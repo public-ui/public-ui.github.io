@@ -1,0 +1,39 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+env:
+  access: restricted
+  registry: https://npm.pkg.github.com
+  scope: public-ui
+  token: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  # pull_request:
+  #   branches:
+  #     - main
+  # push:
+    # branches-ignore:
+    #   - main
+  # release:
+  #   types:
+  #     - released
+  workflow_dispatch:
+
+jobs:
+  update-page:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: 16
+          registry-url: '${{env.registry}}'
+          scope: '@${{env.scope}}'
+      - name: Download
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+        run: |
+          npm pack @${{env.scope}}/storybook
+          ls -la
