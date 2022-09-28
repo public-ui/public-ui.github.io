@@ -25,6 +25,7 @@ jobs:
           scope: '@${{env.scope}}'
       - name: Clear
         run: |
+          npm cache clean -f
           rm -rf docs package *.tgz
           ls -la
       - name: Download
