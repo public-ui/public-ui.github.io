@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Update GitHub Page
+name: update github page
 
 env:
   access: restricted
@@ -30,9 +30,9 @@ jobs:
           node-version: 16
           registry-url: '${{env.registry}}'
           scope: '@${{env.scope}}'
-      - name: Remove tgz
+      - name: Clear
         run: |
-          rm -rf *.tgz
+          rm -rf docs package *.tgz
           ls -la
       - name: Download
         env:
@@ -43,12 +43,14 @@ jobs:
       - name: Unpack
         run: |
           tar -xzvf public-ui-storybook-*.tgz
+          mv package/dist docs
+          rm -rf packages *.tgz
           ls -la
       - name: Commit changed files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add .
+          git add docs
           git status
           git commit -m "Auto update github page"
       - name: Push changes
