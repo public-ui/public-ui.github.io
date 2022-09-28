@@ -30,9 +30,17 @@ jobs:
           node-version: 16
           registry-url: '${{env.registry}}'
           scope: '@${{env.scope}}'
+      - name: Remove tgz
+        run: |
+          rm -rf *.tgz
+          ls -la
       - name: Download
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
         run: |
           npm pack @${{env.scope}}/storybook
+          ls -la
+      - name: Unpack
+        run: |
+          tar -xzvf public-ui-storybook-*.tgz
           ls -la
