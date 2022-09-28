@@ -44,3 +44,14 @@ jobs:
         run: |
           tar -xzvf public-ui-storybook-*.tgz
           ls -la
+      - name: Commit changed files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git status
+          git commit -m "Auto update github page"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
