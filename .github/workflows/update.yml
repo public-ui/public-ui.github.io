@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Update GitHub Page
 
 env:
   access: restricted
@@ -21,7 +21,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  update-page:
+  update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
