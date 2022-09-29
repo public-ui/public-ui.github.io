@@ -41,6 +41,7 @@ jobs:
           rm -rf package *.tgz
           ls -la
       - name: Commit changed files
+        continue-on-error: true
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
