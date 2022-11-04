@@ -1,2 +1,2 @@
 /*! For license information please see 6682.js.LICENSE.txt */
-"use strict";(self.webpackChunk_public_ui_designer=self.webpackChunk_public_ui_designer||[]).push([[6682],{46682:(e,u,i)=>{i.r(u),i.d(u,{kol_input_number:()=>_.K});var _=i(16234)}}]);
+"use strict";(self.webpackChunk_public_ui_designer=self.webpackChunk_public_ui_designer||[]).push([[6682],{46682:(e,u,i)=>{i.r(u),i.d(u,{kol_input_number:()=>_.K});var _=i(50454)}}]);
