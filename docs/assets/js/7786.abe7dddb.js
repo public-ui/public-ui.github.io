@@ -1,0 +1,43 @@
+"use strict";
+exports.id = 7786;
+exports.ids = [7786];
+exports.modules = {
+
+/***/ 18461:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "a": () => (/* binding */ a11yHintLabelingLandmarks),
+/* harmony export */   "b": () => (/* binding */ a11yHintDisabled),
+/* harmony export */   "c": () => (/* binding */ deprecatedHint),
+/* harmony export */   "d": () => (/* binding */ devHint),
+/* harmony export */   "e": () => (/* binding */ a11yHint),
+/* harmony export */   "f": () => (/* binding */ featureHint),
+/* harmony export */   "u": () => (/* binding */ uiUxHintMillerscheZahl)
+/* harmony export */ });
+/* harmony import */ var _dev_utils_daaf2f39_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(57064);
+/*!
+ * KoliBri - The accessible HTML-Standard
+ */
+const a11yCache=new Set,a11yHint=e=>{!1===a11yCache.has(e)&&(a11yCache.add(e),_dev_utils_daaf2f39_js__WEBPACK_IMPORTED_MODULE_0__.L.info(e,{classifier:"✋a11y",overwriteStyle:"; background-color: #09f"}))},deprecatedCache=new Set,deprecatedHint=e=>{!1===deprecatedCache.has(e)&&(deprecatedCache.add(e),_dev_utils_daaf2f39_js__WEBPACK_IMPORTED_MODULE_0__.L.warn(e,{classifier:"🔥deprecated",forceLog:!0,overwriteStyle:"; background-color: #f00"}))},devCache=new Set,devHint=e=>{!1===devCache.has(e)&&(devCache.add(e),_dev_utils_daaf2f39_js__WEBPACK_IMPORTED_MODULE_0__.L.debug(e,{classifier:"💻dev",overwriteStyle:"; background-color: #f09"}))},featureCache=new Set,featureHint=(e,a=!1)=>{!1===featureCache.has(e)&&(featureCache.add(e),e+=!0===a?" ✅":"",_dev_utils_daaf2f39_js__WEBPACK_IMPORTED_MODULE_0__.L.debug(e,{classifier:"🌟feature",overwriteStyle:"; background-color: #309"}))};devHint("Wir freuen uns über jedes Feedback, Kommentare, Screenshots oder Demo-Links von einer auf KoliBri-basierenden Anwendung (kolibri@itzbund.de). Vielen Dank!");const uiUxCache=new Set,uiUxHint=e=>{!1===uiUxCache.has(e)&&(uiUxCache.add(e),Log.debug(e,{classifier:"📑ui/ux",overwriteStyle:"; background-color: #060;"}))},a11yHintDisabled=()=>{a11yHint('"Disabled" schränkt die Zugänglichkeit und Sichtbarkeit ein. Wir empfehlen aus Sicht der Barrierefreiheit readonly- statt disabled-Attribut zu verwenden.\n- https://uxdesign.cc/is-it-ok-to-grey-out-disabled-buttons-8afa74a0fae')},a11yHintLabelingLandmarks=e=>{"string"==typeof e&&""!==e||a11yHint("Manche Strukturelemente, wie bspw. der nav-Tag, können mehrfach in einer Webseite verwendet werden. Damit die gleichnamigen Strukturelemente voneinander unterschieden werden können, ist es erforderlich ein Aria-Label zu setzen.\n- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Navigation_Role#accessibility_concerns")},uiUxHintMillerscheZahl=(e,a=8)=>{var i;a>7&&(i=`[${e}] Innerhalb von Navigationsstrukturen wird empfohlen nicht mehr als 7 Menüpunkte zu verwenden.\n\nLinks:\n- https://de.ryte.com/wiki/Millersche_Zahl\n- https://de.wikipedia.org/wiki/Millersche_Zahl`,!1===uiUxCache.has(i)&&(uiUxCache.add(i),_dev_utils_daaf2f39_js__WEBPACK_IMPORTED_MODULE_0__.L.debug(i,{classifier:"📑ui/ux",overwriteStyle:"; background-color: #060;"})))};
+
+/***/ }),
+
+/***/ 57786:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "kol_input_adapter_leanup": () => (/* binding */ KolInputAdapterLeanup)
+/* harmony export */ });
+/* harmony import */ var _index_a9774259_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(28076);
+/* harmony import */ var _a11y_tipps_d591ee77_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18461);
+/*!
+ * KoliBri - The accessible HTML-Standard
+ */
+const KolInputAdapterLeanup=class{constructor(e){(0,_index_a9774259_js__WEBPACK_IMPORTED_MODULE_0__.r)(this,e)}componentWillLoad(){(0,_a11y_tipps_d591ee77_js__WEBPACK_IMPORTED_MODULE_1__.c)("Die Komponente 'kol-input-adapter-leanup' ist umgezogen. Lesen Sie hier, wie Sie sie migrieren: https://public-ui.github.io/?path=/docs/backlog-und-changelog--page")}render(){return (0,_index_a9774259_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_a9774259_js__WEBPACK_IMPORTED_MODULE_0__.H,null,(0,_index_a9774259_js__WEBPACK_IMPORTED_MODULE_0__.h)("kol-alert",{_type:"warning"},"Die Komponente ",(0,_index_a9774259_js__WEBPACK_IMPORTED_MODULE_0__.h)("code",null,"kol-input-adapter-leanup")," ist umgezogen. Lesen Sie hier, wie Sie sie migrieren:"," ",(0,_index_a9774259_js__WEBPACK_IMPORTED_MODULE_0__.h)("kol-link",{_href:"https://public-ui.github.io/?path=/docs/backlog-und-changelog--page",_target:"storybook"},"https://public-ui.github.io/?path=/docs/backlog-und-changelog--page")))}};
+
+/***/ })
+
+};
+;
