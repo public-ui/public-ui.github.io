@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docusaurus=self.webpackChunk_public_ui_docusaurus||[]).push([[9006],{7051:e=>{e.exports=JSON.parse('{"label":"Getting started","permalink":"/doc/docs/tags/getting-started","allTagsPath":"/doc/docs/tags","count":1,"items":[{"id":"welcome","title":"Willkommen","description":"TODO","permalink":"/doc/docs/willkommen"}]}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docusaurus=self.webpackChunk_public_ui_docusaurus||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Webauftritt mit SEO-Power","permalink":"/doc/blog/seo-optimierung"}]}')}}]);
