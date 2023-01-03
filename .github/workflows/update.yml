@@ -3,6 +3,7 @@
 name: update github page
 
 env:
+  scope: public-ui
   token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
 on:
