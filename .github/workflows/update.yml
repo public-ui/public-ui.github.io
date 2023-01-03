@@ -45,7 +45,7 @@ jobs:
           rm -rf package *.tgz
           npm pack @${{env.scope}}/docusaurus
           tar -xzvf public-ui-docusaurus-*.tgz
-          mv package/dist docs
+          mv package/build docs
           ls -la docs
       - name: Download cheat-sheet
         env:
