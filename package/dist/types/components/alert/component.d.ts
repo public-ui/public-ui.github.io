@@ -1,0 +1,40 @@
+import { JSX } from '../../stencil-public-runtime';
+import { Generic } from '@public-ui/core';
+import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from '../../types/alert';
+import { HeadingLevel } from '../../types/heading-level';
+declare type RequiredProps = unknown;
+declare type OptionalProps = {
+  alert: boolean;
+  hasCloser: boolean;
+  heading: string;
+  level: HeadingLevel;
+  on: KoliBriAlertEventCallbacks;
+  type: AlertType;
+  variant: AlertVariant;
+};
+export declare type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+declare type RequiredStates = RequiredProps;
+declare type OptionalStates = OptionalProps;
+declare type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export declare class KolAlert implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+  private readonly close;
+  private readonly on;
+  render(): JSX.Element;
+  _alert?: boolean;
+  _hasCloser?: boolean;
+  _heading?: string;
+  _level?: HeadingLevel;
+  _on?: KoliBriAlertEventCallbacks;
+  _type?: AlertType;
+  _variant?: AlertVariant;
+  state: States;
+  validateAlert(value?: boolean): void;
+  validateHasCloser(value?: boolean): void;
+  validateHeading(value?: string): void;
+  validateLevel(value?: HeadingLevel): void;
+  validateOn(value?: KoliBriAlertEventCallbacks): void;
+  validateType(value?: AlertType): void;
+  validateVariant(value?: AlertVariant): void;
+  componentWillLoad(): void;
+}
+export {};

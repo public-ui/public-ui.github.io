@@ -1,0 +1,4 @@
+/*!
+ * KoliBri - The accessible HTML-Standard
+ */
+import{r as registerInstance,h,H as Host}from"./index-a9774259.js";const defaultStyleCss="*{font-size:200%}span{width:4rem;display:inline-block;text-align:center}button{background-color:#490e8d;cursor:pointer;width:4rem;height:4rem;border:none;border-radius:10px;background-color:seagreen;color:white}",KolCounter=class{constructor(t){registerInstance(this,t),this.inc=()=>{this.state={_count:this.state._count+1}},this.dec=()=>{this.state={_count:this.state._count-1}},this.state={_count:0}}render(){return h(Host,null,h("button",{onClick:this.dec},"-"),h("span",null,this.state._count),h("button",{onClick:this.inc},"+"))}};KolCounter.style={default:defaultStyleCss};export{KolCounter as kol_counter};
