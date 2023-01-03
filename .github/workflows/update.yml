@@ -29,18 +29,47 @@ jobs:
           npm cache clean -f
           rm -rf docs package *.tgz
           ls -la
-      - name: Download
+      # - name: Download storybook
+      #   run: |
+      #     rm -rf package *.tgz
+      #     npm pack @${{env.scope}}/storybook
+      #     tar -xzvf public-ui-storybook-*.tgz
+      #     mv package/dist docs
+      #     ls -la docs
+      - name: Download docusaurus
+        run: |
+          rm -rf package *.tgz
+          npm pack @${{env.scope}}/docusaurus
+          tar -xzvf public-ui-docusaurus-*.tgz
+          mv package/dist docs
+          ls -la docs
+      - name: Download cheat-sheet
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
         run: |
-          npm pack @${{env.scope}}/storybook
-          ls -la
-      - name: Unpack
-        run: |
-          tar -xzvf public-ui-storybook-*.tgz
-          mv package/dist docs
           rm -rf package *.tgz
-          ls -la
+          npm pack @${{env.scope}}/components
+          tar -xzvf public-ui-components-*.tgz
+          mv package/dist/cheat-sheet.html docs/cheat-sheet.html
+          ls -la docs
+      - name: Download designer
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+        run: |
+          rm -rf package *.tgz
+          npm pack @${{env.scope}}/designer
+          tar -xzvf public-ui-designer-*.tgz
+          mv package/dist docs/designer
+          ls -la docs/designer
+      - name: Download slidev
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+        run: |
+          rm -rf package *.tgz
+          npm pack @${{env.scope}}/slidev
+          tar -xzvf public-ui-slidev-*.tgz
+          mv package/dist docs/presentation
+          ls -la docs/presentation
       - name: Commit changed files
         continue-on-error: true
         run: |
