@@ -1,4 +1,0 @@
-/*!
- * KoliBri - The accessible HTML-Standard
- */
-import{r as registerInstance,h,H as Host}from"./index-a9774259.js";import{w as watchString}from"./prop.validators-82b345aa.js";import"./index.m-86dc8c44.js";import"./a11y.tipps-d591ee77.js";import"./dev.utils-daaf2f39.js";import"./index-d870d3e1.js";const KolSymbol=class{constructor(a){registerInstance(this,a),this._ariaLabel=void 0,this._symbol=void 0,this.state={_ariaLabel:"Warnung",_symbol:"⚠"}}render(){return h(Host,null,h("span",{"aria-label":this.state._ariaLabel,role:"term"},this.state._symbol))}validateAriaLabel(a){watchString(this,"_ariaLabel",a,{required:!0})}validateSymbol(a){watchString(this,"_symbol",a,{required:!0})}componentWillLoad(){this.validateAriaLabel(this._ariaLabel),this.validateSymbol(this._symbol)}static get watchers(){return{_ariaLabel:["validateAriaLabel"],_symbol:["validateSymbol"]}}};export{KolSymbol as kol_symbol};

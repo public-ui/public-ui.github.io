@@ -1,1 +1,0 @@
-(()=>{let e;document.querySelectorAll("off-kol-textarea").forEach((o=>{window.textarea=o,o._value="",o._on={onChange:l=>{clearTimeout(e),setTimeout((()=>{clearTimeout(e),console.log(l,o),o._value=""}),1e3)}}}))})();

@@ -1,4 +1,0 @@
-/*!
- * KoliBri - The accessible HTML-Standard
- */
-import{r as e,h as i,H as o}from"./index-a9774259.js";import{c as t}from"./a11y.tipps-d591ee77.js";import"./dev.utils-daaf2f39.js";const a=class{constructor(i){e(this,i)}componentWillLoad(){t("Die Komponente 'kol-input-adapter-leanup' ist umgezogen. Lesen Sie hier, wie Sie sie migrieren: https://public-ui.github.io/?path=/docs/backlog-und-changelog--page")}render(){return i(o,null,i("kol-alert",{_type:"warning"},"Die Komponente ",i("code",null,"kol-input-adapter-leanup")," ist umgezogen. Lesen Sie hier, wie Sie sie migrieren:"," ",i("kol-link",{_href:"https://public-ui.github.io/?path=/docs/backlog-und-changelog--page",_target:"storybook"},"https://public-ui.github.io/?path=/docs/backlog-und-changelog--page")))}};export{a as kol_input_adapter_leanup};

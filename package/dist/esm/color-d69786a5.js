@@ -1,4 +1,0 @@
-/*!
- * KoliBri - The accessible HTML-Standard
- */
-var Nationalfarben,Farbspektrum;!function(a){a.Schwarz="#000000",a.Rot="#ff0000",a.Gold="#ffc0c0"}(Nationalfarben||(Nationalfarben={})),function(a){a.Violett="#5f316e",a.Dunkelrot="#780f2d",a.Rot="#c0003c",a.Orange="#cd5038",a.Hellorange="#f7bb3d",a.Gelb="#f9e03a",a["Hellgrün"]="#c1ca31",a.Oliv="#597c39",a["Dunkelgrün"]="#005c45",a["Grün"]="#00854a",a["Türkis"]="#00818b",a.Hellblau="#80cdec",a.Blau="#0077b6",a.Petrol="#007194",a.Dunkelblau="#004b76",a.Dunkelgrau="#576164",a.Hellgrau="#bec5c9"}(Farbspektrum||(Farbspektrum={}));export{Farbspektrum as F,Nationalfarben as N};

@@ -1,4 +1,0 @@
-/*!
- * KoliBri - The accessible HTML-Standard
- */
-var n=1/12.92;function r(n){return Math.pow((n+.055)/1.055,2.4)}function t(t){var e=t[0]/255,a=t[1]/255,u=t[2]/255;return.2126*(e<=.03928?e*n:r(e))+.7152*(a<=.03928?a*n:r(a))+.0722*(u<=.03928?u*n:r(u))}function u(n){var r=255;8===(n=n.replace(/^#/,"")).length&&(r=parseInt(n.slice(6,8),16),n=n.substring(0,6)),4===n.length&&(r=parseInt(n.slice(3,4).repeat(2),16),n=n.substring(0,3)),3===n.length&&(n=n[0]+n[0]+n[1]+n[1]+n[2]+n[2]);var t=parseInt(n,16);return[t>>16,t>>8&255,255&t,r]}function a(n,r){return function(n,r){return function(n,r){return(Math.max(n,r)+.05)/(Math.min(n,r)+.05)}(t(n),t(r))}(u(n),u(r))}function e(n){return n>=7?"AAA":n>=4.5?"AA":n>=3?"AA Large":"Fail"}export{e as f,a as s};

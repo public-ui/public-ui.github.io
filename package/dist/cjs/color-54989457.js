@@ -1,4 +1,0 @@
-/*!
- * KoliBri - The accessible HTML-Standard
- */
-"use strict";exports.Nationalfarben=void 0,function(e){e.Schwarz="#000000",e.Rot="#ff0000",e.Gold="#ffc0c0"}(exports.Nationalfarben||(exports.Nationalfarben={})),exports.Farbspektrum=void 0,function(e){e.Violett="#5f316e",e.Dunkelrot="#780f2d",e.Rot="#c0003c",e.Orange="#cd5038",e.Hellorange="#f7bb3d",e.Gelb="#f9e03a",e["Hellgrün"]="#c1ca31",e.Oliv="#597c39",e["Dunkelgrün"]="#005c45",e["Grün"]="#00854a",e["Türkis"]="#00818b",e.Hellblau="#80cdec",e.Blau="#0077b6",e.Petrol="#007194",e.Dunkelblau="#004b76",e.Dunkelgrau="#576164",e.Hellgrau="#bec5c9"}(exports.Farbspektrum||(exports.Farbspektrum={}));

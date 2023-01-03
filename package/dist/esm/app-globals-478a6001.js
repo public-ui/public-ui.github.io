@@ -1,4 +1,0 @@
-/*!
- * KoliBri - The accessible HTML-Standard
- */
-import{s as setMode}from"./index-a9774259.js";import{L as Log}from"./dev.utils-daaf2f39.js";import{s as setThemeStyle,g as getThemeDetails}from"./index-d870d3e1.js";const appGlobalScript=()=>{Log.info("\n,--. ,--.         ,--. ,--. ,-----.           ,--.\n|  .'   /  ,---.  |  | `--' |  |) /_  ,--.--. `--'\n|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.\n|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |\n`--' `--´  `---´  `--' `--' `------´  `--'    `--'\n🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io\n",{forceLog:!0}),setMode((e=>(e.shadowRoot instanceof ShadowRoot&&setThemeStyle(e,getThemeDetails(e)),"default"))),import("./devtools-cc50ca43.js").then((e=>{"object"==typeof e&&null!==e&&"function"==typeof e.initialize&&e.initialize()})).catch((e=>{Log.error(e)}))},globalScripts=appGlobalScript;export{globalScripts as g};

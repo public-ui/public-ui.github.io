@@ -1,4 +1,0 @@
-/*!
- * KoliBri - The accessible HTML-Standard
- */
-import{a as t,c as s}from"./prop.validators-82b345aa.js";import{I as e}from"./controller-f46df1f0.js";class r extends e{constructor(t,s,e){super(t,s,e),this.component=t}validateList(t){s(this.component,"_list",(t=>"string"==typeof t),t)}componentWillLoad(){super.componentWillLoad(),this.validateList(this.component._list)}}class i extends r{constructor(t,s,e){super(t,s,e),this.hasError=!1,this.hasList=!1,this.component=t}validateType(s){t(this.component,"_type",(t=>"string"==typeof t&&("text"===t||"search"===t||"url"===t||"tel"===t)),new Set(["String {text, search, url, tel}"]),s)}componentWillLoad(){super.componentWillLoad(),this.validateType(this.component._type)}}export{r as I,i as a};

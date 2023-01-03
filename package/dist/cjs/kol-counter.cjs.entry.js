@@ -1,4 +1,0 @@
-/*!
- * KoliBri - The accessible HTML-Standard
- */
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});const index=require("./index-59a3234b.js"),defaultStyleCss="*{font-size:200%}span{width:4rem;display:inline-block;text-align:center}button{background-color:#490e8d;cursor:pointer;width:4rem;height:4rem;border:none;border-radius:10px;background-color:seagreen;color:white}",KolCounter=class{constructor(t){index.registerInstance(this,t),this.inc=()=>{this.state={_count:this.state._count+1}},this.dec=()=>{this.state={_count:this.state._count-1}},this.state={_count:0}}render(){return index.h(index.Host,null,index.h("button",{onClick:this.dec},"-"),index.h("span",null,this.state._count),index.h("button",{onClick:this.inc},"+"))}};KolCounter.style={default:defaultStyleCss},exports.kol_counter=KolCounter;

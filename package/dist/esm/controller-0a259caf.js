@@ -1,4 +1,0 @@
-/*!
- * KoliBri - The accessible HTML-Standard
- */
-import{a as watchValidator,c as watchJsonArrayString}from"./prop.validators-82b345aa.js";import{I as InputPasswordController}from"./controller-f46df1f0.js";class InputTextEmailController extends InputPasswordController{constructor(t,o,r){super(t,o,r),this.component=t}validateList(t){watchJsonArrayString(this.component,"_list",(t=>"string"==typeof t),t)}componentWillLoad(){super.componentWillLoad(),this.validateList(this.component._list)}}class InputTextController extends InputTextEmailController{constructor(t,o,r){super(t,o,r),this.hasError=!1,this.hasList=!1,this.component=t}validateType(t){watchValidator(this.component,"_type",(t=>"string"==typeof t&&("text"===t||"search"===t||"url"===t||"tel"===t)),new Set(["String {text, search, url, tel}"]),t)}componentWillLoad(){super.componentWillLoad(),this.validateType(this.component._type)}}export{InputTextEmailController as I,InputTextController as a};
