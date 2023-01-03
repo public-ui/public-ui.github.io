@@ -30,6 +30,8 @@ jobs:
           rm -rf docs package *.tgz
           ls -la
       # - name: Download storybook
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{env.token}}
       #   run: |
       #     rm -rf package *.tgz
       #     npm pack @${{env.scope}}/storybook
@@ -37,6 +39,8 @@ jobs:
       #     mv package/dist docs
       #     ls -la docs
       - name: Download docusaurus
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
         run: |
           rm -rf package *.tgz
           npm pack @${{env.scope}}/docusaurus
