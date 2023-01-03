@@ -1,0 +1,4 @@
+/*!
+ * KoliBri - The accessible HTML-Standard
+ */
+"use strict";var n=.2126,r=.7152,t=.0722,e=1/12.92;function u(n){return Math.pow((n+.055)/1.055,2.4)}function a(a){var i=a[0]/255,s=a[1]/255,c=a[2]/255,o=i<=.03928?i*e:u(i),f=s<=.03928?s*e:u(s),p=c<=.03928?c*e:u(c);return o*n+f*r+p*t}function i(n){var t=255;8===(n=n.replace(/^#/,"")).length&&(t=parseInt(n.slice(6,8),16),n=n.substring(0,6)),4===n.length&&(t=parseInt(n.slice(3,4).repeat(2),16),n=n.substring(0,3)),3===n.length&&(n=n[0]+n[0]+n[1]+n[1]+n[2]+n[2]);var r=parseInt(n,16);return[r>>16,r>>8&255,255&r,t]}function c(n,t){return(Math.max(n,t)+.05)/(Math.min(n,t)+.05)}function o(n,t){return c(a(n),a(t))}function s(n,t){return o(i(n),i(t))}function f(n){return n>=7?"AAA":n>=4.5?"AA":n>=3?"AA Large":"Fail"}exports.f=f,exports.s=s;

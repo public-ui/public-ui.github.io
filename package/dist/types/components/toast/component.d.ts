@@ -1,0 +1,46 @@
+import { JSX } from '../../stencil-public-runtime';
+import { Generic } from '@public-ui/core';
+import { AlertType } from '../../types/alert';
+import { HeadingLevel } from '../../types/heading-level';
+import { KoliBriToastEventCallbacks } from '../../types/toast';
+declare type RequiredProps = unknown;
+declare type OptionalProps = {
+  alert: boolean;
+  hasCloser: boolean;
+  heading: string;
+  level: HeadingLevel;
+  on: KoliBriToastEventCallbacks;
+  show: boolean;
+  showDuration: number;
+  type: AlertType;
+};
+export declare type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+declare type RequiredStates = RequiredProps;
+declare type OptionalStates = OptionalProps;
+declare type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export declare class KolToast implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+  _alert?: boolean;
+  _hasCloser?: boolean;
+  _heading?: string;
+  _level?: HeadingLevel;
+  _on?: KoliBriToastEventCallbacks;
+  _show?: boolean;
+  _showDuration?: number;
+  _type?: AlertType;
+  state: States;
+  validateAlert(value?: boolean): void;
+  validateHasCloser(value?: boolean): void;
+  validateHeading(value?: string): void;
+  validateLevel(value?: HeadingLevel): void;
+  validateOn(value?: KoliBriToastEventCallbacks): void;
+  validateShow(value?: boolean): void;
+  validateShowDuration(value?: number): void;
+  validateType(value?: AlertType): void;
+  componentWillLoad(): void;
+  private durationTimeout?;
+  private readonly handleShowAndDuration;
+  private readonly close;
+  private readonly on;
+  render(): JSX.Element;
+}
+export {};

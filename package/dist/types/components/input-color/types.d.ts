@@ -1,0 +1,48 @@
+import { Generic } from '@public-ui/core';
+import { ButtonProps } from '../../types/button-link';
+import { Stringified } from '../../types/common';
+import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { InputRequiredProps, KoliBriInputIcon } from '../input-text/types';
+declare type RequiredProps = InputRequiredProps;
+declare type OptionalProps = {
+  accessKey: string;
+  alert: boolean;
+  autoComplete: InputTypeOnOff;
+  disabled: boolean;
+  error: string;
+  hideLabel: boolean;
+  hint: string;
+  icon: Stringified<KoliBriInputIcon>;
+  list: Stringified<string[]>;
+  name: string;
+  on: InputTypeOnDefault;
+  smartButton: ButtonProps;
+  touched: boolean;
+  tabIndex: number;
+  value: string;
+};
+export declare type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+declare type RequiredStates = {
+  autoComplete: InputTypeOnOff;
+  id: string;
+  list: string[];
+};
+declare type OptionalStates = {
+  accessKey: string;
+  alert: boolean;
+  disabled: boolean;
+  error: string;
+  hideLabel: boolean;
+  hint: string;
+  icon: KoliBriInputIcon;
+  name: string;
+  on: InputTypeOnDefault;
+  smartButton: ButtonProps;
+  touched: boolean;
+  tabIndex: number;
+  value: string;
+};
+export declare type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export declare type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+export declare type ComponentApi = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export {};

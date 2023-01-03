@@ -1,0 +1,4 @@
+/*!
+ * KoliBri - The accessible HTML-Standard
+ */
+import{proxyCustomElement,HTMLElement,h,Host}from"@stencil/core/internal/client";const KolButtonGroupWc=proxyCustomElement(class extends HTMLElement{constructor(){super(),this.__registerHost(),this.state={}}render(){return h(Host,null,h("div",{class:"flex flex-wrap bg-normal"},h("slot",null)))}},[4,"kol-button-group-wc",{state:[32]}]);function defineCustomElement(){if("undefined"==typeof customElements)return;["kol-button-group-wc"].forEach((t=>{if("kol-button-group-wc"===t)customElements.get(t)||customElements.define(t,KolButtonGroupWc)}))}export{KolButtonGroupWc as K,defineCustomElement as d};

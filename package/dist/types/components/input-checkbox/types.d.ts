@@ -1,0 +1,48 @@
+import { Generic } from '@public-ui/core';
+import { InputTypeOnDefault } from '../../types/input/types';
+import { InputRequiredProps } from '../input-text/types';
+export declare type InputCheckboxVariant = 'checkbox' | 'switch';
+declare type RequiredProps = InputRequiredProps;
+declare type OptionalProps = {
+  alert: boolean;
+  accessKey: string;
+  checked: boolean;
+  disabled: boolean;
+  error: string;
+  hideLabel: boolean;
+  hint: string;
+  indeterminate: boolean;
+  name: string;
+  on: InputTypeOnDefault;
+  required: boolean;
+  touched: boolean;
+  tabIndex: number;
+  type: InputCheckboxVariant;
+  value: string;
+  variant: InputCheckboxVariant;
+};
+export declare type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+declare type RequiredStates = {
+  checked: boolean;
+  id: string;
+  variant: InputCheckboxVariant;
+};
+declare type OptionalStates = {
+  alert: boolean;
+  accessKey: string;
+  disabled: boolean;
+  error: string;
+  hideLabel: boolean;
+  hint: string;
+  indeterminate: boolean;
+  name: string;
+  on: InputTypeOnDefault;
+  required: boolean;
+  touched: boolean;
+  tabIndex: number;
+  value: string;
+};
+export declare type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export declare type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+export declare type ComponentApi = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export {};

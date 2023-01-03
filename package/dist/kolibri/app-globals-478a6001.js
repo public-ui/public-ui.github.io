@@ -1,0 +1,4 @@
+/*!
+ * KoliBri - The accessible HTML-Standard
+ */
+import{s as o}from"./index-a9774259.js";import{L as t}from"./dev.utils-daaf2f39.js";import{s,g as n}from"./index-d870d3e1.js";const a=()=>{t.info("\n,--. ,--.         ,--. ,--. ,-----.           ,--.\n|  .'   /  ,---.  |  | `--' |  |) /_  ,--.--. `--'\n|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.\n|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |\n`--' `--´  `---´  `--' `--' `------´  `--'    `--'\n🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io\n",{forceLog:!0}),o((o=>(o.shadowRoot instanceof ShadowRoot&&s(o,n(o)),"default"))),import("./devtools-cc50ca43.js").then((o=>{"object"==typeof o&&null!==o&&"function"==typeof o.initialize&&o.initialize()})).catch((o=>{t.error(o)}))};export{a as g};

@@ -1,0 +1,4 @@
+/*!
+ * KoliBri - The accessible HTML-Standard
+ */
+"use strict";const prop_validators=require("./prop.validators-8ddaf00e.js"),watchButtonType=(t,a,o)=>{prop_validators.watchValidator(t,a,(t=>"button"===t||"reset"===t||"submit"===t),new Set(["KoliBriButtonType {button, reset, submit}"]),o)},watchButtonVariant=(t,a,o)=>{prop_validators.watchValidator(t,a,(t=>"primary"===t||"secondary"===t||"normal"===t||"danger"===t||"ghost"===t||"custom"===t),new Set(["KoliBriButtonVariant {primary, secondary, normal, danger, ghost, custom}"]),o,{defaultValue:"normal"})};exports.watchButtonType=watchButtonType,exports.watchButtonVariant=watchButtonVariant;

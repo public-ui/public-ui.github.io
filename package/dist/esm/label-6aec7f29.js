@@ -1,0 +1,4 @@
+/*!
+ * KoliBri - The accessible HTML-Standard
+ */
+import{e as a11yHint}from"./a11y.tipps-d591ee77.js";import{w as watchString}from"./prop.validators-82b345aa.js";const syncAriaLabelBeforePatch=(a,e,r,t)=>{const i=e.has("_ariaLabel")?e.get("_ariaLabel"):r.state._ariaLabel;if("string"==typeof i&&i.length>0){const a=e.has("_label")?e.get("_label"):r.state._label;!1===new RegExp(`^${a}`).test(i)&&("_ariaLabel"===t?(e.set("_label",i),r._label=i):(e.set("_ariaLabel",a),r._ariaLabel=a),a11yHint("Das abweichende Aria-Label am Schalter ist nicht barrierefrei. Ein abweichendes Aria-Label muss aus Barrierefreiheitsgründen für die Sprachsteuerung mit dem Label-Text beginnen."))}},validateAriaLabel=(a,e)=>{watchString(a,"_ariaLabel",e,{hooks:{beforePatch:syncAriaLabelBeforePatch}})},validateLabel=(a,e)=>{watchString(a,"_label",e,{hooks:{beforePatch:syncAriaLabelBeforePatch},required:!0})};export{validateLabel as a,validateAriaLabel as v};

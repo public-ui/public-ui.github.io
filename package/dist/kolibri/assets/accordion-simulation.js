@@ -1,0 +1,1 @@
+setTimeout((()=>{document.querySelectorAll("kol-accordion").forEach((o=>{o._on={onClick:(o,c)=>{console.log("Accordion",!0===c?"Auf":"Zu",o,c)}}}))}),1e3);
