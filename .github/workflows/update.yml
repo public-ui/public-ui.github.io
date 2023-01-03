@@ -7,6 +7,7 @@ env:
   token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
 on:
+  push:
   # schedule:
   #   - cron: '0 4 * * *'
   # workflow_call:
@@ -75,7 +76,7 @@ jobs:
           rm -rf package *.tgz
           npm pack @${{env.scope}}/components
           tar -xzvf public-ui-components-*.tgz
-          mv package/dist/cheat-sheet.html docs/cheat-sheet.html
+          mv package/cheat-sheet.html docs/cheat-sheet.html
           ls -la docs
       - name: Commit changed files
         continue-on-error: true
