@@ -3,9 +3,6 @@
 name: update github page
 
 env:
-  access: restricted
-  registry: https://npm.pkg.github.com
-  scope: public-ui
   token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
 on:
@@ -22,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: "${{env.registry}}"
+          registry-url: "https://npm.pkg.github.com"
           scope: "@${{env.scope}}"
       - name: Clear
         run: |
@@ -47,15 +44,6 @@ jobs:
           tar -xzvf public-ui-docusaurus-*.tgz
           mv package/build docs
           ls -la docs
-      - name: Download cheat-sheet
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-        run: |
-          rm -rf package *.tgz
-          npm pack @${{env.scope}}/components
-          tar -xzvf public-ui-components-*.tgz
-          mv package/dist/cheat-sheet.html docs/cheat-sheet.html
-          ls -la docs
       - name: Download designer
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
@@ -74,6 +62,20 @@ jobs:
           tar -xzvf public-ui-slidev-*.tgz
           mv package/dist docs/presentation
           ls -la docs/presentation
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: "https://registry.npmjs.org"
+          scope: "@${{env.scope}}"
+      - name: Download cheat-sheet
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+        run: |
+          rm -rf package *.tgz
+          npm pack @${{env.scope}}/components
+          tar -xzvf public-ui-components-*.tgz
+          mv package/dist/cheat-sheet.html docs/cheat-sheet.html
+          ls -la docs
       - name: Commit changed files
         continue-on-error: true
         run: |
