@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docusaurus=self.webpackChunk_public_ui_docusaurus||[]).push([[7667],{6457:a=>{a.exports=JSON.parse('{"label":"Changelog","permalink":"/docs/tags/changelog","allTagsPath":"/docs/tags","count":1,"items":[{"id":"changelog","title":"Changelog und Backlog","description":"TODO","permalink":"/docs/changelog"}]}')}}]);

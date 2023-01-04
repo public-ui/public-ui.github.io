@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docusaurus=self.webpackChunk_public_ui_docusaurus||[]).push([[1503],{8058:s=>{s.exports=JSON.parse('{"label":"Manifest","permalink":"/docs/tags/manifest","allTagsPath":"/docs/tags","count":1,"items":[{"id":"manifest","title":"Manifest","description":"TODO","permalink":"/docs/manifest"}]}')}}]);

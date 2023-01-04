@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docusaurus=self.webpackChunk_public_ui_docusaurus||[]).push([[1282],{5126:s=>{s.exports=JSON.parse('{"label":"Lizenz","permalink":"/docs/tags/lizenz","allTagsPath":"/docs/tags","count":1,"items":[{"id":"concepts/license","title":"Lizenz","description":"TODO","permalink":"/docs/concepts/license"}]}')}}]);
