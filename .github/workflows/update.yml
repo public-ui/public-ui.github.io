@@ -8,8 +8,8 @@ env:
 
 on:
   push:
-  # schedule:
-  #   - cron: '0 4 * * *'
+  schedule:
+    - cron: '0 4 * * *'
   # workflow_call:
   workflow_dispatch:
 
