@@ -8,8 +8,10 @@ env:
 
 on:
   push:
-  schedule:
-    - cron: '0 4 * * *'
+    branches:
+      - main
+  # schedule:
+  #   - cron: '0 4 * * *'
   # workflow_call:
   workflow_dispatch:
 
@@ -28,56 +30,16 @@ jobs:
           npm cache clean -f
           rm -rf docs package *.tgz
           ls -la
-      # - name: Download storybook
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{env.token}}
-      #   run: |
-      #     rm -rf package *.tgz
-      #     npm pack @${{env.scope}}/storybook
-      #     tar -xzvf public-ui-storybook-*.tgz
-      #     mv package/dist docs
-      #     ls -la docs
-      - name: Download docusaurus
+      - name: Download website
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
         run: |
           rm -rf package *.tgz
-          npm pack @${{env.scope}}/docusaurus
-          tar -xzvf public-ui-docusaurus-*.tgz
+          npm pack @${{env.scope}}/website
+          tar -xzvf public-ui-website-*.tgz
           mv package/build docs
           ls -la docs
-      - name: Download designer
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-        run: |
-          rm -rf package *.tgz
-          npm pack @${{env.scope}}/designer
-          tar -xzvf public-ui-designer-*.tgz
-          mv package/dist docs/designer
-          ls -la docs/designer
-      - name: Download slidev
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-        run: |
-          rm -rf package *.tgz
-          npm pack @${{env.scope}}/slidev
-          tar -xzvf public-ui-slidev-*.tgz
-          mv package/dist docs/presentation
-          ls -la docs/presentation
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: "https://registry.npmjs.org"
-          scope: "@${{env.scope}}"
-      - name: Download cheat-sheet
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-        run: |
-          rm -rf package *.tgz
-          npm pack @${{env.scope}}/components
-          tar -xzvf public-ui-components-*.tgz
-          mv package/cheat-sheet.html docs/cheat-sheet.html
-          ls -la docs
+
       - name: Commit changed files
         continue-on-error: true
         run: |
