@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_website=self.webpackChunk_public_ui_website||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Neuste Beitr\xe4ge","items":[{"title":"\xdcbersetzungen","permalink":"/blog/ubersetzungen"},{"title":"Webauftritt mit SEO-Power","permalink":"/blog/seo-optimierung"}]}')}}]);
