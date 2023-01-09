@@ -20,9 +20,9 @@ Je nach verwendeten Paket-Manager k\xF6nnen diese mit einem der folgenden Befehl
 `)),(0,e.kt)("p",null,(0,e.kt)("kol-heading",{_level:"3"},"3. Registrieren des Komponenten-Loaders")),(0,e.kt)("p",null,`Nachdem die Vorbereitungen abgeschlossen sind, muss nur noch der Komponenten-Loader registriert werden.
 Er sorgt daf\xFCr, dass die Web Components asychron (lazy) nachgeladen werden, sobald sie in der Webseite verwendet werden.`),(0,e.kt)("table",null,(0,e.kt)("thead",{parentName:"table"},(0,e.kt)("tr",{parentName:"thead"},(0,e.kt)("th",{parentName:"tr",align:null},"Methode"),(0,e.kt)("th",{parentName:"tr",align:null},"Erl\xE4uterung"))),(0,e.kt)("tbody",{parentName:"table"},(0,e.kt)("tr",{parentName:"tbody"},(0,e.kt)("td",{parentName:"tr",align:null},"register"),(0,e.kt)("td",{parentName:"tr",align:null},"Setzt ein Theme und registiert anschlie\xDFend den Loader")),(0,e.kt)("tr",{parentName:"tbody"},(0,e.kt)("td",{parentName:"tr",align:null},"BMF"),(0,e.kt)("td",{parentName:"tr",align:null},"Registiert den Loader f\xFCr z.B. das BMF-Theme")),(0,e.kt)("tr",{parentName:"tbody"},(0,e.kt)("td",{parentName:"tr",align:null},"defineCustomElements"),(0,e.kt)("td",{parentName:"tr",align:null},"Registiert den Loader f\xFCr die Web Components")))),(0,e.kt)("p",null,(0,e.kt)("kol-heading",{_level:"4"},"Variant A: Statisches Projekt")),(0,e.kt)("pre",null,(0,e.kt)("code",{parentName:"pre",className:"language-html"},`<head>
     <script type="module">
-        import { register } from 'https://esm.sh/@public-ui/core@1.1.16-rc.7';
-        import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16-rc.7/dist/loader';
-        import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.16-rc.7';
+        import { register } from 'https://esm.sh/@public-ui/core@1.1.16';
+        import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16/dist/loader';
+        import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.16';
         register([BMF], defineCustomElements)
             .then(() => {})
             .catch(console.warn);
