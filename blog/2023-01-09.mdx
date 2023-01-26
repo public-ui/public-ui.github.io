@@ -1,0 +1,117 @@
+---
+slug: button-und-link-komponenten
+title: Button- und Link-Komponenten
+authors: deleonio
+tags: ['button', 'link']
+---
+
+Wir bieten heute die Varianten von Button, ButtonLink, Link und LinkButton an. Zukünftig werden wir zusätzlich den ButtonToggle (Toogle-Button) anbieten. Alle semantischen Links unterstützen dabei nur noch `_href` und alle Buttons nur noch `_on` als semantischen "Klick". Optisch gibt es Buttons die genau wie Links aussehen und Links die genauso wie Buttons aussehen.
+
+In der folgenden Tabelle wir eine Übersicht über die Unterschiede dargestellt:
+
+|  Merkmal  | Link | LinkButton |  Button  | ButtonLink | ButtonToggle<sup>\*</sup> |
+| :-------: | :--: | :--------: | :------: | :--------: | :-----------------------: |
+|  Design   | Link |   Button   |  Button  |    Link    |          Button           |
+| Semantik  | `a`  |    `a`     | `button` |  `button`  |         `button`          |
+|  `_href`  |  ➕  |     ➕     |    ➖    |     ➖     |            ➖             |
+|   `_on`   |  ➖  |     ➖     |    ➕    |     ➕     |            ➕             |
+| `focus()` |  ➕  |     ➕     |    ➕    |     ➕     |            ➕             |
+|   Wert    |  ➖  |     ➖     |    ➖    |     ➖     |         `boolean`         |
+
+<small>
+	<sup>*</sup> Die Komponente ButtonToogle ist aktuell noch nicht umgesetzt. Sie ist aber spezifiziert und im Backlog.
+</small>
+
+## Motivation
+
+KoliBri strebt neben einer hohe Standardkonformität auch eine sehr gute Wiederverwendbarkeit (Developer Experience DX) an.
+Diese wird durch die Einheitlichkeit zu den HTML-Attributen und dem sparsamen Umgang mit zusätlichen Properties adressiert.
+
+> **Rationale:** Wenn wir bei einer Link-Komponente, die zum Navigieren gedacht ist, die beiden Verhalten **Navigieren** und **Klick ohne Navigieren**
+> anbieten würden, dann hääten wir einen Widerspruch im Verhalten. Auch bei der Verwendung in der Entwicklung müssten wir die Properties `_href` und `_on`
+> optional machen und wir könnten nicht mehr vor der Falschverwendung warnen (Statische Codeprüfung).
+
+## Herausforderungen
+
+Diese strenge Auslegung kann dazu führen, dass es bei der Entwicklung mit anderen Bibliotheken und Frameworks zu Problemen kommt.
+Vorallem dann, wenn diese bei einem Link einen Klick erwarten.
+
+### React-Router
+
+Der React-Router bildet das Navigieren über Klicks ab. Bei der Verwendung mit der Link-Komponente gibt es unterschiedliche Möglichkeiten der Implementierung.
+
+**Wrapping:**
+
+```tsx
+<Link to="/">
+	<KolLink _href="">Home</KolLink>
+</Link>
+<Link to="/test">
+	<KolLink _href="">Test</KolLink>
+</Link>
+```
+
+**Per Klick:**
+
+```tsx
+<KolButtonLink
+	_label="Home"
+	_on={{
+		onClick: () => navigate("/")
+	}}
+>
+	Home
+</KolButtonLink>
+<KolButtonLink
+	_label="Test"
+	_on={{
+		onClick: () => navigate("/test")
+	}}
+>
+	Test
+</KolButtonLink>
+```
+
+**React-Link:**
+
+```tsx
+<KolLink
+	_href=""
+	_label="Home"
+	onClick={() => navigate("/")}
+>
+	Home
+</KolLink>
+<KolLink
+	_href=""
+	_label="Test"
+	onClick={() => navigate("/test")}
+>
+	Test
+</KolLink>
+```
+
+> **Hinweis:** `_href=""` ist eigentlich nicht erlaubt.
+
+Hier gibt es auch ein kleines Code-Beispiel zum <kol-link _href="https://codesandbox.io/s/kolibri-sample-react-link-sample-1jgz8v?file=/src/Navigation.tsx:0-112" _label="" _target="sandbox">Navigieren mit React-Router</kol-link>.
+
+Die angegebenen Beispiele zeigen, dass die Link- und ButtonLink-Komponente für die direkte Nutzung mit React-Router geeignet sind. Allerdings wird die Link-Komponente auch innerhalb anderer KoliBri-Komponenten verwendet. **Wo das so nicht funktionieren würde!**
+
+### Server-Side-Rendering
+
+Das Server-Side-Rendering ist sehr ähnlich zum React-Router, weil dieser technisch sehr stark durch das Framework Remix getrieben ist.
+Remix ist ein Framework zum Erstellen von hybriden Client- und Server-Side-Webapplications. Das heißt die Implementierung unterscheiden sich nicht, ob ich die Anwendung später als Client- oder Server-seitige Anwendung bauen möchte.
+Für Server-Side-Anwendungen müssen die navigierenden Links mit einem Klick funktionieren, weil diese Anwendungen auf dem Server und nicht im Browser ausgeführt werden.
+
+Um die Wiederverwendbarkeit von KoliBri auch für Server-Side-Webapplications zu gewährleisten, muss der Seitenwechsel auch durch **Klick ohne Navigieren** möglich sein.
+
+## Lösung
+
+Um die Herausforderungen zu lösen, werden alle Komponenten, denen Link-Definitionen übergeben werden, erweitert. Wenn diesen Komponenten wahlweise auch ButtonLink-Definitionen übergeben werden können, dann können diese auch Klicks abbilden ohne zu Navigieren, sehen aber optisch weiterhin wie Links aus.
+
+Folgende Komponenten müssen dazu noch erweitert werden:
+
+- Breadcrumb
+- LinkGroup
+- Nav
+- SkipNav

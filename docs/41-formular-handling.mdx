@@ -1,0 +1,146 @@
+---
+title: Formular-Handling
+description: Auf diese Seite wird beschrieben, wie komplexe Formulare mit KoliBri umgesetzt werden können.
+tags:
+  - Architektur
+  - Formular
+  - Konzept
+---
+
+Fast alle **KoliBri**-Komponenten dienen der Implementierung und Kapselung spezifischer barrierefreier HTML-Komponenten und gehören zur **View**.
+
+Um sehr dynamische und komplexe Formulare umsetzen zu können, sind zahlreiche Funktionalitäten, wie Change-Listener, Validatoren, Formatter u.a. erforderlich.
+Diese Logik sollte entkoppelt von der View implementiert werden und gehören zum **Controller**.
+
+## Design-Ansätze
+
+In der <kol-abbr _title="Single-Page-Application">SPA</kol-abbr>-Entwicklung wird hier oft in den <i>Template-driven</i>- und
+
+<i>Model-driven</i>-Ansatz unterschieden.
+
+Der Template-driven-Ansatz besagt dabei, dass die Formular-Logik auch ins Template also die View implementiert wird. Das kann schamant sein, aber auch zu
+unübersichtlichen Code führen.
+
+Der Model-driven-Ansatz hingegen besagt dabei, dass die Formular-Logik ins Modell also den Controller implementiert wird. Das führt zwar erstmal zu mehr
+Aufwand, aber dadurch auch zu entkoppelten wartbareren Code.
+
+<kol-alert _type="info">
+
+In **KoliBri** sind die Formular-Komponenten vom Formular-Handling entkoppelt. Das hat den Vorteil, dass die Komponenten universeller wiederverwendet werden
+können. Quasi wie das HTML selbst auch.
+
+</kol-alert>
+
+## Eingabe-Komponenten
+
+Die **Eingabe**-Komponenten sind die Komponenten mit den Formular-Eingaben gemacht werden können. Sprich in erster Linie <kol-link _href="/docs/konzepte/formular-input">Inputs, Select und Textarea</kol-link>.
+
+## Handling-Adapter
+
+Wie oben beschrieben ist das Formular-Handling von den **Eingabe**-Komponenten entkoppelt. Somit kann jedes Entwicklungsteam in Abhängigkeit zum eingesetzten
+Framework selbst entscheiden, welches Formular-Handling geeignet ist.
+
+<kol-alert _type="info">
+
+Die **Kopplung** des Formular-Handlings mit den **Eingabe**-Komponenten erfolgt dann über eine **Adapter** -Komponente, die den State der Komponenten
+dynamisch synchronisiert.
+
+</kol-alert>
+
+### Lean-Input-Adapter
+
+Für die Entwicklung mit TypeScript bietet **KoliBri** die **Adapter**-Komponent für die Formular-Handling-Bibliothek <kol-link _href="https://www.npmjs.com/package/@leanup/form" _label="@leanup/form" _target="npmjs"/> an.
+
+#### Installation
+
+Der Adapter kann über die öffentliche NPM-Registry installiert werden:
+
+```bash
+npm i @leanup/form @leanup/kolibri-components @leanup/kolibri-react
+```
+
+#### Einbindung
+
+Bei der Einbindung ist darauf zu achten, dass die Leanup-Komponenten zunächst registriert werden müssen.
+
+```html
+<head>
+	<script type="module">
+		import { register } from 'https://esm.sh/@public-ui/core@1.1.16';
+		import { defineCustomElements as kolibri } from 'https://esm.sh/@public-ui/components@1.1.16/dist/loader';
+		import { defineCustomElements as leanup } from 'https://esm.sh/@leanup/kolibri-components@1.0.5/dist/loader';
+		import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.16';
+		register([BMF], [kolibri, leanup])
+			.catch(console.warn);
+	</script>
+</head>
+<body>
+	<kol-spin _show>
+</body>
+```
+
+Oder für React:
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import { AppComponent } from './components/app/component';
+
+import { register } from '@public-ui/core';
+import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
+import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
+import { BMF } from '@public-ui/themes';
+
+register([BMF], [kolibri, leanup])
+	.then(() => {
+		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
+		if (htmlDivElement instanceof HTMLDivElement) {
+			const root = createRoot(htmlDivElement);
+			root.render(<AppComponent />);
+		}
+	})
+	.catch(console.warn);
+```
+
+#### Verwendung
+
+Wie der Name (Adpater) schon sagt, stellt die Komponent die Synchronisation zwischen der spezifischen Formular-Logik
+(Controller) und der Formular-Darstellung (View) dar. Die Umsetzung im HTML-Code erfolgt in Form eines umschließenden
+Tags.
+
+**Beispiel (schematisch):**
+
+```html
+<lean-input-adapter>
+	<kol-input-text>Land</kol-input-text>
+</lean-input-adapter>
+
+<lean-input-adapter>
+	<kol-select _list="Deutschland, Österreich, Schweiz usw.">Land</kol-select>
+</lean-input-adapter>
+```
+
+> Im reinen HTML müssen die Controls nach dem DOM-Aufbau an die Adapter-Nodes gehängt werden, damit das reaktive Verhalten funktioniert.
+
+Oder für React:
+
+```tsx
+<LeanInputAdapter _control={landControl as InputControl}>
+	<KolInputText>Land</KolInputText>
+</LeanInputAdapter>
+
+<LeanInputAdapter _control={landControl as InputControl}>
+	<KolSelect _list="Deutschland, Österreich, Schweiz usw.">Land</KolSelect>
+</LeanInputAdapter>
+```
+
+<kol-alert _type="info">
+
+In diesem Beispiel ist schön zu sehen, dass das Modell von der Darstellung entkoppelt ist. Ob also ein Formular-Wert als Text-Eingabefeld oder als Select-Feld
+dargestellt wird, ist auf Modell-Ebene irrelevant.
+
+</kol-alert>
+
+Die **Adapter**-Komponente umschließt die **Eingabe**-Komponente von KoliBri und stellt dadurch die Synchronisation
+zwischen Modell und Darstellung sicher.

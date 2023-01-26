@@ -23,22 +23,51 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@${{env.scope}}"
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@${{env.scope}}'
       - name: Clear
         run: |
           npm cache clean -f
-          rm -rf docs package *.tgz
+          rm -rf build package *.tgz
           ls -la
-      - name: Download website
+
+      - name: Build doc
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
         run: |
           rm -rf package *.tgz
-          npm pack @${{env.scope}}/website
-          tar -xzvf public-ui-website-*.tgz
-          mv package/build docs
-          ls -la docs
+          npm i
+          npm run build
+
+      - name: Download designer
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+        run: |
+          rm -rf package *.tgz
+          npm pack @${{env.scope}}/designer
+          tar -xzvf public-ui-designer-*.tgz
+          mv package/dist build/designer
+          ls -la build
+
+      - name: Download slidev
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+        run: |
+          rm -rf package *.tgz
+          npm pack @${{env.scope}}/slidev
+          tar -xzvf public-ui-slidev-*.tgz
+          mv package/dist build/slidev
+          ls -la build
+
+      - name: Download storybook
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+        run: |
+          rm -rf package *.tgz
+          npm pack @${{env.scope}}/storybook
+          tar -xzvf public-ui-storybook-*.tgz
+          mv package/dist build/storybook
+          ls -la build
 
       - name: Commit changed files
         continue-on-error: true
