@@ -68,6 +68,7 @@ jobs:
           npm pack @${{env.scope}}/designer
           tar -xzvf public-ui-designer-*.tgz
           mv package/dist build/designer
+          rm -rf package *.tgz
           ls -la build
         working-directory: dev
 
@@ -79,6 +80,7 @@ jobs:
           npm pack @${{env.scope}}/slidev
           tar -xzvf public-ui-slidev-*.tgz
           mv package/dist build/slidev
+          rm -rf package *.tgz
           ls -la build
         working-directory: dev
 
@@ -90,20 +92,19 @@ jobs:
           npm pack @${{env.scope}}/storybook
           tar -xzvf public-ui-storybook-*.tgz
           mv package/dist build/storybook
+          rm -rf package *.tgz
           ls -la build
         working-directory: dev
 
       - name: Commit changed files
         continue-on-error: true
         run: |
-          mv build ../docs
-          rm -rf package *.tgz
+          mv dev/build docs
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
           git status
           git commit -m "Auto update github page"
-        working-directory: dev
 
       - uses: ad-m/github-push-action@master
         with:
