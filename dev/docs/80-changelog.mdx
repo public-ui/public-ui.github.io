@@ -20,13 +20,12 @@ _headers="{'horizontal':[[{'label':'Symbol','key':'symbol','textAlign':'center',
 _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrierefreiheit'},{'symbol':'👩‍🎨','desc':'Styleguide/Themes'},{'symbol':'🧬','desc':'Test'},{'symbol':'🔧','desc':'Verbesserung/Fehlerbehebung'},{'symbol':'📚','desc':'Dokumentation'},{'symbol':'🚀','desc':'Performance'},{'symbol':'❗','desc':'Refactoring'},{'symbol':'🔥','desc':'Breaking Change'},{'symbol':'🔝','desc':'Pflege des Technologie-Stacks'}]">
 </kol-table>
 
-### 1.3.0 - Preview
+### 1.5.0 - Preview
 
 <kol-details _summary="Änderungen">
 	<ul></ul>
 	<hr />
 	<ul>
-		<li>🔧 I18n: Translationservice fertigstellen (i18next)</li>
 		<li>📚 Dokumentation: Übersicht über alle Komponenten im Storybook</li>
 		<li>🔧 Table: Sort-Funktion auch die Sortierrichtung übergeben</li>
 		<li>👩‍🎨 Input*, Textarea: onInput prüfen</li>
@@ -54,7 +53,6 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔧 Tabs: Tab-Change-Callback aufrufen, sobald die Tab-Selection eine Korrektur durchführt</li>
 		<li>🔧 Tabs: Verhalten beim Wechsel von Tabs beobachten</li>
 		<li>🔧 Table: Pagination wahlweise oben oder untern oder beides</li>
-		<li>🔧 Part: @part und part= abbauen</li>
 		<li>
 			🔧 Link, ButtonLink: Zeilenumbruch innerhalb des Link-Textes - <code>display: inline</code> statt <code>display: inline-flex</code>
 		</li>
@@ -62,25 +60,24 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 			👩‍🎨 Theming: Für eine bestmögliche Style-Anpassbarkeit müssen bei alle Conditions die die Konstruktion einer Komponente verändern, die umrahmenden
 			HTML-Nodes um CSS-Klasse erweitert werden.
 		</li>
-		<li>Badge: Konstruktion für das Styling des Smart-Buttons optimieren.</li>
 	</ul>
 </kol-details>
 
-### 1.2.0 - 20.01.2023 (geplant)
+### 1.3.0 - 27.01.2023
 
 <kol-details _summary="Änderungen" _open>
 	<ul>
+		<li>🔧 Part: @part und part= abbauen</li>
+		<li>🌟 Adapter: Support für Vue hinzugefügt + Create-KoliBri<li/>
+		<li>👩‍🎨 Button, LinkButton: Breite der Schaltflächen lässt sich wieder von außen steuern<li/>
+		<li>🔧 Nav: <code>aria-current</code> wird jetzt an der richtigen Stelle gesetzt<li/>
+		<li>🔧 Link, ButtonLink: Ausrichtung der Icons optimiert<li/>
+		<li>🔧 Framework: Upgrade des Webcomponent-Framework<li/>
 		<li>👩‍🎨 Themes: Optimierung aller Themes nach Änderungen an Komponenten-Konstruktion (Badge, Tabs)</li>
-		<li>📚 Code-Beispiele: Migration aller Code-Beispiele für React auf CodeSandbox</li>
-		<li>
-			🔧
-			<li>👩‍🎨 Icon-Fonts: Theme-Default sind Codicon, Font-Awesome (free) und Icofont</li>
-			I18n: Translationservice fertigstellen (i18next)
-		</li>
+		<li>👩‍🎨 Icon-Fonts: Theme-Default sind Codicon, Font-Awesome (free) und Icofont</li>
+		<li>🔧 I18n: Translationservice fertigstellen (i18next)</li>
 		<li>👩‍🎨 Badge: Konstruktion für das Styling des Smart-Buttons optimieren.</li>
-		<li>
-			🔧 Tabs: Fehlerbehebung bei <code>_aria-selected</code>
-		</li>
+		<li>🔧 Tabs: Fehlerbehebung bei <code>_aria-selected</code></li>
 		<li>👩‍🎨 Theming: Optimierung des Themings der Webcomponents</li>
 	</ul>
 </kol-details>
