@@ -1,4 +1,4 @@
-name: 'CLA Assistant'
+name: "CLA Assistant"
 
 on:
   issue_comment:
@@ -8,10 +8,10 @@ on:
 
 jobs:
   cla:
-    if: github.repository == 'public-ui/documentation'
+    if: github.repository == 'public-ui/public-ui.github.io'
     runs-on: ubuntu-latest
     steps:
-      - name: 'CLA Assistant'
+      - name: "CLA Assistant"
         if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request_target'
         # Beta Release
         uses: cla-assistant/github-action@v2.2.1
@@ -20,12 +20,12 @@ jobs:
           # the below token should have repo scope and must be manually added by you in the repository's secret
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
-          path-to-signatures: 'cla/kolibri/signatures-v1.0.json'
-          path-to-document: 'https://github.com/public-ui/kolibri/blob/main/docs/CLA.md' # e.g. a CLA or a DCO document
-          remote-organization-name: 'public-ui'
-          remote-repository-name: '.github-private'
+          path-to-signatures: "cla/kolibri/signatures-v1.0.json"
+          path-to-document: "https://github.com/public-ui/kolibri/blob/main/docs/CLA.md" # e.g. a CLA or a DCO document
+          remote-organization-name: "public-ui"
+          remote-repository-name: ".github-private"
           # branch should not be protected
-          branch: 'main'
+          branch: "main"
           allowlist: actions-user,bot*
 
           #below are the optional inputs - If the optional inputs are not given, then default values will be taken

@@ -99,6 +99,7 @@ jobs:
       - name: Commit changed files
         continue-on-error: true
         run: |
+          rm -rf docs
           mv dev/build docs
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"

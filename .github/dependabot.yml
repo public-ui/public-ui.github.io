@@ -6,32 +6,12 @@
 version: 2
 updates:
   - package-ecosystem: github-actions
-    directory: '/'
+    directory: "/"
     schedule:
       interval: daily
     target-branch: main
   - package-ecosystem: npm
-    directory: '/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/designer/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/docusaurus/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/slidev/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/storybook/'
+    directory: "/dev"
     schedule:
       interval: daily
     target-branch: main
