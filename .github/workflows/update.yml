@@ -77,7 +77,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{env.token}}
         run: |
           rm -rf package *.tgz
-          npm pack @${{env.scope}}/slidev
+          npm pack @${{env.scope}}/presentation
           tar -xzvf public-ui-slidev-*.tgz
           mv package/dist build/slidev
           rm -rf package *.tgz
