@@ -48,6 +48,16 @@ const config = {
 				blog: {
 					blogDescription: 'Im Blog greifen wir verschiedene interessant und hilfreiche Themen rund um barrierefreie Webcomponents auf.',
 					blogSidebarTitle: 'Neueste Posts',
+					feedOptions: {
+						createFeedItems: async (params) => {
+							const { blogPosts, defaultCreateFeedItems, ...rest } = params;
+							return defaultCreateFeedItems({
+								// keep only the 10 most recent blog posts in the feed
+								blogPosts: blogPosts.filter((item, index) => index < 10),
+								...rest,
+							});
+						},
+					},
 					showReadingTime: true,
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
@@ -191,31 +201,31 @@ const config = {
 		// 		disableInDev: false,
 		// 	},
 		// ],
-		[
-			// https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-pwa
-			'@docusaurus/plugin-pwa',
-			{
-				debug: true,
-				offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
-				pwaHead: [
-					{
-						tagName: 'link',
-						rel: 'icon',
-						href: '/img/docusaurus.png',
-					},
-					{
-						tagName: 'link',
-						rel: 'manifest',
-						href: '/manifest.json', // your PWA manifest
-					},
-					{
-						tagName: 'meta',
-						name: 'theme-color',
-						content: 'rgb(37, 194, 160)',
-					},
-				],
-			},
-		],
+		// [
+		// 	// https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-pwa
+		// 	'@docusaurus/plugin-pwa',
+		// 	{
+		// 		debug: true,
+		// 		offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
+		// 		pwaHead: [
+		// 			{
+		// 				tagName: 'link',
+		// 				rel: 'icon',
+		// 				href: '/img/docusaurus.png',
+		// 			},
+		// 			{
+		// 				tagName: 'link',
+		// 				rel: 'manifest',
+		// 				href: '/manifest.json', // your PWA manifest
+		// 			},
+		// 			{
+		// 				tagName: 'meta',
+		// 				name: 'theme-color',
+		// 				content: 'rgb(37, 194, 160)',
+		// 			},
+		// 		],
+		// 	},
+		// ],
 		// 'docusaurus-plugin-sass',
 	],
 	themes: ['@docusaurus/theme-mermaid'],

@@ -33,7 +33,6 @@ const OPTIONS: SelectOption<Theme>[] = [
 		value: 'th',
 	},
 	{
-		disabled: true,
 		label: 'ZOLL-Styleguide v2 (untested)',
 		value: 'zoll',
 	},

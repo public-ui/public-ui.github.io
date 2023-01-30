@@ -84,17 +84,17 @@ jobs:
           ls -la build
         working-directory: dev
 
-      - name: Download storybook
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-        run: |
-          rm -rf package *.tgz
-          npm pack @${{env.scope}}/storybook
-          tar -xzvf public-ui-storybook-*.tgz
-          mv package/dist build/storybook
-          rm -rf package *.tgz
-          ls -la build
-        working-directory: dev
+      # - name: Download storybook
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{env.token}}
+      #   run: |
+      #     rm -rf package *.tgz
+      #     npm pack @${{env.scope}}/storybook
+      #     tar -xzvf public-ui-storybook-*.tgz
+      #     mv package/dist build/storybook
+      #     rm -rf package *.tgz
+      #     ls -la build
+      #   working-directory: dev
 
       - name: Commit changed files
         continue-on-error: true
