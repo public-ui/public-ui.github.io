@@ -7,16 +7,22 @@ import { Store, Theme } from '../../shares/theme';
 
 const OPTIONS: SelectOption<Theme>[] = [
 	{
-		label: 'BMF-Styleguide',
-		value: 'bmf',
+		label: 'DEFAULT-Styleguide',
+		value: 'default',
 	},
 	{
 		disabled: true,
-		label: 'BZSt-Styleguide (WIP)',
-		value: 'bzst',
+		label: 'BPA-Styleguide (WIP)',
+		value: 'bpa',
 	},
 	{
-		label: 'DESY-Styleguide (untested)',
+		disabled: true,
+		label: 'BMF-Styleguide (not public)',
+		value: 'bpa',
+	},
+	{
+		disabled: true,
+		label: 'DESY-Styleguide (not public)',
 		value: 'desy',
 	},
 	{
@@ -25,7 +31,8 @@ const OPTIONS: SelectOption<Theme>[] = [
 		value: 'itzbund',
 	},
 	{
-		label: 'MAPZoll-Styleguide',
+		disabled: true,
+		label: 'MAPZoll-Styleguide (not public)',
 		value: 'mapz',
 	},
 	{
@@ -33,7 +40,8 @@ const OPTIONS: SelectOption<Theme>[] = [
 		value: 'th',
 	},
 	{
-		label: 'ZOLL-Styleguide v2 (untested)',
+		disabled: true,
+		label: 'ZOLL-Styleguide v2 (not public)',
 		value: 'zoll',
 	},
 ];

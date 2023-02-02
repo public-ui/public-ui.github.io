@@ -227,6 +227,16 @@ const config = {
 		// 	},
 		// ],
 		// 'docusaurus-plugin-sass',
+		[
+			'@docusaurus/plugin-client-redirects',
+			{
+				createRedirects: (path) => {
+					if (/\?path=/) {
+						return ['/404'];
+					}
+				},
+			},
+		],
 	],
 	themes: ['@docusaurus/theme-mermaid'],
 };
