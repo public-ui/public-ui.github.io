@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_website=self.webpackChunk_public_ui_website||[]).push([[4571],{5632:e=>{e.exports=JSON.parse('{"label":"corporate design","permalink":"/blog/tags/corporate-design","allTagsPath":"/blog/tags","count":1}')}}]);
