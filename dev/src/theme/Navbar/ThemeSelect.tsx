@@ -12,6 +12,11 @@ const OPTIONS: SelectOption<Theme>[] = [
 	},
 	{
 		disabled: true,
+		label: 'Bayrische Staatskanzlei (PoC)',
+		value: 'by',
+	},
+	{
+		disabled: true,
 		label: 'BPA-Styleguide (WIP)',
 		value: 'bpa',
 	},
@@ -27,6 +32,11 @@ const OPTIONS: SelectOption<Theme>[] = [
 	},
 	{
 		disabled: true,
+		label: 'Hansestadt Hamburg (PoC)',
+		value: 'hh',
+	},
+	{
+		disabled: true,
 		label: 'ITZBund-Styleguide (WIP)',
 		value: 'itzbund',
 	},
@@ -36,7 +46,7 @@ const OPTIONS: SelectOption<Theme>[] = [
 		value: 'mapz',
 	},
 	{
-		label: 'Freistaat Thüringen (untested)',
+		label: 'Freistaat Thüringen (PoC)',
 		value: 'th',
 	},
 	{

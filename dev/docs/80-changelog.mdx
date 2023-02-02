@@ -70,12 +70,24 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 	</ul>
 </kol-details>
 
-### 1.3.3 - 01.02.2023
+<br />
+
+<kol-alert _variant="card" _level={4} _type="info" _heading="Auslagerung interner Themes">
+	<p>
+		Mit der Version <strong>1.3.3</strong> werden die internen Themes ausgelagert und nur noch über intere NPM-Registries verfügbar sein.
+	</p>
+	<p>
+		In einem unerser Blog-Beiträge können Sie mehr über die Auslagerung der internen Themes erfahren (<KolLink _href="/blog" _label="Zum Blog" />
+		).
+	</p>
+</kol-alert>
+
+### 1.3.3 - 02.02.2023
 
 <kol-details _summary="Änderungen" _open>
 	<ul>
 		<li>👩‍🎨 Theming: Performance-Optimierung im Styling</li>
-		<li>👩‍🎨 Theming: Auslagerung interner Theme-Pakete</li>
+		<li>👩‍🎨 Theming: Auslagerung interner Themes</li>
 		<li>🔧 Accordion: Initiale Auszeichnung für den Expanded-Status optimiert</li>
 	</ul>
 </kol-details>
@@ -90,6 +102,33 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔧 Tooltip: Sichtbar solange das Element fokussiert oder die Maus über dem Element oder dem Tooltip ist.</li>
 	</ul>
 </kol-details>
+
+<br />
+
+<kol-alert _variant="card" _level={4} _type="info" _heading="Datentypen in Eingabefeldern">
+	<p>
+		Mit der Version <strong>1.3.0</strong> wurde offenen Datentypen bei <code>Option</code> und <code>SelectOption</code> auf den Type <code>string</code>{' '}
+		begrenzt.
+	</p>
+	<kol-heading _level={5}>Erläuterung</kol-heading>
+	<p>
+		Der W3C-Standard sieht standardmäßig nur Strings als Werte für Formulareingabefelder (<code>button</code>, <code>input</code>, <code>select</code> und{' '}
+		<code>textarea</code>) vor. Diese Einschränkung ist darin begründet, dass die Werte der Formulareingabefelder in der URL als Query-Parameter übermittelt
+		werden können. Da die URL nur Strings als Werte erlaubt, ist es notwendig, dass auch die Formulareingabefelder nur Strings als Werte akzeptieren.
+	</p>
+	<br />
+	<kol-heading _level={5}>Framework & Developer Experience (DX)</kol-heading>
+	<p>
+		Aus Sicht eines Developers ist es natürlich sehr unpraktisch, wenn man nur Strings als Werte für Formulareingabefelder verwenden kann. Deshalb haben sich
+		die Frameworks wie Angular, React und Vue.js dazu entschieden, die Einschränkung des W3C-Standards zu umgehen. Sie erlauben es, dass man auch andere
+		Datentypen als Werte für Formulareingabefelder verwendet. Die Frameworks übernehmen dabei die Verantwortung, dass die Werte der Formulareingabefelder als
+		Strings in der URL übermittelt werden.
+	</p>
+	<p>
+		Um die Developer Experience (DX) zukünftig wieder zu verbessern, wir sich KoliBri an der W3C-konformen Implementierung orientieren und hier auf die{' '}
+		<code>valueAs*</code>-Methoden einzelner Formularfeldtypen zurückgreifen.
+	</p>
+</kol-alert>
 
 ### 1.3.0 - 27.01.2023
 

@@ -1,0 +1,157 @@
+---
+slug: eigene-themes-unabhaengig-umsetzen
+title: Eigene Themes unabhängig umsetzen
+authors: deleonio
+tags: ['theme', 'style', 'styleguide', 'corporate design', 'design system']
+---
+
+import { KolLink, KolTable } from '@public-ui/react';
+
+# Eigene Themes unabhängig umsetzen
+
+Ein besonders großer Vorteil von KoliBri liegt in seiner besonders guten Wiederverwendbarkeit und hohen Flexiblität. Denn auf
+Basis der semantisch barrierefreien Komponenten, in denen zahlreiche technische und gesetzliche Anforderungen (alle) umgesetzt
+sind, können eigene Themes unabhängig erstellt werden.
+
+## Rückblick
+
+KoliBri wurde als internes Projekt des ITZBund realisiert und hat sich natürlich dabei anfangs vor allem auf die Bedürfnisse interner
+Projekte fokussiert. Hierbei sind in erster Linie zahlreiche Themes umgesetzt worden, die nur intern Anwendung finden.
+
+<KolTable
+	_caption="Liste ausgewählter internen Themes"
+	_headers={{
+		horizontal: [
+			[
+				{
+					label: 'Name',
+					width: '5em',
+					key: 'name',
+				},
+				{
+					label: 'Verwendung',
+					key: 'usage',
+				},
+			],
+		],
+	}}
+	_data={[
+		{
+			name: 'BMF',
+			usage: 'Verwendung im BMF für die Modernisierung der Haushaltsverfahren',
+		},
+		{
+			name: 'DESY',
+			usage: 'Verwendung für das Portal im Umfeld der Generalzolldirektion',
+		},
+		{
+			name: 'MAPZoll',
+			usage: 'Verwendung für das Mitarbeiterportal im Umfeld der Generalzolldirektion',
+		},
+		{
+			name: 'Zoll',
+			usage: 'Verwendung für das neue Mitarbeiterportal im Umfeld der Generalzolldirektion',
+		},
+	]}
+/>
+
+<br />
+
+Darüber hinaus wurden auch einige Themes für zum Zwecke der Verbesserung umgesetzt, die als Proof-of-Concepts (PoC) dienten.
+
+<KolTable
+	_caption="Liste ausgewählter PoC-Themes"
+	_headers={{
+		horizontal: [
+			[
+				{
+					label: 'Name',
+					width: '5em',
+					key: 'name',
+				},
+				{
+					label: 'Verwendung',
+					key: 'usage',
+				},
+			],
+		],
+	}}
+	_data={[
+		{
+			name: 'BY',
+			usage: 'Umsetzung des Online-Styleguides der Bayerischen Staatsregierung als Proof-of-Concept zur Verifizierung und Verbesserung der KoliBri-Komponenten',
+		},
+		{
+			name: 'HH',
+			usage: 'Umsetzung des Styleguides der Hansestadt Hamburg als Proof-of-Concept zur Verifizierung und Verbesserung der KoliBri-Komponenten',
+		},
+		{
+			name: 'TH',
+			usage: 'Umsetzung des Styleguides des Freistaates Thüringens als Proof-of-Concept zur Verifizierung und Verbesserung der KoliBri-Komponenten',
+		},
+	]}
+/>
+
+## Migration
+
+Wir beschreiben jetzt hier in der Migration einfach mal, wie wir das im ITZBund exemplarisch umgesetzt haben, weil dass sicher
+ein interessanter Aspekt für andere Behörden, Organisationen und Unternehmen ist, wie sie eigene Themes intern bereitstellen
+können.
+
+Im Grunde haben wir ein neues Repository angelegt und ein Theme-Projekt erstellt (siehe nächsten Abschnitt), in dem wir alle
+internen Themes pflegen. Wir haben erstmal alle Themes in einem Repository, weil wir das für die Entwicklung aktuell einfacher
+finden. Es ist aber auch möglich, die Themes in unterschiedlichen Repositories jeweils einzeln zu pflegen.
+
+Mittels des TypeScript-Compilers wird das Theme-Projekt in ein JavaScript-Projekt kompiliert und als NPM-Paket <code>@itzbund/interne-kolibri-themes</code>
+in unsere interne NPM-Registry versioniert gepublished.
+
+Damit die entwickelnden Projekt jetzt das neue Theme-Paket installieren und verwenden können, muss zunächst die NPM-Konfiguration <code>.npmrc</code>
+im Projekt-Verzeichnis erweitert und die neue Abhängigkeit in die <code>package.json</code> hinzugefügt werden.
+
+**`.npmrc`** (kann mit im Projekt-Verzeichnis liegen oder im Home-Verzeichnis des Benutzers)
+
+```bash
+@itzbund:registry=https://<URL-zur-internen-registry>
+```
+
+**`package.json`** (im Projekt-Verzeichnis)
+
+```json
+{
+	"dependencies": {
+		"@itzbund/interne-kolibri-themes": "1.0.0"
+	}
+}
+```
+
+## Eigenes Theme erstellen
+
+In diesem Abschnitt einen kurzen Einblick geben, wie einfach es ist, ein eigenes Theme zu erstellen.
+
+### Rationale
+
+Einer der wichtigsten Punkte, die man verstehen muss, liegt darin, dass KoliBri sich auf kleinteilige
+häufig wiederverwendete Komponenten konzentriert (mehr hierzu im <KolLink _href="/docs/manifest" _label="Manifest" />).
+Das führt dazu, dass wir uns vorallem auf standardisierbare Komponenten fokussieren. Deutlicher wird dies,
+wenn wir uns vorstellen, eine redundante Umsetzung einer Basis-Komponente unter Beachtung der technischen und
+gesetzlichen Anforderungen zu entwickeln und am Ende feststellen - die verhält sich ja genauso, wie eine KoliBri-
+Komponente und ist nahezu gleich semantisch aufgebaut. Insbesondere die technisch semantischen Vorgaben des W3C
+für die assistive Unterstützung (Barrierefreiheit) fördern das Standardisierungspotenzial.
+
+Wir können somit von einer hohen Überdeckung von Komponenten ausgehen, die allgemein jedes Design System oder
+Komponenten-Bibliothek beinhalten und sich in der KoliBri-Sammlung verwendbar wiederfinden. Durch das Kompositionsprinzip
+kann einfach die passende Teilmenge aus KoliBri ausgewählt und wiederverwendet werden. Alle nicht vereinbaren Komponenten
+können unabhängig von KoliBri und unternehmensspezifisch umgesetzt werden.
+
+> **Hinweis:** Es ist immer möglich eine Konstellation gegen die Wiederverwendung einer KoliBri-Komponenten aufzustellen,
+> die auf die Abweichung von der Referenzimplementierung abzielt. Es ist nicht unsere Entscheidung ob die aufgezeigte
+> Abweichung eine vollständige Eigenentwicklung wirtschaftlich und ökonomisch rechtfertigt. Wir bieten eine Lösung an, die
+> von alle frei und geprüft genutzt werden kann.
+
+### Umsetzung
+
+Mit Hilfe der KoliBri-CLI (<code>npm init kolibri my-theme</code>) kann ein neues Theme-Projekt generiert werden. Das Theme-Projekt
+ist ein TypeScript-Projekt und beinhalten schon ein Dummy-Theme. Mit Hilfe des KoliBri-Designers kann dann ein Theme
+interaktiv auf den Basis-Komponenten erstellt, gespeichert, geladen und weiter gepflegt werden. Der vom Designer generierte Code wird
+einfach in das Theme-Projekt kopiert und kann dann mit dem TypeScript-Compiler kompiliert werden. Anschließend kann es mittels NPM
+eine interne oder in die öffentliche NPM-Registry gepublished werden.
