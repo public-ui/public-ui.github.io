@@ -2,15 +2,15 @@
 slug: eigene-themes-unabhaengig-umsetzen
 title: Eigene Themes unabhängig umsetzen
 authors: deleonio
-tags: ['theme', 'style', 'styleguide', 'corporate design', 'design system']
+tags: ["theme", "style", "styleguide", "corporate design", "design system"]
 ---
 
-import { KolLink, KolTable } from '@public-ui/react';
+import { KolLink, KolTable } from "@public-ui/react";
 
 # Eigene Themes unabhängig umsetzen
 
-Ein besonders großer Vorteil von KoliBri liegt in seiner besonders guten Wiederverwendbarkeit und hohen Flexiblität. Denn auf
-Basis der semantisch barrierefreien Komponenten, in denen zahlreiche technische und gesetzliche Anforderungen (alle) umgesetzt
+Ein großer Vorteil von KoliBri liegt in seiner besonders guten Wiederverwendbarkeit und hohen Flexiblität. Denn auf
+Basis der semantisch barrierefreien Komponenten, in denen alle technische und gesetzliche Anforderungen umgesetzt
 sind, können eigene Themes unabhängig erstellt werden.
 
 ## Rückblick
@@ -19,77 +19,82 @@ KoliBri wurde als internes Projekt des ITZBund realisiert und hat sich natürlic
 Projekte fokussiert. Hierbei sind in erster Linie zahlreiche Themes umgesetzt worden, die nur intern Anwendung finden.
 
 <KolTable
-	_caption="Liste ausgewählter internen Themes"
-	_headers={{
-		horizontal: [
-			[
-				{
-					label: 'Name',
-					width: '5em',
-					key: 'name',
-				},
-				{
-					label: 'Verwendung',
-					key: 'usage',
-				},
-			],
-		],
-	}}
-	_data={[
-		{
-			name: 'BMF',
-			usage: 'Verwendung im BMF für die Modernisierung der Haushaltsverfahren',
-		},
-		{
-			name: 'DESY',
-			usage: 'Verwendung für das Portal im Umfeld der Generalzolldirektion',
-		},
-		{
-			name: 'MAPZoll',
-			usage: 'Verwendung für das Mitarbeiterportal im Umfeld der Generalzolldirektion',
-		},
-		{
-			name: 'Zoll',
-			usage: 'Verwendung für das neue Mitarbeiterportal im Umfeld der Generalzolldirektion',
-		},
-	]}
+  _caption="Liste ausgewählter internen Themes"
+  _headers={{
+    horizontal: [
+      [
+        {
+          label: "Name",
+          width: "5em",
+          key: "name",
+        },
+        {
+          label: "Verwendung",
+          key: "usage",
+        },
+      ],
+    ],
+  }}
+  _data={[
+    {
+      name: "BMF",
+      usage: "Verwendung im BMF für die Modernisierung der Haushaltsverfahren",
+    },
+    {
+      name: "DESY",
+      usage: "Verwendung für das Portal im Umfeld der Generalzolldirektion",
+    },
+    {
+      name: "MAPZoll",
+      usage:
+        "Verwendung für das Mitarbeiterportal im Umfeld der Generalzolldirektion",
+    },
+    {
+      name: "Zoll",
+      usage:
+        "Verwendung für das neue Mitarbeiterportal im Umfeld der Generalzolldirektion",
+    },
+  ]}
 />
 
 <br />
 
-Darüber hinaus wurden auch einige Themes für zum Zwecke der Verbesserung umgesetzt, die als Proof-of-Concepts (PoC) dienten.
+Darüber hinaus wurden auch einige Themes zum Zwecke der Verbesserung umgesetzt, die als Proof-of-Concepts (PoC) dienten.
 
 <KolTable
-	_caption="Liste ausgewählter PoC-Themes"
-	_headers={{
-		horizontal: [
-			[
-				{
-					label: 'Name',
-					width: '5em',
-					key: 'name',
-				},
-				{
-					label: 'Verwendung',
-					key: 'usage',
-				},
-			],
-		],
-	}}
-	_data={[
-		{
-			name: 'BY',
-			usage: 'Umsetzung des Online-Styleguides der Bayerischen Staatsregierung als Proof-of-Concept zur Verifizierung und Verbesserung der KoliBri-Komponenten',
-		},
-		{
-			name: 'HH',
-			usage: 'Umsetzung des Styleguides der Hansestadt Hamburg als Proof-of-Concept zur Verifizierung und Verbesserung der KoliBri-Komponenten',
-		},
-		{
-			name: 'TH',
-			usage: 'Umsetzung des Styleguides des Freistaates Thüringens als Proof-of-Concept zur Verifizierung und Verbesserung der KoliBri-Komponenten',
-		},
-	]}
+  _caption="Liste ausgewählter PoC-Themes"
+  _headers={{
+    horizontal: [
+      [
+        {
+          label: "Name",
+          width: "5em",
+          key: "name",
+        },
+        {
+          label: "Verwendung",
+          key: "usage",
+        },
+      ],
+    ],
+  }}
+  _data={[
+    {
+      name: "BY",
+      usage:
+        "Umsetzung des Online-Styleguides der Bayerischen Staatsregierung als Proof-of-Concept zur Verifizierung und Verbesserung der KoliBri-Komponenten",
+    },
+    {
+      name: "HH",
+      usage:
+        "Umsetzung des Styleguides der Hansestadt Hamburg als Proof-of-Concept zur Verifizierung und Verbesserung der KoliBri-Komponenten",
+    },
+    {
+      name: "TH",
+      usage:
+        "Umsetzung des Styleguides des Freistaates Thüringens als Proof-of-Concept zur Verifizierung und Verbesserung der KoliBri-Komponenten",
+    },
+  ]}
 />
 
 ## Migration
@@ -118,9 +123,9 @@ im Projekt-Verzeichnis erweitert und die neue Abhängigkeit in die <code>package
 
 ```json
 {
-	"dependencies": {
-		"@itzbund/interne-kolibri-themes": "1.0.0"
-	}
+  "dependencies": {
+    "@itzbund/interne-kolibri-themes": "1.0.0"
+  }
 }
 ```
 
