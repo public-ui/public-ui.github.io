@@ -1,4 +1,7 @@
 import { isTheme, Store, Theme } from './theme';
+import PackageJson from '../../node_modules/@public-ui/components/package.json';
+
+export const STORE_IDENTIFIER = `public-ui.website-${PackageJson.version}`;
 
 class Storage {
 	private readonly store: Map<string, string> = new Map();
@@ -14,10 +17,10 @@ class Storage {
 
 export const STORAGE = new Storage();
 // const storage = new Storage();
-const RESTORE = STORAGE.getItem('public-ui.website');
+const RESTORE = STORAGE.getItem(STORE_IDENTIFIER);
 const STORE: Store = {
 	darkMode: false,
-	theme: 'bmf',
+	theme: 'default',
 };
 
 try {
@@ -33,7 +36,7 @@ try {
 }
 
 const setStore = () => {
-	STORAGE.setItem('public-ui.website', JSON.stringify(STORE));
+	STORAGE.setItem(STORE_IDENTIFIER, JSON.stringify(STORE));
 };
 
 const switchDarkMode = (mode: boolean) => {

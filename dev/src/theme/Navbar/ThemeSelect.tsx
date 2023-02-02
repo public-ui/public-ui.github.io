@@ -2,9 +2,8 @@ import { SelectOption } from '@public-ui/components';
 import { InputTypeOnDefault } from '@public-ui/components/dist/types/types/input/types';
 import { KolSelect } from '@public-ui/react';
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { getDarkMode, setDarkMode, setTheme, getTheme } from '../../shares/store';
+import { getDarkMode, setDarkMode, setTheme, getTheme, STORE_IDENTIFIER } from '../../shares/store';
 import { Store, Theme } from '../../shares/theme';
-import PackageJson from '../../../package.json';
 
 const OPTIONS: SelectOption<Theme>[] = [
 	{
@@ -73,7 +72,7 @@ export const ThemeSelect: FunctionComponent = () => {
 			theme: getTheme(),
 		});
 		localStorage.setItem(
-			`public-ui.website-${PackageJson.version}`,
+			STORE_IDENTIFIER,
 			JSON.stringify({
 				darkMode: getDarkMode(),
 				theme: getTheme(),
@@ -82,7 +81,7 @@ export const ThemeSelect: FunctionComponent = () => {
 	};
 
 	useEffect(() => {
-		const RESTORE = localStorage.getItem(`public-ui.website-${PackageJson.version}`);
+		const RESTORE = localStorage.getItem(STORE_IDENTIFIER);
 		try {
 			const store = JSON.parse(RESTORE) as Store;
 			if (typeof store === 'object' && store !== null) {
