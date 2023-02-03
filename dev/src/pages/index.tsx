@@ -17,7 +17,7 @@ const HomepageHeader: FunctionComponent = () => (
 			{translate({
 				id: 'custom.subtitle',
 			})}
-		</p>		
+		</p>
 	</header>
 );
 
