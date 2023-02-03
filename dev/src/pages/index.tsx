@@ -40,7 +40,7 @@ export default function Homepage(): JSX.Element {
 		>
 			<HomepageHeader />
 			<main>
-				<div className="flex gap-4 justify-center">
+				<div className="flex gap-4 justify-center mt-4">
 					<KolLinkButton
 						className="w-72"
 						_icon={{
