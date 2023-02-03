@@ -17,27 +17,7 @@ const HomepageHeader: FunctionComponent = () => (
 			{translate({
 				id: 'custom.subtitle',
 			})}
-		</p>
-		<div className="grid gap-4 items-center justify-items-center sm:grid-cols-2">
-			<KolLinkButton
-				className="w-72"
-				_icon={{
-					right: 'fa-solid fa-clock',
-				}}
-				_href="docs/get-started/erste-schritte"
-				_label={translate({
-					id: 'custom.get-started-button',
-				})}
-				_variant="primary"
-			></KolLinkButton>
-			<KolLinkButton
-				className="w-72"
-				_href="docs/willkommen"
-				_label={translate({
-					id: 'custom.documentation-button',
-				})}
-			></KolLinkButton>
-		</div>
+		</p>		
 	</header>
 );
 
@@ -60,6 +40,26 @@ export default function Homepage(): JSX.Element {
 		>
 			<HomepageHeader />
 			<main>
+				<div className="flex gap-4 justify-center">
+					<KolLinkButton
+						className="w-72"
+						_icon={{
+							right: 'fa-solid fa-clock',
+						}}
+						_href="docs/get-started/erste-schritte"
+						_label={translate({
+							id: 'custom.get-started-button',
+						})}
+						_variant="primary"
+					></KolLinkButton>
+					<KolLinkButton
+						className="w-72"
+						_href="docs/willkommen"
+						_label={translate({
+							id: 'custom.documentation-button',
+						})}
+					></KolLinkButton>
+				</div>
 				<div className="grid gap-2 md:w-6/12 m-auto mt-4 p-4">
 					<div className="flex gap-4 justify-center">
 						<KolLogo
