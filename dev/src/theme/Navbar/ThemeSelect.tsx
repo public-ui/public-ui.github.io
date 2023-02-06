@@ -36,8 +36,7 @@ const OPTIONS: SelectOption<Theme>[] = [
 		value: 'hh',
 	},
 	{
-		disabled: true,
-		label: 'ITZBund-Styleguide (WIP)',
+		label: 'ITZBund-Styleguide',
 		value: 'itzbund',
 	},
 	{

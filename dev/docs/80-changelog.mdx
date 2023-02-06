@@ -62,19 +62,11 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 	</ul>
 </kol-details>
 
-### 1.4.0 - 10.02.2023
-
-<kol-details _summary="Änderungen">
-	<ul>
-		<li></li>
-	</ul>
-</kol-details>
-
 <br />
 
 <kol-alert _variant="card" _level={4} _type="info" _heading="Auslagerung interner Themes">
 	<p>
-		Mit der Version <strong>1.3.3</strong> werden die internen Themes ausgelagert und nur noch über interne NPM-Registries verfügbar sein. Des Weiteren haben
+		Mit der Version <strong>1.4.0</strong> werden die internen Themes ausgelagert und nur noch über interne NPM-Registries verfügbar sein. Des Weiteren haben
 		wir die Bundes-Schriftart und die BundesSerif erweitert und die BundesSans aktualisiert.
 	</p>
 	<p>
@@ -87,14 +79,25 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 	</p>
 </kol-alert>
 
-### 1.3.3 - 03.02.2023
+### 1.4.0 - 10.02.2023
 
 <kol-details _summary="Änderungen" _open>
 	<ul>
+		<li>
+			❗ Input, Select: Überarbeitung des <code>_icon</code>-Property (Trennung Checkbox und Eingabefeld)
+		</li>
+		<li>👩‍🎨 Theming: Überarbeitung der Themes bzgl. der Checkbox-Varianten</li>
+		<li>
+			Checkbox: Das die Icons für die Status <code>checked</code>, <code>unchecked</code> und <code>indeterminate</code> können jetzt geändert werder.
+		</li>
+		<li>
+			🔧 Checkbox: Der Indeterminated-Status einer Checkbox wird auf <code>false</code> gesetzt, sobald die Checkbox angeklickt wird.
+		</li>
+		<li>🌟 Checkbox: Mittels der Checkbox kann jetzt auch ein Toogle-Button umgesetzt werden</li>
 		<li>👩‍🎨 Fonts: Aktualisierung der BundesSans und BundesSerif (hinzugefügt)</li>
 		<li>🔧 Tooltip: Abhängig vom Bildschirmrand werden Tooltips automatisch ausgerichtet</li>
-		<li>👩‍🎨 Theming: Performance-Optimierung im Styling</li>
-		<li>👩‍🎨 Theming: Auslagerung interner Themes</li>
+		<li>🚀 Theming: Performance-Optimierung im Styling</li>
+		<li>❗ Theming: Auslagerung interner Themes</li>
 		<li>🔧 Accordion: Initiale Auszeichnung für den Expanded-Status optimiert</li>
 	</ul>
 </kol-details>
@@ -106,7 +109,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🌟 Adapter: Vaadin-Generator optimiert (Draft)</li>
 		<li>👩‍🎨 Theme: Zoll Design System v2 hinzugefügt (Draft)</li>
 		<li>🔧 Aria-Label: Aria-Label- und Label-Management für leere Labels im Expert-Slot optimiert</li>
-		<li>🔧 Tooltip: Sichtbar solange das Element fokussiert oder die Maus über dem Element oder dem Tooltip ist.</li>
+		<li>🚹 Tooltip: Sichtbar solange das Element fokussiert oder die Maus über dem Element oder dem Tooltip ist.</li>
 	</ul>
 </kol-details>
 
