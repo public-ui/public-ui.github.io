@@ -6,15 +6,11 @@ import { getDarkMode, setDarkMode, setTheme, getTheme, STORE_IDENTIFIER } from '
 import { Store, Theme } from '../../shares/theme';
 
 const OPTIONS: SelectOption<Theme>[] = [
-	{
-		label: 'DEFAULT-Styleguide',
-		value: 'default',
-	},
-	{
-		disabled: true,
-		label: 'Bayrische Staatskanzlei (PoC)',
-		value: 'by',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'Bayrische Staatskanzlei (PoC)',
+	// 	value: 'by',
+	// },
 	{
 		disabled: true,
 		label: 'BPA-Styleguide (WIP)',
@@ -30,11 +26,11 @@ const OPTIONS: SelectOption<Theme>[] = [
 		label: 'DESY-Styleguide (not public)',
 		value: 'desy',
 	},
-	{
-		disabled: true,
-		label: 'Hansestadt Hamburg (PoC)',
-		value: 'hh',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'Hansestadt Hamburg (PoC)',
+	// 	value: 'hh',
+	// },
 	{
 		label: 'ITZBund-Styleguide',
 		value: 'itzbund',
@@ -44,10 +40,10 @@ const OPTIONS: SelectOption<Theme>[] = [
 		label: 'MAPZoll-Styleguide (not public)',
 		value: 'mapz',
 	},
-	{
-		label: 'Freistaat Thüringen (PoC)',
-		value: 'th',
-	},
+	// {
+	// 	label: 'Freistaat Thüringen (PoC)',
+	// 	value: 'th',
+	// },
 	{
 		disabled: true,
 		label: 'ZOLL-Styleguide v2 (not public)',

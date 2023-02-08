@@ -1,4 +1,4 @@
-export type Theme = 'bamf' | 'bmf' | 'bpa' | 'by' | 'bzst' | 'default' | 'desy' | 'hh' | 'itzbund' | 'mapz' | 'th' | 'zoll';
+export type Theme = 'bamf' | 'bmf' | 'bpa' | 'by' | 'bzst' | 'desy' | 'hh' | 'itzbund' | 'mapz' | 'th' | 'zoll';
 
 export const isTheme = (value: unknown) =>
 	typeof value === 'string' &&
@@ -7,7 +7,6 @@ export const isTheme = (value: unknown) =>
 		value === 'bpa' ||
 		value === 'by' ||
 		value === 'bzst' ||
-		value === 'default' ||
 		value === 'desy' ||
 		value === 'hh' ||
 		value === 'itzbund' ||

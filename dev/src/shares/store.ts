@@ -20,7 +20,7 @@ export const STORAGE = new Storage();
 const RESTORE = STORAGE.getItem(STORE_IDENTIFIER);
 const STORE: Store = {
 	darkMode: false,
-	theme: 'default',
+	theme: 'itzbund',
 };
 
 try {
