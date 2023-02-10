@@ -51,6 +51,9 @@ jobs:
 
       - name: Create new branch
         run: git checkout -b chore/auto-update-deps
+      - name: Show code
+        run: ls -la
+        working-directory: dev
       - name: Install tools
         run: npm i npm-check-updates --no-save
         working-directory: dev
