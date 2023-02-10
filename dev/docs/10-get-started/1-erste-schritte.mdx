@@ -61,8 +61,8 @@ Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<!-- Assets for BMF -->
-		<link rel="stylesheet" href="assets/bund/bund.css" />
-		<link rel="stylesheet" href="assets/fontawesome-free/v6/css/all.min.css" />
+		<link rel="stylesheet" href="assets/bundes/style.css" />
+		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
 	</head>
 </html>
 ```
@@ -83,9 +83,9 @@ Er sorgt dafür, dass die Web Components asychron (lazy) nachgeladen werden, sob
 ```html
 <head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/core@1.1.16';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16/dist/loader';
-		import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.16';
+		import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.6';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.6/dist/loader';
+		import { BMF } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.6';
 		register([BMF], defineCustomElements)
 			.then(() => {})
 			.catch(console.warn);
