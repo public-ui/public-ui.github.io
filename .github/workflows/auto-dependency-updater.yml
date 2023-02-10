@@ -55,7 +55,7 @@ jobs:
         run: ls -la
         working-directory: dev
       - name: Install tools
-        run: npm i npm-check-updates --no-save
+        run: npm i npm-check-updates --no-save --legacy-peer-deps
         working-directory: dev
       - name: Update dependencies
         run: npm run update
