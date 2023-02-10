@@ -61,7 +61,7 @@ jobs:
         run: npm run update
         working-directory: dev
       - name: Reinstall dependencies
-        run: pnpm i
+        run: pnpm install --no-frozen-lockfile
         working-directory: dev
       - name: Commit changed files
         run: |
