@@ -67,8 +67,8 @@
 	RewriteEngine On
 
 	RewriteCond %{QUERY_STRING} path=
-	RewriteRule (.*) /404-not-found [R=301,L]
+	RewriteRule .* - [L,R=410]
 
-	# RewriteCond %{HTTPS} !=on
-	# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+	RewriteCond %{HTTPS} !=on
+	RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
