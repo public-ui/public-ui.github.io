@@ -1,4 +1,4 @@
-export type Theme = 'bamf' | 'bmf' | 'bpa' | 'by' | 'bzst' | 'desy' | 'hh' | 'itzbund' | 'mapz' | 'th' | 'zoll';
+export type Theme = 'bamf' | 'bmf' | 'bpa' | 'by' | 'bzst' | 'desy-v2' | 'hh' | 'itzbund' | 'mapz' | 'th' | 'zoll-v2';
 
 export const isTheme = (value: unknown) =>
 	typeof value === 'string' &&
@@ -7,12 +7,12 @@ export const isTheme = (value: unknown) =>
 		value === 'bpa' ||
 		value === 'by' ||
 		value === 'bzst' ||
-		value === 'desy' ||
+		value === 'desy-v2' ||
 		value === 'hh' ||
 		value === 'itzbund' ||
 		value === 'mapz' ||
 		value === 'th' ||
-		value === 'zoll');
+		value === 'zoll-v2');
 
 export type Store = {
 	darkMode: boolean;
