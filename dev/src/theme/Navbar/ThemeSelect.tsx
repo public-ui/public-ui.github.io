@@ -35,11 +35,11 @@ const OPTIONS: SelectOption<Theme>[] = [
 		label: 'ITZBund-Styleguide',
 		value: 'itzbund',
 	},
-	{
-		disabled: true,
-		label: 'MAPZoll-Styleguide (not public)',
-		value: 'mapz',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'MAPZoll-Styleguide (not public)',
+	// 	value: 'mapz',
+	// },
 	// {
 	// 	label: 'Freistaat Thüringen (PoC)',
 	// 	value: 'th',
