@@ -9,21 +9,21 @@ tags:
 
 ## Entscheidung `Q2/2020`
 
-In der öffentlichen Verwaltung sind wir gesetzlich verpflichtet alle digitalen Angebote allen Menschen zugänglich zu machen. Des Weiteren wollen wir unsere digitalen Produkt so effizient und flexibel wie möglich realisieren und dazu braucht es fundierte und konsolidierte Standards.
+In der öffentlichen Verwaltung sind wir gesetzlich verpflichtet, alle digitalen Angebote allen Menschen zugänglich zu machen. Des Weiteren wollen wir unsere digitalen Produkte so effizient und flexibel wie möglich realisieren und dazu braucht es fundierte und konsolidierte Standards.
 
-Bei der Entscheidung eine eigene von Grund auf neu entwickelte Komponenten-Bibliothek zu erstellen, haben wir uns maßgeblich von den Zielen des ITZBund und der IT-Strategie des Bundes leiten lassen. Zudem hat die Reife des Webcomponent-Standard, verbunden mit der endgültigen Ablöse des Internet Explorers, damals eine große Rolle gespielt.
+Bei der Entscheidung eine eigene von Grund auf neu entwickelte Komponenten-Bibliothek zu erstellen, haben wir uns maßgeblich von den Zielen des ITZBund und der IT-Strategie des Bundes leiten lassen. Zudem hat die Reife des Web-Component-Standards, verbunden mit der endgültigen Ablöse des Internet Explorers, damals eine große Rolle gespielt.
 
-Vorhanden UI-Bibliotheken waren sehr Design-getrieben und Framework-spezifisch entwickelt worden. Die semantische Barrierefreiheit stand bei der Konstruktion von Komponenten nicht im Fokus. Zudem sind die meisten in Frage kommenden Bibliotheken so populär sie auch sind außerhalb unseres Handlungsspielraums, um Anforderungen im Rahmen unserer Gesetzgebung schnell umsetzen zu können.
+Vorhandene UI-Bibliotheken waren sehr Design-getrieben und Framework-spezifisch entwickelt worden. Die semantische Barrierefreiheit stand bei der Konstruktion von Komponenten nicht im Fokus. Zudem sind die meisten infrage kommenden Bibliotheken, so populär sie auch sind, außerhalb unseres Handlungsspielraums, um Anforderungen im Rahmen unserer Gesetzgebung schnell umsetzen zu können.
 
-Für uns war es für die Entscheidung wichtig, so unabhängig und souverän wie möglich aufgestellt zu sein. Mit dem Durchbruch des Webcomponent-Standard können wir eine Single-Source-Strategie umsetzen und alle Komponenten von Grund auf mit den Leitlinien des W3C, der WCAG und der BITV aufbauen und kontinuierlich verbessern.
+Für uns war es für die Entscheidung wichtig, so unabhängig und souverän wie möglich aufgestellt zu sein. Mit dem Durchbruch des Web-Component-Standards können wir eine Single-Source-Strategie umsetzen und alle Komponenten von Grund auf mit den Leitlinien des W3C, der WCAG und der BITV aufbauen und kontinuierlich verbessern.
 
-Die freie Gestaltbarkeit kommt erst zum Schluss und partizipiert von den in sich geschlossenen barrierefreien Basis-Komponenten. Dadurch das die UI/UX Designer:innen sich mit den restriktiven Komponenten auseinandersetzen müssen, haben Sie die Barrierefreiheit und technische Seite stets im Blick.
+Die freie Gestaltbarkeit kommt erst zum Schluss und partizipiert von den in sich geschlossenen barrierefreien Basis-Komponenten. Dadurch, dass die UI/UX Designer:innen sich mit den restriktiven Komponenten auseinandersetzen müssen, haben Sie die Barrierefreiheit und technische Seite stets im Blick.
 
 Mit KoliBri als Standard schaffen wir auch einen Ort, an dem sich alle "reiben" können, egal ob Entwickler:innen, Designer:innen oder Tester:innen. **Das Wissen, die Erfahrung und das Feedback aller trägt zu Verbesserung des Standards bei.**
 
 ## Prototyp `Q3/2020`
 
-Mitte 2020 haben wir zur Realisierung der Vision einen Prototypen mittels eines TSX-basierten Frameworks erstellt. Mit Hilfe des Prototypen und einer ausführlichen Projektbeschreibung den angestrebten Zielen, konnten wir ein internes Projekt zur erstellen standardisierter, flexibler und barrierefreier Komponenten initiieren.
+Mitte 2020 haben wir zur Realisierung der Vision einen Prototyp mittels eines TSX-basierten Frameworks erstellt. Mithilfe des Prototyps und einer ausführlichen Projektbeschreibung, den angestrebten Zielen, konnten wir ein internes Projekt zum Erstellen standardisierter, flexibler und barrierefreier Komponenten initiieren.
 
 ## Projekt `2021`
 
