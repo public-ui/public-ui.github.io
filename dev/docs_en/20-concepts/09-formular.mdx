@@ -1,0 +1,48 @@
+---
+slug: /concepts/form-input
+title: Inputs, Select und Textarea
+description: KoliBri creates accessible HTML compositions and strictly adheres to the W3C specification.
+tags:
+  - architecture
+  - arc42
+  - concept
+---
+
+As part of the refactoring to improve the developer experience, we have restructured the input components and converted them into separate components according to the <kol-link _href="https://html.spec.whatwg.org/multipage/input.html" _target="w3c">W3C-Aufteilung</kol-link>.
+In this way, the respective components only provide the properties that also have a function for the respective type. Properties that were previously maintained but had no function were removed from the programming.
+
+## Vergleich zum HTML-Tag &lt;input&gt;
+
+<p>
+	If you look at the {' '}
+	<kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/Input" _target="mozilla">
+	  <code>&lt;input&gt;</code>-tag
+	</kol-link>{' '}
+	, then all types of an input field are implemented with only one tag (component). This results in the fact that all properties (attributes/properties) are possible, but have no function depending on the type.
+</p>
+
+<p>
+	This implementation of the standard <code>&lt;input&gt;</code> tag leads to the fact that usually more properties are offered than actually fit functionally to the type of the input field. This can lead to misunderstandings during development.
+</p>
+
+## Division
+
+<p>
+	The different types of input fields have been divided into the following <b>KoliBri</b> components:
+</p>
+
+<ul>
+	<li>KolInputCheckbox</li>
+	<li>KolInputColor</li>
+	<li>KolInputDate (ab v1.1.10)</li>
+	<li>KolInputEmail</li>
+	<li>KolInputFile</li>
+	<li>KolInputLocalDateTime (open, part of KolInputDate)</li>
+	<li>KolInputNumber</li>
+	<li>KolInputPassword</li>
+	<li>KolInputRadio (KolInputRadioGroup is replaced)</li>
+	<li>KolInputRange</li>
+	<li>KolInputText</li>
+	<li>KolSelect</li>
+	<li>KolTextarea</li>
+</ul>
