@@ -28,8 +28,7 @@ npm init kolibri@latest my-kolibri-app
 
 ### 1. Installation der Pakete
 
-Um die Komponenten nutzen zu können müssen die benötigten npm-Pakete installiert werden.
-Je nach verwendeten Paket-Manager können diese mit einem der folgenden Befehlen dem Projekt hinzugefügt werden.
+Um die Komponenten nutzen zu können, müssen die benötigten npm-Pakete installiert werden. Je nach verwendeten Paket-Manager können diese mit einem der folgenden Befehle dem Projekt hinzugefügt werden.
 
 NPM `npm i @public-ui/core @public-ui/components @public-ui/themes` oder
 
@@ -70,15 +69,15 @@ Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen
 ### 3. Registrieren des Komponenten-Loaders
 
 Nachdem die Vorbereitungen abgeschlossen sind, muss nur noch der Komponenten-Loader registriert werden.
-Er sorgt dafür, dass die Web Components asychron (lazy) nachgeladen werden, sobald sie in der Webseite verwendet werden.
+Er sorgt dafür, dass die Web Components asynchron (lazy) nachgeladen werden, sobald sie in der Webseite verwendet werden.
 
 | Methode              | Erläuterung                                            |
 | -------------------- | ------------------------------------------------------ |
-| register             | Setzt ein Theme und registiert anschließend den Loader |
-| BMF                  | Registiert den Loader für z.B. das BMF-Theme           |
-| defineCustomElements | Registiert den Loader für die Web Components           |
+| register             | Setzt ein Theme und registriert anschließend den Loader |
+| BMF                  | Registriert den Loader für z.B. das BMF-Theme           |
+| defineCustomElements | Registriert den Loader für die Web Components           |
 
-#### Variant A: Statisches Projekt
+#### Variante A: Statisches Projekt
 
 ```html
 <head>
@@ -96,7 +95,7 @@ Er sorgt dafür, dass die Web Components asychron (lazy) nachgeladen werden, sob
 </body>
 ```
 
-#### Variant B: React-Projekt
+#### Variante B: React-Projekt
 
 ##### Integration
 
@@ -160,7 +159,7 @@ Mittels der folgenden Konfiguration in der HTML-Datei können die Developer-Tool
 </html>
 ```
 
-### Experimental Mode / Labor
+### Experimenteller Modus / Labor
 
 Mittels der folgenden Konfiguration in der HTML-Datei kann der experimentelle Modus aktiviert werden.
 
@@ -176,7 +175,7 @@ Mittels der folgenden Konfiguration in der HTML-Datei kann der experimentelle Mo
 
 ### Color-Contrast-Analyse
 
-Die Color-Contrast-Analyse ermöglicht es Farb-Kontrast-Fehler innerhalb des DOM's zu erkennen. Durch hinzufügen der folgenden Konfiguration in den meta-Tag, wird die Color-Contrast-Analyse aktiviert.
+Die Color-Contrast-Analyse ermöglicht es, Farb-Kontrast-Fehler innerhalb des DOM's zu erkennen. Durch Hinzufügen der folgenden Konfiguration in den meta-Tag, wird die Color-Contrast-Analyse aktiviert.
 
 ```html
 …
