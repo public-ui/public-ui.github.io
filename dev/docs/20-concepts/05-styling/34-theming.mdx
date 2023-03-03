@@ -18,9 +18,9 @@ import { Mermaid } from '@site/src/components/Mermaid';
 # Theming
 
 <kol-alert _type="info">
-	<img width="100%" src="/assets/theme-switch.png" alt="Zeigt wo der Schalter zum Umschalten des Themes im Toolbar ist" />
+	<img width="100%" src="/assets/theme-switch.png" alt="Zeigt, wo der Schalter zum Umschalten des Themes in der Toolbar ist." />
 	<p>
-		<kol-icon _icon="fa-solid fa-arrow-right"></kol-icon> Über den Schalter in der Toolbar oben, können Sie das Theme von unserer Seite (KoliBri) umschalten.
+		<kol-icon _icon="fa-solid fa-arrow-right"></kol-icon>Über den Schalter in der Toolbar oben können Sie das Theme von unserer Seite (KoliBri) umschalten.
 	</p>
 </kol-alert>
 
@@ -75,9 +75,7 @@ import { Mermaid } from '@site/src/components/Mermaid';
 	</KolIndentedText>
 </p>
 <p>
-	Mit Hilfe des Designers kann ein "Mandant" die Komponenten einzeln und vollständig unabhängig voneinander mit der gesamten CSS-Freiheit gestalten. Innerhalb
-	eines "Mandanten"-Themes können eigene CSS-Properties eingeführt werden. Die Nutzung von CSS-Properties (Design-Tokens) bleibt somit auf Theme-Ebene erhalten,
-	jedoch mit einem viel kleineren und pflegbareren Scope.
+	Mithilfe des Designers kann ein „Mandant“ die Komponenten einzeln und vollständig unabhängig voneinander mit der gesamten CSS-Freiheit gestalten. Innerhalb eines „Mandanten“-Themes können eigene CSS-Properties eingeführt werden. Die Nutzung von CSS-Properties (Design-Tokens) bleibt somit auf Theme-Ebene erhalten, jedoch mit einem viel kleineren und pflegbaren Scope.
 </p>
 <p>
 	<KolIndentedText>
@@ -128,10 +126,7 @@ stateDiagram-v2
 ></Mermaid>
 
 <p>
-	Das UI/UX-Team spezifiziert beispielsweise mit Figma die Komponenten ihres Design Systems. Bei der Überführung der Spezifikation in die Realisierung, wird das
-	Design in Form von reinem CSS mittels des <KolLink _href="/docs/concepts/styling/designer">KoliBri-Designers</KolLink> auf die Basis-Komponenten "übertragen".
-	Ist im eigenen Design System eine Individualisierbarkeit gewüscht, dann können im Designer dafür CSS-Properties oder Design-Tokens definiert werden. Damit das
-	eigene Theme über Projekte hinweg geteilt werden kann, wird das Theme in ein NPM-Paket paketiert und kann über eine beliebige Registry bereitgestellt werden.
+	Das UI/UX-Team spezifiziert beispielsweise mit Figma die Komponenten ihres Design-Systems. Bei der Überführung der Spezifikation in die Realisierung wird das Design in Form von reinem CSS mittels des <KolLink _href="/docs/concepts/styling/designer">KoliBri-Designers</KolLink> auf die Basis-Komponenten „übertragen“. Wenn im eigenen Design-System eine Individualisierbarkeit gewünscht ist, können im Designer dafür CSS-Properties oder Design-Tokens definiert werden. Damit das eigene Theme über Projekte hinweg geteilt werden kann, wird das Theme in ein NPM-Paket paketiert und kann über eine beliebige Registry bereitgestellt werden.
 </p>
 <p>
 	<KolDetails _summary="Design-Tokens">
@@ -148,11 +143,8 @@ stateDiagram-v2
 
 <KolAlert _heading="KoliBri-Factory" _type="info" _variant="card">
 	<p>
-		Eigene spezifische Komponenten die nicht von KoliBri bereitgestellt wird und die leider nicht zur KoliBri-Komponenten-Vielfalt passen, können in eigenen
-		Komponenten-Bibliotheken aufgebaut und unabhängig gepflegt werden. Hierfür bieten wir die sogenannte <strong>KoliBri-Factory</strong> (Stack) an (siehe{' '}
-		<KolLink _href="https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md#erweitert" _target="github">
+		Eigene spezifische Komponenten, die nicht von KoliBri bereitgestellt werden und leider nicht zur KoliBri-Komponenten-Vielfalt passen, können in eigenen Komponenten-Bibliotheken aufgebaut und unabhängig gepflegt werden. Hierfür bieten wir die sogenannte <strong>KoliBri-Factory</strong> (Stack) an (siehe <KolLink _href="https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md#erweitert" _target="github">
 			Modularisierung
-		</KolLink>
-		).
+		</KolLink>).
 	</p>
 </KolAlert>

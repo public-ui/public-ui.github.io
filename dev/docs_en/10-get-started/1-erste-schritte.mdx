@@ -1,19 +1,19 @@
-# Erste Schritte
+# First steps
 
 <div class="grid md:grid-cols-2 mb-4">
-	<kol-card _headline="Cheat Sheet herunterladen" _level="2">
+	<kol-card _headline="Download Cheat Sheet" _level="2">
 		<kol-link slot="content" _useCase="nav" _href="https://public-ui.github.io/cheat-sheet/" _target="cheat-sheet">
 			<div className="d-flex gap-4 py-2">
 				<kol-link className="homepage" _icon="fa-solid fa-code" />
-				<span>Klicken Sie hier, um sich das Cheat-Sheet zum Entwickeln anzuschauen und herunterzuladen.</span>
+				<span>Click here to view and download the cheat sheet for developing.</span>
 			</div>
 		</kol-link>
 	</kol-card>
 </div>
 
-## Neues Projekt erstellen
+## Create a new project
 
-Ein neues React-Projekt kann mit Hilfe des Kommandozeilenassistenten schnell erstellt werden.
+A new React project can be created quickly using the command line wizard.
 
 ```
 npm init kolibri@latest my-kolibri-app
@@ -21,30 +21,31 @@ npm init kolibri@latest my-kolibri-app
 
 <img
 	src="https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif"
-	alt="Zeigt wie man mit create-kolibri eine neue App anlegen kann."
+	alt="Shows how to create a new app with create-kolibri."
 />
 
-## Integration in vorhandene Projekte
+## Integration into existing projects
 
-### 1. Installation der Pakete
+### 1. Install the packages
 
-Um die Komponenten nutzen zu können, müssen die benötigten npm-Pakete installiert werden. Je nach verwendeten Paket-Manager können diese mit einem der folgenden Befehle dem Projekt hinzugefügt werden.
+To be able to use the components the required npm packages have to be installed.
+Depending on the package manager used, these can be added to the project using one of the following commands.
 
-NPM `npm i @public-ui/core @public-ui/components @public-ui/themes` oder
+NPM `npm i @public-ui/core @public-ui/components @public-ui/themes` or
 
-PNPM `pnpm i @public-ui/core @public-ui/components @public-ui/themes` oder
+PNPM `pnpm i @public-ui/core @public-ui/components @public-ui/themes` or
 
 YARN `yarn add @public-ui/core @public-ui/components @public-ui/themes`
 
-### 2. Einbinden von Schriftarten
+### 2. Embedding fonts
 
-Schriftarten, sogenannte Fonts, werden von Natur aus losgelöst vom CSS geladen und müssen je nach KoliBri-Theme (Styleguide) in die Rahmenseite (HTML-Datei) eingebunden werden.
+Fonts are loaded by nature detached from the CSS and must be included in the frame page (HTML file) depending on the KoliBri theme (style guide).
 
-Hierzu können die in der Bibliothek mitgelieferten Schriftarten in die eigenen Assets kopiert werden.
+For this purpose, the fonts supplied in the library can be copied into your own assets.
 
 `cp -r node_modules/@public-ui/themes/assets public/assets`
 
-Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen im `<head>` der HTML-Datei eingebunden werden.
+Then the relevant CSS files can be included with the font definitions in the `<head>` of the HTML file.
 
 ```html
 <!DOCTYPE html>
@@ -66,18 +67,18 @@ Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen
 </html>
 ```
 
-### 3. Registrieren des Komponenten-Loaders
+### 3. Registering the component loaders
 
-Nachdem die Vorbereitungen abgeschlossen sind, muss nur noch der Komponenten-Loader registriert werden.
-Er sorgt dafür, dass die Web Components asynchron (lazy) nachgeladen werden, sobald sie in der Webseite verwendet werden.
+After the preparations are complete, only the component loader needs to be registered.
+It ensures that the Web Components are reloaded asychronously (lazy) as soon as they are used in the web page.
 
-| Methode              | Erläuterung                                            |
-| -------------------- | ------------------------------------------------------ |
-| register             | Setzt ein Theme und registriert anschließend den Loader |
-| BMF                  | Registriert den Loader für z.B. das BMF-Theme           |
-| defineCustomElements | Registriert den Loader für die Web Components           |
+| Method               | Description                                 |
+| -------------------- | ------------------------------------------- |
+| register             | Sets a theme and then registers the loader  |
+| BMF                  | Registers the loader for e.g. the BMF theme |
+| defineCustomElements | Registers the loader for the Web Components |
 
-#### Variante A: Statisches Projekt
+#### Variant A: Static project
 
 ```html
 <head>
@@ -95,7 +96,7 @@ Er sorgt dafür, dass die Web Components asynchron (lazy) nachgeladen werden, so
 </body>
 ```
 
-#### Variante B: React-Projekt
+#### Variant B: React project
 
 ##### Integration
 
@@ -120,17 +121,17 @@ register(BMF, defineCustomElements)
 	.catch(console.warn);
 ```
 
-##### Adapter installieren
+##### Install adapter
 
-Für React steht ein Adapter zur Verfügung, der die nahtlose und typisierte Verwendung in TSX ermöglicht.
+An adapter is available for React that allows seamless and typed usage in TSX.
 
-NPM `npm i @public-ui/react` oder
+NPM `npm i @public-ui/react` or
 
-PNPM `pnpm i @public-ui/react` oder
+PNPM `pnpm i @public-ui/react` or
 
 YARN `yarn add @public-ui/react`
 
-##### Komponente verwenden
+##### Use component
 
 ```tsx
 import React, { FunctionComponent } from 'react';
@@ -142,11 +143,11 @@ export const App: FunctionComponent = () => <KolSpin _show />;
 <hr />
 <hr />
 
-## Spezial Features
+## Special features
 
-### Developer Tools
+### Developer tools
 
-Mittels der folgenden Konfiguration in der HTML-Datei können die Developer-Tools von KoliBri aktiviert werden.
+By using the following configuration in the HTML file the developer tools of KoliBri can be activated.
 
 ```html
 …
@@ -159,9 +160,9 @@ Mittels der folgenden Konfiguration in der HTML-Datei können die Developer-Tool
 </html>
 ```
 
-### Experimenteller Modus / Labor
+### Experimental mode / lab
 
-Mittels der folgenden Konfiguration in der HTML-Datei kann der experimentelle Modus aktiviert werden.
+By using the following configuration in the HTML file the experimental mode can be activated.
 
 ```html
 …
@@ -173,9 +174,9 @@ Mittels der folgenden Konfiguration in der HTML-Datei kann der experimentelle Mo
 </html>
 ```
 
-### Color-Contrast-Analyse
+### Color-Contrast-Analysis
 
-Die Color-Contrast-Analyse ermöglicht es, Farb-Kontrast-Fehler innerhalb des DOM's zu erkennen. Durch Hinzufügen der folgenden Konfiguration in den meta-Tag, wird die Color-Contrast-Analyse aktiviert.
+The color contrast analysis allows detecting color contrast errors within the DOM. By adding the following configuration to the meta tag, the color contrast analysis is enabled.
 
 ```html
 …

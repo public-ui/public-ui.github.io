@@ -1,8 +1,8 @@
 ---
 id: welcome
-slug: willkommen
-title: Willkommen
-description: Wir wollen gemeinsam barrierefreie Basis-Komponenten bereitstellen.
+slug: welcome
+title: Welcome
+description: We want to jointly provide accessible basic components.
 tags:
   - Demo
   - Getting started
@@ -46,7 +46,7 @@ import { translate } from '@docusaurus/Translate';
 <KolAlert _type="info">
 	<KolLink _href="/docs/concepts/styling/theming">
 		{' '}
-		Erfahren Sie hier, wieso <KoliBri /> so hilfreich ist.
+		Learn here why <KoliBri /> is so helpful.
 	</KolLink>
 </KolAlert>
 
@@ -56,7 +56,7 @@ import { translate } from '@docusaurus/Translate';
 	<strong>
 		<KoliBri />
 	</strong>{' '}
-	steht für{' '}
+	stands for{' '}
 	<b>
 		<u>Ko</u>
 	</b>
@@ -71,43 +71,41 @@ import { translate } from '@docusaurus/Translate';
 	<b>
 		<u>ri</u>
 	</b>
-	erefreiheit
+	erefreiheit (Accessibility component library)
 </p>
 
 ## Vision
 
 <p className="col-12">
-	Wir machen gemeinsam <strong>HTML</strong> mittels <strong>wiederverwendbaren Web Components semantisch barrierefrei</strong>, um die{' '}
-	<strong>Usability</strong> und <strong>Zugänglichkeit</strong> sicherzustellen.
+	Together, we make <strong>HTML semantically accessible using reusable Web Components</strong> to ensure <strong>usability</strong> and <strong>accessibility</strong>.
 </p>
 
 ## Mission
 
 <p className="col-12">
-	Der{' '}
+	The{' '}
 	<kol-link _href="https://html.spec.whatwg.org" _target="w3c">
-		HTML-Webstandard
+	  HTML web standard
 	</kol-link>{' '}
-	ist an sich sehr "offen" spezifiziert, um möglichst langlebig und robust zu sein. Es kommt daher häufig vor, dass HTML-Kompositionen nicht ohne Weiteres
-	barrierefrei, semantisch und valide sind. <KoliBri /> baut direkt auf den{' '}
-	<kol-link _href="https://www.w3.org/standards/webdesign/" _target="w3c">
-		Webstandards
-	</kol-link>{' '}
-	des{' '}
+	is specified to be very "open" in order to be as durable and robust as possible. It therefore often happens that HTML compositions are
+	not readily accessible, semantic and valid. <KoliBri /> builds directly on the{' '}
 	<kol-link _href="https://www.w3.org" _target="w3c">
-		W3C
+	  W3C
 	</kol-link>{' '}
-	auf (Framework-agnostisch), ist dabei eine generische Referenzimplementierung des{' '}
+	<kol-link _href="https://www.w3.org/standards/webdesign/" _target="w3c">
+	  web standards
+	</kol-link>{' '}
+	(framework-agnostic), is thereby a generic reference implementation of the{' '}
 	<kol-link _href="https://www.w3.org/WAI/standards-guidelines/wcag/" _target="wcag">
-		WCAG-Standards
+	WCAG standard
 	</kol-link>{' '}
-	und der{' '}
+	and{' '}
 	<kol-link _href="https://www.bitvtest.de/bitv_test.html" _target="bitv">
-		BITV
+	BITV
 	</kol-link>{' '}
-	für die Barrierefreiheit und als eine Multi-Theming-fähige Präsentationsschicht umgesetzt. Es gibt keinerlei fachlichen Bezug und keine
-	Datenübertragungsfunktionalitäten. Damit ist <KoliBri /> für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher
-	Corporate Designs und Styleguides gleichermaßen wiederverwendbar und somit für Open Source sehr interessant.
+	for accessibility, and is implemented as a multi-theme-enabled presentation layer. There is no technical reference and no data transfer
+	functionalities. This makes <KoliBri /> equally reusable for the realization of static websites as well as dynamic web applications of
+	different corporate designs and style guides and thus very interesting for open source.
 </p>
 
 ## Kollaboration und Kooperation
@@ -144,7 +142,8 @@ import { translate } from '@docusaurus/Translate';
 			<strong>Gewährleistungs- und Haftungsausschluss:</strong> Mit der Wiederverwendung gehen keinerlei Gewährleistung und Haftungsansprüche einher.
 		</li>
 		<li>
-			<strong>„Copyleft“-Klausel:</strong> Copyleft besagt, dass jede Kopie von <KoliBri /> (Fork) wieder unter derselben oder einer kompatiblen Open-Source-Lizenz veröffentlicht werden muss.
+			<strong>„Copyleft“-Klausel:</strong> Copyleft besagt, dass jede Kopie von <KoliBri /> (Fork) wieder unter der selben oder einer kompatiblen Open
+			Source-Lizenz veröffentlicht werden muss.
 		</li>
 	</ul>
 </p>
@@ -153,7 +152,7 @@ import { translate } from '@docusaurus/Translate';
 
 <p className="col-12">
 	Um <KoliBri /> richtig einzusetzen, ist es wichtig zu wissen, wo es seine Potenziale entfaltet. <KoliBri /> ist vielseitig wiederverwendbar, weil das Styling
-	vollkommen entkoppelt wurde und das Rendering client- aber auch Server-seitig möglich ist.
+	vollkommen entkoppelt wurde und das Rendering client- aber auch server-seitig möglich ist.
 </p>
 
 ### Styling
@@ -179,7 +178,7 @@ import { translate } from '@docusaurus/Translate';
 ### Rendering
 
 <p className="col-12">
-	Web Components können technologisch sowohl Client-seitig (CSR), prerendered (SSG), als auch Server-seitig (SSR) gerendert werden. Das Rendering ist dabei von
+	Web Components können technologisch sowohl client-seitig (CSR), prerendered (SSG), als auch server-seitig (SSR) gerendert werden. Das Rendering ist dabei von
 	den jeweils technischen Rahmenbedingungen abhängig (
 	<KolLink _href="https://web.dev/rendering-on-the-web/" _target="web.dev">
 		https://web.dev
@@ -193,9 +192,9 @@ import { translate } from '@docusaurus/Translate';
 <p>
 	<KolIndentedText className="col-12">
 		<small>
-			💡 Es ist zu beachten, dass Web Components ein auf JavaScript basierender Webstandard ist. Das Server-Side-Rendering ermöglicht das Prerendern der Web
-			Component für eine optimale Anzeigegeschwindigkeit auf dem Client. Ist Client-seitig JavaScript erlaubt, dann steht die vollständige Dynamik der Web
-			Component auch Client-seitig zur Verfügung. Möchte man jedoch Client-seitig kein JavaScript einsetzen, wird die Web Component geprerendert angezeigt, aber
+			💡 Es ist zu beachten, das Web Components ein auf JavaScript basierender Webstandard ist. Das Server-Side-Rendering ermöglicht das Prerendern der Web
+			Component für eine optimale Anzeigegeschwindigkeit auf dem Client. Ist client-seitig JavaScript erlaubt, dann steht die vollständige Dynamik der Web
+			Component auch client-seitig zur Verfügung. Möchte man jedoch client-seitig kein JavaScript einsetzen, wird die Web Component geprerendert angezeigt, aber
 			die Dynamik geht dadurch verloren.
 		</small>
 	</KolIndentedText>
@@ -203,7 +202,7 @@ import { translate } from '@docusaurus/Translate';
 	<KolIndentedText className="col-12">
 		<small>
 			🧪 Das Server-Side-Rendering von Web Components ist eine neue spannende Funktionalität, wo noch Anpassungen an den Prerenderer notwendig sein werden und
-			wird daher unsererseits als experimentell eingestuft (
+			wird daher unsererseits als experimentel eingestuft (
 			<KolLink _href="https://web.dev/declarative-shadow-dom/" _target="web.dev">
 				https://web.dev
 			</KolLink>
@@ -215,7 +214,7 @@ import { translate } from '@docusaurus/Translate';
 ## Versionierung
 
 <p className="col-12">
-	<KoliBri /> folgt den Prinzipien der semantischen Versionierung.
+	<KoliBri /> folgt den Prinzipien des semantischen Versionierens.
 </p>
 <p className="col-12">
 	Aufbau einer Version:
@@ -235,7 +234,7 @@ import { translate } from '@docusaurus/Translate';
 			</ul>
 		</li>
 		<li>
-			für die Härtungsphase einer Version kann man zusätzlich Labels verwenden (z.B. 1.0.3-rc.2)
+			für die Härtungsphase einer Version, kann man zusätzlich Labels verwenden (z.B. 1.0.3-rc.2)
 			<ul>
 				<li>
 					Label, hier die <i>rc.2</i>
@@ -248,13 +247,13 @@ import { translate } from '@docusaurus/Translate';
 	Folgende Hauptprinzipien kommen dabei zur Anwendung:
 	<ul>
 		<li>
-			<b>Patch</b>: Beinhaltet Änderungen, die den aktuellen Funktionsumfang verbessern und in seiner Verwendung nicht ändern.
+			<b>Patch</b>: Beinhaltet Änderungen die den aktuellen Funktionsumfang verbessern und in seiner Verwendung nicht ändern.
 		</li>
 		<li>
-			<b>Minor</b>: Beinhaltet Änderungen, die den Funktionsumfang erweitern und den bestehenden Funktionsumfang in seiner Verwendung nicht ändern.
+			<b>Minor</b>: Beinhaltet Änderungen die den Funktionsumfang erweitern und den bestehenden Funktionsumfang in seiner Verwendung nicht ändern.
 		</li>
 		<li>
-			<b>Major</b>: Beinhaltet Änderungen, die eine architektonische Neuausrichtung ermöglichen und den bestehenden Funktionsumfang in seiner Verwendung ändern
+			<b>Major</b>: Beinhaltet Änderungen die eine architektonische Neuausrichtung ermöglichen und den bestehenden Funktionsumfang in seiner Verwendung ändern
 			dürfen.
 		</li>
 	</ul>
@@ -338,10 +337,10 @@ import { translate } from '@docusaurus/Translate';
 
 <p className="col-12">
 	<KoliBri /> ist für die Umsetzung beliebiger webbasierter Benutzeroberflächen vorgesehen und soll auf allen modernen Geräten (PC, Tablet, Mobil),
-	Betriebssystemen (Windows, Linux, MacOS, Android, iOS) und standardkonformen Browsern eingesetzt werden können.
+	Betriebssystemen (Windows, Linux, MaxOS, Android, iOS) und standardkonformen Browsern eingesetzt werden können.
 	<br />
 	Der Microsoft Internet Explorer wird explizit nicht unterstützt, um das Projekt und die Entwicklung nicht durch Altlasten zu schwächen. <KoliBri /> investiert
-	stattdessen konsequent in die Zukunft.
+	stattdessen konziquent in die Zukunft.
 </p>
 <KolTable
 	className="col-12"
@@ -357,7 +356,7 @@ import { translate } from '@docusaurus/Translate';
 					textAlign: 'center',
 				},
 				{
-					label: 'Betriebssystem',
+					label: 'Betriebsystem',
 					key: 'os',
 					width: '10em',
 					textAlign: 'center',

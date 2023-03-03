@@ -1,6 +1,6 @@
 ---
-slug: /konzepte/swippling
-title: Swippling
+slug: /konzepte/swizzling
+title: Swizzling
 description: Komplexere Anforderungen an die Komponenten können mittels Swippling ermöglicht werden.
 tags:
   - Architektur
@@ -10,7 +10,7 @@ tags:
 
 ## Motivation
 
-Zahlreiche teils komplexe Anforderungen an Komponenten von Design Systemen oder Komponenten-Bibliotheken müssten nicht immer wieder aufs Neue betrachtet werden, wenn es kleinteilige gut wiederverwendbare Basis-Komponenten gäbe, die diese Anforderungen mit sich bringen.
+Zahlreiche teils komplexe Anforderungen an Komponenten von Design-Systemen oder Komponenten-Bibliotheken müssten nicht immer wieder aufs Neue betrachtet werden, wenn es kleinteilige, gut wiederverwendbare Basis-Komponenten gäbe, die diese Anforderungen mit sich bringen.
 
 ## Definition
 
