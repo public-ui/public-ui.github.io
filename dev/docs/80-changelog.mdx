@@ -67,6 +67,20 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 	</ul>
 </kol-details>
 
+### 1.4.2 - 03.03.2023
+
+<kol-details _summary="Änderungen" _open>
+	<ul>
+		<li>📚 Dokumentation: Präsentation aktualisiert</li>
+		<li>🔧 Storybook: Abhängigkeiten optimiert</li>
+		<li>👩‍🎨 Theming: Themes noch einmal bzgl. Basis-Styling optimiert</li>
+		<li>
+			🔧 Basis-Styling: <code>:host</code> und <code>!important</code> entfernt
+		</li>
+		<li>🔧 Template: Angular-JSON-Problem gelöst</li>
+	</ul>
+</kol-details>
+
 ### 1.4.1 - 28.02.2023
 
 <kol-details _summary="Änderungen" _open>
@@ -102,7 +116,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		Um die Basis-CSS-Properties wieder zu verwenden oder zu entfernen, können Sie die folgenden CSS-Regeln in Ihr Theme einbinden:
 
 ```css
-.my-selector {
+:host {
 	--kolibri-border-color: unset;
 	--kolibri-border-radius: unset;
 	--kolibri-border-width: unset;
