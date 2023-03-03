@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[756],{8629:e=>{e.exports=JSON.parse('{"label":"Modal","permalink":"/docs/tags/modal","allTagsPath":"/docs/tags","count":1,"items":[{"id":"components/modal","title":"Modal","description":"Beschreibung, Spezifikation und Beispiele f\xfcr die Modal-Komponente.","permalink":"/docs/components/modal"}]}')}}]);

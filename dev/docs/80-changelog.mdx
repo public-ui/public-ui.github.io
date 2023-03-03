@@ -59,6 +59,23 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 			👩‍🎨 Theming: Für eine bestmögliche Style-Anpassbarkeit müssen bei alle Conditions die die Konstruktion einer Komponente verändern, die umrahmenden
 			HTML-Nodes um CSS-Klasse erweitert werden.
 		</li>
+		<li>Rola: Button, Link ?!</li>
+		<li>Alert: Prüfen, wie man auch einen EventCallback einzeln ändern kann.</li>
+		<li>
+			Alert & Card: Prüfen, ob <code>_hasCloser</code> und <code>_hasFooter_</code> noch notwendig sind.
+		</li>
+	</ul>
+</kol-details>
+
+### 1.4.1 - 28.02.2023
+
+<kol-details _summary="Änderungen" _open>
+	<ul>
+		<li>
+			🔧 Theming: Basis-Styling an <code>:host</code> korrigiert
+		</li>
+		<li>🔧 Template: Korrektur am Preact-Template</li>
+		<li>👩‍🎨 Theming: Optimierung Basis-Styling für InputRange und alle zeilen-artigen Input-Komponenten</li>
 	</ul>
 </kol-details>
 
@@ -70,35 +87,81 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		wir die Bundes-Schriftart und die BundesSerif erweitert und die BundesSans aktualisiert.
 	</p>
 	<p>
-		In einem unerser Blog-Beiträge können Sie mehr über die Auslagerung der internen Themes erfahren (<KolLink _href="/blog" _label="Zum Blog"></KolLink>).
+		In einem unserer Blog-Beiträge können Sie mehr über die Auslagerung der internen Themes erfahren (<KolLink _href="/blog" _label="Zum Blog"></KolLink>).
 	</p>
 	<p>
 		Damit die Bundes-Schriftarten in Ihrem Projekt korrekt angezeigt werden, müssen Sie die Schriftarten erneut aus dem Themes-Paket in Ihren
 		Prokekt-Assets-Verzeichnis kopieren (
 		<KolLink _href="https://public-ui.github.io/docs/get-started/erste-schritte#2-einbinden-von-schriftarten" _label="Einbinden von Schriftarten"></KolLink>).
 	</p>
+	<p>Des Weiteren wurde die Alert-Komponente neu konstruiert und muss ggf. über den Theme-Designer nachgestyled werden.</p>
+	<p>
+		<strong>Neue CSS-Properties:</strong>: Um den Einstieg zum Erstellen und Pflegen eigener Themes zu erleichtern, liefern wir zukünftig
+		standardmäßig gelayoutete und teilweise gestylete Komponenten aus. Auf dem Basis-Styling können Sie dann im Theme-Designer aufbauen oder
+		es vollständig zurücksetzen und die Komponenten einzeln frei gestalten.<br/>
+		Um die Basis-CSS-Properties wieder zu verwenden oder zu entfernen, können Sie die folgenden CSS-Regeln in Ihr Theme einbinden:
+
+```css
+.my-selector {
+	--kolibri-border-color: unset;
+	--kolibri-border-radius: unset;
+	--kolibri-border-width: unset;
+	--kolibri-color-error: unset;
+	--kolibri-color-info: unset;
+	--kolibri-color-success: unset;
+	--kolibri-color-warning: unset;
+	--kolibri-color-primary: unset;
+	--kolibri-color-secondary: unset;
+	--kolibri-color-normal: unset;
+	--kolibri-color-danger: unset;
+	--kolibri-color-ghost: unset;
+	--kolibri-color-disabled: unset;
+	--kolibri-color-text: unset;
+	--kolibri-color-visited: unset;
+	--kolibri-font-family: unset;
+	--kolibri-font-size: unset;
+	--kolibri-spacing: unset;
+}
+```
+
+  </p>
 </kol-alert>
 
-### 1.4.0-rc - 24.02.2023
+### 1.4.0 - 27.02.2023
 
 <kol-details _summary="Änderungen" _open>
 	<ul>
+		<li>
+			👩‍🎨 Theming: Basis-Styling an <code>:host</code> gebunden (ggf. Theme-Korrektur notwendig, z.B. Table)
+		</li>
+		<li>🔧 Accordion: Aria-Controls hinzugefügt</li>
+		<li>🔧 ButtonLink, LinkButton: Role wird gespiegelt gesetzt.</li>
+		<li>🔧 Icon: Role bleibt immer Img.</li>
+		<li>🔧 Badge: Der Text eines Badge sollte nicht mehr länger als 32 Zeichen sein.</li>
+		<li>🌟 Dev-Tools: Alle Konsole-Ausgaben werden nur noch in der Debug-Ansicht angezeigt.</li>
+		<li>🚹 Dev-Tools: Labels und Aria-Labels sollten mindestens 3 lesbare Zeichen enthalten.</li>
 		<li>🔧 KoliBri-Factory: Optimierung des Templates zum Erstellen eigener KoliBri's</li>
 		<li>🌟 CLI + Templates: Neue Projekt-Templates für Stencil-App und React-Vite-App</li>
 		<li>🚹 Badge: Verbesserte Developer-Tool-Ausgabe bei der Kontrastprüfung</li>
+		<li>❗ Alert: HTML-Konstruktion wurde überarbeitet</li>
+		<li>❗ Details: HTML-Konstruktion wurde überarbeitet</li>
+		<li>
+			❗ Input Smart-Button: Ggf. muss die Positionierung im eigenen Theme angepasst werden (<code>margin-top: -44px;</code>).
+		</li>
+		<li>❗ Tabs: HTML-Konstruktion wurde überarbeitet</li>
+		<li>👩‍🎨 Theming: Überarbeitung der Themes bzgl. der Checkbox-Varianten</li>
 		<li>
 			❗ Input, Select: Überarbeitung des <code>_icon</code>-Property (Trennung Checkbox und Eingabefeld)
 		</li>
-		<li>👩‍🎨 Theming: Überarbeitung der Themes bzgl. der Checkbox-Varianten</li>
 		<li>
-			Checkbox: Das die Icons für die Status <code>checked</code>, <code>unchecked</code> und <code>indeterminate</code> können jetzt geändert werder.
+			Checkbox: Das die Icons für die Status <code>checked</code>, <code>unchecked</code> und <code>indeterminate</code> können jetzt geändert werden.
 		</li>
 		<li>
 			🔧 Checkbox: Der Indeterminated-Status einer Checkbox wird auf <code>false</code> gesetzt, sobald die Checkbox angeklickt wird.
 		</li>
-		<li>🌟 Checkbox: Mittels der Checkbox kann jetzt auch ein Toogle-Button umgesetzt werden</li>
+		<li>🌟 Checkbox: Mittels der Checkbox kann jetzt auch ein Toogle-Button umgesetzt werden.</li>
 		<li>👩‍🎨 Fonts: Aktualisierung der BundesSans und BundesSerif (hinzugefügt)</li>
-		<li>🔧 Tooltip: Abhängig vom Bildschirmrand werden Tooltips automatisch ausgerichtet</li>
+		<li>🔧 Tooltip: Abhängig vom Bildschirmrand werden Tooltips automatisch ausgerichtet.</li>
 		<li>🚀 Theming: Performance-Optimierung im Styling</li>
 		<li>❗ Theming: Auslagerung interner Themes</li>
 		<li>🔧 Accordion: Initiale Auszeichnung für den Expanded-Status optimiert</li>
