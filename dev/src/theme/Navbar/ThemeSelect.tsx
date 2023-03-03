@@ -23,8 +23,8 @@ const OPTIONS: SelectOption<Theme>[] = [
 	},
 	{
 		disabled: true,
-		label: 'DESY-Styleguide (not public)',
-		value: 'desy',
+		label: 'Zoll Design System (DESY, not public)',
+		value: 'desy-v2',
 	},
 	// {
 	// 	disabled: true,
@@ -35,19 +35,19 @@ const OPTIONS: SelectOption<Theme>[] = [
 		label: 'ITZBund-Styleguide',
 		value: 'itzbund',
 	},
-	{
-		disabled: true,
-		label: 'MAPZoll-Styleguide (not public)',
-		value: 'mapz',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'MAPZoll-Styleguide (not public)',
+	// 	value: 'mapz',
+	// },
 	// {
 	// 	label: 'Freistaat Thüringen (PoC)',
 	// 	value: 'th',
 	// },
 	{
 		disabled: true,
-		label: 'ZOLL-Styleguide v2 (not public)',
-		value: 'zoll',
+		label: 'Zoll-Designsystem (not public)',
+		value: 'zoll-v2',
 	},
 ];
 
@@ -86,7 +86,7 @@ export const ThemeSelect: FunctionComponent = () => {
 		} catch (e) {
 			/* empty */
 			setDarkMode(false);
-			setTheme('default');
+			setTheme('itzbund');
 			store();
 		}
 
