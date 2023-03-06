@@ -1,3 +1,4 @@
+import { KolSelect } from '@public-ui/react';
 import { SelectOption } from '@public-ui/components';
 import { InputTypeOnDefault } from '@public-ui/components/dist/types/types/input/types';
 import React, { FunctionComponent, useEffect, useState } from 'react';
@@ -19,6 +20,15 @@ const OPTIONS: SelectOption<Theme>[] = [
 		disabled: true,
 		label: 'BMF-Styleguide (not public)',
 		value: 'bpa',
+	},
+	{
+		label: 'Europa Component Library (EC, WIP)',
+		value: 'ecl-ec',
+	},
+	{
+		disabled: true,
+		label: 'Europa Component Library (EU, WIP)',
+		value: 'ecl-eu',
 	},
 	{
 		disabled: true,
@@ -117,11 +127,9 @@ export const ThemeSelect: FunctionComponent = () => {
 	}, []);
 
 	return (
-		<>
-			{/* <KolSelect className="col-span-2 sm:col-auto" {...activate} _hideLabel _id="theme-toggle" _list={OPTIONS} _value={[getTheme()]}>
-				Theme auswählen
-			</KolSelect> */}
-		</>
+		<KolSelect className="col-span-2 sm:col-auto" {...activate} _hideLabel _id="theme-toggle" _list={OPTIONS} _value={[getTheme()]}>
+			Theme auswählen
+		</KolSelect>
 	);
 };
 
