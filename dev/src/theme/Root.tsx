@@ -1,5 +1,5 @@
 import { applyPolyfills, defineCustomElements } from '@public-ui/components/dist/loader';
-import { KoliBriDevHelper, register } from '@public-ui/components';
+import { register } from '@public-ui/components';
 import { BPA, ITZBund } from '@public-ui/themes';
 import { TH } from '@public-oss/kolibri-themes';
 import React, { FunctionComponent, PropsWithChildren, useEffect, useState } from 'react';
