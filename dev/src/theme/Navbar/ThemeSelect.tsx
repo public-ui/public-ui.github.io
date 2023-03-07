@@ -1,6 +1,6 @@
+import { KolSelect } from '@public-ui/react';
 import { SelectOption } from '@public-ui/components';
 import { InputTypeOnDefault } from '@public-ui/components/dist/types/types/input/types';
-import { KolSelect } from '@public-ui/react';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { getDarkMode, setDarkMode, setTheme, getTheme, STORE_IDENTIFIER } from '../../shares/store';
 import { Store, Theme } from '../../shares/theme';
@@ -20,6 +20,15 @@ const OPTIONS: SelectOption<Theme>[] = [
 		disabled: true,
 		label: 'BMF-Styleguide (not public)',
 		value: 'bpa',
+	},
+	{
+		label: 'Europa Component Library (EC, WIP)',
+		value: 'ecl-ec',
+	},
+	{
+		disabled: true,
+		label: 'Europa Component Library (EU, WIP)',
+		value: 'ecl-eu',
 	},
 	{
 		disabled: true,

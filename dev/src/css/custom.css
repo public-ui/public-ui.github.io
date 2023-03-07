@@ -45,6 +45,10 @@
 	font-family: 'Noto Sans', sans-serif !important;
 }
 
+kol-toast {
+	display: block;
+}
+
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
 	--ifm-color-primary: #25c2a0;
