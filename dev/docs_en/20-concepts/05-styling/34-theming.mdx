@@ -27,7 +27,9 @@ import { Mermaid } from '@site/src/components/Mermaid';
 <br />
 
 <p>
-	The unique feature of <KoliBri /> is the <string>reference implementation</strong> of components that are <string>semantically W3C- and WCAG-compliant</strong> from the ground up and thus <string>completely accessible</strong> regarding assistive support. All components are implemented as{' '}
+	The unique feature of <KoliBri /> is the <strong>reference implementation</strong> of components that are{' '}
+	<strong>semantically W3C- and WCAG-compliant</strong> from the ground up and thus <strong>completely accessible</strong> regarding assistive support. All
+	components are implemented as{' '}
 	<KolLink _href="https://developer.mozilla.org/en-US/docs/Web/Web_Components?retiredLocale=de" _target="mozilla">
 		Web Components
 	</KolLink>{' '}
@@ -54,7 +56,11 @@ import { Mermaid } from '@site/src/components/Mermaid';
 	</KolLink>
 	, <KolLink _href="https://tailwindcss.com" _target="tailwindcss">
 		Tailwind CSS
-	</KolLink>). With the implementation of further themes, however, we have found that we would have to introduce more and more CSS-Properties to be able to implement the flexibility for the desired design/UX (Corporate Design/Style guide). In case of doubt, a separate property would have to be provided for each customizability. The example of the <KolLink _href="https://mui.com/material-ui/api/button/#css" _target="mui">MUI-Button CSS</KolLink> shows well how the CSS properties (design tokens) become more and more.
+	</KolLink>). With the implementation of further themes, however, we have found that we would have to introduce more and more CSS-Properties to be able to implement
+	the flexibility for the desired design/UX (Corporate Design/Style guide). In case of doubt, a separate property would have to be provided for each customizability.
+	The example of the <KolLink _href="https://mui.com/material-ui/api/button/#css" _target="mui">
+		MUI-Button CSS
+	</KolLink> shows well how the CSS properties (design tokens) become more and more.
 </p>
 <p>
 	<KolIndentedText>
@@ -68,12 +74,15 @@ import { Mermaid } from '@site/src/components/Mermaid';
 	</KolIndentedText>
 </p>
 <p>
-	Using the designer, a “client” can design the components individually and completely independently with all the CSS freedom. Within a “client” theme, custom CSS properties can be introduced. The use of CSS properties (design tokens) is thus preserved at the theme level, but with a much smaller and maintainable scope.
+	Using the designer, a “client” can design the components individually and completely independently with all the CSS freedom. Within a “client” theme, custom
+	CSS properties can be introduced. The use of CSS properties (design tokens) is thus preserved at the theme level, but with a much smaller and maintainable
+	scope.
 </p>
 <p>
 	<KolIndentedText>
 		<strong>
-			3. KoliBri allows the reuse of tested, accessible and robust components (constructions) with almost individual design and thus represents a freely customizable HTML standard in the context of accessibility.
+			3. KoliBri allows the reuse of tested, accessible and robust components (constructions) with almost individual design and thus represents a freely
+			customizable HTML standard in the context of accessibility.
 		</strong>
 	</KolIndentedText>
 </p>
@@ -118,11 +127,16 @@ stateDiagram-v2
 ></Mermaid>
 
 <p>
-	For example, the UI/UX team specifies the components of their design system with Figma. When the specification is transferred to implementation, the design is “transferred” to the basic components in the form of pure CSS using <KolLink _href="/docs/concepts/styling/designer">KoliBri-Designers</KolLink>. If customizability is desired in your design system, CSS properties or design tokens can be defined in the Designer for this purpose. So that the own theme can be shared across projects, the theme is packaged in an NPM package and can be made available via any registry.
+	For example, the UI/UX team specifies the components of their design system with Figma. When the specification is transferred to implementation, the design is
+	“transferred” to the basic components in the form of pure CSS using <KolLink _href="/docs/concepts/styling/designer">KoliBri-Designers</KolLink>. If
+	customizability is desired in your design system, CSS properties or design tokens can be defined in the Designer for this purpose. So that the own theme can
+	be shared across projects, the theme is packaged in an NPM package and can be made available via any registry.
 </p>
 <p>
 	<KolDetails _summary="Design-Tokens">
-		Optionally, design schemes can be exported from Figma, for example, using design tokens. These can then be transferred into separate CSS files that contain the respective values for the CSS properties. Later, one of these CSS files is used to apply the concrete design in combination with the Web Components and the theme on the website.
+		Optionally, design schemes can be exported from Figma, for example, using design tokens. These can then be transferred into separate CSS files that contain
+		the respective values for the CSS properties. Later, one of these CSS files is used to apply the concrete design in combination with the Web Components and
+		the theme on the website.
 	</KolDetails>
 </p>
 <p>
@@ -133,8 +147,11 @@ stateDiagram-v2
 
 <KolAlert _heading="KoliBri-Factory" _type="info" _variant="card">
 	<p>
-		Own specific components, which are not provided by KoliBri and unfortunately do not fit to the KoliBri component variety, can be built in own component libraries and maintained independently. For this purpose, we offer the so-called <strong>KoliBri-Factory</strong> (Stack) (see <KolLink _href="https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md#erweitert" _target="github">
+		Own specific components, which are not provided by KoliBri and unfortunately do not fit to the KoliBri component variety, can be built in own component
+		libraries and maintained independently. For this purpose, we offer the so-called <strong>KoliBri-Factory</strong> (Stack) (see{' '}
+		<KolLink _href="https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md#erweitert" _target="github">
 			Modularization
-		</KolLink>).
+		</KolLink>
+		).
 	</p>
 </KolAlert>
