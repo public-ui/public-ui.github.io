@@ -18,7 +18,8 @@ import { KolButton } from '@public-ui/react';
 			KoliBri
 		</kol-abbr>
 	</strong>{' '}
-	provides self-contained and accessible components and allows the “filling” of the components, usually only via the properties of the components. All incoming property values are validated and mapped to the internal state.
+	provides self-contained and accessible components and allows the “filling” of the components, usually only via the properties of the components. All incoming
+	property values are validated and mapped to the internal state.
 </p>
 <p>
 	<kol-indented-text>
@@ -26,19 +27,21 @@ import { KolButton } from '@public-ui/react';
 	</kol-indented-text>
 </p>
 <p>
-	However, to further improve the reusability of {' '}
+	However, to further improve the reusability of{' '}
 	<strong>
 		<kol-abbr _tooltip-align="right" _title="Accessibility component library">
 			KoliBri
 		</kol-abbr>
 	</strong>{' '}
-	, we will extend the flexibility with a so-called <strong>expert</strong> mode. The expert mode defines the point where the <strong>expert</strong> gets more design space within the component and in return takes responsibility for accessibility.
+	, we will extend the flexibility with a so-called <strong>expert</strong> mode. The expert mode defines the point where the <strong>expert</strong> gets more
+	design space within the component and in return takes responsibility for accessibility.
 </p>
 
 ## "Expert"-slot
 
 <p>
-	The “Expert” slot can be used to “overwrite” the internal construction of some components. If necessary, it is necessary to set the regular required property values of the component to <code>empty</code>.
+	The “Expert” slot can be used to “overwrite” the internal construction of some components. If necessary, it is necessary to set the regular required property
+	values of the component to <code>empty</code>.
 </p>
 
 ### Component list
@@ -49,18 +52,18 @@ import { KolButton } from '@public-ui/react';
 |        Button |     1.1.10     |         <code>expert</code>          |                   |
 |    ButtonLink |     1.1.15     |         <code>expert</code>          |                   |
 |  ButtonToggle |       -        |         <code>expert</code>          |                   |
-| InputCheckbox |       -        | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-|     InputDate |       -        | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-|    InputEmail |       -        | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-|   InputNumber |       -        | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-| InputPassword |       -        | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-|    InputRange |       -        | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-|    InputRadio |       -        | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-|     InputText |       -        | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-|        Select |       -        | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-|      Textarea |       -        | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-|          Link |     1.1.16     | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
-|    LinkButton |     1.1.16     | <code>expert</code> \| <code></code> | <sup>\*</sup>     |
+| InputCheckbox |       -        | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+|     InputDate |       -        | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+|    InputEmail |       -        | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+|   InputNumber |       -        | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+| InputPassword |       -        | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+|    InputRange |       -        | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+|    InputRadio |       -        | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+|     InputText |       -        | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+|        Select |       -        | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+|      Textarea |       -        | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+|          Link |     1.1.16     | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
+|    LinkButton |     1.1.16     | <code>expert</code> \| <code></code> |   <sup>\*</sup>   |
 |          Span |     1.1.10     |         <code>expert</code>          |                   |
 |       Tooltip |       -        |         <code>expert</code>          |                   |
 
