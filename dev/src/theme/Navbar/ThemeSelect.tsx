@@ -13,7 +13,7 @@ const OPTIONS: SelectOption<Theme>[] = [
 	// },
 	{
 		disabled: true,
-		label: 'BPA-Styleguide (WIP)',
+		label: 'Bundes-Styleguide (WIP)',
 		value: 'bpa',
 	},
 	{

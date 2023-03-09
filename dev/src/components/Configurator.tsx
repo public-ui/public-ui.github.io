@@ -79,6 +79,7 @@ export const Configurator: FC<ConfiguratorProps> = ({ component, sample }) => {
 
 	return (
 		<KolTabs
+			className="w-full"
 			_ariaLabel="Code-Beispiel"
 			_on={onSelect}
 			// _selected={selected}
