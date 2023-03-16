@@ -12,13 +12,11 @@ const OPTIONS: SelectOption<Theme>[] = [
 	// 	value: 'by',
 	// },
 	{
-		disabled: true,
 		label: 'Bundes-Styleguide (WIP)',
 		value: 'bpa',
 	},
 	{
-		disabled: true,
-		label: 'BMF-Styleguide (not public)',
+		label: 'BMF-Styleguide',
 		value: 'bpa',
 	},
 	{
@@ -26,7 +24,6 @@ const OPTIONS: SelectOption<Theme>[] = [
 		value: 'ecl-ec',
 	},
 	{
-		disabled: true,
 		label: 'Europa Component Library (EU, WIP)',
 		value: 'ecl-eu',
 	},
