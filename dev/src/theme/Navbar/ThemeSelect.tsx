@@ -17,7 +17,7 @@ const OPTIONS: SelectOption<Theme>[] = [
 	},
 	{
 		label: 'BMF-Styleguide',
-		value: 'bpa',
+		value: 'bmf',
 	},
 	{
 		label: 'Europa Component Library (EC, WIP)',
