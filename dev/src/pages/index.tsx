@@ -44,7 +44,7 @@ export default function Homepage(): JSX.Element {
 					<KolLinkButton
 						className="w-72"
 						_icon={{
-							right: 'fa-solid fa-clock',
+							right: 'codicon codicon-dashboard',
 						}}
 						_href="docs/get-started/erste-schritte"
 						_label={translate({
