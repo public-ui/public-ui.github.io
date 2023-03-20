@@ -10,7 +10,7 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
 	{
-		icon: 'fa-solid fa-palette',
+		icon: 'codicon codicon-paintcan',
 		title: 'Designer',
 		description: (
 			<>
@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
 		button: <KolLinkButton className="w-72" _href="docs/concepts/styling/theming" _label="Styling & Design"></KolLinkButton>,
 	},
 	{
-		icon: 'fa-solid fa-code',
+		icon: 'codicon codicon-code',
 		title: 'Developer',
 		description: (
 			<>
@@ -37,7 +37,7 @@ const FeatureList: FeatureItem[] = [
 		button: <KolLinkButton className="w-72" _href="docs/get-started/frameworks" _label="Frameworks"></KolLinkButton>,
 	},
 	{
-		icon: 'fa-solid fa-layer-group',
+		icon: 'codicon codicon-layers',
 		title: 'Components',
 		description: (
 			<>

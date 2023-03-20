@@ -32,12 +32,12 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 				<div className="grid gap-2 grid-cols-5 col-span-2 items-center justify-items-center">
 					{/* <div>
 						{dark ? (
-							<KolButton _icon={'fa-solid fa-moon'} _iconOnly _label="Dark-Modus ausschalten" _on={onDark} _tooltipAlign="left" _variant="ghost"></KolButton>
+							<KolButton _icon={'codicon codicon-moon'} _iconOnly _label="Dark-Modus ausschalten" _on={onDark} _tooltipAlign="left" _variant="ghost"></KolButton>
 						) : (
 							<KolButton
 								className="hidden sm:inline"
 								_disabled
-								_icon={'fa-solid fa-sun'}
+								_icon={'codicon codicon-sun'}
 								_iconOnly
 								_label="Dark-Modus aktivieren"
 								_on={onLight}
@@ -49,7 +49,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 					<div>
 						<KolLinkButton
 							_href="https://github.com/public-ui/kolibri"
-							_icon={'fa-brands fa-github'}
+							_icon={'codicon codicon-github'}
 							_iconOnly
 							_label="GitHub-Repository"
 							_tooltipAlign="left"
@@ -60,7 +60,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 					<div>
 						<KolLinkButton
 							_href="/cheat-sheet/"
-							_icon={'fa-solid fa-graduation-cap'}
+							_icon={'codicon codicon-record-keys'}
 							_iconOnly
 							_label="Cheat-Sheet öffnen"
 							_tooltipAlign="left"
@@ -71,7 +71,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 					<div>
 						<KolLinkButton
 							_href="/designer/"
-							_icon={'fa-solid fa-fill-drip'}
+							_icon={'codicon codicon-paintcan'}
 							_iconOnly
 							_label="Designer öffnen"
 							_tooltipAlign="left"
@@ -82,7 +82,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 					<div>
 						<KolLinkButton
 							_href="/presentation/"
-							_icon={'fa-solid fa-chalkboard-user'}
+							_icon={'codicon codicon-preview'}
 							_iconOnly
 							_label="Präsentation anschauen"
 							_tooltipAlign="left"
@@ -93,7 +93,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 					{/* <div>
 						<KolLinkButton
 							_href="https://discord.com/invite/7ntYFPns6b"
-							_icon={'fa-brands fa-discord'}
+							_icon={'codicon codicon-discord'}
 							_iconOnly
 							_label="Discord-Chat"
 							_tooltipAlign="left"
@@ -104,7 +104,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 					<div>
 						<KolLinkButton
 							_href="https://social.bund.de/@kolibri"
-							_icon={'fa-brands fa-mastodon'}
+							_icon={'codicon codicon-comment-discussion'}
 							_iconOnly
 							_label="Mastodon-Profil"
 							_tooltipAlign="left"
