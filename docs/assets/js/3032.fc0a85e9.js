@@ -1,1 +1,0 @@
-/*! For license information please see 3032.fc0a85e9.js.LICENSE.txt */ "use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[3032],{93032:(t,r,s)=>{s.r(r),s.d(r,{kol_button_group_wc:()=>u});var o=s(78689);const u=class{constructor(t){(0,o.r)(this,t),this.state={}}render(){return(0,o.h)(o.H,null,(0,o.h)("slot",null))}}}}]);
