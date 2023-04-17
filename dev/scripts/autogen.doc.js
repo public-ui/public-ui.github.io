@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { rimrafSync } = require('rimraf');
+const rimraf = require('rimraf');
 
 function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
@@ -122,20 +122,21 @@ const mkDirs = (dirs, index = 0) => {
 	}
 };
 
-rimrafSync([...DOC_FOLDERS, '**/*.md'].join('/'));
-
-README_PATHS.forEach((readmePath) => {
-	const name = path.basename(readmePath).replace(/\..+/g, '');
-	const folders = [...DOC_FOLDERS, name];
-	mkDirs(folders);
-	fs.writeFileSync(
-		`${folders.join('/')}/readme.md`,
-		fs
-			.readFileSync(readmePath, 'utf-8')
-			.replace(/style="color:red"/g, 'class="text-red-500"')
-			.replace(/^# \w+/, '')
-			.replace(/^( *\r?\n)+/, '')
-			.replace(/\]\(..\//g, '](./'),
-		'utf-8'
-	);
+rimraf([...DOC_FOLDERS, '**/*.md'].join('/'), () => {
+	console.log(README_PATHS);
+	README_PATHS.forEach((readmePath) => {
+		const name = path.basename(readmePath).replace(/\..+/g, '');
+		const folders = [...DOC_FOLDERS, name];
+		mkDirs(folders);
+		fs.writeFileSync(
+			`${folders.join('/')}/readme.md`,
+			fs
+				.readFileSync(readmePath, 'utf-8')
+				.replace(/style="color:red"/g, 'class="text-red-500"')
+				.replace(/^# \w+/, '')
+				.replace(/^( *\r?\n)+/, '')
+				.replace(/\]\(..\//g, '](./'),
+			'utf-8'
+		);
+	});
 });
