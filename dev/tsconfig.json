@@ -3,6 +3,30 @@
 	"extends": "@tsconfig/docusaurus/tsconfig.json",
 	"compilerOptions": {
 		"baseUrl": ".",
-		"resolveJsonModule": true
-	}
+			"experimentalDecorators": true,
+			"pretty": true,
+			"target": "ESNext",
+			"module": "ESNext",
+			"preserveConstEnums": true,
+			"sourceMap": true,
+			"preserveSymlinks": true,
+			"moduleResolution": "node",
+			"lib": ["es2017", "dom"],
+			"types": ["node"],
+			"typeRoots": ["node_modules/@types", "src/types"],
+			"noUnusedLocals": true,
+			"resolveJsonModule": true,
+			"allowSyntheticDefaultImports": true,
+			"noEmit": true,
+			"skipLibCheck": true,
+			"noUnusedParameters": true,
+			"noImplicitReturns": true,
+			"noFallthroughCasesInSwitch": true,
+			"forceConsistentCasingInFileNames": true,
+			"importHelpers": true,
+			"removeComments": true,
+			"strict": true,
+	},
+	"include": ["src/**/*", "tests/**/*"],
+	"exclude": ["node_modules/**/*"]
 }

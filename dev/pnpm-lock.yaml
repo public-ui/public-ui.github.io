@@ -47,8 +47,8 @@ dependencies:
     specifier: 1.5.0-rc.11
     version: 1.5.0-rc.11
   '@public-ui/react':
-    specifier: 1.5.0-rc.11
-    version: 1.5.0-rc.11(@public-ui/components@1.5.0-rc.11)(react-dom@17.0.2)(react@17.0.2)
+    specifier: ^1.4.2
+    version: 1.4.2(@public-ui/components@1.5.0-rc.11)(react-dom@17.0.2)(react@17.0.2)
   '@public-ui/themes':
     specifier: 1.5.0-rc.11
     version: 1.5.0-rc.11
@@ -3096,10 +3096,10 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/react@1.5.0-rc.11(@public-ui/components@1.5.0-rc.11)(react-dom@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-dfiqmJR+x8xalesLFwRW2TFVSVRLCwHC9DMP7ab77047Qg6M1Ohts5+8xW/OXIGQ+7TgIaiwbIe/7vPEP5HHKg==}
+  /@public-ui/react@1.4.2(@public-ui/components@1.5.0-rc.11)(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-2x32auE239AFZFj2Wrg+jfIzdb5isjkT+OqP34NdNc5jsEA64zE9EZxuUAF+0UcMKjypju8VnvXwpqbSfmbQSQ==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.11
+      '@public-ui/components': 1.4.2
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
