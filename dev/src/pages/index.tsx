@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 import React, { FunctionComponent } from 'react';
 import KoliBri from '../components/KoliBri';
 import { LiveEditor } from '../components/LiveEditor';
+import Head from '@docusaurus/Head';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -39,6 +40,9 @@ export default function Homepage(): JSX.Element {
 				}
 			)}
 		>
+			<Head>
+				<meta name="kolibri" content="dev-mode=true"></meta>
+			</Head>
 			{/* <HomepageHeader /> */}
 			<main className="container">
 				<LiveEditor component="badge" />

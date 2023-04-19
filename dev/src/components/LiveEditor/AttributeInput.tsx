@@ -1,60 +1,73 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Attribute } from './types';
-import { KolInputCheckbox, KolInputColor, KolInputNumber, KolInputText } from '@public-ui/react';
+import { KolAbbr, KolInputCheckbox, KolInputNumber, KolInputRadio, KolInputText } from '@public-ui/react';
+import { AlignmentOptions } from './lists';
+import { Icon } from './attributeInputs/Icon';
+import { Color } from './attributeInputs/Color';
 
 type Props = {
 	attribute: Attribute;
 	update: (key: string, value: string | number | boolean) => void;
+	value?: string | number | boolean | unknown[] | Record<string, unknown>;
 };
 export function AttributeInput(props: Props) {
-	const { attribute, update } = props;
+	const { attribute, update, value } = props;
 
 	const calculatedType = useMemo(() => {
-		let calculatedTypes = attribute.type.split(' | ');
-		calculatedTypes = calculatedTypes.filter((t) => t !== 'undefined');
+		let calculatedTypes = attribute.type.split(' | ').map((t) => t.replace(/\\"/g, ''));
+		calculatedTypes = calculatedTypes.filter((t) => t !== 'KoliBriAllIcon ignorieren');
 		if (calculatedTypes.length === 1) return calculatedTypes[0];
 		else {
 			if (calculatedTypes.includes('string')) return 'string';
 			else if (calculatedTypes.includes('number')) return 'number';
 			else if (calculatedTypes.includes('boolean')) return 'boolean';
 			else {
-				console.log('no type found', calculatedTypes);
+				// console.log('no type found', calculatedTypes);
 				return '';
 			}
 		}
 	}, [attribute]);
 
 	const input = useMemo(() => {
-		if (attribute.name === '_color') {
-			return (
-				<KolInputColor _on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as string) }}>
-					{attribute.name}: {attribute.description}
-				</KolInputColor>
-			);
-		}
-		switch (calculatedType) {
-			case 'string':
-				return (
-					<KolInputText _on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as string) }}>
-						{attribute.name}: {attribute.description}
-					</KolInputText>
-				);
-			case 'number':
-				return (
-					<KolInputNumber _on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as number) }}>
-						{attribute.name}: {attribute.description}
-					</KolInputNumber>
-				);
-			case 'boolean':
-				return (
-					<KolInputCheckbox _on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as boolean) }}>
-						{attribute.name}: {attribute.description}
-					</KolInputCheckbox>
-				);
+		const label = <KolAbbr _title={attribute.description}>{attribute.name}</KolAbbr>;
+		switch (attribute.name) {
+			case '_color':
+				return <Color name={attribute.name} label={label} update={update} value={value as string}></Color>;
+			case '_icon':
+				return <Icon update={update} attribute={attribute} value={value as string}></Icon>;
 			default:
-				return <p>Keine Eingabe</p>;
+				switch (calculatedType) {
+					case 'string':
+						return (
+							<KolInputText _on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as string) }} _value={(value as string) || ''}>
+								{label}
+							</KolInputText>
+						);
+					case 'number':
+						return (
+							<KolInputNumber _on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as number) }} _value={value as number}>
+								{label}
+							</KolInputNumber>
+						);
+					case 'boolean':
+						return (
+							<KolInputCheckbox _on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as boolean) }} _checked={value as boolean}>
+								{label}
+							</KolInputCheckbox>
+						);
+					case 'Alignment':
+						return (
+							<KolInputRadio
+								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as string) }}
+								_list={AlignmentOptions}
+								_value={value as string | number}
+							></KolInputRadio>
+						);
+					default:
+						return <p>Keine Eingabe</p>;
+				}
 		}
-	}, [attribute]);
+	}, [attribute, value]);
 
 	return <div key={attribute.name}>{input}</div>;
 }
