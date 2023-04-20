@@ -80,6 +80,7 @@ jobs:
           npm pack @${{env.scope}}/slidev
           tar -xzvf public-ui-slidev-*.tgz
           mv package/dist build/presentation
+          mv package/presentation.pdf build/presentation.pdf
           rm -rf package *.tgz
           ls -la build
         working-directory: dev
