@@ -1,5 +1,6 @@
 import React from 'react';
 import { TagName } from './types';
+import Editor from '@monaco-editor/react';
 
 type Props = {
 	tag: TagName;
@@ -34,5 +35,9 @@ export function CodeOutput(props: Props) {
 		}
 	}
 
-	return <pre>{`<kol-${tag}${paramList}></kol-${tag}>`}</pre>;
+	return (
+		<div style={{ paddingBlock: '7px', backgroundColor: '#1e1e1e' }}>
+			<Editor defaultLanguage="html" value={`<kol-${tag}${paramList}></kol-${tag}>`} height="19px" theme="vs-dark"></Editor>
+		</div>
+	);
 }
