@@ -15,6 +15,7 @@ import {
 	KolForm,
 	KolHeading,
 	KolIcon,
+	KolImage,
 	KolIndentedText,
 	KolInputCheckbox,
 	KolInputColor,
@@ -34,7 +35,9 @@ import {
 	KolModal,
 	KolNav,
 	KolPagination,
+	KolPopover,
 	KolProgress,
+	KolQuote,
 	KolSelect,
 	KolSkipNav,
 	KolSpin,
@@ -47,18 +50,6 @@ import {
 	KolVersion,
 } from '@public-ui/react';
 import { TagName } from './types';
-import {
-	ButtonOrLinkOrTextWithChildrenProps,
-	KoliBriDataType,
-	KoliBriTableHeaders,
-	LinkProps,
-	Option,
-	PaginationHasButton,
-	SelectOption,
-	Stringified,
-	TabButtonProps,
-	W3CInputValue,
-} from '@public-ui/components';
 
 type Props = {
 	tag: TagName;
@@ -82,6 +73,7 @@ export function ComponentDisplay(props: Props) {
 		form: KolForm,
 		heading: KolHeading,
 		icon: KolIcon,
+		image: KolImage,
 		indentedText: KolIndentedText,
 		inputCheckbox: KolInputCheckbox,
 		inputColor: KolInputColor,
@@ -101,7 +93,9 @@ export function ComponentDisplay(props: Props) {
 		modal: KolModal,
 		nav: KolNav,
 		pagination: KolPagination,
+		popover: KolPopover,
 		progress: KolProgress,
+		quote: KolQuote,
 		select: KolSelect,
 		skipNav: KolSkipNav,
 		spin: KolSpin,
@@ -115,5 +109,5 @@ export function ComponentDisplay(props: Props) {
 	};
 	// @ts-ignore
 	const Tag = list[props.tag];
-	return <Tag {...p}></Tag>;
+	return Tag ? <Tag {...p}></Tag> : 'Tag not implemented';
 }
