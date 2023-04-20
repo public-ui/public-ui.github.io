@@ -1,9 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useMemo } from 'react';
 import { Attribute } from './types';
 import { KolAbbr, KolInputCheckbox, KolInputNumber, KolInputRadio, KolInputText } from '@public-ui/react';
 import { AlignmentOptions } from './lists';
 import { Icon } from './attributeInputs/Icon';
 import { Color } from './attributeInputs/Color';
+import { Variant } from './attributeInputs/Variant';
 
 type Props = {
 	attribute: Attribute;
@@ -35,6 +37,8 @@ export function AttributeInput(props: Props) {
 				return <Color name={attribute.name} label={label} update={update} value={value as string}></Color>;
 			case '_icon':
 				return <Icon update={update} attribute={attribute} value={value as string}></Icon>;
+			case '_variant':
+				return <Variant label={label} name={attribute.name} update={update} value={value as string}></Variant>;
 			default:
 				switch (calculatedType) {
 					case 'string':
@@ -68,7 +72,12 @@ export function AttributeInput(props: Props) {
 							></KolInputRadio>
 						);
 					default:
-						return <p>Keine Eingabe</p>;
+						return (
+							<p>
+								Attribut: '{attribute.name}'<br />
+								Typ: '{attribute.type}'
+							</p>
+						);
 				}
 		}
 	}, [attribute, value]);

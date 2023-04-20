@@ -109,5 +109,5 @@ export function ComponentDisplay(props: Props) {
 	};
 	// @ts-ignore
 	const Tag = list[props.tag];
-	return Tag ? <Tag {...p}></Tag> : 'Tag not implemented';
+	return Tag ? <Tag {...p}></Tag> : <div>Tag not implemented</div>;
 }

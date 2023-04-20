@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Attribute, TagName } from './types';
 import allElements from '@public-ui/components/custom-elements.json';
 import { KolHeading } from '@public-ui/react';
@@ -16,8 +16,6 @@ export function Configuration(props: Props) {
 		if (e.name === `kol-${tag}`) return true;
 		else return false;
 	});
-
-	useEffect(() => console.log('Configuration: config', config), [config]);
 
 	return (
 		<div>
