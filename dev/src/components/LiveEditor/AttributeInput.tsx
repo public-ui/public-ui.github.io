@@ -5,7 +5,7 @@ import { KolAbbr, KolInputCheckbox, KolInputNumber, KolInputRadio, KolInputText 
 import { AlignmentOptions } from './lists';
 import { Icon } from './attributeInputs/Icon';
 import { Color } from './attributeInputs/Color';
-import { Variant } from './attributeInputs/Variant';
+import { UnionSelect } from './attributeInputs/UnionSelect';
 
 type Props = {
 	attribute: Attribute;
@@ -16,29 +16,25 @@ export function AttributeInput(props: Props) {
 	const { attribute, update, value } = props;
 
 	const calculatedType = useMemo(() => {
-		let calculatedTypes = attribute.type.split(' | ').map((t) => t.replace(/\\"/g, ''));
+		let calculatedTypes = attribute.type.replace(/\\?"/g, '').split(' | ');
 		calculatedTypes = calculatedTypes.filter((t) => t !== 'KoliBriAllIcon ignorieren');
 		if (calculatedTypes.length === 1) return calculatedTypes[0];
 		else {
 			if (calculatedTypes.includes('string')) return 'string';
 			else if (calculatedTypes.includes('number')) return 'number';
 			else if (calculatedTypes.includes('boolean')) return 'boolean';
-			else {
-				console.log('no type found', calculatedTypes);
-				return '';
-			}
+			else return '';
 		}
 	}, [attribute]);
 
 	const input = useMemo(() => {
+		const calculatedTypes = attribute.type.split(' | ').map((t) => t.replace(/\\?"/g, ''));
 		const label = <KolAbbr _title={attribute.description}>{attribute.name}</KolAbbr>;
 		switch (attribute.name) {
 			case '_color':
 				return <Color name={attribute.name} label={label} update={update} value={value as string}></Color>;
 			case '_icon':
 				return <Icon update={update} attribute={attribute} value={value as string}></Icon>;
-			case '_variant':
-				return <Variant label={label} name={attribute.name} update={update} value={value as string}></Variant>;
 			default:
 				switch (calculatedType) {
 					case 'string':
@@ -63,15 +59,9 @@ export function AttributeInput(props: Props) {
 								{label}
 							</KolInputCheckbox>
 						);
-					case 'Alignment':
-						return (
-							<KolInputRadio
-								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as string) }}
-								_list={AlignmentOptions}
-								_value={value as string | number}
-							></KolInputRadio>
-						);
 					default:
+						if (calculatedTypes.length > 1)
+							return <UnionSelect label={label} name={attribute.name} types={calculatedTypes} update={update} value={value as string}></UnionSelect>;
 						return (
 							<p>
 								Attribut: '{attribute.name}'<br />
