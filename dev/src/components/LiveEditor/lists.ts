@@ -4,3 +4,7 @@ export const AlignmentOptions = [
 	{ label: 'bottom', value: 'bottom' },
 	{ label: 'left', value: 'left' },
 ];
+
+export const AttributeBlackList = ['_smart-button'];
+
+export const ElementBlackList = [];

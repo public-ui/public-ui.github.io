@@ -22,7 +22,7 @@ export function AttributeInput(props: Props) {
 			else if (calculatedTypes.includes('number')) return 'number';
 			else if (calculatedTypes.includes('boolean')) return 'boolean';
 			else {
-				// console.log('no type found', calculatedTypes);
+				console.log('no type found', calculatedTypes);
 				return '';
 			}
 		}
@@ -51,7 +51,11 @@ export function AttributeInput(props: Props) {
 						);
 					case 'boolean':
 						return (
-							<KolInputCheckbox _on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as boolean) }} _checked={value as boolean}>
+							<KolInputCheckbox
+								_checked={value as boolean}
+								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as boolean) }}
+								_variant="switch"
+							>
 								{label}
 							</KolInputCheckbox>
 						);

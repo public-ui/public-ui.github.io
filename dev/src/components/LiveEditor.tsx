@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useEffect, useMemo, useState } from 'react';
 import allElements from '@public-ui/components/custom-elements.json';
-import { KolSelect } from '@public-ui/react';
+import { KolBadge, KolSelect } from '@public-ui/react';
 
 import { TagName } from './LiveEditor/types';
 import { CodeOutput } from './LiveEditor/CodeOutput';
@@ -22,8 +22,6 @@ export function LiveEditor(props: Props) {
 	}, [props.component]);
 
 	const config = useMemo(() => {
-		console.log('allConfig[tag]');
-		console.log(allConfig[tag] || {});
 		return allConfig[tag] || {};
 	}, [allConfig, tag]);
 
@@ -43,13 +41,14 @@ export function LiveEditor(props: Props) {
 		setTag(tag);
 	}
 
-	const tagList = allElements.tags.map((el) => {
-		return { value: el.name.replace('kol-', ''), label: el.name };
+	const tagList = allElements.tags.map((el: Record<string, unknown>) => {
+		return { value: (el.name as string).replace('kol-', ''), label: el.name as string };
 	});
 
 	return (
 		<div className="grid gap-4 py-4">
-			<div className="py-4 border-solid border border-gray-300 rounded-md min-h-[5rem] grid place-content-center">
+			<KolBadge _label="Beta" _color="primary"></KolBadge>
+			<div className="py-2 px-4 border-solid border border-gray-300 rounded-md min-h-[5rem] grid place-content-center">
 				<ComponentDisplay tag={tag} params={config} />
 			</div>
 			<KolSelect _list={tagList} _value={[tag]} _on={{ onChange: updateTag }}></KolSelect>
