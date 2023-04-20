@@ -36,8 +36,18 @@ export function CodeOutput(props: Props) {
 	}
 
 	return (
-		<div style={{ paddingBlock: '7px', backgroundColor: '#1e1e1e' }}>
-			<Editor defaultLanguage="html" value={`<kol-${tag}${paramList}></kol-${tag}>`} height="19px" theme="vs-dark"></Editor>
+		<div className="h-48 rounded-md overflow-hidden">
+			<Editor
+				defaultLanguage="html"
+				options={{
+					fontSize: 16,
+					lineNumbers: 'on',
+					readOnly: true,
+				}}
+				value={`<kol-${tag}${paramList}></kol-${tag}>`}
+				height="500px"
+				theme="vs-dark"
+			></Editor>
 		</div>
 	);
 }

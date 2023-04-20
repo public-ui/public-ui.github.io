@@ -48,14 +48,14 @@ export function LiveEditor(props: Props) {
 	});
 
 	return (
-		<>
-			<div className="my-4 border-solid border border-gray-300 rounded-md min-h-[5rem] grid place-content-center">
+		<div className="grid gap-4 py-4">
+			<div className="py-4 border-solid border border-gray-300 rounded-md min-h-[5rem] grid place-content-center">
 				<ComponentDisplay tag={tag} params={config} />
 			</div>
 			<KolSelect _list={tagList} _value={[tag]} _on={{ onChange: updateTag }}></KolSelect>
 			{/* @ts-ignore */}
 			<Configuration config={config} update={updateConfig} tag={tag} />
 			<CodeOutput params={config} tag={tag} />
-		</>
+		</div>
 	);
 }
