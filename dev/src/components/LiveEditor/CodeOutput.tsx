@@ -6,11 +6,9 @@ type Props = {
 	params: Record<string, string | number | boolean>;
 };
 
-export function CodeOutput(props: Props) {
-	const { tag, params } = props;
-	let paramList = '';
-
-	for (const [key, value] of Object.entries(params)) {
+export function getHtmlCode(tag: TagName, props: Record<string, string | number | boolean>) {
+	let propList = '';
+	for (const [key, value] of Object.entries(props)) {
 		if (value) {
 			let paramString = '';
 			switch (typeof value) {
@@ -30,9 +28,14 @@ export function CodeOutput(props: Props) {
 					paramString = `Never give up hope, one day everything will be fixed.`;
 			}
 
-			paramList += paramString;
+			propList += paramString;
 		}
 	}
 
-	return <pre>{`<kol-${tag}${paramList}></kol-${tag}>`}</pre>;
+	return `<kol-${tag}${propList}></kol-${tag}>`;
+}
+
+export function CodeOutput(props: Props) {
+	const { tag, params } = props;
+	return <pre>{getHtmlCode(tag, params)}</pre>;
 }
