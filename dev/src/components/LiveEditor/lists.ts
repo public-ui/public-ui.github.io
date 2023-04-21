@@ -5,6 +5,6 @@ export const AlignmentOptions = [
 	{ label: 'left', value: 'left' },
 ];
 
-export const AttributeBlackList = ['_smart-button'];
+export const AttributeBlackList = ['_smart-button', '_icon-align'];
 
 export const ElementBlackList = [];
