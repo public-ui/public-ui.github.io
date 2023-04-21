@@ -1,8 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useMemo } from 'react';
 import { Attribute } from './types';
-import { KolAbbr, KolInputCheckbox, KolInputNumber, KolInputRadio, KolInputText } from '@public-ui/react';
-import { AlignmentOptions } from './lists';
+import { KolAbbr, KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/react';
 import { Icon } from './attributeInputs/Icon';
 import { Color } from './attributeInputs/Color';
 import { UnionSelect } from './attributeInputs/UnionSelect';
@@ -34,7 +33,7 @@ export function AttributeInput(props: Props) {
 			case '_color':
 				return <Color name={attribute.name} label={label} update={update} value={value as string}></Color>;
 			case '_icon':
-				return <Icon update={update} attribute={attribute} value={value as string}></Icon>;
+				return <Icon attribute={attribute} label={label} update={update} value={value as string}></Icon>;
 			default:
 				switch (calculatedType) {
 					case 'string':
@@ -60,17 +59,19 @@ export function AttributeInput(props: Props) {
 							</KolInputCheckbox>
 						);
 					default:
-						if (calculatedTypes.length > 1)
+						if (calculatedTypes.length > 1) {
 							return <UnionSelect label={label} name={attribute.name} types={calculatedTypes} update={update} value={value as string}></UnionSelect>;
-						return (
-							<p>
-								Attribut: '{attribute.name}'<br />
-								Typ: '{attribute.type}'
-							</p>
-						);
+						} else {
+							return (
+								<p>
+									Attribut: '{attribute.name}'<br />
+									Typ: '{attribute.type}'
+								</p>
+							);
+						}
 				}
 		}
 	}, [attribute, value]);
 
-	return <div key={attribute.name}>{input}</div>;
+	return <div className="bg-gray-100 rounded-lg p-2 border border-gray-300 border-solid">{input}</div>;
 }

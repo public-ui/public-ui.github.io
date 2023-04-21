@@ -128,6 +128,11 @@ export type Params = {
 	_width?: string;
 };
 
+export type Slot = {
+	description: string;
+	name: string;
+};
+
 export type TagName =
 	| 'abbr'
 	| 'accordion'

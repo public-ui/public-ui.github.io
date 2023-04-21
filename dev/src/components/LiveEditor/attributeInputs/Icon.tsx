@@ -5,12 +5,13 @@ import { KoliBriAllIcon } from '@public-ui/components/dist/types/types/icon';
 
 type Props = {
 	attribute: Attribute;
+	label: JSX.Element | string;
 	update: (key: string, value: string | number | boolean) => void;
 	value?: string;
 };
 
 export function Icon(props: Props) {
-	const { attribute, update, value } = props;
+	const { attribute, label, update, value } = props;
 
 	const [left, setLeft] = useState('');
 	const [right, setRight] = useState('');
@@ -54,6 +55,7 @@ export function Icon(props: Props) {
 	const iconList = ['home', 'arrow-up', 'arrow-right', 'arrow-down', 'arrow-left'];
 	return (
 		<div>
+			{label}
 			{leftAvailable ? (
 				<KolDetails _summary="Links">
 					<div className="flex flex-wrap">

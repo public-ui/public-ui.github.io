@@ -45,7 +45,7 @@ export default function Homepage(): JSX.Element {
 			</Head>
 			{/* <HomepageHeader /> */}
 			<main className="container">
-				<LiveEditor component="button" />
+				<LiveEditor component="accordion" />
 				{/* <div className="grid sm:flex gap-4 justify-center mt-4">
 					<KolLinkButton
 						className="w-72"

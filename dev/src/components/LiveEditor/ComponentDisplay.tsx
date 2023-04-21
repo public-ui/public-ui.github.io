@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -57,7 +57,13 @@ type Props = {
 };
 
 export function ComponentDisplay(props: Props) {
-	const p = props.params;
+	const p: Record<string, string | number | boolean> = {};
+	Object.entries(props.params)
+		.filter((tuple) => !tuple[0].startsWith('slot-'))
+		.forEach((tuple) => {
+			p[tuple[0]] = tuple[1];
+		});
+	const slots = Object.entries(props.params).filter((tuple) => tuple[0].startsWith('slot-'));
 
 	const list = {
 		abbr: KolAbbr,
@@ -109,5 +115,13 @@ export function ComponentDisplay(props: Props) {
 	};
 	// @ts-ignore
 	const Tag = list[props.tag];
-	return Tag ? <Tag {...p}></Tag> : <div>Tag not implemented</div>;
+	return Tag ? (
+		<Tag {...p}>
+			{slots.map((s) => (
+				<div key={s[0]} slot={s[0].replace('slot-', '')} dangerouslySetInnerHTML={{ __html: s[1] as string }}></div>
+			))}
+		</Tag>
+	) : (
+		<div>Tag not implemented</div>
+	);
 }

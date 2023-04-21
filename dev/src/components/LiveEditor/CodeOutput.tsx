@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { TagName } from './types';
 import Editor from '@monaco-editor/react';
 
@@ -10,8 +10,24 @@ type Props = {
 export function CodeOutput(props: Props) {
 	const { tag, params } = props;
 	let paramList = '';
+	const slots = useMemo(() => {
+		let result = '';
+		Object.entries(params)
+			.filter((tuple) => tuple[0].startsWith('slot-'))
+			.forEach((tuple) => {
+				const content = tuple[1] as string;
+				const name = tuple[0].split('-')[1];
+				if (content) {
+					if (content.match(/^<.*?>/)?.length) {
+						const index = content.indexOf('>');
+						result += content.substring(0, index) + ` slot="${name}"` + content.substring(index);
+					} else result += `<div slot="${name}">${content}</div>`;
+				}
+			});
+		return result;
+	}, [params]);
 
-	for (const [key, value] of Object.entries(params)) {
+	for (const [key, value] of Object.entries(params).filter((tuple) => !tuple[0].startsWith('slot-'))) {
 		if (value) {
 			let paramString = '';
 			switch (typeof value) {
@@ -44,7 +60,7 @@ export function CodeOutput(props: Props) {
 					lineNumbers: 'on',
 					readOnly: true,
 				}}
-				value={`<kol-${tag}${paramList}></kol-${tag}>`}
+				value={`<kol-${tag}${paramList}>${slots}</kol-${tag}>`}
 				height="500px"
 				theme="vs-dark"
 			></Editor>

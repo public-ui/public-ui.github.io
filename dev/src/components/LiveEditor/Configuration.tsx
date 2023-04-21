@@ -1,9 +1,10 @@
 import React from 'react';
-import { Attribute, TagName } from './types';
+import { Attribute, Slot, TagName } from './types';
 import allElements from '@public-ui/components/custom-elements.json';
 import { KolHeading } from '@public-ui/react';
 import { AttributeInput } from './AttributeInput';
 import { AttributeBlackList } from './lists';
+import { SlotInput } from './attributeInputs/SlotInput';
 
 type Props = {
 	config: Record<string, string | number | boolean>;
@@ -28,11 +29,12 @@ export function Configuration(props: Props) {
 							AttributeBlackList.includes(attribute.name) ? (
 								''
 							) : (
-								<div className="bg-gray-100 rounded-lg p-2 border border-gray-300 border-solid" key={attribute.name}>
-									<AttributeInput attribute={attribute} update={update} value={config[attribute.name]}></AttributeInput>
-								</div>
+								<AttributeInput key={attribute.name} attribute={attribute} update={update} value={config[attribute.name]}></AttributeInput>
 							)
 						)}
+						{element.slots.map((slot: Slot) => (
+							<SlotInput key={slot.name} description={slot.description} name={slot.name} update={update} />
+						))}
 					</div>
 				</>
 			) : (

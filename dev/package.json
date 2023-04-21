@@ -3,7 +3,7 @@
 	"private": true,
 	"scripts": {
 		"docusaurus": "npm run gen:doc && docusaurus",
-		"start": "npm run gen:doc && docusaurus start",
+		"start": "npm run gen:doc && docusaurus start --no-open",
 		"startonly": "docusaurus start --no-open",
 		"build": "rimraf build && cp node_modules/@public-ui/components/cheat-sheet.html static/cheat-sheet/index.html && npm run gen:doc && docusaurus build && node scripts/update.meta.js && node scripts/minify.js",
 		"swizzle": "npm run gen:doc && docusaurus swizzle",
