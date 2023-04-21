@@ -10,6 +10,7 @@
 | \_align              | bottom/left/right/top                              | Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.                           |
 | \_aria-controls      | string                                             | Siehe https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls          |
 | \_aria-current       | date/location/page/step/time/boolean               | Siehe https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current           |
+| \_aria-current-value | date/location/page/step/time/boolean               | Setzt den Wert für aria-current, der verwendet werden soll.                                             |
 | \_aria-expanded      | boolean                                            | Siehe https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded          |
 | \_aria-label         | string                                             | Siehe https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label             |
 | \_aria-selected      | boolean                                            | Siehe https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected          |
@@ -35,11 +36,10 @@
 | \_hide-label         | boolean                                            | Versteckt das sichtbare Label des Elements.                                                             |
 | \_hint               | string                                             | Setzt den Hinweistext.                                                                                  |
 | \_href               | string                                             | Setzt die Ziel-URL.                                                                                     |
-| \_icon               | string                                             | Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).                                             |
-| \_icon               | string \| KoliBriAllIcon                           | Setzt die Iconklasse oder -objekt. ({ left?:string, right?:string, top?:string, bottom?:string })       |
+| \_icon               | string/KoliBriAllIcon                              | Setzt die Iconklasse oder -objekt. ({ left?:string, right?:string, top?:string, bottom?:string })       |
 | \_indeterminate      | boolean                                            | Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.                                    |
 | \_label              | string                                             | Setzt den Text/Label des Elements.                                                                      |
-| \_level              | 1/2/3/4/5/6                                        | Setzt den H-Level, von 1 bis 6, der Überschrift.                                                        |
+| \_level              | 1/2/3/4/5/6/0                                      | Setzt den H-Level, von 1 bis 6, der Überschrift. 0 Setzt nur den Schriftschnitt auf fett.               |
 | \_links              | LinkProps[]                                        | Setzt die Liste der Links.                                                                              |
 | \_loading            | eager/lazy                                         | Gibt den Lademodus an.                                                                                  |
 | \_max                | ???                                                | Setzt die obere Grenze                                                                                  |
@@ -81,7 +81,6 @@
 | \_tabs               | TabButtonProps[]                                   | Setzt die Daten für die Registrierkarten.                                                               |
 | \_tabs-align         | Alignment                                          | Setzt die Position der Registrierkarten.                                                                |
 | \_target             | \_blank/\_self/\_parent/\_top/[framename]          | Siehe https://www.w3schools.com/tags/att_a_target.asp                                                   |
-| \_target-description | string                                             | ???                                                                                                     |
 | \_title              | string                                             | Gibt die Beschreibung oder Erläuterung der Abkürzung an.                                                |
 | \_touched            | boolean                                            | Zeigt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                          |
 | \_total              | number                                             | Setzt die Gesamtanzahl der Seiten.                                                                      |
@@ -100,3 +99,5 @@ Bei direkter Weiterleitung an das HTMLElement: keine Beschreibung, nur Link, sof
 \_size bei Select
 \_type und \_variant
 \_value
+
+KolQuote
