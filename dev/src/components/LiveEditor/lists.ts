@@ -7,4 +7,12 @@ export const AlignmentOptions = [
 
 export const AttributeBlackList = ['_smart-button', '_icon-align'];
 
-export const ElementBlackList = [];
+export const ElementBlackList = [
+	'kol-button-group-wc',
+	'kol-heading-wc',
+	'kol-icon-font-awesome',
+	'kol-icon-icofont',
+	'kol-input-adapter-leanup',
+	'kol-input-radio-group',
+	'kol-span',
+];

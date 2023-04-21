@@ -7,6 +7,7 @@ import { TagName } from './LiveEditor/types';
 import { CodeOutput } from './LiveEditor/CodeOutput';
 import { ComponentDisplay } from './LiveEditor/ComponentDisplay';
 import { Configuration } from './LiveEditor/Configuration';
+import { ElementBlackList } from './LiveEditor/lists';
 
 type Props = {
 	component?: string;
@@ -41,9 +42,11 @@ export function LiveEditor(props: Props) {
 		setTag(tag);
 	}
 
-	const tagList = allElements.tags.map((el: Record<string, unknown>) => {
-		return { value: (el.name as string).replace('kol-', ''), label: el.name as string };
-	});
+	const tagList = allElements.tags
+		.filter((t) => !ElementBlackList.includes(t.name))
+		.map((el: Record<string, unknown>) => {
+			return { value: (el.name as string).replace('kol-', ''), label: el.name as string };
+		});
 
 	return (
 		<div className="grid gap-4 py-4">
