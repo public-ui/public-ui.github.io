@@ -33,7 +33,7 @@ export function Configuration(props: Props) {
 							)
 						)}
 						{element.slots.map((slot: Slot) => (
-							<SlotInput key={slot.name} description={slot.description} name={slot.name} update={update} />
+							<SlotInput key={slot.name} description={slot.description} name={slot.name} update={update} value={config['slot-' + slot.name] as string} />
 						))}
 					</div>
 				</>
