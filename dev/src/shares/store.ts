@@ -1,9 +1,9 @@
 import { isTheme, Store, Theme } from './theme';
 import PackageJson from '../../node_modules/@public-ui/components/package.json';
 
-export const STORE_IDENTIFIER = `public-ui.website-${PackageJson.version}`;
+const STORE_IDENTIFIER = `public-ui.v${PackageJson.version}`;
 
-class Storage {
+class StaticStorage {
 	private readonly store: Map<string, string> = new Map();
 
 	public setItem(key: string, value: string) {
@@ -15,25 +15,30 @@ class Storage {
 	}
 }
 
-export const STORAGE = new Storage();
-// const storage = new Storage();
-const RESTORE = STORAGE.getItem(STORE_IDENTIFIER);
 const STORE: Store = {
 	darkMode: false,
 	theme: 'itzbund',
 };
 
-try {
-	const store = JSON.parse(RESTORE) as Store;
-	if (typeof store === 'object' && store !== null) {
-		STORE.darkMode = store.darkMode === true;
-		if (isTheme(store.theme)) {
-			STORE.theme = store.theme;
+let STORAGE: Storage;
+export function setStorage(storage: Storage) {
+	STORAGE = storage;
+	const RESTORE = STORAGE.getItem(STORE_IDENTIFIER);
+	try {
+		const store = JSON.parse(RESTORE as string) as Store;
+		console.log('RESTORE', store);
+		if (typeof store === 'object' && store !== null) {
+			STORE.darkMode = store.darkMode === true;
+			if (isTheme(store.theme)) {
+				STORE.theme = store.theme;
+			}
+			console.log('getTheme', getTheme());
 		}
+	} catch (e) {
+		/* empty */
 	}
-} catch (e) {
-	/* empty */
 }
+setStorage(new StaticStorage() as unknown as Storage);
 
 const setStore = () => {
 	STORAGE.setItem(STORE_IDENTIFIER, JSON.stringify(STORE));

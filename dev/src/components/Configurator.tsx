@@ -54,9 +54,10 @@ export const Configurator: FC<ConfiguratorProps> = ({ component, sample }) => {
 		vue: `${path}.vue`,
 		webcomponent: `${path}.html`,
 	};
+	const sampleUrl = `/sample-react/#/${component}/${sample}`;
 
 	const onSelect = {
-		onSelect: (_event, idx) => {
+		onSelect: (_event: Event, idx: number) => {
 			// setSelected(() => idx as number);
 			switch (idx) {
 				case 1:
@@ -104,7 +105,17 @@ export const Configurator: FC<ConfiguratorProps> = ({ component, sample }) => {
 				},
 			]}
 		>
-			<div>{tab === 'Preview' && <CodeSandbox url={mapFileInUrl(baseUrl, component, sample, files.react, 'preview')} />}</div>
+			<div>
+				{tab === 'Preview' && (
+					<iframe
+						src={sampleUrl}
+						style={STYLES}
+						title="kolibri-public-ui-code-samples"
+						allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+						sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+					></iframe>
+				)}
+			</div>
 			<div>{tab === 'Angular' && <CodeSandbox url={mapFileInUrl(baseUrl, component, sample, files.angular)} />}</div>
 			<div>{tab === 'React' && <CodeSandbox url={mapFileInUrl(baseUrl, component, sample, files.react)} />}</div>
 			<div>{tab === 'Vue' && <CodeSandbox url={mapFileInUrl(baseUrl, component, sample, files.vue)} />}</div>
