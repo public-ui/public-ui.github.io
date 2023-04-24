@@ -23,6 +23,11 @@ export function LiveEditor(props: Props) {
 		if (props.component) setTag(props.component.replace('kol-', '') as TagName);
 	}, [props.component]);
 
+	useEffect(() => {
+		const hasLabel = !!allElements.tags.find((t) => t.name === `kol-${tag}`)?.attributes.find((a) => a.name === '_label');
+		if (hasLabel && !allConfig[tag]?._label) updateConfig('_label', 'Beispieltext in _label');
+	}, [tag]);
+
 	const config = useMemo(() => {
 		return allConfig[tag] || {};
 	}, [allConfig, tag]);
