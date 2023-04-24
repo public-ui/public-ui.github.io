@@ -11,6 +11,7 @@ import { ElementBlackList } from './LiveEditor/lists';
 
 type Props = {
 	component?: string;
+	isOnComponentPage?: boolean;
 };
 
 type AllConfig = Record<string, Record<string, string | number | boolean>>;
@@ -54,9 +55,9 @@ export function LiveEditor(props: Props) {
 			<div className="py-2 px-4 border-solid border border-gray-300 rounded-md min-h-[5rem] grid place-content-center">
 				<ComponentDisplay tag={tag} params={config} />
 			</div>
-			<KolSelect _list={tagList} _value={[tag]} _on={{ onChange: updateTag }}></KolSelect>
+			{props.isOnComponentPage ? '' : <KolSelect _list={tagList} _value={[tag]} _on={{ onChange: updateTag }}></KolSelect>}
 			{/* @ts-ignore */}
-			<Configuration config={config} update={updateConfig} tag={tag} />
+			<Configuration config={config} showDescription={!props.isOnComponentPage} tag={tag} update={updateConfig} />
 			<CodeOutput params={config} tag={tag} />
 		</div>
 	);

@@ -8,11 +8,12 @@ import { SlotInput } from './attributeInputs/SlotInput';
 
 type Props = {
 	config: Record<string, string | number | boolean>;
+	showDescription: boolean;
 	tag: TagName;
 	update: (key: string, value: string | number | boolean) => void;
 };
 export function Configuration(props: Props) {
-	const { config, tag, update } = props;
+	const { config, showDescription, tag, update } = props;
 	const element = Object.values(allElements.tags).find((e) => {
 		if (e.name === `kol-${tag}`) return true;
 		else return false;
@@ -22,8 +23,14 @@ export function Configuration(props: Props) {
 		<div>
 			{element ? (
 				<>
-					<h2>Konfiguration von {element.name}</h2>
-					<p>{element.description}</p>
+					{showDescription ? (
+						<>
+							<h2>Konfiguration von {element.name}</h2>
+							<p>{element.description}</p>
+						</>
+					) : (
+						''
+					)}
 					<div className="grid grid-cols-2 gap-2 my-2">
 						{element.attributes.map((attribute: Attribute) =>
 							AttributeBlackList.includes(attribute.name) ? (
