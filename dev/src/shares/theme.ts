@@ -75,7 +75,7 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 		value: 'ecl-eu',
 	},
 	{
-		label: 'Informationszentrum Bund',
+		label: 'Informationstechnikzentrum Bund',
 		value: 'itzbund',
 	},
 	{
