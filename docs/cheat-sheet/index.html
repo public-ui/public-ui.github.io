@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.17';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.18';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.18/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.18';
 				register(ITZBund, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -99,9 +99,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.17';
+		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.18';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.18/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.18';
 		register([ITZBund], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -315,12 +315,12 @@ Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode
 
 Beachten Sie, dass die Komponente automatisch ein Padding links und rechts zum umgebenden Text erzeugt. Sie kann daher im Fließtext ohne
 Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern den Abstand zum umgebenden Text.`,
-	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _disabled, _href, _icon, _icon-align, _icon-only, _label, _role, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _use-case`
+	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _disabled, _download, _href, _icon, _icon-align, _icon-only, _label, _role, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _use-case`
 },{
 	name: `link-button`,
 	desc: `Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
 Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="Seite des Buttons"></kol-link>.`,
-	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _href, _icon, _icon-only, _label, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
+	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _download, _href, _icon, _icon-only, _label, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
 },{
 	name: `modal`,
 	desc: `Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Ein offenes **Modal** kann via **ESC** geschlossen werden.
@@ -346,11 +346,11 @@ noch die Icons ausgegeben.`,
 	name: `popover`,
 	desc: `Die **Popover**-Komponente stellt eine Möglichkeit dar zusätzliche Inhalte in ein temporäres Element zu setzen, das, ähnlich wie <kol-link _href="" _label="Tooltip"></kol-link>, um sein Triggerelement angeordnet ist.
 Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).`,
-	props: `_alignment, _open`
+	props: `_alignment, _show`
 },{
 	name: `progress`,
 	desc: `Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine optische Rückmeldung gegeben werden kann.`,
-	props: `_max, _type, _unit, _value`
+	props: `_description, _max, _show-unit, _type, _unit, _value`
 },{
 	name: `quote`,
 	desc: `Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('inline') und eine eingerückte('block') Variante. Beide Varianten enthalten einen Link auf die Quelle des Zitates.`,
@@ -510,7 +510,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_type`,
 	desc: `Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.`,
-	types: `"bar" | "cycle", "button" | "checkbox" | "switch", "button" | "reset" | "submit", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
+	types: `"bar" | "cycle", "button" | "checkbox" | "default" | "switch", "button" | "reset" | "submit", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
 	comps: `alert, button, button-link, input-checkbox, input-date, input-number, input-text, progress, toast`
 },{
 	name: `_list`,
@@ -520,7 +520,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_variant`,
 	desc: `Gibt an, welche Ausprägung der Button hat.`,
-	types: `"block" | "inline", "button" | "checkbox" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
+	types: `"block" | "inline", "button" | "checkbox" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
 	comps: `alert, button, input-checkbox, link-button, nav, pagination, quote`
 },{
 	name: `_label`,
@@ -613,15 +613,15 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range`
 },{
+	name: `_show`,
+	desc: `Gibt an, ob der Toast eingeblendet wird.`,
+	types: `boolean`,
+	comps: `popover, spin, toast`
+},{
 	name: `_pattern`,
 	desc: `Gibt ein Prüfmuster für das Eingabefeld an.`,
 	types: `string`,
 	comps: `input-email, input-password, input-text`
-},{
-	name: `_open`,
-	desc: `Gibt an, ob das Accordion geöffnet ist.`,
-	types: `boolean`,
-	comps: `accordion, details, popover`
 },{
 	name: `_multiple`,
 	desc: `Gibt an, ob mehrere Werte eingegeben werden können.`,
@@ -653,15 +653,20 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `link, link-button`
 },{
-	name: `_show`,
-	desc: `Gibt an, ob der Toast eingeblendet wird.`,
-	types: `boolean`,
-	comps: `spin, toast`
+	name: `_download`,
+	desc: `Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.`,
+	types: `boolean | string`,
+	comps: `link, link-button`
 },{
 	name: `_orientation`,
 	desc: `Gibt die Ausrichtung der LinkList an.`,
 	types: `"horizontal" | "vertical"`,
 	comps: `input-radio, nav`
+},{
+	name: `_open`,
+	desc: `Gibt an, ob das Accordion geöffnet ist.`,
+	types: `boolean`,
+	comps: `accordion, details`
 },{
 	name: `_icon-align`,
 	desc: `Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.`,
@@ -700,6 +705,16 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_unit`,
 	desc: `Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)`,
+	types: `string`,
+	comps: `progress`
+},{
+	name: `_show-unit`,
+	desc: `Zeigt die Einheit der Fortschrittswerte an.`,
+	types: `boolean`,
+	comps: `progress`
+},{
+	name: `_description`,
+	desc: `Setzt die Beschreibung der Fortschrittsanzeige.`,
 	types: `string`,
 	comps: `progress`
 },{
