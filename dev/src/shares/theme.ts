@@ -89,7 +89,7 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	},
 	{
 		disabled: true,
-		label: 'ZOLL-Styleguide v2',
+		label: 'Design System Zoll (v2)',
 		value: 'zoll-v2',
 	},
 ];
