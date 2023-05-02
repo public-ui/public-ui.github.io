@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.19';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.19/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.19';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.20';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.20/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.20';
 				register(ITZBund, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.19';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.19/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.19';
+		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.20';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.20/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.20';
 		register([ITZBund], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -351,6 +351,10 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 	desc: `Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.`,
 	props: `_show`
 },{
+	name: `split-button`,
+	desc: ``,
+	props: `_access-key, _aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _hide-label, _icon, _icon-only, _label, _role, _show-dropdown, _tab-index, _tooltip-align, _type, _variant`
+},{
 	name: `symbol`,
 	desc: `Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit steuerbarer Ausgabe durch den Screenreader.`,
 	props: `_aria-label, _symbol`
@@ -424,17 +428,17 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_tab-index`,
 	desc: `Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)`,
 	types: `number`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, textarea`
+	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_disabled`,
 	desc: `Gibt an, ob der Button deaktiviert ist.`,
 	types: `boolean`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, textarea`
+	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_icon`,
 	desc: `Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.`,
 	types: `KoliBriHorizontalIcon & KoliBriVerticalIcon | string, string, string | { checked: string; indeterminate?: string | undefined; unchecked?: string | undefined; } & { checked?: string | undefined; indeterminate: string; unchecked?: string | undefined; } & { checked?: string | undefined; indeterminate?: string | undefined; unchecked: string; }, string | { right?: IconOrIconClass | undefined; left?: IconOrIconClass | undefined; }`,
-	comps: `badge, button, button-link, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select`
+	comps: `badge, button, button-link, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select, split-button`
 },{
 	name: `_id`,
 	desc: `Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.`,
@@ -449,12 +453,17 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_access-key`,
 	desc: `Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.`,
 	types: `string`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
+	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
 },{
 	name: `_value`,
 	desc: `Gibt an, wie weit die Anzeige fortgeschritten ist.`,
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null, W3CInputValue[] | string, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null | number, number, number | string, string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, progress, select, textarea`
+},{
+	name: `_hide-label`,
+	desc: `Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.`,
+	types: `boolean`,
+	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
 },{
 	name: `_touched`,
 	desc: `Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.`,
@@ -471,11 +480,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
-	name: `_hide-label`,
-	desc: `Versteckt das sichtbare Label des Elements.`,
-	types: `boolean`,
-	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
-},{
 	name: `_error`,
 	desc: `Gibt den Text für eine Fehlermeldung an.`,
 	types: `string`,
@@ -484,12 +488,12 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_aria-label`,
 	desc: `Gibt an, was der Screenreader ausgeben soll`,
 	types: `string`,
-	comps: `breadcrumb, button, button-link, icon, link, link-button, modal, nav, skip-nav, symbol, tabs`
+	comps: `breadcrumb, button, button-link, icon, link, link-button, modal, nav, skip-nav, split-button, symbol, tabs`
 },{
 	name: `_type`,
 	desc: `Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.`,
 	types: `"bar" | "cycle", "button" | "checkbox" | "default" | "switch", "button" | "reset" | "submit", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
-	comps: `alert, alert-wc, button, button-link, input-checkbox, input-date, input-number, input-text, progress, toast`
+	comps: `alert, alert-wc, button, button-link, input-checkbox, input-date, input-number, input-text, progress, split-button, toast`
 },{
 	name: `_required`,
 	desc: `Macht das Eingabeelement zu einem Pflichtfeld.`,
@@ -499,27 +503,27 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_variant`,
 	desc: `Gibt an, welche Ausprägung der Button hat.`,
 	types: `"block" | "inline", "button" | "checkbox" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
-	comps: `alert, alert-wc, button, input-checkbox, link-button, nav, pagination, quote`
+	comps: `alert, alert-wc, button, input-checkbox, link-button, nav, pagination, quote, split-button`
+},{
+	name: `_label`,
+	desc: `Gibt den Text der Überschrift an.`,
+	types: `string`,
+	comps: `badge, button, button-link, heading, link, link-button, progress, split-button, tooltip`
 },{
 	name: `_list`,
 	desc: `Gibt den technischen Namen des Eingabefeldes an.`,
 	types: `Option<W3CInputValue>[] | string, Option<number>[] | string, SelectOption<W3CInputValue>[] | string, string | string[]`,
 	comps: `input-color, input-date, input-email, input-number, input-radio, input-range, input-text, select`
 },{
-	name: `_label`,
-	desc: `Gibt den Text der Überschrift an.`,
-	types: `string`,
-	comps: `badge, button, button-link, heading, link, link-button, progress, tooltip`
+	name: `_tooltip-align`,
+	desc: `Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.`,
+	types: `"bottom" | "left" | "right" | "top"`,
+	comps: `abbr, button, button-link, link, link-button, pagination, split-button`
 },{
 	name: `_auto-complete`,
 	desc: `Gibt an, ob das Eingabefeld autovervollständigt werden kann.`,
 	types: `"off" | "on"`,
 	comps: `input-color, input-date, input-email, input-number, input-password, input-range, input-text`
-},{
-	name: `_tooltip-align`,
-	desc: `Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.`,
-	types: `"bottom" | "left" | "right" | "top"`,
-	comps: `abbr, button, button-link, link, link-button, pagination`
 },{
 	name: `_read-only`,
 	desc: `Setzt das Eingabefeld in den schreibgeschützten Modus.`,
@@ -531,15 +535,40 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `0 | 1 | 2 | 3 | 4 | 5 | 6`,
 	comps: `accordion, alert, alert-wc, card, heading, toast`
 },{
+	name: `_icon-only`,
+	desc: `Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.`,
+	types: `boolean`,
+	comps: `badge, button, button-link, link, link-button, split-button`
+},{
+	name: `_role`,
+	desc: `Gibt an, welche Role der Schalter hat.`,
+	types: `"button" | "link" | "tab"`,
+	comps: `button, button-link, link, link-button, split-button`
+},{
+	name: `_aria-selected`,
+	desc: `Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
+	types: `boolean`,
+	comps: `button, button-link, link, link-button, split-button`
+},{
+	name: `_aria-expanded`,
+	desc: `Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
+	types: `boolean`,
+	comps: `button, button-link, link, link-button, split-button`
+},{
+	name: `_aria-current`,
+	desc: `Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
+	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
+	comps: `button, button-link, link, link-button, split-button`
+},{
+	name: `_aria-controls`,
+	desc: `Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
+	types: `string`,
+	comps: `button, button-link, link, link-button, split-button`
+},{
 	name: `_placeholder`,
 	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
 	types: `string`,
 	comps: `input-email, input-number, input-password, input-text, textarea`
-},{
-	name: `_icon-only`,
-	desc: `Gibt an, ob nur das Icon angezeigt wird.`,
-	types: `boolean`,
-	comps: `badge, button, button-link, link, link-button`
 },{
 	name: `_heading`,
 	desc: `Gibt den Titel der Meldung an.`,
@@ -551,31 +580,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `number`,
 	comps: `input-email, input-password, input-text, select`
 },{
-	name: `_role`,
-	desc: `Gibt an, welche Role der Schalter hat.`,
-	types: `"button" | "link" | "tab"`,
-	comps: `button, button-link, link, link-button`
-},{
-	name: `_aria-selected`,
-	desc: `Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
-	types: `boolean`,
-	comps: `button, button-link, link, link-button`
-},{
-	name: `_aria-expanded`,
-	desc: `Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
-	types: `boolean`,
-	comps: `button, button-link, link, link-button`
-},{
-	name: `_aria-current`,
-	desc: `Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
-	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
-	comps: `button, button-link, link, link-button`
-},{
-	name: `_aria-controls`,
-	desc: `Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
-	types: `string`,
-	comps: `button, button-link, link, link-button`
-},{
 	name: `_max-length`,
 	desc: `Gibt an, wie viele Zeichen man maximal eingeben kann.`,
 	types: `number`,
@@ -585,6 +589,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.`,
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range, progress`
+},{
+	name: `_custom-class`,
+	desc: `Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.`,
+	types: `string`,
+	comps: `button, link-button, pagination, split-button`
 },{
 	name: `_step`,
 	desc: `Gibt die Schrittweite der Wertveränderung an`,
@@ -625,11 +634,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Aktiviert das Schließen-Icon.`,
 	types: `boolean`,
 	comps: `alert, alert-wc, toast`
-},{
-	name: `_custom-class`,
-	desc: `Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.`,
-	types: `string`,
-	comps: `button, link-button, pagination`
 },{
 	name: `_target-description`,
 	desc: `Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.`,
@@ -795,6 +799,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.`,
 	types: `number`,
 	comps: `toast`
+},{
+	name: `_show-dropdown`,
+	desc: `Gibt an, welche Rolle der Schalter hat.`,
+	types: `boolean`,
+	comps: `split-button`
 },{
 	name: `_secondary-headline`,
 	desc: `Gibt den Text der zusätzlichen Überschrift an.`,
