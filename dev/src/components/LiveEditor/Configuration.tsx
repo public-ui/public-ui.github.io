@@ -24,14 +24,16 @@ export function Configuration(props: Props) {
 			{element ? (
 				<>
 					{showDescription ? (
-						<>
-							<h2>Konfiguration von {element.name}</h2>
+						<details className="flex">
+							<summary className="cursor-pointer">
+								<h2 className="inline">Konfiguration von {element.name}</h2>
+							</summary>
 							<p>{element.description}</p>
-						</>
+						</details>
 					) : (
 						''
 					)}
-					<div className="grid grid-cols-2 gap-2 my-2">
+					<div className="grid sm:grid-cols-2 gap-2 my-2">
 						{element.attributes.map((attribute: Attribute) =>
 							AttributeBlackList.includes(attribute.name) ? (
 								''

@@ -11,7 +11,7 @@ export function SlotInput(props: Props) {
 	const { description, name, update, value } = props;
 
 	return (
-		<div className="bg-gray-100 rounded-lg p-2 border border-gray-300 border-solid col-span-2" key={name}>
+		<div className="bg-gray-100 rounded-lg p-2 border border-gray-300 border-solid sm:col-span-2">
 			<b>{name}</b>: {description}
 			<br></br>
 			<Editor defaultLanguage="html" height="5em" onChange={(v) => update(`slot-${name}`, v || '')} value={value} />
