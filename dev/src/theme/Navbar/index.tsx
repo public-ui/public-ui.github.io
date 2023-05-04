@@ -81,7 +81,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 					</div>
 					<div>
 						<KolLinkButton
-							_href="/presentation.pdf"
+							_href="presentation/presentation.pdf"
 							_icon={'codicon codicon-preview'}
 							_iconOnly
 							_label="Präsentation anschauen"
