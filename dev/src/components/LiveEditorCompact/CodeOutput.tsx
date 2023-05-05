@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { TagName } from './types';
-import { format } from 'prettier';
 import Editor from '@monaco-editor/react';
-import babelParser from 'prettier/parser-babel';
+// import { format } from 'prettier';
+// import babelParser from 'prettier/parser-babel';
 
 type Props = {
 	tag: TagName;
@@ -64,9 +64,10 @@ export function CodeOutput(props: Props) {
 					readOnly: true,
 				}}
 				theme="vs-dark"
-				value={format(`<kol-${tag}${paramList}>${slots}</kol-${tag}>`, {
-					plugins: [babelParser],
-				})}
+				value={`<kol-${tag}${paramList}>${slots}</kol-${tag}>`}
+				// value={format(`<kol-${tag}${paramList}>${slots}</kol-${tag}>`, {
+				// 	plugins: [babelParser],
+				// })}
 			></Editor>
 		</div>
 	);
