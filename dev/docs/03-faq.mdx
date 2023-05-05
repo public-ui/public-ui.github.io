@@ -10,7 +10,11 @@ tags:
   - Rechtliches
 ---
 
+import { KolLink } from '@public-ui/react';
+
 # Häufig gestellte Fragen (FAQ)
+
+## Allgemeines
 
 - **Wie abhängig mach ich mich, wenn ich KoliBri einsetze?**<br/>
   Vergleicht man KoliBri mit einem LEGO®-Set, dann kann man die enthaltenen Bausteine einfach mir anderen Bausteinen mischen, um die Gesamtanwendung abzubilden _(s. blaue, orange und graue Komponenten)_.
@@ -18,3 +22,21 @@ tags:
   KoliBri-Komponenten sind zur Sicherstellung der Barrierefreiheit sehr restriktiv und werden durch Komposition wiederverwendet. Anpassungen von außen lassen sich nur durch das **Wrappen** oder den **Expert-Slot** vornehmen _(s. orange in blau, blau in orange)_. Das Styling ist über das **Theme-Konzept** durch Konfiguration möglich.
 - **Was mach ich, wenn eine Komponente oder Funktion fehlt?**<br/>
   Neue **fachlich neutrale Komponenten** oder **Funktionen** sollen innerhalb von KoliBri realisiert werden. Hierbei ist das **Mitwirken** ausdrücklich erwünscht und beschleunigt die Umsetzung.
+
+## Theming und Styling
+
+- **Wer erstellt ein Theme, wenn es noch nicht existiert?**<br/>
+  Aktuell ist es so, dass das ITZBund zahlreiche Themes seiner Kundenbehörden und Beispiel-Themes umgesetzt hat und pflegt. Das Theme-Konzept sieht allerdings vor, dass Themes unabhängig vom
+  KoliBri-Team erstellt und gepflegt werden können. Sobald eine Kombination aus KoliBri-Komponenten und eigenem -Theme erstellt wurde, ist ein Theme-spezifischer eigenständiger Barrierefreiheitstest
+  empfohlen. KoliBri testet beispielsweise in einem Loop-Prinzip immer wieder alle Komponenten der Reihe nach durch. Wieder verwendende Projekte können nach diesem Erstellungsprozess von abgestimmten,
+  robusten und konsistenten Komponenten partizipieren.
+- **Wie funktioniert das Theming?**<br/>
+  In der Regel werden Web Components mit festem Styling erstellt. KoliBri trennt die semantisch barrierefreien Komponenten vom Styling und stellt eine Register-Methode zum Kombinieren zur Verfügung. Da
+  die Web Components im Browser registriert (`define`) werden müssen, besteht hier auch die Möglichkeit die Komponenten mit einem definierten Theme zu laden.
+- **Wie kann man ein eigenes Theme erstellen?**<br/>
+  Aktuell arbeiten wir sehr daran, das Erstellen und Pflegen von Themes stark zu vereinfachen. Hierzu dienen z.B. das Basis-Styling (reines Layout) der Komponenten ab Version 1.5. Aufsetzen kann man einfach
+  durch die Erstellung einer Theme-Definition, z.B. mit einem eigenen Theme-Projekt (NPM-Paket) mittels der <KolLink _href="/docs/get-started/erste-schritte" _label="KoliBri-CLI" _target="github"/> oder einer reinen <KolLink _href="https://github.com/public-ui/kolibri/blob/45726c50d7f28c9c595442b2241582816eca5670/packages/create-kolibri/templates/kolibri-library/packages/components/src/global/script.ts#L8" _label="TS-Datei" _target="github"/>.
+- **Wozu braucht man das Schema?**<br/>
+  KoliBri basiert auf einer ausgeklügelten Architektur. Beispielsweise dient das kleine Schema-Paket (@public-ui/schema) dazu, die Tag-Namen und Sprach-Keys der KoliBri-Komponenten unabhängig von der konkreten
+  Implementierung zu definieren. Dies ermöglicht bei der Theme-Erstellung eine komplett losgelöste Implementierung mit Autovervollständigung, ohne aber die Komponenten und deren ganze Abhängigkeiten zu benötigen.
+  In speziellen Integrationsszenarien (CMS) ist es sogar notwendig, es so zu machen.
