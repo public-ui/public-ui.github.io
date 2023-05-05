@@ -5,8 +5,6 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Layout from '@theme/Layout';
 import React, { FunctionComponent } from 'react';
 import KoliBri from '../components/KoliBri';
-import { LiveEditor } from '../components/LiveEditor';
-import Head from '@docusaurus/Head';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -40,13 +38,9 @@ export default function Homepage(): JSX.Element {
 				}
 			)}
 		>
-			<Head>
-				<meta name="kolibri" content="dev-mode=true"></meta>
-			</Head>
-			{/* <HomepageHeader /> */}
-			<main className="container">
-				<LiveEditor component="accordion" />
-				{/* <div className="grid sm:flex gap-4 justify-center mt-4">
+			<HomepageHeader />
+			<main>
+				<div className="grid sm:flex gap-4 justify-center mt-4">
 					<KolLinkButton
 						className="w-72"
 						_icon={{
@@ -101,7 +95,7 @@ export default function Homepage(): JSX.Element {
 						Open&nbsp;Source zur Wiederverwendung und Weiterentwicklung freigegeben.
 					</p>
 				</div>
-				<HomepageFeatures /> */}
+				<HomepageFeatures />
 			</main>
 		</Layout>
 	);

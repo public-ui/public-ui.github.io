@@ -40,7 +40,7 @@ export const ThemeSelect: FunctionComponent = () => {
 					},
 				},
 			});
-		}, 1000);
+		}, 3000);
 	}, []);
 
 	return (
