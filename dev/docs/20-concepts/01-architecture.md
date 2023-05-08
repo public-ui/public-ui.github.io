@@ -53,15 +53,15 @@ In der folgenden Darstellung wird der Grundaufbau einer Komponentenbibliothek (U
 ```mermaid
   flowchart BT
     subgraph UI-Lib
-      Components --> Schema
-      Components .-> Themes
+      Themes .-> Components
       Themes --> Schema
+      Components --> Schema
     end
     Schema --> Core
-    FW-Adapter --> Components
     App/Storybook .-> Components
     App/Storybook .-> FW-Adapter
     App/Storybook --> Themes
+    FW-Adapter --> Components
 ```
 
 | Modul      | Erläuterung                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -79,33 +79,32 @@ In der erweiterten Darstellung der Modularisierung wird sichtbar, wie durch die 
 
 ```mermaid
   flowchart BT
+    OtherCustomLibComponents -.-o CustomLibComponents
     subgraph CustomLib
-      CustomLibComponents --> CustomLibSchema
       CustomLibThemes --> CustomLibSchema
-      CustomLibComponents .-> CustomLibThemes
+      CustomLibThemes .-> CustomLibComponents
+      CustomLibComponents --> CustomLibSchema
     end
     subgraph OtherCustomLib
-      OtherCustomLibComponents -->OtherCustomLibSchema
+      OtherCustomLibThemes .-> OtherCustomLibComponents
       OtherCustomLibThemes --> OtherCustomLibSchema
-      OtherCustomLibComponents .-> OtherCustomLibThemes
+      OtherCustomLibComponents -->OtherCustomLibSchema
     end
     subgraph KoliBri
-      KoliBriComponents --> KoliBriSchema
+      KoliBriThemes .-> KoliBriComponents
       KoliBriThemes --> KoliBriSchema
-      KoliBriComponents .-> KoliBriThemes
+      KoliBriComponents --> KoliBriSchema
     end
     subgraph Core
       Utils
       Types
     end
-	OtherCustomLibComponents -.-o CustomLibComponents
-	CustomLibComponents -.-o KoliBriComponents
-
+    CustomLibComponents -.-o KoliBriComponents
     KoliBriSchema --> Core
     CustomLibSchema --> Core
     OtherCustomLibSchema --> Core
-    App/Storybook --> CustomLibComponents
     App/Storybook --> CustomLibThemes
+    App/Storybook --> CustomLibComponents
     App/Storybook --> OtherCustomLibComponents
     App/Storybook --> OtherCustomLibThemes
     App/Storybook --> KoliBriComponents
