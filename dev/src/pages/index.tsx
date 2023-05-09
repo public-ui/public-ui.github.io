@@ -5,7 +5,6 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Layout from '@theme/Layout';
 import React, { FunctionComponent } from 'react';
 import KoliBri from '../components/KoliBri';
-import { LiveEditor } from '../components/LiveEditor';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -39,8 +38,7 @@ export default function Homepage(): JSX.Element {
 				}
 			)}
 		>
-			<LiveEditor />
-			{/* <HomepageHeader />
+			<HomepageHeader />
 			<main>
 				<div className="grid sm:flex gap-4 justify-center mt-4">
 					<KolLinkButton
@@ -98,7 +96,7 @@ export default function Homepage(): JSX.Element {
 					</p>
 				</div>
 				<HomepageFeatures />
-			</main> */}
+			</main>
 		</Layout>
 	);
 }

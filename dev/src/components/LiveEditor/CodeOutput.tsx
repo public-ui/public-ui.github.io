@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useMemo } from 'react';
 import { TagName } from './types';
 import Editor from '@monaco-editor/react';
