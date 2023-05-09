@@ -26,6 +26,8 @@ export function LiveEditor(props: Props) {
 	useEffect(() => {
 		const hasLabel = !!allElements.tags.find((t) => t.name === `kol-${tag}`)?.attributes.find((a) => a.name === '_label');
 		if (hasLabel && !allConfig[tag]?._label) updateConfig('_label', 'Beispieltext in _label');
+		const hasHeading = !!allElements.tags.find((t) => t.name === `kol-${tag}`)?.attributes.find((a) => a.name === '_heading');
+		if (hasHeading && !allConfig[tag]?._heading) updateConfig('_heading', 'Beispieltext in _heading');
 	}, [tag]);
 
 	const config = useMemo(() => {
