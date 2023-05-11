@@ -53,14 +53,15 @@ export function CodeOutput(props: Props) {
 		}
 	}
 
+	const code = `<kol-${tag}${paramList}>${slots}</kol-${tag}>`;
 	let formatted: string;
 	try {
-		formatted = format(`<kol-${tag}${paramList}>${slots}</kol-${tag}>`, {
+		formatted = format(code, {
 			plugins: [parser],
 			printWidth: 80,
 		}).replace(/;\n$/, '');
 	} catch (e) {
-		formatted = `Formatter-Error: Slot-Markup is not valid HTML for formatting.`;
+		formatted = `<!-- Formatter-Error: Slot-Markup is not valid HTML for formatting. -->\n${code}`;
 	}
 
 	return (
