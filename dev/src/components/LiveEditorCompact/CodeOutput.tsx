@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { TagName } from './types';
 import Editor from '@monaco-editor/react';
-// import { format } from 'prettier';
-// import babelParser from 'prettier/parser-babel';
+import { format } from 'prettier';
+import parser from 'prettier/parser-html';
 
 type Props = {
 	tag: TagName;
@@ -34,7 +34,7 @@ export function CodeOutput(props: Props) {
 			let paramString = '';
 			switch (typeof value) {
 				case 'string':
-					paramString = ` ${key}="${value}"`;
+					paramString = ` ${key}="${value.replace(/"/g, "'")}"`;
 					break;
 				case 'number':
 					paramString = ` ${key}="${value.toString()}"`;
@@ -59,16 +59,17 @@ export function CodeOutput(props: Props) {
 				defaultLanguage="html"
 				height="100%"
 				options={{
+					automaticLayout: true,
 					fontSize: 16,
 					lineNumbers: 'off',
 					readOnly: true,
 				}}
-				theme="vs-dark"
-				value={`<kol-${tag}${paramList}>${slots}</kol-${tag}>`}
-				// value={format(`<kol-${tag}${paramList}>${slots}</kol-${tag}>`, {
-				// 	plugins: [babelParser],
-				// })}
-			></Editor>
+				value={format(`<kol-${tag}${paramList}>${slots}</kol-${tag}>`, {
+					parser: 'html',
+					plugins: [parser],
+					printWidth: 80,
+				})}
+			/>
 		</div>
 	);
 }

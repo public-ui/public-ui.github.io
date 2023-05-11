@@ -19,6 +19,7 @@ export function SlotInput(props: Props) {
 				height="5em"
 				onChange={(v) => update(`slot-${name}`, v || '')}
 				options={{
+					automaticLayout: true,
 					fontSize: 16,
 					lineNumbers: 'off',
 				}}

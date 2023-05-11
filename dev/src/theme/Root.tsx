@@ -1,7 +1,7 @@
-import { applyPolyfills, defineCustomElements } from '@public-ui/components/dist/loader';
-import { KoliBriDevHelper, register } from '@public-ui/components';
-import { BPA, BMF, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 import { TH } from '@public-oss/kolibri-themes';
+import { register } from '@public-ui/components';
+import { applyPolyfills, defineCustomElements } from '@public-ui/components/dist/loader';
+import { BMF, BPA, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 import React, { FunctionComponent, PropsWithChildren, useEffect, useState } from 'react';
 import { Theme } from '../shares/theme';
 
@@ -16,11 +16,7 @@ export const Root: FunctionComponent<PropsWithChildren> = (props) => {
 					detect: 'auto',
 				},
 			}),
-		])
-			.then(() => {
-				KoliBriDevHelper.patchTheme('itzbund', {});
-			})
-			.catch(console.warn);
+		]).catch(console.warn);
 	}, []);
 
 	return (
