@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { TagName } from './types';
 import Editor from '@monaco-editor/react';
 import { format } from 'prettier';
-import parser from 'prettier/parser-html';
+import parser from 'prettier/parser-babel';
 
 type Props = {
 	tag: TagName;
@@ -53,6 +53,16 @@ export function CodeOutput(props: Props) {
 		}
 	}
 
+	let formatted: string;
+	try {
+		formatted = format(`<kol-${tag}${paramList}>${slots}</kol-${tag}>`, {
+			plugins: [parser],
+			printWidth: 80,
+		}).replace(/;\n$/, '');
+	} catch (e) {
+		formatted = `Formatter-Error: Slot-Markup is not valid HTML for formatting.`;
+	}
+
 	return (
 		<div className="h-48 rounded-md overflow-hidden">
 			<Editor
@@ -64,11 +74,7 @@ export function CodeOutput(props: Props) {
 					lineNumbers: 'off',
 					readOnly: true,
 				}}
-				value={format(`<kol-${tag}${paramList}>${slots}</kol-${tag}>`, {
-					parser: 'html',
-					plugins: [parser],
-					printWidth: 80,
-				})}
+				value={formatted}
 			/>
 		</div>
 	);
