@@ -101,10 +101,10 @@ const config = {
 					// 	type: 'docsVersionDropdown',
 					// 	position: 'left',
 					// },
-					// {
-					// 	type: 'localeDropdown',
-					// 	position: 'left',
-					// },
+					{
+						type: 'localeDropdown',
+						position: 'right',
+					},
 				],
 			},
 			footer: {
