@@ -11,6 +11,7 @@ const config = {
 	url: 'https://public-ui.github.io',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
+	trailingSlash: false,
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'assets/favicon.ico',
 
