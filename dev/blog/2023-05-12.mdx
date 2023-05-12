@@ -1,10 +1,10 @@
 ---
 slug: change-icons-via-theming
 authors: deleonio
-tags: ["theming", "icon", "font"]
+tags: ['theming', 'icon', 'font']
 ---
 
-import { KolLink } from "@public-ui/react";
+import { KolLink } from '@public-ui/react';
 
 # Wie kann ich Icons im Theme ändern?
 
@@ -16,7 +16,7 @@ Damit Icons angezeigt werden können, muss zunächst die gewünschte Icon-Font (
 
 ```html
 <head>
-  <link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
+	<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
 </head>
 ```
 
@@ -40,11 +40,11 @@ so aus:
 
 ```css
 kol-icon::part(icon) {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
+	font-family: 'Font Awesome 6 Free';
+	font-weight: 900;
 }
 kol-icon::part(icon):before {
-  content: "😃";
+	content: '😃';
 }
 ```
 
@@ -63,13 +63,13 @@ Hier mal ein komplexeres Beispiel für die Pagination:
 
 ```css
 kol-button::part(icon) {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
+	font-family: 'Font Awesome 6 Free';
+	font-weight: 900;
 }
 kol-button.first::part(icon):before,
 kol-button.previous::part(icon):before,
 kol-button.next::part(icon):before,
 kol-button.last::part(icon):before {
-  content: "😃";
+	content: '😃';
 }
 ```
