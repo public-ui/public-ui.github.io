@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { TagName } from './types';
+import { TagName } from '../LiveEditor/types';
 import Editor from '@monaco-editor/react';
 import { format } from 'prettier';
 import parser from 'prettier/parser-babel';
