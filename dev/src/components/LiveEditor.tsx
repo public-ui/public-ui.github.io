@@ -8,6 +8,7 @@ import { CodeOutput } from './LiveEditor/CodeOutput';
 import { ComponentDisplay } from './LiveEditor/ComponentDisplay';
 import { Configuration } from './LiveEditor/Configuration';
 import { ElementBlackList } from './LiveEditor/lists';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 type Props = {
 	component?: string;
@@ -57,19 +58,21 @@ export function LiveEditor(props: Props) {
 		});
 
 	return (
-		<div className="grid lg:grid-cols-2 gap-4 py-4">
-			<div className={props.isOnComponentPage ? '' : 'lg:row-span-2'}>
-				<KolBadge _label="Beta" _color="#b00"></KolBadge>
-				<div className="py-2 px-4 border-solid border border-gray-300 rounded-md min-h-[5rem] grid place-content-center">
-					<ComponentDisplay tag={tag} params={config} />
+		<BrowserOnly>
+			<div className="grid lg:grid-cols-2 gap-4 py-4">
+				<div className={props.isOnComponentPage ? '' : 'lg:row-span-2'}>
+					<KolBadge _label="Beta" _color="#b00"></KolBadge>
+					<div className="py-2 px-4 border-solid border border-gray-300 rounded-md min-h-[5rem] grid place-content-center">
+						<ComponentDisplay tag={tag} params={config} />
+					</div>
+				</div>
+				{props.isOnComponentPage ? '' : <KolSelect _list={tagList} _value={[tag]} _on={{ onChange: updateTag }}></KolSelect>}
+				{/* @ts-ignore */}
+				<Configuration config={config} showDescription={!props.isOnComponentPage} tag={tag} update={updateConfig} />
+				<div className="lg:col-span-2">
+					<CodeOutput params={config} tag={tag} />
 				</div>
 			</div>
-			{props.isOnComponentPage ? '' : <KolSelect _list={tagList} _value={[tag]} _on={{ onChange: updateTag }}></KolSelect>}
-			{/* @ts-ignore */}
-			<Configuration config={config} showDescription={!props.isOnComponentPage} tag={tag} update={updateConfig} />
-			<div className="lg:col-span-2">
-				<CodeOutput params={config} tag={tag} />
-			</div>
-		</div>
+		</BrowserOnly>
 	);
 }
