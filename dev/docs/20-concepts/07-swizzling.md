@@ -1,5 +1,4 @@
 ---
-slug: /konzepte/swizzling
 title: Swizzling
 description: Komplexere Anforderungen an die Komponenten können mittels Swippling ermöglicht werden.
 tags:

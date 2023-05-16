@@ -1,5 +1,4 @@
 ---
-slug: /historie
 title: Historie
 tags:
   - Geschichtliches

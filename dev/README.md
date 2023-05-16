@@ -2,44 +2,41 @@
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-### Installation
+## Installation
 
 ```
-$ yarn
+$ pnpm i
 ```
 
-### Local Development
+## Local Development
 
 ```
-$ yarn start
+$ npm start
+$ npm start -- --locale en
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-### Build
+## Build
 
 ```
-$ yarn build
+$ npm run build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deployment
+## Translation
 
-Using SSH:
+Basic rules for translate the website:
 
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
-
-- https://www.webpagetest.org/result/221231_AiDcER_5R9/
-- https://www.webpagetest.org/result/221231_AiDc99_5RG/
-- https://totheweb.com/learning_center/tools-search-engine-simulator/
+- The translation should be as close as possible to the original text.
+- The translation keys should be in English separated by dashes (kebab-case).
+- The default translation text (`message`) should be in German. So we does not need always a description. Later they will be replaced with other language values.
+- Only use the `translate` method! Do not use the `Translate` component!
+- We handle no own translation descriptions.
+- SEO-Urls
+  - Do not use `slug` seo url definitions in the translated files (only `docs/welcome.md`).
+  - The `slug` is automatically generated from the file name.
+  - So all file names should be in English.
+- All code samples should be in English.
+- All technical terms should be in English.

@@ -1,5 +1,4 @@
 ---
-slug: /history
 title: History
 tags:
   - historical

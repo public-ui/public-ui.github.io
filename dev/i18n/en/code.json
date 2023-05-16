@@ -6,7 +6,7 @@
 		"message": "Documentation"
 	},
 	"custom.subtitle": {
-		"message": "The barrier free Web Component library"
+		"message": "The accessible Web Component library"
 	},
 	"custom.get-started-button": {
 		"message": "Get Started - 5min"
@@ -222,31 +222,31 @@
 		"description": "The ARIA label to toggle the collapsible sidebar category"
 	},
 	"theme.navbar.mobileLanguageDropdown.label": {
-		"message": "Sprachen",
+		"message": "Languages",
 		"description": "The label for the mobile language switcher dropdown"
 	},
 	"theme.TOCCollapsible.toggleButtonLabel": {
-		"message": "Auf dieser Seite",
+		"message": "On this page",
 		"description": "The label used by the button on the collapsible TOC component"
 	},
 	"theme.blog.post.readMore": {
-		"message": "Mehr lesen",
+		"message": "Read more",
 		"description": "The label used in blog post item excerpts to link to full blog posts"
 	},
 	"theme.blog.post.readMoreLabel": {
-		"message": "Mehr lesen über {title}",
+		"message": "Read more about {title}",
 		"description": "The ARIA label for the link to full blog posts from excerpts"
 	},
 	"theme.blog.post.readingTime.plurals": {
-		"message": "Eine Minute Lesezeit|{readingTime} Minuten Lesezeit",
+		"message": "One minute reading time|{readingTime} minutes of reading time",
 		"description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
 	},
 	"theme.docs.sidebar.collapseButtonTitle": {
-		"message": "Seitenleiste einklappen",
+		"message": "Collapse sidebar",
 		"description": "The title attribute for collapse button of doc sidebar"
 	},
 	"theme.docs.sidebar.collapseButtonAriaLabel": {
-		"message": "Seitenleiste einklappen",
+		"message": "Collapse sidebar",
 		"description": "The title attribute for collapse button of doc sidebar"
 	},
 	"theme.docs.sidebar.closeSidebarButtonAriaLabel": {
@@ -254,7 +254,7 @@
 		"description": "The ARIA label for close button of mobile sidebar"
 	},
 	"theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
-		"message": "← Zurück zum Hauptmenü",
+		"message": "← Back to main menu",
 		"description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
 	},
 	"theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
@@ -262,47 +262,39 @@
 		"description": "The ARIA label for hamburger menu button of mobile navigation"
 	},
 	"theme.docs.sidebar.expandButtonTitle": {
-		"message": "Seitenleiste ausklappen",
+		"message": "Expand sidebar",
 		"description": "The ARIA label and title attribute for expand button of doc sidebar"
 	},
 	"theme.docs.sidebar.expandButtonAriaLabel": {
-		"message": "Seitenleiste ausklappen",
+		"message": "Expand sidebar",
 		"description": "The ARIA label and title attribute for expand button of doc sidebar"
 	},
 	"theme.IdealImageMessage.loading": {
-		"message": "Wird geladen...",
-		"description": "When the full-scale image is loading"
+		"message": "Loading..."
 	},
 	"theme.IdealImageMessage.load": {
-		"message": "Zum Laden klicken {sizeMessage}",
-		"description": "To prompt users to load the full image. sizeMessage is a parenthesized size figure."
+		"message": "Click to load {sizeMessage}"
 	},
 	"theme.IdealImageMessage.offline": {
-		"message": "Browser ist offline. Bild nicht geladen",
-		"description": "When the user is viewing an offline document"
+		"message": "Browser is offline. Image not loaded"
 	},
 	"theme.IdealImageMessage.404error": {
-		"message": "404. Bild nicht gefunden.",
-		"description": "When the image is not found"
+		"message": "404. Image not found."
 	},
 	"theme.IdealImageMessage.error": {
-		"message": "Fehler. Zum neu laden klicken",
-		"description": "When the image fails to load for unknown error"
+		"message": "Mistake. Click to reload"
 	},
 	"theme.PwaReloadPopup.info": {
-		"message": "Neue Version verfügbar",
-		"description": "The text for PWA reload popup"
+		"message": "New version available"
 	},
 	"theme.PwaReloadPopup.refreshButtonText": {
-		"message": "Aktualisieren",
-		"description": "The text for PWA reload button"
+		"message": "To update"
 	},
 	"theme.PwaReloadPopup.closeButtonAriaLabel": {
-		"message": "Schließen",
-		"description": "The ARIA label for close button of PWA reload popup"
+		"message": "Close"
 	},
 	"theme.common.skipToMainContent": {
-		"message": "Zum Hauptinhalt springen",
+		"message": "Skip to main content",
 		"description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
 	},
 	"theme.tags.tagsPageTitle": {
@@ -319,5 +311,32 @@
 	"theme.docs.sidebar.navAriaLabel": {
 		"message": "Docs sidebar",
 		"description": "The ARIA label for the sidebar navigation"
+	},
+	"custom.component-library-for-the-accessibility": {
+		"message": "Component library for the accessibility"
+	},
+	"custom.component-stands-for": {
+		"message": "stands for"
+	},
+	"custom.accessible-standard": {
+		"message": "Accessible Standard"
+	},
+	"custom.homepage-message-part-1": {
+		"message": "and was from the"
+	},
+	"custom.homepage-message-part-2": {
+		"message": "open source released for reuse and further development."
+	},
+	"custom.designer-short-description-part-1": {
+		"message": "The semantically accessible web components can be seamlessly reused in other component libraries or design systems. by means of"
+	},
+	"custom.designer-short-description-part-2": {
+		"message": "the components can be adapted to any style guides or designs."
+	},
+	"custom.developer-short-description": {
+		"message": "The robust web components (shadow root) can be reused in all web-based projects. In addition to using the Web Components directly, we also offer framework adapters for Angular, React, Preact and Solid."
+	},
+	"custom.components-short-description": {
+		"message": "Today, the variety of components includes more than 40 components with a wide range of functions for the implementation of a wide variety of specialist applications and the display of web-based content."
 	}
 }
