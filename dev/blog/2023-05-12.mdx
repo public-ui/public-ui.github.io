@@ -1,0 +1,108 @@
+---
+slug: change-icons-via-theming
+authors: deleonio
+tags: ['theming', 'icon', 'font']
+---
+
+import { KolLink } from '@public-ui/react';
+
+# Wie kann ich Icons im Theme ändern?
+
+Heute wollen wir in einem kurzen Blog-Post zeigen, wie Ihr die standardmäßig hinterlegten Icons über das Theming (Theme-Designer) ändern könnt.
+
+## 1. Icon-Font integrieren
+
+Damit Icons angezeigt werden können, muss zunächst die gewünschte Icon-Font (z.B. Font Awesome Free) in der Webseite (HTML) eingebunden werden. Dies geschieht in der Regel mittels folgendem HTML:
+
+```html
+<head>
+	<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
+</head>
+```
+
+## Icon-Font im Theme hinterlegen
+
+Die Icon-Komponente von KoliBri kapselt die Icon-Font und muss daher die CSS-Definitionen von den im Design System ausgewählten Icon-Identifier kennen.
+Dazu muss das CSS aus der gleichen CSS-Datei, wie aus 1., in das Theme kopiert und damit hinterlegt werden.
+
+1. Theme-Designer öffnen
+2. Theme auswählen
+3. Icon-Komponente auswählen
+4. Schalter auf Komponent-Styling umstellen
+5. CSS aus der Icon-Font einfügen und speichern
+6. Theme in Projekt übernehmen
+
+## Standard-Icons im Theme ändern
+
+Das Ändern eines Icons ist ganz einfach, wenn folgendes Prinzip klar ist. Alle Icons werden durch die Web Component `kol-icon` abgebildet. Diese Komponente
+exportiert immer den Part `icon`. Über einen Part kann man auf festgelegte CSS-Eigenschaften innerhalb einer Web Component zugreifen. Exemplarisch sieht das
+so aus:
+
+```css
+kol-icon::part(icon) {
+	font-family: 'Font Awesome 6 Free';
+	font-weight: 900;
+}
+kol-icon::part(icon):before {
+	content: '😃';
+}
+```
+
+Um ein Icon über den Designer zu ändern, sind folgende Schritte zu durchlaufen:
+
+1. Theme-Designer öffnen
+2. Theme auswählen
+3. Komponente auswählen, wo ein Icon geändert werden soll
+4. Schalter auf Komponent-Styling umstellen
+5. Spezifischen Selektor auf ein Icon ermitteln
+6. Spezifischen Selektor verwenden, um Schriftart und Content anzupassen
+7. Komponent-CSS speichern
+8. Theme in Projekt übernehmen
+
+Hier mal ein komplexeres Beispiel für die Pagination:
+
+```css
+kol-button::part(icon) {
+	font-family: 'Font Awesome 6 Free';
+	font-weight: 900;
+}
+kol-button.first::part(icon):before,
+kol-button.previous::part(icon):before,
+kol-button.next::part(icon):before,
+kol-button.last::part(icon):before {
+	content: '😃';
+}
+```
+
+## FAQ
+
+### Warum kann ich die Schriftgröße nicht ändern?
+
+```css
+kol-icon::part(icon) {
+	font-family: 'Font Awesome 6 Free';
+	font-size: 2rem !important;
+	font-weight: 900;
+}
+```
+
+Der Grund liegt in der `font` CSS-Definition in der Icon-Font selbst und in der Notwendigkeit, die Schriftgröße
+bei Icons von Außen setzen übernehmen (erben).
+
+```css
+.codicon[class*='codicon-'] {
+	font: 16px / 1 codicon;
+}
+:host > i,
+:host > i::before {
+	font-size: inherit !important;
+}
+```
+
+Möchte man ein Icon in seiner Größe anpassen, so kann man das einfach von Außen tun.
+
+```css
+kol-icon {
+	font-size: 2rem;
+}
+```
