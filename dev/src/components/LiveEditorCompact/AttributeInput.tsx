@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useMemo } from 'react';
-import { Attribute } from './types';
+import { Attribute } from '../LiveEditor/types';
 import { KolAbbr, KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/react';
 import { Icon } from './attributeInputs/Icon';
 import { Color } from './attributeInputs/Color';

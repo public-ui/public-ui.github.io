@@ -3,35 +3,35 @@
 		"message": "KoliBri - Public UI"
 	},
 	"custom.documentation-button": {
-		"message": "Dokumentation"
+		"message": "Documentation"
 	},
 	"custom.subtitle": {
-		"message": "Die barrierefreie Web Component Bibliothek"
+		"message": "The accessible Web Component library"
 	},
 	"custom.get-started-button": {
 		"message": "Get Started - 5min"
 	},
 	"Seite wird geladen": {
-		"message": "Seite wird geladen"
+		"message": "Page is being loaded."
 	},
 	"theme.ErrorPageContent.title": {
-		"message": "Die Seite ist abgestürzt.",
+		"message": "The page crashed.",
 		"description": "The title of the fallback page when the page crashed"
 	},
 	"theme.ErrorPageContent.tryAgain": {
-		"message": "Nochmal versuchen",
+		"message": "Try again.",
 		"description": "The label of the button to try again rendering when the React error boundary captures an error"
 	},
 	"theme.NotFound.title": {
-		"message": "Seite nicht gefunden",
+		"message": "Page not found.",
 		"description": "The title of the 404 page"
 	},
 	"theme.NotFound.p1": {
-		"message": "Wir konnten nicht finden, wonach Sie gesucht haben.",
+		"message": "We could not find, what you were looking for.",
 		"description": "The first paragraph of the 404 page"
 	},
 	"theme.NotFound.p2": {
-		"message": "Bitte kontaktieren Sie den Besitzer der Seite, die Sie mit der ursprünglichen URL verlinkt hat, und teilen Sie ihm mit, dass der Link nicht mehr funktioniert.",
+		"message": "Please contact the person/website, that gave you this link and tell them it is incorrect.",
 		"description": "The 2nd paragraph of the 404 page"
 	},
 	"theme.admonition.note": {
@@ -55,51 +55,51 @@
 		"description": "The default label used for the Caution admonition (:::caution)"
 	},
 	"theme.BackToTopButton.buttonAriaLabel": {
-		"message": "Zurück nach oben scrollen",
+		"message": "Back to top.",
 		"description": "The ARIA label for the back to top button"
 	},
 	"theme.blog.archive.title": {
-		"message": "Archiv",
+		"message": "Archive",
 		"description": "The page & hero title of the blog archive page"
 	},
 	"theme.blog.archive.description": {
-		"message": "Archiv",
+		"message": "Archive",
 		"description": "The page & hero description of the blog archive page"
 	},
 	"theme.blog.paginator.navAriaLabel": {
-		"message": "Navigation der Blog-Listenseite",
+		"message": "Navigation of the Blog-overview.",
 		"description": "The ARIA label for the blog pagination"
 	},
 	"theme.blog.paginator.newerEntries": {
-		"message": "Neuere Einträge",
+		"message": "More recent entries",
 		"description": "The label used to navigate to the newer blog posts page (previous page)"
 	},
 	"theme.blog.paginator.olderEntries": {
-		"message": "Ältere Einträge",
+		"message": "Older entries",
 		"description": "The label used to navigate to the older blog posts page (next page)"
 	},
 	"theme.blog.post.paginator.navAriaLabel": {
-		"message": "Blog Post Seiten Navigation",
+		"message": "Blog post site navigation",
 		"description": "The ARIA label for the blog posts pagination"
 	},
 	"theme.blog.post.paginator.newerPost": {
-		"message": "Neuer Post",
+		"message": "More recent post",
 		"description": "The blog post button label to navigate to the newer/previous post"
 	},
 	"theme.blog.post.paginator.olderPost": {
-		"message": "Älterer Post",
+		"message": "older post",
 		"description": "The blog post button label to navigate to the older/next post"
 	},
 	"theme.blog.post.plurals": {
-		"message": "Ein Post|{count} Posts",
+		"message": "One post|{count} posts",
 		"description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
 	},
 	"theme.blog.tagTitle": {
-		"message": "{nPosts} getaggt mit \"{tagName}\"",
+		"message": "{nPosts} tagged with \"{tagName}\"",
 		"description": "The title of the page for a blog tag"
 	},
 	"theme.tags.tagsPageLink": {
-		"message": "Alle Tags anzeigen",
+		"message": "Show all Tags",
 		"description": "The label of the link targeting the tag list page"
 	},
 	"theme.colorToggle.ariaLabel": {
@@ -222,31 +222,31 @@
 		"description": "The ARIA label to toggle the collapsible sidebar category"
 	},
 	"theme.navbar.mobileLanguageDropdown.label": {
-		"message": "Sprachen",
+		"message": "Languages",
 		"description": "The label for the mobile language switcher dropdown"
 	},
 	"theme.TOCCollapsible.toggleButtonLabel": {
-		"message": "Auf dieser Seite",
+		"message": "On this page",
 		"description": "The label used by the button on the collapsible TOC component"
 	},
 	"theme.blog.post.readMore": {
-		"message": "Mehr lesen",
+		"message": "Read more",
 		"description": "The label used in blog post item excerpts to link to full blog posts"
 	},
 	"theme.blog.post.readMoreLabel": {
-		"message": "Mehr lesen über {title}",
+		"message": "Read more about {title}",
 		"description": "The ARIA label for the link to full blog posts from excerpts"
 	},
 	"theme.blog.post.readingTime.plurals": {
-		"message": "Eine Minute Lesezeit|{readingTime} Minuten Lesezeit",
+		"message": "One minute reading time|{readingTime} minutes of reading time",
 		"description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
 	},
 	"theme.docs.sidebar.collapseButtonTitle": {
-		"message": "Seitenleiste einklappen",
+		"message": "Collapse sidebar",
 		"description": "The title attribute for collapse button of doc sidebar"
 	},
 	"theme.docs.sidebar.collapseButtonAriaLabel": {
-		"message": "Seitenleiste einklappen",
+		"message": "Collapse sidebar",
 		"description": "The title attribute for collapse button of doc sidebar"
 	},
 	"theme.docs.sidebar.closeSidebarButtonAriaLabel": {
@@ -254,7 +254,7 @@
 		"description": "The ARIA label for close button of mobile sidebar"
 	},
 	"theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
-		"message": "← Zurück zum Hauptmenü",
+		"message": "← Back to main menu",
 		"description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
 	},
 	"theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
@@ -262,39 +262,39 @@
 		"description": "The ARIA label for hamburger menu button of mobile navigation"
 	},
 	"theme.docs.sidebar.expandButtonTitle": {
-		"message": "Seitenleiste ausklappen",
+		"message": "Expand sidebar",
 		"description": "The ARIA label and title attribute for expand button of doc sidebar"
 	},
 	"theme.docs.sidebar.expandButtonAriaLabel": {
-		"message": "Seitenleiste ausklappen",
+		"message": "Expand sidebar",
 		"description": "The ARIA label and title attribute for expand button of doc sidebar"
 	},
 	"theme.IdealImageMessage.loading": {
-		"message": "Wird geladen..."
+		"message": "Loading..."
 	},
 	"theme.IdealImageMessage.load": {
-		"message": "Zum Laden klicken {sizeMessage}"
+		"message": "Click to load {sizeMessage}"
 	},
 	"theme.IdealImageMessage.offline": {
-		"message": "Browser ist offline. Bild nicht geladen"
+		"message": "Browser is offline. Image not loaded"
 	},
 	"theme.IdealImageMessage.404error": {
-		"message": "404. Bild nicht gefunden."
+		"message": "404. Image not found."
 	},
 	"theme.IdealImageMessage.error": {
-		"message": "Fehler. Zum neu laden klicken"
+		"message": "Mistake. Click to reload"
 	},
 	"theme.PwaReloadPopup.info": {
-		"message": "Neue Version verfügbar"
+		"message": "New version available"
 	},
 	"theme.PwaReloadPopup.refreshButtonText": {
-		"message": "Aktualisieren"
+		"message": "To update"
 	},
 	"theme.PwaReloadPopup.closeButtonAriaLabel": {
-		"message": "Schließen"
+		"message": "Close"
 	},
 	"theme.common.skipToMainContent": {
-		"message": "Zum Hauptinhalt springen",
+		"message": "Skip to main content",
 		"description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
 	},
 	"theme.tags.tagsPageTitle": {
@@ -305,38 +305,38 @@
 		"message": "custom.meta.description"
 	},
 	"theme.NavBar.navAriaLabel": {
-		"message": "Hauptmenü",
+		"message": "Main",
 		"description": "The ARIA label for the main navigation"
 	},
 	"theme.docs.sidebar.navAriaLabel": {
-		"message": "Dokumentation Seiten Navigation",
+		"message": "Docs sidebar",
 		"description": "The ARIA label for the sidebar navigation"
 	},
 	"custom.component-library-for-the-accessibility": {
-		"message": "Komponentenbibliothek für die Barrierefreiheit"
+		"message": "Component library for the accessibility"
 	},
 	"custom.component-stands-for": {
-		"message": "steht für"
+		"message": "stands for"
 	},
 	"custom.accessible-standard": {
-		"message": "Barrierefreier Standard"
+		"message": "Accessible Standard"
 	},
 	"custom.homepage-message-part-1": {
-		"message": "und wurde vom"
+		"message": "and was from the"
 	},
 	"custom.homepage-message-part-2": {
-		"message": "Open Source zur Wiederverwendung und Weiterentwicklung freigegeben."
+		"message": "open source released for reuse and further development."
 	},
 	"custom.designer-short-description-part-1": {
-		"message": "Die semantisch barrierefreien Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet werden. Mittels des"
+		"message": "The semantically accessible web components can be seamlessly reused in other component libraries or design systems. by means of"
 	},
 	"custom.designer-short-description-part-2": {
-		"message": "können die Komponenten an beliebige Styleguides oder Designs angepasst werden."
+		"message": "the components can be adapted to any style guides or designs."
 	},
 	"custom.developer-short-description": {
-		"message": "Die robusten Web Components (Shadow-Root) lassen sich in allen webbasierten Projekten wiederverwenden. Neben der direkten Verwendung der Web Components bieten wir auch Framework-Adapter für Angular, React, Preact und Solid an."
+		"message": "The robust web components (shadow root) can be reused in all web-based projects. In addition to using the Web Components directly, we also offer framework adapters for Angular, React, Preact and Solid."
 	},
 	"custom.components-short-description": {
-		"message": "Heute umfasst die Komponentenvielfalt mehr als 40 Komponenten mit einem hohen Funktionsumfang zur Umsetzung verschiedenster Fachanwendungen und Darstellung von webbasierten Inhalten."
+		"message": "Today, the variety of components includes more than 40 components with a wide range of functions for the implementation of a wide variety of specialist applications and the display of web-based content."
 	}
 }

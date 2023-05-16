@@ -1,0 +1,107 @@
+---
+authors: deleonio
+tags: ['theming', 'icon', 'font']
+---
+
+import { KolLink } from '@public-ui/react';
+
+# How can I change icons in the theme?
+
+Today we want to show in a short blog post how you can change the default icons via the theming (Theme Designer).
+
+## 1. Integrate icon font
+
+In order for icons to be displayed, the desired icon font (e.g. Font Awesome Free) must first be integrated into the website (HTML). This is usually done using the following HTML:
+
+```html
+<head>
+	<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
+</head>
+```
+
+## Store icon font in the theme
+
+The KoliBri icon component encapsulates the icon font and therefore needs to know the CSS definitions of the icon identifiers selected in the design system.
+To do this, the CSS must be copied from the same CSS file as from 1. into the theme and stored with it.
+
+1. Open Theme Designer
+2. Select theme
+3. Select icon component
+4. Switch to component styling
+5. Paste CSS from icon font and save
+6. Apply theme to project
+
+## Change default icons in theme
+
+Changing an icon is easy if the following principle is clear. All icons are represented by the web component `kol-icon`. This component
+always exports the `icon` part. A part provides access to specified CSS properties within a web component. See that as an example
+like this:
+
+```css
+kol-icon::part(icon) {
+	font-family: 'Font Awesome 6 Free';
+	font-weight: 900;
+}
+kol-icon::part(icon):before {
+	content: '😃';
+}
+```
+
+In order to change an icon via the designer, the following steps have to be carried out:
+
+1. Open Theme Designer
+2. Select theme
+3. Select component where an icon should be changed
+4. Switch to component styling
+5. Determine specific selector on an icon
+6. Use specific selector to customize font and content
+7. Save Component CSS
+8. Apply theme to project
+
+Here is a more complex example of pagination:
+
+```css
+kol-button::part(icon) {
+	font-family: 'Font Awesome 6 Free';
+	font-weight: 900;
+}
+kol-button.first::part(icon):before,
+kol-button.previous::part(icon):before,
+kol-button.next::part(icon):before,
+kol-button.last::part(icon):before {
+	content: '😃';
+}
+```
+
+##FAQ
+
+### Why can't I change the font size?
+
+```css
+kol-icon::part(icon) {
+	font-family: 'Font Awesome 6 Free';
+	font-size: 2rem !important;
+	font-weight: 900;
+}
+```
+
+The reason lies in the `font` CSS definition in the icon font itself and in the need to set the font size
+apply (inherit) when setting icons from outside.
+
+```css
+.codicon[class*='codicon-'] {
+	font: 16px / 1 codicon;
+}
+:host > i,
+:host > i::before {
+	font-size: inherit !important;
+}
+```
+
+If you want to adjust the size of an icon, you can do this from the outside.
+
+```css
+kol-icon {
+	font-size: 2rem;
+}
+```

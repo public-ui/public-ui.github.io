@@ -25,7 +25,7 @@ const config = {
 	// to replace "en" with "zh-Hans".
 	i18n: {
 		defaultLocale: 'de',
-		locales: ['de'],
+		locales: ['de', 'en'],
 	},
 
 	presets: [
@@ -89,7 +89,7 @@ const config = {
 				items: [
 					{
 						label: 'Dokumentation',
-						to: '/docs/willkommen',
+						to: '/docs',
 						position: 'left',
 					},
 					{ to: '/blog', label: 'Blog', position: 'left' },
@@ -102,10 +102,10 @@ const config = {
 					// 	type: 'docsVersionDropdown',
 					// 	position: 'left',
 					// },
-					// {
-					// 	type: 'localeDropdown',
-					// 	position: 'left',
-					// },
+					{
+						type: 'localeDropdown',
+						position: 'right',
+					},
 				],
 			},
 			footer: {
@@ -116,7 +116,7 @@ const config = {
 						items: [
 							{
 								label: 'Dokumentation',
-								to: '/docs/willkommen',
+								to: '/docs',
 							},
 							{
 								label: 'Blog',
@@ -228,16 +228,16 @@ const config = {
 		// 	},
 		// ],
 		// 'docusaurus-plugin-sass',
-		[
-			'@docusaurus/plugin-client-redirects',
-			{
-				createRedirects: (path) => {
-					if (/\?path=/) {
-						return ['/404'];
-					}
-				},
-			},
-		],
+		// [
+		// 	'@docusaurus/plugin-client-redirects',
+		// 	{
+		// 		createRedirects: (path) => {
+		// 			if (/\?path=/) {
+		// 				return ['/404'];
+		// 			}
+		// 		},
+		// 	},
+		// ],
 	],
 	themes: ['@docusaurus/theme-mermaid'],
 };

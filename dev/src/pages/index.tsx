@@ -5,6 +5,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Layout from '@theme/Layout';
 import React, { FunctionComponent } from 'react';
 import KoliBri from '../components/KoliBri';
+import { KoliBriAbbr } from '../components/KoliBriAbbr';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -54,7 +55,7 @@ export default function Homepage(): JSX.Element {
 					></KolLinkButton>
 					<KolLinkButton
 						className="w-72"
-						_href="docs/willkommen"
+						_href="docs"
 						_label={translate({
 							id: 'custom.documentation-button',
 						})}
@@ -79,20 +80,25 @@ export default function Homepage(): JSX.Element {
 							}}
 						/>
 					</div>
-					<h2 className="text-center">Barrierefreier Standard</h2>
+					<h2 className="text-center">
+						{translate({
+							id: 'custom.accessible-standard',
+							message: 'Barrierefreier Standard',
+						})}
+					</h2>
 					<p className="text-center">
-						<strong>
-							<KoliBri />
-						</strong>{' '}
-						steht für{' '}
-						<strong>
-							<u>Ko</u>mponenten-Bib<u>li</u>othek für die <u>B</u>ar<u>ri</u>erefreiheit
-						</strong>{' '}
-						und wurde vom{' '}
+						<KoliBriAbbr />{' '}
+						{translate({
+							id: 'custom.homepage-message-part-1',
+							message: 'und wurde vom',
+						})}{' '}
 						<strong>
 							<KolLink _href="https://itzbund.de" _label="Informationstechnikzentrum Bund" _target="itzbund"></KolLink>
 						</strong>{' '}
-						Open&nbsp;Source zur Wiederverwendung und Weiterentwicklung freigegeben.
+						{translate({
+							id: 'custom.homepage-message-part-2',
+							message: 'Open Source zur Wiederverwendung und Weiterentwicklung freigegeben.',
+						})}
 					</p>
 				</div>
 				<HomepageFeatures />
