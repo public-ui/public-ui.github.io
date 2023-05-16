@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[9381],{54964:e=>{e.exports=JSON.parse('{"permalink":"/en/blog/tags/button","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Im Blog greifen wir verschiedene interessant und hilfreiche Themen rund um barrierefreie Webcomponents auf.","blogTitle":"Blog"}')}}]);

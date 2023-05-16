@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[3573],{14137:e=>{e.exports=JSON.parse('{"label":"Icon","permalink":"/en/docs/tags/icon","allTagsPath":"/en/docs/tags","count":1,"items":[{"id":"components/icon","title":"Icon","description":"Beschreibung, Spezifikation und Beispiele f\xfcr die Icon-Komponente.","permalink":"/en/docs/components/icon"}]}')}}]);

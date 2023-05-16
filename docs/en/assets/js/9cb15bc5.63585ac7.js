@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[5974],{67248:e=>{e.exports=JSON.parse('{"title":"Concepts","slug":"/category/konzepte","permalink":"/en/docs/category/konzepte","navigation":{"previous":{"title":"Playground","permalink":"/en/docs/get-started/playground"},"next":{"title":"Architecture","permalink":"/en/docs/concepts/architecture"}}}')}}]);
