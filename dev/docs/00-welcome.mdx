@@ -1,6 +1,5 @@
 ---
-id: welcome
-slug: willkommen
+slug: /
 title: Willkommen
 description: Wir wollen gemeinsam barrierefreie Basis-Komponenten bereitstellen.
 tags:
@@ -23,6 +22,7 @@ import {
 	KolTable,
 } from '@public-ui/react';
 import { KoliBri } from '@site/src/components/KoliBri';
+import { KoliBriAbbr } from '@site/src/components/KoliBriAbbr';
 import { translate } from '@docusaurus/Translate';
 
 <div className="flex gap-4">
@@ -53,25 +53,7 @@ import { translate } from '@docusaurus/Translate';
 <br />
 
 <p className="col-12">
-	<strong>
-		<KoliBri />
-	</strong>{' '}
-	steht für{' '}
-	<b>
-		<u>Ko</u>
-	</b>
-	mponenten-Bib
-	<b>
-		<u>li</u>
-	</b>
-	othek für die <b>
-		<u>B</u>
-	</b>
-	ar
-	<b>
-		<u>ri</u>
-	</b>
-	erefreiheit
+	<KoliBriAbbr />
 </p>
 
 ## Vision

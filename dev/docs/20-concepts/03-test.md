@@ -1,5 +1,4 @@
 ---
-slug: /konzepte/testvorgehen
 title: Testvorgehen
 description: Auf dieser Seite wird das Testkonzept beschrieben.
 tags:

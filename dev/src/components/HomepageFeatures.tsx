@@ -1,5 +1,6 @@
 import React from 'react';
 import { KolIcon, KolLink, KolLinkButton } from '@public-ui/react';
+import Translate, { translate } from '@docusaurus/Translate';
 
 type FeatureItem = {
 	icon: string;
@@ -15,9 +16,16 @@ const FeatureList: FeatureItem[] = [
 		description: (
 			<>
 				<p>
-					Die semantisch barrierefreien Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet werden. Mittels
-					des <KolLink _href="/designer" _label="Designers" _target="designer"></KolLink> können die Komponenten an beliebige Styleguides oder Designs angepasst
-					werden.
+					{translate({
+						id: 'custom.designer-short-description-part-1',
+						message:
+							'Die semantisch barrierefreien Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet werden. Mittels des',
+					})}{' '}
+					<KolLink _href="/designer" _label="Designers" _target="designer" />{' '}
+					{translate({
+						id: 'custom.designer-short-description-part-2',
+						message: 'können die Komponenten an beliebige Styleguides oder Designs angepasst werden.',
+					})}
 				</p>
 			</>
 		),
@@ -29,8 +37,11 @@ const FeatureList: FeatureItem[] = [
 		description: (
 			<>
 				<p>
-					Die robusten Web Components (Shadow-Root) lassen sich in allen webbasierten Projekten wiederverwenden. Neben der direkten Verwendung der Web
-					Components bieten wir auch Framework-Adapter für Angular, React, Preact und Solid an.
+					{translate({
+						id: 'custom.developer-short-description',
+						message:
+							'Die robusten Web Components (Shadow-Root) lassen sich in allen webbasierten Projekten wiederverwenden. Neben der direkten Verwendung der Web Components bieten wir auch Framework-Adapter für Angular, React, Preact und Solid an.',
+					})}
 				</p>
 			</>
 		),
@@ -42,12 +53,24 @@ const FeatureList: FeatureItem[] = [
 		description: (
 			<>
 				<p>
-					Heute umfasst die Komponentenvielfalt mehr als 40 Komponenten mit einem hohen Funktionsumfang zur Umsetzung verschiedenster Fachanwendungen und
-					Darstellung von webbasierten Inhalten.
+					{translate({
+						id: 'custom.components-short-description',
+						message:
+							'Heute umfasst die Komponentenvielfalt mehr als 40 Komponenten mit einem hohen Funktionsumfang zur Umsetzung verschiedenster Fachanwendungen und Darstellung von webbasierten Inhalten.',
+					})}
 				</p>
 			</>
 		),
-		button: <KolLinkButton className="w-72" _href="docs/category/komponenten" _label="Komponenten"></KolLinkButton>,
+		button: (
+			<KolLinkButton
+				className="w-72"
+				_href="docs/category/komponenten"
+				_label={translate({
+					id: 'custom.components',
+					message: 'Components',
+				})}
+			></KolLinkButton>
+		),
 	},
 ];
 
