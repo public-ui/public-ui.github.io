@@ -1,0 +1,115 @@
+---
+title: Button and link components
+authors: deleonio
+tags: ['button', 'link']
+---
+
+Today we offer the variants of Button, ButtonLink, Link and LinkButton. In the future we will also offer the ButtonToggle (Toogle button). All semantic links only support `_href` and all buttons only `_on` as a semantic "click". Visually, there are buttons that look exactly like links and links that look exactly like buttons.
+
+The following table provides an overview of the differences:
+
+|  Merkmal  | Link | LinkButton |  Button  | ButtonLink | ToggleButton<sup>\*</sup> |
+| :-------: | :--: | :--------: | :------: | :--------: | :-----------------------: |
+|  Design   | Link |   Button   |  Button  |    Link    |          Button           |
+| Semantics | `a`  |    `a`     | `button` |  `button`  |          `input`          |
+|  `_href`  |  ➕  |     ➕     |    ➖    |     ➖     |            ➖             |
+|   `_on`   |  ➖  |     ➖     |    ➕    |     ➕     |            ➕             |
+| `focus()` |  ➕  |     ➕     |    ➕    |     ➕     |            ➕             |
+|   Value   |  ➖  |     ➖     |    ➖    |     ➖     |         `boolean`         |
+
+<small>
+	<sup>*</sup> The toggle button was implemented as a variant of the checkbox because it is a switch with a maximum of two states (either "on" or "off").
+</small>
+
+## Motivation
+
+In addition to a high level of standard conformity, KoliBri also strives for very good reusability (Developer Experience DX).
+This is addressed by the uniformity of the HTML attributes and the economical use of additional properties.
+
+> **Rationale:** Given a link component intended for navigation, if we consider the two behaviors **Navigate** and **Click without navigating**
+> would offer, then we would have a contradiction in behavior. Also when used in development we would need the properties `_href` and `_on`
+> make it optional and we could no longer warn against misuse (static code checking).
+
+## Challenges
+
+This strict interpretation can cause problems when developing with other libraries and frameworks.
+Especially when they expect a click on a link.
+
+### React-Router
+
+The React router maps navigation via clicks. When used with the link component, there are different implementation options.
+
+**Wrapping:**
+
+```tsx
+<Link to="/">
+	<KolLink _href="">Home</KolLink>
+</Link>
+<Link to="/test">
+	<KolLink _href="">Test</KolLink>
+</Link>
+```
+
+**With a click:**
+
+```tsx
+<KolButtonLink
+	_label="Home"
+	_on={{
+		onClick: () => navigate("/")
+	}}
+>
+	Home
+</KolButtonLink>
+<KolButtonLink
+	_label="Test"
+	_on={{
+		onClick: () => navigate("/test")
+	}}
+>
+	Test
+</KolButtonLink>
+```
+
+**React-Link:**
+
+```tsx
+<KolLink
+	_href=""
+	_label="Home"
+	onClick={() => navigate("/")}
+>
+	Home
+</KolLink>
+<KolLink
+	_href=""
+	_label="Test"
+	onClick={() => navigate("/test")}
+>
+	Test
+</KolLink>
+```
+
+> **Notice:** `_href=""` is actually not allowed.
+
+HThere is also a small code example here <kol-link _href="https://codesandbox.io/s/kolibri-sample-react-link-sample-1jgz8v?file=/src/Navigation.tsx:0-112" _label="" _target="sandbox">Navigate with React router</kol-link>.
+
+The provided examples show that the Link and ButtonLink components are suitable for direct use with React-Router. However, the link component is also used within other KoliBri components. **Where that wouldn't work!**
+
+### Server side rendering
+
+The server-side rendering is very similar to the React router because it is technically very strongly driven by the Remix framework.
+Remix is ​​a framework for building hybrid client and server side web applications. This means that the implementation does not differ whether I want to build the application later as a client or server-side application.
+For server-side applications, the one-click navigating links must work because these applications run on the server and not in the browser.
+
+In order to ensure that KoliBri can also be used for server-side web applications, it must also be possible to change pages by **clicking without navigating**.
+
+## Solution
+
+To solve the challenges, all components that are passed link definitions are expanded. If ButtonLink definitions can also be transferred to these components, then they can also display clicks without navigating, but they still look like links.
+The following components must also be expanded:
+
+- Breadcrumb
+- LinkGroup
+- Nav
+- SkipNav

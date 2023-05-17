@@ -8,17 +8,17 @@ Wir bieten heute die Varianten von Button, ButtonLink, Link und LinkButton an. Z
 
 In der folgenden Tabelle wir eine Übersicht über die Unterschiede dargestellt:
 
-|  Merkmal  | Link | LinkButton |  Button  | ButtonLink | ButtonToggle<sup>\*</sup> |
+|  Merkmal  | Link | LinkButton |  Button  | ButtonLink | ToogleButton<sup>\*</sup> |
 | :-------: | :--: | :--------: | :------: | :--------: | :-----------------------: |
 |  Design   | Link |   Button   |  Button  |    Link    |          Button           |
-| Semantik  | `a`  |    `a`     | `button` |  `button`  |         `button`          |
+| Semantik  | `a`  |    `a`     | `button` |  `button`  |          `input`          |
 |  `_href`  |  ➕  |     ➕     |    ➖    |     ➖     |            ➖             |
 |   `_on`   |  ➖  |     ➖     |    ➕    |     ➕     |            ➕             |
 | `focus()` |  ➕  |     ➕     |    ➕    |     ➕     |            ➕             |
 |   Wert    |  ➖  |     ➖     |    ➖    |     ➖     |         `boolean`         |
 
 <small>
-	<sup>*</sup> Die Komponente ButtonToogle ist aktuell noch nicht umgesetzt. Sie ist aber spezifiziert und im Backlog.
+	<sup>*</sup> Der Toogle-Button wurde als Variante der Checkbox umgesetzt, weil es ein Schalter mit maximal zwei Zuständen (entweder "an" oder "aus") ist.
 </small>
 
 ## Motivation

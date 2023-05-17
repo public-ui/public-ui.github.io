@@ -49,6 +49,7 @@ const config = {
 				blog: {
 					blogDescription: 'Im Blog greifen wir verschiedene interessant und hilfreiche Themen rund um barrierefreie Webcomponents auf.',
 					blogSidebarTitle: 'Neueste Posts',
+					postsPerPage: 'ALL',
 					feedOptions: {
 						createFeedItems: async (params) => {
 							const { blogPosts, defaultCreateFeedItems, ...rest } = params;
