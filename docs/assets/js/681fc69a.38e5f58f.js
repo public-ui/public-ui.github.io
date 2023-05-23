@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[9425],{82567:e=>{e.exports=JSON.parse('{"title":"Komponenten","slug":"/category/komponenten","permalink":"/docs/category/komponenten","navigation":{"previous":{"title":"Sicherheit","permalink":"/docs/concepts/sicherheit"},"next":{"title":"Abbr","permalink":"/docs/components/abbr"}}}')}}]);
