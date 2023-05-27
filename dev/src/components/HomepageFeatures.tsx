@@ -49,7 +49,10 @@ const FeatureList: FeatureItem[] = [
 	},
 	{
 		icon: 'codicon codicon-layers',
-		title: 'Components',
+		title: translate({
+			id: 'custom.components',
+			message: 'Komponenten',
+		}),
 		description: (
 			<>
 				<p>
