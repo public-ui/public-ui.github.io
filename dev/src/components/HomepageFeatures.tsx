@@ -49,7 +49,10 @@ const FeatureList: FeatureItem[] = [
 	},
 	{
 		icon: 'codicon codicon-layers',
-		title: 'Components',
+		title: translate({
+			id: 'custom.components',
+			message: 'Komponenten',
+		}),
 		description: (
 			<>
 				<p>
@@ -64,7 +67,7 @@ const FeatureList: FeatureItem[] = [
 		button: (
 			<KolLinkButton
 				className="w-72"
-				_href="docs/category/komponenten"
+				_href="docs/components/abbr"
 				_label={translate({
 					id: 'custom.components',
 					message: 'Components',
