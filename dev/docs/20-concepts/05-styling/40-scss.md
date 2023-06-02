@@ -1,6 +1,6 @@
 ---
 title: Scss
-description: Wir beschreiben auf dieser Seite die Verwendung von Scss zur Erstellung von KoliBri-Themes genutzt werden kann.
+description: Auf dieser Seite wird beschrieben, wie Scss zur Erstellung von KoliBri-Themes verwendet werden kann.
 ---
 
 # Scss
