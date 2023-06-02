@@ -106,7 +106,7 @@ export default function Homepage(): JSX.Element {
 				<HomepageFeatures />
 				<section className="used-by-gallery m-8 gap-8 text-center">
 					<h2>Referenzen</h2>
-					<p className="text-center">KoliBri/Public UI wird als Basis für eigene Design System oder direkt bei der Umsetzung von Webprojekten verwendet.</p>
+					<p className="text-center">KoliBri/Public UI wird als Basis für eigene Design Systeme oder direkt bei der Umsetzung von Webprojekten verwendet.</p>
 					<ul>
 						{Array.from(USED_BY).map((item) => {
 							const used = item[1];
