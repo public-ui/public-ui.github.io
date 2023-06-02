@@ -104,7 +104,7 @@ export default function Homepage(): JSX.Element {
 					</p>
 				</div>
 				<HomepageFeatures />
-				<section className="used-by-gallery m-8 gap-8 text-center">
+				{/* <section className="used-by-gallery m-8 gap-8 text-center">
 					<h2>Referenzen</h2>
 					<p className="text-center">KoliBri/Public UI wird als Basis für eigene Design Systeme oder direkt bei der Umsetzung von Webprojekten verwendet.</p>
 					<ul>
@@ -119,7 +119,7 @@ export default function Homepage(): JSX.Element {
 							);
 						})}
 					</ul>
-				</section>
+				</section> */}
 			</main>
 		</Layout>
 	);
