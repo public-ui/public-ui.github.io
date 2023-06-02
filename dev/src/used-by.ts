@@ -32,8 +32,8 @@ USED_BY.set('bzst', {
 	homepageUrl: 'www.bzst.de/DE/Home/home_node.html',
 	logoSrc: 'upload.wikimedia.org/wikipedia/commons/thumb/6/60/BZSt_Logo.svg/426px-BZSt_Logo.svg.png',
 });
-// USED_BY.set('kern', {
-// 	label: 'KERN - UX-Standard für die deutsche Verwaltung',
-// 	homepageUrl: 'gitlab.opencode.de/kern-designsystem',
-// 	logoSrc: 'gitlab.opencode.de/uploads/-/system/project/avatar/803/KERN_Signet.png', Logo mit Schriftzug
-// });
+ USED_BY.set('kern', {
+ 	label: 'KERN - UX-Standard für die deutsche Verwaltung',
+ 	homepageUrl: 'gitlab.opencode.de/kern-designsystem',
+ 	logoSrc: 'kern-design-system.de/Images/logo.svg',
+});
