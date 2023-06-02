@@ -1,10 +1,11 @@
 import { translate } from '@docusaurus/Translate';
 import { Bundesanstalt } from '@public-ui/components';
-import { KolKolibri, KolLink, KolLinkButton, KolLogo } from '@public-ui/react';
+import { KolKolibri, KolHeading, KolImage, KolLink, KolLinkButton, KolLogo } from '@public-ui/react';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Layout from '@theme/Layout';
 import React, { FunctionComponent } from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
+import { USED_BY } from '../used-by';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -20,6 +21,8 @@ const HomepageHeader: FunctionComponent = () => (
 		</p>
 	</header>
 );
+
+console.warn(Array.from(USED_BY));
 
 export default function Homepage(): JSX.Element {
 	return (
@@ -101,6 +104,22 @@ export default function Homepage(): JSX.Element {
 					</p>
 				</div>
 				<HomepageFeatures />
+				<section className="used-by-gallery m-8 gap-8 text-center">
+					<h2>Referenzen</h2>
+					<p className="text-center">KoliBri/Public UI wird als Basis für eigene Design System oder direkt bei der Umsetzung von Webprojekten verwendet.</p>
+					<ul>
+						{Array.from(USED_BY).map((item) => {
+							const used = item[1];
+							return (
+								<li key={item[0]}>
+									<KolLink _label="" _target={item[0]}>
+										<KolImage slot="expert" className="block w-30" _alt={`Logo von ${used.label}`} _src={`https://${used.logoSrc}`} />
+									</KolLink>
+								</li>
+							);
+						})}
+					</ul>
+				</section>
 			</main>
 		</Layout>
 	);

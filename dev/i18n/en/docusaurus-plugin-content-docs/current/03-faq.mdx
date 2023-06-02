@@ -2,19 +2,51 @@
 title: FAQ
 description: Frequently asked questions about KoliBri
 tags:
-  - architecture
+  - Architecture
   - arc42
-  - faq
-  - concept
-  - lizence
-  - legal
+  - Faq
+  - Concept
+  - License
+  - Legal
 ---
+
+import { KolLink } from '@public-ui/react';
 
 # Frequently Asked Questions (FAQ)
 
-- **How dependent will I be if I use KoliBri?**<br/>
-  If you compare KoliBri with a LEGO® set, then you can simply mix the included building blocks with other building blocks to depict the overall application _(see blue, orange and gray components)_.
-- **How can I influence a component if necessary?**<br/>
-  KoliBri components are very restrictive to ensure accessibility and are reused through composition. Adjustments from the outside can only be made through **wrapping** or the **expert slot** _(see orange in blue, blue in orange)_. The styling is possible via the **Theme concept** by configuration.
-- **What do I do if a component or function is missing?**<br/>
-  New **technically neutral components** or **functions** are to be implemented within KoliBri. **Participation** is expressly desired and accelerates the implementation.
+## General
+
+- **What is so special about KoliBri?**<br/>
+  KoliBri offers granular, easily reusable HTML compositions that are semantically barrier-free and decoupled from the design. Using the basic styling, which is limited exclusively to the layout, the components can be easily adapted to your own corporate design.
+- **How ​​do you save with KoliBri?**<br/>
+  Websites/applications are implemented with different HTML elements and variants of elements. Each of these HTML structures must be semantically accessible and marked. KoliBri focuses on exactly such HTML structures and their variants and summarizes them in clearly defined components. The development teams that later reuse KoliBri can now use these components and adjust parameters to display different variants without having to think about the correctness of the HTML structure within the component. You are relieved and can focus more on the implementation of the actual technicality.<br/>
+- **How ​​can you not explain KoliBri technically?**<br/>
+  KoliBri is for accessibility like a Thermomix® is for cooking. It makes cooking easier because you can simply choose a suitable dish (component) without having to know how to cook it exactly. The Thermomix® (KoliBri) guides you through the cooking process (parameters for different variants) and ensures that the right dish (barrier-free user interface) comes out at the end.
+- **How ​​dependent will I be if I use KoliBri?**<br/>
+  If you compare KoliBri with a LEGO® set, you can simply mix the building blocks it contains with other building blocks to depict the overall application. You enter into a partial dependency (logical) in order to receive advantages in ensuring accessibility in return.
+- **How ​​can I influence a component if necessary?**<br/>
+  KoliBri components are very restrictive to ensure accessibility and are reused through composition. Adjustments from the outside can only be made through wrapping or the Expert slot. The styling is possible via the theme concept through configuration.
+- **What do I do if a component or feature is missing?**<br/>
+  New technically neutral components or functions are to be implemented within KoliBri. Participation in this is expressly desired and will speed up implementation.
+- **What does the licensing say?**<br/>
+  The EUPL allows unrestricted use of the artifacts, which can be customized in a configurative way to suit one's needs.
+  On the other hand, it forces the disclosure of changes made when copying source code from KoliBri (Copy-Left).
+  See the <KolLink _href="/docs/license" _label="License" /> for more information.
+
+## Theming and styling
+
+- **Who creates a theme if it doesn't already exist?**<br/>
+  The current situation is that the ITZBund has implemented and maintains numerous themes of its customer authorities and example themes. However, the theme concept provides that themes can be created and maintained independently. We are happy to answer any questions and can provide selective support. As soon as your own theme has been created, an independent accessibility test is necessary to ensure, for example, the contrast ratios of the color values. Themes that have been created and tested can now be used again in other projects.
+- **How ​​does theming work?**<br/>
+  Typically, web components are created with fixed styling. KoliBri separates the semantically accessible components from the styling and provides a register method for combining them. Since the web components must always be registered (defined) in the browser, there is the option here of loading the components with a defined theme.
+- **How ​​to create your own theme?**<br/>
+  We are always working to further simplify the creation and maintenance of themes. For example, the basic styling (pure layout) of the components from version 1.5 is used for this. You can set it up simply by creating a theme definition, e.g. with your own theme project (NPM package) using the <KolLink _href="https://github.com/public-ui/kolibri/blob/45726c50d7f28c9c595442b2241582816eca5670/packages /create-kolibri/templates/kolibri-library/packages/components/src/global/script.ts#L8" _label="TS file" _target="github"/>. Our <KolLink _href="/designer/" _label=" Theme Designer" _target="designer"/> is also helpful for creating and maintaining themes.
+- **Why does CSS need to be managed in JavaScript?**<br/>
+  KoliBri components are not styled solely using embedded CSS or the use of CSS frameworks (such as Bootstrap, Material-UI, Tailwind CSS, etc.), but
+  about the technical setting of CSS on the component. This has the advantage that the components are independent of the external CSS. Robustness is an architectural quality objective. It is reflected in the fact that only the component itself decides on its styling.
+- **Why do you need the scheme?**<br/>
+  KoliBri is based on a sophisticated <KolLink _href="/docs/concepts/architecture#simple" _label="Architecture" />. For example, the small schema package (@public-ui/schema) is used to define the tag names and language keys of the KoliBri components independently of the concrete implementation. This enables completely detached work with auto-completion when creating the theme, but without needing the components and their dependencies. This has advantages in some integration scenarios, such as static pages or content management systems (CMS).
+
+## Any questions?
+
+If you still have questions, please send us an email to <KolLink _href="mailto:kolibri@itzbund.de" _label="kolibri@itzbund.de" _target="email" _icon="codicon codicon-mail " />.

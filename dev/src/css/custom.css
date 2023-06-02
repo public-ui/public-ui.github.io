@@ -101,3 +101,14 @@ kol-button,
 kol-link-button {
 	display: block;
 }
+
+.used-by-gallery ul {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	place-items: center;
+}
+.used-by-gallery ul li {
+	width: 15rem;
+}
