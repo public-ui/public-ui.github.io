@@ -15,7 +15,7 @@ Scss ist eine Erweiterung von CSS, die es ermöglicht, Variablen, Funktionen, Mi
 
 ## Hintergrund
 
-Wir haben den <kol-link _href="/docs/faq" _label="FAQ" /> beschrieben, warum wir CSS in JavaScript verwalten. Das bedeutet, dass das einfach Einbinden von CSS in der Rahmenseite nicht die KoliBri-Komponenten styled. Denn jede Komponente weiß über JavaScript selbst, welches CSS es verwenden soll. Das CSS muss also in JavaScript verpackt werden, so dass es bei der Ausführung der Web Component geladen werden kann.
+Wir haben in den <kol-link _href="/docs/faq" _label="FAQ" /> beschrieben, warum wir CSS in JavaScript verwalten. Das bedeutet, dass das einfach Einbinden von CSS in der Rahmenseite nicht die KoliBri-Komponenten styled. Denn jede Komponente weiß über JavaScript selbst, welches CSS es verwenden soll. Das CSS muss also in JavaScript verpackt werden, so dass es bei der Ausführung der Web Component geladen werden kann.
 
 ## Erstellung
 
