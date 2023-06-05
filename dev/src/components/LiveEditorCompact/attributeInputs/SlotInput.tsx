@@ -12,7 +12,7 @@ export function SlotInput(props: Props) {
 
 	return (
 		<div className="bg-gray-100 my-2 rounded-lg p-2 border border-gray-300 border-solid">
-			<b>{name}</b>: {description}
+			<b>{name || 'default'}</b>: {description}
 			<br></br>
 			<Editor
 				defaultLanguage="html"

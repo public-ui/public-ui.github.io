@@ -69,7 +69,7 @@ export function LiveEditorCompact(props: Props) {
 								},
 							]}
 						>
-							<div className="p-2 inline-block">
+							<div className="p-2">
 								<ComponentDisplay tag={tag} params={config} />
 							</div>
 							<div className="lg:col-span-2">

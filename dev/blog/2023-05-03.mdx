@@ -41,6 +41,23 @@ Die wichtigsten Änderungen sind:
       		…
       	}
       ```
+    - Anschließend einem `npm i` (`pnpm i`) ausführen, damit alle Assets automatisch in den `public/assets`-Ordner kopiert werden.
+    - Damit die Assets nicht mit eingecheckt werden müssen, kann man sie in der `.gitignore`-Datei ausschließen.
+      ```gitignore
+      # .gitignore
+      /public/assets/bpa-icons/
+      /public/assets/bundes/
+      /public/assets/codicons/
+      /public/assets/fontawesome-free/
+      /public/assets/icofont/
+      /public/assets/kreon/
+      /public/assets/material-icons/
+      /public/assets/material-symbols/
+      /public/assets/noto-sans/
+      /public/assets/roboto/
+      /public/assets/tabler-icons/
+      /public/assets/kolibri.ico
+      ```
     - Weitere Icon-Fonts wurden in Themes verwendet:
       - Microsoft Codicons
       - Google Material Icons
