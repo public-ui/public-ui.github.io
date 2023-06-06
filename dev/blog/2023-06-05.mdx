@@ -11,8 +11,8 @@ Im Grunde ist es so, dass jede Komponente innerhalb ihrere HTML-Struktur frei ge
 
 Mit Hilfe unsereres Designers oder dem SCSS-Script können vorhandene Themes angepasst oder eigenes Theme erstellt werden.
 
-- [Designers](http://localhost:3000/docs/concepts/styling/designers)
-- [SCSS-Script](http://localhost:3000/docs/concepts/styling/scss)
+- [Designer](/docs/concepts/styling/designer)
+- [SCSS-Script](/docs/concepts/styling/scss)
 
 ## Button und Custom-Class
 
@@ -75,14 +75,20 @@ können über das Property `_custom-class` beliebige vordefinierte Custom-Classe
 
 ## Icon im Button von außen stylen
 
+Es ist möglich dem Button einen Icon-Style zu übergeben. Dazu muss dem Property `_icon` der gewünschte Style übergeben werden.
+
 ```tsx
 <KolButton
 	_icon={{
 		left: {
 			icon: 'codicon codicon-house',
+			style: {
+				color: 'red',
+				'font-size': '300%',
+			},
 		},
 	}}
-	_label="Speichern"
+	_label="Schalter mit großen roten Icon"
 ></KolButton>
 ```
 
@@ -96,5 +102,5 @@ können über das Property `_custom-class` beliebige vordefinierte Custom-Classe
 			},
 		},
 	}}
-	_label="Speichern"
+	_label="Schalter mit großen roten Icon"
 ></KolButton>

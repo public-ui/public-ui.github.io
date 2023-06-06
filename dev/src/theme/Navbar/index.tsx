@@ -31,6 +31,10 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 			<section aria-label="Toolbar" className="grid gap-2 col-span-2 p-4 sm:grid-cols-[auto,auto,auto]">
 				<div className="grid gap-2 grid-cols-5 col-span-2 items-center justify-items-center">
 					{/* <div>
+						<KolLinkButton _href="/" _iconOnly _label="Deutsch" _tooltipAlign="left" _variant="ghost" />
+						<KolLinkButton _href="/en" _iconOnly _label="English" _tooltipAlign="left" _variant="ghost" />
+					</div> */}
+					{/* <div>
 						{dark ? (
 							<KolButton _icon={'codicon codicon-moon'} _iconOnly _label="Dark-Modus ausschalten" _on={onDark} _tooltipAlign="left" _variant="ghost"></KolButton>
 						) : (
@@ -55,7 +59,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_tooltipAlign="left"
 							// _target="github"
 							_variant="ghost"
-						></KolLinkButton>
+						/>
 					</div>
 					<div>
 						<KolLinkButton
@@ -66,7 +70,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_tooltipAlign="left"
 							// _target="cheat-sheet"
 							_variant="ghost"
-						></KolLinkButton>
+						/>
 					</div>
 					<div>
 						<KolLinkButton
@@ -77,7 +81,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_tooltipAlign="left"
 							// _target="designer"
 							_variant="ghost"
-						></KolLinkButton>
+						/>
 					</div>
 					<div>
 						<KolLinkButton
@@ -88,7 +92,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_tooltipAlign="left"
 							// _target="presentation"
 							_variant="ghost"
-						></KolLinkButton>
+						/>
 					</div>
 					{/* <div>
 						<KolLinkButton
@@ -99,7 +103,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_tooltipAlign="left"
 							_target="discord"
 							_variant="ghost"
-						></KolLinkButton>
+						/>
 					</div> */}
 					<div>
 						<KolLinkButton
@@ -110,7 +114,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_tooltipAlign="left"
 							// _target="mastodon"
 							_variant="ghost"
-						></KolLinkButton>
+						/>
 					</div>
 				</div>
 				<BrowserOnly>{() => <ThemeSelect />}</BrowserOnly>
