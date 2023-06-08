@@ -72,8 +72,8 @@ export const Properties: FC = () => {
 			</p>
 			<ul>
 				<li>Nur ein Property-Name für gleichartige Eigenschaften</li>
-				<li>Wenn möglich, einheitliche Beschreibungen bei gleichen Propterty-Namen</li>
-				<li>Wenn möglich, einheitliche Typen bei gleichen Propterty-Namen</li>
+				<li>Wenn möglich, einheitliche Beschreibungen bei gleichen Property-Namen</li>
+				<li>Wenn möglich, einheitliche Typen bei gleichen Property-Namen</li>
 				<li>Anzahl an unterschiedlichen Properties, Beschreibungen und Typen minimieren</li>
 			</ul>
 			<h2>Aktueller Stand</h2>
