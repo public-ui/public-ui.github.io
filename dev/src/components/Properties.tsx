@@ -58,10 +58,10 @@ const DEPRECATED = new Map<string, Set<string>>();
 DEPRECATED.set('_align', new Set(['_alignment']));
 DEPRECATED.set('_hide-button', new Set(['_has-buttons']));
 DEPRECATED.set('_hide-label', new Set(['_icon-only']));
-DEPRECATED.set('_label', new Set(['_aria-label', '_caption', '_heading', '_headline', '_quote', '_summary', '_symbol', '_title']));
+DEPRECATED.set('_label', new Set(['_aria-label', '_caption', '_heading', '_headline', '_quote (?)', '_summary', '_symbol', '_title']));
 // DEPRECATED.set('_list', new Set(['_links']));
 DEPRECATED.set('_variant', new Set(['_type<sup>*</sup>']));
-DEPRECATED.set('', new Set(['_has-buttons', '_has-footer', '_height', '_icon-align', '_part', '_show-dropdown']));
+DEPRECATED.set('', new Set(['_has-footer', '_height', '_icon-align', '_part', '_show-dropdown']));
 
 export const Properties: FC = () => {
 	return (
@@ -115,12 +115,12 @@ export const Properties: FC = () => {
 				</tbody>
 			</table>
 			<h2>Deprecated</h2>
-			<p>Die in der folgenden Tabelle aufgelisteten Eigenschaften lösen zahlreiche veraltete Eigenschaften (-{Math.round((16 / PROPS.size) * 100)}%) ab.</p>
+			<p>Die in der folgenden Tabelle aufgelisteten Eigenschaften lösen zahlreiche veraltete Eigenschaften (-{Math.round((15 / PROPS.size) * 100)}%) ab.</p>
 			<table>
 				<thead>
 					<tr>
 						<th>New Property</th>
-						<th>Deprecates Properties</th>
+						<th>Deprecated Properties</th>
 					</tr>
 				</thead>
 				<tbody>

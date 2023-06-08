@@ -14,18 +14,24 @@ Die wichtigsten Änderungen sind:
 
 - Verbesserungen
 - Refactorings
-  - Vereinheitlichung von Komponenten-Eigenschaften (siehe <KolLink _href="/docs/concepts/properties" _label="Eigenschaften" />-Konzept)
+  - Vereinheitlichung von Properties der Komponenten (siehe <KolLink _href="/docs/concepts/properties" _label="Eigenschaften" />-Konzept)
     - `_alignment` vom Popover in `_align` umbenannt
     - Typ `Alignment` wurde intern in `Align` umbenannt
     - `_label` wird in Version 2 folgende Properties ersetzen:
       - `_aria-label` von Breadcrumb, Button, ButtonLink, Icon, Link, LinkButton, Modal, Nav, SkipNav, SplitButton, Symbol und Tabs
-      - ~~`_caption` von Quote und Table~~
+      - `_caption` von Quote und Table
       - `_heading` von Accordion, Alert, Card und Toast
       - `_headline` von Card
-      - `_quote` von Quote
+      - `_quote` von Quote (?)
       - `_summary` von Details
       - `_symbol` von Symbol
       - `_title` von Abbr
+    - Properties, die zukünftig nicht mehr benötigt werden
+      - `_has-footer` von Card
+      - `_height_` von Select
+      - `_icon-align` ...
+      - `_part` ...
+      - `_show-dropdown` ...
 - Expert-Slot
   - Alle Inputs-, Select- und Textarea-Komponenten haben nun einen Expert-Slot und das `_label` ist Pflicht. Wenn das `_label=""` leer bleibt, dann wird das Label über den Slot, wie gewohnt angezeigt.
 - Theming
