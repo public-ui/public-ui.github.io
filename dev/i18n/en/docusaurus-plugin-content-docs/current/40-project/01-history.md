@@ -47,7 +47,7 @@ We now knew that the technology was powerful and concentrated on supplying the p
 
 We want to build a broad community around the topic "small flexible accessible web components", KoliBri for short. KoliBri as an accessible webcomponent library is free to use and should be developed collaboratively.
 
-Why this is worthwhile can be derived from the guidelines of KoliBri. The focus is on small frequently occurring components and their HTML construction. These HTML constructions must be solved namely as a rule by all development teams, which must provide barrier-free web-based user interfaces. If one looks attentively with the "accessibility glasses" in the Web, one notices that for example the Button with the Tooltip, all nearly the same implemented.
+Why this is worthwhile can be derived from the guidelines of KoliBri. The focus is on small frequently occurring components and their HTML construction. These HTML constructions must be solved namely as a rule by all development teams, which must provide accessible web-based user interfaces. If one looks attentively with the "accessibility glasses" in the Web, one notices that for example the Button with the Tooltip, all nearly the same implemented.
 And this is exactly what KoliBri addresses with the small-part components. We turn the openly specified HTML (not readily accessible) into semantic accessible HTML components by means of web components, which can be reused flexibly and customizable for your own design systems and web projects.
 
 ## Prospect `2023`
