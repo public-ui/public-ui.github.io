@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { KolLinkButton, KolVersion, KolIcon, KolImage } from '@public-ui/react';
+import { KolLinkButton, KolVersion } from '@public-ui/react';
 import React, { FunctionComponent, PropsWithChildren } from 'react';
 // import { getDarkMode, setDarkMode } from '../../shares/store';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { LanguageSwitch } from '@site/src/components/LanguageSwitch';
 import Navbar from '@theme-original/Navbar';
 import JSON from '../../../node_modules/@public-ui/components/package.json';
 import ThemeSelect from './ThemeSelect';
@@ -25,21 +25,13 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 	// 	},
 	// };
 
-	const { i18n } = useDocusaurusContext();
-
 	return (
 		<div className="grid grid-cols-2 shadow items-center md:grid-cols-[1fr,auto,auto,auto]">
 			<Navbar {...props} />
 			<KolVersion aria-label="Kontaktformular" role="region" className="text-right pr-4" _version={JSON.version as string}></KolVersion>
 			<section aria-label="Toolbar" className="grid gap-2 col-span-2 p-4 sm:grid-cols-[auto,auto,auto]">
 				<div className="grid gap-2 grid-cols-6 col-span-2 items-center justify-items-center">
-					<div>
-						{i18n.currentLocale === 'de' ? (
-							<KolLinkButton _href="/en/" _label="Switch to English" _icon-only _icon="fa-solid fa-language" _tooltipAlign="left" _variant="ghost" />
-						) : (
-							<KolLinkButton _href="/" _label="Zu Deutsch wechseln" _icon-only _icon="fa-solid fa-language" _tooltipAlign="left" _variant="ghost" />
-						)}
-					</div>
+					<LanguageSwitch />
 					{/* <div>
 						{dark ? (
 							<KolButton _icon={'codicon codicon-moon'} _iconOnly _label="Dark-Modus ausschalten" _on={onDark} _tooltipAlign="left" _variant="ghost"></KolButton>

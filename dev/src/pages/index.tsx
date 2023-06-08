@@ -1,6 +1,6 @@
 import { translate } from '@docusaurus/Translate';
 import { Bundesanstalt } from '@public-ui/components';
-import { KolKolibri, KolHeading, KolImage, KolLink, KolLinkButton, KolLogo } from '@public-ui/react';
+import { KolKolibri, KolLink, KolLinkButton, KolLogo } from '@public-ui/react';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Layout from '@theme/Layout';
 import React, { FunctionComponent } from 'react';
