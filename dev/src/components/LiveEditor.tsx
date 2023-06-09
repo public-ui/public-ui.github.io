@@ -25,9 +25,13 @@ export function LiveEditor(props: Props) {
 	}, [props.component]);
 
 	useEffect(() => {
-		const hasLabel = !!allElements.tags.find((t) => t.name === `kol-${tag}`)?.attributes.find((a) => a.name === '_label');
+		const hasLabel = !!allElements.tags
+			.find((t) => t.name === `kol-${tag}`)
+			?.attributes.find((a) => a.name === '_label');
 		if (hasLabel && !allConfig[tag]?._label) updateConfig('_label', 'Beispieltext in _label');
-		const hasHeading = !!allElements.tags.find((t) => t.name === `kol-${tag}`)?.attributes.find((a) => a.name === '_heading');
+		const hasHeading = !!allElements.tags
+			.find((t) => t.name === `kol-${tag}`)
+			?.attributes.find((a) => a.name === '_heading');
 		if (hasHeading && !allConfig[tag]?._heading) updateConfig('_heading', 'Beispieltext in _heading');
 	}, [tag]);
 
@@ -67,7 +71,11 @@ export function LiveEditor(props: Props) {
 							<ComponentDisplay tag={tag} params={config} />
 						</div>
 					</div>
-					{props.isOnComponentPage ? '' : <KolSelect _list={tagList} _value={[tag]} _on={{ onChange: updateTag }}></KolSelect>}
+					{props.isOnComponentPage ? (
+						''
+					) : (
+						<KolSelect _list={tagList} _value={[tag]} _on={{ onChange: updateTag }}></KolSelect>
+					)}
 					{/* @ts-ignore */}
 					<Configuration config={config} showDescription={!props.isOnComponentPage} tag={tag} update={updateConfig} />
 					<div className="lg:col-span-2">

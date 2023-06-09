@@ -119,7 +119,9 @@ export const Configurator: FC<ConfiguratorProps> = ({ component, sample }) => {
 			<div>{tab === 'Angular' && <CodeSandbox url={mapFileInUrl(baseUrl, component, sample, files.angular)} />}</div>
 			<div>{tab === 'React' && <CodeSandbox url={mapFileInUrl(baseUrl, component, sample, files.react)} />}</div>
 			<div>{tab === 'Vue' && <CodeSandbox url={mapFileInUrl(baseUrl, component, sample, files.vue)} />}</div>
-			<div>{tab === 'Web Component' && <CodeSandbox url={mapFileInUrl(baseUrl, component, sample, files.webcomponent)} />}</div>
+			<div>
+				{tab === 'Web Component' && <CodeSandbox url={mapFileInUrl(baseUrl, component, sample, files.webcomponent)} />}
+			</div>
 		</KolTabs>
 	);
 };

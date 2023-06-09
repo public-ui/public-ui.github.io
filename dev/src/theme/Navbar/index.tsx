@@ -28,7 +28,12 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 	return (
 		<div className="grid grid-cols-2 shadow items-center md:grid-cols-[1fr,auto,auto,auto]">
 			<Navbar {...props} />
-			<KolVersion aria-label="Kontaktformular" role="region" className="text-right pr-4" _version={JSON.version as string}></KolVersion>
+			<KolVersion
+				aria-label="Kontaktformular"
+				role="region"
+				className="text-right pr-4"
+				_version={JSON.version as string}
+			></KolVersion>
 			<section aria-label="Toolbar" className="grid gap-2 col-span-2 p-4 sm:grid-cols-[auto,auto,auto]">
 				<div className="grid gap-2 grid-cols-6 col-span-2 items-center justify-items-center">
 					<LanguageSwitch />

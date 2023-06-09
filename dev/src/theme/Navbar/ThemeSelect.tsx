@@ -44,7 +44,14 @@ export const ThemeSelect: FunctionComponent = () => {
 	}, []);
 
 	return (
-		<KolSelect className="col-span-2 sm:col-auto" {...activate} _hideLabel _id="theme-toggle" _list={THEME_OPTIONS} _value={[getTheme()]}>
+		<KolSelect
+			className="col-span-2 sm:col-auto"
+			{...activate}
+			_hideLabel
+			_id="theme-toggle"
+			_list={THEME_OPTIONS}
+			_value={[getTheme()]}
+		>
 			Theme auswählen
 		</KolSelect>
 	);

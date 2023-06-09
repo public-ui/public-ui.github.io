@@ -29,7 +29,9 @@ const FeatureList: FeatureItem[] = [
 				</p>
 			</>
 		),
-		button: <KolLinkButton className="w-72" _href="docs/concepts/styling/theming" _label="Styling & Design"></KolLinkButton>,
+		button: (
+			<KolLinkButton className="w-72" _href="docs/concepts/styling/theming" _label="Styling & Design"></KolLinkButton>
+		),
 	},
 	{
 		icon: 'codicon codicon-code',

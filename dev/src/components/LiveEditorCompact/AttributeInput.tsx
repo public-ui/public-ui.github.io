@@ -38,13 +38,21 @@ export function AttributeInput(props: Props) {
 				switch (calculatedType) {
 					case 'string':
 						return (
-							<KolInputText className="my-2" _on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as string) }} _value={(value as string) || ''}>
+							<KolInputText
+								className="my-2"
+								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as string) }}
+								_value={(value as string) || ''}
+							>
 								{label}
 							</KolInputText>
 						);
 					case 'number':
 						return (
-							<KolInputNumber className="my-2" _on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as number) }} _value={value as number}>
+							<KolInputNumber
+								className="my-2"
+								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as number) }}
+								_value={value as number}
+							>
 								{label}
 							</KolInputNumber>
 						);
@@ -61,7 +69,15 @@ export function AttributeInput(props: Props) {
 						);
 					default:
 						if (calculatedTypes.length > 1) {
-							return <UnionSelect label={label} name={attribute.name} types={calculatedTypes} update={update} value={value as string}></UnionSelect>;
+							return (
+								<UnionSelect
+									label={label}
+									name={attribute.name}
+									types={calculatedTypes}
+									update={update}
+									value={value as string}
+								></UnionSelect>
+							);
 						} else {
 							return (
 								<p>

@@ -49,7 +49,11 @@ export function CodeOutput(props: Props) {
 		}
 	}
 
-	const formatted = format(`<kol-${tag}${paramList}>${slots}</kol-${tag}>`, { parser: 'html', plugins: [html], printWidth: 80 });
+	const formatted = format(`<kol-${tag}${paramList}>${slots}</kol-${tag}>`, {
+		parser: 'html',
+		plugins: [html],
+		printWidth: 80,
+	});
 
 	return (
 		<div className="h-48 rounded-md overflow-hidden">

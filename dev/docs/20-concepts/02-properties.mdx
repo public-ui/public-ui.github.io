@@ -8,6 +8,22 @@ tags:
   - Konzept
 ---
 
-import { Properties } from '@site/src/components/Properties';
+import { PropertiesOverview } from '@site/src/components/PropertiesOverview';
+import { PropertiesDeprecated } from '@site/src/components/PropertiesDeprecated';
 
-<Properties />
+Ziel ist, möglichst über alle Komponenten einheitliche Eigenschaften (Properties) zu verwenden, um die Erlernbarkeit zu erleichtern. Folgende Anforderungen sind dafür definiert:
+
+- Nur ein Property-Name für gleichartige Eigenschaften
+- Wenn möglich, einheitliche Beschreibungen bei gleichen Property-Namen
+- Wenn möglich, einheitliche Typen bei gleichen Property-Namen
+- Anzahl an unterschiedlichen Eigenschaften, Beschreibungen und Typen minimieren
+
+## Aktueller Stand
+
+<PropertiesOverview />
+
+## Veraltete Eigenschaften
+
+Die in der folgenden Tabelle aufgelisteten Eigenschaften lösen zahlreiche veraltete Eigenschaften (13 von 99, ~13%) ab.
+
+<PropertiesDeprecated />

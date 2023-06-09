@@ -25,9 +25,13 @@ export function LiveEditorCompact(props: Props) {
 	}, [props.component]);
 
 	useEffect(() => {
-		const hasLabel = !!allElements.tags.find((t) => t.name === `kol-${tag}`)?.attributes.find((a) => a.name === '_label');
+		const hasLabel = !!allElements.tags
+			.find((t) => t.name === `kol-${tag}`)
+			?.attributes.find((a) => a.name === '_label');
 		if (hasLabel && !allConfig[tag]?._label) updateConfig('_label', 'Label-Text');
-		const hasHeading = !!allElements.tags.find((t) => t.name === `kol-${tag}`)?.attributes.find((a) => a.name === '_heading');
+		const hasHeading = !!allElements.tags
+			.find((t) => t.name === `kol-${tag}`)
+			?.attributes.find((a) => a.name === '_heading');
 		if (hasHeading && !allConfig[tag]?._heading) updateConfig('_heading', 'Heading-Text');
 	}, [tag]);
 
@@ -85,11 +89,18 @@ export function LiveEditorCompact(props: Props) {
 										element.attributes.map((attribute: Attribute) => (
 											<>
 												{!AttributeBlackList.includes(attribute.name) && (
-													<AttributeInput key={attribute.name} attribute={attribute} update={updateConfig} value={config[attribute.name]}></AttributeInput>
+													<AttributeInput
+														key={attribute.name}
+														attribute={attribute}
+														update={updateConfig}
+														value={config[attribute.name]}
+													></AttributeInput>
 												)}
 											</>
 										))}
-									{element && element.slots.length === 0 && <span className="text-gray-500">Keine Properties vorhanden</span>}
+									{element && element.slots.length === 0 && (
+										<span className="text-gray-500">Keine Properties vorhanden</span>
+									)}
 								</div>
 								<KolHeading _level={4} _label="Slots" />
 								<div className="max-h-56 p-2 overflow-scroll">
@@ -103,7 +114,9 @@ export function LiveEditorCompact(props: Props) {
 												value={config['slot-' + slot.name] as string}
 											/>
 										))}
-									{element && element.slots.length === 0 && <span className="text-gray-500">Keine Slots vorhanden</span>}
+									{element && element.slots.length === 0 && (
+										<span className="text-gray-500">Keine Slots vorhanden</span>
+									)}
 								</div>
 							</div>
 						</div>

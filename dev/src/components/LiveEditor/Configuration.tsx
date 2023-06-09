@@ -38,11 +38,22 @@ export function Configuration(props: Props) {
 							AttributeBlackList.includes(attribute.name) ? (
 								''
 							) : (
-								<AttributeInput key={attribute.name} attribute={attribute} update={update} value={config[attribute.name]}></AttributeInput>
+								<AttributeInput
+									key={attribute.name}
+									attribute={attribute}
+									update={update}
+									value={config[attribute.name]}
+								></AttributeInput>
 							)
 						)}
 						{element.slots.map((slot: Slot) => (
-							<SlotInput key={slot.name} description={slot.description} name={slot.name} update={update} value={config['slot-' + slot.name] as string} />
+							<SlotInput
+								key={slot.name}
+								description={slot.description}
+								name={slot.name}
+								update={update}
+								value={config['slot-' + slot.name] as string}
+							/>
 						))}
 					</div>
 				</>

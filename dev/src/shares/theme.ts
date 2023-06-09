@@ -1,6 +1,20 @@
 import { SelectOption } from '@public-ui/components';
 
-export type Theme = 'unstyled' | 'bamf' | 'bmf' | 'bpa' | 'by' | 'bzst' | 'desy-v1' | 'desy-v2' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'mapz' | 'th' | 'zoll-v2';
+export type Theme =
+	| 'unstyled'
+	| 'bamf'
+	| 'bmf'
+	| 'bpa'
+	| 'by'
+	| 'bzst'
+	| 'desy-v1'
+	| 'desy-v2'
+	| 'ecl-ec'
+	| 'ecl-eu'
+	| 'itzbund'
+	| 'mapz'
+	| 'th'
+	| 'zoll-v2';
 
 export const isTheme = (value: unknown) => {
 	console.log('typeof value', typeof value);

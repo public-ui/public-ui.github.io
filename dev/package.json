@@ -6,7 +6,7 @@
 		"docusaurus": "npm run gen:doc && docusaurus",
 		"start": "npm run gen:doc && docusaurus start --no-open",
 		"startonly": "docusaurus start --no-open",
-		"build": "rimraf build && cp node_modules/@public-ui/components/cheat-sheet.html static/cheat-sheet/index.html && npm run gen:doc && docusaurus build && node scripts/update.meta.js && node scripts/minify.js && node scripts/sitemap.en.js",
+		"build": "rimraf build && node scripts/cheat-sheet.js && npm run gen:doc && docusaurus build && node scripts/update.meta.js && node scripts/minify.js && node scripts/sitemap.en.js",
 		"swizzle": "npm run gen:doc && docusaurus swizzle",
 		"deploy": "npm run gen:doc && docusaurus deploy",
 		"clear": "npm run gen:doc && docusaurus clear",

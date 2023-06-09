@@ -60,7 +60,13 @@ export function Icon(props: Props) {
 				<KolDetails _summary="Links">
 					<div className="flex flex-wrap">
 						{iconList.map((icon) => (
-							<KolButton key={icon} _icon={`codicon codicon-${icon}`} _iconOnly _label="" _on={{ onClick: (e: Event) => setLeft(icon) }}></KolButton>
+							<KolButton
+								key={icon}
+								_icon={`codicon codicon-${icon}`}
+								_iconOnly
+								_label=""
+								_on={{ onClick: (e: Event) => setLeft(icon) }}
+							></KolButton>
 						))}
 					</div>
 				</KolDetails>
@@ -71,7 +77,13 @@ export function Icon(props: Props) {
 				<KolDetails _summary="Rechts">
 					<div className="flex flex-wrap">
 						{iconList.map((icon) => (
-							<KolButton key={icon} _icon={`codicon codicon-${icon}`} _iconOnly _label="" _on={{ onClick: (e: Event) => setRight(icon) }}></KolButton>
+							<KolButton
+								key={icon}
+								_icon={`codicon codicon-${icon}`}
+								_iconOnly
+								_label=""
+								_on={{ onClick: (e: Event) => setRight(icon) }}
+							></KolButton>
 						))}
 					</div>
 				</KolDetails>
@@ -82,7 +94,13 @@ export function Icon(props: Props) {
 				<KolDetails _summary="Oben">
 					<div className="flex flex-wrap">
 						{iconList.map((icon) => (
-							<KolButton key={icon} _icon={`codicon codicon-${icon}`} _iconOnly _label="" _on={{ onClick: (e: Event) => setTop(icon) }}></KolButton>
+							<KolButton
+								key={icon}
+								_icon={`codicon codicon-${icon}`}
+								_iconOnly
+								_label=""
+								_on={{ onClick: (e: Event) => setTop(icon) }}
+							></KolButton>
 						))}
 					</div>
 				</KolDetails>
@@ -93,7 +111,13 @@ export function Icon(props: Props) {
 				<KolDetails _summary="Unten">
 					<div className="flex flex-wrap">
 						{iconList.map((icon) => (
-							<KolButton key={icon} _icon={`codicon codicon-${icon}`} _iconOnly _label="" _on={{ onClick: (e: Event) => setBottom(icon) }}></KolButton>
+							<KolButton
+								key={icon}
+								_icon={`codicon codicon-${icon}`}
+								_iconOnly
+								_label=""
+								_on={{ onClick: (e: Event) => setBottom(icon) }}
+							></KolButton>
 						))}
 					</div>
 				</KolDetails>

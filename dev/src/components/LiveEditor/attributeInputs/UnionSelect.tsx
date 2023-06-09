@@ -23,7 +23,11 @@ export function UnionSelect(props: Props) {
 	}
 
 	return (
-		<KolSelect _list={JSON.stringify(list)} _on={{ onChange: (e: Event, v: unknown) => update(name, (v as string[])[0]) }} _value={value as string}>
+		<KolSelect
+			_list={JSON.stringify(list)}
+			_on={{ onChange: (e: Event, v: unknown) => update(name, (v as string[])[0]) }}
+			_value={value as string}
+		>
 			{label}
 		</KolSelect>
 	);
