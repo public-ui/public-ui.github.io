@@ -330,7 +330,7 @@ noch die Icons ausgegeben.`,
 
 Die **Popover**-Komponente stellt eine Möglichkeit dar zusätzliche Inhalte in ein temporäres Element zu setzen, das, ähnlich wie <kol-link _href="" _label="Tooltip"></kol-link>, um sein Triggerelement angeordnet ist.
 Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).`,
-	props: `_alignment, _show`
+	props: `_align, _show`
 },{
 	name: `progress`,
 	desc: `Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine optische Rückmeldung gegeben werden kann.`,
@@ -429,46 +429,37 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 				};
 				propertyTable._data = [{
 	name: `_label`,
-	desc: `Das Label dient der Beschriftung unterschiedlicher Elemente.
-- Button -> label text
-- Heading -> headline text
-- Input, Select und Textarea -> label text
-- Summary -> summary text
-- Table -> caption text
-- etc.
-
-Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
-wenn man das Label mittels dem Expert-Slot überschreiben will.`,
+	desc: `Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
 	types: `string`,
 	comps: `badge, button, button-link, heading, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, progress, select, split-button, textarea, tooltip`
 },{
 	name: `_tab-index`,
-	desc: `Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)`,
+	desc: `Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)`,
 	types: `number`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_disabled`,
-	desc: `Gibt an, ob der Button deaktiviert ist.`,
+	desc: `Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.`,
 	types: `boolean`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_icon`,
-	desc: `Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.`,
+	desc: `Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).`,
 	types: `KoliBriHorizontalIcon & KoliBriVerticalIcon | string, string, string | { checked: string; indeterminate?: string; unchecked?: string; } & { checked?: string; indeterminate: string; unchecked?: string; } & { checked?: string; indeterminate?: string; unchecked: string; }, string | { right?: IconOrIconClass; left?: IconOrIconClass; }`,
 	comps: `badge, button, button-link, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select, split-button`
 },{
 	name: `_id`,
-	desc: `Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.`,
+	desc: `Gibt die interne ID des primären Elements in der Komponente an.`,
 	types: `string`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea, tooltip`
 },{
 	name: `_alert`,
-	desc: `Gibt an, ob der Screenreader die Meldung vorlesen soll.`,
+	desc: `Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.`,
 	types: `boolean`,
 	comps: `alert, alert-wc, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea, toast`
 },{
 	name: `_access-key`,
-	desc: `Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.`,
+	desc: `Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.`,
 	types: `string`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
 },{
@@ -478,7 +469,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, progress, select, textarea`
 },{
 	name: `_hide-label`,
-	desc: `Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.`,
+	desc: `Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.`,
 	types: `boolean`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
 },{
@@ -503,17 +494,17 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_aria-label`,
-	desc: `Gibt an, was der Screenreader ausgeben soll`,
+	desc: `Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
 	types: `string`,
 	comps: `breadcrumb, button, button-link, icon, link, link-button, modal, nav, skip-nav, split-button, symbol, tabs`
 },{
 	name: `_variant`,
-	desc: `Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.`,
+	desc: `Gibt an, welche Variante der Darstellung genutzt werden soll.`,
 	types: `"bar" | "cycle", "block" | "inline", "button" | "checkbox" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "cycle" | "dot" | "none", "primary" | "secondary"`,
 	comps: `alert, alert-wc, button, input-checkbox, link-button, nav, pagination, progress, quote, spin, split-button`
 },{
 	name: `_type`,
-	desc: `Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.`,
+	desc: `Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.`,
 	types: `"bar" | "cycle", "button" | "checkbox" | "default" | "switch", "button" | "reset" | "submit", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
 	comps: `alert, alert-wc, button, button-link, input-checkbox, input-date, input-number, input-text, progress, split-button, toast`
 },{
@@ -528,7 +519,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `input-color, input-date, input-email, input-number, input-radio, input-range, input-text, select`
 },{
 	name: `_tooltip-align`,
-	desc: `Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.`,
+	desc: `Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `abbr, button, button-link, link, link-button, pagination, split-button`
 },{
@@ -543,32 +534,32 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
 },{
 	name: `_level`,
-	desc: `Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.`,
+	desc: `Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.`,
 	types: `0 | 1 | 2 | 3 | 4 | 5 | 6`,
 	comps: `accordion, alert, alert-wc, card, heading, toast`
 },{
 	name: `_icon-only`,
-	desc: `Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.`,
+	desc: `Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.`,
 	types: `boolean`,
 	comps: `badge, button, button-link, link, link-button, split-button`
 },{
 	name: `_role`,
-	desc: `Gibt an, welche Role der Schalter hat.`,
+	desc: `Gibt die Rolle des primären Elements in der Komponente an.`,
 	types: `"button" | "link" | "tab"`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_aria-selected`,
-	desc: `Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
+	desc: `Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
 	types: `boolean`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_aria-expanded`,
-	desc: `Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
+	desc: `Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
 	types: `boolean`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_aria-current`,
-	desc: `Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
+	desc: `Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
@@ -583,7 +574,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `input-email, input-number, input-password, input-text, textarea`
 },{
 	name: `_heading`,
-	desc: `Gibt den Titel der Meldung an.`,
+	desc: `Gibt die Beschriftung der Komponente an.`,
 	types: `string`,
 	comps: `accordion, alert, alert-wc, card, toast`
 },{
@@ -593,7 +584,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `input-email, input-password, input-text, select`
 },{
 	name: `_max-length`,
-	desc: `Gibt an, wie viele Zeichen man maximal eingeben kann.`,
+	desc: `Gibt an, wie viele Zeichen maximal eingegeben werden können.`,
 	types: `number`,
 	comps: `input-email, input-password, input-text, textarea`
 },{
@@ -608,22 +599,22 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `button, link-button, pagination, split-button`
 },{
 	name: `_step`,
-	desc: `Gibt die Schrittweite der Wertveränderung an`,
+	desc: `Gibt die Schrittweite der Wertveränderung an.`,
 	types: `number`,
 	comps: `input-date, input-number, input-range`
 },{
 	name: `_min`,
-	desc: `Gibt den Minimalwert des Eingabefeldes an.`,
+	desc: `Gibt den kleinstmöglichen Eingabewert an.`,
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range`
 },{
 	name: `_show`,
-	desc: `Gibt an, ob der Toast eingeblendet wird.`,
+	desc: `Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.`,
 	types: `boolean`,
 	comps: `popover, spin, toast`
 },{
 	name: `_pattern`,
-	desc: `Gibt ein Prüfmuster für das Eingabefeld an.`,
+	desc: `Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.`,
 	types: `string`,
 	comps: `input-email, input-password, input-text`
 },{
@@ -633,17 +624,17 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `input-email, input-file, select`
 },{
 	name: `_links`,
-	desc: `Gibt die geordnete Liste der Seitenhierarchie an.`,
+	desc: `Gibt die Liste der darzustellenden Button, Links oder Texte an.`,
 	types: `ButtonOrLinkOrTextWithChildrenProps[] | string, LinkProps[] | string`,
 	comps: `breadcrumb, nav, skip-nav`
 },{
 	name: `_href`,
-	desc: `Gibt die Ziel-Url des Links an.`,
+	desc: `Gibt den Link zur Quelle des Zitates an.`,
 	types: `string`,
 	comps: `link, link-button, quote`
 },{
 	name: `_has-closer`,
-	desc: `Aktiviert das Schließen-Icon.`,
+	desc: `Gibt an, ob die Komponente einen Schließen-Schalter hat.`,
 	types: `boolean`,
 	comps: `alert, alert-wc, toast`
 },{
@@ -663,24 +654,29 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `link, link-button`
 },{
 	name: `_orientation`,
-	desc: `Gibt die Ausrichtung der LinkList an.`,
+	desc: `Gibt die horizontale oder vertikale Ausrichtung der Komponente an.`,
 	types: `"horizontal" | "vertical"`,
 	comps: `input-radio, nav`
 },{
 	name: `_open`,
-	desc: `Gibt an, ob das Accordion geöffnet ist.`,
+	desc: `Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.`,
 	types: `boolean`,
 	comps: `accordion, details`
 },{
 	name: `_icon-align`,
-	desc: `Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.`,
+	desc: `Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `button, link`
 },{
 	name: `_caption`,
-	desc: `Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.`,
+	desc: `Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
 	types: `string`,
 	comps: `quote, table`
+},{
+	name: `_align`,
+	desc: `Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.`,
+	types: `"bottom" | "left" | "right" | "top"`,
+	comps: `popover, tooltip`
 },{
 	name: `_width`,
 	desc: `Setzt die Breite des Modals. (max-width: 100%).`,
@@ -799,7 +795,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
-	types: `string | { _label: string; } & { _ariaControls?: string; _ariaLabel?: string; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Alignment; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Alignment; _ariaCurrent?: AriaCurrent; _ariaExpanded?: boolean; _ariaSelected?: boolean; _disabled?: boolean; _accessKey?: string; _id?: string; _on?: KoliBriButtonCallbacks<unknown>; _type?: KoliBriButtonType; _value?: unknown; _variant?: KoliBriButtonVariant; _customClass?: string; }`,
+	types: `string | { _label: string; } & { _ariaControls?: string; _ariaLabel?: string; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Align; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Align; _ariaCurrent?: AriaCurrent; _ariaExpanded?: boolean; _ariaSelected?: boolean; _disabled?: boolean; _accessKey?: string; _id?: string; _on?: KoliBriButtonCallbacks<unknown>; _type?: KoliBriButtonType; _value?: unknown; _variant?: KoliBriButtonVariant; _customClass?: string; }`,
 	comps: `badge`
 },{
 	name: `_color`,
@@ -813,7 +809,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `toast`
 },{
 	name: `_show-dropdown`,
-	desc: `Gibt an, welche Rolle der Schalter hat.`,
+	desc: `Gibt die Rolle des primären Elements in der Komponente an.`,
 	types: `boolean`,
 	comps: `split-button`
 },{
@@ -859,7 +855,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 },{
 	name: `_pagination`,
 	desc: `Gibt an, ob die Daten geteilt in Seiten angezeigt wird.`,
-	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _customClass?: string; _variant?: KoliBriButtonVariant; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _tooltipAlign?: Alignment; }`,
+	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _customClass?: string; _variant?: KoliBriButtonVariant; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _tooltipAlign?: Align; }`,
 	comps: `table`
 },{
 	name: `_min-width`,
@@ -893,7 +889,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	comps: `select`
 },{
 	name: `_headline`,
-	desc: `Gibt die Überschrift der Card an.`,
+	desc: `Gibt die Beschriftung der Komponente an.`,
 	types: `string`,
 	comps: `card`
 },{
@@ -921,16 +917,6 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	desc: `Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.`,
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `nav`
-},{
-	name: `_alignment`,
-	desc: `Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.`,
-	types: `"bottom" | "left" | "right" | "top"`,
-	comps: `popover`
-},{
-	name: `_align`,
-	desc: `Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.`,
-	types: `"bottom" | "left" | "right" | "top"`,
-	comps: `tooltip`
 },{
 	name: `_accept`,
 	desc: `Gibt an, welche Dateiformate erlaubt sind.`,
