@@ -4,13 +4,13 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 
 ## Installation
 
-```
+```bash
 $ pnpm i
 ```
 
 ## Local Development
 
-```
+```bash
 $ npm start
 $ npm start -- --locale en
 ```
@@ -19,7 +19,7 @@ This command starts a local development server and opens up a browser window. Mo
 
 ## Build
 
-```
+```bash
 $ npm run build
 ```
 
@@ -29,6 +29,7 @@ This command generates static content into the `build` directory and can be serv
 
 Basic rules for translate the website:
 
+- File names all in english - for SEO URLs.
 - The translation should be as close as possible to the original text.
 - The translation keys should be in English separated by dashes (kebab-case).
 - The default translation text (`message`) should be in German. So we does not need always a description. Later they will be replaced with other language values.
@@ -40,3 +41,4 @@ Basic rules for translate the website:
   - So all file names should be in English.
 - All code samples should be in English.
 - All technical terms should be in English.
+- Use no tags: replace `/tags:(\n.+)+/` - `---`
