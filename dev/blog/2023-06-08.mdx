@@ -34,6 +34,8 @@ Die wichtigsten Änderungen sind:
       - `_show-dropdown` ...
 - Expert-Slot
   - Alle Inputs-, Select- und Textarea-Komponenten haben nun einen Expert-Slot und das `_label` ist Pflicht. Wenn das `_label=""` leer bleibt, dann wird das Label über den Slot, wie gewohnt angezeigt.
+  - Code-Replacement - am besten einzeln ersetzen:
+    - `(<Kol(Button|Button|Link|Heading|Input[^>]+|Link|LinkButton|Select|Textarea))>(\n?\t*)([^\n]+)[^<]+<\/Kol(Button|Button|Link|Heading|Input[^>]+|Link|LinkButton|Select|Textarea)>` -> `$1 _label="$5" />`
 - Theming
 - Dokumentation
 - Adapter
