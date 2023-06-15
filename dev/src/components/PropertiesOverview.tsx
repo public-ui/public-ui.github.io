@@ -3,19 +3,26 @@ import React, { FC } from 'react';
 import ELEMENTS from '@public-ui/components/custom-elements.json';
 
 const BLACKLIST = [
+	'kol-alert-wc',
+	'kol-all',
 	'kol-button-group',
 	'kol-color',
 	'kol-counter',
+	'kol-button-wc',
 	'kol-heading-wc',
 	'kol-icon-font-awesome',
 	'kol-icon-icofont',
+	'kol-input',
 	'kol-input-adapter-leanup',
 	'kol-input-radio-group',
 	'kol-kolibri',
 	'kol-logo',
 	'kol-link-group',
+	'kol-link-wc',
 	'kol-span',
 	'kol-span-wc',
+	'kol-symbol',
+	'kol-tooltip',
 	'kol-version',
 ];
 type Property = 'components' | 'descriptions' | 'types';

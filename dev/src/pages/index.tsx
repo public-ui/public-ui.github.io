@@ -49,7 +49,7 @@ export default function Homepage(): JSX.Element {
 						_icon={{
 							right: 'codicon codicon-dashboard',
 						}}
-						_href="docs/get-started/erste-schritte"
+						_href="docs/get-started/first-steps"
 						_label={translate({
 							id: 'custom.get-started-button',
 						})}

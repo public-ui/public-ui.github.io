@@ -47,7 +47,8 @@ const config = {
 					// },
 				},
 				blog: {
-					blogDescription: 'Im Blog greifen wir verschiedene interessant und hilfreiche Themen rund um barrierefreie Webcomponents auf.',
+					blogDescription:
+						'Im Blog greifen wir verschiedene interessant und hilfreiche Themen rund um barrierefreie Webcomponents auf.',
 					blogSidebarTitle: 'Neueste Posts',
 					postsPerPage: 'ALL',
 					feedOptions: {
@@ -229,16 +230,17 @@ const config = {
 		// 	},
 		// ],
 		// 'docusaurus-plugin-sass',
-		// [
-		// 	'@docusaurus/plugin-client-redirects',
-		// 	{
-		// 		createRedirects: (path) => {
-		// 			if (/\?path=/) {
-		// 				return ['/404'];
-		// 			}
-		// 		},
-		// 	},
-		// ],
+		[
+			'@docusaurus/plugin-client-redirects',
+			{
+				redirects: [
+					{
+						from: '/docs/get-started/erste-schritte',
+						to: '/docs/get-started/first-steps',
+					},
+				],
+			},
+		],
 	],
 	themes: ['@docusaurus/theme-mermaid'],
 };

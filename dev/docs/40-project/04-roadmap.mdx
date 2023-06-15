@@ -21,37 +21,49 @@ tags:
 |   ❌   | Erstmal nicht geplant |
 |   ➕   | Verfügbar             |
 |   ➖   | Nicht verfügbar       |
+|   ⚠️   | Veraltet              |
 
 ## Todo-Liste
 
-| Typ                  | Vorhaben                              | Status |   Version 1    | Version 2 |
-| -------------------- | ------------------------------------- | :----: | :------------: | :-------: |
-| Architektur          | Vereinheitlichung aller Propteries    |   👩‍💻   |       ➕       |    ➕     |
-| Architektur          | Expert-Slot                           |   👩‍💻   | ➕<sup>1</sup> |    ➕     |
-| Architektur          | Auslagerung aller Bund-Themes         |   👩‍💻   |       ➕       |    ➕     |
-| Feature              | Checkbox in Tabellen                  |   🕑   |       ➕       |    ➕     |
-| Feature              | Tabellen mit Footer                   |   🕑   |       ➕       |    ➕     |
-| Dokumentation        | Testergebnisse zu allen Komponenten   |   🕑   |       ➕       |    ➕     |
-| Developer Experience | Bereitstellung einer Demo-Anwendung   |   🕑   |       ➕       |    ➕     |
-| Architektur          | Label-Property für alle Bezeichnungen |   🕑   |       ➕       |    ➕     |
-| Theming              | ThemingToken-basiertes Theme          |   🕑   |       ➕       |    ➕     |
-| Theming              | Dark-Mode                             |   🕑   |       ➕       |    ➕     |
-| Komponent            | Accordion-Gruppe                      |   🕑   | ➕<sup>2</sup> |    ➕     |
-| Komponent            | Avatar                                |   🕑   | ➕<sup>2</sup> |    ➕     |
-| Komponent            | ~~Carousel~~                          |   ❌   |       ➖       |    ➖     |
-| Komponent            | ~~Cookie-Banner~~                     |   ❌   |       ➖       |    ➖     |
-| Komponent            | Dialog                                |   🕑   | ➕<sup>2</sup> |    ➕     |
-| Komponent            | Dropdown                              |   ✅   |       ➕       |    ➕     |
-| Komponent            | Image                                 |   ✅   |       ➕       |    ➕     |
-| Komponent            | ~~Listbox~~                           |   ❌   |       ➖       |    ➖     |
-| Komponent            | ~~Timeline~~                          |   ❌   |       ➖       |    ➖     |
-| Komponent            | Tree                                  |   🕑   | ➕<sup>2</sup> |    ➕     |
-| Komponent            | Kopf-Zeilen und Spalten fixieren      |   👩‍💻   |       ➕       |    ➕     |
+| Typ                  | Vorhaben                                     | Status |   Version 1    |    Version 2    |
+| -------------------- | -------------------------------------------- | :----: | :------------: | :-------------: |
+| Architektur          | Vereinheitlichung aller Propteries           |   ✅   |       ➕       |       ➕        |
+| Architektur          | Expert-Slot                                  |   ✅   | ➕<sup>1</sup> |       ➕        |
+| Architektur          | Auslagerung aller Bund-Themes                |   👩‍💻   |       ➕       |       ➕        |
+| Feature              | Checkbox in Tabellen                         |   🕑   |       ➕       |       ➕        |
+| Feature              | Tabellen mit Footer                          |   🕑   |       ➕       |       ➕        |
+| Dokumentation        | Testergebnisse zu allen Komponenten          |   🕑   |       ➕       |       ➕        |
+| Developer Experience | Bereitstellung einer Demo-Anwendung          |   🕑   |       ➕       |       ➕        |
+| Eigenschaft          | Label-Property für alle Bezeichnungen        |   ✅   |       ➕       |       ➕        |
+| Theming              | ThemingToken-basiertes Theme                 |   🕑   |       ➕       |       ➕        |
+| Theming              | Dark-Mode                                    |   🕑   |       ➕       |       ➕        |
+| Komponent            | Accordions (Group)                           |   🕑   | ➕<sup>2</sup> |       ➕        |
+| Komponent            | Avatar                                       |   🕑   | ➕<sup>2</sup> |       ➕        |
+| Komponent            | ButtonGroup (⚠️ Deprecated)                  |   ✅   |       ➕       | ➖<sup>3</sup>  |
+| Komponent            | LinkGroup (⚠️ Deprecated)                    |   ✅   |       ➕       | ➖<sup>3</sup>  |
+| Komponent            | IconFontAwesome (⚠️ Deprecated)              |   ✅   |       ➕       | ➖ <sup>3</sup> |
+| Komponent            | IconIcofont (⚠️ Deprecated)                  |   ✅   |       ➕       | ➖ <sup>3</sup> |
+| Komponent            | InputAdapterLeanup (Moving in other Package) |   ✅   |       ➕       | ➕ <sup>3</sup> |
+| Komponent            | InputRadioGroup (⚠️ Deprecated)              |   ✅   |       ➕       | ➖ <sup>3</sup> |
+| Komponent            | Symbol (⚠️ Deprecated)                       |   ✅   |       ➕       | ➖ <sup>3</sup> |
+| Komponent            | ~~Carousel~~                                 |   ❌   |       ➖       | ➖ <sup>3</sup> |
+| Komponent            | ~~Cookie-Banner~~                            |   ❌   |       ➖       |       ➖        |
+| Komponent            | Dialog                                       |   🕑   | ➕<sup>2</sup> |       ➕        |
+| Komponent            | Dropdown / Split-Button                      |   ✅   |       ➕       |       ➕        |
+| Komponent            | Image                                        |   ✅   |       ➕       |       ➕        |
+| Komponent            | ~~Listbox~~                                  |   ❌   |       ➖       |       ➖        |
+| Komponent            | Logo (Moving in other Package)               |   ✅   |       ➕       | ➕ <sup>3</sup> |
+| Komponent            | Tabs (Refactoring)                           |   🕑   |       ➕       |       ➕        |
+| Komponent            | ~~Timeline~~                                 |   ❌   |       ➖       |       ➖        |
+| Komponent            | Tree                                         |   🕑   | ➕<sup>2</sup> |       ➕        |
+| Komponent            | Kopf-Zeilen und -Spalten fixieren            |   👩‍💻   |       ➕       |       ➕        |
 
 > <small>
 > 	<sup>1</sup> Dieses Vorhaben wird weitestgehend abwärtskompatibel umgesetzt.
 > 	<br />
 > 	<sup>2</sup> Dieses Vorhaben ist wahrscheinlich auch in Version 1 verfügbar.
+> 	<br />
+> 	<sup>3</sup> Achtung, diese Komponente entfällt in Version 2.
 > </small>
 
 ## Lose Can do-Liste

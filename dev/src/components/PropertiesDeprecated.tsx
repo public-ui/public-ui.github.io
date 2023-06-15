@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 const DEPRECATED = new Map<string, Set<string>>();
+DEPRECATED.set('_dataFoot', new Set(['']));
 DEPRECATED.set('_hide-button', new Set(['_has-buttons (?)']));
 DEPRECATED.set('_hide-label', new Set(['_icon-only']));
 DEPRECATED.set(
@@ -10,7 +11,7 @@ DEPRECATED.set(
 // DEPRECATED.set('_list', new Set(['_links']));
 DEPRECATED.set('_variant', new Set(['_type<sup>*</sup>']));
 DEPRECATED.set('_show', new Set(['_show-dropdown']));
-DEPRECATED.set('', new Set(['_has-footer', '_height', '_icon-align', '_part', '_show-duration']));
+DEPRECATED.set('', new Set(['_has-footer', '_height', '_icon-align', '_part', '_show-duration', '_selector']));
 
 export const PropertiesDeprecated: FC = () => {
 	return (
