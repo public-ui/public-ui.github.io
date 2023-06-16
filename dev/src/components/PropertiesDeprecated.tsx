@@ -11,7 +11,10 @@ DEPRECATED.set(
 // DEPRECATED.set('_list', new Set(['_links']));
 DEPRECATED.set('_variant', new Set(['_type<sup>*</sup>']));
 DEPRECATED.set('_show', new Set(['_show-dropdown']));
-DEPRECATED.set('', new Set(['_has-footer', '_height', '_icon-align', '_part', '_show-duration', '_stealth', '_selector']));
+DEPRECATED.set(
+	'',
+	new Set(['_has-footer', '_height', '_icon-align', '_part', '_show-duration', '_stealth', '_selector'])
+);
 
 export const PropertiesDeprecated: FC = () => {
 	return (
