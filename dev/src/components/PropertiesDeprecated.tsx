@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 const DEPRECATED = new Map<string, Set<string>>();
 DEPRECATED.set('_dataFoot', new Set(['']));
 DEPRECATED.set('_hide-button', new Set(['_has-buttons (?)']));
-DEPRECATED.set('_hide-label', new Set(['_icon-only']));
+DEPRECATED.set('_hide-label', new Set(['_hideLabel']));
 DEPRECATED.set(
 	'_label',
 	new Set(['_aria-label', '_caption', '_heading', '_headline', '_quote (?)', '_summary', '_symbol', '_title'])

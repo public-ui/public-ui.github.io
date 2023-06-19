@@ -63,7 +63,7 @@ export function Icon(props: Props) {
 							<KolButton
 								key={icon}
 								_icon={`codicon codicon-${icon}`}
-								_iconOnly
+								_hideLabel
 								_label=""
 								_on={{ onClick: (e: Event) => setLeft(icon) }}
 							></KolButton>
@@ -80,7 +80,7 @@ export function Icon(props: Props) {
 							<KolButton
 								key={icon}
 								_icon={`codicon codicon-${icon}`}
-								_iconOnly
+								_hideLabel
 								_label=""
 								_on={{ onClick: (e: Event) => setRight(icon) }}
 							></KolButton>
@@ -97,7 +97,7 @@ export function Icon(props: Props) {
 							<KolButton
 								key={icon}
 								_icon={`codicon codicon-${icon}`}
-								_iconOnly
+								_hideLabel
 								_label=""
 								_on={{ onClick: (e: Event) => setTop(icon) }}
 							></KolButton>
@@ -114,7 +114,7 @@ export function Icon(props: Props) {
 							<KolButton
 								key={icon}
 								_icon={`codicon codicon-${icon}`}
-								_iconOnly
+								_hideLabel
 								_label=""
 								_on={{ onClick: (e: Event) => setBottom(icon) }}
 							></KolButton>

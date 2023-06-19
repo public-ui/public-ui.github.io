@@ -49,7 +49,7 @@ export type Params = {
 	_href?: string;
 	_icon?: KoliBriAllIcon | string;
 	'_icon-align'?: 'bottom' | 'left' | 'right' | 'top';
-	'_icon-only'?: boolean;
+	_hideLabel?: boolean;
 	_id?: string;
 	_indeterminate?: boolean;
 	_label?: string;
