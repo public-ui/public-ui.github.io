@@ -1,3 +1,4 @@
+
 # Erste Schritte
 
 <div class="grid md:grid-cols-2 mb-4">
@@ -13,7 +14,7 @@
 
 ## Neues Projekt erstellen
 
-Ein neues React-Projekt kann mit Hilfe des Kommandozeilenassistenten schnell erstellt werden.
+Ein neues Projekt kann mit Hilfe des Kommandozeilenassistenten schnell erstellt werden. (hier im Beispiel: react)
 
 ```
 npm init kolibri@latest my-kolibri-app
@@ -31,6 +32,8 @@ npm init kolibri@latest my-kolibri-app
 Schriftarten werden von Natur aus losgelöst vom CSS geladen und müssen je nach **KoliBri**-Theme in die projektspezifische Rahmenseite (`index.html`) eingebunden werden.
 
 Hierzu können die in der Bibliothek mitgelieferten Schriftarten in die eigenen Assets kopiert werden: `node_modules/@public-ui/themes/assets`, oder eigene verwendet werden.
+
+Bitte importieren Sie nur die Schriftarten und Icons, die Sie verwenden, um unnötigen Datentransfer zu vermeiden.
 
 ```html
 <!DOCTYPE html>
@@ -57,14 +60,28 @@ Hierzu können die in der Bibliothek mitgelieferten Schriftarten in die eigenen 
 </html>
 ```
 
+### Typescript
+
+Um eine umfängliche Codevervollständigung zu erhalten, benötigen Sie folgenden Eintrag in der `tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+		...
+    "moduleResolution": "Node",
+		...
+  },
+	...
+}
+```
+
 ### I Vite + React
 
 #### 1. Installieren der KoliBri-Bibliotheken
 
 <kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
-	<div>npm i @public-ui/components @public-ui/themes @public-ui/react</div>
-	<div>pnpm i @public-ui/components @public-ui/themes @public-ui/react</div>
-	<div>yarn add @public-ui/components @public-ui/themes @public-ui/react</div>
+	<div>```npm i @public-ui/components @public-ui/themes @public-ui/react```</div>
+	<div>```pnpm i @public-ui/components @public-ui/themes @public-ui/react```</div>
+	<div>```yarn add @public-ui/components @public-ui/themes @public-ui/react```</div>
 </kol-tabs>
 
 #### 2. Integration
@@ -104,10 +121,7 @@ index.html
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
-+   <script
-+     type="module"
-+     src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
-+   ></script>
++   <script type="module" src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"></script>
   </head>
   <body>
     <div id="root"></div>
@@ -136,9 +150,9 @@ export const AppComponent = () => {
 #### 1. Installieren der KoliBri-Bibliotheken
 
 <kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
-	<div>npm i @public-ui/components @public-ui/themes @public-ui/vue</div>
-	<div>pnpm i @public-ui/components @public-ui/themes @public-ui/vue</div>
-	<div>yarn add @public-ui/components @public-ui/themes @public-ui/vue</div>
+	<div>```npm i @public-ui/components @public-ui/themes @public-ui/vue```</div>
+	<div>```pnpm i @public-ui/components @public-ui/themes @public-ui/vue```</div>
+	<div>```yarn add @public-ui/components @public-ui/themes @public-ui/vue```</div>
 </kol-tabs>
 
 #### 2. Plugin
@@ -185,10 +199,7 @@ index.html
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+    <script
-+      type="module"
-+      src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
-+    ></script>
++   <script type="module" src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"></script>
     <title>Vite App</title>
   </head>
   <body>
@@ -198,7 +209,7 @@ index.html
 </html>
 ```
 
-#### 4. Komponenten als custom components registrieren
+#### 4. Konfiguration anpassen
 
 vite.config.ts
 
@@ -232,8 +243,8 @@ export default defineConfig({
 #### 5. Beispiel
 
 ```html
-<kol-input-text :_value="text" :_on="{ onChange: (e: unknown, v: string) => (text = v) }"></kol-input-text>
-<kol-button _label="Text löschen" :_on="{ onClick: () => (text = '') }"></kol-button>
+<KolInputText :_value="text" :_on="{ onChange: (e: unknown, v: string) => (text = v) }"></KolInputText>
+<KolButton _label="Text löschen" :_on="{ onClick: () => (text = '') }"></KolButton>
 ```
 
 Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Parameter und den Wert des Feldes als Zweiten.
@@ -242,15 +253,11 @@ Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Pa
 
 #### 1. Installieren der KoliBri-Bibliotheken
 
-`npm i @public-ui/components @public-ui/react @public-ui/themes`
-
-oder
-
-`pnpm i @public-ui/components @public-ui/react @public-ui/themes`
-
-oder
-
-`yarn add @public-ui/components @public-ui/react @public-ui/themes`
+<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
+	<div>```npm i @public-ui/components @public-ui/themes @public-ui/react```</div>
+	<div>```pnpm i @public-ui/components @public-ui/themes @public-ui/react```</div>
+	<div>```yarn add @public-ui/components @public-ui/themes @public-ui/react```</div>
+</kol-tabs>
 
 #### 2. Registrieren des KoliBri-Loaders
 
@@ -303,9 +310,11 @@ export const AppComponent = () => {
 
 ### IV ohne Framework
 
-`pnpm i @public-ui/components @public-ui/themes`
-`npm i @public-ui/components @public-ui/themes`
-`yarn add @public-ui/components @public-ui/themes`
+<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
+	<div>```npm i @public-ui/components @public-ui/themes```</div>
+	<div>```pnpm i @public-ui/components @public-ui/themes```</div>
+	<div>```yarn add @public-ui/components @public-ui/themes```</div>
+</kol-tabs>
 
 ```diff
 <!DOCTYPE html>
@@ -315,10 +324,7 @@ export const AppComponent = () => {
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Title</title>
-+    <script
-+      type="module"
-+      src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
-+    ></script>
++   <script type="module" src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"></script>
   </head>
   <body>
     <div id="app"></div>
@@ -345,7 +351,7 @@ Sofern Schriftarten und/oder Icons verwendet werden, müssen diese, wie oben bes
 
 Hierbei ist die Web-Component Schreibweise (kebab-case) zu verwenden. (z.B.: `<kol-heading>`)
 
-## Spezial Features
+## Weitere Optionen
 
 ### Developer Tools
 
@@ -356,13 +362,12 @@ Mittels der folgenden Konfiguration in der HTML-Datei können die Developer-Tool
 <html>
 	<head>
 		<meta name="kolibri" content="dev-mode=true" />
-		<!-- <meta name="kolibri" content="dev-mode=true,experimental-mode=true" /> -->
 	</head>
 	…
 </html>
 ```
 
-### Experimenteller Modus / Labor
+### Experimenteller Modus
 
 Mittels der folgenden Konfiguration in der HTML-Datei kann der experimentelle Modus aktiviert werden.
 
@@ -376,9 +381,9 @@ Mittels der folgenden Konfiguration in der HTML-Datei kann der experimentelle Mo
 </html>
 ```
 
-### Color-Contrast-Analyse
+### Farbkontrastanalyse
 
-Die Color-Contrast-Analyse ermöglicht es, Farb-Kontrast-Fehler innerhalb des DOM's zu erkennen. Durch Hinzufügen der folgenden Konfiguration in den meta-Tag, wird die Color-Contrast-Analyse aktiviert.
+Um Farbkontrastfehler innerhalb des DOMs zu erkennen, können Sie mittels der folgenden Konfiguration die Farbkontrastanalyse aktivieren.
 
 ```html
 …
