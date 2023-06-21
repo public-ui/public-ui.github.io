@@ -1,18 +1,4 @@
----
-slug: /concepts/architecture
-title: Architecture
-description: This page describes the architecture and the development process.
-tags:
-  - architecture
-  - arc42
-  - concept
----
-
-In order to make changes to KoliBri it is necessary to understand the module architecture (KoliBri Factory). More details are described in the section [Modularization](#modularization).
-
-## Monorepo
-
-The repository is built as a monorepo and is managed by `lerna`. The important thing here is that the individual submodules are dependent on other modules.
+# Architecture
 
 ## Develop and change
 
@@ -22,9 +8,11 @@ For development, `pnpm` is used as package manager with `lerna` as monorepo mana
 
 `pnpm i`
 
+> Due to the non-public KoliBri packages, the `pnpm i` command and the `pnpm :publish` command must be run alternately until all packages are once in the local registry (verdaccio) (`pnpm i` runs completely through).
+
 Once everything is installed, the individual modules can be modified and built.
 
-The module `library` can be started via `pnpm start` and displayed in the browser.
+The modules `library` and `storybook` in particular can be accessed and displayed in the browser using `npm start`.
 
 ### Clear all
 
@@ -38,13 +26,13 @@ The Web Component module is located in the package directory (`packages/library`
 
 ## Modularization
 
-The goal of modularization is to limit the technical scope per module to its core task and thus also to simplify maintenance and further development.
+The aim of modularization is to limit the technical scope of each module to its core task and thus also to simplify maintenance and further development.
 
-In the core are functionalities, which proved with the time for helpful with the conversion of components and in principle in each Web Component Lib potentially to use could.
+In the core are functionalities which proved with the time for helpful with the conversion of components and in principle in each Web Component Lib potentially to use could.
 
-The schema, Components (still "Library"), Themes represent a concrete component library. Of it there could be several, which build onion-like from the inside (KoliBri) outward on each other (see below).
+The schema, the components and Themes represent a concrete component library. Of it there could be several, which build onion-like from the inside (KoliBri) outward on each other (see below).
 
-This practice promotes the emergence of new basic components from the subject-specific projects - which can be adopted and shared through a process in KoliBri after checking the qualities and standard.
+This practice promotes the emergence of new basic components from the subject-specific projects - which can be adopted and shared with others through a process in KoliBri after checking the qualities and standard.
 
 ### Simple
 
