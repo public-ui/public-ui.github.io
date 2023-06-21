@@ -855,7 +855,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_pagination`,
 	desc: `Gibt an, ob die Daten geteilt in Seiten angezeigt wird.`,
-	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _customClass?: string; _variant?: KoliBriButtonVariant; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _tooltipAlign?: Align; }`,
+	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _tooltipAlign?: Align; _customClass?: string; _variant?: KoliBriButtonVariant; }`,
 	comps: `table`
 },{
 	name: `_min-width`,
@@ -870,12 +870,12 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_data-foot`,
 	desc: `Hier können die Daten für die Fußzeile der Tabelle übergeben werden.`,
-	types: `KoliBriDataType[] | string`,
+	types: `KoliBriTableDataType[] | string`,
 	comps: `table`
 },{
 	name: `_data`,
 	desc: `Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.`,
-	types: `KoliBriDataType[] | string`,
+	types: `KoliBriTableDataType[] | string`,
 	comps: `table`
 },{
 	name: `_indeterminate`,
