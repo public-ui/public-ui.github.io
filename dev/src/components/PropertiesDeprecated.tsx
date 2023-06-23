@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 const DEPRECATED = new Map<string, Set<string>>();
+DEPRECATED.set('_align', new Set(['_tabs-align', '_tooltip-align']));
 DEPRECATED.set('_dataFoot', new Set(['']));
 DEPRECATED.set('_hide-button', new Set(['_has-buttons (?)']));
 DEPRECATED.set('_hide-label', new Set(['_compact', '_icon-only']));
