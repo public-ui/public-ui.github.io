@@ -4,7 +4,6 @@ export type Theme =
 	| 'unstyled'
 	| 'bamf'
 	| 'bmf'
-	| 'bpa'
 	| 'by'
 	| 'bzst'
 	| 'desy-v1'
@@ -23,7 +22,6 @@ export const isTheme = (value: unknown) => {
 		(value === 'unstyled' ||
 			value === 'bamf' ||
 			value === 'bmf' ||
-			value === 'bpa' ||
 			value === 'by' ||
 			value === 'bzst' ||
 			value === 'desy-v1' ||
@@ -55,10 +53,6 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	{
 		label: 'Bundesministerium der Finanzen',
 		value: 'bmf',
-	},
-	{
-		label: 'Bundesregierung',
-		value: 'bpa',
 	},
 	{
 		disabled: true,
