@@ -8,7 +8,7 @@ Für die Entwicklung wird `pnpm` als Paketmanager in Verbindung mit `lerna` als 
 
 `pnpm i`
 
-> Aufgrund der nicht öffentlich verfügbaren KoliBri-Pakete muss der `pnpm i` Befehl und der `pnpm :publish` Befehl abweckselnd ausgeführt werden, bis alle Pakete einmal in der lokalen Registry (verdaccio) liegen (`pnpm i` läuft komplett durch).
+> Aufgrund der nicht öffentlich verfügbaren KoliBri-Pakete muss der `pnpm i` Befehl und der `pnpm :publish` Befehl abwechselnd ausgeführt werden, bis alle Pakete einmal in der lokalen Registry (verdaccio) liegen (`pnpm i` läuft komplett durch).
 
 Sobald alles installiert ist, können die einzelnen Module modifiziert und gebaut werden.
 
@@ -28,9 +28,9 @@ Im Paket-Verzeichnis (`packages/components`) befindet sich das Web Component-Mod
 
 Ziel der Modularisierung ist es den technischen Scope pro Modul auf dessen Kernaufgabe zu beschränken und damit auch die Pflege und Weiterentwicklung zu vereinfachen.
 
-Im Core befinden sich Funktionalitäten die sich mit der Zeit für hilfreich bei der Umsetzung von Komponenten erwiesen haben und prinzipiell in jeder Web Componenten-Lib potenziell zu Einsatz kommen könnten.
+Im Kern befinden sich Funktionalitäten die sich mit der Zeit für hilfreich bei der Umsetzung von Komponenten erwiesen haben und prinzipiell in jeder Web Component-Lib potenziell zu Einsatz kommen könnten.
 
-Das Schema, Components (noch "Library"), Themes repräsentieren eine konkrete Komponentenbibliothek. Davon könnte es mehrere geben, die zwiebelartig von Innen (KoliBri) nach Außen aufeinander Aufbauen (s.u.).
+Das Schema, die Komponenten und Themes repräsentieren eine konkrete Komponentenbibliothek. Davon könnte es mehrere geben, die zwiebelartig von Innen (KoliBri) nach Außen aufeinander Aufbauen (s.u.).
 
 Diese Praxis fördert die Entstehung neuer Basiskomponenten aus den fachspezifischen Projekten - die durch einen Prozess in KoliBri nach Prüfung der Qualitäten und Standard übernommen werden und mit anderen geteilt kann.
 
