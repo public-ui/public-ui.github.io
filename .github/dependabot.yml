@@ -12,6 +12,8 @@ updates:
     target-branch: main
   - package-ecosystem: npm
     directory: "/dev"
+    ignore:
+      - dependency-name: "rimraf"
     schedule:
       interval: daily
     target-branch: main
