@@ -50,14 +50,15 @@ import {
 } from '@public-ui/react';
 import React from 'react';
 import { TagName } from '../LiveEditor/types';
+import { Config } from '../LiveEditorCompact';
 
 type Props = {
 	tag: TagName;
-	params: Record<string, string | number | boolean>;
+	params: Config;
 };
 
 export function ComponentDisplay(props: Props) {
-	const p: Record<string, string | number | boolean> = {};
+	const p: Config = {};
 	Object.entries(props.params)
 		.filter((tuple) => !tuple[0].startsWith('slot-'))
 		.forEach((tuple) => {
