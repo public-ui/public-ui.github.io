@@ -15,10 +15,28 @@ type Props = {
 	showComponentSwitch?: boolean;
 };
 
-type AllConfig = Record<string, Record<string, string | number | boolean>>;
+export type Config = Record<string, string | number | boolean | string[]>;
+type AllConfig = Record<string, Config>;
+
+function fillDefaultValues(): AllConfig {
+	const result: AllConfig = {};
+	Object.values(allElements.tags).forEach((tag) => {
+		const name = tag.name.replace('kol-', '');
+		result[name] = { defaultValues: [] as string[] };
+		tag.attributes.forEach((attribute: Config) => {
+			if (attribute.defaultValue) {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				result[name][attribute.name as string] = (attribute.defaultValue as string).replaceAll("'", '');
+				(result[name].defaultValues as string[]).push(attribute.name as string);
+			}
+		});
+	});
+	return result;
+}
 
 export function LiveEditorCompact(props: Props) {
-	const [allConfig, setAllConfig] = useState<AllConfig>({});
+	const [allConfig, setAllConfig] = useState<AllConfig>(fillDefaultValues());
 	const [tag, setTag] = useState('badge' as TagName);
 	useEffect(() => {
 		if (props.component) setTag(props.component.replace('kol-', '') as TagName);
@@ -44,8 +62,8 @@ export function LiveEditorCompact(props: Props) {
 			const newConfigPart = {
 				...old[tag],
 				[key]: value,
+				defaultValues: (old[tag].defaultValues as string[]).filter((k) => k !== key),
 			};
-			console.log(newConfigPart);
 			return { ...old, [tag]: newConfigPart };
 		});
 	}

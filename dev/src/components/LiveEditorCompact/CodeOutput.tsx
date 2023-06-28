@@ -3,18 +3,20 @@ import { TagName } from '../LiveEditor/types';
 import Editor from '@monaco-editor/react';
 import { format } from 'prettier';
 import parser from 'prettier/parser-babel';
+import { Config } from '../LiveEditorCompact';
 
 type Props = {
 	tag: TagName;
-	params: Record<string, string | number | boolean>;
+	params: Config;
 };
 
 export function CodeOutput(props: Props) {
 	const { tag, params } = props;
+	const paramsCleaned = Object.entries(params).filter((tuple) => tuple[0] !== 'defaultValues');
 	let paramList = '';
 	const slots = useMemo(() => {
 		let result = '';
-		Object.entries(params)
+		paramsCleaned
 			.filter((tuple) => tuple[0].startsWith('slot-'))
 			.forEach((tuple) => {
 				const content = tuple[1] as string;
@@ -29,7 +31,10 @@ export function CodeOutput(props: Props) {
 		return result;
 	}, [params]);
 
-	for (const [key, value] of Object.entries(params).filter((tuple) => !tuple[0].startsWith('slot-'))) {
+	const filteredParams = paramsCleaned
+		.filter((tuple) => !tuple[0].startsWith('slot-'))
+		.filter((tuple) => !(params.defaultValues as string[]).includes(tuple[0]));
+	for (const [key, value] of filteredParams) {
 		if (value) {
 			let paramString = '';
 			switch (typeof value) {
