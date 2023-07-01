@@ -14,7 +14,7 @@ DEPRECATED.set('_variant', new Set(['_type<sup>*</sup>']));
 DEPRECATED.set('_show', new Set(['_show-dropdown']));
 DEPRECATED.set(
 	'',
-	new Set(['_has-footer', '_height', '_icon-align', '_part', '_show-duration', '_stealth', '_selector'])
+	new Set(['_has-footer', '_height', '_icon-align', '_part', '_show-duration', '_stealth', '_selector', '_useCase'])
 );
 
 export const PropertiesDeprecated: FC = () => {
