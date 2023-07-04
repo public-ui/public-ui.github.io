@@ -96,7 +96,7 @@ const config = {
 						position: 'left',
 					},
 					{ to: '/blog', label: 'Blog', position: 'left' },
-					{ type: 'search', position: 'left' },
+					{ type: 'search', position: 'right' },
 					// {
 					// 	href: 'https://public-ui.github.io/designer',
 					// 	label: 'Designer',

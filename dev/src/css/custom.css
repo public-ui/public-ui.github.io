@@ -31,6 +31,8 @@
 	--ifm-color-primary-lightest: #41586d;
 	--ifm-code-font-size: 95%;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+	--ifm-navbar-height: 5rem; /* 3rem (select) + 2rem (padding) */
 }
 
 .footer__link-item:hover {
@@ -58,6 +60,7 @@ kol-toast {
 }
 
 /* hide colorModeToggle */
+[class^='toggle_node_modules'],
 button[class*='colorModeToggle'],
 button[class*='toggleButton'] {
 	display: none;
@@ -72,8 +75,36 @@ a[aria-current='page'] {
 	font-weight: 700;
 }
 
-.navbar {
-	box-shadow: none !important;
+.kolibri-navbar-wrapper {
+	border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.kolibri-navbar .navbar {
+	box-shadow: none;
+	height: unset;
+	padding: 0;
+	position: unset;
+	top: unset;
+	z-index: unset;
+}
+.navbar__items {
+	flex: 0 0 auto;
+}
+/* search */
+.navbar__items--right {
+	flex-grow: 1;
+	justify-content: flex-start;
+}
+.navbar__items [class^='searchBox_node_modules'] {
+	position: unset;
+	width: 100%;
+}
+.navbar__search-input {
+	width: 100%;
+}
+
+aside.theme-doc-sidebar-container [class^='sidebarViewport_'] {
+	height: unset;
 }
 
 #doc-app > footer,
