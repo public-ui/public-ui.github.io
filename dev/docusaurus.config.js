@@ -96,6 +96,7 @@ const config = {
 						position: 'left',
 					},
 					{ to: '/blog', label: 'Blog', position: 'left' },
+					{ type: 'search', position: 'left' },
 					// {
 					// 	href: 'https://public-ui.github.io/designer',
 					// 	label: 'Designer',
@@ -242,6 +243,7 @@ const config = {
 				],
 			},
 		],
+		require.resolve('docusaurus-lunr-search'),
 	],
 	themes: ['@docusaurus/theme-mermaid'],
 };
