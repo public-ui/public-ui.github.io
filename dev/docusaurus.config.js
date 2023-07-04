@@ -243,6 +243,7 @@ const config = {
 				],
 			},
 		],
+		// docu/origin: https://github.com/praveenn77/docusaurus-lunr-search
 		require.resolve('docusaurus-lunr-search'),
 	],
 	themes: ['@docusaurus/theme-mermaid'],
