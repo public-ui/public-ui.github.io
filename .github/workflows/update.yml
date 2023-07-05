@@ -50,7 +50,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
         run: |
-          pnpm i --frozen-lockfile
+          pnpm i
           npm run build
         working-directory: dev
 
