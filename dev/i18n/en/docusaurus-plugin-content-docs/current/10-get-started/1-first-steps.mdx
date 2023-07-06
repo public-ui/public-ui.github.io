@@ -19,7 +19,10 @@ A new project can be created quickly using the command line wizard.
 npm init kolibri@latest my-kolibri-app
 ```
 
-<img src="https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif" alt="Shows how to create a new app with create-kolibri." />
+<img
+	src="https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif"
+	alt="Shows how to create a new app with create-kolibri."
+/>
 
 ## Integration into existing projects
 
@@ -129,7 +132,7 @@ index.html
 #### 4. Example
 
 ```tsx
-import React from 'react';
+import React from 'React';
 import { KolSpin } from '@public-ui/react';
 
 export const AppComponent = () => {
@@ -260,11 +263,11 @@ Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Pa
 After the preparations are completed, only the KoliBri loader has to be registered.
 It ensures that the Web Components are reloaded asynchronously (lazy) as soon as they are used in the web page.
 
-| Method               | Description                                             |
-| -------------------- | ------------------------------------------------------- |
-| register             | Sets a theme and then registers the loader              |
-| DEFAULT              | Registers the loader for e.g. the DEFAULT theme         |
-| defineCustomElements | Registers the Loader for the Web Components             |
+| Method               | Description                                     |
+| -------------------- | ----------------------------------------------- |
+| register             | Sets a theme and then registers the loader      |
+| DEFAULT              | Registers the loader for e.g. the DEFAULT theme |
+| defineCustomElements | Registers the Loader for the Web Components     |
 
 #### 3. Integration
 
@@ -398,12 +401,6 @@ To detect color contrast errors within the DOM, you can enable color contrast an
 	…
 </html>
 ```
-
-
-
-
-
-
 
 ### 3. Registering the component loaders
 
