@@ -49,7 +49,7 @@ import {
 	KolVersion,
 } from '@public-ui/react';
 import React from 'react';
-import { TagName } from '../LiveEditor/types';
+import { TagName } from '../LiveEditorCompact/types';
 import { Config } from '../LiveEditorCompact';
 
 type Props = {

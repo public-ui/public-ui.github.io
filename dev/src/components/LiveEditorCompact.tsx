@@ -7,8 +7,8 @@ import { AttributeInput } from './LiveEditorCompact/AttributeInput';
 import { CodeOutput } from './LiveEditorCompact/CodeOutput';
 import { ComponentDisplay } from './LiveEditorCompact/ComponentDisplay';
 import { SlotInput } from './LiveEditorCompact/attributeInputs/SlotInput';
-import { AttributeBlackList } from './LiveEditor/lists';
-import { Attribute, Slot, TagName } from './LiveEditor/types';
+import { AttributeBlackList } from './LiveEditorCompact/lists';
+import { Attribute, Slot, TagName } from './LiveEditorCompact/types';
 
 type Props = {
 	component?: string;
