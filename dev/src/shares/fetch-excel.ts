@@ -1,4 +1,4 @@
-import readXlsxFile, { readSheetNames } from 'read-excel-file';
+import { readSheetNames } from 'read-excel-file';
 
 export const getDataFromExcel = async () => {
 	try {

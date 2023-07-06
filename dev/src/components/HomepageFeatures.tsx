@@ -1,6 +1,6 @@
 import React from 'react';
 import { KolIcon, KolLink, KolLinkButton } from '@public-ui/react';
-import Translate, { translate } from '@docusaurus/Translate';
+import { translate } from '@docusaurus/Translate';
 
 type FeatureItem = {
 	icon: string;

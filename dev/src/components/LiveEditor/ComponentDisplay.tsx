@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { useMemo } from 'react';
+import React from 'react';
 import {
 	KolAbbr,
 	KolAccordion,
