@@ -5,7 +5,7 @@ import { BMF, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 import React, { FunctionComponent, PropsWithChildren, useEffect, useState } from 'react';
 import { Theme } from '../shares/theme';
 
-export const Root: FunctionComponent<PropsWithChildren> = (props) => {
+const Root: FunctionComponent<PropsWithChildren> = (props) => {
 	const [theme] = useState<Theme>('bmf');
 
 	useEffect(() => {
