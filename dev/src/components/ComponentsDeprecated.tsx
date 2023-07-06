@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC } from 'React';
 
 const DEPRECATED = new Map<string, Set<string>>();
 DEPRECATED.set('avatar', new Set());

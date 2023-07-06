@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC } from 'React';
 
 import ELEMENTS from '@public-ui/components/custom-elements.json';
 

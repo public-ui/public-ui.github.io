@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'React';
 import { KolIcon, KolLink, KolLinkButton } from '@public-ui/react';
 import { translate } from '@docusaurus/Translate';
 

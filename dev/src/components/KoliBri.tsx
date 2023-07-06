@@ -1,6 +1,6 @@
 import { translate } from '@docusaurus/Translate';
 import { KolAbbr } from '@public-ui/react';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'React';
 
 export const KoliBri: FunctionComponent = () => {
 	return (

@@ -1,5 +1,5 @@
 import BrowserOnly from '@docusaurus/BrowserOnly';
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect } from 'React';
 import { getDataFromExcel } from '../shares/fetch-excel';
 
 export const BitvTestResult: FC = () => {

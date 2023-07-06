@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo } from 'React';
 import { TagName } from '../LiveEditorCompact/types';
 import Editor from '@monaco-editor/react';
 import { format } from 'prettier';

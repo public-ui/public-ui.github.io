@@ -1,6 +1,6 @@
 import { InputTypeOnDefault } from '@public-ui/components/dist/types/types/input/types';
 import { KolSelect } from '@public-ui/react';
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'React';
 import { getDarkMode, getTheme, setStorage, setTheme } from '../../shares/store';
 import { THEME_OPTIONS, Theme } from '../../shares/theme';
 

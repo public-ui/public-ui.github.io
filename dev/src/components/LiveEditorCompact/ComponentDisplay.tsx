@@ -48,7 +48,7 @@ import {
 	KolTooltip,
 	KolVersion,
 } from '@public-ui/react';
-import React from 'react';
+import React from 'React';
 import { TagName } from '../LiveEditorCompact/types';
 import { Config } from '../LiveEditorCompact';
 

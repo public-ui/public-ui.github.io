@@ -3,7 +3,7 @@ import { Bundesanstalt } from '@public-ui/components';
 import { KolKolibri, KolLink, KolLinkButton, KolLogo } from '@public-ui/react';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Layout from '@theme/Layout';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'React';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
 import { USED_BY } from '../used-by';
 

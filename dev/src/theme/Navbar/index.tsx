@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { KolLinkButton, KolVersion } from '@public-ui/react';
-import React, { FunctionComponent, PropsWithChildren } from 'react';
+import React, { FunctionComponent, PropsWithChildren } from 'React';
 // import { getDarkMode, setDarkMode } from '../../shares/store';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import { LanguageSwitch } from '@site/src/components/LanguageSwitch';

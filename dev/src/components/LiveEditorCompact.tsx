@@ -1,6 +1,6 @@
 import allElements from '@public-ui/components/custom-elements.json';
 import { KolBadge, KolHeading, KolTabs } from '@public-ui/react';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'React';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
 import { AttributeInput } from './LiveEditorCompact/AttributeInput';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'React';
 import { KolSelect } from '@public-ui/react';
 
 type Props = {
