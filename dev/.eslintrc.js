@@ -1,6 +1,6 @@
 module.exports = {
 	extends: ['eslint:recommended', 'plugin:@docusaurus/recommended', 'plugin:mdx/recommended'],
-	ignorePatterns: ['**/assets/**', '**/*.md'],
+	ignorePatterns: ['**/assets/**', '**/*.md', '**/*.mdx'],
 	overrides: [
 		{
 			extends: [
@@ -9,7 +9,7 @@ module.exports = {
 				'plugin:jsx-a11y/recommended',
 				'plugin:react/recommended',
 			],
-			files: ['src/**/*.js', 'src/**/*.jsx', 'src/**/*.ts', 'src/**/*.tsx'],
+			files: ['src/**/*.ts', 'src/**/*.tsx'],
 			parser: '@typescript-eslint/parser',
 			parserOptions: {
 				ecmaFeatures: {
