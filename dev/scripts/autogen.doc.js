@@ -137,8 +137,7 @@ rimraf([...DOC_FOLDERS, '**/*.md'].join('/'), () => {
 				.replace(/^( *\r?\n)+/, '')
 				.replace(/\]\(..\//g, '](./')
 				.replace(/class=/g, 'className=')
-				.replace(/ *\\_/g, ' _')
-				.replace(/ <dialog>/, ' `<dialog>`'),
+				.replace(/ *\\_/g, ' _'),
 			'utf-8'
 		);
 	});

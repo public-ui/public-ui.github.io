@@ -429,7 +429,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 				propertyTable._data = [{
 	name: `_label`,
 	desc: `Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
-	types: `string`,
+	types: `boolean | string, string`,
 	comps: `badge, breadcrumb, button, button-link, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, progress, select, skip-nav, split-button, symbol, tabs, textarea, tooltip`
 },{
 	name: `_hide-label`,
@@ -629,7 +629,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_links`,
 	desc: `Gibt die Liste der darzustellenden Button, Links oder Texte an.`,
-	types: `ButtonOrLinkOrTextWithChildrenProps[] | string, LinkProps[] | string`,
+	types: `BreadcrumbLinkProps[] | string, ButtonOrLinkOrTextWithChildrenProps[] | string, LinkProps[] | string`,
 	comps: `breadcrumb, nav, skip-nav`
 },{
 	name: `_href`,
@@ -799,7 +799,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).`,
-	types: `string | { _label: string; } & { _ariaControls?: string; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Align; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Align; _ariaCurrent?: AriaCurrent; _ariaExpanded?: boolean; _ariaLabel?: string; _ariaSelected?: boolean; _disabled?: boolean; _hideLabel?: boolean; _accessKey?: string; _id?: string; _on?: KoliBriButtonCallbacks<unknown>; _type?: KoliBriButtonType; _value?: unknown; _variant?: KoliBriButtonVariant; _customClass?: string; }`,
+	types: `string | { _label: LabelWithExpertSlotPropType; } & { _ariaControls?: string; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Align; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Align; _ariaCurrent?: AriaCurrent; _ariaExpanded?: boolean; _ariaLabel?: string; _ariaSelected?: boolean; _disabled?: boolean; _hideLabel?: boolean; _accessKey?: string; _id?: string; _on?: KoliBriButtonCallbacks<unknown>; _type?: KoliBriButtonType; _value?: unknown; _label?: LabelWithExpertSlotPropType; _variant?: KoliBriButtonVariant; _customClass?: string; }`,
 	comps: `badge`
 },{
 	name: `_color`,
