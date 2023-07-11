@@ -1,6 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const ELEMENTS = require(path.relative(__dirname, 'node_modules/@public-ui/components/custom-elements.json'));
+
+const cpOptions = { recursive: true, force: true, preserveTimestamps: true };
+fs.cpSync('node_modules/@public-ui/components/dist/esm', 'static/assets/components-esm', cpOptions);
+fs.cpSync('node_modules/@public-ui/themes/dist', 'static/assets/themes', cpOptions);
+
 let MARKDOWN = `# Cheat Sheet
 
 ## Unified properties
