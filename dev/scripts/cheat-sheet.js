@@ -20,9 +20,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<link href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/a11y-light.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/index.min.js"></script>
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.6.0-rc.1';
+			import { register } from '/assets/components-esm/index.js';
+			import { defineCustomElements } from '/assets/components-esm/loader.js';
+			import { ITZBund } from '/assets/themes/index.mjs';
 				register(ITZBund, defineCustomElements)
 						.catch(console.warn);
 		</script>

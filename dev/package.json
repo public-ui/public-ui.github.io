@@ -24,7 +24,9 @@
 		"ts-prune": "ts-prune src",
 		"postinstall": "npm-run-all postinstall:*",
 		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" static/assets --dot",
+		"postinstall:components": "cpy \"node_modules/@public-ui/components/dist/esm/**/*\" static/assets/components-esm --dot",
 		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" static/assets --dot",
+		"postinstall:themes": "cpy \"node_modules/@public-ui/themes/dist/*\" static/assets/themes --dot",
 		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major"
 	},
 	"dependencies": {
