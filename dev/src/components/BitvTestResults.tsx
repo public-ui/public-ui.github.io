@@ -12,6 +12,9 @@ function parseThemeResult(result: string, col: number) {
 			case 'erfüllt':
 				erfuellt++;
 				break;
+			case 'nicht erfüllt':
+			case 'teilweise erfüllt':
+				break;
 			default:
 				gesamt--;
 		}
