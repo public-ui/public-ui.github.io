@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { useMemo } from 'react';
 import {
 	KolAbbr,
 	KolAccordion,
 	KolAlert,
+	KolAvatar,
 	KolBadge,
 	KolBreadcrumb,
 	KolButton,
@@ -49,6 +49,7 @@ import {
 	KolTooltip,
 	KolVersion,
 } from '@public-ui/react';
+import React from 'react';
 import { TagName } from './types';
 
 type Props = {
@@ -69,6 +70,7 @@ export function ComponentDisplay(props: Props) {
 		abbr: KolAbbr,
 		accordion: KolAccordion,
 		alert: KolAlert,
+		avatar: KolAvatar,
 		badge: KolBadge,
 		breadcrumb: KolBreadcrumb,
 		button: KolButton,
