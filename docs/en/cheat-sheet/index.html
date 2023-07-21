@@ -193,6 +193,14 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 	desc: `Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ '_type' des Alert.`,
 	props: `_alert, _has-closer, _heading, _level, _type, _variant`
 },{
+	name: `avatar`,
+	desc: ``,
+	props: `_label, _src`
+},{
+	name: `avatar-wc`,
+	desc: ``,
+	props: `_label, _src`
+},{
 	name: `badge`,
 	desc: `Mit **Badges** können Sie bestimmte Informationen auf Ihrer Webseite optisch hervorheben.
 KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnung der Textfarbe auch die Möglichkeit, einem Badge ein Icon und/oder einen anderen Schriftschnitt mitzugeben.`,
@@ -254,7 +262,7 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
 	name: `icon`,
 	desc: `Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **'_icon'** gesteuert werden und erfolgt durch das Attribut **'_label'** barrierefrei. Die Ausgabe erfolgt standardmäßig als _'inline'_-Element.
 
-Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-link> unterstützt.
+Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Codicons"></kol-link> unterstützt.
 
 <kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite ('index.html') die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>`,
 	props: `_aria-label, _icon, _label, _part`
@@ -275,27 +283,27 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 },{
 	name: `input-color`,
 	desc: `Der Input-Typ **Color** erzeugt ein Auswahlfeld für die Definition einer beliebigen Farbe. Die Eingabe der Farbe kann in hexadezimaler Schreibweise, in RGB-Schreibweise oder in HSL-Schreibweise erfolgen. Möglich ist die Auswahl einer Farbe über einen Picker oder auch die exakte Eingabe von Farbwerten.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _name, _tab-index, _tooltip-align, _touched, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _name, _smart-button, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `input-date`,
 	desc: `Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können konkrete Daten sein, aber auch Wochen, Monate oder Zeitangaben.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _max, _min, _name, _read-only, _required, _step, _tab-index, _tooltip-align, _touched, _type, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _max, _min, _name, _read-only, _required, _smart-button, _step, _tab-index, _tooltip-align, _touched, _type, _value`
 },{
 	name: `input-email`,
 	desc: `Der Input-Typ **E-Mail** erzeugt ein Eingabefeld für E-Mails.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-label, _hint, _icon, _id, _label, _list, _max-length, _multiple, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _tooltip-align, _touched, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-label, _hint, _icon, _id, _label, _list, _max-length, _multiple, _name, _pattern, _placeholder, _read-only, _required, _size, _smart-button, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `input-file`,
 	desc: `Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.`,
-	props: `_accept, _access-key, _alert, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _multiple, _name, _required, _tab-index, _tooltip-align, _touched, _value`
+	props: `_accept, _access-key, _alert, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _multiple, _name, _required, _smart-button, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `input-number`,
 	desc: `Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _max, _min, _name, _placeholder, _read-only, _required, _step, _tab-index, _tooltip-align, _touched, _type, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _max, _min, _name, _placeholder, _read-only, _required, _smart-button, _step, _tab-index, _tooltip-align, _touched, _type, _value`
 },{
 	name: `input-password`,
 	desc: `Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe wird über Punktsymbole maskiert.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-label, _hint, _icon, _id, _label, _max-length, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _tooltip-align, _touched, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-label, _hint, _icon, _id, _label, _max-length, _name, _pattern, _placeholder, _read-only, _required, _size, _smart-button, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `input-radio`,
 	desc: `Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
@@ -311,7 +319,7 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 },{
 	name: `input-text`,
 	desc: `Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe, URLs oder Telefonnummern.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-label, _hint, _icon, _id, _label, _list, _max-length, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _tooltip-align, _touched, _type, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-label, _hint, _icon, _id, _label, _list, _max-length, _name, _pattern, _placeholder, _read-only, _required, _size, _smart-button, _tab-index, _tooltip-align, _touched, _type, _value`
 },{
 	name: `link`,
 	desc: `Die **Link**-Komponente rendert einen auf Barrierefreiheit optimierten Link, der als Text, als Icon oder auch in Kombination ausgegeben werden kann.
@@ -326,7 +334,7 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
 	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _download, _hide-label, _href, _icon, _icon-only, _label, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
 },{
 	name: `modal`,
-	desc: `Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native '<dialog>' Element sehr gut unterstützt ([caniuse](https://caniuse.com/?search=dialog)), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.`,
+	desc: `Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native '<dialog>' Element sehr gut unterstützt (<kol-link _href="https://caniuse.com/?search=dialog" _target="_blank" _label="caniuse"></kol-link>), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.`,
 	props: `_aria-label, _label, _width`
 },{
 	name: `nav`,
@@ -449,9 +457,9 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 				};
 				propertyTable._data = [{
 	name: `_label`,
-	desc: `Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
+	desc: `Defines the label, usually the name of the person, to render as alt text and to compute initials from`,
 	types: `boolean | string, string`,
-	comps: `badge, breadcrumb, button, button-link, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, progress, select, skip-nav, split-button, symbol, tabs, textarea, tooltip`
+	comps: `avatar, avatar-wc, badge, breadcrumb, button, button-link, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, progress, select, skip-nav, split-button, symbol, tabs, textarea, tooltip`
 },{
 	name: `_tooltip-align`,
 	desc: `Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.`,
@@ -537,6 +545,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Macht das Eingabeelement zu einem Pflichtfeld.`,
 	types: `boolean`,
 	comps: `input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
+},{
+	name: `_smart-button`,
+	desc: `Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).`,
+	types: `string | { _label: LabelWithExpertSlotPropType; } & { _ariaControls?: string; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Align; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Align; _ariaCurrent?: AriaCurrent; _ariaExpanded?: boolean; _ariaLabel?: string; _ariaSelected?: boolean; _disabled?: boolean; _hideLabel?: boolean; _accessKey?: string; _id?: string; _on?: KoliBriButtonCallbacks<unknown>; _type?: KoliBriButtonType; _value?: unknown; _label?: LabelWithExpertSlotPropType; _variant?: KoliBriButtonVariant; _customClass?: string; }`,
+	comps: `badge, input-color, input-date, input-email, input-file, input-number, input-password, input-text`
 },{
 	name: `_list`,
 	desc: `Gibt den technischen Namen des Eingabefeldes an.`,
@@ -632,6 +645,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt den kleinstmöglichen Eingabewert an.`,
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range`
+},{
+	name: `_src`,
+	desc: `Defines the image source to render`,
+	types: `string`,
+	comps: `avatar, avatar-wc, image`
 },{
 	name: `_show`,
 	desc: `Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.`,
@@ -798,11 +816,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `image`
 },{
-	name: `_src`,
-	desc: `Setzt die Quell-URL des Bildes.`,
-	types: `string`,
-	comps: `image`
-},{
 	name: `_sizes`,
 	desc: `Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.`,
 	types: `string`,
@@ -817,16 +830,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Setzt den alternativen Text.`,
 	types: `string`,
 	comps: `image`
-},{
-	name: `_smart-button`,
-	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).`,
-	types: `string | { _label: LabelWithExpertSlotPropType; } & { _ariaControls?: string; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Align; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Align; _ariaCurrent?: AriaCurrent; _ariaExpanded?: boolean; _ariaLabel?: string; _ariaSelected?: boolean; _disabled?: boolean; _hideLabel?: boolean; _accessKey?: string; _id?: string; _on?: KoliBriButtonCallbacks<unknown>; _type?: KoliBriButtonType; _value?: unknown; _label?: LabelWithExpertSlotPropType; _variant?: KoliBriButtonVariant; _customClass?: string; }`,
-	comps: `badge`
-},{
-	name: `_color`,
-	desc: `Setzt die Hintergrundfarbe.`,
-	types: `string | { backgroundColor: string; color: string; } | { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }`,
-	comps: `badge`
 },{
 	name: `_show-duration`,
 	desc: `Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.`,
@@ -942,6 +945,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.`,
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `nav`
+},{
+	name: `_color`,
+	desc: `Setzt die Hintergrundfarbe.`,
+	types: `string | { backgroundColor: string; color: string; } | { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }`,
+	comps: `badge`
 },{
 	name: `_accept`,
 	desc: `Gibt an, welche Dateiformate erlaubt sind.`,
