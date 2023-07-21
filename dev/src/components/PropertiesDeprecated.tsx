@@ -7,10 +7,11 @@ DEPRECATED.set('_hide-button', new Set(['_has-buttons (?)']));
 DEPRECATED.set('_hide-label', new Set(['_compact', '_icon-only']));
 DEPRECATED.set(
 	'_label',
-	new Set(['_aria-label', '_caption', '_heading', '_headline', '_quote (?)', '_summary', '_symbol', '_title'])
+	new Set(['_alt', '_aria-label', '_caption', '_heading', '_headline', '_quote (?)', '_summary', '_symbol', '_title'])
 );
 // DEPRECATED.set('_list', new Set(['_links']));
 DEPRECATED.set('_variant', new Set(['_type<sup>*</sup>']));
+DEPRECATED.set('_src', new Set(['_srcset']));
 DEPRECATED.set('_show', new Set(['_show-dropdown']));
 DEPRECATED.set(
 	'',

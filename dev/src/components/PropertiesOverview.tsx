@@ -68,29 +68,56 @@ export const PropertiesOverview: FC = () => {
 				<tr>
 					<th>#</th>
 					<th>Property</th>
-					{/* <th>Components</th> */}
+					<th>Components</th>
 					<th>Descriptions</th>
 					<th>Types</th>
 				</tr>
 			</thead>
 			<tbody>
 				{Array.from(PROPS.keys()).map((prop, index) => {
-					// const components = Array.from(PROPS.get(prop)?.get('components') || []);
+					const components = Array.from(PROPS.get(prop)?.get('components') || []);
 					const descriptions = Array.from(PROPS.get(prop)?.get('descriptions') || []);
 					const types = Array.from(PROPS.get(prop)?.get('types') || []);
 					return (
 						<tr key={prop}>
 							<td>{index}</td>
-							<td>{prop}</td>
-							{/* <td>{components.join(', ')}</td> */}
 							<td
-								style={{ backgroundColor: descriptions.length > 1 && '#fbc' }}
+								style={{
+									backgroundColor:
+										[
+											'_aria-label',
+											'_icon-only',
+											'_title',
+											'_heading',
+											'_icon-align',
+											'_headline',
+											'_summary',
+											'_srcset',
+											'_alt',
+											'_selector',
+											'_stealth',
+											'_use-case',
+											'_has-compact-button',
+											'_caption',
+											'_show-duration',
+										].includes(prop) && '#fbc',
+								}}
+							>
+								{prop}
+							</td>
+							<td>{components.join(', ')}</td>
+							<td
+								style={{
+									backgroundColor: descriptions.length > 1 && '#fbc',
+								}}
 								dangerouslySetInnerHTML={{
 									__html: descriptions.join('<hr/>'),
 								}}
 							/>
 							<td
-								style={{ backgroundColor: types.length > 1 && '#fbc' }}
+								style={{
+									backgroundColor: types.length > 1 && '#fbc',
+								}}
 								dangerouslySetInnerHTML={{
 									__html: types.join('<hr/>'),
 								}}
