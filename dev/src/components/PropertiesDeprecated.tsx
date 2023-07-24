@@ -1,21 +1,34 @@
 import React, { FC } from 'react';
 
 const DEPRECATED = new Map<string, Set<string>>();
-DEPRECATED.set('_align', new Set(['_tabs-align', '_tooltip-align']));
+DEPRECATED.set('_align', new Set(['_tabs-align']));
 DEPRECATED.set('_dataFoot', new Set(['']));
 DEPRECATED.set('_hide-button', new Set(['_has-buttons (?)']));
 DEPRECATED.set('_hide-label', new Set(['_compact', '_icon-only']));
 DEPRECATED.set(
 	'_label',
-	new Set(['_alt', '_aria-label', '_caption', '_heading', '_headline', '_quote (?)', '_summary', '_symbol', '_title'])
+	new Set(['_alt', '_aria-label', '_caption', '_heading', '_headline', '_summary', '_symbol', '_title'])
 );
 // DEPRECATED.set('_list', new Set(['_links']));
+DEPRECATED.set('_max', new Set(['_total']));
+DEPRECATED.set('_row', new Set(['_size']));
 DEPRECATED.set('_variant', new Set(['_type<sup>*</sup>']));
 DEPRECATED.set('_src', new Set(['_srcset']));
 DEPRECATED.set('_show', new Set(['_show-dropdown']));
 DEPRECATED.set(
 	'',
-	new Set(['_has-footer', '_height', '_icon-align', '_part', '_show-duration', '_stealth', '_selector', '_useCase'])
+	new Set([
+		'_has-footer',
+		'_height',
+		'_icon-align',
+		'_list',
+		'_part',
+		'_role',
+		'_show-duration',
+		'_stealth',
+		'_selector',
+		'_useCase',
+	])
 );
 
 export const PropertiesDeprecated: FC = () => {
