@@ -241,7 +241,7 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
 	name: `icon`,
 	desc: `Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **'_icon'** gesteuert werden und erfolgt durch das Attribut **'_label'** barrierefrei. Die Ausgabe erfolgt standardmäßig als _'inline'_-Element.
 
-Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Codicons"></kol-link> unterstützt.
+Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Codicons"></kol-link> unterstützt.
 
 <kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite ('index.html') die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>`,
 	props: `_aria-label, _icon, _label, _part`
@@ -253,7 +253,7 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 	props: `_alt, _loading, _sizes, _src, _srcset`
 },{
 	name: `indented-text`,
-	desc: `Heben Sie einzelne Informationen auf Ihrer Webseite optisch mit der **IndentedText**-Komponente hervor. Die Komponente eignet sich nicht nur für besondere Abschnitte auf der Webseite, sondern auch beispielsweise für Zitate (für verlinkte Zitate kann auch die <kol-link _href="/docs/components/quote/" _label="kol-quote-Komponente"></kol-link> verwendet werden.).`,
+	desc: `Heben Sie einzelne Informationen auf Ihrer Webseite optisch mit der **IndentedText**-Komponente hervor. Die Komponente eignet sich nicht nur für besondere Abschnitte auf der Webseite, sondern auch beispielsweise für Zitate (für verlinkte Zitate kann auch die <kol-link _href="/docs/components/quote/" _label="/docs/components/quote/" _label="kol-quote-Komponente"></kol-link> verwendet werden.).`,
 	props: ``
 },{
 	name: `input-checkbox`,
@@ -309,11 +309,11 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 },{
 	name: `link-button`,
 	desc: `Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
-Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="Seite des Buttons"></kol-link>.`,
+Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="/docs/components/button" _label="Seite des Buttons"></kol-link>.`,
 	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _download, _hide-label, _href, _icon, _icon-only, _label, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
 },{
 	name: `modal`,
-	desc: `Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native '<dialog>' Element sehr gut unterstützt (<kol-link _href="https://caniuse.com/?search=dialog" _target="_blank" _label="caniuse"></kol-link>), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.`,
+	desc: `Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native '<dialog>' Element sehr gut unterstützt (<kol-link _href="https://caniuse.com/?search=dialog" _label="https://caniuse.com/?search=dialog" _target="_blank" _label="caniuse"></kol-link>), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.`,
 	props: `_aria-label, _label, _width`
 },{
 	name: `nav`,
@@ -351,7 +351,7 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 },{
 	name: `select`,
 	desc: `Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.`,
-	props: `_access-key, _alert, _disabled, _error, _height, _hide-label, _hint, _icon, _id, _label, _list, _multiple, _name, _required, _size, _tab-index, _tooltip-align, _touched, _value`
+	props: `_access-key, _alert, _disabled, _error, _height, _hide-label, _hint, _icon, _id, _label, _list, _multiple, _name, _required, _rows, _size, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `skip-nav`,
 	desc: `Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt werden. Sie dient dazu, Sehbehinderten das Überspringen von Seitenbereichen zu ermöglichen. Sie wird nur nach Anspringen durch die **Tab-Taste** sichtbar.`,
@@ -370,9 +370,7 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 	props: `_aria-label, _label, _symbol`
 },{
 	name: `table`,
-	desc: `k# Table
-
-Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+	desc: `Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 
 <kol-indented-text _summary="Backend-seitige Pagination">
 	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der Table-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden.
@@ -384,7 +382,7 @@ Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Date
 	props: `_aria-label, _label, _selected, _tabs, _tabs-align`
 },{
 	name: `textarea`,
-	desc: `Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.`,
+	desc: `Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.`,
 	props: `_access-key, _adjust-height, _alert, _disabled, _error, _has-counter, _hide-label, _hint, _id, _label, _max-length, _name, _placeholder, _read-only, _required, _resize, _rows, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `toast`,
@@ -675,6 +673,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `boolean | string`,
 	comps: `link, link-button`
 },{
+	name: `_rows`,
+	desc: `Defines how many rows of options should be visible at the same time.`,
+	types: `number`,
+	comps: `select, textarea`
+},{
 	name: `_orientation`,
 	desc: `Gibt die horizontale oder vertikale Ausrichtung der Komponente an.`,
 	types: `"horizontal" | "vertical"`,
@@ -824,11 +827,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt den Text der zusätzlichen Überschrift an.`,
 	types: `string`,
 	comps: `heading`
-},{
-	name: `_rows`,
-	desc: `Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.`,
-	types: `number`,
-	comps: `textarea`
 },{
 	name: `_resize`,
 	desc: `Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)`,
