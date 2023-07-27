@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ import{d as watchString}from"./prop.validators-464644b7.js";const validateImageSource=(a,r,t)=>{watchString(a,"_src",r,t)};export{validateImageSource as v};

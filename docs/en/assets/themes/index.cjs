@@ -347,42 +347,40 @@ var TagEnum = /* @__PURE__ */ ((TagEnum2) => {
   TagEnum2[TagEnum2["button-link"] = 9] = "button-link";
   TagEnum2[TagEnum2["card"] = 10] = "card";
   TagEnum2[TagEnum2["details"] = 11] = "details";
-  TagEnum2[TagEnum2["dialog"] = 12] = "dialog";
-  TagEnum2[TagEnum2["dropdown"] = 13] = "dropdown";
-  TagEnum2[TagEnum2["form"] = 14] = "form";
-  TagEnum2[TagEnum2["heading"] = 15] = "heading";
-  TagEnum2[TagEnum2["icon"] = 16] = "icon";
-  TagEnum2[TagEnum2["image"] = 17] = "image";
-  TagEnum2[TagEnum2["indented-text"] = 18] = "indented-text";
-  TagEnum2[TagEnum2["input-checkbox"] = 19] = "input-checkbox";
-  TagEnum2[TagEnum2["input-color"] = 20] = "input-color";
-  TagEnum2[TagEnum2["input-date"] = 21] = "input-date";
-  TagEnum2[TagEnum2["input-file"] = 22] = "input-file";
-  TagEnum2[TagEnum2["input-email"] = 23] = "input-email";
-  TagEnum2[TagEnum2["input-number"] = 24] = "input-number";
-  TagEnum2[TagEnum2["input-password"] = 25] = "input-password";
-  TagEnum2[TagEnum2["input-radio"] = 26] = "input-radio";
-  TagEnum2[TagEnum2["input-range"] = 27] = "input-range";
-  TagEnum2[TagEnum2["input-text"] = 28] = "input-text";
-  TagEnum2[TagEnum2["link"] = 29] = "link";
-  TagEnum2[TagEnum2["link-button"] = 30] = "link-button";
-  TagEnum2[TagEnum2["link-group"] = 31] = "link-group";
-  TagEnum2[TagEnum2["modal"] = 32] = "modal";
-  TagEnum2[TagEnum2["nav"] = 33] = "nav";
-  TagEnum2[TagEnum2["pagination"] = 34] = "pagination";
-  TagEnum2[TagEnum2["popover"] = 35] = "popover";
-  TagEnum2[TagEnum2["progress"] = 36] = "progress";
-  TagEnum2[TagEnum2["select"] = 37] = "select";
-  TagEnum2[TagEnum2["separator"] = 38] = "separator";
-  TagEnum2[TagEnum2["skip-nav"] = 39] = "skip-nav";
-  TagEnum2[TagEnum2["spin"] = 40] = "spin";
-  TagEnum2[TagEnum2["symbol"] = 41] = "symbol";
-  TagEnum2[TagEnum2["table"] = 42] = "table";
-  TagEnum2[TagEnum2["tabs"] = 43] = "tabs";
-  TagEnum2[TagEnum2["textarea"] = 44] = "textarea";
-  TagEnum2[TagEnum2["toast"] = 45] = "toast";
-  TagEnum2[TagEnum2["toolbar"] = 46] = "toolbar";
-  TagEnum2[TagEnum2["tooltip"] = 47] = "tooltip";
+  TagEnum2[TagEnum2["form"] = 12] = "form";
+  TagEnum2[TagEnum2["heading"] = 13] = "heading";
+  TagEnum2[TagEnum2["icon"] = 14] = "icon";
+  TagEnum2[TagEnum2["image"] = 15] = "image";
+  TagEnum2[TagEnum2["indented-text"] = 16] = "indented-text";
+  TagEnum2[TagEnum2["input-checkbox"] = 17] = "input-checkbox";
+  TagEnum2[TagEnum2["input-color"] = 18] = "input-color";
+  TagEnum2[TagEnum2["input-date"] = 19] = "input-date";
+  TagEnum2[TagEnum2["input-file"] = 20] = "input-file";
+  TagEnum2[TagEnum2["input-email"] = 21] = "input-email";
+  TagEnum2[TagEnum2["input-number"] = 22] = "input-number";
+  TagEnum2[TagEnum2["input-password"] = 23] = "input-password";
+  TagEnum2[TagEnum2["input-radio"] = 24] = "input-radio";
+  TagEnum2[TagEnum2["input-range"] = 25] = "input-range";
+  TagEnum2[TagEnum2["input-text"] = 26] = "input-text";
+  TagEnum2[TagEnum2["link"] = 27] = "link";
+  TagEnum2[TagEnum2["link-button"] = 28] = "link-button";
+  TagEnum2[TagEnum2["link-group"] = 29] = "link-group";
+  TagEnum2[TagEnum2["modal"] = 30] = "modal";
+  TagEnum2[TagEnum2["nav"] = 31] = "nav";
+  TagEnum2[TagEnum2["pagination"] = 32] = "pagination";
+  TagEnum2[TagEnum2["popover"] = 33] = "popover";
+  TagEnum2[TagEnum2["progress"] = 34] = "progress";
+  TagEnum2[TagEnum2["select"] = 35] = "select";
+  TagEnum2[TagEnum2["separator"] = 36] = "separator";
+  TagEnum2[TagEnum2["skip-nav"] = 37] = "skip-nav";
+  TagEnum2[TagEnum2["spin"] = 38] = "spin";
+  TagEnum2[TagEnum2["symbol"] = 39] = "symbol";
+  TagEnum2[TagEnum2["table"] = 40] = "table";
+  TagEnum2[TagEnum2["tabs"] = 41] = "tabs";
+  TagEnum2[TagEnum2["textarea"] = 42] = "textarea";
+  TagEnum2[TagEnum2["toast"] = 43] = "toast";
+  TagEnum2[TagEnum2["toolbar"] = 44] = "toolbar";
+  TagEnum2[TagEnum2["tooltip"] = 45] = "tooltip";
   return TagEnum2;
 })(TagEnum || {});
 
@@ -23070,7 +23068,7 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 });
 
 const MFM = KoliBri.createTheme("mfm", {
-  "GLOBAL": `/* Design Tokens */
+  GLOBAL: `/* Design Tokens */
 		:host {
 			--border-radius: 5px;
 			--color-midnight: #004b76;
