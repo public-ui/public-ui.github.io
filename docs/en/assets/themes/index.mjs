@@ -3274,18 +3274,18 @@ const BMF = KoliBri.createTheme("bmf", {
 	kol-heading-wc {
 		font-weight: 700;
 	}
-	kol-tooltip #floating {
+	kol-tooltip .tooltip-floating {
 		border: 1px solid var(--color-metal);
 		border-radius: var(--border-radius);
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		border: 1px solid var(--color-metal);
 	}
-	kol-tooltip .area {
+	kol-tooltip .tooltip-area {
 		background-color: var(--color-white);
 		color: var(--color-metal);
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5em;
 		padding: 0.5rem 0.75rem;
@@ -15604,13 +15604,13 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 
 const DESYv2 = KoliBri.createTheme("desy-v2", {
   GLOBAL: `
-	kol-tooltip .area {
+	kol-tooltip .tooltip-area {
 		background-color:#f2f2f2;
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -18442,13 +18442,13 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 });
 
 const ECL_EC = KoliBri.createTheme("ecl-ec", {
-  GLOBAL: `kol-tooltip .area {
+  GLOBAL: `kol-tooltip .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -19879,13 +19879,13 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 });
 
 const ECL_EU = KoliBri.createTheme("ecl-eu", {
-  GLOBAL: `kol-tooltip .area {
+  GLOBAL: `kol-tooltip .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -21427,13 +21427,13 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 	kol-span-wc > span {
 		gap: 0.25em;
 	}
-	kol-tooltip .area {
+	kol-tooltip .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -23155,11 +23155,11 @@ const MFM = KoliBri.createTheme("mfm", {
 		kol-heading-wc {
 			font-weight: 700;
 		}
-		kol-tooltip .area {
+		kol-tooltip .tooltip-area {
 			background-color: var(--color-metal);
 			color: var(--color-white);
 		}
-		kol-tooltip kol-span-wc {
+		kol-tooltip .tooltip-content {
 			border-radius: var(--border-radius);
 			line-height: 1.5em;
 			padding: 0.5rem 0.75rem;
@@ -32719,13 +32719,13 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		outline-width: 3px;
 		transition: outline-offset 0.2s linear;
 	}
-	kol-tooltip .area {
+	kol-tooltip .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		border-radius: 2px;
 		border: 1px solid #626262;
 		color: #000000 !important;
@@ -50323,13 +50323,13 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		color: var(--color-red);
 		padding-left: 0.25em;
 	}
-	kol-tooltip .area {
+	kol-tooltip .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;

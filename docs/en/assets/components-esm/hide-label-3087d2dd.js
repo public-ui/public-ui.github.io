@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ import{a as watchBoolean}from"./prop.validators-16a299ef.js";const validateHideLabel=(a,e)=>{watchBoolean(a,"_hideLabel",e)};export{validateHideLabel as v};

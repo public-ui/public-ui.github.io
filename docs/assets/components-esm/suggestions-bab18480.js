@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ import{c as watchJsonArrayString}from"./prop.validators-16a299ef.js";const validateSuggestions=(t,s)=>{watchJsonArrayString(t,"_suggestions",(t=>"string"==typeof t||"number"==typeof t),s)};export{validateSuggestions as v};

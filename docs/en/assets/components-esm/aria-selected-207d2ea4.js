@@ -1,1 +1,0 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{a as watchBoolean}from"./prop.validators-05d07b50.js";const validateAriaSelected=(a,e)=>{watchBoolean(a,"_ariaSelected",e)};export{validateAriaSelected as v};
