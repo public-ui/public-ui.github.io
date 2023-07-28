@@ -49,11 +49,10 @@ export const ThemeSelect: FunctionComponent = () => {
 			{...activate}
 			_hideLabel
 			_id="theme-toggle"
+			_label="Theme auswählen"
 			_list={THEME_OPTIONS}
 			_value={[getTheme()]}
-		>
-			Theme auswählen
-		</KolSelect>
+		/>
 	);
 };
 
