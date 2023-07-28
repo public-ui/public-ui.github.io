@@ -102,7 +102,7 @@ export function LiveEditorCompact(props: Props) {
 							<KolHeading _level={3} _label="Konfigurator" />
 							<div>
 								<KolHeading _level={4} _label="Properties" />
-								<div className="max-h-96 p-2 overflow-scroll mb-4">
+								<div className="max-h-96 p-2 overflow-auto mb-4">
 									{element &&
 										element.attributes.map((attribute: Attribute) => (
 											<>
@@ -121,7 +121,7 @@ export function LiveEditorCompact(props: Props) {
 									)}
 								</div>
 								<KolHeading _level={4} _label="Slots" />
-								<div className="max-h-56 p-2 overflow-scroll">
+								<div className="max-h-56 p-2 overflow-auto">
 									{element &&
 										element.slots.map((slot: Slot) => (
 											<SlotInput
