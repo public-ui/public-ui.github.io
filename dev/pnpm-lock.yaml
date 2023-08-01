@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@docusaurus/core':
     specifier: 2.4.1
@@ -110,7 +114,7 @@ devDependencies:
     version: 1.4.3
   docusaurus-plugin-sass:
     specifier: 0.2.5
-    version: 0.2.5(@docusaurus/core@2.4.1)(sass@1.64.1)(webpack@5.88.2)
+    version: 0.2.5(@docusaurus/core@2.4.1)(sass@1.64.2)(webpack@5.88.2)
   eslint:
     specifier: 8.46.0
     version: 8.46.0
@@ -151,8 +155,8 @@ devDependencies:
     specifier: 3.0.2
     version: 3.0.2
   sass:
-    specifier: 1.64.1
-    version: 1.64.1
+    specifier: 1.64.2
+    version: 1.64.2
   tailwindcss:
     specifier: 3.3.3
     version: 3.3.3(ts-node@10.9.1)
@@ -6236,7 +6240,7 @@ packages:
       readdirp: 3.6.0
       require-package-name: 2.0.1
       resolve: 1.22.1
-      sass: 1.64.1
+      sass: 1.64.2
       scss-parser: 1.0.6
       semver: 7.3.8
       yargs: 16.2.0
@@ -6373,15 +6377,15 @@ packages:
       unist-util-is: 4.1.0
     dev: false
 
-  /docusaurus-plugin-sass@0.2.5(@docusaurus/core@2.4.1)(sass@1.64.1)(webpack@5.88.2):
+  /docusaurus-plugin-sass@0.2.5(@docusaurus/core@2.4.1)(sass@1.64.2)(webpack@5.88.2):
     resolution: {integrity: sha512-Z+D0fLFUKcFpM+bqSUmqKIU+vO+YF1xoEQh5hoFreg2eMf722+siwXDD+sqtwU8E4MvVpuvsQfaHwODNlxJAEg==}
     peerDependencies:
       '@docusaurus/core': ^2.0.0-beta || ^3.0.0-alpha
       sass: ^1.30.0
     dependencies:
       '@docusaurus/core': 2.4.1(@docusaurus/types@2.4.1)(eslint@8.46.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-      sass: 1.64.1
-      sass-loader: 10.4.1(sass@1.64.1)(webpack@5.88.2)
+      sass: 1.64.2
+      sass-loader: 10.4.1(sass@1.64.2)(webpack@5.88.2)
     transitivePeerDependencies:
       - fibers
       - node-sass
@@ -12089,7 +12093,7 @@ packages:
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  /sass-loader@10.4.1(sass@1.64.1)(webpack@5.88.2):
+  /sass-loader@10.4.1(sass@1.64.2)(webpack@5.88.2):
     resolution: {integrity: sha512-aX/iJZTTpNUNx/OSYzo2KsjIUQHqvWsAhhUijFjAPdZTEhstjZI9zTNvkTTwsx+uNUJqUwOw5gacxQMx4hJxGQ==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -12108,14 +12112,14 @@ packages:
       klona: 2.0.5
       loader-utils: 2.0.4
       neo-async: 2.6.2
-      sass: 1.64.1
+      sass: 1.64.2
       schema-utils: 3.3.0
       semver: 7.5.3
       webpack: 5.88.2
     dev: true
 
-  /sass@1.64.1:
-    resolution: {integrity: sha512-16rRACSOFEE8VN7SCgBu1MpYCyN7urj9At898tyzdXFhC+a+yOX5dXwAR7L8/IdPJ1NB8OYoXmD55DM30B2kEQ==}
+  /sass@1.64.2:
+    resolution: {integrity: sha512-TnDlfc+CRnUAgLO9D8cQLFu/GIjJIzJCGkE7o4ekIGQOH7T3GetiRR/PsTWJUHhkzcSPrARkPI+gNWn5alCzDg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -14468,7 +14472,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
-
-settings:
-  autoInstallPeers: false
-  excludeLinksFromLockfile: false
