@@ -45,35 +45,35 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 		label: 'Unstyled',
 		value: 'unstyled',
 	},
-	{
-		disabled: true,
-		label: 'Bundesamt für Migration und Flüchtlinge',
-		value: 'bamf',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'Bundesamt für Migration und Flüchtlinge',
+	// 	value: 'bamf',
+	// },
 	{
 		label: 'Bundesministerium der Finanzen',
 		value: 'bmf',
 	},
-	{
-		disabled: true,
-		label: 'Freistaat Bayern (StMWi)',
-		value: 'by',
-	},
-	{
-		disabled: true,
-		label: 'Bundesamt für Zoll und Steuern',
-		value: 'bzst',
-	},
-	{
-		disabled: true,
-		label: 'DESY-Styleguide (v1)',
-		value: 'desy-v1',
-	},
-	{
-		disabled: true,
-		label: 'DESY-Styleguide (v2)',
-		value: 'desy-v2',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'Freistaat Bayern (StMWi)',
+	// 	value: 'by',
+	// },
+	// {
+	// 	disabled: true,
+	// 	label: 'Bundesamt für Zoll und Steuern',
+	// 	value: 'bzst',
+	// },
+	// {
+	// 	disabled: true,
+	// 	label: 'DESY-Styleguide (v1)',
+	// 	value: 'desy-v1',
+	// },
+	// {
+	// 	disabled: true,
+	// 	label: 'DESY-Styleguide (v2)',
+	// 	value: 'desy-v2',
+	// },
 	{
 		label: 'European Commission (ECL)',
 		value: 'ecl-ec',
@@ -86,18 +86,18 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 		label: 'Informationstechnikzentrum Bund',
 		value: 'itzbund',
 	},
-	{
-		disabled: true,
-		label: 'MAPZoll-Styleguide',
-		value: 'mapz',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'MAPZoll-Styleguide',
+	// 	value: 'mapz',
+	// },
 	{
 		label: 'Freistaat Thüringen',
 		value: 'th',
 	},
-	{
-		disabled: true,
-		label: 'Design System Zoll (v2)',
-		value: 'zoll-v2',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'Design System Zoll (v2)',
+	// 	value: 'zoll-v2',
+	// },
 ];
