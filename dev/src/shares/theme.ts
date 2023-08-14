@@ -74,14 +74,14 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	// 	label: 'DESY-Styleguide (v2)',
 	// 	value: 'desy-v2',
 	// },
-	{
-		label: 'European Commission (ECL)',
-		value: 'ecl-ec',
-	},
-	{
-		label: 'European Union (ECL)',
-		value: 'ecl-eu',
-	},
+	// {
+	// 	label: 'European Commission (ECL)',
+	// 	value: 'ecl-ec',
+	// },
+	// {
+	// 	label: 'European Union (ECL)',
+	// 	value: 'ecl-eu',
+	// },
 	{
 		label: 'Informationstechnikzentrum Bund',
 		value: 'itzbund',
