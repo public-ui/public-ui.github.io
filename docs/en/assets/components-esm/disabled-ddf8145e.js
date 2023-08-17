@@ -1,1 +1,0 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{a as watchBoolean}from"./prop.validators-16a299ef.js";const validateAriaExpanded=(a,d)=>{watchBoolean(a,"_ariaExpanded",d)},validateDisabled=(a,d)=>{watchBoolean(a,"_disabled",d)};export{validateDisabled as a,validateAriaExpanded as v};

@@ -363,7 +363,7 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 },{
 	name: `split-button`,
 	desc: `> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.`,
-	props: `_access-key, _aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _hide-label, _icon, _icon-only, _label, _name, _role, _show-dropdown, _tab-index, _tooltip-align, _type, _value, _variant`
+	props: `_access-key, _aria-controls, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _hide-label, _icon, _id, _label, _name, _role, _show-dropdown, _tab-index, _tooltip-align, _type, _value, _variant`
 },{
 	name: `symbol`,
 	desc: `Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit steuerbarer Ausgabe durch den Screenreader.`,
@@ -468,6 +468,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null, W3CInputValue[] | string, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null | number, boolean | null | number | object | string, number, number | string, string`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, progress, select, split-button, textarea`
 },{
+	name: `_id`,
+	desc: `Defines the internal ID of the primary component element.`,
+	types: `string`,
+	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea, tooltip`
+},{
 	name: `_name`,
 	desc: `Defines the technical name of an input field.`,
 	types: `string`,
@@ -477,11 +482,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.`,
 	types: `string`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
-},{
-	name: `_id`,
-	desc: `Defines the internal ID of the primary component element.`,
-	types: `string`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea, tooltip`
 },{
 	name: `_alert`,
 	desc: `Defines whether the screen-readers should read out the notification.
@@ -557,11 +557,6 @@ TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolve
 	types: `0 | 1 | 2 | 3 | 4 | 5 | 6`,
 	comps: `accordion, alert, alert-wc, card, heading, toast`
 },{
-	name: `_icon-only`,
-	desc: `Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.`,
-	types: `boolean`,
-	comps: `badge, button, button-link, link, link-button, split-button`
-},{
 	name: `_role`,
 	desc: `Defines the role of the components primary element.`,
 	types: `"button" | "link" | "tab"`,
@@ -577,11 +572,6 @@ TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolve
 	types: `boolean`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
-	name: `_aria-current`,
-	desc: `Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
-	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
-	comps: `button, button-link, link, link-button, split-button`
-},{
 	name: `_aria-controls`,
 	desc: `Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
 	types: `string`,
@@ -591,6 +581,11 @@ TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolve
 	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
 	types: `string`,
 	comps: `input-email, input-number, input-password, input-text, textarea`
+},{
+	name: `_icon-only`,
+	desc: `Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.`,
+	types: `boolean`,
+	comps: `badge, button, button-link, link, link-button`
 },{
 	name: `_size`,
 	desc: `Setzt die Breite des Eingabefeldes in Buchstabenbreiten.`,
@@ -629,6 +624,11 @@ TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolv
 	types: `string`,
 	comps: `button, link-button, pagination, split-button`
 },{
+	name: `_aria-current`,
+	desc: `Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
+	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
+	comps: `button, button-link, link, link-button`
+},{
 	name: `_step`,
 	desc: `Gibt die Schrittweite der Wertveränderung an.`,
 	types: `number`,
@@ -663,7 +663,7 @@ TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolve
 },{
 	name: `_links`,
 	desc: `Gibt die Liste der darzustellenden Button, Links oder Texte an.`,
-	types: `BreadcrumbLinkProps[] | string, ButtonOrLinkOrTextWithChildrenProps[] | string, Props[] | string`,
+	types: `BreadcrumbLinkProps[] | string, ButtonOrLinkOrTextWithChildrenProps[] | string, LinkProps[] | string`,
 	comps: `breadcrumb, nav, skip-nav`
 },{
 	name: `_href`,

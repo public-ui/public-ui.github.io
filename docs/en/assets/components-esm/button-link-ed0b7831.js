@@ -1,1 +1,0 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{w as watchValidator}from"./prop.validators-16a299ef.js";const watchTooltipAlignment=(t,o,a)=>{watchValidator(t,o,(t=>"top"===t||"right"===t||"bottom"===t||"left"===t),new Set(["Alignment {top, right, buttom, left}"]),a,{defaultValue:"top"})};export{watchTooltipAlignment as w};
