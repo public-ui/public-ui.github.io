@@ -19,7 +19,10 @@ A new project can be created quickly using the command line wizard.
 npm init kolibri@latest my-kolibri-app
 ```
 
-<img src="https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif" alt="Shows how to create a new app with create-kolibri." />
+<img
+	src="https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif"
+	alt="Shows how to create a new app with create-kolibri."
+/>
 
 ## Integration into existing projects
 
@@ -260,11 +263,11 @@ Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Pa
 After the preparations are completed, only the KoliBri loader has to be registered.
 It ensures that the Web Components are reloaded asynchronously (lazy) as soon as they are used in the web page.
 
-| Method               | Description                                             |
-| -------------------- | ------------------------------------------------------- |
-| register             | Sets a theme and then registers the loader              |
-| DEFAULT              | Registers the loader for e.g. the DEFAULT theme         |
-| defineCustomElements | Registers the Loader for the Web Components             |
+| Method               | Description                                     |
+| -------------------- | ----------------------------------------------- |
+| register             | Sets a theme and then registers the loader      |
+| DEFAULT              | Registers the loader for e.g. the DEFAULT theme |
+| defineCustomElements | Registers the Loader for the Web Components     |
 
 #### 3. Integration
 
@@ -346,9 +349,9 @@ If fonts and/or icons are used, they must be included as described above.
 
 ```html
 <script type="module">
-	import { register } from 'https://esm.sh/@public-ui/components';
-	import { defineCustomElements } from 'https://esm.sh/@public-ui/components/dist/loader';
-	import { ITZBund } from 'https://esm.sh/@public-ui/themes';
+	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/dist/loader/index.js';
+	import { ITZBund } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
 	register(ITZBund, defineCustomElements).catch(console.warn);
 </script>
 ```
@@ -399,12 +402,6 @@ To detect color contrast errors within the DOM, you can enable color contrast an
 </html>
 ```
 
-
-
-
-
-
-
 ### 3. Registering the component loaders
 
 After the preparations are complete, only the component loader needs to be registered.
@@ -421,9 +418,9 @@ It ensures that the Web Components are reloaded asychronously (lazy) as soon as 
 ```html
 <head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/components@1.4.0-rc.6';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.6/dist/loader';
-		import { BMF } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.6';
+		import { register } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6';
+		import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6/dist/loader';
+		import { BMF } from 'https://unpkg.com/@public-ui/themes@1.4.0-rc.6';
 		register([BMF], defineCustomElements)
 			.then(() => {})
 			.catch(console.warn);

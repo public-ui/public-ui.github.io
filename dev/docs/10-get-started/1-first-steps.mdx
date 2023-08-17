@@ -354,9 +354,9 @@ Sofern Schriftarten und/oder Icons verwendet werden, müssen diese, wie oben bes
 
 ```html
 <script type="module">
-	import { register } from 'https://esm.sh/@public-ui/components';
-	import { defineCustomElements } from 'https://esm.sh/@public-ui/components/dist/loader';
-	import { ITZBund } from 'https://esm.sh/@public-ui/themes';
+	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/dist/loader/index.js';
+	import { ITZBund } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
 	register(ITZBund, defineCustomElements).catch(console.warn);
 </script>
 ```

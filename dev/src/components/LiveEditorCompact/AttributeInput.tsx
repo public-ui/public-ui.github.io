@@ -1,10 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useMemo } from 'react';
 import { Attribute } from '../LiveEditor/types';
-import { KolAbbr, KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/react';
+import { KolAbbr, KolIcon, KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/react';
 import { Icon } from './attributeInputs/Icon';
 import { Color } from './attributeInputs/Color';
 import { UnionSelect } from './attributeInputs/UnionSelect';
+import { type } from 'os';
 
 type Props = {
 	attribute: Attribute;
@@ -40,6 +41,7 @@ export function AttributeInput(props: Props) {
 						return (
 							<KolInputText
 								className="my-2"
+								_label={false}
 								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as string) }}
 								_value={(value as string) || ''}
 							>
@@ -50,6 +52,7 @@ export function AttributeInput(props: Props) {
 						return (
 							<KolInputNumber
 								className="my-2"
+								_label={false}
 								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as number) }}
 								_value={value as number}
 							>
@@ -60,11 +63,13 @@ export function AttributeInput(props: Props) {
 						return (
 							<KolInputCheckbox
 								className="my-2"
-								_checked={value as boolean}
-								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as boolean) }}
+								_checked={value === true}
+								_label={false}
+								_on={{ onChange: (_event, value) => update(attribute.name, value as boolean) }}
 								_variant="switch"
+								_value={true}
 							>
-								{label}
+								{label} | {typeof !!value} | {value ? 'true' : 'false'}
 							</KolInputCheckbox>
 						);
 					default:

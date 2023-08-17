@@ -76,9 +76,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.6.0-rc.1';
+		import { register } from 'https://unpkg.com/@public-ui/components@1.6.0-rc.1';
+		import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@1.6.0-rc.1/dist/loader';
+		import { ITZBund } from 'https://unpkg.com/@public-ui/themes@1.6.0-rc.1';
 			register(ITZBund, defineCustomElements)
 					.catch(console.warn);
 	&#60;/script&#62;
@@ -95,7 +95,7 @@
 		<p>Im VSCode können die Meta-Informationen der Komponenten und deren Eigenschaften für die Autovervollständigung von HTML aktiviert werden.</p>
 		<pre>
 			<code class="language-json">{
-	"html.customData": ["https://esm.sh/@public-ui/components@1.6.0-rc.1/vscode-custom-data.json"]
+	"html.customData": ["https://unpkg.com/@public-ui/components@1.6.0-rc.1/vscode-custom-data.json"]
 }</code>
 		</pre>
 		<kol-heading _label="" _level="3">Dev-Tools</kol-heading>
@@ -439,7 +439,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `abbr, accordion, alert, alert-wc, avatar, avatar-wc, badge, breadcrumb, button, button-link, card, details, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, progress, quote, select, skip-nav, split-button, symbol, table, tabs, textarea, toast, tooltip`
 },{
 	name: `_tooltip-align`,
-	desc: `Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.`,
+	desc: `Defines where to show the Tooltip preferably: top, right, bottom or left.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `abbr, button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, pagination, select, split-button, textarea`
 },{
@@ -459,7 +459,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_icon`,
-	desc: `Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).`,
+	desc: `Defines the icon classnames.`,
 	types: `KoliBriHorizontalIcon & KoliBriVerticalIcon | string, string, string | { checked: string; indeterminate?: string; unchecked?: string; } & { checked?: string; indeterminate: string; unchecked?: string; } & { checked?: string; indeterminate?: string; unchecked: string; }, string | { right?: IconOrIconClass; left?: IconOrIconClass; }`,
 	comps: `badge, button, button-link, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select, split-button`
 },{
@@ -469,7 +469,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, progress, select, split-button, textarea`
 },{
 	name: `_name`,
-	desc: `Gibt den technischen Namen des Eingabefeldes an.`,
+	desc: `Defines the technical name of an input field.`,
 	types: `string`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
 },{
@@ -484,12 +484,14 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea, tooltip`
 },{
 	name: `_alert`,
-	desc: `Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.`,
+	desc: `Defines whether the screen-readers should read out the notification.
+TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `alert, alert-wc, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea, toast`
 },{
 	name: `_touched`,
-	desc: `Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.`,
+	desc: `Shows if the input was touched by a user.
+TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
@@ -509,23 +511,24 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `breadcrumb, button, button-link, icon, link, link-button, modal, nav, skip-nav, split-button, symbol, tabs`
 },{
 	name: `_variant`,
-	desc: `Gibt an, welche Variante der Darstellung genutzt werden soll.`,
+	desc: `Defines the variant of spin navigation.`,
 	types: `"bar" | "cycle" | "cycle-label-value" | "cycle-value-label", "block" | "inline", "button" | "checkbox" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | "tertiary", "cycle" | "dot" | "none", "primary" | "secondary"`,
 	comps: `alert, alert-wc, button, input-checkbox, link-button, nav, pagination, progress, quote, spin, split-button`
 },{
 	name: `_type`,
-	desc: `Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.`,
+	desc: `Defines either the type of the component or of the components interactive element.`,
 	types: `"bar" | "cycle" | "cycle-label-value" | "cycle-value-label", "button" | "checkbox" | "default" | "switch", "button" | "reset" | "submit", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
 	comps: `alert, alert-wc, button, button-link, input-checkbox, input-date, input-number, input-text, progress, split-button, toast`
 },{
 	name: `_required`,
-	desc: `Macht das Eingabeelement zu einem Pflichtfeld.`,
+	desc: `Makes the input element required.
+TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).`,
-	types: `string | { _label: LabelWithExpertSlotPropType; } & { _ariaControls?: string; _ariaExpanded?: boolean; _ariaSelected?: boolean; _disabled?: boolean; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Align; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Align; _ariaCurrent?: AriaCurrent; _ariaLabel?: string; _hideLabel?: boolean; _accessKey?: string; _on?: KoliBriButtonCallbacks<StencilUnknown>; _syncValueBySelector?: string; _type?: KoliBriButtonType; _value?: Stringified<StencilUnknown>; _id?: string; _label?: LabelWithExpertSlotPropType; _name?: string; _variant?: KoliBriButtonVariant; _customClass?: string; }`,
+	types: `string | { _label: LabelWithExpertSlotPropType; } & { _tabIndex?: number; _value?: Stringified<StencilUnknown>; _accessKey?: string; _iconAlign?: AlignPropType; _iconOnly?: boolean; _role?: AlternativeButtonLinkRolePropType; _ariaControls?: string; _ariaCurrent?: AriaCurrentPropType; _ariaExpanded?: boolean; _ariaLabel?: string; _ariaSelected?: boolean; _on?: ButtonCallbacksPropType<StencilUnknown>; _type?: ButtonTypePropType; _variant?: ButtonVariantPropType; _customClass?: string; _disabled?: boolean; _hideLabel?: boolean; _icon?: IconPropType; _id?: string; _name?: string; _syncValueBySelector?: string; _tooltipAlign?: AlignPropType; }`,
 	comps: `badge, input-color, input-date, input-email, input-file, input-number, input-password, input-text`
 },{
 	name: `_list`,
@@ -544,7 +547,8 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `input-color, input-date, input-email, input-number, input-range, input-text`
 },{
 	name: `_read-only`,
-	desc: `Setzt das Eingabefeld in den schreibgeschützten Modus.`,
+	desc: `Makes the input element read only.
+TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
 },{
@@ -559,7 +563,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `badge, button, button-link, link, link-button, split-button`
 },{
 	name: `_role`,
-	desc: `Gibt die Rolle des primären Elements in der Komponente an.`,
+	desc: `Defines the role of the components primary element.`,
 	types: `"button" | "link" | "tab"`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
@@ -599,7 +603,8 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `input-email, input-password, input-text, textarea`
 },{
 	name: `_has-counter`,
-	desc: `Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.`,
+	desc: `Shows the character count on the lower border of the input.
+TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `input-email, input-password, input-text, textarea`
 },{
@@ -614,12 +619,13 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `accordion, alert, card, toast`
 },{
 	name: `_has-closer`,
-	desc: `Defines whether the card has a close button.`,
+	desc: `Defines whether the card has a close button.
+TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `alert, alert-wc, card, toast`
 },{
 	name: `_custom-class`,
-	desc: `Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.`,
+	desc: `Defines the custom class attribute if _variant="custom" is set.`,
 	types: `string`,
 	comps: `button, link-button, pagination, split-button`
 },{
@@ -639,7 +645,8 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `avatar, avatar-wc, image`
 },{
 	name: `_show`,
-	desc: `Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.`,
+	desc: `Makes the element show up.
+TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `popover, spin, toast`
 },{
@@ -649,22 +656,23 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `input-email, input-password, input-text`
 },{
 	name: `_multiple`,
-	desc: `Gibt an, ob mehrere Werte eingegeben werden können.`,
+	desc: `Makes the input accept multiple inputs.
+TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `input-email, input-file, select`
 },{
 	name: `_links`,
 	desc: `Gibt die Liste der darzustellenden Button, Links oder Texte an.`,
-	types: `BreadcrumbLinkProps[] | string, ButtonOrLinkOrTextWithChildrenProps[] | string, LinkProps[] | string`,
+	types: `BreadcrumbLinkProps[] | string, ButtonOrLinkOrTextWithChildrenProps[] | string, Props[] | string`,
 	comps: `breadcrumb, nav, skip-nav`
 },{
 	name: `_href`,
-	desc: `Gibt den Link zur Quelle des Zitates an.`,
+	desc: `Defines the link the source of the quote.`,
 	types: `string`,
 	comps: `link, link-button, quote`
 },{
 	name: `_align`,
-	desc: `Defines the position of the tab captions.`,
+	desc: `Defines the alignment of the tooltip in relation to the parent element.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `popover, tabs, tooltip`
 },{
@@ -674,7 +682,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `link, link-button`
 },{
 	name: `_target`,
-	desc: `Gibt an wo der Link geöffnet werden soll.`,
+	desc: `Defines where to open the link.`,
 	types: `string`,
 	comps: `link, link-button`
 },{
@@ -684,7 +692,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `link, link-button`
 },{
 	name: `_download`,
-	desc: `Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.`,
+	desc: `Tells the browser that the link contains a file. Optionally sets the filename.`,
 	types: `boolean | string`,
 	comps: `link, link-button`
 },{
@@ -704,12 +712,13 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `input-radio, select`
 },{
 	name: `_open`,
-	desc: `Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.`,
+	desc: `If set (to true) opens/expands the element, closes if not set (or set to false).
+TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `accordion, details`
 },{
 	name: `_icon-align`,
-	desc: `Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.`,
+	desc: `Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `button, link`
 },{
@@ -849,7 +858,8 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `textarea`
 },{
 	name: `_adjust-height`,
-	desc: `Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.`,
+	desc: `Adjusts the height of the element to its content.
+TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved`,
 	types: `boolean`,
 	comps: `textarea`
 },{
@@ -870,7 +880,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_pagination`,
 	desc: `Gibt an, ob die Daten geteilt in Seiten angezeigt wird.`,
-	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _tooltipAlign?: Align; _customClass?: string; _variant?: KoliBriButtonVariant; }`,
+	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _customClass?: string; _variant?: ButtonVariantPropType; _tooltipAlign?: AlignPropType; }`,
 	comps: `table`
 },{
 	name: `_min-width`,
@@ -894,12 +904,14 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `table`
 },{
 	name: `_indeterminate`,
-	desc: `Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.`,
+	desc: `Puts the checkbox in the indeterminate state, does not change the value of _checked.
+TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `input-checkbox`
 },{
 	name: `_checked`,
-	desc: `Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)`,
+	desc: `Defines whether the checkbox is checked or not. Can be read and written.
+TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `input-checkbox`
 },{
@@ -914,7 +926,8 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `card`
 },{
 	name: `_has-footer`,
-	desc: `Macht den Footerbereich der Card sichtbar.`,
+	desc: `Shows the slot="footer".
+TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `card`
 },{
@@ -929,7 +942,8 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `nav`
 },{
 	name: `_collapsible`,
-	desc: `Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.`,
+	desc: `Defines if navigation nodes can be collapsed or not. Enabled by default.
+TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `nav`
 },{

@@ -95,9 +95,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 			<pre>
 				<code class="language-html">${`<head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.6.0-rc.1';
+		import { register } from 'https://unpkg.com/@public-ui/components@1.6.0-rc.1';
+		import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@1.6.0-rc.1/dist/loader';
+		import { ITZBund } from 'https://unpkg.com/@public-ui/themes@1.6.0-rc.1';
 			register(ITZBund, defineCustomElements)
 					.catch(console.warn);
 	</script>
@@ -125,7 +125,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<p>Im VSCode können die Meta-Informationen der Komponenten und deren Eigenschaften für die Autovervollständigung von HTML aktiviert werden.</p>
 		<pre>
 			<code class="language-json">${`{
-	"html.customData": ["https://esm.sh/@public-ui/components@1.6.0-rc.1/vscode-custom-data.json"]
+	"html.customData": ["https://unpkg.com/@public-ui/components@1.6.0-rc.1/vscode-custom-data.json"]
 }`
 				.replace(/</g, '&#60;')
 				.replace(/>/g, '&#62;')}</code>
