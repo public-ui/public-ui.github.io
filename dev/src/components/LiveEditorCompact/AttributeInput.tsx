@@ -69,7 +69,7 @@ export function AttributeInput(props: Props) {
 								_variant="switch"
 								_value={true}
 							>
-								{label} | {typeof !!value} | {value ? 'true' : 'false'}
+								{label}
 							</KolInputCheckbox>
 						);
 					default:
