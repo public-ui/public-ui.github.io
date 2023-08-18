@@ -61,7 +61,34 @@ hideButton.set('descriptions', new Set(['Versteckt entweder den Zurück- oder We
 hideButton.set('types', new Set(['"previous" | "next" | "both"']));
 PROPS.set('_hide-button', hideButton);
 
+const PROP_BLACKLIST = [
+	'_alt',
+	'_aria-label',
+	'_caption',
+	'_compact',
+	'_has-compact-button',
+	'_has-footer',
+	'_heading',
+	'_headline',
+	'_icon-align',
+	'_icon-only',
+	'_list',
+	'_part',
+	'_role',
+	'_title',
+	'_total',
+	'_selector',
+	'_show-duration',
+	'_size',
+	'_srcset',
+	'_stealth',
+	'_summary',
+	'_tabs-align',
+	'_use-case',
+];
+
 export const PropertiesOverview: FC = () => {
+	let counter = 0;
 	return (
 		<table>
 			<thead>
@@ -75,40 +102,19 @@ export const PropertiesOverview: FC = () => {
 			</thead>
 			<tbody>
 				{Array.from(PROPS.keys()).map((prop, index) => {
+					if (PROP_BLACKLIST.includes(prop)) {
+						return null;
+					}
+					counter++;
 					const components = Array.from(PROPS.get(prop)?.get('components') || []);
 					const descriptions = Array.from(PROPS.get(prop)?.get('descriptions') || []);
 					const types = Array.from(PROPS.get(prop)?.get('types') || []);
 					return (
 						<tr key={prop}>
-							<td>{index}</td>
+							<td>{counter}</td>
 							<td
 								style={{
-									backgroundColor:
-										[
-											'_alt',
-											'_aria-label',
-											'_caption',
-											'_compact',
-											'_has-compact-button',
-											'_has-footer',
-											'_heading',
-											'_headline',
-											'_icon-align',
-											'_icon-only',
-											'_list',
-											'_part',
-											'_role',
-											'_title',
-											'_total',
-											'_selector',
-											'_show-duration',
-											'_size',
-											'_srcset',
-											'_stealth',
-											'_summary',
-											'_tabs-align',
-											'_use-case',
-										].includes(prop) && '#fbc',
+									backgroundColor: PROP_BLACKLIST.includes(prop) ? '#fbc' : undefined,
 								}}
 							>
 								{prop}
@@ -116,7 +122,7 @@ export const PropertiesOverview: FC = () => {
 							<td>{components.join(', ')}</td>
 							<td
 								style={{
-									backgroundColor: descriptions.length > 1 && '#fbc',
+									backgroundColor: descriptions.length > 1 ? '#fbc' : undefined,
 								}}
 								dangerouslySetInnerHTML={{
 									__html: descriptions.join('<hr/>'),
@@ -124,7 +130,7 @@ export const PropertiesOverview: FC = () => {
 							/>
 							<td
 								style={{
-									backgroundColor: types.length > 1 && '#fbc',
+									backgroundColor: types.length > 1 ? '#fbc' : undefined,
 								}}
 								dangerouslySetInnerHTML={{
 									__html: types.join('<hr/>'),
