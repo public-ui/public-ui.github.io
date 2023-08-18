@@ -50,7 +50,7 @@ export const ThemeSelect: FunctionComponent = () => {
 			_hideLabel
 			_id="theme-toggle"
 			_label="Theme auswählen"
-			_list={THEME_OPTIONS}
+			_options={THEME_OPTIONS}
 			_value={[getTheme()]}
 		/>
 	);

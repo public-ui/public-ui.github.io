@@ -106,17 +106,18 @@ export function LiveEditorCompact(props: Props) {
 									{element &&
 										element.attributes.map((attribute: Attribute) => (
 											<>
-												{!AttributeBlackList.includes(attribute.name) && (
-													<AttributeInput
-														key={attribute.name}
-														attribute={attribute}
-														update={updateConfig}
-														value={config[attribute.name]}
-													></AttributeInput>
-												)}
+												{!AttributeBlackList.includes(attribute.name) &&
+													!attribute.description.startsWith('Deprecated:') && (
+														<AttributeInput
+															key={attribute.name}
+															attribute={attribute}
+															update={updateConfig}
+															value={config[attribute.name]}
+														></AttributeInput>
+													)}
 											</>
 										))}
-									{element && element.slots.length === 0 && (
+									{element && element.attributes.length === 0 && (
 										<span className="text-gray-500">Keine Properties vorhanden</span>
 									)}
 								</div>

@@ -6,6 +6,7 @@ export type Theme =
 	| 'bmf'
 	| 'by'
 	| 'bzst'
+	| 'default'
 	| 'desy-v1'
 	| 'desy-v2'
 	| 'ecl-ec'
@@ -24,6 +25,7 @@ export const isTheme = (value: unknown) => {
 			value === 'bmf' ||
 			value === 'by' ||
 			value === 'bzst' ||
+			value === 'default' ||
 			value === 'desy-v1' ||
 			value === 'desy-v2' ||
 			value === 'ecl-ec' ||
@@ -44,6 +46,10 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	{
 		label: 'Unstyled',
 		value: 'unstyled',
+	},
+	{
+		label: 'Default',
+		value: 'default',
 	},
 	// {
 	// 	disabled: true,
