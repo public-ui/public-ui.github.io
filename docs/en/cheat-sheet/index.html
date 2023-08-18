@@ -455,7 +455,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 				};
 				propertyTable._data = [{
 	name: `_label`,
-	desc: ``,
+	desc: `Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).`,
 	types: `boolean | string, string`,
 	comps: `abbr, accordion, alert, alert-wc, avatar, avatar-wc, badge, breadcrumb, button, button-link, card, details, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, progress, quote, select, skip-nav, split-button, symbol, table, tabs, textarea, toast, tooltip`
 },{
@@ -527,7 +527,7 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_aria-label`,
-	desc: `Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
+	desc: `Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
 	types: `string`,
 	comps: `breadcrumb, button, button-link, icon, link, link-button, modal, nav, skip-nav, split-button, symbol, tabs`
 },{
@@ -553,7 +553,7 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 	comps: `badge, input-color, input-date, input-email, input-file, input-number, input-password, input-text`
 },{
 	name: `_list`,
-	desc: `Gibt die Liste der Optionen für das Eingabefeld an.`,
+	desc: `Deprecated: Gibt die Liste der Optionen für das Eingabefeld an.`,
 	types: `Option<W3CInputValue>[] | string, SelectOption<W3CInputValue>[] | string, W3CInputValue[] | string, string | string[]`,
 	comps: `input-color, input-date, input-email, input-number, input-radio, input-range, input-text, select`
 },{
@@ -584,17 +584,17 @@ TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolve
 	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_aria-selected`,
-	desc: `Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
+	desc: `Deprecated: Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
 	types: `boolean`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_aria-expanded`,
-	desc: `Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
+	desc: `Deprecated: Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
 	types: `boolean`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_aria-controls`,
-	desc: `Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
+	desc: `Deprecated: Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
 	types: `string`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
@@ -604,7 +604,7 @@ TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolve
 	comps: `input-email, input-number, input-password, input-text, textarea`
 },{
 	name: `_icon-only`,
-	desc: `Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.`,
+	desc: `Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.`,
 	types: `boolean`,
 	comps: `badge, button, button-link, link, link-button`
 },{
@@ -630,12 +630,12 @@ TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resol
 	comps: `input-date, input-number, input-range, progress`
 },{
 	name: `_heading`,
-	desc: `Gibt die Beschriftung der Komponente an.`,
+	desc: `Deprecated: Gibt die Beschriftung der Komponente an.`,
 	types: `string`,
 	comps: `accordion, alert, card, toast`
 },{
 	name: `_has-closer`,
-	desc: `Defines whether the card has a close button.
+	desc: `Defines whether the element can be closed.
 TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved`,
 	types: `boolean`,
 	comps: `alert, alert-wc, card, toast`
@@ -646,7 +646,7 @@ TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolv
 	comps: `button, link-button, pagination, split-button`
 },{
 	name: `_aria-current`,
-	desc: `Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
+	desc: `Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `button, button-link, link, link-button`
 },{
@@ -744,7 +744,7 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	comps: `button, link`
 },{
 	name: `_caption`,
-	desc: `Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
+	desc: `Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
 	types: `string`,
 	comps: `quote, table`
 },{
@@ -754,17 +754,17 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	comps: `modal`
 },{
 	name: `_use-case`,
-	desc: `Gibt den Verwendungsfall des Links an.`,
+	desc: `Deprecated: Gibt den Verwendungsfall des Links an.`,
 	types: `"image" | "nav" | "text"`,
 	comps: `link`
 },{
 	name: `_stealth`,
-	desc: `Gibt an, ob der Link nur beim Fokus sichtbar ist.`,
+	desc: `Deprecated: Gibt an, ob der Link nur beim Fokus sichtbar ist.`,
 	types: `boolean`,
 	comps: `link`
 },{
 	name: `_selector`,
-	desc: `Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.`,
+	desc: `Deprecated: Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.`,
 	types: `string`,
 	comps: `link`
 },{
@@ -809,12 +809,12 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	comps: `pagination`
 },{
 	name: `_title`,
-	desc: `Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.`,
+	desc: `Deprecated: Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.`,
 	types: `string`,
 	comps: `abbr`
 },{
 	name: `_tabs-align`,
-	desc: `Setzt die Position der Registrierkarten.`,
+	desc: `Deprecated: Setzt die Position der Registrierkarten.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `tabs`
 },{
@@ -834,7 +834,7 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	comps: `symbol`
 },{
 	name: `_summary`,
-	desc: `Gibt die Zusammenfassung der Detailbeschreibung an.`,
+	desc: `Deprecated: Gibt die Zusammenfassung der Detailbeschreibung an.`,
 	types: `string`,
 	comps: `details`
 },{
@@ -895,7 +895,7 @@ TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved`
 	comps: `quote`
 },{
 	name: `_part`,
-	desc: `Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)`,
+	desc: `Deprecated: Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)`,
 	types: `string`,
 	comps: `icon`
 },{
@@ -937,12 +937,12 @@ TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
 	comps: `input-checkbox`
 },{
 	name: `_height`,
-	desc: `Gibt an, ob eine individuelle Höhe übergeben werden soll.`,
+	desc: `Deprecated: Gibt an, ob eine individuelle Höhe übergeben werden soll.`,
 	types: `string`,
 	comps: `select`
 },{
 	name: `_headline`,
-	desc: `Gibt die Beschriftung der Komponente an.`,
+	desc: `Deprecated: Gibt die Beschriftung der Komponente an.`,
 	types: `string`,
 	comps: `card`
 },{
@@ -953,12 +953,12 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 	comps: `card`
 },{
 	name: `_has-compact-button`,
-	desc: `Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.`,
+	desc: `Deprecated: Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.`,
 	types: `boolean`,
 	comps: `nav`
 },{
 	name: `_compact`,
-	desc: `Gibt an, ob die Navigation kompakt angezeigt wird.`,
+	desc: `Deprecated: Gibt an, ob die Navigation kompakt angezeigt wird.`,
 	types: `boolean`,
 	comps: `nav`
 },{

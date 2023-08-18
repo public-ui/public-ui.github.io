@@ -50274,7 +50274,7 @@ const MAPZ = KoliBri.createTheme("mapz", {
 });
 
 const css = (input) => input.join(``);
-const TOKEN_BASED = KoliBri.createTheme("token-based", {
+const DEFAULT = KoliBri.createTheme("default", {
   GLOBAL: css`
 		:host {
 			--border-radius: var(--kolibri-border-radius, 5px);
@@ -61303,6 +61303,7 @@ exports.BAMF = BAMF;
 exports.BMF = BMF;
 exports.BZSt = BZSt;
 exports.DE = DE;
+exports.DEFAULT = DEFAULT;
 exports.DESYv1 = DESYv1;
 exports.DESYv2 = DESYv2;
 exports.ECL_EC = ECL_EC;
@@ -61311,5 +61312,4 @@ exports.EN = EN;
 exports.ITZBund = ITZBund;
 exports.MAPZ = MAPZ;
 exports.MFM = MFM;
-exports.TOKEN_BASED = TOKEN_BASED;
 exports.ZOLLv2 = ZOLLv2;
