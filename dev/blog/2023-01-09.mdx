@@ -4,7 +4,7 @@ authors: deleonio
 tags: ['button', 'link']
 ---
 
-Wir bieten heute die Varianten von Button, ButtonLink, Link und LinkButton an. Zukünftig werden wir zusätzlich den ButtonToggle (Toogle-Button) anbieten. Alle semantischen Links unterstützen dabei nur noch `_href` und alle Buttons nur noch `_on` als semantischen "Klick". Optisch gibt es Buttons die genau wie Links aussehen und Links die genauso wie Buttons aussehen.
+Wir bieten heute die Varianten von Button, ButtonLink, Link und LinkButton an. Zukünftig werden wir zusätzlich den ButtonToggle (Toogle-Button) anbieten. Optisch gibt es Buttons die genau wie Links aussehen und Links die genauso wie Buttons aussehen.
 
 In der folgenden Tabelle wir eine Übersicht über die Unterschiede dargestellt:
 
@@ -13,7 +13,7 @@ In der folgenden Tabelle wir eine Übersicht über die Unterschiede dargestellt:
 |  Design   | Link |   Button   |  Button  |    Link    |          Button           |
 | Semantik  | `a`  |    `a`     | `button` |  `button`  |          `input`          |
 |  `_href`  |  ➕  |     ➕     |    ➖    |     ➖     |            ➖             |
-|   `_on`   |  ➖  |     ➖     |    ➕    |     ➕     |            ➕             |
+|   `_on`   |  ➕  |     ➕     |    ➕    |     ➕     |            ➕             |
 | `focus()` |  ➕  |     ➕     |    ➕    |     ➕     |            ➕             |
 |   Wert    |  ➖  |     ➖     |    ➖    |     ➖     |         `boolean`         |
 
@@ -25,16 +25,16 @@ In der folgenden Tabelle wir eine Übersicht über die Unterschiede dargestellt:
 ## Motivation
 
 KoliBri strebt neben einer hohe Standardkonformität auch eine sehr gute Wiederverwendbarkeit (Developer Experience DX) an.
-Diese wird durch die Einheitlichkeit zu den HTML-Attributen und dem sparsamen Umgang mit zusätlichen Properties adressiert.
+Diese wird durch die Einheitlichkeit zu den HTML-Attributen und dem sparsamen Umgang mit zusätzlichen Properties adressiert.
 
 > **Rationale:** Wenn wir bei einer Link-Komponente, die zum Navigieren gedacht ist, die beiden Verhalten **Navigieren** und **Klick ohne Navigieren**
-> anbieten würden, dann hääten wir einen Widerspruch im Verhalten. Auch bei der Verwendung in der Entwicklung müssten wir die Properties `_href` und `_on`
+> anbieten würden, dann hätten wir einen Widerspruch im Verhalten. Auch bei der Verwendung in der Entwicklung müssten wir die Properties `_href` und `_on`
 > optional machen und wir könnten nicht mehr vor der Falschverwendung warnen (Statische Codeprüfung).
 
 ## Herausforderungen
 
 Diese strenge Auslegung kann dazu führen, dass es bei der Entwicklung mit anderen Bibliotheken und Frameworks zu Problemen kommt.
-Vorallem dann, wenn diese bei einem Link einen Klick erwarten.
+Vor allem dann, wenn diese bei einem Link einen Klick erwarten.
 
 ### React-Router
 
