@@ -351,7 +351,7 @@ noch die Icons ausgegeben.`,
 },{
 	name: `pagination`,
 	desc: `Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte Inhalte, wie zum Beispiel Suchergebnisse, der Reihe nach durchlaufen.`,
-	props: `_boundary-count, _custom-class, _has-buttons, _page, _page-size, _page-size-options, _sibling-count, _tooltip-align, _total, _variant`
+	props: `_boundary-count, _custom-class, _has-buttons, _label, _page, _page-size, _page-size-options, _sibling-count, _tooltip-align, _total, _variant`
 },{
 	name: `popover`,
 	desc: `> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
@@ -412,7 +412,7 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für zehn Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.`,
 	props: `_alert, _has-closer, _heading, _label, _level, _show, _show-duration, _type`
 },{
-	name: `tooltip`,
+	name: `tooltip-wc`,
 	desc: `<kol-alert _type="warning">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
 
 Die **Tooltip**-Komponente implementiert das Gegenstück zum 'Aria-Label'. Es ist also explizit nur dafür vorgesehen, dem/der Nutzer:in ohne Screenreader die Beschriftung eines Elementes anzuzeigen.
@@ -455,9 +455,9 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 				};
 				propertyTable._data = [{
 	name: `_label`,
-	desc: `Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).`,
+	desc: `Defines the description of the component.`,
 	types: `boolean | string, string`,
-	comps: `abbr, accordion, alert, alert-wc, avatar, avatar-wc, badge, breadcrumb, button, button-link, card, details, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, progress, quote, select, skip-nav, split-button, symbol, table, tabs, textarea, toast, tooltip`
+	comps: `abbr, accordion, alert, alert-wc, avatar, avatar-wc, badge, breadcrumb, button, button-link, card, details, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, pagination, progress, quote, select, skip-nav, split-button, symbol, table, tabs, textarea, toast, tooltip-wc`
 },{
 	name: `_tooltip-align`,
 	desc: `Defines where to show the Tooltip preferably: top, right, bottom or left.`,
@@ -465,34 +465,37 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `abbr, button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, pagination, select, split-button, textarea`
 },{
 	name: `_hide-label`,
-	desc: `Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.`,
+	desc: `Deprecated:
+⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
+  since it would not be accessible without visible labeling. A separate tooltip
+  is not planed, because a badge is not an interactive element.`,
 	types: `boolean`,
 	comps: `badge, button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, nav, select, split-button, textarea`
 },{
 	name: `_tab-index`,
-	desc: `Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)`,
+	desc: `Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)`,
 	types: `number`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_disabled`,
-	desc: `Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.`,
+	desc: `Deprecated: Makes the element not focusable and ignore all events.`,
 	types: `boolean`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_icon`,
-	desc: `Defines the icon classnames.`,
+	desc: `Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).`,
 	types: `KoliBriHorizontalIcon & KoliBriVerticalIcon | string, string, string | { checked: string; indeterminate?: string; unchecked?: string; } & { checked?: string; indeterminate: string; unchecked?: string; } & { checked?: string; indeterminate?: string; unchecked: string; }, string | { right?: IconOrIconClass; left?: IconOrIconClass; }`,
 	comps: `badge, button, button-link, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select, split-button`
 },{
 	name: `_value`,
-	desc: `Gibt an, wie weit die Anzeige fortgeschritten ist.`,
+	desc: `Defines the progress.`,
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null, W3CInputValue[] | string, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null | number, boolean | null | number | object | string, number, number | string, string`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, progress, select, split-button, textarea`
 },{
 	name: `_id`,
 	desc: `Defines the internal ID of the primary component element.`,
 	types: `string`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea, tooltip`
+	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea, tooltip-wc`
 },{
 	name: `_name`,
 	desc: `Defines the technical name of an input field.`,
@@ -500,39 +503,37 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
 },{
 	name: `_access-key`,
-	desc: `Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.`,
+	desc: `Defines which key combination can be used to trigger or focus the interactive element of the component.`,
 	types: `string`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
 },{
 	name: `_alert`,
-	desc: `Defines whether the screen-readers should read out the notification.
-TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved`,
+	desc: `Defines whether the screen-readers should read out the notification.`,
 	types: `boolean`,
 	comps: `alert, alert-wc, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea, toast`
 },{
 	name: `_touched`,
-	desc: `Shows if the input was touched by a user.
-TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved`,
+	desc: `Shows if the input was touched by a user.`,
 	types: `boolean`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_hint`,
-	desc: `Gibt den Hinweistext an.`,
+	desc: `Defines the hint text.`,
 	types: `string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_error`,
-	desc: `Gibt den Text für eine Fehlermeldung an.`,
+	desc: `Defines the error message text.`,
 	types: `string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_aria-label`,
-	desc: `Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
+	desc: `Deprecated: Setzt die semantische Beschriftung der Komponente.`,
 	types: `string`,
 	comps: `breadcrumb, button, button-link, icon, link, link-button, modal, nav, skip-nav, split-button, symbol, tabs`
 },{
 	name: `_variant`,
-	desc: `Defines the variant of spin navigation.`,
+	desc: `Defines which variant should be used for presentation.`,
 	types: `"bar" | "cycle" | "cycle-label-value" | "cycle-value-label", "block" | "inline", "button" | "checkbox" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | "tertiary", "cycle" | "dot" | "none", "primary" | "secondary"`,
 	comps: `alert, alert-wc, button, input-checkbox, link-button, nav, pagination, progress, quote, spin, split-button`
 },{
@@ -542,13 +543,12 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	comps: `alert, alert-wc, button, button-link, input-checkbox, input-date, input-number, input-text, progress, split-button, toast`
 },{
 	name: `_required`,
-	desc: `Makes the input element required.
-TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved`,
+	desc: `Makes the input element required.`,
 	types: `boolean`,
 	comps: `input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
 },{
 	name: `_smart-button`,
-	desc: `Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).`,
+	desc: `Allows to add a button with an arbitrary action within the element (_hide-label only).`,
 	types: `string | { _label: LabelWithExpertSlotPropType; } & { _tabIndex?: number; _value?: Stringified<StencilUnknown>; _accessKey?: string; _iconAlign?: AlignPropType; _iconOnly?: boolean; _role?: AlternativeButtonLinkRolePropType; _ariaControls?: string; _ariaCurrent?: AriaCurrentPropType; _ariaExpanded?: boolean; _ariaLabel?: string; _ariaSelected?: boolean; _on?: ButtonCallbacksPropType<StencilUnknown>; _type?: ButtonTypePropType; _variant?: ButtonVariantPropType; _customClass?: string; _disabled?: boolean; _hideLabel?: boolean; _icon?: IconPropType; _id?: string; _name?: string; _syncValueBySelector?: string; _tooltipAlign?: AlignPropType; }`,
 	comps: `badge, input-color, input-date, input-email, input-file, input-number, input-password, input-text`
 },{
@@ -558,7 +558,7 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 	comps: `input-color, input-date, input-email, input-number, input-radio, input-range, input-text, select`
 },{
 	name: `_auto-complete`,
-	desc: `Gibt an, ob das Eingabefeld autovervollständigt werden kann.`,
+	desc: `Defines whether the input can be auto-completed.`,
 	types: `"off" | "on"`,
 	comps: `input-color, input-date, input-email, input-number, input-password, input-range, input-text`
 },{
@@ -568,13 +568,12 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 	comps: `input-color, input-date, input-email, input-number, input-range, input-text`
 },{
 	name: `_read-only`,
-	desc: `Makes the input element read only.
-TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved`,
+	desc: `Makes the input element read only.`,
 	types: `boolean`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
 },{
 	name: `_level`,
-	desc: `Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.`,
+	desc: `Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.`,
 	types: `0 | 1 | 2 | 3 | 4 | 5 | 6`,
 	comps: `accordion, alert, alert-wc, card, heading, toast`
 },{
@@ -584,27 +583,27 @@ TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolve
 	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_aria-selected`,
-	desc: `Deprecated: Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
+	desc: `Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
 	types: `boolean`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_aria-expanded`,
-	desc: `Deprecated: Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
+	desc: `Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
 	types: `boolean`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_aria-controls`,
-	desc: `Deprecated: Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
+	desc: `Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
 	types: `string`,
 	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_placeholder`,
-	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
+	desc: `Defines the placeholder for input field. To be shown when there's no value.`,
 	types: `string`,
 	comps: `input-email, input-number, input-password, input-text, textarea`
 },{
 	name: `_icon-only`,
-	desc: `Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.`,
+	desc: `Deprecated: Hides the label and shows the description in a Tooltip instead.`,
 	types: `boolean`,
 	comps: `badge, button, button-link, link, link-button`
 },{
@@ -614,18 +613,17 @@ TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolve
 	comps: `input-email, input-password, input-text, select`
 },{
 	name: `_max-length`,
-	desc: `Gibt an, wie viele Zeichen maximal eingegeben werden können.`,
+	desc: `Defines the maximum number of input characters.`,
 	types: `number`,
 	comps: `input-email, input-password, input-text, textarea`
 },{
 	name: `_has-counter`,
-	desc: `Shows the character count on the lower border of the input.
-TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved`,
+	desc: `Shows the character count on the lower border of the input.`,
 	types: `boolean`,
 	comps: `input-email, input-password, input-text, textarea`
 },{
 	name: `_max`,
-	desc: `Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.`,
+	desc: `Defines at which value the progress display is completed.`,
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range, progress`
 },{
@@ -635,70 +633,67 @@ TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resol
 	comps: `accordion, alert, card, toast`
 },{
 	name: `_has-closer`,
-	desc: `Defines whether the element can be closed.
-TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved`,
+	desc: `Defines whether the card has a close button.`,
 	types: `boolean`,
 	comps: `alert, alert-wc, card, toast`
 },{
 	name: `_custom-class`,
-	desc: `Defines the custom class attribute if _variant="custom" is set.`,
+	desc: `Defines the custom class attribute for the buttons.`,
 	types: `string`,
 	comps: `button, link-button, pagination, split-button`
 },{
 	name: `_aria-current`,
-	desc: `Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
+	desc: `Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `button, button-link, link, link-button`
 },{
 	name: `_step`,
-	desc: `Gibt die Schrittweite der Wertveränderung an.`,
+	desc: `Defines the step size for value changes.`,
 	types: `number`,
 	comps: `input-date, input-number, input-range`
 },{
 	name: `_min`,
-	desc: `Gibt den kleinstmöglichen Eingabewert an.`,
+	desc: `Defines the smallest possible input value.`,
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range`
 },{
 	name: `_src`,
-	desc: `Defines the image source to render`,
+	desc: `Sets the image `src` attribute to the given string.`,
 	types: `string`,
 	comps: `avatar, avatar-wc, image`
 },{
 	name: `_show`,
-	desc: `Makes the element show up.
-TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved`,
+	desc: `Makes the element show up.`,
 	types: `boolean`,
 	comps: `popover, spin, toast`
 },{
 	name: `_pattern`,
-	desc: `Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.`,
+	desc: `Defines a validation pattern for the input field.`,
 	types: `string`,
 	comps: `input-email, input-password, input-text`
 },{
 	name: `_multiple`,
-	desc: `Makes the input accept multiple inputs.
-TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved`,
+	desc: `Makes the input accept multiple inputs.`,
 	types: `boolean`,
 	comps: `input-email, input-file, select`
 },{
 	name: `_links`,
-	desc: `Gibt die Liste der darzustellenden Button, Links oder Texte an.`,
+	desc: `Defines the list of links combined with their labels to render.`,
 	types: `BreadcrumbLinkProps[] | string, ButtonOrLinkOrTextWithChildrenProps[] | string, LinkProps[] | string`,
 	comps: `breadcrumb, nav, skip-nav`
 },{
 	name: `_href`,
-	desc: `Defines the link the source of the quote.`,
+	desc: `Defines the link to the source of the quote.`,
 	types: `string`,
 	comps: `link, link-button, quote`
 },{
 	name: `_align`,
 	desc: `Defines the alignment of the tooltip in relation to the parent element.`,
 	types: `"bottom" | "left" | "right" | "top"`,
-	comps: `popover, tabs, tooltip`
+	comps: `popover, tabs, tooltip-wc`
 },{
 	name: `_target-description`,
-	desc: `Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.`,
+	desc: `Defines the description to use when the link is going to be opened in another application.`,
 	types: `string`,
 	comps: `link, link-button`
 },{
@@ -723,7 +718,7 @@ TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolve
 	comps: `select, textarea`
 },{
 	name: `_orientation`,
-	desc: `Gibt die horizontale oder vertikale Ausrichtung der Komponente an.`,
+	desc: `Defines whether the orientation of the component is horizontal or vertical.`,
 	types: `"horizontal" | "vertical"`,
 	comps: `input-radio, nav`
 },{
@@ -733,8 +728,7 @@ TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolve
 	comps: `input-radio, select`
 },{
 	name: `_open`,
-	desc: `If set (to true) opens/expands the element, closes if not set (or set to false).
-TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
+	desc: `If set (to true) opens/expands the element, closes if not set (or set to false).`,
 	types: `boolean`,
 	comps: `accordion, details`
 },{
@@ -744,12 +738,12 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	comps: `button, link`
 },{
 	name: `_caption`,
-	desc: `Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).`,
+	desc: `Deprecated: Defines the visible caption of the component.`,
 	types: `string`,
 	comps: `quote, table`
 },{
 	name: `_width`,
-	desc: `Setzt die Breite des Modals. (max-width: 100%).`,
+	desc: `Defines the width of the modal. (max-width: 100%)`,
 	types: `string`,
 	comps: `modal`
 },{
@@ -769,7 +763,7 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	comps: `link`
 },{
 	name: `_unit`,
-	desc: `Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)`,
+	desc: `Defines the unit of the step values (not shown).`,
 	types: `string`,
 	comps: `progress`
 },{
@@ -779,32 +773,32 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	comps: `pagination`
 },{
 	name: `_sibling-count`,
-	desc: `Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.`,
+	desc: `Defines the amount of pages to show next to the current page.`,
 	types: `number`,
 	comps: `pagination`
 },{
 	name: `_page-size-options`,
-	desc: `Setzt die Optionen für das Seitenlängenselect.`,
+	desc: `Defines the options for the page-size-select.`,
 	types: `number[] | string`,
 	comps: `pagination`
 },{
 	name: `_page-size`,
-	desc: `Gibt an, wie viele Einträge pro Seite angezeigt werden.`,
+	desc: `Defines the amount of entries to show per page.`,
 	types: `number`,
 	comps: `pagination`
 },{
 	name: `_page`,
-	desc: `Gibt an, welche Seite aktuell ausgewählt ist.`,
+	desc: `Defines the current page.`,
 	types: `number`,
 	comps: `pagination`
 },{
 	name: `_has-buttons`,
-	desc: `Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.`,
+	desc: `Defines which navigation buttons to render (first, last, next, previous buttons).`,
 	types: `boolean | string | { first: boolean; last: boolean; next: boolean; previous: boolean; }`,
 	comps: `pagination`
 },{
 	name: `_boundary-count`,
-	desc: `Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.`,
+	desc: `Defines the amount of pages to show next to the outer arrow buttons.`,
 	types: `number`,
 	comps: `pagination`
 },{
@@ -819,12 +813,12 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	comps: `tabs`
 },{
 	name: `_tabs`,
-	desc: `Setzt die Daten für die Registrierkarten.`,
+	desc: `Defines the tab captions.`,
 	types: `TabButtonProps[] | string`,
 	comps: `tabs`
 },{
 	name: `_selected`,
-	desc: `Gibt an, welches Tab selektiert sein soll.`,
+	desc: `Defines which tab is active.`,
 	types: `number`,
 	comps: `tabs`
 },{
@@ -844,12 +838,12 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	comps: `image`
 },{
 	name: `_sizes`,
-	desc: `Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.`,
+	desc: `Defines the image sizes for different screen resolutions, supporting _srcset.`,
 	types: `string`,
 	comps: `image`
 },{
 	name: `_loading`,
-	desc: `Setzt den Lademodus.`,
+	desc: `Defines the loading mode for the image.`,
 	types: `"eager" | "lazy"`,
 	comps: `image`
 },{
@@ -864,17 +858,17 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved`,
 	comps: `toast`
 },{
 	name: `_show-dropdown`,
-	desc: `Gibt die Rolle des primären Elements in der Komponente an.`,
+	desc: `Defines whether to show the dropdown menu.`,
 	types: `boolean`,
 	comps: `split-button`
 },{
 	name: `_secondary-headline`,
-	desc: `Gibt den Text der zusätzlichen Überschrift an.`,
+	desc: `Defines the text of the secondary headline.`,
 	types: `string`,
 	comps: `heading`
 },{
 	name: `_resize`,
-	desc: `Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)`,
+	desc: `Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)`,
 	types: `"both" | "horizontal" | "none" | "vertical"`,
 	comps: `textarea`
 },{
@@ -885,12 +879,12 @@ TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved`
 	comps: `textarea`
 },{
 	name: `_required-text`,
-	desc: `Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.`,
+	desc: `Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.`,
 	types: `boolean | string`,
 	comps: `form`
 },{
 	name: `_quote`,
-	desc: `Setzt den Text, also das Zitat selbst.`,
+	desc: `Defines the text of the quote.`,
 	types: `string`,
 	comps: `quote`
 },{
@@ -900,44 +894,42 @@ TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved`
 	comps: `icon`
 },{
 	name: `_pagination`,
-	desc: `Gibt an, ob die Daten geteilt in Seiten angezeigt wird.`,
-	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _customClass?: string; _variant?: ButtonVariantPropType; _tooltipAlign?: AlignPropType; }`,
+	desc: `Defines whether to show the data distributed over multiple pages.`,
+	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _customClass?: string; _variant?: ButtonVariantPropType; _label?: string; _tooltipAlign?: AlignPropType; }`,
 	comps: `table`
 },{
 	name: `_min-width`,
-	desc: `Gibt an, die minimale Breite der Tabelle an.`,
+	desc: `Defines the table min-width.`,
 	types: `string`,
 	comps: `table`
 },{
 	name: `_headers`,
-	desc: `Gibt die horizontalen und vertikalen Header für die Tabelle an.`,
+	desc: `Defines the horizontal and vertical table headers.`,
 	types: `string | { horizontal?: KoliBriTableHeaderCell[][]; vertical?: KoliBriTableHeaderCell[][]; }`,
 	comps: `table`
 },{
 	name: `_data-foot`,
-	desc: `Hier können die Daten für die Fußzeile der Tabelle übergeben werden.`,
+	desc: `Defines the data for the table footer.`,
 	types: `KoliBriTableDataType[] | string`,
 	comps: `table`
 },{
 	name: `_data`,
-	desc: `Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.`,
+	desc: `Defines the primary table data.`,
 	types: `KoliBriTableDataType[] | string`,
 	comps: `table`
 },{
 	name: `_indeterminate`,
-	desc: `Puts the checkbox in the indeterminate state, does not change the value of _checked.
-TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved`,
+	desc: `Puts the checkbox in the indeterminate state, does not change the value of _checked.`,
 	types: `boolean`,
 	comps: `input-checkbox`
 },{
 	name: `_checked`,
-	desc: `Defines whether the checkbox is checked or not. Can be read and written.
-TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved`,
+	desc: `Defines whether the checkbox is checked or not. Can be read and written.`,
 	types: `boolean`,
 	comps: `input-checkbox`
 },{
 	name: `_height`,
-	desc: `Deprecated: Gibt an, ob eine individuelle Höhe übergeben werden soll.`,
+	desc: `Deprecated: Defines an individual height.`,
 	types: `string`,
 	comps: `select`
 },{
@@ -947,8 +939,7 @@ TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
 	comps: `card`
 },{
 	name: `_has-footer`,
-	desc: `Shows the slot="footer".
-TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved`,
+	desc: `Shows the slot="footer".`,
 	types: `boolean`,
 	comps: `card`
 },{
@@ -963,23 +954,22 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 	comps: `nav`
 },{
 	name: `_collapsible`,
-	desc: `Defines if navigation nodes can be collapsed or not. Enabled by default.
-TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved`,
+	desc: `Defines if navigation nodes can be collapsed or not. Enabled by default.`,
 	types: `boolean`,
 	comps: `nav`
 },{
 	name: `_aria-current-value`,
-	desc: `Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.`,
+	desc: `Defines the value of aria-current to be used with the current context within the navigation.`,
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `nav`
 },{
 	name: `_color`,
-	desc: `Setzt die Hintergrundfarbe.`,
+	desc: `Defines the backgroundColor and foregroundColor.`,
 	types: `string | { backgroundColor: string; color: string; } | { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }`,
 	comps: `badge`
 },{
 	name: `_accept`,
-	desc: `Gibt an, welche Dateiformate erlaubt sind.`,
+	desc: `Defines which file formats are accepted.`,
 	types: `string`,
 	comps: `input-file`
 },

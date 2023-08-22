@@ -2846,7 +2846,7 @@ const BZSt = KoliBri.createTheme("bzst", {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -3176,9 +3176,6 @@ const BZSt = KoliBri.createTheme("bzst", {
 		list-style-type: none !important;
 		margin-left: 0;
 	}`,
-  "KOL-TOOLTIP": `:host {
-		--kolibri-font-size: var(--textFontSize);
-	}`,
   "KOL-SKIP-NAV": `kol-link-wc > a > kol-span-wc {
 		border-radius: 2px;
 		border-style: solid;
@@ -3276,18 +3273,18 @@ const BMF = KoliBri.createTheme("bmf", {
 	kol-heading-wc {
 		font-weight: 700;
 	}
-	kol-tooltip .tooltip-floating {
+	kol-tooltip-wc .tooltip-floating {
 		border: 1px solid var(--color-metal);
 		border-radius: var(--border-radius);
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		border: 1px solid var(--color-metal);
 	}
-	kol-tooltip .tooltip-area {
+	kol-tooltip-wc .tooltip-area {
 		background-color: var(--color-white);
 		color: var(--color-metal);
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5em;
 		padding: 0.5rem 0.75rem;
@@ -3392,30 +3389,13 @@ const BMF = KoliBri.createTheme("bmf", {
 	:is(a, button).loading > kol-span-wc kol-icon {
 		animation: spin 5s infinite linear;
 	}
-  /** small ghost button */
-	.ghost :is(a, button).small > kol-span-wc {
-		border: none;
-		background-color: transparent;
-		box-shadow: none;
+  /** button with inline focus */
+	:is(a, button).focus-inline:focus > kol-span-wc {
+		outline-offset: -2px;
 	}
-	.ghost :is(a, button).small > kol-span-wc > span {
-		border-radius: 1.5em;
-		border-style: solid;
-		border-width: 2px;
-		border-color: var(--color-white);
-		background-color: var(--color-white);
-	}
-	.ghost :is(a, button).small:active > kol-span-wc > span,
-	.ghost :is(a, button).small:hover > kol-span-wc > span,
-	.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
-	.ghost :is(a, button).small.transparent:hover > kol-span-wc > span {
-		background-color: var(--color-ocean);
-		border-color: var(--color-ocean);
-		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-		color: var(--color-white);
-	} /** :is(a,button) with transparent background */
+	/** :is(a,button) with transparent background */
 	:is(a, button).transparent > kol-span-wc > span,
-	.ghost :is(a, button).small.transparent > kol-span-wc > span,
+	.ghost :is(a, button).transparent > kol-span-wc > span,
 	:is(a, button).transparent > kol-span-wc {
 		background-color: transparent;
 		border-color: transparent;
@@ -4150,7 +4130,7 @@ const BMF = KoliBri.createTheme("bmf", {
 	.card > .content {
 		padding: 1rem;
 		max-height: 9.5rem;
-  	overflow-y: auto;
+  		overflow-y: auto;
 	}
 	.card.default > .heading {
 		background-color: var(--color-grey);
@@ -5393,7 +5373,7 @@ const BMF = KoliBri.createTheme("bmf", {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -13536,7 +13516,7 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -15634,13 +15614,13 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 
 const DESYv2 = KoliBri.createTheme("desy-v2", {
   GLOBAL: `
-	kol-tooltip .tooltip-area {
+	kol-tooltip-wc .tooltip-area {
 		background-color:#f2f2f2;
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -16375,7 +16355,7 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -18472,13 +18452,13 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 });
 
 const ECL_EC = KoliBri.createTheme("ecl-ec", {
-  GLOBAL: `kol-tooltip .tooltip-area {
+  GLOBAL: `kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -19003,7 +18983,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		display: grid;
 		gap: var(--spacing-m);
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -19909,13 +19889,13 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 });
 
 const ECL_EU = KoliBri.createTheme("ecl-eu", {
-  GLOBAL: `kol-tooltip .tooltip-area {
+  GLOBAL: `kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -20408,7 +20388,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		display: grid;
 		gap: var(--spacing-m);
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -21457,13 +21437,13 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 	kol-span-wc > span {
 		gap: 0.25em;
 	}
-	kol-tooltip .tooltip-area {
+	kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -21696,7 +21676,7 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -23185,11 +23165,11 @@ const MFM = KoliBri.createTheme("mfm", {
 		kol-heading-wc {
 			font-weight: 700;
 		}
-		kol-tooltip .tooltip-area {
+		kol-tooltip-wc .tooltip-area {
 			background-color: var(--color-metal);
 			color: var(--color-white);
 		}
-		kol-tooltip .tooltip-content {
+		kol-tooltip-wc .tooltip-content {
 			border-radius: var(--border-radius);
 			line-height: 1.5em;
 			padding: 0.5rem 0.75rem;
@@ -25266,7 +25246,7 @@ const MFM = KoliBri.createTheme("mfm", {
 			display: grid;
 			gap: 1rem;
 		}
-		:host > div {
+		:host .navigation-list {
 			display: inline-flex;
 			flex-wrap: wrap;
 			align-items: center;
@@ -32749,13 +32729,13 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		outline-width: 3px;
 		transition: outline-offset 0.2s linear;
 	}
-	kol-tooltip .tooltip-area {
+	kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		border-radius: 2px;
 		border: 1px solid #626262;
 		color: #000000 !important;
@@ -34173,7 +34153,7 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -50326,17 +50306,17 @@ const DEFAULT = KoliBri.createTheme("default", {
 		kol-heading-wc {
 			font-weight: 700;
 		}
-		kol-tooltip .tooltip-floating {
+		kol-tooltip-wc .tooltip-floating {
 			border: var(--border-width) solid var(--color-subtle);
 			border-radius: var(--border-radius);
 		}
-		kol-tooltip .tooltip-arrow {
+		kol-tooltip-wc .tooltip-arrow {
 			border: var(--border-width) solid var(--color-subtle);
 		}
-		kol-tooltip .tooltip-area {
+		kol-tooltip-wc .tooltip-area {
 			background-color: var(--color-light);
 		}
-		kol-tooltip .tooltip-content {
+		kol-tooltip-wc .tooltip-content {
 			border-radius: var(--border-radius);
 			line-height: 1.5;
 			padding: var(--spacing) calc(var(--spacing) * 1.5);
@@ -52357,7 +52337,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			display: grid;
 			gap: calc(var(--spacing) * 4);
 		}
-		:host > div {
+		:host .navigation-list {
 			display: inline-flex;
 			flex-wrap: wrap;
 			align-items: center;
@@ -52753,13 +52733,13 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		color: var(--color-red);
 		padding-left: 0.25em;
 	}
-	kol-tooltip .tooltip-area {
+	kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -53406,7 +53386,7 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
