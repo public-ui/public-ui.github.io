@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@docusaurus/core':
     specifier: 2.4.1
@@ -139,8 +143,8 @@ devDependencies:
     specifier: 13.3.0
     version: 13.3.0
   npm-check-updates:
-    specifier: 16.12.3
-    version: 16.12.3
+    specifier: 16.13.0
+    version: 16.13.0
   npm-run-all:
     specifier: 4.1.5
     version: 4.1.5
@@ -10370,8 +10374,8 @@ packages:
       npm-normalize-package-bin: 3.0.0
     dev: true
 
-  /npm-check-updates@16.12.3:
-    resolution: {integrity: sha512-oF6kwb5d0HzMpDA5Xt8Ah8LyEkYPI40tBwv1hPs43BMGHqh2Abah+KBp1RJLnIsb8Hjy0DY4yzQrm/qLjL2UCA==}
+  /npm-check-updates@16.13.0:
+    resolution: {integrity: sha512-zTJCqov2+KpCLM7lOOxXLFiqKg8RLt10dempIbE9EfKCzoN1yqSrDcBCpU6uOmlSRy3IIGm1rK+piCrn+uulJw==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
@@ -14799,7 +14803,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
-
-settings:
-  autoInstallPeers: false
-  excludeLinksFromLockfile: false
