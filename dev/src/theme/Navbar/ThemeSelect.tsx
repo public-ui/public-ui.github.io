@@ -1,6 +1,6 @@
 import { InputTypeOnDefault } from '@public-ui/components/dist/types/types/input/types';
 import { KolSelect } from '@public-ui/react';
-import React, { FunctionComponent, useEffect, useState } from 'React';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { getDarkMode, getTheme, setStorage, setTheme } from '../../shares/store';
 import { THEME_OPTIONS, Theme } from '../../shares/theme';
 
@@ -49,11 +49,10 @@ export const ThemeSelect: FunctionComponent = () => {
 			{...activate}
 			_hideLabel
 			_id="theme-toggle"
-			_list={THEME_OPTIONS}
+			_label="Theme auswählen"
+			_options={THEME_OPTIONS}
 			_value={[getTheme()]}
-		>
-			Theme auswählen
-		</KolSelect>
+		/>
 	);
 };
 

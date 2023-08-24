@@ -1,6 +1,6 @@
 import allElements from '@public-ui/components/custom-elements.json';
 import { KolBadge, KolHeading, KolTabs } from '@public-ui/react';
-import React, { useEffect, useMemo, useState } from 'React';
+import React, { useEffect, useMemo, useState } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
 import { AttributeInput } from './LiveEditorCompact/AttributeInput';
@@ -102,26 +102,27 @@ export function LiveEditorCompact(props: Props) {
 							<KolHeading _level={3} _label="Konfigurator" />
 							<div>
 								<KolHeading _level={4} _label="Properties" />
-								<div className="max-h-96 p-2 overflow-scroll mb-4">
+								<div className="max-h-96 p-2 overflow-auto mb-4">
 									{element &&
 										element.attributes.map((attribute: Attribute) => (
 											<>
-												{!AttributeBlackList.includes(attribute.name) && (
-													<AttributeInput
-														key={attribute.name}
-														attribute={attribute}
-														update={updateConfig}
-														value={config[attribute.name]}
-													></AttributeInput>
-												)}
+												{!AttributeBlackList.includes(attribute.name) &&
+													!attribute.description.startsWith('Deprecated:') && (
+														<AttributeInput
+															key={attribute.name}
+															attribute={attribute}
+															update={updateConfig}
+															value={config[attribute.name]}
+														></AttributeInput>
+													)}
 											</>
 										))}
-									{element && element.slots.length === 0 && (
+									{element && element.attributes.length === 0 && (
 										<span className="text-gray-500">Keine Properties vorhanden</span>
 									)}
 								</div>
 								<KolHeading _level={4} _label="Slots" />
-								<div className="max-h-56 p-2 overflow-scroll">
+								<div className="max-h-56 p-2 overflow-auto">
 									{element &&
 										element.slots.map((slot: Slot) => (
 											<SlotInput

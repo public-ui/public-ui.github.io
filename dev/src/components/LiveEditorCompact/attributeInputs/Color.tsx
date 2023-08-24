@@ -1,4 +1,4 @@
-import React, { useEffect } from 'React';
+import React, { useEffect } from 'react';
 import { KolInputColor } from '@public-ui/react';
 
 type Props = {

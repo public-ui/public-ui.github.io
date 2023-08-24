@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import { Attribute, Slot, TagName } from '../LiveEditorCompact/types';
 import allElements from '@public-ui/components/custom-elements.json';
 import { KolHeading } from '@public-ui/react';

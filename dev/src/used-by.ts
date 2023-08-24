@@ -1,4 +1,4 @@
-type UsedBy = {
+export type UsedBy = {
 	label: string;
 	homepageUrl: string;
 	logoSrc: string;

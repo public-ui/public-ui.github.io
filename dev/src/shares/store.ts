@@ -17,7 +17,7 @@ class StaticStorage {
 
 const STORE: Store = {
 	darkMode: false,
-	theme: 'bmf',
+	theme: 'default',
 };
 
 let STORAGE: Storage;
@@ -44,18 +44,18 @@ const setStore = () => {
 	STORAGE.setItem(STORE_IDENTIFIER, JSON.stringify(STORE));
 };
 
-// const switchDarkMode = (mode: boolean) => {
-// 	const html = document.querySelector('html');
-// 	if (html) {
-// 		html.dataset.theme = mode ? 'dark' : 'light';
-// 	}
-// };
+const switchDarkMode = (mode: boolean) => {
+	const html = document.querySelector('html');
+	if (html) {
+		html.dataset.theme = mode ? 'dark' : 'light';
+	}
+};
 
-// export const setDarkMode = (value: boolean) => {
-// 	STORE.darkMode = value === true;
-// 	switchDarkMode(STORE.darkMode);
-// 	setStore();
-// };
+export const setDarkMode = (value: boolean) => {
+	STORE.darkMode = value === true;
+	switchDarkMode(STORE.darkMode);
+	setStore();
+};
 
 export const getDarkMode = (): boolean => {
 	return STORE.darkMode === true;

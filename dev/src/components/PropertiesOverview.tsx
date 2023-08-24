@@ -1,4 +1,4 @@
-import React, { FC } from 'React';
+import React, { FC } from 'react';
 
 import ELEMENTS from '@public-ui/components/custom-elements.json';
 
@@ -61,36 +61,77 @@ hideButton.set('descriptions', new Set(['Versteckt entweder den Zurück- oder We
 hideButton.set('types', new Set(['"previous" | "next" | "both"']));
 PROPS.set('_hide-button', hideButton);
 
+const PROP_BLACKLIST = [
+	'_alt',
+	'_aria-label',
+	'_caption',
+	'_compact',
+	'_has-compact-button',
+	'_has-footer',
+	'_heading',
+	'_headline',
+	'_icon-align',
+	'_icon-only',
+	'_list',
+	'_part',
+	'_role',
+	'_title',
+	'_total',
+	'_selector',
+	'_show-duration',
+	'_size',
+	'_srcset',
+	'_stealth',
+	'_summary',
+	'_tabs-align',
+	'_use-case',
+];
+
 export const PropertiesOverview: FC = () => {
+	let counter = 0;
 	return (
 		<table>
 			<thead>
 				<tr>
 					<th>#</th>
 					<th>Property</th>
-					{/* <th>Components</th> */}
+					<th>Components</th>
 					<th>Descriptions</th>
 					<th>Types</th>
 				</tr>
 			</thead>
 			<tbody>
-				{Array.from(PROPS.keys()).map((prop, index) => {
-					// const components = Array.from(PROPS.get(prop)?.get('components') || []);
+				{Array.from(PROPS.keys()).map((prop) => {
+					if (PROP_BLACKLIST.includes(prop)) {
+						return null;
+					}
+					counter++;
+					const components = Array.from(PROPS.get(prop)?.get('components') || []);
 					const descriptions = Array.from(PROPS.get(prop)?.get('descriptions') || []);
 					const types = Array.from(PROPS.get(prop)?.get('types') || []);
 					return (
 						<tr key={prop}>
-							<td>{index}</td>
-							<td>{prop}</td>
-							{/* <td>{components.join(', ')}</td> */}
+							<td>{counter}</td>
 							<td
-								style={{ backgroundColor: descriptions.length > 1 && '#fbc' }}
+								style={{
+									backgroundColor: PROP_BLACKLIST.includes(prop) ? '#fbc' : undefined,
+								}}
+							>
+								{prop}
+							</td>
+							<td>{components.join(', ')}</td>
+							<td
+								style={{
+									backgroundColor: descriptions.length > 1 ? '#fbc' : undefined,
+								}}
 								dangerouslySetInnerHTML={{
 									__html: descriptions.join('<hr/>'),
 								}}
 							/>
 							<td
-								style={{ backgroundColor: types.length > 1 && '#fbc' }}
+								style={{
+									backgroundColor: types.length > 1 ? '#fbc' : undefined,
+								}}
 								dangerouslySetInnerHTML={{
 									__html: types.join('<hr/>'),
 								}}

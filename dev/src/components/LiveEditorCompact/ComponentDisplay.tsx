@@ -4,6 +4,7 @@ import {
 	KolAbbr,
 	KolAccordion,
 	KolAlert,
+	KolAvatar,
 	KolBadge,
 	KolBreadcrumb,
 	KolButton,
@@ -40,15 +41,15 @@ import {
 	KolSelect,
 	KolSkipNav,
 	KolSpin,
+	KolSplitButton,
 	KolSymbol,
 	KolTable,
 	KolTabs,
 	KolTextarea,
 	KolToast,
-	KolTooltip,
 	KolVersion,
 } from '@public-ui/react';
-import React from 'React';
+import React from 'react';
 import { TagName } from '../LiveEditorCompact/types';
 import { Config } from '../LiveEditorCompact';
 
@@ -70,6 +71,7 @@ export function ComponentDisplay(props: Props) {
 		abbr: KolAbbr,
 		accordion: KolAccordion,
 		alert: KolAlert,
+		avatar: KolAvatar,
 		badge: KolBadge,
 		breadcrumb: KolBreadcrumb,
 		button: KolButton,
@@ -106,12 +108,12 @@ export function ComponentDisplay(props: Props) {
 		select: KolSelect,
 		'skip-nav': KolSkipNav,
 		spin: KolSpin,
+		'split-button': KolSplitButton,
 		symbol: KolSymbol,
 		table: KolTable,
 		tabs: KolTabs,
 		textarea: KolTextarea,
 		toast: KolToast,
-		tooltip: KolTooltip,
 		version: KolVersion,
 	};
 	const Tag = list[props.tag];

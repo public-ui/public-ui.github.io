@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'React';
+import React, { useEffect, useState } from 'react';
 import { Attribute } from '../../LiveEditorCompact/types';
 import { KolButton, KolDetails } from '@public-ui/react';
 import { KoliBriAllIcon } from '@public-ui/components/dist/types/types/icon';

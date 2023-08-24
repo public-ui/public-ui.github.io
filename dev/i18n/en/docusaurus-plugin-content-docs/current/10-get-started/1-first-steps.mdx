@@ -132,7 +132,7 @@ index.html
 #### 4. Example
 
 ```tsx
-import React from 'React';
+import React from 'react';
 import { KolSpin } from '@public-ui/react';
 
 export const AppComponent = () => {
@@ -272,7 +272,7 @@ It ensures that the Web Components are reloaded asynchronously (lazy) as soon as
 #### 3. Integration
 
 ```tsx
-import React from 'React';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { AppComponent } from './components/app/component';
@@ -295,7 +295,7 @@ register(DEFAULT, defineCustomElements)
 #### 4. Example
 
 ```tsx
-import React from 'React';
+import React from 'react';
 import { KolSpin } from '@public-ui/react';
 
 export const AppComponent = () => {
@@ -349,9 +349,9 @@ If fonts and/or icons are used, they must be included as described above.
 
 ```html
 <script type="module">
-	import { register } from 'https://esm.sh/@public-ui/components';
-	import { defineCustomElements } from 'https://esm.sh/@public-ui/components/dist/loader';
-	import { ITZBund } from 'https://esm.sh/@public-ui/themes';
+	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/dist/loader/index.js';
+	import { ITZBund } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
 	register(ITZBund, defineCustomElements).catch(console.warn);
 </script>
 ```
@@ -418,9 +418,9 @@ It ensures that the Web Components are reloaded asychronously (lazy) as soon as 
 ```html
 <head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/components@1.4.0-rc.6';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.6/dist/loader';
-		import { BMF } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.6';
+		import { register } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6';
+		import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6/dist/loader';
+		import { BMF } from 'https://unpkg.com/@public-ui/themes@1.4.0-rc.6';
 		register([BMF], defineCustomElements)
 			.then(() => {})
 			.catch(console.warn);
@@ -436,7 +436,7 @@ It ensures that the Web Components are reloaded asychronously (lazy) as soon as 
 ##### Integration
 
 ```tsx
-import React from 'React';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { AppComponent } from './components/app/component';
@@ -469,7 +469,7 @@ YARN `yarn add @public-ui/react`
 ##### Use component
 
 ```tsx
-import React, { FunctionComponent } from 'React';
+import React, { FunctionComponent } from 'react';
 import { KolSpin } from '@public-ui/react';
 
 export const App: FunctionComponent = () => <KolSpin _show />;

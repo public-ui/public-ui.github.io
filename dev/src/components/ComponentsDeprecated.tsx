@@ -1,8 +1,7 @@
-import React, { FC } from 'React';
+import React, { FC } from 'react';
 
 const DEPRECATED = new Map<string, Set<string>>();
 DEPRECATED.set('avatar', new Set());
-DEPRECATED.set('dialog', new Set());
 DEPRECATED.set('toolbar', new Set());
 DEPRECATED.set('tree', new Set());
 DEPRECATED.set('list', new Set());

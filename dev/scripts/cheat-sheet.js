@@ -1,6 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const ELEMENTS = require(path.relative(__dirname, 'node_modules/@public-ui/components/custom-elements.json'));
+
+const cpOptions = { recursive: true, force: true, preserveTimestamps: true };
+fs.cpSync('node_modules/@public-ui/components/dist/esm', 'static/assets/components-esm', cpOptions);
+fs.cpSync('node_modules/@public-ui/themes/dist', 'static/assets/themes', cpOptions);
+
 let MARKDOWN = `# Cheat Sheet
 
 ## Unified properties
@@ -20,9 +25,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<link href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/a11y-light.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/index.min.js"></script>
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.6.0-rc.1';
+			import { register } from '/assets/components-esm/index.js';
+			import { defineCustomElements } from '/assets/components-esm/loader.js';
+			import { ITZBund } from '/assets/themes/index.mjs';
 				register(ITZBund, defineCustomElements)
 						.catch(console.warn);
 		</script>
@@ -90,9 +95,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 			<pre>
 				<code class="language-html">${`<head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.6.0-rc.1';
+		import { register } from 'https://unpkg.com/@public-ui/components@1.6.0-rc.1';
+		import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@1.6.0-rc.1/dist/loader';
+		import { ITZBund } from 'https://unpkg.com/@public-ui/themes@1.6.0-rc.1';
 			register(ITZBund, defineCustomElements)
 					.catch(console.warn);
 	</script>
@@ -120,7 +125,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<p>Im VSCode können die Meta-Informationen der Komponenten und deren Eigenschaften für die Autovervollständigung von HTML aktiviert werden.</p>
 		<pre>
 			<code class="language-json">${`{
-	"html.customData": ["https://esm.sh/@public-ui/components@1.6.0-rc.1/vscode-custom-data.json"]
+	"html.customData": ["https://unpkg.com/@public-ui/components@1.6.0-rc.1/vscode-custom-data.json"]
 }`
 				.replace(/</g, '&#60;')
 				.replace(/>/g, '&#62;')}</code>

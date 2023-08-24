@@ -1,17 +1,17 @@
 import { TH } from '@public-oss/kolibri-themes';
 import { register } from '@public-ui/components';
 import { applyPolyfills, defineCustomElements } from '@public-ui/components/dist/loader';
-import { BMF, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
+import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 import React, { FunctionComponent, PropsWithChildren, useEffect, useState } from 'react';
 import { Theme } from '../shares/theme';
 
-const Root: FunctionComponent<PropsWithChildren> = (props) => {
+export const Root: FunctionComponent<PropsWithChildren> = (props) => {
 	const [theme] = useState<Theme>('bmf');
 
 	useEffect(() => {
 		Promise.all([
 			applyPolyfills(),
-			register([BMF, ECL_EC, ECL_EU, ITZBund, TH], [defineCustomElements], {
+			register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund, TH], [defineCustomElements], {
 				theme: {
 					detect: 'auto',
 				},

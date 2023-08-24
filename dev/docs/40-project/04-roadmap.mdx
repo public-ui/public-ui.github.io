@@ -30,15 +30,15 @@ tags:
 | Architektur   | Vereinheitlichung aller Propteries           |   ✅   |       ➕       |       ➕        |
 | Architektur   | Expert-Slot                                  |   ✅   | ➕<sup>1</sup> |       ➕        |
 | Architektur   | Auslagerung aller Bund-Themes                |   👩‍💻   |       ➕       |       ➕        |
-| Feature       | Checkbox in Tabellen                         |   👩‍💻   |       ➕       |       ➕        |
-| Feature       | Tabellen mit Footer                          |   👩‍💻   |       ➕       |       ➕        |
+| Feature       | Checkbox in Tabellen                         |   👩‍💻   | ➕<sup>2</sup> |       ➕        |
+| Feature       | Tabellen mit Footer                          |   ✅   | ➕<sup>2</sup> |       ➕        |
 | Dokumentation | Migrationsanleitung                          |   🕑   |       ➕       |       ➕        |
 | Dokumentation | Testergebnisse zu allen Komponenten          |   👩‍💻   |       ➕       |       ➕        |
-| Eigenschaft   | Properties übergreifend vereinheitlichen     |   👩‍💻   |       ➕       |       ➕        |
+| Eigenschaft   | Properties übergreifend vereinheitlichen     |   👩‍💻   | ➕<sup>1</sup> |       ➕        |
 | Eigenschaft   | Übersicht vereinheitlichter Properties       |   ✅   |       ➕       |       ➕        |
 | Theming       | ThemingToken-basiertes Theme                 |   🕑   |       ➕       |       ➕        |
-| Komponent     | Accordions (as Group)                        |   🕑   |       ➖       |       ➕        |
-| Komponent     | Avatar                                       |   🕑   |       ➖       |       ➕        |
+| Komponent     | Accordions (as Group)                        |   ❌   |       ➖       |       ➕        |
+| Komponent     | Avatar                                       |   ✅   | ➕<sup>2</sup> |       ➕        |
 | Komponent     | ButtonGroup (⚠️ Deprecated)                  |   ✅   |       ➕       |       ➕        |
 | Komponent     | LinkGroup (⚠️ Deprecated)                    |   ✅   |       ➕       |       ➕        |
 | Komponent     | IconFontAwesome (⚠️ Deprecated)              |   ✅   |       ➕       | ➖ <sup>3</sup> |
@@ -46,17 +46,15 @@ tags:
 | Komponent     | InputAdapterLeanup (Moving in other Package) |   ✅   |       ➕       | ➕ <sup>3</sup> |
 | Komponent     | InputRadioGroup (⚠️ Deprecated)              |   ✅   |       ➕       | ➖ <sup>3</sup> |
 | Komponent     | Symbol (⚠️ Deprecated)                       |   ✅   |       ➕       | ➖ <sup>3</sup> |
-| Komponent     | ~~Carousel~~                                 |   ❌   |       ➖       | ➖ <sup>3</sup> |
+| Komponent     | ~~Carousel~~                                 |   ❌   |       ➖       |       ➖        |
 | Komponent     | ~~Cookie-Banner~~                            |   ❌   |       ➖       |       ➖        |
-| Komponent     | Dialog                                       |   👩‍💻   | ➕<sup>2</sup> |       ➕        |
+| Komponent     | Dialog                                       |   ✅   | ➖<sup>4</sup> | ➖<sup>4</sup>  |
 | Komponent     | Image                                        |   ✅   | ➕<sup>2</sup> |       ➕        |
-| Komponent     | ~~Listbox~~                                  |   ❌   |       ➖       |       ➖        |
+| Komponent     | List                                         |   ❌   |       ➖       |       ➕        |
 | Komponent     | Split-Button / Dropdown                      |   ✅   | ➕<sup>2</sup> |       ➕        |
-| Komponent     | Tabs (Refactoring)                           |   👩‍💻   |       ➕       |       ➕        |
-| Komponent     | Tab (for Tabs)                               |   🕑   | ➕<sup>2</sup> |       ➕        |
+| Komponent     | Tabs (Refactoring)                           |   ❌   |       ➖       |       ➕        |
 | Komponent     | ~~Timeline~~                                 |   ❌   |       ➖       |       ➖        |
-| Komponent     | Tree                                         |   🕑   |       ➖       |       ➕        |
-| Komponent     | Kopf-Zeilen und -Spalten fixieren            |   👩‍💻   |       ➕       |       ➕        |
+| Komponent     | Tree                                         |   👩‍💻   |       ➖       |       ➕        |
 
 > <small>
 > 	<sup>1</sup> Dieses Vorhaben wird weitestgehend abwärtskompatibel umgesetzt.
@@ -64,6 +62,8 @@ tags:
 > 	<sup>2</sup> Dieses Vorhaben ist wahrscheinlich auch in Version 1 verfügbar.
 > 	<br />
 > 	<sup>3</sup> Achtung, diese Komponente entfällt in Version 2.
+> 	<br />
+> 	<sup>4</sup> Feature entfällt, weil der HTML-Standard vollständig barrierefrei und gut nutzbar ist.
 > </small>
 
 ## Lose Can do-Liste

@@ -55,6 +55,11 @@ import { KolLink } from '@public-ui/react';
 - **Warum werden die Eigenschaften von Komponenten manchmal abweichend vom HTML-Naming benannt?**<br/>
   Um die Erlernbarkeit von KoliBri zu einfach zu halten, wird in der Regel immer das Naming des HTML verwenden. Doch auch der HTML-Standard ist in seinem Naming über mehrerer Element (Komponenten) nicht einheitlich. Und daher kommt es dazu, dass wir in KoliBri für gleichartige Eigenschaften übergreifend einheitliche Namen gewählt haben. Mehr dazu finden Sie im Konzept <KolLink _href="/docs/concepts/properties" _label="Eigenschaften" />.
 
+## Barrierefreiheit
+
+- **Warum müssen bei interaktiven Elementen das Label und Aria-Label gleich sein?**<br/>
+  Bei Button/Schaltern und Links muss die sichtbare Bezeichnung (Label) und die assistive Bezeichnung (Aria-Label) identisch sein, damit die Nutzung per Sprachsteuerung zugänglich und somit barrierefrei ist.
+
 ## Noch Fragen offen?
 
 Wenn noch Fragen offen sind, dann schreiben Sie uns gerne eine E-Mail an <KolLink _href="mailto:kolibri@itzbund.de" _label="kolibri@itzbund.de" _target="email" _icon="codicon codicon-mail" />.

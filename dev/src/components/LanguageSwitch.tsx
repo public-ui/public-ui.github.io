@@ -1,7 +1,7 @@
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { KolLinkButton } from '@public-ui/react';
-import React, { FC } from 'React';
+import React, { FC } from 'react';
 
 export const LanguageSwitch: FC = () => {
 	const { i18n } = useDocusaurusContext();

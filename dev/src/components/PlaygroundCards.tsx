@@ -1,5 +1,5 @@
 import { KolLinkButton } from '@public-ui/react';
-import React from 'React';
+import React from 'react';
 import { FunctionComponent } from 'react';
 
 interface Playground {

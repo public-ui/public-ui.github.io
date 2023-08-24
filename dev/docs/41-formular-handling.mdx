@@ -66,10 +66,10 @@ Bei der Einbindung ist darauf zu achten, dass die Leanup-Komponenten zunächst r
 ```html
 <head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/components@1.4.0-rc.6';
-		import { defineCustomElements as kolibri } from 'https://esm.sh/@public-ui/components@1.4.0-rc.6/dist/loader';
-		import { defineCustomElements as leanup } from 'https://esm.sh/@leanup/kolibri-components@1.0.5/dist/loader';
-		import { BMF } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.6';
+		import { register } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6';
+		import { defineCustomElements as kolibri } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6/dist/loader';
+		import { defineCustomElements as leanup } from 'https://unpkg.com/@leanup/kolibri-components@1.0.5/dist/loader';
+		import { BMF } from 'https://unpkg.com/@public-ui/themes@1.4.0-rc.6';
 		register([BMF], [kolibri, leanup])
 			.catch(console.warn);
 	</script>
@@ -82,7 +82,7 @@ Bei der Einbindung ist darauf zu achten, dass die Leanup-Komponenten zunächst r
 Oder für React:
 
 ```tsx
-import React from 'React';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { AppComponent } from './components/app/component';

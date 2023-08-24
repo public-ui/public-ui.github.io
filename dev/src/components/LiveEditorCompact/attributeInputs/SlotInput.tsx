@@ -1,5 +1,5 @@
 import { Editor } from '@monaco-editor/react';
-import React from 'React';
+import React from 'react';
 
 type Props = {
 	description: string;
