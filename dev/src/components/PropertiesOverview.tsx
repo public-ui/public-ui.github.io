@@ -101,7 +101,7 @@ export const PropertiesOverview: FC = () => {
 				</tr>
 			</thead>
 			<tbody>
-				{Array.from(PROPS.keys()).map((prop) => {
+				{Array.from(PROPS.keys()).map((prop, index) => {
 					if (PROP_BLACKLIST.includes(prop)) {
 						return null;
 					}

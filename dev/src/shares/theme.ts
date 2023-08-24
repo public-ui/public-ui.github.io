@@ -4,6 +4,7 @@ export type Theme =
 	| 'unstyled'
 	| 'bamf'
 	| 'bmf'
+	| 'default'
 	| 'by'
 	| 'bzst'
 	| 'default'
