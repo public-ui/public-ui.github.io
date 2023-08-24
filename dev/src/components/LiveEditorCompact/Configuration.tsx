@@ -1,9 +1,9 @@
 import React from 'react';
-import { Attribute, Slot, TagName } from '../LiveEditor/types';
+import { Attribute, Slot, TagName } from '../LiveEditorCompact/types';
 import allElements from '@public-ui/components/custom-elements.json';
 import { KolHeading } from '@public-ui/react';
 import { AttributeInput } from './AttributeInput';
-import { AttributeBlackList } from '../LiveEditor/lists';
+import { AttributeBlackList } from './lists';
 import { SlotInput } from './attributeInputs/SlotInput';
 
 type Props = {

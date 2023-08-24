@@ -48,10 +48,6 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 		label: 'Unstyled',
 		value: 'unstyled',
 	},
-	{
-		label: 'Default',
-		value: 'default',
-	},
 	// {
 	// 	disabled: true,
 	// 	label: 'Bundesamt für Migration und Flüchtlinge',

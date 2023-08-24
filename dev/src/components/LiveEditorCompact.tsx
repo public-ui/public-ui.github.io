@@ -7,8 +7,8 @@ import { AttributeInput } from './LiveEditorCompact/AttributeInput';
 import { CodeOutput } from './LiveEditorCompact/CodeOutput';
 import { ComponentDisplay } from './LiveEditorCompact/ComponentDisplay';
 import { SlotInput } from './LiveEditorCompact/attributeInputs/SlotInput';
-import { AttributeBlackList } from './LiveEditor/lists';
-import { Attribute, Slot, TagName } from './LiveEditor/types';
+import { AttributeBlackList } from './LiveEditorCompact/lists';
+import { Attribute, Slot, TagName } from './LiveEditorCompact/types';
 
 type Props = {
 	component?: string;
@@ -17,17 +17,17 @@ type Props = {
 
 export type Config = Record<string, string | number | boolean | string[]>;
 type AllConfig = Record<string, Config>;
+type TagAttributes = Record<string, string | boolean>[];
+type Tag = Record<string, string | TagAttributes>;
 
 function fillDefaultValues(): AllConfig {
 	const result: AllConfig = {};
-	Object.values(allElements.tags).forEach((tag) => {
-		const name = tag.name.replace('kol-', '');
+	Object.values(allElements.tags as Tag[]).forEach((tag: Tag) => {
+		const name = (tag.name as string).replace('kol-', '');
 		result[name] = { defaultValues: [] as string[] };
-		tag.attributes.forEach((attribute: Config) => {
+		(tag.attributes as TagAttributes).forEach((attribute: Config) => {
 			if (attribute.defaultValue) {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				result[name][attribute.name as string] = (attribute.defaultValue as string).replaceAll("'", '');
+				result[name][attribute.name as string] = (attribute.defaultValue as string).replace(/'/g, '');
 				(result[name].defaultValues as string[]).push(attribute.name as string);
 			}
 		});
