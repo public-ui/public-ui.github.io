@@ -1,11 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
+import { KolAbbr, KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/react';
 import React, { useMemo } from 'react';
-import { Attribute } from '../LiveEditor/types';
-import { KolAbbr, KolIcon, KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/react';
-import { Icon } from './attributeInputs/Icon';
+import { Attribute } from '../LiveEditorCompact/types';
 import { Color } from './attributeInputs/Color';
+import { Icon } from './attributeInputs/Icon';
 import { UnionSelect } from './attributeInputs/UnionSelect';
-import { type } from 'os';
 
 type Props = {
 	attribute: Attribute;

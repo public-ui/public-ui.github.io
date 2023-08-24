@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Attribute } from '../../LiveEditor/types';
+import { Attribute } from '../../LiveEditorCompact/types';
 import { KolButton, KolDetails } from '@public-ui/react';
 import { KoliBriAllIcon } from '@public-ui/components/dist/types/types/icon';
 
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export function Icon(props: Props) {
-	const { attribute, label, update, value } = props;
+	const { attribute, label, update } = props;
 
 	const [left, setLeft] = useState('');
 	const [right, setRight] = useState('');
@@ -65,7 +65,7 @@ export function Icon(props: Props) {
 								_icon={`codicon codicon-${icon}`}
 								_hideLabel
 								_label=""
-								_on={{ onClick: (e: Event) => setLeft(icon) }}
+								_on={{ onClick: () => setLeft(icon) }}
 							></KolButton>
 						))}
 					</div>
@@ -82,7 +82,7 @@ export function Icon(props: Props) {
 								_icon={`codicon codicon-${icon}`}
 								_hideLabel
 								_label=""
-								_on={{ onClick: (e: Event) => setRight(icon) }}
+								_on={{ onClick: () => setRight(icon) }}
 							></KolButton>
 						))}
 					</div>
@@ -99,7 +99,7 @@ export function Icon(props: Props) {
 								_icon={`codicon codicon-${icon}`}
 								_hideLabel
 								_label=""
-								_on={{ onClick: (e: Event) => setTop(icon) }}
+								_on={{ onClick: () => setTop(icon) }}
 							></KolButton>
 						))}
 					</div>
@@ -116,7 +116,7 @@ export function Icon(props: Props) {
 								_icon={`codicon codicon-${icon}`}
 								_hideLabel
 								_label=""
-								_on={{ onClick: (e: Event) => setBottom(icon) }}
+								_on={{ onClick: () => setBottom(icon) }}
 							></KolButton>
 						))}
 					</div>

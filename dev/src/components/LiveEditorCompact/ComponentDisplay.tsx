@@ -47,11 +47,10 @@ import {
 	KolTabs,
 	KolTextarea,
 	KolToast,
-	KolTooltip,
 	KolVersion,
 } from '@public-ui/react';
 import React from 'react';
-import { TagName } from '../LiveEditor/types';
+import { TagName } from '../LiveEditorCompact/types';
 import { Config } from '../LiveEditorCompact';
 
 type Props = {
@@ -115,7 +114,6 @@ export function ComponentDisplay(props: Props) {
 		tabs: KolTabs,
 		textarea: KolTextarea,
 		toast: KolToast,
-		tooltip: KolTooltip,
 		version: KolVersion,
 	};
 	const Tag = list[props.tag];

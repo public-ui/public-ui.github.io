@@ -4,6 +4,7 @@ export type Theme =
 	| 'unstyled'
 	| 'bamf'
 	| 'bmf'
+	| 'default'
 	| 'by'
 	| 'bzst'
 	| 'default'
@@ -47,10 +48,6 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 		label: 'Unstyled',
 		value: 'unstyled',
 	},
-	{
-		label: 'Default',
-		value: 'default',
-	},
 	// {
 	// 	disabled: true,
 	// 	label: 'Bundesamt für Migration und Flüchtlinge',
@@ -70,6 +67,10 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	// 	label: 'Bundesamt für Zoll und Steuern',
 	// 	value: 'bzst',
 	// },
+	{
+		label: 'Default',
+		value: 'default',
+	},
 	// {
 	// 	disabled: true,
 	// 	label: 'DESY-Styleguide (v1)',
