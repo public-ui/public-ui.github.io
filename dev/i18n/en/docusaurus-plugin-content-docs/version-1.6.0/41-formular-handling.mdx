@@ -1,0 +1,135 @@
+---
+title: Form handling
+description: This page describes how complex forms can be implemented with KoliBri.
+tags:
+  - architekture
+  - form
+  - conzept
+---
+
+Almost all **KoliBri** components are used to implement and encapsulate specific accessible HTML components and belong to the **View**.
+
+In order to be able to implement very dynamic and complex forms, numerous functionalities such as change listeners, validators, formatter and others are required.
+This logic should be implemented decoupled from the view and belong to the **controller**.
+
+## Design approaches
+
+In <kol-abbr _title="Single-Page-Application">SPA</kol-abbr> development, a distinction is often made between the <i>template-driven</i> and <i>model-driven</i> approach.
+
+The template-driven approach means that the form logic is also implemented in the template, i.e. the view. This can be shameful, but also lead to confusing code.
+
+The model-driven approach, on the other hand, means that the form logic is implemented in the model, i.e. the controller. This initially leads to more effort, but it also leads to decoupled, more maintainable code.
+
+<kol-alert _type="info">
+
+In **KoliBri** the form components are decoupled from the form handling. This has the advantage that the components can be reused more universally. Quasi like the HTML itself as well.
+
+</kol-alert>
+
+## Input-components
+
+The **input** components are the components that can be used to make form inputs. That means primarily <kol-link _href="/docs/konzepte/formular-input">inputs, select and textarea</kol-link>.
+
+## Handling adapters
+
+As described above, the form handling is decoupled from the **input** components. Thus, each development team can decide for itself which form handling is suitable, depending on the framework used.
+
+<kol-alert _type="info">
+
+The form handling is then **coupled** with the **input** components via an **adapter** component that dynamically synchronizes the state of the components.
+
+</kol-alert>
+
+### Lean-Input adapters
+
+For development with TypeScript, **KoliBri** provides the **adapter** component for the form handling library <kol-link _href="https://www.npmjs.com/package/@leanup/form" _label="@leanup/form" _target="npmjs"/>.
+
+#### Installation
+
+The adapter can be installed via the public NPM registry:
+
+```bash
+npm i @leanup/form @leanup/kolibri-components @leanup/kolibri-react
+```
+
+#### Integration
+
+When integrating, it is important to note that the Leanup components must be registered first.
+
+```html
+<head>
+	<script type="module">
+		import { register } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6';
+		import { defineCustomElements as kolibri } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6/dist/loader';
+		import { defineCustomElements as leanup } from 'https://unpkg.com/@leanup/kolibri-components@1.0.5/dist/loader';
+		import { BMF } from 'https://unpkg.com/@public-ui/themes@1.4.0-rc.6';
+		register([BMF], [kolibri, leanup])
+			.catch(console.warn);
+	</script>
+</head>
+<body>
+	<kol-spin _show>
+</body>
+```
+
+Or for React:
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import { AppComponent } from './components/app/component';
+
+import { register } from '@public-ui/components';
+import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
+import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
+import { BMF } from '@public-ui/themes';
+
+register([BMF], [kolibri, leanup])
+	.then(() => {
+		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
+		if (htmlDivElement instanceof HTMLDivElement) {
+			const root = createRoot(htmlDivElement);
+			root.render(<AppComponent />);
+		}
+	})
+	.catch(console.warn);
+```
+
+#### Usage
+
+As the name (adapter) suggests, the component represents the synchronization between the specific form logic (controller) and the form representation (view). The implementation in the HTML code takes the form of an enclosing tag.
+
+**Example (schematic):**
+
+```html
+<lean-input-adapter>
+	<kol-input-text>Country</kol-input-text>
+</lean-input-adapter>
+
+<lean-input-adapter>
+	<kol-select _list="Germany, Austria, Switzerland, etc.">Country</kol-select>
+</lean-input-adapter>
+```
+
+> In plain HTML, the controls must be attached to the adapter nodes after DOM construction for the reactive behavior to work.
+
+Or for React:
+
+```tsx
+<LeanInputAdapter _control={landControl as InputControl}>
+	<KolInputText>Country</KolInputText>
+</LeanInputAdapter>
+
+<LeanInputAdapter _control={landControl as InputControl}>
+	<KolSelect _list="Germany, Austria, Switzerland, etc.">Country</KolSelect>
+</LeanInputAdapter>
+```
+
+<kol-alert _type="info">
+
+In this example, it is nice to see that the model is decoupled from the representation. So whether a form value is represented as a text input field or as a select field is irrelevant at the model level.
+
+</kol-alert>
+
+The **adapter** component encloses the **input** component of KoliBri and thereby ensures the synchronization between model and representation.

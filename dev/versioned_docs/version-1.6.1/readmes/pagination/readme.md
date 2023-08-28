@@ -1,0 +1,98 @@
+Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte Inhalte, wie zum Beispiel Suchergebnisse, der Reihe nach durchlaufen.
+
+## Konstruktion
+
+### Code
+
+```html
+<div>
+	<kol-pagination _total="100" _page="6"></kol-pagination>
+	<kol-pagination _total="100" _page="6" _sibling-count="2"></kol-pagination>
+	<kol-pagination _total="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
+</div>
+```
+
+### Beispiel
+
+<div className="grid gap-2">
+  <kol-heading _level="3" _label="Standardausgabe nur mit aktuellem Element"></kol-heading>
+  <kol-pagination _total="100" _page="6" _has-buttons="false"></kol-pagination>
+  <kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts dem aktuellen Element (_sibling)"></kol-heading>
+  <kol-pagination _total="100" _page="6" _sibling-count="2"></kol-pagination>
+  <kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts (_boundary-count)"></kol-heading>
+  <kol-pagination _total="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
+</div>
+
+## Verwendung
+
+Die **Paginierung**-Komponente kann über Ihre Properties konfiguriert werden.
+
+- Das Attribut **`_total`** bestimmt die Gesamtanzahl der Elemente.
+- Über das Attribut **`boundary-count`** wird die Anzahl von Elementen bestimmt, die in der **Paginierung**-Komponente rechts und links angezeigt werden, während die übrigen Elemente
+- Das Attribut **`_page`** legt das gerade aktive Element fest. Dieses wird farblich hervorgehoben dargestellt.
+- Über das Attribut **`_sibling-count`** kann festgelegt werden, wie viele Elemente jeweils links und rechts des Aktuellen angezeigt werden sollen.
+
+<!-- ### Best practices -->
+
+### Anwendungsfälle
+
+Die **Paginierung**-Komponente kann auf vielfältige Art eingesetzt werden. Insbesondere dort, wo auf einer Inhaltsseite umfangreiche Inhalte dargestellt werden sollen, trägt sie zur Verbesserung der Struktur und Übersichtlichkeit bei.
+Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte, Listen und Tabellen. Auch für bestimmte Navigationsaufgaben innerhalb einer Seite kann die Paginierung gut verwendet werden.
+
+<!-- Auto Generated Below -->
+
+## Properties
+
+| Property              | Attribute            | Description                                                                                                        | Type                                                                                                                                                                                                                         | Default     |
+| --------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_boundaryCount`      | `_boundary-count`    | Defines the amount of pages to show next to the outer arrow buttons.                                               | `number` \| `undefined`                                                                                                                                                                                                      | `1`         |
+| `_customClass`        | `_custom-class`      | Defines the custom class attribute for the buttons.                                                                | `string` \| `undefined`                                                                                                                                                                                                      | `undefined` |
+| `_hasButtons`         | `_has-buttons`       | Defines which navigation buttons to render (first, last, next, previous buttons).                                  | `boolean` \| `string` \| `undefined` \| `{ first: boolean; last: boolean; next: boolean; previous: boolean; }`                                                                                                               | `true`      |
+| `_label`              | `_label`             | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string` \| `undefined`                                                                                                                                                                                                      | `undefined` |
+| `_on` _(required)_    | --                   | Gibt an, auf welche Callback-Events reagiert werden.                                                               | `{ onChangePage?: EventValueOrEventCallback<Event, number>` \| `undefined; onChangePageSize?: EventValueOrEventCallback<Event, number>` \| `undefined; onClick?: EventValueOrEventCallback<Event, number>` \| `undefined; }` | `undefined` |
+| `_page` _(required)_  | `_page`              | Defines the current page.                                                                                          | `number`                                                                                                                                                                                                                     | `undefined` |
+| `_pageSize`           | `_page-size`         | Defines the amount of entries to show per page.                                                                    | `number`                                                                                                                                                                                                                     | `1`         |
+| `_pageSizeOptions`    | `_page-size-options` | Defines the options for the page-size-select.                                                                      | `number[]` \| `string`                                                                                                                                                                                                       | `[]`        |
+| `_siblingCount`       | `_sibling-count`     | Defines the amount of pages to show next to the current page.                                                      | `number` \| `undefined`                                                                                                                                                                                                      | `1`         |
+| `_tooltipAlign`       | `_tooltip-align`     | Defines where to show the Tooltip preferably: top, right, bottom or left.                                          | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                                                                                                | `'top'`     |
+| `_total` _(required)_ | `_total`             | Setzt die Gesamtanzahl der Seiten.                                                                                 | `number`                                                                                                                                                                                                                     | `undefined` |
+| `_variant`            | `_variant`           | Defines which variant should be used for presentation.                                                             | `"custom"` \| `"danger"` \| `"ghost"` \| `"normal"` \| `"primary"` \| `"secondary"` \| `"tertiary"` \| `undefined`                                                                                                           | `'normal'`  |
+
+## Dependencies
+
+### Used by
+
+- [kol-table](./table)
+
+### Depends on
+
+- [kol-button](./button)
+- [kol-select](./select)
+- kol-button-wc
+
+### Graph
+
+```mermaid
+graph TD;
+  kol-pagination --> kol-button
+  kol-pagination --> kol-select
+  kol-pagination --> kol-button-wc
+  kol-button --> kol-button-wc
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip-wc
+  kol-span-wc --> kol-icon
+  kol-tooltip-wc --> kol-span-wc
+  kol-select --> kol-input
+  kol-select --> kol-tooltip-wc
+  kol-input --> kol-icon
+  kol-input --> kol-button-wc
+  kol-input --> kol-alert
+  kol-alert --> kol-alert-wc
+  kol-alert-wc --> kol-heading-wc
+  kol-alert-wc --> kol-button-wc
+  kol-alert-wc --> kol-icon
+  kol-table --> kol-pagination
+  style kol-pagination fill:#f9f,stroke:#333,stroke-width:4px
+```
+
+---

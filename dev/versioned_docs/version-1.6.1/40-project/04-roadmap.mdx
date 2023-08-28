@@ -1,0 +1,90 @@
+---
+title: Roadmap
+description: Entwicklungsplan für die kommenden Versionen
+tags:
+  - Architektur
+  - arc42
+  - Roadmap
+  - Konzept
+  - Zukunft
+---
+
+# Roadmap
+
+## Legende
+
+| Symbol | Bedeutung             |
+| :----: | --------------------- |
+|   🕑   | Geplant               |
+|   👩‍💻   | In Bearbeitung        |
+|   ✅   | Erledigt              |
+|   ❌   | Erstmal nicht geplant |
+|   ➕   | Verfügbar             |
+|   ➖   | Nicht verfügbar       |
+|   ⚠️   | Veraltet              |
+
+## Todo-Liste
+
+| Typ           | Vorhaben                                     | Status |   Version 1    |    Version 2    |
+| ------------- | -------------------------------------------- | :----: | :------------: | :-------------: |
+| Architektur   | Vereinheitlichung aller Propteries           |   ✅   |       ➕       |       ➕        |
+| Architektur   | Expert-Slot                                  |   ✅   | ➕<sup>1</sup> |       ➕        |
+| Architektur   | Auslagerung aller Bund-Themes                |   👩‍💻   |       ➕       |       ➕        |
+| Feature       | Checkbox in Tabellen                         |   👩‍💻   | ➕<sup>2</sup> |       ➕        |
+| Feature       | Tabellen mit Footer                          |   ✅   | ➕<sup>2</sup> |       ➕        |
+| Dokumentation | Migrationsanleitung                          |   🕑   |       ➕       |       ➕        |
+| Dokumentation | Testergebnisse zu allen Komponenten          |   👩‍💻   |       ➕       |       ➕        |
+| Eigenschaft   | Properties übergreifend vereinheitlichen     |   👩‍💻   | ➕<sup>1</sup> |       ➕        |
+| Eigenschaft   | Übersicht vereinheitlichter Properties       |   ✅   |       ➕       |       ➕        |
+| Theming       | ThemingToken-basiertes Theme                 |   🕑   |       ➕       |       ➕        |
+| Komponent     | Accordions (as Group)                        |   ❌   |       ➖       |       ➕        |
+| Komponent     | Avatar                                       |   ✅   | ➕<sup>2</sup> |       ➕        |
+| Komponent     | ButtonGroup (⚠️ Deprecated)                  |   ✅   |       ➕       |       ➕        |
+| Komponent     | LinkGroup (⚠️ Deprecated)                    |   ✅   |       ➕       |       ➕        |
+| Komponent     | IconFontAwesome (⚠️ Deprecated)              |   ✅   |       ➕       | ➖ <sup>3</sup> |
+| Komponent     | IconIcofont (⚠️ Deprecated)                  |   ✅   |       ➕       | ➖ <sup>3</sup> |
+| Komponent     | InputAdapterLeanup (Moving in other Package) |   ✅   |       ➕       | ➕ <sup>3</sup> |
+| Komponent     | InputRadioGroup (⚠️ Deprecated)              |   ✅   |       ➕       | ➖ <sup>3</sup> |
+| Komponent     | Symbol (⚠️ Deprecated)                       |   ✅   |       ➕       | ➖ <sup>3</sup> |
+| Komponent     | ~~Carousel~~                                 |   ❌   |       ➖       |       ➖        |
+| Komponent     | ~~Cookie-Banner~~                            |   ❌   |       ➖       |       ➖        |
+| Komponent     | Dialog                                       |   ✅   | ➖<sup>4</sup> | ➖<sup>4</sup>  |
+| Komponent     | Image                                        |   ✅   | ➕<sup>2</sup> |       ➕        |
+| Komponent     | List                                         |   ❌   |       ➖       |       ➕        |
+| Komponent     | Split-Button / Dropdown                      |   ✅   | ➕<sup>2</sup> |       ➕        |
+| Komponent     | Tabs (Refactoring)                           |   ❌   |       ➖       |       ➕        |
+| Komponent     | ~~Timeline~~                                 |   ❌   |       ➖       |       ➖        |
+| Komponent     | Tree                                         |   👩‍💻   |       ➖       |       ➕        |
+
+> <small>
+> 	<sup>1</sup> Dieses Vorhaben wird weitestgehend abwärtskompatibel umgesetzt.
+> 	<br />
+> 	<sup>2</sup> Dieses Vorhaben ist wahrscheinlich auch in Version 1 verfügbar.
+> 	<br />
+> 	<sup>3</sup> Achtung, diese Komponente entfällt in Version 2.
+> 	<br />
+> 	<sup>4</sup> Feature entfällt, weil der HTML-Standard vollständig barrierefrei und gut nutzbar ist.
+> </small>
+
+## Lose Can do-Liste
+
+- Dokumentation: Übersicht über alle Komponenten im Storybook
+- Table: Sort-Funktion auch die Sortierrichtung übergeben
+- Input, Textarea: onInput prüfen
+- Table: Sortierrichtung ändern mittels aria-live optimieren
+- Pagination: Aria-Label bei Zahlen-Schalter optimieren (Schalter "1", Schalter "Seite 1")
+- Table: Aufspaltung in self- und manuell-managed Table
+- Input: Zeichenzähler für alle Texteingabefelder
+- Checkbox: Checkbox und mit beliebigen Icon statt "Border-Häkchen"
+- Theming: Designer um CDN-Feature erweitern
+- Theming: Designer CSS-Properties und "Globales CSS" trennen
+- Theming: Designer Speicher-Modell ändern (Meta & Data)
+- Radio & SingleSelect: Zusammenführen?!
+- CheckboxGroup & MultiSelect: Zusammenführen?!
+- Tabs: Tab-Change-Callback aufrufen, sobald die Tab-Selection eine Korrektur durchführt
+- Tabs: Verhalten beim Wechsel von Tabs beobachten
+- Table: Pagination wahlweise oben oder untern oder beides
+- Link, ButtonLink: Zeilenumbruch innerhalb des Link-Textes - display: inline statt display: inline-flex
+- Theming: Für eine bestmögliche Style-Anpassbarkeit müssen bei alle Conditions die die Konstruktion einer Komponente verändern, die umrahmenden HTML-Nodes um CSS-Klasse erweitert werden.
+- Alert: Prüfen, wie man auch einen EventCallback einzeln ändern kann.
+- Alert & Card: Prüfen, ob \_hasCloser und \_hasFooter noch notwendig sind.
