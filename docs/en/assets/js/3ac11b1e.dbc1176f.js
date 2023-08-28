@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[95862],{76166:s=>{s.exports=JSON.parse('{"label":"design system","permalink":"/en/blog/tags/design-system","allTagsPath":"/en/blog/tags","count":1}')}}]);
