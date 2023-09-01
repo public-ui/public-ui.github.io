@@ -11,15 +11,15 @@ interface Playground {
 
 const PLAYGROUNDS: Playground[] = [
 	{
-		name: '📦 CodeSandbox',
-		image: 'codesandbox.png',
-		url: 'https://codesandbox.io/s/minimal-kolibri-sample-oj7pee',
+		name: '⚡ StackBlitz',
+		image: 'stackblitz.png',
+		url: 'https://stackblitz.com/edit/vitejs-vite-6bmmiv',
 		description: <></>,
 	},
 	{
-		name: '⚡ StackBlitz',
-		image: 'stackblitz.png',
-		url: 'https://stackblitz.com/edit/react-ts-sy6knj',
+		name: '📦 CodeSandbox',
+		image: 'codesandbox.png',
+		url: 'https://codesandbox.io/s/minimal-kolibri-sample-oj7pee',
 		description: <></>,
 	},
 ];
