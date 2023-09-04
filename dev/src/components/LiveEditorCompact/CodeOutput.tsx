@@ -3,11 +3,11 @@ import { TagName } from '../LiveEditorCompact/types';
 import Editor from '@monaco-editor/react';
 import { format } from 'prettier';
 import parser from 'prettier/parser-babel';
-import { Config } from '../LiveEditorCompact';
+import { AttributeDescription } from '../LiveEditorCompact';
 
 type Props = {
 	tag: TagName;
-	params: Config;
+	params: AttributeDescription;
 };
 
 export function CodeOutput(props: Props) {

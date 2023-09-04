@@ -9,34 +9,59 @@ import { ComponentDisplay } from './LiveEditorCompact/ComponentDisplay';
 import { SlotInput } from './LiveEditorCompact/attributeInputs/SlotInput';
 import { AttributeBlackList } from './LiveEditorCompact/lists';
 import { Attribute, Slot, TagName } from './LiveEditorCompact/types';
+import demoValues from '@site/src/components/LiveEditorCompact/demoValues';
 
 type Props = {
 	component?: string;
 	showComponentSwitch?: boolean;
 };
+export type AttributeDescription = {
+	description: string;
+	name: string;
+	required: boolean;
+	type: string;
+	defaultValue?: string,
+};
+export type AttributesAndDefaultValues = {
+	defaultValues: string[],
+	[attributeName: string]: string[] | string | boolean | number,
+};
+export type TagNameToAttributes = {
+	[tagName: string]: AttributesAndDefaultValues,
+};
+export type Tag = {
+	name: string;
+	description: string;
+	attributes: AttributeDescription[];
+};
 
-export type Config = Record<string, string | number | boolean | string[]>;
-type AllConfig = Record<string, Config>;
-type TagAttributes = Record<string, string | boolean>[];
-type Tag = Record<string, string | TagAttributes>;
+function fillDefaultValues(): TagNameToAttributes {
+	const result: TagNameToAttributes = {};
 
-function fillDefaultValues(): AllConfig {
-	const result: AllConfig = {};
 	Object.values(allElements.tags as Tag[]).forEach((tag: Tag) => {
-		const name = (tag.name as string).replace('kol-', '');
-		result[name] = { defaultValues: [] as string[] };
-		(tag.attributes as TagAttributes).forEach((attribute: Config) => {
-			if (attribute.defaultValue) {
-				result[name][attribute.name as string] = (attribute.defaultValue as string).replace(/'/g, '');
-				(result[name].defaultValues as string[]).push(attribute.name as string);
+		const tagName = tag.name.replace('kol-', '');
+
+		result[tagName] = { defaultValues: []};
+
+		tag.attributes.forEach((attribute: AttributeDescription) => {
+			// fill with default values defined by component
+			if (typeof attribute.defaultValue !== 'undefined') {
+				result[tagName][attribute.name] = attribute.defaultValue.replace(/'/g, '');
+				result[tagName].defaultValues.push(attribute.name);
+			}
+
+		// apply certain provided demo values
+			if(typeof demoValues[tagName]?.[attribute.name] !== 'undefined') {
+				result[tagName][attribute.name] = demoValues[tagName][attribute.name];
 			}
 		});
 	});
+
 	return result;
 }
 
 export function LiveEditorCompact(props: Props) {
-	const [allConfig, setAllConfig] = useState<AllConfig>(fillDefaultValues());
+	const [allConfig, setAllConfig] = useState<TagNameToAttributes>(fillDefaultValues());
 	const [tag, setTag] = useState('badge' as TagName);
 	useEffect(() => {
 		if (props.component) setTag(props.component.replace('kol-', '') as TagName);
@@ -58,11 +83,11 @@ export function LiveEditorCompact(props: Props) {
 	}, [allConfig, tag]);
 
 	function updateConfig(key: string, value: string | number | boolean) {
-		setAllConfig((old: AllConfig) => {
+		setAllConfig((old: TagNameToAttributes) => {
 			const newConfigPart = {
 				...old[tag],
 				[key]: value,
-				defaultValues: (old[tag].defaultValues as string[]).filter((k) => k !== key),
+				defaultValues: (old[tag].defaultValues).filter((k) => k !== key),
 			};
 			return { ...old, [tag]: newConfigPart };
 		});
