@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[30979],{76014:e=>{e.exports=JSON.parse('{"label":"License","permalink":"/en/docs/1.6.0/tags/license","allTagsPath":"/en/docs/1.6.0/tags","count":1,"items":[{"id":"version-1.6.0/faq","title":"FAQ","description":"Frequently asked questions about KoliBri","permalink":"/en/docs/1.6.0/faq"}]}')}}]);

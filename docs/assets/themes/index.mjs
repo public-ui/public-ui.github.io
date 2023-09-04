@@ -299,7 +299,7 @@ var loglevel = {exports: {}};
 	})); 
 } (loglevel));
 
-const createTranslation=(e,t)=>o=>o(e,t),createTheme=(e,t)=>o=>o(e,t),STORE="object"==typeof window?window:"object"==typeof global?global:"object"==typeof self?self:{};const STYLING_TASK_QUEUE=new Map,HYDRATED_HISTORY=[],CSS_PROPERTIES_REGISTERED=new Set,CSS_STYLE_CACHE=new Map,REGEX_CSS_PROPERTIES=/--[^;]+/g,REGEX_SPLIT_CSS_PROPERTY=/:/;"object"==typeof STORE.A11yUi&&null!==STORE.A11yUi||(STORE.A11yUi={CSS_STYLE_CACHE:CSS_STYLE_CACHE,HYDRATED_HISTORY:HYDRATED_HISTORY,STYLING_TASK_QUEUE:STYLING_TASK_QUEUE});const extractProperties=(e,t)=>{let o=t.match(REGEX_CSS_PROPERTIES);if(Array.isArray(o)){o=o.filter((e=>REGEX_SPLIT_CSS_PROPERTY.test(e)));const t=document.createElement("style");t.innerHTML=`.${e} {${o.join(";")}}`,document.querySelector("head")?.appendChild(t);}CSS_PROPERTIES_REGISTERED.add(e);},getCssStyle=(e,t)=>"object"==typeof STORE.A11yUi&&null!==STORE.A11yUi&&"object"==typeof STORE.A11yUi.Themes&&null!==STORE.A11yUi.Themes&&"object"==typeof STORE.A11yUi.Themes[e]&&null!==STORE.A11yUi.Themes[e]&&"string"==typeof STORE.A11yUi.Themes[e][t]?STORE.A11yUi.Themes[e][t].replace(/\r?\n/g,""):"",removeStyle=e=>{for(const t of Array.from(e.childNodes)){if(!(t instanceof HTMLStyleElement&&"STYLE"===t.tagName))break;e.removeChild(t);}},patchStyle=(e,t)=>{try{const o=[];t.forEach((e=>{const t=new CSSStyleSheet;t.replaceSync(e),o.push(t);})),e.adoptedStyleSheets=o;}catch(o){t.reverse().forEach((t=>{const o=document.createElement("style");o.innerHTML=t,e.insertBefore(o,e.firstChild);}));}},encroachStyles=(e,t,o)=>{if(!1!==o){const s=[...Array.from(e.childNodes).filter((e=>e instanceof HTMLStyleElement&&"STYLE"===e.tagName))];let r;try{r=[...Array.from(e.adoptedStyleSheets)];}catch(e){r=[];}"before"===o?.mode?(s.reverse().forEach((e=>t.unshift(e.innerHTML))),r.reverse().forEach((e=>t.unshift(Array.from(e.cssRules).map((e=>e.cssText)).join(""))))):"after"===o?.mode&&(s.forEach((e=>t.push(e.innerHTML))),r.forEach((e=>t.push(Array.from(e.cssRules).map((e=>e.cssText)).join("")))));}},setThemeStyleAfterHydrated=(e,t,o)=>{const s=t.name||"default";let r;try{if(null===e.shadowRoot)throw new Error("ShadowRoot is null");r=e.shadowRoot;}catch(t){r=e;}if(CSS_STYLE_CACHE.get(s)?.has(e.tagName))switchStyle(e,r,CSS_STYLE_CACHE.get(s)?.get(e.tagName),o);else {const n=getCssStyle(s,"PROPERTIES"),a=getCssStyle(s,"GLOBAL"),l=getCssStyle(s,e.tagName);!1===CSS_PROPERTIES_REGISTERED.has(s)&&extractProperties(s,a);const i=[n,a,l];encroachStyles(r,i,t.encroachCss),"debug"===t.loglevel&&console.log(e.tagName,i),!0===t.cache&&(!1===CSS_STYLE_CACHE.has(s)&&CSS_STYLE_CACHE.set(s,new Map),CSS_STYLE_CACHE.get(s)?.set(e.tagName,i)),switchStyle(e,r,i,o);}},switchStyle=(e,t,o,s)=>{removeStyle(t),patchStyle(t,o),e.style.display=s;},logHydratedHistory=e=>{"debug"===e.loglevel&&HYDRATED_HISTORY.push({timestamp:Date.now(),numberOfTasks:STYLING_TASK_QUEUE.size});},deleteDoneTask=e=>{STYLING_TASK_QUEUE.delete(e);},loggedDeleteDoneTask=(e,t)=>{deleteDoneTask(e),logHydratedHistory(t);},observerCallback=e=>{for(const t of e)if(STYLING_TASK_QUEUE.has(t.target)&&t.target.classList.contains("hydrated")){const{styleDisplay:e,themeDetails:o}=STYLING_TASK_QUEUE.get(t.target);setThemeStyleAfterHydrated(t.target,o,e),loggedDeleteDoneTask(t.target,o);}};let observer;try{observer=new MutationObserver(observerCallback);}catch(e){observer=null;}class Theme{constructor(e,t,o){this.createTheme=(e,t)=>createTheme(e,t),this.createTranslation=(e,t)=>createTranslation(e,t),this.Prefix=e,this.Key=Object.getOwnPropertyNames(t),this.Tag=Object.getOwnPropertyNames(o);}}
+const createTranslation=(e,t)=>o=>o(e,t),createTheme=(e,t)=>o=>o(e,t),STORE="object"==typeof window?window:"object"==typeof global?global:"object"==typeof self?self:{};var __defProp$1=Object.defineProperty,__defNormalProp$1=(e,t,o)=>t in e?__defProp$1(e,t,{enumerable:!0,configurable:!0,writable:!0,value:o}):e[t]=o,__publicField$1=(e,t,o)=>(__defNormalProp$1(e,"symbol"!=typeof t?t+"":t,o),o);const _RobustStore=class e{constructor(e,t){__publicField$1(this,"store"),this.store=this.createStore(e,t);}static getInstance(t,o){let s=e.instances.get(t);return void 0===s&&(s=new e(o,t),e.instances.set(t,s)),s}createStore(e,t){return Object.defineProperty(e,t,{enumerable:!1,value:{},writable:!1}),e[t]}recursiveSetItem(t,o,s,r=e.options){let a="object"==typeof s&&null!==s?{}:s;if(Object.defineProperty(t,o,{enumerable:!0===r.enumerable,get:()=>a,set:!0===r.immutable?void 0:e=>a=e}),"object"==typeof s&&null!==s)for(const[e,a]of Object.entries(s))this.recursiveSetItem(t[o],e,a,r);}setItem(t,o,s=e.options){return this.recursiveSetItem(this.store,t,o,s),this}getItem(e){return Array.isArray(e)?e.map((e=>this.getItem(e))):this.store[e]}};__publicField$1(_RobustStore,"options",{enumerable:!1,immutable:!1}),__publicField$1(_RobustStore,"instances",new Map);const STYLING_TASK_QUEUE=new Map,HYDRATED_HISTORY=[],CSS_PROPERTIES_REGISTERED=new Set,CSS_STYLE_CACHE=new Map,REGEX_CSS_PROPERTIES=/--[^;]+/g,REGEX_SPLIT_CSS_PROPERTY=/:/;"object"==typeof STORE.A11yUi&&null!==STORE.A11yUi||(STORE.A11yUi={CSS_STYLE_CACHE:CSS_STYLE_CACHE,HYDRATED_HISTORY:HYDRATED_HISTORY,STYLING_TASK_QUEUE:STYLING_TASK_QUEUE});const extractProperties=(e,t)=>{let o=t.match(REGEX_CSS_PROPERTIES);if(Array.isArray(o)){o=o.filter((e=>REGEX_SPLIT_CSS_PROPERTY.test(e)));const t=document.createElement("style");t.innerHTML=`.${e} {${o.join(";")}}`,document.querySelector("head")?.appendChild(t);}CSS_PROPERTIES_REGISTERED.add(e);},getCssStyle=(e,t)=>"object"==typeof STORE.A11yUi&&null!==STORE.A11yUi&&"object"==typeof STORE.A11yUi.Themes&&null!==STORE.A11yUi.Themes&&"object"==typeof STORE.A11yUi.Themes[e]&&null!==STORE.A11yUi.Themes[e]&&"string"==typeof STORE.A11yUi.Themes[e][t]?STORE.A11yUi.Themes[e][t].replace(/\r?\n/g,""):"",removeStyle=e=>{for(const t of Array.from(e.childNodes)){if(!(t instanceof HTMLStyleElement&&"STYLE"===t.tagName))break;e.removeChild(t);}},patchStyle=(e,t)=>{try{const o=[];t.forEach((e=>{const t=new CSSStyleSheet;t.replaceSync(e),o.push(t);})),e.adoptedStyleSheets=o;}catch(o){t.reverse().forEach((t=>{const o=document.createElement("style");o.innerHTML=t,e.insertBefore(o,e.firstChild);}));}},encroachStyles=(e,t,o)=>{if(!1!==o){const s=[...Array.from(e.childNodes).filter((e=>e instanceof HTMLStyleElement&&"STYLE"===e.tagName))];let r;try{r=[...Array.from(e.adoptedStyleSheets)];}catch(e){r=[];}"before"===o?.mode?(s.reverse().forEach((e=>t.unshift(e.innerHTML))),r.reverse().forEach((e=>t.unshift(Array.from(e.cssRules).map((e=>e.cssText)).join(""))))):"after"===o?.mode&&(s.forEach((e=>t.push(e.innerHTML))),r.forEach((e=>t.push(Array.from(e.cssRules).map((e=>e.cssText)).join("")))));}},setThemeStyleAfterHydrated=(e,t,o)=>{const s=t.name||"default";let r;try{if(null===e.shadowRoot)throw new Error("ShadowRoot is null");r=e.shadowRoot;}catch(t){r=e;}if(CSS_STYLE_CACHE.get(s)?.has(e.tagName))switchStyle(e,r,CSS_STYLE_CACHE.get(s)?.get(e.tagName),o);else {const a=getCssStyle(s,"PROPERTIES"),n=getCssStyle(s,"GLOBAL"),l=getCssStyle(s,e.tagName);!1===CSS_PROPERTIES_REGISTERED.has(s)&&extractProperties(s,n);const i=[a,n,l];encroachStyles(r,i,t.encroachCss),"debug"===t.loglevel&&console.log(e.tagName,i),!0===t.cache&&(!1===CSS_STYLE_CACHE.has(s)&&CSS_STYLE_CACHE.set(s,new Map),CSS_STYLE_CACHE.get(s)?.set(e.tagName,i)),switchStyle(e,r,i,o);}},switchStyle=(e,t,o,s)=>{removeStyle(t),patchStyle(t,o),e.style.display=s;},logHydratedHistory=e=>{"debug"===e.loglevel&&HYDRATED_HISTORY.push({timestamp:Date.now(),numberOfTasks:STYLING_TASK_QUEUE.size});},deleteDoneTask=e=>{STYLING_TASK_QUEUE.delete(e);},loggedDeleteDoneTask=(e,t)=>{deleteDoneTask(e),logHydratedHistory(t);},observerCallback=e=>{for(const t of e)if(STYLING_TASK_QUEUE.has(t.target)&&t.target.classList.contains("hydrated")){const{styleDisplay:e,themeDetails:o}=STYLING_TASK_QUEUE.get(t.target);setThemeStyleAfterHydrated(t.target,o,e),loggedDeleteDoneTask(t.target,o);}};let observer;try{observer=new MutationObserver(observerCallback);}catch(e){observer=null;}var __defProp=Object.defineProperty,__defNormalProp=(e,t,o)=>t in e?__defProp(e,t,{enumerable:!0,configurable:!0,writable:!0,value:o}):e[t]=o,__publicField=(e,t,o)=>(__defNormalProp(e,"symbol"!=typeof t?t+"":t,o),o);class Theme{constructor(e,t,o){__publicField(this,"Prefix"),__publicField(this,"Key"),__publicField(this,"Tag"),__publicField(this,"createTheme",((e,t)=>createTheme(e,t))),__publicField(this,"createTranslation",((e,t)=>createTranslation(e,t))),this.Prefix=e,this.Key=Object.getOwnPropertyNames(t),this.Tag=Object.getOwnPropertyNames(o);}}
 
 var KeyEnum = /* @__PURE__ */ ((KeyEnum2) => {
   KeyEnum2[KeyEnum2["error"] = 0] = "error";
@@ -399,6 +399,7 @@ const BZSt = KoliBri.createTheme("bzst", {
 		--color-green-dark: #23614e;
 		--color-heroic-blue: #126dff;
 		--color-mercury: #ebebeb;
+		--color-ocean: #0077b6;
 		--color-red-epiphyllum: #d00000;
 		--color-speedwell: #595f73;
 		--color-tropic-sea: #007194;
@@ -1994,6 +1995,7 @@ const BZSt = KoliBri.createTheme("bzst", {
 	option:checked:not(:disabled),
 	option:focus:not(:disabled),
 	option:hover:not(:disabled) {
+		background: var(--color-ocean);
 		color: white;
 	}`,
   "KOL-INPUT-COLOR": `kol-input {
@@ -4779,7 +4781,6 @@ const BMF = KoliBri.createTheme("bmf", {
 	nav {
 		font-family: var(--font-family);
 		font-size: var(--font-size);
-		background-color: var(--color-smoke);
 		width: 100%;
 	}
 	ul {
@@ -4792,10 +4793,12 @@ const BMF = KoliBri.createTheme("bmf", {
 		display: flex;
 		place-items: center;
 	}
-	.entry > kol-span-wc > span {
+	.entry > kol-button-link-text-switch {
 		width: 100%;
 	}
-	.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+	.entry
+		> kol-button-link-text-switch
+		> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		background-color: var(--color-white);
 		text-decoration: none;
 		color: var(--color-midnight);
@@ -4810,55 +4813,81 @@ const BMF = KoliBri.createTheme("bmf", {
 		transition-property: background-color, color, border-color;
 		letter-spacing: 0.175px;
 	}
-	.entry > :is(kol-link-wc, kol-button-wc):first-child :is(a, button) {
+	.entry
+		> kol-button-link-text-switch
+		> :is(kol-link-wc, kol-button-wc):first-child:is(a, button) {
 		color: var(--color-midnight);
 		text-decoration: none;
 	}
-	.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
+	.entry
+		> kol-button-link-text-switch
+		> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
 		border-left-color: var(--color-ocean);
 		background-color: var(--color-ocean);
+		letter-spacing: unset;
 	}
 	.entry
+		> kol-button-link-text-switch
 		> :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child:hover
 		> :is(a, button, span) {
 		color: var(--color-white);
+		background-color: var(--color-ocean);
 		font-weight: 700;
 		letter-spacing: unset;
 	}
-	.selected > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+	:is(.active, .selected).list.entry
+		> kol-button-link-text-switch
+		> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+		background-color: var(--color-smoke);
+	}
+	:is(.active, .selected)
+		> .entry
+		> kol-button-link-text-switch
+		> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		background-color: var(--color-ice);
 		color: var(--color-midnight);
 		font-weight: 700;
 	}
-	.selected
+	:is(.active, .selected)
+		> .entry
+		> kol-button-link-text-switch
 		> :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child
 		> :is(a, button, span) {
 		font-weight: 700;
 	}
-	.selected :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
+	:is(.active, .selected)
+		> .entry
+		> kol-button-link-text-switch
+		> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
 		color: var(--color-white);
 		letter-spacing: unset;
 	}
-	.entry > kol-span-wc > span,
+	.entry > kol-button-link-text-switch > kol-span-wc > span,
 	.entry :is(a, button) {
 		border-left-color: transparent;
 		border-left-style: solid;
 		border-left-width: 0.5rem;
 		padding: 0.75rem 0.5rem 0.75rem 0.25rem;
 	}
-	.selected :is(a, button),
+	:is(.active, .selected) kol-button-link-text-switch :is(a, button),
 	[exportparts*="selected"] a {
 		border-left-color: var(--color-midnight);
-	} /** Compact mode */
-	.entry.compact :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+	}
+	:is(kol-button-wc button, kol-link-wc a) {
+		color: var(--color-midnight);
+	}
+	kol-link-wc a {
+		text-decoration: none;
+	}
+	kol-link-wc kol-icon {
+		display: none;
+	}
+	/** Compact mode */
+	.entry.hide-label :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		place-items: center;
 	}
-	.entry.compact > kol-span-wc > span {
-		flex-direction: column;
-	}
-	.entry.compact > kol-span-wc > span,
-	.entry.compact :is(a, button) {
-		padding-left: 0;
+	.entry.hide-label :is(a, button) {
+		padding: 0;
 	}`,
   "KOL-CARD": `/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 	:host > div {
@@ -5122,6 +5151,7 @@ const BMF = KoliBri.createTheme("bmf", {
 		position: relative;
 		min-height: 44px;
 		margin: 0;
+		gap: 0.5rem;
 	}
 	fieldset div label {
 		cursor: pointer;
@@ -22638,7 +22668,6 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		border-radius: calc(2 * var(--border-radius));
 		width: 100%;
 		height: 100%;
-		overflow: hidden;
 	}
 	kol-heading {
 		padding: 0.5rem;
@@ -50317,11 +50346,11 @@ const DEFAULT = KoliBri.createTheme("default", {
 		kol-tooltip-wc .tooltip-content {
 			border-radius: var(--border-radius);
 			line-height: 1.5;
-			padding: var(--spacing) calc(var(--spacing) * 1.5);
+			padding: 0.5rem 0.75rem;
 		}
 		kol-span-wc,
 		kol-span-wc > span {
-			gap: var(--spacing);
+			gap: 0.5rem;
 		}
 
 		@keyframes spin {
@@ -50421,7 +50450,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			outline: none;
 		}
 		:is(a, button).hide-label > kol-span-wc {
-			padding: calc(var(--spacing) * 2);
+			padding: 0.8rem;
 			width: unset;
 		}
 		:is(a, button).hide-label > kol-span-wc > span > span {
@@ -50461,7 +50490,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 	`,
   "KOL-INPUT-TEXT": css`
 		kol-input {
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		kol-input .error {
 			order: 1;
@@ -50489,18 +50518,18 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 calc(var(--spacing) * 2);
+			padding: 0 0.5rem;
 		}
 		.input > kol-icon {
 			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: calc(var(--spacing) * 4);
-			padding-right: calc(var(--spacing) * 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: calc(var(--spacing) * 2);
-			padding-right: calc(var(--spacing) * 2);
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 		}
 		.input > input:first-child {
 			padding-left: var(--spacing);
@@ -50521,7 +50550,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -50540,7 +50569,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 	`,
   "KOL-INPUT-PASSWORD": css`
 		kol-input {
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		kol-input .error {
 			order: 1;
@@ -50568,18 +50597,18 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 calc(var(--spacing) * 2);
+			padding: 0 0.5rem;
 		}
 		.input > kol-icon {
 			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: calc(var(--spacing) * 4);
-			padding-right: calc(var(--spacing) * 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: calc(var(--spacing) * 2);
-			padding-right: calc(var(--spacing) * 2);
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 		}
 		.input > input:first-child {
 			padding-left: var(--spacing);
@@ -50600,7 +50629,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -50620,7 +50649,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 	`,
   "KOL-INPUT-NUMBER": css`
 		kol-input {
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		kol-input .error {
 			order: 1;
@@ -50648,18 +50677,18 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 calc(var(--spacing) * 2);
+			padding: 0 0.5rem;
 		}
 		.input > kol-icon {
 			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: calc(var(--spacing) * 4);
-			padding-right: calc(var(--spacing) * 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: calc(var(--spacing) * 2);
-			padding-right: calc(var(--spacing) * 2);
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 		}
 		.input > input:first-child {
 			padding-left: var(--spacing);
@@ -50680,7 +50709,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -50700,7 +50729,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 	`,
   "KOL-INPUT-DATE": css`
 		kol-input {
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		kol-input .error {
 			order: 1;
@@ -50728,18 +50757,18 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 calc(var(--spacing) * 2);
+			padding: 0 0.5rem;
 		}
 		.input > kol-icon {
 			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: calc(var(--spacing) * 4);
-			padding-right: calc(var(--spacing) * 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: calc(var(--spacing) * 2);
-			padding-right: calc(var(--spacing) * 2);
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 		}
 		.input > input:first-child {
 			padding-left: var(--spacing);
@@ -50759,7 +50788,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -50779,7 +50808,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 	`,
   "KOL-INPUT-EMAIL": css`
 		kol-input {
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		kol-input .error {
 			order: 1;
@@ -50807,18 +50836,18 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 calc(var(--spacing) * 2);
+			padding: 0 0.5rem;
 		}
 		.input > kol-icon {
 			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: calc(var(--spacing) * 4);
-			padding-right: calc(var(--spacing) * 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: calc(var(--spacing) * 2);
-			padding-right: calc(var(--spacing) * 2);
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 		}
 		.input > input:first-child {
 			padding-left: var(--spacing);
@@ -50839,7 +50868,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -50859,7 +50888,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 	`,
   "KOL-INPUT-FILE": css`
 		kol-input {
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		kol-input .error {
 			order: 1;
@@ -50893,18 +50922,18 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 calc(var(--spacing) * 2);
+			padding: 0 0.5rem;
 		}
 		.input > kol-icon {
 			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: calc(var(--spacing) * 4);
-			padding-right: calc(var(--spacing) * 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: calc(var(--spacing) * 2);
-			padding-right: calc(var(--spacing) * 2);
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 		}
 		.input > input:first-child {
 			padding-left: var(--spacing);
@@ -50925,7 +50954,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -50945,7 +50974,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 	`,
   "KOL-TEXTAREA": css`
 		kol-input {
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		kol-input .error {
 			order: 1;
@@ -50973,18 +51002,18 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 calc(var(--spacing) * 2);
+			padding: 0 0.5rem;
 		}
 		.input > kol-icon {
 			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: calc(var(--spacing) * 4);
-			padding-right: calc(var(--spacing) * 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: calc(var(--spacing) * 2);
-			padding-right: calc(var(--spacing) * 2);
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 		}
 		.input > input:first-child {
 			padding-left: var(--spacing);
@@ -51005,7 +51034,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -51044,19 +51073,15 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-alert-wc > .heading {
 			display: flex;
-			gap: calc(var(--spacing) * 2);
+			gap: 0.5em;
 			place-items: center;
 		}
 		kol-alert-wc > .heading > div {
 			display: grid;
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		.msg > .heading > kol-icon {
 			place-self: baseline;
-		}
-		kol-alert-wc > .heading > div {
-			display: grid;
-			gap: var(--spacing);
 		}
 		kol-alert-wc > .heading > kol-button-wc.close {
 			place-self: center;
@@ -51144,7 +51169,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			flex-direction: column;
 		}
 		.card > .heading {
-			padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+			padding: 0.5rem 1rem;
 		}
 		.card[_has-closer] > .heading {
 			padding-top: 0;
@@ -51170,7 +51195,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			margin: auto 0;
 		}
 		.card > .content {
-			padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+			padding: 1rem;
 		}
 		.card.default > .heading {
 			background-color: var(--color-subtle);
@@ -51276,19 +51301,19 @@ const DEFAULT = KoliBri.createTheme("default", {
 			color: inherit;
 			border-top-right-radius: var(--border-radius);
 			border-bottom-right-radius: var(--border-radius);
-			padding: calc(var(--spacing) / 2);
+			padding: 0.2rem;
 		}
 		:host > span kol-span-wc {
-			padding: calc(var(--spacing) / 2) calc(var(--spacing) * 2);
+			padding: 0.25rem 0.75rem;
 		}
 		:host > span > kol-span-wc {
 			align-items: center;
 			font-style: normal;
-			gap: var(--spacing);
+			gap: 0.5rem;
 		}
 		:host > span > kol-span-wc > span {
 			display: flex;
-			gap: calc(var(--spacing) / 2);
+			gap: 0.25rem;
 		}
 	`,
   "KOL-BUTTON-GROUP": css`
@@ -51303,7 +51328,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			background-color: var(--color-light);
 			border-left: none;
 			box-shadow: -2px 0px 0px var(--color-primary-variant);
-			padding: 0 var(--spacing);
+			padding: 0 0.5rem;
 			width: 100%;
 		}
 	`,
@@ -51349,7 +51374,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 		}
 		details kol-indented-text {
-			margin: var(--spacing) 0 0 calc(var(--spacing) * 3);
+			margin: 0.25rem 0 0 0.65rem;
 		}
 		kol-icon {
 			font-size: 1.2rem;
@@ -51431,17 +51456,21 @@ const DEFAULT = KoliBri.createTheme("default", {
 		:host svg line:first-child,
 		:host svg circle:first-child {
 			fill: transparent;
-			stroke: var(--color-primary-variant);
+			stroke: var(--color-mute-variant);
 		}
 		:host svg line:last-child,
 		:host svg circle:last-child {
 			fill: transparent;
 			stroke: var(--color-primary);
 		}
+
+		.cycle .progress {
+			stroke: var(--color-primary-variant);
+		}
 	`,
   "KOL-SELECT": css`
 		kol-input {
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		kol-input .error {
 			order: 1;
@@ -51469,18 +51498,18 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 calc(var(--spacing) * 2);
+			padding: 0 0.5rem;
 		}
 		.input > kol-icon {
 			width: 2rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: calc(var(--spacing) * 4);
-			padding-right: calc(var(--spacing) * 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
-		.input.icon-left kol-icon:first-child {
-			padding-left: calc(var(--spacing) * 2);
-			padding-right: calc(var(--spacing) * 2);
+		.input:is(.icon-left, .icon-right) input {
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 		}
 		.input > input:first-child {
 			padding-left: var(--spacing);
@@ -51500,7 +51529,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -51538,7 +51567,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 	`,
   "KOL-INPUT-COLOR": css`
 		kol-input {
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		kol-input .error {
 			order: 1;
@@ -51573,18 +51602,18 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 calc(var(--spacing) * 2);
+			padding: 0 0.5rem;
 		}
 		.input > kol-icon {
 			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: calc(var(--spacing) * 4);
-			padding-right: calc(var(--spacing) * 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: calc(var(--spacing) * 2);
-			padding-right: calc(var(--spacing) * 2);
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 		}
 		.input > input:first-child {
 			padding-left: var(--spacing);
@@ -51605,7 +51634,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -51632,16 +51661,16 @@ const DEFAULT = KoliBri.createTheme("default", {
 		:host > div > kol-heading-wc button {
 			border-radius: var(--border-radius);
 			min-height: 2.2rem;
-			padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
+			padding: 12px 8px;
 		}
 		:host > div > kol-heading-wc button kol-span-wc {
 			font-weight: 700;
 			font-size: 1.125rem;
 			line-height: 20px;
-			gap: var(--spacing);
+			gap: 0.5rem;
 		}
 		:host > div > kol-heading-wc button kol-span-wc > span {
-			gap: calc(var(--spacing) * 2);
+			gap: 0.5em;
 		}
 		:host > div > kol-heading-wc button kol-icon {
 			color: var(--color-primary);
@@ -51656,8 +51685,9 @@ const DEFAULT = KoliBri.createTheme("default", {
 			margin: 0;
 		}
 		:host > div div[class='content'] {
-			/* padding-left equals icon width + spacings */
-			padding: 0 calc(var(--spacing) * 2) calc(var(--spacing) * 3) calc(16px + var(--spacing) * 4);
+			padding-left: 2.25em;
+			padding-bottom: 12px;
+			padding-right: 8px;
 		}
 		button:focus {
 			outline: none;
@@ -51684,7 +51714,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			overflow-y: hidden;
 		}
 		caption {
-			padding: calc(var(--spacing) * 2);
+			padding: 0.5rem;
 		}
 		th {
 			font-weight: normal;
@@ -51715,7 +51745,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		th div {
 			width: 100%;
 			display: flex;
-			gap: calc(var(--spacing) * 2);
+			gap: 0.5rem;
 			grid-template-columns: 1fr auto;
 			align-items: center;
 		}
@@ -51730,7 +51760,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		th,
 		td {
-			padding: calc(var(--spacing) * 2);
+			padding: 0.5rem;
 		}
 		td.center > div {
 			display: flex;
@@ -51745,23 +51775,20 @@ const DEFAULT = KoliBri.createTheme("default", {
 			font-weight: 700;
 		}
 		:host > div:last-child {
-			padding: calc(var(--spacing) * 2);
+			padding: 0.5rem;
 		}
 		:host > div:last-child,
 		:host > div:last-child > div:last-child {
 			display: grid;
 			align-items: center;
 			justify-items: center;
-			gap: calc(var(--spacing) * 2);
+			gap: 1rem;
 		}
+
 		@media (min-width: 1024px) {
-			:host > div:last-child,
-			:host > div:last-child > div:last-child {
-				grid-auto-flow: column;
-			}
-			:host > div:last-child kol-pagination {
+			div.pagination kol-pagination {
 				display: flex;
-				gap: calc(var(--spacing) * 2);
+				align-items: center;
 			}
 		}
 	`,
@@ -51834,7 +51861,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-left-color: transparent;
 			border-left-style: solid;
 			border-left-width: 0.5rem;
-			padding: calc(var(--spacing) * 2) var(--spacing) calc(var(--spacing) * 2) calc(var(--spacing) / 2);
+			padding: 0.75rem 0.5rem 0.75rem 0.25rem;
 		}
 		.selected :is(a, button),
 		[exportparts*='selected'] a {
@@ -51860,20 +51887,20 @@ const DEFAULT = KoliBri.createTheme("default", {
 			background-color: var(--color-light);
 			grid-template-rows: min-content 2fr min-content;
 			box-shadow: 0 0 0.25rem var(--color-subtle);
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 		}
 		:host kol-heading-wc {
 			line-height: 1.75rem;
 		}
 		:host div.header {
-			padding: calc(var(--spacing) * 3) calc(var(--spacing) * 3) var(--spacing) calc(var(--spacing) * 3);
+			padding: 1rem 1rem 0.5rem 1rem;
 		}
 		:host div.content {
-			padding: var(--spacing) calc(var(--spacing) * 3) calc(var(--spacing) * 3);
+			padding: 0.5rem 1rem 1rem;
 			overflow: hidden;
 		}
 		:host div.footer {
-			padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+			padding: 0.5rem 1rem;
 		}
 	`,
   "KOL-INPUT-CHECKBOX": css`
@@ -51883,7 +51910,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			justify-items: left;
 			width: 100%;
 			min-height: var(--a11y-min-size);
-			gap: var(--spacing);
+			gap: 0.4rem;
 		}
 		:host kol-input.default {
 			grid-template-columns: 1.5rem auto;
@@ -51910,7 +51937,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		:host kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		:host kol-input.error input:focus,
 		kol-input.error select:focus,
@@ -51972,31 +51999,31 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		:host kol-input.default input[type='checkbox'] {
 			border-radius: var(--border-radius);
-			height: calc(6 * var(--spacing));
-			min-width: calc(6 * var(--spacing));
-			width: calc(6 * var(--spacing));
+			height: calc(6 * 0.25rem);
+			min-width: calc(6 * 0.25rem);
+			width: calc(6 * 0.25rem);
 		}
 		:host kol-input.default input[type='checkbox']:before {
 			border-radius: 1.5em;
 			background-color: transparent;
 			display: block;
-			height: calc(6 * var(--spacing));
+			height: calc(6 * 0.25rem);
 			position: relative;
-			width: calc(6 * var(--spacing));
+			width: calc(6 * 0.25rem);
 		}
 		:host kol-input.default input[type='checkbox']:checked:before {
 			border-right-width: 3px;
 			border-bottom-width: 3px;
-			left: calc(1.5 * var(--spacing) - 2px);
-			top: calc(2.85 * var(--spacing) - 2px);
+			left: calc(1.5 * 0.25rem - 2px);
+			top: calc(2.85 * 0.25rem - 2px);
 			transform: rotate(40deg) translate(-50%, -50%);
 			background-color: transparent;
 			border-width: 0px 3px 3px 0px;
 			border-color: white;
 			border-radius: 1px;
 			border-style: solid;
-			height: calc(3 * var(--spacing));
-			width: calc(1.5 * var(--spacing));
+			height: calc(3 * 0.25rem);
+			width: calc(1.5 * 0.25rem);
 		}
 		:host kol-input.default input[type='checkbox']:indeterminate {
 			background-color: var(--color-primary);
@@ -52006,7 +52033,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			height: 0.125rem;
 			top: 0.6rem;
 			left: 0.25rem;
-			width: calc(3 * var(--spacing));
+			width: calc(3 * 0.25rem);
 			transform: inherit;
 		}
 		:host kol-input.default input[type='checkbox']:checked:indeterminate:before {
@@ -52109,9 +52136,9 @@ const DEFAULT = KoliBri.createTheme("default", {
 			appearance: none;
 			transition: 0.5s;
 			border-radius: 100%;
-			height: calc(6 * var(--spacing));
-			min-width: calc(6 * var(--spacing));
-			width: calc(6 * var(--spacing));
+			height: calc(6 * 0.25rem);
+			min-width: calc(6 * 0.25rem);
+			width: calc(6 * 0.25rem);
 		}
 		fieldset div input[type='radio']:before {
 			content: '';
@@ -52137,7 +52164,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			order: 3;
 		}
 		fieldset.error {
-			padding-left: calc(var(--spacing) * 3);
+			padding-left: 1rem;
 			border-left: 3px solid var(--color-danger);
 		}
 		fieldset kol-alert#error {
@@ -52186,7 +52213,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			display: block;
 			margin-left: auto;
 			margin-right: unset;
-			padding: calc(var(--spacing) * 5);
+			padding: 2rem;
 			max-width: 750px;
 		}
 		:host > div > kol-button-wc {
@@ -52203,7 +52230,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		:host kol-button-group-wc {
 			display: inline-flex;
-			gap: calc(var(--spacing) * 5);
+			gap: 2rem;
 			flex-wrap: wrap;
 		}
 		button {
@@ -52231,10 +52258,10 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-bottom: 0.25em solid;
 		}
 		button kol-span-wc > span {
-			gap: calc(var(--spacing) * 2);
+			gap: 0.5rem;
 		}
 		:host > div > div {
-			padding: var(--spacing) 0;
+			padding: 0.25em 0;
 		}
 		div[role='tabpanel'] {
 			height: 100%;
@@ -52269,10 +52296,10 @@ const DEFAULT = KoliBri.createTheme("default", {
 			display: flex;
 		}
 		:host > .tabs-align-bottom > kol-button-group-wc > div > div:first-child {
-			margin: 0px calc(var(--spacing) * 3) 0px 0px;
+			margin: 0px 1rem 0px 0px;
 		}
 		:host > .tabs-align-bottom > kol-button-group-wc > div > div {
-			margin: 0px calc(var(--spacing) * 3);
+			margin: 0px 1rem;
 		}
 		:host > .tabs-align-top {
 			display: grid;
@@ -52285,10 +52312,10 @@ const DEFAULT = KoliBri.createTheme("default", {
 			display: flex;
 		}
 		:host > .tabs-align-top > kol-button-group-wc > div > div:first-child {
-			margin: 0px calc(var(--spacing) * 3) 0px 0px;
+			margin: 0px 1rem 0px 0px;
 		}
 		:host > .tabs-align-top > kol-button-group-wc > div > div {
-			margin: 0px calc(var(--spacing) * 3);
+			margin: 0px 1rem;
 		}
 		:host > div {
 			display: grid;
@@ -52333,13 +52360,13 @@ const DEFAULT = KoliBri.createTheme("default", {
   "KOL-PAGINATION": css`
 		:host {
 			display: grid;
-			gap: calc(var(--spacing) * 4);
+			gap: 1rem;
 		}
 		:host .navigation-list {
 			display: inline-flex;
 			flex-wrap: wrap;
 			align-items: center;
-			gap: calc(var(--spacing) * 2);
+			gap: 0.5rem;
 		}
 		:host .selected button {
 			min-width: var(--a11y-min-size);
@@ -52361,13 +52388,16 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		:host > div > span {
 			align-self: flex-end;
-			padding-bottom: calc(var(--spacing) * 2);
+			padding-bottom: 0.5rem;
 			color: var(--color-primary);
 		}
 	`,
   "KOL-INPUT-RANGE": css`
+		.inputs-wrapper {
+			gap: 1rem;
+		}
 		kol-input {
-			gap: var(--spacing);
+			gap: 0.25rem;
 		}
 		kol-input .error {
 			order: 1;
@@ -52383,9 +52413,6 @@ const DEFAULT = KoliBri.createTheme("default", {
 			font-size: 0.9rem;
 			font-style: italic;
 		}
-		input {
-			border: none;
-		}
 		input::placeholder {
 			color: var(--color-subtle);
 		}
@@ -52395,14 +52422,20 @@ const DEFAULT = KoliBri.createTheme("default", {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 calc(var(--spacing) * 2);
+			padding: 0 0.5rem;
 		}
 		.input > kol-icon {
 			width: 1rem;
 		}
+		.input.icon-left > kol-icon:first-child {
+			margin-right: 0.5rem;
+		}
+		.input.icon-right > kol-icon:last-child {
+			margin-left: 0.5rem;
+		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: calc(var(--spacing) * 4);
-			padding-right: calc(var(--spacing) * 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 		.input:hover {
 			border-color: var(--color-primary);
@@ -52417,7 +52450,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: calc(var(--spacing) * 2);
+			padding-left: 1rem;
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -52523,7 +52556,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			outline: none;
 		}
 		:is(a, button).hide-label > kol-span-wc {
-			padding: calc(var(--spacing) * 2);
+			padding: 0.8rem;
 			width: unset;
 		}
 		:is(a, button).hide-label > kol-span-wc > span > span {

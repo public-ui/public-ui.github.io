@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { KolLinkButton, KolVersion } from '@public-ui/react';
+import { KolLinkButton } from '@public-ui/react';
 import React, { FunctionComponent, PropsWithChildren } from 'react';
 // import { getDarkMode, setDarkMode } from '../../shares/store';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import { LanguageSwitch } from '@site/src/components/LanguageSwitch';
 import Navbar from '@theme-original/Navbar';
-import JSON from '../../../node_modules/@public-ui/components/package.json';
 import ThemeSelect from './ThemeSelect';
 
-export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { children }) => {
+export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 	// const [dark, setDark] = useState(false);
 
 	// const onLight: KoliBriButtonCallbacks = {
@@ -29,12 +28,6 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 		<div className="kolibri-navbar-wrapper sticky top-0 z-50 bg-white">
 			<div className="kolibri-navbar max-w-screen-md lg:max-w-4xl 2xl:max-w-[95rem] mx-auto grid grid-cols-[1fr,auto] gap-y-2 items-center 2xl:grid-cols-[1fr,auto,auto,auto] p-4 lg:px-8">
 				<Navbar {...props} />
-				<KolVersion
-					class="hidden sm:block ml-4"
-					aria-label="Kontaktformular"
-					role="region"
-					_version={JSON.version as string}
-				></KolVersion>
 				<section aria-label="Toolbar" className="flex flex-wrap gap-2 col-span-2">
 					<div className="flex-grow grid gap-2 grid-cols-6 items-center justify-items-center">
 						<LanguageSwitch />

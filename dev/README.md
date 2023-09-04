@@ -25,6 +25,20 @@ $ npm run build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+## Tagging new versions
+
+Whenever a new KoliBri version is ready, the current state of the docs describing that version should be persisted with the following command:
+
+```sh
+npm run docusaurus docs:version $version_number
+``` 
+
+The changed files have to be committed.
+
+Afterwards, the new version will be available to select in the version-dropdown in the header of the website. 
+
+For further reading, consult the [Docusaurus docs regarding versioning](https://docusaurus.io/docs/versioning#tagging-a-new-version). 
+
 ## Translation
 
 Basic rules for translate the website:
