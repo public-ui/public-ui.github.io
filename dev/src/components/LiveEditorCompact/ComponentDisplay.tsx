@@ -118,7 +118,11 @@ export function ComponentDisplay(props: Props) {
 		// @ts-ignore
 		<Tag {...paramsWithoutSlots}>
 			{slots.map((s) => (
-				<div key={s[0]} slot={s[0].replace('slot-', '')} dangerouslySetInnerHTML={{ __html: s[1] as string }}></div>
+				<div
+					key={s[0]}
+					slot={s[0].replace('slot-', '').replace('default', '')}
+					dangerouslySetInnerHTML={{ __html: s[1] as string }}
+				></div>
 			))}
 		</Tag>
 	) : (

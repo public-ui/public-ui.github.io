@@ -1,6 +1,12 @@
 import { ImplementedTagName } from '@site/src/components/LiveEditorCompact/types';
 
 const demoValues: Partial<Record<ImplementedTagName, Record<string, string>>> = {
+	abbr: {
+		'slot-default': 'Abbr',
+	},
+	accordion: {
+		'slot-default': `Accordion content`,
+	},
 	tabs: {
 		_tabs: `[{"_label":"Tab 1"},{"_label":"Tab 2", "_on": {"onClose": true} },{"_label":"Tab 3"}]`,
 	},

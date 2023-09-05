@@ -33,6 +33,9 @@ export type Tag = {
 	name: string;
 	description: string;
 	attributes: AttributeDescription[];
+	slots: {
+		name: string;
+	}[];
 };
 
 function fillDefaultValues(): TagNameToAttributes {
@@ -53,6 +56,14 @@ function fillDefaultValues(): TagNameToAttributes {
 			// apply certain provided demo values
 			if (typeof demoValues[tagName]?.[attribute.name] !== 'undefined') {
 				result[tagName][attribute.name] = demoValues[tagName]![attribute.name];
+			}
+		});
+
+		tag.slots.forEach((slot) => {
+			const slotPropertyName = `slot-${slot.name || 'default'}`;
+			const slotValue = demoValues[tagName]?.[slotPropertyName];
+			if (slotValue) {
+				result[tagName][slotPropertyName] = slotValue;
 			}
 		});
 	});
@@ -153,9 +164,9 @@ export function LiveEditorCompact(props: Props) {
 											<SlotInput
 												key={slot.name}
 												description={slot.description}
-												name={slot.name}
+												name={slot.name || 'default'}
 												update={updateConfig}
-												value={config['slot-' + slot.name] as string}
+												value={config['slot-' + (slot.name || 'default')] as string}
 											/>
 										))}
 									{element && element.slots.length === 0 && (
