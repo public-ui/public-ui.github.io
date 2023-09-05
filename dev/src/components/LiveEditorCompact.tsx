@@ -8,7 +8,7 @@ import { CodeOutput } from './LiveEditorCompact/CodeOutput';
 import { ComponentDisplay } from './LiveEditorCompact/ComponentDisplay';
 import { SlotInput } from './LiveEditorCompact/attributeInputs/SlotInput';
 import { AttributeBlackList } from './LiveEditorCompact/lists';
-import { Attribute, ImplementedTagName, Slot, TagName } from './LiveEditorCompact/types';
+import { Attribute, ImplementedTagName, Slot } from './LiveEditorCompact/types';
 import demoValues from '@site/src/components/LiveEditorCompact/demoValues';
 
 type Props = {
@@ -52,7 +52,7 @@ function fillDefaultValues(): TagNameToAttributes {
 
 			// apply certain provided demo values
 			if (typeof demoValues[tagName]?.[attribute.name] !== 'undefined') {
-				result[tagName][attribute.name] = demoValues[tagName][attribute.name];
+				result[tagName][attribute.name] = demoValues[tagName]![attribute.name];
 			}
 		});
 	});
@@ -62,9 +62,9 @@ function fillDefaultValues(): TagNameToAttributes {
 
 export function LiveEditorCompact(props: Props) {
 	const [allConfig, setAllConfig] = useState<TagNameToAttributes>(fillDefaultValues());
-	const [tag, setTag] = useState('badge' as TagName);
+	const [tag, setTag] = useState('badge' as ImplementedTagName);
 	useEffect(() => {
-		if (props.component) setTag(props.component.replace('kol-', '') as TagName);
+		if (props.component) setTag(props.component.replace('kol-', '') as ImplementedTagName);
 	}, [props.component]);
 
 	useEffect(() => {

@@ -1,6 +1,6 @@
-import { TagName } from '@site/src/components/LiveEditorCompact/types';
+import { ImplementedTagName } from '@site/src/components/LiveEditorCompact/types';
 
-const demoValues: Partial<Record<TagName, Record<string, string>>> = {
+const demoValues: Partial<Record<ImplementedTagName, Record<string, string>>> = {
 	tabs: {
 		_tabs: `[{"_label":"Tab 1"},{"_label":"Tab 2", "_on": {"onClose": true} },{"_label":"Tab 3"}]`,
 	},
