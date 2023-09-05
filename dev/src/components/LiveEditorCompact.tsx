@@ -8,7 +8,7 @@ import { CodeOutput } from './LiveEditorCompact/CodeOutput';
 import { ComponentDisplay } from './LiveEditorCompact/ComponentDisplay';
 import { SlotInput } from './LiveEditorCompact/attributeInputs/SlotInput';
 import { AttributeBlackList } from './LiveEditorCompact/lists';
-import { Attribute, Slot, TagName } from './LiveEditorCompact/types';
+import { Attribute, ImplementedTagName, Slot, TagName } from './LiveEditorCompact/types';
 import demoValues from '@site/src/components/LiveEditorCompact/demoValues';
 
 type Props = {
@@ -20,14 +20,14 @@ export type AttributeDescription = {
 	name: string;
 	required: boolean;
 	type: string;
-	defaultValue?: string,
+	defaultValue?: string;
 };
 export type AttributesAndDefaultValues = {
-	defaultValues: string[],
-	[attributeName: string]: string[] | string | boolean | number,
+	defaultValues: string[];
+	[attributeName: string]: string[] | string | boolean | number;
 };
 export type TagNameToAttributes = {
-	[tagName: string]: AttributesAndDefaultValues,
+	[tagName: string]: AttributesAndDefaultValues;
 };
 export type Tag = {
 	name: string;
@@ -39,9 +39,9 @@ function fillDefaultValues(): TagNameToAttributes {
 	const result: TagNameToAttributes = {};
 
 	Object.values(allElements.tags as Tag[]).forEach((tag: Tag) => {
-		const tagName = tag.name.replace('kol-', '');
+		const tagName = tag.name.replace('kol-', '') as ImplementedTagName;
 
-		result[tagName] = { defaultValues: []};
+		result[tagName] = { defaultValues: [] };
 
 		tag.attributes.forEach((attribute: AttributeDescription) => {
 			// fill with default values defined by component
@@ -50,8 +50,8 @@ function fillDefaultValues(): TagNameToAttributes {
 				result[tagName].defaultValues.push(attribute.name);
 			}
 
-		// apply certain provided demo values
-			if(typeof demoValues[tagName]?.[attribute.name] !== 'undefined') {
+			// apply certain provided demo values
+			if (typeof demoValues[tagName]?.[attribute.name] !== 'undefined') {
 				result[tagName][attribute.name] = demoValues[tagName][attribute.name];
 			}
 		});
@@ -87,7 +87,7 @@ export function LiveEditorCompact(props: Props) {
 			const newConfigPart = {
 				...old[tag],
 				[key]: value,
-				defaultValues: (old[tag].defaultValues).filter((k) => k !== key),
+				defaultValues: old[tag].defaultValues.filter((k) => k !== key),
 			};
 			return { ...old, [tag]: newConfigPart };
 		});

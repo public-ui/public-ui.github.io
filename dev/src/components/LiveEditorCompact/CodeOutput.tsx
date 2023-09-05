@@ -3,11 +3,11 @@ import { TagName } from '../LiveEditorCompact/types';
 import Editor from '@monaco-editor/react';
 import { format } from 'prettier';
 import parser from 'prettier/parser-babel';
-import { AttributeDescription } from '../LiveEditorCompact';
+import { AttributesAndDefaultValues } from '../LiveEditorCompact';
 
 type Props = {
 	tag: TagName;
-	params: AttributeDescription;
+	params: AttributesAndDefaultValues;
 };
 
 export function CodeOutput(props: Props) {
@@ -33,7 +33,7 @@ export function CodeOutput(props: Props) {
 
 	const filteredParams = paramsCleaned
 		.filter((tuple) => !tuple[0].startsWith('slot-'))
-		.filter((tuple) => !(params.defaultValues as string[]).includes(tuple[0]));
+		.filter((tuple) => !params.defaultValues.includes(tuple[0]));
 	for (const [key, value] of filteredParams) {
 		if (value) {
 			let paramString = '';

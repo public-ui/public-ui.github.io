@@ -183,3 +183,8 @@ export type TagName =
 	| 'toast'
 	| 'tooltip'
 	| 'version';
+
+/**
+ * All tag names except those which don't have an editor implementation
+ */
+export type ImplementedTagName = Exclude<TagName, 'tag' | 'tooltip'>;

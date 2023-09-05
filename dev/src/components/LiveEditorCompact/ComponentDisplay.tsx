@@ -49,20 +49,22 @@ import {
 	KolToast,
 	KolVersion,
 } from '@public-ui/react';
-import React, {NamedExoticComponent} from 'react';
-import {TagName} from '../LiveEditorCompact/types';
-import {AttributesAndDefaultValues} from '../LiveEditorCompact';
+import React from 'react';
+import { ImplementedTagName } from '../LiveEditorCompact/types';
+import { AttributesAndDefaultValues } from '../LiveEditorCompact';
 
 type Props = {
-	tag: TagName;
+	tag: ImplementedTagName;
 	params: AttributesAndDefaultValues;
 };
 
 export function ComponentDisplay(props: Props) {
-	const paramsWithoutSlots = Object.fromEntries(Object.entries(props.params).filter(([attributeName]) => !attributeName.startsWith('slot-')));
+	const paramsWithoutSlots = Object.fromEntries(
+		Object.entries(props.params).filter(([attributeName]) => !attributeName.startsWith('slot-'))
+	);
 	const slots = Object.entries(props.params).filter(([attributeName]) => attributeName.startsWith('slot-'));
 
-	const list: Record<Exclude<TagName, 'tag' | 'tooltip'>, NamedExoticComponent<any>> = {
+	const list: Record<ImplementedTagName, unknown> = {
 		abbr: KolAbbr,
 		accordion: KolAccordion,
 		alert: KolAlert,

@@ -1,43 +1,42 @@
-import {TagName} from "@site/src/components/LiveEditorCompact/types";
+import { TagName } from '@site/src/components/LiveEditorCompact/types';
 
 const demoValues: Partial<Record<TagName, Record<string, string>>> = {
-	'tabs': {
+	tabs: {
 		_tabs: `[{"_label":"Tab 1"},{"_label":"Tab 2", "_on": {"onClose": true} },{"_label":"Tab 3"}]`,
 	},
-	'breadcrumb': {
+	breadcrumb: {
 		_links: `[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]`,
 	},
-	'form': {
+	form: {
 		'_required-text': 'Bitte alle Felder ausfüllen.',
 	},
-	'image': {
+	image: {
 		_src: 'https://placehold.co/100x100/cc006e/white',
 	},
 	'link-group': {
 		_links: `[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]`,
 	},
-	'nav': {
+	nav: {
 		_links: `[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]`,
 	},
-	'pagination': {
+	pagination: {
 		_total: '100',
 		_page: '6',
 	},
-	'quote': {
+	quote: {
 		_quote: 'Hello World',
 	},
-	'select': {
+	select: {
 		_options: `[{'label':'Herr','value':0},{'label':'Frau','value':1}]`,
 	},
 	'skip-nav': {
 		_links: `[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]`,
 	},
-	'table': {
+	table: {
 		_headers: `{"horizontal":[[{"label":"Montag","key":"montag"}]]}`,
 		_data: `[{"montag":"Zelle1"},{"montag":"Zelle2"}]`,
-		_pagination:`{"page":2}`,
-	}
-}
+		_pagination: `{"page":2}`,
+	},
+};
 
 export default demoValues;
-
