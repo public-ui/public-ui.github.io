@@ -137,6 +137,7 @@ export type TagName =
 	| 'abbr'
 	| 'accordion'
 	| 'alert'
+	| 'avatar'
 	| 'badge'
 	| 'breadcrumb'
 	| 'button'
@@ -147,7 +148,7 @@ export type TagName =
 	| 'form'
 	| 'heading'
 	| 'icon'
-	// | 'image'
+	| 'image'
 	| 'indented-text'
 	| 'input-checkbox'
 	| 'input-color'
@@ -167,15 +168,23 @@ export type TagName =
 	| 'modal'
 	| 'nav'
 	| 'pagination'
+	| 'popover'
 	| 'progress'
-	// | 'quote'
+	| 'quote'
 	| 'select'
 	| 'skip-nav'
 	| 'spin'
+	| 'split-button'
 	| 'symbol'
 	| 'table'
 	| 'tabs'
+	| 'tag'
 	| 'textarea'
 	| 'toast'
 	| 'tooltip'
 	| 'version';
+
+/**
+ * All tag names except those which don't have an editor implementation
+ */
+export type ImplementedTagName = Exclude<TagName, 'tag' | 'tooltip'>;

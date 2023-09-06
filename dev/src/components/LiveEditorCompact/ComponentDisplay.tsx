@@ -50,24 +50,21 @@ import {
 	KolVersion,
 } from '@public-ui/react';
 import React from 'react';
-import { TagName } from '../LiveEditorCompact/types';
-import { Config } from '../LiveEditorCompact';
+import { ImplementedTagName } from '../LiveEditorCompact/types';
+import { AttributesAndDefaultValues } from '../LiveEditorCompact';
 
 type Props = {
-	tag: TagName;
-	params: Config;
+	tag: ImplementedTagName;
+	params: AttributesAndDefaultValues;
 };
 
 export function ComponentDisplay(props: Props) {
-	const p: Config = {};
-	Object.entries(props.params)
-		.filter((tuple) => !tuple[0].startsWith('slot-'))
-		.forEach((tuple) => {
-			p[tuple[0]] = tuple[1];
-		});
-	const slots = Object.entries(props.params).filter((tuple) => tuple[0].startsWith('slot-'));
+	const paramsWithoutSlots = Object.fromEntries(
+		Object.entries(props.params).filter(([attributeName]) => !attributeName.startsWith('slot-'))
+	);
+	const slots = Object.entries(props.params).filter(([attributeName]) => attributeName.startsWith('slot-'));
 
-	const list = {
+	const list: Record<ImplementedTagName, unknown> = {
 		abbr: KolAbbr,
 		accordion: KolAccordion,
 		alert: KolAlert,
@@ -119,9 +116,13 @@ export function ComponentDisplay(props: Props) {
 	const Tag = list[props.tag];
 	return Tag ? (
 		// @ts-ignore
-		<Tag {...p}>
+		<Tag {...paramsWithoutSlots}>
 			{slots.map((s) => (
-				<div key={s[0]} slot={s[0].replace('slot-', '')} dangerouslySetInnerHTML={{ __html: s[1] as string }}></div>
+				<div
+					key={s[0]}
+					slot={s[0].replace('slot-', '').replace('default', '')}
+					dangerouslySetInnerHTML={{ __html: s[1] as string }}
+				></div>
 			))}
 		</Tag>
 	) : (
