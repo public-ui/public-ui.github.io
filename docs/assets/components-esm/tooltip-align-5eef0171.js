@@ -1,1 +1,0 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{v as validateAlignment}from"./alignment-aafa5e96.js";const validateTooltipAlign=(a,i)=>{validateAlignment(a,"_align",i)};export{validateTooltipAlign as v};

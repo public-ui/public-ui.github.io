@@ -410,7 +410,11 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 	desc: `Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird nur für einen kurzen Zeitraum am Kopf des Browserfenster angezeigt und verschwindet danach automatisch.
 
 Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für zehn Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.`,
-	props: `_alert, _has-closer, _heading, _label, _level, _show, _show-duration, _type`
+	props: `_label, _status, _type`
+},{
+	name: `toast-container`,
+	desc: ``,
+	props: ``
 },{
 	name: `tooltip-wc`,
 	desc: `<kol-alert _type="warning">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
@@ -510,7 +514,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_alert`,
 	desc: `Defines whether the screen-readers should read out the notification.`,
 	types: `boolean`,
-	comps: `alert, alert-wc, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea, toast`
+	comps: `alert, alert-wc, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_touched`,
 	desc: `Shows if the input was touched by a user.`,
@@ -572,11 +576,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `boolean`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
 },{
-	name: `_level`,
-	desc: `Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.`,
-	types: `0 | 1 | 2 | 3 | 4 | 5 | 6`,
-	comps: `accordion, alert, alert-wc, card, heading, toast`
-},{
 	name: `_role`,
 	desc: `Defines the role of the components primary element.`,
 	types: `"button" | "link" | "tab"`,
@@ -601,6 +600,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Defines the placeholder for input field. To be shown when there's no value.`,
 	types: `string`,
 	comps: `input-email, input-number, input-password, input-text, textarea`
+},{
+	name: `_level`,
+	desc: `Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.`,
+	types: `0 | 1 | 2 | 3 | 4 | 5 | 6`,
+	comps: `accordion, alert, alert-wc, card, heading`
 },{
 	name: `_icon-only`,
 	desc: `Deprecated: Hides the label and shows the description in a Tooltip instead.`,
@@ -627,16 +631,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range, progress`
 },{
-	name: `_heading`,
-	desc: `Deprecated: Gibt die Beschriftung der Komponente an.`,
-	types: `string`,
-	comps: `accordion, alert, card, toast`
-},{
-	name: `_has-closer`,
-	desc: `Defines whether the card has a close button.`,
-	types: `boolean`,
-	comps: `alert, alert-wc, card, toast`
-},{
 	name: `_custom-class`,
 	desc: `Defines the custom class attribute for the buttons.`,
 	types: `string`,
@@ -662,11 +656,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `avatar, avatar-wc, image`
 },{
-	name: `_show`,
-	desc: `Makes the element show up.`,
-	types: `boolean`,
-	comps: `popover, spin, toast`
-},{
 	name: `_pattern`,
 	desc: `Defines a validation pattern for the input field.`,
 	types: `string`,
@@ -686,6 +675,16 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Defines the link to the source of the quote.`,
 	types: `string`,
 	comps: `link, link-button, quote`
+},{
+	name: `_heading`,
+	desc: `Deprecated: Gibt die Beschriftung der Komponente an.`,
+	types: `string`,
+	comps: `accordion, alert, card`
+},{
+	name: `_has-closer`,
+	desc: `Defines whether the card has a close button.`,
+	types: `boolean`,
+	comps: `alert, alert-wc, card`
 },{
 	name: `_align`,
 	desc: `Defines the alignment of the tooltip in relation to the parent element.`,
@@ -711,6 +710,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Tells the browser that the link contains a file. Optionally sets the filename.`,
 	types: `boolean | string`,
 	comps: `link, link-button`
+},{
+	name: `_show`,
+	desc: `Makes the element show up.`,
+	types: `boolean`,
+	comps: `popover, spin`
 },{
 	name: `_rows`,
 	desc: `Defines how many rows of options should be visible at the same time.`,
@@ -832,6 +836,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `details`
 },{
+	name: `_status`,
+	desc: `Defines the current toast status.`,
+	types: `"adding" | "removing" | "settled"`,
+	comps: `toast`
+},{
 	name: `_srcset`,
 	desc: `Setzt eine Liste von Quell-URLs mit Breiten der Bilder.`,
 	types: `string`,
@@ -851,11 +860,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Setzt den alternativen Text.`,
 	types: `string`,
 	comps: `image`
-},{
-	name: `_show-duration`,
-	desc: `Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.`,
-	types: `number`,
-	comps: `toast`
 },{
 	name: `_show-dropdown`,
 	desc: `Defines whether to show the dropdown menu.`,
