@@ -107,7 +107,7 @@ function filterMdFiles(dir) {
 	return files;
 }
 
-const DOC_FOLDERS = ['docs/readmes'];
+const DOC_FOLDERS = ['readmes'];
 const README_PATHS = filterMdFiles(path.relative(process.cwd(), 'node_modules/@public-ui/components/doc'));
 
 const mkDirs = (dirs, index = 0) => {
