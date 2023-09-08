@@ -2,18 +2,18 @@ name: Auto dependency updater
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: "0 2 * * *"
   workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: 'main'
+          ref: "main"
 
       # - uses: pnpm/action-setup@v2.2.4
       #   with:
@@ -74,5 +74,5 @@ jobs:
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'chore/auto-update-deps'
+          branch: "chore/auto-update-deps"
           force: true

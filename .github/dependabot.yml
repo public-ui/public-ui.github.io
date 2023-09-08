@@ -8,12 +8,12 @@ updates:
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: daily
+      interval: monthly
     target-branch: main
-  - package-ecosystem: npm
-    directory: "/dev"
-    ignore:
-      - dependency-name: "rimraf"
-    schedule:
-      interval: daily
-    target-branch: main
+  # - package-ecosystem: npm
+  #   directory: "/dev"
+  #   ignore:
+  #     - dependency-name: "rimraf"
+  #   schedule:
+  #     interval: daily
+  #   target-branch: main
