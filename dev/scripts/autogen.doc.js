@@ -133,11 +133,17 @@ rimraf([...DOC_FOLDERS, '**/*.md'].join('/'), () => {
 			fs
 				.readFileSync(readmePath, 'utf-8')
 				.replace(/style="color:red"/g, 'class="text-red-500"')
-				.replace(/^# \w+/, '')
+				.replace(/^# [\w-]+/, '')
 				.replace(/^( *\r?\n)+/, '')
 				.replace(/\]\(..\//g, '](./')
 				.replace(/class=/g, 'className=')
-				.replace(/ *\\_/g, ' _'),
+				.replace(/ *\\_/g, ' _')
+				.replace(
+					/(### )`([^(]+)/,
+					`$1$2
+
+\`$2`
+				),
 			'utf-8'
 		);
 	});
