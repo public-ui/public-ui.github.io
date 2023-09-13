@@ -386,13 +386,12 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 	props: `_access-key, _adjust-height, _alert, _disabled, _error, _has-counter, _hide-label, _hint, _id, _label, _max-length, _name, _placeholder, _read-only, _required, _resize, _rows, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `toast`,
-	desc: `Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird nur für einen kurzen Zeitraum am Kopf des Browserfenster angezeigt und verschwindet danach automatisch.
-
-Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für zehn Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.`,
+	desc: `Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird am Kopf des Browserfenster
+angezeigt, bis sie geschlossen wird. Werden mehrere Toasts geöffnet, ohne das die bisherigen geschlossen wurden, so werden diese untereinander angezeigt.`,
 	props: `_label, _status, _type`
 },{
 	name: `toast-container`,
-	desc: ``,
+	desc: `Siehe [Toast](/docs/components/toast).`,
 	props: ``
 },{
 	name: `tooltip-wc`,
