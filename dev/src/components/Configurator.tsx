@@ -54,7 +54,7 @@ export const Configurator: FC<ConfiguratorProps> = ({ component, sample }) => {
 		vue: `${path}.vue`,
 		webcomponent: `${path}.html`,
 	};
-	const sampleUrl = `/sample-react/#/${component}/${sample}`;
+	const sampleUrl = `/sample-react/#/${component}/${sample}?hideMenus`;
 
 	const onSelect = {
 		onSelect: (_event: Event, idx: number) => {
