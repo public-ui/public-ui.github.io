@@ -362,8 +362,15 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 	props: `_show, _variant`
 },{
 	name: `split-button`,
-	desc: `> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.`,
-	props: `_access-key, _aria-controls, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _hide-label, _icon, _id, _label, _name, _role, _show-dropdown, _tab-index, _tooltip-align, _type, _value, _variant`
+	desc: `> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+
+Die SplitButton-Komponente kann genutzt werden, um einen zweigeteilten Button darzustellen. Dabei wird der Primär-Button
+üblicherweise für eine Haupt-Aktion genutzt, während der sekundäre Button ein Kontext-Menü ("Popover") öffnet, hinter
+dem sich weitere Aktionen verbergen.
+
+- Der Sekundär-Button togglet grundsätzlich das Kontextmenü.
+- Für den Primär-Button kann ein individueller Event-Handler hinterlegt werden, wird dies nicht getan togglet er ebenfalls das Kontextmenü.`,
+	props: `_access-key, _aria-controls, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _hide-label, _icon, _id, _label, _name, _role, _show, _show-dropdown, _tab-index, _tooltip-align, _type, _value, _variant`
 },{
 	name: `symbol`,
 	desc: `Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit steuerbarer Ausgabe durch den Screenreader.`,
@@ -634,6 +641,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `avatar, avatar-wc, image`
 },{
+	name: `_show`,
+	desc: `Makes the element show up.`,
+	types: `boolean`,
+	comps: `popover, spin, split-button`
+},{
 	name: `_pattern`,
 	desc: `Defines a validation pattern for the input field.`,
 	types: `string`,
@@ -688,11 +700,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Tells the browser that the link contains a file. Optionally sets the filename.`,
 	types: `boolean | string`,
 	comps: `link, link-button`
-},{
-	name: `_show`,
-	desc: `Makes the element show up.`,
-	types: `boolean`,
-	comps: `popover, spin`
 },{
 	name: `_rows`,
 	desc: `Defines how many rows of options should be visible at the same time.`,

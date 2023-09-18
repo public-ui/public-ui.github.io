@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ import{v as validateAlignment}from"./alignment-dbd89cd7.js";const validateAlign=(a,i)=>{validateAlignment(a,"_align",i)};export{validateAlign as v};
