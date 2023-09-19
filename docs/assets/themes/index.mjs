@@ -4617,10 +4617,13 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 		background-color: white;
 		border-radius: 0.3125rem;
 	}
+	kol-input .counter {
+		order: 3;
+	}
 	kol-input kol-alert.error {
 		margin-bottom: 0.4em;
 		margin-top: 0.2em;
-		order: 3;
+		order: 4;
 	}
 	input,
 	select,
@@ -6921,9 +6924,6 @@ const BZSt = KoliBri.createTheme("bzst", {
   "KOL-TEXTAREA": `kol-input {
 		gap: 0.4em;
 	}
-	kol-input .error {
-		order: 3;
-	}
 	kol-input label {
 		font-weight: 700;
 		order: 1;
@@ -6931,8 +6931,14 @@ const BZSt = KoliBri.createTheme("bzst", {
 	kol-input .input {
 		order: 2;
 	}
-	kol-input .hint {
+	kol-input .counter {
+		order: 3;
+	}
+	kol-input .error {
 		order: 4;
+	}
+	kol-input .hint {
+		order: 5;
 		font-size: 0.875em;
 		font-style: italic;
 	}
@@ -19173,8 +19179,11 @@ const DEFAULT = KoliBri.createTheme("default", {
 		kol-input .input {
 			order: 3;
 		}
-		kol-input .hint {
+		kol-input .counter {
 			order: 4;
+		}
+		kol-input .hint {
+			order: 5;
 			font-size: 0.9rem;
 			font-style: italic;
 		}
@@ -22126,6 +22135,9 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		order: 4;
 		align-items: center;
 	}
+	.counter {
+		order: 5;
+	}
 	input::placeholder,
 	textarea::placeholder {
 		color: var(--color-grey-50);
@@ -23539,6 +23551,9 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+	}
+	kol-input .counter {
+		order: 5;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -35849,6 +35864,9 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		border-width: 2px;
 		order: 2;
 	}
+	kol-input .counter {
+		order: 3;
+	}
 	kol-input:hover > .input {
 		border-color: var(--kolibri-color-secondary);
 	}
@@ -35859,10 +35877,10 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		margin-right: 0.75em;
 	}
 	kol-input > .error {
-		order: 3;
+		order: 4;
 	}
 	kol-input > .hint {
-		order: 4;
+		order: 5;
 		font-size: 0.875em;
 	}
 	input,
@@ -54051,14 +54069,17 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		border-radius: 0.25rem;
 		order: 2;
 	}
+	kol-input .counter {
+		order: 3;
+	}
+	kol-input > kol-alert.error {
+		order: 4;
+	}
 	kol-input > span.hint {
 		color: var(--color-grau-60);
 		font-style: italic;
-		order: 4;
+		order: 5;
 		font-size: 0.8rem;
-	}
-	kol-input > kol-alert.error {
-		order: 3;
 	}`,
   "KOL-INDENTED-TEXT": `:host > div {
 		background: white;
