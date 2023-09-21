@@ -4337,6 +4337,19 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 		-ms-transform: translateX(1em);
 		transform: translateX(1em);
 	}
+	.switch {
+		& .icon {
+			width: 1.25em;
+			height: 1.25em;
+			left: 2px;
+		}
+		&:has(input:checked) .icon {
+			transform: translate(2em, -50%);
+		}
+		&:has(input:indeterminate) .icon {
+			transform: translate(1em, -50%);
+		}
+	}
 	.disabled {
 		opacity: 0.33;
 	}`,
@@ -10699,6 +10712,20 @@ const BMF = KoliBri.createTheme("bmf", {
 		-moz-transform: translateX(1em);
 		-ms-transform: translateX(1em);
 		transform: translateX(1em);
+	}
+	.switch {
+		& .icon {
+			width: 1.25em;
+			height: 1.25em;
+			left: 2px;
+			color: #000;
+		}
+		&:has(input:checked) .icon {
+			transform: translate(2em, -50%);
+		}
+		&:has(input:indeterminate) .icon {
+			transform: translate(1em, -50%);
+		}
 	}
 	:host .disabled {
 		opacity: 0.33;
@@ -20264,6 +20291,21 @@ const DEFAULT = KoliBri.createTheme("default", {
 		:host kol-input.switch input[type='checkbox']:indeterminate:before {
 			transform: translateX(1em);
 		}
+		.switch {
+			& .icon {
+				width: 1.25em;
+				height: 1.25em;
+				left: 2px;
+			}
+
+			&:has(input:checked) .icon {
+				transform: translate(2em, -50%);
+			}
+
+			&:has(input:indeterminate) .icon {
+				transform: translate(1em, -50%);
+			}
+		}
 		:host .disabled {
 			opacity: 0.33;
 		}
@@ -25229,11 +25271,13 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		transform: translateX(0.75em);
 		background-color: var(--color-petrol);
 	}
+	.switch:has(input:not(:checked), input:indeterminate) .icon {
+		color: #fff;
+	}
 	.disabled {
 		opacity: 0.33;
 	}
-	.default kol-icon,
-	.switch kol-icon {
+	.default kol-icon {
 		display: none;
 	}
 	kol-input span.hint {
@@ -36084,6 +36128,9 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		-ms-transform: translateX(0.75em);
 		transform: translateX(0.75em);
 		background-color: var(--kolibri-color-primary);
+	}
+	.switch:has(input:not(:checked), input:indeterminate) .icon {
+		color: #fff;
 	}
 	.disabled {
 		opacity: 0.33;
@@ -53613,6 +53660,9 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		-ms-transform: translateX(0.75em);
 		transform: translateX(0.75em);
 		background-color: white;
+	}
+	.switch:has(input:not(:checked, :indeterminate)) .icon {
+		color: #fff;
 	}
 	.disabled {
 		opacity: 0.33;
