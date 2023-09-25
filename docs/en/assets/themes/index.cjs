@@ -355,8 +355,8 @@ var TagEnum = /* @__PURE__ */ ((TagEnum2) => {
   TagEnum2[TagEnum2["input-checkbox"] = 17] = "input-checkbox";
   TagEnum2[TagEnum2["input-color"] = 18] = "input-color";
   TagEnum2[TagEnum2["input-date"] = 19] = "input-date";
-  TagEnum2[TagEnum2["input-file"] = 20] = "input-file";
-  TagEnum2[TagEnum2["input-email"] = 21] = "input-email";
+  TagEnum2[TagEnum2["input-email"] = 20] = "input-email";
+  TagEnum2[TagEnum2["input-file"] = 21] = "input-file";
   TagEnum2[TagEnum2["input-number"] = 22] = "input-number";
   TagEnum2[TagEnum2["input-password"] = 23] = "input-password";
   TagEnum2[TagEnum2["input-radio"] = 24] = "input-radio";
@@ -374,13 +374,15 @@ var TagEnum = /* @__PURE__ */ ((TagEnum2) => {
   TagEnum2[TagEnum2["separator"] = 36] = "separator";
   TagEnum2[TagEnum2["skip-nav"] = 37] = "skip-nav";
   TagEnum2[TagEnum2["spin"] = 38] = "spin";
-  TagEnum2[TagEnum2["symbol"] = 39] = "symbol";
-  TagEnum2[TagEnum2["table"] = 40] = "table";
-  TagEnum2[TagEnum2["tabs"] = 41] = "tabs";
-  TagEnum2[TagEnum2["textarea"] = 42] = "textarea";
-  TagEnum2[TagEnum2["toast"] = 43] = "toast";
-  TagEnum2[TagEnum2["toolbar"] = 44] = "toolbar";
-  TagEnum2[TagEnum2["tooltip"] = 45] = "tooltip";
+  TagEnum2[TagEnum2["split-button"] = 39] = "split-button";
+  TagEnum2[TagEnum2["symbol"] = 40] = "symbol";
+  TagEnum2[TagEnum2["table"] = 41] = "table";
+  TagEnum2[TagEnum2["tabs"] = 42] = "tabs";
+  TagEnum2[TagEnum2["textarea"] = 43] = "textarea";
+  TagEnum2[TagEnum2["toast"] = 44] = "toast";
+  TagEnum2[TagEnum2["toast-container"] = 45] = "toast-container";
+  TagEnum2[TagEnum2["toolbar"] = 46] = "toolbar";
+  TagEnum2[TagEnum2["tooltip"] = 47] = "tooltip";
   return TagEnum2;
 })(TagEnum || {});
 
@@ -9850,9 +9852,7 @@ const BMF = KoliBri.createTheme("bmf", {
 	:host > span {
 		border-radius: 0.3125rem;
 		display: inline-flex;
-		font-size: 1em;
 		font-style: normal;
-		line-height: 1.25rem;
 	}
 	:host > span.smart-button {
 		align-items: center;
@@ -10267,7 +10267,7 @@ const BMF = KoliBri.createTheme("bmf", {
 	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f078";
 	}
-	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
+	:host > div:not(.open) > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f054";
 	}
 	:host > div {
@@ -10544,13 +10544,14 @@ const BMF = KoliBri.createTheme("bmf", {
 		justify-items: left;
 		width: 100%;
 		min-height: 44px;
-		gap: 0.4em;
 	}
 	:host kol-input.default {
 		grid-template-columns: 1.5rem auto;
+		gap: 0.4em;
 	}
 	:host kol-input.switch {
 		grid-template-columns: 3.5rem auto;
+		gap: 0.4em;
 	}
 	:host kol-input > div.input {
 		display: inherit;
@@ -10732,15 +10733,9 @@ const BMF = KoliBri.createTheme("bmf", {
 	:host .disabled {
 		opacity: 0.33;
 	}
+
 	:host kol-input.button {
-		cursor: inherit;
-		display: grid;
-		column-gap: 0;
-		grid-template-columns: 32px auto;
-		grid-template-areas:
-			"error error"
-			"input label"
-			"hint hint";
+		row-gap: 0.5rem;
 	}
 
 	:host kol-input.button.checked > .input,
@@ -10748,12 +10743,7 @@ const BMF = KoliBri.createTheme("bmf", {
 		background-color: var(--color-ice);
 	}
 
-	:host kol-input.button > .error {
-		grid-area: error;
-	}
-
 	:host kol-input.button > label {
-		grid-area: label;
 		background-color: var(--color-silver);
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
@@ -10765,7 +10755,6 @@ const BMF = KoliBri.createTheme("bmf", {
 	}
 
 	:host kol-input.button > .input {
-		grid-area: input;
 		background-color: var(--color-silver);
 		border-top-left-radius: var(--border-radius);
 		border-bottom-left-radius: var(--border-radius);
@@ -10774,12 +10763,12 @@ const BMF = KoliBri.createTheme("bmf", {
 		place-content: center;
 	}
 
-	:host kol-input.button > .hint {
-		grid-area: hint;
-	}
-
 	:host kol-input.button > .input > div {
 		display: flex;
+	}
+
+	:host kol-input.button .icon {
+		height: auto;
 	}
 `,
   "KOL-INPUT-RADIO": `/* INPUT */
@@ -10916,26 +10905,13 @@ const BMF = KoliBri.createTheme("bmf", {
 	fieldset div label {
 		padding-left: 0;
 	}`,
-  "KOL-TOAST": `:host > div {
-		position: fixed;
-		top: 0;
-		right: 0;
-		width: 100%;
-		height: 0;
-		z-index: 200;
-	}
-	:host > div > kol-alert {
-		display: block;
-		margin-left: auto;
-		margin-right: unset;
-		padding: 2rem;
-		max-width: 440px;
-	}
-	:host > div > kol-button-wc {
-		top: 0;
-		position: relative;
-		display: block;
-		width: 1em;
+  "KOL-TOAST-CONTAINER": `:host {
+		top: 1rem;
+		right: 1rem;
+		width: 440px;
+	}`,
+  "KOL-TOAST": `.toast {
+		margin-top: 1rem;
 	}`,
   "KOL-TABS": `button:disabled {
 		opacity: 0.5;
@@ -18500,6 +18476,9 @@ const BMF = KoliBri.createTheme("bmf", {
 		border-color: var(--color-ocean);
 		color: var(--color-white);
 		cursor: pointer;
+	}`,
+  "KOL-SPLIT-BUTTON": `.popover {
+		background: #fff;
 	}`
 });
 
@@ -19509,12 +19488,12 @@ const DEFAULT = KoliBri.createTheme("default", {
   "KOL-BADGE": css`
 		:host {
 			display: inline-block;
+			font-size: inherit;
 		}
 		:host > span {
 			border-radius: var(--border-radius);
 			display: inline-flex;
 			font-style: normal;
-			line-height: 1.25rem;
 		}
 		:host > span.smart-button {
 			align-items: center;
@@ -20144,6 +20123,9 @@ const DEFAULT = KoliBri.createTheme("default", {
 		:host kol-input.switch {
 			grid-template-columns: 3.5rem auto;
 		}
+		:host kol-input.button {
+			gap: 0.4rem 0;
+		}
 		:host kol-input > div.input {
 			display: inherit;
 			min-height: var(--a11y-min-size);
@@ -20441,27 +20423,16 @@ const DEFAULT = KoliBri.createTheme("default", {
 			padding-left: 0;
 		}
 	`,
+  "KOL-TOAST-CONTAINER": css`
+		:host {
+			top: 1rem;
+			right: 1rem;
+			width: 440px;
+		}
+	`,
   "KOL-TOAST": css`
-		:host > div {
-			position: fixed;
-			top: 0;
-			right: 0;
-			width: 100%;
-			height: 0;
-			z-index: 200;
-		}
-		:host > div > kol-alert {
-			display: block;
-			margin-left: auto;
-			margin-right: unset;
-			padding: 2rem;
-			max-width: 750px;
-		}
-		:host > div > kol-button-wc {
-			top: 0;
-			position: relative;
-			display: block;
-			width: 1rem;
+		.toast {
+			margin-top: 1rem;
 		}
 	`,
   "KOL-TABS": css`
@@ -20922,7 +20893,10 @@ const DEFAULT = KoliBri.createTheme("default", {
 			color: var(--color-light);
 			cursor: pointer;
 		}
-	`
+	`,
+  "KOL-SPLIT-BUTTON": `.popover {
+		background: #fff;
+	}`
 });
 
 const ECL_EC = KoliBri.createTheme("ecl-ec", {
@@ -21080,7 +21054,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		outline: 2px solid var(--color-blue);
 		outline-offset: -2px;
 	}
-	div[part="content"] {
+	.content {
 		padding: var(--spacing-s) var(--spacing-m);
 	}`,
   "KOL-INDENTED-TEXT": `:host > div {
@@ -21279,7 +21253,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		color: var(--color-blue-130);
 	}`,
   "KOL-BADGE": `:host > span {
-		font: normal normal var(--font-weight) 0.875rem/1em var(--font-family);
+		font: normal normal var(--font-weight) 1em var(--font-family);
 		padding: calc(0.5rem - 1px) calc(0.75rem - 1px);
 		text-transform: uppercase;
 	}`,
@@ -21561,6 +21535,13 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	kol-input {
 		gap: var(--spacing-xs);
 	}
+	.button {
+		gap: var(--spacing-xs) 0;
+		grid-template-areas:
+			"input label"
+			"hint hint"
+			"error error";
+	}
 	kol-input > .input {
 		order: 2;
 	}
@@ -21585,7 +21566,6 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px;
 		outline: none;
 	}
 	input,
@@ -21613,6 +21593,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -21665,6 +21646,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
   "KOL-INPUT-RADIO": `fieldset {
 		border: 0;
 		gap: 0.5rem;
+		flex-wrap: wrap;
 	}
 	.input-slot {
 		gap: 0.25rem;
@@ -21680,6 +21662,13 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	}
 	fieldset kol-input {
 		order: 4;
+	}
+	.radio-input-wrapper {
+    display: flex;
+		align-items: center;
+	}
+	.radio-label {
+		padding-left: 0.5rem;
 	}
 	input[type="radio"] {
 		border: 2px solid var(--color-grey-75);
@@ -21723,6 +21712,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		font-size: 0.875em;
 		margin-left: calc(-1 * var(--spacing-xs));
 		order: 1;
+		width: 100%;
 	}
 	.hint {
 		font-size: 0.875rem;
@@ -21814,6 +21804,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -21838,7 +21829,6 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -21866,6 +21856,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -21890,7 +21881,6 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -21918,6 +21908,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -21942,7 +21933,6 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -21970,6 +21960,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -21994,7 +21985,6 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -22022,6 +22012,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -22098,7 +22089,6 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -22126,6 +22116,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -22150,7 +22141,6 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -22178,6 +22168,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	.counter {
 		order: 5;
@@ -22362,6 +22353,24 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		border-color: var(--color-blue);
 		color: var(--color-white);
 		cursor: pointer;
+	}`,
+  "KOL-SPLIT-BUTTON": `.popover {
+		background: #fff;
+	}`,
+  "KOL-TOAST-CONTAINER": `:host {
+		top: 1rem;
+		right: 1rem;
+		width: 440px;
+	}`,
+  "KOL-TOAST": `:host {
+		display: block;
+	}
+	.toast {
+		background: #fff;
+		margin-top: 1rem;
+	}
+	.alert {
+		display: block;
 	}`
 });
 
@@ -22411,6 +22420,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		--color-grey-110: #222732;
 		--color-grey-100: #262b38;
 		--color-grey-80: #515560;
+		--color-grey-75: #515560;
 		--color-grey-60: #7d8088;
 		--color-grey-40: #a8aaaf;
 		--color-grey-20: #d4d5d7;
@@ -22624,7 +22634,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	.open .headline button kol-icon::part(icon)::before {
 		content: "\\f077";
 	}
-	.close .headline button kol-icon::part(icon)::before {
+	:not(.open) .headline button kol-icon::part(icon)::before {
 		content: "\\f078";
 	}
 	.content,
@@ -23127,6 +23137,13 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	kol-input {
 		gap: var(--spacing-xs);
 	}
+	.button {
+		gap: var(--spacing-xs) 0;
+		grid-template-areas:
+			"input label"
+			"hint hint"
+			"error error";
+	}
 	kol-input > .input {
 		order: 2;
 	}
@@ -23151,7 +23168,6 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px;
 		outline: none;
 	}
 	input,
@@ -23179,6 +23195,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -23255,7 +23272,6 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -23283,6 +23299,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -23307,7 +23324,6 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -23335,6 +23351,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -23359,7 +23376,6 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -23387,6 +23403,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -23411,7 +23428,6 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px;
 		outline: none;
 	}
 	input,
@@ -23439,6 +23455,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -23463,7 +23480,6 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px;
 		outline: none;
 	}
 	input,
@@ -23491,6 +23507,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -23515,7 +23532,6 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -23543,6 +23559,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -23567,7 +23584,6 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -23595,6 +23611,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	kol-input .counter {
 		order: 5;
@@ -23768,9 +23785,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
   "KOL-INPUT-RADIO": `fieldset {
 		border: 0;
 		gap: 0.5rem;
-	}
-	.input-slot {
-		gap: 0.25rem;
+		flex-wrap: wrap;
 	}
 	fieldset kol-alert {
 		order: 1;
@@ -23784,8 +23799,16 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	fieldset kol-input {
 		order: 4;
 	}
+	.radio-input-wrapper {
+    display: flex;
+		align-items: center;
+	}
+	.radio-label {
+		padding-left: 0.5rem;
+	}
 	input[type="radio"] {
-		border: 2px solid var(--color-grey-75);
+		outline: 2px solid var(--color-grey-75);
+		outline-offset: 2px;
 	}
 	input[type="radio"]:before {
 		display: none;
@@ -23795,8 +23818,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		border-width: 7px;
 	}
 	input[type="radio"]:focus {
-		outline: 2px solid var(--color-blue);
-		outline-offset: 2px;
+		outline-color: var(--color-blue);
 	}
 	input[type="radio"]:not(:disabled):hover {
 		border-color: var(--color-blue);
@@ -23826,10 +23848,14 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		font-size: 0.875em;
 		margin-left: calc(-1 * var(--spacing-xs));
 		order: 1;
+		width: 100%;
 	}
 	.hint {
 		font-size: 0.875rem;
 		order: 4;
+	}`,
+  "KOL-INPUT-RANGE": `.inputs-wrapper {
+		gap: 1rem;
 	}`,
   "KOL-SKIP-NAV": `kol-link-wc > a > kol-span-wc {
 		border-radius: 4px;
@@ -23839,6 +23865,24 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		background-color: #0e47cb;
 		color: #fff;
 		cursor: pointer;
+	}`,
+  "KOL-SPLIT-BUTTON": `.popover {
+		background: #fff;
+	}`,
+  "KOL-TOAST-CONTAINER": `:host {
+		top: 1rem;
+		right: 1rem;
+		width: 440px;
+	}`,
+  "KOL-TOAST": `:host {
+		display: block;
+	}
+	.toast {
+		background: #fff;
+		margin-top: 1rem;
+	}
+	.alert {
+		display: block;
 	}`
 });
 
@@ -24572,6 +24616,9 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 	:host .default {
 		border-color: var(--color-anthrazit);
 	}
+	.heading {
+		gap: 0.5rem;
+	}
 	.default .heading-icon {
 		background-color: var(--color-anthrazit);
 	}
@@ -24645,7 +24692,6 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 	:host > span {
 		border-radius: 0.3125rem;
 		display: inline-flex;
-		line-height: 1.25rem;
 	}
 	:host > span kol-button-wc {
 		border-left: 1px solid rgba(0, 0, 0, 0.25);
@@ -24958,6 +25004,9 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		font-size: inherit;
 		line-height: inherit;
 	}
+	.content {
+		padding: 0.5rem;
+	}
 	:host > div > kol-heading-wc button kol-icon::part(close)::before {
 		font-family: "Font Awesome 6 Free";
 		content: "\\f077";
@@ -25167,8 +25216,15 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 	kol-input.default {
 		grid-template-columns: calc(6 * 2 * var(--spacing)) auto;
 	}
-	kol-input.switch {
+	.switch {
 		grid-template-columns: calc(13 * 2 * var(--spacing)) auto;
+	}
+	.button {
+		gap: 0.5rem 0;
+		grid-template-areas:
+			"input label"
+			"hint hint"
+			"error error";
 	}
 	kol-input > div.input {
 		display: inline-flex;
@@ -25328,8 +25384,10 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		border: 0px;
 		margin: 0px;
 		padding: 0px;
-		display: grid;
-		gap: 0.25em;
+		flex-wrap: wrap;
+	}
+	fieldset.horizontal {
+		gap: 1rem;
 	}
 	fieldset legend {
 		display: block;
@@ -25370,28 +25428,22 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		background-color: var(--color-input-bg-default);
 		border-color: #999;
 		cursor: not-allowed;
-	}`,
-  "KOL-TOAST": `:host > div {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 0;
-		z-index: 200;
 	}
-	:host > div > kol-alert {
-		display: block;
-		margin: auto;
-		padding: 1rem;
-		max-width: 750px;
-	}
-	:host > div > kol-button-wc {
-		top: 0;
-		position: relative;
-		display: block;
-		margin: auto;
-		width: 1em;
+	kol-alert {
+		width: 100%:
 	}`,
+  "KOL-TOAST-CONTAINER": `:host {
+		top: 1rem;
+		width: 750px;
+		left: 50%;
+		transform: translateX(-50%);
+	}`,
+  "KOL-TOAST": `
+		.toast {
+			background: #fff;
+			margin-top: 1rem;
+		}
+	`,
   "KOL-TABS": `:host > div {
 		display: block;
 		width: 100%;
@@ -25560,6 +25612,9 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		border-color: var(--color-petrol);
 		color: var(--color-weiss);
 		cursor: pointer;
+	}`,
+  "KOL-SPLIT-BUTTON": `.popover {
+		background: #fff;
 	}`
 });
 
@@ -36028,6 +36083,9 @@ const MAPZ = KoliBri.createTheme("mapz", {
 	kol-input.switch {
 		grid-template-columns: calc(13 * var(--spacing)) auto;
 	}
+	.button {
+		gap: 0.5rem 0;
+	}
 	kol-input > div.input {
 		display: inline-flex;
 		order: 1;
@@ -36579,6 +36637,9 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		font-weight: inherit;
 		font-size: inherit;
 		line-height: inherit;
+	}
+	.content {
+		padding: 0.5rem;
 	}`,
   "KOL-CARD": `:host > div {
 		border-color: var(--kolibri-border-color);
@@ -36603,7 +36664,7 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		padding: 0.5rem;
 	}
 	:host div.content {
-		padding: 0;
+		padding: 0.5rem;
 	}
 	:host div.content,
 	:host div.content + div.footer {
@@ -36866,28 +36927,18 @@ const MAPZ = KoliBri.createTheme("mapz", {
 	:host > div.tabs-align-right > div {
 		border-radius: 0.25rem 0 0 0.25rem;
 	}`,
-  "KOL-TOAST": `:host > div {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 0;
-		z-index: 200;
-	}
-	:host > div > kol-alert {
-		background-color: white;
-		border-radius: var(--kolibri-border-radius);
-		display: block;
-		margin: 1rem auto;
-		max-width: 750px;
-	}
-	:host > div > kol-button-wc {
-		top: 0;
-		position: relative;
-		display: block;
-		margin: auto;
-		width: 1em;
+  "KOL-TOAST-CONTAINER": `:host {
+		top: 1rem;
+		width: 750px;
+		left: 50%;
+		transform: translateX(-50%);
 	}`,
+  "KOL-TOAST": `
+		.toast {
+			background: #fff;
+			margin-top: 1rem;
+		}
+	`,
   "KOL-NAV": `:host > div {
 		gap: var(--spacing);
 	}
@@ -52737,6 +52788,9 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		border-color: var(--kolibri-border-color);
 		color: white;
 		cursor: pointer;
+	}`,
+  "KOL-SPLIT-BUTTON": `.popover {
+		background: #fff;
 	}`
 });
 
@@ -52839,7 +52893,6 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 	:host > span {
 		border-radius: 0.3125rem;
 		display: inline-flex;
-		line-height: 1.25rem;
 	}
 	:host > span kol-span-wc {
 		padding: 0.25rem 0.5rem;
@@ -53068,13 +53121,13 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 	}
 	th[data-sort="sort-NOS"] kol-button::part(icon)::before,
 	th[data-sort="sort-undefined"] kol-button::part(icon)::before {
-		content: "\f0dc";
+		content: "\\f0dc";
 	}
 	th[data-sort="sort-ASC"] kol-button::part(icon)::before {
-		content: "\f0de";
+		content: "\\f0de";
 	}
 	th[data-sort="sort-DESC"] kol-button::part(icon)::before {
-		content: "\f0dd";
+		content: "\\f0dd";
 	}`,
   "KOL-ACCORDION": `:host > div {
 		border-color: var(--border-color);
@@ -53114,7 +53167,7 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f077";
 	}
-	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
+	:host > div:not(.open) > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f078";
 	}`,
   "KOL-ALERT": `kol-alert-wc {
@@ -53184,7 +53237,7 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		display: flex;
 		gap: var(--spacing);
 		flex-grow: 1;
-		align-items: flex-start;
+		align-items: center;
 	}
 	.msg .heading > div {
 		display: flex;
@@ -53264,8 +53317,11 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 1px;
+		background: #fff;
 	}
-	:host > div .header {
+	:host > div .header,
+	.content,
+	.footer {
 		padding: 1.5rem;
 	}`,
   "KOL-BUTTON": `:host > kol-button-wc > button > kol-span-wc,
@@ -53492,27 +53548,18 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		padding: 0.75rem 1rem;
 		text-decoration: underline;
 	}`,
-  "KOL-TOAST": `:host > div {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 0;
-		z-index: 200;
-	}
-	:host > div > kol-alert {
-		display: block;
-		margin: auto;
-		padding: 1rem;
-		max-width: 750px;
-	}
-	:host > div > kol-button-wc {
-		top: 0;
-		position: relative;
-		display: block;
-		margin: auto;
-		width: 1em;
+  "KOL-TOAST-CONTAINER": `:host {
+		top: 1rem;
+		width: 750px;
+		left: 50%;
+		transform: translateX(-50%);
 	}`,
+  "KOL-TOAST": `
+		.toast {
+			background: #fff;
+			margin-top: 1rem;
+		}
+	`,
   "KOL-PROGRESS": `svg line:first-child,
 	svg circle:first-child {
 		stroke: var(--color-neutral);
@@ -53558,6 +53605,13 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 	}
 	kol-input.switch {
 		grid-template-columns: calc(13 * var(--spacing)) auto;
+	}
+	.button {
+		grid-template-areas:
+			"input label"
+			"hint hint"
+			"error error";
+		gap: 0.5rem 0;
 	}
 	kol-input > div.input {
 		display: inline-flex;
@@ -53749,6 +53803,13 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 	}
 	fieldset kol-input {
 		order: 2;
+	}
+	.radio-input-wrapper {
+    display: flex;
+		align-items: center;
+	}
+	.radio-label {
+		padding-left: 0.5rem;
 	}
 	.disabled {
 		opacity: 0.33;
@@ -61365,6 +61426,9 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		border-color: var(--color-blau-dark);
 		color: white;
 		cursor: pointer;
+	}`,
+  "KOL-SPLIT-BUTTON": `.popover {
+		background: #fff;
 	}`
 });
 

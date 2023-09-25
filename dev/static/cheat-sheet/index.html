@@ -445,7 +445,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 				propertyTable._data = [{
 	name: `_label`,
 	desc: `Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).`,
-	types: `boolean | string, string`,
+	types: `string`,
 	comps: `abbr, accordion, alert, alert-wc, avatar, avatar-wc, badge, breadcrumb, button, button-link, card, details, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, pagination, progress, quote, select, skip-nav, split-button, symbol, table, tabs, textarea, toast, tooltip-wc`
 },{
 	name: `_tooltip-align`,
@@ -543,7 +543,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_smart-button`,
 	desc: `Allows to add a button with an arbitrary action within the element (_hide-label only).`,
-	types: `string | { _label: LabelWithExpertSlotPropType; } & { _tabIndex?: number; _value?: Stringified<StencilUnknown>; _accessKey?: string; _iconAlign?: AlignPropType; _iconOnly?: boolean; _role?: AlternativeButtonLinkRolePropType; _ariaControls?: string; _ariaCurrent?: AriaCurrentPropType; _ariaExpanded?: boolean; _ariaLabel?: string; _ariaSelected?: boolean; _on?: ButtonCallbacksPropType<StencilUnknown>; _type?: ButtonTypePropType; _variant?: ButtonVariantPropType; _customClass?: string; _disabled?: boolean; _hideLabel?: boolean; _icon?: IconPropType; _id?: string; _name?: string; _syncValueBySelector?: string; _tooltipAlign?: AlignPropType; }`,
+	types: `string | { _label: string; } & { _tabIndex?: number; _value?: Stringified<StencilUnknown>; _accessKey?: string; _iconAlign?: AlignPropType; _iconOnly?: boolean; _role?: AlternativeButtonLinkRolePropType; _ariaControls?: string; _ariaCurrent?: AriaCurrentPropType; _ariaExpanded?: boolean; _ariaLabel?: string; _ariaSelected?: boolean; _on?: ButtonCallbacksPropType<StencilUnknown>; _type?: ButtonTypePropType; _variant?: ButtonVariantPropType; _customClass?: string; _disabled?: boolean; _hideLabel?: boolean; _icon?: IconPropType; _id?: string; _name?: string; _syncValueBySelector?: string; _tooltipAlign?: AlignPropType; }`,
 	comps: `badge, input-color, input-date, input-email, input-file, input-number, input-password, input-text`
 },{
 	name: `_list`,
@@ -703,7 +703,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_download`,
 	desc: `Tells the browser that the link contains a file. Optionally sets the filename.`,
-	types: `boolean | string`,
+	types: `string`,
 	comps: `link, link-button`
 },{
 	name: `_rows`,
