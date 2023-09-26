@@ -13,7 +13,6 @@ DEPRECATED.set(
 DEPRECATED.set('_max', new Set(['_total']));
 DEPRECATED.set('_row', new Set(['_size']));
 DEPRECATED.set('_variant', new Set(['_type<sup>*</sup>']));
-DEPRECATED.set('_src', new Set(['_srcset']));
 DEPRECATED.set('_show', new Set(['_show-dropdown']));
 DEPRECATED.set(
 	'',

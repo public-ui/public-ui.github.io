@@ -2,13 +2,16 @@ import React, { FC } from 'react';
 
 import ELEMENTS from '@public-ui/components/custom-elements.json';
 
-const BLACKLIST = [
+const BLOCKLIST = [
 	'kol-alert-wc',
+	'kol-avatar-wc',
 	'kol-all',
 	'kol-button-group',
+	'kol-button-group-wc',
+	'kol-button-link-text-switch',
+	'kol-button-wc',
 	'kol-color',
 	'kol-counter',
-	'kol-button-wc',
 	'kol-heading-wc',
 	'kol-icon-font-awesome',
 	'kol-icon-icofont',
@@ -22,14 +25,14 @@ const BLACKLIST = [
 	'kol-span',
 	'kol-span-wc',
 	'kol-symbol',
-	'kol-tooltip',
+	'kol-tooltip-wc',
 	'kol-version',
 ];
 type Property = 'components' | 'descriptions' | 'types';
 const COMPONENTS = new Map();
 const PROPS = new Map<string, Map<Property, Set<string>>>();
 ELEMENTS.tags.forEach((tag) => {
-	if (BLACKLIST.indexOf(tag.name) === -1) {
+	if (BLOCKLIST.indexOf(tag.name) === -1) {
 		const componentName = tag.name.replace('kol-', '');
 		if (COMPONENTS.has(componentName) === false) {
 			COMPONENTS.set(componentName, {
@@ -80,7 +83,6 @@ const PROP_BLACKLIST = [
 	'_selector',
 	'_show-duration',
 	'_size',
-	'_srcset',
 	'_stealth',
 	'_summary',
 	'_tabs-align',

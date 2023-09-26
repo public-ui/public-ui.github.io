@@ -5,7 +5,7 @@ import React, { FunctionComponent } from 'react';
 export const KoliBri: FunctionComponent = () => {
 	return (
 		<KolAbbr
-			_title={translate({
+			_label={translate({
 				id: 'custom.component-library-for-the-accessibility',
 				message: 'Komponentenbibliothek für die Barrierefreiheit',
 			})}

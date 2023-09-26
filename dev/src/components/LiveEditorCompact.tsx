@@ -117,7 +117,7 @@ export function LiveEditorCompact(props: Props) {
 					<div className="grid lg:grid-cols-3 gap-2">
 						<KolTabs
 							className="col-span-2"
-							_ariaLabel="Wechselnavigation zwischen Viewer und Code"
+							_label="Wechselnavigation zwischen Viewer und Code"
 							_tabs={[
 								{
 									_label: 'Viewer',

@@ -52,7 +52,7 @@ export const BitvTestResult: FC = () => {
 
 	return (
 		<KolTable
-			_caption="Übersicht der Testergebnisse der KoliBri-Komponenten"
+			_label="Übersicht der Testergebnisse der KoliBri-Komponenten"
 			_headers={{
 				horizontal: [
 					[

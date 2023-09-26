@@ -57,7 +57,7 @@ export function Icon(props: Props) {
 		<div>
 			{label}
 			{leftAvailable ? (
-				<KolDetails _summary="Links">
+				<KolDetails _label="Links">
 					<div className="flex flex-wrap">
 						{iconList.map((icon) => (
 							<KolButton
@@ -74,7 +74,7 @@ export function Icon(props: Props) {
 				''
 			)}
 			{rightAvailable ? (
-				<KolDetails _summary="Rechts">
+				<KolDetails _label="Rechts">
 					<div className="flex flex-wrap">
 						{iconList.map((icon) => (
 							<KolButton
@@ -91,7 +91,7 @@ export function Icon(props: Props) {
 				''
 			)}
 			{topAvailable ? (
-				<KolDetails _summary="Oben">
+				<KolDetails _label="Oben">
 					<div className="flex flex-wrap">
 						{iconList.map((icon) => (
 							<KolButton
@@ -108,7 +108,7 @@ export function Icon(props: Props) {
 				''
 			)}
 			{bottomAvailable ? (
-				<KolDetails _summary="Unten">
+				<KolDetails _label="Unten">
 					<div className="flex flex-wrap">
 						{iconList.map((icon) => (
 							<KolButton

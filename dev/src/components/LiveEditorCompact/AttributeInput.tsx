@@ -28,7 +28,7 @@ export function AttributeInput(props: Props) {
 
 	const input = useMemo(() => {
 		const calculatedTypes = attribute.type.split(' | ').map((t) => t.replace(/\\?"/g, ''));
-		const label = <KolAbbr _title={attribute.description}>{attribute.name}</KolAbbr>;
+		const label = <KolAbbr _label={attribute.description}>{attribute.name}</KolAbbr>;
 		switch (attribute.name) {
 			case '_color':
 				return <Color name={attribute.name} label={label} update={update} value={value as string}></Color>;
@@ -40,7 +40,7 @@ export function AttributeInput(props: Props) {
 						return (
 							<KolInputText
 								className="my-2"
-								_label={false}
+								_label=""
 								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as string) }}
 								_value={(value as string) || ''}
 							>
@@ -51,7 +51,7 @@ export function AttributeInput(props: Props) {
 						return (
 							<KolInputNumber
 								className="my-2"
-								_label={false}
+								_label=""
 								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as number) }}
 								_value={value as number}
 							>
@@ -63,7 +63,7 @@ export function AttributeInput(props: Props) {
 							<KolInputCheckbox
 								className="my-2"
 								_checked={value === true}
-								_label={false}
+								_label=""
 								_on={{ onChange: (_event, value) => update(attribute.name, value as boolean) }}
 								_variant="switch"
 								_value={true}
