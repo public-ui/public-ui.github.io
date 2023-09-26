@@ -643,7 +643,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `input-date, input-number, input-range, progress`
 },{
 	name: `_custom-class`,
-	desc: `Defines the custom class attribute for the buttons.`,
+	desc: `Defines the custom class attribute if _variant="custom" is set.`,
 	types: `string`,
 	comps: `button, link-button, pagination, split-button`
 },{
@@ -688,7 +688,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `breadcrumb, nav, skip-nav`
 },{
 	name: `_href`,
-	desc: `Defines the link to the source of the quote.`,
+	desc: `Defines the target URI of the link.`,
 	types: `string`,
 	comps: `link, link-button, quote`
 },{
@@ -698,12 +698,12 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `accordion, alert, card`
 },{
 	name: `_has-closer`,
-	desc: `Defines whether the card has a close button.`,
+	desc: `Defines whether the element can be closed.`,
 	types: `boolean`,
 	comps: `alert, alert-wc, card`
 },{
 	name: `_align`,
-	desc: `Defines the alignment of the tooltip in relation to the parent element.`,
+	desc: `Defines the alignment of the tooltip, popover or tabs in relation to the element.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `popover, tabs, tooltip-wc`
 },{
@@ -873,7 +873,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `image`
 },{
 	name: `_show-dropdown`,
-	desc: `Defines whether to show the dropdown menu.`,
+	desc: `Deprecated: Defines whether to show the dropdown menu.`,
 	types: `boolean`,
 	comps: `split-button`
 },{
