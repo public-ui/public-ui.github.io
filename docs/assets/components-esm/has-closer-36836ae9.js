@@ -1,1 +1,0 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{a as watchBoolean}from"./prop.validators-3b95d09c.js";const validateHasCloser=(a,o)=>{watchBoolean(a,"_hasCloser",o)};export{validateHasCloser as v};
