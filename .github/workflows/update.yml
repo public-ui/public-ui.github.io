@@ -46,13 +46,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store
 
-      - name: Build doc
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-        run: |
-          pnpm install --no-frozen-lockfile
-          npm run build
-        working-directory: dev
+      # - name: Build doc
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{env.token}}
+      #   run: |
+      #     pnpm install --no-frozen-lockfile
+      #     npm run build
+      #   working-directory: dev
 
       - uses: actions/setup-node@v3
         with:
@@ -67,7 +67,10 @@ jobs:
           rm -rf package *.tgz
           npm pack @${{env.scope}}/designer
           tar -xzvf public-ui-designer-*.tgz
-          mv package/dist build/designer
+
+          rm -rf docs/designer
+          mv package/dist docs/designer
+
           rm -rf package *.tgz
           ls -la build
         working-directory: dev
@@ -79,7 +82,10 @@ jobs:
           rm -rf package *.tgz
           npm pack @${{env.scope}}/sample-react
           tar -xzvf public-ui-sample-react-*.tgz
-          mv package/dist build/sample-react
+
+          rm -rf docs/sample-react
+          mv package/dist docs/sample-react
+
           rm -rf package *.tgz
           ls -la build
         working-directory: dev
@@ -112,8 +118,6 @@ jobs:
       - name: Commit changed files
         continue-on-error: true
         run: |
-          rm -rf docs
-          mv dev/build docs
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .

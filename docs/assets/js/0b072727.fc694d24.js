@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[98348],{81748:e=>{e.exports=JSON.parse('{"label":"Nav","permalink":"/docs/tags/nav","allTagsPath":"/docs/tags","count":1,"items":[{"id":"version-1.7/components/nav","title":"Nav","description":"Beschreibung, Spezifikation und Beispiele f\xfcr die Nav-Komponente.","permalink":"/docs/components/nav"}]}')}}]);

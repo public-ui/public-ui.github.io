@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[68729],{52071:e=>{e.exports=JSON.parse('{"label":"leagal","permalink":"/en/docs/1.5.3/tags/leagal","allTagsPath":"/en/docs/1.5.3/tags","count":1,"items":[{"id":"version-1.5.3/impressum","title":"Legal notice","description":"Legal information about our website.","permalink":"/en/docs/1.5.3/impressum"}]}')}}]);

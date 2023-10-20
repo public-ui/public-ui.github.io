@@ -137,6 +137,7 @@ rimraf([...DOC_FOLDERS, '**/*.md'].join('/'), () => {
 				.replace(/^( *\r?\n)+/, '')
 				.replace(/\]\(..\//g, '](./')
 				.replace(/class=/g, 'className=')
+				.replace(/"_target/g, '" _target')
 				.replace(/ *\\_/g, ' _')
 				.replace(
 					/(### )`([^(]+)/,
