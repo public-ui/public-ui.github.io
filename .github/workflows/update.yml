@@ -33,7 +33,7 @@ jobs:
       - uses: pnpm/action-setup@v2
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -56,7 +56,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           registry-url: "${{env.github-registry}}"
           scope: "@${{env.scope}}"
 
@@ -68,8 +68,8 @@ jobs:
           npm pack @${{env.scope}}/designer
           tar -xzvf public-ui-designer-*.tgz
 
-          rm -rf docs/designer
-          mv package/dist docs/designer
+          rm -rf ../docs/designer
+          mv package/dist ../docs/designer
 
           rm -rf package *.tgz
           ls -la build
@@ -83,8 +83,8 @@ jobs:
           npm pack @${{env.scope}}/sample-react
           tar -xzvf public-ui-sample-react-*.tgz
 
-          rm -rf docs/sample-react
-          mv package/dist docs/sample-react
+          rm -rf ../docs/sample-react
+          mv package/dist ../docs/sample-react
 
           rm -rf package *.tgz
           ls -la build
