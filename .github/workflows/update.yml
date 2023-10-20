@@ -72,7 +72,6 @@ jobs:
           mv package/dist ../docs/designer
 
           rm -rf package *.tgz
-          ls -la build
         working-directory: dev
 
       - name: Download sample react
@@ -87,7 +86,6 @@ jobs:
           mv package/dist ../docs/sample-react
 
           rm -rf package *.tgz
-          ls -la build
         working-directory: dev
 
       # - name: Download slidev
