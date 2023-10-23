@@ -82,7 +82,7 @@ const FeatureList: FeatureItem[] = [
 function Feature({ title, icon, description, button }: FeatureItem) {
 	return (
 		<div className="grid gap-4 content-baseline text-center justify-items-center">
-			<KolIcon className="text-8xl text-gray-700" _label="" _icon={icon}></KolIcon>
+			<KolIcon className="text-8xl text-gray-700" _label="" _icons={icon}></KolIcon>
 			<h3 className="m-0">{title}</h3>
 			<div className="grid gap-2">{description}</div>
 			<div className="grid sm:inline">{button}</div>

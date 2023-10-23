@@ -62,7 +62,7 @@ export function Icon(props: Props) {
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
-								_icon={`codicon codicon-${icon}`}
+								_icons={`codicon codicon-${icon}`}
 								_hideLabel
 								_label=""
 								_on={{ onClick: () => setLeft(icon) }}
@@ -79,7 +79,7 @@ export function Icon(props: Props) {
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
-								_icon={`codicon codicon-${icon}`}
+								_icons={`codicon codicon-${icon}`}
 								_hideLabel
 								_label=""
 								_on={{ onClick: () => setRight(icon) }}
@@ -96,7 +96,7 @@ export function Icon(props: Props) {
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
-								_icon={`codicon codicon-${icon}`}
+								_icons={`codicon codicon-${icon}`}
 								_hideLabel
 								_label=""
 								_on={{ onClick: () => setTop(icon) }}
@@ -113,7 +113,7 @@ export function Icon(props: Props) {
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
-								_icon={`codicon codicon-${icon}`}
+								_icons={`codicon codicon-${icon}`}
 								_hideLabel
 								_label=""
 								_on={{ onClick: () => setBottom(icon) }}

@@ -46,7 +46,7 @@ export default function Homepage(): JSX.Element {
 				<div className="grid sm:flex gap-4 justify-center mt-4">
 					<KolLinkButton
 						className="w-72"
-						_icon={{
+						_icons={{
 							right: 'codicon codicon-dashboard',
 						}}
 						_href="docs/get-started/first-steps"
