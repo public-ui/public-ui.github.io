@@ -1521,14 +1521,14 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 		line-height: 24px;
 		font-size: 16px;
 	}
-	:host fieldset div input[type="radio"]:hover {
+	.radio-input-wrapper input[type="radio"]:hover {
 		border-color: var(--color-midnight);
 		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
 	}
-	:host fieldset div input[type="radio"]:focus:hover {
+	.radio-input-wrapper input[type="radio"]:focus:hover {
 		box-shadow: none;
 	}
-	:host fieldset div input[type="radio"]:active {
+	.radio-input-wrapper input[type="radio"]:active {
 		box-shadow: none;
 	}
 	kol-alert {
@@ -1547,7 +1547,7 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 		display: grid;
 		gap: 0.25em;
 	}
-	:host fieldset div {
+	.radio-input-wrapper {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -1555,16 +1555,16 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 		position: relative;
 		min-height: 44px;
 	}
-	:host fieldset div label {
+	.radio-input-wrapper label {
 		cursor: pointer;
 		display: flex;
 		padding-left: 0.25em;
 		width: 100%;
 	}
-	:host fieldset div label span {
+	.radio-input-wrapper label span {
 		margin-top: 0.125em;
 	}
-	:host fieldset div input[type="radio"] {
+	.radio-input-wrapper input[type="radio"] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -1572,7 +1572,7 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 		min-width: 1rem;
 		width: 1rem;
 	}
-	:host fieldset div input[type="radio"]:before {
+	.radio-input-wrapper input[type="radio"]:before {
 		content: "";
 		cursor: pointer;
 		left: calc(1 * var(--spacing) - 1px);
@@ -1583,10 +1583,10 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 		height: calc(2 * var(--spacing));
 		width: calc(2 * var(--spacing));
 	}
-	:host fieldset div input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type="radio"]:checked:before {
 		background-color: var(--color-primary-20);
 	}
-	:host fieldset div input[type="radio"]:disabled {
+	.radio-input-wrapper input[type="radio"]:disabled {
 		cursor: not-allowed;
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
@@ -1751,12 +1751,14 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	option:active:not(:disabled),
 	option:checked:not(:disabled),
@@ -4603,12 +4605,14 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	option:active:not(:disabled),
 	option:checked:not(:disabled),
@@ -6230,14 +6234,15 @@ const BZSt = KoliBri.createTheme("bzst", {
 	input,
 	option,
 	select,
-	summary,
 	textarea {
-		-ms-hyphens: auto;
-		-webkit-hyphens: auto;
 		hyphens: auto;
 		letter-spacing: inherit;
 		display: block;
 	} /* a,button,caption,input,option,select,summary,table,textarea {font-size: 1rem;} */
+	summary {
+		hyphens: auto;
+		letter-spacing: inherit;
+	}
 	*[tabindex]:focus,
 	kol-input:not(.checkbox, .radio) .input:focus-within,
 	kol-input:is(.checkbox, .radio) input:focus,
@@ -7246,8 +7251,6 @@ const BZSt = KoliBri.createTheme("bzst", {
 		width: 100%;
 	}
 	summary {
-		cursor: pointer;
-		display: flow-root;
 		margin: 0;
 		padding: 0;
 	}
@@ -7261,68 +7264,11 @@ const BZSt = KoliBri.createTheme("bzst", {
 	details > kol-indented-text {
 		margin: 0.25em 0 0 0.6em;
 	}`,
-  "KOL-SPIN": `.spin {
-		display: inline-block;
-		height: 1rem;
-		position: relative;
-		width: 3rem;
-	}
-	.spin span {
-		animation-timing-function: cubic-bezier(0, 1, 1, 0);
-		border: 0.1rem solid rgb(255, 255, 255);
-		border-radius: 50%;
-		height: 0.8rem;
-		width: 0.8rem;
-		top: 0.1rem;
-		position: absolute;
-	}
-	.spin span:nth-child(1) {
-		background-color: #fc0;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin1;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(2) {
-		background-color: #f00;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(3) {
-		background-color: #000;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 1.1rem;
-	}
-	.spin span:nth-child(4) {
-		background-color: #666;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin3;
-		left: 2.1rem;
-	}
-	@keyframes spin1 {
-		0% {
-		transform: scale(0);
-		}
-		100% {
-		transform: scale(1);
-		}
-	}
-	@keyframes spin2 {
-		0% {
-		transform: translate(0px, 0px);
-		}
-		100% {
-		transform: translate(1rem, 0px);
-		}
-	}
-	@keyframes spin3 {
-		0% {
-		transform: scale(1);
-		}
-		100% {
-		transform: scale(0);
-		}
+  "KOL-SPIN": `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
+			}
 	}`,
   "KOL-PROGRESS": `:host progress,
 	:host span {
@@ -7382,11 +7328,13 @@ const BZSt = KoliBri.createTheme("bzst", {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	.required label > span::after {
 		content: "*";
@@ -9931,70 +9879,12 @@ const BMF = KoliBri.createTheme("bmf", {
 	}
 	details kol-icon::part(icon):before {
 		content: "\\f054";
-	}
-	`,
-  "KOL-SPIN": `.spin {
-		display: inline-block;
-		height: 1rem;
-		position: relative;
-		width: 3rem;
-	}
-	.spin span {
-		animation-timing-function: cubic-bezier(0, 1, 1, 0);
-		border: 0.1rem solid rgb(255, 255, 255);
-		border-radius: 50%;
-		height: 0.8rem;
-		width: 0.8rem;
-		top: 0.1rem;
-		position: absolute;
-	}
-	.spin span:nth-child(1) {
-		background-color: #fc0;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin1;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(2) {
-		background-color: #f00;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(3) {
-		background-color: #000;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 1.1rem;
-	}
-	.spin span:nth-child(4) {
-		background-color: #666;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin3;
-		left: 2.1rem;
-	}
-	@keyframes spin1 {
-		0% {
-			transform: scale(0);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-	@keyframes spin2 {
-		0% {
-			transform: translate(0px, 0px);
-		}
-		100% {
-			transform: translate(1rem, 0px);
-		}
-	}
-	@keyframes spin3 {
-		0% {
-			transform: scale(1);
-		}
-		100% {
-			transform: scale(0);
-		}
+	}`,
+  "KOL-SPIN": `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
+			}
 	}`,
   "KOL-PROGRESS": `.bar > div {
 		flex-direction: column;
@@ -10130,9 +10020,11 @@ const BMF = KoliBri.createTheme("bmf", {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	select option:disabled {
 		cursor: not-allowed;
@@ -10813,7 +10705,7 @@ const BMF = KoliBri.createTheme("bmf", {
 		display: grid;
 		gap: 0.25em;
 	}
-	fieldset div {
+	.radio-input-wrapper {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -10823,16 +10715,16 @@ const BMF = KoliBri.createTheme("bmf", {
 		margin: 0;
 		gap: 0.5rem;
 	}
-	fieldset div label {
+	.radio-input-wrapper label {
 		cursor: pointer;
 		display: flex;
 		padding-left: 0.25em;
 		width: 100%;
 	}
-	fieldset div label span {
+	.radio-input-wrapper label span {
 		margin-top: 0.125em;
 	}
-	fieldset div input[type="radio"] {
+	.radio-input-wrapper input[type="radio"] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -10840,16 +10732,16 @@ const BMF = KoliBri.createTheme("bmf", {
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
 	}
-	fieldset div input[type="radio"]:before {
+	.radio-input-wrapper input[type="radio"]:before {
 		content: "";
 		cursor: pointer;
 		border-radius: 100%;
 		display: block;
 	}
-	fieldset div input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type="radio"]:checked:before {
 		background-color: var(--color-midnight);
 	}
-	fieldset div input[type="radio"]:disabled {
+	.radio-input-wrapper input[type="radio"]:disabled {
 		cursor: not-allowed;
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
@@ -10897,7 +10789,7 @@ const BMF = KoliBri.createTheme("bmf", {
 	fieldset .input-slot {
 		gap: 0.5rem;
 	}
-	fieldset div label {
+	.radio-input-wrapper label {
 		padding-left: 0;
 	}`,
   "KOL-TOAST-CONTAINER": `:host {
@@ -18477,9 +18369,10 @@ const BMF = KoliBri.createTheme("bmf", {
 	}`
 });
 
-const css$2 = (input) => input.join(``);
+const cssWithCustomLayerName = (layerName) => (input) => `@layer ${layerName} { ${input.join(``)} }`;
+const css$2 = (input) => cssWithCustomLayerName("kol-theme-component")(input);
 const DEFAULT = KoliBri.createTheme("default", {
-  GLOBAL: css$2`
+  GLOBAL: cssWithCustomLayerName("kol-theme-global")`
 		:host {
 			--border-radius: var(--kolibri-border-radius, 5px);
 			--font-family: var(--kolibri-font-family, BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif);
@@ -19580,71 +19473,6 @@ const DEFAULT = KoliBri.createTheme("default", {
 			font-size: 1.2rem;
 		}
 	`,
-  "KOL-SPIN": css$2`
-		.spin {
-			display: inline-block;
-			height: 1rem;
-			position: relative;
-			width: 3rem;
-		}
-		.spin span {
-			animation-timing-function: cubic-bezier(0, 1, 1, 0);
-			border: 0.1rem solid rgb(255, 255, 255);
-			border-radius: 50%;
-			height: 0.8rem;
-			width: 0.8rem;
-			top: 0.1rem;
-			position: absolute;
-		}
-		.spin span:nth-child(1) {
-			background-color: #fc0;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin1;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(2) {
-			background-color: #f00;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(3) {
-			background-color: #000;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 1.1rem;
-		}
-		.spin span:nth-child(4) {
-			background-color: #666;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin3;
-			left: 2.1rem;
-		}
-		@keyframes spin1 {
-			0% {
-				transform: scale(0);
-			}
-			100% {
-				transform: scale(1);
-			}
-		}
-		@keyframes spin2 {
-			0% {
-				transform: translate(0px, 0px);
-			}
-			100% {
-				transform: translate(1rem, 0px);
-			}
-		}
-		@keyframes spin3 {
-			0% {
-				transform: scale(1);
-			}
-			100% {
-				transform: scale(0);
-			}
-		}
-	`,
   "KOL-PROGRESS": css$2`
 		:host progress,
 		:host span {
@@ -19750,12 +19578,14 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 		select option {
 			margin: 1px 0;
-			padding: 0.5em;
 			border-radius: var(--border-radius);
 			cursor: pointer;
 		}
 		select option:disabled {
 			cursor: not-allowed;
+		}
+		select:not([multiple]) option {
+			padding: 0.5em;
 		}
 		option:active:not(:disabled),
 		option:checked:not(:disabled),
@@ -20331,7 +20161,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			display: grid;
 			gap: 0.25em;
 		}
-		fieldset div {
+		.radio-input-wrapper {
 			align-items: center;
 			cursor: pointer;
 			display: flex;
@@ -20341,16 +20171,16 @@ const DEFAULT = KoliBri.createTheme("default", {
 			min-height: var(--a11y-min-size);
 			position: relative;
 		}
-		fieldset div label {
+		.radio-input-wrapper label {
 			cursor: pointer;
 			display: flex;
 			padding-left: calc(var(--spacing) / 2);
 			width: 100%;
 		}
-		fieldset div label span {
+		.radio-input-wrapper label span {
 			margin-top: 0.125em;
 		}
-		fieldset div input[type='radio'] {
+		.radio-input-wrapper input[type='radio'] {
 			appearance: none;
 			transition: 0.5s;
 			border-radius: 100%;
@@ -20358,16 +20188,16 @@ const DEFAULT = KoliBri.createTheme("default", {
 			min-width: calc(6 * 0.25rem);
 			width: calc(6 * 0.25rem);
 		}
-		fieldset div input[type='radio']:before {
+		.radio-input-wrapper input[type='radio']:before {
 			content: '';
 			cursor: pointer;
 			border-radius: 100%;
 			display: block;
 		}
-		fieldset div input[type='radio']:checked:before {
+		.radio-input-wrapper input[type='radio']:checked:before {
 			background-color: var(--color-primary);
 		}
-		fieldset div input[type='radio']:disabled {
+		.radio-input-wrapper input[type='radio']:disabled {
 			cursor: not-allowed;
 			background-color: var(--color-mute-variant);
 		}
@@ -20414,7 +20244,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 		fieldset .input-slot {
 			gap: var(--spacing);
 		}
-		fieldset div label {
+		.radio-input-wrapper label {
 			padding-left: 0;
 		}
 	`,
@@ -20889,9 +20719,11 @@ const DEFAULT = KoliBri.createTheme("default", {
 			cursor: pointer;
 		}
 	`,
-  "KOL-SPLIT-BUTTON": `.popover {
-		background: #fff;
-	}`
+  "KOL-SPLIT-BUTTON": css$2`
+		.popover {
+			background: #fff;
+		}
+	`
 });
 
 const ECL_EC = KoliBri.createTheme("ecl-ec", {
@@ -21410,17 +21242,11 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	progress {
 		display: none;
 	}`,
-  "KOL-SPIN": `.spin span:nth-child(1) {
-		background-color: var(--color-blue-75);
-	}
-	.spin span:nth-child(2) {
-		background-color: var(--color-blue);
-	}
-	.spin span:nth-child(3) {
-		background-color: var(--color-blue-130);
-	}
-	.spin span:nth-child(4) {
-		background-color: var(--color-grey-25);
+  "KOL-SPIN": `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: var(--color-blue-75);
+			}
 	}`,
   "KOL-PAGINATION": `:host {
 		display: grid;
@@ -21537,21 +21363,13 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 			"hint hint"
 			"error error";
 	}
-	kol-input > .input {
-		order: 2;
-	}
-	kol-input > label {
-		order: 3;
-	}
 	kol-alert {
 		color: var(--color-red);
 		font-size: 0.875em;
 		margin-left: calc(-1 * var(--spacing-2xs));
-		order: 1;
 	}
 	.hint {
 		font-size: 0.875rem;
-		order: 4;
 	}`,
   "KOL-INPUT-COLOR": `kol-input {
 		color: var(--color-grey);
@@ -23139,21 +22957,13 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 			"hint hint"
 			"error error";
 	}
-	kol-input > .input {
-		order: 2;
-	}
-	kol-input > label {
-		order: 3;
-	}
 	kol-alert {
 		color: var(--color-red);
 		font-size: 0.875em;
 		margin-left: calc(-1 * var(--spacing-2xs));
-		order: 1;
 	}
 	.hint {
 		font-size: 0.875rem;
-		order: 4;
 	}`,
   "KOL-INPUT-COLOR": `kol-input {
 		color: var(--color-grey);
@@ -23765,17 +23575,11 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 	button:hover {
 		color: var(--color-blue-130);
 	}`,
-  "KOL-SPIN": `.spin span:nth-child(1) {
-		background-color: var(--color-blue-80);
-	}
-	.spin span:nth-child(2) {
-		background-color: var(--color-blue);
-	}
-	.spin span:nth-child(3) {
-		background-color: var(--color-blue-130);
-	}
-	.spin span:nth-child(4) {
-		background-color: var(--color-grey-20);
+  "KOL-SPIN": `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: var(--color-blue-80);
+			}
 	}`,
   "KOL-INPUT-RADIO": `fieldset {
 		border: 0;
@@ -24764,68 +24568,11 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		font-weight: bold;
 		/* text-transform: uppercase; */
 	}`,
-  "KOL-SPIN": `.spin {
-		display: inline-block;
-		height: 1rem;
-		position: relative;
-		width: 3rem;
-	}
-	.spin span {
-		animation-timing-function: cubic-bezier(0, 1, 1, 0);
-		border: 0.1rem solid rgb(255, 255, 255);
-		border-radius: 50%;
-		height: 0.8rem;
-		width: 0.8rem;
-		top: 0.1rem;
-		position: absolute;
-	}
-	.spin span:nth-child(1) {
-		background-color: #fc0;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin1;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(2) {
-		background-color: #f00;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(3) {
-		background-color: #000;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 1.1rem;
-	}
-	.spin span:nth-child(4) {
-		background-color: #666;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin3;
-		left: 2.1rem;
-	}
-	@keyframes spin1 {
-		0% {
-			transform: scale(0);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-	@keyframes spin2 {
-		0% {
-			transform: translate(0px, 0px);
-		}
-		100% {
-			transform: translate(1rem, 0px);
-		}
-	}
-	@keyframes spin3 {
-		0% {
-			transform: scale(1);
-		}
-		100% {
-			transform: scale(0);
-		}
+  "KOL-SPIN": `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
+			}
 	}`,
   "KOL-PROGRESS": `:host progress,
 	:host span {
@@ -24885,6 +24632,8 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 	}
 	option {
 		height: 2em;
+	}
+	select:not([multiple]) option {
 		padding: 0.5em;
 	}
 	kol-alert {
@@ -25389,7 +25138,7 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		width: 100%;
 		line-height: 1.5em;
 	}
-	fieldset div {
+	.radio-input-wrapper, .input {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -25399,15 +25148,15 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		align-items: center;
 		position: relative;
 	}
-	fieldset div label {
+	.radio-label {
 		cursor: pointer;
 		display: flex;
 		width: 100%;
 	}
-	fieldset div label span {
+	.radio-label span {
 		margin-top: 0.125em;
 	}
-	fieldset div input[type="radio"] {
+	.radio-input-wrapper input[type="radio"] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -25415,11 +25164,11 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		min-width: calc(6 * 2 * var(--spacing));
 		width: calc(6 * 2 * var(--spacing));
 	}
-	fieldset div input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type="radio"]:checked:before {
 		box-shadow: 0 0 0.1rem black;
 		background-color: var(--color-petrol);
 	}
-	fieldset div input[type="radio"]:disabled {
+	.radio-input-wrapper input[type="radio"]:disabled {
 		background-color: var(--color-input-bg-default);
 		border-color: #999;
 		cursor: not-allowed;
@@ -26768,69 +26517,12 @@ const MFM = KoliBri.createTheme("mfm", {
 		details:not([open]) kol-icon::part(icon):before {
 			content: "\\f054";
 		}`,
-  "KOL-SPIN": `.spin {
-			display: inline-block;
-			height: 1rem;
-			position: relative;
-			width: 3rem;
-		}
-		.spin span {
-			animation-timing-function: cubic-bezier(0, 1, 1, 0);
-			border: 0.1rem solid rgb(255, 255, 255);
-			border-radius: 50%;
-			height: 0.8rem;
-			width: 0.8rem;
-			top: 0.1rem;
-			position: absolute;
-		}
-		.spin span:nth-child(1) {
-			background-color: #fc0;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin1;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(2) {
-			background-color: #f00;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(3) {
-			background-color: #000;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 1.1rem;
-		}
-		.spin span:nth-child(4) {
-			background-color: #666;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin3;
-			left: 2.1rem;
-		}
-		@keyframes spin1 {
-			0% {
-				transform: scale(0);
+  "KOL-SPIN": `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
 			}
-			100% {
-				transform: scale(1);
-			}
-		}
-		@keyframes spin2 {
-			0% {
-				transform: translate(0px, 0px);
-			}
-			100% {
-				transform: translate(1rem, 0px);
-			}
-		}
-		@keyframes spin3 {
-			0% {
-				transform: scale(1);
-			}
-			100% {
-				transform: scale(0);
-			}
-		}`,
+	}`,
   "KOL-PROGRESS": `:host progress,
 		:host span {
 			display: block;
@@ -26931,13 +26623,15 @@ const MFM = KoliBri.createTheme("mfm", {
 		}
 		select option {
 			margin: 1px 0;
-			padding: 0.5em;
 			border-radius: 0.25em;
 			cursor: pointer;
 		}
 		select option:disabled {
 			cursor: not-allowed;
 		}
+		select:not([multiple]) option {
+		padding: 0.5em;
+	}
 		option:active:not(:disabled),
 		option:checked:not(:disabled),
 		option:focus:not(:disabled),
@@ -27520,7 +27214,7 @@ const MFM = KoliBri.createTheme("mfm", {
 			display: grid;
 			gap: 0.25em;
 		}
-		fieldset div {
+		.radio-input-wrapper {
 			cursor: pointer;
 			display: flex;
 			flex-direction: row;
@@ -27529,16 +27223,16 @@ const MFM = KoliBri.createTheme("mfm", {
 			min-height: 44px;
 			margin: 0;
 		}
-		fieldset div label {
+		.radio-input-wrapper label {
 			cursor: pointer;
 			display: flex;
 			padding-left: 0.25em;
 			width: 100%;
 		}
-		fieldset div label span {
+		.radio-input-wrapper label span {
 			margin-top: 0.125em;
 		}
-		fieldset div input[type="radio"] {
+		.radio-input-wrapper input[type="radio"] {
 			appearance: none;
 			transition: 0.5s;
 			border-radius: 100%;
@@ -27546,16 +27240,16 @@ const MFM = KoliBri.createTheme("mfm", {
 			min-width: calc(6 * var(--spacing));
 			width: calc(6 * var(--spacing));
 		}
-		fieldset div input[type="radio"]:before {
+		.radio-input-wrapper input[type="radio"]:before {
 			content: "";
 			cursor: pointer;
 			border-radius: 100%;
 			display: block;
 		}
-		fieldset div input[type="radio"]:checked:before {
+		.radio-input-wrapper input[type="radio"]:checked:before {
 			background-color: var(--color-midnight);
 		}
-		fieldset div input[type="radio"]:disabled {
+		.radio-input-wrapper input[type="radio"]:disabled {
 			cursor: not-allowed;
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
@@ -27603,7 +27297,7 @@ const MFM = KoliBri.createTheme("mfm", {
 		fieldset .input-slot {
 			gap: 0.5rem;
 		}
-		fieldset div label {
+		.radio-input-wrapper label {
 			padding-left: 0;
 		}`,
   "KOL-TOAST": `:host > div {
@@ -36227,7 +35921,7 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		display: grid;
 		gap: 0.25em;
 	}
-	fieldset div {
+	.radio-input-wrapper, .input {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -36236,16 +35930,16 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		align-items: center;
 		position: relative;
 	}
-	fieldset div label {
+	.radio-label {
 		cursor: pointer;
 		display: flex;
 		padding-left: 0.25em;
 		width: 100%;
 	}
-	fieldset div label span {
+	.radio-label span {
 		margin-top: 0.125em;
 	}
-	fieldset div input[type="radio"] {
+	.radio-input-wrapper input[type="radio"] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -36253,7 +35947,7 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
 	} /* fieldset div input[type="radio"]:before {content: "";cursor: pointer;left: calc(1.5 * var(--spacing) - 2px);top: calc(1.5 * var(--spacing) - 2px);position: relative;border-radius: 100%;display: block;height: calc(3 * var(--spacing));width: calc(3 * var(--spacing));}*/
-	fieldset div input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type="radio"]:checked:before {
 		box-shadow: 0 0 0.1rem black;
 		background-color: var(--kolibri-color-primary);
 	}
@@ -36342,68 +36036,11 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		left: unset;
 		position: unset;
 	}`,
-  "KOL-SPIN": `.spin {
-		display: inline-block;
-		height: 1rem;
-		position: relative;
-		width: 3rem;
-	}
-	.spin span {
-		animation-timing-function: cubic-bezier(0, 1, 1, 0);
-		border: 0.1rem solid rgb(255, 255, 255);
-		border-radius: 50%;
-		height: 0.8rem;
-		width: 0.8rem;
-		top: 0.1rem;
-		position: absolute;
-	}
-	.spin span:nth-child(1) {
-		background-color: #fc0;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin1;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(2) {
-		background-color: #f00;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(3) {
-		background-color: #000;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 1.1rem;
-	}
-	.spin span:nth-child(4) {
-		background-color: #666;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin3;
-		left: 2.1rem;
-	}
-	@keyframes spin1 {
-		0% {
-			transform: scale(0);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-	@keyframes spin2 {
-		0% {
-			transform: translate(0px, 0px);
-		}
-		100% {
-			transform: translate(1rem, 0px);
-		}
-	}
-	@keyframes spin3 {
-		0% {
-			transform: scale(1);
-		}
-		100% {
-			transform: scale(0);
-		}
+  "KOL-SPIN": `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
+			}
 	}`,
   "KOL-PROGRESS": `:host progress,
 	:host span {
@@ -36490,12 +36127,14 @@ const MAPZ = KoliBri.createTheme("mapz", {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	option:active:not(:disabled),
 	option:checked:not(:disabled),
@@ -53036,67 +52675,10 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		}
 	`,
   "KOL-SPIN": css$1`
-		.spin {
-			display: inline-block;
-			height: 1rem;
-			position: relative;
-			width: 3rem;
-		}
-		.spin span {
-			animation-timing-function: cubic-bezier(0, 1, 1, 0);
-			border: 0.1rem solid rgb(255, 255, 255);
-			border-radius: 50%;
-			height: 0.8rem;
-			width: 0.8rem;
-			top: 0.1rem;
-			position: absolute;
-		}
-		.spin span:nth-child(1) {
-			background-color: #fc0;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin1;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(2) {
-			background-color: #f00;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(3) {
-			background-color: #000;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 1.1rem;
-		}
-		.spin span:nth-child(4) {
-			background-color: #666;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin3;
-			left: 2.1rem;
-		}
-		@keyframes spin1 {
-			0% {
-				transform: scale(0);
-			}
-			100% {
-				transform: scale(1);
-			}
-		}
-		@keyframes spin2 {
-			0% {
-				transform: translate(0px, 0px);
-			}
-			100% {
-				transform: translate(1rem, 0px);
-			}
-		}
-		@keyframes spin3 {
-			0% {
-				transform: scale(1);
-			}
-			100% {
-				transform: scale(0);
+		.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
 			}
 		}
 	`,
@@ -62316,67 +61898,10 @@ const ZOLLv3 = KoliBri.createTheme("zoll-v3", {
 		}
 	`,
   "KOL-SPIN": css`
-		.spin {
-			display: inline-block;
-			height: 1rem;
-			position: relative;
-			width: 3rem;
-		}
-		.spin span {
-			animation-timing-function: cubic-bezier(0, 1, 1, 0);
-			border: 0.1rem solid rgb(255, 255, 255);
-			border-radius: 50%;
-			height: 0.8rem;
-			width: 0.8rem;
-			top: 0.1rem;
-			position: absolute;
-		}
-		.spin span:nth-child(1) {
-			background-color: #fc0;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin1;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(2) {
-			background-color: #f00;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(3) {
-			background-color: #000;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 1.1rem;
-		}
-		.spin span:nth-child(4) {
-			background-color: #666;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin3;
-			left: 2.1rem;
-		}
-		@keyframes spin1 {
-			0% {
-				transform: scale(0);
-			}
-			100% {
-				transform: scale(1);
-			}
-		}
-		@keyframes spin2 {
-			0% {
-				transform: translate(0px, 0px);
-			}
-			100% {
-				transform: translate(1rem, 0px);
-			}
-		}
-		@keyframes spin3 {
-			0% {
-				transform: scale(1);
-			}
-			100% {
-				transform: scale(0);
+		.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
 			}
 		}
 	`,
