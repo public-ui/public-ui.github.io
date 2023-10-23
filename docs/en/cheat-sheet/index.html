@@ -346,7 +346,7 @@ Aktive Menüpunkte werden mit einer farbigen Markierung dargestellt.
 
 Über eine optionale Schaltfläche unterhalb der Navigation kann die Breite der **Nav**-Komponente verändert werden. In der kleinsten Breite werden die Menütitel ausgeblendet und nur
 noch die Icons ausgegeben.`,
-	props: `_aria-current-value, _collapsible, _hide-label, _label, _links, _orientation`
+	props: `_aria-current-value, _collapsible, _has-compact-button, _hide-label, _label, _links, _orientation`
 },{
 	name: `pagination`,
 	desc: `Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte Inhalte, wie zum Beispiel Suchergebnisse, der Reihe nach durchlaufen.`,
@@ -854,10 +854,10 @@ interactive element is focused or the mouse is over it.`,
 	types: `boolean`,
 	comps: `input-checkbox`
 },{
-	name: `_color`,
-	desc: `Defines the backgroundColor and foregroundColor.`,
-	types: `string | { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }`,
-	comps: `badge`
+	name: `_has-compact-button`,
+	desc: `Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.`,
+	types: `boolean`,
+	comps: `nav`
 },{
 	name: `_collapsible`,
 	desc: `Defines if navigation nodes can be collapsed or not. Enabled by default.`,
@@ -868,6 +868,11 @@ interactive element is focused or the mouse is over it.`,
 	desc: `Defines the value of aria-current to be used with the current context within the navigation.`,
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `nav`
+},{
+	name: `_color`,
+	desc: `Defines the backgroundColor and foregroundColor.`,
+	types: `string | { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }`,
+	comps: `badge`
 },{
 	name: `_accept`,
 	desc: `Defines which file formats are accepted.`,
