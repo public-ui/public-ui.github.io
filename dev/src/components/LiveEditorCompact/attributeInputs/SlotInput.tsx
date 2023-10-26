@@ -17,7 +17,7 @@ export function SlotInput(props: Props) {
 			<Editor
 				defaultLanguage="html"
 				height="5em"
-				onChange={(v) => update(`slot-${name}`, v || '')}
+				onChange={(value) => update(`slot-${name}`, value || '')}
 				options={{
 					automaticLayout: true,
 					fontSize: 16,

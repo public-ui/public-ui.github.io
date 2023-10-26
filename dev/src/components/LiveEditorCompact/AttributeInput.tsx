@@ -41,7 +41,7 @@ export function AttributeInput(props: Props) {
 							<KolInputText
 								className="my-2"
 								_label=""
-								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as string) }}
+								_on={{ onChange: (_event, value) => update(attribute.name, value as string) }}
 								_value={(value as string) || ''}
 							>
 								{label}
@@ -52,7 +52,7 @@ export function AttributeInput(props: Props) {
 							<KolInputNumber
 								className="my-2"
 								_label=""
-								_on={{ onChange: (e: Event, v: unknown) => update(attribute.name, v as number) }}
+								_on={{ onChange: (_event, value) => update(attribute.name, value as number) }}
 								_value={value as number}
 							>
 								{label}

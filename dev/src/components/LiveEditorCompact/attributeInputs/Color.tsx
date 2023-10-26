@@ -15,7 +15,11 @@ export function Color(props: Props) {
 	}, []);
 
 	return (
-		<KolInputColor _on={{ onChange: (e: Event, v: unknown) => update(name, v as string) }} _value={value as string}>
+		<KolInputColor
+			_label=""
+			_on={{ onChange: (_event, value) => update(name, value as string) }}
+			_value={value as string}
+		>
 			{label}
 		</KolInputColor>
 	);

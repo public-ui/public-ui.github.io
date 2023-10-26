@@ -25,8 +25,9 @@ export function UnionSelect(props: Props) {
 	return (
 		<KolSelect
 			className="my-2"
+			_label=""
 			_options={JSON.stringify(list)}
-			_on={{ onChange: (e: Event, v: unknown) => update(name, (v as string[])[0]) }}
+			_on={{ onChange: (_event: Event, value: unknown) => update(name, (value as string[])[0]) }}
 			_value={value ? [value] : undefined}
 		>
 			{label}
