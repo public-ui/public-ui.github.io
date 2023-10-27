@@ -34,7 +34,7 @@ dependencies:
     version: 1.3.48
   '@leanup/kolibri-components':
     specifier: 1.0.5
-    version: 1.0.5(@leanup/form@1.3.48)(@public-ui/components@2.0.0-rc.4)
+    version: 1.0.5(@leanup/form@1.3.48)(@public-ui/components@2.0.0-rc.5)
   '@leanup/kolibri-react':
     specifier: 1.0.5
     version: 1.0.5(@leanup/kolibri-components@1.0.5)(react-dom@18.2.0)(react@18.2.0)
@@ -46,16 +46,16 @@ dependencies:
     version: 4.6.0(monaco-editor@0.44.0)(react-dom@18.2.0)(react@18.2.0)
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@2.0.0-rc.4)
+    version: 0.0.3(@public-ui/components@2.0.0-rc.5)
   '@public-ui/components':
-    specifier: 2.0.0-rc.4
-    version: 2.0.0-rc.4
+    specifier: 2.0.0-rc.5
+    version: 2.0.0-rc.5
   '@public-ui/react':
-    specifier: 2.0.0-rc.4
-    version: 2.0.0-rc.4(@public-ui/components@2.0.0-rc.4)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 2.0.0-rc.5
+    version: 2.0.0-rc.5(@public-ui/components@2.0.0-rc.5)(react-dom@18.2.0)(react@18.2.0)
   '@public-ui/themes':
-    specifier: 2.0.0-rc.4
-    version: 2.0.0-rc.4(@public-ui/components@2.0.0-rc.4)
+    specifier: 2.0.0-rc.5
+    version: 2.0.0-rc.5(@public-ui/components@2.0.0-rc.5)
   classnames:
     specifier: 2.3.2
     version: 2.3.2
@@ -2804,14 +2804,14 @@ packages:
       '@leanup/lib': 1.3.48
     dev: false
 
-  /@leanup/kolibri-components@1.0.5(@leanup/form@1.3.48)(@public-ui/components@2.0.0-rc.4):
+  /@leanup/kolibri-components@1.0.5(@leanup/form@1.3.48)(@public-ui/components@2.0.0-rc.5):
     resolution: {integrity: sha512-o+C0aC4JYJUoGDVa5Zy3bd8nLtjYyjXBMgDVaVO5sZCSvImsPVVzXm3AJMfrHEtvtxTkusQXGlflVKXAvL3fEw==}
     peerDependencies:
       '@leanup/form': '>=1.2 <2'
       '@public-ui/components': '>=1 <2'
     dependencies:
       '@leanup/form': 1.3.48
-      '@public-ui/components': 2.0.0-rc.4
+      '@public-ui/components': 2.0.0-rc.5
     dev: false
 
   /@leanup/kolibri-react@1.0.5(@leanup/kolibri-components@1.0.5)(react-dom@18.2.0)(react@18.2.0):
@@ -2821,7 +2821,7 @@ packages:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@leanup/kolibri-components': 1.0.5(@leanup/form@1.3.48)(@public-ui/components@2.0.0-rc.4)
+      '@leanup/kolibri-components': 1.0.5(@leanup/form@1.3.48)(@public-ui/components@2.0.0-rc.5)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -3053,17 +3053,17 @@ packages:
   /@polka/url@1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@2.0.0-rc.4):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@2.0.0-rc.5):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 2.0.0-rc.4
+      '@public-ui/components': 2.0.0-rc.5
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@2.0.0-rc.4:
-    resolution: {integrity: sha512-7Fav2wh/KhuLUrwq+EzMOdntY4yN+UBht/7H4A/uC9DuStAHbMC3IMqZAn6Usonj4oYWLzycEDCb9i4y+dw+/g==}
+  /@public-ui/components@2.0.0-rc.5:
+    resolution: {integrity: sha512-arV9oruzjwweadR8OE6pbB+wUMluCEN7huQ+8blL9TI9uwDm+Y/XsGn5dxZBCuqLYX8OtESyOMe5IrQphYheiA==}
     dev: false
 
   /@public-ui/core@1.1.15:
@@ -3073,14 +3073,14 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/react@2.0.0-rc.4(@public-ui/components@2.0.0-rc.4)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-kfn2J5vge2gSli+1ulyINfjhNWbnO+XzfdVBP5DnAHX05FyL/XEMAXSubRaeNPFutk2l+6VsqUl9g2FIpAClSw==}
+  /@public-ui/react@2.0.0-rc.5(@public-ui/components@2.0.0-rc.5)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-BMyANCXzaYxNCm6Zmu2BnfIXLnin45oXHL7ClPJWE7RHxzURtJMN38SyEBzs2qZ19+Qgs8mpTuXVIzGPRiVeeA==}
     peerDependencies:
-      '@public-ui/components': 2.0.0-rc.4
+      '@public-ui/components': 2.0.0-rc.5
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 2.0.0-rc.4
+      '@public-ui/components': 2.0.0-rc.5
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -3091,12 +3091,12 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/themes@2.0.0-rc.4(@public-ui/components@2.0.0-rc.4):
-    resolution: {integrity: sha512-qCFFgZGqQzrWdpN1rXcD7u2VR5zkRtvmj+wc3bpyys8zdm+Vw0qwwhF8ei/wFx3LDtgKzW7UAIBSeNcRZBGS2w==}
+  /@public-ui/themes@2.0.0-rc.5(@public-ui/components@2.0.0-rc.5):
+    resolution: {integrity: sha512-KlZJ4vHxi19aTt4RLvnY2vf5bbfB3I83iyjY7XTUttZvMyC8PEv7WxXDtEODDkgpeCsizErbPgdFQL9ng35koQ==}
     peerDependencies:
-      '@public-ui/components': 2.0.0-rc.4
+      '@public-ui/components': 2.0.0-rc.5
     dependencies:
-      '@public-ui/components': 2.0.0-rc.4
+      '@public-ui/components': 2.0.0-rc.5
     dev: false
 
   /@rollup/plugin-babel@5.3.1(@babel/core@7.20.12)(rollup@2.79.1):

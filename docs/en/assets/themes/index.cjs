@@ -18606,6 +18606,12 @@ const DEFAULT = KoliBri.createTheme("default", {
 			background-color: transparent;
 			border-color: transparent;
 		}
+		.access-key-hint {
+			background: var(--color-mute-variant);
+			border-radius: 3px;
+			color: var(--color-text);
+			padding: 0 0.3em;
+		}
 	`,
   "KOL-INPUT-TEXT": css$3`
 		kol-input {
@@ -20701,6 +20707,12 @@ const DEFAULT = KoliBri.createTheme("default", {
 			background: white;
 			left: unset;
 			position: unset;
+		}
+		.access-key-hint {
+			background: var(--color-mute-variant);
+			border-radius: 3px;
+			color: var(--color-text);
+			padding: 0 0.3em;
 		}
 	`,
   "KOL-ABBR": css$3`
