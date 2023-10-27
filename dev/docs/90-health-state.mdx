@@ -32,8 +32,8 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					render: (el, cell, tupel) => `<kol-link _href="https://www.npmjs.com/package/${getPackageName(
 						tupel.scope,
 						tupel.name
-					)}" _target="npmjs">
-	<img alt="" src="https://img.shields.io/npm/v/${getPackageName(tupel.scope, tupel.name)}" />
+					)}" _label="" _target="npmjs">
+	<img alt="" slot="expert" src="https://img.shields.io/npm/v/${getPackageName(tupel.scope, tupel.name)}" />
 </kol-link>`,
 				},
 				{
@@ -43,15 +43,15 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					render: (el, cell, tupel) => `<kol-link _href="https://npmcharts.com/compare/${getPackageName(
 						tupel.scope,
 						tupel.name
-					)}" _target="npmcharts">
-	<img alt="" src="https://img.shields.io/npm/dt/${getPackageName(tupel.scope, tupel.name)}.svg" />
+					)}" _label="" _target="npmcharts">
+	<img alt="" slot="expert" src="https://img.shields.io/npm/dt/${getPackageName(tupel.scope, tupel.name)}.svg" />
 </kol-link>`,
 				},
 				{
 					label: 'Quality',
 					key: 'name',
 					textAlign: 'center',
-					render: () => `<img alt="" src="https://packagequality.com/shield/create-kolibri.svg" />`,
+					render: () => `<img alt="" slot="expert" src="https://packagequality.com/shield/create-kolibri.svg" />`,
 				},
 				{
 					label: 'Install size',
@@ -60,8 +60,8 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					render: (el, cell, tupel) => `<kol-link _href="https://packagephobia.com/result?p=${getPackageName(
 						tupel.scope,
 						tupel.name
-					)}" _target="packagephobia">
-	<img alt="" src="https://packagephobia.now.sh/badge?p=${getPackageName(tupel.scope, tupel.name)}" />
+					)}" _label="" _target="packagephobia">
+	<img alt="" slot="expert" src="https://packagephobia.now.sh/badge?p=${getPackageName(tupel.scope, tupel.name)}" />
 </kol-link>`,
 				},
 				{
@@ -72,8 +72,11 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 						tupel.scope,
 						tupel.name,
 						'%2F'
-					)}" _target="libraries">
-	<img alt="" src="https://img.shields.io/librariesio/release/npm/${getPackageName(tupel.scope, tupel.name)}" />
+					)}" _label="" _target="libraries">
+	<img alt="" slot="expert" src="https://img.shields.io/librariesio/release/npm/${getPackageName(
+		tupel.scope,
+		tupel.name
+	)}" />
 </kol-link>`,
 				},
 				{
@@ -82,8 +85,11 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					render: (el, cell, tupel) => `<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(
 						tupel.scope,
 						tupel.name
-					)}" _target="snyk">
-	<img alt="" src="https://snyk.io/advisor/npm-package/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
+					)}" _label="" _target="snyk">
+	<img alt="" slot="expert" src="https://snyk.io/advisor/npm-package/${getPackageName(
+		tupel.scope,
+		tupel.name
+	)}/badge.svg" />
 </kol-link>`,
 				},
 				{
@@ -94,8 +100,8 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 						tupel.scope,
 						tupel.name,
 						'%2F'
-					)}" _target="snyk">
-	<img alt="" src="https://snyk.io/test/npm/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
+					)}" _label="" _target="snyk">
+	<img alt="" slot="expert" src="https://snyk.io/test/npm/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
 </kol-link>`,
 				},
 			],
@@ -117,6 +123,18 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 		{
 			scope: '@public-ui',
 			name: 'themes',
+		},
+		{
+			scope: '@public-ui',
+			name: 'theme-default',
+		},
+		{
+			scope: '@public-ui',
+			name: 'kolibri-cli',
+		},
+		{
+			scope: '@public-ui',
+			name: 'visual-tests',
 		},
 		{
 			scope: '@public-ui',

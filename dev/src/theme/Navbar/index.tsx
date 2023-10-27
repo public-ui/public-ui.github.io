@@ -29,7 +29,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 			<div className="kolibri-navbar max-w-screen-md lg:max-w-4xl 2xl:max-w-[95rem] mx-auto grid grid-cols-[1fr,auto] gap-y-2 items-center 2xl:grid-cols-[1fr,auto,auto,auto] p-4 lg:px-8">
 				<Navbar {...props} />
 				<section aria-label="Toolbar" className="flex flex-wrap gap-2 col-span-2">
-					<div className="flex-grow grid gap-2 grid-cols-6 items-center justify-items-center">
+					<div className="flex-grow grid gap-2 grid-cols-5 items-center justify-items-center">
 						<LanguageSwitch />
 						{/* <div>
 						{dark ? (
@@ -80,7 +80,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								_variant="ghost"
 							/>
 						</div>
-						<div>
+						{/* <div>
 							<KolLinkButton
 								_href="/presentation/presentation.pdf"
 								_icons={'codicon codicon-preview'}
@@ -90,7 +90,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								// _target="presentation"
 								_variant="ghost"
 							/>
-						</div>
+						</div> */}
 						{/* <div>
 						<KolLinkButton
 							_href="https://discord.com/invite/7ntYFPns6b"
