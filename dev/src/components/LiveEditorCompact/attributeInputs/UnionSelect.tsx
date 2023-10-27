@@ -30,7 +30,7 @@ export function UnionSelect(props: Props) {
 			_on={{ onChange: (_event: Event, value: unknown) => update(name, (value as string[])[0]) }}
 			_value={value ? [value] : undefined}
 		>
-			{label}
+			<span slot="expert">{label}</span>
 		</KolSelect>
 	);
 }
