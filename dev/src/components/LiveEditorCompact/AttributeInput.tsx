@@ -44,7 +44,7 @@ export function AttributeInput(props: Props) {
 								_on={{ onChange: (_event, value) => update(attribute.name, value as string) }}
 								_value={(value as string) || ''}
 							>
-								{label}
+								<span slot="expert">{label}</span>
 							</KolInputText>
 						);
 					case 'number':
@@ -55,7 +55,7 @@ export function AttributeInput(props: Props) {
 								_on={{ onChange: (_event, value) => update(attribute.name, value as number) }}
 								_value={value as number}
 							>
-								{label}
+								<span slot="expert">{label}</span>
 							</KolInputNumber>
 						);
 					case 'boolean':
@@ -68,7 +68,7 @@ export function AttributeInput(props: Props) {
 								_variant="switch"
 								_value={true}
 							>
-								{label}
+								<span slot="expert">{label}</span>
 							</KolInputCheckbox>
 						);
 					default:
