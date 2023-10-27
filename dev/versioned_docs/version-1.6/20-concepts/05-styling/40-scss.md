@@ -11,7 +11,7 @@ Dieser Artikel beschreibt, wie Scss zur Erstellung von KoliBri-Themes genutzt we
   KoliBri bietet zum Erstellen von Themes auch einen <kol-link _href="/docs/concepts/styling/designer" _label="Designer" /> an. Je nach persönlichen Präferenzen kann Scss oder der Designer verwendet werden.
 </kol-alert><br/>
 
-Scss ist eine Erweiterung von CSS, die es ermöglicht, Variablen, Funktionen, Mixins und vieles mehr zu verwenden. Scss kann für die Erstellung von KoliBri-Themes genutzt. Hierfür hat das Entwicklungsteam vom Projekt <kol-link _href="https://gitlab.opencode.de/kern-designsystem/pattern-library" _label="KERN" _target="kern" /> ein Build-Script geschrieben, um aus Scss-Dateien die entsprechenden KoliBri-Themes zu generieren.
+Scss ist eine Erweiterung von CSS, die es ermöglicht, Variablen, Funktionen, Mixins und vieles mehr zu verwenden. Scss kann für die Erstellung von KoliBri-Themes genutzt. Hierfür hat das Entwicklungsteam vom Projekt <kol-link _href="https://gitlab.opencode.de/kern-designsystem/pattern-library" _label="KERN" _label="" _target="kern" /> ein Build-Script geschrieben, um aus Scss-Dateien die entsprechenden KoliBri-Themes zu generieren.
 
 ## Hintergrund
 
@@ -143,4 +143,4 @@ Identifizierte Änderungen können dann später wieder in den Scss-Dateien über
 
 ## Referenzprojekt
 
-Mehr zur Umsetzung des Scss-Ansatzen findet sich im <kol-link _href="https://gitlab.opencode.de/kern-designsystem/pattern-library/-/tree/main/packages/themes" _label="Git-Repository von KERN" _target="kern" />.
+Mehr zur Umsetzung des Scss-Ansatzen findet sich im <kol-link _href="https://gitlab.opencode.de/kern-designsystem/pattern-library/-/tree/main/packages/themes" _label="Git-Repository von KERN" _label="" _target="kern" />.

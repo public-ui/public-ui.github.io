@@ -35,7 +35,11 @@ import { Mermaid } from '@site/src/components/Mermaid';
 	Das Einzigartige an <KoliBri /> ist die <strong>Referenzimplementierung</strong> von Komponenten, die von Grund auf{' '}
 	<strong>semantisch W3C- und WCAG-konform</strong> und damit <strong>vollständig barrierefrei</strong> bezüglich der
 	assistiven Unterstützung sind. Alle Komponenten werden dabei als{' '}
-	<KolLink _href="https://developer.mozilla.org/en-US/docs/Web/Web_Components?retiredLocale=de" _target="mozilla">
+	<KolLink
+		_href="https://developer.mozilla.org/en-US/docs/Web/Web_Components?retiredLocale=de"
+		_label=""
+		_target="mozilla"
+	>
 		Web Components
 	</KolLink>{' '}
 	umgesetzt und sind somit in allen webbasierten Projekten wiederverwendbar. In der folgenden Abbildung werden diese
@@ -58,15 +62,19 @@ import { Mermaid } from '@site/src/components/Mermaid';
 <p>
 	Im ersten Release (v1.0) hatte <KoliBri /> noch direkt das Individualisieren des Standard-Designs mittels sogenannter{' '}
 	<strong>
-		<KolLink _href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" _target="mozilla">
+		<KolLink
+			_href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties"
+			_label=""
+			_target="mozilla"
+		>
 			CSS-Properties
 		</KolLink>
 	</strong>{' '}
 	(
-	<KolLink _href="https://uxdesign.cc/design-tokens-for-dummies-8acebf010d71" _target="uxdesign">
+	<KolLink _href="https://uxdesign.cc/design-tokens-for-dummies-8acebf010d71" _label="" _target="uxdesign">
 		Design-Tokens
 	</KolLink>
-	, <KolLink _href="https://tailwindcss.com" _target="tailwindcss">
+	, <KolLink _href="https://tailwindcss.com" _label="" _target="tailwindcss">
 		Tailwind CSS
 	</KolLink>) umgesetzt. Mit der Umsetzung weiterer Themes haben wir jedoch festgestellt, dass wir immer mehr CSS-Properties
 	einführen müssten, um die Flexiblität für das gewünschte Design/UX (Corporate Design/Styleguide) umsetzen zu können. Im
@@ -81,7 +89,7 @@ import { Mermaid } from '@site/src/components/Mermaid';
 	<KolIndentedText>
 		<strong>
 			2. Wir haben das ganze CSS vollständig von den Components entkoppelt (like{' '}
-			<KolLink _href="https://styled-components.com" _target="styled-components">
+			<KolLink _href="https://styled-components.com" _label="" _target="styled-components">
 				Styled-Components
 			</KolLink>
 			).
@@ -174,7 +182,11 @@ stateDiagram-v2
 		Eigene spezifische Komponenten, die nicht von KoliBri bereitgestellt werden und leider nicht zu den
 		KoliBri-Komponenten passen, können in eigenen Komponenten-Bibliotheken aufgebaut und unabhängig gepflegt werden.
 		Hierfür bieten wir die sogenannte <strong>KoliBri-Factory</strong> (Stack) an (siehe{' '}
-		<KolLink _href="https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md#erweitert" _target="github">
+		<KolLink
+			_href="https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md#erweitert"
+			_label=""
+			_target="github"
+		>
 			Modularisierung
 		</KolLink>
 		).
