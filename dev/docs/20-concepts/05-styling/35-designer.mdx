@@ -16,9 +16,9 @@ import {
 # Designer
 
 <div className="grid grid-cols-2">
-	<KolCard _headline="Eigenes Theme erstellen" _level={2}>
-		<KolLink slot="content" _useCase="nav" _href="/designer" _target="designer">
-			<div className="flex gap-4 py-2">
+	<KolCard _label="Eigenes Theme erstellen" _level={2}>
+		<KolLink slot="" data-removed-_useCase="nav" _href="/designer" _target="designer" _label="">
+			<div slot="expert" className="flex gap-4 py-2">
 				<KolIcon className="homepage" _icons="codicon codicon-paintcan" />
 				<span>Klicken Sie hier, um den Designer in einem neuen Browser-Fenster zu öffnen.</span>
 			</div>
@@ -31,7 +31,7 @@ import {
 Mithilfe des KoliBri-Designers können Benutzer für die KoliBri-Bibliothek schnell einen eigenen Style entwickeln. Die Wirkungen der eigenen CSS-Anweisungen werden direkt an der Komponente sichtbar.<br/>
 Die fertigen Styles können anschließend als Theme heruntergeladen und im eigenen Projekt eingefügt werden.
 
-<kol-alert _heading="Designer oder Scss" _type="info" _variant="card">
+<kol-alert _label="Designer oder Scss" _type="info" _variant="card">
 	KoliBri bietet zum Erstellen von Themes auch einen <kol-link _href="/docs/concepts/styling/scss" _label="Scss" />
 	-Ansatz an. Je nach persönlichen Präferenzen kann der Designer oder Scss verwendet werden.
 </kol-alert>
@@ -106,7 +106,7 @@ der jeweiligen Komponente, im Detail anhand eines Diagramms beschrieben.</kol-in
 	<b>Beispiel:</b>
 </p>
 
-<kol-link-group _heading="Überschrift" _links="[{'_label':'Link 1', '_icon':'icofont-home','_href':'test'},{'_label':'Link 2', '_icon':'icofont-phone','_href':'test'}]" _list-style-type="none"></kol-link-group>
+<kol-link-group _label="Überschrift" _links="[{'_label':'Link 1', '_icon':'icofont-home','_href':'test'},{'_label':'Link 2', '_icon':'icofont-phone','_href':'test'}]" _list-style-type="none"></kol-link-group>
 
 Die in diesem Beispiel verwendete LinkGroup besteht aus den weiteren KoliBri-Komponenten:
 
