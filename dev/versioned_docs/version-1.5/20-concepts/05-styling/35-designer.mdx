@@ -16,8 +16,8 @@ import {
 # Designer
 
 <div className="grid grid-cols-2">
-	<KolCard _headline="Eigenes Theme erstellen" _level={2}>
-		<KolLink slot="content" _useCase="nav" _href="/designer" _target="designer">
+	<KolCard _label="Eigenes Theme erstellen" _level={2}>
+		<KolLink slot="" data-removed-_useCase="nav" _href="/designer" _target="designer" _label="">
 			<div className="flex gap-4 py-2">
 				<KolIcon className="homepage" _icons="codicon codicon-paintcan" />
 				<span>Klicken Sie hier, um den Designer in einem neuen Browser-Fenster zu öffnen.</span>
@@ -31,7 +31,7 @@ import {
 Mithilfe des KoliBri-Designers können Benutzer für die KoliBri-Bibliothek schnell einen eigenen Style entwickeln. Die Wirkungen der eigenen CSS-Anweisungen werden direkt an der Komponente sichtbar.<br/>
 Die fertigen Styles können anschließend als Theme heruntergeladen und im eigenen Projekt eingefügt werden.
 
-<kol-alert _heading="Designer oder Scss" _type="info" _variant="card">
+<kol-alert _label="Designer oder Scss" _type="info" _variant="card">
 	KoliBri bietet zum Erstellen von Themes auch einen <kol-link _href="/docs/concepts/styling/scss" _label="Scss" />
 	-Ansatz an. Je nach persönlichen Präferenzen kann der Designer oder Scss verwendet werden.
 </kol-alert>
@@ -106,7 +106,7 @@ der jeweiligen Komponente, im Detail anhand eines Diagramms beschrieben.</kol-in
 	<b>Beispiel:</b>
 </p>
 
-<kol-link-group _heading="Überschrift" _links="[{'_label':'Link 1', '_icon':'icofont-home','_href':'test'},{'_label':'Link 2', '_icon':'icofont-phone','_href':'test'}]" _list-style-type="none"></kol-link-group>
+<kol-link-group _label="Überschrift" _links="[{'_label':'Link 1', '_icon':'icofont-home','_href':'test'},{'_label':'Link 2', '_icon':'icofont-phone','_href':'test'}]" _list-style-type="none"></kol-link-group>
 
 Die in diesem Beispiel verwendete LinkGroup besteht aus den weiteren KoliBri-Komponenten:
 
@@ -117,5 +117,5 @@ Die in diesem Beispiel verwendete LinkGroup besteht aus den weiteren KoliBri-Kom
 1. Legen Sie zunächst die CSS-Anweisungen für die Überschrift der LinkGroup fest. Die Überschrift besteht aus der KoliBri-Komponente <b>kol-heading</b>. Wechsel Sie daher im Auswahlfeld <b>Komponenten</b> zur Komponente <b>kol-heading</b>. Passen Sie hier im Editor z. B. für h1 die Schriftfarbe an. Diese Einstellung gilt nun für alle Komponenten, in denen die Komponente kol-heading genutzt wird. Die Schriftfarbe hat sich also nicht nur für die Komponente kol-heading selbst verändert, sondern synchron für alle Komponenten, die <b>kol-heading</b> außerdem nutzen. Unter anderem die im Beispiel genutzte <b>kol-link-group</b>.<br/>Wechseln Sie im Auswahlfeld <b>Komponenten</b> zurück zur Komponente <b>kol-link-group</b>. Auch hier hat sich die Schriftfarbe der Überschrift gemäß der CSS-Anweisung der Komponente <b>kol-eading</b> geändert.
 2. Ändern Sie jetzt die Schriftfarbe der Links. Wechseln Sie im Auswahlfeld <b>Komponenten</b> zu <b>kol-link</b>. Ändern Sie im Editor den Color-Wert für <b>a</b>. Wechseln Sie zurück zur Komponente <b>kol-link-group</b>. Die Schriftfarbe der einzelnen Links hat sich ebenfalls geändert.
 3. Wenn Sie versuchen, die zuvor genannten Einstellungen direkt in der Komponente <b>kol-link-group</b> zu ändern, werden Sie keine Veränderungen sehen. Es wäre hier aber z. B. möglich, die Hintergrundfarbe der ganzen Komponente <b>kol-link-group</b> zu ändern.
-4. Beachten Sie, dass Sie über den KoliBri-Designer nur Komponenten stylen können, die sich innerhalb eines Shadow-Doms befinden. Es wäre beim Beispiel <b>kol-link-group</b> nicht möglich, das Element <b><kol-link-group></kol-link-group></b> selbst zu stylen, da sich dieses nicht innerhalb eines Shadow-Doms befindet.
+4. Beachten Sie, dass Sie über den KoliBri-Designer nur Komponenten stylen können, die sich innerhalb eines Shadow-Doms befinden. Es wäre beim Beispiel <b>kol-link-group</b> nicht möglich, das Element <b><kol-link-group _label=""></kol-link-group></b> selbst zu stylen, da sich dieses nicht innerhalb eines Shadow-Doms befindet.
 5. Beachten Sie, dass Änderungen im KoliBri-Designer nur solche KoliBri-Komponenten möglich sind, die beim Rendern einen Shadow-Dom besitzen. Das ist z. B. bei der Komponente <b>kol-icon-icofont</b> oder <b>kol-icon-fontawesome</b> nicht der Fall.

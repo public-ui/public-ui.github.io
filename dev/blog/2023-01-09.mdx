@@ -44,10 +44,10 @@ Der React-Router bildet das Navigieren über Klicks ab. Bei der Verwendung mit d
 
 ```tsx
 <Link to="/">
-	<KolLink _href="">Home</KolLink>
+	<KolLink _href="" _label={`Home`}/>
 </Link>
 <Link to="/test">
-	<KolLink _href="">Test</KolLink>
+	<KolLink _href="" _label={`Test`}/>
 </Link>
 ```
 
@@ -93,7 +93,7 @@ Der React-Router bildet das Navigieren über Klicks ab. Bei der Verwendung mit d
 
 > **Hinweis:** `_href=""` ist eigentlich nicht erlaubt.
 
-Hier gibt es auch ein kleines Code-Beispiel zum <kol-link _href="https://codesandbox.io/s/kolibri-sample-react-link-sample-1jgz8v?file=/src/Navigation.tsx:0-112" _label="" _target="sandbox">Navigieren mit React-Router</kol-link>.
+Hier gibt es auch ein kleines Code-Beispiel zum <kol-link _href="https://codesandbox.io/s/kolibri-sample-react-link-sample-1jgz8v?file=/src/Navigation.tsx:0-112" _label="" _target="sandbox" _label="Navigieren mit React-Router"></kol-link>.
 
 Die angegebenen Beispiele zeigen, dass die Link- und ButtonLink-Komponente für die direkte Nutzung mit React-Router geeignet sind. Allerdings wird die Link-Komponente auch innerhalb anderer KoliBri-Komponenten verwendet. **Wo das so nicht funktionieren würde!**
 

@@ -14,7 +14,7 @@ Diese Logik sollte entkoppelt von der View implementiert werden und gehören zum
 
 ## Design-Ansätze
 
-In der <kol-abbr _title="Single-Page-Application">SPA</kol-abbr>-Entwicklung wird hier oft in den <i>Template-driven</i>- und
+In der <kol-abbr _label="Single-Page-Application">SPA</kol-abbr>-Entwicklung wird hier oft in den <i>Template-driven</i>- und
 
 <i>Model-driven</i>-Ansatz unterschieden.
 
@@ -33,7 +33,7 @@ können. Quasi wie das HTML selbst auch.
 
 ## Eingabe-Komponenten
 
-Die **Eingabe**-Komponenten sind die Komponenten mit den Formular-Eingaben gemacht werden können. Sprich in erster Linie <kol-link _href="/docs/konzepte/formular-input">Inputs, Select und Textarea</kol-link>.
+Die **Eingabe**-Komponenten sind die Komponenten mit den Formular-Eingaben gemacht werden können. Sprich in erster Linie <kol-link _href="/docs/konzepte/formular-input" _label="Inputs, Select und Textarea"></kol-link>.
 
 ## Handling-Adapter
 
@@ -113,11 +113,11 @@ Tags.
 
 ```html
 <lean-input-adapter>
-	<kol-input-text>Land</kol-input-text>
+	<kol-input-text _label="Land"></kol-input-text>
 </lean-input-adapter>
 
 <lean-input-adapter>
-	<kol-select _list="Deutschland, Österreich, Schweiz usw.">Land</kol-select>
+	<kol-select _options="Deutschland, Österreich, Schweiz usw." _label="Land"></kol-select>
 </lean-input-adapter>
 ```
 
@@ -127,11 +127,11 @@ Oder für React:
 
 ```tsx
 <LeanInputAdapter _control={landControl as InputControl}>
-	<KolInputText>Land</KolInputText>
+	<KolInputText _label={`Land`}/>
 </LeanInputAdapter>
 
 <LeanInputAdapter _control={landControl as InputControl}>
-	<KolSelect _list="Deutschland, Österreich, Schweiz usw.">Land</KolSelect>
+	<KolSelect _options="Deutschland, Österreich, Schweiz usw." _label={`Land`}/>
 </LeanInputAdapter>
 ```
 

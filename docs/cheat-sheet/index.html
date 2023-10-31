@@ -547,7 +547,7 @@ interactive element is focused or the mouse is over it.`,
 },{
 	name: `_smart-button`,
 	desc: `Allows to add a button with an arbitrary action within the element (_hide-label only).`,
-	types: `string | { _label: string; } & { _tabIndex?: number; _value?: Stringified<StencilUnknown>; _role?: AlternativeButtonLinkRolePropType; _ariaControls?: string; _ariaExpanded?: boolean; _ariaSelected?: boolean; _on?: ButtonCallbacksPropType<StencilUnknown>; _type?: ButtonTypePropType; _variant?: ButtonVariantPropType; _customClass?: string; _disabled?: boolean; _hideLabel?: boolean; _icons?: IconsPropType; _id?: string; _name?: string; _syncValueBySelector?: string; _tooltipAlign?: AlignPropType; _accessKey?: string; }`,
+	types: `string | { _label: string; } & { _tabIndex?: number; _value?: Stringified<StencilUnknown>; _role?: AlternativeButtonLinkRolePropType; _ariaControls?: string; _ariaExpanded?: boolean; _ariaSelected?: boolean; _on?: ButtonCallbacksPropType<StencilUnknown>; _type?: "button" | "reset" | "submit"; _variant?: "primary" | "secondary" | "normal" | "tertiary" | "danger" | "ghost" | "custom"; _customClass?: string; _disabled?: boolean; _hideLabel?: boolean; _icons?: IconsPropType; _id?: string; _name?: string; _syncValueBySelector?: string; _tooltipAlign?: AlignPropType; _accessKey?: string; }`,
 	comps: `badge, input-color, input-date, input-email, input-file, input-number, input-password, input-text`
 },{
 	name: `_type`,

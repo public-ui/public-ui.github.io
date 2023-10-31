@@ -14,7 +14,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 
 <KolTable
 	className="col-12"
-	_caption="Liste von Statuswerte zu den Paketen"
+	_label="Liste von Statuswerte zu den Paketen"
 	_minWidth="95em"
 	_headers={{
 		horizontal: [
@@ -32,7 +32,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					render: (el, cell, tupel) => `<kol-link _href="https://www.npmjs.com/package/${getPackageName(
 						tupel.scope,
 						tupel.name
-					)}" _target="npmjs">
+					)}" _target="npmjs" _label="">
 	<img alt="" src="https://img.shields.io/npm/v/${getPackageName(tupel.scope, tupel.name)}" />
 </kol-link>`,
 				},
@@ -43,7 +43,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					render: (el, cell, tupel) => `<kol-link _href="https://npmcharts.com/compare/${getPackageName(
 						tupel.scope,
 						tupel.name
-					)}" _target="npmcharts">
+					)}" _target="npmcharts" _label="">
 	<img alt="" src="https://img.shields.io/npm/dt/${getPackageName(tupel.scope, tupel.name)}.svg" />
 </kol-link>`,
 				},
@@ -60,7 +60,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					render: (el, cell, tupel) => `<kol-link _href="https://packagephobia.com/result?p=${getPackageName(
 						tupel.scope,
 						tupel.name
-					)}" _target="packagephobia">
+					)}" _target="packagephobia" _label="">
 	<img alt="" src="https://packagephobia.now.sh/badge?p=${getPackageName(tupel.scope, tupel.name)}" />
 </kol-link>`,
 				},
@@ -72,7 +72,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 						tupel.scope,
 						tupel.name,
 						'%2F'
-					)}" _target="libraries">
+					)}" _target="libraries" _label="">
 	<img alt="" src="https://img.shields.io/librariesio/release/npm/${getPackageName(tupel.scope, tupel.name)}" />
 </kol-link>`,
 				},
@@ -82,7 +82,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					render: (el, cell, tupel) => `<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(
 						tupel.scope,
 						tupel.name
-					)}" _target="snyk">
+					)}" _target="snyk" _label="">
 	<img alt="" src="https://snyk.io/advisor/npm-package/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
 </kol-link>`,
 				},
@@ -94,7 +94,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 						tupel.scope,
 						tupel.name,
 						'%2F'
-					)}" _target="snyk">
+					)}" _target="snyk" _label="">
 	<img alt="" src="https://snyk.io/test/npm/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
 </kol-link>`,
 				},

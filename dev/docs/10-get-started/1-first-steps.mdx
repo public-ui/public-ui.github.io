@@ -1,16 +1,15 @@
 # Erste Schritte
 
 <div class="grid md:grid-cols-2 mb-4">
-	<kol-card _headline="Cheat Sheet herunterladen" _level="2">
+	<kol-card _label="Cheat Sheet herunterladen" _level="2">
 		<kol-link
-			slot="content"
+			slot=""
 			_href="https://public-ui.github.io/cheat-sheet/"
 			_icons="codicon codicon-code"
 			_label="false"
 			_target="cheat-sheet"
-		>
-			Klicken Sie hier, um sich das Cheat-Sheet zum Entwickeln anzuschauen und herunterzuladen.
-		</kol-link>
+			_label="Klicken Sie hier, um sich das Cheat-Sheet zum Entwickeln anzuschauen und herunterzuladen."
+		></kol-link>
 	</kol-card>
 </div>
 
@@ -345,7 +344,7 @@ Um Codevervollständigung zu erhalten kann es notwendig sein `.vscode/settings.j
 }
 ```
 
-Hierbei ist die Web-Component Schreibweise (kebab-case) zu verwenden. (z.B.: `<kol-heading>`)
+Hierbei ist die Web-Component Schreibweise (kebab-case) zu verwenden. (z.B.: `<kol-heading _label="">`)
 
 ### V statische Webseite
 
@@ -361,7 +360,7 @@ Sofern Schriftarten und/oder Icons verwendet werden, müssen diese, wie oben bes
 </script>
 ```
 
-Hierbei ist die Web-Component Schreibweise (kebab-case) zu verwenden. (z.B.: `<kol-heading>`)
+Hierbei ist die Web-Component Schreibweise (kebab-case) zu verwenden. (z.B.: `<kol-heading _label="">`)
 
 ## Weitere Optionen
 

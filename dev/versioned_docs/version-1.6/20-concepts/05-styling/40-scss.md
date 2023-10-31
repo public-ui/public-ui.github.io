@@ -7,7 +7,7 @@ description: Auf dieser Seite wird beschrieben, wie Scss zur Erstellung von Koli
 
 Dieser Artikel beschreibt, wie Scss zur Erstellung von KoliBri-Themes genutzt werden kann.
 
-<kol-alert _heading="Designer oder Scss" _type="info" _variant="card">
+<kol-alert _label="Designer oder Scss" _type="info" _variant="card">
   KoliBri bietet zum Erstellen von Themes auch einen <kol-link _href="/docs/concepts/styling/designer" _label="Designer" /> an. Je nach persönlichen Präferenzen kann Scss oder der Designer verwendet werden.
 </kol-alert><br/>
 

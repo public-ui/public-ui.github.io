@@ -13,13 +13,13 @@ Auf dieser Seite finden Sie die geplanten und erfolgten Änderungen an KoliBri.
 ## Changelog
 
 <kol-table
-_caption="Legende"
+_label="Legende"
 _headers="{'horizontal':[[{'label':'Symbol','key':'symbol','textAlign':'center','width':'8em'},{'label':'Bedeutung','key':'desc'}]]}"
 _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrierefreiheit'},{'symbol':'👩‍🎨','desc':'Styleguide/Themes'},{'symbol':'🧬','desc':'Test'},{'symbol':'🔧','desc':'Verbesserung/Fehlerbehebung'},{'symbol':'📚','desc':'Dokumentation'},{'symbol':'🚀','desc':'Performance'},{'symbol':'❗','desc':'Refactoring'},{'symbol':'🔥','desc':'Breaking Change'},{'symbol':'🔝','desc':'Pflege des Technologie-Stacks'}]" ></kol-table>
 
 ### Preview
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul></ul>
 	<hr />
 	<ul>
@@ -70,14 +70,14 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 </kol-details>
 
 <br />
-<kol-alert _heading="Changelog" _type="info" _variant="card">
+<kol-alert _label="Changelog" _type="info" _variant="card">
 	Die Dokumentation des Changelogs erfolgt zukünftig auf
 	<kol-link _href="https://github.com/public-ui/kolibri/releases" _label="GitHub" _target="github"></kol-link>.
 </kol-alert>
 
 ### 1.4.2 - 03.03.2023
 
-<kol-details _summary="Änderungen" _open>
+<kol-details _label="Änderungen" _open>
 	<ul>
 		<li>🔧 Tooltip: Entfernt die Anzeigestörung beim Ausrichten</li>
 		<li>
@@ -95,7 +95,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.4.1 - 28.02.2023
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>
 			🔧 Theming: Basis-Styling an <code>:host</code> korrigiert
@@ -107,7 +107,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 <br />
 
-<kol-alert _variant="card" _level={4} _type="info" _heading="Auslagerung interner Themes">
+<kol-alert _variant="card" _level={4} _type="info" _label="Auslagerung interner Themes">
 	<p>
 		Mit der Version <strong>1.4.0</strong> werden die internen Themes ausgelagert und nur noch über interne NPM-Registries verfügbar sein. Des Weiteren haben
 		wir die Bundes-Schriftart und die BundesSerif erweitert und die BundesSans aktualisiert.
@@ -155,7 +155,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.4.0 - 27.02.2023
 
-<kol-details _summary="Änderungen" _open>
+<kol-details _label="Änderungen" _open>
 	<ul>
 		<li>
 			👩‍🎨 Theming: Basis-Styling an <code>:host</code> gebunden (ggf. Theme-Korrektur notwendig, z.B. Table)
@@ -199,7 +199,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.3.1 - 30.01.2023
 
-<kol-details _summary="Änderungen" _open>
+<kol-details _label="Änderungen" _open>
 	<ul>
 		<li>🌟 Adapter: Vaadin-Generator optimiert (Draft)</li>
 		<li>👩‍🎨 Theme: Zoll Design System v2 hinzugefügt (Draft)</li>
@@ -210,12 +210,12 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 <br />
 
-<kol-alert _variant="card" _level={4} _type="info" _heading="Datentypen in Eingabefeldern">
+<kol-alert _variant="card" _level={4} _type="info" _label="Datentypen in Eingabefeldern">
 	<p>
 		Mit der Version <strong>1.3.0</strong> wurde offenen Datentypen bei <code>Option</code> und{' '}
 		<code>SelectOption</code> auf den Type <code>string</code> begrenzt.
 	</p>
-	<kol-heading _level={5}>Erläuterung</kol-heading>
+	<kol-heading _level={5} _label="Erläuterung"></kol-heading>
 	<p>
 		Der W3C-Standard sieht standardmäßig nur Strings als Werte für Formulareingabefelder (<code>button</code>,{' '}
 		<code>input</code>, <code>select</code> und <code>textarea</code>) vor. Diese Einschränkung ist darin begründet,
@@ -223,7 +223,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		Strings als Werte erlaubt, ist es notwendig, dass auch die Formulareingabefelder nur Strings als Werte akzeptieren.
 	</p>
 	<br />
-	<kol-heading _level={5}>Framework & Developer Experience (DX)</kol-heading>
+	<kol-heading _level={5} _label="Framework & Developer Experience (DX)"></kol-heading>
 	<p>
 		Aus Sicht eines Developers ist es natürlich sehr unpraktisch, wenn man nur Strings als Werte für
 		Formulareingabefelder verwenden kann. Deshalb haben sich die Frameworks wie Angular, React und Vue.js dazu
@@ -240,7 +240,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.3.0 - 27.01.2023
 
-<kol-details _summary="Änderungen" _open>
+<kol-details _label="Änderungen" _open>
 	<ul>
 		<li>🔧 Part: @part und part= abbauen</li>
 		<li>🌟 Adapter: Vaadin-Generator hinzugefügt (Draft)</li>
@@ -264,7 +264,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.18 - 13.01.2023
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Nav: Behebt den Anzeigefehler in der Navigation, beim Ein- und Ausklappen</li>
 	</ul>
@@ -272,7 +272,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.16 - 09.01.2023
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>
 			🔧 Select: Das Property <code>_size</code> wird jetzt korrekt gesetzt.
@@ -319,7 +319,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.15 - 20.12.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Table: Wenn die Tabelle leer ist, dann wird die Pagination ausgeblendet.</li>
 		<li>🚹 Table: Verbesserung der Auszeichnung bei leeren Tabellen</li>
@@ -340,14 +340,15 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.14 - 06.12.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>
 			❗ Themes: Theme der Hansestadt Hamburg "umgezogen" (
-			<kol-link _href="https://www.npmjs.com/package/@public-oss/kolibri-themes" _target="public-oss">
-				@public-oss/kolibri-themes
-			</kol-link>
-			)
+			<kol-link
+				_href="https://www.npmjs.com/package/@public-oss/kolibri-themes"
+				_target="public-oss"
+				_label="@public-oss/kolibri-themes"
+			></kol-link>)
 		</li>
 		<li>🔧 Table: Fix Validierung von JSON</li>
 		<li>🚹 Cheat Sheet: Optimierung der Barrierefreiheit</li>
@@ -357,7 +358,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.13 - 05.12.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Form-Events: Event-Handling für Submit optimiert (target: HTMLFormElement)</li>
 		<li>🔧 Dev-Tools: Verbesserung der Consolen-Hinweise bei Validierungsfehlern</li>
@@ -386,7 +387,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.12 - 22.11.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Table & Pagination: Fix Property-Reflection für _pagination</li>
 		<li>🔧 Template: Fehler in Angular-Template behoben</li>
@@ -399,7 +400,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.11 - 21.11.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>👩‍🎨 Theming: Theme-Methode optimiert (Handling für "übergreifendes CSS")</li>
 		<li>🔧 Inputs, Select, Textarea: Alert der Fehlermeldungen standardmäßig aktiv</li>
@@ -416,16 +417,15 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		</li>
 		<li>
 			🌟 Select: Multi-Select erlaubt keine Auswahl (
-			<kol-link _href="https://html.spec.whatwg.org/#attr-select-multiple" _target="w3c">
-				https://html.spec.whatwg.org/#attr-select-multiple
-			</kol-link>
-			)
+			<kol-link
+				_href="https://html.spec.whatwg.org/#attr-select-multiple"
+				_target="w3c"
+				_label="https://html.spec.whatwg.org/#attr-select-multiple"
+			></kol-link>)
 		</li>
 		<li>
 			🌟 Angular-Adapter Upgrade (
-			<kol-link _href="https://github.com/angular/angular/releases/tag/15.0.0" _target="github">
-				v15
-			</kol-link>
+			<kol-link _href="https://github.com/angular/angular/releases/tag/15.0.0" _target="github" _label="v15"></kol-link>
 			)
 		</li>
 		<li>🔧 InputDate, InputNumber: Validierung und Mapping von _max, _min, und _value optimiert (ISO, Float-Values)</li>
@@ -437,12 +437,12 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 <br />
 
-<kol-alert _variant="card" _level={4} _type="info" _heading="Icon-Refactoring">
+<kol-alert _variant="card" _level={4} _type="info" _label="Icon-Refactoring">
 	<p>
 		Mit der Version <strong>1.1.10</strong> wurde die harte Kopplung an die Icofonts aufgelöst und vollständig auf das
 		flexible Icon-Font-Konzept umgestellt.
 	</p>
-	<kol-heading _level={5}>Änderungen</kol-heading>
+	<kol-heading _level={5} _label="Änderungen"></kol-heading>
 	<ul>
 		<li>Alle internen Icons wurden von Icofont auf Font-Awesome (free) umgestellt</li>
 		<li>
@@ -459,7 +459,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		</li>
 	</ul>
 	<br />
-	<kol-heading _level={5}>Komplexer Icon-Typ</kol-heading>
+	<kol-heading _level={5} _label="Komplexer Icon-Typ"></kol-heading>
 	<p>
 		Der neue Icon-Typ für alle Komponenten ermöglicht eine höhere Flexiblität. Es ist u.a. möglich gleichzeitig Icons in
 		allen Hauptrichtungen einzufügen und hierbei auch deren Styling zu beeinflussen. Mehr zur konkreten Typ-Definitionen
@@ -467,12 +467,10 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<kol-link
 			_href="https://github.com/public-ui/kolibri/blob/main/packages/library/src/types/icon.ts"
 			_target="github"
-		>
-			Quellcode
-		</kol-link>{' '}
-		zu finden.
+			_label="Quellcode"
+		></kol-link> zu finden.
 	</p>
-	<kol-heading _level={5}>Migrationsanleitung</kol-heading>
+	<kol-heading _level={5} _label="Migrationsanleitung"></kol-heading>
 	<p>Die Migration gestaltet sich sehr einfach, da nur folgende zwei Stellen ggf. angepassen werden müssen.</p>
 	<ul>
 		<li>
@@ -497,7 +495,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.10 - 11.11.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔥 Badge, Link, Nav, Tabs: Alle Icofont and Font-Awesome spezifischen Typen entfernen (KoliBriIconProp)</li>
 		<li>🔧 Font Awesome: Wechseln von Icofont auf Font Awesome bei allen Default-internen Icons</li>
@@ -523,18 +521,16 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🌟 Tab-Index: Neues Property für Button, ButtonLink, Link und LinkButton</li>
 		<li>
 			🔥 InputNumber: Gemäß neuer{' '}
-			<kol-link _href="https://html.spec.whatwg.org/multipage/input.html" _target="w3c">
-				W3C-Spec
-			</kol-link>{' '}
-			beinhaltet InputNumber nicht mehr die Datumstypen (ℹ️ wird erst mit Major-Release entfernt).
+			<kol-link _href="https://html.spec.whatwg.org/multipage/input.html" _target="w3c" _label="W3C-Spec"></kol-link> beinhaltet
+			InputNumber nicht mehr die Datumstypen (ℹ️ wird erst mit Major-Release entfernt).
 		</li>
 		<li>🔥 Nicht required Properties erlauben null und damit das Zurücksetzen auf den Detault-Value.</li>
 		<li>🌟 "Expert"-Slot eingefügt, um mehr Flexibilität mit Eigenverantwortung zu erhalten</li>
 		<li>
-			📚 Dokumentation: <KolLink _href="/docs/konzepte/expert-slot">Slot-Konzept</KolLink> eingefügt
+			📚 Dokumentation: <KolLink _href="/docs/konzepte/expert-slot" _label={`Slot-Konzept`} /> eingefügt
 		</li>
 		<li>
-			📚 Dokumentation: <KolLink _href="/docs/concepts/styling/theming">Theming-Konzept</KolLink> eingefügt
+			📚 Dokumentation: <KolLink _href="/docs/concepts/styling/theming" _label={`Theming-Konzept`} /> eingefügt
 		</li>
 		<li>🔧 Storybook: Das Umschalten des Themes funktioniert jetzt ohne manuelles Neuladen</li>
 		<li>🔥 Packaging: Veraltete Theme-CSS-Dateien entfernt (aus Release 1.0)</li>
@@ -547,14 +543,15 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.9 - 13.10.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>
 			🔥 ESM: Build-Optimierung aller Pakete für SSG und SSR (ℹ️{' '}
-			<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" _target_="moz">
-				JavaScript-Modules
-			</kol-link>
-			)
+			<kol-link
+				_href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
+				_target_="moz"
+				_label="JavaScript-Modules"
+			></kol-link>)
 		</li>
 		<li>
 			🌟 CLI: Templates für weitere Framework-Integrationen
@@ -572,7 +569,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.8 - 07.10.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Fix: Fehlender Import im React-Template behoben (create-kolibri)</li>
 	</ul>
@@ -580,22 +577,20 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 <br />
 
-<kol-alert _variant="card" _level={4} _type="info" _heading="Open Source-Freigabe">
+<kol-alert _variant="card" _level={4} _type="info" _label="Open Source-Freigabe">
 	<p>
 		Mit der Version <strong>1.1.7</strong> wird KoliBri Open Source veröffentlicht.
 	</p>
-	<kol-heading _level={5}>Renaming</kol-heading>
+	<kol-heading _level={5} _label="Renaming"></kol-heading>
 	<p>
 		Da der Package-Alias "@kolibri" in der{' '}
-		<kol-link _href="https://npmjs.com" _target="npmjs">
-			öffentlichen NPM-Registry
-		</kol-link>{' '}
-		schon vergeben ist, müssen wir unsere Pakete unter einem anderen Namen veröffentlichen. Wir haben uns hierzu für den
-		Alias <strong>"@public-ui"</strong> entschieden. Folgende Packages werden somit unter der NPM-Registry
-		veröffentlicht:
+		<kol-link _href="https://npmjs.com" _target="npmjs" _label="öffentlichen NPM-Registry"></kol-link> schon vergeben ist,
+		müssen wir unsere Pakete unter einem anderen Namen veröffentlichen. Wir haben uns hierzu für den Alias <strong>
+			"@public-ui"
+		</strong> entschieden. Folgende Packages werden somit unter der NPM-Registry veröffentlicht:
 	</p>
 	<KolTable
-		_caption="Übersicht die neuen Paketnamen"
+		_label="Übersicht die neuen Paketnamen"
 		_headers={{
 			horizontal: [
 				[
@@ -663,7 +658,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		]}
 	></KolTable>
 	<br />
-	<kol-heading _level={5}>Refactoring</kol-heading>
+	<kol-heading _level={5} _label="Refactoring"></kol-heading>
 	<p>
 		Des Weiteren wurde in diesem Zuge die umgezogene Input-Adapter-Komponente (<strong>KolInputAdapterLeanup</strong>)
 		für das Form-Handling als veraltet (<strong>deprecated</strong>) gesetzt. Die identische Komponente (
@@ -719,7 +714,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.7 - 30.09.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🌟 KoliBri-Logo: Farbattribut hinzugefügt (_color)</li>
 		<li>🌟 Adapter: Vue-Adapter hinzugefügt (⚠️ experimentell)</li>
@@ -742,7 +737,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.6 - 12.09.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>📚 Dokumentation: Theme-Schalter erweitert und optimiert</li>
 		<li>👩‍🎨 InputText: Search Reset leer Werte</li>
@@ -755,7 +750,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.5 - 29.08.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🌟 Toaster: Einführung eines Toast-Services</li>
 		<li>👩‍🎨 Nav: Darstellung letzter Link optimiert</li>
@@ -769,7 +764,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.4 - 01.08.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>
 			🔧 Console: <code>console.log</code>'s entfernt
@@ -779,7 +774,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.3 - 29.07.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 SemVer: Keine funktionale Änderung / Versionierung behoben</li>
 	</ul>
@@ -787,7 +782,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.2 - 29.07.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Radio & Select: Fehlersuche bei Auswahl der ersten Option</li>
 		<li>
@@ -814,7 +809,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.1 - 28.06.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Register: Fehlerbehebung beim Registrieren der Komponenten, Themes und Translations</li>
 	</ul>
@@ -822,7 +817,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.0 - 28.06.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🚹 BIK BITV-Tests: Vollständiger Retest des BMF- und MAPZ-Themes inkl. Komponenten</li>
 		<li>👩‍🎨 Themes: Verbesserungen an dem BMF- und MAPZ-Theme</li>
@@ -848,7 +843,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.17 - 17.06.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Modularisierung: Import-Pfade optimiert - Reduziert die Dependency-Einträge in der package.json.</li>
 		<li>🔧 Modularisierung: Auflösung des separaten Modules @public-ui/schema pro UI-Lib</li>
@@ -858,7 +853,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.16 - 14.06.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>
 			🔧 Modularisierung: Einführung @public-ui/core, @public-ui/schema und @public-ui/themes (s. React-Integration)
@@ -902,7 +897,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.15 - 10.05.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Textarea: CharacterCounter wird angezeigt</li>
 		<li>🔧 Select: Fix Values-List-Sync</li>
@@ -913,7 +908,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.14 - 05.05.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Nav*: Sicherstellung eindeutiger aria-label</li>
 		<li>🌟 Button: Neue Property accesskey</li>
@@ -957,7 +952,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.13 - 01.04.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🌟 Nav: Es ist jetzt auch möglich den Tooltip in alle Richtungen auszurichten.</li>
 		<li>
@@ -979,7 +974,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.12 - 15.03.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Fix: Verbesserung und Fehlerbehebung an der neuen Theme-Engine</li>
 	</ul>
@@ -987,7 +982,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.11 - 14.03.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔥 Framework: Auto-DefineCustomElements deaktiviert für Verwendung mit Vite und SSR. (s. Get Started React)</li>
 		<li>🔧 Checkbox: Fehlerbehebung Checked-Wert lässt sich nicht ändern</li>
@@ -1003,7 +998,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.10 - 03.03.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🌟 Table: Pagination als separate Komponente</li>
 		<li>🔧 Pagination: Redesign für viele Seiten</li>
@@ -1016,7 +1011,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.9 - 28.02.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Select, Option: Styling behoben</li>
 		<li>🔧 Input-Adapter: Required-Handling behoben</li>
@@ -1041,7 +1036,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.8 - 14.01.2022
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🌟 Button: Separates Aria-Label Property einführen</li>
 		<li>
@@ -1053,13 +1048,8 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🌟 Verbesserung bei der Integration von Themes (import im JS/TS)</li>
 		<li>🌟 Verbesserung der Autovervollständigung für die Entwicklung (font-awesome, icofont)</li>
 		<li>
-			🌟 KoliBri für andere Frameworks ({' '}
-			<kol-link _href="https://www.solidjs.com" _target="solid">
-				SolidJS
-			</kol-link>
-			und <kol-link _href="https://angular.io" _target="angular">
-				Angular
-			</kol-link>)
+			🌟 KoliBri für andere Frameworks ( <kol-link _href="https://www.solidjs.com" _target="solid" _label="SolidJS"></kol-link>
+			und <kol-link _href="https://angular.io" _target="angular" _label="Angular"></kol-link>)
 		</li>
 		<li>👩‍🎨 Umsetzung eines weiteren Styleguides auf Basis der KoliBri-Komponenten</li>
 		<li>❗ Refactoring der Tests</li>
@@ -1069,14 +1059,14 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.7 - 17.12.2021
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>
 			👩‍🎨 <code>font-size</code> ist bei Tooltip immer <code>1rem</code> unabhängig von der Größe des Referenz-Elements
 		</li>
 		<li>
 			❗ Value beim der <code>Select</code>-Komponente wurde auf ein Liste (Array) umgestellt, um die Funktionalität der
-			Mehrfachauswahl umzusetzen. (<kol-link _href="/docs/components/select/">Select-Dokumentation</kol-link>)
+			Mehrfachauswahl umzusetzen. (<kol-link _href="/docs/components/select/" _label="Select-Dokumentation"></kol-link>)
 		</li>
 		<li>📚 Dokumentation verbessert</li>
 	</ul>
@@ -1084,7 +1074,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.6 - 15.12.2021
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>👩‍🎨 Übernahme erster Farbedefinitionen in das BMF-Theme</li>
 		<li>🚹 Verbesserungen an der Modal- und der Table-Komponente</li>
@@ -1106,16 +1096,15 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.5 - 13.12.2021
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>
 			🚹❗ Problematisches und teilweise funktionslose <code>autofocus</code>
 			-Property aus allen Eingabefeldern entfernt (<kol-link
 				_href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109"
 				_target="medium"
-			>
-				Autofocus inputs are an accessibility problem (EN)
-			</kol-link>)
+				_label="Autofocus inputs are an accessibility problem (EN)"
+			></kol-link>)
 		</li>
 		<li>
 			🔝 Statische Code-Prüfung (<code>eslint-plugin-jsx-a11y</code>) erweitert und Quellcode verbessert
@@ -1136,7 +1125,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.4 - 10.12.2021
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>👩‍🎨 Styling-Part für den Select-Knoten hinzugefügt</li>
 		<li>🌟 Optgroup's sind jetzt mit der Select-Komponente möglich</li>
@@ -1154,7 +1143,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.3 - 09.12.2021
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Pagination bei Tabellen repariert</li>
 		<li>🌟 Bereitstellung von KoliBri als Download</li>
@@ -1164,7 +1153,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.2 - 08.12.2021
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🔧 Form-Beispiele im Storybook repariert</li>
 		<li>🔧 Fehler mit der Icofont im Storybook repariert</li>
@@ -1176,7 +1165,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.1 - 07.12.2021
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>❗ Die Komponenten InputRadioGroup und InputRadio sind zur Komponente InputRadio zusammengeführt worden</li>
 		<li>🔧 Probleme beim Rendern von InputRadio's wurden durch das Refactoring behoben</li>
@@ -1187,7 +1176,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.0.0 - 06.12.2021
 
-<kol-details _summary="Änderungen">
+<kol-details _label="Änderungen">
 	<ul>
 		<li>🌟 Dieses Release stellt das initiale Release von KoliBri dar.</li>
 	</ul>
