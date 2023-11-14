@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[56255],{43395:e=>{e.exports=JSON.parse('{"label":"Roadmap","permalink":"/en/docs/tags/roadmap","allTagsPath":"/en/docs/tags","count":1,"items":[{"id":"version-1.7/project/roadmap","title":"Roadmap","description":"Entwicklungsplan f\xfcr die kommenden Versionen","permalink":"/en/docs/project/roadmap"}]}')}}]);

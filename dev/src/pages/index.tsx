@@ -2,18 +2,18 @@ import { translate } from '@docusaurus/Translate';
 import { Bundesanstalt } from '@public-ui/components';
 import { KolKolibri, KolLink, KolLinkButton, KolLogo } from '@public-ui/react';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
 import React, { FunctionComponent } from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
-import { USED_BY } from '../used-by';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
-		<h1 className="text-white text-center">
+		<Heading as="h1" className="text-white text-center">
 			{translate({
 				id: 'custom.title',
 			})}
-		</h1>
+		</Heading>
 		<p className="text-white text-center text-xl">
 			{translate({
 				id: 'custom.subtitle',
@@ -21,8 +21,6 @@ const HomepageHeader: FunctionComponent = () => (
 		</p>
 	</header>
 );
-
-console.warn(Array.from(USED_BY));
 
 export default function Homepage(): JSX.Element {
 	return (
@@ -82,12 +80,12 @@ export default function Homepage(): JSX.Element {
 							}}
 						/>
 					</div>
-					<h2 className="text-center">
+					<Heading as="h2" className="text-center">
 						{translate({
 							id: 'custom.accessible-standard',
 							message: 'Barrierefreier Standard',
 						})}
-					</h2>
+					</Heading>
 					<p className="text-center">
 						<KoliBriAbbr />{' '}
 						{translate({
@@ -105,7 +103,7 @@ export default function Homepage(): JSX.Element {
 				</div>
 				<HomepageFeatures />
 				{/* <section className="used-by-gallery m-8 gap-8 text-center">
-					<h2>Referenzen</h2>
+					<Heading as="h2">Referenzen</Heading>
 					<p className="text-center">KoliBri/Public UI wird als Basis für eigene Design Systeme oder direkt bei der Umsetzung von Webprojekten verwendet.</p>
 					<ul>
 						{Array.from(USED_BY).map((item) => {
