@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ import{d as watchString}from"./prop.validators-445950f8.js";const validateAlternativeButtonLinkRole=(t,a)=>{watchString(t,"_role",a)};export{validateAlternativeButtonLinkRole as v};
