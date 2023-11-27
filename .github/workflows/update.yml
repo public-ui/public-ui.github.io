@@ -60,7 +60,39 @@ jobs:
           registry-url: "${{env.github-registry}}"
           scope: "@${{env.scope}}"
 
-      - name: Download designer
+      - name: Download designer (v1)
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+        run: |
+          rm -rf package *.tgz
+          npm pack @${{env.scope}}/designer@~1.7.6-rc
+          tar -xzvf public-ui-designer-*.tgz
+
+          rm -rf ../docs/designer
+          rm -rf ../docs/v1/designer
+          mkdir -p ../docs/v1
+          mv package/dist ../docs/v1/designer
+
+          rm -rf package *.tgz
+        working-directory: dev
+
+      - name: Download sample react (v1)
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+        run: |
+          rm -rf package *.tgz
+          npm pack @${{env.scope}}/sample-react@~1.7.6-rc
+          tar -xzvf public-ui-sample-react-*.tgz
+
+          rm -rf ../docs/sample-react
+          rm -rf ../docs/v1/sample-react
+          mkdir -p ../docs/v1
+          mv package/dist ../docs/v1/sample-react
+
+          rm -rf package *.tgz
+        working-directory: dev
+
+      - name: Download designer (v2)
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
         run: |
@@ -68,13 +100,14 @@ jobs:
           npm pack @${{env.scope}}/designer@~2.0.0-rc
           tar -xzvf public-ui-designer-*.tgz
 
-          rm -rf ../docs/designer
-          mv package/dist ../docs/designer
+          rm -rf ../docs/v2/designer
+          mkdir -p ../docs/v2
+          mv package/dist ../docs/v2/designer
 
           rm -rf package *.tgz
         working-directory: dev
 
-      - name: Download sample react
+      - name: Download sample react (v2)
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
         run: |
@@ -82,8 +115,9 @@ jobs:
           npm pack @${{env.scope}}/sample-react@~2.0.0-rc
           tar -xzvf public-ui-sample-react-*.tgz
 
-          rm -rf ../docs/sample-react
-          mv package/dist ../docs/sample-react
+          rm -rf ../docs/v2/sample-react
+          mkdir -p ../docs/v2
+          mv package/dist ../docs/v2/sample-react
 
           rm -rf package *.tgz
         working-directory: dev
