@@ -6048,2715 +6048,118 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 	}`
 });
 
-const css$5 = (input) => input.join(``);
+var css_248z$A = "@layer kol-theme-component {\n  .accordion {\n    display: grid;\n    background: var(--color-white);\n  }\n  .accordion-heading {\n    border: 1px solid var(--color-primary-60);\n    font-size: 1.3125rem; /* h3 font-size */\n  }\n  .headline {\n    margin: 0;\n    font-weight: normal;\n  }\n  .accordion-button .button {\n    padding: 0 2rem;\n  }\n  .content {\n    padding: 2rem 2rem 2.5rem;\n  }\n}";
 
-const BZSt = KoliBri.createTheme("bzst", {
-  GLOBAL: css$5`
-		/* NOTE: Alle ':root' CSS properties sollten in KoliBri zu ':host' kopiert werden und umgekehrt. Damit vereinheitlicht man alle Variablen auf beiden Seiten und kann diese dann individuell nutzen.*/ /* colors */
-		:root,
-		:host {
-			/* token */
-			--color-bleached-silk: #f2f2f2;
-			--color-carbon: #333;
-			--color-chilled-lemonade: #ffe695;
-			--color-green: #4d7f6f;
-			--color-green-light: #a7c0b8;
-			--color-green-dark: #23614e;
-			--color-heroic-blue: #126dff;
-			--color-mercury: #ebebeb;
-			--color-red-epiphyllum: #d00000;
-			--color-speedwell: #595f73;
-			--color-tropic-sea: #007194;
-			--color-white: #fff; /* template */ /* general */
-			--colorDark: var(--color-carbon);
-			--colorLight: var(--color-white); /* primary color */
-			--colorPrimary: var(--color-green-dark);
-			--colorPrimaryFront: var(--color-white);
-			--colorPrimarySuccess: var(--color-green);
-			--colorPrimarySuccessFront: var(--color-white);
-			--colorPrimaryActive: var(--color-green-light);
-			--colorPrimaryActiveFront: var(--color-carbon); /* secondary color */
-			--colorSecondary: var(--color-white);
-			--colorSecondaryFront: var(--color-carbon);
-			--colorSecondarySuccess: var(--color-bleached-silk);
-			--colorSecondarySuccessFront: var(--color-carbon);
-			--colorSecondaryActive: var(--color-mercury);
-			--colorSecondaryActiveFront: var(--color-carbon); /* text */
-			--colorText: var(--color-carbon);
-			--colorTextBg: var(--color-white);
-			--colorTextLight: var(--color-white);
-			--colorTextLightBg: var(--color-carbon);
-			--colorTextDisabled: var(--color-speedwell);
-			--colorTextDisabledBg: var(--color-mercury);
-			--colorTextActive: var(--color-green-dark);
-			--colorTextActiveBg: var(--color-white); /* signal */
-			--colorSignal: var(--color-tropic-sea);
-			--colorSignalFront: var(--color-white); /* colorSignalFocus hat keine Frontfarbe */
-			--colorSignalFocus: var(--color-heroic-blue);
-			--colorSignalSuccess: var(--color-green);
-			--colorSignalSuccessFront: var(--color-white);
-			--colorSignalWarn: var(--color-chilled-lemonade);
-			--colorSignalWarnFront: var(--color-carbon);
-			--colorSignalError: var(--color-red-epiphyllum);
-			--colorSignalErrorFront: var(--color-white); /* disabled */
-			--colorDisabled: var(--color-mercury);
-		} /* font, headline, text */
-		:root,
-		:host {
-			/* token */
-			--font-family: 'BundesSans Web', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-				'Helvetica Neue', sans-serif; /* Basis-Größe: html, rem */
-			--font-size: 100%;
-			--line-height: 1.6875rem; /* template */ /* h1 */
-			--headline1FontSize: 2.5rem;
-			--headline1LineHeight: 2.8125rem; /* h2 */
-			--headline2FontSize: 2rem;
-			--headline2LineHeight: 2.5rem; /* h3 */
-			--headline3FontSize: 1.3125rem;
-			--headline3LineHeight: 1.6875rem; /* h4 */
-			--headline4FontSize: 1rem;
-			--headline4LineHeight: 1.6875rem; /* text */
-			--textFont: var(--font-family);
-			--textFontColor: var(--colorText);
-			--textFontSerif: 'BundesSerif Web', var(--textFont);
-			--textFontSize: 1rem;
-			--textFontLineHeight: 1.6875rem;
-			--textFontWeight: normal;
-		} /* Abstände */
-		:root,
-		:host {
-			/* template */
-			--gap: 2rem;
-			--gapDouble: calc(var(--gap) * 2);
-			--gapSmall: 1.25rem; /* TODO: benötigt nur außerhalb KoliBri Komponenten? */
-			--gapSmallest: 0.625rem;
-			--gapLarge: 2.5rem;
-		} /* formular */
-		:root,
-		:host {
-			/* template */
-			--formBorderWidthAndStyle: 1px solid; /* TODO: eigentlich --color-green sein, aber im Styleguide ist der Wert: #23614E */
-			--formBorder: var(--formBorderWidthAndStyle) var(--colorPrimarySuccess);
-			--formBorderHover: var(--formBorderWidthAndStyle) var(--colorPrimaryActive);
-			--formBorderDisabled: var(--formBorderWidthAndStyle) var(--colorDisabled);
-			--formBorderInvalid: var(--formBorderWidthAndStyle) var(--colorSignalError);
-			--focusOutline: var(--colorSignalFocus) solid 2px;
-			--formFieldBackground: var(--colorLight); /*Select option */
-			--formFieldBackgroundHover: var(--colorPrimary); /* Select options */
-			--formFieldBackgroundEven: var(--formFieldBackground); /* Select options */
-			--formFieldBackgroundOdd: var(--colorSecondaryActive);
-			--formFieldBackgroundDisabled: var(--colorSecondarySuccess);
-			--formFieldTextColorDisabled: var(--colorTextDisabled);
-		} /* ********************************* */ /* ********************************* */ /* ********************************* */ /* ********************************* */
-		:host {
-			/* Primärfarbe und Abstufungen */
-			--color-gruen-dunkel: var(--colorPrimary);
-			--color-gruen: var(--colorPrimarySuccess);
-			--color-gruen-hell: var(--colorPrimaryActive); /* Sekundärfarben */
-			--color-weiss: var(--colorSecondary);
-			--color-grau-dunkel: var(--colorSecondaryFront);
-			--color-grau-hell: var(--colorSecondaryActive);
-			--color-grau-weiss: var(--colorSecondarySuccess); /* Textfarben */
-			--color-graublau: var(--colorTextDisabled); /* Signalfarben */
-			--color-blau: var(--colorSignalFocus);
-			--color-blau-dunkel: var(--colorSignal);
-			--color-gelb: var(--colorSignalWarn);
-			--color-rot: var(--colorSignalError);
-			--color-disabled: var(--colorTextDisabled);
-			--text-size: var(--textFontSize);
-			--color-focus: var(--color-blau);
-			--spacing: 4px;
-			--color-text: var(--color-grau-dunkel);
-		}
-		:host {
-			color: var(--color-black);
-			font-family: var(--font-family);
-		}
-		:host * {
-			box-sizing: border-box;
-		}
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			font-family: var(--textFontSerif);
-		}
-		h1,
-		h2 {
-			font-weight: var(--textFontWeight);
-		}
-		h1 {
-			font-size: var(--headline1FontSize);
-			line-height: var(--headline1LineHeight);
-		}
-		h2 {
-			font-size: var(--headline2FontSize);
-			line-height: var(--headline2LineHeight);
-		}
-		h3 {
-			font-size: var(--headline3FontSize);
-			line-height: var(--headline3LineHeight);
-		}
-		h4,
-		h5,
-		h6 {
-			font-size: var(--headline4FontSize);
-			line-height: var(--headline4LineHeight);
-		}
-		a,
-		button,
-		input,
-		option,
-		select,
-		textarea {
-			hyphens: auto;
-			letter-spacing: inherit;
-		} /* a,button,caption,input,option,select,summary,table,textarea {font-size: 1rem;} */
-		summary {
-			hyphens: auto;
-			letter-spacing: inherit;
-		}
-		*[tabindex]:focus,
-		kol-input:not(.checkbox, .radio) .input:focus-within,
-		kol-input:is(.checkbox, .radio) input:focus,
-		summary:focus {
-			outline: var(--focusOutline);
-			outline-offset: 2px;
-			transition: outline-offset 0.2s linear;
-		}
-		@keyframes spin {
-			0% {
-				transform: rotate(0deg);
-			}
-			100% {
-				transform: rotate(360deg);
-			}
-		}
-		kol-tooltip .area {
-			background-color: var(--colorDark);
-			color: var(--colorLight);
-		}
-		kol-tooltip kol-span-wc {
-			line-height: 1.5em;
-			padding: 0.5rem 0.75rem;
-		}
-		kol-span-wc,
-		kol-span-wc > span {
-			gap: 0.5em;
-		}
-		kol-span-wc,
-		kol-span-wc > span {
-			gap: 0.3em;
-		}
-	`,
-  "KOL-BUTTON": css$5`
-		:host {
-			--background-color: var(--color-gruen-dunkel);
-			--border-color: var(--color-gruen-dunkel);
-			--border-size: 1px;
-			--min-size: 2.75rem;
-			display: inline-block;
-		}
-		:is(button, a) {
-			outline: none;
-			&::before {
-				/* Render zero-width character as first element to set the baseline correctly. */
-				content: '\\200B';
-			}
-		}
-		:is(button, a) > kol-span-wc {
-			border-width: var(--border-size);
-			border-style: solid;
-			min-width: var(--min-size);
-			min-height: var(--min-size);
-			display: grid;
-			gap: 0.25em;
-			line-height: 1.5;
-			font-family: var(--font-family);
-			cursor: pointer;
-			font-size: var(--text-size);
-			align-items: center;
-			padding: 0.5rem 0.875rem !important;
-			justify-content: center;
-			font-style: normal;
-			text-align: center;
-			text-transform: uppercase;
-			width: inherit;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-		}
-		:is(button, a):hover:enabled > kol-span-wc {
-			text-decoration: underline;
-		}
-		:is(button, a):focus > kol-span-wc {
-			outline: var(--color-focus) solid 2px;
-		}
-		.primary :is(button, a) > kol-span-wc,
-		.primary :is(button, a):active > kol-span-wc,
-		.primary :is(button, a):hover > kol-span-wc {
-			background-color: var(--background-color);
-			border-color: var(--border-color);
-			color: var(--color-weiss);
-		}
-		.secondary :is(button, a) > kol-span-wc,
-		.danger :is(button, a) > kol-span-wc,
-		.normal :is(button, a) > kol-span-wc,
-		.ghost :is(button, a) > kol-span-wc {
-			background-color: var(--color-weiss);
-			border-color: var(--color-gruen-hell);
-			color: var(--color-grau-dunkel);
-		}
-		.ghost :is(button, a) > kol-span-wc {
-			background-color: transparent;
-			color: inherit;
-			border: calc(var(--border-size) * 2) solid transparent;
-		}
-		.secondary :is(button, a):active > kol-span-wc,
-		.secondary :is(button, a):hover > kol-span-wc {
-			background-color: var(--background-color);
-			border-color: var(--background-color);
-			border-width: var(--border-size);
-			color: var(--color-weiss);
-		}
-		:is(button, a):disabled > kol-span-wc,
-		:is(button, a):disabled:hover > kol-span-wc {
-			background-color: var(--color-weiss);
-			border-color: var(--color-grau-hell);
-			color: var(--color-disabled);
-			cursor: not-allowed;
-		}
-	`,
-  "KOL-INPUT-TEXT": css$5`
-		kol-input {
-			gap: 0.4em;
-		}
-		kol-input .error {
-			order: 3;
-		}
-		kol-input label {
-			font-weight: 700;
-			order: 1;
-		}
-		kol-input .input {
-			order: 2;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.875em;
-			font-style: italic;
-		}
-		input {
-			border: none;
-		}
-		.input {
-			border-color: var(--color-grey);
-			border-style: solid;
-			border-width: 1px;
-			padding: 0 0.5em;
-		}
-		.input > kol-icon {
-			width: 1.5em;
-		}
-		.input > input:first-child {
-			padding-left: 0.375em;
-		}
-		.input > input:last-child {
-			padding-right: 0.375em;
-		}
-		.input:hover {
-			border-color: var(--color-gruen-hell);
-		}
-		input:not([type='color']):read-only,
-		input:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-rot);
-			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-rot) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-rot);
-			font-weight: 700;
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-		label {
-			color: var(--color-text);
-			line-height: 1.5;
-		}
-		.input {
-			font-size: var(--text-size);
-			line-height: 1.5;
-			color: var(--colorText);
-			border-color: var(--color-gruen);
-			border-style: solid;
-			width: 100%;
-		}
-		input:not([type='range']) {
-			height: 2.75em;
-		}
-		input::placeholder {
-			color: var(--color-grau-dunkel);
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-	`,
-  "KOL-INPUT-PASSWORD": css$5`
-		kol-input {
-			display: grid;
-			padding: 0;
-			margin: 0;
-		}
-		input:focus,
-		input:hover,
-		select:focus,
-		select:hover,
-		textarea:focus,
-		textarea:hover {
-			border-color: black;
-		}
-		kol-input > label {
-			order: 1;
-			margin-bottom: 0.25em;
-		}
-		kol-input > label > span {
-			color: black;
-			font-size: 0.875rem;
-			line-height: 1.5rem;
-		}
-		kol-input > div.input {
-			background-color: white;
-			display: block;
-			order: 2;
-		}
-		kol-input > kol-alert.error {
-			margin-top: 0.25em;
-			order: 3;
-		}
-		input,
-		select,
-		textarea {
-			font-family: var(--font-family);
-			background-color: transparent;
-			box-sizing: border-box;
-			font-size: 1rem;
-			display: inline-flex;
-			line-height: 1.5em;
-			color: black;
-			border-color: var(--color-grau-dunkel);
-			border-width: 1px;
-			border-style: solid;
-			padding: 0.5em 0.75em;
-			overflow: hidden;
-			width: 100%;
-		}
-		input:not([type='range']),
-		select:not([multiple]) {
-			height: 2.75em;
-		}
-		textarea {
-			display: inherit;
-		}
-		input::placeholder {
-			color: var(--color-grau-dunkel);
-		}
-		input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		.icons {
-			display: flex;
-			justify-content: space-between;
-			height: 0;
-		}
-		.icons > * {
-			margin: 0.75em;
-		}
-		.icon-left input,
-		.icon-left select {
-			padding-left: 2em;
-		}
-		.icon-right input,
-		.icon-right select {
-			padding-right: 2em;
-		}
-		kol-button-wc {
-			position: relative;
-			float: right;
-			z-index: 1000;
-			margin-top: -33px;
-		}
-		kol-button-wc button {
-			border: 1px solid var(--color-grau-dunkel);
-			box-sizing: border-box;
-			background-color: transparent;
-			cursor: pointer;
-		}
-		.icon-right kol-button-wc {
-			margin-right: 2.5em;
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-		select[multiple],
-		textarea {
-			overflow: auto;
-		}
-		textarea {
-			display: block;
-		}
-		select option {
-			margin: 1px 0;
-			padding: 0.5em;
-			cursor: pointer;
-		}
-		select option:disabled {
-			cursor: not-allowed;
-		}
-		option:active:not(:disabled),
-		option:checked:not(:disabled),
-		option:focus:not(:disabled),
-		option:hover:not(:disabled) {
-			color: white;
-		}
-	`,
-  "KOL-INPUT-NUMBER": css$5`
-		kol-input {
-			display: grid;
-			padding: 0;
-			margin: 0;
-		}
-		input:focus,
-		input:hover,
-		select:focus,
-		select:hover,
-		textarea:focus,
-		textarea:hover {
-			border-color: black;
-		}
-		input:focus-within,
-		select:focus-within,
-		textarea:focus-within {
-			outline: var(--color-focus) solid 2px;
-		}
-		kol-input label {
-			font-weight: 700;
-			order: 1;
-			margin-bottom: var(--gapSmallest);
-		}
-		kol-input label > span {
-			color: black;
-			font-size: 0.875rem;
-			line-height: 1.5rem;
-		}
-		kol-input > div.input {
-			background-color: white;
-			display: block;
-			order: 2;
-		}
-		kol-input > kol-alert.error {
-			margin-top: 0.25em;
-			order: 3;
-		}
-		input,
-		select,
-		textarea {
-			font-family: var(--textFont);
-			background-color: transparent;
-			box-sizing: border-box;
-			font-size: var(--textFontSize);
-			display: inline-flex;
-			line-height: 1.5;
-			color: black;
-			border-color: var(--color-gruen);
-			border-width: 1px;
-			border-style: solid;
-			padding: 0.5em;
-			overflow: hidden;
-			width: 100%;
-		}
-		input:not([type='range']),
-		select:not([multiple]) {
-			height: 2.75em;
-		}
-		textarea {
-			display: inherit;
-		}
-		input::placeholder {
-			color: var(--color-grau-dunkel);
-		}
-		input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		.icons {
-			display: flex;
-			justify-content: space-between;
-			height: 0;
-		}
-		.icons > * {
-			margin: 0.75em;
-		}
-		.icon-left input,
-		.icon-left select {
-			padding-left: 2em;
-		}
-		.icon-right input,
-		.icon-right select {
-			padding-right: 2em;
-		}
-		kol-button-wc {
-			position: relative;
-			float: right;
-			z-index: 1;
-			margin-top: -33px;
-		}
-		kol-button-wc button {
-			border: 1px solid var(--color-grau-dunkel);
-			box-sizing: border-box;
-			background-color: transparent;
-			cursor: pointer;
-		}
-		.icon-right kol-button-wc {
-			margin-right: 2.5em;
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-		select[multiple],
-		textarea {
-			overflow: auto;
-		}
-		textarea {
-			display: block;
-		}
-		select option {
-			margin: 1px 0;
-			padding: 0.5em;
-			cursor: pointer;
-		}
-		select option:disabled {
-			cursor: not-allowed;
-		}
-		option:active:not(:disabled),
-		option:checked:not(:disabled),
-		option:focus:not(:disabled),
-		option:hover:not(:disabled) {
-			background: var(--color-ocean);
-			color: white;
-		}
-	`,
-  "KOL-INPUT-DATE": css$5`
-		kol-input label {
-			font-weight: 700;
-			margin-bottom: var(--gapSmallest);
-		}
-		input {
-			border: var(--formBorder);
-		}
-		input:hover {
-			border: var(--formBorderHover);
-		}
-	`,
-  "KOL-INPUT-EMAIL": css$5`
-		kol-input {
-			display: grid;
-			padding: 0;
-			margin: 0;
-		}
-		input:focus,
-		input:hover,
-		select:focus,
-		select:hover,
-		textarea:focus,
-		textarea:hover {
-			border-color: black;
-		}
-		kol-input > label {
-			order: 1;
-			margin-bottom: 0.25em;
-		}
-		kol-input > label > span {
-			color: black;
-			font-size: 0.875rem;
-			line-height: 1.5rem;
-		}
-		kol-input > div.input {
-			background-color: white;
-			display: block;
-			order: 2;
-		}
-		kol-input > kol-alert.error {
-			margin-top: 0.25em;
-			order: 3;
-		}
-		input,
-		select,
-		textarea {
-			font-family: var(--font-family);
-			background-color: transparent;
-			box-sizing: border-box;
-			font-size: 1rem;
-			display: inline-flex;
-			line-height: 1.5em;
-			color: black;
-			border-color: var(--color-grau-dunkel);
-			border-width: 1px;
-			border-style: solid;
-			padding: 0.5em 0.75em;
-			overflow: hidden;
-			width: 100%;
-		}
-		input:not([type='range']),
-		select:not([multiple]) {
-			height: 2.75em;
-		}
-		textarea {
-			display: inherit;
-		}
-		input::placeholder {
-			color: var(--color-grau-dunkel);
-		}
-		input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		.icons {
-			display: flex;
-			justify-content: space-between;
-			height: 0;
-		}
-		.icons > * {
-			margin: 0.75em;
-		}
-		.icon-left input,
-		.icon-left select {
-			padding-left: 2em;
-		}
-		.icon-right input,
-		.icon-right select {
-			padding-right: 2em;
-		}
-		kol-button-wc {
-			position: relative;
-			float: right;
-			z-index: 1000;
-			margin-top: -33px;
-		}
-		kol-button-wc button {
-			border: 1px solid var(--color-grau-dunkel);
-			box-sizing: border-box;
-			background-color: transparent;
-			cursor: pointer;
-		}
-		.icon-right kol-button-wc {
-			margin-right: 2.5em;
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-		select[multiple],
-		textarea {
-			overflow: auto;
-		}
-		textarea {
-			display: block;
-		}
-		select option {
-			margin: 1px 0;
-			padding: 0.5em;
-			cursor: pointer;
-		}
-		select option:disabled {
-			cursor: not-allowed;
-		}
-		option:active:not(:disabled),
-		option:checked:not(:disabled),
-		option:focus:not(:disabled),
-		option:hover:not(:disabled) {
-			color: white;
-		}
-	`,
-  "KOL-INPUT-FILE": css$5`
-		kol-input {
-			display: grid;
-			padding: 0;
-			margin: 0;
-		}
-		input:focus,
-		input:hover,
-		select:focus,
-		select:hover,
-		textarea:focus,
-		textarea:hover {
-			border-color: black;
-		}
-		kol-input > label {
-			order: 1;
-			margin-bottom: 0.25em;
-		}
-		kol-input > label > span {
-			color: black;
-			font-size: 0.875rem;
-			line-height: 1.5rem;
-		}
-		kol-input > div.input {
-			background-color: white;
-			display: block;
-			order: 2;
-		}
-		kol-input > kol-alert.error {
-			margin-top: 0.25em;
-			order: 3;
-		}
-		input,
-		select,
-		textarea {
-			font-family: var(--font-family);
-			background-color: transparent;
-			box-sizing: border-box;
-			font-size: 1rem;
-			display: inline-flex;
-			line-height: 1.5em;
-			color: black;
-			border-color: var(--color-grau-dunkel);
-			border-width: 1px;
-			border-style: solid;
-			padding: 0.5em 0.75em;
-			overflow: hidden;
-			width: 100%;
-		}
-		input:not([type='range']),
-		select:not([multiple]) {
-			height: 2.75em;
-		}
-		textarea {
-			display: inherit;
-		}
-		input::placeholder {
-			color: var(--color-grau-dunkel);
-		}
-		input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		.icons {
-			display: flex;
-			justify-content: space-between;
-			height: 0;
-		}
-		.icons > * {
-			margin: 0.75em;
-		}
-		.icon-left input,
-		.icon-left select {
-			padding-left: 2em;
-		}
-		.icon-right input,
-		.icon-right select {
-			padding-right: 2em;
-		}
-		kol-button-wc {
-			position: relative;
-			float: right;
-			z-index: 1000;
-			margin-top: -33px;
-		}
-		kol-button-wc button {
-			border: 1px solid var(--color-grau-dunkel);
-			box-sizing: border-box;
-			background-color: transparent;
-			cursor: pointer;
-		}
-		.icon-right kol-button-wc {
-			margin-right: 2.5em;
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-		select[multiple],
-		textarea {
-			overflow: auto;
-		}
-		textarea {
-			display: block;
-		}
-		select option {
-			margin: 1px 0;
-			padding: 0.5em;
-			cursor: pointer;
-		}
-		select option:disabled {
-			cursor: not-allowed;
-		}
-		option:active:not(:disabled),
-		option:checked:not(:disabled),
-		option:focus:not(:disabled),
-		option:hover:not(:disabled) {
-			color: white;
-		}
-	`,
-  "KOL-TEXTAREA": css$5`
-		kol-input {
-			gap: 0.4em;
-		}
-		kol-input .error {
-			order: 3;
-		}
-		kol-input label {
-			font-weight: 700;
-			order: 1;
-		}
-		kol-input .input {
-			order: 2;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.875em;
-			font-style: italic;
-		}
-		input,
-		select,
-		textarea {
-			border: none;
-		}
-		.input {
-			color: var(--colorText);
-			border: var(--formBorder);
-			font-size: var(--textFontSize);
-			line-height: 1.5;
-			padding: 0 0.5em;
-			width: 100%;
-		}
-		.input > kol-icon {
-			width: 1.5em;
-		}
-		.input > input:first-child {
-			padding-left: 0.375em;
-		}
-		.input > input:last-child {
-			padding-right: 0.375em;
-		}
-		.input:hover {
-			border-color: var(--color-gruen-hell);
-		}
-		input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-rot);
-			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-rot) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-rot);
-			font-weight: 700;
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-		label {
-			color: var(--color-text);
-			line-height: 1.5;
-		}
-		.input {
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-	`,
-  "KOL-ALERT": css$5`
-		:host > div {
-			background-color: white;
-			border-width: 2px;
-			border-style: solid;
-			border-radius: 0.25rem;
-			display: flex;
-			overflow: unset;
-		}
-		:host > div.default {
-			border-color: var(--color-grau-dunkel);
-		}
-		:host > div.default > .icon {
-			background-color: var(--color-grau-dunkel);
-		}
-		:host > div.error {
-			border-color: var(--color-rot);
-		}
-		:host > div.error > .icon {
-			background-color: var(--color-rot);
-		}
-		:host > div.info {
-			border-color: var(--color-blau);
-		}
-		:host > div.info > .icon {
-			background-color: var(--color-blau);
-		}
-		:host > div.success {
-			border-color: var(--color-gruen);
-		}
-		:host > div.success > .icon {
-			background-color: var(--color-gruen);
-		}
-		:host > div.warning {
-			border-color: var(--color-gelb);
-		}
-		:host > div.warning > .icon {
-			background-color: var(--color-gelb);
-		}
-		:host > div.msg > .icon {
-			color: white;
-			padding: 0.5em;
-			align-items: center;
-			display: inline-flex;
-		}
-		:host > div.msg.warning > .icon {
-			color: black;
-		}
-		:host > div.card.default .heading .icon {
-			background-color: var(--color-grau-dunkel);
-		}
-		:host > div.card.error .heading .icon {
-			background-color: var(--color-rot);
-		}
-		:host > div.card.info .heading .icon {
-			background-color: var(--color-blau);
-		}
-		:host > div.card.success .heading .icon {
-			background-color: var(--color-gruen);
-		}
-		:host > div.card.warning .heading .icon {
-			background-color: var(--color-gelb);
-		}
-		:host > div.card .heading .icon {
-			color: white;
-			padding: 0.5em;
-			align-items: center;
-			display: inline-flex;
-		}
-		:host > div.card.warning .heading .icon {
-			color: black;
-		}
-		:host > div kol-heading-wc .icon {
-			margin-right: 0.5em;
-		}
-		:host > div.card .heading .icon {
-			border-radius: 0 0 0.25rem 0;
-		}
-		:host > div.msg > div {
-			padding: 0.25em;
-		}
-		:host > div.msg > div > .heading {
-			padding: 0.25em;
-			display: inline-block;
-		}
-		:host > div .content {
-			padding: 0.25em;
-		}
-		:host > div > div {
-			display: grid;
-			grid-template-columns: 1fr auto;
-		}
-		:host > div > div > .content {
-			grid-row: 2;
-			grid-column: 1;
-		}
-		:host > div > div > .close {
-			grid-row: 1 / span 2;
-			display: flex;
-		}
-		:host > div.msg > div > .close > * {
-			margin: auto;
-		}
-		:host > div.msg.default .close .icon {
-			color: var(--color-grau-dunkel);
-		}
-		:host > div.msg.error .close .icon {
-			color: var(--color-rot);
-		}
-		:host > div.msg.info .close .icon {
-			color: var(--color-blau);
-		}
-		:host > div.msg.success .close .icon {
-			color: var(--color-gruen);
-		}
-		:host > div.msg.warning .close .icon {
-			color: var(--color-gelb);
-		}
-		:host > div.card > div > .heading {
-			width: 100%;
-		}
-		.close > button {
-			min-width: 44px;
-			min-height: 44px;
-			display: grid;
-			gap: 0.25em;
-			line-height: 1.5rem;
-			font-family: var(--font-family);
-			font-weight: 700;
-			cursor: pointer;
-			border-radius: 1.5em;
-			border-style: solid;
-			border-width: 2px;
-			font-size: 1rem;
-			align-items: center;
-			padding: 8px 14px;
-			justify-content: center;
-			font-style: normal;
-			text-align: center;
-			text-transform: uppercase;
-			width: inherit;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-			background-color: rgba(0, 0, 0, 0);
-			border-color: rgba(0, 0, 0, 0);
-		}
-		.close > button.icon-only {
-			padding: 8px;
-		}
-		.close > button.icon-only kol-icon {
-			display: inline-block;
-			width: 1.5em;
-			height: 1.5em;
-		}
-		.close > button:active {
-			box-shadow: none;
-			outline: none;
-		}
-		.close kol-icon::part(icon)::before {
-			content: '\\f00d';
-		}
-	`,
-  "KOL-HEADING": css$5`
-		.headline {
-			margin-top: 0;
-		}
-	`,
-  "KOL-BADGE": css$5`
-		:host {
-			display: inline-block;
-		}
-		kol-span-wc {
-			align-items: center;
-			border-radius: 0.3125rem;
-			display: grid;
-			gap: 0.5rem;
-			line-height: 1.25rem;
-			padding: 0.25rem 0.75rem;
-		}
-		kol-span-wc span {
-			display: flex;
-			gap: 0.25rem;
-		}
-	`,
-  "KOL-BUTTON-GROUP": css$5`
-		div {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 0.5em;
-		}
-	`,
-  "KOL-INDENTED-TEXT": css$5`
-		:host > div {
-			width: 100%;
-			padding: 15px;
-			background: var(--color-grau-weiss);
-			box-shadow: -4px 0px 0px var(--color-gruen);
-		}
-	`,
-  "KOL-LINK": css$5`
-		:is(a, button) {
-			/* color: var(--color-midnight); */
-			color: var(--external-link-color, var(--color-gruen));
-			font-style: normal;
-			font-weight: 400;
-			padding: var(--external-link-padding, 0);
-			text-decoration-line: none;
-		}
-		:is(a, button):focus {
-			/* outline: var(--color-focus) solid 2px; */
-			outline: none;
-		}
-		:is(a, button):hover {
-			/* text-decoration-thickness: 0.25em; */
-			box-shadow: inset 0 -1px 0 0 var(--external-link-color, var(--color-gruen));
-		}
-		.hidden {
-			display: none;
-			visibility: hidden;
-		} /*************************/ /* kol-link-wc {display: inline-block;} */ /* kol-icon {padding: 0 0.25rem;} */
-		.hidden {
-			display: none;
-			visibility: hidden;
-		}
-		.skip {
-			left: -99999px;
-			overflow: hidden;
-			position: absolute;
-			z-index: 9999999;
-			line-height: 1em;
-		}
-		.skip:focus {
-			background: white;
-			left: unset;
-			position: unset;
-		}
-		.icon-only {
-			padding-bottom: 0.2rem;
-		}
-		:is(a) kol-span-wc > span {
-			gap: var(--gapSmallest);
-		}
-	`,
-  "KOL-DETAILS": css$5`
-		details {
-			display: grid;
-			width: 100%;
-		}
-		summary {
-			margin: 0;
-			padding: 0;
-		}
-		summary span {
-			margin-left: 0.25rem;
-			text-decoration: underline;
-		}
-		summary span:hover {
-			text-decoration-thickness: 0.25em;
-		}
-		details > kol-indented-text {
-			margin: 0.25em 0 0 0.6em;
-		}
-	`,
-  "KOL-SPIN": css$5`
-		.cycle {
-			padding: 0.125rem;
-			& span {
-				background-color: #fc0;
-			}
-		}
-	`,
-  "KOL-PROGRESS": css$5`
-		:host progress,
-		:host span {
-			display: block;
-			height: 0px;
-			overflow: hidden;
-			width: 0px;
-		}
-		svg line:first-child,
-		svg circle:first-child {
-			fill: transparent;
-			stroke: var(--color-ice);
-		}
-		svg line:last-child,
-		svg circle:last-child {
-			stroke: var(--color-midnight);
-			fill: transparent;
-		}
-		progress {
-			display: none;
-		}
-	`,
-  "KOL-SELECT": css$5`
-		:host {
-			--color: var(--colorText); /* --color: blue; */
-		}
-		kol-input {
-			color: var(--color);
-			font-size: var(--textFontSize);
-			gap: var(--gapSmallest);
-		}
-		label {
-			font-weight: 700;
-			order: 1;
-		}
-		.input {
-			order: 2;
-		}
-		kol-alert.error {
-			color: var(--colorSignalError);
-			order: 3;
-		}
-		select {
-			background-color: var(--colorLight);
-			line-height: 1.5;
-			color: var(--color);
-			border: var(--formBorder);
-			padding: 0.5em 0.75em;
-		}
-		select:hover,
-		select:focus {
-			border-color: var(--colorPrimaryActive);
-		}
-		select:disabled {
-			cursor: not-allowed;
-		}
-		select[multiple] {
-			overflow: auto;
-		}
-		select option {
-			margin: 1px 0;
-			cursor: pointer;
-		}
-		select option:disabled {
-			cursor: not-allowed;
-		}
-		select:not([multiple]) option {
-			padding: 0.5em;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		} /* kol-input.error select:invalid { */
-		kol-input.error select {
-			border-color: var(--colorSignalError);
-		} /* option:active:not(:disabled),option:focus:not(:disabled),option:hover:not(:disabled) {color: white;} */
-	`,
-  "KOL-INPUT-COLOR": css$5`
-		kol-input {
-			display: grid;
-			padding: 0;
-			margin: 0;
-		}
-		input:focus,
-		input:hover,
-		select:focus,
-		select:hover,
-		textarea:focus,
-		textarea:hover {
-			border-color: black;
-		}
-		kol-input > label {
-			order: 1;
-			margin-bottom: 0.25em;
-		}
-		kol-input > label > span {
-			color: black;
-			font-size: 0.875rem;
-			line-height: 1.5rem;
-		}
-		kol-input > div.input {
-			background-color: white;
-			display: block;
-			order: 2;
-		}
-		kol-input > kol-alert.error {
-			margin-top: 0.25em;
-			order: 3;
-		}
-		input,
-		select,
-		textarea {
-			font-family: var(--font-family);
-			background-color: transparent;
-			box-sizing: border-box;
-			font-size: 1rem;
-			display: inline-flex;
-			line-height: 1.5em;
-			color: black;
-			border-color: var(--color-grau-dunkel);
-			border-width: 1px;
-			border-style: solid;
-			padding: 0.5em 0.75em;
-			overflow: hidden;
-			width: 100%;
-		}
-		input:not([type='range']),
-		select:not([multiple]) {
-			height: 2.75em;
-		}
-		textarea {
-			display: inherit;
-		}
-		input::placeholder {
-			color: var(--color-grau-dunkel);
-		}
-		input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		.icons {
-			display: flex;
-			justify-content: space-between;
-			height: 0;
-		}
-		.icons > * {
-			margin: 0.75em;
-		}
-		.icon-left input,
-		.icon-left select {
-			padding-left: 2em;
-		}
-		.icon-right input,
-		.icon-right select {
-			padding-right: 2em;
-		}
-		kol-button-wc {
-			position: relative;
-			float: right;
-			z-index: 1000;
-			margin-top: -33px;
-		}
-		kol-button-wc button {
-			border: 1px solid var(--color-grau-dunkel);
-			box-sizing: border-box;
-			background-color: transparent;
-			cursor: pointer;
-		}
-		.icon-right kol-button-wc {
-			margin-right: 2.5em;
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-		select[multiple],
-		textarea {
-			overflow: auto;
-		}
-		textarea {
-			display: block;
-		}
-		select option {
-			margin: 1px 0;
-			padding: 0.5em;
-			cursor: pointer;
-		}
-		select option:disabled {
-			cursor: not-allowed;
-		}
-		option:active:not(:disabled),
-		option:checked:not(:disabled),
-		option:focus:not(:disabled),
-		option:hover:not(:disabled) {
-			color: white;
-		}
-	`,
-  "KOL-ACCORDION": css$5`
-		:host > div {
-			font-family: var(--font-family);
-			padding: 0 0.5rem 0 0;
-		}
-		:host > div > kol-heading-wc {
-			font-weight: 700;
-			font-size: 1.25rem;
-			line-height: 1.75rem;
-		}
-		:host > div > kol-heading-wc button {
-			cursor: pointer;
-			width: 100%;
-			margin: 0;
-			display: flex;
-			gap: 0.5em;
-			border: 0;
-			align-items: center;
-			overflow: hidden;
-			font-size: inherit;
-			line-height: 1.5em;
-			background-color: transparent;
-			padding: 0.5em;
-			padding-left: 0;
-		}
-		:host > div[part*='open'] > kol-heading-wc button {
-			padding: 0.5em;
-			padding-left: 0;
-		}
-		:host > div > kol-heading-wc button kol-icon::part(icon) {
-			font-family: 'Font Awesome 6 Free';
-			font-weight: 900;
-			color: var(--color-midnight);
-		}
-		.accordion > kol-heading-wc button kol-icon::part(icon)::before {
-			content: '\\2b';
-		}
-		.accordion.open > kol-heading-wc button kol-icon::part(icon)::before {
-			content: '\\f068';
-		}
-		.accordion {
-			width: 100%;
-			height: 100%;
-			display: grid;
-		}
-		.accordion[part*='open'] div[part='header'] {
-			padding-left: 2em;
-		}
-		.accordion[part*='open'] div[part='content'] {
-			padding-top: 1rem;
-		}
-		button {
-			font-weight: inherit;
-			font-size: inherit;
-			line-height: inherit;
-		}
-		.accordion {
-			background: var(--color-white);
-		}
-		.accordion[part*='open'] {
-			padding-bottom: 1em;
-		} /* .accordion > [part="header"] {height: 0;} */
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			margin: 0;
-		}
-	`,
-  "KOL-TABLE": css$5`
-		:host * {
-			hyphens: var(--hyphens);
-			line-height: var(--textFontLineHeight);
-		}
-		:host > div:first-child {
-			overflow-x: auto;
-			overflow-y: hidden;
-		}
-		table {
-			border-collapse: collapse;
-		}
-		caption {
-			height: auto;
-			text-align: left;
-		} /* visuell verstecken */
-		caption {
-			clip: rect(1px, 1px, 1px, 1px);
-			clip-path: inset(50%);
-			height: 1px;
-			width: 1px;
-			margin: -1px;
-			overflow: hidden;
-			padding: 0;
-			position: absolute;
-		}
-		table,
-		tr,
-		th,
-		td {
-			border: 0 solid var(--color-weiss);
-		}
-		tr {
-			border-top-width: 2px;
-		}
-		th {
-			background-color: var(--color-gruen);
-			color: var(--color-weiss);
-			font-weight: normal;
-		}
-		tbody > tr:nth-child(odd) {
-			background-color: #f2f2f2;
-		}
-		tbody > tr:hover {
-			background-color: var(--color-gruen-dunkel);
-			color: var(--color-weiss);
-		}
-		th,
-		td {
-			border-right-width: 2px;
-			padding: 0.25em 0.5em;
-		}
-		th > div {
-			display: grid;
-			grid-template-columns: 1fr auto;
-			align-items: center;
-			gap: 0.25em;
-		}
-		.pagination {
-			padding: 0.5em;
-			font-size: var(--textFontSize);
-			gap: 1rem;
-		}
-		th kol-button button {
-			padding: 0.5rem;
-		} /* default: [aria-sort="none"] */
-		[data-sort] kol-button::part(icon)::before {
-			font-family: 'Font Awesome 6 Free';
-			font-weight: 900;
-			content: '\\f0dc';
-		}
-		[data-sort='sort-ASC'] kol-button::part(icon)::before {
-			content: '\\f0de';
-		}
-		[data-sort='sort-DESC'] kol-button::part(icon)::before {
-			content: '\\f0dd';
-		}
-	`,
-  "KOL-NAV": css$5`
-		ul {
-			list-style: none;
-		}
-		a {
-			color: var(--colorText);
-			display: block;
-			padding: 0.3rem 0.5rem;
-			text-decoration: none;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-		}
-		a:hover {
-			background-color: var(--colorPrimarySuccess);
-			color: var(--colorLight);
-		}
-		a:focus,
-		button:focus {
-			outline: var(--focusOutline);
-			outline-offset: 2px;
-			transition: outline-offset 0.2s linear;
-		}
-		.list[data-deep='0'] {
-			font-family: var(--textFontSerif);
-		}
-		.horizontal {
-			gap: var(--gap);
-		}
-	`,
-  "KOL-CARD": css$5`
-		:host > div {
-			--card-padding: var(--gap);
-			border-color: var(--color-gruen);
-			border-style: solid;
-			border-width: 1px;
-			border-radius: 0.25rem;
-			box-shadow: 0px 0px 1.875rem 0px rgba(0, 0, 0, 0.3);
-			display: grid;
-			width: 100%;
-			height: 100%;
-			background-color: white;
-			grid-template-rows: min-content 2fr min-content;
-			padding-bottom: var(--gapLarge);
-		}
-		:host kol-heading-wc {
-			display: inline-flex;
-			font-style: normal;
-		}
-		:host kol-heading-wc h1,
-		:host kol-heading-wc h2 {
-			font-family: var(--textFontSerif);
-			font-weight: var(--textFontWeight);
-			margin: 0;
-		}
-		:host kol-heading-wc h1 {
-			font-size: var(--headline1FontSize);
-			line-height: var(--headline1LineHeight);
-		}
-		:host kol-heading-wc h2 {
-			font-size: var(--headline2FontSize);
-			line-height: var(--headline2LineHeight);
-		}
-		:host kol-heading-wc h3 {
-			font-size: var(--headline3FontSize);
-			line-height: var(--headline3LineHeight);
-		}
-		:host kol-heading-wc h4 {
-			font-size: var(--headline4FontSize);
-			line-height: var(--headline4LineHeight);
-		}
-		:host div.header {
-			border-bottom: 1px solid var(--color-gruen);
-			padding: var(--card-padding);
-			align-items: flex-start;
-			display: flex;
-			gap: 0 var(--gapSmall);
-			justify-content: space-between;
-		}
-		:host div.content {
-			padding: var(--card-padding) var(--card-padding) 0;
-		}
-		:host div.footer {
-			margin-top: 3rem;
-			padding: 0 var(--card-padding);
-		}
-	`,
-  "KOL-INPUT-CHECKBOX": css$5`
-		:host {
-			--border-width: 1px;
-			--spacing: 0.25rem;
-		}
-		label {
-			cursor: pointer;
-		}
-		input {
-			color: black;
-			border-color: var(--color-grau-dunkel);
-			border-width: var(--border-width);
-			border-style: solid;
-			line-height: 24px;
-			font-size: 16px;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		input:hover {
-			border-color: var(--color-blau);
-		} /* NEU */
-		kol-input {
-			display: grid;
-			align-items: center;
-			justify-items: left;
-			width: 100%;
-		}
-		kol-input.checkbox {
-			grid-template-columns: calc(6 * var(--spacing)) auto;
-		}
-		kol-input.switch {
-			grid-template-columns: calc(13 * var(--spacing)) auto;
-		}
-		kol-input > div.input {
-			display: inline-flex;
-			order: 1;
-		}
-		kol-input > div.input input {
-			margin: 0px;
-		}
-		kol-input > label {
-			order: 2;
-			padding-left: calc(2 * var(--spacing));
-		}
-		kol-input > kol-alert.error {
-			order: 3;
-			padding-top: 0.25em;
-			grid-column: span 2 / auto;
-		} /* CHECKBOX */
-		input[type='checkbox'] {
-			appearance: none;
-			background-color: white;
-			cursor: pointer;
-			transition: 0.5s;
-		}
-		input[type='checkbox'].kol-disabled:before {
-			cursor: not-allowed;
-		}
-		input[type='checkbox']:before {
-			content: '';
-			cursor: pointer;
-		}
-		input[type='checkbox']:checked {
-			background-color: var(--color-blau);
-			border-color: var(--color-blau);
-		}
-		.checkbox input[type='checkbox'] {
-			height: calc(6 * var(--spacing));
-			min-width: calc(6 * var(--spacing));
-			width: calc(6 * var(--spacing));
-		}
-		.checkbox input[type='checkbox']:before {
-			background-color: transparent;
-			display: block;
-			height: calc(6 * var(--spacing));
-			position: relative;
-			width: calc(6 * var(--spacing));
-		}
-		.checkbox input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * var(--spacing) - var(--border-width));
-			top: calc(2.85 * var(--spacing) - var(--border-width));
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-style: solid;
-			height: calc(3 * var(--spacing));
-			width: calc(1.5 * var(--spacing));
-		}
-		.checkbox input[type='checkbox']:indeterminate:before {
-			background-color: var(--color-grau-dunkel);
-			height: 0.375rem;
-			top: 0.5rem;
-			left: 0.2rem;
-			width: calc(4 * var(--spacing));
-		}
-		.switch input[type='checkbox'] {
-			min-width: 3.2em;
-			width: 3.2em;
-			height: 1.7em;
-			display: inline-block;
-			position: relative;
-		}
-		.switch input[type='checkbox']:before {
-			-webkit-transition: 0.5s;
-			-moz-transition: 0.5s;
-			-ms-transition: 0.5s;
-			transition: 0.5;
-			width: 1.2em;
-			height: 1.2em;
-			left: calc(0.25em - var(--border-width));
-			top: calc(0.25em - var(--border-width));
-			background-color: black;
-			position: absolute;
-		}
-		.switch input[type='checkbox']:checked:before {
-			-webkit-transform: translateX(1.5em);
-			-moz-transform: translateX(1.5em);
-			-ms-transform: translateX(1.5em);
-			transform: translateX(1.5em);
-			background-color: white;
-		}
-		.switch input[type='checkbox']:indeterminate:before {
-			-webkit-transform: translateX(0.75em);
-			-moz-transform: translateX(0.75em);
-			-ms-transform: translateX(0.75em);
-			transform: translateX(0.75em);
-			background-color: var(--color-blau);
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-	`,
-  "KOL-INPUT-RADIO": css$5`
-		:host {
-			--border-width: 1px;
-			--input-color: var(--color-gruen-dunkel);
-			--input-inner-position: calc(var(--spacing) + var(--border-width));
-			--input-inner-size: calc(var(--spacing) * 3);
-			--input-outer-size: calc(var(--spacing) * 6);
-		}
-		div[slot='input'] {
-			align-items: center;
-			display: flex;
-			gap: calc(var(--spacing) * 2);
-		}
-		fieldset {
-			border: 0;
-			margin: 0;
-			padding: 0;
-		}
-		fieldset.horizontal {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 0.5rem 32px;
-		}
-		input {
-			cursor: pointer;
-			display: grid;
-			align-self: center;
-			border: var(--border-width) solid var(--input-color);
-			appearance: none;
-			border-radius: 100%;
-			height: var(--input-outer-size);
-			width: var(--input-outer-size);
-			margin: 0;
-		}
-		input:hover {
-			--border-width: 2px;
-		}
-		input:focus:hover {
-			box-shadow: none;
-		}
-		input:disabled {
-			--input-color: var(--color-disabled);
-		}
-		input:disabled:hover {
-			--border-width: 1px;
-		}
-		input:disabled + label {
-			color: var(--color-disabled);
-		}
-		input::before {
-			content: '';
-			cursor: pointer; /* left: var(--input-inner-position);top: var(--input-inner-position); */
-			position: relative;
-			border-radius: 100%;
-			display: inline-block;
-			height: var(--input-inner-size);
-			width: var(--input-inner-size);
-		}
-		input:hover::before {
-			--input-inner-position: var(--spacing);
-		}
-		input:checked::before {
-			background-color: var(--input-color);
-		}
-		kol-input {
-			display: grid;
-		}
-		kol-input {
-			margin-bottom: 1rem;
-		}
-		kol-input.error input {
-			border-color: var(--color-rot);
-			padding-left: 1em;
-		}
-		kol-input.error input:focus,
-		kol-input.error select:focus,
-		kol-input.error textarea:focus {
-			outline: var(--color-focus) solid 2px !important;
-		}
-		kol-input kol-alert.error {
-			margin-bottom: 0.4em;
-			order: 1;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-rot);
-			font-weight: 700;
-		}
-		label {
-			color: var(--color-text);
-			cursor: pointer;
-			display: grid;
-			font-size: var(--text-size); /* order: 2; */
-			font-weight: 700;
-		}
-		legend {
-			font-size: var(--text-size);
-			margin-bottom: var(--text-size);
-		}
-		.icons {
-			display: flex;
-			justify-content: space-between;
-			height: 0;
-		}
-		.icons > * {
-			margin: 0.75em;
-		}
-		.icon-left input,
-		.icon-left select {
-			padding-left: 2em;
-		}
-		.icon-right input,
-		.icon-right select {
-			padding-right: 2em;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-	`,
-  "KOL-TOAST-CONTAINER": css$5`
-		:host {
-			top: 1rem;
-			width: 750px;
-			left: 50%;
-			transform: translateX(-50%);
-		}
-		.toast {
-			background: #fff;
-			margin-top: 1rem;
-		}
-	`,
-  "KOL-TABS": css$5`
-		button:disabled {
-			opacity: 0.5;
-			cursor: not-allowed;
-		}
-		:host {
-			font-family: var(--font-family);
-		}
-		:host > div {
-			display: block;
-			width: 100%;
-		}
-		:host kol-button-group-wc {
-			display: inline-block;
-			border-radius: 0.25rem 0.25rem 0 0;
-			background-color: var(--kolibri-color-normal);
-		}
-		:host kol-button-group-wc > div {
-			display: inline-flex;
-		}
-		:host kol-button-group-wc > div + div {
-			margin-left: 0.25em;
-		}
-		:host > div > div {
-			padding: 0.25em;
-			border: 1px solid var(--kolibri-border-color);
-			border-radius: 0 0 0.25rem 0.25rem;
-		}
-		button {
-			box-sizing: border-box;
-			font-size: inherit;
-			line-height: 1.25em;
-			cursor: pointer;
-			border-width: 2px;
-			box-shadow: 0 0 0.25em gray;
-			font-family: var(--kolibri-font-family);
-			width: inherit;
-			border-radius: var(--kolibri-border-radius);
-			border-style: solid;
-			padding: calc(2 * var(--kolibri-spacing));
-			display: grid;
-			gap: 0.25em;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-		}
-		kol-button-wc[aria-selected='true'] button {
-			border-bottom-width: 0.25em !important;
-			border-bottom-style: solid;
-			border-bottom-color: var(--kolibri-color-accent) !important;
-		}
-		button > kol-span-wc span {
-			display: flex;
-			gap: 0.25em;
-			align-items: center;
-			justify-content: center;
-		}
-		button:disabled {
-			cursor: not-allowed;
-			opacity: 0.5;
-		}
-		button.primary,
-		button.primary:disabled:hover {
-			background-color: var(--kolibri-color-primary);
-			border-color: var(--kolibri-color-primary);
-			color: white;
-		}
-		button.primary:hover,
-		button.primary:focus {
-			color: var(--kolibri-color-primary);
-		}
-		button.secondary,
-		button.secondary:disabled:hover {
-			background-color: var(--kolibri-color-secondary);
-			border-color: var(--kolibri-color-secondary);
-			color: white;
-		}
-		button.secondary:hover,
-		button.secondary:focus {
-			color: var(--kolibri-color-secondary);
-		}
-		button.normal,
-		button.normal:disabled:hover {
-			background-color: var(--kolibri-color-normal);
-			border-color: var(--kolibri-color-normal);
-			color: white;
-		}
-		button.normal:hover,
-		button.normal:focus {
-			color: var(--kolibri-color-normal);
-		}
-		button.danger,
-		button.danger:disabled:hover {
-			background-color: var(--kolibri-color-danger);
-			border-color: var(--kolibri-color-danger);
-			color: white;
-		}
-		button.danger:hover,
-		button.danger:focus {
-			color: var(--kolibri-color-danger);
-		}
-		button.ghost,
-		button.ghost:disabled:hover {
-			background-color: white;
-			border-color: var(--kolibri-color-ghost);
-			color: var(--kolibri-color-ghost);
-		}
-		button.ghost:hover,
-		button.ghost:focus {
-			background-color: var(--kolibri-color-ghost);
-			color: white;
-		}
-		button:hover,
-		button:focus {
-			background-color: white;
-			box-shadow: 0 0 0.25em black;
-		}
-		button:active {
-			outline: 0 !important;
-			box-shadow: none !important;
-		}
-		.close-button {
-			font-size: 25%;
-			height: fit-content;
-			width: 0;
-		}
-		.close-button button {
-			width: 1rem;
-			position: relative;
-			height: 1rem;
-			left: -4.25em;
-			top: 0.25em;
-		}
-		:host > div {
-			display: grid;
-		}
-		:host > div.tabs-align-left {
-			grid-template-columns: auto 1fr;
-		}
-		:host > div.tabs-align-right {
-			grid-template-columns: 1fr auto;
-		}
-		:host > .tabs-align-left kol-button-group-wc,
-		:host > .tabs-align-top kol-button-group-wc {
-			order: 0;
-		}
-		:host > .tabs-align-bottom kol-button-group-wc,
-		:host > .tabs-align-right kol-button-group-wc {
-			order: 1;
-		}
-		:host > div.tabs-align-left kol-button-group-wc > div,
-		:host > div.tabs-align-left kol-button-group-wc > div > div,
-		:host > div.tabs-align-right kol-button-group-wc > div,
-		:host > div.tabs-align-right kol-button-group-wc > div > div {
-			display: grid;
-		}
-		:host > div.tabs-align-left kol-button-group-wc > div > div kol-button-wc,
-		:host > div.tabs-align-right kol-button-group-wc > div > div kol-button-wc {
-			width: 100%;
-		}
-		:host > div.tabs-align-bottom kol-button-group-wc div,
-		:host > div.tabs-align-top kol-button-group-wc div {
-			display: flex;
-			flex-wrap: wrap;
-		}
-		:host > div.tabs-align-bottom > kol-button-group-wc {
-			border-radius: 0 0 0.25rem 0.25rem;
-		}
-		:host > div.tabs-align-bottom > div {
-			border-radius: 0.25rem 0.25rem 0 0;
-		}
-		:host > div.tabs-align-top > kol-button-group-wc {
-			border-radius: 0.25rem 0.25rem 0 0;
-		}
-		:host > div.tabs-align-top > div {
-			border-radius: 0 0 0.25rem 0.25rem;
-		}
-		:host > div.tabs-align-left > kol-button-group-wc {
-			border-radius: 0.25rem 0 0 0.25rem;
-		}
-		:host > div.tabs-align-left > div {
-			border-radius: 0 0.25rem 0.25rem 0;
-		}
-		:host > div.tabs-align-right > kol-button-group-wc {
-			border-radius: 0 0.25rem 0.25rem 0;
-		}
-		:host > div.tabs-align-right > div {
-			border-radius: 0.25rem 0 0 0.25rem;
-		}
-	`,
-  "KOL-PAGINATION": css$5`
-		.navigation-list > li {
-			min-width: var(--a11y-min-size);
-			text-align: center;
-		}
-		.icon::part(icon) {
-			font-family: 'Font Awesome 6 Free';
-			font-weight: 900;
-		}
-		.first .icon::part(icon)::before {
-			content: '\\f100';
-		}
-		.previous .icon::part(icon)::before {
-			content: '\\f104';
-		}
-		.next .icon::part(icon)::before {
-			content: '\\f105';
-		}
-		.last .icon::part(icon)::before {
-			content: '\\f101';
-		}
-		.button {
-			--background-color: var(--color-gruen-dunkel);
-			--border-color: var(--color-gruen-dunkel);
-			--border-size: 1px;
-			--min-size: 2.75rem;
-			align-items: center;
-			background-color: var(--color-weiss);
-			border: var(--border-size) solid var(--color-gruen-hell);
-			color: var(--color-grau-dunkel);
-			cursor: pointer;
-			display: grid;
-			font-family: var(--font-family);
-			font-size: var(--text-size);
-			font-style: normal;
-			gap: 0.25em;
-			justify-content: center;
-			line-height: 1.5;
-			min-height: var(--min-size);
-			min-width: var(--min-size);
-			padding: 0.5rem 0.875rem;
-			text-align: center;
-			text-transform: uppercase;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-			&:hover:enabled {
-				text-decoration: underline;
-			}
-			&:focus {
-				outline: var(--color-focus) solid 2px;
-			}
-			&:disabled,
-			&:disabled:hover {
-				opacity: 0.5;
-				background-color: var(--color-weiss);
-				border-color: var(--color-grau-hell);
-				color: var(--color-disabled);
-				cursor: not-allowed;
-			}
-			& .icon {
-				display: inline-block;
-				width: 1.5em;
-				height: 1.5em;
-			}
-		}
-		.selected button {
-			border-radius: 1.5em;
-			border: none;
-			color: var(--color-midnight) !important;
-			font-weight: 700;
-			line-height: normal;
-		}
-	`,
-  "KOL-INPUT-RANGE": css$5`
-		/* https://www.cssportal.com/style-input-range/ */
-		kol-input {
-			display: grid;
-		}
-		kol-input label {
-			display: grid;
-			order: 2;
-			margin-bottom: 0.4em;
-		}
-		kol-input div.input {
-			box-sizing: border-box;
-			order: 3;
-			background-color: white;
-			border-radius: 0.3125rem;
-		}
-		kol-input kol-alert.error {
-			margin-bottom: 0.4em;
-			order: 1;
-		}
-		input,
-		select,
-		textarea {
-			font-family: var(--font-family);
-			background-color: transparent;
-			box-sizing: border-box;
-			font-size: 1rem;
-			display: inline-flex;
-			line-height: 1.5em;
-			border-color: var(--color-grey);
-			border-width: 2px;
-			border-style: solid;
-			padding: 0.625em 0.875em;
-			border-radius: 0.3125rem;
-			overflow: hidden;
-			width: calc(100% - 4em);
-		}
-		input,
-		select:not([multiple]) {
-			height: 2.75em;
-		}
-		input::placeholder {
-			color: var(--color-grey);
-		}
-		input:hover {
-			border-color: var(--color-midnight);
-		}
-		input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-			cursor: not-allowed;
-			border-color: var(--border-default);
-		}
-		.required #label::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		.icons {
-			display: flex;
-			justify-content: space-between;
-			height: 0;
-		}
-		.icons > * {
-			margin: 0.725em 0.875em;
-			box-sizing: border-box;
-			border-color: transparent;
-			border-width: 2px;
-			border-style: solid;
-		}
-		.icon-left input,
-		.icon-left select {
-			padding-left: calc(0.875em + 1em + 0.5em);
-		}
-		.icon-right input,
-		.icon-right select {
-			padding-right: calc(0.875em + 1em + 0.5em);
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-red);
-			padding-left: 1em;
-		}
-		kol-input.error input:focus,
-		kol-input.error select:focus,
-		kol-input.error textarea:focus {
-			outline-color: var(--color-red) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-red);
-			font-weight: 700;
-		}
-		kol-button-wc {
-			position: relative;
-			float: right;
-			z-index: 1000;
-			margin-top: -33px;
-		}
-		kol-button-wc button {
-			border: 1px solid var(--color-grey);
-			border-radius: 0.25rem;
-			box-sizing: border-box;
-			background-color: transparent;
-			cursor: pointer;
-		}
-		.icon-right kol-button-wc {
-			margin-right: 2.5em;
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-		.icon-left input,
-		.icon-left select {
-			margin-left: 2em;
-		}
-		.icon-right input,
-		.icon-right select {
-			margin-right: 2em;
-		}
-		input[type='range'] {
-			appearance: none;
-			-webkit-appearance: none;
-			-moz-appearance: none;
-		}
-		input[type='range'] {
-			overflow: visible;
-			background-color: var(--color-ice);
-			border: 0;
-			height: 0.5rem;
-			padding: 0;
-			padding-bottom: 0;
-			margin-bottom: 0;
-		}
-		input[type='range']::-webkit-slider-thumb {
-			box-sizing: border-box;
-			background-color: var(--color-midnight);
-			height: 20px;
-			width: 20px;
-			border-radius: 20px;
-			cursor: pointer;
-			-webkit-appearance: none;
-		}
-	`,
-  "KOL-LINK-BUTTON": css$5`
-		:host {
-			--background-color: var(--color-gruen-dunkel);
-			--border-color: var(--color-gruen-dunkel);
-			--border-size: 1px;
-			--min-size: 2.75rem;
-			display: inline-block;
-		}
-		:is(button, a) {
-			outline: none;
-			&::before {
-				/* Render zero-width character as first element to set the baseline correctly. */
-				content: '\\200B';
-			}
-		}
-		:is(button, a) > kol-span-wc {
-			border-width: var(--border-size);
-			border-style: solid;
-			min-width: var(--min-size);
-			min-height: var(--min-size);
-			display: grid;
-			gap: 0.25em;
-			line-height: 1.5;
-			font-family: var(--font-family);
-			cursor: pointer;
-			font-size: var(--text-size);
-			align-items: center;
-			padding: 0.5rem 0.875rem !important;
-			justify-content: center;
-			font-style: normal;
-			text-align: center;
-			text-transform: uppercase;
-			width: inherit;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-		}
-		:is(button, a):hover:enabled > kol-span-wc {
-			text-decoration: underline;
-		}
-		:is(button, a):focus > kol-span-wc {
-			outline: var(--color-focus) solid 2px;
-		}
-		.primary :is(button, a) > kol-span-wc,
-		.primary :is(button, a):active > kol-span-wc,
-		.primary :is(button, a):hover > kol-span-wc {
-			background-color: var(--background-color);
-			border-color: var(--border-color);
-			color: var(--color-weiss);
-		}
-		.secondary :is(button, a) > kol-span-wc,
-		.danger :is(button, a) > kol-span-wc,
-		.normal :is(button, a) > kol-span-wc,
-		.ghost :is(button, a) > kol-span-wc {
-			background-color: var(--color-weiss);
-			border-color: var(--color-gruen-hell);
-			color: var(--color-grau-dunkel);
-		}
-		.ghost :is(button, a) > kol-span-wc {
-			background-color: transparent;
-			color: inherit;
-			border: calc(var(--border-size) * 2) solid transparent;
-		}
-		.secondary :is(button, a):active > kol-span-wc,
-		.secondary :is(button, a):hover > kol-span-wc {
-			background-color: var(--background-color);
-			border-color: var(--background-color);
-			border-width: var(--border-size);
-			color: var(--color-weiss);
-		}
-		:is(button, a):disabled > kol-span-wc,
-		:is(button, a):disabled:hover > kol-span-wc {
-			background-color: var(--color-weiss);
-			border-color: var(--color-grau-hell);
-			color: var(--color-disabled);
-			cursor: not-allowed;
-		}
-	`,
-  "KOL-BUTTON-LINK": css$5`
-		button {
-			background-color: transparent;
-			border: 0;
-			cursor: pointer;
-		}
-		kol-link-button-wc {
-			display: inline-block;
-		}
-		button {
-			color: var(--textFontColorblau);
-			font-style: normal;
-			font-weight: 400;
-			display: inline-flex;
-			line-height: 1.5em;
-			text-decoration-line: none !important;
-			outline: none !important;
-		}
-		button:focus-within,
-		button:hover {
-			box-shadow: inset 0 -1px 0 0 currentColor;
-		}
-		kol-icon {
-			padding: 0 0.25em;
-			display: inline-block;
-		}
-	`,
-  "KOL-ABBR": css$5`
-		abbr {
-			text-decoration: none;
-			border-bottom: dotted var(--color-metal) 1px;
-		}
-	`,
-  "KOL-BREADCRUMB": css$5`
-		nav {
-			width: 100%;
-		}
-		ul {
-			margin: 0;
-			padding: 0;
-			list-style: none;
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-		}
-		kol-link {
-			display: inline;
-		}
-		:host kol-icon[exportparts*='separator'] {
-			padding: 0 0.5rem;
-		}
-		:host kol-icon::part(icon) {
-			font-family: 'Font Awesome 6 Free';
-			font-weight: 900;
-			font-size: 0.875rem !important;
-		}
-		:host kol-icon::part(icon)::before {
-			color: currentColor;
-			font-family: 'Font Awesome 6 Free';
-		}
-		:host ul > li:not(:first-child) kol-icon::part(icon)::before {
-			content: '\\f105';
-		}
-		:host li > kol-link > kol-link-wc > a {
-			color: red !important;
-		}
-	`,
-  "KOL-MODAL": css$5`
-		:host .overlay .modal {
-			max-height: calc(100% - 32px);
-		}
-	`,
-  "KOL-ICON": css$5`
-		:host {
-			color: inherit;
-		} /*! * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) * Copyright 2022 Fonticons, Inc. */
-		.fa {
-			font-family: var(--fa-style-family, 'Font Awesome 6 Free');
-			font-weight: var(--fa-style, 900);
-		}
-		.fa,
-		.fas,
-		.fa-solid,
-		.far,
-		.fa-regular,
-		.fal,
-		.fa-light,
-		.fat,
-		.fa-thin,
-		.fad,
-		.fa-duotone,
-		.fab,
-		.fa-brands {
-			-moz-osx-font-smoothing: grayscale;
-			-webkit-font-smoothing: antialiased;
-			display: var(--fa-display, inline-block);
-			font-style: normal;
-			font-variant: normal;
-			line-height: 1;
-			text-rendering: auto;
-		}
-		[class*='fa-'] {
-			font-style: 0.8rem;
-		} /************************************************************/
-		.fa-arrow-right::before {
-			content: '\\f061';
-		}
-		.fa-arrow-right-from-bracket::before {
-			content: '\\f08b';
-		}
-		.fa-clock::before {
-			content: '\\f017';
-		}
-		.fa-home::before {
-			content: '\\f015';
-		}
-		.fa-times-circle::before {
-			content: '\\f057';
-		}
-		.fa-exclamation-triangle::before {
-			content: '\\f071';
-		} /************************************************************/
-		.fa-chevron-left::before {
-			content: '\\f053';
-		}
-		.fa-chevron-right::before {
-			content: '\\f054';
-		}
-		.fa-download::before {
-			content: '\\f019';
-		}
-		fa-exclamation-triangle::before {
-			content: '\\f071';
-		}
-		.fa-file::before {
-			content: '\\f15b';
-		}
-		.fa-house::before {
-			content: '\\f015';
-		}
-		.fa-link::before {
-			content: '\\f0c1';
-		}
-		.fa-plus::before {
-			content: '\\2b';
-		}
-		.fa-search::before {
-			content: '\\f002';
-		}
-		.fa-times-circle::before {
-			content: '\\f057';
-		}
-		.fa-arrow-up-right-from-square::before {
-			content: '\\f08e';
-		}
-		.fa-user::before {
-			content: '\\f007';
-		}
-		.fa-xmark::before {
-			content: '\\f00d';
-		} /************************************************************/
-		:root,
-		:host {
-			--fa-font-regular: normal 400 1em/1 'Font Awesome 6 Free';
-		}
-		@font-face {
-			font-family: 'Font Awesome 6 Free';
-			font-style: normal;
-			font-weight: 400;
-			font-display: block;
-			src:
-				url('../webfonts/fa-regular-400.woff2') format('woff2'),
-				url('../webfonts/fa-regular-400.ttf') format('truetype');
-		}
-		.far,
-		.fa-regular {
-			font-family: 'Font Awesome 6 Free';
-			font-weight: 400;
-		}
-		:root,
-		:host {
-			--fa-font-solid: normal 900 1em/1 'Font Awesome 6 Free';
-		}
-		@font-face {
-			font-family: 'Font Awesome 6 Free';
-			font-style: normal;
-			font-weight: 900;
-			font-display: block;
-			src:
-				url('../webfonts/fa-solid-900.woff2') format('woff2'),
-				url('../webfonts/fa-solid-900.ttf') format('truetype');
-		}
-		.fas,
-		.fa-solid {
-			font-family: 'Font Awesome 6 Free';
-			font-weight: 900;
-		}
-		@font-face {
-			font-family: 'Font Awesome 5 Brands';
-			font-display: block;
-			font-weight: 400;
-			src:
-				url('../webfonts/fa-brands-400.woff2') format('woff2'),
-				url('../webfonts/fa-brands-400.ttf') format('truetype');
-		}
-		@font-face {
-			font-family: 'Font Awesome 5 Free';
-			font-display: block;
-			font-weight: 900;
-			src:
-				url('../webfonts/fa-solid-900.woff2') format('woff2'),
-				url('../webfonts/fa-solid-900.ttf') format('truetype');
-		}
-		@font-face {
-			font-family: 'Font Awesome 5 Free';
-			font-display: block;
-			font-weight: 400;
-			src:
-				url('../webfonts/fa-regular-400.woff2') format('woff2'),
-				url('../webfonts/fa-regular-400.ttf') format('truetype');
-		}
-		@font-face {
-			font-family: 'FontAwesome';
-			font-display: block;
-			src:
-				url('../webfonts/fa-solid-900.woff2') format('woff2'),
-				url('../webfonts/fa-solid-900.ttf') format('truetype');
-		}
-		@font-face {
-			font-family: 'FontAwesome';
-			font-display: block;
-			src:
-				url('../webfonts/fa-brands-400.woff2') format('woff2'),
-				url('../webfonts/fa-brands-400.ttf') format('truetype');
-		}
-		@font-face {
-			font-family: 'FontAwesome';
-			font-display: block;
-			src:
-				url('../webfonts/fa-regular-400.woff2') format('woff2'),
-				url('../webfonts/fa-regular-400.ttf') format('truetype');
-			unicode-range: U+F003, U+F006, U+F014, U+F016-F017, U+F01A-F01B, U+F01D, U+F022, U+F03E, U+F044, U+F046, U+F05C-F05D, U+F06E, U+F070, U+F087-F088, U+F08A,
-				U+F094, U+F096-F097, U+F09D, U+F0A0, U+F0A2, U+F0A4-F0A7, U+F0C5, U+F0C7, U+F0E5-F0E6, U+F0EB, U+F0F6-F0F8, U+F10C, U+F114-F115, U+F118-F11A,
-				U+F11C-F11D, U+F133, U+F147, U+F14E, U+F150-F152, U+F185-F186, U+F18E, U+F190-F192, U+F196, U+F1C1-F1C9, U+F1D9, U+F1DB, U+F1E3, U+F1EA, U+F1F7, U+F1F9,
-				U+F20A, U+F247-F248, U+F24A, U+F24D, U+F255-F25B, U+F25D, U+F271-F274, U+F278, U+F27B, U+F28C, U+F28E, U+F29C, U+F2B5, U+F2B7, U+F2BA, U+F2BC, U+F2BE,
-				U+F2C0-F2C1, U+F2C3, U+F2D0, U+F2D2, U+F2D4, U+F2DC;
-		}
-		@font-face {
-			font-family: 'FontAwesome';
-			font-display: block;
-			src:
-				url('../webfonts/fa-v4compatibility.woff2') format('woff2'),
-				url('../webfonts/fa-v4compatibility.ttf') format('truetype');
-			unicode-range: U+F041, U+F047, U+F065-F066, U+F07D-F07E, U+F080, U+F08B, U+F08E, U+F090, U+F09A, U+F0AC, U+F0AE, U+F0B2, U+F0D0, U+F0D6, U+F0E4, U+F0EC,
-				U+F10A-F10B, U+F123, U+F13E, U+F148-F149, U+F14C, U+F156, U+F15E, U+F160-F161, U+F163, U+F175-F178, U+F195, U+F1F8, U+F219, U+F250, U+F252, U+F27A;
-		}
-	`,
-  "KOL-SKIP-NAV": css$5`
-		kol-link-wc > a > kol-span-wc {
-			border-radius: var(--a11y-min-size);
-			border-style: solid;
-			border-width: 2px;
-			gap: 0.5rem;
-			line-height: 1rem;
-			padding: 8px 14px;
-			background-color: var(--color-ocean);
-			border-color: var(--color-ocean);
-			color: var(--color-white);
-			cursor: pointer;
-		}
-	`,
-  "KOL-LINK-GROUP": css$5`
-		ul {
-			list-style: none;
-			margin: 0px;
-			padding: 0px;
-		}
-		nav.horizontal ul {
-			display: flex;
-			flex-wrap: wrap;
-		}
-		nav.horizontal li {
-			list-style: none;
-			margin-left: 1.25rem;
-			margin-right: 0.25rem;
-		}
-		nav.horizontal li:first-child {
-			margin-left: 0;
-		}
-		nav.horizontal li:last-child {
-			margin-right: 0;
-		}
-		nav.vertical li {
-			margin-left: 1.75rem;
-			margin-right: 0.5rem;
-		}
-		li.list-none {
-			list-style-type: none !important;
-			margin-left: 0;
-		}
-	`,
-  "KOL-TOOLTIP": css$5`
-		:host {
-			--kolibri-font-size: var(--textFontSize);
-		}
-	`
+var css_248z$z = "@layer kol-theme-component {\n  .alert {\n    background-color: white;\n    border: 1px solid var(--color-black);\n    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);\n  }\n  .heading-icon {\n    align-items: center;\n    display: flex;\n    flex-shrink: 0;\n    font-size: 1.5rem;\n    height: 100%;\n    justify-content: center;\n    width: 2.5rem;\n  }\n  .default .heading-icon {\n    background: var(--color-secondary-40);\n  }\n  .info .heading-icon {\n    background: var(--color-blue);\n    color: var(--color-white);\n  }\n  .success .heading-icon {\n    background: var(--color-green);\n    color: var(--color-white);\n  }\n  .warning .heading-icon {\n    background: var(--color-yellow);\n  }\n  .error .heading-icon {\n    background: var(--color-red);\n    color: var(--color-white);\n  }\n  .heading-content {\n    padding: 0.625rem;\n  }\n  .headline {\n    margin: 0 0 0.625rem 0;\n    font-size: 1.3125rem; /* h3 font-size */\n  }\n  .close {\n    align-self: flex-start;\n  }\n}";
+
+var css_248z$y = "@layer kol-theme-component {\n  :host {\n    display: inline-block;\n  }\n  kol-span-wc {\n    align-items: center;\n    border-radius: 0.3125rem;\n    display: grid;\n    gap: 0.5rem;\n    line-height: 1.25rem;\n    padding: 0.25rem 0.75rem;\n  }\n  kol-span-wc span {\n    display: flex;\n    gap: 0.25rem;\n  }\n}";
+
+var css_248z$x = "@layer kol-theme-component {\n  nav {\n    width: 100%;\n  }\n  ul {\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n  }\n  kol-link {\n    display: inline;\n  }\n  :host kol-icon[exportparts*=separator] {\n    padding: 0 0.5rem;\n  }\n  :host kol-icon::part(icon) {\n    font-family: \"Font Awesome 6 Free\";\n    font-weight: 900;\n    font-size: 0.875rem !important;\n  }\n  :host kol-icon::part(icon)::before {\n    color: currentColor;\n    font-family: \"Font Awesome 6 Free\";\n  }\n  :host ul > li:not(:first-child) kol-icon::part(icon)::before {\n    content: \"\\f105\";\n  }\n  :host li > kol-link > kol-link-wc > a {\n    color: red !important;\n  }\n}";
+
+var css_248z$w = "@charset \"UTF-8\";\n@layer kol-theme-component {\n  :host {\n    display: inline-block;\n  }\n  button {\n    color: inherit;\n    outline: none;\n  }\n  button::before {\n    /* Render zero-width character as first element to set the baseline correctly. */\n    content: \"​\";\n  }\n  button > kol-span-wc {\n    border: 1px solid;\n    font-size: 1.125rem;\n    min-height: var(--a11y-min-size);\n    min-width: var(--a11y-min-size);\n    padding: 0.5rem 0.875rem;\n    text-align: center;\n    text-transform: uppercase;\n  }\n  button:hover:not(:disabled) .span-label {\n    text-decoration: underline;\n  }\n  button:focus > kol-span-wc {\n    outline: var(--color-blue) solid 2px;\n    outline-offset: 2px;\n  }\n  .primary button > kol-span-wc {\n    background-color: var(--color-primary);\n    border-color: var(--color-primary);\n    color: var(--color-white);\n  }\n  .secondary button > kol-span-wc {\n    background-color: var(--color-white);\n    border-color: var(--color-primary-60);\n  }\n  .secondary button:hover > kol-span-wc {\n    background-color: var(--color-primary);\n    border-color: var(--color-primary);\n    color: var(--color-white);\n  }\n  .ghost button > kol-span-wc {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--color-primary);\n    text-transform: unset;\n  }\n  :is(.primary, .secondary, .ghost) button:disabled > kol-span-wc {\n    color: var(--color-disabled-gray);\n  }\n  :is(.primary, .secondary) button:disabled > kol-span-wc {\n    background: var(--color-secondary-40);\n    border-color: var(--color-disabled-gray);\n  }\n}";
+
+var css_248z$v = "@layer kol-theme-component {\n  div {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 0.5em;\n  }\n}";
+
+var css_248z$u = "@layer kol-theme-component {\n  button {\n    color: var(--color-primary);\n    text-decoration-thickness: 1px;\n    text-decoration: none;\n  }\n  button:not(:disabled):hover, button:focus {\n    text-decoration: underline;\n  }\n  button:focus-within {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n  .external-link-icon {\n    margin-left: 0.25rem;\n  }\n  button:disabled {\n    color: var(--color-disabled-gray);\n    cursor: not-allowed;\n  }\n}";
+
+var css_248z$t = "@layer kol-theme-component {\n  .card {\n    background-color: var(--color-white);\n    border: 1px solid var(--color-primary); /* Not part of the design system, necessary because box-shadow alone is not accessible. */\n    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);\n    margin: 2rem 0;\n  }\n  .header {\n    border-bottom: 1px solid var(--color-primary);\n    padding: 1.3125rem 2rem; /* vertical padding copied from h3 */\n  }\n  .header .headline {\n    font-size: 1.3125rem; /* h3 font-size */\n    font-weight: normal;\n    margin: 0;\n  }\n  .content {\n    padding: 2rem 2rem 2.5rem;\n  }\n}";
+
+var css_248z$s = "@layer kol-theme-component {\n  details {\n    display: grid;\n    width: 100%;\n  }\n  summary {\n    margin: 0;\n    padding: 0;\n  }\n  summary span {\n    margin-left: 0.25rem;\n    text-decoration: underline;\n  }\n  summary span:hover {\n    text-decoration-thickness: 0.25em;\n  }\n  details > kol-indented-text {\n    margin: 0.25em 0 0 0.6em;\n  }\n}";
+
+var css_248z$r = "/* NOTE: Alle ':root' CSS properties sollten in KoliBri zu ':host' kopiert werden und umgekehrt. Damit vereinheitlicht man alle Variablen auf beiden Seiten und kann diese dann individuell nutzen.*/ /* colors */\n@layer kol-theme-global {\n  :root,\n  :host {\n    --color-primary: #005c45;\n    --color-primary-60: #00854a;\n    --color-primary-40: #99beb5;\n    --color-primary-20: #ccdeda;\n    --color-secondary: #576164;\n    --color-secondary-40: #e5e8e9;\n    --color-secondary-20: #f2f3f4;\n    --color-secondary-0: #ffffff;\n    --color-blue: #0077b6;\n    --color-petrol: #007194;\n    --color-green: #00854a;\n    --color-yellow: #f9e03a;\n    --color-red: #c0003c;\n    --color-disabled-gray: #595f73;\n    --color-black: #000;\n    --color-white: #fff;\n  }\n  :root,\n  :host {\n    --font-family: \"BundesSans Web\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\",\n    \tsans-serif;\n    --font-family-serif: \"BundesSerif Web\", var(--font-family);\n  }\n  :host {\n    color: var(--color-black);\n    font-family: var(--font-family);\n  }\n  :host * {\n    box-sizing: border-box;\n  }\n  a,\n  button,\n  input,\n  option,\n  select,\n  textarea {\n    hyphens: auto;\n    letter-spacing: inherit;\n  }\n  summary {\n    hyphens: auto;\n    letter-spacing: inherit;\n  }\n  *[tabindex]:focus,\n  kol-input:not(.checkbox, .radio) .input:focus-within,\n  summary:focus {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n    transition: outline-offset 0.2s linear;\n  }\n  @keyframes spin {\n    0% {\n      transform: rotate(0deg);\n    }\n    100% {\n      transform: rotate(360deg);\n    }\n  }\n  kol-tooltip-wc {\n    font-size: 1.125rem;\n  }\n  kol-tooltip-wc .tooltip-area {\n    background-color: var(--color-white);\n  }\n  kol-tooltip-wc .tooltip-arrow {\n    background-color: var(--color-primary);\n  }\n  kol-tooltip-wc .tooltip-content {\n    padding: 0.5rem;\n    border: 2px solid var(--color-primary);\n    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);\n  }\n  kol-span-wc,\n  kol-span-wc > span {\n    gap: 0.5em;\n  }\n  kol-span-wc,\n  kol-span-wc > span {\n    gap: 0.3em;\n  }\n}";
+
+var css_248z$q = "@layer kol-theme-component {\n  .headline {\n    margin-top: 0;\n    letter-spacing: 0.5;\n  }\n  h1 {\n    font-size: 2.5rem;\n    line-height: 2.8125rem;\n    font-weight: normal;\n  }\n  h2 {\n    font-size: 2rem;\n    line-height: 2.3125rem;\n    font-weight: normal;\n  }\n  h3 {\n    font-size: 1.3125rem;\n    line-height: 1.6875rem;\n    font-weight: bold;\n  }\n  h4 {\n    font-size: 1.125rem;\n    line-height: 1.6875rem;\n    font-weight: bold;\n  }\n  h5 {\n    color: red;\n  }\n  h5:after {\n    content: \" (H5 is not part of the design system.)\";\n  }\n  h6 {\n    color: red;\n  }\n  h6:after {\n    content: \" (H6 is not part of the design system.)\";\n  }\n}";
+
+var css_248z$p = "@layer kol-theme-component {\n  :host {\n    color: inherit;\n  }\n}";
+
+var css_248z$o = "@layer kol-theme-component {\n  :host > div {\n    padding: 0.9375rem;\n    background-color: var(--color-secondary-20);\n    border-left: 6px solid var(--color-primary);\n  }\n}";
+
+var css_248z$n = "@layer kol-theme-component {\n  :host {\n    --border-width: 1px;\n    --spacing: 0.25rem;\n  }\n  kol-input {\n    display: grid;\n    align-items: center;\n    justify-items: left;\n    width: 100%;\n  }\n  kol-input:not(.hide-label) {\n    grid-template-columns: calc(6 * var(--spacing)) auto;\n  }\n  kol-input.switch:not(.hide-label) {\n    grid-template-columns: calc(13 * var(--spacing)) auto;\n  }\n  kol-input:has(input:focus) {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n  label {\n    font-size: 1.125rem;\n    font-weight: bold;\n    opacity: 1;\n  }\n  kol-input.disabled label {\n    color: var(--color-disabled-gray);\n  }\n  .input {\n    display: inline-flex;\n    order: 1;\n  }\n  input {\n    appearance: none;\n    background-color: var(--color-white);\n    opacity: 1;\n    outline: none;\n    transition: none;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  .input-label {\n    order: 2;\n    padding-left: calc(2 * var(--spacing));\n  }\n  .error {\n    order: 3;\n    padding-top: 0.25em;\n    grid-column: span 2/auto;\n  }\n  /* variant default */\n  .default input[type=checkbox] {\n    border-radius: 2px;\n    border: var(--border-width) solid var(--color-primary);\n    height: calc(6 * var(--spacing));\n    min-width: calc(6 * var(--spacing));\n    width: calc(6 * var(--spacing));\n  }\n  .default input[type=checkbox]:is(:checked, :indeterminate) {\n    background-color: var(--color-primary);\n    border-color: var(--color-primary);\n  }\n  .default input[type=checkbox]:disabled {\n    border-color: var(--color-disabled-gray);\n    background-color: var(--color-secondary-40);\n  }\n  .default input[type=checkbox]:enabled:hover {\n    outline: 1px solid var(--color-primary); /* Increase visual border-width without shifting contents */\n  }\n  .default input[type=checkbox]:enabled:hover:is(:checked, :indeterminate) {\n    background: var(--color-white);\n    outline-color: var(--color-primary-60);\n    border-color: var(--color-primary-60);\n  }\n  .default input[type=checkbox]:checked::before {\n    left: calc(1.5 * var(--spacing) - var(--border-width));\n    top: calc(2.85 * var(--spacing) - var(--border-width));\n    transform: rotate(40deg) translate(-50%, -50%);\n    background-color: transparent;\n    border-width: 0 3px 3px 0;\n    border-color: var(--color-white);\n    border-style: solid;\n    height: calc(3 * var(--spacing));\n    width: calc(1.5 * var(--spacing));\n  }\n  .default input[type=checkbox]:checked:enabled:hover::before {\n    border-color: var(--color-primary-60);\n  }\n  .default input[type=checkbox]:checked:disabled::before {\n    border-color: var(--color-disabled-gray);\n  }\n  .default input[type=checkbox]:indeterminate::before {\n    background-color: var(--color-white);\n    height: 0.3rem;\n    top: 0.5rem;\n    left: 0.2rem;\n    width: calc(4 * var(--spacing));\n    transform: rotate(45deg);\n  }\n  .default input[type=checkbox]:indeterminate:enabled:hover::before {\n    background-color: var(--color-primary-60);\n  }\n  .default input[type=checkbox]:indeterminate:disabled::before {\n    background-color: var(--color-disabled-gray);\n  }\n  /* variant switch */\n  .switch input[type=checkbox] {\n    border-radius: 1.7em;\n    border-width: 1px;\n    border-color: var(--color-primary);\n    transition: 0.5s background-color, border-color;\n  }\n  .switch input[type=checkbox]:enabled:hover {\n    border-color: var(--color-primary-60);\n  }\n  .switch input[type=checkbox]:is(:checked, :indeterminate):enabled {\n    background: var(--color-primary);\n  }\n  .switch input[type=checkbox]:is(:checked, :indeterminate):enabled:hover {\n    background: var(--color-primary-60);\n  }\n  .switch input[type=checkbox]:disabled {\n    border-color: var(--color-secondary);\n  }\n  .switch input[type=checkbox]:is(:checked, :indeterminate):disabled {\n    background: var(--color-secondary-40);\n  }\n  .switch input[type=checkbox]::before {\n    background: var(--color-white);\n    border: 1px solid var(--color-primary);\n    border-radius: 50%;\n    height: 1.55em;\n    width: 1.55em;\n    left: 0;\n    top: -1px;\n    transform: translateX(-1px);\n  }\n  .switch input[type=checkbox]:indeterminate::before {\n    transform: translateX(calc(50% - 2px));\n  }\n  .switch input[type=checkbox]:checked::before {\n    transform: translateX(calc(100% - 4px));\n  }\n  .switch input[type=checkbox]:enabled:hover::before {\n    border-color: var(--color-primary-60);\n  }\n  .switch input[type=checkbox]:disabled::before {\n    background: var(--color-secondary-40);\n    border-color: var(--color-secondary);\n  }\n  .switch .icon {\n    display: none;\n  }\n}";
+
+var css_248z$m = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n}";
+
+var css_248z$l = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n}";
+
+var css_248z$k = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n}";
+
+var css_248z$j = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n  input {\n    padding-top: 0.625rem;\n  }\n}";
+
+var css_248z$i = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n}";
+
+var css_248z$h = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n}";
+
+var css_248z$g = "@layer kol-theme-component {\n  kol-input:has(input:focus) {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n  .radio-input-wrapper {\n    align-items: center;\n    display: flex;\n    min-height: var(--a11y-min-size);\n  }\n  .fieldset.horizontal {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 0.25rem 0.75rem;\n  }\n  .error {\n    width: 100%;\n  }\n  input {\n    border-width: 1px;\n    opacity: 1;\n  }\n  input:enabled {\n    border-color: var(--color-primary);\n  }\n  input:enabled:hover {\n    border-width: 2px;\n  }\n  input:checked:enabled:hover {\n    border-color: var(--color-primary-60);\n  }\n  input:disabled {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  input:checked:enabled::before {\n    background-color: var(--color-primary);\n  }\n  input:checked:disabled::before {\n    background-color: var(--color-disabled-gray);\n  }\n  input:checked:enabled:hover::before {\n    background-color: var(--color-primary-60);\n  }\n  .radio-label {\n    font-size: 1.125rem;\n    font-weight: bold;\n    padding-left: 0.75rem;\n    opacity: 1;\n  }\n  .disabled .radio-label {\n    color: var(--color-disabled-gray);\n  }\n  .required .radio-label-span-inner::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n}";
+
+var css_248z$f = "/* https://www.cssportal.com/style-input-range/ */\n/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n  input {\n    border: 1px solid var(--color-primary);\n  }\n  input:focus {\n    outline: none;\n  }\n  input:hover {\n    border-color: var(--color-primary-60);\n  }\n  .inputs-wrapper {\n    gap: 0.5rem;\n  }\n}";
+
+var css_248z$e = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n}";
+
+var css_248z$d = "@charset \"UTF-8\";\n@layer kol-theme-component {\n  :host {\n    display: inline-block;\n  }\n  a {\n    color: inherit;\n    outline: none;\n  }\n  a::before {\n    /* Render zero-width character as first element to set the baseline correctly. */\n    content: \"​\";\n  }\n  a > kol-span-wc {\n    border: 1px solid;\n    font-size: 1.125rem;\n    min-height: var(--a11y-min-size);\n    min-width: var(--a11y-min-size);\n    padding: 0.5rem 0.875rem;\n    text-align: center;\n    text-transform: uppercase;\n  }\n  a:hover:not(:disabled) .span-label {\n    text-decoration: underline;\n  }\n  a:focus > kol-span-wc {\n    outline: var(--color-blue) solid 2px;\n    outline-offset: 2px;\n  }\n  .primary a > kol-span-wc {\n    background-color: var(--color-primary);\n    border-color: var(--color-primary);\n    color: var(--color-white);\n  }\n  .secondary a > kol-span-wc {\n    background-color: var(--color-white);\n    border-color: var(--color-primary-60);\n  }\n  .secondary a:hover > kol-span-wc {\n    background-color: var(--color-primary);\n    border-color: var(--color-primary);\n    color: var(--color-white);\n  }\n  .ghost a > kol-span-wc {\n    background-color: transparent;\n    border-color: transparent;\n    color: var(--color-primary);\n    text-transform: unset;\n  }\n  :is(.primary, .secondary, .ghost) a:disabled > kol-span-wc {\n    color: var(--color-disabled-gray);\n  }\n  :is(.primary, .secondary) a:disabled > kol-span-wc {\n    background: var(--color-secondary-40);\n    border-color: var(--color-disabled-gray);\n  }\n}";
+
+var css_248z$c = "@layer kol-theme-component {\n  a {\n    color: var(--color-primary);\n    text-decoration-thickness: 1px;\n    text-decoration: none;\n  }\n  a:not(:disabled):hover, a:focus {\n    text-decoration: underline;\n  }\n  a:focus-within {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n  .external-link-icon {\n    margin-left: 0.25rem;\n  }\n}";
+
+var css_248z$b = "@layer kol-theme-component {\n  ul {\n    list-style: none;\n    margin: 0px;\n    padding: 0px;\n  }\n  nav.horizontal ul {\n    display: flex;\n    flex-wrap: wrap;\n  }\n  nav.horizontal li {\n    list-style: none;\n    margin-left: 1.25rem;\n    margin-right: 0.25rem;\n  }\n  nav.horizontal li:first-child {\n    margin-left: 0;\n  }\n  nav.horizontal li:last-child {\n    margin-right: 0;\n  }\n  nav.vertical li {\n    margin-left: 1.75rem;\n    margin-right: 0.5rem;\n  }\n  li.list-none {\n    list-style-type: none !important;\n    margin-left: 0;\n  }\n}";
+
+var css_248z$a = "@layer kol-theme-component {\n  :host .overlay .modal {\n    max-height: calc(100% - 32px);\n  }\n}";
+
+var css_248z$9 = "@layer kol-theme-component {\n  :host {\n    font-size: 1.3125rem; /* h3 font-size */\n  }\n  :is(a, button) {\n    color: var(--color-black);\n    display: block;\n    margin-left: 0.75rem;\n    padding: 0.3125rem;\n    text-decoration: none;\n  }\n  :is(a, button):hover {\n    background-color: var(--color-primary);\n    color: var(--color-white);\n  }\n  :is(a, button):focus {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n}";
+
+var css_248z$8 = "@layer kol-theme-component {\n  .navigation-list {\n    gap: unset;\n  }\n  .navigation-list > li {\n    min-width: var(--a11y-min-size);\n    text-align: center;\n  }\n  .icon::part(icon) {\n    font-family: \"Font Awesome 6 Free\";\n    font-weight: 900;\n  }\n  .first .icon::part(icon)::before {\n    content: \"\\f100\";\n  }\n  .previous .icon::part(icon)::before {\n    content: \"\\f104\";\n  }\n  .next .icon::part(icon)::before {\n    content: \"\\f105\";\n  }\n  .last .icon::part(icon)::before {\n    content: \"\\f101\";\n  }\n  .button {\n    cursor: pointer;\n    display: flex;\n    height: 2.75rem;\n    width: 2.75rem;\n    outline: none;\n  }\n  .button > kol-span-wc {\n    margin: auto;\n    display: flex;\n    background-color: var(--color-white);\n    border: 1px solid var(--color-primary);\n    color: var(--color-black);\n    font-size: 1.125rem;\n    font-weight: normal;\n    height: 1.875rem;\n    width: 1.875rem;\n    transition-duration: 0.5s;\n    transition-property: background-color, color, border-color;\n  }\n  .button > kol-span-wc > * {\n    margin: auto;\n  }\n  .button > kol-span-wc .icon {\n    width: 1.5em;\n    height: 1.5em;\n  }\n  .button:hover:enabled > kol-span-wc {\n    background-color: var(--color-primary-20);\n    border-color: var(--color-primary-60);\n    color: var(--color-black);\n  }\n  .button:focus > kol-span-wc {\n    outline: var(--color-blue) solid 2px;\n    outline-offset: 2px;\n  }\n  .button:disabled > kol-span-wc, .button:disabled:hover > kol-span-wc {\n    background-color: var(--color-secondary-40);\n    border-color: var(--color-secondary);\n    color: var(--color-secondary);\n    cursor: not-allowed;\n  }\n  .selected button {\n    border-radius: 1.5em;\n    border: none;\n    color: var(--color-midnight) !important;\n    font-weight: 700;\n    line-height: normal;\n  }\n}";
+
+var css_248z$7 = "@layer kol-theme-component {\n  :host progress,\n  :host span {\n    display: block;\n    height: 0px;\n    overflow: hidden;\n    width: 0px;\n  }\n  svg line:first-child,\n  svg circle:first-child {\n    fill: transparent;\n    stroke: var(--color-ice);\n  }\n  svg line:last-child,\n  svg circle:last-child {\n    stroke: var(--color-midnight);\n    fill: transparent;\n  }\n  progress {\n    display: none;\n  }\n}";
+
+var css_248z$6 = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  select {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  select:first-child {\n    padding-left: 0.375rem;\n  }\n  select:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n}";
+
+var css_248z$5 = "@layer kol-theme-component {\n  a {\n    color: var(--color-primary);\n    text-decoration-thickness: 1px;\n    text-decoration: none;\n  }\n  a:not(:disabled):hover, a:focus {\n    text-decoration: underline;\n  }\n  a:focus-within {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n  .external-link-icon {\n    margin-left: 0.25rem;\n  }\n  a {\n    display: block;\n  }\n}";
+
+var css_248z$4 = "@layer kol-theme-component {\n  .cycle {\n    padding: 0.125rem;\n  }\n  .cycle span {\n    background-color: #fc0;\n  }\n}";
+
+var css_248z$3 = "@layer kol-theme-component {\n  :host * {\n    hyphens: var(--hyphens);\n  }\n  :host > div:first-child {\n    overflow-x: auto;\n    overflow-y: hidden;\n  }\n  table {\n    border-collapse: collapse;\n  }\n  caption {\n    height: auto;\n    text-align: left;\n  }\n  /* visuell verstecken */\n  caption {\n    clip: rect(1px, 1px, 1px, 1px);\n    clip-path: inset(50%);\n    height: 1px;\n    width: 1px;\n    margin: -1px;\n    overflow: hidden;\n    padding: 0;\n    position: absolute;\n  }\n  table,\n  tr,\n  th,\n  td {\n    border: 0 solid var(--color-white);\n  }\n  tr {\n    border-top-width: 2px;\n  }\n  th {\n    background-color: var(--color-primary);\n    color: var(--color-white);\n    font-size: 1.5rem;\n  }\n  tbody > tr:nth-child(odd) {\n    background-color: var(--color-secondary-20);\n  }\n  tbody > tr:hover {\n    background-color: var(--color-primary);\n    color: var(--color-white);\n  }\n  th,\n  td {\n    border-right-width: 2px;\n    padding: 0.25em 0.5em;\n  }\n  th > div {\n    display: grid;\n    grid-template-columns: 1fr auto;\n    align-items: center;\n    gap: 0.25em;\n  }\n  .pagination {\n    padding: 0.5em;\n    gap: 1rem;\n  }\n  th kol-button button {\n    padding: 0.5rem;\n  }\n  /* default: [aria-sort=\"none\"] */\n  [data-sort] kol-button::part(icon)::before {\n    font-family: \"Font Awesome 6 Free\";\n    font-weight: 900;\n    color: var(--color-white);\n    content: \"\\f0dc\";\n  }\n  [data-sort=sort-ASC] kol-button::part(icon)::before {\n    content: \"\\f0de\";\n  }\n  [data-sort=sort-DESC] kol-button::part(icon)::before {\n    content: \"\\f0dd\";\n  }\n}";
+
+var css_248z$2 = "@layer kol-theme-component {\n  .tabs-button-group {\n    border-bottom: 1px solid var(--color-primary);\n    gap: 2rem;\n    padding: 0 2rem;\n  }\n  .button {\n    color: var(--color-primary);\n    padding: 0 0.9375rem;\n    font-family: var(--font-family-serif);\n  }\n  .button.selected {\n    background: var(--color-primary);\n    color: var(--color-white);\n  }\n  .button:not(:disabled):hover {\n    background: var(--color-primary);\n    color: var(--color-white);\n    text-decoration: underline;\n  }\n  .button:focus {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n  .button:disabled {\n    color: var(--color-disabled-gray);\n    cursor: not-allowed;\n  }\n  .tabs-content {\n    padding: 2rem 2rem 2.5rem; /* Card paddings */\n  }\n}";
+
+var css_248z$1 = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  textarea {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  textarea:first-child {\n    padding-left: 0.375rem;\n  }\n  textarea:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n}";
+
+var css_248z = "@layer kol-theme-component {\n  :host {\n    top: 4.375rem;\n    left: 50%;\n    transform: translateX(-50%);\n  }\n  .toast {\n    background: #fff;\n    margin-top: 0.75rem;\n  }\n}";
+
+const BZStv1 = KoliBri.createTheme("bzst-v1", {
+  GLOBAL: css_248z$r,
+  "KOL-ACCORDION": css_248z$A,
+  "KOL-ALERT": css_248z$z,
+  "KOL-BADGE": css_248z$y,
+  "KOL-BREADCRUMB": css_248z$x,
+  "KOL-BUTTON": css_248z$w,
+  "KOL-BUTTON-GROUP": css_248z$v,
+  "KOL-BUTTON-LINK": css_248z$u,
+  "KOL-CARD": css_248z$t,
+  "KOL-DETAILS": css_248z$s,
+  "KOL-HEADING": css_248z$q,
+  "KOL-ICON": css_248z$p,
+  "KOL-INDENTED-TEXT": css_248z$o,
+  "KOL-INPUT-CHECKBOX": css_248z$n,
+  "KOL-INPUT-COLOR": css_248z$m,
+  "KOL-INPUT-DATE": css_248z$l,
+  "KOL-INPUT-EMAIL": css_248z$k,
+  "KOL-INPUT-FILE": css_248z$j,
+  "KOL-INPUT-NUMBER": css_248z$i,
+  "KOL-INPUT-PASSWORD": css_248z$h,
+  "KOL-INPUT-RADIO": css_248z$g,
+  "KOL-INPUT-RANGE": css_248z$f,
+  "KOL-INPUT-TEXT": css_248z$e,
+  "KOL-LINK": css_248z$c,
+  "KOL-LINK-BUTTON": css_248z$d,
+  "KOL-LINK-GROUP": css_248z$b,
+  "KOL-MODAL": css_248z$a,
+  "KOL-NAV": css_248z$9,
+  "KOL-PAGINATION": css_248z$8,
+  "KOL-PROGRESS": css_248z$7,
+  "KOL-SELECT": css_248z$6,
+  "KOL-SKIP-NAV": css_248z$5,
+  "KOL-SPIN": css_248z$4,
+  "KOL-TABLE": css_248z$3,
+  "KOL-TABS": css_248z$2,
+  "KOL-TEXTAREA": css_248z$1,
+  "KOL-TOAST-CONTAINER": css_248z
 });
 
 const css$4 = (input) => input.join(``);
@@ -9038,7 +6441,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -9117,7 +6520,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -9196,7 +6599,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -9275,7 +6678,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -9355,7 +6758,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -9441,7 +6844,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -9533,7 +6936,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -9844,31 +7247,31 @@ const BMF = KoliBri.createTheme("bmf", {
 		}
 	`,
   "KOL-HEADING": css$4`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			color: inherit;
 			font-style: normal;
 			margin: 0;
 			padding: 0;
 		}
-		h1,
-		h2,
-		h3 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3 {
 			font-weight: 700;
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 1.25rem;
 			line-height: 1.75rem;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.125rem;
 			line-height: 1.5rem;
 		}
@@ -10100,7 +7503,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -10207,7 +7610,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -10550,7 +7953,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			padding-top: 0.25em;
 			grid-column: span 2 / auto;
 		}
-		:host kol-input.error {
+		:host kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -10751,6 +8154,13 @@ const BMF = KoliBri.createTheme("bmf", {
 		}
 		:host kol-input.button .icon {
 			height: auto;
+		}
+		.button:focus-within {
+			border-radius: var(--a11y-min-size);
+			outline-color: var(--color-ocean);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
 		}
 	`,
   "KOL-INPUT-RADIO": css$4`
@@ -11161,7 +8571,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -19375,29 +16785,29 @@ const DEFAULT = KoliBri.createTheme("default", {
 		}
 	`,
   "KOL-HEADING": css$3`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			color: inherit;
 			font-style: normal;
 		}
-		h1,
-		h2,
-		h3 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3 {
 			font-weight: 700;
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 1.25rem;
 			line-height: 1.75rem;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.125rem;
 			line-height: 1.5rem;
 		}
@@ -20147,6 +17557,13 @@ const DEFAULT = KoliBri.createTheme("default", {
 		:host .disabled {
 			opacity: 0.33;
 		}
+		.button:focus-within {
+			border-radius: var(--border-radius);
+			outline-color: var(--color-primary-variant);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: calc(var(--border-width) * 2);
+		}
 	`,
   "KOL-INPUT-RADIO": css$3`
 		label {
@@ -20868,27 +18285,27 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		}
 	`,
   "KOL-HEADING": css$2`
-		h1 {
+		.headline-h1 {
 			font-size: 2rem;
 			line-height: 2.5rem;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 1.75rem;
 			line-height: 2rem;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.25rem;
 			line-height: 1.75rem;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1rem;
 			line-height: 1.5rem;
 		}
-		h6 {
+		.headline-h6 {
 			color: rgb(234, 0, 255);
 		}
 	`,
@@ -21455,6 +18872,12 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		}
 		.hint {
 			font-size: 0.875rem;
+		}
+		.button:focus-within {
+			outline-color: var(--color-blue);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 2px;
 		}
 	`,
   "KOL-INPUT-COLOR": css$2`
@@ -22452,35 +19875,35 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		}
 	`,
   "KOL-HEADING": css$2`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			font-weight: var(--font-weight-bold);
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 2.625rem;
 			line-height: 3.25rem;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 2.25rem;
 			line-height: 2.75rem;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 2rem;
 			line-height: 2.5rem;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.75rem;
 			line-height: 2rem;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
 		}
-		h6 {
+		.headline-h6 {
 			font-size: 1.25rem;
 			line-height: 1.75rem;
 		}
@@ -23111,6 +20534,11 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		}
 		.hint {
 			font-size: 0.875rem;
+		}
+		.button:focus-within {
+			outline-color: var(--color-blue-130);
+			outline-style: solid;
+			outline-width: 2px;
 		}
 	`,
   "KOL-INPUT-COLOR": css$2`
@@ -24683,42 +22111,42 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		}
 	`,
   "KOL-HEADING": css$1`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			line-height: 1em;
 			margin: 0;
 			padding: 0;
 		}
-		h1 {
+		.headline-h1 {
 			font-family: var(--font-family-serif);
 			font-size: 54px;
 			font-weight: bold;
 		}
-		h2 {
+		.headline-h2 {
 			font-family: var(--font-family-serif);
 			font-size: 32px;
 			font-weight: bold;
 		}
-		h3 {
+		.headline-h3 {
 			font-family: var(--font-family-serif);
 			font-size: 26px;
 			font-weight: bold;
 		}
-		h4 {
+		.headline-h4 {
 			font-family: var(--font-family-serif);
 			font-size: 20px;
 			font-weight: normal;
 		}
-		h5 {
+		.headline-h5 {
 			font-family: var(--font-family-serif);
 			font-size: 17px;
 			font-weight: bold;
 		}
-		h6 {
+		.headline-h6 {
 			font-family: var(--font-family-sans);
 			font-size: 17px;
 			font-weight: normal;
@@ -25353,6 +22781,13 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 			display: block;
 			order: 3;
 			padding: 0 var(--spacing);
+		}
+		.button:focus-within {
+			border-radius: 2rem;
+			outline-color: var(--color-achat) !important;
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
 		}
 	`,
   "KOL-INPUT-RADIO": `/* INPUT */
@@ -27429,7 +24864,15 @@ const MFM = KoliBri.createTheme("mfm", {
 		}
 		:host .disabled {
 			opacity: 0.33;
-		}`,
+		}
+		.button:focus-within {
+			border-radius: 0.25rem;
+			outline-color: var(--color-ocean);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
+		}
+	`,
   "KOL-INPUT-RADIO": `/* INPUT */
 		kol-input {
 			display: grid;
@@ -35989,32 +33432,32 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		}
 	`,
   "KOL-HEADING": css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			line-height: 1.25em;
 			margin: 0;
 			padding: 0;
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 1.5rem !important;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 1.4rem !important;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.3rem !important;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.2rem !important;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1.1rem !important;
 		}
-		h6 {
+		.headline-h6 {
 			font-size: 1rem !important;
 		}
 	`,
@@ -36162,6 +33605,13 @@ const MAPZ = KoliBri.createTheme("mapz", {
 		}
 		.disabled {
 			opacity: 0.33;
+		}
+		.button:focus-within {
+			border-radius: var(--kolibri-border-radius);
+			outline-color: var(--kolibri-color-outline);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
 		}
 	`,
   "KOL-INPUT-RADIO": css`
@@ -50524,7 +47974,7 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 			--color-grau-80: hsl(0 0% 20%);
 			--color-grau-70: hsl(0 0% 30%);
 			--color-grau-60: hsl(0 0% 40%);
-			--color-grau-50: hsl(0 0% 50%);
+			--color-grau-50: #8b8b8b;
 			--color-grau-40: hsl(0 0% 60%);
 			--color-grau-30: hsl(0 0% 70%);
 			--color-grau-20: hsl(0 0% 80%);
@@ -50621,39 +48071,39 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		}
 	`,
   "KOL-HEADING": css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			font-weight: var(--font-weight-bold);
 			margin: 0;
 			padding: 1rem 0;
 			text-align: left;
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 2.5rem;
 			line-height: 1.2;
 			padding: 0 0 1rem 0;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 2rem;
 			line-height: 1.25;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.75rem;
 			line-height: 1.29;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.5rem;
 			line-height: 1.33;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1.25rem;
 			line-height: 1.4;
 		}
-		h6 {
+		.headline-h6 {
 			font-size: 1rem;
 			line-height: 1.5;
 		}
@@ -51428,6 +48878,13 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		}
 		.disabled {
 			opacity: 0.33;
+		}
+		.button:focus-within {
+			border-radius: var(--border-radius);
+			outline-color: var(--color-blau-dark);
+			outline-offset: 0.125rem;
+			outline-style: solid;
+			outline-width: 0.125rem;
 		}
 	`,
   "KOL-INPUT-RADIO": css`
@@ -59560,6 +57017,11 @@ const checkboxStyles = css`
 	kol-input.button {
 		grid-template-areas: 'input label' 'error error' 'hint hint';
 	}
+
+	.button:focus-within {
+		outline: 0.125rem solid var(--color-blau);
+		outline-offset: 0.125rem;
+	}
 `;
 
 const detailsStyles = css`
@@ -59859,39 +57321,39 @@ const ZOLLv3 = KoliBri.createTheme("zoll-v3", {
 		}
 	`,
   "KOL-HEADING": css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			font-weight: var(--font-weight-bold);
 			margin: 0;
 			padding: 1rem 0;
 			text-align: left;
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 2.5rem;
 			line-height: 1.2;
 			padding: 0 0 1rem 0;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 2rem;
 			line-height: 1.25;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.75rem;
 			line-height: 1.29;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.5rem;
 			line-height: 1.33;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1.25rem;
 			line-height: 1.4;
 		}
-		h6 {
+		.headline-h6 {
 			font-size: 1rem;
 			line-height: 1.5;
 		}
@@ -67618,7 +65080,7 @@ const EN = KoliBri.createTranslation("en", {});
 
 exports.BAMF = BAMF;
 exports.BMF = BMF;
-exports.BZSt = BZSt;
+exports.BZStv1 = BZStv1;
 exports.DE = DE;
 exports.DEFAULT = DEFAULT;
 exports.DESYv1 = DESYv1;

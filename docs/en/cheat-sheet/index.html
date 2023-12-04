@@ -256,7 +256,7 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
 },{
 	name: `heading`,
 	desc: `Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Überschrift angezeigt werden soll. Durch die Verwendung der unterschiedlichen Größen, lassen sich Inhalte klar strukturieren und Seiten wirkungsvoll und abwechslungsreich präsentieren. Sie trennt Styling von Semantik und ermöglicht Flexibilität.`,
-	props: `_label, _level, _secondary-headline`
+	props: `_label, _level, _secondary-headline, _variant`
 },{
 	name: `icon`,
 	desc: `Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **'_icon'** gesteuert werden und erfolgt durch das Attribut **'_label'** barrierefrei. Die Ausgabe erfolgt standardmäßig als _'inline'_-Element.
@@ -325,12 +325,12 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 
 Beachten Sie, dass die Komponente automatisch ein Padding links und rechts zum umgebenden Text erzeugt. Sie kann daher im Fließtext ohne
 Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern den Abstand zum umgebenden Text.`,
-	props: `_access-key, _download, _hide-label, _href, _icons, _label, _listen-aria-current, _role, _tab-index, _target, _target-description, _tooltip-align`
+	props: `_access-key, _aria-current-value, _download, _hide-label, _href, _icons, _label, _role, _tab-index, _target, _target-description, _tooltip-align`
 },{
 	name: `link-button`,
 	desc: `Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
 Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="/docs/components/button" _label="Seite des Buttons"></kol-link>.`,
-	props: `_access-key, _custom-class, _download, _hide-label, _href, _icons, _label, _listen-aria-current, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
+	props: `_access-key, _aria-current-value, _custom-class, _download, _hide-label, _href, _icons, _label, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
 },{
 	name: `modal`,
 	desc: `Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native '<dialog>' Element sehr gut unterstützt (<kol-link _href="https://caniuse.com/?search=dialog" _target="_blank" _label="caniuse"></kol-link>), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.`,
@@ -346,7 +346,7 @@ Aktive Menüpunkte werden mit einer farbigen Markierung dargestellt.
 
 Über eine optionale Schaltfläche unterhalb der Navigation kann die Breite der **Nav**-Komponente verändert werden. In der kleinsten Breite werden die Menütitel ausgeblendet und nur
 noch die Icons ausgegeben.`,
-	props: `_aria-current-value, _collapsible, _has-compact-button, _hide-label, _label, _links, _orientation`
+	props: `_collapsible, _has-compact-button, _hide-label, _label, _links, _orientation`
 },{
 	name: `pagination`,
 	desc: `Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte Inhalte, wie zum Beispiel Suchergebnisse, der Reihe nach durchlaufen.`,
@@ -402,7 +402,7 @@ dem sich weitere Aktionen verbergen.
 <kol-indented-text _summary="Backend-seitige Pagination">
 	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der Table-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden.
 </kol-indented-text>`,
-	props: `_data, _data-foot, _headers, _label, _min-width, _pagination`
+	props: `_allow-multi-sort, _data, _data-foot, _headers, _label, _min-width, _pagination`
 },{
 	name: `tabs`,
 	desc: `Die **Tabs**-Komponente wird verwendet, um verwandte Inhalte auf derselben Seite zu organisieren und zwischen ihnen zu navigieren. Tabs sorgen dafür, dass große Inhaltsmengen für Nutzer:innen leichter organisiert werden können. Tabs sind in Registerkartenleisten angeordnet, die als Registerkartengruppen bezeichnet werden, wobei die Registerkartenbeschriftung den Nutzer:innen einen Hinweis darauf gibt, welcher Inhalt angezeigt wird, wenn die Registerkarte ausgewählt wird.`,
@@ -535,15 +535,15 @@ interactive element is focused or the mouse is over it.`,
 	types: `string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
+	name: `_variant`,
+	desc: `Defines which variant should be used for presentation.`,
+	types: `"bar" | "cycle" | "cycle-label-value" | "cycle-value-label", "block" | "inline", "button" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | "tertiary", "cycle" | "dot" | "none", "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "strong"`,
+	comps: `alert, alert-wc, button, heading, input-checkbox, link-button, progress, quote, spin, split-button`
+},{
 	name: `_required`,
 	desc: `Makes the input element required.`,
 	types: `boolean`,
 	comps: `input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
-},{
-	name: `_variant`,
-	desc: `Defines which variant should be used for presentation.`,
-	types: `"bar" | "cycle" | "cycle-label-value" | "cycle-value-label", "block" | "inline", "button" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | "tertiary", "cycle" | "dot" | "none"`,
-	comps: `alert, alert-wc, button, input-checkbox, link-button, progress, quote, spin, split-button`
 },{
 	name: `_smart-button`,
 	desc: `Allows to add a button with an arbitrary action within the element (_hide-label only).`,
@@ -675,14 +675,14 @@ interactive element is focused or the mouse is over it.`,
 	types: `string`,
 	comps: `link, link-button`
 },{
-	name: `_listen-aria-current`,
-	desc: `Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.`,
-	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
-	comps: `link, link-button`
-},{
 	name: `_download`,
 	desc: `Tells the browser that the link contains a file. Optionally sets the filename.`,
 	types: `string`,
+	comps: `link, link-button`
+},{
+	name: `_aria-current-value`,
+	desc: `Defines the value for the aria-current attribute.`,
+	types: `"date" | "false" | "location" | "page" | "step" | "time" | "true"`,
 	comps: `link, link-button`
 },{
 	name: `_show`,
@@ -835,6 +835,11 @@ interactive element is focused or the mouse is over it.`,
 	types: `KoliBriTableDataType[] | string`,
 	comps: `table`
 },{
+	name: `_allow-multi-sort`,
+	desc: `Defines whether to allow multi sort.`,
+	types: `boolean`,
+	comps: `table`
+},{
 	name: `_indeterminate`,
 	desc: `Puts the checkbox in the indeterminate state, does not change the value of _checked.`,
 	types: `boolean`,
@@ -853,11 +858,6 @@ interactive element is focused or the mouse is over it.`,
 	name: `_collapsible`,
 	desc: `Defines if navigation nodes can be collapsed or not. Enabled by default.`,
 	types: `boolean`,
-	comps: `nav`
-},{
-	name: `_aria-current-value`,
-	desc: `Defines the value of aria-current to be used with the current context within the navigation.`,
-	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `nav`
 },{
 	name: `_color`,
