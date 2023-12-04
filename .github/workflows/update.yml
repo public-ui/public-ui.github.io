@@ -68,7 +68,6 @@ jobs:
           npm pack @${{env.scope}}/designer@^1
           tar -xzvf public-ui-designer-*.tgz
 
-          rm -rf ../docs/designer
           rm -rf ../docs/v1/designer
           mkdir -p ../docs/v1
           mv package/dist ../docs/v1/designer
@@ -84,7 +83,6 @@ jobs:
           npm pack @${{env.scope}}/sample-react@^1
           tar -xzvf public-ui-sample-react-*.tgz
 
-          rm -rf ../docs/sample-react
           rm -rf ../docs/v1/sample-react
           mkdir -p ../docs/v1
           mv package/dist ../docs/v1/sample-react
