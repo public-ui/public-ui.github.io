@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ import{d as watchString}from"./prop.validators-2e3fde52.js";const validateAccessKey=(a,e)=>{watchString(a,"_accessKey",e)};export{validateAccessKey as v};

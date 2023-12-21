@@ -301,7 +301,7 @@ var loglevel = {exports: {}};
 	})); 
 } (loglevel));
 
-const createTranslation=(e,t)=>o=>o(e,t),createTheme=(e,t)=>o=>o(e,t),STORE="object"==typeof window?window:"object"==typeof global?global:"object"==typeof self?self:{};const STYLING_TASK_QUEUE=new Map,HYDRATED_HISTORY=[],CSS_PROPERTIES_REGISTERED=new Set,CSS_STYLE_CACHE=new Map,REGEX_CSS_PROPERTIES=/--[^;]+/g,REGEX_SPLIT_CSS_PROPERTY=/:/;"object"==typeof STORE.A11yUi&&null!==STORE.A11yUi||(STORE.A11yUi={CSS_STYLE_CACHE:CSS_STYLE_CACHE,HYDRATED_HISTORY:HYDRATED_HISTORY,STYLING_TASK_QUEUE:STYLING_TASK_QUEUE});const extractProperties=(e,t)=>{let o=t.match(REGEX_CSS_PROPERTIES);if(Array.isArray(o)){o=o.filter((e=>REGEX_SPLIT_CSS_PROPERTY.test(e)));const t=document.createElement("style");t.innerHTML=`.${e} {${o.join(";")}}`,document.querySelector("head")?.appendChild(t);}CSS_PROPERTIES_REGISTERED.add(e);},getCssStyle=(e,t)=>"object"==typeof STORE.A11yUi&&null!==STORE.A11yUi&&"object"==typeof STORE.A11yUi.Themes&&null!==STORE.A11yUi.Themes&&"object"==typeof STORE.A11yUi.Themes[e]&&null!==STORE.A11yUi.Themes[e]&&"string"==typeof STORE.A11yUi.Themes[e][t]?STORE.A11yUi.Themes[e][t].replace(/\r?\n/g,""):"",removeStyle=e=>{for(const t of Array.from(e.childNodes)){if(!(t instanceof HTMLStyleElement&&"STYLE"===t.tagName))break;e.removeChild(t);}},patchStyle=(e,t)=>{try{const o=[];t.forEach((e=>{const t=new CSSStyleSheet;t.replaceSync(e),o.push(t);})),e.adoptedStyleSheets=o;}catch(o){t.reverse().forEach((t=>{const o=document.createElement("style");o.innerHTML=t,e.insertBefore(o,e.firstChild);}));}},encroachStyles=(e,t,o)=>{if(!1!==o){const s=[...Array.from(e.childNodes).filter((e=>e instanceof HTMLStyleElement&&"STYLE"===e.tagName))];let r;try{r=[...Array.from(e.adoptedStyleSheets)];}catch(e){r=[];}"before"===o?.mode?(s.reverse().forEach((e=>t.unshift(e.innerHTML))),r.reverse().forEach((e=>t.unshift(Array.from(e.cssRules).map((e=>e.cssText)).join(""))))):"after"===o?.mode&&(s.forEach((e=>t.push(e.innerHTML))),r.forEach((e=>t.push(Array.from(e.cssRules).map((e=>e.cssText)).join("")))));}},setThemeStyleAfterHydrated=(e,t,o)=>{const s=t.name||"default";let r;try{if(null===e.shadowRoot)throw new Error("ShadowRoot is null");r=e.shadowRoot;}catch(t){r=e;}if(CSS_STYLE_CACHE.get(s)?.has(e.tagName))switchStyle(e,r,CSS_STYLE_CACHE.get(s)?.get(e.tagName),o);else {const a=getCssStyle(s,"PROPERTIES"),n=getCssStyle(s,"GLOBAL"),l=getCssStyle(s,e.tagName);!1===CSS_PROPERTIES_REGISTERED.has(s)&&extractProperties(s,n);const i=[a,n,l];encroachStyles(r,i,t.encroachCss),"debug"===t.loglevel&&console.log(e.tagName,i),!0===t.cache&&(!1===CSS_STYLE_CACHE.has(s)&&CSS_STYLE_CACHE.set(s,new Map),CSS_STYLE_CACHE.get(s)?.set(e.tagName,i)),switchStyle(e,r,i,o);}},switchStyle=(e,t,o,s)=>{removeStyle(t),patchStyle(t,o),e.style.display=s;},logHydratedHistory=e=>{"debug"===e.loglevel&&HYDRATED_HISTORY.push({timestamp:Date.now(),numberOfTasks:STYLING_TASK_QUEUE.size});},deleteDoneTask=e=>{STYLING_TASK_QUEUE.delete(e);},loggedDeleteDoneTask=(e,t)=>{deleteDoneTask(e),logHydratedHistory(t);},observerCallback=e=>{for(const t of e)if(STYLING_TASK_QUEUE.has(t.target)&&t.target.classList.contains("hydrated")){const{styleDisplay:e,themeDetails:o}=STYLING_TASK_QUEUE.get(t.target);setThemeStyleAfterHydrated(t.target,o,e),loggedDeleteDoneTask(t.target,o);}};let observer;try{observer=new MutationObserver(observerCallback);}catch(e){observer=null;}class Theme{constructor(e,t,o){this.createTheme=(e,t)=>createTheme(e,t),this.createTranslation=(e,t)=>createTranslation(e,t),this.Prefix=e,this.Key=Object.getOwnPropertyNames(t),this.Tag=Object.getOwnPropertyNames(o);}}
+const N=(e,t)=>s=>s(e,t),P=(e,t)=>s=>s(e,t,{append:!1}),o=typeof window=="object"?window:typeof global=="object"?global:typeof self=="object"?self:{};const c=new Map,C=[],v=new Set,h=new Map,B=/--[^;]+/g,G=/:/;(typeof o.A11yUi!="object"||o.A11yUi===null)&&(o.A11yUi={CSS_STYLE_CACHE:h,HYDRATED_HISTORY:C,STYLING_TASK_QUEUE:c});const K=(e,t)=>{let s=t.match(B);if(Array.isArray(s)){s=s.filter(r=>G.test(r));const a=document.createElement("style");a.innerHTML=`.${e} {${s.join(";")}}`,document.querySelector("head")?.appendChild(a);}v.add(e);},d=(e,t)=>typeof o.A11yUi=="object"&&o.A11yUi!==null&&typeof o.A11yUi.Themes=="object"&&o.A11yUi.Themes!==null&&typeof o.A11yUi.Themes[e]=="object"&&o.A11yUi.Themes[e]!==null&&typeof o.A11yUi.Themes[e][t]=="string"?o.A11yUi.Themes[e][t].replace(/\r?\n/g,""):"",q=e=>{for(const t of Array.from(e.childNodes))if(t instanceof HTMLStyleElement&&t.tagName==="STYLE")e.removeChild(t);else break},F=(e,t)=>{try{const s=[];t.forEach(a=>{const r=new CSSStyleSheet;r.replaceSync(a),s.push(r);}),e.adoptedStyleSheets=s;}catch{t.reverse().forEach(s=>{const a=document.createElement("style");a.innerHTML=s,e.insertBefore(a,e.firstChild);});}},Q=(e,t,s)=>{if(s!==!1){const a=[...Array.from(e.childNodes).filter(n=>n instanceof HTMLStyleElement&&n.tagName==="STYLE")];let r;try{r=[...Array.from(e.adoptedStyleSheets)];}catch{r=[];}s?.mode==="before"?(a.reverse().forEach(n=>t.unshift(n.innerHTML)),r.reverse().forEach(n=>t.unshift(Array.from(n.cssRules).map(i=>i.cssText).join("")))):s?.mode==="after"&&(a.forEach(n=>t.push(n.innerHTML)),r.forEach(n=>t.push(Array.from(n.cssRules).map(i=>i.cssText).join(""))));}},L=(e,t,s)=>{const a=t.name||"default";let r;try{if(e.shadowRoot===null)throw new Error("ShadowRoot is null");r=e.shadowRoot;}catch{r=e;}if(h.get(a)?.has(e.tagName))M(e,r,h.get(a)?.get(e.tagName),s);else {const n=d(a,"PROPERTIES"),i=d(a,"GLOBAL"),H=d(a,e.tagName);v.has(a)===!1&&K(a,i);const m=[n,i,H];Q(r,m,t.encroachCss),t.loglevel==="debug"&&console.log(e.tagName,m),t.cache===!0&&(h.has(a)===!1&&h.set(a,new Map),h.get(a)?.set(e.tagName,m)),M(e,r,m,s);}},M=(e,t,s,a)=>{q(t),F(t,s),e.style.display=a;},$=e=>{e.loglevel==="debug"&&C.push({timestamp:Date.now(),numberOfTasks:c.size});},W=e=>{c.delete(e);},O=(e,t)=>{W(e),$(t);},X=e=>{for(const t of e)if(c.has(t.target)&&t.target.classList.contains("hydrated")){const{styleDisplay:s,themeDetails:a}=c.get(t.target);L(t.target,a,s),O(t.target,a);}};let f;try{f=new MutationObserver(X);}catch{f=null;}class te{constructor(t,s,a){this.createTheme=(r,n)=>P(r,n),this.createTranslation=(r,n)=>N(r,n),this.Prefix=t,this.Key=Object.getOwnPropertyNames(s),this.Tag=Object.getOwnPropertyNames(a);}}
 
 var KeyEnum = /* @__PURE__ */ ((KeyEnum2) => {
   KeyEnum2[KeyEnum2["error"] = 0] = "error";
@@ -382,7 +382,7 @@ var TagEnum = /* @__PURE__ */ ((TagEnum2) => {
   return TagEnum2;
 })(TagEnum || {});
 
-const KoliBri = new Theme("kol", KeyEnum, TagEnum);
+const KoliBri = new te("kol", KeyEnum, TagEnum);
 
 const BAMF = KoliBri.createTheme("bamf", {});
 
@@ -410,7 +410,7 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 		--spacing: 0.25em;
 	}
 	:host {
-		color: var(--color-black);
+		background-color: transparent; /* Reset global background-color defined by components */
 	}
 	:host * {
 		box-sizing: border-box;
@@ -1589,7 +1589,7 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
 	}
-	:host fieldset #error {
+	kol-alert.error {
 		order: 3;
 	}
 	:host fieldset legend {
@@ -1599,7 +1599,7 @@ const DESYv1 = KoliBri.createTheme("desy-v1", {
 	:host fieldset kol-input {
 		order: 2;
 	}
-	:host fieldset kol-alert#error {
+	kol-alert.error {
 		padding-left: 0.5em;
 		color: var(--color-warning);
 	}
@@ -3240,6 +3240,7 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 		--spacing: 0.25em;
 	}
 	:host {
+		background-color: transparent; /* Reset global background-color defined by components */
 		color: var(--color-black);
 	}
 	:host * {
@@ -4334,10 +4335,10 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 			height: 1.25em;
 			left: 2px;
 		}
-		&:has(input:checked) .icon {
+		&.checked .icon {
 			transform: translate(2em, -50%);
 		}
-		&:has(input:indeterminate) .icon {
+		&.indeterminate .icon {
 			transform: translate(1em, -50%);
 		}
 	}
@@ -4432,7 +4433,7 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
 	}
-	:host fieldset #error {
+	kol-alert.error {
 		order: 3;
 	}
 	:host fieldset legend {
@@ -4442,7 +4443,7 @@ const DESYv2 = KoliBri.createTheme("desy-v2", {
 	:host fieldset kol-input {
 		order: 2;
 	}
-	:host fieldset kol-alert#error {
+	kol-alert.error {
 		padding-left: 0.5em;
 		color: var(--color-warning);
 	}
@@ -6066,7 +6067,7 @@ var css_248z$t = "@layer kol-theme-component {\n  .card {\n    background-color:
 
 var css_248z$s = "@layer kol-theme-component {\n  details {\n    display: grid;\n    width: 100%;\n  }\n  summary {\n    margin: 0;\n    padding: 0;\n  }\n  summary span {\n    margin-left: 0.25rem;\n    text-decoration: underline;\n  }\n  summary span:hover {\n    text-decoration-thickness: 0.25em;\n  }\n  details > kol-indented-text {\n    margin: 0.25em 0 0 0.6em;\n  }\n}";
 
-var css_248z$r = "/* NOTE: Alle ':root' CSS properties sollten in KoliBri zu ':host' kopiert werden und umgekehrt. Damit vereinheitlicht man alle Variablen auf beiden Seiten und kann diese dann individuell nutzen.*/ /* colors */\n@layer kol-theme-global {\n  :root,\n  :host {\n    --color-primary: #005c45;\n    --color-primary-60: #00854a;\n    --color-primary-40: #99beb5;\n    --color-primary-20: #ccdeda;\n    --color-secondary: #576164;\n    --color-secondary-40: #e5e8e9;\n    --color-secondary-20: #f2f3f4;\n    --color-secondary-0: #ffffff;\n    --color-blue: #0077b6;\n    --color-petrol: #007194;\n    --color-green: #00854a;\n    --color-yellow: #f9e03a;\n    --color-red: #c0003c;\n    --color-disabled-gray: #595f73;\n    --color-black: #000;\n    --color-white: #fff;\n  }\n  :root,\n  :host {\n    --font-family: \"BundesSans Web\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\",\n    \tsans-serif;\n    --font-family-serif: \"BundesSerif Web\", var(--font-family);\n  }\n  :host {\n    color: var(--color-black);\n    font-family: var(--font-family);\n  }\n  :host * {\n    box-sizing: border-box;\n  }\n  a,\n  button,\n  input,\n  option,\n  select,\n  textarea {\n    hyphens: auto;\n    letter-spacing: inherit;\n  }\n  summary {\n    hyphens: auto;\n    letter-spacing: inherit;\n  }\n  *[tabindex]:focus,\n  kol-input:not(.checkbox, .radio) .input:focus-within,\n  summary:focus {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n    transition: outline-offset 0.2s linear;\n  }\n  @keyframes spin {\n    0% {\n      transform: rotate(0deg);\n    }\n    100% {\n      transform: rotate(360deg);\n    }\n  }\n  kol-tooltip-wc {\n    font-size: 1.125rem;\n  }\n  kol-tooltip-wc .tooltip-area {\n    background-color: var(--color-white);\n  }\n  kol-tooltip-wc .tooltip-arrow {\n    background-color: var(--color-primary);\n  }\n  kol-tooltip-wc .tooltip-content {\n    padding: 0.5rem;\n    border: 2px solid var(--color-primary);\n    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);\n  }\n  kol-span-wc,\n  kol-span-wc > span {\n    gap: 0.5em;\n  }\n  kol-span-wc,\n  kol-span-wc > span {\n    gap: 0.3em;\n  }\n}";
+var css_248z$r = "/* NOTE: Alle ':root' CSS properties sollten in KoliBri zu ':host' kopiert werden und umgekehrt. Damit vereinheitlicht man alle Variablen auf beiden Seiten und kann diese dann individuell nutzen.*/ /* colors */\n@layer kol-theme-global {\n  :root,\n  :host {\n    --color-primary: #005c45;\n    --color-primary-60: #00854a;\n    --color-primary-40: #99beb5;\n    --color-primary-20: #ccdeda;\n    --color-secondary: #576164;\n    --color-secondary-40: #e5e8e9;\n    --color-secondary-20: #f2f3f4;\n    --color-secondary-0: #ffffff;\n    --color-blue: #0077b6;\n    --color-petrol: #007194;\n    --color-green: #00854a;\n    --color-yellow: #f9e03a;\n    --color-red: #c0003c;\n    --color-disabled-gray: #595f73;\n    --color-black: #000;\n    --color-white: #fff;\n  }\n  :root,\n  :host {\n    --font-family: \"BundesSans Web\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\",\n    \tsans-serif;\n    --font-family-serif: \"BundesSerif Web\", var(--font-family);\n  }\n  :host {\n    background-color: transparent; /* Reset global background-color defined by components */\n    font-family: var(--font-family);\n  }\n  :host * {\n    box-sizing: border-box;\n  }\n  a,\n  button,\n  input,\n  option,\n  select,\n  textarea {\n    hyphens: auto;\n    letter-spacing: inherit;\n  }\n  summary {\n    hyphens: auto;\n    letter-spacing: inherit;\n  }\n  *[tabindex]:focus,\n  kol-input:not(.checkbox, .radio) .input:focus-within,\n  summary:focus {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n    transition: outline-offset 0.2s linear;\n  }\n  @keyframes spin {\n    0% {\n      transform: rotate(0deg);\n    }\n    100% {\n      transform: rotate(360deg);\n    }\n  }\n  kol-tooltip-wc {\n    font-size: 1.125rem;\n  }\n  kol-tooltip-wc .tooltip-area {\n    background-color: var(--color-white);\n  }\n  kol-tooltip-wc .tooltip-arrow {\n    background-color: var(--color-primary);\n  }\n  kol-tooltip-wc .tooltip-content {\n    padding: 0.5rem;\n    border: 2px solid var(--color-primary);\n    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);\n  }\n  kol-span-wc,\n  kol-span-wc > span {\n    gap: 0.5em;\n  }\n  kol-span-wc,\n  kol-span-wc > span {\n    gap: 0.3em;\n  }\n}";
 
 var css_248z$q = "@layer kol-theme-component {\n  .headline {\n    margin-top: 0;\n    letter-spacing: 0.5;\n  }\n  h1 {\n    font-size: 2.5rem;\n    line-height: 2.8125rem;\n    font-weight: normal;\n  }\n  h2 {\n    font-size: 2rem;\n    line-height: 2.3125rem;\n    font-weight: normal;\n  }\n  h3 {\n    font-size: 1.3125rem;\n    line-height: 1.6875rem;\n    font-weight: bold;\n  }\n  h4 {\n    font-size: 1.125rem;\n    line-height: 1.6875rem;\n    font-weight: bold;\n  }\n  h5 {\n    color: red;\n  }\n  h5:after {\n    content: \" (H5 is not part of the design system.)\";\n  }\n  h6 {\n    color: red;\n  }\n  h6:after {\n    content: \" (H6 is not part of the design system.)\";\n  }\n}";
 
@@ -6074,7 +6075,7 @@ var css_248z$p = "@layer kol-theme-component {\n  :host {\n    color: inherit;\n
 
 var css_248z$o = "@layer kol-theme-component {\n  :host > div {\n    padding: 0.9375rem;\n    background-color: var(--color-secondary-20);\n    border-left: 6px solid var(--color-primary);\n  }\n}";
 
-var css_248z$n = "@layer kol-theme-component {\n  :host {\n    --border-width: 1px;\n    --spacing: 0.25rem;\n  }\n  kol-input {\n    display: grid;\n    align-items: center;\n    justify-items: left;\n    width: 100%;\n  }\n  kol-input:not(.hide-label) {\n    grid-template-columns: calc(6 * var(--spacing)) auto;\n  }\n  kol-input.switch:not(.hide-label) {\n    grid-template-columns: calc(13 * var(--spacing)) auto;\n  }\n  kol-input:has(input:focus) {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n  label {\n    font-size: 1.125rem;\n    font-weight: bold;\n    opacity: 1;\n  }\n  kol-input.disabled label {\n    color: var(--color-disabled-gray);\n  }\n  .input {\n    display: inline-flex;\n    order: 1;\n  }\n  input {\n    appearance: none;\n    background-color: var(--color-white);\n    opacity: 1;\n    outline: none;\n    transition: none;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  .input-label {\n    order: 2;\n    padding-left: calc(2 * var(--spacing));\n  }\n  .error {\n    order: 3;\n    padding-top: 0.25em;\n    grid-column: span 2/auto;\n  }\n  /* variant default */\n  .default input[type=checkbox] {\n    border-radius: 2px;\n    border: var(--border-width) solid var(--color-primary);\n    height: calc(6 * var(--spacing));\n    min-width: calc(6 * var(--spacing));\n    width: calc(6 * var(--spacing));\n  }\n  .default input[type=checkbox]:is(:checked, :indeterminate) {\n    background-color: var(--color-primary);\n    border-color: var(--color-primary);\n  }\n  .default input[type=checkbox]:disabled {\n    border-color: var(--color-disabled-gray);\n    background-color: var(--color-secondary-40);\n  }\n  .default input[type=checkbox]:enabled:hover {\n    outline: 1px solid var(--color-primary); /* Increase visual border-width without shifting contents */\n  }\n  .default input[type=checkbox]:enabled:hover:is(:checked, :indeterminate) {\n    background: var(--color-white);\n    outline-color: var(--color-primary-60);\n    border-color: var(--color-primary-60);\n  }\n  .default input[type=checkbox]:checked::before {\n    left: calc(1.5 * var(--spacing) - var(--border-width));\n    top: calc(2.85 * var(--spacing) - var(--border-width));\n    transform: rotate(40deg) translate(-50%, -50%);\n    background-color: transparent;\n    border-width: 0 3px 3px 0;\n    border-color: var(--color-white);\n    border-style: solid;\n    height: calc(3 * var(--spacing));\n    width: calc(1.5 * var(--spacing));\n  }\n  .default input[type=checkbox]:checked:enabled:hover::before {\n    border-color: var(--color-primary-60);\n  }\n  .default input[type=checkbox]:checked:disabled::before {\n    border-color: var(--color-disabled-gray);\n  }\n  .default input[type=checkbox]:indeterminate::before {\n    background-color: var(--color-white);\n    height: 0.3rem;\n    top: 0.5rem;\n    left: 0.2rem;\n    width: calc(4 * var(--spacing));\n    transform: rotate(45deg);\n  }\n  .default input[type=checkbox]:indeterminate:enabled:hover::before {\n    background-color: var(--color-primary-60);\n  }\n  .default input[type=checkbox]:indeterminate:disabled::before {\n    background-color: var(--color-disabled-gray);\n  }\n  /* variant switch */\n  .switch input[type=checkbox] {\n    border-radius: 1.7em;\n    border-width: 1px;\n    border-color: var(--color-primary);\n    transition: 0.5s background-color, border-color;\n  }\n  .switch input[type=checkbox]:enabled:hover {\n    border-color: var(--color-primary-60);\n  }\n  .switch input[type=checkbox]:is(:checked, :indeterminate):enabled {\n    background: var(--color-primary);\n  }\n  .switch input[type=checkbox]:is(:checked, :indeterminate):enabled:hover {\n    background: var(--color-primary-60);\n  }\n  .switch input[type=checkbox]:disabled {\n    border-color: var(--color-secondary);\n  }\n  .switch input[type=checkbox]:is(:checked, :indeterminate):disabled {\n    background: var(--color-secondary-40);\n  }\n  .switch input[type=checkbox]::before {\n    background: var(--color-white);\n    border: 1px solid var(--color-primary);\n    border-radius: 50%;\n    height: 1.55em;\n    width: 1.55em;\n    left: 0;\n    top: -1px;\n    transform: translateX(-1px);\n  }\n  .switch input[type=checkbox]:indeterminate::before {\n    transform: translateX(calc(50% - 2px));\n  }\n  .switch input[type=checkbox]:checked::before {\n    transform: translateX(calc(100% - 4px));\n  }\n  .switch input[type=checkbox]:enabled:hover::before {\n    border-color: var(--color-primary-60);\n  }\n  .switch input[type=checkbox]:disabled::before {\n    background: var(--color-secondary-40);\n    border-color: var(--color-secondary);\n  }\n  .switch .icon {\n    display: none;\n  }\n}";
+var css_248z$n = "@layer kol-theme-component {\n  :host {\n    --border-width: 1px;\n    --spacing: 0.25rem;\n  }\n  kol-input {\n    display: grid;\n    align-items: center;\n    justify-items: left;\n    width: 100%;\n  }\n  kol-input:not(.hide-label) {\n    grid-template-columns: calc(6 * var(--spacing)) auto;\n  }\n  kol-input.switch:not(.hide-label) {\n    grid-template-columns: calc(13 * var(--spacing)) auto;\n  }\n  kol-input:focus-within {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n  .input-label {\n    font-size: 1.125rem;\n    font-weight: bold;\n    opacity: 1;\n  }\n  kol-input.disabled .input-label {\n    color: var(--color-disabled-gray);\n  }\n  .input {\n    display: inline-flex;\n    order: 1;\n  }\n  .checkbox-container {\n    justify-content: flex-start;\n  }\n  input {\n    appearance: none;\n    background-color: var(--color-white);\n    opacity: 1;\n    outline: none;\n    transition: none;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  .input-label {\n    order: 2;\n    padding-left: calc(2 * var(--spacing));\n  }\n  .error {\n    order: 3;\n    padding-top: 0.25em;\n    grid-column: span 2/auto;\n  }\n  /* variant default */\n  .default .checkbox-input-element {\n    border-radius: 2px;\n    border: var(--border-width) solid var(--color-primary);\n    height: calc(6 * var(--spacing));\n    min-width: calc(6 * var(--spacing));\n    width: calc(6 * var(--spacing));\n  }\n  .default .checkbox-input-element:is(:checked, :indeterminate) {\n    background-color: var(--color-primary);\n    border-color: var(--color-primary);\n  }\n  .default .checkbox-input-element:disabled {\n    border-color: var(--color-disabled-gray);\n    background-color: var(--color-secondary-40);\n  }\n  .default:not(.disabled):hover .checkbox-input-element {\n    outline: 1px solid var(--color-primary); /* Increase visual border-width without shifting contents */\n  }\n  .default:not(.disabled):hover:is(.checked, .indeterminate) .checkbox-input-element {\n    background: var(--color-white);\n    outline-color: var(--color-primary-60);\n    border-color: var(--color-primary-60);\n  }\n  .default .icon {\n    margin-left: 0.25rem;\n  }\n  .default.indeterminate .icon::part(icon) {\n    transform: translateY(-0.1875rem);\n  }\n  .default.indeterminate .icon::part(icon)::before {\n    content: \"\\\\\";\n    font-family: var(--font-family);\n  }\n  .default:is(.checked, .indeterminate) .icon {\n    color: var(--color-white);\n  }\n  .default:is(.checked, .indeterminate):not(.disabled):hover .icon {\n    color: var(--color-primary-60);\n  }\n  .default:is(.checked, .indeterminate).disabled .icon {\n    color: var(--color-disabled-gray);\n  }\n  /* variant switch */\n  .switch input[type=checkbox] {\n    border-color: var(--color-primary);\n    border-radius: 1.7em;\n    border-width: 1px;\n    display: block;\n    transition: 0.5s background-color, border-color;\n  }\n  .switch input[type=checkbox]:enabled:hover {\n    border-color: var(--color-primary-60);\n  }\n  .switch input[type=checkbox]:is(:checked, :indeterminate):enabled {\n    background: var(--color-primary);\n  }\n  .switch input[type=checkbox]:is(:checked, :indeterminate):enabled:hover {\n    background: var(--color-primary-60);\n  }\n  .switch input[type=checkbox]:disabled {\n    border-color: var(--color-secondary);\n  }\n  .switch input[type=checkbox]:is(:checked, :indeterminate):disabled {\n    background: var(--color-secondary-40);\n  }\n  .switch input[type=checkbox]::before {\n    background: var(--color-white);\n    border: 1px solid var(--color-primary);\n    border-radius: 50%;\n    height: 1.55em;\n    width: 1.55em;\n    left: 0;\n    top: -1px;\n    transform: translateX(-1px);\n  }\n  .switch input[type=checkbox]:indeterminate::before {\n    transform: translateX(calc(50% - 2px));\n  }\n  .switch input[type=checkbox]:checked::before {\n    transform: translateX(calc(100% - 4px));\n  }\n  .switch input[type=checkbox]:enabled:hover::before {\n    border-color: var(--color-primary-60);\n  }\n  .switch input[type=checkbox]:disabled::before {\n    background: var(--color-secondary-40);\n    border-color: var(--color-secondary);\n  }\n  .switch .icon {\n    display: none;\n  }\n}";
 
 var css_248z$m = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n}";
 
@@ -6088,7 +6089,7 @@ var css_248z$i = "/* Common styles for all type of inputs */\n@layer kol-theme-c
 
 var css_248z$h = "/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n}";
 
-var css_248z$g = "@layer kol-theme-component {\n  kol-input:has(input:focus) {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n  .radio-input-wrapper {\n    align-items: center;\n    display: flex;\n    min-height: var(--a11y-min-size);\n  }\n  .fieldset.horizontal {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 0.25rem 0.75rem;\n  }\n  .error {\n    width: 100%;\n  }\n  input {\n    border-width: 1px;\n    opacity: 1;\n  }\n  input:enabled {\n    border-color: var(--color-primary);\n  }\n  input:enabled:hover {\n    border-width: 2px;\n  }\n  input:checked:enabled:hover {\n    border-color: var(--color-primary-60);\n  }\n  input:disabled {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  input:checked:enabled::before {\n    background-color: var(--color-primary);\n  }\n  input:checked:disabled::before {\n    background-color: var(--color-disabled-gray);\n  }\n  input:checked:enabled:hover::before {\n    background-color: var(--color-primary-60);\n  }\n  .radio-label {\n    font-size: 1.125rem;\n    font-weight: bold;\n    padding-left: 0.75rem;\n    opacity: 1;\n  }\n  .disabled .radio-label {\n    color: var(--color-disabled-gray);\n  }\n  .required .radio-label-span-inner::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n}";
+var css_248z$g = "@layer kol-theme-component {\n  kol-input:focus-within {\n    outline: 2px solid var(--color-blue);\n    outline-offset: 2px;\n  }\n  .radio-input-wrapper {\n    align-items: center;\n    display: flex;\n    min-height: var(--a11y-min-size);\n  }\n  .fieldset.horizontal {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 0.25rem 0.75rem;\n  }\n  .error {\n    width: 100%;\n  }\n  input {\n    border-width: 1px;\n    opacity: 1;\n  }\n  input:enabled {\n    border-color: var(--color-primary);\n  }\n  input:enabled:hover {\n    border-width: 2px;\n  }\n  input:checked:enabled:hover {\n    border-color: var(--color-primary-60);\n  }\n  input:disabled {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  input:checked:enabled::before {\n    background-color: var(--color-primary);\n  }\n  input:checked:disabled::before {\n    background-color: var(--color-disabled-gray);\n  }\n  input:checked:enabled:hover::before {\n    background-color: var(--color-primary-60);\n  }\n  .radio-label {\n    font-size: 1.125rem;\n    font-weight: bold;\n    padding-left: 0.75rem;\n    opacity: 1;\n  }\n  .disabled .radio-label {\n    color: var(--color-disabled-gray);\n  }\n  .required .radio-label-span-inner::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n}";
 
 var css_248z$f = "/* https://www.cssportal.com/style-input-range/ */\n/* Common styles for all type of inputs */\n@layer kol-theme-component {\n  kol-input {\n    gap: 0.625rem;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-red);\n    padding-left: 1rem;\n  }\n  kol-alert.error {\n    color: var(--color-red);\n    font-weight: 700;\n    order: 3;\n  }\n  .input-label {\n    font-weight: 700;\n    opacity: 1;\n    order: 1;\n  }\n  .input {\n    border: 1px solid var(--color-primary);\n    order: 2;\n    padding: 0 0.5rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary-60);\n  }\n  kol-input.error .input {\n    border-color: var(--color-red);\n  }\n  kol-input.disabled .input {\n    border-color: var(--color-disabled-gray);\n    background: var(--color-secondary-40);\n  }\n  .hint {\n    order: 4;\n    font-size: 0.875rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n    opacity: 1;\n    background: transparent;\n  }\n  input:first-child {\n    padding-left: 0.375rem;\n  }\n  input:last-child {\n    padding-right: 0.375rem;\n  }\n  .input > kol-icon {\n    width: 1.5rem;\n  }\n  input {\n    border: 1px solid var(--color-primary);\n  }\n  input:focus {\n    outline: none;\n  }\n  input:hover {\n    border-color: var(--color-primary-60);\n  }\n  .inputs-wrapper {\n    gap: 0.5rem;\n  }\n}";
 
@@ -6208,6 +6209,7 @@ const BMF = KoliBri.createTheme("bmf", {
 		}
 		:host {
 			font-family: var(--font-family); /* font-size: var(--font-size); */
+			background-color: transparent; /* Reset global background-color defined by components */
 		}
 		* {
 			box-sizing: border-box;
@@ -6257,7 +6259,7 @@ const BMF = KoliBri.createTheme("bmf", {
 		}
 		kol-tooltip-wc .tooltip-area {
 			background-color: var(--color-white);
-			color: var(--color-metal);
+			color: var(--color-black);
 		}
 		kol-tooltip-wc .tooltip-content {
 			border-radius: var(--border-radius);
@@ -6319,6 +6321,12 @@ const BMF = KoliBri.createTheme("bmf", {
 			border-color: var(--color-red);
 			color: var(--color-white);
 		}
+		.success :is(a, button) > kol-span-wc,
+		.success :is(a, button):disabled:hover > kol-span-wc {
+			background-color: var(--color-green);
+			border-color: var(--color-green);
+			color: var(--color-white);
+		}
 		.ghost :is(a, button) > kol-span-wc,
 		.ghost :is(a, button):disabled:hover > kol-span-wc {
 			border-color: var(--color-white);
@@ -6334,6 +6342,8 @@ const BMF = KoliBri.createTheme("bmf", {
 		.normal :is(a, button):hover > kol-span-wc,
 		.danger :is(a, button):active > kol-span-wc,
 		.danger :is(a, button):hover > kol-span-wc,
+		.success :is(a, button):active > kol-span-wc,
+		.success :is(a, button):hover > kol-span-wc,
 		.ghost :is(a, button):active > kol-span-wc,
 		.ghost :is(a, button):hover > kol-span-wc {
 			background-color: var(--color-ocean);
@@ -6354,6 +6364,7 @@ const BMF = KoliBri.createTheme("bmf", {
 		.secondary :is(a, button):active > kol-span-wc,
 		.normal :is(a, button):active > kol-span-wc,
 		.danger :is(a, button):active > kol-span-wc,
+		.success :is(a, button):active > kol-span-wc,
 		.ghost :is(a, button):active > kol-span-wc {
 			border-color: var(--color-white);
 			box-shadow: none;
@@ -6379,6 +6390,14 @@ const BMF = KoliBri.createTheme("bmf", {
 		:is(a, button).transparent > kol-span-wc {
 			background-color: transparent;
 			border-color: transparent;
+		}
+		/** CUSTOM_CLASS */
+		:is(a, button).icon-only > kol-span-wc {
+			padding: 8px;
+			width: unset;
+		}
+		:is(a, button).icon-only > kol-span-wc > span > span {
+			display: block;
 		}
 	`,
   "KOL-INPUT-TEXT": css$4`
@@ -6441,12 +6460,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -6520,12 +6540,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -6599,12 +6620,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -6678,12 +6700,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -6758,12 +6781,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -6844,12 +6868,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -6936,12 +6961,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -7503,12 +7529,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -7610,12 +7637,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -7923,11 +7951,11 @@ const BMF = KoliBri.createTheme("bmf", {
 			width: 100%;
 			min-height: 44px;
 		}
-		:host kol-input.default {
+		:host kol-input.default:not(.hide-label) {
 			grid-template-columns: 1.5rem auto;
 			gap: 0.4em;
 		}
-		:host kol-input.switch {
+		:host kol-input.switch:not(.hide-label) {
 			grid-template-columns: 3.5rem auto;
 			gap: 0.4em;
 		}
@@ -7972,7 +8000,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			border-color: var(--color-grey);
 			border-width: 2px;
 			border-style: solid;
-			border-radius: 5px; /* padding: 10px 14px; */
+			border-radius: 5px;
 			line-height: 24px;
 			font-size: 1rem;
 		}
@@ -8009,48 +8037,36 @@ const BMF = KoliBri.createTheme("bmf", {
 			background-color: var(--color-midnight);
 			border-color: var(--color-midnight);
 		}
+		:host kol-input.default .checkbox-container {
+			justify-content: flex-start;
+		}
+		:host kol-input.default input[type='checkbox']:indeterminate {
+			background-color: var(--color-midnight);
+			border-color: var(--color-midnight);
+		}
+		:host kol-input.default .icon {
+			color: var(--color-white);
+			margin: -0.125rem 0 0 0.25rem; /* visually align */
+		}
 		:host kol-input.default input[type='checkbox'] {
 			border-radius: var(--border-radius);
 			height: calc(6 * var(--spacing));
 			min-width: calc(6 * var(--spacing));
 			width: calc(6 * var(--spacing));
 		}
-		:host kol-input.default input[type='checkbox']:before {
-			border-radius: 1.5em;
-			background-color: transparent;
-			display: block;
-			height: calc(6 * var(--spacing));
-			position: relative;
-			width: calc(6 * var(--spacing));
-		}
-		:host kol-input.default input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * var(--spacing) - 2px);
-			top: calc(2.85 * var(--spacing) - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * var(--spacing));
-			width: calc(1.5 * var(--spacing));
-		}
-		:host kol-input.default input[type='checkbox']:indeterminate {
-			--tw-bg-opacity: 1;
-			background-color: var(--color-midnight);
-		}
-		:host kol-input.default input[type='checkbox']:indeterminate:before {
-			background-color: var(--color-white);
-			height: 0.125rem;
-			top: 0.6rem;
-			left: 0.25rem;
-			width: calc(3 * var(--spacing));
-			transform: inherit;
-		}
-		:host kol-input.default input[type='checkbox']:checked:indeterminate:before {
-			border-width: 0px 1px 1px 0px;
+		.default {
+			.icon::part(icon) {
+				font-family: 'Font Awesome 6 Free';
+				font-weight: 900;
+			}
+
+			&.checked .icon::part(icon)::before {
+				content: '\\f00c';
+			}
+
+			&.indeterminate .icon::part(icon)::before {
+				content: '\\f068';
+			}
 		}
 		:host kol-input.switch input[type='checkbox'] {
 			min-width: 3.5em;
@@ -8059,13 +8075,9 @@ const BMF = KoliBri.createTheme("bmf", {
 			border-width: 0;
 			height: 1.5em;
 			border-radius: 1.25em;
-			display: inline-block;
 			position: relative;
 		}
 		:host kol-input.switch input[type='checkbox']:before {
-			-webkit-transition: 0.5s;
-			-moz-transition: 0.5s;
-			-ms-transition: 0.5s;
 			transition: 0.5;
 			width: 1.25em;
 			height: 1.25em;
@@ -8079,9 +8091,6 @@ const BMF = KoliBri.createTheme("bmf", {
 			background-color: var(--color-midnight);
 		}
 		:host kol-input.switch input[type='checkbox']:checked:before {
-			-webkit-transform: translateX(2em);
-			-moz-transform: translateX(2em);
-			-ms-transform: translateX(2em);
 			transform: translateX(2em);
 			--tw-bg-opacity: 1;
 		}
@@ -8089,12 +8098,12 @@ const BMF = KoliBri.createTheme("bmf", {
 			--tw-bg-opacity: 1;
 		}
 		:host kol-input.switch input[type='checkbox']:indeterminate:before {
-			-webkit-transform: translateX(1em);
-			-moz-transform: translateX(1em);
-			-ms-transform: translateX(1em);
 			transform: translateX(1em);
 		}
 		.switch {
+			& .checkbox-input-element {
+				display: block;
+			}
 			& .icon {
 				width: 1.25em;
 				height: 1.25em;
@@ -8108,13 +8117,13 @@ const BMF = KoliBri.createTheme("bmf", {
 					content: '\\2b';
 				}
 			}
-			&:has(input:checked) .icon {
+			&.checked .icon {
 				transform: translate(2em, -50%);
 				&::part(icon)::before {
 					content: '\\f00c';
 				}
 			}
-			&:has(input:indeterminate) .icon {
+			&.indeterminate .icon {
 				transform: translate(1em, -50%);
 				&::part(icon)::before {
 					content: '\\f068';
@@ -8148,6 +8157,10 @@ const BMF = KoliBri.createTheme("bmf", {
 			min-height: 32px;
 			min-width: 32px;
 			place-content: center;
+		}
+		:host kol-input.button.hide-label > .input {
+			border-top-right-radius: var(--border-radius);
+			border-bottom-right-radius: var(--border-radius);
 		}
 		:host kol-input.button > .input > div {
 			display: flex;
@@ -8252,7 +8265,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
 		}
-		fieldset #error {
+		kol-alert.error {
 			order: 1;
 		}
 		fieldset legend {
@@ -8263,12 +8276,10 @@ const BMF = KoliBri.createTheme("bmf", {
 			order: 3;
 		}
 		fieldset.error {
-			padding-left: 1em;
 			border-left: 3px solid var(--color-red);
-		}
-		fieldset kol-alert#error {
 			color: var(--color-red);
 			font-weight: 700;
+			padding-left: 1em;
 		}
 		fieldset.error input:focus,
 		fieldset.error select:focus,
@@ -8571,12 +8582,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -15824,6 +15836,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			font-family: var(--font-family);
 			font-size: var(--font-size);
 		}
@@ -17390,6 +17403,9 @@ const DEFAULT = KoliBri.createTheme("default", {
 		:host kol-input.button {
 			gap: 0.4rem 0;
 		}
+		.checkbox-container {
+			justify-content: flex-start;
+		}
 		:host kol-input > div.input {
 			display: inherit;
 			min-height: var(--a11y-min-size);
@@ -17458,13 +17474,6 @@ const DEFAULT = KoliBri.createTheme("default", {
 			cursor: pointer;
 			transition: 0.5s;
 		}
-		:host kol-input input[type='checkbox'].kol-disabled:before {
-			cursor: not-allowed;
-		}
-		:host kol-input input[type='checkbox']:before {
-			content: '';
-			cursor: pointer;
-		}
 		:host kol-input input[type='checkbox']:checked {
 			background-color: var(--color-primary);
 			border-color: var(--color-primary);
@@ -17475,51 +17484,23 @@ const DEFAULT = KoliBri.createTheme("default", {
 			min-width: calc(6 * 0.25rem);
 			width: calc(6 * 0.25rem);
 		}
-		:host kol-input.default input[type='checkbox']:before {
-			border-radius: 1.5em;
-			background-color: transparent;
-			display: block;
-			height: calc(6 * 0.25rem);
-			position: relative;
-			width: calc(6 * 0.25rem);
-		}
-		:host kol-input.default input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * 0.25rem - 2px);
-			top: calc(2.85 * 0.25rem - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * 0.25rem);
-			width: calc(1.5 * 0.25rem);
-		}
 		:host kol-input.default input[type='checkbox']:indeterminate {
 			background-color: var(--color-primary);
 		}
-		:host kol-input.default input[type='checkbox']:indeterminate:before {
-			background-color: var(--color-light);
-			height: 0.125rem;
-			top: 0.6rem;
-			left: 0.25rem;
-			width: calc(3 * 0.25rem);
-			transform: inherit;
+		:host kol-input.default .icon {
+			color: var(--color-light);
+			margin-left: 0.25rem;
 		}
-		:host kol-input.default input[type='checkbox']:checked:indeterminate:before {
-			border-width: 0px 1px 1px 0px;
-		}
+
 		:host kol-input.switch input[type='checkbox'] {
-			min-width: 3.5em;
-			width: 3.5em;
 			background-color: var(--color-subtle);
-			border-width: 0;
-			height: 1.5em;
 			border-radius: 1.25em;
-			display: inline-block;
+			border-width: 0;
+			display: block;
+			height: 1.5em;
+			min-width: 3.5em;
 			position: relative;
+			width: 3.5em;
 		}
 		:host kol-input.switch input[type='checkbox']:before {
 			width: 1.25em;
@@ -17546,11 +17527,11 @@ const DEFAULT = KoliBri.createTheme("default", {
 				left: 2px;
 			}
 
-			&:has(input:checked) .icon {
+			&.checked .icon {
 				transform: translate(2em, -50%);
 			}
 
-			&:has(input:indeterminate) .icon {
+			&.indeterminate .icon {
 				transform: translate(1em, -50%);
 			}
 		}
@@ -17647,7 +17628,7 @@ const DEFAULT = KoliBri.createTheme("default", {
 			cursor: not-allowed;
 			background-color: var(--color-mute-variant);
 		}
-		fieldset #error {
+		kol-alert.error {
 			order: 1;
 		}
 		fieldset legend {
@@ -17658,12 +17639,10 @@ const DEFAULT = KoliBri.createTheme("default", {
 			order: 3;
 		}
 		fieldset.error {
-			padding-left: 1rem;
 			border-left: 3px solid var(--color-danger);
-		}
-		fieldset kol-alert#error {
 			color: var(--color-danger);
 			font-weight: 700;
+			padding-left: 1rem;
 		}
 		fieldset.error input:focus,
 		fieldset.error select:focus,
@@ -18252,6 +18231,7 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 			--spacing-2xs: 4px; /* ?! */
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			display: inline-block;
 			font-family: var(--font-family);
 		}
@@ -18780,6 +18760,9 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		}
 	`,
   "KOL-INPUT-CHECKBOX": css$2`
+		.checkbox-container {
+			justify-content: flex-start;
+		}
 		input[type='checkbox'] {
 			background-color: var(--color-white);
 			border-width: 2px;
@@ -18808,12 +18791,6 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 			background-color: var(--color-blue-130);
 			border-color: var(--color-blue-130);
 		}
-		input[type='checkbox']:checked::before {
-			border-color: var(--color-white);
-		}
-		input[type='checkbox']:indeterminate:hover::before {
-			background-color: var(--color-blue-130);
-		}
 		.error input[type='checkbox'] {
 			border-color: var(--color-red);
 		}
@@ -18828,11 +18805,19 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 			background-color: var(--color-red-1xx);
 			border-color: var(--color-red-1xx);
 		}
-		.error input[type='checkbox']:indeterminate:hover::before {
-			background-color: var(--color-red-1xx);
-		}
 		.error.required label > span::after {
 			color: var(--color-red);
+		}
+
+		.default .icon {
+			margin-left: 0.2rem;
+		}
+		.default.checked .icon {
+			color: var(--color-white);
+		}
+
+		.switch input[type='checkbox'] {
+			display: block;
 		}
 		.switch input[type='checkbox']::before,
 		.switch input[type='checkbox']:indeterminate::before {
@@ -19821,6 +19806,7 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 			--spacing-2xs: 4px; /* ?! */
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			display: inline-block;
 			font-family: var(--font-family);
 		}
@@ -20442,6 +20428,9 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		}
 	`,
   "KOL-INPUT-CHECKBOX": css$2`
+		.checkbox-container {
+			justify-content: flex-start;
+		}
 		input[type='checkbox'] {
 			background-color: var(--color-white);
 			border-width: 2px;
@@ -20470,12 +20459,6 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 			background-color: var(--color-blue-130);
 			border-color: var(--color-blue-130);
 		}
-		input[type='checkbox']:checked::before {
-			border-color: var(--color-white);
-		}
-		input[type='checkbox']:indeterminate:hover::before {
-			background-color: var(--color-blue-130);
-		}
 		.error input[type='checkbox'] {
 			border-color: var(--color-red);
 		}
@@ -20490,11 +20473,18 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 			background-color: var(--color-red-1xx);
 			border-color: var(--color-red-1xx);
 		}
-		.error input[type='checkbox']:indeterminate:hover::before {
-			background-color: var(--color-red-1xx);
-		}
 		.error.required label > span::after {
 			color: var(--color-red);
+		}
+		.default .icon {
+			margin-left: 0.2rem;
+		}
+		.default.checked .icon {
+			color: var(--color-white);
+		}
+
+		.switch input[type='checkbox'] {
+			display: block;
 		}
 		.switch input[type='checkbox']::before,
 		.switch input[type='checkbox']:indeterminate::before {
@@ -21348,6 +21338,7 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 			--kolibri-spacing: calc(2 * var(--spacing));
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			font-family: var(--font-family); /* font-size: var(--font-size); */
 		}
 		* {
@@ -22624,9 +22615,8 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		}
 	`,
   "KOL-INPUT-CHECKBOX": css$1`
-		/* ALL INPUT, SELECT, TEXTAREA */
-		label {
-			cursor: pointer;
+		.checkbox-container {
+			justify-content: flex-start;
 		}
 		input {
 			color: var(--default-letter);
@@ -22684,58 +22674,28 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 			cursor: pointer;
 			transition: 0.5s;
 		}
-		input[type='checkbox'].kol-disabled:before {
-			cursor: not-allowed;
-		}
-		input[type='checkbox']:before {
-			content: '';
-			cursor: pointer;
-		}
 		input[type='checkbox']:checked {
 			background-color: var(--color-petrol);
 			border-color: var(--color-petrol);
 		}
 		.default input[type='checkbox'] {
-			/* border-radius: 0.25em; */
 			height: calc(6 * 2 * var(--spacing));
 			min-width: calc(6 * 2 * var(--spacing));
 			width: calc(6 * 2 * var(--spacing));
 		}
-		.default input[type='checkbox']:before {
-			/* border-radius: 0.25em; */
-			background-color: transparent;
-			display: block;
-			height: calc(6 * 2 * var(--spacing));
-			position: relative;
-			width: calc(6 * 2 * var(--spacing));
+
+		.default .icon {
+			margin-left: 0.25rem;
 		}
-		.default input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * 2 * var(--spacing) - 2px);
-			top: calc(2.85 * 2 * var(--spacing) - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * 2 * var(--spacing));
-			width: calc(1.5 * 2 * var(--spacing));
+		.default.checked .icon {
+			color: var(--color-weiss);
 		}
-		.default input[type='checkbox']:indeterminate:before {
-			background-color: var(--kolibri-color-normal);
-			height: 0.375rem;
-			top: 0.45rem;
-			left: 0.15rem;
-			width: calc(4 * 2 * var(--spacing));
-		}
+
 		.switch input[type='checkbox'] {
-			/* border-radius: 0.25em; */
+			display: block;
 			min-width: 3.2em;
 			width: 3.2em;
 			height: 1.7em;
-			display: inline-block;
 			position: relative;
 		}
 		.switch input[type='checkbox']:before {
@@ -22752,27 +22712,18 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 			position: absolute;
 		}
 		.switch input[type='checkbox']:checked:before {
-			-webkit-transform: translateX(1.5em);
-			-moz-transform: translateX(1.5em);
-			-ms-transform: translateX(1.5em);
 			transform: translateX(1.5em);
 			background-color: white;
 		}
 		.switch input[type='checkbox']:indeterminate:before {
-			-webkit-transform: translateX(0.75em);
-			-moz-transform: translateX(0.75em);
-			-ms-transform: translateX(0.75em);
 			transform: translateX(0.75em);
 			background-color: var(--color-petrol);
 		}
-		.switch:has(input:not(:checked), input:indeterminate) .icon {
+		.switch:is(:not(.checked), .indeterminate) .icon {
 			color: #fff;
 		}
 		.disabled {
 			opacity: 0.33;
-		}
-		.default kol-icon {
-			display: none;
 		}
 		kol-input span.hint {
 			grid-column: span 2;
@@ -23102,6 +23053,7 @@ const MFM = KoliBri.createTheme("mfm", {
 			--spacing: 0.25em;
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			font-family: var(--font-family); /* font-size: var(--font-size); */
 		}
 		* {
@@ -24960,7 +24912,7 @@ const MFM = KoliBri.createTheme("mfm", {
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
 		}
-		fieldset #error {
+		kol-alert.error {
 			order: 1;
 		}
 		fieldset legend {
@@ -24971,12 +24923,10 @@ const MFM = KoliBri.createTheme("mfm", {
 			order: 3;
 		}
 		fieldset.error {
-			padding-left: 1em;
 			border-left: 3px solid var(--color-red);
-		}
-		fieldset kol-alert#error {
 			color: var(--color-red);
 			font-weight: 700;
+			padding-left: 1em;
 		}
 		fieldset.error input:focus,
 		fieldset.error select:focus,
@@ -32622,6 +32572,7 @@ const MAPZ = KoliBri.createTheme("mapz", {
 			--font-size: 16px;
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			font-family: var(--font-family); /* font-size: var(--font-size); */
 		}
 		* {
@@ -33479,6 +33430,9 @@ const MAPZ = KoliBri.createTheme("mapz", {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		.checkbox-container {
+			justify-content: flex-start;
+		}
 		input:hover {
 			border-color: var(--kolibri-color-primary);
 		} /* NEU */
@@ -33519,13 +33473,6 @@ const MAPZ = KoliBri.createTheme("mapz", {
 			cursor: pointer;
 			transition: 0.5s;
 		}
-		input[type='checkbox'].kol-disabled:before {
-			cursor: not-allowed;
-		}
-		input[type='checkbox']:before {
-			content: '';
-			cursor: pointer;
-		}
 		input[type='checkbox']:checked {
 			background-color: var(--kolibri-color-primary);
 			border-color: var(--kolibri-color-primary);
@@ -33536,41 +33483,21 @@ const MAPZ = KoliBri.createTheme("mapz", {
 			min-width: calc(6 * var(--kolibri-spacing));
 			width: calc(6 * var(--kolibri-spacing));
 		}
-		.default input[type='checkbox']:before {
-			border-radius: 0.25em;
-			background-color: transparent;
-			display: block;
-			height: calc(6 * var(--kolibri-spacing));
-			position: relative;
-			width: calc(6 * var(--kolibri-spacing));
+		.default .icon {
+			margin-left: 0.25rem;
 		}
-		.default input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * var(--kolibri-spacing) - 2px);
-			top: calc(2.85 * var(--kolibri-spacing) - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * var(--kolibri-spacing));
-			width: calc(1.5 * var(--kolibri-spacing));
+		.default.checked .icon {
+			color: #fff;
 		}
-		.default input[type='checkbox']:indeterminate:before {
-			background-color: var(--kolibri-color-normal);
-			height: 0.375rem;
-			top: 0.45rem;
-			left: 0.15rem;
-			width: calc(4 * var(--kolibri-spacing));
+		.default.indeterminate .icon {
+			color: var(--kolibri-color-normal);
 		}
 		.switch input[type='checkbox'] {
+			display: block; //
 			min-width: 3.2em;
 			width: 3.2em;
 			height: 1.7em;
 			border-radius: 0.25em;
-			display: inline-block;
 			position: relative;
 		}
 		.switch input[type='checkbox']:before {
@@ -33600,7 +33527,7 @@ const MAPZ = KoliBri.createTheme("mapz", {
 			transform: translateX(0.75em);
 			background-color: var(--kolibri-color-primary);
 		}
-		.switch:has(input:not(:checked), input:indeterminate) .icon {
+		.switch:is(.checked, .indeterminate) .icon {
 			color: #fff;
 		}
 		.disabled {
@@ -33683,7 +33610,7 @@ const MAPZ = KoliBri.createTheme("mapz", {
 			box-shadow: 0 0 0.1rem black;
 			background-color: var(--kolibri-color-primary);
 		}
-		fieldset #error {
+		kol-alert.error {
 			margin: 0.4em 0;
 			order: 3;
 		}
@@ -47953,6 +47880,7 @@ const MAPZ = KoliBri.createTheme("mapz", {
 const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
   GLOBAL: css`
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			--border-color: var(--color-neutral);
 			--border-radius: 0.25rem;
 			--box-shadow: rgba(0, 0, 0, 0.12) 0 12px 12px -4px, rgba(0, 0, 0, 0.04) 0 4px 4px -4px;
@@ -48724,12 +48652,15 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		:host {
 			--spacing: 0.25rem;
 		}
+		.checkbox-container {
+			justify-content: flex-start;
+		}
 		input {
 			border-color: var(--color-neutral-dark);
 			border-width: 2px;
 			border-style: solid;
 		}
-		label {
+		.input-label {
 			padding-left: 0.75rem;
 		}
 		kol-input:not(.disabled):hover label,
@@ -48741,10 +48672,6 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 		}
 		:host kol-input:not(.disabled) :is(.input, label) {
 			cursor: pointer;
-		}
-		:host kol-input.disabled :is(.input, label),
-		:host kol-input.disabled input[type='checkbox']::before {
-			cursor: not-allowed;
 		}
 		.required label > span::after {
 			content: '*';
@@ -48789,9 +48716,6 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 			background-color: white;
 			transition: 0.5s;
 		}
-		input[type='checkbox']:before {
-			content: '';
-		}
 		input[type='checkbox']:checked,
 		input[type='checkbox']:indeterminate {
 			background-color: var(--color-blau);
@@ -48803,44 +48727,19 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 			min-width: calc(6 * var(--spacing));
 			width: calc(6 * var(--spacing));
 		}
-		.default input[type='checkbox']:before {
-			border-radius: 0.25em;
-			background-color: transparent;
-			display: block;
-			height: calc(6 * var(--spacing));
-			position: relative;
-			width: calc(6 * var(--spacing));
-		}
-		.default input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * var(--spacing) - 2px);
-			top: calc(2.85 * var(--spacing) - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * var(--spacing));
-			width: calc(1.5 * var(--spacing));
-		}
 		.default input[type='checkbox']:indeterminate {
 			background-color: var(--color-blau);
 		}
-		.default input[type='checkbox']:indeterminate:before {
-			background-color: white;
-			height: 0.25rem;
-			top: 0.5rem;
-			left: 0.25rem;
-			width: 0.75rem;
+		.default .icon {
+			color: #fff;
+			margin-left: 0.25rem;
 		}
 		.switch input[type='checkbox'] {
+			display: block;
 			min-width: 3.2em;
 			width: 3.2em;
 			height: 1.7em;
 			border-radius: 0.25em;
-			display: inline-block;
 			position: relative;
 		}
 		.switch input[type='checkbox']:before {
@@ -48857,9 +48756,6 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 			position: absolute;
 		}
 		.switch input[type='checkbox']:checked:before {
-			-webkit-transform: translateX(1.5em);
-			-moz-transform: translateX(1.5em);
-			-ms-transform: translateX(1.5em);
 			transform: translateX(1.5em);
 			background-color: white;
 		}
@@ -48867,13 +48763,10 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 			background-color: var(--color-blau);
 		}
 		.switch input[type='checkbox']:indeterminate:before {
-			-webkit-transform: translateX(0.75em);
-			-moz-transform: translateX(0.75em);
-			-ms-transform: translateX(0.75em);
 			transform: translateX(0.75em);
 			background-color: white;
 		}
-		.switch:has(input:not(:checked, :indeterminate)) .icon {
+		.switch:not(.checked):not(.indeterminate) .icon {
 			color: #fff;
 		}
 		.disabled {
@@ -48901,12 +48794,12 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 			border-width: 2px;
 			border-style: solid;
 		}
-		kol-input:has(input:disabled) input,
-		kol-input:has(input:disabled) label {
+		kol-input.disabled input,
+		kol-input.disabled label {
 			cursor: not-allowed !important;
 			opacity: 0.5;
 		}
-		kol-input:hover:has(input:not(:disabled)) label,
+		kol-input:hover:not(.disabled) label,
 		kol-input:focus-within {
 			text-decoration: underline;
 		}
@@ -48961,7 +48854,7 @@ const ZOLLv2 = KoliBri.createTheme("zoll-v2", {
 			box-shadow: 0 0 0.1rem black;
 			background-color: var(--color-blau);
 		}
-		fieldset #error {
+		kol-alert.error {
 			margin: 0.4em 0;
 			order: 3;
 		}
@@ -56885,6 +56778,9 @@ const checkboxStyles = css`
 		content: '*';
 		padding-left: 0.125em;
 	}
+	.checkbox-container {
+		justify-content: flex-start;
+	}
 	.input {
 		display: inline-flex;
 	}
@@ -56935,33 +56831,13 @@ const checkboxStyles = css`
 		border: 2px solid var(--color-neutral-dark);
 		height: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
-		&::before {
-			display: block;
-			height: calc(6 * var(--spacing));
-			width: calc(6 * var(--spacing));
-		}
-		&:checked::before {
-			left: calc(1.5 * var(--spacing) - 2px);
-			top: calc(2.85 * var(--spacing) - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			border-width: 0 3px 3px 0;
-			border-color: var(--color-blau);
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * var(--spacing));
-			width: calc(1.5 * var(--spacing));
-		}
-		&:indeterminate::before {
-			background-color: var(--color-blau);
-			height: 0.6rem;
-			left: 0.325rem;
-			top: 0.325rem;
-			width: 0.6rem;
-		}
 	}
 	kol-input.default:not(.disabled):hover input,
 	kol-input.default:focus-within input {
 		border-color: var(--color-neutral-dark-correct);
+	}
+	.default .icon {
+		margin-left: 0.25rem;
 	}
 
 	/* SWITCH */
@@ -56969,10 +56845,10 @@ const checkboxStyles = css`
 		grid-template-columns: calc(13 * var(--spacing)) auto;
 	}
 	.switch input[type='checkbox'] {
+		display: block;
 		background: var(--color-grau-50);
 		border-color: transparent;
 		border-radius: var(--a11y-min-size);
-		display: inline-block;
 		height: 1.7em;
 		position: relative;
 		transition: outline-offset 0.25s linear;
@@ -57009,8 +56885,8 @@ const checkboxStyles = css`
 			font-weight: 700;
 		}
 	}
-	.switch:has(input[type='checkbox']:not(:checked, :indeterminate)) .icon {
-		opacity: 0; /* Avoid display: none because it breaks the transform-animation */
+	.switch:not(.checked, .indeterminate) .icon {
+		opacity: 0; /* Avoid display: none because it breaks the 'transform' animation */
 	}
 
 	/* BUTTON */
@@ -57074,12 +56950,12 @@ const radioStyles = css`
 		border-width: 2px;
 		border-style: solid;
 	}
-	kol-input:has(input:disabled) input,
-	kol-input:has(input:disabled) label {
+	kol-input.disabled input,
+	kol-input.disabled label {
 		cursor: not-allowed !important;
 		opacity: 0.5;
 	}
-	kol-input:hover:has(input:not(:disabled)) label,
+	kol-input:hover:not(.disabled) label,
 	kol-input:focus-within {
 		text-decoration: underline;
 	}
@@ -57142,7 +57018,7 @@ const radioStyles = css`
 		order: 1;
 		display: contents;
 	}
-	fieldset #error {
+	kol-alert.error {
 		margin: 0.4em 0;
 		order: 2;
 	}
@@ -57198,6 +57074,7 @@ const tabsStyles = css`
 const ZOLLv3 = KoliBri.createTheme("zoll-v3", {
   GLOBAL: css`
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			--border-color: var(--color-neutral);
 			--border-radius: 0.25rem;
 			--box-shadow: rgba(0, 0, 0, 0.12) 0 12px 12px -4px, rgba(0, 0, 0, 0.04) 0 4px 4px -4px;
