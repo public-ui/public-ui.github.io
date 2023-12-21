@@ -1,7 +1,6 @@
-Siehe [Toast](/docs/components/toast).
+Siehe [Toaster](https://public-ui.github.io/docs/components/toaster).
 
 <!-- Auto Generated Below -->
-
 
 ## Methods
 
@@ -9,14 +8,9 @@ Siehe [Toast](/docs/components/toast).
 
 `enqueue(toast: Toast) => Promise<void>`
 
-
-
 #### Returns
 
 Type: `Promise<void>`
-
-
-
 
 ## Dependencies
 
@@ -26,6 +20,7 @@ Type: `Promise<void>`
 - [kol-toast](./toast)
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-toast-container --> kol-button
@@ -43,6 +38,4 @@ graph TD;
   style kol-toast-container fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

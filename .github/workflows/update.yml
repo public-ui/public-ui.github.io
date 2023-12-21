@@ -95,7 +95,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{env.token}}
         run: |
           rm -rf package *.tgz
-          npm pack @${{env.scope}}/designer@~2.0.0-rc
+          npm pack @${{env.scope}}/designer@^2
           tar -xzvf public-ui-designer-*.tgz
 
           rm -rf ../docs/v2/designer
@@ -110,7 +110,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{env.token}}
         run: |
           rm -rf package *.tgz
-          npm pack @${{env.scope}}/sample-react@~2.0.0-rc
+          npm pack @${{env.scope}}/sample-react@^2
           tar -xzvf public-ui-sample-react-*.tgz
 
           rm -rf ../docs/v2/sample-react

@@ -35,7 +35,6 @@ import {
 	KolModal,
 	KolNav,
 	KolPagination,
-	KolPopover,
 	KolProgress,
 	KolQuote,
 	KolSelect,
@@ -46,7 +45,6 @@ import {
 	KolTable,
 	KolTabs,
 	KolTextarea,
-	KolToast,
 	KolVersion,
 } from '@public-ui/react';
 import React from 'react';
@@ -99,7 +97,6 @@ export function ComponentDisplay(props: Props) {
 		modal: KolModal,
 		nav: KolNav,
 		pagination: KolPagination,
-		popover: KolPopover,
 		progress: KolProgress,
 		quote: KolQuote,
 		select: KolSelect,
@@ -110,7 +107,6 @@ export function ComponentDisplay(props: Props) {
 		table: KolTable,
 		tabs: KolTabs,
 		textarea: KolTextarea,
-		toast: KolToast,
 		version: KolVersion,
 	};
 	const Tag = list[props.tag];
