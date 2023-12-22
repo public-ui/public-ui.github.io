@@ -95,9 +95,9 @@ import "./index.css";
 
 +import { register } from "@public-ui/components";
 +import { defineCustomElements } from "@public-ui/components/dist/loader";
-+import { DE } from "@public-ui/themes";
++import { DEFAULT } from "@public-ui/themes";
 
-+register(DE, defineCustomElements)
++register(DEFAULT, defineCustomElements)
 +  .then(() => {
     ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <React.StrictMode>
