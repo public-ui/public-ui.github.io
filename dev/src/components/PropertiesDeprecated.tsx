@@ -4,7 +4,7 @@ const DEPRECATED = new Map<string, Set<string>>();
 DEPRECATED.set('_align', new Set(['_tabs-align']));
 DEPRECATED.set('_dataFoot', new Set(['']));
 DEPRECATED.set('_hide-button', new Set(['_has-buttons (?)']));
-DEPRECATED.set('_hide-label', new Set(['_compact', '_icon-only']));
+DEPRECATED.set('_hide-label', new Set(['_compact', '_hide-label']));
 DEPRECATED.set(
 	'_label',
 	new Set(['_alt', '_aria-label', '_caption', '_heading', '_headline', '_summary', '_symbol', '_title'])

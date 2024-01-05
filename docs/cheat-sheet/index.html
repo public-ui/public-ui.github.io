@@ -325,12 +325,12 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 
 Beachten Sie, dass die Komponente automatisch ein Padding links und rechts zum umgebenden Text erzeugt. Sie kann daher im Fließtext ohne
 Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern den Abstand zum umgebenden Text.`,
-	props: `_access-key, _aria-current-value, _download, _hide-label, _href, _icons, _label, _role, _tab-index, _target, _target-description, _tooltip-align`
+	props: `_access-key, _aria-current-value, _download, _hide-label, _href, _icons, _label, _role, _tab-index, _target, _tooltip-align`
 },{
 	name: `link-button`,
 	desc: `Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
 Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="/docs/components/button" _label="Seite des Buttons"></kol-link>.`,
-	props: `_access-key, _aria-current-value, _custom-class, _download, _hide-label, _href, _icons, _label, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
+	props: `_access-key, _aria-current-value, _custom-class, _download, _hide-label, _href, _icons, _label, _role, _tab-index, _target, _tooltip-align, _variant`
 },{
 	name: `modal`,
 	desc: `Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native '<dialog>' Element sehr gut unterstützt (<kol-link _href="https://caniuse.com/?search=dialog" _target="_blank" _label="caniuse"></kol-link>), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.`,
@@ -664,11 +664,6 @@ interactive element is focused or the mouse is over it.`,
 	desc: `Defines the alignment of the tooltip, popover or tabs in relation to the element.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `popover-wc, tabs, tooltip-wc`
-},{
-	name: `_target-description`,
-	desc: `Defines the description to use when the link is going to be opened in another application.`,
-	types: `string`,
-	comps: `link, link-button`
 },{
 	name: `_target`,
 	desc: `Defines where to open the link.`,

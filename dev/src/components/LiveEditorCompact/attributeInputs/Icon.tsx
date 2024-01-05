@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Attribute } from '../../LiveEditorCompact/types';
 import { KolButton, KolDetails } from '@public-ui/react';
-import { KoliBriAllIcon } from '@public-ui/components/dist/types/types/icon';
+import { KoliBriAllIcons } from '@public-ui/components/dist/types/types/icons';
 
 type Props = {
 	attribute: Attribute;
@@ -42,7 +42,7 @@ export function Icon(props: Props) {
 		if (left && !right && !top && !bottom) {
 			update(attribute.name, `codicon codicon-${left}`);
 		} else {
-			const result: KoliBriAllIcon = {};
+			const result: KoliBriAllIcons = {};
 			if (left) result.left = `codicon codicon-${left}`;
 			if (right) result.right = `codicon codicon-${right}`;
 			if (top) result.top = `codicon codicon-${top}`;
@@ -58,7 +58,7 @@ export function Icon(props: Props) {
 			{label}
 			{leftAvailable ? (
 				<KolDetails _label="Links">
-					<div className="flex flex-wrap">
+					<div className="flex flex-wrap gap-2 p-2">
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
@@ -75,7 +75,7 @@ export function Icon(props: Props) {
 			)}
 			{rightAvailable ? (
 				<KolDetails _label="Rechts">
-					<div className="flex flex-wrap">
+					<div className="flex flex-wrap gap-2 p-2">
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
@@ -92,7 +92,7 @@ export function Icon(props: Props) {
 			)}
 			{topAvailable ? (
 				<KolDetails _label="Oben">
-					<div className="flex flex-wrap">
+					<div className="flex flex-wrap gap-2 p-2">
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
@@ -109,7 +109,7 @@ export function Icon(props: Props) {
 			)}
 			{bottomAvailable ? (
 				<KolDetails _label="Unten">
-					<div className="flex flex-wrap">
+					<div className="flex flex-wrap gap-2 p-2">
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}

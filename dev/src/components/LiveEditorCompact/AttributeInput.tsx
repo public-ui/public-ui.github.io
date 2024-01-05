@@ -32,7 +32,7 @@ export function AttributeInput(props: Props) {
 		switch (attribute.name) {
 			case '_color':
 				return <Color name={attribute.name} label={label} update={update} value={value as string}></Color>;
-			case '_icon':
+			case '_icons':
 				return <Icon attribute={attribute} label={label} update={update} value={value as string}></Icon>;
 			default:
 				switch (calculatedType) {

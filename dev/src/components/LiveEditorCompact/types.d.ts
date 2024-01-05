@@ -47,7 +47,7 @@ export type Params = {
 	'_hide-label'?: boolean;
 	_hint?: string;
 	_href?: string;
-	_icon?: KoliBriAllIcon | string;
+	_icons?: KoliBriAllIcon | string;
 	'_icon-align'?: 'bottom' | 'left' | 'right' | 'top';
 	_hideLabel?: boolean;
 	_id?: string;

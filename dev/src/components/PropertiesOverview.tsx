@@ -74,7 +74,7 @@ const PROP_BLACKLIST = [
 	'_heading',
 	'_headline',
 	'_icon-align',
-	'_icon-only',
+	'_hide-label',
 	'_list',
 	'_part',
 	'_role',

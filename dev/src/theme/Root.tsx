@@ -1,4 +1,3 @@
-import { TH } from '@public-oss/kolibri-themes';
 import { register } from '@public-ui/components';
 import { applyPolyfills, defineCustomElements } from '@public-ui/components/dist/loader';
 import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
@@ -11,7 +10,7 @@ export const Root: FunctionComponent<PropsWithChildren> = (props) => {
 	useEffect(() => {
 		Promise.all([
 			applyPolyfills(),
-			register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund, TH], [defineCustomElements], {
+			register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund], [defineCustomElements], {
 				theme: {
 					detect: 'auto',
 				},
