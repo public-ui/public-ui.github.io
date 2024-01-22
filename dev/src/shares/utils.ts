@@ -5,3 +5,7 @@ export const getPackageName = (scope: string, name: string, seperator = '/') => 
 		return `${name}`;
 	}
 };
+
+export const dangerouslySetInnerHTML = (el: HTMLElement, html: string) => {
+	el.innerHTML = html;
+};

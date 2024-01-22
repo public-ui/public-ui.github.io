@@ -23,6 +23,7 @@ import {
 } from '@public-ui/react';
 import { KoliBri } from '@site/src/components/KoliBri';
 import { KoliBriAbbr } from '@site/src/components/KoliBriAbbr';
+import { WelcomeQualityTable, WelcomeSupportTable } from '@site/src/components/docs/Welcome';
 import { translate } from '@docusaurus/Translate';
 
 <div className="flex gap-4">
@@ -242,70 +243,7 @@ import { translate } from '@docusaurus/Translate';
 <p className="col-12">
 	In der folgenden Tabelle werden die priorisierten Qualitäten von <KoliBri /> aufgelistet:
 </p>
-<KolTable
-	className="col-12"
-	_label="Priorisierte Qualitäten"
-	_minWidth="50em"
-	_headers={{
-		horizontal: [
-			[
-				{
-					label: 'Qualität',
-					key: 'quality',
-					width: '12em',
-				},
-				{
-					label: 'Priorität',
-					key: 'prio',
-					textAlign: 'center',
-					width: '5em',
-				},
-				{
-					label: 'Erläuterung',
-					key: 'desc',
-				},
-			],
-		],
-	}}
-	_data={[
-		{
-			quality: '<b>Kompatibilität</b>',
-			prio: 'AAA',
-			desc: 'W3C®-Standards, Framework-agnostisch und Open Source',
-		},
-		{
-			quality: '<b>Benutzbarkeit</b>',
-			prio: 'AAA',
-			desc: 'BIK BITV- und Usability-Test',
-		},
-		{
-			quality: '<b>Wartbarkeit</b>',
-			prio: 'AAA',
-			desc: 'DevOps, Technologie-Stack, Modularisierung und Automatisierung',
-		},
-		{
-			quality: '<b>Portierbarkeit</b>',
-			prio: 'AA',
-			desc: 'Anpassbarkeit an verschiedene Styleguides des Bundes oder anderer',
-		},
-		{
-			quality: '<b>Zuverlässigkeit</b>',
-			prio: 'AA',
-			desc: 'BIK BITV-, Axe-, Unit-, Snapshot-, E2E-Tests und Developer Experience (DX)',
-		},
-		{
-			quality: '<b>Performance</b>',
-			prio: 'A',
-			desc: 'KoliBri geht hier einen Kompromiss ein, da es die Entwicklung aktiv bei der Umsetzung barrierefreier Benutzeroberflächen unterstützt.',
-		},
-		{
-			quality: '<b>Sicherheit</b>',
-			prio: 'A',
-			desc: 'Web Components dienen der Präsentationsschicht und beinhalten selbst keine sensitiven Informationen',
-		},
-	]}
-></KolTable>
-<p />
+<WelcomeQualityTable lang="de" />
 
 ## Geräte-, Betriebssystem-, Browser- und Screenreader-Anforderungen
 
@@ -317,58 +255,4 @@ import { translate } from '@docusaurus/Translate';
 	Der Microsoft Internet Explorer wird explizit nicht unterstützt, um das Projekt und die Entwicklung nicht durch
 	Altlasten zu schwächen. <KoliBri /> investiert stattdessen konsequent in die Zukunft.
 </p>
-<KolTable
-	className="col-12"
-	_label="Angestrebt Geräte-, Betriebssystem-, Browser und Screenreader-Kompatibilität"
-	_minWidth="40em"
-	_headers={{
-		horizontal: [
-			[
-				{
-					label: 'Gerät',
-					key: 'device',
-					width: '10em',
-					textAlign: 'center',
-				},
-				{
-					label: 'Betriebssystem',
-					key: 'os',
-					width: '10em',
-					textAlign: 'center',
-				},
-				{
-					label: 'Browser',
-					key: 'browser',
-					width: '10em',
-					textAlign: 'center',
-				},
-				{
-					label: 'Screenreader',
-					key: 'screenreader',
-					width: '10em',
-					textAlign: 'center',
-				},
-			],
-		],
-	}}
-	_data={[
-		{
-			device: '<b>PC</b>',
-			os: 'Windows<br/>Linux<br/>MacOS',
-			browser: 'Chrome<br/>Firefox<br/>Edge<br/>Opera<br/>Safari (nur MacOS)',
-			screenreader: 'NVDA (nur ...)<br/>Jaws (nur ...)<br/>VoiceOver (nur MacOS)',
-		},
-		{
-			device: '<b>Tablet</b>',
-			os: 'Android<br/>iOS<br/>Windows',
-			browser: 'Chrome<br/>Firefox<br/>Edge<br/>Opera<br/>Safari (nur MacOS)',
-		},
-		{
-			device: '<b>Mobil</b>',
-			os: 'Android<br/>iOS',
-			browser: 'Chrome<br/>Firefox<br/>Edge<br/>Opera<br/>Safari (nur MacOS)',
-			screenreader: 'TalkBack (nur Android)',
-		},
-	]}
-></KolTable>
-<p />
+<WelcomeSupportTable lang="de" />
