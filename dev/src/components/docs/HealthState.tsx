@@ -171,7 +171,10 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 											tupel.scope,
 											tupel.name
 										)}" _target="npmjs">
-			<img alt="" src="https://img.shields.io/npm/v/${getPackageName(tupel.scope, tupel.name)}" />
+			<img alt="NPM page of the package ${tupel.name}" src="https://img.shields.io/npm/v/${getPackageName(
+											tupel.scope,
+											tupel.name
+										)}" />
 		</kol-link>`
 									),
 							},
@@ -187,7 +190,10 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 											tupel.scope,
 											tupel.name
 										)}" _target="npmcharts">
-			<img alt="" src="https://img.shields.io/npm/dt/${getPackageName(tupel.scope, tupel.name)}.svg" />
+			<img alt="NPM chart of the package ${tupel.name}" src="https://img.shields.io/npm/dt/${getPackageName(
+											tupel.scope,
+											tupel.name
+										)}.svg" />
 		</kol-link>`
 									),
 							},
@@ -294,7 +300,10 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 											tupel.scope,
 											tupel.name
 										)}" _target="npmjs" _label="">
-		<img alt="" slot="expert" src="https://img.shields.io/npm/v/${getPackageName(tupel.scope, tupel.name)}" />
+		<img alt="NPM-Seite von dem Paket ${tupel.name}" slot="expert" src="https://img.shields.io/npm/v/${getPackageName(
+											tupel.scope,
+											tupel.name
+										)}" />
 	</kol-link>`
 									),
 							},
@@ -309,7 +318,10 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 											tupel.scope,
 											tupel.name
 										)}" _target="npmcharts" _label="">
-		<img alt="" slot="expert" src="https://img.shields.io/npm/dt/${getPackageName(tupel.scope, tupel.name)}.svg" />
+		<img alt="NPM-Chart von dem Paket ${tupel.name}" slot="expert" src="https://img.shields.io/npm/dt/${getPackageName(
+											tupel.scope,
+											tupel.name
+										)}.svg" />
 	</kol-link>`
 									),
 							},
