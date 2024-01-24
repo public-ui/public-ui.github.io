@@ -3,14 +3,14 @@ const path = require('path');
 const ELEMENTS = require(path.relative(__dirname, 'node_modules/@public-ui/components/custom-elements.json'));
 const TODAY = new Date();
 const OPEN_UI = {
-	$schema: '../schemas/design-system.schema.json5',
+	$schema: '../schemas/design-system.schema.json',
 	lastUpdated: TODAY.getFullYear() + '-' + (TODAY.getMonth() + 1) + '-' + TODAY.getDate(),
 	name: 'KoliBri',
 	description:
 		'KoliBri builds directly on the web standards of the W3C (framework-agnostic), is a generic reference implementation of the WCAG standard and the BITV for accessibility and implemented as a multi-theming capable presentation layer. There is no technical reference and no data transmission functionalities. This means that KoliBri can be reused for the realization of static websites as well as dynamic web applications with different corporate designs and style guides and is therefore very interesting for open source.',
-	url: 'https://public-ui.github.io/',
+	url: 'https://public-ui.github.io/en/',
 	version: ELEMENTS.version,
-	by: 'Informationstechnik Zentrum Bund',
+	by: 'Informationstechnikzentrum Bund',
 	components: [],
 };
 const removeUnderscore = (str) => {
@@ -23,6 +23,7 @@ const pascalCase = (str) => {
 };
 const BLACKLIST = [
 	'kol-alert-wc',
+	'kol-avatar-wc',
 	'kol-button-group',
 	'kol-button-group-wc',
 	'kol-color',
@@ -35,8 +36,10 @@ const BLACKLIST = [
 	'kol-kolibri',
 	'kol-logo',
 	'kol-link-group',
+	'kol-popover-wc',
 	'kol-span',
 	'kol-span-wc',
+	'kol-tooltip-wc',
 	'kol-version',
 ];
 ELEMENTS.tags.forEach((tag) => {
@@ -47,7 +50,7 @@ ELEMENTS.tags.forEach((tag) => {
 			// openUIName: pascalCase(clearedName),
 			name: pascalCase(clearedName),
 			definition: tag.description,
-			url: `https://public-ui.github.io/docs/components/${clearedName}`,
+			url: `https://public-ui.github.io/en/docs/components/${clearedName}`,
 			anatomy: [],
 			concepts: [],
 		};
