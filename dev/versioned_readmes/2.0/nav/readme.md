@@ -18,24 +18,24 @@ noch die Icons ausgegeben.
 	_links="[
     {
       '_href': 'startseite',
-      '_icon': 'codicon codicon-home',
-      '_label': 'Startseite',
+      '_icons': 'codicon codicon-home',
+      '_label': 'Startseite2',
       '_children': [
         {
           '_href': 'startseite/1-untermenuepunkt',
-          '_icon': 'codicon codicon-home',
+          '_icons': 'codicon codicon-home',
           '_label': '1. Untermenüpunkt'
         },
         {
           '_href': 'startseite/2-untermenuepunkt',
-          '_icon': 'codicon codicon-home',
+          '_icons': 'codicon codicon-home',
           '_label': '2. Untermenüpunkt'
         }
       ]
     },
     {
       '_href': 'unterseite',
-      '_icon': 'codicon codicon-home',
+      '_icons': 'codicon codicon-home',
       '_label': '2. Menüpunkt'
     }
   ]"
@@ -45,7 +45,7 @@ noch die Icons ausgegeben.
 
 ### Beispiel
 
-<kol-nav _label="Navigation" _links="[{'_href':'startseite','_icon':'codicon codicon-home','_label':'Startseite','_children':[{'_href':'startseite/1-untermenuepunkt','_icon':'codicon codicon-home','_label':'1. Untermenüpunkt'},{'_href':'startseite/2-untermenuepunkt','_icon':'codicon codicon-home','_label':'2. Untermenüpunkt'}]},{'_href':'unterseite','_icon':'codicon codicon-home','_label':'2. Menüpunkt'}]" _has-compact-button></kol-nav>
+<kol-nav _label="Navigation" _links="[{'_href':'startseite','_icons':'codicon codicon-home','_label':'Startseite','_children':[{'_href':'startseite/1-untermenuepunkt','_icons':'codicon codicon-home','_label':'1. Untermenüpunkt'},{'_href':'startseite/2-untermenuepunkt','_icons':'codicon codicon-home','_label':'2. Untermenüpunkt'}]},{'_href':'unterseite','_icons':'codicon codicon-home','_label':'2. Menüpunkt'}]" _has-compact-button></kol-nav>
 
 ## Verwendung
 
