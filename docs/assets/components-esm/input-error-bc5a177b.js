@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ const input=document.querySelector("kol-input-text");input&&(console.log(input),setInterval((()=>{input.hasAttribute("_error")?input.removeAttribute("_error"):input.setAttribute("_error","This is an error")}),1e3));const inputError={};export{inputError as default};

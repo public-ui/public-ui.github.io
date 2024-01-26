@@ -301,6 +301,232 @@ var loglevel = {exports: {}};
 
 const N=(e,t)=>s=>s(e,t),P=(e,t)=>s=>s(e,t,{append:!1}),o=typeof window=="object"?window:typeof global=="object"?global:typeof self=="object"?self:{};const c=new Map,C=[],v=new Set,h=new Map,B=/--[^;]+/g,G=/:/;(typeof o.A11yUi!="object"||o.A11yUi===null)&&(o.A11yUi={CSS_STYLE_CACHE:h,HYDRATED_HISTORY:C,STYLING_TASK_QUEUE:c});const K=(e,t)=>{let s=t.match(B);if(Array.isArray(s)){s=s.filter(r=>G.test(r));const a=document.createElement("style");a.innerHTML=`.${e} {${s.join(";")}}`,document.querySelector("head")?.appendChild(a);}v.add(e);},d=(e,t)=>typeof o.A11yUi=="object"&&o.A11yUi!==null&&typeof o.A11yUi.Themes=="object"&&o.A11yUi.Themes!==null&&typeof o.A11yUi.Themes[e]=="object"&&o.A11yUi.Themes[e]!==null&&typeof o.A11yUi.Themes[e][t]=="string"?o.A11yUi.Themes[e][t].replace(/\r?\n/g,""):"",q=e=>{for(const t of Array.from(e.childNodes))if(t instanceof HTMLStyleElement&&t.tagName==="STYLE")e.removeChild(t);else break},F=(e,t)=>{try{const s=[];t.forEach(a=>{const r=new CSSStyleSheet;r.replaceSync(a),s.push(r);}),e.adoptedStyleSheets=s;}catch{t.reverse().forEach(s=>{const a=document.createElement("style");a.innerHTML=s,e.insertBefore(a,e.firstChild);});}},Q=(e,t,s)=>{if(s!==!1){const a=[...Array.from(e.childNodes).filter(n=>n instanceof HTMLStyleElement&&n.tagName==="STYLE")];let r;try{r=[...Array.from(e.adoptedStyleSheets)];}catch{r=[];}s?.mode==="before"?(a.reverse().forEach(n=>t.unshift(n.innerHTML)),r.reverse().forEach(n=>t.unshift(Array.from(n.cssRules).map(i=>i.cssText).join("")))):s?.mode==="after"&&(a.forEach(n=>t.push(n.innerHTML)),r.forEach(n=>t.push(Array.from(n.cssRules).map(i=>i.cssText).join(""))));}},L=(e,t,s)=>{const a=t.name||"default";let r;try{if(e.shadowRoot===null)throw new Error("ShadowRoot is null");r=e.shadowRoot;}catch{r=e;}if(h.get(a)?.has(e.tagName))M(e,r,h.get(a)?.get(e.tagName),s);else {const n=d(a,"PROPERTIES"),i=d(a,"GLOBAL"),H=d(a,e.tagName);v.has(a)===!1&&K(a,i);const m=[n,i,H];Q(r,m,t.encroachCss),t.loglevel==="debug"&&console.log(e.tagName,m),t.cache===!0&&(h.has(a)===!1&&h.set(a,new Map),h.get(a)?.set(e.tagName,m)),M(e,r,m,s);}},M=(e,t,s,a)=>{q(t),F(t,s),e.style.display=a;},$=e=>{e.loglevel==="debug"&&C.push({timestamp:Date.now(),numberOfTasks:c.size});},W=e=>{c.delete(e);},O=(e,t)=>{W(e),$(t);},X=e=>{for(const t of e)if(c.has(t.target)&&t.target.classList.contains("hydrated")){const{styleDisplay:s,themeDetails:a}=c.get(t.target);L(t.target,a,s),O(t.target,a);}};let f;try{f=new MutationObserver(X);}catch{f=null;}class te{constructor(t,s,a){this.createTheme=(r,n)=>P(r,n),this.createTranslation=(r,n)=>N(r,n),this.Prefix=t,this.Key=Object.getOwnPropertyNames(s),this.Tag=Object.getOwnPropertyNames(a);}}
 
+var rgbaConvert = {exports: {}};
+
+rgbaConvert.exports     = arr;
+rgbaConvert.exports.arr = arr;
+rgbaConvert.exports.obj = obj;
+rgbaConvert.exports.css = css$3;
+rgbaConvert.exports.hex = hex;
+rgbaConvert.exports.num = num;
+
+function arr(data) {
+  var a = parse(data);
+  if (a.length == 3) {
+    return a.concat(255)
+  } else {
+    a[3] = Math.round(a[3]);
+    return a
+  }
+}
+
+function obj(data) {
+  var a = parse(data);
+  return {
+    r: a[0],
+    g: a[1],
+    b: a[2],
+    a: a.length == 3
+      ? 255
+      : Math.round(a[3])
+  }
+}
+
+function css$3(data) {
+  var a = parse(data);
+  if (a.length == 3) a.push(255);
+
+  return a[3] == 255
+    ? 'rgb(' + a[0] + ', ' + a[1] + ', ' + a[2] + ')'
+    : a[3] == 0
+      ? 'rgba(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', 0)'
+      : 'rgba(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + String(a[3] / 255).substr(1) + ')'
+}
+
+function hex(data) {
+  var a = parse(data);
+  if (a.length == 3) a.push(255);
+  var opaque = a[3] == 255;
+  var r = num2hex(a[0]);
+  var g = num2hex(a[1]);
+  var b = num2hex(a[2]);
+  var a = num2hex(Math.round(a[3]));
+  var is = isshort(r, g, b, a);
+  if (opaque) {
+    return is
+      ? '#' + r.charAt(0) + g.charAt(0) + b.charAt(0)
+      : '#' + r + g + b
+  }
+  return is
+    ? '#' + r.charAt(0) + g.charAt(0) + b.charAt(0) + a.charAt(0)
+    : '#' + r + g + b + a
+}
+
+function num(data) {
+  var a = parse(data);
+  if (a.length == 3) a.push(255);
+  else a[3] = Math.round(a[3]);
+  return ((a[3] << 24) >>> 0 | a[0] << 16 | a[1] << 8 | a[2]) >>> 0
+}
+
+function parse(data) {
+  if (typeof data == 'string') {
+    data = data.toLowerCase();
+    return name(data)
+      || hex3(data)
+      || hex6(data)
+      || rgb(data)
+      || rgba(data)
+      || [0, 0, 0, 255]
+  }
+  return object(data)
+    || array(data)
+    || number(data)
+    || [0, 0, 0, 255]
+}
+
+function num2hex(num) {
+  var s = num.toString(16);
+  return s.length == 1
+    ? '0' + s
+    : s
+}
+
+function isshort(r, g, b, a) {
+  var h = ['ff', '00', '11', '22', '33', '44', '55', '66',
+           '77', '88', '99', 'aa', 'bb', 'cc', 'dd', 'ee'];
+  return h.indexOf(r) != -1
+    && h.indexOf(g) != -1
+    && h.indexOf(b) != -1
+    && h.indexOf(a) != -1
+}
+
+function name(str) {
+  if (str == 'red')     return [255, 0, 0]
+  if (str == 'green')   return [0, 255, 0]
+  if (str == 'blue')    return [0, 0, 255]
+  if (str == 'black')   return [0, 0, 0]
+  if (str == 'white')   return [255, 255, 255]
+  if (str == 'cyan')    return [0, 255, 255]
+  if (str == 'gray')    return [128, 128, 128]
+  if (str == 'grey')    return [128, 128, 128]
+  if (str == 'magenta') return [255, 0, 255]
+  // ok, not the real css `pink` but my personal `magenta` alias
+  // `pink` is simpler than `fuchsia`, whatever...
+  if (str == 'pink')    return [255, 0, 255]
+  if (str == 'yellow')  return [255, 255, 0]
+}
+
+function hex2num(str) {
+  return str.length == 1
+    ? parseInt(str + str, 16)
+    : parseInt(str, 16)
+}
+
+function hex3(str) {
+  var s = str.replace(/^#/,'');
+  var l = s.length;
+  if (l == 3 || l == 4) {
+    var r = hex2num(s[0]);
+    var g = hex2num(s[1]);
+    var b = hex2num(s[2]);
+    var a = l == 3
+      ? 255
+      : hex2num(s[3]);
+
+    if (isNaN(r) || isNaN(g) || isNaN(b) || isNaN(a)) return
+
+    return [r, g, b, a]
+  }
+}
+
+function hex6(str) {
+  var s = str.replace(/^#/,'');
+  var l = s.length;
+  if (l == 6 || l == 8) {
+    var r = hex2num(s.slice(0, 2));
+    var g = hex2num(s.slice(2, 4));
+    var b = hex2num(s.slice(4, 6));
+    var a = l == 6
+      ? 255
+      : hex2num(s.slice(6, 8));
+
+    if (isNaN(r) || isNaN(g) || isNaN(b) || isNaN(a)) return
+
+    return [r, g, b, a]
+  }
+}
+
+function getnum(val, integer) {
+  if (typeof val != 'number') return -1
+  if (integer === true && Math.floor(val) !== val) return -1
+  return val >= 0 && val <= 255
+    ? val
+    : -1
+}
+
+function object(obj) {
+  if (Object.prototype.toString.call(obj) === '[object Object]'
+    && Object.getPrototypeOf(obj) === Object.getPrototypeOf({})) {
+    var r = getnum(obj.r != undefined ? obj.r : obj.red   != undefined ? obj.red   : 0,   true);
+    var g = getnum(obj.g != undefined ? obj.g : obj.green != undefined ? obj.green : 0,   true);
+    var b = getnum(obj.b != undefined ? obj.b : obj.blue  != undefined ? obj.blue  : 0,   true);
+    var a = getnum(obj.a != undefined ? obj.a : obj.alpha != undefined ? obj.alpha : 255, true);
+    if (r != -1 && g != -1 && b != -1 && a != -1) {
+      return [r, g, b, a]
+    }
+  }
+}
+
+function array(arr) {
+  if (Array.isArray(arr) && (arr.length == 3 || arr.length == 4)) {
+    var r = getnum(arr[0],   true);
+    var g = getnum(arr[1],   true);
+    var b = getnum(arr[2],   true);
+    var a = getnum(arr[3] != undefined ? arr[3] : 255, true);
+    if (r != -1 && g != -1 && b != -1 && a != -1) {
+      return [r, g, b, a]
+    }
+  }
+}
+
+function number(num) {
+  if (typeof num == 'number' && Math.floor(num) == num && num <= 4294967295 && num >= 0) {
+    var a = num >> 24 & 255;
+    var r = num >> 16 & 255;
+    var g = num >> 8  & 255;
+    var b = num & 255;
+    return [r, g, b, a]
+  }
+}
+
+function rgb(str) {
+  if (str.substr(0, 4) == 'rgb(') {
+    str = str.match(/^rgb\(([^)]+)\)/)[1];
+    var t = str.split(/ *, */).map(Number);
+    var r = getnum(t[0], true);
+    var g = getnum(t[1], true);
+    var b = getnum(t[2], true);
+    if (r != -1 && g != -1 && b != -1) {
+      return [r, g, b, 255]
+    }
+  }
+}
+
+function rgba(str) {
+  if (str.substr(0, 5) == 'rgba(') {
+    str = str.match(/^rgba\(([^)]+)\)/)[1];
+    var t = str.split(/ *, */).map(Number);
+    var r = getnum(t[0], true);
+    var g = getnum(t[1], true);
+    var b = getnum(t[2], true);
+    var a = getnum(t[3] * 255);
+    if (r != -1 && g != -1 && b != -1 && a != -1) {
+      return [r, g, b, a]
+    }
+  }
+}
+
 var KeyEnum = /* @__PURE__ */ ((KeyEnum2) => {
   KeyEnum2[KeyEnum2["error"] = 0] = "error";
   KeyEnum2[KeyEnum2["warning"] = 1] = "warning";
@@ -380,12 +606,83 @@ var TagEnum = /* @__PURE__ */ ((TagEnum2) => {
   return TagEnum2;
 })(TagEnum || {});
 
+const _Log = class {
+  static mapToArray(msg) {
+    return Array.isArray(msg) ? msg : [msg];
+  }
+  static handleClassifier(classifier) {
+    if (typeof classifier === "string" && classifier.length > 0) {
+      return `${_Log.shield.label} | ${classifier}`;
+    } else {
+      return _Log.shield.label;
+    }
+  }
+  static getShield(options) {
+    return [_Log.handleClassifier(options?.classifier), `${_Log.shield.style};${options?.overwriteStyle || ""}`];
+  }
+  static debug(msg, options) {
+    if (options?.forceLog === true) {
+      console.debug(..._Log.getShield(options), ..._Log.mapToArray(msg));
+    }
+  }
+  static info(msg, options) {
+    if (options?.forceLog === true) {
+      console.info(..._Log.getShield(options), ..._Log.mapToArray(msg));
+    }
+  }
+  static trace(msg, options) {
+    if (options?.forceLog === true) {
+      console.trace(..._Log.getShield(options), ..._Log.mapToArray(msg));
+    }
+  }
+  static warn(msg, options) {
+    if (options?.forceLog === true) {
+      console.warn(..._Log.getShield(options), ..._Log.mapToArray(msg));
+    }
+  }
+  static error(msg, options) {
+    if (options?.forceLog === true) {
+      console.error(..._Log.getShield(options), ..._Log.mapToArray(msg));
+    }
+  }
+  static throw(msg, options) {
+    if (options?.forceLog === true) {
+      throw new Error(..._Log.getShield(options), ..._Log.mapToArray(msg));
+    }
+  }
+};
+let Log = _Log;
+Log.shield = {
+  label: "%cKoliBri",
+  style: "color: white; background: #666; font-weight: bold; padding: .25em .5em; border-radius: 3px; border: 1px solid #000"
+};
+const devCache = /* @__PURE__ */ new Set();
+const devHint = (msg, options) => {
+  if (devCache.has(msg) === false || !!options?.force) {
+    devCache.add(msg);
+    Log.debug([msg].concat(options?.details || []), {
+      classifier: `\u{1F4BB} dev`,
+      overwriteStyle: "; background-color: #f09"
+    });
+  }
+};
+devHint(
+  `Wir freuen uns \xFCber jedes Feedback, Kommentare, Screenshots oder Demo-Links von einer auf KoliBri-basierenden Anwendung (kolibri@itzbund.de). Vielen Dank!`
+);
+new Event("StateChange");
+let processEnv = "development";
+try {
+  processEnv = process.env.NODE_ENV;
+} catch (e) {
+  processEnv = "production";
+}
+
 const KoliBri = new te("kol", KeyEnum, TagEnum);
 
-const css$3 = (input) => input.join(``);
+const css$2 = (input) => input.join(``);
 
 const BMF = KoliBri.createTheme("bmf", {
-  GLOBAL: css$3`
+  GLOBAL: css$2`
 		/* Design Tokens */
 		:host {
 			--border-radius: 5px;
@@ -490,7 +787,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			gap: 0.5em;
 		}
 	`,
-  "KOL-BUTTON": css$3`
+  "KOL-BUTTON": css$2`
 		:is(a, button) {
 			font-size: 1.125em;
 		}
@@ -619,7 +916,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			display: block;
 		}
 	`,
-  "KOL-INPUT-TEXT": css$3`
+  "KOL-INPUT-TEXT": css$2`
 		kol-input {
 			gap: 0.25em;
 		}
@@ -671,7 +968,6 @@ const BMF = KoliBri.createTheme("bmf", {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -699,7 +995,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			border-color: var(--color-granite);
 		}
 	`,
-  "KOL-INPUT-PASSWORD": css$3`
+  "KOL-INPUT-PASSWORD": css$2`
 		kol-input {
 			gap: 0.25em;
 		}
@@ -751,7 +1047,6 @@ const BMF = KoliBri.createTheme("bmf", {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -780,7 +1075,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			color: var(--color-black);
 		}
 	`,
-  "KOL-INPUT-NUMBER": css$3`
+  "KOL-INPUT-NUMBER": css$2`
 		kol-input {
 			gap: 0.25em;
 		}
@@ -860,7 +1155,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			color: var(--color-black);
 		}
 	`,
-  "KOL-INPUT-DATE": css$3`
+  "KOL-INPUT-DATE": css$2`
 		kol-input {
 			gap: 0.25em;
 		}
@@ -940,7 +1235,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			color: var(--color-black);
 		}
 	`,
-  "KOL-INPUT-EMAIL": css$3`
+  "KOL-INPUT-EMAIL": css$2`
 		kol-input {
 			gap: 0.25em;
 		}
@@ -992,7 +1287,6 @@ const BMF = KoliBri.createTheme("bmf", {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -1021,7 +1315,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			color: var(--color-black);
 		}
 	`,
-  "KOL-INPUT-FILE": css$3`
+  "KOL-INPUT-FILE": css$2`
 		kol-input {
 			gap: 0.25em;
 		}
@@ -1079,7 +1373,6 @@ const BMF = KoliBri.createTheme("bmf", {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -1108,7 +1401,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			color: var(--color-black);
 		}
 	`,
-  "KOL-TEXTAREA": css$3`
+  "KOL-TEXTAREA": css$2`
 		kol-input {
 			gap: 0.25em;
 			display: grid;
@@ -1172,7 +1465,6 @@ const BMF = KoliBri.createTheme("bmf", {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		textarea:read-only,
 		textarea:disabled {
 			cursor: not-allowed;
 		}
@@ -1212,7 +1504,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			color: var(--color-grey);
 		}
 	`,
-  "KOL-ALERT": css$3`
+  "KOL-ALERT": css$2`
 		.msg,
 		.msg {
 			border-width: 0;
@@ -1491,7 +1783,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			outline: none;
 		}
 	`,
-  "KOL-HEADING": css$3`
+  "KOL-HEADING": css$2`
 		.headline-h1,
 		.headline-h2,
 		.headline-h3,
@@ -1521,7 +1813,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			line-height: 1.5rem;
 		}
 	`,
-  "KOL-BADGE": css$3`
+  "KOL-BADGE": css$2`
 		:host {
 			display: inline-block;
 		}
@@ -1557,14 +1849,14 @@ const BMF = KoliBri.createTheme("bmf", {
 			gap: 0.25rem;
 		}
 	`,
-  "KOL-BUTTON-GROUP": css$3`
+  "KOL-BUTTON-GROUP": css$2`
 		:host > kol-button-group-wc {
 			display: flex;
 			flex-wrap: wrap;
 			gap: 0.5em;
 		}
 	`,
-  "KOL-INDENTED-TEXT": css$3`
+  "KOL-INDENTED-TEXT": css$2`
 		:host > div {
 			background-color: var(--color-white);
 			border-left: none;
@@ -1573,7 +1865,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			width: 100%;
 		}
 	`,
-  "KOL-LINK": css$3`
+  "KOL-LINK": css$2`
 		:is(a, button) {
 			color: var(--color-midnight);
 			font-style: normal;
@@ -1610,7 +1902,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			position: unset;
 		}
 	`,
-  "KOL-DETAILS": css$3`
+  "KOL-DETAILS": css$2`
 		details > summary {
 			border-radius: var(--border-radius);
 		}
@@ -1626,7 +1918,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			content: '\\f054';
 		}
 	`,
-  "KOL-SPIN": css$3`
+  "KOL-SPIN": css$2`
 		.cycle {
 			padding: 0.125rem;
 			& span {
@@ -1634,7 +1926,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			}
 		}
 	`,
-  "KOL-PROGRESS": css$3`
+  "KOL-PROGRESS": css$2`
 		.bar > div {
 			flex-direction: column;
 			gap: 0.5rem !important;
@@ -1687,7 +1979,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			alignment-baseline: central;
 		}
 	`,
-  "KOL-SELECT": css$3`
+  "KOL-SELECT": css$2`
 		kol-input {
 			gap: 0.25em;
 		}
@@ -1789,7 +2081,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			color: white;
 		}
 	`,
-  "KOL-INPUT-COLOR": css$3`
+  "KOL-INPUT-COLOR": css$2`
 		kol-input {
 			gap: 0.25em;
 		}
@@ -1877,7 +2169,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			color: var(--color-black);
 		}
 	`,
-  "KOL-ACCORDION": css$3`
+  "KOL-ACCORDION": css$2`
 		kol-span-wc > span {
 			display: flex;
 			place-items: baseline center;
@@ -1935,7 +2227,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			transition: outline-offset 0.2s linear;
 		}
 	`,
-  "KOL-TABLE": css$3`
+  "KOL-TABLE": css$2`
 		:host * {
 			hyphens: var(--kolibri-hyphens);
 			font-family: var(--kolibri-font-family);
@@ -1946,8 +2238,14 @@ const BMF = KoliBri.createTheme("bmf", {
 			overflow-x: auto;
 			overflow-y: hidden;
 		}
+
+		.table:has(caption:focus) {
+			outline-color: var(--color-ocean);
+			outline-style: solid;
+			outline-width: 3px;
+			transition: outline-offset 0.2s linear;
+		}
 		caption {
-			position: absolute;
 			width: 1px;
 			height: 1px;
 			padding: 0;
@@ -2021,7 +2319,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			}
 		}
 	`,
-  "KOL-NAV": css$3`
+  "KOL-NAV": css$2`
 		* {
 			margin: 0;
 			padding: 0;
@@ -2034,91 +2332,48 @@ const BMF = KoliBri.createTheme("bmf", {
 		ul {
 			list-style: none;
 		}
-		kol-link-wc,
-		a {
-			height: 100%;
-			min-height: 44px;
-			display: flex;
-			place-items: center;
-		}
-		.entry > kol-button-link-text-switch {
-			width: 100%;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-white);
-			text-decoration: none;
-			color: var(--color-midnight);
-			width: 100%;
-			display: flex;
+		.entry-item :is(a, .button) {
 			align-items: center;
-			font-style: normal;
-			line-height: 1.5rem;
-			min-height: 44px;
-			min-width: 44px;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-			letter-spacing: 0.175px;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc):first-child:is(a, button) {
-			color: var(--color-midnight);
-			text-decoration: none;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
-			border-left-color: var(--color-ocean);
-			background-color: var(--color-ocean);
-			letter-spacing: unset;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child:hover > :is(a, button, span) {
-			color: var(--color-white);
-			background-color: var(--color-ocean);
-			font-weight: 700;
-			letter-spacing: unset;
-		}
-		:is(.active, .selected).list.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-smoke);
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-ice);
-			color: var(--color-midnight);
-			font-weight: 700;
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child > :is(a, button, span) {
-			font-weight: 700;
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
-			color: var(--color-white);
-			letter-spacing: unset;
-		}
-		.entry > kol-button-link-text-switch > kol-span-wc > span,
-		.entry :is(a, button) {
+			background-color: var(--color-white);
 			border-left-color: transparent;
 			border-left-style: solid;
 			border-left-width: 0.5rem;
-			padding: 0.75rem 0.5rem 0.75rem 0.25rem;
-		}
-		:is(.active, .selected) kol-button-link-text-switch :is(a, button),
-		[exportparts*='selected'] a {
-			border-left-color: var(--color-midnight);
-		}
-		:is(kol-button-wc button, kol-link-wc a) {
 			color: var(--color-midnight);
-		}
-		kol-link-wc a {
+			display: flex;
+			font-style: normal;
+			letter-spacing: 0.175px;
+			line-height: 1.5rem;
+			min-height: 44px;
+			min-width: 44px;
+			padding: 0.75rem 0.5rem 0.75rem 0.25rem;
+			place-items: center;
 			text-decoration: none;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+			width: 100%;
 		}
-		kol-link-wc kol-icon {
+		.vertical .active .entry-item :is(a, .button) {
+			background-color: var(--color-ice);
+			border-left-color: var(--color-midnight);
+			color: var(--color-midnight);
+			font-weight: 700;
+		}
+		.entry-item :is(a, .button):hover,
+		.vertical .active .entry-item :is(a, .button):hover {
+			background-color: var(--color-ocean);
+			border-left-color: var(--color-ocean);
+			color: var(--color-white);
+			font-weight: 700;
+		}
+		.nav:not(.is-compact) .entry-item .icon {
 			display: none;
 		}
 		/** Compact mode */
-		.entry.hide-label :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			place-items: center;
-		}
-		.entry.hide-label :is(a, button) {
-			padding: 0;
-			border-left: 0;
+		.entry.hide-label .entry-item :is(a, .button) {
+			justify-content: center;
 		}
 	`,
-  "KOL-CARD": css$3`
+  "KOL-CARD": css$2`
 		/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 		:host > div {
 			display: grid;
@@ -2146,7 +2401,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			border-top: 2px solid var(--color-ice);
 		}
 	`,
-  "KOL-INPUT-CHECKBOX": css$3`
+  "KOL-INPUT-CHECKBOX": css$2`
 		/* INPUT */
 		:host kol-input {
 			display: grid;
@@ -2380,7 +2635,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			outline-width: 3px;
 		}
 	`,
-  "KOL-INPUT-RADIO": css$3`
+  "KOL-INPUT-RADIO": css$2`
 		/* INPUT */
 		kol-input {
 			display: grid;
@@ -2514,7 +2769,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			padding-left: 0;
 		}
 	`,
-  "KOL-TOAST-CONTAINER": css$3`
+  "KOL-TOAST-CONTAINER": css$2`
 		:host {
 			top: 1rem;
 			right: 1rem;
@@ -2525,7 +2780,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			margin-top: 1rem;
 		}
 	`,
-  "KOL-TABS": css$3`
+  "KOL-TABS": css$2`
 		button:disabled {
 			opacity: 0.5;
 			cursor: not-allowed;
@@ -2557,7 +2812,10 @@ const BMF = KoliBri.createTheme("bmf", {
 			/* border-bottom: 0.025rem solid var(--color-midnight); */
 			color: var(--color-midnight);
 		}
-		button kol-span-wc > span {
+		button:not(.selected) kol-span-wc > span {
+			border-bottom: 0.25em solid transparent;
+		}
+		button.selected kol-span-wc > span {
 			border-bottom: 0.25em solid;
 		}
 		button kol-span-wc > span {
@@ -2673,7 +2931,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			border: none;
 		}
 	`,
-  "KOL-PAGINATION": css$3`
+  "KOL-PAGINATION": css$2`
 		.icon::part(icon) {
 			font-family: 'Font Awesome 6 Free';
 			font-weight: 900;
@@ -2731,7 +2989,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			font-weight: 700;
 		}
 	`,
-  "KOL-INPUT-RANGE": css$3`
+  "KOL-INPUT-RANGE": css$2`
 		kol-input {
 			gap: 0.25em;
 		}
@@ -2779,7 +3037,6 @@ const BMF = KoliBri.createTheme("bmf", {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -2808,7 +3065,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			color: var(--color-black);
 		}
 	`,
-  "KOL-LINK-BUTTON": css$3`
+  "KOL-LINK-BUTTON": css$2`
 		:is(a, button) {
 			font-size: 1.125em;
 		}
@@ -2937,7 +3194,7 @@ const BMF = KoliBri.createTheme("bmf", {
 			border-color: transparent;
 		}
 	`,
-  "KOL-BUTTON-LINK": css$3`
+  "KOL-BUTTON-LINK": css$2`
 		:is(a, button) {
 			color: var(--color-midnight);
 			font-style: normal;
@@ -2974,13 +3231,13 @@ const BMF = KoliBri.createTheme("bmf", {
 			position: unset;
 		}
 	`,
-  "KOL-ABBR": css$3`
+  "KOL-ABBR": css$2`
 		abbr {
 			border-bottom: dashed var(--color-black) 1px;
 			text-decoration: none !important;
 		}
 	`,
-  "KOL-BREADCRUMB": css$3`
+  "KOL-BREADCRUMB": css$2`
 		li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {
 			font-size: 0.75rem;
 		}
@@ -3003,12 +3260,12 @@ const BMF = KoliBri.createTheme("bmf", {
 			color: var(--color-grey);
 		}
 	`,
-  "KOL-MODAL": css$3`
+  "KOL-MODAL": css$2`
 		:host .overlay .modal {
 			max-height: calc(100% - 32px);
 		}
 	`,
-  "KOL-ICON": css$3`
+  "KOL-ICON": css$2`
 		:host {
 			width: 1em;
 			height: 1em;
@@ -9998,7 +10255,7 @@ const BMF = KoliBri.createTheme("bmf", {
 				u+f10a-f10b, u+f123, u+f13e, u+f148-f149, u+f14c, u+f156, u+f15e, u+f160-f161, u+f163, u+f175-f178, u+f195, u+f1f8, u+f219, u+f250, u+f252, u+f27a;
 		}
 	`,
-  "KOL-SKIP-NAV": css$3`
+  "KOL-SKIP-NAV": css$2`
 		kol-link-wc > a > kol-span-wc {
 			border-radius: var(--a11y-min-size);
 			border-style: solid;
@@ -10012,2347 +10269,162 @@ const BMF = KoliBri.createTheme("bmf", {
 			cursor: pointer;
 		}
 	`,
-  "KOL-SPLIT-BUTTON": css$3`
+  "KOL-SPLIT-BUTTON": css$2`
 		.popover {
 			background: #fff;
 		}
 	`
 });
 
-const cssWithCustomLayerName = (layerName) => (input) => `@layer ${layerName} { ${input.join(``)} }`;
-const css$2 = (input) => cssWithCustomLayerName("kol-theme-component")(input);
+var css_248z$A = "@layer kol-theme-global {\n  :host {\n    --border-radius: var(--kolibri-border-radius, 5px);\n    --font-family: var(--kolibri-font-family, BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif);\n    --font-size: var(--kolibri-font-size, 16px);\n    --spacing: var(--kolibri-spacing, 0.25rem);\n    --border-width: var(--kolibri-border-width, 1px);\n    --color-primary: var(--kolibri-color-primary, #004b76);\n    --color-primary-variant: var(--kolibri-color-primary-variant, #0077b6);\n    --color-danger: var(--kolibri-color-danger, #c0003c);\n    --color-warning: var(--kolibri-color-warning, #c44931);\n    --color-success: var(--kolibri-color-success, #005c45);\n    --color-subtle: var(--kolibri-color-subtle, #576164);\n    --color-light: var(--kolibri-color-light, #ffffff);\n    --color-text: var(--kolibri-color-text, #202020);\n    --color-mute: var(--kolibri-color-mute, #f2f3f4);\n    --color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);\n  }\n  :host {\n    background-color: transparent; /* Reset global background-color defined by components */\n    font-family: var(--font-family);\n    font-size: var(--font-size);\n  }\n  * {\n    box-sizing: border-box;\n  }\n  *:not(i) {\n    font-family: var(--font-family);\n  }\n  h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    margin: 0;\n    padding: 0;\n  }\n  *[tabindex]:focus,\n  kol-input:not(.checkbox, .radio) .input:focus-within,\n  kol-input:is(.checkbox, .radio) input:focus,\n  summary:focus {\n    cursor: pointer;\n    outline-color: var(--color-primary-variant);\n    outline-offset: 2px;\n    outline-style: solid;\n    outline-width: 3px;\n    transition: outline-offset 0.2s linear;\n  }\n  kol-heading-wc {\n    font-weight: 700;\n  }\n  kol-tooltip-wc .tooltip-floating {\n    border: var(--border-width) solid var(--color-subtle);\n    border-radius: var(--border-radius);\n  }\n  kol-tooltip-wc .tooltip-arrow {\n    border: var(--border-width) solid var(--color-subtle);\n  }\n  kol-tooltip-wc .tooltip-area {\n    background-color: var(--color-light);\n  }\n  kol-tooltip-wc .tooltip-content {\n    border-radius: var(--border-radius);\n    line-height: 1.5;\n    padding: 0.5rem 0.75rem;\n  }\n  kol-span-wc,\n  kol-span-wc > span {\n    gap: 0.5rem;\n  }\n  @keyframes spin {\n    0% {\n      transform: rotate(0deg);\n    }\n    100% {\n      transform: rotate(360deg);\n    }\n  }\n}";
+const globalCss = css_248z$A;
+
+var css_248z$z = "@layer kol-theme-component {\n  abbr {\n    border-bottom: dashed var(--color-text) 1px;\n    text-decoration: none !important;\n  }\n}";
+const abbrCss = css_248z$z;
+
+var css_248z$y = "@layer kol-theme-component {\n  kol-span-wc > span {\n    display: flex;\n    place-items: baseline center;\n    text-align: left;\n  }\n  :host > div > kol-heading-wc button {\n    border-radius: var(--border-radius);\n    min-height: 2.2rem;\n    padding: 12px 8px;\n  }\n  :host > div > kol-heading-wc button kol-span-wc {\n    font-weight: 700;\n    font-size: 1.125rem;\n    line-height: 20px;\n    gap: 0.5rem;\n  }\n  :host > div > kol-heading-wc button kol-span-wc > span {\n    gap: 0.5em;\n  }\n  :host > div > kol-heading-wc button kol-icon {\n    color: var(--color-primary);\n  }\n  :host > div {\n    width: 100%;\n    height: 100%;\n    display: grid;\n  }\n  :host > div div[class=header],\n  :host > div[class*=open] div[class=content] {\n    margin: 0;\n  }\n  :host > div div[class=content] {\n    padding-left: 2.25em;\n    padding-bottom: 12px;\n    padding-right: 8px;\n  }\n  button:focus {\n    outline: none;\n  }\n  :host > .accordion:focus-within {\n    border-radius: var(--border-radius);\n    outline-offset: 2px;\n    outline: var(--color-primary-variant) solid 3px;\n    transition: 200ms outline-offset linear;\n    cursor: pointer;\n  }\n}";
+const accordionCss = css_248z$y;
+
+var css_248z$x = "@layer kol-theme-component {\n  .msg {\n    border-width: 0;\n  }\n  kol-alert-wc {\n    border-width: var(--border-width);\n    border-style: solid;\n    border-radius: var(--border-radius);\n    display: flex;\n    width: 100%;\n    overflow: unset;\n    border-color: transparent;\n    background-color: var(--color-light);\n  }\n  kol-alert-wc > .heading {\n    display: flex;\n    gap: 0.5em;\n    place-items: center;\n  }\n  kol-alert-wc > .heading > div {\n    display: grid;\n    gap: 0.25rem;\n  }\n  .msg > .heading > kol-icon {\n    place-self: baseline;\n  }\n  kol-alert-wc > .heading > kol-button-wc.close {\n    place-self: center;\n  }\n  .msg {\n    align-items: start;\n  }\n  .default {\n    border-color: var(--color-subtle);\n  }\n  .default.msg .heading-icon {\n    color: var(--color-subtle);\n  }\n  .error {\n    border-color: var(--color-danger);\n  }\n  .error.msg .heading-icon {\n    color: var(--color-danger);\n  }\n  .info {\n    border-color: var(--color-primary);\n  }\n  .info.msg .heading-icon {\n    color: var(--color-primary);\n  }\n  .success {\n    border-color: var(--color-success);\n  }\n  .success.msg .heading-icon {\n    color: var(--color-success);\n  }\n  .warning {\n    border-color: var(--color-warning);\n  }\n  .warning.msg .heading-icon {\n    color: var(--color-warning);\n  }\n  .heading-icon {\n    color: var(--color-light);\n  }\n  kol-alert-wc .heading .heading-icon {\n    padding: 0;\n  }\n  .msg > .heading > .heading-icon {\n    padding-top: 0;\n    place-items: baseline;\n  }\n  .msg > .heading > div > kol-heading-wc {\n    padding-top: calc(--var-spacing / 2);\n  }\n  .msg.default .heading > div > kol-heading-wc {\n    color: var(--color-subtle);\n  }\n  .msg.error .heading > div > kol-heading-wc {\n    color: var(--color-danger);\n  }\n  .msg.info .heading > div > kol-heading-wc {\n    color: var(--color-primary);\n  }\n  .msg.success .heading > div > kol-heading-wc {\n    color: var(--color-success);\n  }\n  .msg.warning .heading > div > kol-heading-wc {\n    color: var(--color-warning);\n  }\n  .msg.default .close .icon {\n    color: var(--color-subtle);\n  }\n  .msg.error .close .icon {\n    color: var(--color-danger);\n  }\n  .msg.info .close .icon {\n    color: var(--color-primary);\n  }\n  .msg.success .close .icon {\n    color: var(--color-success);\n  }\n  .msg.warning .close .icon {\n    color: var(--color-warning);\n  }\n  .card {\n    border-width: var(--border-width);\n    border-style: solid;\n    filter: drop-shadow(0px 2px 4px rgba(8, 35, 48, 0.24));\n    flex-direction: column;\n  }\n  .card > .heading {\n    padding: 0.5rem 1rem;\n  }\n  .card[_has-closer] > .heading {\n    padding-top: 0;\n    padding-bottom: 0;\n    padding-right: 0;\n  }\n  .card > .heading > div {\n    width: 100%;\n    min-height: 1.25rem;\n  }\n  .card > .heading .heading-icon {\n    justify-self: right;\n    margin-top: -4px;\n  }\n  .card > .heading kol-heading-wc {\n    width: 100%;\n    color: var(--color-light);\n    display: flex;\n    font-size: 1.25rem;\n    line-height: 1.25rem;\n  }\n  .card > .heading kol-heading-wc > * {\n    margin: auto 0;\n  }\n  .card > .content {\n    padding: 1rem;\n  }\n  .card.default > .heading {\n    background-color: var(--color-subtle);\n  }\n  .card.error > .heading {\n    background-color: var(--color-danger);\n  }\n  .card.info > .heading {\n    background-color: var(--color-primary);\n  }\n  .card.success > .heading {\n    background-color: var(--color-success);\n  }\n  .card.warning > .heading {\n    background-color: var(--color-warning);\n  }\n  :is(.error, .info, .success, .warning) .heading-icon {\n    font-size: 1.25rem;\n  }\n  .card > div > .content {\n    grid-row: 2;\n    grid-column: 1/span 2;\n  }\n  .card.default .close {\n    background-color: var(--color-subtle);\n  }\n  .card.error .close {\n    background-color: var(--color-danger);\n  }\n  .card.info .close {\n    background-color: var(--color-primary);\n  }\n  .card.success .close {\n    background-color: var(--color-success);\n  }\n  .card.warning .close {\n    background-color: var(--color-warning);\n  }\n  .close > button {\n    border-radius: 50%; /* visible on focus */\n    color: var(--color-light);\n    cursor: pointer;\n    height: var(--a11y-min-size);\n    width: var(--a11y-min-size);\n  }\n  .close > button.hide-label kol-icon {\n    display: flex;\n    width: 1em;\n    height: 1em;\n    font-size: 1.2rem;\n  }\n  .close > button:active {\n    box-shadow: none;\n    outline: none;\n  }\n}";
+const alertCss = css_248z$x;
+
+var css_248z$w = "@layer kol-theme-component {\n  :host {\n    display: inline-block;\n    font-size: inherit;\n  }\n  :host > span {\n    border-radius: var(--border-radius);\n    display: inline-flex;\n    font-style: normal;\n  }\n  :host > span.smart-button {\n    align-items: center;\n  }\n  :host > span kol-button-wc:hover > button {\n    background-color: var(--color-primary-variant);\n    color: var(--color-light);\n  }\n  :host > span kol-button-wc > button {\n    color: inherit;\n    border-top-right-radius: var(--border-radius);\n    border-bottom-right-radius: var(--border-radius);\n    padding: 0.2rem;\n  }\n  :host > span kol-span-wc {\n    padding: 0.25rem 0.75rem;\n  }\n  :host > span > kol-span-wc {\n    align-items: center;\n    font-style: normal;\n    gap: 0.5rem;\n  }\n  :host > span > kol-span-wc > span {\n    display: flex;\n    gap: 0.25rem;\n  }\n}";
+const badgeCss = css_248z$w;
+
+var css_248z$v = "@layer kol-theme-component {\n  li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {\n    font-size: 0.75rem;\n    color: var(--color-subtle);\n  }\n  kol-link::part(icon) {\n    font-size: 1.25rem;\n  }\n  ul li > :is(span, kol-link) {\n    line-height: 1.25rem;\n    height: 20px;\n  }\n  ul li:last-child > span {\n    color: var(--color-subtle);\n  }\n}";
+const breadcrumbCss = css_248z$v;
+
+var css_248z$u = "@layer kol-theme-component {\n  :is(a, button):focus {\n    outline: none;\n  }\n  :is(a, button):focus kol-span-wc {\n    border-radius: var(--border-radius);\n    outline-offset: 2px;\n    outline: var(--color-primary-variant) solid 3px;\n    transition: 200ms outline-offset linear;\n  }\n  :is(a, button) > kol-span-wc {\n    font-weight: 700;\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: var(--border-width);\n    min-height: var(--a11y-min-size);\n    min-width: var(--a11y-min-size);\n    padding: 8px 14px;\n    text-align: center;\n    transition-duration: 0.5s;\n    transition-property: background-color, color, border-color;\n  }\n  :is(a, button):disabled > kol-span-wc {\n    cursor: not-allowed;\n    opacity: 0.5;\n  }\n  .primary :is(a, button) > kol-span-wc,\n  .primary :is(a, button):disabled:hover > kol-span-wc {\n    background-color: var(--color-primary);\n    border-color: var(--color-primary);\n    color: var(--color-light);\n  }\n  .secondary :is(a, button) > kol-span-wc,\n  .secondary :is(a, button):disabled:hover > kol-span-wc,\n  .normal :is(a, button) > kol-span-wc,\n  .normal :is(a, button):disabled:hover > kol-span-wc {\n    background-color: var(--color-light);\n    border-color: var(--color-primary);\n    color: var(--color-primary);\n  }\n  .danger :is(a, button) > kol-span-wc,\n  .danger :is(a, button):disabled:hover > kol-span-wc {\n    background-color: var(--color-danger);\n    border-color: var(--color-danger);\n    color: var(--color-light);\n  }\n  .ghost :is(a, button) > kol-span-wc,\n  .ghost :is(a, button):disabled:hover > kol-span-wc {\n    border-color: var(--color-light);\n    background-color: var(--color-light);\n    box-shadow: none;\n    color: var(--color-primary);\n  } /*-----------*/\n  .primary :is(a, button):active > kol-span-wc,\n  .primary :is(a, button):hover > kol-span-wc,\n  .secondary :is(a, button):active > kol-span-wc,\n  .secondary :is(a, button):hover > kol-span-wc,\n  .normal :is(a, button):active > kol-span-wc,\n  .normal :is(a, button):hover > kol-span-wc,\n  .danger :is(a, button):active > kol-span-wc,\n  .danger :is(a, button):hover > kol-span-wc,\n  .ghost :is(a, button):active > kol-span-wc,\n  .ghost :is(a, button):hover > kol-span-wc {\n    background-color: var(--color-primary-variant);\n    border-color: var(--color-primary-variant);\n    box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);\n    color: var(--color-light);\n  }\n  .danger :is(a, button):active > kol-span-wc,\n  .danger :is(a, button):hover > kol-span-wc {\n    background-color: var(--color-danger);\n    border-color: var(--color-danger);\n  }\n  :is(a, button):disabled:hover > kol-span-wc,\n  :is(a, button):focus:hover > kol-span-wc {\n    box-shadow: none;\n  }\n  .primary :is(a, button):active > kol-span-wc,\n  .secondary :is(a, button):active > kol-span-wc,\n  .normal :is(a, button):active > kol-span-wc,\n  .danger :is(a, button):active > kol-span-wc,\n  .ghost :is(a, button):active > kol-span-wc {\n    border-color: var(--color-light);\n    box-shadow: none;\n    outline: none;\n  }\n  :is(a, button).hide-label > kol-span-wc {\n    padding: 0.8rem;\n    width: unset;\n  }\n  :is(a, button).hide-label > kol-span-wc > span > span {\n    display: none;\n  }\n  :is(a, button).loading > kol-span-wc kol-icon {\n    animation: spin 5s infinite linear;\n  }\n  /** small ghost button */\n  .ghost :is(a, button).small > kol-span-wc {\n    border: none;\n    background-color: transparent;\n    box-shadow: none;\n  }\n  .ghost :is(a, button).small > kol-span-wc > span {\n    border-radius: 1.5em;\n    border-style: solid;\n    border-width: var(--border-width);\n    border-color: var(--color-light);\n    background-color: var(--color-light);\n  }\n  .ghost :is(a, button).small:active > kol-span-wc > span,\n  .ghost :is(a, button).small:hover > kol-span-wc > span,\n  .ghost :is(a, button).small.transparent:active > kol-span-wc > span,\n  .ghost :is(a, button).small.transparent:hover > kol-span-wc > span {\n    background-color: var(--color-primary-variant);\n    border-color: var(--color-primary-variant);\n    box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);\n    color: var(--color-light);\n  } /** :is(a,button) with transparent background */\n  :is(a, button).transparent > kol-span-wc > span,\n  .ghost :is(a, button).small.transparent > kol-span-wc > span,\n  :is(a, button).transparent > kol-span-wc {\n    background-color: transparent;\n    border-color: transparent;\n  }\n  .access-key-hint {\n    background: var(--color-mute-variant);\n    border-radius: 3px;\n    color: var(--color-text);\n    padding: 0 0.3em;\n  }\n}";
+const buttonCss = css_248z$u;
+
+var css_248z$t = "@layer kol-theme-component {\n  :host > kol-button-group-wc {\n    display: flex;\n    flex-wrap: wrap;\n    gap: var(--spacing);\n  }\n}";
+const buttonGroupCss = css_248z$t;
+
+var css_248z$s = "@layer kol-theme-component {\n  :is(a, button) {\n    color: var(--color-primary);\n    font-style: normal;\n    font-weight: 400;\n    text-decoration-line: underline;\n    font-size: inherit;\n  }\n  :is(a, button):focus {\n    outline: none;\n  }\n  :is(a, button):focus kol-span-wc {\n    border-radius: var(--border-radius);\n    outline: calc(var(--border-width) * 2) solid;\n  }\n  :is(a, button):hover {\n    text-decoration-thickness: 0.25em;\n  }\n  :is(a, button):visited {\n    color: var(--visited);\n  }\n  .hidden {\n    display: none;\n    visibility: hidden;\n  }\n  .skip {\n    left: -99999px;\n    overflow: hidden;\n    position: absolute;\n    z-index: 9999999;\n  }\n  .skip:focus {\n    background: white;\n    left: unset;\n    position: unset;\n  }\n  .access-key-hint {\n    background: var(--color-mute-variant);\n    border-radius: 3px;\n    color: var(--color-text);\n    padding: 0 0.3em;\n  }\n}";
+const buttonLinkCss = css_248z$s;
+
+var css_248z$r = "@layer kol-theme-component {\n  /* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */\n  :host > div {\n    display: grid;\n    width: 100%;\n    height: 100%;\n    background-color: var(--color-light);\n    grid-template-rows: min-content 2fr min-content;\n    box-shadow: 0 0 0.25rem var(--color-subtle);\n    border-radius: var(--border-radius);\n  }\n  :host kol-heading-wc {\n    line-height: 1.75rem;\n  }\n  :host div.header {\n    padding: 1rem 1rem 0.5rem 1rem;\n  }\n  :host div.content {\n    padding: 0.5rem 1rem 1rem;\n    overflow: hidden;\n  }\n  :host div.footer {\n    padding: 0.5rem 1rem;\n  }\n}";
+const cardCss = css_248z$r;
+
+var css_248z$q = "@layer kol-theme-component {\n  details > summary {\n    border-radius: var(--border-radius);\n  }\n  details kol-indented-text {\n    margin: 0.25rem 0 0 0.65rem;\n  }\n  kol-icon {\n    font-size: 1.2rem;\n  }\n}";
+const detailsCss = css_248z$q;
+
+var css_248z$p = "@layer kol-theme-component {\n  .headline-h1,\n  .headline-h2,\n  .headline-h3,\n  .headline-h4,\n  .headline-h5,\n  .headline-h6 {\n    color: inherit;\n    font-style: normal;\n  }\n  .headline-h1,\n  .headline-h2,\n  .headline-h3 {\n    font-weight: 700;\n  }\n  .headline-h1 {\n    font-size: 1.5rem;\n    line-height: 1.75rem;\n  }\n  .headline-h2 {\n    font-size: 1.25rem;\n    line-height: 1.75rem;\n  }\n  .headline-h3 {\n    font-size: 1.125rem;\n    line-height: 1.5rem;\n  }\n}";
+const headingCss = css_248z$p;
+
+var css_248z$o = "@layer kol-theme-component {\n  :host {\n    width: 1em;\n    height: 1em;\n  }\n  :host > i {\n    width: 1em;\n    height: 1em;\n  }\n}";
+const iconCss = css_248z$o;
+
+var css_248z$n = "@layer kol-theme-component {\n  :host > div {\n    background-color: var(--color-light);\n    border-left: none;\n    box-shadow: -2px 0px 0px var(--color-primary-variant);\n    padding: 0 0.5rem;\n    width: 100%;\n  }\n}";
+const indentedTextCss = css_248z$n;
+
+var css_248z$m = "@layer kol-theme-component {\n  :host kol-input {\n    display: grid;\n    align-items: center;\n    justify-items: left;\n    width: 100%;\n    min-height: var(--a11y-min-size);\n    gap: 0.4rem;\n  }\n  :host kol-input.default {\n    grid-template-columns: 1.5rem auto;\n  }\n  :host kol-input.switch {\n    grid-template-columns: 3.5rem auto;\n  }\n  :host kol-input.button {\n    gap: 0.4rem 0;\n  }\n  .checkbox-container {\n    justify-content: flex-start;\n  }\n  :host kol-input > div.input {\n    display: inherit;\n    min-height: var(--a11y-min-size);\n    order: 2;\n  }\n  :host kol-input > div.input input {\n    margin: 0px;\n  }\n  :host kol-input > label {\n    cursor: pointer;\n    order: 3;\n  }\n  :host kol-input > kol-alert.error {\n    order: 1;\n    padding-top: calc(var(--spacing) / 2);\n    grid-column: span 2/auto;\n  }\n  :host kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  :host kol-input.error input:focus,\n  kol-input.error select:focus,\n  kol-input.error textarea:focus {\n    outline-color: var(--color-danger) !important;\n  }\n  :host kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  :host input {\n    cursor: pointer;\n    order: 1;\n    width: 100%;\n    border-color: var(--color-subtle);\n    border-width: 2px;\n    border-style: solid;\n    border-radius: var(--border-radius);\n    line-height: 24px;\n    font-size: 1rem;\n  }\n  :host input:hover {\n    border-color: var(--color-primary);\n    box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);\n  }\n  :host input:focus:hover {\n    box-shadow: none;\n  }\n  :host input:active {\n    box-shadow: none;\n  }\n  :host kol-alert {\n    display: block;\n    width: 100%;\n  } /* CHECKBOX */\n  :host kol-input label span {\n    margin-top: 0.125rem;\n  }\n  :host .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  :host kol-input input[type=checkbox] {\n    appearance: none;\n    background-color: white;\n    cursor: pointer;\n    transition: 0.5s;\n  }\n  :host kol-input input[type=checkbox]:checked {\n    background-color: var(--color-primary);\n    border-color: var(--color-primary);\n  }\n  :host kol-input.default input[type=checkbox] {\n    border-radius: var(--border-radius);\n    height: 1.5rem;\n    min-width: 1.5rem;\n    width: 1.5rem;\n  }\n  :host kol-input.default input[type=checkbox]:indeterminate {\n    background-color: var(--color-primary);\n  }\n  :host kol-input.default .icon {\n    color: var(--color-light);\n    margin-left: 0.25rem;\n  }\n  :host kol-input.switch input[type=checkbox] {\n    background-color: var(--color-subtle);\n    border-radius: 1.25em;\n    border-width: 0;\n    display: block;\n    height: 1.5em;\n    min-width: 3.5em;\n    position: relative;\n    width: 3.5em;\n  }\n  :host kol-input.switch input[type=checkbox]:before {\n    width: 1.25em;\n    height: 1.25em;\n    left: calc(0.25em - 2px);\n    top: calc(0.25em - 2px);\n    border-radius: 1.25em;\n    background-color: white;\n    position: absolute;\n  }\n  :host kol-input.switch input[type=checkbox]:checked {\n    background-color: var(--color-primary);\n  }\n  :host kol-input.switch input[type=checkbox]:checked:before {\n    transform: translateX(2em);\n  }\n  :host kol-input.switch input[type=checkbox]:indeterminate:before {\n    transform: translateX(1em);\n  }\n  .switch .icon {\n    width: 1.25em;\n    height: 1.25em;\n    left: 2px;\n  }\n  .switch.checked .icon {\n    transform: translate(2em, -50%);\n  }\n  .switch.indeterminate .icon {\n    transform: translate(1em, -50%);\n  }\n  :host .disabled {\n    opacity: 0.33;\n  }\n  .button:focus-within {\n    border-radius: var(--border-radius);\n    outline-offset: 2px;\n    outline: var(--color-primary-variant) solid 3px;\n    transition: 200ms outline-offset linear;\n  }\n}";
+const inputCheckboxCss = css_248z$m;
+
+var css_248z$l = "@layer kol-theme-component {\n  kol-input {\n    gap: 0.25rem;\n  }\n  kol-input .error {\n    order: 1;\n  }\n  kol-input label {\n    order: 2;\n  }\n  kol-input .input {\n    order: 3;\n  }\n  kol-input .hint {\n    order: 4;\n    font-size: 0.9rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n  }\n  input[type=color] {\n    border: none;\n    min-height: 40px !important;\n  }\n  input[type=color] {\n    background-color: transparent;\n  }\n  input::placeholder {\n    color: var(--color-subtle);\n  }\n  .input {\n    background-color: var(--color-light);\n    border-color: var(--color-subtle);\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: 2px;\n    padding: 0 0.5rem;\n  }\n  .input > kol-icon {\n    width: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) {\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) input {\n    padding-left: 0.5rem;\n    padding-right: 0.5rem;\n  }\n  .input > input:first-child {\n    padding-left: var(--spacing);\n  }\n  .input > input:last-child {\n    padding-right: var(--spacing);\n  }\n  .input:hover {\n    border-color: var(--color-primary);\n  }\n  input:disabled {\n    cursor: not-allowed;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  kol-input.error .input:focus-within {\n    outline-color: var(--color-danger) !important;\n  }\n  kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  kol-input.disabled :is(input, label) {\n    opacity: 1;\n  }\n  kol-input.disabled :is(input, .input) {\n    background-color: var(--color-mute);\n    border-color: var(--color-mute-variant);\n    color: var(--color-text);\n  }\n}";
+const inputColorCss = css_248z$l;
+
+var css_248z$k = "@layer kol-theme-component {\n  kol-input {\n    gap: 0.25rem;\n  }\n  kol-input .error {\n    order: 1;\n  }\n  kol-input label {\n    order: 2;\n  }\n  kol-input .input {\n    order: 3;\n  }\n  kol-input .hint {\n    order: 4;\n    font-size: 0.9rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n  }\n  input::placeholder {\n    color: var(--color-subtle);\n  }\n  .input {\n    background-color: var(--color-light);\n    border-color: var(--color-subtle);\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: 2px;\n    padding: 0 0.5rem;\n  }\n  .input > kol-icon {\n    width: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) {\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) input {\n    padding-left: 0.5rem;\n    padding-right: 0.5rem;\n  }\n  .input > input:first-child {\n    padding-left: var(--spacing);\n  }\n  .input > input:last-child {\n    padding-right: var(--spacing);\n  }\n  .input:hover {\n    border-color: var(--color-primary);\n  }\n  input:disabled {\n    cursor: not-allowed;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  kol-input.error .input:focus-within {\n    outline-color: var(--color-danger) !important;\n  }\n  kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  kol-input.disabled :is(input, label) {\n    opacity: 1;\n  }\n  kol-input.disabled :is(input, .input) {\n    background-color: var(--color-mute);\n    border-color: var(--color-mute-variant);\n    color: var(--color-text);\n  }\n}";
+const inputDateCss = css_248z$k;
+
+var css_248z$j = "@layer kol-theme-component {\n  kol-input {\n    gap: 0.25rem;\n  }\n  kol-input .error {\n    order: 1;\n  }\n  kol-input label {\n    order: 2;\n  }\n  kol-input .input {\n    order: 3;\n  }\n  kol-input .hint {\n    order: 4;\n    font-size: 0.9rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n  }\n  input::placeholder {\n    color: var(--color-subtle);\n  }\n  .input {\n    background-color: var(--color-light);\n    border-color: var(--color-subtle);\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: 2px;\n    padding: 0 0.5rem;\n  }\n  .input > kol-icon {\n    width: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) {\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) input {\n    padding-left: 0.5rem;\n    padding-right: 0.5rem;\n  }\n  .input > input:first-child {\n    padding-left: var(--spacing);\n  }\n  .input > input:last-child {\n    padding-right: var(--spacing);\n  }\n  .input:hover {\n    border-color: var(--color-primary);\n  }\n  input:disabled {\n    cursor: not-allowed;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  kol-input.error .input:focus-within {\n    outline-color: var(--color-danger) !important;\n  }\n  kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  kol-input.disabled :is(input, label) {\n    opacity: 1;\n  }\n  kol-input.disabled :is(input, .input) {\n    background-color: var(--color-mute);\n    border-color: var(--color-mute-variant);\n    color: var(--color-text);\n  }\n}";
+const inputEmailCss = css_248z$j;
+
+var css_248z$i = "@layer kol-theme-component {\n  kol-input {\n    gap: 0.25rem;\n  }\n  kol-input .error {\n    order: 1;\n  }\n  kol-input label {\n    order: 2;\n  }\n  kol-input .input {\n    order: 3;\n  }\n  kol-input .hint {\n    order: 4;\n    font-size: 0.9rem;\n    font-style: italic;\n  }\n  kol-input .input input[type=file] {\n    padding-top: calc(0.5em + 2px);\n  }\n  input {\n    border: none;\n  }\n  input[type=file] {\n    background-color: transparent;\n  }\n  input::placeholder {\n    color: var(--color-subtle);\n  }\n  .input {\n    background-color: var(--color-light);\n    border-color: var(--color-subtle);\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: 2px;\n    padding: 0 0.5rem;\n  }\n  .input > kol-icon {\n    width: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) {\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) input {\n    padding-left: 0.5rem;\n    padding-right: 0.5rem;\n  }\n  .input > input:first-child {\n    padding-left: var(--spacing);\n  }\n  .input > input:last-child {\n    padding-right: var(--spacing);\n  }\n  .input:hover {\n    border-color: var(--color-primary);\n  }\n  input:disabled {\n    cursor: not-allowed;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  kol-input.error .input:focus-within {\n    outline-color: var(--color-danger) !important;\n  }\n  kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  kol-input.disabled :is(button, input, label, option, select, textarea) {\n    opacity: 1;\n  }\n  kol-input.disabled :is(input, select, textarea, .input) {\n    background-color: var(--color-mute);\n    border-color: var(--color-mute-variant);\n    color: var(--color-text);\n  }\n}";
+const inputFileCss = css_248z$i;
+
+var css_248z$h = "@layer kol-theme-component {\n  kol-input {\n    gap: 0.25rem;\n  }\n  kol-input .error {\n    order: 1;\n  }\n  kol-input label {\n    order: 2;\n  }\n  kol-input .input {\n    order: 3;\n  }\n  kol-input .hint {\n    order: 4;\n    font-size: 0.9rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n  }\n  input::placeholder {\n    color: var(--color-subtle);\n  }\n  .input {\n    background-color: var(--color-light);\n    border-color: var(--color-subtle);\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: 2px;\n    padding: 0 0.5rem;\n  }\n  .input > kol-icon {\n    width: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) {\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) input {\n    padding-left: 0.5rem;\n    padding-right: 0.5rem;\n  }\n  .input > input:first-child {\n    padding-left: var(--spacing);\n  }\n  .input > input:last-child {\n    padding-right: var(--spacing);\n  }\n  .input:hover {\n    border-color: var(--color-primary);\n  }\n  input:disabled {\n    cursor: not-allowed;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  kol-input.error .input:focus-within {\n    outline-color: var(--color-danger) !important;\n  }\n  kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  kol-input.disabled :is(input, label) {\n    opacity: 1;\n  }\n  kol-input.disabled :is(input, .input) {\n    background-color: var(--color-mute);\n    border-color: var(--color-mute-variant);\n    color: var(--color-text);\n  }\n}";
+const inputNumberCss = css_248z$h;
+
+var css_248z$g = "@layer kol-theme-component {\n  kol-input {\n    gap: 0.25rem;\n  }\n  kol-input .error {\n    order: 1;\n  }\n  kol-input label {\n    order: 2;\n  }\n  kol-input .input {\n    order: 3;\n  }\n  kol-input .hint {\n    order: 4;\n    font-size: 0.9rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n  }\n  input::placeholder {\n    color: var(--color-subtle);\n  }\n  .input {\n    background-color: var(--color-light);\n    border-color: var(--color-subtle);\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: 2px;\n    padding: 0 0.5rem;\n  }\n  .input > kol-icon {\n    width: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) {\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) input {\n    padding-left: 0.5rem;\n    padding-right: 0.5rem;\n  }\n  .input > input:first-child {\n    padding-left: var(--spacing);\n  }\n  .input > input:last-child {\n    padding-right: var(--spacing);\n  }\n  .input:hover {\n    border-color: var(--color-primary);\n  }\n  input:disabled {\n    cursor: not-allowed;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  kol-input.error .input:focus-within {\n    outline-color: var(--color-danger) !important;\n  }\n  kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  kol-input.disabled :is(button, input, label, option, select, textarea) {\n    opacity: 1;\n  }\n  kol-input.disabled :is(input, select, textarea, .input) {\n    background-color: var(--color-mute);\n    border-color: var(--color-mute-variant);\n    color: var(--color-text);\n  }\n}";
+const inputPasswordCss = css_248z$g;
+
+var css_248z$f = "@layer kol-theme-component {\n  label {\n    cursor: pointer;\n    display: grid;\n    line-height: 20px;\n    gap: calc(var(--spacing) * 2);\n    width: 100%;\n  }\n  input {\n    cursor: pointer;\n    width: 100%;\n    border-color: var(--color-subtle);\n    border-width: 2px;\n    border-style: solid;\n    border-radius: 5px;\n    line-height: 24px;\n  }\n  input:hover {\n    border-color: var(--color-primary);\n    box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);\n  }\n  input:focus:hover {\n    box-shadow: none;\n  }\n  input:hover {\n    border-color: var(--color-primary);\n  }\n  kol-alert {\n    display: block;\n    width: 100%;\n  }\n  .required legend > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  } /* RADIO */\n  fieldset {\n    border: 0px;\n    margin: 0px;\n    padding: 0px;\n    display: grid;\n    gap: 0.25em;\n  }\n  .radio-input-wrapper {\n    align-items: center;\n    cursor: pointer;\n    display: flex;\n    flex-direction: row;\n    gap: 0.5rem;\n    margin: 0;\n    min-height: var(--a11y-min-size);\n    position: relative;\n  }\n  .radio-input-wrapper label {\n    cursor: pointer;\n    display: flex;\n    padding-left: calc(var(--spacing) / 2);\n    width: 100%;\n  }\n  .radio-input-wrapper label span {\n    margin-top: 0.125em;\n  }\n  .radio-input-wrapper input[type=radio] {\n    appearance: none;\n    transition: 0.5s;\n    border-radius: 100%;\n    height: 1.5rem;\n    min-width: 1.5rem;\n    width: 1.5rem;\n  }\n  .radio-input-wrapper input[type=radio]:before {\n    content: \"\";\n    cursor: pointer;\n    border-radius: 100%;\n    display: block;\n  }\n  .radio-input-wrapper input[type=radio]:checked:before {\n    background-color: var(--color-primary);\n  }\n  .radio-input-wrapper input[type=radio]:disabled {\n    cursor: not-allowed;\n    background-color: var(--color-mute-variant);\n  }\n  kol-alert.error {\n    order: 1;\n  }\n  fieldset legend {\n    order: 2;\n    display: contents;\n  }\n  fieldset kol-input {\n    order: 3;\n  }\n  fieldset.error {\n    border-left: 3px solid var(--color-danger);\n    color: var(--color-danger);\n    font-weight: 700;\n    padding-left: 1rem;\n  }\n  fieldset.error input:focus,\n  fieldset.error select:focus,\n  fieldset.error textarea:focus {\n    outline-color: var(--color-danger) !important;\n  }\n  fieldset.error kol-alert.error {\n    margin-left: -0.25em;\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  .disabled {\n    opacity: 0.33;\n  }\n  fieldset.horizontal {\n    display: flex;\n    flex-wrap: wrap;\n    gap: var(--spacing) calc(var(--spacing) * 2);\n  }\n  fieldset.horizontal legend {\n    display: inline-block;\n    margin-bottom: calc(var(--spacing) / 2);\n  }\n  fieldset .input-slot {\n    gap: var(--spacing);\n  }\n  .radio-input-wrapper label {\n    padding-left: 0;\n  }\n}";
+const inputRadioCss = css_248z$f;
+
+var css_248z$e = "@layer kol-theme-component {\n  .inputs-wrapper {\n    gap: 1rem;\n  }\n  kol-input {\n    gap: 0.25rem;\n  }\n  kol-input .error {\n    order: 1;\n  }\n  kol-input label {\n    order: 2;\n  }\n  kol-input .input {\n    order: 3;\n  }\n  kol-input .hint {\n    order: 4;\n    font-size: 0.9rem;\n    font-style: italic;\n  }\n  input::placeholder {\n    color: var(--color-subtle);\n  }\n  .input {\n    background-color: var(--color-light);\n    border-color: var(--color-subtle);\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: 2px;\n    padding: 0 0.5rem;\n  }\n  .input > kol-icon {\n    width: 1rem;\n  }\n  .input.icon-left > kol-icon:first-child {\n    margin-right: 0.5rem;\n  }\n  .input.icon-right > kol-icon:last-child {\n    margin-left: 0.5rem;\n  }\n  .input:is(.icon-left, .icon-right) {\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n  .input:hover {\n    border-color: var(--color-primary);\n  }\n  input:disabled {\n    cursor: not-allowed;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  kol-input.error .input:focus-within {\n    outline-color: var(--color-danger) !important;\n  }\n  kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  kol-input.disabled :is(input, label) {\n    opacity: 1;\n  }\n  kol-input.disabled :is(.input) {\n    background-color: var(--color-mute);\n    border-color: var(--color-mute-variant);\n    color: var(--color-text);\n  }\n}";
+const inputRangeCss = css_248z$e;
+
+var css_248z$d = "@layer kol-theme-component {\n  kol-input {\n    gap: 0.25rem;\n  }\n  kol-input .error {\n    order: 1;\n  }\n  kol-input label {\n    order: 2;\n  }\n  kol-input .input {\n    order: 3;\n  }\n  kol-input .hint {\n    order: 4;\n    font-size: 0.9rem;\n    font-style: italic;\n  }\n  input {\n    border: none;\n  }\n  input::placeholder {\n    color: var(--color-subtle);\n  }\n  .input {\n    background-color: var(--color-light);\n    border-color: var(--color-subtle);\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: 2px;\n    padding: 0 0.5rem;\n  }\n  .input > kol-icon {\n    width: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) {\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) input {\n    padding-left: 0.5rem;\n    padding-right: 0.5rem;\n  }\n  .input > input:first-child {\n    padding-left: var(--spacing);\n  }\n  .input > input:last-child {\n    padding-right: var(--spacing);\n  }\n  .input:hover {\n    border-color: var(--color-primary);\n  }\n  input:disabled {\n    cursor: not-allowed;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  kol-input.error .input:focus-within {\n    outline-color: var(--color-danger) !important;\n  }\n  kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  kol-input.disabled :is(input, label) {\n    opacity: 1;\n  }\n  kol-input.disabled :is(input, .input) {\n    background-color: var(--color-mute);\n    border-color: var(--color-mute-variant);\n  }\n}";
+const inputTextCss = css_248z$d;
+
+var css_248z$c = "@layer kol-theme-component {\n  :is(a, button) {\n    color: var(--color-primary);\n    font-style: normal;\n    font-weight: 400;\n    text-decoration-line: underline;\n  }\n  :is(a, button):focus {\n    outline: none;\n  }\n  :is(a, button):focus kol-span-wc {\n    border-radius: var(--border-radius);\n    outline: var(--border-width) solid;\n  }\n  :is(a, button):hover {\n    text-decoration-thickness: 0.25em;\n  }\n  :is(a, button):visited {\n    color: var(--visited);\n  }\n  .hidden {\n    display: none;\n    visibility: hidden;\n  }\n  .skip {\n    left: -99999px;\n    overflow: hidden;\n    position: absolute;\n    z-index: 9999999;\n    line-height: 1em;\n  }\n  .skip:focus {\n    background: white;\n    left: unset;\n    position: unset;\n  }\n}";
+const linkCss = css_248z$c;
+
+var css_248z$b = "@layer kol-theme-component {\n  :is(a, button):focus {\n    outline: none;\n  }\n  :is(a, button):focus kol-span-wc {\n    outline-color: var(--color-primary-variant);\n    outline-offset: 2px;\n    outline-style: solid;\n    outline-width: calc(var(--border-width) * 2);\n    transition: outline-offset 0.2s linear;\n  }\n  :is(a, button) > kol-span-wc {\n    font-weight: 700;\n    border-radius: var(--a11y-min-size);\n    border-style: solid;\n    outline-width: calc(var(--border-width) * 2);\n    min-height: var(--a11y-min-size);\n    min-width: var(--a11y-min-size);\n    padding: 8px 14px;\n    text-align: center;\n    transition-duration: 0.5s;\n    transition-property: background-color, color, border-color;\n  }\n  :is(a, button):disabled > kol-span-wc {\n    cursor: not-allowed;\n    opacity: 0.5;\n  }\n  .primary :is(a, button) > kol-span-wc,\n  .primary :is(a, button):disabled:hover > kol-span-wc {\n    background-color: var(--color-primary);\n    border-color: var(--color-primary);\n    color: var(--color-light);\n  }\n  .secondary :is(a, button) > kol-span-wc,\n  .secondary :is(a, button):disabled:hover > kol-span-wc,\n  .normal :is(a, button) > kol-span-wc,\n  .normal :is(a, button):disabled:hover > kol-span-wc {\n    background-color: var(--color-light);\n    border-color: var(--color-primary);\n    color: var(--color-primary);\n  }\n  .danger :is(a, button) > kol-span-wc,\n  .danger :is(a, button):disabled:hover > kol-span-wc {\n    background-color: var(--color-danger);\n    border-color: var(--color-danger);\n    color: var(--color-light);\n  }\n  .ghost :is(a, button) > kol-span-wc,\n  .ghost :is(a, button):disabled:hover > kol-span-wc {\n    border-color: var(--color-light);\n    background-color: var(--color-light);\n    box-shadow: none;\n    color: var(--color-primary);\n  } /*-----------*/\n  .primary :is(a, button):active > kol-span-wc,\n  .primary :is(a, button):hover > kol-span-wc,\n  .secondary :is(a, button):active > kol-span-wc,\n  .secondary :is(a, button):hover > kol-span-wc,\n  .normal :is(a, button):active > kol-span-wc,\n  .normal :is(a, button):hover > kol-span-wc,\n  .danger :is(a, button):active > kol-span-wc,\n  .danger :is(a, button):hover > kol-span-wc,\n  .ghost :is(a, button):active > kol-span-wc,\n  .ghost :is(a, button):hover > kol-span-wc {\n    background-color: var(--color-primary-variant);\n    border-color: var(--color-primary-variant);\n    box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);\n    color: var(--color-light);\n  }\n  .danger :is(a, button):active > kol-span-wc,\n  .danger :is(a, button):hover > kol-span-wc {\n    background-color: var(--color-danger);\n    border-color: var(--color-danger);\n  }\n  :is(a, button):disabled:hover > kol-span-wc,\n  :is(a, button):focus:hover > kol-span-wc {\n    box-shadow: none;\n  }\n  .primary :is(a, button):active > kol-span-wc,\n  .secondary :is(a, button):active > kol-span-wc,\n  .normal :is(a, button):active > kol-span-wc,\n  .danger :is(a, button):active > kol-span-wc,\n  .ghost :is(a, button):active > kol-span-wc {\n    border-color: var(--color-light);\n    box-shadow: none;\n    outline: none;\n  }\n  :is(a, button).hide-label > kol-span-wc {\n    padding: 0.8rem;\n    width: unset;\n  }\n  :is(a, button).hide-label > kol-span-wc > span > span {\n    display: none;\n  }\n  :is(a, button).loading > kol-span-wc kol-icon {\n    animation: spin 5s infinite linear;\n  }\n  /** small ghost button */\n  .ghost :is(a, button).small > kol-span-wc {\n    border: none;\n    background-color: transparent;\n    box-shadow: none;\n  }\n  .ghost :is(a, button).small > kol-span-wc > span {\n    border-radius: 1.5em;\n    border-style: solid;\n    border-width: var(--border-width);\n    border-color: var(--color-light);\n    background-color: var(--color-light);\n  }\n  .ghost :is(a, button).small:active > kol-span-wc > span,\n  .ghost :is(a, button).small:hover > kol-span-wc > span,\n  .ghost :is(a, button).small.transparent:active > kol-span-wc > span,\n  .ghost :is(a, button).small.transparent:hover > kol-span-wc > span {\n    background-color: var(--color-primary-variant);\n    border-color: var(--color-primary-variant);\n    box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);\n    color: var(--color-light);\n  } /** :is(a,button) with transparent background */\n  :is(a, button).transparent > kol-span-wc > span,\n  .ghost :is(a, button).small.transparent > kol-span-wc > span,\n  :is(a, button).transparent > kol-span-wc {\n    background-color: transparent;\n    border-color: transparent;\n  }\n}";
+const linkButtonCss = css_248z$b;
+
+var css_248z$a = "@layer kol-theme-component {\n  :host .overlay .modal {\n    max-height: calc(100% - 32px);\n  }\n}";
+const modalCss = css_248z$a;
+
+var css_248z$9 = "@layer kol-theme-component {\n  nav {\n    background-color: var(--color-mute);\n  }\n  ul {\n    list-style: none;\n  }\n  kol-link-wc {\n    display: flex;\n  }\n  .entry-item a,\n  .entry-item .button {\n    align-items: center;\n    color: var(--color-primary);\n    display: flex;\n    gap: 0.5rem;\n    min-height: var(--a11y-min-size);\n    text-decoration: none;\n  }\n  .vertical .entry-item a,\n  .vertical .entry-item .button {\n    border-left: 2px solid transparent;\n    padding-left: 0.5rem;\n  }\n  .horizontal .entry-item a,\n  .horizontal .entry-item .button {\n    padding: 0 1rem;\n  }\n  .vertical .active .entry-item a,\n  .vertical .active .entry-item .button {\n    border-left-color: var(--color-primary);\n  }\n  .entry-item a:focus-visible,\n  .entry-item .button:focus-visible {\n    border-radius: var(--border-radius);\n    outline-offset: 2px;\n    outline: var(--color-primary-variant) solid 3px;\n    transition: 200ms outline-offset linear;\n  }\n  .entry-item a:hover {\n    text-decoration: underline;\n  }\n  .list .list {\n    padding-left: 1rem;\n  }\n  .active .entry-item a,\n  .active .entry-item .button {\n    font-weight: bold;\n  }\n  .active .list .entry-item a,\n  .active .list .entry-item .button {\n    font-weight: normal;\n    border-left-color: transparent;\n  }\n  .expand-button {\n    margin-left: 0.5rem;\n  }\n  .expand-button .button:hover {\n    background-color: var(--color-primary);\n    color: var(--color-light);\n  }\n  .expand-button .button:focus-visible {\n    border-radius: var(--border-radius);\n    outline-offset: 2px;\n    outline: var(--color-primary-variant) solid 3px;\n    transition: 200ms outline-offset linear;\n  }\n  .expand-button .button-inner {\n    justify-content: center;\n  }\n}";
+const navCss = css_248z$9;
+
+var css_248z$8 = "@layer kol-theme-component {\n  .button:focus {\n    outline: none;\n  }\n  .button-inner {\n    background-color: var(--color-light);\n    border-radius: var(--border-radius);\n    border: 1px solid var(--color-primary);\n    color: var(--color-primary);\n    font-weight: 700;\n    min-height: var(--a11y-min-size);\n    min-width: var(--a11y-min-size);\n    padding: 8px;\n    text-align: center;\n    transition-duration: 0.5s;\n    transition-property: background-color, color, border-color;\n  }\n  .button:focus .button-inner {\n    border-radius: var(--border-radius);\n    outline-offset: 2px;\n    outline: var(--color-primary-variant) solid 3px;\n    transition: 200ms outline-offset linear;\n  }\n  .button:is(:active, :hover):not(:disabled) .button-inner {\n    background-color: var(--color-primary-variant);\n    border-color: var(--color-primary-variant);\n    box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);\n    color: var(--color-light);\n  }\n  .button:active .button-inner {\n    color: var(--color-light);\n    outline: none;\n  }\n  .button:disabled .button-inner {\n    cursor: not-allowed;\n    opacity: 0.5;\n  }\n  .selected .button-inner {\n    background-color: var(--color-mute-variant);\n    border-radius: var(--a11y-min-size);\n    border: 0;\n    opacity: 1 !important;\n  }\n}";
+const paginationCss = css_248z$8;
+
+var css_248z$7 = "@layer kol-theme-component {\n  :host progress,\n  :host span {\n    display: block;\n    height: 0px;\n    overflow: hidden;\n    width: 0px;\n  }\n  :host svg line:first-child,\n  :host svg circle:first-child {\n    fill: transparent;\n    stroke: var(--color-mute-variant);\n  }\n  :host svg line:last-child,\n  :host svg circle:last-child {\n    fill: transparent;\n    stroke: var(--color-primary);\n  }\n  .cycle .progress {\n    stroke: var(--color-primary-variant);\n  }\n}";
+const progressCss = css_248z$7;
+
+var css_248z$6 = "@layer kol-theme-component {\n  kol-input {\n    gap: 0.25rem;\n  }\n  kol-input .error {\n    order: 1;\n  }\n  kol-input label {\n    order: 2;\n  }\n  kol-input .input {\n    order: 3;\n  }\n  kol-input .hint {\n    order: 4;\n    font-size: 0.9rem;\n    font-style: italic;\n  }\n  select {\n    border: none;\n  }\n  input::placeholder {\n    color: var(--color-subtle);\n  }\n  .input {\n    background-color: var(--color-light);\n    border-color: var(--color-subtle);\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: 2px;\n    padding: 0 0.5rem;\n  }\n  .input > kol-icon {\n    width: 2rem;\n  }\n  .input:is(.icon-left, .icon-right) {\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) input {\n    padding-left: 0.5rem;\n    padding-right: 0.5rem;\n  }\n  .input > input:first-child {\n    padding-left: var(--spacing);\n  }\n  .input > input:last-child {\n    padding-right: var(--spacing);\n  }\n  .input:hover {\n    border-color: var(--color-primary);\n  }\n  select:disabled {\n    cursor: not-allowed;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  kol-input.error .input:focus-within {\n    outline-color: var(--color-danger) !important;\n  }\n  kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  kol-input.disabled :is(select, label, option) {\n    opacity: 1;\n  }\n  kol-input.disabled :is(select, .input) {\n    background-color: var(--color-mute);\n    border-color: var(--color-mute-variant);\n  }\n  select[multiple] {\n    overflow: auto;\n  }\n  select option {\n    margin: 1px 0;\n    border-radius: var(--border-radius);\n    cursor: pointer;\n  }\n  select option:disabled {\n    cursor: not-allowed;\n  }\n  select:not([multiple]) option {\n    padding: 0.5em;\n  }\n  option:active:not(:disabled),\n  option:checked:not(:disabled),\n  option:focus:not(:disabled),\n  option:hover:not(:disabled) {\n    background: var(--color-primary-variant);\n    color: var(--color-light);\n  }\n}";
+const selectCss = css_248z$6;
+
+var css_248z$5 = "@layer kol-theme-component {\n  kol-link-wc > a > kol-span-wc {\n    border-radius: var(--a11y-min-size);\n    border-style: solid;\n    border-width: var(--border-width);\n    gap: calc(var(--spacing) * 2);\n    line-height: 1rem;\n    padding: 8px 14px;\n    background-color: var(--color-primary-variant);\n    border-color: var(--color-primary-variant);\n    color: var(--color-light);\n    cursor: pointer;\n  }\n}";
+const skipNavCss = css_248z$5;
+
+var css_248z$4 = "@layer kol-theme-component {\n  .popover {\n    background: #fff;\n  }\n}";
+const splitButtonCss = css_248z$4;
+
+var css_248z$3 = "@layer kol-theme-component {\n  :host * {\n    hyphens: var(--hyphens);\n    font-family: var(--font-family);\n    line-height: var(--line-height);\n    word-break: break-word;\n  }\n  :host > div {\n    overflow-x: auto;\n    overflow-y: hidden;\n  }\n  caption {\n    padding: 0.5rem;\n  }\n  th {\n    font-weight: normal;\n    color: var(--color-primary);\n  }\n  :host table thead tr:first-child th,\n  :host table thead tr:first-child td {\n    border-width: 0;\n    border-top-width: calc(var(--border-width) * 2);\n    border-style: solid;\n    border-color: var(--color-primary-variant);\n  }\n  .table {\n    padding: 0.5rem;\n  }\n  .table:has(caption:focus) {\n    outline-color: var(--color-primary-variant);\n    outline-offset: 2px;\n    outline-style: solid;\n    outline-width: 3px;\n    transition: outline-offset 0.2s linear;\n  }\n  table {\n    width: 100%;\n    border-spacing: 0;\n  }\n  table,\n  :host table thead tr:last-child th,\n  :host table thead tr:last-child td {\n    border-width: 0;\n    border-bottom-width: calc(var(--border-width) * 2);\n    border-style: solid;\n    border-color: var(--color-primary-variant);\n  }\n  th {\n    background-color: var(--color-light);\n  }\n  th div {\n    width: 100%;\n    display: flex;\n    gap: 0.5rem;\n    grid-template-columns: 1fr auto;\n    align-items: center;\n  }\n  tr:nth-child(even) {\n    background-color: var(--color-mute);\n  }\n  th,\n  td {\n    padding: 0.5rem;\n  }\n  th[aria-sort=ascending],\n  th[aria-sort=descending] {\n    font-weight: 700;\n  }\n  @media (min-width: 1024px) {\n    div.pagination kol-pagination {\n      display: flex;\n      align-items: center;\n    }\n  }\n}";
+const tableCss = css_248z$3;
+
+var css_248z$2 = "@layer kol-theme-component {\n  button:disabled {\n    opacity: 0.5;\n    cursor: not-allowed;\n  }\n  :host kol-button-group-wc {\n    display: inline-flex;\n    gap: 2rem;\n    flex-wrap: wrap;\n  }\n  button {\n    box-sizing: border-box;\n    background-color: transparent;\n    border: 0;\n    border-radius: var(--border-radius);\n    font-style: normal;\n    font-weight: 700;\n    font-size: 18px;\n    line-height: 22px;\n    min-height: var(--a11y-min-size);\n    min-width: var(--a11y-min-size);\n    color: var(--color-subtle);\n    padding: 0;\n  }\n  button:hover {\n    color: var(--color-primary);\n  }\n  button.primary,\n  button.selected {\n    color: var(--color-primary);\n  }\n  button:not(.selected) kol-span-wc > span {\n    border-bottom: 0.25em solid transparent;\n  }\n  button.selected kol-span-wc > span {\n    border-bottom: 0.25em solid;\n  }\n  button kol-span-wc > span {\n    gap: 0.5rem;\n  }\n  :host > div > div {\n    padding: 0.25em 0;\n  }\n  div[role=tabpanel] {\n    height: 100%;\n  }\n  div.grid {\n    height: 100%;\n  }\n  :host > .tabs-align-right {\n    display: grid;\n    grid-template-columns: 1fr auto;\n  }\n  :host > .tabs-align-right kol-button-group-wc {\n    display: grid;\n    order: 2;\n  }\n  :host > .tabs-align-left {\n    display: grid;\n    grid-template-columns: auto 1fr;\n  }\n  :host > .tabs-align-left kol-button-group-wc {\n    display: grid;\n    order: 0;\n  }\n  :host > .tabs-align-bottom {\n    display: grid;\n    grid-template-rows: 1fr auto;\n  }\n  :host > .tabs-align-bottom kol-button-group-wc {\n    order: 2;\n  }\n  :host > .tabs-align-bottom kol-button-group-wc > div {\n    display: flex;\n  }\n  :host > .tabs-align-bottom > kol-button-group-wc > div > div:first-child {\n    margin: 0px 1rem 0px 0px;\n  }\n  :host > .tabs-align-bottom > kol-button-group-wc > div > div {\n    margin: 0px 1rem;\n  }\n  :host > .tabs-align-top {\n    display: grid;\n    grid-template-rows: auto 1fr;\n  }\n  :host > .tabs-align-top kol-button-group-wc {\n    order: 0;\n  }\n  :host > .tabs-align-top kol-button-group-wc > div {\n    display: flex;\n  }\n  :host > .tabs-align-top > kol-button-group-wc > div > div:first-child {\n    margin: 0px 1rem 0px 0px;\n  }\n  :host > .tabs-align-top > kol-button-group-wc > div > div {\n    margin: 0px 1rem;\n  }\n  :host > div {\n    display: grid;\n  }\n  :host > div.tabs-align-left {\n    grid-template-columns: auto 1fr;\n  }\n  :host > div.tabs-align-right {\n    grid-template-columns: 1fr auto;\n  }\n  :host > .tabs-align-left kol-button-group-wc,\n  :host > .tabs-align-top kol-button-group-wc {\n    order: 0;\n  }\n  :host > .tabs-align-bottom kol-button-group-wc,\n  :host > .tabs-align-right kol-button-group-wc {\n    order: 1;\n  }\n  :host > .tabs-align-left kol-button-group-wc,\n  :host > .tabs-align-right kol-button-group-wc {\n    gap: inherit;\n  }\n  :host > div.tabs-align-left kol-button-group-wc > div,\n  :host > div.tabs-align-left kol-button-group-wc > div > div,\n  :host > div.tabs-align-right kol-button-group-wc > div,\n  :host > div.tabs-align-right kol-button-group-wc > div > div {\n    display: grid;\n  }\n  :host > div.tabs-align-left kol-button-group-wc > div > div kol-button-wc,\n  :host > div.tabs-align-right kol-button-group-wc > div > div kol-button-wc {\n    width: 100%;\n  }\n  :host > div.tabs-align-bottom kol-button-group-wc div,\n  :host > div.tabs-align-top kol-button-group-wc div {\n    display: flex;\n    flex-wrap: wrap;\n  }\n  :host kol-button-group-wc button {\n    border: none;\n  }\n}";
+const tabsCss = css_248z$2;
+
+var css_248z$1 = "@layer kol-theme-component {\n  kol-input {\n    gap: 0.25rem;\n  }\n  kol-input .error {\n    order: 1;\n  }\n  kol-input label {\n    order: 2;\n  }\n  kol-input .input {\n    order: 3;\n  }\n  kol-input .counter {\n    order: 4;\n  }\n  kol-input .hint {\n    order: 5;\n    font-size: 0.9rem;\n    font-style: italic;\n  }\n  textarea {\n    border: none;\n  }\n  input::placeholder {\n    color: var(--color-subtle);\n  }\n  .input {\n    background-color: var(--color-light);\n    border-color: var(--color-subtle);\n    border-radius: var(--border-radius);\n    border-style: solid;\n    border-width: 2px;\n    padding: 0 0.5rem;\n  }\n  .input > kol-icon {\n    width: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) {\n    padding-left: 1rem;\n    padding-right: 1rem;\n  }\n  .input:is(.icon-left, .icon-right) input {\n    padding-left: 0.5rem;\n    padding-right: 0.5rem;\n  }\n  .input > input:first-child {\n    padding-left: var(--spacing);\n  }\n  .input > input:last-child {\n    padding-right: var(--spacing);\n  }\n  .input:hover {\n    border-color: var(--color-primary);\n  }\n  textarea:disabled {\n    cursor: not-allowed;\n  }\n  .required label > span::after {\n    content: \"*\";\n    padding-left: 0.125em;\n  }\n  kol-input.error {\n    border-left: 3px solid var(--color-danger);\n    padding-left: 1rem;\n  }\n  kol-input.error .input:focus-within {\n    outline-color: var(--color-danger) !important;\n  }\n  kol-input.error kol-alert.error {\n    color: var(--color-danger);\n    font-weight: 700;\n  }\n  .disabled {\n    opacity: 0.33;\n  }\n  select[multiple],\n  textarea {\n    overflow: auto;\n  }\n  textarea {\n    display: block;\n  }\n  .input {\n    position: relative;\n  }\n}";
+const textareaCss = css_248z$1;
+
+var css_248z = "@layer kol-theme-component {\n  :host {\n    top: 1rem;\n    right: 1rem;\n    width: 440px;\n  }\n  .toast {\n    margin-top: 1rem;\n  }\n}";
+const toastContainerCss = css_248z;
+
 const DEFAULT = KoliBri.createTheme("default", {
-  GLOBAL: cssWithCustomLayerName("kol-theme-global")`
-		:host {
-			--border-radius: var(--kolibri-border-radius, 5px);
-			--font-family: var(--kolibri-font-family, BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif);
-			--font-size: var(--kolibri-font-size, 16px);
-			--spacing: var(--kolibri-spacing, 0.25rem);
-			--border-width: var(--kolibri-border-width, 1px);
-			--color-primary: var(--kolibri-color-primary, #004b76);
-			--color-primary-variant: var(--kolibri-color-primary-variant, #0077b6);
-			--color-danger: var(--kolibri-color-danger, #c0003c);
-			--color-warning: var(--kolibri-color-warning, #c44931);
-			--color-success: var(--kolibri-color-success, #005c45);
-			--color-subtle: var(--kolibri-color-subtle, #576164);
-			--color-light: var(--kolibri-color-light, #ffffff);
-			--color-text: var(--kolibri-color-text, #202020);
-			--color-mute: var(--kolibri-color-mute, #f2f3f4);
-			--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
-		}
-		:host {
-			background-color: transparent; /* Reset global background-color defined by components */
-			font-family: var(--font-family);
-			font-size: var(--font-size);
-		}
-		* {
-			box-sizing: border-box;
-		}
-		*:not(i) {
-			font-family: var(--font-family);
-		}
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			margin: 0;
-			padding: 0;
-		}
-		*[tabindex]:focus,
-		kol-input:not(.checkbox, .radio) .input:focus-within,
-		kol-input:is(.checkbox, .radio) input:focus,
-		summary:focus {
-			cursor: pointer;
-			outline-color: var(--color-primary-variant);
-			outline-offset: 2px;
-			outline-style: solid;
-			outline-width: 3px;
-			transition: outline-offset 0.2s linear;
-		}
-		kol-heading-wc {
-			font-weight: 700;
-		}
-		kol-tooltip-wc .tooltip-floating {
-			border: var(--border-width) solid var(--color-subtle);
-			border-radius: var(--border-radius);
-		}
-		kol-tooltip-wc .tooltip-arrow {
-			border: var(--border-width) solid var(--color-subtle);
-		}
-		kol-tooltip-wc .tooltip-area {
-			background-color: var(--color-light);
-		}
-		kol-tooltip-wc .tooltip-content {
-			border-radius: var(--border-radius);
-			line-height: 1.5;
-			padding: 0.5rem 0.75rem;
-		}
-		kol-span-wc,
-		kol-span-wc > span {
-			gap: 0.5rem;
-		}
-
-		@keyframes spin {
-			0% {
-				transform: rotate(0deg);
-			}
-			100% {
-				transform: rotate(360deg);
-			}
-		}
-	`,
-  "KOL-BUTTON": css$2`
-		:is(a, button):focus {
-			outline: none;
-		}
-		:is(a, button):focus kol-span-wc {
-			outline-color: var(--color-primary-variant);
-			outline-offset: 2px;
-			outline-style: solid;
-			outline-width: calc(var(--border-width) * 2);
-			transition: outline-offset 0.2s linear;
-		}
-		:is(a, button) > kol-span-wc {
-			font-weight: 700;
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: var(--border-width);
-			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
-			padding: 8px 14px;
-			text-align: center;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-		}
-		:is(a, button):disabled > kol-span-wc {
-			cursor: not-allowed;
-			opacity: 0.5;
-		}
-		.primary :is(a, button) > kol-span-wc,
-		.primary :is(a, button):disabled:hover > kol-span-wc {
-			background-color: var(--color-primary);
-			border-color: var(--color-primary);
-			color: var(--color-light);
-		}
-		.secondary :is(a, button) > kol-span-wc,
-		.secondary :is(a, button):disabled:hover > kol-span-wc,
-		.normal :is(a, button) > kol-span-wc,
-		.normal :is(a, button):disabled:hover > kol-span-wc {
-			background-color: var(--color-light);
-			border-color: var(--color-primary);
-			color: var(--color-primary);
-		}
-		.danger :is(a, button) > kol-span-wc,
-		.danger :is(a, button):disabled:hover > kol-span-wc {
-			background-color: var(--color-danger);
-			border-color: var(--color-danger);
-			color: var(--color-light);
-		}
-		.ghost :is(a, button) > kol-span-wc,
-		.ghost :is(a, button):disabled:hover > kol-span-wc {
-			border-color: var(--color-light);
-			background-color: var(--color-light);
-			box-shadow: none;
-			color: var(--color-primary);
-		} /*-----------*/
-		.primary :is(a, button):active > kol-span-wc,
-		.primary :is(a, button):hover > kol-span-wc,
-		.secondary :is(a, button):active > kol-span-wc,
-		.secondary :is(a, button):hover > kol-span-wc,
-		.normal :is(a, button):active > kol-span-wc,
-		.normal :is(a, button):hover > kol-span-wc,
-		.danger :is(a, button):active > kol-span-wc,
-		.danger :is(a, button):hover > kol-span-wc,
-		.ghost :is(a, button):active > kol-span-wc,
-		.ghost :is(a, button):hover > kol-span-wc {
-			background-color: var(--color-primary-variant);
-			border-color: var(--color-primary-variant);
-			box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
-			color: var(--color-light);
-		}
-		.danger :is(a, button):active > kol-span-wc,
-		.danger :is(a, button):hover > kol-span-wc {
-			background-color: var(--color-danger);
-			border-color: var(--color-danger);
-		}
-		:is(a, button):disabled:hover > kol-span-wc,
-		:is(a, button):focus:hover > kol-span-wc {
-			box-shadow: none;
-		}
-		.primary :is(a, button):active > kol-span-wc,
-		.secondary :is(a, button):active > kol-span-wc,
-		.normal :is(a, button):active > kol-span-wc,
-		.danger :is(a, button):active > kol-span-wc,
-		.ghost :is(a, button):active > kol-span-wc {
-			border-color: var(--color-light);
-			box-shadow: none;
-			outline: none;
-		}
-		:is(a, button).hide-label > kol-span-wc {
-			padding: 0.8rem;
-			width: unset;
-		}
-		:is(a, button).hide-label > kol-span-wc > span > span {
-			display: none;
-		}
-		:is(a, button).loading > kol-span-wc kol-icon {
-			animation: spin 5s infinite linear;
-		}
-		/** small ghost button */
-		.ghost :is(a, button).small > kol-span-wc {
-			border: none;
-			background-color: transparent;
-			box-shadow: none;
-		}
-		.ghost :is(a, button).small > kol-span-wc > span {
-			border-radius: 1.5em;
-			border-style: solid;
-			border-width: var(--border-width);
-			border-color: var(--color-light);
-			background-color: var(--color-light);
-		}
-		.ghost :is(a, button).small:active > kol-span-wc > span,
-		.ghost :is(a, button).small:hover > kol-span-wc > span,
-		.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
-		.ghost :is(a, button).small.transparent:hover > kol-span-wc > span {
-			background-color: var(--color-primary-variant);
-			border-color: var(--color-primary-variant);
-			box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
-			color: var(--color-light);
-		} /** :is(a,button) with transparent background */
-		:is(a, button).transparent > kol-span-wc > span,
-		.ghost :is(a, button).small.transparent > kol-span-wc > span,
-		:is(a, button).transparent > kol-span-wc {
-			background-color: transparent;
-			border-color: transparent;
-		}
-		.access-key-hint {
-			background: var(--color-mute-variant);
-			border-radius: 3px;
-			color: var(--color-text);
-			padding: 0 0.3em;
-		}
-	`,
-  "KOL-INPUT-TEXT": css$2`
-		kol-input {
-			gap: 0.25rem;
-		}
-		kol-input .error {
-			order: 1;
-		}
-		kol-input label {
-			order: 2;
-		}
-		kol-input .input {
-			order: 3;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.9rem;
-			font-style: italic;
-		}
-		input {
-			border: none;
-		}
-		input::placeholder {
-			color: var(--color-subtle);
-		}
-		.input {
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			padding: 0 0.5rem;
-		}
-		.input > kol-icon {
-			width: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.input > input:first-child {
-			padding-left: var(--spacing);
-		}
-		.input > input:last-child {
-			padding-right: var(--spacing);
-		}
-		.input:hover {
-			border-color: var(--color-primary);
-		}
-		input:read-only,
-		input:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-danger) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
-		}
-		kol-input.disabled :is(input, .input) {
-			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
-		}
-	`,
-  "KOL-INPUT-PASSWORD": css$2`
-		kol-input {
-			gap: 0.25rem;
-		}
-		kol-input .error {
-			order: 1;
-		}
-		kol-input label {
-			order: 2;
-		}
-		kol-input .input {
-			order: 3;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.9rem;
-			font-style: italic;
-		}
-		input {
-			border: none;
-		}
-		input::placeholder {
-			color: var(--color-subtle);
-		}
-		.input {
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			padding: 0 0.5rem;
-		}
-		.input > kol-icon {
-			width: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.input > input:first-child {
-			padding-left: var(--spacing);
-		}
-		.input > input:last-child {
-			padding-right: var(--spacing);
-		}
-		.input:hover {
-			border-color: var(--color-primary);
-		}
-		input:read-only,
-		input:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-danger) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		kol-input.disabled :is(button, input, label, option, select, textarea) {
-			opacity: 1;
-		}
-		kol-input.disabled :is(input, select, textarea, .input) {
-			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
-			color: var(--color-text);
-		}
-	`,
-  "KOL-INPUT-NUMBER": css$2`
-		kol-input {
-			gap: 0.25rem;
-		}
-		kol-input .error {
-			order: 1;
-		}
-		kol-input label {
-			order: 2;
-		}
-		kol-input .input {
-			order: 3;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.9rem;
-			font-style: italic;
-		}
-		input {
-			border: none;
-		}
-		input::placeholder {
-			color: var(--color-subtle);
-		}
-		.input {
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			padding: 0 0.5rem;
-		}
-		.input > kol-icon {
-			width: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.input > input:first-child {
-			padding-left: var(--spacing);
-		}
-		.input > input:last-child {
-			padding-right: var(--spacing);
-		}
-		.input:hover {
-			border-color: var(--color-primary);
-		}
-		input:read-only,
-		input:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-danger) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
-		}
-		kol-input.disabled :is(input, .input) {
-			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
-			color: var(--color-text);
-		}
-	`,
-  "KOL-INPUT-DATE": css$2`
-		kol-input {
-			gap: 0.25rem;
-		}
-		kol-input .error {
-			order: 1;
-		}
-		kol-input label {
-			order: 2;
-		}
-		kol-input .input {
-			order: 3;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.9rem;
-			font-style: italic;
-		}
-		input {
-			border: none;
-		}
-		input::placeholder {
-			color: var(--color-subtle);
-		}
-		.input {
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			padding: 0 0.5rem;
-		}
-		.input > kol-icon {
-			width: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.input > input:first-child {
-			padding-left: var(--spacing);
-		}
-		.input > input:last-child {
-			padding-right: var(--spacing);
-		}
-		.input:hover {
-			border-color: var(--color-primary);
-		}
-		input:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-danger) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
-		}
-		kol-input.disabled :is(input, .input) {
-			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
-			color: var(--color-text);
-		}
-	`,
-  "KOL-INPUT-EMAIL": css$2`
-		kol-input {
-			gap: 0.25rem;
-		}
-		kol-input .error {
-			order: 1;
-		}
-		kol-input label {
-			order: 2;
-		}
-		kol-input .input {
-			order: 3;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.9rem;
-			font-style: italic;
-		}
-		input {
-			border: none;
-		}
-		input::placeholder {
-			color: var(--color-subtle);
-		}
-		.input {
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			padding: 0 0.5rem;
-		}
-		.input > kol-icon {
-			width: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.input > input:first-child {
-			padding-left: var(--spacing);
-		}
-		.input > input:last-child {
-			padding-right: var(--spacing);
-		}
-		.input:hover {
-			border-color: var(--color-primary);
-		}
-		input:read-only,
-		input:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-danger) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
-		}
-		kol-input.disabled :is(input, .input) {
-			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
-			color: var(--color-text);
-		}
-	`,
-  "KOL-INPUT-FILE": css$2`
-		kol-input {
-			gap: 0.25rem;
-		}
-		kol-input .error {
-			order: 1;
-		}
-		kol-input label {
-			order: 2;
-		}
-		kol-input .input {
-			order: 3;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.9rem;
-			font-style: italic;
-		}
-		kol-input .input input[type='file'] {
-			padding-top: calc(0.5em + 2px);
-		}
-		input {
-			border: none;
-		}
-		input[type='file'] {
-			background-color: transparent;
-		}
-		input::placeholder {
-			color: var(--color-subtle);
-		}
-		.input {
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			padding: 0 0.5rem;
-		}
-		.input > kol-icon {
-			width: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.input > input:first-child {
-			padding-left: var(--spacing);
-		}
-		.input > input:last-child {
-			padding-right: var(--spacing);
-		}
-		.input:hover {
-			border-color: var(--color-primary);
-		}
-		input:read-only,
-		input:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-danger) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		kol-input.disabled :is(button, input, label, option, select, textarea) {
-			opacity: 1;
-		}
-		kol-input.disabled :is(input, select, textarea, .input) {
-			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
-			color: var(--color-text);
-		}
-	`,
-  "KOL-TEXTAREA": css$2`
-		kol-input {
-			gap: 0.25rem;
-		}
-		kol-input .error {
-			order: 1;
-		}
-		kol-input label {
-			order: 2;
-		}
-		kol-input .input {
-			order: 3;
-		}
-		kol-input .counter {
-			order: 4;
-		}
-		kol-input .hint {
-			order: 5;
-			font-size: 0.9rem;
-			font-style: italic;
-		}
-		textarea {
-			border: none;
-		}
-		input::placeholder {
-			color: var(--color-subtle);
-		}
-		.input {
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			padding: 0 0.5rem;
-		}
-		.input > kol-icon {
-			width: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.input > input:first-child {
-			padding-left: var(--spacing);
-		}
-		.input > input:last-child {
-			padding-right: var(--spacing);
-		}
-		.input:hover {
-			border-color: var(--color-primary);
-		}
-		textarea:read-only,
-		textarea:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-danger) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-		select[multiple],
-		textarea {
-			overflow: auto;
-		}
-		textarea {
-			display: block;
-		}
-		.input {
-			position: relative;
-		}
-	`,
-  "KOL-ALERT": css$2`
-		.msg {
-			border-width: 0;
-		}
-		kol-alert-wc {
-			border-width: var(--border-width);
-			border-style: solid;
-			border-radius: var(--border-radius);
-			display: flex;
-			width: 100%;
-			overflow: unset;
-			border-color: transparent;
-			background-color: var(--color-light);
-		}
-		kol-alert-wc > .heading {
-			display: flex;
-			gap: 0.5em;
-			place-items: center;
-		}
-		kol-alert-wc > .heading > div {
-			display: grid;
-			gap: 0.25rem;
-		}
-		.msg > .heading > kol-icon {
-			place-self: baseline;
-		}
-		kol-alert-wc > .heading > kol-button-wc.close {
-			place-self: center;
-		}
-		.msg {
-			align-items: start;
-		}
-		.default {
-			border-color: var(--color-subtle);
-		}
-		.default.msg .heading-icon {
-			color: var(--color-subtle);
-		}
-		.error {
-			border-color: var(--color-danger);
-		}
-		.error.msg .heading-icon {
-			color: var(--color-danger);
-		}
-		.info {
-			border-color: var(--color-primary);
-		}
-		.info.msg .heading-icon {
-			color: var(--color-primary);
-		}
-		.success {
-			border-color: var(--color-success);
-		}
-		.success.msg .heading-icon {
-			color: var(--color-success);
-		}
-		.warning {
-			border-color: var(--color-warning);
-		}
-		.warning.msg .heading-icon {
-			color: var(--color-warning);
-		}
-		.heading-icon {
-			color: var(--color-light);
-		}
-		kol-alert-wc .heading .heading-icon {
-			padding: 0;
-		}
-		.msg > .heading > .heading-icon {
-			padding-top: 0;
-			place-items: baseline;
-		}
-		.msg > .heading > div > kol-heading-wc {
-			padding-top: calc(--var-spacing / 2);
-		}
-		.msg.default .heading > div > kol-heading-wc {
-			color: var(--color-subtle);
-		}
-		.msg.error .heading > div > kol-heading-wc {
-			color: var(--color-danger);
-		}
-		.msg.info .heading > div > kol-heading-wc {
-			color: var(--color-primary);
-		}
-		.msg.success .heading > div > kol-heading-wc {
-			color: var(--color-success);
-		}
-		.msg.warning .heading > div > kol-heading-wc {
-			color: var(--color-warning);
-		}
-		.msg.default .close .icon {
-			color: var(--color-subtle);
-		}
-		.msg.error .close .icon {
-			color: var(--color-danger);
-		}
-		.msg.info .close .icon {
-			color: var(--color-primary);
-		}
-		.msg.success .close .icon {
-			color: var(--color-success);
-		}
-		.msg.warning .close .icon {
-			color: var(--color-warning);
-		}
-		.card {
-			border-width: var(--border-width);
-			border-style: solid;
-			filter: drop-shadow(0px 2px 4px rgba(8, 35, 48, 0.24));
-			flex-direction: column;
-		}
-		.card > .heading {
-			padding: 0.5rem 1rem;
-		}
-		.card[_has-closer] > .heading {
-			padding-top: 0;
-			padding-bottom: 0;
-			padding-right: 0;
-		}
-		.card > .heading > div {
-			width: 100%;
-			min-height: 1.25rem;
-		}
-		.card > .heading .heading-icon {
-			justify-self: right;
-			margin-top: -4px;
-		}
-		.card > .heading kol-heading-wc {
-			width: 100%;
-			color: var(--color-light);
-			display: flex;
-			font-size: 1.25rem;
-			line-height: 1.25rem;
-		}
-		.card > .heading kol-heading-wc > * {
-			margin: auto 0;
-		}
-		.card > .content {
-			padding: 1rem;
-		}
-		.card.default > .heading {
-			background-color: var(--color-subtle);
-		}
-		.card.error > .heading {
-			background-color: var(--color-danger);
-		}
-		.card.info > .heading {
-			background-color: var(--color-primary);
-		}
-		.card.success > .heading {
-			background-color: var(--color-success);
-		}
-		.card.warning > .heading {
-			background-color: var(--color-warning);
-		}
-		:is(.error, .info, .success, .warning) .heading-icon {
-			font-size: 1.25rem;
-		}
-		.card > div > .content {
-			grid-row: 2;
-			grid-column: 1 / span 2;
-		}
-		.card.default .close {
-			background-color: var(--color-subtle);
-		}
-		.card.error .close {
-			background-color: var(--color-danger);
-		}
-		.card.info .close {
-			background-color: var(--color-primary);
-		}
-		.card.success .close {
-			background-color: var(--color-success);
-		}
-		.card.warning .close {
-			background-color: var(--color-warning);
-		}
-		.close > button {
-			border-radius: 50%; /* visible on focus */
-			color: var(--color-light);
-			cursor: pointer;
-			height: var(--a11y-min-size);
-			width: var(--a11y-min-size);
-		}
-		.close > button.hide-label kol-icon {
-			display: flex;
-			width: 1em;
-			height: 1em;
-			font-size: 1.2rem;
-		}
-		.close > button:active {
-			box-shadow: none;
-			outline: none;
-		}
-	`,
-  "KOL-HEADING": css$2`
-		.headline-h1,
-		.headline-h2,
-		.headline-h3,
-		.headline-h4,
-		.headline-h5,
-		.headline-h6 {
-			color: inherit;
-			font-style: normal;
-		}
-		.headline-h1,
-		.headline-h2,
-		.headline-h3 {
-			font-weight: 700;
-		}
-		.headline-h1 {
-			font-size: 1.5rem;
-			line-height: 1.75rem;
-		}
-		.headline-h2 {
-			font-size: 1.25rem;
-			line-height: 1.75rem;
-		}
-		.headline-h3 {
-			font-size: 1.125rem;
-			line-height: 1.5rem;
-		}
-	`,
-  "KOL-BADGE": css$2`
-		:host {
-			display: inline-block;
-			font-size: inherit;
-		}
-		:host > span {
-			border-radius: var(--border-radius);
-			display: inline-flex;
-			font-style: normal;
-		}
-		:host > span.smart-button {
-			align-items: center;
-		}
-		:host > span kol-button-wc:hover > button {
-			background-color: var(--color-primary-variant);
-			color: var(--color-light);
-		}
-		:host > span kol-button-wc > button {
-			color: inherit;
-			border-top-right-radius: var(--border-radius);
-			border-bottom-right-radius: var(--border-radius);
-			padding: 0.2rem;
-		}
-		:host > span kol-span-wc {
-			padding: 0.25rem 0.75rem;
-		}
-		:host > span > kol-span-wc {
-			align-items: center;
-			font-style: normal;
-			gap: 0.5rem;
-		}
-		:host > span > kol-span-wc > span {
-			display: flex;
-			gap: 0.25rem;
-		}
-	`,
-  "KOL-BUTTON-GROUP": css$2`
-		:host > kol-button-group-wc {
-			display: flex;
-			flex-wrap: wrap;
-			gap: var(--spacing);
-		}
-	`,
-  "KOL-INDENTED-TEXT": css$2`
-		:host > div {
-			background-color: var(--color-light);
-			border-left: none;
-			box-shadow: -2px 0px 0px var(--color-primary-variant);
-			padding: 0 0.5rem;
-			width: 100%;
-		}
-	`,
-  "KOL-LINK": css$2`
-		:is(a, button) {
-			color: var(--color-primary);
-			font-style: normal;
-			font-weight: 400;
-			text-decoration-line: underline;
-		}
-		:is(a, button):focus {
-			outline: none;
-		}
-		:is(a, button):focus kol-span-wc {
-			border-radius: var(--border-radius);
-			outline: var(--border-width) solid;
-		}
-		:is(a, button):hover {
-			text-decoration-thickness: 0.25em;
-		}
-		:is(a, button):visited {
-			color: var(--visited);
-		}
-		.hidden {
-			display: none;
-			visibility: hidden;
-		}
-		.skip {
-			left: -99999px;
-			overflow: hidden;
-			position: absolute;
-			z-index: 9999999;
-			line-height: 1em;
-		}
-		.skip:focus {
-			background: white;
-			left: unset;
-			position: unset;
-		}
-	`,
-  "KOL-DETAILS": css$2`
-		details > summary {
-			border-radius: var(--border-radius);
-		}
-		details kol-indented-text {
-			margin: 0.25rem 0 0 0.65rem;
-		}
-		kol-icon {
-			font-size: 1.2rem;
-		}
-	`,
-  "KOL-PROGRESS": css$2`
-		:host progress,
-		:host span {
-			display: block;
-			height: 0px;
-			overflow: hidden;
-			width: 0px;
-		}
-		:host svg line:first-child,
-		:host svg circle:first-child {
-			fill: transparent;
-			stroke: var(--color-mute-variant);
-		}
-		:host svg line:last-child,
-		:host svg circle:last-child {
-			fill: transparent;
-			stroke: var(--color-primary);
-		}
-
-		.cycle .progress {
-			stroke: var(--color-primary-variant);
-		}
-	`,
-  "KOL-SELECT": css$2`
-		kol-input {
-			gap: 0.25rem;
-		}
-		kol-input .error {
-			order: 1;
-		}
-		kol-input label {
-			order: 2;
-		}
-		kol-input .input {
-			order: 3;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.9rem;
-			font-style: italic;
-		}
-		select {
-			border: none;
-		}
-		input::placeholder {
-			color: var(--color-subtle);
-		}
-		.input {
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			padding: 0 0.5rem;
-		}
-		.input > kol-icon {
-			width: 2rem;
-		}
-		.input:is(.icon-left, .icon-right) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.input > input:first-child {
-			padding-left: var(--spacing);
-		}
-		.input > input:last-child {
-			padding-right: var(--spacing);
-		}
-		.input:hover {
-			border-color: var(--color-primary);
-		}
-		select:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-danger) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		kol-input.disabled :is(select, label, option) {
-			opacity: 1;
-		}
-		kol-input.disabled :is(select, .input) {
-			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
-		}
-		select[multiple] {
-			overflow: auto;
-		}
-		select option {
-			margin: 1px 0;
-			border-radius: var(--border-radius);
-			cursor: pointer;
-		}
-		select option:disabled {
-			cursor: not-allowed;
-		}
-		select:not([multiple]) option {
-			padding: 0.5em;
-		}
-		option:active:not(:disabled),
-		option:checked:not(:disabled),
-		option:focus:not(:disabled),
-		option:hover:not(:disabled) {
-			background: var(--color-primary-variant);
-			color: var(--color-light);
-		}
-	`,
-  "KOL-INPUT-COLOR": css$2`
-		kol-input {
-			gap: 0.25rem;
-		}
-		kol-input .error {
-			order: 1;
-		}
-		kol-input label {
-			order: 2;
-		}
-		kol-input .input {
-			order: 3;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.9rem;
-			font-style: italic;
-		}
-		input {
-			border: none;
-		}
-		input[type='color'] {
-			border: none;
-			min-height: 40px !important;
-		}
-		input[type='color'] {
-			background-color: transparent;
-		}
-		input::placeholder {
-			color: var(--color-subtle);
-		}
-		.input {
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			padding: 0 0.5rem;
-		}
-		.input > kol-icon {
-			width: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-		}
-		.input > input:first-child {
-			padding-left: var(--spacing);
-		}
-		.input > input:last-child {
-			padding-right: var(--spacing);
-		}
-		.input:hover {
-			border-color: var(--color-primary);
-		}
-		input:read-only,
-		input:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-danger) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
-		}
-		kol-input.disabled :is(input, .input) {
-			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
-			color: var(--color-text);
-		}
-	`,
-  "KOL-ACCORDION": css$2`
-		kol-span-wc > span {
-			display: flex;
-			place-items: baseline center;
-			text-align: left;
-		}
-		:host > div > kol-heading-wc button {
-			border-radius: var(--border-radius);
-			min-height: 2.2rem;
-			padding: 12px 8px;
-		}
-		:host > div > kol-heading-wc button kol-span-wc {
-			font-weight: 700;
-			font-size: 1.125rem;
-			line-height: 20px;
-			gap: 0.5rem;
-		}
-		:host > div > kol-heading-wc button kol-span-wc > span {
-			gap: 0.5em;
-		}
-		:host > div > kol-heading-wc button kol-icon {
-			color: var(--color-primary);
-		}
-		:host > div {
-			width: 100%;
-			height: 100%;
-			display: grid;
-		}
-		:host > div div[class='header'],
-		:host > div[class*='open'] div[class='content'] {
-			margin: 0;
-		}
-		:host > div div[class='content'] {
-			padding-left: 2.25em;
-			padding-bottom: 12px;
-			padding-right: 8px;
-		}
-		button:focus {
-			outline: none;
-		}
-		:host > .accordion:focus-within {
-			border-radius: var(--border-radius);
-			cursor: pointer;
-			outline-color: var(--color-primary-variant);
-			outline-offset: 2px;
-			outline-style: solid;
-			outline-width: 3px;
-			transition: outline-offset 0.2s linear;
-		}
-	`,
-  "KOL-TABLE": css$2`
-		:host * {
-			hyphens: var(--hyphens);
-			font-family: var(--font-family);
-			line-height: var(--line-height);
-			word-break: break-word;
-		}
-		:host > div {
-			overflow-x: auto;
-			overflow-y: hidden;
-		}
-		caption {
-			padding: 0.5rem;
-		}
-		th {
-			font-weight: normal;
-			color: var(--color-primary);
-		}
-		:host table thead tr:first-child th,
-		:host table thead tr:first-child td {
-			border-width: 0;
-			border-top-width: calc(var(--border-width) * 2);
-			border-style: solid;
-			border-color: var(--color-primary-variant);
-		}
-		table {
-			width: 100%;
-			border-spacing: 0;
-		}
-		table,
-		:host table thead tr:last-child th,
-		:host table thead tr:last-child td {
-			border-width: 0;
-			border-bottom-width: calc(var(--border-width) * 2);
-			border-style: solid;
-			border-color: var(--color-primary-variant);
-		}
-		th {
-			background-color: var(--color-light);
-		}
-		th div {
-			width: 100%;
-			display: flex;
-			gap: 0.5rem;
-			grid-template-columns: 1fr auto;
-			align-items: center;
-		}
-		tr:nth-child(even) {
-			background-color: var(--color-mute);
-		}
-		th,
-		td {
-			padding: 0.5rem;
-		}
-		th[aria-sort='ascending'],
-		th[aria-sort='descending'] {
-			font-weight: 700;
-		}
-		:host > div:last-child {
-			padding: 0.5rem;
-		}
-		:host > div:last-child,
-		:host > div:last-child > div:last-child {
-			display: grid;
-			align-items: center;
-			justify-items: center;
-			gap: 1rem;
-		}
-
-		@media (min-width: 1024px) {
-			div.pagination kol-pagination {
-				display: flex;
-				align-items: center;
-			}
-		}
-	`,
-  "KOL-NAV": css$2`
-		* {
-			margin: 0;
-			padding: 0;
-		}
-		nav {
-			font-family: var(--font-family);
-			font-size: var(--font-size);
-			background-color: var(--color-mute);
-			width: 100%;
-		}
-		ul {
-			list-style: none;
-		}
-		kol-link-wc,
-		a {
-			height: 100%;
-			min-height: var(--a11y-min-size);
-			display: flex;
-			place-items: center;
-		}
-		.entry > kol-span-wc > span {
-			width: 100%;
-		}
-		.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-light);
-			text-decoration: none;
-			color: var(--color-primary);
-			width: 100%;
-			display: flex;
-			align-items: center;
-			font-style: normal;
-			line-height: 1.5rem;
-			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-			letter-spacing: 0.175px;
-		}
-		.entry > :is(kol-link-wc, kol-button-wc):first-child :is(a, button) {
-			color: var(--color-primary);
-			text-decoration: none;
-		}
-		.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
-			border-left-color: var(--color-primary-variant);
-			background-color: var(--color-primary-variant);
-		}
-		.entry > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child:hover > :is(a, button, span) {
-			color: var(--color-primary-variant);
-			font-weight: 700;
-			letter-spacing: unset;
-		}
-		.selected > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-primary-variant);
-			color: var(--color-primary);
-			font-weight: 700;
-		}
-		.selected > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child > :is(a, button, span) {
-			font-weight: 700;
-		}
-		.selected :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
-			color: var(--color-primary-variant);
-			letter-spacing: unset;
-		}
-		.entry > kol-span-wc > span,
-		.entry :is(a, button) {
-			border-left-color: transparent;
-			border-left-style: solid;
-			border-left-width: 0.5rem;
-			padding: 0.75rem 0.5rem 0.75rem 0.25rem;
-		}
-		.selected :is(a, button),
-		[exportparts*='selected'] a {
-			border-left-color: var(--color-primary);
-		} /** Compact mode */
-		.entry.compact :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			place-items: center;
-		}
-		.entry.compact > kol-span-wc > span {
-			flex-direction: column;
-		}
-		.entry.compact > kol-span-wc > span,
-		.entry.compact :is(a, button) {
-			padding-left: 0;
-		}
-	`,
-  "KOL-CARD": css$2`
-		/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
-		:host > div {
-			display: grid;
-			width: 100%;
-			height: 100%;
-			background-color: var(--color-light);
-			grid-template-rows: min-content 2fr min-content;
-			box-shadow: 0 0 0.25rem var(--color-subtle);
-			border-radius: var(--border-radius);
-		}
-		:host kol-heading-wc {
-			line-height: 1.75rem;
-		}
-		:host div.header {
-			padding: 1rem 1rem 0.5rem 1rem;
-		}
-		:host div.content {
-			padding: 0.5rem 1rem 1rem;
-			overflow: hidden;
-		}
-		:host div.footer {
-			padding: 0.5rem 1rem;
-		}
-	`,
-  "KOL-INPUT-CHECKBOX": css$2`
-		:host kol-input {
-			display: grid;
-			align-items: center;
-			justify-items: left;
-			width: 100%;
-			min-height: var(--a11y-min-size);
-			gap: 0.4rem;
-		}
-		:host kol-input.default {
-			grid-template-columns: 1.5rem auto;
-		}
-		:host kol-input.switch {
-			grid-template-columns: 3.5rem auto;
-		}
-		:host kol-input.button {
-			gap: 0.4rem 0;
-		}
-		.checkbox-container {
-			justify-content: flex-start;
-		}
-		:host kol-input > div.input {
-			display: inherit;
-			min-height: var(--a11y-min-size);
-			order: 2;
-		}
-		:host kol-input > div.input input {
-			margin: 0px;
-		}
-		:host kol-input > label {
-			cursor: pointer;
-			order: 3;
-		}
-		:host kol-input > kol-alert.error {
-			order: 1;
-			padding-top: calc(var(--spacing) / 2);
-			grid-column: span 2 / auto;
-		}
-		:host kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		:host kol-input.error input:focus,
-		kol-input.error select:focus,
-		kol-input.error textarea:focus {
-			outline-color: var(--color-danger) !important;
-		}
-		:host kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		:host input {
-			cursor: pointer;
-			order: 1;
-			width: 100%;
-			border-color: var(--color-subtle);
-			border-width: 2px;
-			border-style: solid;
-			border-radius: var(--border-radius);
-			line-height: 24px;
-			font-size: 1rem;
-		}
-		:host input:hover {
-			border-color: var(--color-primary);
-			box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-		}
-		:host input:focus:hover {
-			box-shadow: none;
-		}
-		:host input:active {
-			box-shadow: none;
-		}
-		:host kol-alert {
-			display: block;
-			width: 100%;
-		} /* CHECKBOX */
-		:host kol-input label span {
-			margin-top: 0.125rem;
-		}
-		:host .required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		:host kol-input input[type='checkbox'] {
-			appearance: none;
-			background-color: white;
-			cursor: pointer;
-			transition: 0.5s;
-		}
-		:host kol-input input[type='checkbox']:checked {
-			background-color: var(--color-primary);
-			border-color: var(--color-primary);
-		}
-		:host kol-input.default input[type='checkbox'] {
-			border-radius: var(--border-radius);
-			height: calc(6 * 0.25rem);
-			min-width: calc(6 * 0.25rem);
-			width: calc(6 * 0.25rem);
-		}
-		:host kol-input.default input[type='checkbox']:indeterminate {
-			background-color: var(--color-primary);
-		}
-		:host kol-input.default .icon {
-			color: var(--color-light);
-			margin-left: 0.25rem;
-		}
-
-		:host kol-input.switch input[type='checkbox'] {
-			background-color: var(--color-subtle);
-			border-radius: 1.25em;
-			border-width: 0;
-			display: block;
-			height: 1.5em;
-			min-width: 3.5em;
-			position: relative;
-			width: 3.5em;
-		}
-		:host kol-input.switch input[type='checkbox']:before {
-			width: 1.25em;
-			height: 1.25em;
-			left: calc(0.25em - 2px);
-			top: calc(0.25em - 2px);
-			border-radius: 1.25em;
-			background-color: white;
-			position: absolute;
-		}
-		:host kol-input.switch input[type='checkbox']:checked {
-			background-color: var(--color-primary);
-		}
-		:host kol-input.switch input[type='checkbox']:checked:before {
-			transform: translateX(2em);
-		}
-		:host kol-input.switch input[type='checkbox']:indeterminate:before {
-			transform: translateX(1em);
-		}
-		.switch {
-			& .icon {
-				width: 1.25em;
-				height: 1.25em;
-				left: 2px;
-			}
-
-			&.checked .icon {
-				transform: translate(2em, -50%);
-			}
-
-			&.indeterminate .icon {
-				transform: translate(1em, -50%);
-			}
-		}
-		:host .disabled {
-			opacity: 0.33;
-		}
-		.button:focus-within {
-			border-radius: var(--border-radius);
-			outline-color: var(--color-primary-variant);
-			outline-offset: 2px;
-			outline-style: solid;
-			outline-width: calc(var(--border-width) * 2);
-		}
-	`,
-  "KOL-INPUT-RADIO": css$2`
-		label {
-			cursor: pointer;
-			display: grid;
-			line-height: 20px;
-			gap: calc(var(--spacing) * 2);
-			width: 100%;
-		}
-		input {
-			cursor: pointer;
-			width: 100%;
-			border-color: var(--color-subtle);
-			border-width: 2px;
-			border-style: solid;
-			border-radius: 5px;
-			line-height: 24px;
-		}
-		input:hover {
-			border-color: var(--color-primary);
-			box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-		}
-		input:focus:hover {
-			box-shadow: none;
-		}
-		input:hover {
-			border-color: var(--color-primary);
-		}
-		kol-alert {
-			display: block;
-			width: 100%;
-		}
-		.required legend > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		} /* RADIO */
-		fieldset {
-			border: 0px;
-			margin: 0px;
-			padding: 0px;
-			display: grid;
-			gap: 0.25em;
-		}
-		.radio-input-wrapper {
-			align-items: center;
-			cursor: pointer;
-			display: flex;
-			flex-direction: row;
-			gap: 0.5rem;
-			margin: 0;
-			min-height: var(--a11y-min-size);
-			position: relative;
-		}
-		.radio-input-wrapper label {
-			cursor: pointer;
-			display: flex;
-			padding-left: calc(var(--spacing) / 2);
-			width: 100%;
-		}
-		.radio-input-wrapper label span {
-			margin-top: 0.125em;
-		}
-		.radio-input-wrapper input[type='radio'] {
-			appearance: none;
-			transition: 0.5s;
-			border-radius: 100%;
-			height: calc(6 * 0.25rem);
-			min-width: calc(6 * 0.25rem);
-			width: calc(6 * 0.25rem);
-		}
-		.radio-input-wrapper input[type='radio']:before {
-			content: '';
-			cursor: pointer;
-			border-radius: 100%;
-			display: block;
-		}
-		.radio-input-wrapper input[type='radio']:checked:before {
-			background-color: var(--color-primary);
-		}
-		.radio-input-wrapper input[type='radio']:disabled {
-			cursor: not-allowed;
-			background-color: var(--color-mute-variant);
-		}
-		kol-alert.error {
-			order: 1;
-		}
-		fieldset legend {
-			order: 2;
-			display: contents;
-		}
-		fieldset kol-input {
-			order: 3;
-		}
-		fieldset.error {
-			border-left: 3px solid var(--color-danger);
-			color: var(--color-danger);
-			font-weight: 700;
-			padding-left: 1rem;
-		}
-		fieldset.error input:focus,
-		fieldset.error select:focus,
-		fieldset.error textarea:focus {
-			outline-color: var(--color-danger) !important;
-		}
-		fieldset.error kol-alert.error {
-			margin-left: -0.25em;
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		.disabled {
-			opacity: 0.33;
-		}
-		fieldset.horizontal {
-			display: flex;
-			flex-wrap: wrap;
-			gap: var(--spacing) calc(var(--spacing) * 2);
-		}
-		fieldset.horizontal legend {
-			display: inline-block;
-			margin-bottom: calc(var(--spacing) / 2);
-		}
-		fieldset .input-slot {
-			gap: var(--spacing);
-		}
-		.radio-input-wrapper label {
-			padding-left: 0;
-		}
-	`,
-  "KOL-TOAST-CONTAINER": css$2`
-		:host {
-			top: 1rem;
-			right: 1rem;
-			width: 440px;
-			max-width: 100%;
-		}
-		.toast {
-			margin-top: 1rem;
-		}
-	`,
-  "KOL-TABS": css$2`
-		button:disabled {
-			opacity: 0.5;
-			cursor: not-allowed;
-		}
-		:host kol-button-group-wc {
-			display: inline-flex;
-			gap: 2rem;
-			flex-wrap: wrap;
-		}
-		button {
-			box-sizing: border-box;
-			background-color: transparent;
-			border: 0;
-			border-radius: var(--border-radius);
-			font-style: normal;
-			font-weight: 700;
-			font-size: 18px;
-			line-height: 22px;
-			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
-			color: var(--color-subtle);
-			padding: 0;
-		}
-		button:hover {
-			color: var(--color-primary);
-		}
-		button.primary,
-		button.selected {
-			color: var(--color-primary);
-		}
-		button kol-span-wc > span {
-			border-bottom: 0.25em solid;
-		}
-		button kol-span-wc > span {
-			gap: 0.5rem;
-		}
-		:host > div > div {
-			padding: 0.25em 0;
-		}
-		div[role='tabpanel'] {
-			height: 100%;
-		}
-		div.grid {
-			height: 100%;
-		}
-		:host > .tabs-align-right {
-			display: grid;
-			grid-template-columns: 1fr auto;
-		}
-		:host > .tabs-align-right kol-button-group-wc {
-			display: grid;
-			order: 2;
-		}
-		:host > .tabs-align-left {
-			display: grid;
-			grid-template-columns: auto 1fr;
-		}
-		:host > .tabs-align-left kol-button-group-wc {
-			display: grid;
-			order: 0;
-		}
-		:host > .tabs-align-bottom {
-			display: grid;
-			grid-template-rows: 1fr auto;
-		}
-		:host > .tabs-align-bottom kol-button-group-wc {
-			order: 2;
-		}
-		:host > .tabs-align-bottom kol-button-group-wc > div {
-			display: flex;
-		}
-		:host > .tabs-align-bottom > kol-button-group-wc > div > div:first-child {
-			margin: 0px 1rem 0px 0px;
-		}
-		:host > .tabs-align-bottom > kol-button-group-wc > div > div {
-			margin: 0px 1rem;
-		}
-		:host > .tabs-align-top {
-			display: grid;
-			grid-template-rows: auto 1fr;
-		}
-		:host > .tabs-align-top kol-button-group-wc {
-			order: 0;
-		}
-		:host > .tabs-align-top kol-button-group-wc > div {
-			display: flex;
-		}
-		:host > .tabs-align-top > kol-button-group-wc > div > div:first-child {
-			margin: 0px 1rem 0px 0px;
-		}
-		:host > .tabs-align-top > kol-button-group-wc > div > div {
-			margin: 0px 1rem;
-		}
-		:host > div {
-			display: grid;
-		}
-		:host > div.tabs-align-left {
-			grid-template-columns: auto 1fr;
-		}
-		:host > div.tabs-align-right {
-			grid-template-columns: 1fr auto;
-		}
-		:host > .tabs-align-left kol-button-group-wc,
-		:host > .tabs-align-top kol-button-group-wc {
-			order: 0;
-		}
-		:host > .tabs-align-bottom kol-button-group-wc,
-		:host > .tabs-align-right kol-button-group-wc {
-			order: 1;
-		}
-		:host > .tabs-align-left kol-button-group-wc,
-		:host > .tabs-align-right kol-button-group-wc {
-			gap: inherit;
-		}
-		:host > div.tabs-align-left kol-button-group-wc > div,
-		:host > div.tabs-align-left kol-button-group-wc > div > div,
-		:host > div.tabs-align-right kol-button-group-wc > div,
-		:host > div.tabs-align-right kol-button-group-wc > div > div {
-			display: grid;
-		}
-		:host > div.tabs-align-left kol-button-group-wc > div > div kol-button-wc,
-		:host > div.tabs-align-right kol-button-group-wc > div > div kol-button-wc {
-			width: 100%;
-		}
-		:host > div.tabs-align-bottom kol-button-group-wc div,
-		:host > div.tabs-align-top kol-button-group-wc div {
-			display: flex;
-			flex-wrap: wrap;
-		}
-		:host kol-button-group-wc button {
-			border: none;
-		}
-	`,
-  "KOL-PAGINATION": css$2`
-		.button:focus {
-			outline: none;
-		}
-		.button-inner {
-			background-color: var(--color-light);
-			border-radius: var(--border-radius);
-			border: 1px solid var(--color-primary);
-			color: var(--color-primary);
-			font-weight: 700;
-			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
-			padding: 8px;
-			text-align: center;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-		}
-		.button:focus .button-inner {
-			outline-offset: 2px;
-			outline: 2px solid var(--color-primary-variant);
-			transition: outline-offset 0.2s linear;
-		}
-		.button:is(:active, :hover):not(:disabled) .button-inner {
-			background-color: var(--color-primary-variant);
-			border-color: var(--color-primary-variant);
-			box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
-			color: var(--color-light);
-		}
-		.button:active .button-inner {
-			color: var(--color-light);
-			outline: none;
-		}
-		.button:disabled .button-inner {
-			cursor: not-allowed;
-			opacity: 0.5;
-		}
-		.selected .button-inner {
-			background-color: var(--color-mute-variant);
-			border-radius: var(--a11y-min-size);
-			border: 0;
-			opacity: 1 !important;
-		}
-	`,
-  "KOL-INPUT-RANGE": css$2`
-		.inputs-wrapper {
-			gap: 1rem;
-		}
-		kol-input {
-			gap: 0.25rem;
-		}
-		kol-input .error {
-			order: 1;
-		}
-		kol-input label {
-			order: 2;
-		}
-		kol-input .input {
-			order: 3;
-		}
-		kol-input .hint {
-			order: 4;
-			font-size: 0.9rem;
-			font-style: italic;
-		}
-		input::placeholder {
-			color: var(--color-subtle);
-		}
-		.input {
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			padding: 0 0.5rem;
-		}
-		.input > kol-icon {
-			width: 1rem;
-		}
-		.input.icon-left > kol-icon:first-child {
-			margin-right: 0.5rem;
-		}
-		.input.icon-right > kol-icon:last-child {
-			margin-left: 0.5rem;
-		}
-		.input:is(.icon-left, .icon-right) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		.input:hover {
-			border-color: var(--color-primary);
-		}
-		input:read-only,
-		input:disabled {
-			cursor: not-allowed;
-		}
-		.required label > span::after {
-			content: '*';
-			padding-left: 0.125em;
-		}
-		kol-input.error {
-			border-left: 3px solid var(--color-danger);
-			padding-left: 1rem;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-danger) !important;
-		}
-		kol-input.error kol-alert.error {
-			color: var(--color-danger);
-			font-weight: 700;
-		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
-		}
-		kol-input.disabled :is(.input) {
-			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
-			color: var(--color-text);
-		}
-	`,
-  "KOL-LINK-BUTTON": css$2`
-		:is(a, button):focus {
-			outline: none;
-		}
-		:is(a, button):focus kol-span-wc {
-			outline-color: var(--color-primary-variant);
-			outline-offset: 2px;
-			outline-style: solid;
-			outline-width: calc(var(--border-width) * 2);
-			transition: outline-offset 0.2s linear;
-		}
-		:is(a, button) > kol-span-wc {
-			font-weight: 700;
-			border-radius: var(--a11y-min-size);
-			border-style: solid;
-			outline-width: calc(var(--border-width) * 2);
-			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
-			padding: 8px 14px;
-			text-align: center;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-		}
-		:is(a, button):disabled > kol-span-wc {
-			cursor: not-allowed;
-			opacity: 0.5;
-		}
-		.primary :is(a, button) > kol-span-wc,
-		.primary :is(a, button):disabled:hover > kol-span-wc {
-			background-color: var(--color-primary);
-			border-color: var(--color-primary);
-			color: var(--color-light);
-		}
-		.secondary :is(a, button) > kol-span-wc,
-		.secondary :is(a, button):disabled:hover > kol-span-wc,
-		.normal :is(a, button) > kol-span-wc,
-		.normal :is(a, button):disabled:hover > kol-span-wc {
-			background-color: var(--color-light);
-			border-color: var(--color-primary);
-			color: var(--color-primary);
-		}
-		.danger :is(a, button) > kol-span-wc,
-		.danger :is(a, button):disabled:hover > kol-span-wc {
-			background-color: var(--color-danger);
-			border-color: var(--color-danger);
-			color: var(--color-light);
-		}
-		.ghost :is(a, button) > kol-span-wc,
-		.ghost :is(a, button):disabled:hover > kol-span-wc {
-			border-color: var(--color-light);
-			background-color: var(--color-light);
-			box-shadow: none;
-			color: var(--color-primary);
-		} /*-----------*/
-		.primary :is(a, button):active > kol-span-wc,
-		.primary :is(a, button):hover > kol-span-wc,
-		.secondary :is(a, button):active > kol-span-wc,
-		.secondary :is(a, button):hover > kol-span-wc,
-		.normal :is(a, button):active > kol-span-wc,
-		.normal :is(a, button):hover > kol-span-wc,
-		.danger :is(a, button):active > kol-span-wc,
-		.danger :is(a, button):hover > kol-span-wc,
-		.ghost :is(a, button):active > kol-span-wc,
-		.ghost :is(a, button):hover > kol-span-wc {
-			background-color: var(--color-primary-variant);
-			border-color: var(--color-primary-variant);
-			box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-			color: var(--color-light);
-		}
-		.danger :is(a, button):active > kol-span-wc,
-		.danger :is(a, button):hover > kol-span-wc {
-			background-color: var(--color-danger);
-			border-color: var(--color-danger);
-		}
-		:is(a, button):disabled:hover > kol-span-wc,
-		:is(a, button):focus:hover > kol-span-wc {
-			box-shadow: none;
-		}
-		.primary :is(a, button):active > kol-span-wc,
-		.secondary :is(a, button):active > kol-span-wc,
-		.normal :is(a, button):active > kol-span-wc,
-		.danger :is(a, button):active > kol-span-wc,
-		.ghost :is(a, button):active > kol-span-wc {
-			border-color: var(--color-light);
-			box-shadow: none;
-			outline: none;
-		}
-		:is(a, button).hide-label > kol-span-wc {
-			padding: 0.8rem;
-			width: unset;
-		}
-		:is(a, button).hide-label > kol-span-wc > span > span {
-			display: none;
-		}
-		:is(a, button).loading > kol-span-wc kol-icon {
-			animation: spin 5s infinite linear;
-		}
-		/** small ghost button */
-		.ghost :is(a, button).small > kol-span-wc {
-			border: none;
-			background-color: transparent;
-			box-shadow: none;
-		}
-		.ghost :is(a, button).small > kol-span-wc > span {
-			border-radius: 1.5em;
-			border-style: solid;
-			border-width: var(--border-width);
-			border-color: var(--color-light);
-			background-color: var(--color-light);
-		}
-		.ghost :is(a, button).small:active > kol-span-wc > span,
-		.ghost :is(a, button).small:hover > kol-span-wc > span,
-		.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
-		.ghost :is(a, button).small.transparent:hover > kol-span-wc > span {
-			background-color: var(--color-primary-variant);
-			border-color: var(--color-primary-variant);
-			box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-			color: var(--color-light);
-		} /** :is(a,button) with transparent background */
-		:is(a, button).transparent > kol-span-wc > span,
-		.ghost :is(a, button).small.transparent > kol-span-wc > span,
-		:is(a, button).transparent > kol-span-wc {
-			background-color: transparent;
-			border-color: transparent;
-		}
-	`,
-  "KOL-BUTTON-LINK": css$2`
-		:is(a, button) {
-			color: var(--color-primary);
-			font-style: normal;
-			font-weight: 400;
-			text-decoration-line: underline;
-			font-size: inherit;
-		}
-		:is(a, button):focus {
-			outline: none;
-		}
-		:is(a, button):focus kol-span-wc {
-			border-radius: var(--border-radius);
-			outline: calc(var(--border-width) * 2) solid;
-		}
-		:is(a, button):hover {
-			text-decoration-thickness: 0.25em;
-		}
-		:is(a, button):visited {
-			color: var(--visited);
-		}
-		.hidden {
-			display: none;
-			visibility: hidden;
-		}
-		.skip {
-			left: -99999px;
-			overflow: hidden;
-			position: absolute;
-			z-index: 9999999;
-		}
-		.skip:focus {
-			background: white;
-			left: unset;
-			position: unset;
-		}
-		.access-key-hint {
-			background: var(--color-mute-variant);
-			border-radius: 3px;
-			color: var(--color-text);
-			padding: 0 0.3em;
-		}
-	`,
-  "KOL-ABBR": css$2`
-		abbr {
-			border-bottom: dashed var(--color-text) 1px;
-			text-decoration: none !important;
-		}
-	`,
-  "KOL-BREADCRUMB": css$2`
-		li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {
-			font-size: 0.75rem;
-			color: var(--color-subtle);
-		}
-		kol-link::part(icon) {
-			font-size: 1.25rem;
-		}
-		ul li > :is(span, kol-link) {
-			line-height: 1.25rem;
-			height: 20px;
-		}
-		ul li:last-child > span {
-			color: var(--color-subtle);
-		}
-	`,
-  "KOL-MODAL": css$2`
-		:host .overlay .modal {
-			max-height: calc(100% - 32px);
-		}
-	`,
-  "KOL-ICON": css$2`
-		:host {
-			width: 1em;
-			height: 1em;
-		}
-		:host > i {
-			width: 1em;
-			height: 1em;
-		}
-	`,
-  "KOL-SKIP-NAV": css$2`
-		kol-link-wc > a > kol-span-wc {
-			border-radius: var(--a11y-min-size);
-			border-style: solid;
-			border-width: var(--border-width);
-			gap: calc(var(--spacing) * 2);
-			line-height: 1rem;
-			padding: 8px 14px;
-			background-color: var(--color-primary-variant);
-			border-color: var(--color-primary-variant);
-			color: var(--color-light);
-			cursor: pointer;
-		}
-	`,
-  "KOL-SPLIT-BUTTON": css$2`
-		.popover {
-			background: #fff;
-		}
-	`
+  GLOBAL: globalCss,
+  "KOL-ABBR": abbrCss,
+  "KOL-ACCORDION": accordionCss,
+  "KOL-ALERT": alertCss,
+  "KOL-BADGE": badgeCss,
+  "KOL-BREADCRUMB": breadcrumbCss,
+  "KOL-BUTTON": buttonCss,
+  "KOL-BUTTON-GROUP": buttonGroupCss,
+  "KOL-BUTTON-LINK": buttonLinkCss,
+  "KOL-CARD": cardCss,
+  "KOL-DETAILS": detailsCss,
+  "KOL-HEADING": headingCss,
+  "KOL-ICON": iconCss,
+  "KOL-INDENTED-TEXT": indentedTextCss,
+  "KOL-INPUT-CHECKBOX": inputCheckboxCss,
+  "KOL-INPUT-COLOR": inputColorCss,
+  "KOL-INPUT-DATE": inputDateCss,
+  "KOL-INPUT-EMAIL": inputEmailCss,
+  "KOL-INPUT-FILE": inputFileCss,
+  "KOL-INPUT-NUMBER": inputNumberCss,
+  "KOL-INPUT-PASSWORD": inputPasswordCss,
+  "KOL-INPUT-RADIO": inputRadioCss,
+  "KOL-INPUT-RANGE": inputRangeCss,
+  "KOL-INPUT-TEXT": inputTextCss,
+  "KOL-LINK": linkCss,
+  "KOL-LINK-BUTTON": linkButtonCss,
+  "KOL-MODAL": modalCss,
+  "KOL-NAV": navCss,
+  "KOL-PAGINATION": paginationCss,
+  "KOL-PROGRESS": progressCss,
+  "KOL-SELECT": selectCss,
+  "KOL-SKIP-NAV": skipNavCss,
+  "KOL-SPLIT-BUTTON": splitButtonCss,
+  "KOL-TABLE": tableCss,
+  "KOL-TABS": tabsCss,
+  "KOL-TEXTAREA": textareaCss,
+  "KOL-TOAST-CONTAINER": toastContainerCss
 });
 
 const css$1 = (input) => input.join(``);
@@ -13714,6 +11786,15 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 		border-style: solid;
 		border-color: var(--color-ice);
 	}
+	.table {
+		padding: 0.5em;
+	}
+	.table:has(caption:focus) {
+		outline-color: var(--color-blue);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 2px;
+	}
 	table {
 		width: 100%;
 		border-spacing: 0;
@@ -13746,16 +11827,6 @@ const ECL_EC = KoliBri.createTheme("ecl-ec", {
 	th[aria-sort="ascending"],
 	th[aria-sort="descending"] {
 		font-weight: 700;
-	}
-	:host > div:last-child {
-		padding: 0.5em;
-	}
-	:host > div:last-child,
-	:host > div:last-child > div:last-child {
-		display: grid;
-		align-items: center;
-		justify-items: center;
-		gap: 1em;
 	}
 	@media (min-width: 1024px) {
 		:host > div:last-child,
@@ -15236,6 +13307,15 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 			border-style: solid;
 			border-color: var(--color-ice);
 		}
+		.table {
+			padding: 0.5em;
+		}
+		.table:has(caption:focus) {
+			outline-color: var(--color-blue);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 2px;
+		}
 		table {
 			width: 100%;
 			border-spacing: 0;
@@ -15268,16 +13348,6 @@ const ECL_EU = KoliBri.createTheme("ecl-eu", {
 		th[aria-sort='ascending'],
 		th[aria-sort='descending'] {
 			font-weight: 700;
-		}
-		:host > div:last-child {
-			padding: 0.5em;
-		}
-		:host > div:last-child,
-		:host > div:last-child > div:last-child {
-			display: grid;
-			align-items: center;
-			justify-items: center;
-			gap: 1em;
 		}
 		@media (min-width: 1024px) {
 			:host > div:last-child,
@@ -16215,9 +14285,11 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		textarea::placeholder {
 			color: var(--default-border);
 		}
-		textarea:read-only,
 		textarea:disabled {
 			cursor: not-allowed;
+		}
+		textarea:disabled,
+		textarea:read-only {
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
 		}
@@ -16611,6 +14683,16 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 			border-width: 1px;
 			border-color: var(--border-color);
 		}
+		.table {
+			padding: 0.5em;
+		}
+		.table:has(caption:focus) {
+			outline-color: var(--color-petrol);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
+			transition: outline-offset 0.2s linear;
+		}
 		table {
 			width: 100%;
 			border-collapse: collapse;
@@ -16638,16 +14720,6 @@ const ITZBund = KoliBri.createTheme("itzbund", {
 		}
 		.table-sort-button .button {
 			font-weight: bold;
-		}
-		:host > div.pagination {
-			padding: 0.5em;
-		}
-		:host > div.pagination,
-		:host > div.pagination > div:last-child {
-			display: grid;
-			align-items: center;
-			justify-items: center;
-			gap: 0.5em;
 		}
 		@media (min-width: 1024px) {
 			:host > div.pagination,
