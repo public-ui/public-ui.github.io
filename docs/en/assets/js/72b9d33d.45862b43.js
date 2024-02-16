@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[80700],{75816:e=>{e.exports=JSON.parse('{"label":"font","permalink":"/en/blog/tags/font","allTagsPath":"/en/blog/tags","count":1,"unlisted":false}')}}]);

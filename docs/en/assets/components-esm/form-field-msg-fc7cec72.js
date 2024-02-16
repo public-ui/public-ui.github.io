@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ import{h}from"./index-a5e15b1e.js";const FormFieldMsg=({_alert:r,_error:e,_hideError:o,_id:i})=>h("kol-alert",{"aria-hidden":"true",id:`${i}-error`,_alert:r,_type:"error",class:{error:!0,"visually-hidden":!0===o}},e);export{FormFieldMsg as F};

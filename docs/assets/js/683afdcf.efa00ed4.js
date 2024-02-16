@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[64939],{64124:e=>{e.exports=JSON.parse('{"label":"Demo","permalink":"/docs/1.6/tags/demo","allTagsPath":"/docs/1.6/tags","count":1,"items":[{"id":"welcome","title":"Willkommen","description":"Wir wollen gemeinsam barrierefreie Basis-Komponenten bereitstellen.","permalink":"/docs/1.6/"}],"unlisted":false}')}}]);

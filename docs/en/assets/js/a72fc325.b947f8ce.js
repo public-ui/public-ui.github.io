@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[8032],{60952:a=>{a.exports=JSON.parse('{"label":"aria","permalink":"/en/blog/tags/aria","allTagsPath":"/en/blog/tags","count":1,"unlisted":false}')}}]);
