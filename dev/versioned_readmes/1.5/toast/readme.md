@@ -56,24 +56,27 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property        | Attribute        | Description                                                                       | Type                                                                              | Default     |
-| --------------- | ---------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ----------- |
-| `_alert`        | `_alert`         | Gibt an, ob der Screenreader die Meldung vorlesen soll.                           | `boolean` \| `undefined`                                                          | `true`      |
-| `_hasCloser`    | `_has-closer`    | Aktiviert das Schließen-Icon.                                                     | `boolean` \| `undefined`                                                          | `false`     |
-| `_heading`      | `_heading`       | Gibt den Titel der Meldung an.                                                    | `string` \| `undefined`                                                           | `''`        |
-| `_level`        | `_level`         | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.                         | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `undefined`                      | `1`         |
-| `_on`           | --               | Gibt die EventCallback-Function für das Schließen des Toasts an.                  | `undefined` \| `{ onClose?: EventCallback<Event>` \| `undefined; }`               | `undefined` |
-| `_show`         | `_show`          | Gibt an, ob der Toast eingeblendet wird.                                          | `boolean` \| `undefined`                                                          | `true`      |
-| `_showDuration` | `_show-duration` | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.              | `number` \| `undefined`                                                           | `10000`     |
+| Property        | Attribute        | Description                                                                       | Type                                                                    | Default     |
+| --------------- | ---------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
+| `_alert`        | `_alert`         | Gibt an, ob der Screenreader die Meldung vorlesen soll.                           | `boolean` \| `undefined`                                                  | `true`      |
+| `_hasCloser`    | `_has-closer`    | Aktiviert das Schließen-Icon.                                                     | `boolean` \| `undefined`                                                  | `false`     |
+| `_heading`      | `_heading`       | Gibt den Titel der Meldung an.                                                    | `string` \| `undefined`                                                   | `''`        |
+| `_level`        | `_level`         | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.                         | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `undefined`                          | `1`         |
+| `_on`           | --               | Gibt die EventCallback-Function für das Schließen des Toasts an.                  | `undefined` \| `{ onClose?: EventCallback<Event>` \| `undefined; }`         | `undefined` |
+| `_show`         | `_show`          | Gibt an, ob der Toast eingeblendet wird.                                          | `boolean` \| `undefined`                                                  | `true`      |
+| `_showDuration` | `_show-duration` | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.              | `number` \| `undefined`                                                   | `10000`     |
 | `_type`         | `_type`          | Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt. | `"default"` \| `"error"` \| `"info"` \| `"success"` \| `"warning"` \| `undefined` | `'default'` |
+
 
 ## Slots
 
 | Slot | Description             |
 | ---- | ----------------------- |
 |      | Der Inhalt der Meldung. |
+
 
 ## Dependencies
 
@@ -82,7 +85,6 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 - [kol-alert](./alert)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-toast --> kol-alert
@@ -97,4 +99,6 @@ graph TD;
   style kol-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

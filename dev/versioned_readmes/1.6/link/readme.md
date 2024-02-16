@@ -32,18 +32,20 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 
 ### Link innerhalb eines Fließtextes mit Icon und Text
 
-<p>
-  <kol-link _icons="codicon codicon-home">Ich bin ein Link mit Icon links</kol-link><br/>
-  <kol-link _icons="codicon codicon-home" _icon-align="right">
-    Ich bin ein Link mit Icon rechts
-  </kol-link>
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
-  nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
-  <kol-link _icons="codicon codicon-home">Ich bin ein Link mit Icon links</kol-link>. Lorem, ipsum dolor sit amet consectetur adipisicing
-  elit. Ea optio deleniti fuga quos molestias, voluptate nobis nemo, incidunt excepturi
-  <kol-link _icons="codicon codicon-home" _icon-align="right">Ich bin ein Link mit Icon rechts</kol-link>
-  facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
-</p>
+  <p>
+    <kol-link _icon="codicon codicon-home">Ich bin ein Link mit Icon links</kol-link><br/>
+    <kol-link _icon="codicon codicon-home" _icon-align="right">
+      Ich bin ein Link mit Icon rechts
+    </kol-link>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
+    nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
+    <kol-link _icon="codicon codicon-home">Ich bin ein Link mit Icon links</kol-link>. Lorem, ipsum dolor sit amet consectetur adipisicing
+    elit. Ea optio deleniti fuga quos molestias, voluptate nobis nemo, incidunt excepturi
+    
+    <kol-link _icon="codicon codicon-home" _icon-align="right"> Ich bin ein Link mit Icon rechts</kol-link>
+    
+    facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
+  </p>
 
 <!--### Best practices
 
@@ -73,7 +75,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 | `_download`          | `_download`            | Tells the browser that the link contains a file. Optionally sets the filename.                                                                                                                                                                                                                                                                                                   | `boolean` \| `string` \| `undefined`                                                     | `false`                                        |
 | `_hideLabel`         | `_hide-label`          | Hides the label and shows the description in a Tooltip instead.                                                                                                                                                                                                                                                                                                                  | `boolean` \| `undefined`                                                                 | `false`                                        |
 | `_href` _(required)_ | `_href`                | Defines the target URI of the link.                                                                                                                                                                                                                                                                                                                                              | `string`                                                                                 | `undefined`                                    |
-| `_icon`              | `_icon`                | Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).                                                                                                                                                                                                                                                                                                                  | `KoliBriHorizontalIcon & KoliBriVerticalIcon` \| `string` \| `undefined`                 | `undefined`                                    |
+| `_icon`              | `_icon`                | Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).                                                                                                                                                                                                                                                                                                                   | `KoliBriHorizontalIcon & KoliBriVerticalIcon` \| `string` \| `undefined`                 | `undefined`                                    |
 | `_iconAlign`         | `_icon-align`          | <span className="text-red-500">**[DEPRECATED]**</span> Wird durch das neue flexibleren Icon-Typ abgedeckt.<br/><br/>Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                                                                                                        | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                            | `undefined`                                    |
 | `_iconOnly`          | `_icon-only`           | <span className="text-red-500">**[DEPRECATED]**</span> use \_hide-label<br/><br/>Deprecated: Hides the label and shows the description in a Tooltip instead.                                                                                                                                                                                                                     | `boolean` \| `undefined`                                                                 | `undefined`                                    |
 | `_label`             | `_label`               | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.                                                                                                                                                                                                                     | `boolean` \| `string` \| `undefined`                                                     | `undefined`                                    |

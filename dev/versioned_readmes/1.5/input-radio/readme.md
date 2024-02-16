@@ -22,7 +22,7 @@ Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und
 
 ## Verwendung
 
-Die einzelnen Radio-Elemente innerhalb der Komponente ** InputRadio** werden über dass Attribut **\_ _list_** als JSON-Objekt übergeben.
+Die einzelnen Radio-Elemente innerhalb der Komponente ** InputRadio** werden über dass Attribut **_ _list_** als JSON-Objekt übergeben.
 
 Das JSON-Objekt erwartet je Radio-Element folgende Werte:
 
@@ -78,10 +78,11 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property             | Attribute      | Description                                                                                | Type                                                                                       | Default      |
-| -------------------- | -------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------ |
+| Property             | Attribute      | Description                                                                                | Type                                                                                     | Default      |
+| -------------------- | -------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ------------ |
 | `_accessKey`         | `_access-key`  | Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.       | `string` \| `undefined`                                                                    | `undefined`  |
 | `_alert`             | `_alert`       | Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.                   | `boolean` \| `undefined`                                                                   | `true`       |
 | `_disabled`          | `_disabled`    | Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.            | `boolean` \| `undefined`                                                                   | `undefined`  |
@@ -92,11 +93,12 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 | `_list` _(required)_ | `_list`        | Gibt die Liste der Optionen für das Eingabefeld an.                                        | `Option<W3CInputValue>[]` \| `string`                                                      | `undefined`  |
 | `_name`              | `_name`        | Gibt den technischen Namen des Eingabefeldes an.                                           | `string` \| `undefined`                                                                    | `undefined`  |
 | `_on`                | --             | Gibt die EventCallback-Funktionen für das Input-Event an.                                  | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus` \| `undefined` | `undefined`  |
-| `_orientation`       | `_orientation` | Gibt die Ausrichtung der LinkList an.                                                      | `"horizontal"` \| `"vertical"` \| `undefined`                                              | `'vertical'` |
+| `_orientation`       | `_orientation` | Gibt die Ausrichtung der LinkList an.                                                      | `"horizontal"` \| `"vertical"` \| `undefined`                                                | `'vertical'` |
 | `_required`          | `_required`    | Macht das Eingabeelement zu einem Pflichtfeld.                                             | `boolean` \| `undefined`                                                                   | `undefined`  |
 | `_tabIndex`          | `_tab-index`   | Gibt an, welchen Tab-Index dieses Input hat.                                               | `number` \| `undefined`                                                                    | `undefined`  |
 | `_touched`           | `_touched`     | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.              | `boolean` \| `undefined`                                                                   | `false`      |
-| `_value`             | `_value`       | Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902) | `number` \| `string` \| `undefined`                                                        | `undefined`  |
+| `_value`             | `_value`       | Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902) | `number` \| `string` \| `undefined`                                                          | `undefined`  |
+
 
 ## Slots
 
@@ -104,11 +106,12 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 | ---- | ----------------------------------------- |
 |      | Die Legende/Überschrift der Radiobuttons. |
 
+
 ## Dependencies
 
 ### Used by
 
-- [kol-input-radio-group](./input-radio-group)
+ - [kol-input-radio-group](./input-radio-group)
 
 ### Depends on
 
@@ -116,7 +119,6 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 - [kol-alert](./alert)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-input-radio --> kol-input
@@ -136,4 +138,6 @@ graph TD;
   style kol-input-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

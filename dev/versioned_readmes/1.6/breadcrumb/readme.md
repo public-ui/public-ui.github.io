@@ -11,9 +11,7 @@ Diese ist nicht mit einem link versehen. Alle Elemente links der aktuellen Seite
 
 ```html
 <div>
-	<kol-breadcrumb
-		_links='[{"_label":"Startseite","_href":"#/"},{"_label":"Unterseite von Startseite","_href":"#/unterseite"}]'
-	></kol-breadcrumb>
+	<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/"},{"_label":"Unterseite von Startseite","_href":"#/unterseite"}]'></kol-breadcrumb>
 </div>
 ```
 
@@ -25,7 +23,7 @@ Diese ist nicht mit einem link versehen. Alle Elemente links der aktuellen Seite
 
 ### Definition der Links
 
-Das Attribut ** \_links** erwartet die Übergabe eines JSON-Objekts, aus dem sich der Aufbau der anzuzeigenden Breadcrumb-Pfade ergibt. Das JSON-Objekt übergibt beliebig viele Elemente, die jeweils eine Anzahl an Eigenschaften und Werten bereitstellen.
+Das Attribut ** _links** erwartet die Übergabe eines JSON-Objekts, aus dem sich der Aufbau der anzuzeigenden Breadcrumb-Pfade ergibt. Das JSON-Objekt übergibt beliebig viele Elemente, die jeweils eine Anzahl an Eigenschaften und Werten bereitstellen.
 
 Jede Eigenschaft und der zugehörige Wert müssen in doppelten Anführungszeichen gesetzt werden.
 
@@ -85,13 +83,15 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute     | Description                                                                                                                                        | Type                                | Default     |
-| --------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------- |
-| `_ariaLabel`          | `_aria-label` | <span className="text-red-500">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string` \| `undefined`             | `undefined` |
-| `_label`              | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                 | `string` \| `undefined`             | `undefined` |
-| `_links` _(required)_ | `_links`      | Defines the list of links combined with their labels to render.                                                                                    | `BreadcrumbLinkProps[]` \| `string` | `undefined` |
+| Property              | Attribute     | Description                                                                                                                                | Type                              | Default     |
+| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- | ----------- |
+| `_ariaLabel`          | `_aria-label` | <span className="text-red-500">**[DEPRECATED]**</span> use _label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string` \| `undefined`             | `undefined` |
+| `_label`              | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                         | `string` \| `undefined`             | `undefined` |
+| `_links` _(required)_ | `_links`      | Defines the list of links combined with their labels to render.                                                                            | `BreadcrumbLinkProps[]` \| `string` | `undefined` |
+
 
 ## Dependencies
 
@@ -101,7 +101,6 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 - [kol-link](./link)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-breadcrumb --> kol-icon
@@ -115,4 +114,6 @@ graph TD;
   style kol-breadcrumb fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

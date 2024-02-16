@@ -112,20 +112,22 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute             | Description                                                                                                                                                                                                   | Type                                                                      | Default      |
-| --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------ |
-| `_ariaCurrentValue`   | `_aria-current-value` | Defines the value of aria-current to be used with the current context within the navigation.                                                                                                                  | `"date"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `boolean` | `false`      |
-| `_ariaLabel`          | `_aria-label`         | <span className="text-red-500">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente.                                                            | `string` \| `undefined`                                                   | `undefined`  |
-| `_collapsible`        | `_collapsible`        | Defines if navigation nodes can be collapsed or not. Enabled by default.                                                                                                                                      | `boolean` \| `undefined`                                                  | `true`       |
-| `_compact`            | `_compact`            | <span className="text-red-500">**[DEPRECATED]**</span> Use \_hide-label<br/><br/>Deprecated: Gibt an, ob die Navigation kompakt angezeigt wird.                                                               | `boolean` \| `undefined`                                                  | `false`      |
-| `_hasCompactButton`   | `_has-compact-button` | <span className="text-red-500">**[DEPRECATED]**</span> Version 2<br/><br/>Deprecated: Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.          | `boolean` \| `undefined`                                                  | `false`      |
-| `_hideLabel`          | `_hide-label`         | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.                                                                    | `boolean` \| `undefined`                                                  | `false`      |
-| `_label`              | `_label`              | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                                                                            | `string` \| `undefined`                                                   | `undefined`  |
-| `_links` _(required)_ | `_links`              | Defines the list of links, buttons or texts to render.                                                                                                                                                        | `ButtonOrLinkOrTextWithChildrenProps[]` \| `string`                       | `undefined`  |
-| `_orientation`        | `_orientation`        | Defines whether the orientation of the component is horizontal or vertical.                                                                                                                                   | `"horizontal"` \| `"vertical"` \| `undefined`                             | `'vertical'` |
-| `_variant`            | `_variant`            | <span className="text-red-500">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Deprecated: Defines which variant should be used for presentation. | `"primary"` \| `"secondary"` \| `undefined`                               | `'primary'`  |
+| Property              | Attribute             | Description                                                                                                                                                                                            | Type                                                            | Default      |
+| --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- | ------------ |
+| `_ariaCurrentValue`   | `_aria-current-value` | Defines the value of aria-current to be used with the current context within the navigation.                                                                                                           | `"date"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `boolean` | `false`      |
+| `_ariaLabel`          | `_aria-label`         | <span className="text-red-500">**[DEPRECATED]**</span> use _label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente.                                                             | `string` \| `undefined`                                           | `undefined`  |
+| `_collapsible`        | `_collapsible`        | Defines if navigation nodes can be collapsed or not. Enabled by default.                                                                                                                               | `boolean` \| `undefined`                                          | `true`       |
+| `_compact`            | `_compact`            | <span className="text-red-500">**[DEPRECATED]**</span> Use _hide-label<br/><br/>Deprecated: Gibt an, ob die Navigation kompakt angezeigt wird.                                                                | `boolean` \| `undefined`                                          | `false`      |
+| `_hasCompactButton`   | `_has-compact-button` | <span className="text-red-500">**[DEPRECATED]**</span> Version 2<br/><br/>Deprecated: Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.          | `boolean` \| `undefined`                                          | `false`      |
+| `_hideLabel`          | `_hide-label`         | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.                                                             | `boolean` \| `undefined`                                          | `false`      |
+| `_label`              | `_label`              | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                                                                     | `string` \| `undefined`                                           | `undefined`  |
+| `_links` _(required)_ | `_links`              | Defines the list of links, buttons or texts to render.                                                                                                                                                 | `ButtonOrLinkOrTextWithChildrenProps[]` \| `string`               | `undefined`  |
+| `_orientation`        | `_orientation`        | Defines whether the orientation of the component is horizontal or vertical.                                                                                                                            | `"horizontal"` \| `"vertical"` \| `undefined`                       | `'vertical'` |
+| `_variant`            | `_variant`            | <span className="text-red-500">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Deprecated: Defines which variant should be used for presentation. | `"primary"` \| `"secondary"` \| `undefined`                         | `'primary'`  |
+
 
 ## Dependencies
 
@@ -136,7 +138,6 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 - [kol-button](./button)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-nav --> kol-button-link-text-switch
@@ -156,4 +157,6 @@ graph TD;
   style kol-nav fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

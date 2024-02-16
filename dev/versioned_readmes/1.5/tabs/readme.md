@@ -10,10 +10,7 @@ Die Zuordnung der Daten im Attribut **`_tabs`** zu den Div-Elementen erfolgt aut
 ### Code
 
 ```html
-<kol-tabs
-	_selected="0"
-	_tabs='[{"_label":"Tab 1","_icon":"codicon codicon-home"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'
->
+<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icon":"codicon codicon-home"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
 	<div>Inhalt von Tab 1</div>
 	<div>Inhalt von Tab 2</div>
 	<div>Inhalt von Tab 3</div>
@@ -35,11 +32,7 @@ Die Zuordnung der Daten im Attribut **`_tabs`** zu den Div-Elementen erfolgt aut
 Die Daten für die Registerkarten können als Objekte oder JSON-String an das Attribut **`_tabs`** übergeben werden.
 
 ```json
-[
-	{ "_label": "Tab 1", "_icon": "codicon codicon-home" },
-	{ "_label": "Tab 2", "_on": { "onClose": true } },
-	{ "_label": "Tab 3" }
-]
+[{ "_label": "Tab 1", "_icon": "codicon codicon-home" }, { "_label": "Tab 2", "_on": { "onClose": true } }, { "_label": "Tab 3" }]
 ```
 
 ### Registerkarte deaktivieren
@@ -79,9 +72,9 @@ Bei der Umsetzung der Tastatursteuerung wurde sich an den Beispielen des W3C's o
 
 Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effizient über die gesamte Seite/Anwendung zu navigieren, ist nur 1 Schalter aus der Tab-Serie fokussierbar. Sobald der Nutzende auf der Tab-Navigation selbst ist, werden die Pfeiltasten verwendet, um zwischen den Tabs selbst wechseln.
 
-| Taste                              | Funktion                                                                                                |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `Tab`                              | Fokussiert den ersten aktiven Tab. Auf vorhandene Close-Icons können mit der Tab-Taste erreicht werden. |
+| Taste                            | Funktion                                                                                                |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `Tab`                            | Fokussiert den ersten aktiven Tab. Auf vorhandene Close-Icons können mit der Tab-Taste erreicht werden. |
 | `Pfeil-Tasten (links` \| `rechts)` | Wechselt zwischen den Tabs.                                                                             |
 
 ## Links und Referenzen
@@ -93,15 +86,17 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property                  | Attribute     | Description                                                                         | Type                                                                                                                                                                                                                                                                   | Default     |
-| ------------------------- | ------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.        | `string`                                                                                                                                                                                                                                                               | `undefined` |
+| Property                  | Attribute     | Description                                                                         | Type                                                                                                                                                                                                                                                     | Default     |
+| ------------------------- | ------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.        | `string`                                                                                                                                                                                                                                                 | `undefined` |
 | `_on`                     | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen. | `undefined` \| `{ onCreate?: EventCallback<Event>` \| `{ label: string; callback: EventCallback<Event>; }` \| `undefined; } & { onSelect?: EventValueOrEventCallback<MouseEvent` \| `CustomEvent<any>` \| `KeyboardEvent` \| `PointerEvent, number>` \| `undefined; }` | `undefined` |
-| `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                          | `number` \| `undefined`                                                                                                                                                                                                                                                | `0`         |
-| `_tabs` _(required)_      | `_tabs`       | Setzt die Daten für die Registrierkarten.                                           | `TabButtonProps[]` \| `string`                                                                                                                                                                                                                                         | `undefined` |
-| `_tabsAlign`              | `_tabs-align` | Setzt die Position der Registrierkarten.                                            | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                                                                                                                                          | `'top'`     |
+| `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                          | `number` \| `undefined`                                                                                                                                                                                                                                    | `0`         |
+| `_tabs` _(required)_      | `_tabs`       | Setzt die Daten für die Registrierkarten.                                           | `TabButtonProps[]` \| `string`                                                                                                                                                                                                                             | `undefined` |
+| `_tabsAlign`              | `_tabs-align` | Setzt die Position der Registrierkarten.                                            | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                                                                                                                                    | `'top'`     |
+
 
 ## Dependencies
 
@@ -111,7 +106,6 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 - kol-button-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-tabs --> kol-button-group-wc
@@ -123,4 +117,6 @@ graph TD;
   style kol-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

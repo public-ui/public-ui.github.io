@@ -12,10 +12,9 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
 
 ```html
 <kol-details _summary="Nach Laden der Seite geschlossen">
-	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-	magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-	gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-	elitr, sed diam nonumy eirmod tempor invidunt.
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+	vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
 </kol-details>
 ```
 
@@ -87,18 +86,21 @@ Verwenden Sie das Attribut **`_summary`**, um den Text zu definieren, der als Ü
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property                | Attribute  | Description                                                       | Type                     | Default     |
-| ----------------------- | ---------- | ----------------------------------------------------------------- | ------------------------ | ----------- |
+| Property                | Attribute  | Description                                                       | Type                   | Default     |
+| ----------------------- | ---------- | ----------------------------------------------------------------- | ---------------------- | ----------- |
 | `_open`                 | `_open`    | Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist. | `boolean` \| `undefined` | `false`     |
-| `_summary` _(required)_ | `_summary` | Gibt die Zusammenfassung der Detailbeschreibung an.               | `string`                 | `undefined` |
+| `_summary` _(required)_ | `_summary` | Gibt die Zusammenfassung der Detailbeschreibung an.               | `string`               | `undefined` |
+
 
 ## Slots
 
 | Slot | Description                                               |
 | ---- | --------------------------------------------------------- |
 |      | Der Inhalt, der in der Detailbeschreibung angezeigt wird. |
+
 
 ## Dependencies
 
@@ -108,7 +110,6 @@ Verwenden Sie das Attribut **`_summary`**, um den Text zu definieren, der als Ü
 - [kol-indented-text](./indented-text)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-details --> kol-icon
@@ -116,4 +117,6 @@ graph TD;
   style kol-details fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

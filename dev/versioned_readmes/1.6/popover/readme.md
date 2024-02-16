@@ -5,12 +5,14 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property | Attribute | Description                                                                                               | Type                                                          | Default |
-| -------- | --------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------- |
+| Property | Attribute | Description                                                                                               | Type                                                  | Default |
+| -------- | --------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------- |
 | `_align` | `_align`  | Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element. | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined` | `'top'` |
-| `_show`  | `_show`   | Makes the element show up.                                                                                | `boolean` \| `undefined`                                      | `false` |
+| `_show`  | `_show`   | Makes the element show up.                                                                                | `boolean` \| `undefined`                                | `false` |
+
 
 ## Slots
 
@@ -18,4 +20,7 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 | ---- | ----------------------- |
 |      | Der Inhalt des Popover. |
 
----
+
+----------------------------------------------
+
+

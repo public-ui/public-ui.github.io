@@ -11,12 +11,12 @@ zur **Button**-Komponente.
 
 ```html
 <kol-button-group>
-  <kol-button _label="Speichern" _variant="primary"></<kol-button>
-  <kol-button _label="Speichern & Schließen" _variant="normal"></<kol-button>
-  <kol-button _label="Abbrechen" _variant="secondary"></<kol-button>
-  <kol-button _label="Löschen" _variant="danger"></<kol-button>
-  <kol-button _label="Ghost" _variant="ghost"></kol-button>
-  <kol-button _label="Deaktiviert" _disabled></<kol-button>
+	<kol-button _label="Speichern" _variant="primary"></kol-button>
+	<kol-button _label="Speichern & Schließen" _variant="normal"></kol-button>
+	<kol-button _label="Abbrechen" _variant="secondary"></kol-button>
+	<kol-button _label="Löschen" _variant="danger"></kol-button>
+	<kol-button _label="Ghost" _variant="ghost"></kol-button>
+	<kol-button _label="Deaktiviert" _disabled></kol-button>
 </kol-button-group>
 ```
 
@@ -97,7 +97,7 @@ Bei Verwendung der **ButtonGroup**-Komponente sind keine besonderen Maßnahmen i
 graph TD;
   kol-button-group --> kol-button-group-wc
   kol-tabs --> kol-button-group-wc
-  style kol-button-group-wc fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-button-group-wc stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

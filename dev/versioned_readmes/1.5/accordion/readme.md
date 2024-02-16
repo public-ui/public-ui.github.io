@@ -10,24 +10,20 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 <div className="grid gap-2">
 	<kol-accordion _heading="Element 1">
 		<div slot="content">
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-			dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-			kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-			sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-			sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 		</div>
 		<div slot="header">Inhalt eines Header</div>
 	</kol-accordion>
 	<kol-accordion _heading="Element 2">
 		<div slot="header">Inhalt im Header</div>
 		<div slot="content">
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-			dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-			kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-			sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-			sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 		</div>
 		<div slot="footer">Inhalt im Footer</div>
 	</kol-accordion>
@@ -82,7 +78,7 @@ Der Hauptinhalt des Accordions wird über einen eigenen Slot übergeben.
 
 ### Accordion geöffnet anzeigen
 
-Standardmäßig wird das Accordion nach dem Laden der Seite im geschlossenen Zustand angezeigt. Soll das Accordion geöffnet angezeigt werden, setzen Sie das Attribut ** \_open** zusätzlich ein.
+Standardmäßig wird das Accordion nach dem Laden der Seite im geschlossenen Zustand angezeigt. Soll das Accordion geöffnet angezeigt werden, setzen Sie das Attribut ** _open** zusätzlich ein.
 
 ### Best practices
 
@@ -121,14 +117,16 @@ Standardansicht gelegt.
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property                | Attribute  | Description                                      | Type                                                                                     | Default     |
-| ----------------------- | ---------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------- | ----------- |
-| `_heading` _(required)_ | `_heading` | Gibt die Überschrift des Accordions an.          | `string`                                                                                 | `undefined` |
-| `_level`                | `_level`   | Setzt den H-Level, von 1 bis 6, der Überschrift. | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `undefined`                             | `1`         |
+| Property                | Attribute  | Description                                      | Type                                                                                 | Default     |
+| ----------------------- | ---------- | ------------------------------------------------ | ------------------------------------------------------------------------------------ | ----------- |
+| `_heading` _(required)_ | `_heading` | Gibt die Überschrift des Accordions an.          | `string`                                                                             | `undefined` |
+| `_level`                | `_level`   | Setzt den H-Level, von 1 bis 6, der Überschrift. | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `undefined`                                       | `1`         |
 | `_on`                   | --         | Gibt die EventCallback-Funktionen an.            | `undefined` \| `{ onClick?: EventValueOrEventCallback<Event, boolean>` \| `undefined; }` | `undefined` |
-| `_open`                 | `_open`    | Gibt an, ob das Accordion geöffnet ist.          | `boolean` \| `undefined`                                                                 | `false`     |
+| `_open`                 | `_open`    | Gibt an, ob das Accordion geöffnet ist.          | `boolean` \| `undefined`                                                               | `false`     |
+
 
 ## Slots
 
@@ -138,6 +136,7 @@ Standardansicht gelegt.
 | `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.                        |
 | `"header"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions. |
 
+
 ## Dependencies
 
 ### Depends on
@@ -146,7 +145,6 @@ Standardansicht gelegt.
 - kol-button-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-accordion --> kol-heading-wc
@@ -158,4 +156,6 @@ graph TD;
   style kol-accordion fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

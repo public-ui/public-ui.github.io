@@ -22,12 +22,14 @@ Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                          | Type                    | Default     |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ----------- |
-| `_label`   | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                   | `string` \| `undefined` | `undefined` |
-| `_version` | `_version` | <span className="text-red-500">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Gibt die Versionsnummer als Text an. | `string` \| `undefined` | `undefined` |
+| Property   | Attribute  | Description                                                                                                                  | Type                  | Default     |
+| ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `_label`   | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).           | `string` \| `undefined` | `undefined` |
+| `_version` | `_version` | <span className="text-red-500">**[DEPRECATED]**</span> use _label instead<br/><br/>Deprecated: Gibt die Versionsnummer als Text an. | `string` \| `undefined` | `undefined` |
+
 
 ## Dependencies
 
@@ -36,7 +38,6 @@ Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 - [kol-badge](./badge)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-version --> kol-badge
@@ -49,4 +50,6 @@ graph TD;
   style kol-version fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

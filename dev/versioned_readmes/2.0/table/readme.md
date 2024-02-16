@@ -86,6 +86,60 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 - Es ist exakt eine oder keine Sortierfunktion aktiviert.
 - Aktuell wird nicht unterstützt, dass bei zweidimensionalen Headern, die Header der jeweils anderen Header-Seite mit sortiert werden. Bei der Anforderung der Sortierung empfehlen wir die Verwendung nur einer Header-Dimension (entweder horizontal oder vertikal).
 
+### Render Funktion
+
+Die `render` Funktion kann auf verschiedene Arten wie folgt verwendet werden.  
+Alle Methoden sind auch in diesem Beispiel demonstriert: [render-cell.tsx](https://github.com/public-ui/kolibri/blob/23ebb42d1ce3c8d1e4c74a5c7972842d5e4203fe/packages/samples/react/src/components/table/render-cell.tsx#L34)
+
+1. String Rückgabewert:
+
+```tsx
+{
+  render: (_el, cell) => `Index: ${cell.label}`,
+}
+```
+
+2. Node mit textContent füllen
+
+```tsx
+{
+  render: (el, cell) => {
+    el.textContent = `Index: ${cell.label}`;
+  },
+}
+```
+
+3. Node mit innerHTML füllen - ⚠️ Hierbei unbedingt darauf achten, Werte zu sanitizen, um XXS vermeiden.
+
+```tsx
+{
+  render: (el, cell) => {
+    el.innerHTML = `<strong>${cell.label}</strong>`;
+  },
+}
+```
+
+4. React render-function verwenden
+
+```tsx
+{
+  render: (el) => {
+    const renderElement = document.createElement('div');
+    renderElement.setAttribute('role', 'presentation'); // Vorlegen in Screenreader als "anklickbar" vermeiden
+    el.innerHTML = '';
+    el.appendChild(renderElement);
+
+    /* https://react.dev/reference/react-dom/client/createRoot */
+    getRoot(renderElement).render(
+      <div>
+        <KolInputText _label="Input" />
+        <KolButton _label="Save" />
+      </div>,
+    );
+  },
+}
+```
+
 <!--### Best practices
 
 ### Anwendungsfälle-->
@@ -120,15 +174,16 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 
 ## Properties
 
-| Property                | Attribute           | Description                                                                                                        | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Default     |
-| ----------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_allowMultiSort`       | `_allow-multi-sort` | Defines whether to allow multi sort.                                                                               | `boolean` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `undefined` |
-| `_data` _(required)_    | `_data`             | Defines the primary table data.                                                                                    | `KoliBriTableDataType[]` \| `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `undefined` |
-| `_dataFoot`             | `_data-foot`        | Defines the data for the table footer.                                                                             | `KoliBriTableDataType[]` \| `string` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | `undefined` |
-| `_headers` _(required)_ | `_headers`          | Defines the horizontal and vertical table headers.                                                                 | `string` \| `{ horizontal?: KoliBriTableHeaderCell[][]` \| `undefined; vertical?: KoliBriTableHeaderCell[][]` \| `undefined; }`                                                                                                                                                                                                                                                                                                                                                                                                           | `undefined` |
-| `_label` _(required)_   | `_label`            | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
-| `_minWidth`             | `_min-width`        | Defines the table min-width.                                                                                       | `string` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
-| `_pagination`           | `_pagination`       | Defines whether to show the data distributed over multiple pages.                                                  | `boolean` \| `string` \| `undefined` \| `{ _page: number; } & { _on?: KoliBriPaginationButtonCallbacks` \| `undefined; _page?: number` \| `undefined; _max?: number` \| `undefined; _boundaryCount?: number` \| `undefined; _hasButtons?: boolean` \| `Stringified<PaginationHasButton>` \| `undefined; _pageSize?: number` \| `undefined; _pageSizeOptions?: Stringified<number[]>` \| `undefined; _siblingCount?: number` \| `undefined; _customClass?: string` \| `undefined; _label?: string` \| `undefined; _tooltipAlign?: AlignPropType` \| `undefined; }` | `undefined` |
+| Property                | Attribute              | Description                                                                                                        | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Default     |
+| ----------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_allowMultiSort`       | `_allow-multi-sort`    | Defines whether to allow multi sort.                                                                               | `boolean` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `undefined` |
+| `_data` _(required)_    | `_data`                | Defines the primary table data.                                                                                    | `KoliBriTableDataType[]` \| `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `undefined` |
+| `_dataFoot`             | `_data-foot`           | Defines the data for the table footer.                                                                             | `KoliBriTableDataType[]` \| `string` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | `undefined` |
+| `_headers` _(required)_ | `_headers`             | Defines the horizontal and vertical table headers.                                                                 | `string` \| `{ horizontal?: KoliBriTableHeaderCell[][]` \| `undefined; vertical?: KoliBriTableHeaderCell[][]` \| `undefined; }`                                                                                                                                                                                                                                                                                                                                                                                                           | `undefined` |
+| `_label` _(required)_   | `_label`               | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
+| `_minWidth`             | `_min-width`           | Defines the table min-width.                                                                                       | `string` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
+| `_pagination`           | `_pagination`          | Defines whether to show the data distributed over multiple pages.                                                  | `boolean` \| `string` \| `undefined` \| `{ _page: number; } & { _on?: KoliBriPaginationButtonCallbacks` \| `undefined; _page?: number` \| `undefined; _max?: number` \| `undefined; _boundaryCount?: number` \| `undefined; _hasButtons?: boolean` \| `Stringified<PaginationHasButton>` \| `undefined; _pageSize?: number` \| `undefined; _pageSizeOptions?: Stringified<number[]>` \| `undefined; _siblingCount?: number` \| `undefined; _customClass?: string` \| `undefined; _label?: string` \| `undefined; _tooltipAlign?: AlignPropType` \| `undefined; }` | `undefined` |
+| `_paginationPosition`   | `_pagination-position` | Controls the position of the pagination.                                                                           | `"both"` \| `"bottom"` \| `"top"` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `'bottom'`  |
 
 
 ## Dependencies
@@ -137,12 +192,14 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 
 - [kol-button](./button)
 - [kol-pagination](./pagination)
+- kol-button-wc
 
 ### Graph
 ```mermaid
 graph TD;
   kol-table --> kol-button
   kol-table --> kol-pagination
+  kol-table --> kol-button-wc
   kol-button --> kol-button-wc
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc
@@ -159,7 +216,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-table fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-table stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

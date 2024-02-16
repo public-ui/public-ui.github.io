@@ -5,12 +5,8 @@ Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie be
 ### Code
 
 ```html
-<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="msg"
-	>Textbereich im Alert</kol-alert
->
-<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="card"
-	>Textbereich im Alert</kol-alert
->
+<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="msg">Textbereich im Alert</kol-alert>
+<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="card">Textbereich im Alert</kol-alert>
 ```
 
 ### Beispiel
@@ -79,17 +75,19 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property     | Attribute     | Description                                                                       | Type                                                                              | Default     |
-| ------------ | ------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ----------- |
-| `_alert`     | `_alert`      | Gibt an, ob der Screenreader die Meldung vorlesen soll.                           | `boolean` \| `undefined`                                                          | `false`     |
-| `_hasCloser` | `_has-closer` | Gibt an, ob der Alert ein Schließen-Icon hat.                                     | `boolean` \| `undefined`                                                          | `false`     |
-| `_heading`   | `_heading`    | Gibt den Titel der Meldung an.                                                    | `string` \| `undefined`                                                           | `undefined` |
-| `_level`     | `_level`      | Setzt den H-Level, von 1 bis 6, der Überschrift.                                  | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `undefined`                      | `1`         |
-| `_on`        | --            | Gibt die EventCallback-Function für das Schließen des Alerts an.                  | `undefined` \| `{ onClose?: EventCallback<Event>` \| `undefined; }`               | `undefined` |
+| Property     | Attribute     | Description                                                                       | Type                                                                    | Default     |
+| ------------ | ------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
+| `_alert`     | `_alert`      | Gibt an, ob der Screenreader die Meldung vorlesen soll.                           | `boolean` \| `undefined`                                                  | `false`     |
+| `_hasCloser` | `_has-closer` | Gibt an, ob der Alert ein Schließen-Icon hat.                                     | `boolean` \| `undefined`                                                  | `false`     |
+| `_heading`   | `_heading`    | Gibt den Titel der Meldung an.                                                    | `string` \| `undefined`                                                   | `undefined` |
+| `_level`     | `_level`      | Setzt den H-Level, von 1 bis 6, der Überschrift.                                  | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `undefined`                          | `1`         |
+| `_on`        | --            | Gibt die EventCallback-Function für das Schließen des Alerts an.                  | `undefined` \| `{ onClose?: EventCallback<Event>` \| `undefined; }`         | `undefined` |
 | `_type`      | `_type`       | Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt. | `"default"` \| `"error"` \| `"info"` \| `"success"` \| `"warning"` \| `undefined` | `'default'` |
-| `_variant`   | `_variant`    | Gibt an, welche Benachrichtigungsvariante dargestellt wird.                       | `"card"` \| `"msg"` \| `undefined`                                                | `'msg'`     |
+| `_variant`   | `_variant`    | Gibt an, welche Benachrichtigungsvariante dargestellt wird.                       | `"card"` \| `"msg"` \| `undefined`                                          | `'msg'`     |
+
 
 ## Slots
 
@@ -97,11 +95,12 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 | ---- | ----------------------- |
 |      | Der Inhalt der Meldung. |
 
+
 ## Dependencies
 
 ### Used by
 
-- [kol-alert](.)
+ - [kol-alert](.)
 
 ### Depends on
 
@@ -110,7 +109,6 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 - [kol-icon](./icon)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-alert-wc --> kol-heading-wc
@@ -124,4 +122,6 @@ graph TD;
   style kol-alert-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

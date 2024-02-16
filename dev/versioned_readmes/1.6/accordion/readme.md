@@ -10,22 +10,18 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 <div className="grid gap-2">
 	<kol-accordion _label="Element 1">
 		<div slot="content">
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-			dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-			kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-			sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-			sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 		</div>
 	</kol-accordion>
 	<kol-accordion _label="Element 2">
 		<div slot="content">
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-			dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-			kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-			sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-			sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 		</div>
 	</kol-accordion>
 </div>
@@ -70,7 +66,7 @@ Der Hauptinhalt des Accordions wird über einen eigenen Slot übergeben.
 
 ### Accordion geöffnet anzeigen
 
-Standardmäßig wird das Accordion nach dem Laden der Seite im geschlossenen Zustand angezeigt. Soll das Accordion geöffnet angezeigt werden, setzen Sie das Attribut ** \_open** zusätzlich ein.
+Standardmäßig wird das Accordion nach dem Laden der Seite im geschlossenen Zustand angezeigt. Soll das Accordion geöffnet angezeigt werden, setzen Sie das Attribut ** _open** zusätzlich ein.
 
 ### Best practices
 
@@ -109,15 +105,17 @@ Standardansicht gelegt.
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                       | Type                                                                                     | Default     |
-| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ----------- |
-| `_heading` | `_heading` | <span className="text-red-500">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an. | `string` \| `undefined`                                                                  | `undefined` |
-| `_label`   | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                | `string` \| `undefined`                                                                  | `undefined` |
-| `_level`   | `_level`   | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                                 | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `undefined`                             | `1`         |
-| `_on`      | --         | Gibt die EventCallback-Funktionen an.                                                                                             | `undefined` \| `{ onClick?: EventValueOrEventCallback<Event, boolean>` \| `undefined; }` | `undefined` |
-| `_open`    | `_open`    | If set (to true) opens/expands the element, closes if not set (or set to false).                                                  | `boolean` \| `undefined`                                                                 | `false`     |
+| Property   | Attribute  | Description                                                                                                               | Type                                                                                 | Default     |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------- |
+| `_heading` | `_heading` | <span className="text-red-500">**[DEPRECATED]**</span> Use _label.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an. | `string` \| `undefined`                                                                | `undefined` |
+| `_label`   | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).        | `string` \| `undefined`                                                                | `undefined` |
+| `_level`   | `_level`   | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                         | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `undefined`                                       | `1`         |
+| `_on`      | --         | Gibt die EventCallback-Funktionen an.                                                                                     | `undefined` \| `{ onClick?: EventValueOrEventCallback<Event, boolean>` \| `undefined; }` | `undefined` |
+| `_open`    | `_open`    | If set (to true) opens/expands the element, closes if not set (or set to false).                                          | `boolean` \| `undefined`                                                               | `false`     |
+
 
 ## Slots
 
@@ -127,6 +125,7 @@ Standardansicht gelegt.
 | `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.                        |
 | `"header"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions. |
 
+
 ## Dependencies
 
 ### Depends on
@@ -135,7 +134,6 @@ Standardansicht gelegt.
 - kol-button-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-accordion --> kol-heading-wc
@@ -147,4 +145,6 @@ graph TD;
   style kol-accordion fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

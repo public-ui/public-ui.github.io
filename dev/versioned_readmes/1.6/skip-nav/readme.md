@@ -49,13 +49,15 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute     | Description                                                                                                                                        | Type                      | Default     |
-| --------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------- |
-| `_ariaLabel`          | `_aria-label` | <span className="text-red-500">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string` \| `undefined`   | `undefined` |
-| `_label`              | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                 | `string` \| `undefined`   | `undefined` |
-| `_links` _(required)_ | `_links`      | Defines the list of links combined with their labels to render.                                                                                    | `LinkProps[]` \| `string` | `undefined` |
+| Property              | Attribute     | Description                                                                                                                                | Type                    | Default     |
+| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ----------- |
+| `_ariaLabel`          | `_aria-label` | <span className="text-red-500">**[DEPRECATED]**</span> use _label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string` \| `undefined`   | `undefined` |
+| `_label`              | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                         | `string` \| `undefined`   | `undefined` |
+| `_links` _(required)_ | `_links`      | Defines the list of links combined with their labels to render.                                                                            | `LinkProps[]` \| `string` | `undefined` |
+
 
 ## Dependencies
 
@@ -64,7 +66,6 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 - kol-link-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-skip-nav --> kol-link-wc
@@ -76,4 +77,6 @@ graph TD;
   style kol-skip-nav fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

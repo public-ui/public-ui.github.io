@@ -44,7 +44,7 @@ Für die eindeutige Beschriftung des Buttons nutzen Sie das Attribut **`_label`*
 ### Icon
 
 Ein Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objekt.
-Als String übergeben Sie die Iconklasse (z.B.: `_icons="codicon codicon-home`), das Icon wird links vom Text angezeigt.
+Als String übergeben Sie die Iconklasse (z.B.: `_icon="codicon codicon-home`), das Icon wird links vom Text angezeigt.
 Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
 
 <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Übersicht Codicons"></kol-link>
@@ -93,45 +93,46 @@ Probleme mit Disabled-Status
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute        | Description                                                                                                                                        | Type                                                                                                                                                  | Default     |
-| --------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_accessKey`          | `_access-key`    | Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.                                                              | `string` \| `undefined`                                                                                                                               | `undefined` |
-| `_ariaControls`       | `_aria-controls` | Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)           | `string` \| `undefined`                                                                                                                               | `undefined` |
-| `_ariaCurrent`        | `_aria-current`  | Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) | `"date"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `boolean` \| `undefined`                                                              | `undefined` |
-| `_ariaExpanded`       | `_aria-expanded` | Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)   | `boolean` \| `undefined`                                                                                                                              | `undefined` |
-| `_ariaLabel`          | `_aria-label`    | Gibt einen beschreibenden Text des Buttons an. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)             | `string` \| `undefined`                                                                                                                               | `undefined` |
-| `_ariaSelected`       | `_aria-selected` | Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)          | `boolean` \| `undefined`                                                                                                                              | `undefined` |
-| `_customClass`        | `_custom-class`  | Gibt an, welche Custom-Class übergeben werden soll, wenn \_variant="custom" gesetzt ist.                                                           | `string` \| `undefined`                                                                                                                               | `undefined` |
-| `_disabled`           | `_disabled`      | Gibt an, ob der Button deaktiviert ist.                                                                                                            | `boolean` \| `undefined`                                                                                                                              | `false`     |
-| `_icon`               | `_icon`          | Iconklasse (z.B.: "codicon codicon-home")                                                                                                          | `KoliBriHorizontalIcon & KoliBriVerticalIcon` \| `string` \| `undefined`                                                                              | `undefined` |
-| `_iconAlign`          | `_icon-align`    | <span className="text-red-500">**[DEPRECATED]**</span> <br/><br/>Gibt an, ob das Icon links oder rechts dargestellt werden soll.                   | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                         | `undefined` |
-| `_iconOnly`           | `_icon-only`     | Gibt an, ob nur das Icon angezeigt wird.                                                                                                           | `boolean` \| `undefined`                                                                                                                              | `false`     |
-| `_id`                 | `_id`            | Gibt die ID der Schaltfläche an.                                                                                                                   | `string` \| `undefined`                                                                                                                               | `undefined` |
-| `_label` _(required)_ | `_label`         | Setzt den sichtbaren Text des Elements.                                                                                                            | `string`                                                                                                                                              | `undefined` |
+| Property              | Attribute        | Description                                                                                                                                        | Type                                                                                                                                            | Default     |
+| --------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_accessKey`          | `_access-key`    | Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.                                                              | `string` \| `undefined`                                                                                                                           | `undefined` |
+| `_ariaControls`       | `_aria-controls` | Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)           | `string` \| `undefined`                                                                                                                           | `undefined` |
+| `_ariaCurrent`        | `_aria-current`  | Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) | `"date"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `boolean` \| `undefined`                                                                    | `undefined` |
+| `_ariaExpanded`       | `_aria-expanded` | Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)   | `boolean` \| `undefined`                                                                                                                          | `undefined` |
+| `_ariaLabel`          | `_aria-label`    | Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)            | `string` \| `undefined`                                                                                                                           | `undefined` |
+| `_ariaSelected`       | `_aria-selected` | Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)          | `boolean` \| `undefined`                                                                                                                          | `undefined` |
+| `_customClass`        | `_custom-class`  | Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.                                                            | `string` \| `undefined`                                                                                                                           | `undefined` |
+| `_disabled`           | `_disabled`      | Gibt an, ob der Button deaktiviert ist.                                                                                                            | `boolean` \| `undefined`                                                                                                                          | `false`     |
+| `_icon`               | `_icon`          | Iconklasse (z.B.: "codicon codicon-home")                                                                                                          | `KoliBriHorizontalIcon & KoliBriVerticalIcon` \| `string` \| `undefined`                                                                            | `undefined` |
+| `_iconAlign`          | `_icon-align`    | <span className="text-red-500">**[DEPRECATED]**</span> <br/><br/>Gibt an, ob das Icon links oder rechts dargestellt werden soll.                          | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                           | `undefined` |
+| `_iconOnly`           | `_icon-only`     | Gibt an, ob nur das Icon angezeigt wird.                                                                                                           | `boolean` \| `undefined`                                                                                                                          | `false`     |
+| `_id`                 | `_id`            | Gibt die ID der Schaltfläche an.                                                                                                                   | `string` \| `undefined`                                                                                                                           | `undefined` |
+| `_label` _(required)_ | `_label`         | Setzt den sichtbaren Text des Elements.                                                                                                            | `string`                                                                                                                                        | `undefined` |
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für die Button-Events an.                                                                                        | `undefined` \| `{ onClick?: EventValueOrEventCallback<MouseEvent, unknown>` \| `undefined; onMouseDown?: EventCallback<MouseEvent>` \| `undefined; }` | `undefined` |
 | `_role`               | `_role`          | Gibt an, welche Role der Schalter hat.                                                                                                             | `"button"` \| `"link"` \| `"tab"` \| `undefined`                                                                                                      | `undefined` |
-| `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                          | `number` \| `undefined`                                                                                                                               | `undefined` |
-| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.                                                                      | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                         | `'top'`     |
+| `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                          | `number` \| `undefined`                                                                                                                           | `undefined` |
+| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.                                                                      | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                           | `'top'`     |
 | `_type`               | `_type`          | Gibt an, welche Typ der Button hat.                                                                                                                | `"button"` \| `"reset"` \| `"submit"` \| `undefined`                                                                                                  | `'button'`  |
-| `_value`              | --               | Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.                                                                                   | `unknown`                                                                                                                                             | `undefined` |
-| `_variant`            | `_variant`       | Gibt an, welche Ausprägung der Button hat.                                                                                                         | `"custom"` \| `"danger"` \| `"ghost"` \| `"normal"` \| `"primary"` \| `"secondary"` \| `undefined`                                                    | `'normal'`  |
+| `_value`              | --               | Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.                                                                                   | `unknown`                                                                                                                                       | `undefined` |
+| `_variant`            | `_variant`       | Gibt an, welche Ausprägung der Button hat.                                                                                                         | `"custom"` \| `"danger"` \| `"ghost"` \| `"normal"` \| `"primary"` \| `"secondary"` \| `undefined`                                                          | `'normal'`  |
+
 
 ## Dependencies
 
 ### Used by
 
-- [kol-nav](./nav)
-- [kol-pagination](./pagination)
-- [kol-table](./table)
+ - [kol-nav](./nav)
+ - [kol-pagination](./pagination)
+ - [kol-table](./table)
 
 ### Depends on
 
 - kol-button-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-button --> kol-button-wc
@@ -145,4 +146,6 @@ graph TD;
   style kol-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

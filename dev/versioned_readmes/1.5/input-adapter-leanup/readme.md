@@ -1,5 +1,6 @@
 <!-- Auto Generated Below -->
 
+
 > **[DEPRECATED]** Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
 
 ## Dependencies
@@ -10,7 +11,6 @@
 - [kol-link](./link)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-input-adapter-leanup --> kol-alert
@@ -30,4 +30,6 @@ graph TD;
   style kol-input-adapter-leanup fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

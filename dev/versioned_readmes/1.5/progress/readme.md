@@ -40,15 +40,19 @@ Verwenden Sie das Attribut **`_value`**, um den aktuellen Wert der Komponente zu
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute  | Description                                                                                                                                                          | Type                                | Default     |
-| --------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------- |
-| `_label`              | `_label`   | Setzt die Bezeichnung der Fortschrittsanzeige.                                                                                                                       | `string` \| `undefined`             | `undefined` |
-| `_max` _(required)_   | `_max`     | Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.                                                                                                 | `number`                            | `undefined` |
-| `_type`               | `_type`    | <span className="text-red-500">**[DEPRECATED]**</span> will be removed in v2, use \_variant<br/><br/>Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird. | `"bar"` \| `"cycle"` \| `undefined` | `undefined` |
-| `_unit`               | `_unit`    | Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)                                                                                                      | `string` \| `undefined`             | `'%'`       |
-| `_value` _(required)_ | `_value`   | Gibt an, wie weit die Anzeige fortgeschritten ist.                                                                                                                   | `number`                            | `undefined` |
-| `_variant`            | `_variant` | Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.                                                                                          | `"bar"` \| `"cycle"` \| `undefined` | `undefined` |
+| Property              | Attribute  | Description                                                                                                                                                  | Type                            | Default     |
+| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | ----------- |
+| `_label`              | `_label`   | Setzt die Bezeichnung der Fortschrittsanzeige.                                                                                                               | `string` \| `undefined`           | `undefined` |
+| `_max` _(required)_   | `_max`     | Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.                                                                                         | `number`                        | `undefined` |
+| `_type`               | `_type`    | <span className="text-red-500">**[DEPRECATED]**</span> will be removed in v2, use _variant<br/><br/>Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird. | `"bar"` \| `"cycle"` \| `undefined` | `undefined` |
+| `_unit`               | `_unit`    | Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)                                                                                              | `string` \| `undefined`           | `'%'`       |
+| `_value` _(required)_ | `_value`   | Gibt an, wie weit die Anzeige fortgeschritten ist.                                                                                                           | `number`                        | `undefined` |
+| `_variant`            | `_variant` | Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.                                                                                  | `"bar"` \| `"cycle"` \| `undefined` | `undefined` |
 
----
+
+----------------------------------------------
+
+

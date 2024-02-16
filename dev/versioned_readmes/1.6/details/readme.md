@@ -12,10 +12,9 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
 
 ```html
 <kol-details _label="Nach Laden der Seite geschlossen">
-	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-	magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-	gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-	elitr, sed diam nonumy eirmod tempor invidunt.
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+	vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
 </kol-details>
 ```
 
@@ -87,19 +86,22 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                  | Type                     | Default     |
-| ---------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ----------- |
-| `_label`   | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                           | `string` \| `undefined`  | `undefined` |
-| `_open`    | `_open`    | If set (to true) opens/expands the element, closes if not set (or set to false).                                                             | `boolean` \| `undefined` | `false`     |
-| `_summary` | `_summary` | <span className="text-red-500">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Gibt die Zusammenfassung der Detailbeschreibung an. | `string` \| `undefined`  | `undefined` |
+| Property   | Attribute  | Description                                                                                                                          | Type                   | Default     |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ----------- |
+| `_label`   | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                   | `string` \| `undefined`  | `undefined` |
+| `_open`    | `_open`    | If set (to true) opens/expands the element, closes if not set (or set to false).                                                     | `boolean` \| `undefined` | `false`     |
+| `_summary` | `_summary` | <span className="text-red-500">**[DEPRECATED]**</span> Use _label.<br/><br/>Deprecated: Gibt die Zusammenfassung der Detailbeschreibung an. | `string` \| `undefined`  | `undefined` |
+
 
 ## Slots
 
 | Slot | Description                                               |
 | ---- | --------------------------------------------------------- |
 |      | Der Inhalt, der in der Detailbeschreibung angezeigt wird. |
+
 
 ## Dependencies
 
@@ -109,7 +111,6 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 - [kol-indented-text](./indented-text)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-details --> kol-icon
@@ -117,4 +118,6 @@ graph TD;
   style kol-details fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

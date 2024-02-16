@@ -17,13 +17,7 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 
 ### Beispiel
 
-<kol-input-range
-	_label="Wertebereich"
-	_min="100"
-	_max="200"
-	_value="100"
-	_step="20"
-	_icon='{"left": "codicon codicon-arrow-small-down", "right": "codicon codicon-arrow-small-up"}'></kol-input-range>
+<kol-input-range _label="Wertebereich" _min="100" _max="200" _value="100" _step="20" _icon='{"left": "codicon codicon-arrow-small-down", "right": "codicon codicon-arrow-small-up"}'></kol-input-range>
 
 ## Verwendung
 
@@ -57,7 +51,7 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 | `_error`        | `_error`         | Defines the error message text.                                                                                                                              | `string` \| `undefined`                                                                                         | `undefined` |
 | `_hideLabel`    | `_hide-label`    | Hides the label.                                                                                                                                             | `boolean` \| `undefined`                                                                                        | `undefined` |
 | `_hint`         | `_hint`          | Defines the hint text.                                                                                                                                       | `string` \| `undefined`                                                                                         | `''`        |
-| `_icon`         | `_icon`          | Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).                                                                                              | `string` \| `undefined` \| `{ right?: IconOrIconClass` \| `undefined; left?: IconOrIconClass` \| `undefined; }` | `undefined` |
+| `_icon`         | `_icon`          | Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).                                                                                               | `string` \| `undefined` \| `{ right?: IconOrIconClass` \| `undefined; left?: IconOrIconClass` \| `undefined; }` | `undefined` |
 | `_id`           | `_id`            | Defines the internal ID of the primary component element.                                                                                                    | `string` \| `undefined`                                                                                         | `undefined` |
 | `_label`        | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `boolean` \| `string` \| `undefined`                                                                            | `undefined` |
 | `_list`         | `_list`          | <span className="text-red-500">**[DEPRECATED]**</span> Use \_suggestions.<br/><br/>Deprecated: Gibt die Liste der Vorschlagswörter an.                       | `Option<W3CInputValue>[]` \| `string` \| `undefined`                                                            | `undefined` |

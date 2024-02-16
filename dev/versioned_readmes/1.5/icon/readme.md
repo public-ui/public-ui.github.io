@@ -11,17 +11,17 @@ Die Komponente **Icon** wird über das HTML-Tag `kol-icon` erzeugt.
 ### Code
 
 ```html
-<kol-icon _aria-label="Zu Hause" _icons="codicon codicon-home"></kol-icon>
+<kol-icon _aria-label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
 ```
 
 ### Beispiel
 
-<kol-icon _aria-label="Zu Hause" _icons="codicon codicon-home"></kol-icon>
+<kol-icon _aria-label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
 
 ### Icon
 
 Das Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objekt.
-Als String übergeben Sie die Iconklasse (z.B.: `_icons="codicon codicon-home`), das Icon wird links vom Text angezeigt.
+Als String übergeben Sie die Iconklasse (z.B.: `_icon="codicon codicon-home`), das Icon wird links vom Text angezeigt.
 Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
 
 <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Übersicht Codicons"></kol-link>
@@ -44,13 +44,15 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property                  | Attribute     | Description                                                                                                                                                                                                                                  | Type                    | Default     |
-| ------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt das Aria-Label am Icon an.                                                                                                                                                                                                              | `string`                | `undefined` |
-| `_icon` _(required)_      | `_icon`       | Setzt die Iconklasse (z.B.: `_icons="codicon codicon-home`).                                                                                                                                                                                 | `string`                | `undefined` |
+| Property                  | Attribute     | Description                                                                                                                                                                                                                           | Type                  | Default     |
+| ------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Gibt das Aria-Label am Icon an.                                                                                                                                                                                                       | `string`              | `undefined` |
+| `_icon` _(required)_      | `_icon`       | Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).                                                                                                                                                                           | `string`              | `undefined` |
 | `_part`                   | `_part`       | <span className="text-red-500">**[DEPRECATED]**</span> Das Styling sollte stets über CSS erfolgen.<br/><br/>Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) | `string` \| `undefined` | `undefined` |
+
 
 ## Shadow Parts
 
@@ -58,22 +60,22 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 | -------- | ----------------------------------------- |
 | `"icon"` | Ermöglicht das Styling des inneren Icons. |
 
+
 ## Dependencies
 
 ### Used by
 
-- [kol-alert-wc](./alert)
-- [kol-breadcrumb](./breadcrumb)
-- [kol-details](./details)
-- [kol-icon-font-awesome](./icon-font-awesome)
-- [kol-icon-icofont](./icon-icofont)
-- kol-input
-- [kol-input-checkbox](./input-checkbox)
-- kol-link-wc
-- kol-span-wc
+ - [kol-alert-wc](./alert)
+ - [kol-breadcrumb](./breadcrumb)
+ - [kol-details](./details)
+ - [kol-icon-font-awesome](./icon-font-awesome)
+ - [kol-icon-icofont](./icon-icofont)
+ - kol-input
+ - [kol-input-checkbox](./input-checkbox)
+ - kol-link-wc
+ - kol-span-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-alert-wc --> kol-icon
@@ -88,4 +90,6 @@ graph TD;
   style kol-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

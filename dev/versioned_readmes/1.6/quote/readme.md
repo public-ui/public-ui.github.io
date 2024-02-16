@@ -31,21 +31,23 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`
 ### Beispiele
 
 <kol-quote
-	_label="RFC 1149"
-	_href="https://datatracker.ietf.org/doc/html/rfc1149"
-	_quote="Avian carriers can provide high delay, low throughput, and low altitude
-					service. The connection topology is limited to a single point-to-point path
-					for each carrier, used with standard carriers, but many carriers can be used
-					without significant interference with each other, outside early spring.
-					This is because of the 3D ether space available to the carriers, in contrast
-					to the 1D ether used by IEEE802.3. The carriers have an intrinsic collision
-					avoidance system, which increases availability."
-	_variant="block"></kol-quote>
+    _label="RFC 1149"
+    _href="https://datatracker.ietf.org/doc/html/rfc1149"
+    _quote="Avian carriers can provide high delay, low throughput, and low altitude
+            service. The connection topology is limited to a single point-to-point path
+            for each carrier, used with standard carriers, but many carriers can be used
+            without significant interference with each other, outside early spring.
+            This is because of the 3D ether space available to the carriers, in contrast
+            to the 1D ether used by IEEE802.3. The carriers have an intrinsic collision
+            avoidance system, which increases availability."
+				_variant="block">
+</kol-quote>
 <kol-quote
-	_label="RFC 1149"
-	_href="https://datatracker.ietf.org/doc/html/rfc1149"
-	_quote="Avian carriers can provide high delay."
-	_variant="inline"></kol-quote>
+  _label="RFC 1149"
+  _href="https://datatracker.ietf.org/doc/html/rfc1149"
+  _quote="Avian carriers can provide high delay."
+  _variant="inline"
+			></kol-quote>
 
 ## Verwendung
 
@@ -62,15 +64,17 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute  | Description                                                                                                                            | Type                                   | Default     |
-| --------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ----------- |
-| `_caption`            | `_caption` | <span className="text-red-500">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Defines the visible caption of the component. | `string` \| `undefined`                | `undefined` |
-| `_href` _(required)_  | `_href`    | Defines the link to the source of the quote.                                                                                           | `string`                               | `undefined` |
-| `_label`              | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                     | `string` \| `undefined`                | `undefined` |
-| `_quote` _(required)_ | `_quote`   | Defines the text of the quote.                                                                                                         | `string`                               | `undefined` |
-| `_variant`            | `_variant` | Defines which variant should be used for presentation.                                                                                 | `"block"` \| `"inline"` \| `undefined` | `'inline'`  |
+| Property              | Attribute  | Description                                                                                                                    | Type                               | Default     |
+| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- | ----------- |
+| `_caption`            | `_caption` | <span className="text-red-500">**[DEPRECATED]**</span> Use _label.<br/><br/>Deprecated: Defines the visible caption of the component. | `string` \| `undefined`              | `undefined` |
+| `_href` _(required)_  | `_href`    | Defines the link to the source of the quote.                                                                                   | `string`                           | `undefined` |
+| `_label`              | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).             | `string` \| `undefined`              | `undefined` |
+| `_quote` _(required)_ | `_quote`   | Defines the text of the quote.                                                                                                 | `string`                           | `undefined` |
+| `_variant`            | `_variant` | Defines which variant should be used for presentation.                                                                         | `"block"` \| `"inline"` \| `undefined` | `'inline'`  |
+
 
 ## Dependencies
 
@@ -79,7 +83,6 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 - [kol-link](./link)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-quote --> kol-link
@@ -92,4 +95,6 @@ graph TD;
   style kol-quote fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

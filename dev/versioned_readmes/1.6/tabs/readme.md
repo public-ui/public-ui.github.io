@@ -10,10 +10,7 @@ Die Zuordnung der Daten im Attribut **`_tabs`** zu den Div-Elementen erfolgt aut
 ### Code
 
 ```html
-<kol-tabs
-	_selected="0"
-	_tabs='[{"_label":"Tab 1","_icon":"codicon codicon-home"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'
->
+<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icon":"codicon codicon-home"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
 	<div>Inhalt von Tab 1</div>
 	<div>Inhalt von Tab 2</div>
 	<div>Inhalt von Tab 3</div>
@@ -35,11 +32,7 @@ Die Zuordnung der Daten im Attribut **`_tabs`** zu den Div-Elementen erfolgt aut
 Die Daten für die Registerkarten können als Objekte oder JSON-String an das Attribut **`_tabs`** übergeben werden.
 
 ```json
-[
-	{ "_label": "Tab 1", "_icon": "codicon codicon-home" },
-	{ "_label": "Tab 2", "_on": { "onClose": true } },
-	{ "_label": "Tab 3" }
-]
+[{ "_label": "Tab 1", "_icon": "codicon codicon-home" }, { "_label": "Tab 2", "_on": { "onClose": true } }, { "_label": "Tab 3" }]
 ```
 
 ### Registerkarte deaktivieren
@@ -79,9 +72,9 @@ Bei der Umsetzung der Tastatursteuerung wurde sich an den Beispielen des W3C's o
 
 Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effizient über die gesamte Seite/Anwendung zu navigieren, ist nur 1 Schalter aus der Tab-Serie fokussierbar. Sobald der Nutzende auf der Tab-Navigation selbst ist, werden die Pfeiltasten verwendet, um zwischen den Tabs selbst wechseln.
 
-| Taste                              | Funktion                                                                                                |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `Tab`                              | Fokussiert den ersten aktiven Tab. Auf vorhandene Close-Icons können mit der Tab-Taste erreicht werden. |
+| Taste                            | Funktion                                                                                                |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `Tab`                            | Fokussiert den ersten aktiven Tab. Auf vorhandene Close-Icons können mit der Tab-Taste erreicht werden. |
 | `Pfeil-Tasten (links` \| `rechts)` | Wechselt zwischen den Tabs.                                                                             |
 
 ## Links und Referenzen
@@ -93,17 +86,19 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property             | Attribute     | Description                                                                                                                                        | Type                                                                                                                                                                                                                                                                   | Default     |
-| -------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_align`             | `_align`      | Defines the position of the tab captions.                                                                                                          | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                                                                                                                                          | `'top'`     |
-| `_ariaLabel`         | `_aria-label` | <span className="text-red-500">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string` \| `undefined`                                                                                                                                                                                                                                                | `undefined` |
-| `_label`             | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                 | `string` \| `undefined`                                                                                                                                                                                                                                                | `undefined` |
-| `_on`                | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.                                                                | `undefined` \| `{ onCreate?: EventCallback<Event>` \| `{ label: string; callback: EventCallback<Event>; }` \| `undefined; } & { onSelect?: EventValueOrEventCallback<MouseEvent` \| `CustomEvent<any>` \| `KeyboardEvent` \| `PointerEvent, number>` \| `undefined; }` | `undefined` |
-| `_selected`          | `_selected`   | Defines which tab is active.                                                                                                                       | `number` \| `undefined`                                                                                                                                                                                                                                                | `0`         |
-| `_tabs` _(required)_ | `_tabs`       | Defines the tab captions.                                                                                                                          | `TabButtonProps[]` \| `string`                                                                                                                                                                                                                                         | `undefined` |
-| `_tabsAlign`         | `_tabs-align` | <span className="text-red-500">**[DEPRECATED]**</span> Use \_align.<br/><br/>Deprecated: Setzt die Position der Registrierkarten.                  | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                                                                                                                                          | `'top'`     |
+| Property             | Attribute     | Description                                                                                                                                | Type                                                                                                                                                                                                                                                     | Default     |
+| -------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_align`             | `_align`      | Defines the position of the tab captions.                                                                                                  | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                                                                                                                                    | `'top'`     |
+| `_ariaLabel`         | `_aria-label` | <span className="text-red-500">**[DEPRECATED]**</span> use _label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string` \| `undefined`                                                                                                                                                                                                                                    | `undefined` |
+| `_label`             | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                         | `string` \| `undefined`                                                                                                                                                                                                                                    | `undefined` |
+| `_on`                | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.                                                        | `undefined` \| `{ onCreate?: EventCallback<Event>` \| `{ label: string; callback: EventCallback<Event>; }` \| `undefined; } & { onSelect?: EventValueOrEventCallback<MouseEvent` \| `CustomEvent<any>` \| `KeyboardEvent` \| `PointerEvent, number>` \| `undefined; }` | `undefined` |
+| `_selected`          | `_selected`   | Defines which tab is active.                                                                                                               | `number` \| `undefined`                                                                                                                                                                                                                                    | `0`         |
+| `_tabs` _(required)_ | `_tabs`       | Defines the tab captions.                                                                                                                  | `TabButtonProps[]` \| `string`                                                                                                                                                                                                                             | `undefined` |
+| `_tabsAlign`         | `_tabs-align` | <span className="text-red-500">**[DEPRECATED]**</span> Use _align.<br/><br/>Deprecated: Setzt die Position der Registrierkarten.                  | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                                                                                                                                    | `'top'`     |
+
 
 ## Dependencies
 
@@ -113,7 +108,6 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 - kol-button-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-tabs --> kol-button-group-wc
@@ -125,4 +119,6 @@ graph TD;
   style kol-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

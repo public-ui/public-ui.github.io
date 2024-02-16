@@ -73,11 +73,7 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 ### Code
 
 ```html
-<kol-table
-	_caption="Tabellenbeschreibung"
-	_headers="{'horizontal': [[{'label':'Montag','key':'montag'}]]}"
-	_pagination="[{'page':2}]"
-></kol-table>
+<kol-table _caption="Tabellenbeschreibung" _headers="{'horizontal': [[{'label':'Montag','key':'montag'}]]}" _pagination="[{'page':2}]"></kol-table>
 ```
 
 ### Beispiel
@@ -123,15 +119,17 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property                | Attribute     | Description                                                             | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Default     |
-| ----------------------- | ------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_caption` _(required)_ | `_caption`    | Gibt den Titel oder eine Legende mit Erklärungen zur Tabelle an.        | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `undefined` |
-| `_data` _(required)_    | `_data`       | Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden. | `KoliBriDataType[]` \| `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
-| `_headers` _(required)_ | `_headers`    | Gibt die horizontalen und vertikalen Header für die Tabelle an.         | `string` \| `{ horizontal?: KoliBriTableHeaderCell[][]` \| `undefined; vertical?: KoliBriTableHeaderCell[][]` \| `undefined; }`                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
-| `_minWidth`             | `_min-width`  | Gibt an, die minimale Breite der Tabelle an.                            | `string` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `undefined` |
+| Property                | Attribute     | Description                                                             | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Default     |
+| ----------------------- | ------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_caption` _(required)_ | `_caption`    | Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.       | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `undefined` |
+| `_data` _(required)_    | `_data`       | Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden. | `KoliBriDataType[]` \| `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | `undefined` |
+| `_headers` _(required)_ | `_headers`    | Gibt die horizontalen und vertikalen Header für die Tabelle an.         | `string` \| `{ horizontal?: KoliBriTableHeaderCell[][]` \| `undefined; vertical?: KoliBriTableHeaderCell[][]` \| `undefined; }`                                                                                                                                                                                                                                                                                                                                                                                                                         | `undefined` |
+| `_minWidth`             | `_min-width`  | Gibt an, die minimale Breite der Tabelle an.                            | `string` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
 | `_pagination`           | `_pagination` | Gibt an, ob die Daten geteilt in Seiten angezeigt wird.                 | `boolean` \| `string` \| `undefined` \| `{ _page: number; } & { _on?: KoliBriPaginationButtonCallbacks` \| `undefined; _page?: number` \| `undefined; _total?: number` \| `undefined; _customClass?: string` \| `undefined; _variant?: KoliBriButtonVariant` \| `undefined; _boundaryCount?: number` \| `undefined; _hasButtons?: boolean` \| `Stringified<PaginationHasButton>` \| `undefined; _pageSize?: number` \| `undefined; _pageSizeOptions?: Stringified<number[]>` \| `undefined; _siblingCount?: number` \| `undefined; _tooltipAlign?: Alignment` \| `undefined; }` | `undefined` |
+
 
 ## Dependencies
 
@@ -141,7 +139,6 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 - [kol-button](./button)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-table --> kol-pagination
@@ -165,4 +162,6 @@ graph TD;
   style kol-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

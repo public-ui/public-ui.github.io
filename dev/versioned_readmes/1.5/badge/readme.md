@@ -6,34 +6,34 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
 ### Code
 
 ```html
-<kol-badge _label="Beispieltext" _color="#b7e4b4" _icons="home" _icon-align="right"></kol-badge>
-<kol-badge _label="Beispieltext" _color="#0c8703" _icons="home" _icon-align="right"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#b7e4b4" _icon="home" _icon-align="right"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#0c8703" _icon="home" _icon-align="right"></kol-badge>
 ```
 
 ### Beispiel
 
-<kol-badge _label="Beispieltext" _color="#b7e4b4" _icons="home" _icon-align="right"></kol-badge>
-<kol-badge _label="Beispieltext" _color="#0c8703" _icons="home" _icon-align="right"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#b7e4b4" _icon="home" _icon-align="right"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#0c8703" _icon="home" _icon-align="right"></kol-badge>
 
 ## Verwendung
 
 ### Label im Badge
 
-Der Text, der im Badge angezeigt werden soll, wird über das Attribut ** \_label** übergeben. Der Text kann neben Sonderzeichen auch Umlaute oder Leerzeichen enthalten.
+Der Text, der im Badge angezeigt werden soll, wird über das Attribut ** _label** übergeben. Der Text kann neben Sonderzeichen auch Umlaute oder Leerzeichen enthalten.
 Das Element `<kol-badge></kol-badge>` beinhaltet selbst keinen Text.
 
 ### Hintergrundfarbe des Badge
 
-Ein Badge, ohne weitere Angaben zur Hintergrundfarbe, wird standardmäßig mit hellgrauer Schriftfarbe auf schwarzem Hintergrund angezeigt. Über das Attribut ** \_color** können andere Hintergrundfarben gewählt werden.
+Ein Badge, ohne weitere Angaben zur Hintergrundfarbe, wird standardmäßig mit hellgrauer Schriftfarbe auf schwarzem Hintergrund angezeigt. Über das Attribut ** _color** können andere Hintergrundfarben gewählt werden.
 
-Die Angabe der gewünschten Hintergrundfarbe erfolgt in hexadezimaler Schreibweise, z.B. ** \_color="#000000"** für schwarz.
+Die Angabe der gewünschten Hintergrundfarbe erfolgt in hexadezimaler Schreibweise, z.B. ** _color="#000000"** für schwarz.
 
 Die Textfarbe wird automatisch als Kontrastfarbe zur gewählten Hintergrundfarbe errechnet.
 
 ### Icon
 
 Ein Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objekt.
-Als String übergeben Sie die Iconklasse (z.B.: `_icons="codicon codicon-home`), das Icon wird links vom Text angezeigt.
+Als String übergeben Sie die Iconklasse (z.B.: `_icon="codicon codicon-home`), das Icon wird links vom Text angezeigt.
 Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
 
 <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Übersicht Codicons"></kol-link>
@@ -84,21 +84,23 @@ Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hie
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute       | Description                                                                                              | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Default     |
-| --------------------- | --------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_color`              | `_color`        | Setzt die Hintergrundfarbe.                                                                              | `string` \| `undefined` \| `{ backgroundColor: string; color: string; }` \| `{ backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `'#000'`    |
-| `_icon`               | `_icon`         | Iconklasse (z.B.: "codicon codicon-home")                                                                | `KoliBriHorizontalIcon & KoliBriVerticalIcon` \| `string` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `undefined` |
-| `_iconOnly`           | `_icon-only`    | Gibt an, ob nur das Icon angezeigt wird.                                                                 | `boolean` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `false`     |
-| `_label` _(required)_ | `_label`        | Setzt den sichtbaren Text des Elements.                                                                  | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `undefined` |
+| Property              | Attribute       | Description                                                                                              | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Default     |
+| --------------------- | --------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_color`              | `_color`        | Setzt die Hintergrundfarbe.                                                                              | `string` \| `undefined` \| `{ backgroundColor: string; color: string; }` \| `{ backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `'#000'`    |
+| `_icon`               | `_icon`         | Iconklasse (z.B.: "codicon codicon-home")                                                                | `KoliBriHorizontalIcon & KoliBriVerticalIcon` \| `string` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
+| `_iconOnly`           | `_icon-only`    | Gibt an, ob nur das Icon angezeigt wird.                                                                 | `boolean` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `false`     |
+| `_label` _(required)_ | `_label`        | Setzt den sichtbaren Text des Elements.                                                                  | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `undefined` |
 | `_smartButton`        | `_smart-button` | Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only). | `string` \| `undefined` \| `{ _label: string; } & { _ariaControls?: string` \| `undefined; _ariaLabel?: string` \| `undefined; _icon?: Stringified<KoliBriIconProp>` \| `undefined; _iconAlign?: Alignment` \| `undefined; _iconOnly?: boolean` \| `undefined; _role?: AlternativButtonLinkRole` \| `undefined; _tabIndex?: number` \| `undefined; _tooltipAlign?: Alignment` \| `undefined; _ariaCurrent?: AriaCurrent` \| `undefined; _ariaExpanded?: boolean` \| `undefined; _ariaSelected?: boolean` \| `undefined; _disabled?: boolean` \| `undefined; _accessKey?: string` \| `undefined; _id?: string` \| `undefined; _on?: KoliBriButtonCallbacks<unknown>` \| `undefined; _type?: KoliBriButtonType` \| `undefined; _value?: unknown; _variant?: KoliBriButtonVariant` \| `undefined; _customClass?: string` \| `undefined; }` | `undefined` |
+
 
 ## Dependencies
 
 ### Used by
 
-- [kol-version](./version)
+ - [kol-version](./version)
 
 ### Depends on
 
@@ -106,7 +108,6 @@ Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hie
 - kol-button-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-badge --> kol-span-wc
@@ -119,4 +120,6 @@ graph TD;
   style kol-badge fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

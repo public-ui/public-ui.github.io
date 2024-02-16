@@ -6,10 +6,9 @@ Heben Sie einzelne Informationen auf Ihrer Webseite optisch mit der **IndentedTe
 
 ```html
 <kol-indented-text>
-	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-	magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-	gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-	elitr, sed diam nonumy eirmod tempor invidunt.
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+	vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
 </kol-indented-text>
 ```
 
@@ -36,21 +35,22 @@ Verwenden Sie die **IndentedText**-Komponente, um Textpassagen oder Informatione
 
 <!-- Auto Generated Below -->
 
+
 ## Slots
 
 | Slot | Description |
 | ---- | ----------- |
 |      | Der Text.   |
 
+
 ## Dependencies
 
 ### Used by
 
-- [kol-details](./details)
-- [kol-form](./form)
+ - [kol-details](./details)
+ - [kol-form](./form)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-details --> kol-indented-text
@@ -58,4 +58,6 @@ graph TD;
   style kol-indented-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

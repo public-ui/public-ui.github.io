@@ -48,10 +48,11 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property        | Attribute        | Description                                                                                                                           | Type                                                                                       | Default      |
-| --------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------ |
+| Property        | Attribute        | Description                                                                                                                           | Type                                                                                     | Default      |
+| --------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------ |
 | `_accessKey`    | `_access-key`    | Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.                                                  | `string` \| `undefined`                                                                    | `undefined`  |
 | `_adjustHeight` | `_adjust-height` | Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.                                                                     | `boolean` \| `undefined`                                                                   | `false`      |
 | `_alert`        | `_alert`         | Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.                                                              | `boolean` \| `undefined`                                                                   | `true`       |
@@ -67,17 +68,19 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 | `_placeholder`  | `_placeholder`   | Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.                                                                          | `string` \| `undefined`                                                                    | `undefined`  |
 | `_readOnly`     | `_read-only`     | Setzt das Eingabefeld in den schreibgeschützten Modus.                                                                                | `boolean` \| `undefined`                                                                   | `undefined`  |
 | `_required`     | `_required`      | Macht das Eingabeelement zu einem Pflichtfeld.                                                                                        | `boolean` \| `undefined`                                                                   | `undefined`  |
-| `_resize`       | `_resize`        | Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize) | `"both"` \| `"horizontal"` \| `"none"` \| `"vertical"` \| `undefined`                      | `'vertical'` |
+| `_resize`       | `_resize`        | Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize) | `"both"` \| `"horizontal"` \| `"none"` \| `"vertical"` \| `undefined`                            | `'vertical'` |
 | `_rows`         | `_rows`          | Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.                                                                        | `number` \| `undefined`                                                                    | `undefined`  |
 | `_tabIndex`     | `_tab-index`     | Gibt an, welchen Tab-Index dieses Input hat.                                                                                          | `number` \| `undefined`                                                                    | `undefined`  |
 | `_touched`      | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                         | `boolean` \| `undefined`                                                                   | `false`      |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                   | `string` \| `undefined`                                                                    | `undefined`  |
+
 
 ## Slots
 
 | Slot | Description                         |
 | ---- | ----------------------------------- |
 |      | Die Beschriftung des Eingabefeldes. |
+
 
 ## Dependencies
 
@@ -86,7 +89,6 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 - kol-input
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-textarea --> kol-input
@@ -104,4 +106,6 @@ graph TD;
   style kol-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

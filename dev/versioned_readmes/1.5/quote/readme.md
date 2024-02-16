@@ -17,14 +17,16 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute  | Description                            | Type                                   | Default     |
-| --------------------- | ---------- | -------------------------------------- | -------------------------------------- | ----------- |
-| `_caption`            | `_caption` | Setzt die Überschrift.                 | `string` \| `undefined`                | `undefined` |
-| `_href` _(required)_  | `_href`    | Link auf die Quelle des Zitates.       | `string`                               | `undefined` |
-| `_quote` _(required)_ | `_quote`   | Setzt den Text, also das Zitat selbst. | `string`                               | `undefined` |
+| Property              | Attribute  | Description                            | Type                               | Default     |
+| --------------------- | ---------- | -------------------------------------- | ---------------------------------- | ----------- |
+| `_caption`            | `_caption` | Setzt die Überschrift.                 | `string` \| `undefined`              | `undefined` |
+| `_href` _(required)_  | `_href`    | Link auf die Quelle des Zitates.       | `string`                           | `undefined` |
+| `_quote` _(required)_ | `_quote`   | Setzt den Text, also das Zitat selbst. | `string`                           | `undefined` |
 | `_variant`            | `_variant` | Setzt die Variante des Zitats.         | `"block"` \| `"inline"` \| `undefined` | `'inline'`  |
+
 
 ## Dependencies
 
@@ -33,7 +35,6 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 - [kol-link](./link)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-quote --> kol-link
@@ -46,4 +47,6 @@ graph TD;
   style kol-quote fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

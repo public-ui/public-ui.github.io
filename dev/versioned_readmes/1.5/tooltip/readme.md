@@ -20,28 +20,29 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute | Description                                                                           | Type                                                          | Default     |
-| --------------------- | --------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ----------- |
+| Property              | Attribute | Description                                                                           | Type                                                  | Default     |
+| --------------------- | --------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
 | `_align`              | `_align`  | Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.                     | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined` | `'top'`     |
-| `_id` _(required)_    | `_id`     | Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.                      | `string`                                                      | `undefined` |
-| `_label` _(required)_ | `_label`  | Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird. | `string`                                                      | `undefined` |
+| `_id` _(required)_    | `_id`     | Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.                      | `string`                                              | `undefined` |
+| `_label` _(required)_ | `_label`  | Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird. | `string`                                              | `undefined` |
+
 
 ## Dependencies
 
 ### Used by
 
-- [kol-abbr](./abbr)
-- kol-button-wc
-- kol-link-wc
+ - [kol-abbr](./abbr)
+ - kol-button-wc
+ - kol-link-wc
 
 ### Depends on
 
 - kol-span-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-tooltip --> kol-span-wc
@@ -52,4 +53,6 @@ graph TD;
   style kol-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

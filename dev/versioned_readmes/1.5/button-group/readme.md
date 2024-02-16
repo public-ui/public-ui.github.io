@@ -39,7 +39,7 @@ Im einfachsten Fall besteht die **ButtonGroup**-Komponente aus einer Liste besch
 
 ### ButtonGroup mit Text, Icon und Text mit Icon
 
-Über das Attribut **`_icons="xxx"`** wird festgelegt, ob und welches Icon verwendet werden soll.
+Über das Attribut **`_icon="xxx"`** wird festgelegt, ob und welches Icon verwendet werden soll.
 
 Eine Übersicht über die zur Verfügung stehenden Icons in KoliBri finden Sie [hier](https://icofont.com/icons).
 
@@ -84,15 +84,15 @@ Bei Verwendung der **ButtonGroup**-Komponente sind keine besonderen Maßnahmen i
 
 <!-- Auto Generated Below -->
 
+
 ## Dependencies
 
 ### Used by
 
-- [kol-button-group](.)
-- [kol-tabs](./tabs)
+ - [kol-button-group](.)
+ - [kol-tabs](./tabs)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-button-group --> kol-button-group-wc
@@ -100,4 +100,6 @@ graph TD;
   style kol-button-group-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

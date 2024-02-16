@@ -102,15 +102,17 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property         | Attribute     | Description                                                                                                                                        | Type                                                                | Default     |
-| ---------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------- |
-| `_activeElement` | --            | Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.                                                            | `HTMLElement` \| `null` \| `undefined`                              | `undefined` |
-| `_ariaLabel`     | `_aria-label` | <span className="text-red-500">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string` \| `undefined`                                             | `undefined` |
-| `_label`         | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                 | `string` \| `undefined`                                             | `undefined` |
-| `_on`            | --            | Gibt die EventCallback-Function für das Schließen des Modals an.                                                                                   | `undefined` \| `{ onClose?: EventCallback<Event>` \| `undefined; }` | `undefined` |
-| `_width`         | `_width`      | Defines the width of the modal. (max-width: 100%)                                                                                                  | `string` \| `undefined`                                             | `'100%'`    |
+| Property         | Attribute     | Description                                                                                                                                | Type                                                            | Default     |
+| ---------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- | ----------- |
+| `_activeElement` | --            | Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.                                                    | `HTMLElement` \| `null` \| `undefined`                              | `undefined` |
+| `_ariaLabel`     | `_aria-label` | <span className="text-red-500">**[DEPRECATED]**</span> use _label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string` \| `undefined`                                           | `undefined` |
+| `_label`         | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                         | `string` \| `undefined`                                           | `undefined` |
+| `_on`            | --            | Gibt die EventCallback-Function für das Schließen des Modals an.                                                                           | `undefined` \| `{ onClose?: EventCallback<Event>` \| `undefined; }` | `undefined` |
+| `_width`         | `_width`      | Defines the width of the modal. (max-width: 100%)                                                                                          | `string` \| `undefined`                                           | `'100%'`    |
+
 
 ## Slots
 
@@ -118,4 +120,7 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 | ---- | ---------------------- |
 |      | Der Inhalt des Modals. |
 
----
+
+----------------------------------------------
+
+

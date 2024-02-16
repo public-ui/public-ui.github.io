@@ -20,40 +20,41 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute | Description                                                                                                        | Type                                                          | Default     |
-| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- | ----------- |
+| Property              | Attribute | Description                                                                                                        | Type                                                  | Default     |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
 | `_align`              | `_align`  | Defines the alignment of the tooltip in relation to the parent element.                                            | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined` | `'top'`     |
-| `_id`                 | `_id`     | Defines the internal ID of the primary component element.                                                          | `string` \| `undefined`                                       | `undefined` |
-| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                      | `undefined` |
+| `_id`                 | `_id`     | Defines the internal ID of the primary component element.                                                          | `string` \| `undefined`                                 | `undefined` |
+| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
+
 
 ## Dependencies
 
 ### Used by
 
-- [kol-abbr](./abbr)
-- kol-button-wc
-- [kol-input-checkbox](./input-checkbox)
-- [kol-input-color](./input-color)
-- [kol-input-date](./input-date)
-- [kol-input-email](./input-email)
-- [kol-input-file](./input-file)
-- [kol-input-number](./input-number)
-- [kol-input-password](./input-password)
-- [kol-input-radio](./input-radio)
-- [kol-input-range](./input-range)
-- [kol-input-text](./input-text)
-- kol-link-wc
-- [kol-select](./select)
-- [kol-textarea](./textarea)
+ - [kol-abbr](./abbr)
+ - kol-button-wc
+ - [kol-input-checkbox](./input-checkbox)
+ - [kol-input-color](./input-color)
+ - [kol-input-date](./input-date)
+ - [kol-input-email](./input-email)
+ - [kol-input-file](./input-file)
+ - [kol-input-number](./input-number)
+ - [kol-input-password](./input-password)
+ - [kol-input-radio](./input-radio)
+ - [kol-input-range](./input-range)
+ - [kol-input-text](./input-text)
+ - kol-link-wc
+ - [kol-select](./select)
+ - [kol-textarea](./textarea)
 
 ### Depends on
 
 - kol-span-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-tooltip-wc --> kol-span-wc
@@ -76,4 +77,6 @@ graph TD;
   style kol-tooltip-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

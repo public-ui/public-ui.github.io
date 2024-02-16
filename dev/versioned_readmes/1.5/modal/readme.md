@@ -87,14 +87,16 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property                  | Attribute     | Description                                                                             | Type                                                                | Default     |
-| ------------------------- | ------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------- |
+| Property                  | Attribute     | Description                                                                             | Type                                                            | Default     |
+| ------------------------- | ------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
 | `_activeElement`          | --            | Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde. | `HTMLElement` \| `null` \| `undefined`                              | `undefined` |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.            | `string`                                                            | `undefined` |
+| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.            | `string`                                                        | `undefined` |
 | `_on`                     | --            | Gibt die EventCallback-Function für das Schließen des Modals an.                        | `undefined` \| `{ onClose?: EventCallback<Event>` \| `undefined; }` | `undefined` |
-| `_width`                  | `_width`      | Setzt die Breite des Modals. (max-width: 100%).                                         | `string` \| `undefined`                                             | `'100%'`    |
+| `_width`                  | `_width`      | Setzt die Breite des Modals. (max-width: 100%).                                         | `string` \| `undefined`                                           | `'100%'`    |
+
 
 ## Slots
 
@@ -102,4 +104,7 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 | ---- | ---------------------- |
 |      | Der Inhalt des Modals. |
 
----
+
+----------------------------------------------
+
+
