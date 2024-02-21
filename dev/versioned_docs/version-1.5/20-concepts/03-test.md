@@ -3,7 +3,7 @@ title: Testvorgehen
 description: Auf dieser Seite wird das Testkonzept beschrieben.
 tags:
   - Barrierefreiheit
-  - BIK BITV
+  - BITV
   - Konzept
 ---
 
@@ -13,7 +13,7 @@ Nur durch umfangreiche und kontinuierliche Durchführung von Tests können die F
 
 Zur Sicherstellung der korrekten Funktionsweise der Komponenten werden dabei etablierte Test-Methoden wie Unit-Test, Snapshot-Test und visuelle Screenshot-Tests angewendet.
 
-Um die Barrierefreiheit der KoliBri-Komponentenbibliothek zu gewährleisten, wurde ein Testvorgehen basierend auf dem BIK BITV-Test etabliert, das an die Besonderheiten der Entwicklung von Web Components angepasst wurde. Dazu wurden die einzelnen Prüfschritte des BIK BITV-Tests hinsichtlich ihrer Anwendbarkeit auf jede zu testende Komponenten überprüft und somit ein auf die Komponentenbibliothek abgestimmter Testkatalog definiert. Die Verantwortung für die Durchführung obliegt dabei dem ITZBund-internen Barrierefreiheitstestteam.
+Um die Barrierefreiheit der KoliBri-Komponentenbibliothek zu gewährleisten, wurde ein Testvorgehen basierend auf dem BITV-Test etabliert, das an die Besonderheiten der Entwicklung von Web Components angepasst wurde. Dazu wurden die einzelnen Prüfschritte des BITV-Tests hinsichtlich ihrer Anwendbarkeit auf jede zu testende Komponenten überprüft und somit ein auf die Komponentenbibliothek abgestimmter Testkatalog definiert. Die Verantwortung für die Durchführung obliegt dabei dem ITZBund-internen Barrierefreiheitstestteam.
 
 ## Test neuer Komponenten und Funktionalitäten
 

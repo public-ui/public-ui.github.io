@@ -44,7 +44,7 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 					{
 						quality: 'Usability',
 						prio: 'AAA',
-						desc: 'BIK BITV- und Usability-Test',
+						desc: 'BITV- und Usability-Test',
 					},
 					{
 						quality: 'Maintainability',
@@ -59,7 +59,7 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 					{
 						quality: 'Reliability',
 						prio: 'AA',
-						desc: 'BIK BITV-, Axe-, Unit-, Snapshot-, E2E-Tests and Developer Experience (DX)',
+						desc: 'BITV-, Axe-, Unit-, Snapshot-, E2E-Tests and Developer Experience (DX)',
 					},
 					{
 						quality: 'Performance',
@@ -111,7 +111,7 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 					{
 						quality: 'Benutzbarkeit',
 						prio: 'AAA',
-						desc: 'BIK BITV- und Usability-Test',
+						desc: 'BITV- und Usability-Test',
 					},
 					{
 						quality: 'Wartbarkeit',
@@ -126,7 +126,7 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 					{
 						quality: 'Zuverlässigkeit',
 						prio: 'AA',
-						desc: 'BIK BITV-, Axe-, Unit-, Snapshot-, E2E-Tests und Developer Experience (DX)',
+						desc: 'BITV-, Axe-, Unit-, Snapshot-, E2E-Tests und Developer Experience (DX)',
 					},
 					{
 						quality: 'Performance',
