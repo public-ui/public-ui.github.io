@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[93040],{75512:e=>{e.exports=JSON.parse('{"label":"BITV","permalink":"/en/docs/tags/bitv","allTagsPath":"/en/docs/tags","count":1,"items":[{"id":"concepts/test","title":"Test procedure","description":"This page describes the test concept.","permalink":"/en/docs/concepts/testprocedure"}],"unlisted":false}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[39097],{20328:e=>{e.exports=JSON.parse('{"label":"BIK BITV","permalink":"/docs/tags/bik-bitv","allTagsPath":"/docs/tags","count":1,"items":[{"id":"concepts/test","title":"Testvorgehen","description":"Auf dieser Seite wird das Testkonzept beschrieben.","permalink":"/docs/concepts/test"}],"unlisted":false}')}}]);
