@@ -30,7 +30,7 @@ jobs:
           node-version: 16
           registry-url: "${{env.npmjs-registry}}"
           scope: "@${{env.scope}}"
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         id: pnpm-install
         with:
           version: 8
