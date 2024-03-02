@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ import{y as watchJsonArrayString,z as uiUxHintMillerscheZahl}from"./index-de9d4ee0.js";const watchNavLinks=(t,e,i)=>{watchJsonArrayString(e,"_links",(t=>"object"==typeof t&&("string"==typeof t._href||"string"==typeof t._label)),i),uiUxHintMillerscheZahl(t,e.state._links.length)};export{watchNavLinks as w};
