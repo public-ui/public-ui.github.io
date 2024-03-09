@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import KoliBri from './KoliBri';
 import { translate } from '@docusaurus/Translate';
 

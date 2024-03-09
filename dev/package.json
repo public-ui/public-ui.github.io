@@ -16,6 +16,7 @@
 		"write-heading-ids": "npm run gen:doc && docusaurus write-heading-ids",
 		"format": "prettier blog docs src -c",
 		"lint": "eslint src",
+		"lint:hard": "tsc --noemit && eslint src",
 		"ncu:major": "ncu",
 		"ncu:minor": "ncu -t minor -u",
 		"ncu:patch": "ncu -t patch -u",
@@ -42,24 +43,25 @@
 		"@monaco-editor/react": "4.6.0",
 		"@public-ui/components": "2.0.8",
 		"@public-ui/react": "2.0.8",
+		"@public-ui/schema": "2.0.8",
 		"@public-ui/themes": "2.0.8",
 		"classnames": "2.5.1",
 		"docusaurus-lunr-search": "3.3.2",
-		"mermaid": "10.8.0",
+		"mermaid": "10.9.0",
 		"prettier": "2.8.8",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"read-excel-file": "5.7.1"
 	},
 	"devDependencies": {
-		"@docsearch/react": "3.5.2",
+		"@docsearch/react": "3.6.0",
 		"@docusaurus/module-type-aliases": "3.1.1",
 		"@docusaurus/types": "3.1.1",
 		"@tsconfig/docusaurus": "2.0.2",
-		"@types/node": "20.11.24",
+		"@types/node": "20.11.25",
 		"@types/prettier": "2.7.3",
-		"@typescript-eslint/eslint-plugin": "7.1.0",
-		"@typescript-eslint/parser": "7.1.0",
+		"@typescript-eslint/eslint-plugin": "7.1.1",
+		"@typescript-eslint/parser": "7.1.1",
 		"autoprefixer": "10.4.18",
 		"cpy-cli": "5.0.0",
 		"depcheck": "1.4.7",
@@ -67,7 +69,7 @@
 		"eslint": "8.57.0",
 		"eslint-plugin-jsx-a11y": "6.8.0",
 		"eslint-plugin-mdx": "3.1.5",
-		"eslint-plugin-react": "7.33.2",
+		"eslint-plugin-react": "7.34.0",
 		"html-minifier-terser": "7.2.0",
 		"npm-check-updates": "16.14.15",
 		"npm-run-all": "4.1.5",
@@ -77,7 +79,7 @@
 		"sass": "1.71.1",
 		"tailwindcss": "3.4.1",
 		"ts-prune": "0.10.3",
-		"typescript": "5.3.3"
+		"typescript": "5.4.2"
 	},
 	"browserslist": {
 		"production": [
@@ -90,14 +92,5 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
-	},
-	"engines": {
-		"node": ">=16.14"
-	},
-	"files": [
-		"build/"
-	],
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com"
 	}
 }

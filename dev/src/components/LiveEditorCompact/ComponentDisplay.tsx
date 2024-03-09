@@ -48,8 +48,8 @@ import {
 	KolVersion,
 } from '@public-ui/react';
 import React from 'react';
-import { ImplementedTagName } from '../LiveEditorCompact/types';
-import { AttributesAndDefaultValues } from '../LiveEditorCompact';
+import type { ImplementedTagName } from '../LiveEditorCompact/types';
+import type { AttributesAndDefaultValues } from '../LiveEditorCompact';
 
 type Props = {
 	tag: ImplementedTagName;

@@ -8,7 +8,7 @@ import { CodeOutput } from './LiveEditorCompact/CodeOutput';
 import { ComponentDisplay } from './LiveEditorCompact/ComponentDisplay';
 import { SlotInput } from './LiveEditorCompact/attributeInputs/SlotInput';
 import { AttributeBlackList } from './LiveEditorCompact/lists';
-import { Attribute, ImplementedTagName, Slot } from './LiveEditorCompact/types';
+import type { Attribute, ImplementedTagName, Slot } from './LiveEditorCompact/types';
 import demoValues from '@site/src/components/LiveEditorCompact/demoValues';
 
 type Props = {

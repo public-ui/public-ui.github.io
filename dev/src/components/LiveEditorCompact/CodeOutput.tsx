@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
-import { TagName } from '../LiveEditorCompact/types';
+import type { TagName } from '../LiveEditorCompact/types';
 import Editor from '@monaco-editor/react';
 import { format } from 'prettier';
 import parser from 'prettier/parser-babel';
-import { AttributesAndDefaultValues } from '../LiveEditorCompact';
+import type { AttributesAndDefaultValues } from '../LiveEditorCompact';
 
 type Props = {
 	tag: TagName;

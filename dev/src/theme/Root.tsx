@@ -1,8 +1,9 @@
 import { register } from '@public-ui/components';
 import { applyPolyfills, defineCustomElements } from '@public-ui/components/dist/loader';
 import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
-import React, { FunctionComponent, PropsWithChildren, useEffect, useState } from 'react';
-import { Theme } from '../shares/theme';
+import type { FunctionComponent, PropsWithChildren} from 'react';
+import React, { useEffect, useState } from 'react';
+import type { Theme } from '../shares/theme';
 
 export const Root: FunctionComponent<PropsWithChildren> = (props) => {
 	const [theme] = useState<Theme>('bmf');

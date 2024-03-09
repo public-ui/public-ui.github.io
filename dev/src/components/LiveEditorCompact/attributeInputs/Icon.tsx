@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Attribute } from '../../LiveEditorCompact/types';
+import type { Attribute } from '../../LiveEditorCompact/types';
 import { KolButton, KolDetails } from '@public-ui/react';
-import { KoliBriAllIcons } from '@public-ui/components/dist/types/types/icons';
+import type { KoliBriAllIcons } from '@public-ui/schema';
 
 type Props = {
 	attribute: Attribute;

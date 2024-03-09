@@ -1,9 +1,17 @@
 import { KolTable } from '@public-ui/react';
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import { dangerouslySetInnerHTML } from '../../shares/utils';
 
 type Props = {
 	lang: 'de' | 'en';
+};
+
+type Tupel = {
+	device: string;
+	os: string;
+	browser: string;
+	screenreader: string;
 };
 
 export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
@@ -159,28 +167,28 @@ export const WelcomeSupportTable: FC<Props> = ({ lang }) => {
 								key: 'device',
 								width: '10em',
 								textAlign: 'center',
-								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${row.device}</b>`),
+								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, `<b>${row.device}</b>`),
 							},
 							{
 								label: 'Operating system',
 								key: 'os',
 								width: '10em',
 								textAlign: 'center',
-								render: (el, _col, row) => dangerouslySetInnerHTML(el, row.os),
+								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.os),
 							},
 							{
 								label: 'Browser',
 								key: 'browser',
 								width: '10em',
 								textAlign: 'center',
-								render: (el, _col, row) => dangerouslySetInnerHTML(el, row.os),
+								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.os),
 							},
 							{
 								label: 'Screen reader',
 								key: 'screenreader',
 								width: '10em',
 								textAlign: 'center',
-								render: (el, _col, row) => dangerouslySetInnerHTML(el, row.screenreader),
+								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.screenreader),
 							},
 						],
 					],
@@ -220,28 +228,28 @@ export const WelcomeSupportTable: FC<Props> = ({ lang }) => {
 								key: 'device',
 								width: '10em',
 								textAlign: 'center',
-								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${row.device}</b>`),
+								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, `<b>${row.device}</b>`),
 							},
 							{
 								label: 'Betriebssystem',
 								key: 'os',
 								width: '10em',
 								textAlign: 'center',
-								render: (el, _col, row) => dangerouslySetInnerHTML(el, row.os),
+								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.os),
 							},
 							{
 								label: 'Browser',
 								key: 'browser',
 								width: '10em',
 								textAlign: 'center',
-								render: (el, _col, row) => dangerouslySetInnerHTML(el, row.browser),
+								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.browser),
 							},
 							{
 								label: 'Screenreader',
 								key: 'screenreader',
 								width: '10em',
 								textAlign: 'center',
-								render: (el, _col, row) => dangerouslySetInnerHTML(el, row.screenreader),
+								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.screenreader),
 							},
 						],
 					],

@@ -1,4 +1,4 @@
-import { ButtonProps, KoliBriColor, ListStyleType } from '@public-ui/components';
+import type { ButtonProps, KoliBriColor, ListStyleType } from '@public-ui/components';
 
 export type Attribute = {
 	defaultValue?: string | number | boolean;

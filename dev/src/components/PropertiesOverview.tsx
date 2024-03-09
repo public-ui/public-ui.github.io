@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
 import ELEMENTS from '@public-ui/components/custom-elements.json';
 
@@ -103,7 +104,7 @@ export const PropertiesOverview: FC = () => {
 				</tr>
 			</thead>
 			<tbody>
-				{Array.from(PROPS.keys()).map((prop, index) => {
+				{Array.from(PROPS.keys()).map((prop) => {
 					if (PROP_BLACKLIST.includes(prop)) {
 						return null;
 					}

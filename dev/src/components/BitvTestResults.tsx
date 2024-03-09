@@ -1,6 +1,7 @@
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import { KolTable } from '@public-ui/react';
-import React, { FC, useEffect, useState } from 'react';
+import type { FC} from 'react';
+import React, { useEffect, useState } from 'react';
 import { getDataFromExcel } from '../shares/fetch-excel';
 
 function parseThemeResult(result: string, col: number) {

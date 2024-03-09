@@ -1,8 +1,10 @@
-import { InputTypeOnDefault } from '@public-ui/components/dist/types/types/input/types';
+import type { InputTypeOnDefault } from '@public-ui/schema';
 import { KolSelect } from '@public-ui/react';
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import type { FunctionComponent} from 'react';
+import React, { useEffect, useState } from 'react';
 import { getDarkMode, getTheme, setStorage, setTheme } from '../../shares/store';
-import { THEME_OPTIONS, Theme } from '../../shares/theme';
+import type { Theme } from '../../shares/theme';
+import { THEME_OPTIONS } from '../../shares/theme';
 
 type ActivateButton = {
 	_disabled: boolean;

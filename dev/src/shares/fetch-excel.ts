@@ -25,7 +25,7 @@ async function getDataFromSheet(blob: Blob, name: string) {
 	return await readXlsxFile(blob, { sheet: name });
 }
 
-function getDataFromSheets(queryList: any[], resultList: Record<string, any> = {}): any {
+function getDataFromSheets(queryList: unknown[], resultList: Record<string, unknown> = {}): unknown {
 	return new Promise((resolve) => {
 		if (queryList.length === 0) {
 			resolve(resultList);
@@ -35,7 +35,7 @@ function getDataFromSheets(queryList: any[], resultList: Record<string, any> = {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 		const { sheet, promise } = query;
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-		promise.then((result: any) => {
+		promise.then((result: unknown) => {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
 			resultList[sheet] = result;
 			resolve(getDataFromSheets(queryList, resultList));
@@ -48,7 +48,7 @@ export const getDataFromExcel = async () => {
 		const result = await fetch('/test-results/bitv-test.xlsx');
 		const blob = await result.blob();
 		const sheets = await readSheetNames(blob);
-		const data: any[] = [];
+		const data: unknown[] = [];
 		sheets.forEach((sheet) => {
 			if (WHITELIST.includes(sheet)) {
 				data.push({

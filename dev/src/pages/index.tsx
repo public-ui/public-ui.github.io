@@ -4,7 +4,8 @@ import { KolKolibri, KolLink, KolLinkButton, KolLogo } from '@public-ui/react';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
-import React, { FunctionComponent } from 'react';
+import type { FunctionComponent } from 'react';
+import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
 
 const HomepageHeader: FunctionComponent = () => (

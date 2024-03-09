@@ -1,4 +1,5 @@
-import { isTheme, Store, Theme } from './theme';
+import type { Store, Theme } from './theme';
+import { isTheme } from './theme';
 import PackageJson from '../../node_modules/@public-ui/components/package.json';
 
 const STORE_IDENTIFIER = `public-ui.v${PackageJson.version}`;

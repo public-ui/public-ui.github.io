@@ -23,6 +23,10 @@ module.exports = {
 			plugins: ['@typescript-eslint', 'jsx-a11y', 'react'],
 			rules: {
 				/**
+				 * Import types with `import type` instead of `import`.
+				 */
+				'@typescript-eslint/consistent-type-imports': 'warn',
+				/**
 				 * This setting is necessary because required and optional properties
 				 * and states build on each other in API design. If duplicate or redundant
 				 * types were not used, changes to base types would not be propagated

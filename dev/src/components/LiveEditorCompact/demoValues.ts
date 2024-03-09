@@ -1,4 +1,4 @@
-import { ImplementedTagName } from '@site/src/components/LiveEditorCompact/types';
+import type { ImplementedTagName } from '@site/src/components/LiveEditorCompact/types';
 
 const demoValues: Partial<Record<ImplementedTagName, Record<string, string>>> = {
 	abbr: {

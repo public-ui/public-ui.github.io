@@ -1,4 +1,4 @@
-import { SelectOption } from '@public-ui/components';
+import type { SelectOption } from '@public-ui/components';
 
 export type Theme = 'unstyled' | 'bmf' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund';
 

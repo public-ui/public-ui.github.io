@@ -30,6 +30,21 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 | `_requiredText` | `_required-text` | Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.                                                                                         | `boolean` \| `string` \| `undefined`                                                                              | `true`      |
 
 
+## Methods
+
+### focusErrorList
+
+`focusErrorList() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Slots
 
 | Slot | Description      |

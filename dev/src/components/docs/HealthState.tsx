@@ -1,10 +1,16 @@
 import { KolTable } from '@public-ui/react';
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import { dangerouslySetInnerHTML, getPackageName } from '../../shares/utils';
 
 type Props = {
 	lang: 'de' | 'en';
 	version: '1' | '2';
+};
+
+type Tupel = {
+	name: string;
+	scope: string;
 };
 
 const DATA_V1 = [
@@ -157,14 +163,14 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 							{
 								label: 'Package',
 								key: 'name',
-								render: (_el, _cell, tupel) => `${getPackageName(tupel.scope, tupel.name)}`,
+								render: (_el, _cell, tupel: Tupel) => `${getPackageName(tupel.scope, tupel.name)}`,
 								width: '15em',
 							},
 							{
 								label: 'Version',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://www.npmjs.com/package/${getPackageName(
@@ -183,7 +189,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								key: 'name',
 								textAlign: 'center',
 
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://npmcharts.com/compare/${getPackageName(
@@ -201,7 +207,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Quality',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel) =>
+								render: (el) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<img alt="" src="https://packagequality.com/shield/create-kolibri.svg" />`
@@ -211,7 +217,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Install size',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://packagephobia.com/result?p=${getPackageName(
@@ -226,7 +232,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Dependencies',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://libraries.io/npm/${getPackageName(
@@ -241,7 +247,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 							{
 								label: 'Health',
 								key: 'name',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(
@@ -256,7 +262,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Vulnerabilities*',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(
@@ -286,14 +292,14 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 							{
 								label: 'Package',
 								key: 'name',
-								render: (_el, _cell, tupel) => `${getPackageName(tupel.scope, tupel.name)}`,
+								render: (_el, _cell, tupel: Tupel) => `${getPackageName(tupel.scope, tupel.name)}`,
 								width: '15em',
 							},
 							{
 								label: 'Version',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://www.npmjs.com/package/${getPackageName(
@@ -311,7 +317,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Downloads',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://npmcharts.com/compare/${getPackageName(
@@ -339,7 +345,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Install size',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://packagephobia.com/result?p=${getPackageName(
@@ -354,7 +360,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Dependencies',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://libraries.io/npm/${getPackageName(
@@ -372,7 +378,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 							{
 								label: 'Health',
 								key: 'name',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(
@@ -390,7 +396,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Vulnerabilities*',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel) =>
+								render: (el, _cell, tupel: Tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(

@@ -1,5 +1,6 @@
 import { KolLink, KolTabs } from '@public-ui/react';
-import React, { FC, useState } from 'react';
+import type { FC} from 'react';
+import React, { useState } from 'react';
 
 type CodeSandboxProps = {
 	url: string;
