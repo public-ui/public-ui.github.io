@@ -51,19 +51,6 @@ Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefr
 | `_src`                | `_src`    | Sets the image `src` attribute to the given string.                                                                | `string` \| `undefined` | `undefined` |
 
 
-## Dependencies
-
-### Used by
-
- - [kol-avatar](.)
-
-### Graph
-```mermaid
-graph TD;
-  kol-avatar --> kol-avatar-wc
-  style kol-avatar-wc stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

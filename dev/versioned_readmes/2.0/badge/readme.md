@@ -106,30 +106,6 @@ Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hie
 | `_smartButton`        | `_smart-button` | Allows to add a button with an arbitrary action within the element (_hide-label only).                             | `string` \| `undefined` \| `{ _label: string; } & { _tabIndex?: number` \| `undefined; _value?: Stringified<StencilUnknown>; _role?: AlternativeButtonLinkRolePropType` \| `undefined; _ariaControls?: string` \| `undefined; _ariaExpanded?: boolean` \| `undefined; _ariaSelected?: boolean` \| `undefined; _on?: ButtonCallbacksPropType<StencilUnknown>` \| `undefined; _type?: "button"` \| `"reset"` \| `"submit"` \| `undefined; _variant?: "primary"` \| `"secondary"` \| `"normal"` \| `"tertiary"` \| `"danger"` \| `"ghost"` \| `"custom"` \| `undefined; _customClass?: string` \| `undefined; _disabled?: boolean` \| `undefined; _hideLabel?: boolean` \| `undefined; _icons?: IconsPropType` \| `undefined; _id?: string` \| `undefined; _name?: string` \| `undefined; _syncValueBySelector?: string` \| `undefined; _tooltipAlign?: AlignPropType` \| `undefined; _accessKey?: string` \| `undefined; }` | `undefined` |
 
 
-## Dependencies
-
-### Used by
-
- - [kol-version](./version)
-
-### Depends on
-
-- kol-button-wc
-- kol-span-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-badge --> kol-button-wc
-  kol-badge --> kol-span-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-version --> kol-badge
-  style kol-badge stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

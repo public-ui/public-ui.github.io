@@ -12,19 +12,6 @@
 | `_label` _(required)_ | `_label`  | Defines the label of the tree. | `string` | `undefined` |
 
 
-## Dependencies
-
-### Used by
-
- - [kol-tree](.)
-
-### Graph
-```mermaid
-graph TD;
-  kol-tree --> kol-tree-wc
-  style kol-tree-wc stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

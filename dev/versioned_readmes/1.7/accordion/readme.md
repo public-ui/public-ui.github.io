@@ -126,25 +126,6 @@ Standardansicht gelegt.
 | `"header"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions. |
 
 
-## Dependencies
-
-### Depends on
-
-- [kol-heading-wc](./heading)
-- kol-button-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-accordion --> kol-heading-wc
-  kol-accordion --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-accordion fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

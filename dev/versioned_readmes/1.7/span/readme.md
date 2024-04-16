@@ -28,20 +28,6 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 | `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string`                                                               | `undefined` |
 
 
-## Dependencies
-
-### Depends on
-
-- kol-span-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-span --> kol-span-wc
-  kol-span-wc --> kol-icon
-  style kol-span fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

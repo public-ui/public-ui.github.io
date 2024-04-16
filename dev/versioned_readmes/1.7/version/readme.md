@@ -31,25 +31,6 @@ Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 | `_version` | `_version` | <span className="text-red-500">**[DEPRECATED]**</span> use _label instead<br/><br/>Deprecated: Gibt die Versionsnummer als Text an. | `string` \| `undefined` | `undefined` |
 
 
-## Dependencies
-
-### Depends on
-
-- [kol-badge](./badge)
-
-### Graph
-```mermaid
-graph TD;
-  kol-version --> kol-badge
-  kol-badge --> kol-button-wc
-  kol-badge --> kol-span-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-version fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

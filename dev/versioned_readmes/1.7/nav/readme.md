@@ -129,34 +129,6 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 | `_variant`            | `_variant`            | <span className="text-red-500">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Deprecated: Defines which variant should be used for presentation. | `"primary"` \| `"secondary"` \| `undefined`                         | `'primary'`  |
 
 
-## Dependencies
-
-### Depends on
-
-- kol-button-link-text-switch
-- kol-button-wc
-- [kol-button](./button)
-
-### Graph
-```mermaid
-graph TD;
-  kol-nav --> kol-button-link-text-switch
-  kol-nav --> kol-button-wc
-  kol-nav --> kol-button
-  kol-button-link-text-switch --> kol-button-wc
-  kol-button-link-text-switch --> kol-link-wc
-  kol-button-link-text-switch --> kol-span-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-button --> kol-button-wc
-  style kol-nav fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

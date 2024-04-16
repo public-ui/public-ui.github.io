@@ -57,21 +57,6 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 |      | Der Begriff, der erläutert werden soll. |
 
 
-## Dependencies
-
-### Depends on
-
-- [kol-tooltip-wc](./tooltip)
-
-### Graph
-```mermaid
-graph TD;
-  kol-abbr --> kol-tooltip-wc
-  kol-tooltip-wc --> kol-span-wc
-  kol-span-wc --> kol-icon
-  style kol-abbr fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

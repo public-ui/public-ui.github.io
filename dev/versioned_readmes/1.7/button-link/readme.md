@@ -51,23 +51,6 @@ Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `seconda
 | `_value`              | `_value`         | Defines the value that the button emits on click.                                                                                                                                                                                                                                                                                                                                                    | `boolean` \| `null` \| `number` \| `object` \| `string` \| `undefined`                                                                                           | `undefined` |
 
 
-## Dependencies
-
-### Depends on
-
-- kol-button-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-button-link --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-button-link fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

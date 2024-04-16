@@ -1,4 +1,4 @@
-<kol-alert _type="warning">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
+<kol-alert _type="info" _variant="card">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
 
 Die **Tooltip**-Komponente implementiert das Gegenstück zum `Aria-Label`. Es ist also explizit nur dafür vorgesehen, dem/der Nutzer:in ohne Screenreader die Beschriftung eines Elementes anzuzeigen.
 
@@ -40,31 +40,6 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
 | `_id`                 | `_id`     | Defines the internal ID of the primary component element.                                                          | `string` \| `undefined`                                 | `undefined` |
 | `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
 
-
-## Dependencies
-
-### Used by
-
- - [kol-abbr](./abbr)
- - kol-button-wc
- - kol-input
- - kol-link-wc
-
-### Depends on
-
-- kol-span-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-tooltip-wc --> kol-span-wc
-  kol-span-wc --> kol-icon
-  kol-abbr --> kol-tooltip-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-input --> kol-tooltip-wc
-  kol-link-wc --> kol-tooltip-wc
-  style kol-tooltip-wc fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

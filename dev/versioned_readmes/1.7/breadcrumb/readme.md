@@ -93,27 +93,6 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 | `_links` _(required)_ | `_links`      | Defines the list of links combined with their labels to render.                                                                            | `BreadcrumbLinkProps[]` \| `string` | `undefined` |
 
 
-## Dependencies
-
-### Depends on
-
-- [kol-icon](./icon)
-- [kol-link](./link)
-
-### Graph
-```mermaid
-graph TD;
-  kol-breadcrumb --> kol-icon
-  kol-breadcrumb --> kol-link
-  kol-link --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-breadcrumb fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

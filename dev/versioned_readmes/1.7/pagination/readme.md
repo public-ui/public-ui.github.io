@@ -61,42 +61,6 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 | `_variant`           | `_variant`           | Defines which variant should be used for presentation.                                                             | `"custom"` \| `"danger"` \| `"ghost"` \| `"normal"` \| `"primary"` \| `"secondary"` \| `"tertiary"` \| `undefined`                                                                                                                   | `'normal'`  |
 
 
-## Dependencies
-
-### Used by
-
- - [kol-table](./table)
-
-### Depends on
-
-- [kol-button](./button)
-- [kol-select](./select)
-- kol-button-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-pagination --> kol-button
-  kol-pagination --> kol-select
-  kol-pagination --> kol-button-wc
-  kol-button --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-select --> kol-input
-  kol-input --> kol-icon
-  kol-input --> kol-button-wc
-  kol-input --> kol-tooltip-wc
-  kol-input --> kol-alert
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  kol-table --> kol-pagination
-  style kol-pagination fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

@@ -100,25 +100,6 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 | `_tabsAlign`         | `_tabs-align` | <span className="text-red-500">**[DEPRECATED]**</span> Use _align.<br/><br/>Deprecated: Setzt die Position der Registrierkarten.                  | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                                                                                                                                    | `'top'`     |
 
 
-## Dependencies
-
-### Depends on
-
-- [kol-button-group-wc](./button-group)
-- kol-button-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-tabs --> kol-button-group-wc
-  kol-tabs --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-tabs fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

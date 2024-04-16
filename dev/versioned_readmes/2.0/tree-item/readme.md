@@ -56,30 +56,6 @@ Type: `Promise<boolean>`
 
 
 
-## Dependencies
-
-### Used by
-
- - [kol-tree-item](.)
-
-### Depends on
-
-- [kol-link](./link)
-
-### Graph
-```mermaid
-graph TD;
-  kol-tree-item-wc --> kol-link
-  kol-link --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-tree-item --> kol-tree-item-wc
-  style kol-tree-item-wc stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

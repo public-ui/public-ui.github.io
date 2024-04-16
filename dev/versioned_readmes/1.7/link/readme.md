@@ -89,37 +89,6 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 | `_useCase`           | `_use-case`            | <span className="text-red-500">**[DEPRECATED]**</span> will be removed in v2<br/><br/>Deprecated: Gibt den Verwendungsfall des Links an.                                                                                                                                                                                                                            | `"image"` \| `"nav"` \| `"text"` \| `undefined`                                           | `'text'`    |
 
 
-## Dependencies
-
-### Used by
-
- - [kol-breadcrumb](./breadcrumb)
- - [kol-form](./form)
- - [kol-input-adapter-leanup](./input-adapter-leanup)
- - [kol-link-group](./link-group)
- - [kol-quote](./quote)
-
-### Depends on
-
-- kol-link-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-link --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-breadcrumb --> kol-link
-  kol-form --> kol-link
-  kol-input-adapter-leanup --> kol-link
-  kol-link-group --> kol-link
-  kol-quote --> kol-link
-  style kol-link fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

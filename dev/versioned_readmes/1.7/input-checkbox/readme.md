@@ -73,7 +73,7 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 | `_indeterminate` | `_indeterminate` | Puts the checkbox in the indeterminate state, does not change the value of _checked.                                                                                     | `boolean` \| `undefined`                                                                                                                                                                                                                                                                                          | `undefined` |
 | `_label`         | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.             | `string` \| `undefined`                                                                                                                                                                                                                                                                                           | `undefined` |
 | `_name`          | `_name`          | Defines the technical name of an input field.                                                                                                                            | `string` \| `undefined`                                                                                                                                                                                                                                                                                           | `undefined` |
-| `_on`            | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                                | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus` \| `undefined`                                                                                                                                                                                                                        | `undefined` |
+| `_on`            | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                                | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput` \| `undefined`                                                                                                                                                                                                     | `undefined` |
 | `_required`      | `_required`      | Makes the input element required.                                                                                                                                        | `boolean` \| `undefined`                                                                                                                                                                                                                                                                                          | `false`     |
 | `_tabIndex`      | `_tab-index`     | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                         | `number` \| `undefined`                                                                                                                                                                                                                                                                                           | `undefined` |
 | `_tooltipAlign`  | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                                | `"bottom"` \| `"left"` \| `"right"` \| `"top"` \| `undefined`                                                                                                                                                                                                                                                           | `'top'`     |
@@ -89,33 +89,6 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 | ---- | ------------------------------ |
 |      | Die Beschriftung der Checkbox. |
 
-
-## Dependencies
-
-### Depends on
-
-- kol-input
-- [kol-icon](./icon)
-
-### Graph
-```mermaid
-graph TD;
-  kol-input-checkbox --> kol-input
-  kol-input-checkbox --> kol-icon
-  kol-input --> kol-icon
-  kol-input --> kol-button-wc
-  kol-input --> kol-tooltip-wc
-  kol-input --> kol-alert
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  style kol-input-checkbox fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

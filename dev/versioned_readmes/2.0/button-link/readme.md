@@ -62,23 +62,6 @@ Type: `Promise<Stringified<StencilUnknown>>`
 
 
 
-## Dependencies
-
-### Depends on
-
-- kol-button-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-button-link --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-button-link stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

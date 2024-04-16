@@ -59,24 +59,6 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 | `_links` _(required)_ | `_links`      | Defines the list of links combined with their labels to render.                                                                            | `LinkProps[]` \| `string` | `undefined` |
 
 
-## Dependencies
-
-### Depends on
-
-- kol-link-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-skip-nav --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-skip-nav fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

@@ -52,24 +52,6 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
 | `_variant`            | `_variant`             | Defines which variant should be used for presentation.                                                                                                                                                                                                                                                                                                       | `"custom"` \| `"danger"` \| `"ghost"` \| `"normal"` \| `"primary"` \| `"secondary"` \| `"tertiary"` \| `undefined` | `'normal'`  |
 
 
-## Dependencies
-
-### Depends on
-
-- kol-link-wc
-
-### Graph
-```mermaid
-graph TD;
-  kol-link-button --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-link-button fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 
