@@ -353,7 +353,9 @@ noch die Icons ausgegeben.`,
 	desc: `> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
 
 Die **Popover**-Komponente stellt eine Möglichkeit dar zusätzliche Inhalte in ein temporäres Element zu setzen, das, ähnlich wie <kol-link _href="" _label="Tooltip"></kol-link>, um sein Triggerelement angeordnet ist.
-Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).`,
+Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
+
+<kol-alert _type="info" _variant="card">Die **Popover**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden.</kol-alert>`,
 	props: `_align, _show`
 },{
 	name: `progress`,
@@ -415,7 +417,7 @@ angezeigt, bis sie geschlossen wird. Werden mehrere Toasts geöffnet, ohne das d
 	props: ``
 },{
 	name: `tooltip-wc`,
-	desc: `<kol-alert _type="warning">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
+	desc: `<kol-alert _type="info" _variant="card">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
 
 Die **Tooltip**-Komponente implementiert das Gegenstück zum 'Aria-Label'. Es ist also explizit nur dafür vorgesehen, dem/der Nutzer:in ohne Screenreader die Beschriftung eines Elementes anzuzeigen.
 
@@ -514,7 +516,7 @@ interactive element is focused or the mouse is over it.`,
 },{
 	name: `_value`,
 	desc: `Defines the progress.`,
-	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null, W3CInputValue[] | string, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null | number, boolean | null | number | object | string, number, number | string, string`,
+	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null, W3CInputValue[] | string, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null | number, boolean | null | number | object | string, number, string`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, progress, select, split-button, textarea`
 },{
 	name: `_id`,
@@ -554,7 +556,7 @@ interactive element is focused or the mouse is over it.`,
 },{
 	name: `_variant`,
 	desc: `Defines which variant should be used for presentation.`,
-	types: `"bar" | "cycle" | "cycle-label-value" | "cycle-value-label", "block" | "inline", "button" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | "tertiary", "cycle" | "dot" | "none", "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "strong"`,
+	types: `"bar" | "cycle", "block" | "inline", "button" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | "tertiary", "cycle" | "dot" | "none", "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "strong"`,
 	comps: `alert, alert-wc, button, heading, input-checkbox, link-button, progress, quote, spin, split-button`
 },{
 	name: `_required`,
@@ -719,7 +721,7 @@ interactive element is focused or the mouse is over it.`,
 },{
 	name: `_options`,
 	desc: `Options the user can choose from, also supporting Optgroup.`,
-	types: `(Option<W3CInputValue> | Optgroup<W3CInputValue>)[] | string, Option<W3CInputValue>[] | string`,
+	types: `(Option<StencilUnknown> | Optgroup<StencilUnknown>)[] | string, Option<StencilUnknown>[] | string`,
 	comps: `input-radio, select`
 },{
 	name: `_active`,
