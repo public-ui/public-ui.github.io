@@ -1,0 +1,2 @@
+/*! For license information please see 8063.js.LICENSE.txt */
+"use strict";(self.webpackChunk_public_ui_designer=self.webpackChunk_public_ui_designer||[]).push([[8063],{68063:(e,t,u)=>{u.r(t),u.d(t,{default:()=>o}),setInterval((()=>{const e=document.querySelectorAll("kol-accordion,kol-details");e&&e.forEach((e=>{e.hasAttribute("_open")?e.removeAttribute("_open"):e.setAttribute("_open","")}))}),1e3);const o={}}}]);

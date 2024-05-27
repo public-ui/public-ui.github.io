@@ -1,0 +1,2 @@
+/*! For license information please see 5470.js.LICENSE.txt */
+"use strict";(self.webpackChunk_public_ui_designer=self.webpackChunk_public_ui_designer||[]).push([[5470],{95470:(e,r,t)=>{t.r(r),t.d(r,{default:()=>u});const s=document.querySelector("kol-input-text");s&&(console.log(s),setInterval((()=>{s.hasAttribute("_error")?s.removeAttribute("_error"):s.setAttribute("_error","This is an error")}),1e3));const u={}}}]);
