@@ -68,6 +68,7 @@ export type Params = {
 	_on?: {
 		onBlur?: (e: Event) => void;
 		onChange?: (e: Event, v: unknown) => void;
+		onInput?: (e: Event, v: unknown) => void;
 		onCreate?: EventCallback<Event> | { label: string; callback: EventCallback<Event> };
 		onClick?: (e: Event) => void;
 		onClose?: (e: Event) => void;

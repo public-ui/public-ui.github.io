@@ -89,9 +89,9 @@ Type: `Promise<void>`
 
 #### Parameters
 
-| Name    | Type                                                                                                                                                                                                                                                          | Description |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ description?: string` \| `undefined; render?: ((nodeRef: HTMLElement, options: { close: () => void; }) => void)` \| `undefined; label: string; type: "error"` \| `"warning"` \| `"info"` \| `"success"` \| `"default"; alertVariant?: "card"` \| `"msg"` \| `undefined; }` |             |
+| Name    | Type                                                                                                                                                                                                            | Description |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `toast` | `{ description?: string` \| `undefined; render?: ToastRenderFunction` \| `undefined; label: string; type: "error"` \| `"warning"` \| `"info"` \| `"success"` \| `"default"; alertVariant?: "card"` \| `"msg"` \| `undefined; }` |             |
 
 #### Returns
 

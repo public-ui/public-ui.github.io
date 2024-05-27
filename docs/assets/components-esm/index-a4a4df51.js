@@ -1,1 +1,0 @@
-/*! * KoliBri - The accessible HTML-Standard */ switch(location.pathname){case"/dev/toaster.html":import("./toaster-f89ddf4f.js");break;case"/dev/reprod-accordion-does-not-toggle-with-open.html":import("./reprod-accordion-does-not-toggle-with-open-930fccf8.js");break;case"/dev/details-synced-open-state.html":import("./details-synced-open-state-45ecc035.js")}

@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ import{i as watchString}from"./prop.validators-28badc7d.js";const validateCustomClass=(a,s)=>{watchString(a,"_customClass",s,{defaultValue:void 0})};export{validateCustomClass as v};

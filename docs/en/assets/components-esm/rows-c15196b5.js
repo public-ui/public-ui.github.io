@@ -1,1 +1,0 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{e as watchNumber}from"./prop.validators-e8e7611e.js";const validateRows=(a,e)=>{watchNumber(a,"_rows",e,{min:1})};export{validateRows as v};

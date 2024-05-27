@@ -41,7 +41,7 @@ export function AttributeInput(props: Props) {
 							<KolInputText
 								className="my-2"
 								_label=""
-								_on={{ onChange: (_event, value) => update(attribute.name, value as string) }}
+								_on={{ onInput: (_event, value) => update(attribute.name, value as string) }}
 								_value={(value as string) || ''}
 							>
 								<span slot="expert">{label}</span>
@@ -52,7 +52,7 @@ export function AttributeInput(props: Props) {
 							<KolInputNumber
 								className="my-2"
 								_label=""
-								_on={{ onChange: (_event, value) => update(attribute.name, value as number) }}
+								_on={{ onInput: (_event, value) => update(attribute.name, value as number) }}
 								_value={value as number}
 							>
 								<span slot="expert">{label}</span>
@@ -64,7 +64,7 @@ export function AttributeInput(props: Props) {
 								className="my-2"
 								_checked={value === true}
 								_label=""
-								_on={{ onChange: (_event, value) => update(attribute.name, value as boolean) }}
+								_on={{ onInput: (_event, value) => update(attribute.name, value as boolean) }}
 								_variant="switch"
 								_value={true}
 							>

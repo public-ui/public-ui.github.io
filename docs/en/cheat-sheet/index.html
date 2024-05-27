@@ -240,6 +240,14 @@ Die **Card**-Komponente besteht aus einem **_Titel-Bereich_**, einem **_Inhalts-
 Der **Titel-Bereich** wird in einer größeren Schrift dargestellt. Der **Inhalts-Bereich** ist optisch durch eine horizontale Trennlinie unterhalb des Titel-Bereichs abgetrennt und wird in der Standardschrift ausgegeben.`,
 	props: `_has-closer, _label, _level`
 },{
+	name: `combobox`,
+	desc: `<kol-alert _type="warning">
+  Komponente ist ein Entwurf - Vorläufig nicht in Produktion verwenden.
+</kol-alert>
+
+Die **Combobox**-Komponente erzeugt eine Auswahlliste, die ein Eingabefeld mit einer darunter angezeigten Liste von auswählbaren Optionen kombiniert.`,
+	props: `_access-key, _alert, _disabled, _hide-error, _hide-label, _hint, _icons, _id, _label, _name, _placeholder, _required, _tab-index, _tooltip-align, _touched, _value`
+},{
 	name: `details`,
 	desc: `Mit Hilfe der **Detail**-Komponente können weiterführende Informationen zunächst mit einem kurzen Einleitungstext angezeigt werden, die erst nach Klick
 durch die Nutzer:innen auf ein Pfeil-Icon in voller Größe aufgeklappt werden.
@@ -317,7 +325,9 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-error, _hide-label, _hint, _icons, _id, _label, _max, _min, _name, _step, _suggestions, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `input-text`,
-	desc: `Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe, URLs oder Telefonnummern.`,
+	desc: `Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe, URLs oder Telefonnummern.
+
+Die Komponente hat Known-Issues bezüglich Browserabhängigkeit und Barrierefreiheit. Näheres kann unter [KNOWN_ISSUES.md](https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md) nachgelssen werden.`,
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-error, _hide-label, _hint, _icons, _id, _label, _max-length, _name, _pattern, _placeholder, _read-only, _required, _smart-button, _suggestions, _tab-index, _tooltip-align, _touched, _type, _value`
 },{
 	name: `link`,
@@ -396,12 +406,50 @@ dem sich weitere Aktionen verbergen.
 	props: `_label, _symbol`
 },{
 	name: `table`,
-	desc: `Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+	desc: `<KolAlert _type="warning" _variant="msg">
+  KolTable ist deprecated, bitte stattdessen
+  <kol-link _label="KolTableStateful" _href="https://github.com/public-ui/kolibri/blob/develop/packages/components/src/components/table-stateless/readme.md">
+  verwenden, die API und Funktionalität sind identisch.
+</KolAlert>
+
+Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 
 <kol-indented-text _summary="Backend-seitige Pagination">
 	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der Table-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden.
 </kol-indented-text>`,
 	props: `_allow-multi-sort, _data, _data-foot, _headers, _label, _min-width, _pagination, _pagination-position`
+},{
+	name: `table-stateful`,
+	desc: `<KolAlert _type="warning" _variant="msg">
+  <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+</KolAlert>
+
+Die **TableStateful**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+
+<kol-indented-text _summary="Backend-seitige Pagination">
+	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der TableStateless-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden. Eine mögliche Sortierung muss ebenfalls über die 'onSort'-Events selber implementiert werden. Siehe [KolTableStateless](../table-stateless/readme.md).
+</kol-indented-text>`,
+	props: `_allow-multi-sort, _data, _data-foot, _headers, _label, _min-width, _pagination, _pagination-position`
+},{
+	name: `table-stateless`,
+	desc: `<KolAlert _type="warning" _variant="msg">
+  <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+</KolAlert>
+
+Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Für eine Tabellen-Komponente, die Sortierung und Paginierung mit den zur Verfügung gestellten Daten automatisch übernehmen kann, siehe [KolTableStateful](../table-stateful/readme.md).
+
+TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es nicht praktikabel ist, die komplette Datenmenge zur Filterung und Sortierung in den Browser auszuliefern.`,
+	props: `_data, _data-foot, _header-cells, _label, _min-width, _selection`
+},{
+	name: `table-stateless-wc`,
+	desc: `<KolAlert _type="warning" _variant="msg">
+  <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+</KolAlert>
+
+Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Für eine Tabellen-Komponente, die Sortierung und Paginierung mit den zur Verfügung gestellten Daten automatisch übernehmen kann, siehe [KolTableStateful](../table-stateful/readme.md).
+
+TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es nicht praktikabel ist, die komplette Datenmenge zur Filterung und Sortierung in den Browser auszuliefern.`,
+	props: `_data, _data-foot, _header-cells, _label, _min-width, _selection`
 },{
 	name: `tabs`,
 	desc: `Die **Tabs**-Komponente wird verwendet, um verwandte Inhalte auf derselben Seite zu organisieren und zwischen ihnen zu navigieren. Tabs sorgen dafür, dass große Inhaltsmengen für Nutzer:innen leichter organisiert werden können. Tabs sind in Registerkartenleisten angeordnet, die als Registerkartengruppen bezeichnet werden, wobei die Registerkartenbeschriftung den Nutzer:innen einen Hinweis darauf gibt, welcher Inhalt angezeigt wird, wenn die Registerkarte ausgewählt wird.`,
@@ -415,6 +463,30 @@ dem sich weitere Aktionen verbergen.
 	desc: `Mit dem **Toast**-Service geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird am Kopf des Browserfenster
 angezeigt, bis sie geschlossen wird. Werden mehrere Toasts geöffnet, ohne das die bisherigen geschlossen wurden, so werden diese untereinander angezeigt.`,
 	props: ``
+},{
+	name: `toolbar`,
+	desc: `<kol-alert _type="warning">
+  Komponente ist ein Entwurf - Vorläufig nicht in Produktion verwenden.
+</kol-alert>
+
+Die Komponente **Toolbar** ist eine Sammlung häufig verwendeter Steuerelemente für Schaltflächen und Links, die in einer kompakten visuellen Form zusammengefasst sind. Die Toolbar ist in der Regel eine Untermenge von Funktionen, die in einer Menüleiste zu finden sind, um den Aufwand für den Benutzer zu verringern.
+
+'''html
+<kol-toolbar
+	_label="Label"
+	_items=[
+    {
+      {
+        _label: "Button",
+      },
+      {
+        _href: "#",
+        _label: "Link"
+      },
+    }
+]></kol-toolbar>
+'''`,
+	props: `_label`
 },{
 	name: `tooltip-wc`,
 	desc: `<kol-alert _type="info" _variant="card">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
@@ -481,88 +553,88 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_label`,
 	desc: `Defines the label of the link.`,
 	types: `string`,
-	comps: `abbr, accordion, alert, alert-wc, avatar, avatar-wc, badge, breadcrumb, button, button-link, card, details, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, pagination, progress, quote, select, skip-nav, split-button, symbol, table, tabs, textarea, tooltip-wc, tree, tree-item, tree-item-wc, tree-wc`
+	comps: `abbr, accordion, alert, alert-wc, avatar, avatar-wc, badge, breadcrumb, button, button-link, card, combobox, details, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, pagination, progress, quote, select, skip-nav, split-button, symbol, table, table-stateful, table-stateless, table-stateless-wc, tabs, textarea, toolbar, tooltip-wc, tree, tree-item, tree-item-wc, tree-wc`
 },{
 	name: `_tooltip-align`,
 	desc: `Defines where to show the Tooltip preferably: top, right, bottom or left.`,
 	types: `"bottom" | "left" | "right" | "top"`,
-	comps: `abbr, button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, pagination, select, split-button, textarea`
+	comps: `abbr, button, button-link, combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, pagination, select, split-button, textarea`
 },{
 	name: `_disabled`,
 	desc: `Makes the element not focusable and ignore all events.`,
 	types: `boolean`,
-	comps: `accordion, button, button-link, details, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
+	comps: `accordion, button, button-link, combobox, details, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_hide-label`,
 	desc: `Hides the caption by default and displays the caption text with a tooltip when the
 interactive element is focused or the mouse is over it.`,
 	types: `boolean`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, nav, select, split-button, textarea`
+	comps: `button, button-link, combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, nav, select, split-button, textarea`
 },{
 	name: `_tab-index`,
 	desc: `Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)`,
 	types: `number`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
+	comps: `button, button-link, combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_icons`,
 	desc: `Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).`,
 	types: `KoliBriHorizontalIcons & KoliBriVerticalIcons | string, string, string | { checked: string; indeterminate?: string; unchecked?: string; } | { checked?: string; indeterminate: string; unchecked?: string; } | { checked?: string; indeterminate?: string; unchecked: string; }, string | { right?: IconOrIconClass; left?: IconOrIconClass; }`,
-	comps: `badge, button, button-link, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select, split-button`
+	comps: `badge, button, button-link, combobox, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select, split-button`
 },{
 	name: `_access-key`,
 	desc: `Defines the elements access key.`,
 	types: `string`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, textarea, tooltip-wc`
+	comps: `button, button-link, combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, textarea, tooltip-wc`
 },{
 	name: `_value`,
 	desc: `Defines the progress.`,
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null, W3CInputValue[] | string, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null | number, boolean | null | number | object | string, number, string`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, progress, select, split-button, textarea`
+	comps: `button, button-link, combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, progress, select, split-button, textarea`
 },{
 	name: `_id`,
 	desc: `Defines the internal ID of the primary component element.`,
 	types: `string`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea, tooltip-wc`
+	comps: `button, button-link, combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea, tooltip-wc`
 },{
 	name: `_name`,
 	desc: `Defines the technical name of an input field.`,
 	types: `string`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
+	comps: `button, button-link, combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
 },{
 	name: `_alert`,
 	desc: `Defines whether the screen-readers should read out the notification.`,
 	types: `boolean`,
-	comps: `alert, alert-wc, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
+	comps: `alert, alert-wc, combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_touched`,
 	desc: `Shows if the input was touched by a user.`,
 	types: `boolean`,
-	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
+	comps: `combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_hint`,
 	desc: `Defines the hint text.`,
 	types: `string`,
-	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
+	comps: `combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_hide-error`,
 	desc: `Hides the error message but leaves it in the DOM for the input's aria-describedby.`,
 	types: `boolean`,
-	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
+	comps: `combobox, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_error`,
 	desc: `Defines the error message text.`,
 	types: `string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
+	name: `_required`,
+	desc: `Makes the input element required.`,
+	types: `boolean`,
+	comps: `combobox, input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
+},{
 	name: `_variant`,
 	desc: `Defines which variant should be used for presentation.`,
 	types: `"bar" | "cycle", "block" | "inline", "button" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | "tertiary", "cycle" | "dot" | "none", "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "strong"`,
 	comps: `alert, alert-wc, button, heading, input-checkbox, link-button, progress, quote, spin, split-button`
-},{
-	name: `_required`,
-	desc: `Makes the input element required.`,
-	types: `boolean`,
-	comps: `input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
 },{
 	name: `_smart-button`,
 	desc: `Allows to add a button with an arbitrary action within the element (_hide-label only).`,
@@ -589,15 +661,15 @@ interactive element is focused or the mouse is over it.`,
 	types: `boolean`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
 },{
+	name: `_placeholder`,
+	desc: `Defines the placeholder for input field. To be shown when there's no value.`,
+	types: `string`,
+	comps: `combobox, input-email, input-number, input-password, input-text, textarea`
+},{
 	name: `_role`,
 	desc: `Defines the role of the components primary element.`,
 	types: `"button" | "link" | "tab"`,
 	comps: `button, button-link, link, link-button, split-button`
-},{
-	name: `_placeholder`,
-	desc: `Defines the placeholder for input field. To be shown when there's no value.`,
-	types: `string`,
-	comps: `input-email, input-number, input-password, input-text, textarea`
 },{
 	name: `_max`,
 	desc: `Defines at which value the progress display is completed.`,
@@ -618,6 +690,21 @@ interactive element is focused or the mouse is over it.`,
 	desc: `If set (to true) opens/expands the element, closes if not set (or set to false).`,
 	types: `boolean`,
 	comps: `accordion, details, tree-item, tree-item-wc`
+},{
+	name: `_min-width`,
+	desc: `Defines the table min-width.`,
+	types: `string`,
+	comps: `table, table-stateful, table-stateless, table-stateless-wc`
+},{
+	name: `_data-foot`,
+	desc: `Defines the data for the table footer.`,
+	types: `KoliBriTableDataType[] | string`,
+	comps: `table, table-stateful, table-stateless, table-stateless-wc`
+},{
+	name: `_data`,
+	desc: `Defines the primary table data.`,
+	types: `KoliBriTableDataType[] | string`,
+	comps: `table, table-stateful, table-stateless, table-stateless-wc`
 },{
 	name: `_max-length`,
 	desc: `Defines the maximum number of input characters.`,
@@ -709,10 +796,40 @@ interactive element is focused or the mouse is over it.`,
 	types: `boolean`,
 	comps: `popover-wc, spin`
 },{
+	name: `_selection`,
+	desc: `Defines how rows can be selected and the current selection.`,
+	types: `string | ({ label: (row: KoliBriTableDataType) => string; keyPropertyName?: string; selectedKeys?: string[]; })`,
+	comps: `table-stateless, table-stateless-wc`
+},{
+	name: `_header-cells`,
+	desc: `Defines the horizontal and vertical table headers.`,
+	types: `string | { horizontal?: KoliBriTableHeaderCell[][]; vertical?: KoliBriTableHeaderCell[][]; }`,
+	comps: `table-stateless, table-stateless-wc`
+},{
 	name: `_rows`,
 	desc: `Defines how many rows of options should be visible at the same time.`,
 	types: `number`,
 	comps: `select, textarea`
+},{
+	name: `_pagination-position`,
+	desc: `Controls the position of the pagination.`,
+	types: `"both" | "bottom" | "top"`,
+	comps: `table, table-stateful`
+},{
+	name: `_pagination`,
+	desc: `Defines whether to show the data distributed over multiple pages.`,
+	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _max?: number; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _customClass?: string; _label?: string; _tooltipAlign?: AlignPropType; }`,
+	comps: `table, table-stateful`
+},{
+	name: `_headers`,
+	desc: `Defines the horizontal and vertical table headers.`,
+	types: `string | { horizontal?: KoliBriTableHeaderCellWithLogic[][]; vertical?: KoliBriTableHeaderCellWithLogic[][]; }`,
+	comps: `table, table-stateful`
+},{
+	name: `_allow-multi-sort`,
+	desc: `Defines whether to allow multi sort.`,
+	types: `boolean`,
+	comps: `table, table-stateful`
 },{
 	name: `_orientation`,
 	desc: `Defines whether the orientation of the component is horizontal or vertical.`,
@@ -828,41 +945,6 @@ interactive element is focused or the mouse is over it.`,
 	desc: `Defines the text of the quote.`,
 	types: `string`,
 	comps: `quote`
-},{
-	name: `_pagination-position`,
-	desc: `Controls the position of the pagination.`,
-	types: `"both" | "bottom" | "top"`,
-	comps: `table`
-},{
-	name: `_pagination`,
-	desc: `Defines whether to show the data distributed over multiple pages.`,
-	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _max?: number; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _customClass?: string; _label?: string; _tooltipAlign?: AlignPropType; }`,
-	comps: `table`
-},{
-	name: `_min-width`,
-	desc: `Defines the table min-width.`,
-	types: `string`,
-	comps: `table`
-},{
-	name: `_headers`,
-	desc: `Defines the horizontal and vertical table headers.`,
-	types: `string | { horizontal?: KoliBriTableHeaderCell[][]; vertical?: KoliBriTableHeaderCell[][]; }`,
-	comps: `table`
-},{
-	name: `_data-foot`,
-	desc: `Defines the data for the table footer.`,
-	types: `KoliBriTableDataType[] | string`,
-	comps: `table`
-},{
-	name: `_data`,
-	desc: `Defines the primary table data.`,
-	types: `KoliBriTableDataType[] | string`,
-	comps: `table`
-},{
-	name: `_allow-multi-sort`,
-	desc: `Defines whether to allow multi sort.`,
-	types: `boolean`,
-	comps: `table`
 },{
 	name: `_indeterminate`,
 	desc: `Puts the checkbox in the indeterminate state, does not change the value of _checked.`,

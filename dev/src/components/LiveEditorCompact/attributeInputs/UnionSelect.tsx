@@ -27,7 +27,7 @@ export function UnionSelect(props: Props) {
 			className="my-2"
 			_label=""
 			_options={JSON.stringify(list)}
-			_on={{ onChange: (_event: Event, value: unknown) => update(name, (value as string[])[0]) }}
+			_on={{ onInput: (_event: Event, value: unknown) => update(name, (value as string[])[0]) }}
 			_value={value ? [value] : undefined}
 		>
 			<span slot="expert">{label}</span>

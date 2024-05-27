@@ -1,0 +1,1 @@
+/*! * KoliBri - The accessible HTML-Standard */ import{i as watchString}from"./prop.validators-28badc7d.js";const validateHref=(a,r,t={})=>{watchString(a,"_href",r,t)};export{validateHref as v};

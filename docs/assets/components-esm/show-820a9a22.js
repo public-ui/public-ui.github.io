@@ -1,1 +1,0 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{a as watchBoolean}from"./prop.validators-e3efc9be.js";const validateShow=(a,o,e)=>{watchBoolean(a,"_show",o,e)};export{validateShow as v};
