@@ -135,3 +135,14 @@ kol-link-button {
 .used-by-gallery ul li {
 	width: 15rem;
 }
+
+/* Highlighting for the diff code blocks */
+.token.inserted-sign {
+	color: #00cc00;
+	background-color: #e6ffe6;
+}
+  
+.token.deleted-sign {
+	color: #cc0000;
+	background-color: #ffe6e6;
+}

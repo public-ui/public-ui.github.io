@@ -176,6 +176,7 @@ const config = {
 			prism: {
 				theme: themes.vsLight,
 				darkTheme: themes.vsDark,
+				additionalLanguages: ['diff'],
 			},
 			mermaid: {
 				theme: {
