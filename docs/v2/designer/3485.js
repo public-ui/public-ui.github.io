@@ -1,0 +1,2 @@
+/*! For license information please see 3485.js.LICENSE.txt */
+"use strict";(self.webpackChunk_public_ui_designer=self.webpackChunk_public_ui_designer||[]).push([[3485],{23485:(e,n,t)=>{t.r(n),t.d(n,{default:()=>s});const l=document.getElementById("details"),o=document.getElementById("button");l&&(l._on={onToggle:(e,n)=>{o._label="👆Details "+(n?"schließen":"öffnen")}}),o&&(o._on={onClick:()=>{l._open=!l._open}});const s={}}}]);
