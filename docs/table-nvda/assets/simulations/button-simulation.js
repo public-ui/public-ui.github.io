@@ -1,1 +1,1 @@
-var buttons = document.querySelectorAll('kol-button.not-used'); buttons.forEach((button) => {  button._on = {   onClick: () => {    alert(`Button "${button._label}" wurde geklickt.`);   },  }; }); 
+var buttons=document.querySelectorAll("kol-button.not-used");buttons.forEach((t=>{t._on={onClick:()=>{alert(`Button "${t._label}" wurde geklickt.`)}}}));

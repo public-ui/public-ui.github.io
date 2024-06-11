@@ -1,1 +1,1 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{v as validateAlignment}from"./align-d1a156ea.js";const validateTooltipAlign=(i,a)=>{validateAlignment(i,"_tooltipAlign",a)};export{validateTooltipAlign as v};
+/*! For license information please see tooltip-align-0c6ee8c8.js.LICENSE.txt */ import{v as validateAlignment}from"./align-d1a156ea.js";const validateTooltipAlign=(i,a)=>{validateAlignment(i,"_tooltipAlign",a)};export{validateTooltipAlign as v};

@@ -1,1 +1,1 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{i as watchString}from"./prop.validators-28badc7d.js";const validateAccessKey=(a,s)=>{watchString(a,"_accessKey",s)};export{validateAccessKey as v};
+/*! For license information please see access-key-2088944e.js.LICENSE.txt */ import{i as watchString}from"./prop.validators-28badc7d.js";const validateAccessKey=(a,s)=>{watchString(a,"_accessKey",s)};export{validateAccessKey as v};
