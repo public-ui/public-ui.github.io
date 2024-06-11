@@ -73,9 +73,15 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 ### closeAll
 
-`closeAll() => Promise<void>`
+`closeAll(immediate?: boolean) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| `immediate` | `boolean` |             |
 
 #### Returns
 

@@ -138,8 +138,6 @@ rimraf([...DOC_FOLDERS, '**/*.md'].join('/'), () => {
 				.replace(/\]\(..\//g, '](./')
 				.replace(/class=/g, 'className=')
 				.replace(/"_target/g, '" _target')
-				.replace(/KolAlert/g, 'kol-alert')
-				.replace(/stateless\/readme.md">/g, 'table-stateless/readme.md"></kol-link>')
 				.replace(/ *\\_/g, ' _')
 				.replace(
 					/(### )`([^(]+)/,
