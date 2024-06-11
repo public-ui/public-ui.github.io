@@ -1,1 +1,1 @@
-const on = {  onClose: console.log, }; const timeout = setTimeout(() => {  document.querySelectorAll('kol-alert').forEach((alert) => {   if (Math.random() > 0.5) {    alert._on = on;    alert.setAttribute('_has-closer', '');   }  }); }, 2500); 
+const on={onClose:console.log},timeout=setTimeout((()=>{document.querySelectorAll("kol-alert").forEach((o=>{Math.random()>.5&&(o._on=on,o.setAttribute("_has-closer",""))}))}),2500);

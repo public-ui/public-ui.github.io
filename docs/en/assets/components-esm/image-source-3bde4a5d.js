@@ -1,0 +1,1 @@
+/*! For license information please see image-source-3bde4a5d.js.LICENSE.txt */ import{i as watchString}from"./prop.validators-f2b9a155.js";const validateImageSource=(a,r,t)=>{watchString(a,"_src",r,t)};export{validateImageSource as v};

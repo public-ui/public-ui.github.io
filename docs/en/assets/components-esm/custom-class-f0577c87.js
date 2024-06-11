@@ -1,1 +1,1 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{i as watchString}from"./prop.validators-28badc7d.js";const validateCustomClass=(a,s)=>{watchString(a,"_customClass",s,{defaultValue:void 0})};export{validateCustomClass as v};
+/*! For license information please see custom-class-f0577c87.js.LICENSE.txt */ import{i as watchString}from"./prop.validators-28badc7d.js";const validateCustomClass=(a,s)=>{watchString(a,"_customClass",s,{defaultValue:void 0})};export{validateCustomClass as v};

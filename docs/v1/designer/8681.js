@@ -1,2 +1,0 @@
-/*! For license information please see 8681.js.LICENSE.txt */
-"use strict";(self.webpackChunk_public_ui_designer=self.webpackChunk_public_ui_designer||[]).push([[8681],{48681:(e,n,t)=>{t.r(n),t.d(n,{default:()=>s});const l=document.getElementById("details"),o=document.getElementById("button");l._on={onToggle:(e,n)=>{o._label="👆Details "+(n?"schließen":"öffnen")}},o._on={onClick:()=>{l._open=!l._open}};const s={}}}]);

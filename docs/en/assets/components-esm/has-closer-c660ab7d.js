@@ -1,1 +1,1 @@
-/*! * KoliBri - The accessible HTML-Standard */ import{b as watchBoolean}from"./prop.validators-28badc7d.js";const validateHasCloser=(a,o)=>{watchBoolean(a,"_hasCloser",o)};export{validateHasCloser as v};
+/*! For license information please see has-closer-c660ab7d.js.LICENSE.txt */ import{b as watchBoolean}from"./prop.validators-28badc7d.js";const validateHasCloser=(a,o)=>{watchBoolean(a,"_hasCloser",o)};export{validateHasCloser as v};

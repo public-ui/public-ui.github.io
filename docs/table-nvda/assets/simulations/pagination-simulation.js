@@ -1,1 +1,1 @@
-var buttons = document.querySelectorAll('kol-pagination'); buttons.forEach((button) => {  button._on = {   onClick: (event, page) => {    alert(`Pagination "${page}" wurde geklickt.`);   },  }; }); 
+var buttons=document.querySelectorAll("kol-pagination");buttons.forEach((o=>{o._on={onClick:(o,t)=>{alert(`Pagination "${t}" wurde geklickt.`)}}}));
