@@ -146,3 +146,15 @@ kol-link-button {
 	color: #cc0000;
 	background-color: #ffe6e6;
 }
+
+/* Components Overview */
+
+.components-overview {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+.components-overview-item {
+	min-height: 250px;
+}
