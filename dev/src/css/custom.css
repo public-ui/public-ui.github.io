@@ -156,5 +156,10 @@ kol-link-button {
 }
 
 .components-overview-item {
-	min-height: 250px;
+	height: 300px;
+	cursor: pointer;
+}
+
+.components-overview-item kol-card {
+	pointer-events: none;
 }

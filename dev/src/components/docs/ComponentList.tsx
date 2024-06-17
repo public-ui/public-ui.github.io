@@ -1,38 +1,30 @@
 import type { FC, MouseEvent, KeyboardEvent } from 'react';
-import React, { useEffect, useState, useMemo, useRef, useCallback } from 'react';
+import React, { Suspense, useEffect, useState, useRef, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { KolCard } from '@public-ui/react';
 
-import type { Component } from '../../shares/component';
-import { components } from '../../shares/component';
+import type { Language } from '../../shares/language';
+import type { Component } from '../samplePreviews';
+import { components } from '../samplePreviews';
 
-// iFrame styles
-const STYLES = {
-    width: '100%',
-    height: '250px',
-    border: '0',
-    overflow: 'hidden',
-    pointerEvents: 'none' as 'none',
-};
+type Props = Language;
 
-const LazyLoadComponent: FC<Component> = ({ name, sample }) => {
+const LazyLoadComponent: FC<Component & Language> = ({ name, lang, loadComponent }) => {
     const history = useHistory();
     const ref = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
     useEffect(() => {
-        const observer = new IntersectionObserver((entries, obs) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
-                    obs.disconnect();
                 }
             })
         });
         observer.observe(ref.current as Element);
     }, []);
 
-    const sampleUrl = `/sample-react/#/${name}/${sample}?hideMenus`;
     const formattedComponentName = name.charAt(0).toUpperCase() + name.slice(1);
 
     const handleRedirect = useCallback((event: MouseEvent<HTMLAnchorElement> | KeyboardEvent<HTMLAnchorElement>) => {
@@ -42,38 +34,34 @@ const LazyLoadComponent: FC<Component> = ({ name, sample }) => {
         }
         return event
     }, [formattedComponentName])
-    
-    const iframe = useMemo(() => (
-        <iframe
-            src={sampleUrl}
-            style={STYLES}
-            tabIndex={-1}
-            title="kolibri-public-ui-code-samples"
-            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-        />
-    ), [sampleUrl]);
+
+    const SampleComponent = loadComponent();
+    if (!loadComponent) {
+        throw new Error(`Example component for ${name} not found`);
+    }
     return (
         <div ref={ref} className="components-overview-item">
-            {isVisible ? (
-                <a
-                    tabIndex={0}
-                    onKeyDown={handleRedirect}
-                    onClick={handleRedirect}
-                >
-                    <KolCard _level={2} _label={formattedComponentName}>
-                        {iframe}
-                    </KolCard>
-                </a>
-            ) : <div className="skeleton"></div>}
+            {isVisible && (
+                <Suspense fallback={<div className="skeleton"></div>}>
+                    <a
+                        tabIndex={0}
+                        onKeyDown={handleRedirect}
+                        onClick={handleRedirect}
+                    >
+                        <KolCard _level={2} _label={formattedComponentName}>
+                            <SampleComponent lang={lang} />
+                        </KolCard>
+                    </a>
+                </Suspense>
+            )}
         </div>
     );
 };
 
-export const ComponentList: FC = () => (
+export const ComponentList: FC<Props> = ({ lang }) => (
     <div className="components-overview">
-        {components.map(({ name, sample }) => (
-            <LazyLoadComponent key={name} name={name} sample={sample} />
+        {components.map(({ name, loadComponent }) => (
+            <LazyLoadComponent key={name} name={name} lang={lang} loadComponent={loadComponent} />
         ))}
     </div>
 );
