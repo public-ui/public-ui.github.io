@@ -134,6 +134,10 @@ export const components = [
 		loadComponent: () => lazy(() => import('./Pagination')),
 	},
 	{
+		name: 'popover',
+		loadComponent: () => lazy(() => import('./Popover')),
+	},
+	{
 		name: 'progress',
 		loadComponent: () => lazy(() => import('./Progress')),
 	},

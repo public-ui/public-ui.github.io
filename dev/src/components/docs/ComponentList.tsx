@@ -48,8 +48,10 @@ const LazyLoadComponent: FC<Component & Language> = ({ name, lang, loadComponent
                         onKeyDown={handleRedirect}
                         onClick={handleRedirect}
                     >
-                        <KolCard _level={2} _label={formattedComponentName}>
-                            <SampleComponent lang={lang} />
+                        <KolCard aria-label={formattedComponentName} role="img" _level={2} _label={formattedComponentName}>
+                            <div aria-hidden="true">
+                                <SampleComponent lang={lang} />
+                            </div>
                         </KolCard>
                     </a>
                 </Suspense>

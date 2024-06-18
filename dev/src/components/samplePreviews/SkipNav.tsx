@@ -1,10 +1,6 @@
-import type { FC } from 'react';
 import React from 'react';
-import type { Language } from '../../shares/language';
-import { MESSAGES } from '../../shares/language';
+import { KolImage } from '@public-ui/react';
 
-type Props = Language;
-
-const SkipNav: FC<Props> = ({ lang }) => <p>{MESSAGES?.[lang]?.components?.noPreview}</p>;
+const SkipNav = () => <KolImage _src="/assets/samples/skip-nav.png" _alt="Sample Image - Skip-Nav" _sizes="20vw"/>;
 
 export default SkipNav;

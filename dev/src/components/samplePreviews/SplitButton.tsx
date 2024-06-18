@@ -1,10 +1,6 @@
 import React from 'react';
-import { KolSplitButton } from '@public-ui/react';
+import { KolImage } from '@public-ui/react';
 
-const SplitButton = () => (
-	<KolSplitButton _label="Label" _hideLabel _icons="codicon codicon-git-pull-request">
-		Dropdown-Inhalt
-	</KolSplitButton>
-);
+const SplitButton = () => <KolImage _src="/assets/samples/split-button.png" _alt="Sample Image - Split-Button" _sizes="20vw"/>;
 
 export default SplitButton;

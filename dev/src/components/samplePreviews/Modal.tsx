@@ -1,10 +1,6 @@
-import type { FC } from 'react';
 import React from 'react';
-import type { Language } from '../../shares/language';
-import { MESSAGES } from '../../shares/language';
+import { KolImage } from '@public-ui/react';
 
-type Props = Language;
-
-const Modal: FC<Props> = ({ lang }) => <p>{MESSAGES?.[lang]?.components?.noPreview}</p>;
+const Modal = () => <KolImage _src="/assets/samples/modal.png" _alt="Sample Image - Modal" _sizes="20vw"/>;
 
 export default Modal;

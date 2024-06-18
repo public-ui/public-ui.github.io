@@ -1,10 +1,10 @@
-import type { FC } from 'react';
 import React from 'react';
-import type { Language } from '../../shares/language';
-import { MESSAGES } from '../../shares/language';
+import { KolAlert } from '@public-ui/react';
 
-type Props = Language;
-
-const Toaster: FC<Props> = ({ lang }) => <p>{MESSAGES?.[lang]?.components?.noPreview}</p>;
+const Toaster = () => (
+    <KolAlert _label="Title" _level={5} _type="error" _variant="card">
+		Content
+	</KolAlert>
+);
 
 export default Toaster;
