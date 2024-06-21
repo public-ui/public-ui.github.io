@@ -178,10 +178,6 @@ export const COMPONENTS_20 = [
 		loadComponent: () => lazy(() => import('../Toaster')),
 	},
 	{
-		name: 'toolbar',
-		loadComponent: () => lazy(() => import('../Toolbar')),
-	},
-	{
 		name: 'tooltip',
 		loadComponent: () => lazy(() => import('../Tooltip')),
 	},

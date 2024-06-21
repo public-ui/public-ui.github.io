@@ -42,6 +42,10 @@ export const COMPONENTS_CURRENT = [
 		loadComponent: () => lazy(() => import('../Card')),
 	},
 	{
+		name: 'combobox',
+		loadComponent: () => lazy(() => import('../Combobox')),
+	},
+	{
 		name: 'details',
 		loadComponent: () => lazy(() => import('../Details')),
 	},

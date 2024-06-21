@@ -1,7 +1,8 @@
 import type { FC, MouseEvent, KeyboardEvent } from 'react';
 import React, { Suspense, useEffect, useState, useRef, useCallback } from 'react';
+import {useDocsPreferredVersion} from '@docusaurus/theme-common';
 import { useHistory } from 'react-router-dom';
-import { KolCard } from '@public-ui/react';
+import { KolCard, KolHeading } from '@public-ui/react';
 
 import type { Language } from '../../shares/language';
 import type { Version } from '../../shares/version';
@@ -12,7 +13,9 @@ type Props = Language & {
     version?: Version
 }
 
-const LazyLoadComponent: FC<Component & Language> = ({ name, lang, loadComponent }) => {
+const LazyLoadComponent: FC<Component & Language & {
+    path?: string
+}> = ({ name, lang, path, loadComponent }) => {
     const history = useHistory();
     const ref = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -33,10 +36,10 @@ const LazyLoadComponent: FC<Component & Language> = ({ name, lang, loadComponent
     const handleRedirect = useCallback((event: MouseEvent<HTMLAnchorElement> | KeyboardEvent<HTMLAnchorElement>) => {
         if (event.type === 'click' || (event.type === 'keydown' && (event as React.KeyboardEvent).key === 'Enter')) {
             event.preventDefault();
-            history.push(`/docs/next/components/${formattedComponentName}`)
+            history.push(`${path ?? "/docs/next"}/components/${formattedComponentName}`)
         }
         return event
-    }, [formattedComponentName])
+    }, [path, formattedComponentName])
 
     const SampleComponent = loadComponent();
     if (!loadComponent) {
@@ -63,14 +66,21 @@ const LazyLoadComponent: FC<Component & Language> = ({ name, lang, loadComponent
     );
 };
 
-export const ComponentList: FC<Props> = ({ lang, version }) => {
+export const ComponentList: FC<Props> = ({ lang }) => {
+    const { preferredVersion } = useDocsPreferredVersion();
+    const version = preferredVersion?.name as Version
     const components = COMPONENT_VERSIONS?.[version ?? "current"] as Component[]
     if (components?.length <= 0) return null
+    const componentLength = components.length
+    const headline = lang === "de" ? `Anzahl Komponenten: ${componentLength}` : `Components sum: ${componentLength}`
     return (
-        <div className="components-overview">
-            {components.map(({ name, loadComponent }) => (
-                <LazyLoadComponent key={name} name={name} lang={lang} loadComponent={loadComponent} />
-            ))}
-        </div>
+        <>
+            <KolHeading _label={headline} _level={3}>{headline}</KolHeading>
+            <div className="components-overview">
+                {components.map(({ name, loadComponent }) => (
+                    <LazyLoadComponent key={name} name={name} lang={lang} path={preferredVersion?.path} loadComponent={loadComponent} />
+                ))}
+            </div>
+        </>
     )
 };
