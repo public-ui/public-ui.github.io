@@ -4,10 +4,13 @@ import { useHistory } from 'react-router-dom';
 import { KolCard } from '@public-ui/react';
 
 import type { Language } from '../../shares/language';
+import type { Version } from '../../shares/version';
 import type { Component } from '../samplePreviews';
-import { components } from '../samplePreviews';
+import { COMPONENT_VERSIONS } from "../samplePreviews/version"
 
-type Props = Language;
+type Props = Language & {
+    version?: Version
+}
 
 const LazyLoadComponent: FC<Component & Language> = ({ name, lang, loadComponent }) => {
     const history = useHistory();
@@ -60,10 +63,14 @@ const LazyLoadComponent: FC<Component & Language> = ({ name, lang, loadComponent
     );
 };
 
-export const ComponentList: FC<Props> = ({ lang }) => (
-    <div className="components-overview">
-        {components.map(({ name, loadComponent }) => (
-            <LazyLoadComponent key={name} name={name} lang={lang} loadComponent={loadComponent} />
-        ))}
-    </div>
-);
+export const ComponentList: FC<Props> = ({ lang, version }) => {
+    const components = COMPONENT_VERSIONS?.[version ?? "current"] as Component[]
+    if (components?.length <= 0) return null
+    return (
+        <div className="components-overview">
+            {components.map(({ name, loadComponent }) => (
+                <LazyLoadComponent key={name} name={name} lang={lang} loadComponent={loadComponent} />
+            ))}
+        </div>
+    )
+};
