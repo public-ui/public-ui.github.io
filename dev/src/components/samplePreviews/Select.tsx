@@ -10,6 +10,6 @@ const OPTIONS: SelectOption<string>[] = [
 	},
 ];
 
-const Select = () => <KolSelect _options={OPTIONS} _label="" _hideLabel />;
+const Select = () => <KolSelect _options={OPTIONS} _label="Select field" _hideLabel />;
 
 export default Select;
