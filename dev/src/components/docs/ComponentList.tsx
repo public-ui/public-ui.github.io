@@ -1,7 +1,7 @@
-import type { FC, MouseEvent, KeyboardEvent } from 'react';
+import type { FC } from 'react';
 import React, { Suspense, useEffect, useState, useRef, useCallback } from 'react';
 import { useDocsPreferredVersion } from '@docusaurus/theme-common';
-import { useHistory } from 'react-router-dom';
+import Link from '@docusaurus/Link';
 import { KolCard, KolHeading } from '@public-ui/react';
 
 import type { Language } from '../../shares/language';
@@ -20,7 +20,6 @@ const LazyLoadComponent: FC<
 			observer: (cb: () => void) => IntersectionObserver;
 		}
 > = ({ name, lang, path, loadComponent, observer }) => {
-	const history = useHistory();
 	const ref = useRef<HTMLDivElement>(null);
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 
@@ -30,17 +29,6 @@ const LazyLoadComponent: FC<
 
 	const formattedComponentName = name.charAt(0).toUpperCase() + name.slice(1);
 
-	const handleRedirect = useCallback(
-		(event: MouseEvent<HTMLAnchorElement> | KeyboardEvent<HTMLAnchorElement>) => {
-			if (event.type === 'click' || (event.type === 'keydown' && (event as React.KeyboardEvent).key === 'Enter')) {
-				event.preventDefault();
-				history.push(`${path ?? '/docs/next'}/components/${formattedComponentName}`);
-			}
-			return event;
-		},
-		[path, formattedComponentName]
-	);
-
 	const SampleComponent = loadComponent();
 	if (!loadComponent) {
 		throw new Error(`Example component for ${name} not found`);
@@ -49,7 +37,7 @@ const LazyLoadComponent: FC<
 		<div ref={ref} className="components-overview-item">
 			{isVisible && (
 				<Suspense fallback={<div className="skeleton"></div>}>
-					<a tabIndex={0} onKeyDown={handleRedirect} onClick={handleRedirect}></a>
+					<Link tabIndex={0} to={`${path ?? '/docs/next'}/components/${formattedComponentName}`} />
 					<KolCard
 						tabIndex={-1}
 						aria-label={formattedComponentName}
