@@ -49,11 +49,16 @@ const LazyLoadComponent: FC<
 		<div ref={ref} className="components-overview-item">
 			{isVisible && (
 				<Suspense fallback={<div className="skeleton"></div>}>
-					<a tabIndex={0} onKeyDown={handleRedirect} onClick={handleRedirect}>
-						<KolCard aria-label={formattedComponentName} role="img" _level={2} _label={formattedComponentName}>
-							<SampleComponent lang={lang} />
-						</KolCard>
-					</a>
+					<a tabIndex={0} onKeyDown={handleRedirect} onClick={handleRedirect}></a>
+					<KolCard
+						tabIndex={-1}
+						aria-label={formattedComponentName}
+						role="img"
+						_level={2}
+						_label={formattedComponentName}
+					>
+						<SampleComponent lang={lang} />
+					</KolCard>
 				</Suspense>
 			)}
 		</div>

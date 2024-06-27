@@ -141,7 +141,7 @@ kol-link-button {
 	color: #00cc00;
 	background-color: #e6ffe6;
 }
-  
+
 .token.deleted-sign {
 	color: #cc0000;
 	background-color: #ffe6e6;
@@ -157,6 +157,15 @@ kol-link-button {
 }
 
 .components-overview-item {
+	position: relative;
 	height: 300px;
+}
+
+.components-overview-item a {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
 	cursor: pointer;
 }
