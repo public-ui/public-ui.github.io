@@ -15,21 +15,15 @@ type Props = Language & {
 
 const LazyLoadComponent: FC<Component & Language & {
     path?: string
-}> = ({ name, lang, path, loadComponent }) => {
+    observer: (cb: () => void) => IntersectionObserver;
+}> = ({ name, lang, path, loadComponent, observer }) => {
     const history = useHistory();
     const ref = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
     useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            })
-        });
-        observer.observe(ref.current as Element);
-    }, []);
+        observer(() => setIsVisible(true)).observe(ref.current as Element);
+    }, [observer]);
 
     const formattedComponentName = name.charAt(0).toUpperCase() + name.slice(1);
 
@@ -73,12 +67,19 @@ export const ComponentList: FC<Props> = ({ lang }) => {
     if (components?.length <= 0) return null
     const componentLength = components.length
     const headline = lang === "de" ? `Anzahl Komponenten: ${componentLength}` : `Components sum: ${componentLength}`
+    const observer = useCallback((cb: () => void) => new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                cb()
+            }
+        })
+    }), []);
     return (
         <>
             <KolHeading _label={headline} _level={3}>{headline}</KolHeading>
             <div className="components-overview">
                 {components.map(({ name, loadComponent }) => (
-                    <LazyLoadComponent key={name} name={name} lang={lang} path={preferredVersion?.path} loadComponent={loadComponent} />
+                    <LazyLoadComponent key={name} name={name} lang={lang} path={preferredVersion?.path} loadComponent={loadComponent} observer={observer} />
                 ))}
             </div>
         </>
