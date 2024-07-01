@@ -1,0 +1,2 @@
+/*! For license information please see 895.js.LICENSE.txt */
+"use strict";(self.webpackChunk_public_ui_sample_react=self.webpackChunk_public_ui_sample_react||[]).push([[895],{895:(e,s,t)=>{t.r(s),t.d(s,{kol_button_group_wc:()=>a});var c=t(6981);const a=class{constructor(e){(0,c.r)(this,e),this.state={}}render(){return(0,c.h)(c.H,{key:"d70d07aee8bf780d21f93ad48d5549e65e889f02",class:"kol-button-group-wc"},(0,c.h)("slot",{key:"3dfb84fee69b23211aab06b29d28690cdebe5ffc"}))}}}}]);
