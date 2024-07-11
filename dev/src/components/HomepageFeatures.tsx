@@ -1,6 +1,7 @@
 import React from 'react';
 import { KolIcon, KolLink, KolLinkButton } from '@public-ui/react';
 import { translate } from '@docusaurus/Translate';
+import Heading from '@theme/Heading';
 
 type FeatureItem = {
 	icon: string;
@@ -83,7 +84,9 @@ function Feature({ title, icon, description, button }: FeatureItem) {
 	return (
 		<div className="grid gap-4 content-baseline text-center justify-items-center">
 			<KolIcon className="text-8xl text-gray-700" _label="" _icons={icon}></KolIcon>
-			<h3 className="m-0">{title}</h3>
+			<Heading as="h3" className="m-0">
+				{title}
+			</Heading>
 			<div className="grid gap-2">{description}</div>
 			<div className="grid sm:inline">{button}</div>
 		</div>

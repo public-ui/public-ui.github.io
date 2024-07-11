@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Attribute, Slot, TagName } from '../LiveEditorCompact/types';
 import allElements from '@public-ui/components/custom-elements.json';
-import { KolHeading } from '@public-ui/react';
+import Heading from '@theme/Heading';
 import { AttributeInput } from './AttributeInput';
 import { AttributeBlackList } from './lists';
 import { SlotInput } from './attributeInputs/SlotInput';
@@ -26,7 +26,9 @@ export function Configuration(props: Props) {
 					{showDescription ? (
 						<details className="flex">
 							<summary className="cursor-pointer">
-								<h2 className="inline">Konfiguration von {element.name}</h2>
+								<Heading as="h2" className="inline">
+									Konfiguration von {element.name}
+								</Heading>
 							</summary>
 							<p>{element.description}</p>
 						</details>
@@ -56,7 +58,7 @@ export function Configuration(props: Props) {
 					))}
 				</>
 			) : (
-				<KolHeading _level={2} _label={`Der Übergebene Tag '${tag}' ist inkorrekt.`} />
+				<Heading as="h2">{`Der Übergebene Tag '${tag}' ist inkorrekt.`}</Heading>
 			)}
 		</>
 	);
