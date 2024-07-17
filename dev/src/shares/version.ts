@@ -1,3 +1,3 @@
-import VERSIONS from "../../versions.json"
+import type VERSIONS from '../../versions.json';
 
-export type Version = typeof VERSIONS[number] & "current";
+export type Version = (typeof VERSIONS)[number] & 'current';

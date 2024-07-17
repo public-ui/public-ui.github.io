@@ -1,6 +1,6 @@
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import { KolTable } from '@public-ui/react';
-import type { FC} from 'react';
+import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
 import { getDataFromExcel } from '../shares/fetch-excel';
 

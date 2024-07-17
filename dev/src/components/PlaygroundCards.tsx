@@ -1,6 +1,7 @@
 import { KolLinkButton } from '@public-ui/react';
 import React from 'react';
 import type { FunctionComponent } from 'react';
+import Heading from '@theme/Heading';
 
 interface Playground {
 	name: string;
@@ -26,7 +27,7 @@ const PLAYGROUNDS: Playground[] = [
 
 const PlaygroundCard: FunctionComponent<Playground> = ({ name, image, url, description }) => (
 	<div className="grid gap-2">
-		<h3>{name}</h3>
+		<Heading as="h3">{name}</Heading>
 		<img src={`/assets/playgrounds/${image}`} alt={`Vorschau des Playground ${name}'s`} />
 		<p>{description}</p>
 		<div className="text-center">

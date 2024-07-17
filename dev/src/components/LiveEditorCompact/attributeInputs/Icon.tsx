@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { Attribute } from '../../LiveEditorCompact/types';
 import { KolButton, KolDetails } from '@public-ui/react';
-import type { KoliBriAllIcons } from '@public-ui/schema';
+import type { KoliBriIconsProp } from '@public-ui/components';
 
 type Props = {
 	attribute: Attribute;
@@ -42,7 +42,7 @@ export function Icon(props: Props) {
 		if (left && !right && !top && !bottom) {
 			update(attribute.name, `codicon codicon-${left}`);
 		} else {
-			const result: KoliBriAllIcons = {};
+			const result: KoliBriIconsProp = {};
 			if (left) result.left = `codicon codicon-${left}`;
 			if (right) result.right = `codicon codicon-${right}`;
 			if (top) result.top = `codicon codicon-${top}`;

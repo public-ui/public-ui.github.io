@@ -2,10 +2,11 @@ import type { FC } from 'react';
 import React, { Suspense, useEffect, useState, useRef, useCallback } from 'react';
 import { useDocsPreferredVersion } from '@docusaurus/theme-common';
 import Link from '@docusaurus/Link';
-import { KolCard, KolHeading } from '@public-ui/react';
+import { KolBadge, KolCard, KolHeading } from '@public-ui/react';
 
 import type { Language } from '../../shares/language';
 import type { Version } from '../../shares/version';
+import { COMPONENT_SYNONYMS } from '../../shares/synonyms';
 import type { Component } from '../samplePreviews';
 import { COMPONENT_VERSIONS } from '../samplePreviews/version';
 
@@ -33,6 +34,7 @@ const LazyLoadComponent: FC<
 	if (!loadComponent) {
 		throw new Error(`Example component for ${name} not found`);
 	}
+	const badges = COMPONENT_SYNONYMS?.[name];
 	return (
 		<div ref={ref} className="components-overview-item">
 			{isVisible && (
@@ -46,6 +48,15 @@ const LazyLoadComponent: FC<
 						_label={formattedComponentName}
 					>
 						<SampleComponent lang={lang} />
+						{badges && badges?.length > 0 && (
+							<div className="absolute bottom-2 p-1">
+								<div className="flex flex-wrap gap-2">
+									{badges?.map((label) => (
+										<KolBadge key={label} _color="#dadde1" _label={label}></KolBadge>
+									))}
+								</div>
+							</div>
+						)}
 					</KolCard>
 				</Suspense>
 			)}
@@ -54,9 +65,9 @@ const LazyLoadComponent: FC<
 };
 
 export const ComponentList: FC<Props> = ({ lang }) => {
-	const { preferredVersion } = useDocsPreferredVersion();
-	const version = preferredVersion?.name as Version;
-	const components = COMPONENT_VERSIONS?.[version ?? 'current'] as Component[];
+	const docVersion = useDocsPreferredVersion();
+	const version = docVersion?.preferredVersion?.name as Version;
+	const components = COMPONENT_VERSIONS?.[version ?? 'current'];
 	if (components?.length <= 0) return null;
 	const componentLength = components.length;
 	const headline = lang === 'de' ? `Anzahl Komponenten: ${componentLength}` : `Components sum: ${componentLength}`;
@@ -82,7 +93,7 @@ export const ComponentList: FC<Props> = ({ lang }) => {
 						key={name}
 						name={name}
 						lang={lang}
-						path={preferredVersion?.path}
+						path={(docVersion?.preferredVersion?.path as string) ?? ''}
 						loadComponent={loadComponent}
 						observer={observer}
 					/>
