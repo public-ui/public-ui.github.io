@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[1036],{1036:(e,t,a)=>{a.r(t),a.d(t,{default:()=>r});a(80924);var l=a(64992),n=a(76776);const r=()=>(0,n.jsx)(l.mW,{_label:"Title",_level:5,_type:"warning",_variant:"card",children:"Content"})}}]);

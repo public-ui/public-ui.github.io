@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[2076],{2076:(t,e,r)=>{r.r(e),r.d(e,{default:()=>s});r(80924);var o=r(64992),i=r(76776);const s=()=>(0,i.jsx)(o.SY,{_href:"https://datatracker.ietf.org/doc/html/rfc1149",_quote:"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.",_variant:"inline"})}}]);

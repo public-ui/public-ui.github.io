@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[76],{76:(e,a,l)=>{l.r(a),l.d(a,{default:()=>o});l(80924);var s=l(64992),u=l(76776);const c=["D\xe4nemark","Deutschland","Dominica"],o=()=>(0,u.jsx)(s.m8,{_touched:!0,_label:"Label",_placeholder:"Placeholder",_required:!0,_suggestions:c,_value:"Deutschland"})}}]);

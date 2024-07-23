@@ -1,0 +1,1 @@
+/*! For license information please see custom-class-8e412ac4.js.LICENSE.txt */ import{i as watchString}from"./prop.validators-db70e3c4.js";const validateCustomClass=(a,s)=>{watchString(a,"_customClass",s,{defaultValue:void 0})};export{validateCustomClass as v};

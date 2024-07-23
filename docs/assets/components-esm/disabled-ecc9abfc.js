@@ -1,0 +1,1 @@
+/*! For license information please see disabled-ecc9abfc.js.LICENSE.txt */ import{b as watchBoolean,c as a11yHintDisabled}from"./prop.validators-db70e3c4.js";const validateDisabled=(a,e)=>{watchBoolean(a,"_disabled",e,{hooks:{afterPatch:a=>{!0===a&&a11yHintDisabled()}}})};export{validateDisabled as v};

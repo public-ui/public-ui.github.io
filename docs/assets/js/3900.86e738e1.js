@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[3900],{3900:(a,n,o)=>{o.r(n),o.d(n,{default:()=>s});o(80924);var t=o(64992),e=o(76776);const s=()=>(0,e.jsx)(t.kj,{_max:14,_page:14,_siblingCount:1,_boundaryCount:2,_label:"Pagination",_on:{}})}}]);

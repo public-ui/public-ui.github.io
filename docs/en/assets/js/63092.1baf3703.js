@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[63092],{63092:(s,t,a)=>{a.r(t),a.d(t,{default:()=>r});a(80924);var o=a(64992),e=a(76776);const r=()=>(0,e.jsx)(o.aq,{_src:"https://www.w3schools.com/howto/img_avatar.png",_label:"Elke Mustermann"})}}]);

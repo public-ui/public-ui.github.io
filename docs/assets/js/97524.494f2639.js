@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[97524],{97524:(a,e,r)=>{r.r(e),r.d(e,{default:()=>u});r(80924);var s=r(64992),t=r(76776);const u=()=>(0,t.jsx)(s.O0,{_variant:"bar",_max:100,_value:50})}}]);

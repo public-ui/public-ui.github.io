@@ -180,25 +180,35 @@ Der Tooltip für die Beschreibung wird bei Focus oder Hover der **Abbr**-Kompone
 	props: `_label, _tooltip-align`
 },{
 	name: `accordion`,
-	desc: `Die **Accordion**-Komponente ist ein Aufklapp-Menü. Klickt man auf den Kopfbereich, bestehend aus Icon und Überschrift, klappt der Inhalt mit zusätzlichen Informationen auf. Somit ist es ein interaktives Navigationselement, welches dazu dient, umfangreiche Inhalte platzsparend darzustellen.
+	desc: `Synonyme: Collapse
+
+Die **Accordion**-Komponente ist ein Aufklapp-Menü. Klickt man auf den Kopfbereich, bestehend aus Icon und Überschrift, klappt der Inhalt mit zusätzlichen Informationen auf. Somit ist es ein interaktives Navigationselement, welches dazu dient, umfangreiche Inhalte platzsparend darzustellen.
 
 Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zugeordnete Inhalte angezeigt oder verborgen werden sollen. Sie erlauben umfangreichere Detailinformationen zu einem Oberbegriff, als es aus Gründen der Übersichtlichkeit eigentlich sinnvoll wäre. Sie überlassen es den Besucher:innen selbst, ob sie sich diese Informationen anzeigen lassen möchten.`,
 	props: `_disabled, _label, _level, _open`
 },{
 	name: `alert`,
-	desc: `Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ '_type' des Alert.`,
+	desc: `Synonyme: Message
+
+Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ '_type' des Alert.`,
 	props: `_alert, _has-closer, _label, _level, _type, _variant`
 },{
 	name: `alert-wc`,
-	desc: `Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ '_type' des Alert.`,
+	desc: `Synonyme: Message
+
+Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ '_type' des Alert.`,
 	props: `_alert, _has-closer, _label, _level, _type, _variant`
 },{
 	name: `avatar`,
-	desc: `Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder dessen Initialen an, falls kein Bild vorhanden ist.`,
+	desc: `Synonyme: Persona
+
+Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder dessen Initialen an, falls kein Bild vorhanden ist.`,
 	props: `_label, _src`
 },{
 	name: `avatar-wc`,
-	desc: `Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder dessen Initialen an, falls kein Bild vorhanden ist.`,
+	desc: `Synonyme: Persona
+
+Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder dessen Initialen an, falls kein Bild vorhanden ist.`,
 	props: `_label, _src`
 },{
 	name: `badge`,
@@ -241,7 +251,9 @@ Der **Titel-Bereich** wird in einer größeren Schrift dargestellt. Der **Inhalt
 	props: `_has-closer, _label, _level`
 },{
 	name: `combobox`,
-	desc: `<kol-alert _type="warning" _variant="card">
+	desc: `Synonyme: Autocomplete, Select, Dropdown
+
+<kol-alert _type="warning" _variant="card">
   <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
 </kol-alert>
 
@@ -249,7 +261,9 @@ Die **Combobox**-Komponente erzeugt eine Auswahlliste, die ein Eingabefeld mit e
 	props: `_access-key, _alert, _disabled, _hide-error, _hide-label, _hint, _icons, _id, _label, _name, _placeholder, _required, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `details`,
-	desc: `Mit Hilfe der **Detail**-Komponente können weiterführende Informationen zunächst mit einem kurzen Einleitungstext angezeigt werden, die erst nach Klick
+	desc: `Synonyme: Disclosure, Collapse, Summary Detail
+
+Mit Hilfe der **Detail**-Komponente können weiterführende Informationen zunächst mit einem kurzen Einleitungstext angezeigt werden, die erst nach Klick
 durch die Nutzer:innen auf ein Pfeil-Icon in voller Größe aufgeklappt werden.
 
 Die **Detail**-Komponente stellt sich standardmäßig als einzeiliges Layout-Element dar, das aus einem Pfeil-Icon und einem nachfolgenden,
@@ -257,6 +271,20 @@ kurzen Einleitungstext gebildet wird. Der eigentliche Inhalt der Komponente wird
 seine Ausrichtung von **_rechts_** nach **_unten_**.
 Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit verbergen.`,
 	props: `_disabled, _label, _open`
+},{
+	name: `drawer`,
+	desc: `Synonyme: Modal, Modal Dialog, Corner Dialog, Prompt
+
+<kol-alert _type="warning" _variant="card">
+  <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
+</kol-alert>
+
+Mit Hilfe der **Drawer**-Komponente können zusätzliche Informationen oder auch Navigationselemente in einem ausklappbaren Seitenfenster angezeigt werden. Ein offener Drawer kann als Modal (\_modal) via ESC geschlossen werden. Die **Drawer**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt bzw. controlled mit dem Attribut \_open gesteuert.
+
+'''html
+<kol-drawer _label="Drawer" _open _modal _align="top"> </kol-drawer>
+'''`,
+	props: `_align, _label, _modal, _open`
 },{
 	name: `form`,
 	desc: `Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinweistext für Pflichtfelder korrekt zu positionieren und die Events 'submit' und 'reset' weiterzuleiten.`,
@@ -275,7 +303,9 @@ Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode
 	props: `_icons, _label`
 },{
 	name: `image`,
-	desc: `> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+	desc: `Synonyme: Img, Thumbnail
+
+> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
 
 Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 	props: `_alt, _loading, _sizes, _src, _srcset`
@@ -293,7 +323,9 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-error, _hide-label, _hint, _icons, _id, _label, _name, _smart-button, _suggestions, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `input-date`,
-	desc: `Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können konkrete Daten sein, aber auch Wochen, Monate oder Zeitangaben.`,
+	desc: `Synonyme: Date Picker, Datetime Picker, Week Picker Month Picker, Time Picker, Calendar
+
+Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können konkrete Daten sein, aber auch Wochen, Monate oder Zeitangaben.`,
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-error, _hide-label, _hint, _icons, _id, _label, _max, _min, _name, _read-only, _required, _smart-button, _step, _suggestions, _tab-index, _tooltip-align, _touched, _type, _value`
 },{
 	name: `input-email`,
@@ -301,7 +333,9 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-error, _hide-label, _hint, _icons, _id, _label, _max-length, _multiple, _name, _pattern, _placeholder, _read-only, _required, _smart-button, _suggestions, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `input-file`,
-	desc: `Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.`,
+	desc: `Synonyme: Upload, File Uploader, File Picker, File Selector
+
+Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.`,
 	props: `_accept, _access-key, _alert, _disabled, _error, _hide-error, _hide-label, _hint, _icons, _id, _label, _multiple, _name, _required, _smart-button, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `input-number`,
@@ -310,10 +344,12 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 },{
 	name: `input-password`,
 	desc: `Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe wird über Punktsymbole maskiert.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-error, _hide-label, _hint, _icons, _id, _label, _max-length, _name, _pattern, _placeholder, _read-only, _required, _smart-button, _tab-index, _tooltip-align, _touched, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-error, _hide-label, _hint, _icons, _id, _label, _max-length, _name, _pattern, _placeholder, _read-only, _required, _smart-button, _tab-index, _tooltip-align, _touched, _value, _variant`
 },{
 	name: `input-radio`,
-	desc: `Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
+	desc: `Synonyme: Choice Group, Radio Buttons
+
+Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
 
 <kol-alert _alert _heading="Hinweis" _level="1" _type="info">
   Das Input-Radio dient der Abbildung einer Auswahlmöglichkeit bei der mindestens und maximal eine Auswahl getroffen werden kann. Das bedeutet, dass ein Input-Radio nicht einzeln vorkommen kann. Aufgrund dessen haben wir die Komponente als Listen-Komponente umgesetzt.
@@ -321,11 +357,15 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 	props: `_access-key, _alert, _disabled, _error, _hide-error, _hide-label, _hint, _id, _label, _name, _options, _orientation, _required, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `input-range`,
-	desc: `Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Verschieben eines Reglers verändert werden können.`,
+	desc: `Synonyme: Slider
+
+Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Verschieben eines Reglers verändert werden können.`,
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-error, _hide-label, _hint, _icons, _id, _label, _max, _min, _name, _step, _suggestions, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `input-text`,
-	desc: `Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe, URLs oder Telefonnummern.
+	desc: `Synonyme: Text Field
+
+Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe, URLs oder Telefonnummern.
 
 Die Komponente hat Known-Issues bezüglich Browserabhängigkeit und Barrierefreiheit. Näheres kann unter [KNOWN_ISSUES.md](https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md) nachgelssen werden.`,
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _has-counter, _hide-error, _hide-label, _hint, _icons, _id, _label, _max-length, _name, _pattern, _placeholder, _read-only, _required, _smart-button, _suggestions, _tab-index, _tooltip-align, _touched, _type, _value`
@@ -336,15 +376,17 @@ Die Komponente hat Known-Issues bezüglich Browserabhängigkeit und Barrierefrei
 },{
 	name: `link-button`,
 	desc: `Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
-Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="/docs/components/button" _label="Seite des Buttons"></kol-link>.`,
+Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="Seite des Buttons"></kol-link>.`,
 	props: `_access-key, _aria-current-value, _custom-class, _disabled, _download, _hide-label, _href, _icons, _label, _role, _tab-index, _target, _tooltip-align, _variant`
 },{
 	name: `modal`,
-	desc: `Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native '<dialog>' Element sehr gut unterstützt (<kol-link _href="https://caniuse.com/?search=dialog" _target="_blank" _label="caniuse"></kol-link>), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.`,
+	desc: `Synonyme: Dialog, Prompt`,
 	props: `_label, _width`
 },{
 	name: `nav`,
-	desc: `Eine **Navigationsleiste** ist eine Gruppe von verwandten Links oder Navigationselementen, die durch Anklicken eine Aktion ausführen oder Inhalte anzeigen. Sie navigiert Nutzer:innen direkt zu bestimmten Inhalten der aktuellen Seite oder zu externen Seiten. Außerdem dient sie Nutzer:innen (ähnlich wie Registerkarten) als Steuerelement, um Inhalte anzuzeigen, auszublenden und zwischen ihnen zu wechseln.
+	desc: `Synonyme: Navigation, Menu, Sidebar, Dropdowns (menu)
+
+Eine **Navigationsleiste** ist eine Gruppe von verwandten Links oder Navigationselementen, die durch Anklicken eine Aktion ausführen oder Inhalte anzeigen. Sie navigiert Nutzer:innen direkt zu bestimmten Inhalten der aktuellen Seite oder zu externen Seiten. Außerdem dient sie Nutzer:innen (ähnlich wie Registerkarten) als Steuerelement, um Inhalte anzuzeigen, auszublenden und zwischen ihnen zu wechseln.
 
 **KoliBri** stellt eine umfangreich konfigurierbare, vertikale oder horizontale **Navigationsleiste** zur Verfügung, die mehrere Ebenen darstellen und in der Breite variiert werden kann.
 Übergeordnete Menüpunkte die Untermenüpunkte enthalten, werden mit einem **Plus-Icon** am rechten Rand angezeigt. Wird der übergeordnete Menüpunkt mit dem Plus-Icon geöffnet, ändert sich das Plus-Icon automatisch zu einem **Minus-Icon**, mit dem der Menüpunkt wieder geschlossen werden kann.
@@ -379,7 +421,9 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 	props: `_href, _label, _quote, _variant`
 },{
 	name: `select`,
-	desc: `Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.`,
+	desc: `Synonyme: Datalist, Dropdown
+
+Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.`,
 	props: `_access-key, _alert, _disabled, _error, _hide-error, _hide-label, _hint, _icons, _id, _label, _multiple, _name, _options, _required, _rows, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `skip-nav`,
@@ -387,7 +431,9 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 	props: `_label, _links`
 },{
 	name: `spin`,
-	desc: `Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.`,
+	desc: `Synonyme: Placeholder, Skeleton, Shimmer
+
+Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.`,
 	props: `_show, _variant`
 },{
 	name: `split-button`,
@@ -406,7 +452,9 @@ dem sich weitere Aktionen verbergen.
 	props: `_label, _symbol`
 },{
 	name: `table`,
-	desc: `<kol-alert _type="warning" _variant="card">
+	desc: `Synonyme: Data Table, Details List, Data Grid
+
+<kol-alert _type="warning" _variant="card">
   <kol-badge _color="#fb4509" _label="Deprecated"></kol-badge> KolTable ist veraltet, bitte stattdessen <kol-link _label="KolTableStateful" _href="https://github.com/public-ui/kolibri/blob/develop/packages/components/src/components/table-stateless/readme.md"></kol-link> verwenden, die API und Funktionalität sind identisch.
 </kol-alert>
 
@@ -418,7 +466,9 @@ Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Date
 	props: `_allow-multi-sort, _data, _data-foot, _headers, _label, _min-width, _pagination, _pagination-position, _selection`
 },{
 	name: `table-stateful`,
-	desc: `<kol-alert _type="warning" _variant="card">
+	desc: `Synonyme: Data Table, Details List, Data Grid
+
+<kol-alert _type="warning" _variant="card">
   <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
 </kol-alert>
 
@@ -430,7 +480,9 @@ Die **TableStateful**-Komponente dient primär der übersichtlichen Darstellung 
 	props: `_allow-multi-sort, _data, _data-foot, _headers, _label, _min-width, _pagination, _pagination-position, _selection`
 },{
 	name: `table-stateless`,
-	desc: `<kol-alert _type="warning" _variant="card">
+	desc: `Synonyme: Data Table, Details List, Data Grid
+
+<kol-alert _type="warning" _variant="card">
   <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
 </kol-alert>
 
@@ -440,7 +492,9 @@ TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es n
 	props: `_data, _data-foot, _header-cells, _label, _min-width, _selection`
 },{
 	name: `table-stateless-wc`,
-	desc: `<kol-alert _type="warning" _variant="card">
+	desc: `Synonyme: Data Table, Details List, Data Grid
+
+<kol-alert _type="warning" _variant="card">
   <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
 </kol-alert>
 
@@ -450,7 +504,9 @@ TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es n
 	props: `_data, _data-foot, _header-cells, _label, _min-width, _selection`
 },{
 	name: `tabs`,
-	desc: `Die **Tabs**-Komponente wird verwendet, um verwandte Inhalte auf derselben Seite zu organisieren und zwischen ihnen zu navigieren. Tabs sorgen dafür, dass große Inhaltsmengen für Nutzer:innen leichter organisiert werden können. Tabs sind in Registerkartenleisten angeordnet, die als Registerkartengruppen bezeichnet werden, wobei die Registerkartenbeschriftung den Nutzer:innen einen Hinweis darauf gibt, welcher Inhalt angezeigt wird, wenn die Registerkarte ausgewählt wird.`,
+	desc: `Synonyme: Navigation, Nav
+
+Die **Tabs**-Komponente wird verwendet, um verwandte Inhalte auf derselben Seite zu organisieren und zwischen ihnen zu navigieren. Tabs sorgen dafür, dass große Inhaltsmengen für Nutzer:innen leichter organisiert werden können. Tabs sind in Registerkartenleisten angeordnet, die als Registerkartengruppen bezeichnet werden, wobei die Registerkartenbeschriftung den Nutzer:innen einen Hinweis darauf gibt, welcher Inhalt angezeigt wird, wenn die Registerkarte ausgewählt wird.`,
 	props: `_align, _label, _selected, _tabs`
 },{
 	name: `textarea`,
@@ -458,7 +514,9 @@ TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es n
 	props: `_access-key, _adjust-height, _alert, _disabled, _error, _has-counter, _hide-error, _hide-label, _hint, _id, _label, _max-length, _name, _placeholder, _read-only, _required, _resize, _rows, _tab-index, _tooltip-align, _touched, _value`
 },{
 	name: `toast-container`,
-	desc: `Mit dem **Toast**-Service geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird am Kopf des Browserfenster
+	desc: `Synonyme: Notification, Snackbar
+
+Mit dem **Toast**-Service geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird am Kopf des Browserfenster
 angezeigt, bis sie geschlossen wird. Werden mehrere Toasts geöffnet, ohne das die bisherigen geschlossen wurden, so werden diese untereinander angezeigt.`,
 	props: ``
 },{
@@ -475,7 +533,9 @@ Die Komponente **Toolbar** ist eine Sammlung häufig verwendeter Steuerelemente 
 	props: `_label`
 },{
 	name: `tooltip-wc`,
-	desc: `<kol-alert _type="info" _variant="card">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
+	desc: `Synonyme: Inline Dialog, Popover
+
+<kol-alert _type="info" _variant="card">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
 
 Die **Tooltip**-Komponente implementiert das Gegenstück zum 'Aria-Label'. Es ist also explizit nur dafür vorgesehen, dem/der Nutzer:in ohne Screenreader die Beschriftung eines Elementes anzuzeigen.
 
@@ -485,23 +545,31 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	props: `_access-key, _align, _id, _label`
 },{
 	name: `tree`,
-	desc: `<kol-alert _type="warning" _variant="card">
+	desc: `Synonyme: List, Navigation
+
+<kol-alert _type="warning" _variant="card">
   <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
-</kol-alert>`,
+</kol-alert>
+
+Die Komponente **Tree** stellt eine hierarchische Liste dar. Jedes Element in der Hierarchie kann Kindelemente haben, und Elemente, die Kinder haben, können erweitert oder reduziert werden, um die Kinder anzuzeigen oder zu verbergen.`,
 	props: `_label`
 },{
 	name: `tree-item`,
-	desc: ``,
+	desc: `Weitere Informationen zum Tree finden Sie auf der <kol-link _href="/docs/components/tree" _label="Seite der Tree-Komponente"></kol-link>.`,
 	props: `_active, _href, _label, _open`
 },{
 	name: `tree-item-wc`,
-	desc: ``,
+	desc: `Weitere Informationen zum Tree finden Sie auf der <kol-link _href="/docs/components/tree" _label="Seite der Tree-Komponente"></kol-link>.`,
 	props: `_active, _href, _label, _open`
 },{
 	name: `tree-wc`,
-	desc: `<kol-alert _type="warning" _variant="card">
+	desc: `Synonyme: List, Navigation
+
+<kol-alert _type="warning" _variant="card">
   <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
-</kol-alert>`,
+</kol-alert>
+
+Die Komponente **Tree** stellt eine hierarchische Liste dar. Jedes Element in der Hierarchie kann Kindelemente haben, und Elemente, die Kinder haben, können erweitert oder reduziert werden, um die Kinder anzuzeigen oder zu verbergen.`,
 	props: `_label`
 },
 				];
@@ -539,7 +607,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_label`,
 	desc: `Defines the label of the link.`,
 	types: `string`,
-	comps: `abbr, accordion, alert, alert-wc, avatar, avatar-wc, badge, breadcrumb, button, button-link, card, combobox, details, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, pagination, progress, quote, select, skip-nav, split-button, symbol, table, table-stateful, table-stateless, table-stateless-wc, tabs, textarea, toolbar, tooltip-wc, tree, tree-item, tree-item-wc, tree-wc`
+	comps: `abbr, accordion, alert, alert-wc, avatar, avatar-wc, badge, breadcrumb, button, button-link, card, combobox, details, drawer, heading, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, modal, nav, pagination, progress, quote, select, skip-nav, split-button, symbol, table, table-stateful, table-stateless, table-stateless-wc, tabs, textarea, toolbar, tooltip-wc, tree, tree-item, tree-item-wc, tree-wc`
 },{
 	name: `_tooltip-align`,
 	desc: `Defines where to show the Tooltip preferably: top, right, bottom or left.`,
@@ -612,19 +680,19 @@ interactive element is focused or the mouse is over it.`,
 	types: `string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
+	name: `_variant`,
+	desc: `Defines which variant should be used for presentation.`,
+	types: `"bar" | "cycle", "block" | "inline", "button" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | "tertiary", "cycle" | "dot" | "none", "default" | "visibility-toggle", "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "strong"`,
+	comps: `alert, alert-wc, button, heading, input-checkbox, input-password, link-button, progress, quote, spin, split-button`
+},{
 	name: `_required`,
 	desc: `Makes the input element required.`,
 	types: `boolean`,
 	comps: `combobox, input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
 },{
-	name: `_variant`,
-	desc: `Defines which variant should be used for presentation.`,
-	types: `"bar" | "cycle", "block" | "inline", "button" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | "tertiary", "cycle" | "dot" | "none", "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "strong"`,
-	comps: `alert, alert-wc, button, heading, input-checkbox, link-button, progress, quote, spin, split-button`
-},{
 	name: `_smart-button`,
 	desc: `Allows to add a button with an arbitrary action within the element (_hide-label only).`,
-	types: `string | { _label: string; } & { _tabIndex?: number; _value?: Stringified<StencilUnknown>; _role?: AlternativeButtonLinkRolePropType; _ariaControls?: string; _ariaExpanded?: boolean; _ariaSelected?: boolean; _on?: ButtonCallbacksPropType<StencilUnknown>; _type?: "button" | "reset" | "submit"; _variant?: "primary" | "secondary" | "normal" | "tertiary" | "danger" | "ghost" | "custom"; _customClass?: string; _disabled?: boolean; _hideLabel?: boolean; _icons?: IconsPropType; _id?: string; _name?: string; _syncValueBySelector?: string; _tooltipAlign?: AlignPropType; _accessKey?: string; }`,
+	types: `string | { _label: string; } & { _tabIndex?: number; _value?: Stringified<StencilUnknown>; _ariaExpanded?: boolean; _role?: AlternativeButtonLinkRolePropType; _ariaControls?: string; _ariaSelected?: boolean; _on?: ButtonCallbacksPropType<StencilUnknown>; _type?: "button" | "reset" | "submit"; _variant?: "primary" | "secondary" | "normal" | "tertiary" | "danger" | "ghost" | "custom"; _customClass?: string; _disabled?: boolean; _hideLabel?: boolean; _icons?: IconsPropType; _id?: string; _name?: string; _syncValueBySelector?: string; _tooltipAlign?: AlignPropType; _accessKey?: string; }`,
 	comps: `badge, input-color, input-date, input-email, input-file, input-number, input-password, input-text`
 },{
 	name: `_type`,
@@ -654,8 +722,13 @@ interactive element is focused or the mouse is over it.`,
 },{
 	name: `_role`,
 	desc: `Defines the role of the components primary element.`,
-	types: `"button" | "link" | "tab"`,
+	types: `"button" | "link" | "tab" | "treeitem"`,
 	comps: `button, button-link, link, link-button, split-button`
+},{
+	name: `_open`,
+	desc: `If set (to true) opens/expands the element, closes if not set (or set to false).`,
+	types: `boolean`,
+	comps: `accordion, details, drawer, tree-item, tree-item-wc`
 },{
 	name: `_max`,
 	desc: `Defines at which value the progress display is completed.`,
@@ -692,11 +765,6 @@ interactive element is focused or the mouse is over it.`,
 	types: `KoliBriTableDataType[] | string`,
 	comps: `table, table-stateful, table-stateless, table-stateless-wc`
 },{
-	name: `_open`,
-	desc: `If set (to true) opens/expands the element, closes if not set (or set to false).`,
-	types: `boolean`,
-	comps: `accordion, details, tree-item, tree-item-wc`
-},{
 	name: `_max-length`,
 	desc: `Defines the maximum number of input characters.`,
 	types: `number`,
@@ -711,6 +779,11 @@ interactive element is focused or the mouse is over it.`,
 	desc: `Defines the custom class attribute if _variant="custom" is set.`,
 	types: `string`,
 	comps: `button, link-button, pagination, split-button`
+},{
+	name: `_align`,
+	desc: `Defines the alignment of the tooltip, popover or tabs in relation to the element.`,
+	types: `"bottom" | "left" | "right" | "top"`,
+	comps: `drawer, popover-wc, tabs, tooltip-wc`
 },{
 	name: `_step`,
 	desc: `Defines the step size for value changes.`,
@@ -761,11 +834,6 @@ interactive element is focused or the mouse is over it.`,
 	desc: `Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
 	types: `string`,
 	comps: `button, button-link, split-button`
-},{
-	name: `_align`,
-	desc: `Defines the alignment of the tooltip, popover or tabs in relation to the element.`,
-	types: `"bottom" | "left" | "right" | "top"`,
-	comps: `popover-wc, tabs, tooltip-wc`
 },{
 	name: `_target`,
 	desc: `Defines where to open the link.`,
@@ -932,6 +1000,11 @@ In version 3 (v3), horizontal resizing is abolished. The corresponding property 
 	desc: `Defines the text of the quote.`,
 	types: `string`,
 	comps: `quote`
+},{
+	name: `_modal`,
+	desc: `Indicates whether the drawer is a modal.`,
+	types: `boolean`,
+	comps: `drawer`
 },{
 	name: `_indeterminate`,
 	desc: `Puts the checkbox in the indeterminate state, does not change the value of _checked.`,

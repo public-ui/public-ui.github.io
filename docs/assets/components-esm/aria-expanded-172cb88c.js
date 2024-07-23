@@ -1,0 +1,1 @@
+/*! For license information please see aria-expanded-172cb88c.js.LICENSE.txt */ import{i as watchString,b as watchBoolean}from"./prop.validators-db70e3c4.js";const validateAlternativeButtonLinkRole=(a,t)=>{watchString(a,"_role",t)},validateAriaExpanded=(a,t)=>{watchBoolean(a,"_ariaExpanded",t)};export{validateAlternativeButtonLinkRole as a,validateAriaExpanded as v};

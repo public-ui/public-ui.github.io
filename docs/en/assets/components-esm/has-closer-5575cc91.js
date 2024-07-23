@@ -1,0 +1,1 @@
+/*! For license information please see has-closer-5575cc91.js.LICENSE.txt */ import{b as watchBoolean}from"./prop.validators-db70e3c4.js";const validateHasCloser=(a,o)=>{watchBoolean(a,"_hasCloser",o)};export{validateHasCloser as v};
