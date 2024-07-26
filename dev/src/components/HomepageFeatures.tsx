@@ -70,7 +70,7 @@ const FeatureList: FeatureItem[] = [
 		button: (
 			<KolLinkButton
 				className="w-72"
-				_href="docs/components/abbr"
+				_href="docs/components"
 				_label={translate({
 					id: 'custom.components',
 					message: 'Components',
