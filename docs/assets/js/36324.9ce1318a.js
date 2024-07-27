@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[36324],{36324:(e,a,l)=>{l.r(a),l.d(a,{default:()=>k});l(80924);var b=l(64992),r=l(76776);const k=()=>(0,r.jsx)(b.If,{_label:"Breadcrumb from text links",_links:[{_label:"Home",_href:"#/back-page"},{_label:"Page",_href:"#/back-page"},{_label:"Subpage",_href:"#/back-page"}]})}}]);

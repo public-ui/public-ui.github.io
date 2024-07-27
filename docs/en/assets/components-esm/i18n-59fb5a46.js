@@ -1,0 +1,1 @@
+/*! For license information please see i18n-59fb5a46.js.LICENSE.txt */ import{g as getI18nInstance,i as initializeI18n}from"./i18n-3dcfca85.js";import{p as processEnv}from"./reuse-108ee8f5.js";let translate=(t,e)=>{var n;return(null!==(n=getI18nInstance())&&void 0!==n?n:initializeI18n("de")).translate(t,e)};"test"===processEnv&&(translate=t=>t);export{translate as t};
