@@ -49,7 +49,7 @@ const LazyLoadComponent: FC<
 					>
 						<SampleComponent lang={lang} />
 						{badges && badges?.length > 0 && (
-							<div className="absolute bottom-2 p-1">
+							<div className="bottom-2 p-1">
 								<div className="flex flex-wrap gap-2">
 									{badges?.map((label) => (
 										<KolBadge key={label} _color="#dadde1" _label={label}></KolBadge>
