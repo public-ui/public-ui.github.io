@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[50360],{50360:(e,s,l)=>{l.r(s),l.d(s,{default:()=>r});l(80924);var a=l(33920),i=l(76776);const r=()=>(0,i.jsx)(a.OO,{_requiredText:!1,children:(0,i.jsxs)("div",{className:"grid gap-2",children:[(0,i.jsx)(a.Uh,{id:"input1",_label:"Label"}),(0,i.jsx)(a.Uh,{id:"input1",_label:"Label 2"})]})})}}]);

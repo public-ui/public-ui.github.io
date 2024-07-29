@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[96856],{74476:(s,e,a)=>{a.r(e),a.d(e,{default:()=>r});a(80924);var t=a(33920),p=a(76776);const r=()=>(0,p.jsx)(t.iu,{_src:"/assets/samples/skip-nav.png",_alt:"",_sizes:"20vw"})}}]);

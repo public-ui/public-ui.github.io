@@ -1,1 +1,0 @@
-/*! For license information please see open-5b527658.js.LICENSE.txt */ import{b as watchBoolean}from"./prop.validators-db70e3c4.js";const validateOpen=(a,o,e)=>{watchBoolean(a,"_open",o,e)};export{validateOpen as v};

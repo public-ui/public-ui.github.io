@@ -1,1 +1,0 @@
-/*! For license information please see aria-selected-b1c50b49.js.LICENSE.txt */ import{a,b as t}from"./prop.validators-0a66a178.js";const e=(t,e)=>{a(t,"_ariaCurrent",(a=>"date"===a||"location"===a||"page"===a||"step"===a||"time"===a||!0===a),new Set(["String {data, location, page, step, time}","boolean"]),e)},o=(a,e)=>{t(a,"_ariaSelected",e)};export{o as a,e as v};

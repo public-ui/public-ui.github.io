@@ -1,1 +1,0 @@
-/*! For license information please see button-link-6460a64a.js.LICENSE.txt */ import{a as t}from"./prop.validators-0a66a178.js";const o=(o,a,e)=>{t(o,a,(t=>"top"===t||"right"===t||"bottom"===t||"left"===t),new Set(["Alignment {top, right, buttom, left}"]),e,{defaultValue:"top"})};export{o as w};

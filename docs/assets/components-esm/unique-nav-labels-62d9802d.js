@@ -1,1 +1,0 @@
-/*! For license information please see unique-nav-labels-62d9802d.js.LICENSE.txt */ const UNIQUE_LABELS=new Set;function addNavLabel(e){UNIQUE_LABELS.has(e)?console.error(`There already is a nav element with the label "${e}"`):UNIQUE_LABELS.add(e)}function removeNavLabel(e){UNIQUE_LABELS.delete(e)}export{addNavLabel as a,removeNavLabel as r};
