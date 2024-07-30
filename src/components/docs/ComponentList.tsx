@@ -39,7 +39,11 @@ const LazyLoadComponent: FC<
 		<div ref={ref} className="components-overview-item">
 			{isVisible && (
 				<Suspense fallback={<div className="skeleton"></div>}>
-					<Link tabIndex={0} to={`${path}/components/${formattedComponentName}`} />
+					<Link
+						className="components-overview-item__link"
+						tabIndex={0}
+						to={`${path}/components/${formattedComponentName}`}
+					/>
 					<KolCard
 						tabIndex={-1}
 						aria-label={formattedComponentName}
@@ -47,16 +51,18 @@ const LazyLoadComponent: FC<
 						_level={2}
 						_label={formattedComponentName}
 					>
-						<SampleComponent lang={lang} />
-						{badges && badges?.length > 0 && (
-							<div className="bottom-2 p-1">
-								<div className="flex flex-wrap gap-2">
-									{badges?.map((label) => (
-										<KolBadge key={label} _color="#dadde1" _label={label}></KolBadge>
-									))}
+						<div className="components-overview-item__card-content">
+							<SampleComponent lang={lang} />
+							{badges && badges?.length > 0 && (
+								<div className="mt-4 p-1">
+									<div className="flex flex-wrap gap-2">
+										{badges?.map((label) => (
+											<KolBadge key={label} _color="#dadde1" _label={label}></KolBadge>
+										))}
+									</div>
 								</div>
-							</div>
-						)}
+							)}
+						</div>
 					</KolCard>
 				</Suspense>
 			)}
