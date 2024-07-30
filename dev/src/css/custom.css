@@ -159,8 +159,6 @@ kol-link-button {
 .components-overview-item {
 	position: relative;
 	height: auto;
-	padding: 1rem;
-	box-sizing: border-box;
 }
 
 .components-overview-item a {
@@ -173,7 +171,7 @@ kol-link-button {
 	cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 	.components-overview {
 		grid-template-columns: 1fr;
 	}
