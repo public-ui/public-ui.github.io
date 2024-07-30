@@ -1,1 +1,0 @@
-/*! For license information please see validation-78ce9756.js.LICENSE.txt */ import{c as o}from"./a11y.tipps-beae7792.js";import{d as t}from"./prop.validators-0a66a178.js";const s=(s,a,e)=>{t(a,"_links",(t=>"object"==typeof t&&("string"==typeof t._href||"string"==typeof t._label)),e),o(s,a.state._links.length)};export{s as w};

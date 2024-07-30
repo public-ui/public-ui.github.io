@@ -1,1 +1,0 @@
-/*! For license information please see open-c3666632.js.LICENSE.txt */ import{b as watchBoolean}from"./prop.validators-28badc7d.js";const validateOpen=(a,o,e)=>{watchBoolean(a,"_open",o,e)};export{validateOpen as v};

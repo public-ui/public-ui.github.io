@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[31028],{8648:(s,e,r)=>{r.r(e),r.d(e,{default:()=>o});r(80924);var t=r(64992),l=r(76776);const o=()=>(0,l.jsxs)("p",{children:["Lorem ipsum"," ",(0,l.jsx)(t.s1,{_label:"Abk\xfcrzung",_tooltipAlign:"right",children:"z.B."})," ","dolor sit amet."]})}}]);

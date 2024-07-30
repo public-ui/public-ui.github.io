@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[68204],{68204:(s,e,t)=>{t.r(e),t.d(e,{default:()=>u});t(80924);var a=t(64992),r=t(76776);const u=()=>(0,r.jsx)(a.iu,{_src:"/assets/abgrenzung.jpg",_alt:"",_sizes:"20vw"})}}]);

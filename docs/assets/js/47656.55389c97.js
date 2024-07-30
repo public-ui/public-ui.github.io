@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[47656],{47656:(e,l,_)=>{_.r(l),_.d(l,{default:()=>s});_(80924);var a=_(64992),k=_(76776);const r=[{_label:"Link 1",_href:"#"},{_label:"Link 2",_href:"#"},{_label:"Link 3",_href:"#"}],s=()=>(0,k.jsx)(a.O_,{_links:r,_label:""})}}]);
