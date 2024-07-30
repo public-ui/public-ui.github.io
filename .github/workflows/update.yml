@@ -53,9 +53,8 @@ jobs:
       - name: Build Docs
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
-          PNPM_REGISTRY: "${{env.npmjs-registry}}"
         run: |
-          pnpm install --no-frozen-lockfile
+          pnpm install --no-frozen-lockfile --registry=${{env.npmjs-registry}}
           npm run build
 
       - name: Download designer (v1)
