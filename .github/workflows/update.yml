@@ -44,18 +44,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store
 
+      - name: Build Docs
+        run: |
+          pnpm install --no-frozen-lockfile
+          npm run build
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: "${{env.github-registry}}"
           scope: "@${{env.scope}}"
-
-      - name: Build Docs
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-        run: |
-          pnpm install --no-frozen-lockfile --registry=${{env.npmjs-registry}}
-          npm run build
 
       - name: Download designer (v1)
         env:
