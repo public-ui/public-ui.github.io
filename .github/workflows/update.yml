@@ -50,6 +50,9 @@ jobs:
           registry-url: "${{env.github-registry}}"
           scope: "@${{env.scope}}"
 
+      - name: Build Docs
+        run: pnpm build
+
       - name: Download designer (v1)
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
