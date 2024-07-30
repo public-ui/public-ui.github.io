@@ -39,7 +39,7 @@ const LazyLoadComponent: FC<
 		<div ref={ref} className="components-overview-item">
 			{isVisible && (
 				<Suspense fallback={<div className="skeleton"></div>}>
-					<Link tabIndex={0} to={`${path ?? '/docs/next'}/components/${formattedComponentName}`} />
+					<Link tabIndex={0} to={`${path}/components/${formattedComponentName}`} />
 					<KolCard
 						tabIndex={-1}
 						aria-label={formattedComponentName}
@@ -68,7 +68,6 @@ export const ComponentList: FC<Props> = ({ lang }) => {
 	const docVersion = useDocsPreferredVersion();
 	const version = docVersion?.preferredVersion?.name as Version;
 	const components = COMPONENT_VERSIONS?.[version ?? 'current'];
-	if (components?.length <= 0) return null;
 	const componentLength = components.length;
 	const headline = lang === 'de' ? `Anzahl Komponenten: ${componentLength}` : `Components sum: ${componentLength}`;
 	const observer = useCallback(
@@ -82,6 +81,7 @@ export const ComponentList: FC<Props> = ({ lang }) => {
 			}),
 		[]
 	);
+	if (components?.length <= 0) return null;
 	return (
 		<>
 			<KolHeading _label={headline} _level={3}>
@@ -93,7 +93,7 @@ export const ComponentList: FC<Props> = ({ lang }) => {
 						key={name}
 						name={name}
 						lang={lang}
-						path={(docVersion?.preferredVersion?.path as string) ?? ''}
+						path={(docVersion?.preferredVersion?.path as string) ?? '/docs'}
 						loadComponent={loadComponent}
 						observer={observer}
 					/>
