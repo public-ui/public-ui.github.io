@@ -1,1 +1,0 @@
-/*! For license information please see alternative-button-link-role-d488ee62.js.LICENSE.txt */ import{i as watchString}from"./prop.validators-28badc7d.js";const validateAlternativeButtonLinkRole=(t,a)=>{watchString(t,"_role",a)};export{validateAlternativeButtonLinkRole as v};

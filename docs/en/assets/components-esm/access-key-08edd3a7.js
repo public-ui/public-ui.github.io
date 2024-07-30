@@ -1,1 +1,0 @@
-/*! For license information please see access-key-08edd3a7.js.LICENSE.txt */ import{i as watchString}from"./prop.validators-db70e3c4.js";const validateAccessKey=(a,s)=>{watchString(a,"_accessKey",s)};export{validateAccessKey as v};

@@ -1,1 +1,0 @@
-/*! For license information please see custom-class-9daf0e87.js.LICENSE.txt */ import{i as watchString}from"./prop.validators-f2b9a155.js";const validateCustomClass=(a,s)=>{watchString(a,"_customClass",s,{defaultValue:void 0})};export{validateCustomClass as v};
