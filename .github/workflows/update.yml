@@ -53,6 +53,7 @@ jobs:
       - name: Build Docs
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          PNPM_REGISTRY: "${{env.npmjs-registry}}"
         run: |
           pnpm install --no-frozen-lockfile
           npm run build
