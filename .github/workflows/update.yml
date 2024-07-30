@@ -51,7 +51,11 @@ jobs:
           scope: "@${{env.scope}}"
 
       - name: Build Docs
-        run: pnpm i && pnpm build
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+        run: |
+          pnpm install --no-frozen-lockfile
+          npm run build
 
       - name: Download designer (v1)
         env:
