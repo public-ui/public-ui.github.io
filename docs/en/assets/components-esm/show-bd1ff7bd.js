@@ -1,1 +1,0 @@
-/*! For license information please see show-bd1ff7bd.js.LICENSE.txt */ import{b as watchBoolean}from"./prop.validators-db70e3c4.js";const validateShow=(o,a,t)=>{watchBoolean(o,"_show",a,t)};export{validateShow as v};

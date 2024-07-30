@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[31172],{31172:(e,l,a)=>{a.r(l),a.d(l,{default:()=>s});a(80924);var o=a(33920),r=a(76776);const s=()=>(0,r.jsx)(o.DG,{_label:"Label",_hideLabel:!0,_rows:5,_placeholder:"Placeholder"})}}]);

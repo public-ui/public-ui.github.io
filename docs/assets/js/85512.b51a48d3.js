@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[85512],{85512:(r,t,a)=>{a.r(t),a.d(t,{default:()=>k});a(80924);var e=a(33920),s=a(76776);const k=()=>(0,s.jsx)(e._k,{_href:"#",_label:"LinkButton",_variant:"primary"})}}]);

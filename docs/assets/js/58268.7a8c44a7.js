@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[58268],{58268:(s,t,e)=>{e.r(t),e.d(t,{default:()=>l});e(80924);var a=e(33920),o=e(76776);const l=()=>(0,o.jsx)(a.iu,{_src:"/assets/samples/tooltip.png",_alt:"",_sizes:"20vw"})}}]);

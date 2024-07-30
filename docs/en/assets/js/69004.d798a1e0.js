@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[69004],{69004:(s,t,e)=>{e.r(t),e.d(t,{default:()=>l});e(80924);var a=e(33920),u=e(76776);const l=()=>(0,u.jsx)(a.iu,{_src:"/assets/samples/split-button.png",_alt:"",_sizes:"20vw"})}}]);
