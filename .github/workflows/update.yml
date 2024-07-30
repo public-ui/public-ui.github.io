@@ -51,7 +51,7 @@ jobs:
           scope: "@${{env.scope}}"
 
       - name: Build Docs
-        run: pnpm build
+        run: pnpm i && pnpm build
 
       - name: Download designer (v1)
         env:
