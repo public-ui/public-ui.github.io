@@ -1,6 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
-name: update github page
+name: Update GitHub page
 
 env:
   github-registry: https://npm.pkg.github.com
@@ -13,9 +11,6 @@ on:
   push:
     branches:
       - main
-  # schedule:
-  #   - cron: '0 4 * * *'
-  # workflow_call:
   workflow_dispatch:
 
 jobs:
@@ -27,36 +22,31 @@ jobs:
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
           registry-url: "${{env.npmjs-registry}}"
           scope: "@${{env.scope}}"
+
       - uses: pnpm/action-setup@v4
         id: pnpm-install
         with:
-          version: 8
+          version: 9
           run_install: false
+
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
       - uses: actions/cache@v4
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store # -${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store
           restore-keys: |
             ${{ runner.os }}-pnpm-store
 
-      # - name: Build doc
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{env.token}}
-      #   run: |
-      #     pnpm install --no-frozen-lockfile
-      #     npm run build
-      #   working-directory: dev
-
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           registry-url: "${{env.github-registry}}"
           scope: "@${{env.scope}}"
 
@@ -68,12 +58,11 @@ jobs:
           npm pack @${{env.scope}}/designer@^1
           tar -xzvf public-ui-designer-*.tgz
 
-          rm -rf ../docs/v1/designer
-          mkdir -p ../docs/v1
-          mv package/dist ../docs/v1/designer
+          rm -rf build/v1/designer
+          mkdir -p build/v1
+          mv package/dist build/v1/designer
 
           rm -rf package *.tgz
-        working-directory: dev
 
       - name: Download sample react (v1)
         env:
@@ -83,12 +72,11 @@ jobs:
           npm pack @${{env.scope}}/sample-react@^1
           tar -xzvf public-ui-sample-react-*.tgz
 
-          rm -rf ../docs/v1/sample-react
-          mkdir -p ../docs/v1
-          mv package/dist ../docs/v1/sample-react
+          rm -rf build/v1/sample-react
+          mkdir -p build/v1
+          mv package/dist build/v1/sample-react
 
           rm -rf package *.tgz
-        working-directory: dev
 
       - name: Download designer (v2)
         env:
@@ -98,12 +86,11 @@ jobs:
           npm pack @${{env.scope}}/designer@^2
           tar -xzvf public-ui-designer-*.tgz
 
-          rm -rf ../docs/v2/designer
-          mkdir -p ../docs/v2
-          mv package/dist ../docs/v2/designer
+          rm -rf build/v2/designer
+          mkdir -p build/v2
+          mv package/dist build/v2/designer
 
           rm -rf package *.tgz
-        working-directory: dev
 
       - name: Download sample react (v2)
         env:
@@ -113,48 +100,13 @@ jobs:
           npm pack @${{env.scope}}/sample-react@^2
           tar -xzvf public-ui-sample-react-*.tgz
 
-          rm -rf ../docs/v2/sample-react
-          mkdir -p ../docs/v2
-          mv package/dist ../docs/v2/sample-react
+          rm -rf build/v2/sample-react
+          mkdir -p build/v2
+          mv package/dist build/v2/sample-react
 
           rm -rf package *.tgz
-        working-directory: dev
 
-      # - name: Download slidev
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{env.token}}
-      #   run: |
-      #     rm -rf package *.tgz
-      #     npm pack @${{env.scope}}/slidev
-      #     tar -xzvf public-ui-slidev-*.tgz
-      #     mv package/dist build/presentation
-      #     mv package/presentation.pdf build/presentation/presentation.pdf
-      #     rm -rf package *.tgz
-      #     ls -la build
-      #   working-directory: dev
-
-      # - name: Download storybook
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{env.token}}
-      #   run: |
-      #     rm -rf package *.tgz
-      #     npm pack @${{env.scope}}/storybook
-      #     tar -xzvf public-ui-storybook-*.tgz
-      #     mv package/dist build/storybook
-      #     rm -rf package *.tgz
-      #     ls -la build
-      #   working-directory: dev
-
-      - name: Commit changed files
-        continue-on-error: true
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git status
-          git commit -m "Auto update github page"
-
-      - uses: ad-m/github-push-action@master
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3.0.1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
+          path: build
