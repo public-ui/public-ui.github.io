@@ -1,1 +1,0 @@
-/*! For license information please see href-8b03462b.js.LICENSE.txt */ import{i as watchString}from"./prop.validators-f2b9a155.js";const validateHref=(a,r,t={})=>{watchString(a,"_href",r,t)};export{validateHref as v};

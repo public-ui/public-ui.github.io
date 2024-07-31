@@ -1,1 +1,0 @@
-const textAreas=document.querySelectorAll("off-kol-textarea");let timeout;textAreas&&textAreas.forEach((e=>{window.textarea=e,e._value="",e._on={onChange:t=>{clearTimeout(timeout),setTimeout((()=>{console.log(t,e),e._value=""}),1e3)}}}));

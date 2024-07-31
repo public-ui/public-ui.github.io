@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[15668],{15668:(o,c,r)=>{r.r(c),r.d(c,{default:()=>n});r(80924);var t=r(64992),i=r(76776);const n=()=>(0,i.jsx)(t.qC,{_label:"Button",_variant:"primary",_icons:{left:{icon:"codicon codicon-arrow-left"},right:"codicon codicon-arrow-right"}})}}]);

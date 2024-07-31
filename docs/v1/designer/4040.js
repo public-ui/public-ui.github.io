@@ -1,2 +1,0 @@
-/*! For license information please see 4040.js.LICENSE.txt */
-"use strict";(self.webpackChunk_public_ui_designer=self.webpackChunk_public_ui_designer||[]).push([[4040],{54040:(e,c,s)=>{s.r(c),s.d(c,{kol_button_group_wc:()=>r});var t=s(55895);const r=class{constructor(e){(0,t.r)(this,e),this.state={}}render(){return(0,t.h)(t.H,{key:"c8b1e4f2877c43ef8451b950a05b33a35137eb92",class:"kol-button-group-wc"},(0,t.h)("slot",{key:"ed0ec064acfd7f610c9108a72770b8916d9fce7b"}))}}}}]);

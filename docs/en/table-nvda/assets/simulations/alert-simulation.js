@@ -1,1 +1,0 @@
-const on={onClose:console.log},timeout=setTimeout((()=>{document.querySelectorAll("kol-alert").forEach((o=>{Math.random()>.5&&(o._on=on,o.setAttribute("_has-closer",""))}))}),2500);

@@ -1,1 +1,0 @@
-/*! For license information please see rows-7ae440b2.js.LICENSE.txt */ import{k as watchNumber}from"./prop.validators-28badc7d.js";const validateRows=(a,o)=>{watchNumber(a,"_rows",o,{min:1})};export{validateRows as v};

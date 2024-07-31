@@ -1,1 +1,0 @@
-/*! For license information please see hide-label-f5e03637.js.LICENSE.txt */ import{b as watchBoolean}from"./prop.validators-f2b9a155.js";const validateHideLabel=(a,e,o={})=>{watchBoolean(a,"_hideLabel",e,o)};export{validateHideLabel as v};

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkroot=self.webpackChunkroot||[]).push([[1488],{79107:(e,o,l)=>{l.r(o),l.d(o,{default:()=>u});l(80924);var t=l(64992),a=l(76776);const u=()=>(0,a.jsx)(t.wJ,{_required:!0,_touched:!0,_value:"option1",_options:"[{'label':'Option 1','value':'option1'},{'label':'Option 2','value':'option2'}]",_label:"Label"})}}]);

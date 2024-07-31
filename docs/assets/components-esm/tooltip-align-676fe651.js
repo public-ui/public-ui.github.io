@@ -1,1 +1,0 @@
-/*! For license information please see tooltip-align-676fe651.js.LICENSE.txt */ import{v as validateAlignment}from"./align-6595a6d6.js";const validateTooltipAlign=(i,l)=>{validateAlignment(i,"_tooltipAlign",l)};export{validateTooltipAlign as v};
