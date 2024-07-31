@@ -8,6 +8,9 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 import { LanguageSwitch } from '@site/src/components/LanguageSwitch';
 import Navbar from '@theme-original/Navbar';
 import ThemeSelect from './ThemeSelect';
+import { useDocsPreferredVersion } from '@docusaurus/theme-common';
+import { determinateVersionId } from '../../shares/version';
+import { translate } from '@docusaurus/Translate';
 
 export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 	// const [dark, setDark] = useState(false);
@@ -24,6 +27,8 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 	// 		setDark(false);
 	// 	},
 	// };
+	const docVersion = useDocsPreferredVersion();
+	const version = determinateVersionId(docVersion);
 
 	return (
 		<div className="kolibri-navbar-wrapper sticky top-0 z-50 bg-white">
@@ -59,7 +64,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								_variant="ghost"
 							/>
 						</div>
-						<div>
+						{/* <div>
 							<KolLinkButton
 								_href="/cheat-sheet/"
 								_icons={'codicon codicon-record-keys'}
@@ -80,13 +85,15 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								// _target="designer"
 								_variant="ghost"
 							/>
-						</div>
+						</div> */}
 						<div>
 							<KolLinkButton
-								_href="/presentation/presentation.pdf"
+								_href={`/${version}/sample-react/#/handout/basic`}
 								_icons={'codicon codicon-preview'}
 								_hideLabel
-								_label="Präsentation anschauen"
+								_label={translate({
+									id: 'custom.sample-app-button',
+								})}
 								_tooltipAlign="left"
 								// _target="presentation"
 								_variant="ghost"
@@ -102,7 +109,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 							_target="discord"
 							_variant="ghost"
 						/>
-					</div> */}
+					</div>
 						<div>
 							<KolLinkButton
 								_href="https://social.bund.de/@kolibri"
@@ -113,7 +120,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								// _target="mastodon"
 								_variant="ghost"
 							/>
-						</div>
+						</div>*/}
 					</div>
 					<div className="flex-grow">
 						<BrowserOnly>{() => <ThemeSelect />}</BrowserOnly>

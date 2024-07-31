@@ -7,6 +7,8 @@ import Layout from '@theme/Layout';
 import type { FunctionComponent } from 'react';
 import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
+import { useDocsPreferredVersion } from '@docusaurus/theme-common';
+import { determinateVersionId } from '../shares/version';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -22,6 +24,40 @@ const HomepageHeader: FunctionComponent = () => (
 		</p>
 	</header>
 );
+const HomepageButtons: FunctionComponent = () => {
+	const docVersion = useDocsPreferredVersion();
+	const version = determinateVersionId(docVersion);
+
+	return (
+		<div className="grid sm:flex gap-4 justify-center mt-4">
+			<KolLinkButton
+				className="w-72"
+				_icons={{
+					right: 'codicon codicon-dashboard',
+				}}
+				_href="docs/get-started/first-steps"
+				_label={translate({
+					id: 'custom.get-started-button',
+				})}
+				_variant="primary"
+			></KolLinkButton>
+			<KolLinkButton
+				className="w-72"
+				_href="docs"
+				_label={translate({
+					id: 'custom.documentation-button',
+				})}
+			></KolLinkButton>
+			<KolLinkButton
+				className="w-72"
+				_href={`/${version}/sample-react/#/handout/basic`}
+				_label={translate({
+					id: 'custom.sample-app-button',
+				})}
+			></KolLinkButton>
+		</div>
+	);
+};
 
 export default function Homepage(): JSX.Element {
 	return (
@@ -41,27 +77,9 @@ export default function Homepage(): JSX.Element {
 			)}
 		>
 			<HomepageHeader />
+			<HomepageButtons />
+
 			<main>
-				<div className="grid sm:flex gap-4 justify-center mt-4">
-					<KolLinkButton
-						className="w-72"
-						_icons={{
-							right: 'codicon codicon-dashboard',
-						}}
-						_href="docs/get-started/first-steps"
-						_label={translate({
-							id: 'custom.get-started-button',
-						})}
-						_variant="primary"
-					></KolLinkButton>
-					<KolLinkButton
-						className="w-72"
-						_href="docs"
-						_label={translate({
-							id: 'custom.documentation-button',
-						})}
-					></KolLinkButton>
-				</div>
 				<div className="grid gap-2 md:w-6/12 m-auto mt-4 p-4">
 					<div className="flex gap-4 justify-center">
 						<KolLogo
