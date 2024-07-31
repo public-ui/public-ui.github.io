@@ -9,6 +9,8 @@ import { LanguageSwitch } from '@site/src/components/LanguageSwitch';
 import Navbar from '@theme-original/Navbar';
 import ThemeSelect from './ThemeSelect';
 import { useDocsPreferredVersion } from '@docusaurus/theme-common';
+import { Version } from '../../shares/version';
+import { translate } from '@docusaurus/Translate';
 
 export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 	// const [dark, setDark] = useState(false);
@@ -26,7 +28,11 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 	// 	},
 	// };
 	const docVersion = useDocsPreferredVersion();
-	const version = (docVersion?.preferredVersion?.name as number) > 2 ? 'v2' : 'v1';
+	const version =
+		typeof docVersion?.preferredVersion?.name && parseFloat(docVersion?.preferredVersion?.name as Version) < 2
+			? 'v1'
+			: 'v2';
+
 	return (
 		<div className="kolibri-navbar-wrapper sticky top-0 z-50 bg-white">
 			<div className="kolibri-navbar max-w-screen-md lg:max-w-4xl 2xl:max-w-[95rem] mx-auto grid grid-cols-[1fr,auto] gap-y-2 items-center 2xl:grid-cols-[1fr,auto,auto,auto] p-4 lg:px-8">
@@ -88,7 +94,9 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								_href={`/${version}/sample-react/#/handout/basic`}
 								_icons={'codicon codicon-preview'}
 								_hideLabel
-								_label="Präsentation anschauen"
+								_label={translate({
+									id: 'custom.sample-app-button',
+								})}
 								_tooltipAlign="left"
 								// _target="presentation"
 								_variant="ghost"
