@@ -9,7 +9,7 @@ import { LanguageSwitch } from '@site/src/components/LanguageSwitch';
 import Navbar from '@theme-original/Navbar';
 import ThemeSelect from './ThemeSelect';
 import { useDocsPreferredVersion } from '@docusaurus/theme-common';
-import { Version } from '../../shares/version';
+import { determinateVersionId } from '../../shares/version';
 import { translate } from '@docusaurus/Translate';
 
 export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
@@ -28,10 +28,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 	// 	},
 	// };
 	const docVersion = useDocsPreferredVersion();
-	const version =
-		typeof docVersion?.preferredVersion?.name && parseFloat(docVersion?.preferredVersion?.name as Version) < 2
-			? 'v1'
-			: 'v2';
+	const version = determinateVersionId(docVersion);
 
 	return (
 		<div className="kolibri-navbar-wrapper sticky top-0 z-50 bg-white">

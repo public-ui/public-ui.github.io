@@ -8,7 +8,7 @@ import type { FunctionComponent } from 'react';
 import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
 import { useDocsPreferredVersion } from '@docusaurus/theme-common';
-import { Version } from '../../shares/version';
+import { determinateVersionId } from '../shares/version';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -26,10 +26,7 @@ const HomepageHeader: FunctionComponent = () => (
 );
 const HomepageButtons: FunctionComponent = () => {
 	const docVersion = useDocsPreferredVersion();
-	const version =
-		typeof docVersion?.preferredVersion?.name && parseFloat(docVersion?.preferredVersion?.name as Version) < 2
-			? 'v1'
-			: 'v2';
+	const version = determinateVersionId(docVersion);
 
 	return (
 		<div className="grid sm:flex gap-4 justify-center mt-4">
