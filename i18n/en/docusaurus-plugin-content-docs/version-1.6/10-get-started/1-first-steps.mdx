@@ -1,14 +1,15 @@
 # First steps
 
-<div class="grid md:grid-cols-2 mb-4">
-	<kol-card _headline="Download Cheat Sheet" _level="2">
-		<kol-link slot="content" _useCase="nav" _href="https://public-ui.github.io/cheat-sheet/" _target="cheat-sheet">
-			<div className="d-flex gap-4 py-2">
-				<kol-link className="homepage" _icons="codicon codicon-code" />
-				<span>Click here to view and download the cheat sheet for developing.</span>
-			</div>
-		</kol-link>
-	</kol-card>
+<div class="grid md:grid-cols-12 mb-4">
+	<kol-alert _label="Download Cheat Sheet" _level="2" _type="info" _variant="card">
+		<kol-link
+			slot=""
+			_href="https://public-ui.github.io/cheat-sheet/"
+			_label="false"
+			_target="cheat-sheet"
+			_label="Click here to view and download the cheat sheet for developing."
+		></kol-link>
+	</kol-alert>
 </div>
 
 ## Create a new project
@@ -108,7 +109,7 @@ import "./index.css";
 +  .catch(console.warn);
 ```
 
-#### 3. Inclde modules
+#### 3. Include modules
 
 index.html
 
@@ -187,7 +188,7 @@ const app = createApp(App)
 app.mount('#app')
 ```
 
-#### 3. module einbinden
+#### 3. Integrate modules
 
 index.html
 
@@ -208,7 +209,7 @@ index.html
 </html>
 ```
 
-#### 4. Konfiguration anpassen
+#### 4. Customise configuration
 
 vite.config.ts
 
@@ -239,14 +240,14 @@ export default defineConfig({
 })
 ```
 
-#### 5. Beispiel
+#### 5. Example
 
 ```html
 <KolInputText :_value="text" :_on="{ onChange: (e: unknown, v: string) => (text = v) }"></KolInputText>
 <KolButton _label="Text löschen" :_on="{ onClick: () => (text = '') }"></KolButton>
 ```
 
-Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Parameter und den Wert des Feldes als Zweiten.
+Note: KoliBri inputs usually pass the original event as the first parameter and the value of the field as the second.
 
 ### III React
 
@@ -258,7 +259,7 @@ Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Pa
 	<div>yarn add @public-ui/components @public-ui/themes @public-ui/react</div>
 </kol-tabs>
 
-#### 2. Registrieren des KoliBri-Loaders
+#### 2. Registering the KoliBri loader
 
 After the preparations are completed, only the KoliBri loader has to be registered.
 It ensures that the Web Components are reloaded asynchronously (lazy) as soon as they are used in the web page.
@@ -307,7 +308,7 @@ export const AppComponent = () => {
 };
 ```
 
-### IV without any framework
+### IV Without any framework
 
 <kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
 	<div>npm i @public-ui/components @public-ui/themes</div>
@@ -342,7 +343,7 @@ To get code completion it may be necessary to create `.vscode/settings.json` and
 
 Here the web component notation (kebab-case) is to be used. (e.g.: `<kol-heading>`)
 
-### V static website
+### V Static website
 
 To include KoliBri in a static web page you only have to include the following script tag.
 If fonts and/or icons are used, they must be included as described above.
@@ -358,7 +359,7 @@ If fonts and/or icons are used, they must be included as described above.
 
 Here the web component notation (kebab-case) is to be used. (e.g.: `<kol-heading>`)
 
-## additional features
+## Additional features
 
 ### Developer Tools
 
