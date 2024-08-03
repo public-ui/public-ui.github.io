@@ -7,8 +7,6 @@ import Layout from '@theme/Layout';
 import type { FunctionComponent } from 'react';
 import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
-import { useDocsPreferredVersion } from '@docusaurus/theme-common';
-import { determinateVersionId } from '../shares/version';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -25,8 +23,6 @@ const HomepageHeader: FunctionComponent = () => (
 	</header>
 );
 const HomepageButtons: FunctionComponent = () => {
-	const docVersion = useDocsPreferredVersion();
-	const version = determinateVersionId(docVersion);
 
 	return (
 		<div className="grid sm:flex gap-4 justify-center mt-4">
@@ -50,7 +46,7 @@ const HomepageButtons: FunctionComponent = () => {
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href={`/${version}/sample-react/#/handout/basic`}
+				_href={`/sample-react/#/handout/basic`}
 				_label={translate({
 					id: 'custom.sample-app-button',
 				})}

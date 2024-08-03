@@ -27,8 +27,6 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 	// 		setDark(false);
 	// 	},
 	// };
-	const docVersion = useDocsPreferredVersion();
-	const version = determinateVersionId(docVersion);
 
 	return (
 		<div className="kolibri-navbar-wrapper sticky top-0 z-50 bg-white">
@@ -88,7 +86,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 						</div> */}
 						<div>
 							<KolLinkButton
-								_href={`/${version}/sample-react/#/handout/basic`}
+								_href={`/sample-react/#/handout/basic`}
 								_icons={'codicon codicon-preview'}
 								_hideLabel
 								_label={translate({
