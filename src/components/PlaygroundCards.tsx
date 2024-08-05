@@ -1,47 +1,43 @@
 import { KolLinkButton } from '@public-ui/react';
 import React from 'react';
-import type { FunctionComponent } from 'react';
+import type { FC } from 'react';
 import Heading from '@theme/Heading';
 
-interface Playground {
-	name: string;
-	image: string;
-	url: string;
-	description: JSX.Element;
-}
+import type { Locale } from '../shares/language';
+import type { Playground } from '../shares/playground';
+import { PLAYGROUNDS_V1, PLAYGROUNDS_V2 } from '../shares/playground';
 
-const PLAYGROUNDS: Playground[] = [
-	{
-		name: '⚡ StackBlitz',
-		image: 'stackblitz.png',
-		url: 'https://stackblitz.com/edit/vitejs-vite-6bmmiv',
-		description: <></>,
-	},
-	{
-		name: '📦 CodeSandbox',
-		image: 'codesandbox.png',
-		url: 'https://codesandbox.io/s/minimal-kolibri-sample-oj7pee',
-		description: <></>,
-	},
-];
-
-const PlaygroundCard: FunctionComponent<Playground> = ({ name, image, url, description }) => (
+const PlaygroundCard: FC<
+	Playground & {
+		lang: Locale;
+	}
+> = ({ lang, name, image, url }) => (
 	<div className="grid gap-2">
 		<Heading as="h3">{name}</Heading>
 		<img src={`/assets/playgrounds/${image}`} alt={`Vorschau des Playground ${name}'s`} />
-		<p>{description}</p>
 		<div className="text-center">
-			<KolLinkButton _href={url} _label="Jetzt ausprobieren!" _target="${image}"></KolLinkButton>
+			<KolLinkButton
+				_href={url}
+				_label={lang === 'de' ? 'Jetzt ausprobieren!' : 'Try it out now!'}
+				_target="${image}"
+			></KolLinkButton>
 		</div>
 	</div>
 );
 
-export const PlaygroundCards: FunctionComponent = () => (
-	<div className="grid gap-8 md:grid-cols-2">
-		{PLAYGROUNDS.map((item, idx) => (
-			<PlaygroundCard key={idx} {...item} />
-		))}
-	</div>
-);
+export type PlaygroundCardsProps = {
+	lang?: Locale;
+	majorVersion?: 1 | 2;
+};
+
+export const PlaygroundCards: FC<PlaygroundCardsProps> = ({ lang = 'de', majorVersion = 1 }) => {
+	return (
+		<div className="grid gap-8 md:grid-cols-2">
+			{(majorVersion === 1 ? PLAYGROUNDS_V1 : PLAYGROUNDS_V2).map((item, idx) => (
+				<PlaygroundCard key={idx} lang={lang} {...item} />
+			))}
+		</div>
+	);
+};
 
 export default PlaygroundCards;
