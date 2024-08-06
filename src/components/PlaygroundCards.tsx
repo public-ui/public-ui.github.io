@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import Heading from '@theme/Heading';
 
 import type { Locale } from '../shares/language';
+import { MESSAGES } from '../shares/language';
 import type { Playground } from '../shares/playground';
 import { PLAYGROUNDS_V1, PLAYGROUNDS_V2 } from '../shares/playground';
 
@@ -18,7 +19,7 @@ const PlaygroundCard: FC<
 		<div className="text-center">
 			<KolLinkButton
 				_href={url}
-				_label={lang === 'de' ? 'Jetzt ausprobieren!' : 'Try it out now!'}
+				_label={MESSAGES[lang].components.playgroundCards.button}
 				_target="${image}"
 			></KolLinkButton>
 		</div>
