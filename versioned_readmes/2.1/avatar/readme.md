@@ -1,3 +1,5 @@
+Synonyme: Persona
+
 Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder dessen Initialen an, falls kein Bild vorhanden ist.
 
 ## Konstruktion

@@ -1,3 +1,5 @@
+Synonyme: Data Table, Details List, Data Grid
+
 <kol-alert _type="warning" _variant="card">
   <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
 </kol-alert>
@@ -80,7 +82,7 @@ const selection: KoliBriTableSelection = {
 | `_label` _(required)_       | `_label`        | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                                                                                                                                          | `undefined` |
 | `_minWidth`                 | `_min-width`    | Defines the table min-width.                                                                                       | `string` \| `undefined`                                                                                                                                                                             | `undefined` |
 | `_on`                       | --              | Defines the callback functions for table events.                                                                   | `undefined` \| `{ onSort?: EventValueOrEventCallback<MouseEvent, SortEventPayload>` \| `undefined; onSelectionChange?: EventValueOrEventCallback<Event, SelectionChangeEventPayload>` \| `undefined; }` | `undefined` |
-| `_selection`                | `_selection`    | Defines how rows can be selected and the current selection.                                                        | `string` \| `undefined` \| `({ label: (row: KoliBriTableDataType) => string; keyPropertyName?: string` \| `undefined; selectedKeys?: string[]` \| `undefined; })`                                         | `undefined` |
+| `_selection`                | `_selection`    | Defines how rows can be selected and the current selection.                                                        | `string` \| `undefined` \| `({ label: (row: KoliBriTableDataType) => string; keyPropertyName?: string` \| `undefined; multiple?: boolean` \| `undefined; selectedKeys?: string[]` \| `undefined; })`        | `undefined` |
 
 
 ----------------------------------------------

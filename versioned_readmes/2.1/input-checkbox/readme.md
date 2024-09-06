@@ -107,15 +107,35 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 
 ## Methods
 
-### getValue
+### focus
 
-`getValue() => Promise<boolean | undefined>`
+`focus() => Promise<void>`
+
+<span className="text-red-500">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `getValue() => Promise<StencilUnknown>`
 
 
 
 #### Returns
 
-Type: `Promise<boolean | undefined>`
+Type: `Promise<StencilUnknown>`
+
+
+
+### `kolFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

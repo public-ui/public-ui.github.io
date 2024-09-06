@@ -42,14 +42,14 @@ importers:
         specifier: 4.6.0
         version: 4.6.0(monaco-editor@0.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@public-ui/components':
-        specifier: 2.1.5
-        version: 2.1.5
+        specifier: 2.1.7
+        version: 2.1.7
       '@public-ui/react':
-        specifier: 2.1.5
-        version: 2.1.5(@public-ui/components@2.1.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 2.1.7
+        version: 2.1.7(@public-ui/components@2.1.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@public-ui/themes':
-        specifier: 2.1.5
-        version: 2.1.5(@public-ui/components@2.1.5)
+        specifier: 2.1.7
+        version: 2.1.7(@public-ui/components@2.1.7)
       classnames:
         specifier: 2.5.1
         version: 2.5.1
@@ -1345,20 +1345,20 @@ packages:
   '@polka/url@1.0.0-next.21':
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
 
-  '@public-ui/components@2.1.5':
-    resolution: {integrity: sha512-Vg+/W0pmnSdGvsLhdKj4kPeaJEnbxdmyCcXbU/ffKphoFVGywUuYAyJNZnDh0hvI0EdmiaHycmvk1sdSj/g0eg==}
+  '@public-ui/components@2.1.7':
+    resolution: {integrity: sha512-lte8xRnCwnabWYmY7JZedSMPK2ZbUp1z6HjdUlyd2uKFIqc1Q2IekeLtp/CNSdxwll8WbLUu5t5KI1HkhCME9w==}
 
-  '@public-ui/react@2.1.5':
-    resolution: {integrity: sha512-5wswCkhLgdeXqeyu9y6mdr/Iakqz1imdiUOpI/MrrSDxyuni2keh9ddDSCbWphSZJdTfvevRhjOc00X4XMckWw==}
+  '@public-ui/react@2.1.7':
+    resolution: {integrity: sha512-DzUQps2UCT6an4/0hSQ8LtwBREmRT3NSXizFFm+YupcA85ht+TDzmiszjxpJC7kNNfOwvyiA7MkdblJCha1nBg==}
     peerDependencies:
-      '@public-ui/components': 2.1.5
+      '@public-ui/components': 2.1.7
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
 
-  '@public-ui/themes@2.1.5':
-    resolution: {integrity: sha512-n1f4dyymYVQpOITTnh8sS+Pc6Po+aMuVRMe4LZplVAR5R1luJ1xfUlGLMXMLjMNZMoEsX8YnuUqJunDI/PRIiw==}
+  '@public-ui/themes@2.1.7':
+    resolution: {integrity: sha512-8oPKg/aYfr8iAvz6efWjOvPPLDk0geRi6zSL37FINDWj0msRjbpNm8JbTCi6t+jf81Nb/2riIhYgrwvAtH0i3A==}
     peerDependencies:
-      '@public-ui/components': 2.1.5
+      '@public-ui/components': 2.1.7
 
   '@rollup/plugin-babel@5.3.1':
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
@@ -9356,17 +9356,17 @@ snapshots:
 
   '@polka/url@1.0.0-next.21': {}
 
-  '@public-ui/components@2.1.5': {}
+  '@public-ui/components@2.1.7': {}
 
-  '@public-ui/react@2.1.5(@public-ui/components@2.1.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@public-ui/react@2.1.7(@public-ui/components@2.1.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@public-ui/components': 2.1.5
+      '@public-ui/components': 2.1.7
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@public-ui/themes@2.1.5(@public-ui/components@2.1.5)':
+  '@public-ui/themes@2.1.7(@public-ui/components@2.1.7)':
     dependencies:
-      '@public-ui/components': 2.1.5
+      '@public-ui/components': 2.1.7
 
   '@rollup/plugin-babel@5.3.1(@babel/core@7.23.3)(rollup@2.79.1)':
     dependencies:

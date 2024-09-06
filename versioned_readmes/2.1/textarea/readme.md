@@ -106,15 +106,35 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 
 ## Methods
 
-### getValue
+### focus
 
-`getValue() => Promise<string | undefined>`
+`focus() => Promise<void>`
+
+<span className="text-red-500">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `getValue() => Promise<string | undefined>`
 
 
 
 #### Returns
 
 Type: `Promise<string | undefined>`
+
+
+
+### `kolFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

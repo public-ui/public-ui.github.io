@@ -1,3 +1,5 @@
+Synonyme: Data Table, Details List, Data Grid
+
 <kol-alert _type="warning" _variant="card">
   <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
 </kol-alert>
@@ -192,20 +194,20 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 | `_on`                   | --                     | Defines the callback functions for table events.                                                                   | `undefined` \| `{ onSelectionChange?: EventValueOrEventCallback<Event, StatefulSelectionChangeEventPayload>` \| `undefined; }`                                                                                                                                                                                                                                                                                                                                                                                                          | `undefined` |
 | `_pagination`           | `_pagination`          | Defines whether to show the data distributed over multiple pages.                                                  | `boolean` \| `string` \| `undefined` \| `{ _page: number; } & { _on?: KoliBriPaginationButtonCallbacks` \| `undefined; _page?: number` \| `undefined; _max?: number` \| `undefined; _boundaryCount?: number` \| `undefined; _hasButtons?: boolean` \| `Stringified<PaginationHasButton>` \| `undefined; _pageSize?: number` \| `undefined; _pageSizeOptions?: Stringified<number[]>` \| `undefined; _siblingCount?: number` \| `undefined; _customClass?: string` \| `undefined; _label?: string` \| `undefined; _tooltipAlign?: AlignPropType` \| `undefined; }` | `undefined` |
 | `_paginationPosition`   | `_pagination-position` | Controls the position of the pagination.                                                                           | `"both"` \| `"bottom"` \| `"top"` \| `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `'bottom'`  |
-| `_selection`            | `_selection`           | Defines how rows can be selected and the current selection.                                                        | `string` \| `undefined` \| `({ label: (row: KoliBriTableDataType) => string; keyPropertyName?: string` \| `undefined; selectedKeys?: string[]` \| `undefined; })`                                                                                                                                                                                                                                                                                                                                                                           | `undefined` |
+| `_selection`            | `_selection`           | Defines how rows can be selected and the current selection.                                                        | `string` \| `undefined` \| `({ label: (row: KoliBriTableDataType) => string; keyPropertyName?: string` \| `undefined; multiple?: boolean` \| `undefined; selectedKeys?: string[]` \| `undefined; })`                                                                                                                                                                                                                                                                                                                                          | `undefined` |
 
 
 ## Methods
 
 ### getSelection
 
-`getSelection() => Promise<KoliBriTableDataType[]>`
+`getSelection() => Promise<KoliBriTableDataType[] | KoliBriTableDataType | null>`
 
 
 
 #### Returns
 
-Type: `Promise<KoliBriTableDataType[]>`
+Type: `Promise<KoliBriTableDataType | KoliBriTableDataType[] | null>`
 
 
 

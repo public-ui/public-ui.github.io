@@ -1,3 +1,5 @@
+Synonyme: Choice Group, Radio Buttons
+
 Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
 
 <kol-alert _alert _heading="Hinweis" _level="1" _type="info">
@@ -111,7 +113,7 @@ kolibriElement._on = {
 | `_msg`                | --               | Defines the properties for a message rendered as Alert component.                                                                                            | `undefined` \| `{} & { _level?: 0` \| `2` \| `1` \| `4` \| `3` \| `5` \| `6` \| `undefined; _on?: KoliBriAlertEventCallbacks` \| `undefined; _type?: "default"` \| `"info"` \| `"success"` \| `"warning"` \| `"error"` \| `undefined; _variant?: "card"` \| `"msg"` \| `undefined; _label?: string` \| `undefined; _alert?: boolean` \| `undefined; _hasCloser?: boolean` \| `undefined; } & { _description: string; }` | `undefined`  |
 | `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                | `string` \| `undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined`  |
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                    | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput` \| `undefined`                                                                                                                                                                                                                                                                       | `undefined`  |
-| `_options`            | `_options`       | Options the user can choose from.                                                                                                                            | `Option<StencilUnknown>[]` \| `string` \| `undefined`                                                                                                                                                                                                                                                                                                                                 | `undefined`  |
+| `_options`            | `_options`       | Options the user can choose from.                                                                                                                            | `RadioOption<StencilUnknown>[]` \| `string` \| `undefined`                                                                                                                                                                                                                                                                                                                            | `undefined`  |
 | `_orientation`        | `_orientation`   | Defines whether the orientation of the component is horizontal or vertical.                                                                                  | `"horizontal"` \| `"vertical"` \| `undefined`                                                                                                                                                                                                                                                                                                                                         | `'vertical'` |
 | `_required`           | `_required`      | Makes the input element required.                                                                                                                            | `boolean` \| `undefined`                                                                                                                                                                                                                                                                                                                                                            | `false`      |
 | `_tabIndex`           | `_tab-index`     | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)             | `number` \| `undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined`  |
@@ -122,15 +124,35 @@ kolibriElement._on = {
 
 ## Methods
 
-### getValue
+### focus
 
-`getValue() => Promise<StencilUnknown | undefined>`
+`focus() => Promise<void>`
+
+<span className="text-red-500">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `getValue() => Promise<StencilUnknown | undefined>`
 
 
 
 #### Returns
 
 Type: `Promise<StencilUnknown>`
+
+
+
+### `kolFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 
