@@ -2,13 +2,16 @@ import React from 'react';
 import { KolLink } from '@public-ui/react';
 import type { FC } from 'react';
 import { useDocsPreferredVersion } from '@docusaurus/theme-common';
-import type { Version } from '../../shares/version';
 import VERSIONS from '../../versions.json';
 import { translate } from '@docusaurus/Translate';
+import { Version } from '../shares/version';
 
-export const ExampleLink: FC = ({ component }) => {
+interface ComponentProps {
+	component: React.ComponentType<string>;
+}
+export const ExampleLink: FC<ComponentProps> = ({ component }) => {
 	const docVersion = useDocsPreferredVersion();
-	let version = docVersion?.preferredVersion?.name as Version;
+	let version: string = docVersion?.preferredVersion?.name as Version;
 
 	if (version === 'current') {
 		const highestVersion = VERSIONS.reduce((max, ver) => {
