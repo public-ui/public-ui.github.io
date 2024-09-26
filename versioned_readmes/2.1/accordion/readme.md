@@ -1,3 +1,5 @@
+Synonyme: Collapse
+
 Die **Accordion**-Komponente ist ein Aufklapp-Menü. Klickt man auf den Kopfbereich, bestehend aus Icon und Überschrift, klappt der Inhalt mit zusätzlichen Informationen auf. Somit ist es ein interaktives Navigationselement, welches dazu dient, umfangreiche Inhalte platzsparend darzustellen.
 
 Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zugeordnete Inhalte angezeigt oder verborgen werden sollen. Sie erlauben umfangreichere Detailinformationen zu einem Oberbegriff, als es aus Gründen der Übersichtlichkeit eigentlich sinnvoll wäre. Sie überlassen es den Besucher:innen selbst, ob sie sich diese Informationen anzeigen lassen möchten.
@@ -115,6 +117,31 @@ Standardansicht gelegt.
 | `_level`              | `_level`    | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                  | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `undefined`                                       | `1`         |
 | `_on`                 | --          | Gibt die EventCallback-Funktionen an.                                                                              | `undefined` \| `{ onClick?: EventValueOrEventCallback<Event, boolean>` \| `undefined; }` | `undefined` |
 | `_open`               | `_open`     | If set (to true) opens/expands the element, closes if not set (or set to false).                                   | `boolean` \| `undefined`                                                               | `false`     |
+
+
+## Methods
+
+### focus
+
+`focus() => Promise<void>`
+
+<span className="text-red-500">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `kolFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Slots

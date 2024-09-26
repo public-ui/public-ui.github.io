@@ -13,7 +13,7 @@
 		"preserveSymlinks": true,
 		"moduleResolution": "node",
 		"lib": ["es2017", "dom"],
-		"types": ["node", "react"],
+		"types": ["react"],
 		"typeRoots": ["node_modules/@types", "src/types"],
 		"noUnusedLocals": true,
 		"noEmit": true,

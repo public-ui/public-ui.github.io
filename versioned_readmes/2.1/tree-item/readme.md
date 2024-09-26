@@ -1,3 +1,5 @@
+Weitere Informationen zum Tree finden Sie auf der <kol-link _href="/docs/components/tree" _label="Seite der Tree-Komponente"></kol-link>.
+
 <!-- Auto Generated Below -->
 
 

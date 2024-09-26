@@ -1,3 +1,5 @@
+Synonyme: Datalist, Dropdown
+
 Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.
 
 ## Konstruktion
@@ -143,6 +145,16 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 
 ## Methods
 
+### `focus() => Promise<void>`
+
+<span className="text-red-500">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `getValue() => Promise<Stringified<W3CInputValue[]> | undefined>`
 
 
@@ -150,6 +162,16 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 #### Returns
 
 Type: `Promise<Stringified<W3CInputValue[]> | undefined>`
+
+
+
+### `kolFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

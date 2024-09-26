@@ -1,3 +1,5 @@
+Synonyme: Img, Thumbnail
+
 > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
 
 Die **Image**-Komponente dient dazu, Bilder darzustellen.
