@@ -7,24 +7,11 @@ tags:
   - Getting started
 ---
 
-import {
-	KolAbbr,
-	KolAlert,
-	KolCard,
-	KolHeading,
-	KolIconIcofont,
-	KolIndentedText,
-	KolIcon,
-	KolKolibri,
-	KolDetails,
-	KolLink,
-	KolLogo,
-	KolTable,
-} from '@public-ui/react';
-import { KoliBri } from '@site/src/components/KoliBri';
-import { KoliBriAbbr } from '@site/src/components/KoliBriAbbr';
-import { WelcomeQualityTable, WelcomeSupportTable } from '@site/src/components/docs/Welcome';
-import { translate } from '@docusaurus/Translate';
+
+import {KolAlert, KolKolibri, KolLink, KolLogo,} from '@public-ui/react';
+import {KoliBri} from '@site/src/components/KoliBri';
+import {KoliBriAbbr} from '@site/src/components/KoliBriAbbr';
+import {WelcomeQualityTable, WelcomeSupportTable} from '@site/src/components/docs/Welcome';
 
 <div className="flex gap-4">
 	<KolLogo
@@ -44,8 +31,8 @@ import { translate } from '@docusaurus/Translate';
 	/>
 </div>
 
-<KolAlert _type="info">
-	<KolLink _href="/docs/concepts/styling/theming" _label="Erfahren Sie hier, wieso KoliBri so hilfreich ist." />
+<KolAlert _type="info" _variant="card">
+	<KolLink _label="Erfahren Sie hier, wieso KoliBri so hilfreich ist." _href="/docs/concepts/styling/theming" />
 </KolAlert>
 
 <br />
@@ -65,17 +52,17 @@ import { translate } from '@docusaurus/Translate';
 ## Mission
 
 <p className="col-12">
-	Der <kol-link _href="https://html.spec.whatwg.org" _target="w3c" _label="HTML-Webstandard"></kol-link> ist an sich sehr
+	Der <KolLink _label="HTML-Webstandard" _href="https://html.spec.whatwg.org" _target="blank" /> ist an sich sehr
 	"offen" spezifiziert, um möglichst langlebig und robust zu sein. Es kommt daher häufig vor, dass HTML-Kompositionen nicht
 	ohne Weiteres barrierefrei, semantisch und valide sind. <KoliBri /> baut direkt auf den
-	<kol-link _href="https://www.w3.org/standards/webdesign/" _target="w3c" _label="Webstandards"></kol-link> des
-	<kol-link _href="https://www.w3.org" _target="w3c" _label="W3C"></kol-link> auf (Framework-agnostisch), ist dabei eine
-	generische Referenzimplementierung des <kol-link
-		_href="https://www.w3.org/WAI/standards-guidelines/wcag/"
-		_target="wcag"
+	<KolLink _label="Webstandards" _href="https://www.w3.org/standards/webdesign/" _target="blank" /> des
+	<KolLink _label="W3C" _href="https://www.w3.org" _target="blank" /> auf (Framework-agnostisch), ist dabei eine
+	generische Referenzimplementierung des <KolLink
 		_label="WCAG-Standards"
+		_href="https://www.w3.org/WAI/standards-guidelines/wcag/"
+		_target="blank"
 	/>
-	und der <kol-link _href="https://www.bitvtest.de/bitv_test.html" _target="bitv" _label="BITV"></kol-link> für die Barrierefreiheit
+	und der <KolLink _label="BITV" _href="https://www.bitvtest.de/bitv_test.html" _target="blank" /> für die Barrierefreiheit
 	und als eine Multi-Theming-fähige Präsentationsschicht umgesetzt. Es gibt keinerlei fachlichen Bezug und keine Datenübertragungsfunktionalitäten.
 	Damit ist <KoliBri /> für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher Corporate
 	Designs und Styleguides gleichermaßen wiederverwendbar und somit für Open Source sehr interessant.
@@ -108,7 +95,7 @@ import { translate } from '@docusaurus/Translate';
 		<li>
 			<strong>Zugänglichmachung:</strong> Die Artefakte und der Quellcode können von jedem frei und kostenlos
 			wiederverwendet werden. Hierdurch leistet der ITZBund einen Beitrag im Sinne von{' '}
-			<kol-link _href="https://publiccode.eu/" _target="publiccode" _label="„Public Money – Public Code“"></kol-link>.
+			<KolLink _label="„Public Money – Public Code“" _href="https://publiccode.eu/" _target="blank" />.
 		</li>
 		<li>
 			<strong>Gewährleistungs- und Haftungsausschluss:</strong> Mit der Wiederverwendung gehen keinerlei Gewährleistung
@@ -145,8 +132,7 @@ import { translate } from '@docusaurus/Translate';
 </p>
 <p className="col-12">
 	<KolAlert _type="success" _variant="card">
-		<KoliBri />
-		-Komponenten lassen sich nahtlos in vorhandene Webseiten oder Webanwendungen integrieren und bringen ihren Style (-guide)
+		<KoliBri />-Komponenten lassen sich nahtlos in vorhandene Webseiten oder Webanwendungen integrieren und bringen ihren Style (-guide)
 		selbst mit und kapseln diesen nahezu vollständig von Außen ab.
 	</KolAlert>
 </p>
@@ -155,14 +141,15 @@ import { translate } from '@docusaurus/Translate';
 
 <p className="col-12">
 	Web Components können technologisch sowohl Client-seitig (CSR), prerendered (SSG), als auch Server-seitig (SSR)
-	gerendert werden. Das Rendering ist dabei von den jeweils technischen Rahmenbedingungen abhängig (
-	<KolLink _href="https://web.dev/rendering-on-the-web/" _target="web.dev" _label={`https://web.dev`} />,{` `}
-	<KolLink
+	gerendert werden. Das Rendering ist dabei von den jeweils technischen Rahmenbedingungen abhängig (<KolLink
+		_label="https://web.dev"
+		_href="https://web.dev/rendering-on-the-web/"
+		_target="blank"
+	/>, <KolLink
+		_label="https://medium.com"
 		_href="https://medium.com/nerd-for-tech/compare-and-contrast-csr-ssr-and-ssg-in-nextjs-58e3caf2e15e"
-		_target="web.dev"
-		_label={`https://medium.com`}
-	/>
-	).
+		_target="blank"
+	/>).
 </p>
 <p>
 	<KolAlert _type="info" _variant="card">
@@ -178,9 +165,7 @@ import { translate } from '@docusaurus/Translate';
 	<KolAlert _type="info" _variant="card">
 		<small>
 			🧪 Das Server-Side-Rendering von Web Components ist eine neue spannende Funktionalität, wo noch Anpassungen an den
-			Prerenderer notwendig sein werden und wird daher unsererseits als experimentell eingestuft
-			<br />(<KolLink _href="https://web.dev/declarative-shadow-dom/" _target="web.dev" _label={`https://web.dev`} />
-			).
+			Prerenderer notwendig sein werden und wird daher unsererseits als experimentell eingestuft (<KolLink _label="https://web.dev" _href="https://web.dev/declarative-shadow-dom/" _target="blank" />).
 		</small>
 	</KolAlert>
 </p>
@@ -191,7 +176,7 @@ import { translate } from '@docusaurus/Translate';
 	<KoliBri /> folgt den Prinzipien der semantischen Versionierung.
 </p>
 <p className="col-12">
-	<b>Aufbau</b> einer Version:
+	<strong>Aufbau</strong> einer Version:
 	<ul>
 		<li>
 			Sie besteht in der Regel aus 3 Teilen (z. B. 1.0.2)
@@ -218,7 +203,7 @@ import { translate } from '@docusaurus/Translate';
 	</ul>
 </p>
 <p className="col-12">
-	Folgende <b>Hauptprinzipien</b> kommen dabei zur Anwendung:
+	Folgende <strong>Hauptprinzipien</strong> kommen dabei zur Anwendung:
 	<ul>
 		<li>
 			<b>Patch</b>: Beinhaltet Änderungen, die den aktuellen Funktionsumfang verbessern und in seiner Verwendung nicht
@@ -234,7 +219,7 @@ import { translate } from '@docusaurus/Translate';
 		</li>
 	</ul>
 	Die komplette Beschreibung der SemVer finden Sie hier:{' '}
-	<kol-link _href="https://semver.org/lang/de/" _target="semver" _label="https://semver.org/lang/de/"></kol-link>
+	<KolLink _label="https://semver.org/lang/de/" _href="https://semver.org/lang/de/" _target="blank" />
 </p>
 
 ## Qualitätsziele

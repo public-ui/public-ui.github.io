@@ -5,7 +5,7 @@ tags:
   - Rechtliches
 ---
 
-import { KolKolibri, KolLogo } from '@public-ui/react';
+import {KolKolibri, KolLink, KolLogo} from '@public-ui/react';
 import { KoliBri } from '@site/src/components/KoliBri';
 import { translate } from '@docusaurus/Translate';
 
@@ -31,18 +31,15 @@ import { translate } from '@docusaurus/Translate';
 
 <p>
 	Diese technische Dokumentation wird vom Open Source-Projekt "<KoliBri />" des{' '}
-	<kol-link _href="https://itzbund.de" _target="itzbund" _label="Informationstechnikzentrum Bund (ITZBund)"></kol-link> herausgegeben.
+	<KolLink _label="Informationstechnikzentrum Bund (ITZBund)" _href="https://itzbund.de" _target="blank" /> herausgegeben.
 </p>
 
 ### Adresse
 
 <p>
-	ITZBund Dienstsitz Bonn
-	<br />
-	Bernkasteler Straße 8
-	<br />
-	53175 Bonn
-	<br />
+	ITZBund Dienstsitz Bonn <br />
+	Bernkasteler Straße 8 <br />
+	53175 Bonn <br />
 	Deutschland
 </p>
 
@@ -50,12 +47,11 @@ import { translate } from '@docusaurus/Translate';
 
 <p>
 	E-Mail:
-	<kol-link
-		_icons="codicon codicon-mail"
-		_href="mailto:kolibri@itzbund.de"
-		_target="_blank"
+	<KolLink
 		_label="kolibri@itzbund.de"
-	></kol-link>
+		_href="mailto:kolibri@itzbund.de"
+		_icons="codicon codicon-mail"
+	></KolLink>
 </p>
 
 ### Datenschutz
