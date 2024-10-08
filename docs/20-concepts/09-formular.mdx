@@ -10,14 +10,14 @@ tags:
 import { KolLink } from '@public-ui/react';
 
 Im Rahmen des Refactorings zur Verbesserung der Developer Experience haben wir die Input-Komponenten neu strukturiert
-und sie gemäß der <KolLink _label="W3C-Aufteilung" _href="https://html.spec.whatwg.org/multipage/input.html" _target="blank" /> in separierte Komponenten umgesetzt.
+und sie gemäß der <KolLink _label="W3C-Aufteilung" _href="https://html.spec.whatwg.org/multipage/input.html" _target="_blank" /> in separierte Komponenten umgesetzt.
 Auf diese Weise stellen die jeweiligen Komponenten nur noch die Eigenschaften zur Verfügung, die beim jeweiligen Typ auch eine Funktion haben. Eigenschaften die zuvor
 "mitgeschleppt" wurden, aber keinerlei Funktion haben, wurden aus der Programmierung entfernt.
 
 ## Vergleich zum HTML-Tag &lt;input&gt;
 
 <p>
-	Schaut man sich die <KolLink _label="" _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/Input" _target="blank">
+	Schaut man sich die <KolLink _label="" _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/Input" _target="_blank">
 		<span slot="expert">Umsetzung des <code>&lt;input&gt;</code>-Tags</span>
 	</KolLink> an, dann werden alle Typen eines Eingabefelds mit nur einem Tag (Komponente) umgesetzt. Dadurch kommt es dazu, dass
 	zwar alle Eigenschaften (Attribute/Properties) möglich sind, aber in Abhängigkeit vom Typ keinerlei Funktion haben.
