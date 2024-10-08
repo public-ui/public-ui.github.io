@@ -8,6 +8,8 @@ tags:
   - concept
 ---
 
+import { KolLink } from '@public-ui/react';
+
 ## Motivation
 
 Numerous, sometimes complex requirements for components of design systems or component libraries would not have to be considered over and over again if there were small-scale, easily reusable basic components to carry these requirements.
@@ -24,4 +26,4 @@ The easiest method to customize a KoliBri component is wrapping. Here, an own co
 
 ### Overwriting
 
-Another variant of swizzling is the overwriting of the inner component construction. In Web Components, this is often done using slots. In KoliBri, we have introduced the <kol-link _href="expert-slot" _label="expert slots"></kol-link> for this purpose.
+Another variant of swizzling is the overwriting of the inner component construction. In Web Components, this is often done using slots. In KoliBri, we have introduced the <KolLink _label="expert slots" _href="expert-slot" /> for this purpose.
