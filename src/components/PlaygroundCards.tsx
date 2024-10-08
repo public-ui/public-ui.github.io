@@ -12,19 +12,23 @@ const PlaygroundCard: FC<
 	Playground & {
 		lang: Locale;
 	}
-> = ({ lang, name, image, url }) => (
-	<div className="grid gap-2">
-		<Heading as="h3">{name}</Heading>
-		<img src={`/assets/playgrounds/${image}`} alt={`Vorschau des Playground ${name}'s`} />
-		<div className="text-center">
-			<KolLinkButton
-				_href={url}
-				_label={MESSAGES[lang].components.playgroundCards.button}
-				_target="${image}"
-			></KolLinkButton>
+> = ({ lang, name, image, url }) => {
+	const imagePath = `${lang === 'en' ? '/en' : ''}/assets/playgrounds/${image}`;
+
+	return (
+		<div className="grid gap-2">
+			<Heading as="h3">{name}</Heading>
+			<img src={imagePath} alt={MESSAGES[lang].components.playgroundCards.previewAlt(name)} />
+			<div className="text-center">
+				<KolLinkButton
+					_href={url}
+					_label={MESSAGES[lang].components.playgroundCards.button}
+					_target="${image}"
+				></KolLinkButton>
+			</div>
 		</div>
-	</div>
-);
+	);
+};
 
 export type PlaygroundCardsProps = {
 	lang?: Locale;
