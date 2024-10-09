@@ -7,6 +7,8 @@ tags:
   - Konzept
 ---
 
+import { KolLink } from '@public-ui/react';
+
 ## Motivation
 
 Zahlreiche teils komplexe Anforderungen an Komponenten von Design-Systemen oder Komponenten-Bibliotheken müssten nicht immer wieder aufs Neue betrachtet werden, wenn es kleinteilige, gut wiederverwendbare Basis-Komponenten gäbe, die diese Anforderungen mit sich bringen.
@@ -23,4 +25,4 @@ Die einfachste Methode eine KoliBri-Komponente auf eigene Bedürfnisse anzupasse
 
 ### Overwriting
 
-Eine andere Variante des Swippling ist das Overwriting der inneren Komponenten-Konstruktion. Bei Web Components wird dies häufig mittels Slots gemacht. In KoliBri haben wir dafür die <kol-link _href="expert-slot" _label="Expert-Slots"></kol-link> eingeführt.
+Eine andere Variante des Swippling ist das Overwriting der inneren Komponenten-Konstruktion. Bei Web Components wird dies häufig mittels Slots gemacht. In KoliBri haben wir dafür die <KolLink _label="Expert-Slots" _href="expert-slot" /> eingeführt.

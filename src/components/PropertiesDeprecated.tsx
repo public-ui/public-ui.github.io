@@ -1,6 +1,9 @@
 import type { FC } from 'react';
 import React from 'react';
 
+import type { Locale } from '../shares/language';
+import { MESSAGES } from '../shares/language';
+
 const DEPRECATED = new Map<string, Set<string>>();
 DEPRECATED.set('_align', new Set(['_tabs-align']));
 DEPRECATED.set('_dataFoot', new Set(['']));
@@ -31,7 +34,11 @@ DEPRECATED.set(
 	])
 );
 
-export const PropertiesDeprecated: FC = () => {
+export type PropertiesDeprecatedProps = {
+	lang?: Locale;
+};
+
+export const PropertiesDeprecated: FC<PropertiesDeprecatedProps> = ({ lang = 'de' }) => {
 	return (
 		<>
 			<table>
@@ -59,7 +66,7 @@ export const PropertiesDeprecated: FC = () => {
 			</table>
 			<p>
 				<small>
-					<sup>*</sup> Betrifft nur Typen, die eigentlich Varianten meinen.
+					<sup>*</sup> {MESSAGES[lang].components.propertiesTable.meta}
 				</small>
 			</p>
 		</>

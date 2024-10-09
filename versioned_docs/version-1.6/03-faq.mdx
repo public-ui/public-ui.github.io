@@ -31,7 +31,7 @@ import { KolLink } from '@public-ui/react';
 - **Was besagt die Lizenzierung?**<br/>
   Die EUPL erlaubt die uneingeschränkte Nutzung der Artefakt, die auf konfigurative Weise an die eigenen Bedürfnisse angepasst werden können.
   Andererseits erzwingt sie die Offenlegung von Änderungen, die beim Kopieren von Quellcode aus KoliBri hervorgegangen sind (Copy-Left).
-  Mehr hierzu finden Sie in der <KolLink _href="/docs/license" _label="Lizenz" />.
+  Mehr hierzu finden Sie in der <KolLink _href="/docs/project/license" _label="Lizenz" />.
 
 ## Theming und Styling
 
@@ -40,7 +40,7 @@ import { KolLink } from '@public-ui/react';
 - **Wie funktioniert das Theming?**<br/>
   In der Regel werden Web Components mit festem Styling erstellt. KoliBri trennt die semantisch barrierefreien Komponenten vom Styling und stellt dafür eine Register-Methode zum Kombinieren zur Verfügung. Da die Web Components im Browser grundsätzlich registriert (define) werden müssen, besteht hier die Möglichkeit, die Komponenten mit einem definierten Theme zu laden.
 - **Wie kann man ein eigenes Theme erstellen?**<br/>
-  Wir arbeiten stets daran, das Erstellen und Pflegen von Themes weiter zu vereinfachen. Hierzu dienen z.B. das Basis-Styling (reines Layout) der Komponenten ab Version 1.5. Aufsetzen kann man einfach durch die Erstellung einer Theme-Definition, z.B. mit einem eigenen Theme-Projekt (NPM-Paket) mittels der <KolLink _href="https://github.com/public-ui/kolibri/blob/45726c50d7f28c9c595442b2241582816eca5670/packages/create-kolibri/templates/kolibri-library/packages/components/src/global/script.ts#L8" _label="TS-Datei" _target="github"/>. Hilfreich um Erstellen und Pflegen von Themes ist auch unser<KolLink _href="/designer/" _label=" Theme-Designer" _target="designer"/>.
+  Wir arbeiten stets daran, das Erstellen und Pflegen von Themes weiter zu vereinfachen. Hierzu dienen z.B. das Basis-Styling (reines Layout) der Komponenten ab Version 1.5. Aufsetzen kann man einfach durch die Erstellung einer Theme-Definition, z.B. mit einem eigenen Theme-Projekt (NPM-Paket) mittels der <KolLink _href="https://github.com/public-ui/kolibri/blob/45726c50d7f28c9c595442b2241582816eca5670/packages/create-kolibri/templates/kolibri-library/packages/components/src/global/script.ts#L8" _label="TS-Datei" _target="github"/>. Hilfreich um Erstellen und Pflegen von Themes ist auch unser <KolLink _href="/designer/" _label=" Theme-Designer" _target="designer"/>.
 - **Warum muss CSS in JavaScript verwalten werden?**<br/>
   Das Stylen von KoliBri-Komponenten erfolgt nicht allein eingebundenes CSS oder die Verwendung von CSS-Frameworks (wie z.B. Bootstrap, Material-UI, Tailwind CSS, etc.), sondern
   über das technische Setzen von CSS an der Komponente. Das hat den Vorteil, dass die Komponenten vom äußeren CSS unabhängig sind. Die Robustheit ist ein architektonischen Qualitätsziel. Sie spiegelt sich darin wieder, das nur die Komponente selbst über ihr Styling entscheidet.
