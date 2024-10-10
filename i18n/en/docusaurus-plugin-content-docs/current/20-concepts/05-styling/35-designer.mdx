@@ -1,28 +1,10 @@
-import {
-	KolAbbr,
-	KolAlert,
-	KolCard,
-	KolHeading,
-	KolIconIcofont,
-	KolIndentedText,
-	KolIcon,
-	KolKolibri,
-	KolDetails,
-	KolLink,
-	KolLogo,
-	KolTable,
-} from '@public-ui/react';
+import {KolCard, KolLink,} from '@public-ui/react';
 
 # Designer
 
 <div className="grid grid-cols-2">
-	<KolCard _headline="Create own theme" _level={2}>
-		<KolLink slot="content" _useCase="nav" _href="/designer" _target="designer">
-			<div className="flex gap-4 py-2">
-				<KolIcon className="homepage" _icons="codicon codicon-paintcan" />
-				<span>Click here to open the designer in a new browser window.</span>
-			</div>
-		</KolLink>
+	<KolCard _label="Create own theme" _level={2}>
+		<KolLink _label="Click here to open the designer in a new browser window." _href="/designer" _target="_blank" _icons={{ left:'codicon codicon-paintcan' }} />
 	</KolCard>
 </div>
 

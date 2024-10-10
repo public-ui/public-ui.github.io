@@ -1,28 +1,10 @@
-import {
-	KolAbbr,
-	KolAlert,
-	KolCard,
-	KolHeading,
-	KolIconIcofont,
-	KolIndentedText,
-	KolIcon,
-	KolKolibri,
-	KolDetails,
-	KolLink,
-	KolLogo,
-	KolTable,
-} from '@public-ui/react';
+import {KolCard, KolIcon, KolLink,} from '@public-ui/react';
 
 # Designer
 
 <div className="grid grid-cols-2">
 	<KolCard _label="Eigenes Theme erstellen" _level={2}>
-		<KolLink slot="" data-removed-_useCase="nav" _href="/designer" _target="designer" _label="">
-			<div slot="expert" className="flex gap-4 py-2">
-				<KolIcon className="homepage" _icons="codicon codicon-paintcan" />
-				<span>Klicken Sie hier, um den Designer in einem neuen Browser-Fenster zu öffnen.</span>
-			</div>
-		</KolLink>
+		<KolLink _label="Klicken Sie hier, um den Designer in einem neuen Browser-Fenster zu öffnen." _href="/designer" _target="_blank" _icons={{ left:'codicon codicon-paintcan' }} />
 	</KolCard>
 </div>
 
@@ -32,8 +14,7 @@ Mithilfe des KoliBri-Designers können Benutzer für die KoliBri-Bibliothek schn
 Die fertigen Styles können anschließend als Theme heruntergeladen und im eigenen Projekt eingefügt werden.
 
 <kol-alert _label="Designer oder Scss" _type="info" _variant="card">
-	KoliBri bietet zum Erstellen von Themes auch einen <kol-link _href="/docs/concepts/styling/scss" _label="Scss" />
-	-Ansatz an. Je nach persönlichen Präferenzen kann der Designer oder Scss verwendet werden.
+	KoliBri bietet zum Erstellen von Themes auch einen <KolLink _label="Scss" _href="/docs/concepts/styling/scss" />-Ansatz an. Je nach persönlichen Präferenzen kann der Designer oder Scss verwendet werden.
 </kol-alert>
 
 ## Globales CSS

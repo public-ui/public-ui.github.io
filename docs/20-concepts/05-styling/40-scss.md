@@ -3,19 +3,21 @@ title: Scss
 description: Auf dieser Seite wird beschrieben, wie Scss zur Erstellung von KoliBri-Themes verwendet werden kann.
 ---
 
+import { KolAlert, KolLink } from '@public-ui/react';
+
 # Scss
 
 Dieser Artikel beschreibt, wie Scss zur Erstellung von KoliBri-Themes genutzt werden kann.
 
-<kol-alert _label="Designer oder Scss" _type="info" _variant="card">
-  KoliBri bietet zum Erstellen von Themes auch einen <kol-link _href="/docs/concepts/styling/designer" _label="Designer" /> an. Je nach persönlichen Präferenzen kann Scss oder der Designer verwendet werden.
-</kol-alert><br/>
+<KolAlert _label="Designer oder Scss" _type="info" _variant="card">
+  KoliBri bietet zum Erstellen von Themes auch einen <KolLink _label="Designer" _href="/docs/concepts/styling/designer" /> an. Je nach persönlichen Präferenzen kann Scss oder der Designer verwendet werden.
+</KolAlert><br/>
 
-Scss ist eine Erweiterung von CSS, die es ermöglicht, Variablen, Funktionen, Mixins und vieles mehr zu verwenden. Scss kann für die Erstellung von KoliBri-Themes genutzt. Hierfür hat das Entwicklungsteam vom Projekt <kol-link _href="https://gitlab.opencode.de/kern-designsystem/pattern-library" _label="KERN" _target="kern" /> ein Build-Script geschrieben, um aus Scss-Dateien die entsprechenden KoliBri-Themes zu generieren.
+Scss ist eine Erweiterung von CSS, die es ermöglicht, Variablen, Funktionen, Mixins und vieles mehr zu verwenden. Scss kann für die Erstellung von KoliBri-Themes genutzt. Hierfür hat das Entwicklungsteam vom Projekt <KolLink _label="KERN" _href="https://gitlab.opencode.de/kern-designsystem/pattern-library" _target="_blank" /> ein Build-Script geschrieben, um aus Scss-Dateien die entsprechenden KoliBri-Themes zu generieren.
 
 ## Hintergrund
 
-Wir haben in den <kol-link _href="/docs/faq" _label="FAQ" /> beschrieben, warum wir CSS in JavaScript verwalten. Das bedeutet, dass das einfach Einbinden von CSS in der Rahmenseite nicht die KoliBri-Komponenten styled. Denn jede Komponente weiß über JavaScript selbst, welches CSS es verwenden soll. Das CSS muss also in JavaScript verpackt werden, so dass es bei der Ausführung der Web Component geladen werden kann.
+Wir haben in den <KolLink _label="FAQ" _href="/docs/faq" /> beschrieben, warum wir CSS in JavaScript verwalten. Das bedeutet, dass das einfach Einbinden von CSS in der Rahmenseite nicht die KoliBri-Komponenten styled. Denn jede Komponente weiß über JavaScript selbst, welches CSS es verwenden soll. Das CSS muss also in JavaScript verpackt werden, so dass es bei der Ausführung der Web Component geladen werden kann.
 
 ## Erstellung
 
@@ -143,4 +145,4 @@ Identifizierte Änderungen können dann später wieder in den Scss-Dateien über
 
 ## Referenzprojekt
 
-Mehr zur Umsetzung des Scss-Ansatzen findet sich im <kol-link _href="https://gitlab.opencode.de/kern-designsystem/pattern-library/-/tree/main/packages/themes" _label="Git-Repository von KERN" _target="kern" />.
+Mehr zur Umsetzung des Scss-Ansatz findet sich im <KolLink _label="Git-Repository von KERN" _href="https://gitlab.opencode.de/kern-designsystem/pattern-library/-/tree/main/packages/themes" _target="_blank" />.

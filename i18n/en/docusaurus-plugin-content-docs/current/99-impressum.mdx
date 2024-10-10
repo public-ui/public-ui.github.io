@@ -5,9 +5,9 @@ tags:
   - leagal
 ---
 
-import { KolKolibri, KolLogo } from '@public-ui/react';
-import { KoliBri } from '@site/src/components/KoliBri';
-import { translate } from '@docusaurus/Translate';
+
+import {KolKolibri, KolLink, KolLogo} from '@public-ui/react';
+import {KoliBri} from '@site/src/components/KoliBri';
 
 <div className="flex gap-4">
 	<KolLogo
@@ -31,31 +31,26 @@ import { translate } from '@docusaurus/Translate';
 
 <p>
 	This technical documentation is published by the open source project "<KoliBri />" of the{' '}
-	<kol-link _href="https://itzbund.de" _target="itzbund">
-		Informationstechnikzentrum Bund (ITZBund)
-	</kol-link>
-	.
+	<KolLink _label="Informationstechnikzentrum Bund (ITZBund)" _href="https://itzbund.de" _target="blank" />.
 </p>
 
-### Adress
+### Address
 
 <p>
-	ITZBund Dienstsitz Bonn
-	<br />
-	Bernkasteler Straße 8
-	<br />
-	53175 Bonn
-	<br />
+	ITZBund Dienstsitz Bonn<br />
+	Bernkasteler Straße 8<br />
+	53175 Bonn<br />
 	Germany
 </p>
 
 ### Contact
 
 <p>
-	E-Mail:
-	<kol-link _icons="codicon codicon-mail" _href="mailto:kolibri@itzbund.de" _target="_blank">
-		kolibri@itzbund.de
-	</kol-link>
+	E-Mail: <KolLink
+		_label="kolibri@itzbund.de"
+		_href="mailto:kolibri@itzbund.de"
+		_icons="codicon codicon-mail"
+	/>
 </p>
 
 ### Privacy
