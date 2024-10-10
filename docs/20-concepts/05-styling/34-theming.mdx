@@ -1,6 +1,6 @@
-import {KolAlert, KolDetails, KolIndentedText, KolLink,} from '@public-ui/react';
-import {KoliBri} from '@site/src/components/KoliBri';
-import {Mermaid} from '@site/src/components/Mermaid';
+import { KolAlert, KolDetails, KolIndentedText, KolLink, } from '@public-ui/react';
+import { KoliBri } from '@site/src/components/KoliBri';
+import { Mermaid } from '@site/src/components/Mermaid';
 
 # Theming
 
@@ -9,13 +9,13 @@ import {Mermaid} from '@site/src/components/Mermaid';
 </KolAlert>
 
 <p>
-	Das Einzigartige an <KoliBri /> ist die <strong>Referenzimplementierung</strong> von Komponenten, die von Grund auf
+	Das Einzigartige an <KoliBri/> ist die <strong>Referenzimplementierung</strong> von Komponenten, die von Grund auf
 	<strong>semantisch W3C- und WCAG-konform</strong> und damit <strong>vollständig barrierefrei</strong> bezüglich der assistiven
 	Unterstützung sind. Alle Komponenten werden dabei als <KolLink
-		_label="Web Components"
-		_href="https://developer.mozilla.org/en-US/docs/Web/Web_Components?retiredLocale=de"
-		_target="_blank"
-	/> umgesetzt und sind somit in allen webbasierten Projekten wiederverwendbar. In der folgenden Abbildung werden diese Komponenten
+	_label="Web Components"
+	_href="https://developer.mozilla.org/en-US/docs/Web/Web_Components?retiredLocale=de"
+	_target="_blank"
+/> umgesetzt und sind somit in allen webbasierten Projekten wiederverwendbar. In der folgenden Abbildung werden diese Komponenten
 	durch die grau-gestrichelten Formen in der Mitte dargestellt.
 </p>
 <p>
@@ -33,7 +33,7 @@ import {Mermaid} from '@site/src/components/Mermaid';
 />
 
 <p>
-	Im ersten Release (v1.0) hatte <KoliBri /> noch direkt das Individualisieren des Standard-Designs mittels sogenannter{' '}
+	Im ersten Release (v1.0) hatte <KoliBri/> noch direkt das Individualisieren des Standard-Designs mittels sogenannter{' '}
 	<strong>
 		<KolLink
 			_label="CSS-Properties"
@@ -48,10 +48,10 @@ import {Mermaid} from '@site/src/components/Mermaid';
 		_target="_blank"
 	/>
 	, <KolLink
-		_label="Tailwind CSS"
-		_href="https://tailwindcss.com"
-		_target="_blank"
-	/>) umgesetzt. Mit der
+	_label="Tailwind CSS"
+	_href="https://tailwindcss.com"
+	_target="_blank"
+/>) umgesetzt. Mit der
 	Umsetzung weiterer Themes haben wir jedoch festgestellt, dass wir immer mehr CSS-Properties einführen müssten, um die
 	Flexiblität für das gewünschte Design/UX (Corporate Design/Styleguide) umsetzen zu können. Im Zweifel müsste für jede
 	Anpassbarkeit ein separates Property vorgesehen werden. Am Beispiel des{' '}
@@ -66,10 +66,10 @@ import {Mermaid} from '@site/src/components/Mermaid';
 	<KolIndentedText>
 		<strong>
 			2. Wir haben das ganze CSS vollständig von den Components entkoppelt (wie <KolLink
-				_label="Styled-Components"
-				_href="https://styled-components.com"
-				_target="_blank"
-			/>).
+			_label="Styled-Components"
+			_href="https://styled-components.com"
+			_target="_blank"
+		/>).
 		</strong>
 	</KolIndentedText>
 </p>
@@ -132,7 +132,7 @@ stateDiagram-v2
 <p>
 	Das UI/UX-Team spezifiziert beispielsweise mit Figma die Komponenten ihres Design-Systems. Bei der Überführung der
 	Spezifikation in die Realisierung wird das Design in Form von reinem CSS mittels des{' '}
-	<KolLink _label="KoliBri-Designers" _href="/docs/concepts/styling/designer" /> auf die Basis-Komponenten
+	<KolLink _label="KoliBri-Designers" _href="/docs/concepts/styling/designer"/> auf die Basis-Komponenten
 	„übertragen“. Wenn im eigenen Design-System eine Individualisierbarkeit gewünscht ist, können im Designer dafür
 	CSS-Properties oder Design-Tokens definiert werden. Damit das eigene Theme über Projekte hinweg geteilt werden kann,
 	wird das Theme in ein NPM-Paket paketiert und kann über eine beliebige Registry bereitgestellt werden.
@@ -159,7 +159,7 @@ stateDiagram-v2
 		Hierfür bieten wir die sogenannte <strong>KoliBri-Factory</strong> (Stack) an (siehe{' '}
 		<KolLink
 			_label="Modularisierung"
-			_href="https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md#erweitert"
+			_href="/docs/concepts/architecture#erweitert"
 			_target="_blank"
 		/>
 		).
