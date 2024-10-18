@@ -12,6 +12,7 @@ type Tupel = {
 	os: string;
 	browser: string;
 	screenreader: string;
+	quality: string;
 };
 
 export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
@@ -29,7 +30,7 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 								key: 'quality',
 								width: '12em',
 								textAlign: 'left',
-								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${row.quality}</b>`),
+								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${(row as Tupel).quality}</b>`),
 							},
 							{
 								label: 'Priority',
@@ -98,7 +99,7 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 								key: 'quality',
 								width: '12em',
 								textAlign: 'left',
-								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${row.quality}</b>`),
+								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${(row as Tupel).quality}</b>`),
 							},
 							{
 								label: 'Priorität',
@@ -171,28 +172,28 @@ export const WelcomeSupportTable: FC<Props> = ({ lang }) => {
 								key: 'device',
 								width: '10em',
 								textAlign: 'left',
-								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, `<b>${row.device}</b>`),
+								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${(row as Tupel).device}</b>`),
 							},
 							{
 								label: 'Operating system',
 								key: 'os',
 								width: '10em',
 								textAlign: 'left',
-								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.os),
+								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).os),
 							},
 							{
 								label: 'Browser',
 								key: 'browser',
 								width: '10em',
 								textAlign: 'left',
-								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.os),
+								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).os),
 							},
 							{
 								label: 'Screen reader',
 								key: 'screenreader',
 								width: '10em',
 								textAlign: 'left',
-								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.screenreader),
+								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).screenreader),
 							},
 						],
 					],
@@ -232,28 +233,28 @@ export const WelcomeSupportTable: FC<Props> = ({ lang }) => {
 								key: 'device',
 								width: '10em',
 								textAlign: 'left',
-								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, `<b>${row.device}</b>`),
+								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${(row as Tupel).device}</b>`),
 							},
 							{
 								label: 'Betriebssystem',
 								key: 'os',
 								width: '10em',
 								textAlign: 'left',
-								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.os),
+								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).os),
 							},
 							{
 								label: 'Browser',
 								key: 'browser',
 								width: '10em',
 								textAlign: 'left',
-								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.browser),
+								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).browser),
 							},
 							{
 								label: 'Screenreader',
 								key: 'screenreader',
 								width: '10em',
 								textAlign: 'left',
-								render: (el, _col, row: Tupel) => dangerouslySetInnerHTML(el, row.screenreader),
+								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).screenreader),
 							},
 						],
 					],

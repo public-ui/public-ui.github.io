@@ -169,7 +169,6 @@ export type TagName =
 	| 'modal'
 	| 'nav'
 	| 'pagination'
-	| 'popover'
 	| 'progress'
 	| 'quote'
 	| 'select'
@@ -181,7 +180,6 @@ export type TagName =
 	| 'tabs'
 	| 'tag'
 	| 'textarea'
-	| 'toast'
 	| 'tooltip'
 	| 'version';
 
