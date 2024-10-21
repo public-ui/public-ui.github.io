@@ -55,7 +55,7 @@ function fillDefaultValues(): TagNameToAttributes {
 
 			// apply certain provided demo values
 			if (typeof demoValues[tagName]?.[attribute.name] !== 'undefined') {
-				result[tagName][attribute.name] = demoValues[tagName]![attribute.name];
+				result[tagName][attribute.name] = demoValues[tagName][attribute.name];
 			}
 		});
 

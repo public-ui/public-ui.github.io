@@ -33,9 +33,9 @@ function getDataFromSheets(queryList: unknown[], resultList: Record<string, unkn
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 		const query = queryList.shift();
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-		const { sheet, promise } = query as any;
+		const { sheet, promise } = query as { sheet: string; promise: Promise<unknown> };
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-		promise.then((result: unknown) => {
+		void promise.then((result: unknown) => {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
 			resultList[sheet] = result;
 			resolve(getDataFromSheets(queryList, resultList));

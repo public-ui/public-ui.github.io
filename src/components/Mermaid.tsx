@@ -9,7 +9,7 @@ type MermaidProps = {
 
 let mermaidTimeout: NodeJS.Timeout;
 
-export const mermaidLoadContent = (config: any) => {
+export const mermaidLoadContent = (config: unknown) => {
 	if (config) {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 		mermaid.initialize(Object.assign({ startOnLoad: true }, config));
