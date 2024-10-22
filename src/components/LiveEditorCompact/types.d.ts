@@ -169,6 +169,7 @@ export type TagName =
 	| 'modal'
 	| 'nav'
 	| 'pagination'
+	| 'popover'
 	| 'progress'
 	| 'quote'
 	| 'select'
@@ -180,10 +181,11 @@ export type TagName =
 	| 'tabs'
 	| 'tag'
 	| 'textarea'
+	| 'toast'
 	| 'tooltip'
 	| 'version';
 
 /**
  * All tag names except those which don't have an editor implementation
  */
-export type ImplementedTagName = Exclude<TagName, 'tag' | 'tooltip'>;
+export type ImplementedTagName = Exclude<TagName, 'tag' | 'tooltip' | 'toast' | 'popover'>;
