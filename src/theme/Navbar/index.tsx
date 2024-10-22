@@ -8,8 +8,6 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 import { LanguageSwitch } from '@site/src/components/LanguageSwitch';
 import Navbar from '@theme-original/Navbar';
 import ThemeSelect from './ThemeSelect';
-import { useDocsPreferredVersion } from '@docusaurus/theme-common';
-import { determinateVersionId } from '../../shares/version';
 import { translate } from '@docusaurus/Translate';
 
 export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {

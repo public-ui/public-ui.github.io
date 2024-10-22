@@ -51,9 +51,9 @@ ELEMENTS.tags.forEach((tag) => {
 			}
 			const prop = PROPS.get(attribute.name);
 			if (prop) {
-				prop.get('components').add(componentName);
-				prop.get('descriptions').add(attribute.description);
-				prop.get('types').add(attribute.type.replace(/ \| undefined/g, ''));
+				prop.get('components')?.add(componentName);
+				prop.get('descriptions')?.add(attribute.description);
+				prop.get('types')?.add(attribute.type.replace(/ \| undefined/g, ''));
 			}
 		});
 	}

@@ -66,7 +66,7 @@ export const setTheme = (theme: Theme) => {
 		STORE.theme = theme;
 		setStore();
 	} else {
-		throw new Error(`The theme identifier "${theme}" is not valid or an available option.`);
+		throw new Error(`The theme identifier "${theme as string}" is not valid or an available option.`);
 	}
 };
 

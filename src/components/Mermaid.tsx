@@ -1,15 +1,15 @@
 import type { FunctionComponent } from 'react';
 import React, { useEffect } from 'react';
-import mermaid from 'mermaid';
+import mermaid, { type MermaidConfig } from 'mermaid';
 
 type MermaidProps = {
 	code: string;
-	config?: unknown;
+	config: MermaidConfig;
 };
 
 let mermaidTimeout: NodeJS.Timeout;
 
-export const mermaidLoadContent = (config) => {
+export const mermaidLoadContent = (config: MermaidConfig) => {
 	if (config) {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 		mermaid.initialize(Object.assign({ startOnLoad: true }, config));
