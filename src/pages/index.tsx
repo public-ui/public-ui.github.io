@@ -26,8 +26,8 @@ const HomepageHeader: FunctionComponent = () => (
 );
 const HomepageButtons: FunctionComponent = () => {
 	const docVersion = useDocsPreferredVersion();
-	const version: string = getVersionForUrl(docVersion);
-	const versionId: string = determinateVersionId(docVersion);
+	const version = getVersionForUrl(docVersion);
+	const versionId = determinateVersionId(docVersion);
 
 	return (
 		<div className="grid sm:flex gap-4 justify-center mt-4">
@@ -36,7 +36,7 @@ const HomepageButtons: FunctionComponent = () => {
 				_icons={{
 					right: 'codicon codicon-dashboard',
 				}}
-				_href={`docs/${version ? `${version}/` : ''}get-started/first-steps`}
+				_href={`/docs/${version ? `${version}/` : ''}get-started/first-steps`}
 				_label={translate({
 					id: 'custom.get-started-button',
 				})}
@@ -44,14 +44,14 @@ const HomepageButtons: FunctionComponent = () => {
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href={`docs/${version ? `${version}` : ''}`}
+				_href={`/docs/${version ? `${version}` : ''}`}
 				_label={translate({
 					id: 'custom.documentation-button',
 				})}
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href={`${versionId}/sample-react/#/handout/basic`}
+				_href={`/${versionId}/sample-react/#/handout/basic`}
 				_label={translate({
 					id: 'custom.sample-app-button',
 				})}

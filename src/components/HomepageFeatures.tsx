@@ -27,8 +27,8 @@ function Feature({ title, icon, description, button }: FeatureItem) {
 
 export default function HomepageFeatures(): JSX.Element {
 	const docVersion = useDocsPreferredVersion();
-	const version: string | null = getVersionForUrl(docVersion);
-	const versionId: string | null = determinateVersionId(docVersion);
+	const version = getVersionForUrl(docVersion);
+	const versionId = determinateVersionId(docVersion);
 
 	const FeatureList: FeatureItem[] = [
 		{
@@ -42,7 +42,7 @@ export default function HomepageFeatures(): JSX.Element {
 							message:
 								'Die semantisch barrierefreien Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet werden. Mittels des',
 						})}{' '}
-						<KolLink _href={`${versionId}/designer`} _label="Designers" _target="designer" />{' '}
+						<KolLink _href={`/${versionId}/designer`} _label="Designers" _target="designer" />{' '}
 						{translate({
 							id: 'custom.designer-short-description-part-2',
 							message: 'können die Komponenten an beliebige Styleguides oder Designs angepasst werden.',
@@ -53,7 +53,7 @@ export default function HomepageFeatures(): JSX.Element {
 			button: (
 				<KolLinkButton
 					className="w-72"
-					_href={`docs/${version ? `${version ? `${version}/` : ''}` : ''}concepts/styling/theming `}
+					_href={`/docs/${version ? `${version ? `${version}/` : ''}` : ''}concepts/styling/theming `}
 					_label="Styling & Design"
 				></KolLinkButton>
 			),
@@ -75,7 +75,7 @@ export default function HomepageFeatures(): JSX.Element {
 			button: (
 				<KolLinkButton
 					className="w-72"
-					_href={`docs/${version ? `${version}/` : ''}get-started/frameworks`}
+					_href={`/docs/${version ? `${version}/` : ''}get-started/frameworks`}
 					_label="Frameworks"
 				></KolLinkButton>
 			),
@@ -100,7 +100,7 @@ export default function HomepageFeatures(): JSX.Element {
 			button: (
 				<KolLinkButton
 					className="w-72"
-					_href={`docs/${version ? `${version}/` : ''}components`}
+					_href={`/docs/${version ? `${version}/` : ''}components`}
 					_label={translate({
 						id: 'custom.components',
 						message: 'Components',
