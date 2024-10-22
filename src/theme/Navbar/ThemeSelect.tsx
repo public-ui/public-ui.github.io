@@ -1,4 +1,4 @@
-import type { InputTypeOnDefault } from '@public-ui/schema';
+import type { InputTypeOnDefault } from '@public-ui/components';
 import { KolSelect } from '@public-ui/react';
 import type { FunctionComponent } from 'react';
 import React, { useEffect, useState } from 'react';
@@ -34,7 +34,7 @@ export const ThemeSelect: FunctionComponent = () => {
 			setActivate({
 				_disabled: false,
 				_on: {
-					onInput: (_event, value) => {
+					onInput: (_event: Event, value: unknown) => {
 						if (Array.isArray(value)) {
 							setTheme(value[0] as Theme);
 							location.reload();

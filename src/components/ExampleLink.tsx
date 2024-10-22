@@ -4,9 +4,10 @@ import type { FC } from 'react';
 import { useDocsPreferredVersion } from '@docusaurus/theme-common';
 import { translate } from '@docusaurus/Translate';
 import { determinateVersionId } from '../shares/version';
+import Heading from '@theme/Heading';
 
 interface ComponentProps {
-	component: React.ComponentType<string>;
+	component: string;
 }
 export const ExampleLink: FC<ComponentProps> = ({ component }) => {
 	const docVersion = useDocsPreferredVersion();
@@ -14,12 +15,12 @@ export const ExampleLink: FC<ComponentProps> = ({ component }) => {
 
 	return (
 		<div>
-			<h2>
+			<Heading as="h2">
 				{translate({
 					id: 'custom.view-example',
 					message: 'Beispiel ansehen',
 				})}
-			</h2>
+			</Heading>
 			<KolLink
 				_href={`/${versionId}/sample-react/#/${component}`}
 				_label={translate({

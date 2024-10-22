@@ -32,16 +32,17 @@ function parseResult(name: string, result: string) {
 }
 
 export const BitvTestResult: FC = () => {
-	const [data, setData] = useState([]);
+	const [data, setData] = useState<{ component: string; bmf: string; zoll: string }[]>([]);
 
 	useEffect(() => {
 		getDataFromExcel()
 			.then((results) => {
-				console.log(results);
+				const typedResults = results as { [key: string]: string };
+				console.log(typedResults);
 				const data = [];
-				for (const key in results) {
+				for (const key in typedResults) {
 					// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-					data.push(parseResult(key, results[key]));
+					data.push(parseResult(key, typedResults[key]));
 				}
 				setData(data);
 				console.log(data);

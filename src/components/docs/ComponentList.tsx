@@ -4,7 +4,7 @@ import { useDocsPreferredVersion } from '@docusaurus/theme-common';
 import Link from '@docusaurus/Link';
 import { KolBadge, KolCard, KolHeading } from '@public-ui/react';
 
-import type { Language } from '../../shares/language';
+import type { Language, Locale } from '../../shares/language';
 import type { Version } from '../../shares/version';
 import { COMPONENT_SYNONYMS } from '../../shares/synonyms';
 import type { Component } from '../samplePreviews';
@@ -30,7 +30,11 @@ const LazyLoadComponent: FC<
 
 	const formattedComponentName = name.charAt(0).toUpperCase() + name.slice(1);
 
-	const SampleComponent = loadComponent();
+	interface SampleComponentProps {
+		lang: Locale;
+	}
+
+	const SampleComponent: React.FC<SampleComponentProps> = loadComponent();
 	if (!loadComponent) {
 		throw new Error(`Example component for ${name} not found`);
 	}

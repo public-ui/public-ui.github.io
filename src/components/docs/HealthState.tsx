@@ -163,23 +163,23 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 							{
 								label: 'Package',
 								key: 'name',
-								render: (_el, _cell, tupel: Tupel) => `${getPackageName(tupel.scope, tupel.name)}`,
+								render: (_el, _cell, tupel) => `${getPackageName((tupel as Tupel).scope, (tupel as Tupel).name)}`,
 								width: '15em',
 							},
 							{
 								label: 'Version',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://www.npmjs.com/package/${getPackageName(
-											tupel.scope,
-											tupel.name
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}" _target="npmjs">
-			<img alt="NPM page of the package ${tupel.name}" src="https://img.shields.io/npm/v/${getPackageName(
-											tupel.scope,
-											tupel.name
+			<img alt="NPM page of the package ${(tupel as Tupel).name}" src="https://img.shields.io/npm/v/${getPackageName(
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}" />
 		</kol-link>`
 									),
@@ -189,16 +189,16 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								key: 'name',
 								textAlign: 'center',
 
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://npmcharts.com/compare/${getPackageName(
-											tupel.scope,
-											tupel.name
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}" _target="npmcharts">
-			<img alt="NPM chart of the package ${tupel.name}" src="https://img.shields.io/npm/dt/${getPackageName(
-											tupel.scope,
-											tupel.name
+			<img alt="NPM chart of the package ${(tupel as Tupel).name}" src="https://img.shields.io/npm/dt/${getPackageName(
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}.svg" />
 		</kol-link>`
 									),
@@ -217,14 +217,17 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Install size',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://packagephobia.com/result?p=${getPackageName(
-											tupel.scope,
-											tupel.name
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}" _target="packagephobia">
-			<img alt="" src="https://packagephobia.now.sh/badge?p=${getPackageName(tupel.scope, tupel.name)}" />
+			<img alt="" src="https://packagephobia.now.sh/badge?p=${getPackageName(
+				(tupel as Tupel).scope,
+				(tupel as Tupel).name
+			)}" />
 		</kol-link>`
 									),
 							},
@@ -232,29 +235,35 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Dependencies',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://libraries.io/npm/${getPackageName(
-											tupel.scope,
-											tupel.name,
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name,
 											'%2F'
 										)}" _target="libraries">
-			<img alt="" src="https://img.shields.io/librariesio/release/npm/${getPackageName(tupel.scope, tupel.name)}" />
+			<img alt="" src="https://img.shields.io/librariesio/release/npm/${getPackageName(
+				(tupel as Tupel).scope,
+				(tupel as Tupel).name
+			)}" />
 		</kol-link>`
 									),
 							},
 							{
 								label: 'Health',
 								key: 'name',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(
-											tupel.scope,
-											tupel.name
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}" _target="snyk">
-			<img alt="" src="https://snyk.io/advisor/npm-package/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
+			<img alt="" src="https://snyk.io/advisor/npm-package/${getPackageName(
+				(tupel as Tupel).scope,
+				(tupel as Tupel).name
+			)}/badge.svg" />
 		</kol-link>`
 									),
 							},
@@ -262,15 +271,15 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Vulnerabilities*',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(
-											tupel.scope,
-											tupel.name,
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name,
 											'%2F'
 										)}" _target="snyk">
-			<img alt="" src="https://snyk.io/test/npm/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
+			<img alt="" src="https://snyk.io/test/npm/${getPackageName((tupel as Tupel).scope, (tupel as Tupel).name)}/badge.svg" />
 		</kol-link>`
 									),
 							},
@@ -292,23 +301,25 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 							{
 								label: 'Package',
 								key: 'name',
-								render: (_el, _cell, tupel: Tupel) => `${getPackageName(tupel.scope, tupel.name)}`,
+								render: (_el, _cell, tupel) => `${getPackageName((tupel as Tupel).scope, (tupel as Tupel).name)}`,
 								width: '15em',
 							},
 							{
 								label: 'Version',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://www.npmjs.com/package/${getPackageName(
-											tupel.scope,
-											tupel.name
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}" _target="npmjs" _label="">
-		<img alt="NPM-Seite von dem Paket ${tupel.name}" slot="expert" src="https://img.shields.io/npm/v/${getPackageName(
-											tupel.scope,
-											tupel.name
+		<img alt="NPM-Seite von dem Paket ${
+			(tupel as Tupel).name
+		}" slot="expert" src="https://img.shields.io/npm/v/${getPackageName(
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}" />
 	</kol-link>`
 									),
@@ -317,16 +328,18 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Downloads',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://npmcharts.com/compare/${getPackageName(
-											tupel.scope,
-											tupel.name
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}" _target="npmcharts" _label="">
-		<img alt="NPM-Chart von dem Paket ${tupel.name}" slot="expert" src="https://img.shields.io/npm/dt/${getPackageName(
-											tupel.scope,
-											tupel.name
+		<img alt="NPM-Chart von dem Paket ${
+			(tupel as Tupel).name
+		}" slot="expert" src="https://img.shields.io/npm/dt/${getPackageName(
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}.svg" />
 	</kol-link>`
 									),
@@ -345,14 +358,17 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Install size',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://packagephobia.com/result?p=${getPackageName(
-											tupel.scope,
-											tupel.name
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}" _target="packagephobia" _label="">
-		<img alt="" slot="expert" src="https://packagephobia.now.sh/badge?p=${getPackageName(tupel.scope, tupel.name)}" />
+		<img alt="" slot="expert" src="https://packagephobia.now.sh/badge?p=${getPackageName(
+			(tupel as Tupel).scope,
+			(tupel as Tupel).name
+		)}" />
 	</kol-link>`
 									),
 							},
@@ -360,17 +376,17 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Dependencies',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://libraries.io/npm/${getPackageName(
-											tupel.scope,
-											tupel.name,
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name,
 											'%2F'
 										)}" _target="libraries" _label="">
 		<img alt="" slot="expert" src="https://img.shields.io/librariesio/release/npm/${getPackageName(
-			tupel.scope,
-			tupel.name
+			(tupel as Tupel).scope,
+			(tupel as Tupel).name
 		)}" />
 	</kol-link>`
 									),
@@ -378,16 +394,16 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 							{
 								label: 'Health',
 								key: 'name',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(
-											tupel.scope,
-											tupel.name
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name
 										)}" _target="snyk" _label="">
 		<img alt="" slot="expert" src="https://snyk.io/advisor/npm-package/${getPackageName(
-			tupel.scope,
-			tupel.name
+			(tupel as Tupel).scope,
+			(tupel as Tupel).name
 		)}/badge.svg" />
 	</kol-link>`
 									),
@@ -396,15 +412,18 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Vulnerabilities*',
 								key: 'name',
 								textAlign: 'center',
-								render: (el, _cell, tupel: Tupel) =>
+								render: (el, _cell, tupel) =>
 									dangerouslySetInnerHTML(
 										el,
 										`<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(
-											tupel.scope,
-											tupel.name,
+											(tupel as Tupel).scope,
+											(tupel as Tupel).name,
 											'%2F'
 										)}" _target="snyk" _label="">
-		<img alt="" slot="expert" src="https://snyk.io/test/npm/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
+		<img alt="" slot="expert" src="https://snyk.io/test/npm/${getPackageName(
+			(tupel as Tupel).scope,
+			(tupel as Tupel).name
+		)}/badge.svg" />
 	</kol-link>`
 									),
 							},
