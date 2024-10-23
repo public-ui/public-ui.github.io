@@ -54,6 +54,10 @@ export const COMPONENTS_CURRENT = [
 		loadComponent: () => lazy(() => import('../Dialog')),
 	},
 	{
+		name: 'drawer',
+		loadComponent: () => lazy(() => import('../Drawer')),
+	},
+	{
 		name: 'form',
 		loadComponent: () => lazy(() => import('../Form')),
 	},
@@ -152,6 +156,10 @@ export const COMPONENTS_CURRENT = [
 	{
 		name: 'select',
 		loadComponent: () => lazy(() => import('../Select')),
+	},
+	{
+		name: 'single-select',
+		loadComponent: () => lazy(() => import('../SingleSelect')),
 	},
 	{
 		name: 'skip-nav',
