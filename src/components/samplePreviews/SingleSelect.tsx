@@ -1,6 +1,22 @@
 import React from 'react';
-import { KolImage } from '@public-ui/react';
+import { KolSingleSelect } from '@public-ui/react';
+import { Option, StencilUnknown } from '@public-ui/components';
 
-const SingleSelect = () => <KolImage _src="/assets/samples/single-select.png" _alt="" _sizes="20vw" />;
+const COUNTRY_OPTIONS = [
+	{ label: 'Dänemark', value: 'dk' },
+	{ label: 'Deutschland', value: 'de' },
+	{ label: 'Dominica', value: 'dm' },
+];
+
+const SingleSelect = () => (
+	<KolSingleSelect
+		_touched
+		_label="Label"
+		_placeholder="Placeholder"
+		_required
+		_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
+		_value={'Deutschland'}
+	/>
+);
 
 export default SingleSelect;
