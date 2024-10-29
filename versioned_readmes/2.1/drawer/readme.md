@@ -1,76 +1,66 @@
- (Sidebar) `preview`
-
 Synonyme: Modal, Modal Dialog, Corner Dialog, Prompt
 
 <kol-alert _type="warning" _variant="card">
   <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
 </kol-alert>
 
-Mit Hilfe der **Drawer**-Komponente können zusätzliche Informationen oder auch Navigationselemente in einem ausklappbaren Seitenfenster angezeigt werden. Ein offener Drawer kann als Modal ( _modal) via ESC geschlossen werden. Die **Drawer**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt bzw. controlled mit dem Attribut _open gesteuert.
+Mithilfe der **Drawer**-Komponente können zusätzliche Informationen oder auch Navigationselemente in einem ausklappbaren Seitenfenster angezeigt werden. Ein offener Drawer kann als Modal (`_modal`) via ESC geschlossen werden.
+
+Die **Drawer**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt bzw. controlled mit dem Attribut `_open` gesteuert.
 
 ```html
-<kol-drawer _label="Drawer" _open _modal _align="top"> </kol-drawer>
+<kol-drawer _label="Drawer" _open _modal _align="top"></kol-drawer>
 ```
 
 ### Beispiel
 
 #### Uncontrolled
 
-<kol-drawer
-id="example-drawer"
- _align="left"
- _label="Drawer"
+Im _Uncontrolled_-Modus wird der Drawer über die Methoden `open()` und `close()` gesteuert.
 
->
-
-    <div>
-        <p>Dies ist der Inhalt des Drawers. Hier können Sie beliebige HTML-Elemente einfügen.</p>
-        <kol-button className="close-drawer" _label="Schließen"></kol-button>
-    </div>
-
+```html
+<kol-drawer id="example-drawer" _align="left" _label="Drawer">
+	<div>
+		<p>Dies ist der Inhalt des Drawers. Hier können Sie beliebige HTML-Elemente einfügen.</p>
+		<kol-button className="close-drawer" _label="Schließen"></kol-button>
+	</div>
 </kol-drawer>
 <kol-button id="drawer-open-button" _label="Drawer öffnen"></kol-button>
 
 <script>
-  const drawer = document.querySelector('#example-drawer');
-  const drawerOpenButton = document.querySelector('#drawer-open-button');
+	const drawer = document.querySelector('#example-drawer');
+	const drawerOpenButton = document.querySelector('#drawer-open-button');
 
-  function openDrawer() {
-    drawer.open();
-  }
+	function openDrawer() {
+		drawer.open();
+	}
 
-  function closeDrawer() {
-    drawer.close();
-  }
+	function closeDrawer() {
+		drawer.close();
+	}
 
-  document.querySelectorAll('.close-drawer').forEach((b) => (b.onclick = closeDrawer));
-  drawerOpenButton.onclick = openDrawer;
+	document.querySelectorAll('.close-drawer').forEach((b) => (b.onclick = closeDrawer));
+	drawerOpenButton.onclick = openDrawer;
 </script>
+```
 
 #### Uncontrolled Modal
 
-<kol-drawer
- _modal
- _align="left"
- _label="Drawer"
-
-> </kol-drawer>
+```html
+<kol-drawer _modal _align="left" _label="Drawer">
+	<p>Drawer Inhalt</p>
+</kol-drawer>
+```
 
 #### Controlled
 
-<kol-drawer
- _open=true
- _align="left"
- _label="Drawer"
+Im _Controlled_-Modus wird der Drawer über das `_open` Attribut gesteuert.
 
-> </kol-drawer>
-
-<kol-drawer
- _open=true
- _align="left"
- _label="Drawer"
-
-> </kol-drawer>
+```html
+<kol-drawer _open="true" _align="left" _label="Drawer">
+	<p>Drawer Inhalt</p>
+</kol-drawer>
+```
 
 ## Verwendung
 
@@ -78,7 +68,7 @@ Um den **Drawer** programmgesteuert zu öffnen und zu schließen, verwenden Sie 
 
 ## Barrierefreiheit
 
-Das _label Attribut stellt eine klare und verständliche Beschriftung für den Drawer bereit. Dies verbessert die Nutzung für Personen, die Screenreader verwenden, da das Label als **`aria-label`** fungiert und somit die Bedeutung und Funktion des Drawers erklärt.
+Das `_label` Attribut stellt eine klare und verständliche Beschriftung für den Drawer bereit. Dies verbessert die Nutzung für Personen, die Screenreader verwenden, da das Label als **`aria-label`** fungiert und somit die Bedeutung und Funktion des Drawers erklärt.
 
 ### Drawer als Modal
 
