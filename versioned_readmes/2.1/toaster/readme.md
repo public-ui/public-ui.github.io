@@ -22,7 +22,7 @@ toaster.enqueue({
 	label: 'This is the title',
 	description: 'Magna eu sit adipisicing cillum amet esse in aute quis in dolore.',
 	type: 'info',
-	alertType: 'msg', // Standard: 'card'
+	variant: 'msg', // Standard: 'card'
 });
 ```
 
@@ -97,9 +97,9 @@ Type: `Promise<void>`
 
 #### Parameters
 
-| Name    | Type                                                                                                                                                                                                            | Description |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ description?: string` \| `undefined; render?: ToastRenderFunction` \| `undefined; label: string; type: "default"` \| `"info"` \| `"success"` \| `"warning"` \| `"error"; alertVariant?: "card"` \| `"msg"` \| `undefined; }` |             |
+| Name    | Type                                                                                                                                                                                                                                                    | Description |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `toast` | `{ description?: string` \| `undefined; render?: ToastRenderFunction` \| `undefined; label: string; type: "default"` \| `"info"` \| `"success"` \| `"warning"` \| `"error"; alertVariant?: "card"` \| `"msg"` \| `undefined; variant?: "card"` \| `"msg"` \| `undefined; }` |             |
 
 #### Returns
 
