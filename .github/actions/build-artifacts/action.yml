@@ -46,6 +46,7 @@ runs:
     - name: Download designer (v1)
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
       run: |
         rm -rf package *.tgz
         npm pack @public-ui/designer@^1
@@ -60,6 +61,7 @@ runs:
     - name: Download sample react (v1)
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
       run: |
         rm -rf package *.tgz
         npm pack @public-ui/sample-react@^1
@@ -74,6 +76,7 @@ runs:
     - name: Download designer (v2)
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
       run: |
         rm -rf package *.tgz
         npm pack @public-ui/designer@^2
@@ -88,6 +91,7 @@ runs:
     - name: Download sample react (v2)
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
       run: |
         rm -rf package *.tgz
         npm pack @public-ui/sample-react@^2
