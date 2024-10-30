@@ -1,0 +1,32 @@
+---
+title: Table
+description: Beschreibung, Spezifikation und Beispiele für die Table-Komponente.
+tags:
+  - Table
+  - Beschreibung
+  - Spezifikation
+  - Beispiele
+---
+
+import Readme from '../../../readmes/table/readme.md';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+### Stateful & Stateless
+
+Es gibt 2 Varianten der Table: <kol-link _label="KolTableStateful" _href="table/table-stateful"></kol-link> und <kol-link _label="KolTableStateful" _href="table/table-stateful"></kol-link>.
+Beide Varianten sind für übersichtliche Darstellung von Datenmengen benutzbar.
+
+Die **TableStateful**-Komponente ist so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+
+Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Sortierung und Paginierung werden von der Tabelle nicht automatisch übernommen
+
+Ausführlichere Informationen zur Nutzung findet sich auf der jeweiligen Seite.
+
+<Readme />
+
+<ExampleLink component="table" />
+
+## Live-Editor
+
+<LiveEditorCompact component="table" />
