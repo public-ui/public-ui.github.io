@@ -1,0 +1,51 @@
+name: Netlify Draft Deploy
+
+env:
+  github-registry: https://npm.pkg.github.com
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  npmjs-registry: https://registry.npmjs.org
+  scope: public-ui
+  token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  build-and-deploy:
+    if: ${{ github.event.pull_request.base.repo.clone_url == github.event.pull_request.head.repo.clone_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Artifacts
+        uses: ./.github/actions/build-artifacts
+
+      - name: Netlify Deploy
+        uses: netlify/actions/cli@master
+        id: netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=build
+
+      - name: Find comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Netlify Draft Deployment
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Netlify Draft Deployment
+            URL: ${{ steps.netlify.outputs.NETLIFY_URL }}
+            Logs: ${{ steps.netlify.outputs.NETLIFY_LOGS_URL }}
+          edit-mode: replace

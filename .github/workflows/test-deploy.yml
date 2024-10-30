@@ -1,0 +1,33 @@
+name: Netlify Test Deploy - Deploy main branch under fixed alias
+
+env:
+  github-registry: https://npm.pkg.github.com
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  npmjs-registry: https://registry.npmjs.org
+  scope: public-ui
+  token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Artifacts
+        uses: ./.github/actions/build-artifacts
+
+      - name: Netlify Deploy
+        uses: netlify/actions/cli@master
+        id: netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=build --alias="$GITHUB_REF_NAME"
