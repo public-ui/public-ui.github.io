@@ -1,12 +1,5 @@
 name: Update GitHub page
 
-env:
-  github-registry: https://npm.pkg.github.com
-  github-token: ${{ secrets.GITHUB_TOKEN }}
-  npmjs-registry: https://registry.npmjs.org
-  scope: public-ui
-  token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-
 on:
   push:
     branches:
@@ -34,6 +27,8 @@ jobs:
 
       - name: Build Artifacts
         uses: ./.github/actions/build-artifacts
+        with:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

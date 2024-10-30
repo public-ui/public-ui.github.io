@@ -1,12 +1,5 @@
 name: Netlify Test Deploy - Deploy main branch under fixed alias
 
-env:
-  github-registry: https://npm.pkg.github.com
-  github-token: ${{ secrets.GITHUB_TOKEN }}
-  npmjs-registry: https://registry.npmjs.org
-  scope: public-ui
-  token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-
 on:
   push:
     branches:
@@ -22,6 +15,8 @@ jobs:
 
       - name: Build Artifacts
         uses: ./.github/actions/build-artifacts
+        with:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Netlify Deploy
         uses: netlify/actions/cli@master
