@@ -7,7 +7,6 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property | Attribute | Description                                                                       | Type                                                                                  | Default     |
@@ -16,14 +15,10 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 | `_on`    | --        | Defines the callback functions for popover events.                                | `undefined` \| `{ onClose?: EventCallback<MouseEvent` \| `KeyboardEvent>` \| `undefined; }` | `undefined` |
 | `_show`  | `_show`   | Makes the element show up.                                                        | `boolean` \| `undefined`                                                                | `false`     |
 
-
 ## Slots
 
 | Slot | Description             |
 | ---- | ----------------------- |
 |      | Der Inhalt des Popover. |
 
-
-----------------------------------------------
-
-
+---

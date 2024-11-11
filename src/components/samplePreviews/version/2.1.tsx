@@ -46,6 +46,10 @@ export const COMPONENTS_21 = [
 		loadComponent: () => lazy(() => import('../Details')),
 	},
 	{
+		name: 'drawer',
+		loadComponent: () => lazy(() => import('../Drawer')),
+	},
+	{
 		name: 'dialog',
 		loadComponent: () => lazy(() => import('../Dialog')),
 	},
@@ -148,6 +152,10 @@ export const COMPONENTS_21 = [
 	{
 		name: 'select',
 		loadComponent: () => lazy(() => import('../Select')),
+	},
+	{
+		name: 'single-select',
+		loadComponent: () => lazy(() => import('../SingleSelect')),
 	},
 	{
 		name: 'skip-nav',
