@@ -14,14 +14,15 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 ### Stateful & Stateless
 
-Es gibt 2 Varianten der Table: <kol-link _label="KolTableStateful" _href="table/table-stateful"></kol-link> und <kol-link _label="KolTableStateful" _href="table/table-stateful"></kol-link>.
+Es gibt zwei Varianten der Tabelle: <kol-link _label="KolTableStateful" _href="table/table-stateful"></kol-link> und <kol-link _label="KolTableStateless" _href="table/table-stateless"></kol-link>.
 Beide Varianten sind für übersichtliche Darstellung von Datenmengen benutzbar.
 
-Die **TableStateful**-Komponente ist so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+Die **TableStateful**-Komponente ist darauf ausgelegt, große Datenmengen übergeben zu bekommen und übernimmt automatisch Funktionen wie Paginierung und Sortierung nach Tabellenspalten.
 
-Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Sortierung und Paginierung werden von der Tabelle nicht automatisch übernommen
+Die **TableStateless**-Komponente hingegen ist ausschließlich für die Darstellung zuständig. Ihr wird jeweils nur die darzustellende Teildatenmenge übergeben,
+während Sortierung und Filterung der Daten außerhalb der Komponente stattfinden und über die von der Komponente emittierten Events gesteuert werden können.
 
-Ausführlichere Informationen zur Nutzung findet sich auf der jeweiligen Seite.
+Ausführlichere Informationen zur Nutzung finden sich auf der jeweiligen Seite.
 
 <Readme />
 
