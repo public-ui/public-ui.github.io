@@ -8,6 +8,7 @@ tags:
   - Beispiele
 ---
 
+import Readme from '../../readmes/avatar/readme.md';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
@@ -57,17 +58,7 @@ Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefr
 - Die Initialen, die alternativ zum Avatar-Bild gezeigt werden, werden als rein visuelles, semantisch nicht relevantes Element betrachtet und für Screenreader
 entsprechend versteckt.
 
-<!-- Auto Generated Below -->
-
-## Properties
-
-| Property              | Attribute | Description                                                                                                        | Type                  | Default     |
-| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | --------------------- | ----------- |
-| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`              | `undefined` |
-| `_src`                | `_src`    | Sets the image `src` attribute to the given string.                                                                | `string \| undefined` | `undefined` |
-
----
-
+<Readme />
 
 <ExampleLink component="avatar" />
 

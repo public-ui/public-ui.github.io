@@ -8,6 +8,7 @@ tags:
   - Beispiele
 ---
 
+import Readme from '../../readmes/drawer/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
@@ -139,39 +140,7 @@ Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wic
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" _target="_blank"></kol-link>
 
-<!-- Auto Generated Below -->
-
-## Properties
-
-| Property              | Attribute | Description                                                                                                        | Type                                                      | Default     |
-| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | ----------- |
-| `_align`              | `_align`  | Specifies the orientation of the drawer.                                                                           | `"bottom" \| "left" \| "right" \| "top" \| undefined`     | `undefined` |
-| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                  | `undefined` |
-| `_modal`              | `_modal`  | Indicates whether the drawer is a modal.                                                                           | `boolean \| undefined`                                    | `undefined` |
-| `_on`                 | --        | Specifies the EventCallback function to be called when the drawer is closing.                                      | `undefined \| ({ onClose?: (() => void) \| undefined; })` | `undefined` |
-| `_open`               | `_open`   | Specifies the default open state of the drawer.                                                                    | `boolean \| undefined`                                    | `undefined` |
-
-## Methods
-
-### `close() => Promise<void>`
-
-#### Returns
-
-Type: `Promise<void>`
-
-### `open() => Promise<void>`
-
-#### Returns
-
-Type: `Promise<void>`
-
-## Slots
-
-| Slot | Description            |
-| ---- | ---------------------- |
-|      | The Content of drawer. |
-
----
+<Readme />
 
 <ExampleLink component="drawer" />
 

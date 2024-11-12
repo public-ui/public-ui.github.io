@@ -8,6 +8,7 @@ tags:
   - Beispiele
 ---
 
+import Readme from '../../readmes/toaster/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Toaster
@@ -82,34 +83,6 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 - `success`
 - `warning`
 
-<!-- Auto Generated Below -->
-
-## Methods
-
-### `closeAll(immediate?: boolean) => Promise<void>`
-
-#### Parameters
-
-| Name        | Type      | Description |
-| ----------- | --------- | ----------- |
-| `immediate` | `boolean` |             |
-
-#### Returns
-
-Type: `Promise<void>`
-
-### `enqueue(toast: Toast) => Promise<() => void>`
-
-#### Parameters
-
-| Name    | Type                                                                                                                                                                                                                                                    | Description |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; alertVariant?: "card" \| "msg" \| undefined; variant?: "card" \| "msg" \| undefined; }` |             |
-
-#### Returns
-
-Type: `Promise<() => void>`
-
----
+<Readme />
 
 <ExampleLink component="toast" />

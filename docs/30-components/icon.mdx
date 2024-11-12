@@ -8,6 +8,7 @@ tags:
   - Beispiele
 ---
 
+import Readme from '../../readmes/icon/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
@@ -56,22 +57,7 @@ Mittels der Property `_label` muss ein Kontext-relevantes Icon beschriftet werde
 - <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font-Awesome"></kol-link>
 - <kol-link _href="https://icofont.com"  _target="_blank" _label="Icofont"></kol-link>
 
-<!-- Auto Generated Below -->
-
-## Properties
-
-| Property              | Attribute | Description                                                                                                        | Type     | Default     |
-| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | -------- | ----------- |
-| `_icons` _(required)_ | `_icons`  | Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).                                                    | `string` | `undefined` |
-| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string` | `undefined` |
-
-## Shadow Parts
-
-| Part     | Description                               |
-| -------- | ----------------------------------------- |
-| `"icon"` | Ermöglicht das Styling des inneren Icons. |
-
----
+<Readme />
 
 <ExampleLink component="icon" />
 

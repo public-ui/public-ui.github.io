@@ -8,6 +8,7 @@ tags:
   - Beispiele
 ---
 
+import Readme from '../../readmes/heading/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
@@ -47,24 +48,7 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 - Achten Sie bei der Verwendung von Headings auf die empfohlene Semantik für die Suchmaschinenoptimierung.
 - Setzen Sie Headings in verschiedenen Größen ein, um eine sinnvolle Struktur Ihrer Inhalte zu erzeugen.
 
-<!-- Auto Generated Below -->
-
-## Properties
-
-| Property              | Attribute             | Description                                                                                                                                                  | Type                                                                    | Default     |
-| --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------- |
-| `_label` _(required)_ | `_label`              | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string`                                                                | `undefined` |
-| `_level`              | `_level`              | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                                                            | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                          | `undefined` |
-| `_secondaryHeadline`  | `_secondary-headline` | Defines the text of the secondary headline.                                                                                                                  | `string \| undefined`                                                   | `undefined` |
-| `_variant`            | `_variant`            | Defines which variant should be used for presentation.                                                                                                       | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "strong" \| undefined` | `undefined` |
-
-## Slots
-
-| Slot         | Description              |
-| ------------ | ------------------------ |
-| `"headline"` | Content of the headline. |
-
----
+<Readme />
 
 <ExampleLink component="heading" />
 

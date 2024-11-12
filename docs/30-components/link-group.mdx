@@ -9,6 +9,7 @@ tags:
 ---
 
 
+import Readme from '../../readmes/link-group/readme.md';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
@@ -94,18 +95,7 @@ Die auszugebenden Links werden als JSON-Objekt an das Attribut **`_links`** übe
 | `Tab`   | Fokussiert das erste Element der LinkGroup. |
 | `Enter` | Ruft den hinterlegten Link auf.             |
 
-<!-- Auto Generated Below -->
-
-## Properties
-
-| Property              | Attribute          | Description                                                                                                        | Type                                                                                                                                                                                                                  | Default      |
-| --------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| `_label`              | `_label`           | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string \| undefined`                                                                                                                                                                                                 | `undefined`  |
-| `_links` _(required)_ | `_links`           | Defines the list of links to render.                                                                               | `LinkProps[] \| string`                                                                                                                                                                                               | `undefined`  |
-| `_listStyleType`      | `_list-style-type` | Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet       | `"circle" \| "decimal" \| "decimal-leading-zero" \| "disc" \| "lower-alpha" \| "lower-greek" \| "lower-latin" \| "lower-roman" \| "none" \| "square" \| "upper-alpha" \| "upper-latin" \| "upper-roman" \| undefined` | `undefined`  |
-| `_orientation`        | `_orientation`     | Defines whether the orientation of the component is horizontal or vertical.                                        | `"horizontal" \| "vertical" \| undefined`                                                                                                                                                                             | `'vertical'` |
-
----
+<Readme />
 
 <ExampleLink component="link-group" />
 

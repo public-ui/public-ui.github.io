@@ -8,6 +8,7 @@ tags:
   - Beispiele
 ---
 
+import Readme from '../../readmes/abbr/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
@@ -54,22 +55,7 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 
 - <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank"></kol-link>
 
-<!-- Auto Generated Below -->
-
-## Properties
-
-| Property              | Attribute        | Description                                                                                                        | Type                                                  | Default     |
-| --------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
-| `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
-| `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                          | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
-
-## Slots
-
-| Slot | Description                             |
-| ---- | --------------------------------------- |
-|      | Der Begriff, der erläutert werden soll. |
-
----
+<Readme />
 
 
 <ExampleLink component="abbr" />

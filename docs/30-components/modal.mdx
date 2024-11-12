@@ -9,6 +9,7 @@ tags:
   - Beispiele
 ---
 
+import Readme from '../../readmes/modal/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Modal
@@ -103,41 +104,6 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 - <kol-link _href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html" _target="_blank"></kol-link>
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
 
-<!-- Auto Generated Below -->
-
-## Overview
-
-https://en.wikipedia.org/wiki/Modal_window
-
-## Properties
-
-| Property              | Attribute | Description                                                                                                                                                                  | Type                                                      | Default     |
-| --------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
-| `_activeElement`      | --        | <span style={{color:"red"}}>**[DEPRECATED]**</span> Use methode `openModal` and `closeModal` instead.<br/><br/>Legacy property - while set to an HTMLElement, the modal is open. | `HTMLElement \| null \| undefined`                        | `undefined` |
-| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                                           | `string`                                                  | `undefined` |
-| `_on`                 | --        | Defines the modal callback functions.                                                                                                                                        | `undefined \| ({ onClose?: (() => void) \| undefined; })` | `undefined` |
-| `_width`              | `_width`  | Defines the width of the modal. (max-width: 100%)                                                                                                                            | `string \| undefined`                                     | `'100%'`    |
-
-## Methods
-
-### `closeModal() => Promise<void>`
-
-#### Returns
-
-Type: `Promise<void>`
-
-### `openModal() => Promise<void>`
-
-#### Returns
-
-Type: `Promise<void>`
-
-## Slots
-
-| Slot | Description           |
-| ---- | --------------------- |
-|      | The modal's contents. |
-
----
+<Readme />
 
 <ExampleLink component="modal" />
