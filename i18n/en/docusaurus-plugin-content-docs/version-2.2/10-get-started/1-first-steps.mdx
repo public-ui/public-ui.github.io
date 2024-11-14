@@ -1,0 +1,525 @@
+import {KolAlert, KolLink,} from '@public-ui/react';
+
+# First steps
+
+<div class="grid md:grid-cols-12 mb-4">
+	<KolAlert _label="Download Cheat Sheet" _level="2" _type="info" _variant="card">
+		<KolLink
+			_label="Click here to view and download the cheat sheet for developing."
+			_href="https://public-ui.github.io/cheat-sheet/"
+			_target="_blank"
+		/>
+	</KolAlert>
+</div>
+
+## Create a new project
+
+A new project can be created quickly using the command line wizard.
+
+```
+npm init kolibri@latest my-kolibri-app
+```
+
+<img
+	src="https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif"
+	alt="Shows how to create a new app with create-kolibri."
+/>
+
+## Integration into existing projects
+
+### Embedding fonts
+
+Fonts are loaded by nature detached from the CSS and must be included in the frame page (HTML file) depending on the KoliBri theme (style guide).
+
+For this purpose, the fonts supplied in the library can be copied into your own assets.
+
+Please check which files You need and only import those to minimize traffic.
+
+```html
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+	<head>
+		<title>Webapplication | KoliBri</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="..." />
+		<base href="/" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
+		<link rel="stylesheet" href="assets/bundes/style.css" />
+		<link rel="stylesheet" href="assets/codicons/codicon.css" />
+		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
+		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
+		<link rel="stylesheet" href="assets/kreon/style.css" />
+		<link rel="stylesheet" href="assets/material-icons/iconfont/material-icons.css" />
+		<link rel="stylesheet" href="assets/material-symbols/index.css" />
+		<link rel="stylesheet" href="assets/roboto/roboto.css" />
+		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
+	</head>
+</html>
+```
+
+### Typescript
+
+To get full code completion, add these lines to `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+		...
+    "moduleResolution": "Node",
+		...
+  },
+	...
+}
+```
+
+### I Vite + React
+
+#### 1. Installing the KoliBri libraries
+
+<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
+	<div>npm i @public-ui/components @public-ui/themes @public-ui/react</div>
+	<div>pnpm i @public-ui/components @public-ui/themes @public-ui/react</div>
+	<div>yarn add @public-ui/components @public-ui/themes @public-ui/react</div>
+</kol-tabs>
+
+#### 2. Integration
+
+main.tsx
+
+```diff
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+
++import { register } from "@public-ui/components";
++import { defineCustomElements } from "@public-ui/components/dist/loader";
++import { DEFAULT } from "@public-ui/themes";
+
++register(DEFAULT, defineCustomElements)
++  .then(() => {
+    ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
++  })
++  .catch(console.warn);
+```
+
+#### 3. Include modules
+
+index.html
+
+```diff
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
++   <script type="module" src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+```
+
+#### 4. Example
+
+```tsx
+import React from 'react';
+import { KolSpin } from '@public-ui/react';
+
+export const AppComponent = () => {
+	return (
+		<div>
+			<KolSpin _show />
+		</div>
+	);
+};
+```
+
+### II Vite + Vue
+
+#### 1. Installing the KoliBri libraries
+
+<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
+	<div>npm i @public-ui/components @public-ui/themes @public-ui/vue</div>
+	<div>pnpm i @public-ui/components @public-ui/themes @public-ui/vue</div>
+	<div>yarn add @public-ui/components @public-ui/themes @public-ui/vue</div>
+</kol-tabs>
+
+#### 2. Plugin
+
+kolibri.plugin.ts
+
+```js
+import type { Plugin } from 'vue';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { register } from '@public-ui/components';
+import { ITZBund } from '@public-ui/themes';
+export const ComponentLibrary: Plugin = {
+	install() {
+		register(ITZBund, defineCustomElements)
+			.then(() => console.log('Components registered'))
+			.catch(console.warn);
+	},
+};
+```
+
+main.ts:
+
+```diff
+import { createApp } from 'vue'
+import App from './App.vue'
+import './assets/main.css'
++ import { ComponentLibrary } from './vue.plugin'
+
+const app = createApp(App)
+
++ app.use(ComponentLibrary)
+
+app.mount('#app')
+```
+
+#### 3. Integrate modules
+
+index.html
+
+```diff
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++   <script type="module" src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"></script>
+    <title>Vite + Vue + TS</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+```
+
+#### 4. Customise configuration
+
+vite.config.ts
+
+```diff
+import { fileURLToPath, URL } from 'node:url'
+
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+-  plugins: [],
++  plugins: [
++    vue({
++      template: {
++        compilerOptions: {
++          // treat all tags with a dash as custom elements
++          isCustomElement: (tag) => tag.includes('-')
++        }
++      }
++    })
++  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  }
+})
+```
+
+#### 5. Example
+
+```html
+<KolInputText :_value="text" :_on="{ onChange: (e: unknown, v: string) => (text = v) }"></KolInputText>
+<KolButton _label="Text löschen" :_on="{ onClick: () => (text = '') }"></KolButton>
+```
+
+Note: KoliBri inputs usually pass the original event as the first parameter and the value of the field as the second.
+
+### III React
+
+#### 1. Installing the KoliBri libraries
+
+<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
+	<div>npm i @public-ui/components @public-ui/themes @public-ui/react</div>
+	<div>pnpm i @public-ui/components @public-ui/themes @public-ui/react</div>
+	<div>yarn add @public-ui/components @public-ui/themes @public-ui/react</div>
+</kol-tabs>
+
+#### 2. Registering the KoliBri loader
+
+After the preparations are completed, only the KoliBri loader has to be registered.
+It ensures that the Web Components are reloaded asynchronously (lazy) as soon as they are used in the web page.
+
+| Method               | Description                                     |
+| -------------------- | ----------------------------------------------- |
+| register             | Sets a theme and then registers the loader      |
+| DEFAULT              | Registers the loader for e.g. the DEFAULT theme |
+| defineCustomElements | Registers the Loader for the Web Components     |
+
+#### 3. Integration
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import { AppComponent } from './components/app/component';
+
+import { register } from '@public-ui/core';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { DEFAULT } from '@public-ui/themes';
+
+register(DEFAULT, defineCustomElements)
+	.then(() => {
+		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
+		if (htmlDivElement instanceof HTMLDivElement) {
+			const root = createRoot(htmlDivElement);
+			root.render(<AppComponent />);
+		}
+	})
+	.catch(console.warn);
+```
+
+#### 4. Example
+
+```tsx
+import React from 'react';
+import { KolSpin } from '@public-ui/react';
+
+export const AppComponent = () => {
+	return (
+		<div>
+			<KolSpin _show />
+		</div>
+	);
+};
+```
+
+### IV Without any framework
+
+<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
+	<div>npm i @public-ui/components @public-ui/themes</div>
+	<div>pnpm i @public-ui/components @public-ui/themes</div>
+	<div>yarn add @public-ui/components @public-ui/themes</div>
+</kol-tabs>
+
+```diff
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
++   <script type="module" src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+```
+
+To get code completion it may be necessary to create `.vscode/settings.json` and insert the following:
+
+```json
+{
+	"html.customData": ["./node_modules/@public-ui/components/vscode-custom-data.json"]
+}
+```
+
+Here the web component notation (kebab-case) is to be used. (e.g.: `<kol-heading>`)
+
+### V Static website
+
+To include KoliBri in a static web page you only have to include the following script tag.
+If fonts and/or icons are used, they must be included as described above.
+
+```html
+<script type="module">
+	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/dist/loader/index.js';
+	import { ITZBund } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
+	register(ITZBund, defineCustomElements).catch(console.warn);
+</script>
+```
+
+Here the web component notation (kebab-case) is to be used. (e.g.: `<kol-heading>`)
+
+## Additional features
+
+### Developer Tools
+
+By means of the following configuration in the HTML file the developer tools of KoliBri can be activated.
+
+```html
+…
+<html>
+	<head>
+		<meta name="kolibri" content="dev-mode=true" />
+	</head>
+	…
+</html>
+```
+
+### Experimental mode
+
+By means of the following configuration in the HTML file the experimental mode can be activated.
+
+```html
+…
+<html>
+	<head>
+		<meta name="kolibri" content="experimental-mode=true" />
+	</head>
+	…
+</html>
+```
+
+### Color contrast analysis
+
+To detect color contrast errors within the DOM, you can enable color contrast analysis using the following configuration.
+
+```html
+…
+<html>
+	<head>
+		<meta name="kolibri" content="color-constrast-analysis=true" />
+	</head>
+	…
+</html>
+```
+
+### 3. Registering the component loaders
+
+After the preparations are complete, only the component loader needs to be registered.
+It ensures that the Web Components are reloaded asychronously (lazy) as soon as they are used in the web page.
+
+| Method               | Description                                 |
+| -------------------- | ------------------------------------------- |
+| register             | Sets a theme and then registers the loader  |
+| BMF                  | Registers the loader for e.g. the BMF theme |
+| defineCustomElements | Registers the loader for the Web Components |
+
+#### Variant A: Static project
+
+```html
+<head>
+	<script type="module">
+		import { register } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6';
+		import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6/dist/loader';
+		import { BMF } from 'https://unpkg.com/@public-ui/themes@1.4.0-rc.6';
+		register([BMF], defineCustomElements)
+			.then(() => {})
+			.catch(console.warn);
+	</script>
+</head>
+<body>
+	<kol-spin _show>
+</body>
+```
+
+#### Variant B: React project
+
+##### Integration
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import { AppComponent } from './components/app/component';
+
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { BMF } from '@public-ui/themes';
+
+register(BMF, defineCustomElements)
+	.then(() => {
+		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
+		if (htmlDivElement instanceof HTMLDivElement) {
+			const root = createRoot(htmlDivElement);
+			root.render(<AppComponent />);
+		}
+	})
+	.catch(console.warn);
+```
+
+##### Install adapter
+
+An adapter is available for React that allows seamless and typed usage in TSX.
+
+NPM `npm i @public-ui/react` or
+
+PNPM `pnpm i @public-ui/react` or
+
+YARN `yarn add @public-ui/react`
+
+##### Use component
+
+```tsx
+import React, { FunctionComponent } from 'react';
+import { KolSpin } from '@public-ui/react';
+
+export const App: FunctionComponent = () => <KolSpin _show />;
+```
+
+<hr />
+<hr />
+
+## Special features
+
+### Developer tools
+
+By using the following configuration in the HTML file the developer tools of KoliBri can be activated.
+
+```html
+…
+<html>
+	<head>
+		<meta name="kolibri" content="dev-mode=true" />
+		<!-- <meta name="kolibri" content="dev-mode=true,experimental-mode=true" /> -->
+	</head>
+	…
+</html>
+```
+
+### Experimental mode / lab
+
+By using the following configuration in the HTML file the experimental mode can be activated.
+
+```html
+…
+<html>
+	<head>
+		<meta name="kolibri" content="experimental-mode=true" />
+	</head>
+	…
+</html>
+```
+
+### Color-Contrast-Analysis
+
+The color contrast analysis allows detecting color contrast errors within the DOM. By adding the following configuration to the meta tag, the color contrast analysis is enabled.
+
+```html
+…
+<html>
+	<head>
+		<meta name="kolibri" content="color-constrast-analysis=true" />
+	</head>
+	…
+</html>
+```
