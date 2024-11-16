@@ -13,6 +13,72 @@ import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
+# InputEmail
+
+Der Input-Typ **E-Mail** erzeugt ein Eingabefeld für E-Mails.
+
+## Konstruktion
+
+### Code
+
+```html
+<kol-input-email _label="E-Mail-Adresse" _icons='{"right": "codicon codicon-mail"}'></kol-input-email>
+```
+
+### Beispiel
+
+<kol-input-email _label="E-Mail-Adresse" _icons='{"right": "codicon codicon-mail"}'></kol-input-email>
+
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                                                     | Value                        |
+| -------- | -------------------------------------------------------------------------------------------- | ---------------------------- |
+| onFocus  | Element wird fokussiert                                                                      | -                            |
+| onClick  | Element wird angeklickt                                                                      | -                            |
+| onInput  | Eine Eingabe erfolgt (entspricht nativem `input`-Event)                                      | Eingegebener Wert als String |
+| onChange | Eingabe ist abgeschlossen und Eingabefeld verliert Fokus (entspricht nativem `change`-Event) | Eingegebener Wert als String |
+| onBlur   | Element verliert Fokus                                                                       | -                            |
+
+## Verwendung
+
+Setzen Sie die **InputEmail**-Komponente auf Formularen ein, wenn dort die Eingabe einer oder mehrerer E-Mail-Adressen erforderlich ist.
+
+Standardmäßig ist die Komponente für die Erfassung einer einzelnen E-Mail-Adresse vorgesehen. Setzen Sie das Attribut **`_multiple`**, um mehrere E-Mail-Adressen zu erfassen. Trennen Sie die einzelnen E-Mail-Adressen mit einem Komma (,) voneinander.
+
+### Best practices
+
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
+
+## Barrierefreiheit
+
+Eine Validierung der erfassten E-Mail-Adressen innerhalb der Komponente erfolgt nicht.
+Um eine fehlgeschlagene Validierung anzuzeigen, setzen Sie das Attrbut **`_error`** mit der entsprechenden Fehlermeldung, diese wird dann via **kol-alert** unterhalb angezeigt.
+
+### Tastatursteuerung
+
+| Taste | Funktion                    |
+| ----- | --------------------------- |
+| `Tab` | Fokussiert das Eingabefeld. |
+
+## Links und Referenzen
+
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- <kol-link _href="https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/" _target="_blank"></kol-link>
+
 <Readme />
 
 <ExampleLink component="input-email" />

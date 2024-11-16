@@ -13,6 +13,106 @@ import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
+# InputDate
+
+Synonyme: Date Picker, Datetime Picker, Week Picker Month Picker, Time Picker, Calendar
+
+Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können konkrete Daten sein, aber auch Wochen, Monate oder Zeitangaben.
+
+## Konstruktion
+
+### Code
+
+```html
+<kol-input-date _type="date" _label="Erstellungsdatum" _icons='{"right": "codicon codicon-calendar"}'></kol-input-date>
+```
+
+### Beispiel
+
+<kol-input-date _type="date" _label="Erstellungsdatum" _icons='{"right": "codicon codicon-calendar"}'></kol-input-date>
+
+#### Datum entfernen
+
+Folgendes Beispiel zeigt eine Component in React, die die Möglichkeit bietet über einen Button den Wert im Datumsfeld zu entfernen.
+
+```jsx
+const ClearableDateInput = () => {
+  const [value, setValue] = useState<Date>();
+  return (
+    <>
+        <KolInputDate
+          _label="Lorem ipsum dolor sit"
+          _value={value}
+          _on={{ onChange: (_, v: Date) => setValue(v) }}
+        />
+        {/* Set null as value to clear the inputs value. */}
+        <KolButton _on={{ onClick: () => setValue(null) }} _label="Clear" />
+    </>
+  );
+};
+```
+
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                                | Value                                 |
+| -------- | ----------------------------------------------------------------------- | ------------------------------------- |
+| onFocus  | Element wird fokussiert                                                 | -                                     |
+| onClick  | Element wird angeklickt                                                 | -                                     |
+| onInput  | Datum wird gesetzt bzw. ändert sich (entspricht nativem `input`-Event)  | Eingegebenes Datum als ISO8601 String |
+| onChange | Datum wird gesetzt bzw. ändert sich (entspricht nativem `change`-Event) | Eingegebenes Datum als ISO8601 String |
+| onBlur   | Element verliert Fokus                                                  | -                                     |
+
+## Verwendung
+
+Die **InputDate**-Komponente kann für die Erfassung von Daten verwendet werden. Es verwendet intern die InputNumber-Komponente.
+
+<kol-alert _type="info">Beachten Sie, dass im **Firefox** nicht alle **`_types`** der **InputDate**-Komponente funktional sind. Es werden bei den Typen `month`, `time` und `week` keine Auswahldialoge angezeigt.</kol-alert>
+
+Die Komponente zeichnet sich dadurch aus, dass sie zahlreiche Ziffern-basierte Eingabemuster unterstützt. Hierbei ist es wichtig zu beachten, dass sich das Verhalten bei der Eingabe von Browser zu Browser und Geräte zu Gerät unterscheiden kann. Beispielsweise ist es möglich beim Datum, 01.01.999999 einzugeben, auch wenn max=2022-02-02 ist. Der Feldwert ist aber trotzdem 2022-02-02.
+
+### Best practices
+
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
+
+## Barrierefreiheit
+
+Die Icons in der Komponente sind per Tab-Taste nicht erreichbar. Die Auswahlhilfen der Komponente werden über die **Leertaste** geöffnet. So erhalten Sie beispielsweise beim Typ **date** ein Kalendermodul, über das per Maus oder über die Tastatur das gewünschte Datum ausgewählt werden kann. Die manuelle Eingabe der Werte ist alternativ möglich.
+
+### Tastatursteuerung
+
+Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Datum, Uhrzeit u.a). Mit der `Tab`-Taste wird der Fokus auf das Eingabefeld gesetzt. Anschließend kann mittels der `Leer`-Taste das gerätespezifische Auswahldialog geöffent werden.
+
+> Hinweis: Wir haben in unseren Tests festgestellt, dass es je nach Browser-Version manchmal möglich ist, das Kalender-Icon anzufokusieren und mal nicht. Ohne das sich die Implementierung der Komponente geändert hat. Warum das so ist ist uns noch nicht bekannt. Nichtsdestotrotz ist das Öffnen des Auswahldialogs immer mittels der `Leer`-Taste möglich.
+
+| Taste                           | Funktion                                                                                                                                                                                                                                                        |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                           | Fokussiert das Eingabefeld. Nach erhalt des Fokus wechselt die `Tab`-Taste durch die Eingabebereiche. Danach erst wechselt die `Tab`-Taste zum nächsten Eingabefeld.                                                                                            |
+| `Leer`                          | Wenn das Eingabefeld fokussiert ist, kann im Browser mit der `Leer`-Taste ein Auswahldialog aufgerufen bzw. geschlossen werden. Die Navigation und Auswahl erfolgt hier mit Hilfe der `Tab`-Taste, der `Pfeil`-Tasten und der Bestätigung mittes `Enter`-Taste. |
+| `Pfeil-Tasten (links / rechts)` | Wenn das Eingabefeld fokussiert ist, kann mit den `Pfeil`-Tasten zwischen den Eingabebereichen gewechselt werden.                                                                                                                                               |
+| `Pfeil-Tasten (oben / unten)`   | Wenn ein Eingabebereich aktiviert ist, können mit den `Pfeil`-Tasten oben und unten die Werte verändert werden.                                                                                                                                                 |
+| `Esc`                           | Ist ein Auswahldialog verfügbar, kann dieser alternativ zur `Leer`-Taste oder auch mit der `Esc`-Taste geschlossen werden.                                                                                                                                      |
+
+## Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.hassellinclusion.com/blog/input-type-date-ready-for-use/" _target="_blank"></kol-link>
+- <kol-link _href="https://a11ysupport.io/tech/html/input(type-date)_element" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+
 <Readme />
 
 <ExampleLink component="input-date" />

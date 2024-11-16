@@ -9,9 +9,30 @@ tags:
 ---
 
 import Readme from '../../readmes/form/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Form
+
+Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinweistext für Pflichtfelder korrekt zu positionieren und die Events `submit` und `reset` weiterzuleiten.
+
+## Konstruktion
+
+### Code
+
+```html
+<kol-form _requiredText="Sternchen heißt Pflichtfeld.">
+	<kol-input-text _label="Vorname"></kol-input-text>
+	<kol-input-text _label="Nachname"></kol-input-text>
+</kol-form>
+```
+
+### Beispiel
+
+<kol-form _requiredText="Sternchen heißt Pflichtfeld.">
+	<kol-input-text _label="Vorname"></kol-input-text>
+	<kol-input-text _label="Nachname"></kol-input-text>
+</kol-form>
 
 <Readme />
 
