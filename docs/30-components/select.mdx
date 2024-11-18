@@ -13,6 +13,119 @@ import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
+# Select
+
+Synonyme: Datalist, Dropdown
+
+Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.
+
+## Konstruktion
+
+### Code
+
+```html
+<kol-select _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]" _value="[1]"> Auswahlfeld </kol-select>
+<kol-select _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]" _multiple _value="[0,2]">
+	Auswahlfeld (Mehrfachauswahl)
+</kol-select>
+<kol-select
+	_options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2},{'label':'Herr','value':3},{'label':'Frau','value':4},{'label':'Firma','value':5}]"
+	_rows="4"
+	_value="[1]"
+>
+	Auswahlfeld mit _rows
+</kol-select>
+```
+
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                 | Value                       |
+| -------- | -------------------------------------------------------- | --------------------------- |
+| onFocus  | Element wird fokussiert                                  | -                           |
+| onClick  | Element wird angeklickt                                  | -                           |
+| onInput  | Eine Auswahl erfolgt (entspricht nativem `input`-Event)  | `value`-Attribut der Option |
+| onChange | Eine Auswahl erfolgt (entspricht nativem `change`-Event) | `value`-Attribut der Option |
+| onBlur   | Element verliert Fokus                                   | -                           |
+
+### Beispiel
+
+<kol-select _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]" _value="[1]"> Auswahlfeld </kol-select>
+<kol-select _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]" _multiple _value="[0,2]">
+	Auswahlfeld (Mehrfachauswahl)
+</kol-select>
+<kol-select _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2},{'label':'Herr','value':3},{'label':'Frau','value':4},{'label':'Firma','value':5}]" _rows="4" _value="[1]">Auswahlfeld mit rows</kol-select>
+
+## Verwendung
+
+Die Auswahlmöglichkeiten werden über das Attribut **`_options`** als Objekt oder JSON-String an die Komponente übergeben. Je Option müssen die Werte **`label`** und **`value`** angegeben werden.
+
+Beispiel für die Konstruktion des JSON-Objektes:
+
+```json
+[
+	{ "label": "Herr", "value": 0 },
+	{ "label": "Frau", "value": 1 },
+	{ "label": "Firma", "value": 2 }
+]
+```
+
+### Individuelle Höhe angeben
+
+Über das Attribut **`_rows`** kann von einem Auswahlmenü auf ein Auswahlfeld (wie bei **`_multiple`**) gewechselt werden und dessen Höhe gesetzt werden.
+
+<!--### Best practices-->
+
+<!-- ## Barrierefreiheit -->
+
+### Tastatursteuerung
+
+| Taste                         | Funktion                                                                                                                                                                                                                      |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                         | Fokussiert das Auswahlfeld.                                                                                                                                                                                                   |
+| `Enter`                       | Öffnet bzw.schließt die Auswahlliste.                                                                                                                                                                                         |
+| `Pfeil-Tasten (oben / unten)` | Wechselt in der Auswahlliste das aktivierte Element. Diese Funktion ist auch bei eingeklappter Auswahlliste aktiv. Bei Mehrfachauswahl muss zur Auswahl mehrerer Einträge zusätzlich die Shift-Taste gedrück gehalten werden. |
+
+### `Single-Select-Filter` für Select-Komponente
+
+Die Select-Komponente liefert bei Auswahl eines Wertes eine Liste (Array) mit genau einem
+Wert zurück (im Single-Modus). Das kann bei der weiteren Verarbeitung zu unnötigem Aufwand führen. Einfacher ist es hier, den Wert der Select-Komponente über einen <b>SingeSelectFormatter</b> zu Filtern. Fügen Sie hierzu im Formular nachfolgende Klasse ein:
+
+```html
+class SingleSelectFormatter extends AbstractFormatter { public format(value: unknown): unknown { return [value]; } public parse(value: unknown): unknown { if
+(Array.isArray(value) && value.length > 0) { return value[0]; } return value; } }
+```
+
+Fügen Sie den Formatter anschließend der Select-Komponente hinzu:
+
+```html
+const singleSelectFormatHandler = new FormatHandler(); singleSelectFormatHandler.formatters.add([new SingleSelectFormatter()]); (this.getInput('kategorie') as
+InputControl).setFormatHandler(singleSelectFormatHandler);
+```
+
+Beachten Sie, dass der FormatHandler zunächst in die Form importiert wird.
+
+```html
+import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
+```
+
+## Links und Referenzen
+
+- https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
+
 <Readme />
 
 <ExampleLink component="select" />
