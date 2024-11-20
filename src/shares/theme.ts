@@ -1,17 +1,12 @@
 import type { SelectOption } from '@public-ui/components';
 
-export type Theme = 'unstyled' | 'bmf' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund';
+export type Theme = 'unstyled' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund';
 
 export const isTheme = (value: unknown) => {
 	console.log('typeof value', typeof value);
 	return (
 		typeof value === 'string' &&
-		(value === 'unstyled' ||
-			value === 'bmf' ||
-			value === 'default' ||
-			value === 'ecl-ec' ||
-			value === 'ecl-eu' ||
-			value === 'itzbund')
+		(value === 'unstyled' || value === 'default' || value === 'ecl-ec' || value === 'ecl-eu' || value === 'itzbund')
 	);
 };
 
@@ -24,10 +19,6 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	{
 		label: 'Unstyled',
 		value: 'unstyled',
-	},
-	{
-		label: 'Bundesministerium der Finanzen',
-		value: 'bmf',
 	},
 	{
 		label: 'Default',
