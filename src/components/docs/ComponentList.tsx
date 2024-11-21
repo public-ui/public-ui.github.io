@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { Suspense, useEffect, useState, useRef, useCallback } from 'react';
 import { useDocsPreferredVersion } from '@docusaurus/theme-common';
 import Link from '@docusaurus/Link';
-import { KolBadge, KolCard, KolHeading } from '@public-ui/react';
+import { KolBadge, KolCard } from '@public-ui/react';
 
 import type { Language, Locale } from '../../shares/language';
 import type { Version } from '../../shares/version';
@@ -78,8 +78,6 @@ export const ComponentList: FC<Props> = ({ lang }) => {
 	const docVersion = useDocsPreferredVersion();
 	const version = docVersion?.preferredVersion?.name as Version;
 	const components = COMPONENT_VERSIONS?.[version ?? 'current'];
-	const componentLength = components.length;
-	const headline = lang === 'de' ? `Anzahl Komponenten: ${componentLength}` : `Components sum: ${componentLength}`;
 	const observer = useCallback(
 		(cb: () => void) =>
 			new IntersectionObserver((entries) => {
@@ -94,9 +92,6 @@ export const ComponentList: FC<Props> = ({ lang }) => {
 	if (components?.length <= 0) return null;
 	return (
 		<>
-			<KolHeading _label={headline} _level={3}>
-				{headline}
-			</KolHeading>
 			<div className="components-overview">
 				{components.map(({ name, loadComponent }) => (
 					<LazyLoadComponent
