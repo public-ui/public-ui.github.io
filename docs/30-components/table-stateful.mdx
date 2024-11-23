@@ -1,6 +1,6 @@
 ---
-title: Table (Deprecated)
-description: Beschreibung, Spezifikation und Beispiele für die Table-Komponente.
+title: TableStateful
+description: Beschreibung, Spezifikation und Beispiele für die TableStateful-Komponente.
 tags:
   - Table
   - Beschreibung
@@ -8,19 +8,16 @@ tags:
   - Beispiele
 ---
 
+import Readme from '../../readmes/table-stateful/readme.md';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 Synonyme: Data Table, Details List, Data Grid
 
-<kol-alert _type="warning" _variant="card">
-	<kol-badge _color="#fb4509" _label="Deprecated"></kol-badge> KolTable ist veraltet, bitte stattdessen <kol-link _label="KolTableStateful" _href="table-stateful"></kol-link> verwenden, die API und Funktionalität sind identisch.
-</kol-alert>
-
-Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+Die **TableStateful**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 
 <kol-indented-text _summary="Backend-seitige Pagination">
-	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der Table-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden.
+	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der TableStateless-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden. Eine mögliche Sortierung muss ebenfalls über die `onSort`-Events selber implementiert werden. Siehe [KolTableStateless](./table-stateless).
 </kol-indented-text>
 
 ## Konstruktion
@@ -48,7 +45,7 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 
 ### Pagination
 
-Über das Attribut **`_pagination`** kann optional eine Vielzahl zusätzlicher Properties zur Steuerung der Pagination übergeben werden. Die genaue Beschreibung der Optionen ist auf der Seite <kol-link _href="pagination" _label="/docs/components/pagination" _label="Pagination"></kol-link> zu finden.
+Über das Attribut **`_pagination`** kann optional eine Vielzahl zusätzlicher Properties zur Steuerung der Pagination übergeben werden. Die genaue Beschreibung der Optionen ist auf der Seite <kol-link _href="../pagination" _label="/docs/components/pagination" _label="Pagination"></kol-link> zu finden.
 
 #### KoliBriTableHeaders
 
@@ -90,12 +87,24 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 ### Code
 
 ```html
-<kol-table _label="Tabellenbeschreibung" _headers='{"horizontal": [[{"label":"Montag","key":"montag"}]]}' _pagination='[{"page":2}]'></kol-table>
+<kol-table-stateful
+	_label="Tabellenbeschreibung"
+	_headers='{"horizontal": [[{"label":"Montag","key":"montag"}]]}'
+	_pagination='[{"page":2}]'
+></kol-table-stateful>
 ```
 
 ### Beispiel
 
-<kol-table _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _pagination='{"page":2}'></kol-table>
+<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _pagination='{"page":2}'></kol-table-stateful>
+
+### Footer
+
+Durch die Verwendung des **`_dataFoot_`**-Attribut können zusammenfassende Informationen oder zusätzliche Details am Ende der Tabelle angezeigt werden. Die Informationen sind hierbei an die Spaltendefinitionen gebunden.
+
+### Beispiel
+
+<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination, DataFoot" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _dataFoot='[{"montag":"Ruhetag"}]' _pagination='{"page":2}'></kol-table-stateful>
 
 ## Verwendung
 
@@ -186,8 +195,10 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 - <kol-link _href="https://stackoverflow.com/questions/1312236/" _target="_blank"></kol-link>
 - <kol-link _href="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable" _target="_blank"></kol-link>
 
-<ExampleLink component="table" />
+<Readme />
+
+<ExampleLink component="table-stateful" />
 
 ## Live-Editor
 
-<LiveEditorCompact component="table" />
+<LiveEditorCompact component="table-stateful" />
