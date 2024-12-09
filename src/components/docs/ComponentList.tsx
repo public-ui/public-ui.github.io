@@ -89,21 +89,18 @@ export const ComponentList: FC<Props> = ({ lang }) => {
 			}),
 		[]
 	);
-	if (components?.length <= 0) return null;
 	return (
-		<>
-			<div className="components-overview">
-				{components.map(({ name, loadComponent }) => (
-					<LazyLoadComponent
-						key={name}
-						name={name}
-						lang={lang}
-						path={(docVersion?.preferredVersion?.path as string) ?? '/docs'}
-						loadComponent={loadComponent}
-						observer={observer}
-					/>
-				))}
-			</div>
-		</>
+		<div className="components-overview">
+			{components?.map(({ name, loadComponent }) => (
+				<LazyLoadComponent
+					key={name}
+					name={name}
+					lang={lang}
+					path={(docVersion?.preferredVersion?.path as string) ?? '/docs'}
+					loadComponent={loadComponent}
+					observer={observer}
+				/>
+			))}
+		</div>
 	);
 };
