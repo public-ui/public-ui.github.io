@@ -30,13 +30,12 @@ function getDataFromSheets(queryList: unknown[], resultList: Record<string, unkn
 		if (queryList.length === 0) {
 			resolve(resultList);
 		}
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
 		const query = queryList.shift();
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
 		const { sheet, promise } = query as { sheet: string; promise: Promise<unknown> };
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+
 		void promise.then((result: unknown) => {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
 			resultList[sheet] = result;
 			resolve(getDataFromSheets(queryList, resultList));
 		});
@@ -57,7 +56,7 @@ export const getDataFromExcel = async () => {
 				});
 			}
 		});
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+
 		return getDataFromSheets(data);
 	} catch (e) {
 		throw Error(`Excel file not found: ${e as string}`);

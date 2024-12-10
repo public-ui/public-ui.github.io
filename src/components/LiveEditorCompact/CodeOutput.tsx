@@ -67,6 +67,7 @@ export function CodeOutput(props: Props) {
 		}).replace(/;\n$/, '');
 	} catch (e) {
 		formatted = `<!-- Formatter-Error: Slot-Markup is not valid HTML for formatting. -->\n${code}`;
+		void e;
 	}
 
 	return (
