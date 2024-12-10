@@ -1,17 +1,13 @@
-import { useDocsVersion } from '@docusaurus/theme-common/internal';
-import { KolBadge } from '@public-ui/react';
 import React from 'react';
+import { KolBadge } from '@public-ui/react';
+import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
 
 export default function DocVersionBadgeWrapper() {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-	const versionMetadata = useDocsVersion();
+	const { label } = useDocsVersion();
 	return (
 		<span className="flex">
-			<KolBadge
-				_color={'#ddd'}
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-				_label={`Version: ${versionMetadata.label}`}
-			></KolBadge>
+			<KolBadge _color={'#ddd'} _label={`Version: ${label}`}></KolBadge>
 		</span>
 	);
 }

@@ -41,7 +41,6 @@ export const BitvTestResult: FC = () => {
 				console.log(typedResults);
 				const data = [];
 				for (const key in typedResults) {
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
 					data.push(parseResult(key, typedResults[key]));
 				}
 				setData(data);
