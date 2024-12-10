@@ -1,6 +1,6 @@
 import React from 'react';
 import { KolSingleSelect } from '@public-ui/react';
-import { Option, StencilUnknown } from '@public-ui/components';
+import type { Option, StencilUnknown } from '@public-ui/components';
 
 const COUNTRY_OPTIONS = [
 	{ label: 'Dänemark', value: 'dk' },

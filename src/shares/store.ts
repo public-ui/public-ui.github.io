@@ -35,7 +35,7 @@ export function setStorage(storage: Storage) {
 			console.log('getTheme', getTheme());
 		}
 	} catch (e) {
-		/* empty */
+		void e;
 	}
 }
 setStorage(new StaticStorage() as unknown as Storage);

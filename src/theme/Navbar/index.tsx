@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { KolLinkButton } from '@public-ui/react';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import React from 'react';

@@ -11,7 +11,6 @@ let mermaidTimeout: NodeJS.Timeout;
 
 export const mermaidLoadContent = (config: MermaidConfig) => {
 	if (config) {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 		mermaid.initialize(Object.assign({ startOnLoad: true }, config));
 	}
 	clearTimeout(mermaidTimeout);
