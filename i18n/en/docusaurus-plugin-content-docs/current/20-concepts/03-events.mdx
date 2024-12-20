@@ -1,0 +1,39 @@
+---
+title: Events
+description: todo
+tags:
+  - Events
+  - Callbacks
+---
+
+Events in KoliBri können als DOM Events oder als Callbacks verarbeitet werden.
+
+### DOM Events
+
+Events der Komponente können über Event Listener behandelt werden, die ggf. mit einem `details`-Parameter aufgerufen werden:
+
+```js
+kolibriElement.addEventListener('kolFocus', (event) => {
+	/* Do something on focus */
+});
+
+kolibriElement.addEventListener('kolInput', (event, { detail: value }) => {
+	/* Do something with value or event */
+});
+```
+
+
+### Callbacks
+
+Callbacks der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	}
+};
+```

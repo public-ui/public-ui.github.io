@@ -29,27 +29,15 @@ Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es kö
 
 ### Events
 
-Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
-
-```js
-kolibriElement._on = {
-	onFocus: (event) => {
-		/* Do something on focus */
-	},
-	onInput: (event, value) => {
-		/* Do something with value or event */
-	},
-	// ...
-};
-```
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
 | Event    | Auslöser                                                                        | Value                           |
-| -------- | ------------------------------------------------------------------------------- | ------------------------------- |
-| onFocus  | Element wird fokussiert                                                         | -                               |
-| onClick  | Element wird angeklickt                                                         | -                               |
-| onInput  | Eine oder mehrere Dateien werden ausgewählt (entspricht nativem `input`-Event)  | Ausgwählte Dateien als FileList |
-| onChange | Eine oder mehrere Dateien werden ausgewählt (entspricht nativem `change`-Event) | Ausgwählte Dateien als FileList |
-| onBlur   | Element verliert Fokus                                                          | -                               |
+|----------|---------------------------------------------------------------------------------|---------------------------------|
+| `focus`  | Eingabefeld wird fokussiert                                                     | -                               |
+| `click`  | Eingabefeld wird angeklickt                                                     | -                               |
+| `input`  | Eine oder mehrere Dateien werden ausgewählt (entspricht nativem `input`-Event)  | Ausgwählte Dateien als FileList |
+| `change` | Eine oder mehrere Dateien werden ausgewählt (entspricht nativem `change`-Event) | Ausgwählte Dateien als FileList |
+| `blur`   | Eingabefeld verliert Fokus                                                      | -                               |
 
 ### Beispiel
 
