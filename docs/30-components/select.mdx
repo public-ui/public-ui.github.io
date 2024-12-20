@@ -39,27 +39,15 @@ Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere v
 
 ### Events
 
-Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-```js
-kolibriElement._on = {
-	onFocus: (event) => {
-		/* Do something on focus */
-	},
-	onInput: (event, value) => {
-		/* Do something with value or event */
-	},
-	// ...
-};
-```
-
-| Event    | Auslöser                                                 | Value                       |
-| -------- | -------------------------------------------------------- | --------------------------- |
-| onFocus  | Element wird fokussiert                                  | -                           |
-| onClick  | Element wird angeklickt                                  | -                           |
-| onInput  | Eine Auswahl erfolgt (entspricht nativem `input`-Event)  | `value`-Attribut der Option |
-| onChange | Eine Auswahl erfolgt (entspricht nativem `change`-Event) | `value`-Attribut der Option |
-| onBlur   | Element verliert Fokus                                   | -                           |
+| Event    | Auslöser                    | Value                       |
+|----------|-----------------------------|-----------------------------|
+| `click`  | Eingabefeld wird angeklickt | -                           |
+| `focus`  | Eingabefeld wird fokussiert | -                           |
+| `blur`   | Eingabefeld verliert Fokus  | -                           |
+| `input`  | Option wird ausgewählt      | `value`-Attribut der Option |
+| `change` | Option wird ausgewählt      | `value`-Attribut der Option |
 
 ### Beispiel
 
