@@ -60,7 +60,7 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
         rowSpan?: number,
         useTdInsteadOfTh?: boolean,
         render?: (data) => string,
-        sort?: (data) => data,
+        compareFn?: (dataA, dataB) => number,
       },
       …
     ],
@@ -75,7 +75,7 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
         rowSpan?: number,
         useTdInsteadOfTh?: boolean,
         render?: (data) => string,
-        sort?: (data) => data,
+        compareFn?: (dataA, dataB) => number,
       },
       …
     ],
