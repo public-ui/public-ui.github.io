@@ -1,12 +1,12 @@
 import type { SelectOption } from '@public-ui/components';
 
-export type Theme = 'unstyled' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund';
+export type Theme = 'unstyled' | 'default' | 'ecl-ec' | 'ecl-eu';
 
 export const isTheme = (value: unknown) => {
 	console.log('typeof value', typeof value);
 	return (
 		typeof value === 'string' &&
-		(value === 'unstyled' || value === 'default' || value === 'ecl-ec' || value === 'ecl-eu' || value === 'itzbund')
+		(value === 'unstyled' || value === 'default' || value === 'ecl-ec' || value === 'ecl-eu')
 	);
 };
 
@@ -31,9 +31,5 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	{
 		label: 'European Union (ECL)',
 		value: 'ecl-eu',
-	},
-	{
-		label: 'Informationstechnikzentrum Bund',
-		value: 'itzbund',
 	},
 ];
