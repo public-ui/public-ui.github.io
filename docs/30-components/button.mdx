@@ -31,26 +31,12 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 ### Events
 
-Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-```js
-kolibriElement._on = {
-	onFocus: (event) => {
-		/* Do something on focus */
-	},
-	onClick: (event, value) => {
-		/* Do something with value or event */
-	},
-	// ...
-};
-```
-
-| Event       | Auslöser                                                       | Value                |
-| ----------- | -------------------------------------------------------------- | -------------------- |
-| onFocus     | Element wird fokussiert                                        | -                    |
-| onMouseDown | Element wird angeklickt (entspricht nativem `mouseDown`-Event) | -                    |
-| onClick     | Element wird angeklickt (entspricht nativem `click`-Event)     | Definierter `_value` |
-| onBlur      | Element verliert Fokus                                         | -                    |
+| Event         | Auslöser                                                                                            | Value             |
+|---------------|-----------------------------------------------------------------------------------------------------|-------------------|
+| `click`       | Element wird angeklickt                                                                             | `_value`-Property |
+| `onMouseDown` | Eine Taste eines Zeigegeräts wird gedrückt, während der Zeiger sich innerhalb des Elements befindet | -                 |
 
 ### Beispiel
 

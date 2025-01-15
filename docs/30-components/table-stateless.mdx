@@ -39,6 +39,15 @@ const selection: KoliBriTableSelection = {
 };
 ```
 
+### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event             | Auslöser                                         | Value                                                                   |
+|-------------------|--------------------------------------------------|-------------------------------------------------------------------------|
+| `sort`            | Die Sortierung hat sich geändert                 | Objekt vom Typ `SortEventPayload` mit `key` und `currentSortDirection`  |
+| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert | Array von ausgewählten IDs bzw. ausgewählt ID bei Einfachauswahl        |
+
 ## Beispiel
 
 ```jsx
