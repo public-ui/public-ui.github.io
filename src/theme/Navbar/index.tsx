@@ -2,10 +2,8 @@ import { KolLinkButton } from '@public-ui/react';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import React from 'react';
 // import { getDarkMode, setDarkMode } from '../../shares/store';
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import { LanguageSwitch } from '@site/src/components/LanguageSwitch';
 import Navbar from '@theme-original/Navbar';
-import ThemeSelect from './ThemeSelect';
 import { translate } from '@docusaurus/Translate';
 
 export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
@@ -115,9 +113,6 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								_variant="ghost"
 							/>
 						</div>*/}
-					</div>
-					<div className="flex-grow">
-						<BrowserOnly>{() => <ThemeSelect />}</BrowserOnly>
 					</div>
 				</section>
 			</div>
