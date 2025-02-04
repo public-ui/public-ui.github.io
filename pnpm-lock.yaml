@@ -42,14 +42,14 @@ importers:
         specifier: 4.6.0
         version: 4.6.0(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@public-ui/components':
-        specifier: 2.2.5-rc.1
-        version: 2.2.5-rc.1(adopted-style-sheets@1.1.6)
+        specifier: 2.2.6-rc.0
+        version: 2.2.6-rc.0(adopted-style-sheets@1.1.6)
       '@public-ui/react':
-        specifier: 2.2.5-rc.1
-        version: 2.2.5-rc.1(@public-ui/components@2.2.5-rc.1(adopted-style-sheets@1.1.6))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 2.2.6-rc.0
+        version: 2.2.6-rc.0(@public-ui/components@2.2.6-rc.0(adopted-style-sheets@1.1.6))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@public-ui/theme-default':
-        specifier: 2.2.5-rc.1
-        version: 2.2.5-rc.1(@public-ui/components@2.2.5-rc.1(adopted-style-sheets@1.1.6))
+        specifier: 2.2.6-rc.0
+        version: 2.2.6-rc.0(@public-ui/components@2.2.6-rc.0(adopted-style-sheets@1.1.6))
       classnames:
         specifier: 2.5.1
         version: 2.5.1
@@ -1653,22 +1653,22 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
-  '@public-ui/components@2.2.5-rc.1':
-    resolution: {integrity: sha512-ITmkxx93Wjtun1qoWKTwhLyPmFB5WL3N6SiUoXEcFbPXq7UU9z5C4xst+NT4nT0tQlr+j+ZObyiFC4EwobRmXQ==}
+  '@public-ui/components@2.2.6-rc.0':
+    resolution: {integrity: sha512-RF1EbmWd1au6WiHV+0BGm86MJ/AIBJ2aXeNoQb8FadTq9sXRkrta0+BbPRdlaih2h0rb4nIFN9oJkggvYXnIyQ==}
     peerDependencies:
       adopted-style-sheets: 1.1.7
 
-  '@public-ui/react@2.2.5-rc.1':
-    resolution: {integrity: sha512-yaXgSZxU3yIta6P07Cp85Ft3tZi1MJZjKBhS+Mm0TlzIT9DUNKS+FlNYQAc14bcaUPCMw9X2/TgJpwvEf2KznQ==}
+  '@public-ui/react@2.2.6-rc.0':
+    resolution: {integrity: sha512-JV394RUGWiASgc94ad1znjAaCFsP29zxNuD/Op0QwrLYEMwqxSacuZ7DkCapR5KuYt6pHxjXYtTNvH5Os/wXAw==}
     peerDependencies:
-      '@public-ui/components': 2.2.5-rc.1
+      '@public-ui/components': 2.2.6-rc.0
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
 
-  '@public-ui/theme-default@2.2.5-rc.1':
-    resolution: {integrity: sha512-nE+ANpl/15gmZmNAkMFeIV3B9IB9lE/cpGinCJVGl/1ke2ffcaOFVx9f+Ha/YOOwlP+hO2HQaf7i+9X5l9ZyuQ==}
+  '@public-ui/theme-default@2.2.6-rc.0':
+    resolution: {integrity: sha512-63qy+TND2DDklIHb6vfGjuXYA4LCi/PQfrSI+zQTXX8dqwx9dd6PyX8M3Q89P1Ljor5BUpF9bszMkV3bAjHa3g==}
     peerDependencies:
-      '@public-ui/components': 2.2.5-rc.1
+      '@public-ui/components': 2.2.6-rc.0
 
   '@rollup/plugin-babel@5.3.1':
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
@@ -10239,7 +10239,7 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@public-ui/components@2.2.5-rc.1(adopted-style-sheets@1.1.6)':
+  '@public-ui/components@2.2.6-rc.0(adopted-style-sheets@1.1.6)':
     dependencies:
       '@floating-ui/dom': 1.6.13
       adopted-style-sheets: 1.1.6
@@ -10252,15 +10252,15 @@ snapshots:
       rgba-convert: 0.3.0
       wcag-contrast: 3.0.0
 
-  '@public-ui/react@2.2.5-rc.1(@public-ui/components@2.2.5-rc.1(adopted-style-sheets@1.1.6))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@public-ui/react@2.2.6-rc.0(@public-ui/components@2.2.6-rc.0(adopted-style-sheets@1.1.6))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@public-ui/components': 2.2.5-rc.1(adopted-style-sheets@1.1.6)
+      '@public-ui/components': 2.2.6-rc.0(adopted-style-sheets@1.1.6)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  '@public-ui/theme-default@2.2.5-rc.1(@public-ui/components@2.2.5-rc.1(adopted-style-sheets@1.1.6))':
+  '@public-ui/theme-default@2.2.6-rc.0(@public-ui/components@2.2.6-rc.0(adopted-style-sheets@1.1.6))':
     dependencies:
-      '@public-ui/components': 2.2.5-rc.1(adopted-style-sheets@1.1.6)
+      '@public-ui/components': 2.2.6-rc.0(adopted-style-sheets@1.1.6)
 
   '@rollup/plugin-babel@5.3.1(@babel/core@7.26.0)(rollup@2.79.2)':
     dependencies:
