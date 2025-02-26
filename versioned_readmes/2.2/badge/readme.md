@@ -6,14 +6,14 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
 ### Code
 
 ```html
-<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
-<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
 ```
 
 ### Beispiel
 
-<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
-<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
 
 ## Kontext für Badges
 
@@ -27,8 +27,8 @@ Stellen Sie sicher, dass jede Gruppe von Badges durch eine Überschrift ergänzt
 ```html
 <kol-heading _label="Beispielüberschrift" _level="2"></kol-heading>
 <div>
-	<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
-	<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
+	<kol-badge _label="Beispieltext" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
+	<kol-badge _label="Beispieltext" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
 </div>
 ```
 
