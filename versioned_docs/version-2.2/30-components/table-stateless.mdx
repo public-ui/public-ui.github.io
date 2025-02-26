@@ -1,0 +1,97 @@
+---
+title: TableStateless
+description: Beschreibung, Spezifikation und Beispiele für die TableStateless-Komponente.
+tags:
+  - Table
+  - Beschreibung
+  - Spezifikation
+  - Beispiele
+---
+
+import Readme from '../../../versioned_readmes/2.2/table-stateless/readme.md';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+Synonyme: Data Table, Details List, Data Grid
+
+Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Für eine Tabellen-Komponente, die Sortierung und Paginierung mit den zur Verfügung gestellten Daten automatisch übernehmen kann, siehe <kol-link _href="table-stateful" _label="KolTableStateful" />.
+
+TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es nicht praktikabel ist, die komplette Datenmenge zur Filterung und Sortierung in den Browser auszuliefern.
+
+## Selektion
+
+Über die `_selection`-Property kann der "Selection-Modus" der Komponente aktiviert und gesteuert werden. Ist `_selection` definiert, erhält jede Zeile eine Checkbox, über die sich die Zeile aus- oder abwählen lässt.
+
+```ts
+const data = [
+	{ id: '1001', name: 'Marianne Musterfrau' },
+	{ id: '1002', name: 'Max Mustermann' },
+];
+const selection: KoliBriTableSelection = {
+	/* label: Funktion, welche für jede Zeile ausgerufen wird, und ein Label für die Checkbox zurückgibt. */
+	label: (row: KoliBriTableDataType) => `Selection for ${row.name}`,
+
+	/* selectedKeys: Array von Strings, das die Key-Properties der gewählten Zeilen beinhaltet */
+	selectedKeys: ['1002'],
+
+	/* keyPropertyName: Eigenschaft, auf die sich `selectedKeys` bezieht. Default-Wert: `id` */
+	keyPropertyName: 'id',
+};
+```
+
+### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event             | Auslöser                                         | Value                                                                   |
+|-------------------|--------------------------------------------------|-------------------------------------------------------------------------|
+| `sort`            | Die Sortierung hat sich geändert                 | Objekt vom Typ `SortEventPayload` mit `key` und `currentSortDirection`  |
+| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert | Array von ausgewählten IDs bzw. ausgewählt ID bei Einfachauswahl        |
+
+## Beispiel
+
+```jsx
+<KolTableStateless
+  _label="Table for demonstration purposes"
+  _headerCells={{
+    horizontal: [
+      [
+        { key: 'value', label: 'Value', sortDirection: 'ASC' },
+      ],
+    ],
+  }}
+  _data={DATA}
+  _selection={{
+    label: (row: KoliBriTableDataType) => `Selection for ${row.name}`,
+    selectedKeys: ['1002'],
+    keyPropertyName: 'id',
+  }}
+  _on={{
+    /**
+     * @param {MouseEvent} _
+     * @param {SortEventPayload} payload
+     * @param {string} payload.key
+     * @param {KoliBriSortDirection} payload.currentSortDirection
+     */
+    onSort: (_: MouseEvent, payload: SortEventPayload) => {
+      /* Perform sort, update `DATA` and headers `sortDirection` */
+    },
+
+    /**
+     * @param {Event} _
+     * @param {string[]} selection - Array of selected keys
+     */
+    onSelectionChange: (_: Event, selection: string[]) => {
+      /* Update selection.selectedKeys state */
+    }
+  }}
+/>
+```
+
+<Readme />
+
+<ExampleLink component="table-stateless" />
+
+## Live-Editor
+
+<LiveEditorCompact component="table-stateless" />
