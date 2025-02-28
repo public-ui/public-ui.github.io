@@ -1,7 +1,7 @@
 import React from 'react';
 import { KolLink } from '@public-ui/react';
 import type { FC } from 'react';
-import { useDocsPreferredVersion } from '@docusaurus/theme-common';
+import { useDocsPreferredVersion } from '../shares/useDocsPreferredVersion';
 import { translate } from '@docusaurus/Translate';
 import { determinateVersionId } from '../shares/version';
 import Heading from '@theme/Heading';

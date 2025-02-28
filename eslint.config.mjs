@@ -57,7 +57,6 @@ export default [
 				},
 
 				project: ['./tsconfig.json'],
-				tsconfigRootDir: '/Users/moppitz/Workspace/kolibri/public-ui.github.io',
 			},
 		},
 

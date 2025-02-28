@@ -1,8 +1,9 @@
+import type { ReactNode } from 'react';
 import React, { useEffect } from 'react';
 import { KolInputColor } from '@public-ui/react';
 
 type Props = {
-	label: JSX.Element;
+	label: ReactNode;
 	name: string;
 	update: (key: string, value: string | number | boolean) => void;
 	value?: string;

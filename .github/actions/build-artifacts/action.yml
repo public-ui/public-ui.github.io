@@ -7,30 +7,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20
-        registry-url: "https://registry.npmjs.org"
-        scope: "@public-ui"
-
-    - uses: pnpm/action-setup@v4
-      id: pnpm-install
-      with:
-        version: 9
-        run_install: false
-
-    - name: Get pnpm store directory
-      id: pnpm-cache
-      shell: bash
-      run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-    - uses: actions/cache@v4
-      with:
-        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store
+    - uses: ./.github/actions/pnpm-setup
 
     - name: Build Docs
       shell: bash

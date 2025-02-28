@@ -1,3 +1,4 @@
+import type { ReactNode} from 'react';
 import React, { useEffect, useState } from 'react';
 import type { Attribute } from '../../LiveEditorCompact/types';
 import { KolButton, KolDetails } from '@public-ui/react';
@@ -5,7 +6,7 @@ import type { KoliBriIconsProp } from '@public-ui/components';
 
 type Props = {
 	attribute: Attribute;
-	label: JSX.Element | string;
+	label: ReactNode;
 	update: (key: string, value: string | number | boolean) => void;
 	value?: string;
 };

@@ -1,8 +1,9 @@
+import type { ReactNode } from 'react';
 import React from 'react';
 import { KolSelect } from '@public-ui/react';
 
 type Props = {
-	label: JSX.Element;
+	label: ReactNode;
 	name: string;
 	types: string[];
 	update: (key: string, value: string | number | boolean) => void;

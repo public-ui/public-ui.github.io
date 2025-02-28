@@ -1,4 +1,5 @@
 import VERSIONS from '../../versions.json';
+import type { DocVersionType } from '../types/DocVersionType';
 
 export type Version = (typeof VERSIONS)[number] & 'current';
 
@@ -15,7 +16,7 @@ export function determinateVersionId(docVersion: { preferredVersion?: { name: st
  * @param docVersion - An object containing the preferred version.
  * @returns A string representing the version to be used in the URL, or `null` if the preferred version is "current" or matches the latest version.
  */
-export function getVersionForUrl(docVersion: { preferredVersion?: { versionName: string } }): string | null {
+export function getVersionForUrl(docVersion: DocVersionType): string | null {
 	if (!docVersion || !docVersion.preferredVersion) return null;
 
 	const lastVersion = VERSIONS.reduce((max, ver) => {

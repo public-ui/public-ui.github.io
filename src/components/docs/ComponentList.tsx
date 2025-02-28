@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import React, { Suspense, useEffect, useState, useRef, useCallback } from 'react';
-import { useDocsPreferredVersion } from '@docusaurus/theme-common';
+import { useDocsPreferredVersion } from '../../shares/useDocsPreferredVersion';
 import Link from '@docusaurus/Link';
 import { KolBadge, KolCard } from '@public-ui/react';
 
