@@ -15,5 +15,8 @@ jobs:
 
       - uses: ./.github/actions/pnpm-setup
 
-      - name: Build and Lint
-        run: pnpm -r --parallel build lint:hard
+      - name: Lint
+        run: pnpm run lint:hard
+
+      - name: Build
+        run: pnpm run build
