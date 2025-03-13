@@ -4,11 +4,11 @@ import { KolKolibri, KolLink, KolLinkButton, KolLogo } from '@public-ui/react';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
-import type { FunctionComponent } from 'react';
+import type { FunctionComponent, ReactElement } from 'react';
 import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
-import { useDocsPreferredVersion } from '@docusaurus/theme-common';
-import { getVersionForUrl, determinateVersionId } from '../shares/version';
+import { useDocsPreferredVersion } from '../shares/useDocsPreferredVersion';
+import { determinateVersionId, getVersionForUrl } from '../shares/version';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -60,7 +60,7 @@ const HomepageButtons: FunctionComponent = () => {
 	);
 };
 
-export default function Homepage(): JSX.Element {
+export default function Homepage(): ReactElement {
 	return (
 		<Layout
 			title={translate({

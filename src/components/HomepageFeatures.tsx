@@ -1,15 +1,16 @@
+import type { ReactNode, ReactElement } from 'react';
 import React from 'react';
 import { KolIcon, KolLink, KolLinkButton } from '@public-ui/react';
 import { translate } from '@docusaurus/Translate';
 import Heading from '@theme/Heading';
-import { useDocsPreferredVersion } from '@docusaurus/theme-common';
+import { useDocsPreferredVersion } from '../shares/useDocsPreferredVersion';
 import { getVersionForUrl, determinateVersionId } from '../shares/version';
 
 type FeatureItem = {
 	icon: string;
 	title: string;
-	description: JSX.Element;
-	button: JSX.Element;
+	description: ReactNode;
+	button: ReactNode;
 };
 
 function Feature({ title, icon, description, button }: FeatureItem) {
@@ -25,7 +26,7 @@ function Feature({ title, icon, description, button }: FeatureItem) {
 	);
 }
 
-export default function HomepageFeatures(): JSX.Element {
+export default function HomepageFeatures(): ReactElement {
 	const docVersion = useDocsPreferredVersion();
 	const version = getVersionForUrl(docVersion);
 	const versionId = determinateVersionId(docVersion);
