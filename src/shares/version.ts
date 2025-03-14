@@ -4,7 +4,7 @@ import type { DocVersionType } from '../types/DocVersionType';
 export type Version = (typeof VERSIONS)[number] & 'current';
 
 export function determinateVersionId(docVersion: { preferredVersion?: { name: string } }) {
-	if (!docVersion || !docVersion.preferredVersion) return null;
+	if (!docVersion || !docVersion.preferredVersion) return 'v2';
 	return parseFloat(docVersion?.preferredVersion?.name as Version) < 2 ? 'v1' : 'v2';
 }
 
