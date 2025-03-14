@@ -87,7 +87,7 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 
 ### Inhalt des Accordion
 
-Der Hauptinhalt des Accordions wird über deb Slot übergeben.
+Der Hauptinhalt des Accordions wird über den Slot übergeben.
 
 **`<kol-accordion _label="Element 1">Accordion-Inhalt</kol-accordion>`**
 
@@ -95,20 +95,60 @@ Der Hauptinhalt des Accordions wird über deb Slot übergeben.
 
 Standardmäßig wird das Accordion nach dem Laden der Seite im geschlossenen Zustand angezeigt. Soll das Accordion geöffnet angezeigt werden, setzen Sie das Attribut **\_open** zusätzlich ein.
 
+### Vorteile
+
+1. **Platzersparnis**: Ideal für Inhalte, die sonst viel Platz einnehmen würden.
+2. **Verbesserte Nutzererfahrung**: Nutzer:innen können Inhalte gezielt ein- und ausklappen.
+3. **Struktur und Übersicht**: Inhalte werden logisch gegliedert und wirken weniger überfordernd.
+
 ### Best practices
 
-- Verwenden Sie ein Accordion, um lange Textabschnitte unter einem thematischen Oberbegriff zusammenzufassen
-- Verwenden Sie ein Accordion, um weniger wichtige Informationen, als Ergänzung zu Hauptinformationen, zur Verfügung zu stellen.
-- Mit einem Accordion können Sie die Länge Ihrer Webseite deutlich reduzieren und stellen gleichzeitig die Erreichbarkeit aller Informationen für die Nutzer:innen sicher.
-- Verwenden Sie eindeutige Überschriften, um die Nutzer:innen auf die weiteren Informationen des Accordions hinzuweisen.
-- Vermeiden Sie, wichtige `Call-To-Action`-Elemente innerhalb eines Accordions zu verbergen.
-- Lassen Sie Fehlermeldungen nicht innerhalb des Accordions anzeigen, um zu vermeiden, dass Nutzer:innen wichtige Informationen übersehen.
-- Verwenden Sie ein Accordion nicht als Auswahl-Element für Nutzer:innen.
-- Verwenden Sie ein Accordion nicht, um wichtige Informationen zu rechtlichen Angaben oder zum Datenschutz anzuzeigen.
+1. **Zweckmäßiger Einsatz**  
+   Verwenden Sie Accordions, um Inhalte unter einem thematischen Oberbegriff zu gruppieren, insbesondere bei langen Textabschnitten oder detaillierten Informationen.
+
+2. **Unterstützende Informationen**  
+   Platzieren Sie in Accordions eher ergänzende oder weniger wichtige Informationen, die nicht unbedingt sofort sichtbar sein müssen.
+
+3. **Reduktion der Seitenlänge**  
+   Nutzen Sie Accordions, um die visuelle Länge einer Webseite zu reduzieren, ohne die Zugänglichkeit von Inhalten einzuschränken.
+
+4. **Eindeutige und beschreibende Überschriften**  
+   Verwenden Sie prägnante und aussagekräftige Überschriften, die den Inhalt des jeweiligen Abschnitts klar beschreiben, um die Orientierung zu erleichtern.
+
+5. **Wichtige Aktionen und Inhalte sichtbar halten**  
+   Vermeiden Sie es, kritische `Call-to-Action`-Elemente oder zentrale Informationen innerhalb eines Accordions zu verstecken.
+
+6. **Sichtbarkeit von Fehlermeldungen sicherstellen**  
+   Platzieren Sie Fehlermeldungen immer außerhalb eines Accordions um zu vermeiden, dass wichtige Informationen übersehen werden.
+
+7. **Nicht als Auswahl-Element verwenden**  
+   Verwenden Sie Accordions nicht als interaktive Auswahl- oder Filterelemente, da sie für solche Interaktionen nicht intuitiv sind.
+
+8. **Wichtige rechtliche Informationen außerhalb platzieren**  
+   Anzeigen wie Datenschutz- oder rechtliche Hinweise sollten nicht in Accordions versteckt werden, da diese stets leicht zugänglich und sichtbar sein müssen.
+
+9. **Maximale Lesbarkeit**  
+    Halten Sie die Inhalte innerhalb eines Accordions kurz und übersichtlich. Verwenden Sie Listen, Absätze oder visuelle Trennungen, um eine Überforderung zu vermeiden.
+
+10. **Standardmäßig wichtige Inhalte sichtbar machen**  
+    Überlegen Sie, ob es sinnvoll ist, einen oder mehrere Accordion-Abschnitte standardmäßig geöffnet zu lassen, insbesondere wenn diese Inhalte oft benötigt werden.
+
+11. **Performance berücksichtigen**  
+    Stellen Sie sicher, dass das Accordion keine Ladezeitprobleme verursacht, insbesondere bei dynamisch geladenen Inhalten. Inhalte sollten möglichst asynchron und effizient geladen werden.
 
 ### Anwendungsfälle
 
 - Häufig gestellte Fragen (FAQ)
+- Darstellung von Details, Eigenschaften oder Varianten eines Elements
+- Gruppierungen von
+  - Formularen mit vielen Optionen
+  - Daten in Dashboards
+  - Filterfunktionen
+- Darstellung von Menüs auf kleinen Bildschirmen, bei denen Platz begrenzt ist
+- Gliederung in Einstellungsseiten
+- Aufteilung langer Artikel oder Dokumentationen in logische Abschnitte
+- Dynamisches Laden von Inhalten, welche nur bei Bedarf geladen werden
+- Darstellung eines Prozesses oder einer Anleitung, bei der einzelne Schritte ausgeklappt werden
 
 ## Barrierefreiheit
 
