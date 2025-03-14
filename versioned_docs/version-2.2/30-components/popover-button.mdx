@@ -1,0 +1,51 @@
+---
+title: PopoverButton
+description: Beschreibung und Spezifikation für die PopoverButton-Komponente.
+tags:
+  - Dropdown
+  - ContextMenu
+---
+
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '../../../versioned_readmes/2.2/popover-button/readme.md';
+
+# PopoverButton
+
+<kol-badge
+	_label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+
+Der PopoverButton ist eine Komponente, die einen Button mit einem zugehörigen Popover-Menü kombiniert. Das Popover wird durch Klicken auf den Button ein- und ausgeblendet. Die Beschriftung des Buttons kann über das `_label`-Attribut festgelegt werden. Die Position des Popovers lässt sich über `_popover-align` steuern, wobei das Popover wahlweise oberhalb, rechts, unterhalb oder links vom Button platziert werden kann.
+
+Der PopoverButton eignet sich besonders für:
+
+- Zusätzliche Informationen
+- Kontextmenüs
+- Ausklappbare Bedienelemente
+
+## Konstruktion
+
+### Code
+
+```html
+<kol-popover-button _label="Weitere Informationen" _icons="codicon codicon-info" _popover-align="right">
+	Weitere Informationen im Popover.
+</kol-popover-button>
+```
+
+### Beispiel
+
+<kol-popover-button _label="Weitere Informationen" _icons="codicon codicon-info" _popover-align="right">
+	Weitere Informationen im Popover.
+</kol-popover-button>
+
+<Readme />
+
+<ExampleLink component="popover-button" />
+
+## Live-Editor
+
+[//]: # (<LiveEditorCompact component="popover-button" />)
+
+## Beispiele
+
+[//]: # (<Configurator component="popover-button" sample="basic" />)
