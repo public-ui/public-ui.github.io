@@ -8,78 +8,10 @@ tags:
   - Beispiele
 ---
 
-import Readme from '../../readmes/input-checkbox/readme.md';
+import Readme from '../../../versioned_readmes/2.2/input-checkbox/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
-
-# Checkbox
-
-Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken aktiviert und wieder deaktiviert wird. In aktiviertem Zustand befindet sich ein farbiger Haken in der Box.
-
-## Konstruktion
-
-### Code
-
-```html
-<kol-input-checkbox _label="false">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
-<kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
-```
-
-### Beispiel
-
-<kol-input-checkbox _label="false">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
-<kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event    | Auslöser                                                            | Value                                               |
-|----------|---------------------------------------------------------------------|-----------------------------------------------------|
-| `focus`  | Eingabefeld wird fokussiert                                         | -                                                   |
-| `click`  | Eingabefeld wird angeklickt                                         | -                                                   |
-| `input`  | Checkbox wird an- oder abgehakt (entspricht nativem `input`-Event)  | Definierter `_value` wenn aktiv, andernfalls `null` |
-| `change` | Checkbox wird an- oder abgehakt (entspricht nativem `change`-Event) | Definierter `_value` wenn aktiv, andernfalls `null` |
-| `blur`   | Eingabefeld verliert Fokus                                          | -                                                   |
-
-## Verwendung
-
-Checkboxen werden als Einzelelement oder als Liste beliebig vieler Checkboxen verwendet. Sie ermöglichen den Nutzer:innen, aus einer vordefinierten Anzahl von Möglichkeiten eine oder mehrere auszuwählen.
-
-### Varianten
-
-Mittels des Attributs **`_variant`** können folgende Varianten ausgewählt werden (Beispiele siehe oben):
-
-- `button`: wechselt das Icon je nach Zustand (Beispiel 3+4)
-- `switch`: verwandelt die Checkbox in einen horizontalen Schalter, hierbei gilt rechts als aktiv und links als inaktiv. (Beispiel 2)
-
-### Best practices
-
-- Verwenden Sie eine einzelne Checkbox, wenn Sie von den Nutzer:innen eine einfach Bestätigung wünschen, z.B. Akzeptieren der Datenschutzerklärung.
-- Verwenden Sie eine Gruppe von Checkboxen, um den Nutzer:innen die Möglichkeit zu geben einen oder mehrere Werte auszuwählen.
-
-## Barrierefreiheit
-
-Vermeiden Sie die Verwendung von vielen Checkboxen auf einer Seite, da Ihre Inhalte hierdurch schnell unübersichtlich und lang werden. Prüfen Sie in solchen Anwendungsfällen die Verwendung einer <kol-link _href="/docs/components/select" _label="/docs/components/select">Select-Box mit **`_multiple`**</kol-link>.
-
-Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenreadern vorgelesen wird und so eine eindeutige Identifikation des Eingabefeldes ermöglicht.
-
-### Tastatursteuerung
-
-| Taste  | Funktion                                                                                                           |
-| ------ | ------------------------------------------------------------------------------------------------------------------ |
-| `Tab`  | Fokussiert die Checkbox bzw. ermöglicht den Wechsel zwischen Checkboxen einer Liste.                               |
-| `Leer` | Aktiviert bzw. deaktiviert die Checkbox. Der Zustand **_Indeterminate_** ist über die Tastatur nicht herzustellen. |
-
-## Links und Referenzen
-
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#checkbox" _target="_blank"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <Readme />
 

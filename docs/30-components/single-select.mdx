@@ -8,52 +8,10 @@ tags:
   - Beispiele
 ---
 
-import Readme from '../../readmes/single-select/readme.md';
+import Readme from '../../../versioned_readmes/2.2/single-select/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
-
-# SingleSelect
-
-Die **SingleSelect**-Komponente erzeugt eine Auswahlbox, die ein Eingabefeld mit einer darunter angeordneten Liste von auswählbaren Optionen kombiniert. Sie bietet auch eine Suchfunktion, um die Auswahl zu filtern.
-
-## Konstruktion
-
-### Code
-
-```html
-<kol-single-select
-	_options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]"
-	_label="Beispiel"
-	_value="1"
-></kol-single-select>
-```
-
-## Verwendung
-
-Die Auswahlmöglichkeiten werden über das Attribut **`_options`** als Objekt oder JSON-String an die Komponente übergeben. Je Option müssen die Werte **`label`** und **`value`** angegeben werden.
-
-Beispiel für die Konstruktion des JSON-Objektes:
-
-```json
-[
-	{ "label": "Herr", "value": 0 },
-	{ "label": "Frau", "value": 1 },
-	{ "label": "Firma", "value": 2 }
-]
-```
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event    | Auslöser                    | Value                           |
-|----------|-----------------------------|---------------------------------|
-| `click`  | Eingabefeld wird angeklickt | -                               |
-| `focus`  | Eingabefeld wird fokussiert | -                               |
-| `blur`   | Eingabefeld verliert Fokus  | -                               |
-| `input`  | Option wird ausgewählt      | `value`-Attribut der Option     |
-| `change` | Option wird ausgewählt      | `value`-Attribut der Option     |
 
 <Readme />
 

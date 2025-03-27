@@ -8,7 +8,7 @@ tags:
   - Beispiele
 ---
 
-import Readme from '../../readmes/table-stateless/readme.md';
+import Readme from '../../../versioned_readmes/2.2/table-stateless/readme.md';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
@@ -17,20 +17,6 @@ Synonyme: Data Table, Details List, Data Grid
 Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Für eine Tabellen-Komponente, die Sortierung und Paginierung mit den zur Verfügung gestellten Daten automatisch übernehmen kann, siehe <kol-link _href="table-stateful" _label="KolTableStateful" />.
 
 TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es nicht praktikabel ist, die komplette Datenmenge zur Filterung und Sortierung in den Browser auszuliefern.
-
-## Richtung der Datenwiedergabe
-
-Die Komponente KolTableStateless bietet eine flexible Tabellenimplementierung, die die bi-direktionale Datenwiedergabe unterstützt. Die Richtung der Datenwiedergabe wird durch die Header-Konfiguration bestimmt:
-
-- Horizontale Kopfzeilen (Standard): Die Daten werden von oben nach unten gerendert, wenn Schlüssel in den horizontalen Kopfzeilen vorhanden sind. Jede Spalte steht für einen Schlüssel, und die Zeilen stehen für einzelne Dateneinträge.
-- Vertikale Kopfzeilen: Die Daten werden von links nach rechts dargestellt, wenn die Schlüssel in den vertikalen Kopfzeilen vorhanden und in den horizontalen Kopfzeilen nicht vorhanden sind. Jede Zeile stellt einen Schlüssel dar, und Spalten stellen einzelne Dateneinträge dar.
-
-Die Darstellungsrichtung wird automatisch durch die Untersuchung der Kopfzeilenzellen bestimmt:
-
-- Wenn horizontale Kopfzeilen Schlüssel enthalten, wird die horizontale Darstellung verwendet.
-- Wenn nur vertikale Kopfzeilen Schlüssel enthalten, wird vertikal gerendert.
-- Wenn keine Kopfzeilen Schlüssel enthalten, wird standardmäßig das horizontale Rendering verwendet.
-
 
 ## Selektion
 
