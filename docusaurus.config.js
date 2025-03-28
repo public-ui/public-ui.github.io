@@ -10,7 +10,7 @@ const config = {
 	title: 'KoliBri - Public UI',
 	tagline: 'The accessible Web Component Library',
 	url: 'https://public-ui.github.io',
-	baseUrl: '/',
+	baseUrl: '/docs/2.2/',
 	onBrokenLinks: 'throw',
 	trailingSlash: false,
 	onBrokenMarkdownLinks: 'warn',
