@@ -3,6 +3,8 @@
 
 const { themes } = require('prism-react-renderer');
 
+const PUBLIC_BASE_URL = 'https://kolibri.bund.de/';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'KoliBri - Public UI',
@@ -45,27 +47,6 @@ const config = {
 					// 	},
 					// },
 				},
-				blog: {
-					blogDescription:
-						'Im Blog greifen wir verschiedene interessant und hilfreiche Themen rund um barrierefreie Webcomponents auf.',
-					blogSidebarTitle: 'Neueste Posts',
-					postsPerPage: 3,
-					blogSidebarCount: 10,
-					feedOptions: {
-						createFeedItems: async (params) => {
-							const { blogPosts, defaultCreateFeedItems, ...rest } = params;
-							return defaultCreateFeedItems({
-								// keep only the 10 most recent blog posts in the feed
-								blogPosts: blogPosts.filter((_, index) => index < 10),
-								...rest,
-							});
-						},
-					},
-					showReadingTime: true,
-					// Please change this to your repo.
-					// Remove this to remove the "edit this page" links.
-					// editUrl: 'https://github.com/public-ui/documentation/blob/main/packages/docusaurus/',
-				},
 				sitemap: {
 					changefreq: 'daily',
 					priority: 0.5,
@@ -103,7 +84,7 @@ const config = {
 								className: 'dropdown-archived-versions',
 								value: '<b>Archive</b>',
 							},
-							{ to: 'https://kolibri.bund.de/docs/v2/', label: '2.2' },
+							{ to: `${PUBLIC_BASE_URL}docs/v2/`, label: '2.2' },
 						],
 					},
 					{
@@ -111,7 +92,7 @@ const config = {
 						to: '/docs',
 						position: 'left',
 					},
-					{ to: '/blog', label: 'Blog', position: 'left' },
+					{ to: `${PUBLIC_BASE_URL}blog`, label: 'Blog', position: 'left' },
 					{ type: 'search', position: 'right' },
 					// {
 					// 	href: 'https://public-ui.github.io/designer',
@@ -140,7 +121,7 @@ const config = {
 							},
 							{
 								label: 'Blog',
-								to: '/blog',
+								to: `${PUBLIC_BASE_URL}blog`,
 							},
 							{
 								label: 'Impressum',
