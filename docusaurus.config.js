@@ -93,6 +93,18 @@ const config = {
 						type: 'docsVersionDropdown',
 						position: 'left',
 						dropdownActiveClassDisabled: true,
+						dropdownItemsAfter: [
+							{
+								type: 'html',
+								value: '<hr class="dropdown-separator">',
+							},
+							{
+								type: 'html',
+								className: 'dropdown-archived-versions',
+								value: '<b>Archive</b>',
+							},
+							{ to: 'https://kolibri.bund.de/docs/v2/', label: '2.2' },
+						],
 					},
 					{
 						label: 'Dokumentation',
