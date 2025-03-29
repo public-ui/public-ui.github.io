@@ -92,7 +92,7 @@ const config = {
 					},
 					{
 						label: 'Dokumentation',
-						to: '/docs/2.2/',
+						to: '/',
 						position: 'left',
 					},
 					{ to: `${PUBLIC_BASE_URL}blog`, label: 'Blog', position: 'left' },
@@ -120,7 +120,7 @@ const config = {
 						items: [
 							{
 								label: 'Dokumentation',
-								to: '/docs/2.2/',
+								to: '/',
 							},
 							{
 								label: 'Blog',
