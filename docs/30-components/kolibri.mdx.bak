@@ -8,9 +8,16 @@ tags:
   - Beispiele
 ---
 
+import Readme from '../../readmes/kolibri/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+
+<Readme />
 
 ## Live-Editor
 
 <LiveEditorCompact component="kolibri" />
+
+## Beispiele
+
+<Configurator component="kolibri" sample="basic" />

@@ -7,43 +7,11 @@ tags:
   - Spezifikation
   - Beispiele
 ---
+
 import Readme from '../../readmes/split-button/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
-
-# SplitButton
-
-<kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
-
-Die SplitButton-Komponente kann genutzt werden, um einen zweigeteilten Button darzustellen. Dabei wird der Primär-Button
-üblicherweise für eine Haupt-Aktion genutzt, während der sekundäre Button ein Kontext-Menü ("Popover") öffnet, hinter
-dem sich weitere Aktionen verbergen.
-
-- Der Sekundär-Button togglet grundsätzlich das Kontextmenü.
-- Für den Primär-Button kann ein individueller Event-Handler hinterlegt werden, wird dies nicht getan togglet er ebenfalls das Kontextmenü.
-
-## Konstruktion
-
-### Code
-
-```html
-<kol-split-button _label="Split-Button">Split-Button Popover</kol-split-button>
-```
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event         | Auslöser                                                                                            | Value             |
-|---------------|-----------------------------------------------------------------------------------------------------|-------------------|
-| `click`       | Element wird angeklickt                                                                             | `_value`-Property |
-| `onMouseDown` | Eine Taste eines Zeigegeräts wird gedrückt, während der Zeiger sich innerhalb des Elements befindet | -                 |
-
-### Beispiel
-
-<kol-split-button _label="Split-Button">
-	Split-Button Popover
-</kol-split-button>
 
 <Readme />
 

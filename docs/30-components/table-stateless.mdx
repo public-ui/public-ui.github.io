@@ -18,20 +18,6 @@ Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tab
 
 TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es nicht praktikabel ist, die komplette Datenmenge zur Filterung und Sortierung in den Browser auszuliefern.
 
-## Richtung der Datenwiedergabe
-
-Die Komponente KolTableStateless bietet eine flexible Tabellenimplementierung, die die bi-direktionale Datenwiedergabe unterstützt. Die Richtung der Datenwiedergabe wird durch die Header-Konfiguration bestimmt:
-
-- Horizontale Kopfzeilen (Standard): Die Daten werden von oben nach unten gerendert, wenn Schlüssel in den horizontalen Kopfzeilen vorhanden sind. Jede Spalte steht für einen Schlüssel, und die Zeilen stehen für einzelne Dateneinträge.
-- Vertikale Kopfzeilen: Die Daten werden von links nach rechts dargestellt, wenn die Schlüssel in den vertikalen Kopfzeilen vorhanden und in den horizontalen Kopfzeilen nicht vorhanden sind. Jede Zeile stellt einen Schlüssel dar, und Spalten stellen einzelne Dateneinträge dar.
-
-Die Darstellungsrichtung wird automatisch durch die Untersuchung der Kopfzeilenzellen bestimmt:
-
-- Wenn horizontale Kopfzeilen Schlüssel enthalten, wird die horizontale Darstellung verwendet.
-- Wenn nur vertikale Kopfzeilen Schlüssel enthalten, wird vertikal gerendert.
-- Wenn keine Kopfzeilen Schlüssel enthalten, wird standardmäßig das horizontale Rendering verwendet.
-
-
 ## Selektion
 
 Über die `_selection`-Property kann der "Selection-Modus" der Komponente aktiviert und gesteuert werden. Ist `_selection` definiert, erhält jede Zeile eine Checkbox, über die sich die Zeile aus- oder abwählen lässt.

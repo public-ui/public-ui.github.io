@@ -13,41 +13,6 @@ import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
-# LinkButton
-
-Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
-Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="../components/button" _label="Seite des Buttons"></kol-link>.
-
-## Konstruktion
-
-### Code
-
-```html
-<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
-<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
-<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
-<kol-link-button _href="#" _label="Secondary" _variant="danger"></kol-link-button>
-<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
-```
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event   | Auslöser                | Value            |
-|---------|-------------------------|------------------|
-| `click` | Element wird angeklickt | `_href`-Property |
-
-### Beispiel
-
-<div class="flex gap-2">
-	<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
-	<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
-	<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
-	<kol-link-button _href="#" _label="Danger" _variant="danger"></kol-link-button>
-	<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
-</div>
-
 <Readme />
 
 <ExampleLink component="link-button" />

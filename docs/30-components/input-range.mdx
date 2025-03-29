@@ -13,68 +13,6 @@ import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
-# InputRange
-
-Synonyme: Slider
-
-Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Verschieben eines Reglers verändert werden können.
-
-## Konstruktion
-
-### Code
-
-```html
-<kol-input-range
-	_label="Wertebereich"
-	_min="100"
-	_max="200"
-	_value="100"
-	_step="20"
-	_icons='{"left": "codicon codicon-arrow-small-down", "right": "codicon codicon-arrow-small-up"}'
-></kol-input-range>
-```
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event    | Auslöser                         | Value                           |
-|----------|----------------------------------|---------------------------------|
-| `click`  | Eingabefeld wird angeklickt      | -                               |
-| `focus`  | Eingabefeld wird fokussiert      | -                               |
-| `blur`   | Eingabefeld verliert Fokus       | -                               |
-| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
-| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
-
-### Beispiel
-
-<kol-input-range
-	_label="Wertebereich"
-	_min="100"
-	_max="200"
-	_value="100"
-	_step="20"
-	_icons='{"left": "codicon codicon-arrow-small-down", "right": "codicon codicon-arrow-small-up"}'></kol-input-range>
-
-## Verwendung
-
-### Best practices
-
-- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
-
-## Barrierefreiheit
-
-### Tastatursteuerung
-
-| Taste          | Funktion                                 |
-| -------------- | ---------------------------------------- |
-| `Tab`          | Fokussiert das Eingabefeld.              |
-| `Pfeil-Tasten` | Verändern den Wert der Range-Komponente. |
-
-## Links und Referenzen
-
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
-
 <Readme />
 
 <ExampleLink component="input-range" />

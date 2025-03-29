@@ -5,31 +5,27 @@ import type { FC } from 'react';
 import React from 'react';
 
 export const LanguageSwitch: FC = () => {
-	const { i18n } = useDocusaurusContext();
-
-	const location = useLocation();
+	const { i18n, siteConfig } = useDocusaurusContext();
+	const { pathname } = useLocation();
+	const normalizedPathname = pathname.endsWith('/') ? pathname : `${pathname}/`;
+	const baseUrl = siteConfig.baseUrl || '/';
+	const baseUrlWithoutLanguage = baseUrl.replace(/en(\/|$)/, '');
+	const relativePath = normalizedPathname.startsWith(baseUrl)
+		? normalizedPathname.slice(baseUrl.length)
+		: normalizedPathname;
+	const isGerman = i18n.currentLocale === 'de';
+	const switchTo = `${baseUrlWithoutLanguage}${isGerman ? 'en/' : ''}${relativePath}`;
 
 	return (
 		<div>
-			{i18n.currentLocale === 'de' ? (
-				<KolLinkButton
-					_href={`/en${location.pathname}`}
-					_label="Switch to English"
-					_hideLabel
-					_icons="codicon codicon-globe"
-					_tooltipAlign="left"
-					_variant="ghost"
-				/>
-			) : (
-				<KolLinkButton
-					_href={`${location.pathname.replace(/^\/en/, '')}`}
-					_label="Zu Deutsch wechseln"
-					_hideLabel
-					_icons="codicon codicon-globe"
-					_tooltipAlign="left"
-					_variant="ghost"
-				/>
-			)}
+			<KolLinkButton
+				_href={switchTo}
+				_label={isGerman ? 'Switch to English' : 'Zu Deutsch wechseln'}
+				_hideLabel
+				_icons="codicon codicon-globe"
+				_tooltipAlign="left"
+				_variant="ghost"
+			/>
 		</div>
 	);
 };

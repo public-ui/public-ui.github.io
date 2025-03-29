@@ -13,51 +13,6 @@ import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
-# InputNumber
-
-Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
-
-## Konstruktion
-
-### Code
-
-```html
-<kol-input-number _value="74" _label="ZAHL!" _icons='{"right": "codicon codicon-dashboard"}'></kol-input-number>
-```
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event    | Auslöser                         | Value                           |
-|----------|----------------------------------|---------------------------------|
-| `click`  | Eingabefeld wird angeklickt      | -                               |
-| `focus`  | Eingabefeld wird fokussiert      | -                               |
-| `blur`   | Eingabefeld verliert Fokus       | -                               |
-| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
-| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
-
-### Beispiel
-
-<kol-input-number _value="74" _label="ZAHL!" _icons='{"right": "codicon codicon-dashboard"}'></kol-input-number>
-
-## Verwendung
-
-### Best practices
-
-- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
-
-### Tastatursteuerung
-
-| Taste                         | Funktion                                                                                                                                             |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                         | Fokussiert das Eingabefeld.                                                                                                                          |
-| `Pfeil-Tasten (oben / unten)` | Erhöht oder verringert den Wert innerhalb der Attribute **`_min`** und **`_max`** entsprechend der im Attribut **`_step`** angegebenen Schrittgröße. |
-
-## Links und Referenzen
-
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
-
 <Readme />
 
 <ExampleLink component="input-number" />

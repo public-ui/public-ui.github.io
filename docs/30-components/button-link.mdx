@@ -13,41 +13,6 @@ import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
-# ButtonLink
-
-Der ButtonLink ist semantisch ein Button und hat das Design eines Links. Hierzu werden alle relevanten Properties der Button-Komponente übernommen und um die Design-bestimmenden Properties des Links erweitert.
-
-Einen Button kann man deaktivieren und daher gibt es bei einem ButtonLink das Property `_disabled`. Wie das optisch ausgestaltet wird, entscheidet die UX-Designer:in.
-
-Statt, wie bei einem Link, `_href` zu verwenden, wird bei einem ButtonLink das Property über den `Click-Callback` gesteuert. Hierzu wird das `_on`-Property verwendet.
-
-Bei einem Link gibt es das Property `target`, welches ggf. den Link in einem neuen Fenster/Tab öffnet. Das Verhalten ist aktuell noch nicht umgesetzt.
-
-Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `secondary` usw.) angeboten wird, stehen die Properties `_customClass` und `_variant` nicht zur Verfügung.
-
-## Konstruktion
-
-### Code
-
-```html
-<kol-button-link _on="" _label="Schalter sieht wie ein Link aus"></kol-button-link>
-```
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event         | Auslöser                                                                                            | Value             |
-|---------------|-----------------------------------------------------------------------------------------------------|-------------------|
-| `click`       | Element wird angeklickt                                                                             | `_value`-Property |
-| `onMouseDown` | Eine Taste eines Zeigegeräts wird gedrückt, während der Zeiger sich innerhalb des Elements befindet | -                 |
-
-### Beispiel
-
-<div class="flex gap-2">
-	<kol-button-link _on="" _label="Schalter sieht wie ein Link aus"></kol-button-link>
-</div>
-
 <Readme />
 
 <ExampleLink component="button-link" />
