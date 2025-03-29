@@ -35,6 +35,7 @@ const config = {
 			/** @type {import('@docusaurus/preset-classic').Options} */
 			({
 				docs: {
+					routeBasePath: '/',
 					sidebarCollapsible: true,
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Remove this to remove the "edit this page" links.
@@ -47,6 +48,8 @@ const config = {
 					// 	},
 					// },
 				},
+				blog: false,
+				pages: false,
 				sitemap: {
 					changefreq: 'daily',
 					priority: 0.5,
@@ -89,7 +92,7 @@ const config = {
 					},
 					{
 						label: 'Dokumentation',
-						to: '/docs',
+						to: '/docs/2.2/',
 						position: 'left',
 					},
 					{ to: `${PUBLIC_BASE_URL}blog`, label: 'Blog', position: 'left' },
@@ -117,7 +120,7 @@ const config = {
 						items: [
 							{
 								label: 'Dokumentation',
-								to: '/docs',
+								to: '/docs/2.2/',
 							},
 							{
 								label: 'Blog',
@@ -125,7 +128,7 @@ const config = {
 							},
 							{
 								label: 'Impressum',
-								to: '/docs/impressum',
+								to: `${PUBLIC_BASE_URL}docs/impressum`,
 							},
 						],
 					},
@@ -230,17 +233,6 @@ const config = {
 		// 	},
 		// ],
 		// 'docusaurus-plugin-sass',
-		[
-			'@docusaurus/plugin-client-redirects',
-			{
-				redirects: [
-					{
-						from: '/docs/get-started/erste-schritte',
-						to: '/docs/get-started/first-steps',
-					},
-				],
-			},
-		],
 		// docu/origin: https://github.com/praveenn77/docusaurus-lunr-search
 		require.resolve('docusaurus-lunr-search'),
 	],
