@@ -27,7 +27,6 @@
 		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" static/assets --dot",
 		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" static/assets --dot",
 		"update": "pnpm ncu:minor && pnpm ncu:major",
-		"regenerate:version": "rimraf i18n/en/docusaurus-plugin-content-docs/version-2.0 versioned_docs/version-2.0 versioned_readmes/2.0 versioned_sidebars/version-2.0-sidebars.json && npm run docusaurus docs:version 2.0"
 	},
 	"dependencies": {
 		"@docusaurus/core": "3.7.0",
