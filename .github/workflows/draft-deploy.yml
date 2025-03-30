@@ -47,6 +47,6 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Netlify Draft Deployment
-            URL: "${{ steps.netlify.outputs.NETLIFY_URL }}/docs/2.2"
+            URL: ${{ steps.netlify.outputs.NETLIFY_URL }}/docs/2.2
             Logs: ${{ steps.netlify.outputs.NETLIFY_LOGS_URL }}
           edit-mode: replace
