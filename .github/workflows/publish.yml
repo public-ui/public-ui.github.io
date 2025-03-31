@@ -24,6 +24,16 @@ jobs:
           node-version: 22
           registry-url: https://npm.pkg.github.com
 
+      - name: Bump version
+        shell: bash
+        run: |
+          pnpm version patch --no-git-tag-version
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add package.json
+          git commit -m "chore: Bump version"
+          git push
+
       - name: Publish Docs
         run: npm publish --access restricted
         env:
