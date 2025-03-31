@@ -1,9 +1,5 @@
 name: Build Docs Artifacts
-description: Builds the documentation artifacts including Docusaus, Sample App and Designer
-inputs:
-  PERSONAL_ACCESS_TOKEN:
-    description: 'A Github PAT'
-    required: true
+description: Builds the documentation
 runs:
   using: "composite"
   steps:

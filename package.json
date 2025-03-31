@@ -1,6 +1,7 @@
 {
-	"name": "root",
+	"name": "@public-ui/docs-v2",
 	"private": true,
+	"version": "0.0.0",
 	"scripts": {
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
@@ -28,6 +29,7 @@
 		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" static/assets --dot",
 		"update": "pnpm ncu:minor && pnpm ncu:major"
 	},
+	"files": ["build"],
 	"dependencies": {
 		"@docusaurus/core": "3.7.0",
 		"@docusaurus/eslint-plugin": "3.7.0",
