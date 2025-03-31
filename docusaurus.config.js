@@ -3,7 +3,7 @@
 
 const { themes } = require('prism-react-renderer');
 
-const PUBLIC_BASE_URL = 'https://kolibri.bund.de/';
+const PUBLIC_BASE_URL = 'https://public-ui.github.io/';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
