@@ -1,9 +1,9 @@
-name: Netlify Test Deploy - Deploy main branch under fixed alias
+name: Netlify Test Deploy - Deploy release branch under fixed alias
 
 on:
   push:
     branches:
-      - 'main'
+      - 'release/2'
   workflow_dispatch:
 
 jobs:

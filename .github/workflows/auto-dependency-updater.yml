@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: "main"
+          ref: "release/2"
       - uses: ./.github/actions/pnpm-setup
       - name: Create new branch
         run: git checkout -b chore/auto-update-deps
