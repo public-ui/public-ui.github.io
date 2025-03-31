@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/docs-v2",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"scripts": {
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
