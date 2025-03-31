@@ -11,12 +11,4 @@ runs:
 
     - name: Build Docs
       shell: bash
-      run: |
-        pnpm install --no-frozen-lockfile
-        npm run build
-
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20
-        registry-url: "https://npm.pkg.github.com"
-        scope: "@public-ui"
+      run: npm run build
