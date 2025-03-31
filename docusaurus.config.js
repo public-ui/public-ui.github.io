@@ -87,7 +87,7 @@ const config = {
 								className: 'dropdown-archived-versions',
 								value: '<b>Archive</b>',
 							},
-							{ to: `${PUBLIC_BASE_URL}docs/v2/`, label: '2.2' },
+							{ to: `${PUBLIC_BASE_URL}docs/2.2/`, label: '2.2' },
 						],
 					},
 					{
