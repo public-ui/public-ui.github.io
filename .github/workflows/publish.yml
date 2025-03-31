@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - release/2
-      - 284-prepare-release-v2 # TODO Remove
   workflow_dispatch:
 
 jobs:
