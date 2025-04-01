@@ -30,7 +30,7 @@ runs:
 
         rm -rf build/2.2
         mkdir -p build/2.2
-        mv package/dist build/2.2
+        mv package/build build/2.2
 
         rm -rf package *.tgz
 
