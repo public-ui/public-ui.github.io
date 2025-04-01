@@ -36,6 +36,8 @@ runs:
 
         echo "--DEBUG START--"
         ls -l build
+        ls -l build/2.2
+        tree build/2.2
         echo "--DEBUG END--"
 
     - name: Download designer (v1)
