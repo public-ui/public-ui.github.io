@@ -45,6 +45,6 @@ FILES.forEach((file) => {
 	<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/109126739?u=a57a37d20d60090bf572668d907ed093f6dbda85" />
 	<meta name="twitter:image:alt" content="Logo von KoliBri - The accessible HTML-Standard" /></head>`
 	);
-	console.warn(`${file} meta details updated`);
+	// console.warn(`${file} meta details updated`);
 	fs.writeFileSync(file, content, 'utf-8');
 });
