@@ -70,7 +70,6 @@ const LazyLoadComponent: FC<
 };
 
 export const ComponentList: FC<Language> = ({ lang }) => {
-	const { siteConfig } = useDocusaurusContext();
 	const components = COMPONENT_VERSIONS.current;
 	const observer = useCallback(
 		(cb: () => void) =>
@@ -91,7 +90,7 @@ export const ComponentList: FC<Language> = ({ lang }) => {
 					key={name}
 					name={name}
 					lang={lang}
-					path={siteConfig.baseUrl}
+					path="/docs"
 					loadComponent={loadComponent}
 					observer={observer}
 				/>
