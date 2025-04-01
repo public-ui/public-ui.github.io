@@ -7,7 +7,6 @@ import type { Language, Locale } from '../../shares/language';
 import { COMPONENT_SYNONYMS } from '../../shares/synonyms';
 import type { Component } from '../samplePreviews';
 import { COMPONENT_VERSIONS } from '../samplePreviews/version';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const LazyLoadComponent: FC<
 	Component &
