@@ -28,16 +28,14 @@ runs:
         npm pack @public-ui/docs-v2@latest > /dev/null
         tar -xzvf public-ui-docs-*.tgz > /dev/null
 
-        rm -rf build/2.2
-        mkdir -p build/2.2
-        mv package/build build/2.2
+        rm -rf build/docs/2.2
+        mkdir -p build/docs/2.2
+        mv package/build/* build/docs/2.2/
 
         rm -rf package *.tgz
 
         echo "--DEBUG START--"
-        ls -l build
-        ls -l build/2.2
-        tree build/2.2
+        tree build
         echo "--DEBUG END--"
 
     - name: Download designer (v1)
