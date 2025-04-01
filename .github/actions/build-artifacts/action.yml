@@ -34,10 +34,6 @@ runs:
 
         rm -rf package *.tgz
 
-        echo "--DEBUG START--"
-        tree build
-        echo "--DEBUG END--"
-
     - name: Download designer (v1)
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
