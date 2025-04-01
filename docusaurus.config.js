@@ -3,6 +3,8 @@
 
 const { themes } = require('prism-react-renderer');
 
+const PUBLIC_BASE_URL = 'https://public-ui.github.io/';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'KoliBri - Public UI',
@@ -94,6 +96,18 @@ const config = {
 						type: 'docsVersionDropdown',
 						position: 'left',
 						dropdownActiveClassDisabled: true,
+						dropdownItemsAfter: [
+							{
+								type: 'html',
+								value: '<hr class="dropdown-separator">',
+							},
+							{
+								type: 'html',
+								className: 'dropdown-archived-versions',
+								value: '<b>Archive</b>',
+							},
+							{ to: `${PUBLIC_BASE_URL}docs/2.2/`, label: '2.2' },
+						],
 					},
 					{
 						label: 'Dokumentation',
