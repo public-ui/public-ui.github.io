@@ -1,4 +1,4 @@
-name: Publish GitHub package
+name: Publish GitHub package and trigger main branch update
 
 on:
   push:
@@ -44,3 +44,7 @@ jobs:
         run: npm publish --access restricted
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger main branch update
+        shell: bash
+        run: gh workflow run update.yml --ref main
