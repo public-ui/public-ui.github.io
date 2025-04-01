@@ -25,8 +25,8 @@ runs:
       shell: bash
       run: |
         rm -rf package *.tgz
-        npm pack @public-ui/docs-v2@latest
-        tar -xzvf public-ui-docs-*.tgz
+        npm pack @public-ui/docs-v2@latest > /dev/null
+        tar -xzvf public-ui-docs-*.tgz > /dev/null
 
         rm -rf build/2.2
         mkdir -p build/2.2
