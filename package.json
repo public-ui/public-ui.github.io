@@ -11,7 +11,7 @@
 		"swizzle": "npm run gen:doc && docusaurus swizzle",
 		"deploy": "npm run gen:doc && docusaurus deploy",
 		"clear": "npm run gen:doc && docusaurus clear",
-		"serve": "npm run gen:doc && docusaurus serve",
+		"serve": "docusaurus serve",
 		"write-translations": "npm run gen:doc && docusaurus write-translations",
 		"write-heading-ids": "npm run gen:doc && docusaurus write-heading-ids",
 		"format": "prettier blog docs src -c",
