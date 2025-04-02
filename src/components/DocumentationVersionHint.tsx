@@ -6,7 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 export default function DocumentationVersionHint(): ReactNode {
 	const { i18n } = useDocusaurusContext();
 	return (
-		<KolAlert _label="Heading" _variant="card" _type="warning" className="margin-bottom--md">
+		<KolAlert _variant="card" _type="warning" className="margin-bottom--md">
 			<p>
 				<Translate
 					id="custom.docs-version-hint"
