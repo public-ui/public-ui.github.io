@@ -1,18 +1,12 @@
 import type { FC } from 'react';
-import React, { Suspense, useEffect, useState, useRef, useCallback } from 'react';
-import { useDocsPreferredVersion } from '../../shares/useDocsPreferredVersion';
+import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import Link from '@docusaurus/Link';
 import { KolBadge, KolCard } from '@public-ui/react';
 
 import type { Language, Locale } from '../../shares/language';
-import type { Version } from '../../shares/version';
 import { COMPONENT_SYNONYMS } from '../../shares/synonyms';
 import type { Component } from '../samplePreviews';
 import { COMPONENT_VERSIONS } from '../samplePreviews/version';
-
-type Props = Language & {
-	version?: Version;
-};
 
 const LazyLoadComponent: FC<
 	Component &
@@ -74,10 +68,8 @@ const LazyLoadComponent: FC<
 	);
 };
 
-export const ComponentList: FC<Props> = ({ lang }) => {
-	const docVersion = useDocsPreferredVersion();
-	const version = docVersion?.preferredVersion?.name as Version;
-	const components = COMPONENT_VERSIONS?.[version ?? 'current'];
+export const ComponentList: FC<Language> = ({ lang }) => {
+	const components = COMPONENT_VERSIONS.current;
 	const observer = useCallback(
 		(cb: () => void) =>
 			new IntersectionObserver((entries) => {
@@ -89,6 +81,7 @@ export const ComponentList: FC<Props> = ({ lang }) => {
 			}),
 		[]
 	);
+
 	return (
 		<div className="components-overview">
 			{components?.map(({ name, loadComponent }) => (
@@ -96,7 +89,7 @@ export const ComponentList: FC<Props> = ({ lang }) => {
 					key={name}
 					name={name}
 					lang={lang}
-					path={(docVersion?.preferredVersion?.path as string) ?? '/docs'}
+					path="/docs"
 					loadComponent={loadComponent}
 					observer={observer}
 				/>
