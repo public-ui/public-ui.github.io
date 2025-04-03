@@ -19,9 +19,6 @@ const demoValues: Partial<Record<ImplementedTagName, Record<string, string>>> = 
 	image: {
 		_src: 'https://placehold.co/100x100/cc006e/white',
 	},
-	'link-group': {
-		_links: `[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]`,
-	},
 	nav: {
 		_links: `[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]`,
 	},
@@ -38,7 +35,7 @@ const demoValues: Partial<Record<ImplementedTagName, Record<string, string>>> = 
 	'skip-nav': {
 		_links: `[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]`,
 	},
-	table: {
+	'table-stateful': {
 		_headers: `{"horizontal":[[{"label":"Montag","key":"montag"}]]}`,
 		_data: `[{"montag":"Zelle1"},{"montag":"Zelle2"}]`,
 		_pagination: `{"page":2}`,

@@ -1,6 +1,7 @@
-import { KolAlert, KolDetails, KolIndentedText, KolLink, } from '@public-ui/react';
-import { KoliBri } from '@site/src/components/KoliBri';
-import { Mermaid } from '@site/src/components/Mermaid';
+import {KolAlert, KolDetails, KolLink,} from '@public-ui/react';
+import {KoliBri} from '@site/src/components/KoliBri';
+import {Mermaid} from '@site/src/components/Mermaid';
+import {IndentedText} from '@site/src/components/IndentedText';
 
 # Theming
 
@@ -18,14 +19,13 @@ import { Mermaid } from '@site/src/components/Mermaid';
 /> umgesetzt und sind somit in allen webbasierten Projekten wiederverwendbar. In der folgenden Abbildung werden diese Komponenten
 	durch die grau-gestrichelten Formen in der Mitte dargestellt.
 </p>
-<p>
-	<KolIndentedText>
-		<strong>
-			1. KoliBri-Komponenten könnten als Basis für alle Design Systeme oder Komponenten-Bibliotheken wiederverwendet
-			werden.
-		</strong>
-	</KolIndentedText>
-</p>
+
+<IndentedText>
+	<strong>
+		1. KoliBri-Komponenten könnten als Basis für alle Design Systeme oder Komponenten-Bibliotheken wiederverwendet
+		werden.
+	</strong>
+</IndentedText>
 
 <img
 	src="/assets/abgrenzung.jpg"
@@ -63,7 +63,7 @@ import { Mermaid } from '@site/src/components/Mermaid';
 	erkennbar, wie die CSS-Properties (Design Token) immer mehr werden.
 </p>
 <p>
-	<KolIndentedText>
+	<IndentedText>
 		<strong>
 			2. Wir haben das ganze CSS vollständig von den Components entkoppelt (wie <KolLink
 			_label="Styled-Components"
@@ -71,7 +71,7 @@ import { Mermaid } from '@site/src/components/Mermaid';
 			_target="_blank"
 		/>).
 		</strong>
-	</KolIndentedText>
+	</IndentedText>
 </p>
 <p>
 	Mithilfe des Designers kann ein „Mandant“ die Komponenten einzeln und vollständig unabhängig voneinander mit der
@@ -80,13 +80,13 @@ import { Mermaid } from '@site/src/components/Mermaid';
 	und pflegbaren Scope.
 </p>
 <p>
-	<KolIndentedText>
+	<IndentedText>
 		<strong>
 			3. KoliBri ermöglicht die Wiederverwendung getesteter, barrierefreier und robuster Komponenten(-konstruktionen)
 			bei nahezu individuellem Design und stellt damit einen im Rahmen der Barrierefreiheit frei gestaltbaren
 			HTML-Standard dar.
 		</strong>
-	</KolIndentedText>
+	</IndentedText>
 </p>
 <p>
 	Im folgenden Diagramm wird ein beispielhafter Design-Prozess mit KoliBri dargestellt, der vollkommen unabhängig vom

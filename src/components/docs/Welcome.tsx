@@ -1,4 +1,4 @@
-import { KolTable } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react';
 import type { FC } from 'react';
 import React from 'react';
 import { dangerouslySetInnerHTML } from '../../shares/utils';
@@ -18,7 +18,7 @@ type Tupel = {
 export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 	if (lang === 'en') {
 		return (
-			<KolTable
+			<KolTableStateful
 				className="col-12"
 				_label="Prioritized qualities"
 				_minWidth="50em"
@@ -83,11 +83,11 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 						desc: 'Web Components are used for the presentation layer and do not contain any sensitive information themselves.',
 					},
 				]}
-			></KolTable>
+			></KolTableStateful>
 		);
 	} else {
 		return (
-			<KolTable
+			<KolTableStateful
 				className="col-12"
 				_label="Priorisierte Qualitäten"
 				_minWidth="50em"
@@ -152,7 +152,7 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 						desc: 'Web Components dienen der Präsentationsschicht und beinhalten selbst keine sensitiven Informationen',
 					},
 				]}
-			></KolTable>
+			></KolTableStateful>
 		);
 	}
 };
@@ -160,7 +160,7 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 export const WelcomeSupportTable: FC<Props> = ({ lang }) => {
 	if (lang === 'en') {
 		return (
-			<KolTable
+			<KolTableStateful
 				className="col-12"
 				_label="Aims for device, operating system, browser and screen reader compatibility"
 				_minWidth="40em"
@@ -217,11 +217,11 @@ export const WelcomeSupportTable: FC<Props> = ({ lang }) => {
 						screenreader: 'TalkBack (Android only)',
 					},
 				]}
-			></KolTable>
+			></KolTableStateful>
 		);
 	} else {
 		return (
-			<KolTable
+			<KolTableStateful
 				className="col-12"
 				_label="Angestrebt Geräte-, Betriebssystem-, Browser und Screenreader-Kompatibilität"
 				_minWidth="40em"
@@ -279,7 +279,7 @@ export const WelcomeSupportTable: FC<Props> = ({ lang }) => {
 						screenreader: 'TalkBack (nur Android)',
 					},
 				]}
-			></KolTable>
+			></KolTableStateful>
 		);
 	}
 };

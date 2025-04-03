@@ -1,4 +1,4 @@
-import { KolTable } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react';
 import type { FC } from 'react';
 import React from 'react';
 import { dangerouslySetInnerHTML, getPackageName } from '../../shares/utils';
@@ -153,7 +153,7 @@ const DATA_V2 = [
 export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 	if (lang === 'en') {
 		return (
-			<KolTable
+			<KolTableStateful
 				className="col-12"
 				_label="List of status values for the packages"
 				_minWidth="95em"
@@ -287,11 +287,11 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 					],
 				}}
 				_data={version === '1' ? DATA_V1 : DATA_V2}
-			></KolTable>
+			></KolTableStateful>
 		);
 	} else {
 		return (
-			<KolTable
+			<KolTableStateful
 				className="col-12"
 				_label="Liste von Statuswerte zu den Paketen"
 				_minWidth="95em"
@@ -431,7 +431,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 					],
 				}}
 				_data={version === '1' ? DATA_V1 : DATA_V2}
-			></KolTable>
+			></KolTableStateful>
 		);
 	}
 };

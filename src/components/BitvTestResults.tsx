@@ -1,5 +1,5 @@
 import BrowserOnly from '@docusaurus/BrowserOnly';
-import { KolTable } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react';
 import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
 import { getDataFromExcel } from '../shares/fetch-excel';
@@ -52,7 +52,7 @@ export const BitvTestResult: FC = () => {
 	}, []);
 
 	return (
-		<KolTable
+		<KolTableStateful
 			_label="Übersicht der Testergebnisse der KoliBri-Komponenten"
 			_headers={{
 				horizontal: [
@@ -75,6 +75,7 @@ export const BitvTestResult: FC = () => {
 				],
 			}}
 			_data={data}
+			_minWidth="50rem"
 		/>
 	);
 };

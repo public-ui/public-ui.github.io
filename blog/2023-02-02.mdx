@@ -4,7 +4,7 @@ authors: deleonio
 tags: ['theme', 'style', 'styleguide', 'corporate design', 'design system']
 ---
 
-import { KolLink, KolTable } from '@public-ui/react';
+import { KolLink, KolTableStateful } from '@public-ui/react';
 
 # Eigene Themes unabhängig umsetzen
 
@@ -17,7 +17,7 @@ sind, können eigene Themes unabhängig erstellt werden.
 KoliBri wurde als internes Projekt des ITZBund realisiert und hat sich natürlich dabei anfangs vor allem auf die Bedürfnisse interner
 Projekte fokussiert. Hierbei sind in erster Linie zahlreiche Themes umgesetzt worden, die nur intern Anwendung finden.
 
-<KolTable
+<KolTableStateful
 	_label="Liste ausgewählter internen Themes"
 	_headers={{
 		horizontal: [
@@ -58,7 +58,7 @@ Projekte fokussiert. Hierbei sind in erster Linie zahlreiche Themes umgesetzt wo
 
 Darüber hinaus wurden auch einige Themes zum Zwecke der Verbesserung umgesetzt, die als Proof-of-Concepts (PoC) dienten.
 
-<KolTable
+<KolTableStateful
 	_label="Liste ausgewählter PoC-Themes"
 	_headers={{
 		horizontal: [
@@ -112,9 +112,10 @@ im Projekt-Verzeichnis erweitert und die neue Abhängigkeit in die <code>package
 
 **`.npmrc`** (kann mit im Projekt-Verzeichnis liegen oder im Home-Verzeichnis des Benutzers)
 
-```bash
-@itzbund:registry=https://<URL-zur-internen-registry>
-```
+[//]: # (Not using Markdown syntax here because the angle brackets lead to escape issues in MDX)
+<pre><code>
+@itzbund:registry=https://&lt;URL-zur-internen-registry&gt;
+</code></pre>
 
 **`package.json`** (im Projekt-Verzeichnis)
 
