@@ -1,0 +1,50 @@
+name: Publish GitHub package and trigger main branch update
+
+on:
+  push:
+    branches:
+      - release/2
+  workflow_dispatch:
+
+jobs:
+  publish:
+    permissions:
+      packages: write
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Artifacts
+        uses: ./.github/actions/build-artifacts
+
+      # Publish packages on GitHub packages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com
+
+      - name: Bump version
+        shell: bash
+        run: |
+          pnpm version patch --no-git-tag-version
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add package.json
+          git commit -m "chore: Bump version"
+
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+      - name: Publish Docs
+        run: npm publish --access restricted
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger main branch update
+        shell: bash
+        run: gh workflow run update.yml --ref main

@@ -3,12 +3,14 @@
 
 const { themes } = require('prism-react-renderer');
 
+const PUBLIC_BASE_URL = 'https://public-ui.github.io/';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'KoliBri - Public UI',
 	tagline: 'The accessible Web Component Library',
 	url: 'https://public-ui.github.io',
-	baseUrl: '/',
+	baseUrl: '/docs/2.2/',
 	onBrokenLinks: 'throw',
 	trailingSlash: false,
 	onBrokenMarkdownLinks: 'warn',
@@ -33,6 +35,7 @@ const config = {
 			/** @type {import('@docusaurus/preset-classic').Options} */
 			({
 				docs: {
+					routeBasePath: '/',
 					sidebarCollapsible: true,
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Remove this to remove the "edit this page" links.
@@ -45,27 +48,8 @@ const config = {
 					// 	},
 					// },
 				},
-				blog: {
-					blogDescription:
-						'Im Blog greifen wir verschiedene interessant und hilfreiche Themen rund um barrierefreie Webcomponents auf.',
-					blogSidebarTitle: 'Neueste Posts',
-					postsPerPage: 3,
-					blogSidebarCount: 10,
-					feedOptions: {
-						createFeedItems: async (params) => {
-							const { blogPosts, defaultCreateFeedItems, ...rest } = params;
-							return defaultCreateFeedItems({
-								// keep only the 10 most recent blog posts in the feed
-								blogPosts: blogPosts.filter((_, index) => index < 10),
-								...rest,
-							});
-						},
-					},
-					showReadingTime: true,
-					// Please change this to your repo.
-					// Remove this to remove the "edit this page" links.
-					// editUrl: 'https://github.com/public-ui/documentation/blob/main/packages/docusaurus/',
-				},
+				blog: false,
+				pages: false,
 				sitemap: {
 					changefreq: 'daily',
 					priority: 0.5,
@@ -93,13 +77,25 @@ const config = {
 						type: 'docsVersionDropdown',
 						position: 'left',
 						dropdownActiveClassDisabled: true,
+						dropdownItemsAfter: [
+							{
+								type: 'html',
+								value: '<hr class="dropdown-separator">',
+							},
+							{
+								type: 'html',
+								className: 'dropdown-archived-versions',
+								value: '<b>Archive</b>',
+							},
+							{ to: `${PUBLIC_BASE_URL}docs/2.2/`, label: '2.2' },
+						],
 					},
 					{
 						label: 'Dokumentation',
-						to: '/docs',
+						to: '/',
 						position: 'left',
 					},
-					{ to: '/blog', label: 'Blog', position: 'left' },
+					{ to: `${PUBLIC_BASE_URL}blog`, label: 'Blog', position: 'left' },
 					{ type: 'search', position: 'right' },
 					// {
 					// 	href: 'https://public-ui.github.io/designer',
@@ -124,15 +120,15 @@ const config = {
 						items: [
 							{
 								label: 'Dokumentation',
-								to: '/docs',
+								to: '/',
 							},
 							{
 								label: 'Blog',
-								to: '/blog',
+								to: `${PUBLIC_BASE_URL}blog`,
 							},
 							{
 								label: 'Impressum',
-								to: '/docs/impressum',
+								to: `${PUBLIC_BASE_URL}docs/impressum`,
 							},
 						],
 					},
@@ -237,17 +233,6 @@ const config = {
 		// 	},
 		// ],
 		// 'docusaurus-plugin-sass',
-		[
-			'@docusaurus/plugin-client-redirects',
-			{
-				redirects: [
-					{
-						from: '/docs/get-started/erste-schritte',
-						to: '/docs/get-started/first-steps',
-					},
-				],
-			},
-		],
 		// docu/origin: https://github.com/praveenn77/docusaurus-lunr-search
 		require.resolve('docusaurus-lunr-search'),
 	],

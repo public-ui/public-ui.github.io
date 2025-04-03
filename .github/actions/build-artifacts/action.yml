@@ -1,9 +1,5 @@
 name: Build Docs Artifacts
-description: Builds the documentation artifacts including Docusaus, Sample App and Designer
-inputs:
-  PERSONAL_ACCESS_TOKEN:
-    description: 'A Github PAT'
-    required: true
+description: Builds the documentation
 runs:
   using: "composite"
   steps:
@@ -11,71 +7,4 @@ runs:
 
     - name: Build Docs
       shell: bash
-      run: |
-        pnpm install --no-frozen-lockfile
-        npm run build
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20
-        registry-url: "https://npm.pkg.github.com"
-        scope: "@public-ui"
-
-    - name: Download designer (v1)
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
-      shell: bash
-      run: |
-        rm -rf package *.tgz
-        npm pack @public-ui/designer@^1
-        tar -xzvf public-ui-designer-*.tgz
-
-        rm -rf build/v1/designer
-        mkdir -p build/v1
-        mv package/dist build/v1/designer
-
-        rm -rf package *.tgz
-
-    - name: Download sample react (v1)
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
-      shell: bash
-      run: |
-        rm -rf package *.tgz
-        npm pack @public-ui/sample-react@^1
-        tar -xzvf public-ui-sample-react-*.tgz
-
-        rm -rf build/v1/sample-react
-        mkdir -p build/v1
-        mv package/dist build/v1/sample-react
-
-        rm -rf package *.tgz
-
-    - name: Download designer (v2)
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
-      shell: bash
-      run: |
-        rm -rf package *.tgz
-        npm pack @public-ui/designer@^2
-        tar -xzvf public-ui-designer-*.tgz
-
-        rm -rf build/v2/designer
-        mkdir -p build/v2
-        mv package/dist build/v2/designer
-
-        rm -rf package *.tgz
-
-    - name: Download sample react (v2)
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
-      shell: bash
-      run: |
-        rm -rf package *.tgz
-        npm pack @public-ui/sample-react@^2
-        tar -xzvf public-ui-sample-react-*.tgz
-
-        rm -rf build/v2/sample-react
-        mkdir -p build/v2
-        mv package/dist build/v2/sample-react
-
-        rm -rf package *.tgz
+      run: npm run build

@@ -12,10 +12,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build Artifacts
+      - name: Build Docs
         uses: ./.github/actions/build-artifacts
         with:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Move docs
+        shell: bash
+        run: |
+          mkdir -p dist/docs
+          mv build dist/docs/2.2/
 
       - name: Netlify Deploy
         uses: netlify/actions/cli@master
@@ -24,7 +30,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
         with:
-          args: deploy --dir=build
+          args: deploy --dir=dist
 
       - name: Find comment
         uses: peter-evans/find-comment@v3
@@ -41,6 +47,6 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Netlify Draft Deployment
-            URL: ${{ steps.netlify.outputs.NETLIFY_URL }}
+            URL: ${{ steps.netlify.outputs.NETLIFY_URL }}/docs/2.2
             Logs: ${{ steps.netlify.outputs.NETLIFY_LOGS_URL }}
           edit-mode: replace
