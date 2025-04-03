@@ -30,10 +30,6 @@ export const COMPONENTS_CURRENT = [
 		loadComponent: () => lazy(() => import('../Button')),
 	},
 	{
-		name: 'button-group',
-		loadComponent: () => lazy(() => import('../ButtonGroup')),
-	},
-	{
 		name: 'button-link',
 		loadComponent: () => lazy(() => import('../ButtonLink')),
 	},
@@ -72,10 +68,6 @@ export const COMPONENTS_CURRENT = [
 	{
 		name: 'image',
 		loadComponent: () => lazy(() => import('../Image')),
-	},
-	{
-		name: 'indented-text',
-		loadComponent: () => lazy(() => import('../IndentedText')),
 	},
 	{
 		name: 'input-checkbox',
@@ -126,10 +118,6 @@ export const COMPONENTS_CURRENT = [
 		loadComponent: () => lazy(() => import('../LinkButton')),
 	},
 	{
-		name: 'link-group',
-		loadComponent: () => lazy(() => import('../LinkGroup')),
-	},
-	{
 		name: 'modal',
 		loadComponent: () => lazy(() => import('../Modal')),
 	},
@@ -174,7 +162,7 @@ export const COMPONENTS_CURRENT = [
 		loadComponent: () => lazy(() => import('../SplitButton')),
 	},
 	{
-		name: 'table',
+		name: 'table-stateful',
 		loadComponent: () => lazy(() => import('../Table')),
 	},
 	{

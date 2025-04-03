@@ -3,11 +3,7 @@ import { KolAbbr } from '@public-ui/react';
 
 const Abbr = () => (
 	<p>
-		Lorem ipsum{' '}
-		<KolAbbr _label="Abkürzung" _tooltipAlign="right">
-			z.B.
-		</KolAbbr>{' '}
-		dolor sit amet.
+		Lorem ipsum <KolAbbr _label="Abkürzung">z.B.</KolAbbr> dolor sit amet.
 	</p>
 );
 

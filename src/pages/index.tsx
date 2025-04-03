@@ -1,14 +1,13 @@
 import { translate } from '@docusaurus/Translate';
-import { Bundesanstalt } from '@public-ui/components';
-import { KolKolibri, KolLink, KolLinkButton, KolLogo } from '@public-ui/react';
+import { KolKolibri, KolLink, KolLinkButton } from '@public-ui/react';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
 import type { FunctionComponent, ReactElement } from 'react';
 import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
-import { useDocsPreferredVersion } from '../shares/useDocsPreferredVersion';
-import { determinateVersionId, getVersionForUrl } from '../shares/version';
+import { VERSION_ID } from '@site/src/shares/version';
+import { ITZLogo } from '@site/src/components/ITZLogo';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -25,10 +24,6 @@ const HomepageHeader: FunctionComponent = () => (
 	</header>
 );
 const HomepageButtons: FunctionComponent = () => {
-	const docVersion = useDocsPreferredVersion();
-	const version = getVersionForUrl(docVersion);
-	const versionId = determinateVersionId(docVersion);
-
 	return (
 		<div className="grid sm:flex gap-4 justify-center mt-4">
 			<KolLinkButton
@@ -36,7 +31,7 @@ const HomepageButtons: FunctionComponent = () => {
 				_icons={{
 					right: 'codicon codicon-dashboard',
 				}}
-				_href={`/docs/${version ? `${version}/` : ''}get-started/first-steps`}
+				_href="/docs/get-started/first-steps"
 				_label={translate({
 					id: 'custom.get-started-button',
 				})}
@@ -44,14 +39,14 @@ const HomepageButtons: FunctionComponent = () => {
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href={`/docs/${version ? `${version}` : ''}`}
+				_href="/docs/"
 				_label={translate({
 					id: 'custom.documentation-button',
 				})}
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href={`/${versionId}/sample-react/#/handout/basic`}
+				_href={`/${VERSION_ID}/sample-react/#/handout/basic`}
 				_label={translate({
 					id: 'custom.sample-app-button',
 				})}
@@ -83,8 +78,7 @@ export default function Homepage(): ReactElement {
 			<main>
 				<div className="grid gap-2 md:w-6/12 m-auto mt-4 p-4">
 					<div className="flex gap-4 justify-center">
-						<KolLogo
-							_org={Bundesanstalt['Informationstechnikzentrum Bund']}
+						<ITZLogo
 							style={{
 								display: 'block',
 								width: '175px',
