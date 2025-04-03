@@ -85,7 +85,7 @@ runs:
       shell: bash
       run: |
         rm -rf package *.tgz
-        npm pack @public-ui/sample-react@^3
+        npm pack @public-ui/sample-react@">=3.0.0-rc.1" --include-prerelease
         tar -xzvf public-ui-sample-react-*.tgz
 
         rm -rf build/v3/sample-react
