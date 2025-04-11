@@ -36,20 +36,21 @@ Die Darstellungsrichtung wird automatisch durch die Untersuchung der Kopfzeilenz
 
 Über die `_selection`-Property kann der "Selection-Modus" der Komponente aktiviert und gesteuert werden. Ist `_selection` definiert, erhält jede Zeile eine Checkbox, über die sich die Zeile aus- oder abwählen lässt.
 
+- **label**: Funktion, welche für jede Zeile ausgerufen wird, und ein Label für die Checkbox zurückgibt.
+- **selectedKeys**: Array von Strings, das die Key-Properties der gewählten Zeilen beinhaltet.
+- **disabledKeys**: Array von Strings, das die Key-Properties der deaktivierten Zeilen beinhaltet. Bei Zeilen, die in `disabledKeys` vorkommen, wird die Checkbox bzw. der Radio Button deaktiviert.
+- **keyPropertyName**: Eigenschaft, auf die sich `selectedKeys` und `disabledKeys` beziehen. Standardwert: `id`.
+
 ```ts
 const data = [
 	{ id: '1001', name: 'Marianne Musterfrau' },
 	{ id: '1002', name: 'Max Mustermann' },
 ];
 const selection: KoliBriTableSelection = {
-	/* label: Funktion, welche für jede Zeile ausgerufen wird, und ein Label für die Checkbox zurückgibt. */
 	label: (row: KoliBriTableDataType) => `Selection for ${row.name}`,
-
-	/* selectedKeys: Array von Strings, das die Key-Properties der gewählten Zeilen beinhaltet */
-	selectedKeys: ['1002'],
-
-	/* keyPropertyName: Eigenschaft, auf die sich `selectedKeys` bezieht. Default-Wert: `id` */
-	keyPropertyName: 'id',
+  selectedKeys: ['1002'],
+  disabledKeys: ['1001'],
+  keyPropertyName: 'id',
 };
 ```
 
