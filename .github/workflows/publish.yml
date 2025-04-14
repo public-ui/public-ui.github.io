@@ -8,14 +8,19 @@ on:
 
 jobs:
   publish:
-    permissions:
-      packages: write
-      contents: write
-      pull-requests: write
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 0
 
       - name: Build Artifacts
         uses: ./.github/actions/build-artifacts
@@ -28,17 +33,15 @@ jobs:
 
       - name: Bump version
         shell: bash
-        run: |
-          pnpm version patch --no-git-tag-version
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add package.json
-          git commit -m "chore: Bump version"
+        run: pnpm version patch --no-git-tag-version
 
-      - uses: ad-m/github-push-action@master
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          commit_message: 'chore: Bump version [skip actions]'
+          file_pattern: 'package.json'
+          commit_user_name: '${{ steps.app-token.outputs.app-slug }}[bot]'
+          commit_user_email: '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
 
       - name: Publish Docs
         run: npm publish --access restricted
