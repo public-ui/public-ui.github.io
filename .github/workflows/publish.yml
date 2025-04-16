@@ -54,4 +54,4 @@ jobs:
         shell: bash
         run: gh workflow run update.yml --ref main
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
