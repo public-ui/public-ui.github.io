@@ -93,3 +93,18 @@ runs:
         mv package/dist build/v2/sample-react
 
         rm -rf package *.tgz
+
+    - name: Download sample react (v3)
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
+      run: |
+        rm -rf package *.tgz
+        npm pack @public-ui/sample-react@">=3.0.0-rc.1" --include-prerelease
+        tar -xzvf public-ui-sample-react-*.tgz
+
+        rm -rf build/v3/sample-react
+        mkdir -p build/v3
+        mv package/dist build/v3/sample-react
+
+        rm -rf package *.tgz
