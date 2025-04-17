@@ -19,6 +19,21 @@ runs:
         registry-url: "https://npm.pkg.github.com"
         scope: "@public-ui"
 
+    - name: Download Docs (2.2)
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
+      run: |
+        rm -rf package *.tgz
+        npm pack @public-ui/docs-v2@latest > /dev/null
+        tar -xzvf public-ui-docs-*.tgz > /dev/null
+
+        rm -rf build/docs/2.2
+        mkdir -p build/docs/2.2
+        mv package/build/* build/docs/2.2/
+
+        rm -rf package *.tgz
+
     - name: Download designer (v1)
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
