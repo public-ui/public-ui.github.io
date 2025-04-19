@@ -42,14 +42,14 @@ importers:
         specifier: 4.7.0
         version: 4.7.0(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@public-ui/components':
-        specifier: 2.2.7
-        version: 2.2.7(adopted-style-sheets@1.1.7)
+        specifier: 3.0.0-rc.6
+        version: 3.0.0-rc.6(adopted-style-sheets@1.1.7)
       '@public-ui/react':
-        specifier: 2.2.7
-        version: 2.2.7(@public-ui/components@2.2.7(adopted-style-sheets@1.1.7))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 3.0.0-rc.6
+        version: 3.0.0-rc.6(@public-ui/components@3.0.0-rc.6(adopted-style-sheets@1.1.7))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@public-ui/theme-default':
-        specifier: 2.2.7
-        version: 2.2.7(@public-ui/components@2.2.7(adopted-style-sheets@1.1.7))
+        specifier: 3.0.0-rc.6
+        version: 3.0.0-rc.6(@public-ui/components@3.0.0-rc.6(adopted-style-sheets@1.1.7))
       classnames:
         specifier: 2.5.1
         version: 2.5.1
@@ -1621,22 +1621,22 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
-  '@public-ui/components@2.2.7':
-    resolution: {integrity: sha512-3Hg+YSBzntDGfKzz5vCFjbal8h4JcEjDTEOshei4tNQGV2W0E2NzS0vWAD3Hgf1oZAuvmZmgmmJyowF7F4bBsw==}
+  '@public-ui/components@3.0.0-rc.6':
+    resolution: {integrity: sha512-Fv8WILcxLoVHQXN9QfUnZ9J/hsBTkhCdWTLCfhG2INoiiHbOdmuAjNUmbAJ07r2EbUCY+q3e2oNGo8gOnhdd1Q==}
     peerDependencies:
       adopted-style-sheets: 1.1.7
 
-  '@public-ui/react@2.2.7':
-    resolution: {integrity: sha512-SraMe3/WrznbTDAPa/UVDjnrU8AAyMzehSdyDIaGwos7XI7uRX/wiGymwx6wi/vqhLdQ+KHNYslZHJLUtvbXJw==}
+  '@public-ui/react@3.0.0-rc.6':
+    resolution: {integrity: sha512-7WMf98kjwCSJ2gwPVOJDfbrN/swkZ6JvEZKbnjK4bkvygD+auFnCgr6czg1vXrevHw0MlutryoELbPcTbFKexg==}
     peerDependencies:
-      '@public-ui/components': 2.2.7
+      '@public-ui/components': 3.0.0-rc.6
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
 
-  '@public-ui/theme-default@2.2.7':
-    resolution: {integrity: sha512-AgJcjddJc0ZHKMEcsJgYEj9fLwASqb4Rp3vwjmRj//LJ+KBdkmvJiIapEsD2y3k2u/JZddcWxfhpgEsP3u8N4A==}
+  '@public-ui/theme-default@3.0.0-rc.6':
+    resolution: {integrity: sha512-GakG/ha7yhNr08YGsD+ERU/SIfnMlqlQJsD/4k38pIKBWxWCbYme21zWXJIAD0yZdCGXFRQBXeCREQumD2GeIA==}
     peerDependencies:
-      '@public-ui/components': 2.2.7
+      '@public-ui/components': 3.0.0-rc.6
 
   '@rollup/plugin-babel@5.3.1':
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
@@ -10148,28 +10148,29 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@public-ui/components@2.2.7(adopted-style-sheets@1.1.7)':
+  '@public-ui/components@3.0.0-rc.6(adopted-style-sheets@1.1.7)':
     dependencies:
       '@floating-ui/dom': 1.6.13
       adopted-style-sheets: 1.1.7
       clsx: 2.1.1
       color-convert: 2.0.1
       color-rgba: 2.4.0
+      lodash-es: 4.17.21
       markdown-it: 14.1.0
       query-selector-all-shadow-root: 0.0.3
       query-selector-shadow-root: 0.0.3
       rgba-convert: 0.3.0
       wcag-contrast: 3.0.0
 
-  '@public-ui/react@2.2.7(@public-ui/components@2.2.7(adopted-style-sheets@1.1.7))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@public-ui/react@3.0.0-rc.6(@public-ui/components@3.0.0-rc.6(adopted-style-sheets@1.1.7))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@public-ui/components': 2.2.7(adopted-style-sheets@1.1.7)
+      '@public-ui/components': 3.0.0-rc.6(adopted-style-sheets@1.1.7)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  '@public-ui/theme-default@2.2.7(@public-ui/components@2.2.7(adopted-style-sheets@1.1.7))':
+  '@public-ui/theme-default@3.0.0-rc.6(@public-ui/components@3.0.0-rc.6(adopted-style-sheets@1.1.7))':
     dependencies:
-      '@public-ui/components': 2.2.7(adopted-style-sheets@1.1.7)
+      '@public-ui/components': 3.0.0-rc.6(adopted-style-sheets@1.1.7)
 
   '@rollup/plugin-babel@5.3.1(@babel/core@7.26.0)(rollup@2.79.2)':
     dependencies:
