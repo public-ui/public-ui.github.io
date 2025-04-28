@@ -6,7 +6,6 @@ import Layout from '@theme/Layout';
 import type { FunctionComponent, ReactElement } from 'react';
 import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
-import { VERSION_ID } from '@site/src/shares/version';
 import { ITZLogo } from '@site/src/components/ITZLogo';
 
 const HomepageHeader: FunctionComponent = () => (
@@ -46,7 +45,7 @@ const HomepageButtons: FunctionComponent = () => {
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href={`/${VERSION_ID}/sample-react/#/handout/basic`}
+				_href="https://develop--kolibri-public-ui.netlify.app"
 				_label={translate({
 					id: 'custom.sample-app-button',
 				})}

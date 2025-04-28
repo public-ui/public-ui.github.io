@@ -193,13 +193,12 @@ kol-link-button {
 	background: linear-gradient(90deg, #facc15, #fbbf24); /* leichter gelber Verlauf */
 	color: #1f2937; /* dunkles Grau für gute Lesbarkeit */
 	font-weight: 500;
+	margin: 0;
 	text-align: center;
-	padding: 0.75rem 1rem;
-	font-size: 0.95rem;
+	padding: 0.5rem 1rem;
+	font-size: 0.8rem;
 	border-bottom: 1px solid #e5e7eb; /* feine untere Linie */
 	position: sticky;
-	top: 0;
-	z-index: 1000;
 }
 
 .version-hint a {

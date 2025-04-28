@@ -93,10 +93,14 @@ const config = {
 				},
 				items: [
 					{
-						type: 'docsVersionDropdown',
-						position: 'left',
-						dropdownActiveClassDisabled: true,
-						dropdownItemsAfter: [
+						label: 'Version 3',
+						position: 'right',
+						items: [
+							{
+								type: 'html',
+								className: 'dropdown-archived-versions',
+								value: '<strong class="dropdown__link">Version 3</strong>',
+							},
 							{ to: `${PUBLIC_BASE_URL}/v2/`, label: 'Version 2' },
 							{
 								type: 'html',
@@ -114,21 +118,15 @@ const config = {
 						to: '/docs',
 						position: 'left',
 					},
-					{ to: '/blog', label: 'Blog', position: 'left' },
-					{ type: 'search', position: 'right' },
-					// {
-					// 	href: 'https://public-ui.github.io/designer',
-					// 	label: 'Designer',
-					// 	position: 'left',
-					// },
-					// {
-					// 	type: 'docsVersionDropdown',
-					// 	position: 'left',
-					// },
-					// {
-					// 	type: 'localeDropdown',
-					// 	position: 'right',
-					// },
+					{
+						to: '/blog',
+						label: 'Blog',
+						position: 'left',
+					},
+					{
+						type: 'search',
+						position: 'right',
+					},
 				],
 			},
 			footer: {
