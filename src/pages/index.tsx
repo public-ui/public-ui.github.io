@@ -46,7 +46,7 @@ const HomepageButtons: FunctionComponent = () => {
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href={`/${VERSION_ID}/sample-react/#/handout/basic`}
+				_href="https://develop--kolibri-public-ui.netlify.app"
 				_label={translate({
 					id: 'custom.sample-app-button',
 				})}
