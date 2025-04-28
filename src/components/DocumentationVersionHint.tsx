@@ -1,37 +1,25 @@
-import React, { type ReactNode } from 'react';
-import { KolAlert, KolLink } from '@public-ui/react';
-import Translate, { translate } from '@docusaurus/Translate';
+import Translate from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { KolLink } from '@public-ui/react';
+import React, { type ReactNode } from 'react';
 
 export default function DocumentationVersionHint(): ReactNode {
 	const { i18n } = useDocusaurusContext();
 	return (
-		<KolAlert _variant="card" _type="warning" className="margin-bottom--md">
-			<p>
-				<Translate
-					id="custom.docs-version-hint"
-					values={{
-						version: <b>2.2</b>,
-					}}
-				>
-					{'Das ist die Dokumentation für KoliBri - Public UI {version} und wird nicht weiter gewartet.'}
-				</Translate>
-			</p>
-			<p>
-				<Translate
-					id="custom.docs-version-hint-link"
-					values={{
-						link: (
-							<KolLink
-								_href={i18n.currentLocale === 'en' ? '/en/docs/' : '/docs/'}
-								_label={translate({ id: 'custom.docs-version-hint-latest-version', message: 'letzte Version' })}
-							></KolLink>
-						),
-					}}
-				>
-					{'Für die aktuellste Dokumentation bitte auf {link} gehen.'}
-				</Translate>
-			</p>
-		</KolAlert>
+		<p className="version-hint">
+			<Translate
+				id="custom.docs-version-hint"
+				values={{
+					link: (
+						<KolLink
+							style={{ padding: '0 .5rem' }}
+							_href={`https://public-ui.github.io${i18n.currentLocale === 'en' ? '/en' : ''}`}
+							_label={'https://public-ui.github.io'}
+						></KolLink>
+					),
+					version: <b>2.2</b>,
+				}}
+			/>
+		</p>
 	);
 }

@@ -21,7 +21,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p dist/docs
-          mv build dist/docs/2.2/
+          mv build dist/v2/
 
       - name: Netlify Deploy
         uses: netlify/actions/cli@master
@@ -47,6 +47,6 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Netlify Draft Deployment
-            URL: ${{ steps.netlify.outputs.NETLIFY_URL }}/docs/2.2
+            URL: ${{ steps.netlify.outputs.NETLIFY_URL }}/v2
             Logs: ${{ steps.netlify.outputs.NETLIFY_LOGS_URL }}
           edit-mode: replace

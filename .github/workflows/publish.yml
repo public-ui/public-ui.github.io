@@ -35,7 +35,7 @@ jobs:
 
       - name: Bump version
         shell: bash
-        run: pnpm version patch --no-git-tag-version
+        run: pnpm version prerelease --no-git-tag-version
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5

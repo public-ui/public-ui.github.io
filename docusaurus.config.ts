@@ -1,16 +1,19 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const { themes } = require('prism-react-renderer');
+import { themes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
+import type { PostCssOptions } from '@docusaurus/types';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
-const PUBLIC_BASE_URL = 'https://public-ui.github.io/';
+const PUBLIC_BASE_URL = 'https://public-ui.github.io';
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+const config: Config = {
 	title: 'KoliBri - Public UI',
 	tagline: 'The accessible Web Component Library',
-	url: 'https://public-ui.github.io',
-	baseUrl: '/docs/2.2/',
+	url: PUBLIC_BASE_URL,
+	baseUrl: '/v2/',
 	onBrokenLinks: 'throw',
 	trailingSlash: false,
 	onBrokenMarkdownLinks: 'warn',
@@ -33,11 +36,11 @@ const config = {
 		[
 			'classic',
 			/** @type {import('@docusaurus/preset-classic').Options} */
-			({
+			{
 				docs: {
-					routeBasePath: '/',
+					routeBasePath: '/docs',
 					sidebarCollapsible: true,
-					sidebarPath: require.resolve('./sidebars.js'),
+					sidebarPath: './sidebars.js',
 					// Remove this to remove the "edit this page" links.
 					// editUrl: 'https://github.com/public-ui/documentation/blob/main/packages/docusaurus/',
 					// lastVersion: 'current',
@@ -49,7 +52,6 @@ const config = {
 					// },
 				},
 				blog: false,
-				pages: false,
 				sitemap: {
 					changefreq: 'daily',
 					priority: 0.5,
@@ -57,15 +59,15 @@ const config = {
 					filename: 'sitemap.xml',
 				},
 				theme: {
-					customCss: require.resolve('./src/css/custom.css'),
+					customCss: './src/css/custom.css',
 				},
-			}),
+			},
 		],
 	],
 
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-		({
+		{
 			navbar: {
 				title: 'KoliBri',
 				logo: {
@@ -80,22 +82,26 @@ const config = {
 						dropdownItemsAfter: [
 							{
 								type: 'html',
+								className: 'dropdown-archived-versions',
+								value: '<strong class="dropdown__link">Version 2</strong>',
+							},
+							{
+								type: 'html',
 								value: '<hr class="dropdown-separator">',
 							},
 							{
 								type: 'html',
 								className: 'dropdown-archived-versions',
-								value: '<b>Archive</b>',
+								value: '<span class="dropdown__link">Version 1</span>',
 							},
-							{ to: `${PUBLIC_BASE_URL}docs/2.2/`, label: '2.2' },
 						],
 					},
 					{
 						label: 'Dokumentation',
-						to: '/',
+						to: '/docs',
 						position: 'left',
 					},
-					{ to: `${PUBLIC_BASE_URL}blog`, label: 'Blog', position: 'left' },
+					{ to: `${PUBLIC_BASE_URL}/blog`, label: 'Blog', position: 'left' },
 					{ type: 'search', position: 'right' },
 					// {
 					// 	href: 'https://public-ui.github.io/designer',
@@ -120,15 +126,15 @@ const config = {
 						items: [
 							{
 								label: 'Dokumentation',
-								to: '/',
+								to: '/docs',
 							},
 							{
 								label: 'Blog',
-								to: `${PUBLIC_BASE_URL}blog`,
+								to: `${PUBLIC_BASE_URL}/blog`,
 							},
 							{
 								label: 'Impressum',
-								to: `${PUBLIC_BASE_URL}docs/impressum`,
+								to: `${PUBLIC_BASE_URL}/docs/impressum`,
 							},
 						],
 					},
@@ -180,7 +186,7 @@ const config = {
 					dark: 'forest',
 				},
 			},
-		}),
+		},
 	markdown: {
 		mermaid: true,
 	},
@@ -188,10 +194,15 @@ const config = {
 		async () => {
 			return {
 				name: 'docusaurus-tailwindcss',
-				configurePostCss(postcssOptions) {
+
+				configurePostCss(postcssOptions: PostCssOptions) {
 					// Appends TailwindCSS and AutoPrefixer.
-					postcssOptions.plugins.push(require('tailwindcss'));
-					postcssOptions.plugins.push(require('autoprefixer'));
+					if (!Array.isArray(postcssOptions.plugins)) {
+						postcssOptions.plugins = [];
+					}
+
+					postcssOptions.plugins.push(tailwindcss());
+					postcssOptions.plugins.push(autoprefixer());
 					return postcssOptions;
 				},
 			};
@@ -239,4 +250,4 @@ const config = {
 	themes: ['@docusaurus/theme-mermaid'],
 };
 
-module.exports = config;
+export default config;
