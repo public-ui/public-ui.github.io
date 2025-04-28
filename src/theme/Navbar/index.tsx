@@ -82,7 +82,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 						</div> */}
 						<div>
 							<KolLinkButton
-								_href={`/sample-react/#/handout/basic`}
+								_href="https://develop--kolibri-public-ui.netlify.app"
 								_icons={'codicon codicon-preview'}
 								_hideLabel
 								_label={translate({
