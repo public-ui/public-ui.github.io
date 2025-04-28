@@ -4,12 +4,12 @@ on:
     types: [opened, edited, synchronize]
 
 concurrency:
-  group: pr-{{ github.event.pull_request.number }}
+  group: 'pr-${{ github.event.pull_request.number }}'
   cancel-in-progress: true
 
 jobs:
   check-dod:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Print Pull Request ID
         run: |

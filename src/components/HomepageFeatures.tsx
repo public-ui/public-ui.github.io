@@ -49,7 +49,7 @@ export default function HomepageFeatures(): ReactElement {
 			button: (
 				<KolLinkButton
 					className="w-72"
-					_href="/docs/concepts/styling/theming"
+					_href={`/${VERSION_ID}/docs/concepts/styling/theming`}
 					_label="Styling & Design"
 				></KolLinkButton>
 			),
@@ -68,7 +68,13 @@ export default function HomepageFeatures(): ReactElement {
 					</p>
 				</>
 			),
-			button: <KolLinkButton className="w-72" _href="/docs/get-started/frameworks" _label="Frameworks"></KolLinkButton>,
+			button: (
+				<KolLinkButton
+					className="w-72"
+					_href={`/${VERSION_ID}/docs/get-started/frameworks`}
+					_label="Frameworks"
+				></KolLinkButton>
+			),
 		},
 		{
 			icon: 'codicon codicon-layers',
@@ -90,7 +96,7 @@ export default function HomepageFeatures(): ReactElement {
 			button: (
 				<KolLinkButton
 					className="w-72"
-					_href="/docs/components"
+					_href={`/${VERSION_ID}/docs/components`}
 					_label={translate({
 						id: 'custom.components',
 						message: 'Components',
