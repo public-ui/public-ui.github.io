@@ -3,13 +3,13 @@
 
 const { themes } = require('prism-react-renderer');
 
-const PUBLIC_BASE_URL = 'https://public-ui.github.io/';
+const PUBLIC_BASE_URL = 'https://public-ui.github.io';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'KoliBri - Public UI',
 	tagline: 'The accessible Web Component Library',
-	url: 'https://public-ui.github.io',
+	url: PUBLIC_BASE_URL,
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
 	trailingSlash: false,
@@ -97,6 +97,7 @@ const config = {
 						position: 'left',
 						dropdownActiveClassDisabled: true,
 						dropdownItemsAfter: [
+							{ to: `${PUBLIC_BASE_URL}/v2/`, label: 'Version 2' },
 							{
 								type: 'html',
 								value: '<hr class="dropdown-separator">',
@@ -104,9 +105,8 @@ const config = {
 							{
 								type: 'html',
 								className: 'dropdown-archived-versions',
-								value: '<b>Archive</b>',
+								value: '<span class="dropdown__link">Version 1</span>',
 							},
-							{ to: `${PUBLIC_BASE_URL}docs/2.2/`, label: '2.2' },
 						],
 					},
 					{

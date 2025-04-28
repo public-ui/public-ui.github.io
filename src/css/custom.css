@@ -178,6 +178,40 @@ kol-link-button {
 	cursor: pointer;
 }
 
+.dropdown-separator {
+	margin: 0.25rem 0;
+}
+.dropdown-archived-versions .dropdown__link {
+	color: gray;
+}
+.dropdown-archived-versions .dropdown__link:hover {
+	background-color: transparent;
+	color: gray;
+}
+
+.version-hint {
+	background: linear-gradient(90deg, #facc15, #fbbf24); /* leichter gelber Verlauf */
+	color: #1f2937; /* dunkles Grau für gute Lesbarkeit */
+	font-weight: 500;
+	text-align: center;
+	padding: 0.75rem 1rem;
+	font-size: 0.95rem;
+	border-bottom: 1px solid #e5e7eb; /* feine untere Linie */
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+.version-hint a {
+	color: #1d4ed8; /* schönes kräftiges Blau */
+	text-decoration: underline;
+	font-weight: 600;
+}
+
+.version-hint a:hover {
+	text-decoration: none;
+}
+
 @media (max-width: 767px) {
 	.components-overview {
 		grid-template-columns: 1fr;
