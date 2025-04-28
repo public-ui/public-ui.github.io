@@ -1,12 +1,15 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const { themes } = require('prism-react-renderer');
+import { themes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
+import type { PostCssOptions } from '@docusaurus/types';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 const PUBLIC_BASE_URL = 'https://public-ui.github.io';
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+const config: Config = {
 	title: 'KoliBri - Public UI',
 	tagline: 'The accessible Web Component Library',
 	url: PUBLIC_BASE_URL,
@@ -37,7 +40,7 @@ const config = {
 				docs: {
 					routeBasePath: '/docs',
 					sidebarCollapsible: true,
-					sidebarPath: require.resolve('./sidebars.js'),
+					sidebarPath: './sidebars.js',
 					// Remove this to remove the "edit this page" links.
 					// editUrl: 'https://github.com/public-ui/documentation/blob/main/packages/docusaurus/',
 					// lastVersion: 'current',
@@ -56,7 +59,7 @@ const config = {
 					filename: 'sitemap.xml',
 				},
 				theme: {
-					customCss: require.resolve('./src/css/custom.css'),
+					customCss: './src/css/custom.css',
 				},
 			},
 		],
@@ -191,10 +194,15 @@ const config = {
 		async () => {
 			return {
 				name: 'docusaurus-tailwindcss',
-				configurePostCss(postcssOptions) {
+
+				configurePostCss(postcssOptions: PostCssOptions) {
 					// Appends TailwindCSS and AutoPrefixer.
-					postcssOptions.plugins.push(require('tailwindcss'));
-					postcssOptions.plugins.push(require('autoprefixer'));
+					if (!Array.isArray(postcssOptions.plugins)) {
+						postcssOptions.plugins = [];
+					}
+
+					postcssOptions.plugins.push(tailwindcss());
+					postcssOptions.plugins.push(autoprefixer());
 					return postcssOptions;
 				},
 			};
@@ -242,4 +250,4 @@ const config = {
 	themes: ['@docusaurus/theme-mermaid'],
 };
 
-module.exports = config;
+export default config;
