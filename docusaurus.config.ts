@@ -76,10 +76,9 @@ const config: Config = {
 				},
 				items: [
 					{
-						type: 'docsVersionDropdown',
-						position: 'left',
-						dropdownActiveClassDisabled: true,
-						dropdownItemsAfter: [
+						label: 'Version 2',
+						position: 'right',
+						items: [
 							{
 								type: 'html',
 								className: 'dropdown-archived-versions',
