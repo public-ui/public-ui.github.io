@@ -12,12 +12,14 @@ export default function DocumentationVersionHint(): ReactNode {
 				values={{
 					link: (
 						<KolLink
-							style={{ padding: '0 .5rem' }}
+							style={{
+								padding: '0 .25rem',
+							}}
 							_href={`https://public-ui.github.io${i18n.currentLocale === 'en' ? '/en' : ''}`}
 							_label={'https://public-ui.github.io'}
 						></KolLink>
 					),
-					version: <b>2.2</b>,
+					version: <b>v2 (LTS)</b>,
 				}}
 			/>
 		</p>

@@ -5,7 +5,6 @@ import React from 'react';
 import { LanguageSwitch } from '@site/src/components/LanguageSwitch';
 import Navbar from '@theme-original/Navbar';
 import { translate } from '@docusaurus/Translate';
-import DocumentationVersionHint from '../../components/DocumentationVersionHint';
 
 export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 	// const [dark, setDark] = useState(false);
@@ -25,7 +24,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 
 	return (
 		<div className="kolibri-navbar-wrapper sticky top-0 z-50 bg-white">
-			<DocumentationVersionHint />
+			{/* <DocumentationVersionHint /> */}
 			<div className="kolibri-navbar max-w-screen-md lg:max-w-4xl 2xl:max-w-[95rem] mx-auto grid grid-cols-[1fr,auto] gap-y-2 items-center 2xl:grid-cols-[1fr,auto,auto,auto] p-4 lg:px-8">
 				<Navbar {...props} />
 				<section aria-label="Toolbar" className="flex flex-wrap gap-2 col-span-2">
@@ -49,7 +48,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 					</div> */}
 						<div>
 							<KolLinkButton
-								_href="https://github.com/public-ui/kolibri"
+								_href="https://github.com/public-ui/kolibri/tree/release/2"
 								_icons={'codicon codicon-github'}
 								_hideLabel
 								_label="GitHub-Repository"
