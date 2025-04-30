@@ -28,6 +28,18 @@ Die **Combobox**-Komponente erzeugt eine Auswahlliste, die ein Eingabefeld mit e
 <kol-combobox _suggestions="['Herr','Frau','Firma']" _label="Anrede" _value="Herr"></kol-combobox>
 ```
 
+### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event    | Auslöser                         | Value                           |
+|----------|----------------------------------|---------------------------------|
+| `click`  | Eingabefeld wird angeklickt      | -                               |
+| `focus`  | Eingabefeld wird fokussiert      | -                               |
+| `blur`   | Eingabefeld verliert Fokus       | -                               |
+| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
+| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
+
 ### Beispiel
 
 <kol-combobox  _suggestions="['Herr','Frau','Firma']" _label="Anrede" _value="Herr"></kol-combobox>

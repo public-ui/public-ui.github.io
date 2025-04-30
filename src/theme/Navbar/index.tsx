@@ -2,11 +2,10 @@ import { KolLinkButton } from '@public-ui/react';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import React from 'react';
 // import { getDarkMode, setDarkMode } from '../../shares/store';
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import { LanguageSwitch } from '@site/src/components/LanguageSwitch';
 import Navbar from '@theme-original/Navbar';
-import ThemeSelect from './ThemeSelect';
 import { translate } from '@docusaurus/Translate';
+import DocumentationVersionHint from '../../components/DocumentationVersionHint';
 
 export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 	// const [dark, setDark] = useState(false);
@@ -26,6 +25,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 
 	return (
 		<div className="kolibri-navbar-wrapper sticky top-0 z-50 bg-white">
+			<DocumentationVersionHint />
 			<div className="kolibri-navbar max-w-screen-md lg:max-w-4xl 2xl:max-w-[95rem] mx-auto grid grid-cols-[1fr,auto] gap-y-2 items-center 2xl:grid-cols-[1fr,auto,auto,auto] p-4 lg:px-8">
 				<Navbar {...props} />
 				<section aria-label="Toolbar" className="flex flex-wrap gap-2 col-span-2">
@@ -82,7 +82,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 						</div> */}
 						<div>
 							<KolLinkButton
-								_href={`/sample-react/#/handout/basic`}
+								_href="https://develop--kolibri-public-ui.netlify.app"
 								_icons={'codicon codicon-preview'}
 								_hideLabel
 								_label={translate({
@@ -115,9 +115,6 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								_variant="ghost"
 							/>
 						</div>*/}
-					</div>
-					<div className="flex-grow">
-						<BrowserOnly>{() => <ThemeSelect />}</BrowserOnly>
 					</div>
 				</section>
 			</div>

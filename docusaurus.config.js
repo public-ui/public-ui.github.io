@@ -3,11 +3,13 @@
 
 const { themes } = require('prism-react-renderer');
 
+const PUBLIC_BASE_URL = 'https://public-ui.github.io';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'KoliBri - Public UI',
 	tagline: 'The accessible Web Component Library',
-	url: 'https://public-ui.github.io',
+	url: PUBLIC_BASE_URL,
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
 	trailingSlash: false,
@@ -65,6 +67,7 @@ const config = {
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
 					// editUrl: 'https://github.com/public-ui/documentation/blob/main/packages/docusaurus/',
+					onUntruncatedBlogPosts: 'ignore',
 				},
 				sitemap: {
 					changefreq: 'daily',
@@ -90,30 +93,40 @@ const config = {
 				},
 				items: [
 					{
-						type: 'docsVersionDropdown',
-						position: 'left',
-						dropdownActiveClassDisabled: true,
+						label: 'Version 3',
+						position: 'right',
+						items: [
+							{
+								type: 'html',
+								className: 'dropdown-archived-versions',
+								value: '<strong class="dropdown__link">Version 3</strong>',
+							},
+							{ to: `${PUBLIC_BASE_URL}/v2/`, label: 'Version 2' },
+							{
+								type: 'html',
+								value: '<hr class="dropdown-separator">',
+							},
+							{
+								type: 'html',
+								className: 'dropdown-archived-versions',
+								value: '<span class="dropdown__link">Version 1</span>',
+							},
+						],
 					},
 					{
 						label: 'Dokumentation',
 						to: '/docs',
 						position: 'left',
 					},
-					{ to: '/blog', label: 'Blog', position: 'left' },
-					{ type: 'search', position: 'right' },
-					// {
-					// 	href: 'https://public-ui.github.io/designer',
-					// 	label: 'Designer',
-					// 	position: 'left',
-					// },
-					// {
-					// 	type: 'docsVersionDropdown',
-					// 	position: 'left',
-					// },
-					// {
-					// 	type: 'localeDropdown',
-					// 	position: 'right',
-					// },
+					{
+						to: '/blog',
+						label: 'Blog',
+						position: 'left',
+					},
+					{
+						type: 'search',
+						position: 'right',
+					},
 				],
 			},
 			footer: {

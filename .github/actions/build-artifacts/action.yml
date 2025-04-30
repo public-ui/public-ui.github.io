@@ -5,43 +5,34 @@ inputs:
     description: 'A Github PAT'
     required: true
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
-    # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20
-        registry-url: "https://registry.npmjs.org"
-        scope: "@public-ui"
-
-    - uses: pnpm/action-setup@v4
-      id: pnpm-install
-      with:
-        version: 9
-        run_install: false
-
-    - name: Get pnpm store directory
-      id: pnpm-cache
-      shell: bash
-      run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-    - uses: actions/cache@v4
-      with:
-        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store
+    - uses: ./.github/actions/pnpm-setup
 
     - name: Build Docs
       shell: bash
-      run: |
-        pnpm install --no-frozen-lockfile
-        npm run build
+      run: npm run build
+
     - uses: actions/setup-node@v4
       with:
-        node-version: 20
-        registry-url: "https://npm.pkg.github.com"
-        scope: "@public-ui"
+        node-version: 22
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@public-ui'
+
+    - name: Download Docs (v2)
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
+      run: |
+        rm -rf package *.tgz
+        npm pack @public-ui/docs-v2@latest > /dev/null
+        tar -xzvf public-ui-docs-*.tgz > /dev/null
+
+        rm -rf build/docs/2.2 build/v2
+        mkdir -p build/v2
+        mv package/build/* build/v2/
+
+        rm -rf package *.tgz
 
     - name: Download designer (v1)
       env:
@@ -100,5 +91,20 @@ runs:
         rm -rf build/v2/sample-react
         mkdir -p build/v2
         mv package/dist build/v2/sample-react
+
+        rm -rf package *.tgz
+
+    - name: Download sample react (v3)
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
+      run: |
+        rm -rf package *.tgz
+        npm pack @public-ui/sample-react@">=3.0.0-rc.1" --include-prerelease
+        tar -xzvf public-ui-sample-react-*.tgz
+
+        rm -rf build/v3/sample-react
+        mkdir -p build/v3
+        mv package/dist build/v3/sample-react
 
         rm -rf package *.tgz

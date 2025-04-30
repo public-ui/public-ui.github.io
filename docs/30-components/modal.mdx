@@ -55,6 +55,14 @@ Sobald ein **Modal** geöffnet wird, werden alle selektierbaren Elemente in der 
 </script>
 ```
 
+### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event   | Auslöser                    | Value |
+|---------|-----------------------------|-------|
+| `close` | Komponente wird geschlossen | -     |
+
 ### Verwendung
 
 Über das Attribut **`_width`** geben Sie die gewünschte Breite der Modalbox an. Sie wird in der gewählten Größe immer mittig auf dem Bildschirm angezeigt.
@@ -64,10 +72,6 @@ Da das Modal vom eigentlichen Seiteninhalt entkoppelt ist, aber für eine teilwe
 <kol-alert _type="info">Es wird empfohlen einen Close-Button oben rechts einzubauen.</kol-alert>
 
 Zum Öffnen des Modals können Sie mithilfe einer DOM-Referenz die Methode `openModal` verwenden, zum Schließen `closeModal`.
-
-### Legacy Verwendung
-
-Aus Kompatibilitätsgründen ist es weiterhin möglich, des Modal über die Eigenschaft `_activeElement` zu steuern. Ist die Eigenschaft (auf eine beliebige DOM-Node) gesetzt, wird das Modal gezeigt. Beim Entfernen wird das Modal entsprechend wieder ausgeblendet. Die Eigenschaft wird mit KoliBri Version 3 entfernt werden.
 
 #### Best practices
 

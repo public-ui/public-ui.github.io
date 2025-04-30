@@ -37,26 +37,15 @@ Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken
 
 ### Events
 
-Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
-
-```js
-kolibriElement._on = {
-	onFocus: (event) => {
-		/* Do something on focus */
-	},
-	onInput: (event, value) => {
-		/* Do something with value or event */
-	},
-	// ...
-};
-```
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
 | Event    | Auslöser                                                            | Value                                               |
-| -------- | ------------------------------------------------------------------- | --------------------------------------------------- |
-| onFocus  | Element wird fokussiert                                             | -                                                   |
-| onInput  | Checkbox wird an- oder abgehakt (entspricht nativem `input`-Event)  | Definierter `_value` wenn aktiv, andernfalls `null` |
-| onChange | Checkbox wird an- oder abgehakt (entspricht nativem `change`-Event) | Definierter `_value` wenn aktiv, andernfalls `null` |
-| onBlur   | Element verliert Fokus                                              | -                                                   |
+|----------|---------------------------------------------------------------------|-----------------------------------------------------|
+| `focus`  | Eingabefeld wird fokussiert                                         | -                                                   |
+| `click`  | Eingabefeld wird angeklickt                                         | -                                                   |
+| `input`  | Checkbox wird an- oder abgehakt (entspricht nativem `input`-Event)  | Definierter `_value` wenn aktiv, andernfalls `null` |
+| `change` | Checkbox wird an- oder abgehakt (entspricht nativem `change`-Event) | Definierter `_value` wenn aktiv, andernfalls `null` |
+| `blur`   | Eingabefeld verliert Fokus                                          | -                                                   |
 
 ## Verwendung
 

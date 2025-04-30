@@ -18,7 +18,7 @@ const compat = new FlatCompat({
 
 export default [
 	{
-		ignores: ['**/assets/**/*'],
+		ignores: ['**/assets/**/*', '**/*.mdx'],
 	},
 	...compat.extends('eslint:recommended', 'plugin:@docusaurus/recommended', 'plugin:mdx/recommended'),
 	{
@@ -57,7 +57,6 @@ export default [
 				},
 
 				project: ['./tsconfig.json'],
-				tsconfigRootDir: '/Users/moppitz/Workspace/kolibri/public-ui.github.io',
 			},
 		},
 

@@ -14,13 +14,32 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 Synonyme: Data Table, Details List, Data Grid
 
-Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Für eine Tabellen-Komponente, die Sortierung und Paginierung mit den zur Verfügung gestellten Daten automatisch übernehmen kann, siehe [KolTableStateful](./table-stateful).
+Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Für eine Tabellen-Komponente, die Sortierung und Paginierung mit den zur Verfügung gestellten Daten automatisch übernehmen kann, siehe <kol-link _href="table-stateful" _label="KolTableStateful" />.
 
 TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es nicht praktikabel ist, die komplette Datenmenge zur Filterung und Sortierung in den Browser auszuliefern.
+
+## Richtung der Datenwiedergabe
+
+Die Komponente KolTableStateless bietet eine flexible Tabellenimplementierung, die die bi-direktionale Datenwiedergabe unterstützt. Die Richtung der Datenwiedergabe wird durch die Header-Konfiguration bestimmt:
+
+- Horizontale Kopfzeilen (Standard): Die Daten werden von oben nach unten gerendert, wenn Schlüssel in den horizontalen Kopfzeilen vorhanden sind. Jede Spalte steht für einen Schlüssel, und die Zeilen stehen für einzelne Dateneinträge.
+- Vertikale Kopfzeilen: Die Daten werden von links nach rechts dargestellt, wenn die Schlüssel in den vertikalen Kopfzeilen vorhanden und in den horizontalen Kopfzeilen nicht vorhanden sind. Jede Zeile stellt einen Schlüssel dar, und Spalten stellen einzelne Dateneinträge dar.
+
+Die Darstellungsrichtung wird automatisch durch die Untersuchung der Kopfzeilenzellen bestimmt:
+
+- Wenn horizontale Kopfzeilen Schlüssel enthalten, wird die horizontale Darstellung verwendet.
+- Wenn nur vertikale Kopfzeilen Schlüssel enthalten, wird vertikal gerendert.
+- Wenn keine Kopfzeilen Schlüssel enthalten, wird standardmäßig das horizontale Rendering verwendet.
+
 
 ## Selektion
 
 Über die `_selection`-Property kann der "Selection-Modus" der Komponente aktiviert und gesteuert werden. Ist `_selection` definiert, erhält jede Zeile eine Checkbox, über die sich die Zeile aus- oder abwählen lässt.
+
+- **label**: Funktion, welche für jede Zeile ausgerufen wird, und ein Label für die Checkbox zurückgibt.
+- **selectedKeys**: Array von Strings, das die Key-Properties der gewählten Zeilen beinhaltet.
+- **disabledKeys**: Array von Strings, das die Key-Properties der deaktivierten Zeilen beinhaltet. Bei Zeilen, die in `disabledKeys` vorkommen, wird die Checkbox bzw. der Radio Button deaktiviert.
+- **keyPropertyName**: Eigenschaft, auf die sich `selectedKeys` und `disabledKeys` beziehen. Standardwert: `id`.
 
 ```ts
 const data = [
@@ -28,16 +47,21 @@ const data = [
 	{ id: '1002', name: 'Max Mustermann' },
 ];
 const selection: KoliBriTableSelection = {
-	/* label: Funktion, welche für jede Zeile ausgerufen wird, und ein Label für die Checkbox zurückgibt. */
 	label: (row: KoliBriTableDataType) => `Selection for ${row.name}`,
-
-	/* selectedKeys: Array von Strings, das die Key-Properties der gewählten Zeilen beinhaltet */
-	selectedKeys: ['1002'],
-
-	/* keyPropertyName: Eigenschaft, auf die sich `selectedKeys` bezieht. Default-Wert: `id` */
-	keyPropertyName: 'id',
+  selectedKeys: ['1002'],
+  disabledKeys: ['1001'],
+  keyPropertyName: 'id',
 };
 ```
+
+### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event             | Auslöser                                         | Value                                                                   |
+|-------------------|--------------------------------------------------|-------------------------------------------------------------------------|
+| `sort`            | Die Sortierung hat sich geändert                 | Objekt vom Typ `SortEventPayload` mit `key` und `currentSortDirection`  |
+| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert | Array von ausgewählten IDs bzw. ausgewählt ID bei Einfachauswahl        |
 
 ## Beispiel
 

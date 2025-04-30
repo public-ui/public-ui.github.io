@@ -1,15 +1,15 @@
+import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
 import { KolIcon, KolLink, KolLinkButton } from '@public-ui/react';
 import { translate } from '@docusaurus/Translate';
 import Heading from '@theme/Heading';
-import { useDocsPreferredVersion } from '@docusaurus/theme-common';
-import { getVersionForUrl, determinateVersionId } from '../shares/version';
+import { VERSION_ID } from '@site/src/shares/version';
 
 type FeatureItem = {
 	icon: string;
 	title: string;
-	description: JSX.Element;
-	button: JSX.Element;
+	description: ReactNode;
+	button: ReactNode;
 };
 
 function Feature({ title, icon, description, button }: FeatureItem) {
@@ -25,11 +25,7 @@ function Feature({ title, icon, description, button }: FeatureItem) {
 	);
 }
 
-export default function HomepageFeatures(): JSX.Element {
-	const docVersion = useDocsPreferredVersion();
-	const version = getVersionForUrl(docVersion);
-	const versionId = determinateVersionId(docVersion);
-
+export default function HomepageFeatures(): ReactElement {
 	const FeatureList: FeatureItem[] = [
 		{
 			icon: 'codicon codicon-paintcan',
@@ -42,7 +38,7 @@ export default function HomepageFeatures(): JSX.Element {
 							message:
 								'Die semantisch barrierefreien Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet werden. Mittels des',
 						})}{' '}
-						<KolLink _href={`/${versionId}/designer`} _label="Designers" _target="designer" />{' '}
+						<KolLink _href={`/${VERSION_ID}/designer`} _label="Designers" _target="designer" />{' '}
 						{translate({
 							id: 'custom.designer-short-description-part-2',
 							message: 'können die Komponenten an beliebige Styleguides oder Designs angepasst werden.',
@@ -53,7 +49,7 @@ export default function HomepageFeatures(): JSX.Element {
 			button: (
 				<KolLinkButton
 					className="w-72"
-					_href={`/docs/${version ? `${version ? `${version}/` : ''}` : ''}concepts/styling/theming `}
+					_href="/docs/concepts/styling/theming"
 					_label="Styling & Design"
 				></KolLinkButton>
 			),
@@ -72,13 +68,7 @@ export default function HomepageFeatures(): JSX.Element {
 					</p>
 				</>
 			),
-			button: (
-				<KolLinkButton
-					className="w-72"
-					_href={`/docs/${version ? `${version}/` : ''}get-started/frameworks`}
-					_label="Frameworks"
-				></KolLinkButton>
-			),
+			button: <KolLinkButton className="w-72" _href="/docs/get-started/frameworks" _label="Frameworks"></KolLinkButton>,
 		},
 		{
 			icon: 'codicon codicon-layers',
@@ -100,7 +90,7 @@ export default function HomepageFeatures(): JSX.Element {
 			button: (
 				<KolLinkButton
 					className="w-72"
-					_href={`/docs/${version ? `${version}/` : ''}components`}
+					_href="/docs/components"
 					_label={translate({
 						id: 'custom.components',
 						message: 'Components',

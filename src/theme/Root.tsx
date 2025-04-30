@@ -1,26 +1,48 @@
-import { register } from '@public-ui/components';
+import { KoliBriDevHelper, register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
+import { DEFAULT } from '@public-ui/theme-default';
 import type { FunctionComponent, PropsWithChildren } from 'react';
-import React, { useEffect, useState } from 'react';
-import type { Theme } from '../shares/theme';
+import React, { useEffect } from 'react';
 
 export const Root: FunctionComponent<PropsWithChildren> = (props) => {
-	const [theme] = useState<Theme>('default');
-
 	useEffect(() => {
-		register([DEFAULT, ECL_EC, ECL_EU, ITZBund], [defineCustomElements], {
+		register([DEFAULT], [defineCustomElements], {
 			theme: {
-				detect: 'auto',
+				detect: 'fixed',
 			},
-		}).catch(console.warn);
+		})
+			.then(() => {
+				KoliBriDevHelper.patchTheme(
+					'default',
+					{
+						'KOL-BUTTON-LINK': `
+							:host,
+							button {
+								font-size: inherit;
+							}
+						`,
+						'KOL-ICON': `
+							:host {
+								color: inherit;
+								font-size: inherit;
+							}
+						`,
+						'KOL-LINK': `
+							:host,
+							a {
+								font-size: inherit;
+							}
+						`,
+					},
+					{
+						append: true,
+					}
+				);
+			})
+			.catch(console.warn);
 	}, []);
 
-	return (
-		<div id="doc-app" className={theme} data-theme={theme}>
-			{props.children}
-		</div>
-	);
+	return <div id="doc-app">{props.children}</div>;
 };
 
 export default Root;

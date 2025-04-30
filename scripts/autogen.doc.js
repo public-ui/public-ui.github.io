@@ -111,11 +111,9 @@ const DOC_FOLDERS = ['readmes'];
 const README_PATHS = filterMdFiles(path.relative(process.cwd(), 'node_modules/@public-ui/components/doc'));
 
 const mkDirs = (dirs, index = 0) => {
-	console.log(dirs, index);
 	if (Array.isArray(dirs) && index >= 0 && index < dirs.length) {
 		index++;
 		try {
-			console.log(dirs.slice(0, index).join('/'));
 			fs.mkdirSync(dirs.slice(0, index).join('/'));
 		} catch (e) {}
 		mkDirs(dirs, index);
@@ -123,7 +121,6 @@ const mkDirs = (dirs, index = 0) => {
 };
 
 rimraf([...DOC_FOLDERS, '**/*.md'].join('/'), () => {
-	console.log(README_PATHS);
 	README_PATHS.forEach((readmePath) => {
 		const name = path.basename(readmePath).replace(/\..+/g, '');
 		const folders = [...DOC_FOLDERS, name];
@@ -139,6 +136,7 @@ rimraf([...DOC_FOLDERS, '**/*.md'].join('/'), () => {
 				.replace(/class=/g, 'className=')
 				.replace(/"_target/g, '" _target')
 				.replace(/ *\\_/g, ' _')
+				.replace(/\[([^\]]+)\]\(([^)]+)\/readme\.md\)/g, '[$1]($2)')
 				.replace(
 					/(### )`([^(]+)/,
 					`$1$2

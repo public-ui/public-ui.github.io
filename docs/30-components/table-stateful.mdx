@@ -17,7 +17,7 @@ Synonyme: Data Table, Details List, Data Grid
 Die **TableStateful**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 
 <kol-indented-text _summary="Backend-seitige Pagination">
-	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der TableStateless-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden. Eine mögliche Sortierung muss ebenfalls über die `onSort`-Events selber implementiert werden. Siehe [KolTableStateless](./table-stateless).
+	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der TableStateless-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden. Eine mögliche Sortierung muss ebenfalls über die `onSort`-Events selber implementiert werden. Siehe <kol-link _href="table-stateless" _label="KolTableStateless" />.
 </kol-indented-text>
 
 ## Konstruktion
@@ -25,6 +25,14 @@ Die **TableStateful**-Komponente dient primär der übersichtlichen Darstellung 
 Die Table-Komponente ist so konstruiert, dass nicht der gesamte Tabellenaufbau im Markup selbst beschrieben werden muss. Wie genau die Tabelle Markup-spezifisch aufgebaut werden muss, um barrierefrei zu sein, übernimmt die Komponente selbst.
 
 Dadurch, dass die Table-Komponente das valide und barrierefreie Markup dynamisch zusammenbaut, kann die komplexe Auszeichnung für die assistive Systeme dem/der Entwickler:in abgenommen werden.
+
+### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event             | Auslöser                                        | Value                                                                         |
+|-------------------|-------------------------------------------------|-------------------------------------------------------------------------------|
+| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert | Array von ausgewählten Zeilen-Objekten bzw. Zeilen-Objekt bei Einfachauswahl |
 
 ### Funktionalitäten
 
@@ -60,7 +68,7 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
         rowSpan?: number,
         useTdInsteadOfTh?: boolean,
         render?: (data) => string,
-        sort?: (data) => data,
+        compareFn?: (dataA, dataB) => number,
       },
       …
     ],
@@ -75,7 +83,7 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
         rowSpan?: number,
         useTdInsteadOfTh?: boolean,
         render?: (data) => string,
-        sort?: (data) => data,
+        compareFn?: (dataA, dataB) => number,
       },
       …
     ],
