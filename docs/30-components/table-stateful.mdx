@@ -30,9 +30,10 @@ Dadurch, dass die Table-Komponente das valide und barrierefreie Markup dynamisch
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event             | Auslöser                                        | Value                                                                         |
-|-------------------|-------------------------------------------------|-------------------------------------------------------------------------------|
-| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert | Array von ausgewählten Zeilen-Objekten bzw. Zeilen-Objekt bei Einfachauswahl |
+| Event             | Auslöser                                                  | Value                                                                        |
+|-------------------|-----------------------------------------------------------|------------------------------------------------------------------------------|
+| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert          | Array von ausgewählten Zeilen-Objekten bzw. Zeilen-Objekt bei Einfachauswahl |
+| `settingsChange`  | Die Tabelleneinstellungen wurden durch den User geändert. | Objekt vom Typ `TableSettings`                                               |
 
 ### Funktionalitäten
 
@@ -173,6 +174,10 @@ import { createReactRenderElement } from '@public-ui/react';
   },
 }
 ```
+
+### Einstellungen
+
+Tabellen-Einstellungen (`_table-settings`) werden an die Komponente kol-table-stateless durchgereicht. Siehe <kol-link _href="table-stateless#einstellungen" _label="kol-table-stateless Dokumentation" />.
 
 <!--### Best practices
 
