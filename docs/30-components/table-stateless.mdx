@@ -54,14 +54,44 @@ const selection: KoliBriTableSelection = {
 };
 ```
 
+## Einstellungen
+
+Tabellen verfügen automatisch über ein Einstellungsmenü, mit dem Nutzende:
+
+* Spalten ein- und ausblenden
+* Spaltenbreiten anpassen
+* Spaltenreihenfolge ändern
+
+Standardmäßig werden alle horizontalen Tabellenspalten berücksichtigt.
+
+Mithilfe der Property _tableSettings lassen sich vordefinierte oder bereits gespeicherte Tabellenkonfigurationen laden. Diese überschreiben die Standardwerte, und im Menü werden dann nur noch die dort aufgeführten Spalten angezeigt.
+
+Beispiel:
+
+```jsx
+<KolTableStateful
+	_tableSettings={{
+		columns: [
+			{ key: 'columnA', visible: false, label: 'Column A', position: 2 },
+			{ key: 'columnB', visible: true, label: 'Column B', position: 1, width: 20 },
+			{ key: 'columnC', visible: true, label: 'Column C', position: 0, width: 45 },
+		],
+	}}
+	// ...
+/>
+```
+
+Ändern Nutzende die Einstellungen, werden diese automatisch auf die Tabellenansicht übertragen und ein <nobr>`settingsChange`</nobr>-DOM-Event ausgelöst (siehe Events).
+
 ### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event             | Auslöser                                         | Value                                                                   |
-|-------------------|--------------------------------------------------|-------------------------------------------------------------------------|
-| `sort`            | Die Sortierung hat sich geändert                 | Objekt vom Typ `SortEventPayload` mit `key` und `currentSortDirection`  |
-| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert | Array von ausgewählten IDs bzw. ausgewählt ID bei Einfachauswahl        |
+| Event             | Auslöser                                                  | Value                                                                  |
+|-------------------|-----------------------------------------------------------|------------------------------------------------------------------------|
+| `sort`            | Die Sortierung hat sich geändert                          | Objekt vom Typ `SortEventPayload` mit `key` und `currentSortDirection` |
+| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert          | Array von ausgewählten IDs bzw. ausgewählt ID bei Einfachauswahl       |
+| `settingsChange`  | Die Tabelleneinstellungen wurden durch den User geändert. | Objekt vom Typ `TableSettings`                                         |
 
 ## Beispiel
 
