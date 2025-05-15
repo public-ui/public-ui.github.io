@@ -13,8 +13,9 @@ export const LanguageSwitch: FC = () => {
 	const relativePath = normalizedPathname.startsWith(baseUrl)
 		? normalizedPathname.slice(baseUrl.length)
 		: normalizedPathname;
+	const relativePathWithoutTrailingSlash = relativePath.replace(/\/$/, '');
 	const isGerman = i18n.currentLocale === 'de';
-	const switchTo = `${baseUrlWithoutLanguage}${isGerman ? 'en/' : ''}${relativePath}`;
+	const switchTo = `${baseUrlWithoutLanguage}${isGerman ? 'en/' : ''}${relativePathWithoutTrailingSlash}`;
 
 	return (
 		<div>

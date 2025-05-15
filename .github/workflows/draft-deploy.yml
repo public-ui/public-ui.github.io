@@ -30,7 +30,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
         with:
-          args: deploy --dir=dist
+          args: deploy --dir=dist --no-build
 
       - name: Find comment
         uses: peter-evans/find-comment@v3
