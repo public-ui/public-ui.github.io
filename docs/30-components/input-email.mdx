@@ -62,6 +62,16 @@ Um eine fehlgeschlagene Validierung anzuzeigen, verwenden Sie die Attribute `_ms
 | ----- | --------------------------- |
 | `Tab` | Fokussiert das Eingabefeld. |
 
+### Character Limit (Prop `_character-limit`)
+
+Über die Prop `_character-limit` lässt sich ein Zeichenlimit für das Eingabefeld festlegen, wobei auch längere Texte eingegeben oder eingefügt und anschließend gekürzt werden können. Es wird stets die Anzahl der verbleibenden Zeichen bzw. die Anzahl der überschrittenen Zeichen angezeigt.
+
+**Verhalten:**
+- **Echtzeit-Feedback:** Die verbleibende bzw. überschrittene Zeichenanzahl wird direkt beim Tippen angezeigt.
+- **Screenreader-Optimierung:**
+- Um den Schreibvorgang nicht zu unterbrechen, erfolgt die Ausgabe der Zeichenanzahl verzögert, sobald **500 ms** keine Eingabe erfolgt ist.
+- Beim Fokussieren des Eingabefelds wird das definierte Zeichenlimit angesagt.
+
 ## Links und Referenzen
 
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
