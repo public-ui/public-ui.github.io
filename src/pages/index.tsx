@@ -38,7 +38,7 @@ const HomepageButtons: FunctionComponent = () => {
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href="/docs/"
+				_href="/docs"
 				_label={translate({
 					id: 'custom.documentation-button',
 				})}
