@@ -2,4 +2,139 @@
 title: Bekannte Probleme
 ---
 
-todo
+## Allgemein
+
+### Alle Texteingabefelder
+
+In Chrome unter Windows erhält ein leeres HTML-Eingabefeld beim Klicken außerhalb des Eingabefelds, aber innerhalb einer WebComponent, keinen Fokus. Dieses Problem tritt manchmal nicht auf, wenn das Eingabefeld bereits einen Wert enthält. Wir vermuten ein Problem mit der Fokus-Weitergabe im Zusammenhang mit WebComponent-Verhalten.
+
+[🐞 GitHub Issue #7713](https://github.com/public-ui/kolibri/issues/7713)
+
+### NVDA buchstabiert bestimmte Wörter statt sie vorzulesen
+
+Es wurde beobachtet, dass NVDA auf einem System mit deutscher Spracheinstellung bestimmte englische Wörter wie "selection" buchstabiert, anstatt sie korrekt vorzulesen.
+
+[🐞 GitHub Issue #6898](https://github.com/public-ui/kolibri/issues/6898),
+[Stack Overflow](https://stackoverflow.com/questions/69091167/nvda-spells-words-where-it-shouldnt)
+
+## Komponenten
+
+### kol-select
+
+- Deaktivierte Optionen in KolSelect beeinflussen die Gesamtanzahl in einigen Screenreadern. Wenn eine Option mit disabled: true gesetzt ist, wird sie möglicherweise trotzdem in der Gesamtanzahl der Optionen von unterstützenden Technologien mitgezählt. Die Verwendung von aria-hidden="true" auf `<option>` entspricht nicht den WAI-ARIA-Richtlinien und verursacht Browser-Warnungen, daher wurde dies entfernt. Infolgedessen könnten Screenreader eine höhere Anzahl verfügbarer Optionen ansagen, als tatsächlich auswählbar sind.
+
+[🐞 GitHub Issue #7453](https://github.com/public-ui/kolibri/pull/7453)
+[🐞 GitHub Issue #7920](https://github.com/public-ui/kolibri/pull/7920)
+
+### kol-input-color
+
+Die Komponente InputColor ist ein Wrapper für das native HTML-Element `<input type="color">`, das Zugänglichkeitsprobleme aufweist:
+
+- Mit NVDA wird das Element als "klickbar" und nicht als Eingabefeld angekündigt.
+- Es ist nicht möglich, mit einem Screenreader eine Farbe auszuwählen.
+- **9.1.3.1h Programmgesteuerte Erkennbarkeit der Beschriftung von Formularelementen:**
+Das Label wird vom Screenreader nicht angekündigt. Da linear gelesen wird, ist bei Verwendung von `hideLabel` kein Label wahrnehmbar.
+- **9.1.3.2 Sinnvolle Reihenfolge:**
+Beim Öffnen der Farbauswahl für "Farbe mit Fehler" erfolgt keine Ausgabe. Sie ist nicht über die Tab-Taste, sondern nur mit den Pfeiltasten erreichbar, was für Screenreader-Nutzer sehr verwirrend ist.
+- **9.2.4.3 Logische Tastaturnavigationsreihenfolge:**
+Die Fokusreihenfolge für "Farbe mit Fehler" ist sehr ungewöhnlich. Nutzer erkennen nicht, dass sie die Pfeiltasten verwenden müssen. Dies ist besonders problematisch, da es auf Schwarz nicht sichtbar ist.
+- **9.2.4.7 Deutlich sichtbare Fokusposition:**
+Der Fokus ist auf dem schwarzen Farbsymbol bei "Farbe mit Fehler" nicht sichtbar.
+
+Für vollständige Barrierefreiheit sollten vordefinierte Farblisten, z. B. mit KolSelect oder KolCheckbox, verwendet werden.
+
+[🐞 GitHub Issue #5549](https://github.com/public-ui/kolibri/issues/5549),
+[🐞 GitHub Issue #7455](https://github.com/public-ui/kolibri/pull/7455)
+
+### kol-table-stateful und kol-table-stateless
+
+#### Änderungen an `aria-sort` werden manchmal in NVDA nicht angekündigt
+
+Wenn sich die Sortierreihenfolge einer Tabellenspalte ändert (d. h. wenn sich das `aria-sort`-Attribut ändert), kündigen Screenreader diese Änderung normalerweise automatisch an. Aus unbekannten Gründen geschieht dies manchmal in NVDA nicht.
+
+[🐞 GitHub Issue (PR) #5780](https://github.com/public-ui/kolibri/pull/5780),
+[🐞 NVDA Issue #10890](https://github.com/nvaccess/nvda/issues/10890),
+[🐞 NVDA Issue #8132](https://github.com/nvaccess/nvda/issues/8132)
+
+#### Feste Tabellenköpfe (Sticky Headers)
+
+Feste Tabellenköpfe werden derzeit nicht unterstützt, da `position: sticky` nicht mit `overflow: auto` im Tabellen-Container funktioniert, ohne andere Nachteile einzuführen.
+
+[🐞 GitHub Issue #7490](https://github.com/public-ui/kolibri/issues/7490),
+[CSSWG Drafts Issue](https://github.com/w3c/csswg-drafts/issues/865),
+[Code-Beispiel (StackBlitz)](https://stackblitz.com/edit/stackblitz-starters-umfg2y7m)
+
+### kol-input-number und kol-input-date
+
+#### 'readonly' wird in NVDA nicht angekündigt
+
+Die Komponenten InputNumber und InputDate rendern die jeweiligen nativen HTML-Elemente `<input type="number">` und `<input type="date">`, die beide das Attribut `readonly` unterstützen. Beim Fokussieren des Elements wird erwartet, dass das Attribut `readonly` als Teil der Elementbeschreibung angekündigt wird. Dies ist bei NVDA nicht der Fall.
+
+[🐞 GitHub Issue #5554](https://github.com/public-ui/kolibri/issues/5554) (Für number),
+[🐞 GitHub Issue #5749](https://github.com/public-ui/kolibri/issues/5749) (Für date),
+[🐞 NVDA Issue #13672](https://github.com/nvaccess/nvda/issues/13672)
+
+### kol-input-date
+
+#### VoiceOver liest Datumsfelder mit Prozentangabe in Google Chrome vor
+
+In Google Chrome liest VoiceOver bei leeren `date`-Eingabefeldern (ohne Anfangswert) einen unerwarteten Prozentwert zusammen mit der üblichen Eingabeaufforderung vor.
+
+Dieses Problem tritt bei Windows Narrator nicht auf, der leere Datumsfelder korrekt behandelt.
+
+Es gibt einen Bug-Report zu diesem Problem:
+
+[VoiceOver reads negative percent values for month, day, and year steppers in `<input type="date">`](https://issuetracker.google.com/issues/361250561?pli=1)
+
+### kol-input-text
+
+Das Suchfeld dieser Komponente ist stark vom Browser abhängig. Beispielsweise wird das Schließen-Symbol je nach Browser angezeigt oder nicht. Barrierefreiheit ist daher nicht gewährleistet.
+
+[🐞 GitHub Issue #6307](https://github.com/public-ui/kolibri/issues/6307)
+
+### kol-select
+
+#### Screenreader liest nur die zuletzt ausgewählte Option vor
+
+KolSelect verwendet das native HTML-Element `<select>`.
+
+Bei Verwendung von KolSelect mit der Eigenschaft `multiple` kann das native HTML-Element `<select>` Probleme mit Screenreadern verursachen. Oft wird nicht die gesamte Auswahl vorgelesen, sondern nur die letzte. Daher ist KolSelect nicht vollständig barrierefrei.
+
+#### Eingeschränkte Styling-Möglichkeiten für `<select>` und `<option>`-Elemente
+
+[Stackblitz-Beispiel](https://stackblitz.com/edit/vitejs-vite-nthnce?file=src%2Fstyle.css)
+
+Das `<select>`-Element und seine `<option>`-Tags bieten nur eingeschränkte Styling-Möglichkeiten. Insbesondere Zustände wie "selected", "focus" oder "active" können nicht zuverlässig per CSS angepasst werden. Dies erschwert es, Barrierefreiheitsstandards einzuhalten, insbesondere ausreichende Kontrastverhältnisse sicherzustellen.
+
+**Auswirkungen**:
+
+- **Eingeschränkte Anpassbarkeit**: Der visuelle Zustand von Dropdown-Optionen (z. B. bei Fokus oder Auswahl) kann nicht in allen Browsern konsistent angepasst werden. Dadurch ist es schwierig, ein barrierefreies visuelles Erlebnis für alle Nutzer zu schaffen.
+
+- **Browserabhängige Darstellung**: Das Erscheinungsbild des `<select>`-Elements variiert je nach Browser und Betriebssystem, was zu uneinheitlichen Nutzererfahrungen führt.
+
+- **Kontrastprobleme**: Da der Kontrast der Standard-Dropdown-Darstellung vom Browser gesteuert wird, ist es nicht immer möglich, WCAG-konforme Kontrastverhältnisse sicherzustellen, was die Lesbarkeit für sehbehinderte Nutzer beeinträchtigen kann.
+
+### kol-icon
+
+#### Firefox-Problem mit `aria-label` bei Barrierefreiheit
+
+Die Verwendung von `aria-label` oder `aria-labelledby` auf `<kol-icon>` oder dessen verschachtelten Elementen funktioniert in Firefox nicht zuverlässig. Selbst das direkte Anwenden dieser Attribute auf `<kol-icon>` hat keine Wirkung, was auf ein browser-spezifisches Problem mit ARIA-Unterstützung bei Custom Elements oder Shadow DOM hinweist.
+
+##### Wichtige Punkte
+
+- Das Problem liegt in der Handhabung von ARIA-Attributen bei benutzerdefinierten Webkomponenten oder tief verschachtelten Elementen in Firefox.
+- Es handelt sich nicht um dynamische Ankündigungen (`aria-live`), sondern speziell um die Unfähigkeit von Firefox, `aria-label` oder `aria-labelledby` in diesen Fällen korrekt zu verarbeiten.
+- Das Problem ist browser-spezifisch und tritt nicht konsistent in Chrome, Edge oder Safari auf.
+
+##### Fazit
+
+Dies ist eine Einschränkung in der ARIA-Implementierung von Firefox. Bis das Problem behoben ist, sollten alternative Strategien wie visuell versteckter Text in der Nähe des Elements oder redundante Fehlermeldungen verwendet werden, um Barrierefreiheit sicherzustellen.
+
+[🐞 GitHub Issue #7076](https://github.com/public-ui/kolibri/issues/7076),
+[🐞 GitHub Issue #7119](https://github.com/public-ui/kolibri/issues/7119)
+
+### Toaster
+
+Toasts werden in einem Container gerendert, der als erstes Element in `<body>` eingefügt und mit einem hohen `z-index` versehen wird.
+
+Bei der Verwendung von [modalen Dialogen](https://developer.mozilla.org/de/docs/Web/HTML/Element/dialog) werden diese über Toasts auf der [Top Layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer) gerendert. Daher werden Toast-Nachrichten immer von Modalen blockiert. Wir empfehlen, Toasts in Modalen komplett zu vermeiden und Rückmeldungen direkt im Modal zu geben.
