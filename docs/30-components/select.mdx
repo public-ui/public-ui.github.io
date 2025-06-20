@@ -75,7 +75,12 @@ Beispiel für die Konstruktion des JSON-Objektes:
 
 Über das Attribut **`_rows`** kann von einem Auswahlmenü auf ein Auswahlfeld (wie bei **`_multiple`**) gewechselt werden und dessen Höhe gesetzt werden.
 
-<!--### Best practices-->
+### Best practices
+
+- Verzichten Sie darauf, Optionen eines Selects über `disabled` zu deaktivieren. Screenreader (getestet mit NVDA) zählen deaktivierte Optionen mit und geben so eine höhere Anzahl an Auswahlmöglichkeiten aus.
+- Häufig wird die erste Option als „Bitte Option wählen“ angelegt und anschließend deaktiviert, um eine Auswahl zu erzwingen. Dieses Vorgehen sollte vermieden werden.
+- Das Ausblenden einer deaktivierten Option mittels `aria-hidden` wird mittlerweile von modernen Browsern blockiert. Verwenden Sie stattdessen eine auswählbare Option mit leerem Wert, wenn eine Platzhalteroption benötigt wird.
+- Prüfen Sie mit Validatoren, ob eine gültige Option gewählt wurde, anstatt Optionen ohne Angabe von Gründen zu deaktivieren.
 
 <!-- ## Barrierefreiheit -->
 
