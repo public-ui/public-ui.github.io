@@ -39,9 +39,10 @@ Die Zuordnung der Daten im Attribut **`_tabs`** zu den Div-Elementen erfolgt aut
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event    | Auslöser             | Value                      |
-|----------|----------------------|----------------------------|
-| `select` | Tab wurde ausgewählt | Index des ausgewählten Tab |
+| Event    | Auslöser                       | Value                      |
+|----------|--------------------------------|----------------------------|
+| `select` | Tab wurde ausgewählt           | Index des ausgewählten Tab |
+| `create` | Create-Button wurde angeklickt | -                          |
 
 ### Beispiel
 
@@ -68,6 +69,21 @@ Um eine Registerkarte zu deaktivieren, verwenden Sie das Attribut **`_disabled`*
 ### Close-Icon im Registekartenheader
 
 Wenn Sie eine schließbare Registerkarte benötigen, können Sie dies über das Attribut **`_on`** und den Wert **"onClose":true** realisieren.
+
+### Create-Button
+
+Mit dem Attribut **`_has-create-button`** lässt sich ein zusätzlicher Button in der Tab-Navigation aktivieren. Dieser Button erscheint am Ende der Tab-Leiste und ermöglicht es Usern, neue Tabs dynamisch hinzuzufügen.
+
+#### Code
+
+```html
+<kol-tabs _tabs='[{"_label":"Tab 1"},{"_label":"Tab 2"}]' _has-create-button>
+	<div>Inhalt von Tab 1</div>
+	<div>Inhalt von Tab 2</div>
+</kol-tabs>
+```
+
+<kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/tabs/create-button" _target="_blank" _label="Beispiel in der Sample App"></kol-link>
 
 ### Best practices
 
