@@ -6,7 +6,7 @@ title: Known Issues
 
 ### All text inputs
 
-In Chrome on Windows, clicking outside an HTML input but inside a WebComponent does not give focus to the input when it is empty. This issue sometimes does not occur if the input already contains a value. We suspect a focus propagation problem related to WebComponent behavior.
+In Chrome on Windows, clicking outside an HTML input but inside a Web Component does not give focus to the input when it is empty. This issue sometimes does not occur if the input already contains a value. We suspect a focus propagation problem related to WebComponent behavior.
 
 [🐞 GitHub issue #7713](https://github.com/public-ui/kolibri/issues/7713)
 
@@ -17,6 +17,14 @@ It has been observed that on a system with German locale, NVDA spells out certai
 [🐞 GitHub issue #6898](https://github.com/public-ui/kolibri/issues/6898),
 [Stack Overflow](https://stackoverflow.com/questions/69091167/nvda-spells-words-where-it-shouldnt)
 
+### Text selection in Firefox
+
+In Firefox, text selection when using Web Components does not work as expected. Highlighting and selecting text behaves inconsistently or fails.
+
+[🐞 GitHub issue #7761](https://github.com/public-ui/kolibri/issues/7761),
+[Mozilla Bug #1587724](https://bugzilla.mozilla.org/show_bug.cgi?id=1587724),
+[Mozilla Bug #1233594](https://bugzilla.mozilla.org/show_bug.cgi?id=1233594),
+[Mozilla Bug #1590379](https://bugzilla.mozilla.org/show_bug.cgi?id=1590379)
 
 ## Components
 
