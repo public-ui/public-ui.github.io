@@ -42,14 +42,14 @@ importers:
         specifier: 4.7.0
         version: 4.7.0(monaco-editor@0.52.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@public-ui/components':
-        specifier: 3.0.0-rc.7
-        version: 3.0.0-rc.7(adopted-style-sheets@1.1.8)
+        specifier: 3.0.1
+        version: 3.0.1(adopted-style-sheets@1.1.8)
       '@public-ui/react':
         specifier: 3.0.0-rc.7
-        version: 3.0.0-rc.7(@public-ui/components@3.0.0-rc.7(adopted-style-sheets@1.1.8))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 3.0.0-rc.7(@public-ui/components@3.0.1(adopted-style-sheets@1.1.8))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@public-ui/theme-default':
         specifier: 3.0.0-rc.7
-        version: 3.0.0-rc.7(@public-ui/components@3.0.0-rc.7(adopted-style-sheets@1.1.8))
+        version: 3.0.0-rc.7(@public-ui/components@3.0.1(adopted-style-sheets@1.1.8))
       classnames:
         specifier: 2.5.1
         version: 2.5.1
@@ -1416,11 +1416,11 @@ packages:
     resolution: {integrity: sha512-0J+zgWxHN+xXONWIyPWKFMgVuJoZuGiIFu8yxk7RJjxkzpGmyja5wRFqZIVtjDVOQpV+Rw0iOAjYPE2eQyjr0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@floating-ui/core@1.6.9':
-    resolution: {integrity: sha512-uMXCuQ3BItDUbAMhIXw7UPXRfAlOAvZzdK9BWpE60MCn+Svt3aLn9jsPTi/WNGlRUu2uI0v5S7JiIUsbsvh3fw==}
+  '@floating-ui/core@1.7.1':
+    resolution: {integrity: sha512-azI0DrjMMfIug/ExbBaeDVJXcY0a7EPvPjb2xAJPa4HeimBX+Z18HK8QQR3jb6356SnDDdxx+hinMLcJEDdOjw==}
 
-  '@floating-ui/dom@1.6.13':
-    resolution: {integrity: sha512-umqzocjDgNRGTuO7Q8CU32dkHkECqI8ZdMZ5Swb6QAM0t5rnlrN3lGo1hdpscRd3WS8T6DKYK4ephgIH9iRh3w==}
+  '@floating-ui/dom@1.7.1':
+    resolution: {integrity: sha512-cwsmW/zyw5ltYTUeeYJ60CnQuPqmGwuGVhG9w0PRaRKkAyi38BT5CKrpIbb+jtahSwUl04cWzSx9ZOIxeS6RsQ==}
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
@@ -1730,10 +1730,10 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
-  '@public-ui/components@3.0.0-rc.7':
-    resolution: {integrity: sha512-tiZyLzTGybbEdjOFGTMSeAghW8dQ0qIj2+2i2HRBAXXFmx/tnRSJR7ZBWMA+UmWu4CNKyLTjmozKuL4S6/f/TQ==}
+  '@public-ui/components@3.0.1':
+    resolution: {integrity: sha512-gd5YVV8Rk3bxP7fRTH3my82nlS2AeJko+h/3n4E5VBE2GPpdShtpvYpSrR6itFw6XVidLtj+K1Q08bWKe0wZCw==}
     peerDependencies:
-      adopted-style-sheets: 1.1.8
+      adopted-style-sheets: 1.1.9-rc.19
 
   '@public-ui/react@3.0.0-rc.7':
     resolution: {integrity: sha512-CzBR+gVrE3ri0TAYPRAzCNz3/1DuXtfdx0NwCRyjmLS03VzpcCqRkP+aqUI9109MdfdhN0enqHLMjEVPpXsLCg==}
@@ -2861,8 +2861,16 @@ packages:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
     engines: {node: '>=7.0.0'}
 
+  color-convert@3.1.0:
+    resolution: {integrity: sha512-TVoqAq8ZDIpK5lsQY874DDnu65CSsc9vzq0wLpNQ6UMBq81GSZocVazPiBbYGzngzBOIRahpkTzCLVe2at4MfA==}
+    engines: {node: '>=14.6'}
+
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+
+  color-name@2.0.0:
+    resolution: {integrity: sha512-SbtvAMWvASO5TE2QP07jHBMXKafgdZz8Vrsrn96fiL+O92/FN/PLARzUW5sKt013fjAprK2d2iCn2hk2Xb5oow==}
+    engines: {node: '>=12.20'}
 
   color-parse@1.4.3:
     resolution: {integrity: sha512-BADfVl/FHkQkyo8sRBwMYBqemqsgnu7JZAwUgvBvuwwuNUZAhSvLTbsEErS5bQXzOjDR0dWzJ4vXN2Q+QoPx0A==}
@@ -3546,6 +3554,9 @@ packages:
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+
+  easy-bem@1.1.1:
+    resolution: {integrity: sha512-GJRqdiy2h+EXy6a8E6R+ubmqUM08BK0FWNq41k24fup6045biQ8NXxoXimiwegMQvFFV3t1emADdGNL1TlS61A==}
 
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -7088,6 +7099,10 @@ packages:
     resolution: {integrity: sha512-3KS2b+kL7fsuk/eJZ7EQdnEmQoaho/r6KUef7hxvltNA5DR8NAUM+8wJMbJyZ4G9/7i3v5zPBIMN5aybAh2/Jg==}
     engines: {node: '>= 0.4'}
 
+  typed-bem@1.0.0-rc.7:
+    resolution: {integrity: sha512-NuptFkEO0CAdcSNupYE16D8P/XphIU+rPpXLHbFCjqJTaBLTNA6/XUwRS+mtW/icPoIOo/jq3NeS2LM9Sb5X1Q==}
+    engines: {node: ^22, npm: ^10, pnpm: ^10}
+
   typedarray-to-buffer@3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
 
@@ -9772,13 +9787,13 @@ snapshots:
       '@eslint/core': 0.14.0
       levn: 0.4.1
 
-  '@floating-ui/core@1.6.9':
+  '@floating-ui/core@1.7.1':
     dependencies:
       '@floating-ui/utils': 0.2.9
 
-  '@floating-ui/dom@1.6.13':
+  '@floating-ui/dom@1.7.1':
     dependencies:
-      '@floating-ui/core': 1.6.9
+      '@floating-ui/core': 1.7.1
       '@floating-ui/utils': 0.2.9
 
   '@floating-ui/utils@0.2.9': {}
@@ -10115,29 +10130,30 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@public-ui/components@3.0.0-rc.7(adopted-style-sheets@1.1.8)':
+  '@public-ui/components@3.0.1(adopted-style-sheets@1.1.8)':
     dependencies:
-      '@floating-ui/dom': 1.6.13
+      '@floating-ui/dom': 1.7.1
       adopted-style-sheets: 1.1.8
       clsx: 2.1.1
-      color-convert: 2.0.1
+      color-convert: 3.1.0
       color-rgba: 2.4.0
       lodash-es: 4.17.21
       markdown-it: 14.1.0
       query-selector-all-shadow-root: 0.0.3
       query-selector-shadow-root: 0.0.3
       rgba-convert: 0.3.0
+      typed-bem: 1.0.0-rc.7
       wcag-contrast: 3.0.0
 
-  '@public-ui/react@3.0.0-rc.7(@public-ui/components@3.0.0-rc.7(adopted-style-sheets@1.1.8))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@public-ui/react@3.0.0-rc.7(@public-ui/components@3.0.1(adopted-style-sheets@1.1.8))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@public-ui/components': 3.0.0-rc.7(adopted-style-sheets@1.1.8)
+      '@public-ui/components': 3.0.1(adopted-style-sheets@1.1.8)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  '@public-ui/theme-default@3.0.0-rc.7(@public-ui/components@3.0.0-rc.7(adopted-style-sheets@1.1.8))':
+  '@public-ui/theme-default@3.0.0-rc.7(@public-ui/components@3.0.1(adopted-style-sheets@1.1.8))':
     dependencies:
-      '@public-ui/components': 3.0.0-rc.7(adopted-style-sheets@1.1.8)
+      '@public-ui/components': 3.0.1(adopted-style-sheets@1.1.8)
 
   '@rollup/plugin-babel@5.3.1(@babel/core@7.26.0)(rollup@2.79.2)':
     dependencies:
@@ -11472,7 +11488,13 @@ snapshots:
     dependencies:
       color-name: 1.1.4
 
+  color-convert@3.1.0:
+    dependencies:
+      color-name: 2.0.0
+
   color-name@1.1.4: {}
+
+  color-name@2.0.0: {}
 
   color-parse@1.4.3:
     dependencies:
@@ -12231,6 +12253,8 @@ snapshots:
   duplexer@0.1.2: {}
 
   eastasianwidth@0.2.0: {}
+
+  easy-bem@1.1.1: {}
 
   ee-first@1.1.1: {}
 
@@ -16547,6 +16571,10 @@ snapshots:
       is-typed-array: 1.1.15
       possible-typed-array-names: 1.0.0
       reflect.getprototypeof: 1.0.10
+
+  typed-bem@1.0.0-rc.7:
+    dependencies:
+      easy-bem: 1.1.1
 
   typedarray-to-buffer@3.1.5:
     dependencies:
