@@ -19,7 +19,7 @@ export default function DocumentationVersionHint(): ReactNode {
 							_label={'https://public-ui.github.io/v2'}
 						></KolLink>
 					),
-					version: <b>v3 (Next)</b>,
+					version: <b>v3</b>,
 				}}
 			/>
 		</p>
