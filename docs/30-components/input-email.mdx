@@ -62,6 +62,59 @@ Um eine fehlgeschlagene Validierung anzuzeigen, verwenden Sie die Attribute `_ms
 | ----- | --------------------------- |
 | `Tab` | Fokussiert das Eingabefeld. |
 
+## Zeichenbegrenzung und Zeichenzähler
+
+Mit den drei Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen und gleichzeitig visuelles Feedback geben.
+
+### Attribute
+
+| Attribut               | Typ                | Standard | Beschreibung                                                                                                                                                                                                                                                                                |
+| ---------------------- | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_has-counter`         | `boolean`          | `false`  | Globaler Schalter für den Zeichenzähler. Nur wenn dieses Attribut **gesetzt (= true)** ist, wird überhaupt ein Zähler ausgegeben.                                                                                                                                                           |
+| `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
+| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`‑Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
+
+### Ausgabevarianten
+
+| Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
+| ---: | --------------------- | ------------- | ---------------------- | ---------------------------------------------------------- |
+| 1    | *(leer)* oder `false` | —             | —                      | — (kein Zähler)                                            |
+| 2    | `true`                | *(leer)*      | —                      | `n Zeichen`                                                |
+| 3    | `true`                | 5             | *(leer)* oder `hard`   | `n/5 Zeichen`                                              |
+| 4    | `true`                | 5             | `soft`                 | `noch 3 Zeichen verfügbar`<br />*(bzw. `3 Zeichen zu viel`)* |
+
+> Wird `_max-length-behavior="soft"` verwendet, **wird das native `maxlength`‑Attribut *nicht* gesetzt** – das Eingabefeld wird also nicht hart begrenzt.
+
+### Barrierefreiheit
+
+* Der Zähler aktualisiert sich mit einer Verzögerung von **500 ms**, damit Screenreader‑Ereignisse gebündelt werden und das Tippen nicht unterbrechen.
+* Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa:
+  *„Sie können bis zu 10 Zeichen eingeben.“*
+
+### Beispiele
+
+```html
+<!-- Nur Zähler -->
+<kol-input-email _label="E-Mail-Adresse" _has-counter></kol-input-email>
+
+<!-- Harte Begrenzung auf 5 Zeichen -->
+<kol-input-email _label="E-Mail-Adresse" _has-counter _max-length="5"></kol-input-email>
+
+<!-- Weiche Begrenzung auf 5 Zeichen -->
+<kol-input-email
+  _label="E-Mail-Adresse"
+  _has-counter
+  _max-length="5"
+  _max-length-behavior="soft">
+</kol-input-email>
+```
+
+### Zusammenfassung
+
+* Ohne `_has-counter` gibt es **nie** einen Zähler.
+* Mit `_has-counter` **und ohne** `_max-length` wird nur die aktuell eingegebene Zeichenzahl angezeigt.
+* Mit `_has-counter` **und** `_max-length` bestimmt `_max-length-behavior`, ob die Grenze hart (`hard`) oder weich (`soft`) umgesetzt wird.
+
 ## Links und Referenzen
 
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
