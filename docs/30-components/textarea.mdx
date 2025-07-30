@@ -9,17 +9,20 @@ tags:
 ---
 
 import Readme from '../../readmes/textarea/readme.md';
+import TextAreaPreview from '@site/src/components/previews/components/Textarea';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Textarea
 
-Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="../components/input-text" _label="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
+Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="../components/input-text" _label="/docs/components/input-text"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
 
 ## Konstruktion
 
 ### Code
+
+<TextAreaPreview />
 
 ```html
 <kol-textarea
@@ -63,9 +66,9 @@ Verwenden Sie die **Textarea**-Komponente wenn die Eingabe von größeren Textme
 Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestimmt werden.
 Über das Attribut **`_resize`** kann zusätzlich festgelegt werden ob und in welche Richtung die Textarea vergrößert werden kann. Der Wert **`none`** sperrt die Textarea gegen Größenänderungen.
 
-<!--### Best practices
+{/* ### Best practices
 
-### Anwendungsfälle-->
+### Anwendungsfälle */}
 
 ## Barrierefreiheit
 
@@ -89,6 +92,11 @@ Mit den drei Attributen `_max-length`, `_max-length-behavior` und `_has-counter`
 | `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
 | `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`‑Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
 
+<TextAreaPreview 
+  initialProps={{ _label:"Beschreibung", _hasCounter: true, _maxLength: 20, _value: "Initialer Text", _rows: 3 }} 
+  visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']} 
+/>
+
 ### Ausgabevarianten
 
 | Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
@@ -106,23 +114,6 @@ Mit den drei Attributen `_max-length`, `_max-length-behavior` und `_has-counter`
 * Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa:
   *„Sie können bis zu 10 Zeichen eingeben.“*
 
-### Beispiele
-
-```html
-<!-- Nur Zähler -->
-<kol-textarea _label="Beschreibung" _has-counter></kol-textarea>
-
-<!-- Harte Begrenzung auf 5 Zeichen -->
-<kol-textarea _label="Beschreibung" _has-counter _max-length="5"></kol-textarea>
-
-<!-- Weiche Begrenzung auf 5 Zeichen -->
-<kol-textarea
-  _label="Beschreibung"
-  _has-counter
-  _max-length="5"
-  _max-length-behavior="soft">
-</kol-textarea>
-```
 
 ### Zusammenfassung
 
