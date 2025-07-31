@@ -125,6 +125,22 @@ kol-link-button {
 	display: block;
 }
 
+.popover-container {
+	width: 300px;
+	padding: 1rem;
+}
+
+.popover-paragraph {
+	margin-top: 10px;
+	font-size: 0.9rem;
+}
+
+.popover-link-button {
+	display: inline-block; 
+	border-radius: 9999px; 
+	text-decoration: none;
+}
+
 .used-by-gallery ul {
 	list-style: none;
 	display: flex;
