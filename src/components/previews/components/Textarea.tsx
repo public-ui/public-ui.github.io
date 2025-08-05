@@ -1,7 +1,7 @@
 import React from 'react';
 import Preview from '../Preview';
 import { BooleanProperty } from '../properties';
-import { JSX } from '@public-ui/components';
+import type { JSX } from '@public-ui/components';
 import { KolInputText, KolInputNumber, KolTextarea, KolSelect } from '@public-ui/react';
 
 const TextAreaPreview: React.FC = (props: {

@@ -1,5 +1,6 @@
-import React, { ReactNode, useState, ReactElement, cloneElement } from 'react';
-import { KolCard, KolButton } from '@public-ui/react';
+import type { ReactNode, ReactElement } from 'react';
+import React, { useState, cloneElement } from 'react';
+import { KolCard, KolButton, KolHeading } from '@public-ui/react';
 
 type PropertyComponent = ReactElement<{
 	_on?: {
@@ -52,7 +53,7 @@ const Preview = <TProps,>({
 		};
 
 		const propsString = Object.entries(currentProps as Record<string, unknown>)
-			.filter(([_, value]) => value !== undefined && value !== null && value !== '')
+			.filter(([, value]) => value !== undefined && value !== null && value !== '')
 			.map(([key, value]) => {
 				const formattedValue = formatValue(value);
 				return formattedValue ? `\n  ${key}=${formattedValue}` : '';
@@ -81,13 +82,13 @@ const Preview = <TProps,>({
 		return (
 			<div className="border-2 bg-gray-100 border-solid border-gray-200 rounded-md p-4">
 				<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-					<h4 style={{ margin: 0, fontSize: '14px', fontWeight: 'bold' }}>Source Code</h4>
+					<KolHeading _label="Source Code" _level={4} />
 					<KolButton
 						_label="Copy"
 						_variant="secondary"
 						_icons="codicon codicon-copy"
 						_on={{
-							onClick: copyToClipboard,
+							onClick: () => void copyToClipboard(),
 						}}
 					/>
 				</div>
@@ -113,10 +114,9 @@ const Preview = <TProps,>({
 		if (!propertyComponents) return null;
 
 		// Filter entries based on visibleProperties if provided
-		const filteredEntries = Object.entries(propertyComponents).filter(([key]) => {
-			if (!visibleProperties) return true; // Show all if no filter specified
-			return visibleProperties.includes(key as keyof TProps);
-		});
+		const filteredEntries = Object.entries(propertyComponents)
+			.map(([key, cmp]) => [key as keyof TProps, cmp as PropertyComponent] as const)
+			.filter(([key]) => !visibleProperties || visibleProperties.includes(key));
 
 		return (
 			<KolCard _label="Playground">
@@ -124,22 +124,22 @@ const Preview = <TProps,>({
 					if (!React.isValidElement(component)) return null;
 
 					// Get the current value for this property
-					const currentValue = currentProps[key as keyof TProps];
+					const currentValue = currentProps[key];
 
 					return (
-						<div key={key} style={{ marginBottom: '10px' }}>
+						<div key={key as string} style={{ marginBottom: '10px' }}>
 							{cloneElement(component, {
-								...(component.props as any),
+								...component.props,
 								_value: currentValue,
 								_on: {
-									...(component.props as any)?._on,
+									...component.props?._on,
 									onInput: (event: Event, value: unknown) => {
-										updateProperty(key as keyof TProps, value);
+										updateProperty(key, value);
 										// Call original onInput if it exists
-										(component.props as any)?._on?.onInput?.(event, value);
+										component.props?._on?.onInput?.(event, value);
 									},
 								},
-							} as any)}
+							})}
 						</div>
 					);
 				})}
