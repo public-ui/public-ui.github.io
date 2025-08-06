@@ -136,7 +136,17 @@ export const PropertiesOverview: FC = () => {
 									backgroundColor: types.length > 1 ? '#fbc' : undefined,
 								}}
 								dangerouslySetInnerHTML={{
-									__html: types.join('<hr/>'),
+									// This type causes invalid HTML: "undefined | { onCreate?: EventCallback<Event> | undefined; } & { onSelect?: EventValueOrEventCallback<MouseEvent | KeyboardEvent | CustomEvent<any> | PointerEvent, number> | undefined; }"
+									__html: types
+										.map((type) =>
+											type
+												.replace(/&/g, '&amp;')
+												.replace(/</g, '&lt;')
+												.replace(/>/g, '&gt;')
+												.replace(/"/g, '&quot;')
+												.replace(/'/g, '&#39;')
+										)
+										.join('<hr/>'),
 								}}
 							/>
 						</tr>
