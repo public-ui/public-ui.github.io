@@ -24,16 +24,16 @@ Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere v
 ### Code
 
 ```html
-<kol-select _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]" _value="[1]"> Auswahlfeld </kol-select>
-<kol-select _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]" _multiple _value="[0,2]">
-	Auswahlfeld (Mehrfachauswahl)
+<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _value="Mrs."> Auswahlfeld </kol-select>
+<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _multiple _value="['Mr.','Company']">
+        Auswahlfeld (Mehrfachauswahl)
 </kol-select>
 <kol-select
-	_options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2},{'label':'Herr','value':3},{'label':'Frau','value':4},{'label':'Firma','value':5}]"
-	_rows="4"
-	_value="[1]"
+        _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'},{'label':'Herr','value':'Mr2'},{'label':'Frau','value':'Mrs2'},{'label':'Firma','value':'Company2'}]"
+        _rows="4"
+        _value="Mrs."
 >
-	Auswahlfeld mit _rows
+        Auswahlfeld mit _rows
 </kol-select>
 ```
 
@@ -51,11 +51,11 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 
 ### Beispiel
 
-<kol-select _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]" _value="[1]"> Auswahlfeld </kol-select>
-<kol-select _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]" _multiple _value="[0,2]">
+<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _value="Mrs."> Auswahlfeld </kol-select>
+<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _multiple _value="['Mr.','Company']">
 	Auswahlfeld (Mehrfachauswahl)
 </kol-select>
-<kol-select _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2},{'label':'Herr','value':3},{'label':'Frau','value':4},{'label':'Firma','value':5}]" _rows="4" _value="[1]">Auswahlfeld mit rows</kol-select>
+<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'},{'label':'Herr','value':'Mr2'},{'label':'Frau','value':'Mrs2'},{'label':'Firma','value':'Company2'}]" _rows="4" _value="Mrs.">Auswahlfeld mit rows</kol-select>
 
 ## Verwendung
 
@@ -65,9 +65,9 @@ Beispiel für die Konstruktion des JSON-Objektes:
 
 ```json
 [
-	{ "label": "Herr", "value": 0 },
-	{ "label": "Frau", "value": 1 },
-	{ "label": "Firma", "value": 2 }
+        { "label": "Herr", "value": "Mr." },
+        { "label": "Frau", "value": "Mrs." },
+        { "label": "Firma", "value": "Company" }
 ]
 ```
 
