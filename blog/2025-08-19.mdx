@@ -1,0 +1,35 @@
+---
+title: Komponenten-Paket, Themes und Peer Dependencies
+authors: deleonio
+---
+
+# Komponenten-Paket, Themes und Peer Dependencies
+
+In unserem Projekt arbeiten mehrere NPM-Pakete zusammen, um wiederverwendbare Oberflächen zu schaffen. Das Herzstück ist das Components-Paket. Es liefert die Web Components mit ihrer Funktionalität, aber ohne festes Styling. Dadurch bleibt jede Komponente schlank und kann in unterschiedlichsten Designkonzepten eingesetzt werden.
+
+## Headless Komponenten
+
+Die Komponenten sind bewusst headless aufgebaut. Sie enthalten also keinerlei Vorgaben für Farben, Abstände oder Schriftarten. Diese Freiheit erlaubt es jeder Organisation, das Aussehen komplett selbst zu bestimmen und die Komponenten nahtlos in bestehende Designsysteme einzubetten.
+
+## Themes bringen das Styling
+
+Das Aussehen kommt über separate Theme-Pakete ins Spiel. Ein Theme beschreibt die Gestaltung von Buttons, Formularfeldern oder Tabellen – kurz: es liefert das visuelle Auftreten. Wer die Komponenten nutzt, kann ein eigenes Theme schreiben und so denselben Funktionsumfang mit einer individuellen Oberfläche kombinieren.
+
+## Peer Dependencies: Versionssicherheit
+
+Damit klar ist, welche Theme-Version zu welcher Components-Version passt, setzen wir auf Peer Dependencies. In einem Theme-Paket steht als Peer Dependency der Versionsbereich des Components-Pakets, für den das Theme gedacht ist. Bei uns gilt eine einfache Regel: Eine Theme-Version gehört exakt zu einer Components-Version.
+
+## Installieren und Prüfen
+
+Beim `npm install` prüft NPM automatisch, ob die Peer Dependencies erfüllt sind. Stimmen die Versionen nicht überein, erscheint eine Fehlermeldung. Dieser Hinweis ist gewollt, denn er verhindert, dass man eine Kombination installiert, die später Probleme macht.
+
+## Kein Legacy-Modus
+
+NPM bietet die Option `legacy peer deps`, die diese Prüfung abschaltet. In unserem Setup darf dieser Modus nicht verwendet werden. Ohne die Fehlermeldungen würden leicht falsche oder kaputte Installationen entstehen.
+
+## Fazit
+
+- Components-Paket: liefert die funktionalen Bausteine ohne Styling.
+- Theme-Paket: liefert das Aussehen.
+- Peer Dependencies: stellen sicher, dass beides exakt zusammenpasst.
+- Fehlermeldungen von NPM: sind gewünscht und schützen vor falschen Kombinationen.
