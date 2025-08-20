@@ -99,7 +99,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								_label="Feedback"
 								_hideLabel
 								_tooltipAlign="left"
-								_icons={"codicon codicon-feedback"}
+								_icons={'codicon codicon-feedback'}
 								_popoverAlign="bottom"
 								_variant="ghost"
 							>
@@ -109,8 +109,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 											id: 'feedback.header',
 										})}
 										_level={3}
-									>
-									</KolHeading>
+									></KolHeading>
 									<p className="p popover-paragraph">
 										{translate({
 											id: 'feedback.information',
@@ -123,8 +122,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 										})}
 										_variant="primary"
 										_href="mailto:kolibri@itzbund.de?subject=Feedback%20zu%20KoliBri-Webcomponents&body=Hallo%20KoliBri-Team,%0A%0Ahier%20ist%20mein%20Feedback%20zur%20Dokumentation%20oder%20den%20Webcomponents:%0A%0A%5BEinfach%20hier%20Ihr%20Feedback%20einfügen%5D%0A%0AVielen%20Dank!"
-									>
-									</KolLinkButton>
+									></KolLinkButton>
 								</div>
 							</KolPopoverButton>
 						</div>
