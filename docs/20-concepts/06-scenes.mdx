@@ -1,0 +1,102 @@
+---
+title: Themes - Barrierefreie Layout-Varianten
+description: KoliBri bietet verschiedene visuelle Anordnungen (Themes) für Komponenten, ohne die Barrierefreiheit zu beeinträchtigen.
+tags:
+  - Barrierefreiheit
+  - Layout
+  - Themes
+  - Accessibility
+  - Konzept
+---
+
+import { KolLink } from '@public-ui/react';
+
+## Überblick
+
+In KoliBri bauen wir unsere Komponenten so, dass sie immer als ein fertiger, barrierefreier Baustein funktionieren. Jede Komponente enthält alle wichtigen Teile, zum Beispiel Label, Eingabefeld, Hilfetext, Fehlermeldung oder ein Icon. Von außen sieht man nur diesen einen Baustein, und beim Arbeiten mit Tastatur oder Screenreader gibt es auch nur ein einziges Eingabefeld, das den Fokus bekommt.
+
+## Technische Grundlagen
+
+### DOM-Struktur vs. visuelle Darstellung
+
+Für die Barrierefreiheit ist es egal, in welcher Reihenfolge die einzelnen Teile innerhalb der Komponente im HTML stehen. Der Screenreader liest immer zuerst die Rolle des Elements vor, dann das Label und danach zusätzliche Hinweise oder Fehlermeldungen. Deshalb spielt die technische Reihenfolge im Inneren keine Rolle, solange alles korrekt mit `aria-labelledby` und `aria-describedby` verbunden ist.
+
+### ARIA-Verknüpfungen
+
+Die Barrierefreiheit wird durch die korrekte Verwendung von ARIA-Attributen sichergestellt:
+
+- **`aria-labelledby`**: Verknüpft das Eingabefeld mit seinem Label
+- **`aria-describedby`**: Verbindet zusätzliche Beschreibungen und Fehlermeldungen
+- **`role`**: Definiert die semantische Bedeutung des Elements
+
+## Das Themes-Konzept
+
+Damit wir trotzdem verschiedene Layouts anbieten können, erlauben wir unterschiedliche Anordnungen der Teile – wir nennen das **„Themes"**. So kann zum Beispiel die Fehlermeldung oberhalb oder unterhalb des Eingabefelds erscheinen oder das Label links statt oben stehen.
+
+### Beispiele für Scene-Varianten
+
+- **Label-Position**: Oberhalb oder links neben dem Eingabefeld
+- **Fehlermeldung**: Oberhalb oder unterhalb des Eingabefelds
+- **Hilfetext**: Verschiedene Positionen relativ zum Eingabefeld
+- **Icon-Platzierung**: Links oder rechts im Eingabefeld
+
+### CSS-basierte Implementierung
+
+Diese Änderungen passieren nur über CSS und nicht durch Verschieben im DOM. Dadurch bleibt die Barrierefreiheit immer gleich zuverlässig. Die DOM-Struktur bleibt konstant, während CSS Grid, Flexbox oder andere Layout-Techniken für die visuelle Anordnung sorgen.
+
+```css
+/* Beispiel: Label oberhalb des Eingabefelds */
+.theme-label-top {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Beispiel: Label links neben dem Eingabefeld */
+.theme-label-left {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+```
+
+## Vorteile des Themes-Konzepts
+
+### Konsistente Barrierefreiheit
+
+- Die Screenreader-Navigation bleibt immer gleich
+- ARIA-Verknüpfungen werden nicht verändert
+- Tastaturnavigation funktioniert identisch in allen Themes
+
+### Designflexibilität
+
+- Verschiedene Layout-Anforderungen können erfüllt werden
+- Responsive Design-Anpassungen sind möglich
+- Corporate Design-Vorgaben lassen sich umsetzen
+
+### Wartbarkeit
+
+- Ein Code für alle Layout-Varianten
+- Keine Duplikation der Barrierefreiheits-Logik
+- Einfache Theme-Erstellung
+
+## Wichtige Hinweise
+
+### Innerhalb der Komponente
+
+Innerhalb der Komponente ist die Reihenfolge egal, solange alles richtig verbunden ist. Die Komponente stellt sicher, dass:
+
+- Alle ARIA-Attribute korrekt gesetzt sind
+- Die Fokusreihenfolge logisch ist
+- Screenreader alle relevanten Informationen erhalten
+
+### In der Gesamtanwendung
+
+In der Gesamtanwendung darf man aber die Struktur nicht durch feste Positionierung oder absolute Layouts kaputtmachen. Folgende Punkte sind zu beachten:
+
+- Keine absoluten Positionierungen verwenden, die die logische Reihenfolge zerstören
+- Responsive Design-Prinzipien befolgen
+- Die natürliche Leserichtung respektieren
+
+## Fazit
+
+Jede Komponente ist ein geschlossener, barrierefreier Baustein, der in unterschiedlichen optischen Varianten eingesetzt werden kann, ohne dass es zu Problemen für Nutzerinnen und Nutzer mit Hilfstechnologien kommt. Das Themes-Konzept ermöglicht es, visuelle Anforderungen zu erfüllen, während die Barrierefreiheit auf technischer Ebene gewährleistet bleibt.
