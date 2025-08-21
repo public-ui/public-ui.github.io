@@ -1,4 +1,4 @@
-import { KolHeading, KolLinkButton, KolPopoverButton } from '@public-ui/react';
+import { KolLinkButton, KolPopoverButton } from '@public-ui/react';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import React from 'react';
 // import { getDarkMode, setDarkMode } from '../../shares/store';
@@ -23,12 +23,13 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 	// 	},
 	// };
 
-	return (
-		<div className="kolibri-navbar-wrapper sticky top-0 z-50 bg-white">
-			<DocumentationVersionHint />
-			<div className="kolibri-navbar max-w-screen-md lg:max-w-4xl 2xl:max-w-[95rem] mx-auto grid grid-cols-[1fr,auto] gap-y-2 items-center 2xl:grid-cols-[1fr,auto,auto,auto] p-4 lg:px-8">
-				<Navbar {...props} />
-				<section aria-label="Toolbar" className="flex flex-wrap gap-2 col-span-2">
+        return (
+                <>
+                <div className="kolibri-navbar-wrapper sticky top-0 z-50 bg-white">
+                        <DocumentationVersionHint />
+                        <div className="kolibri-navbar max-w-screen-md lg:max-w-4xl 2xl:max-w-[95rem] mx-auto grid grid-cols-[1fr,auto] gap-y-2 items-center 2xl:grid-cols-[1fr,auto,auto,auto] p-4 lg:px-8">
+                                <Navbar {...props} />
+                                <section aria-label="Toolbar" className="flex flex-wrap gap-2 col-span-2">
 					<div className="flex-grow grid gap-2 grid-cols-6 items-center justify-items-center">
 						<LanguageSwitch />
 						{/* <div>
@@ -93,41 +94,6 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								_variant="ghost"
 							/>
 						</div>
-						<div>
-							<KolPopoverButton
-								aria-label="Feedback geben"
-								_label="Feedback"
-								_hideLabel
-								_tooltipAlign="left"
-								_icons={"codicon codicon-feedback"}
-								_popoverAlign="bottom"
-								_variant="ghost"
-							>
-								<div className="popover-container">
-									<KolHeading
-										_label={translate({
-											id: 'feedback.header',
-										})}
-										_level={3}
-									>
-									</KolHeading>
-									<p className="p popover-paragraph">
-										{translate({
-											id: 'feedback.information',
-										})}
-									</p>
-									<KolLinkButton
-										className="popover-link-button"
-										_label={translate({
-											id: 'email.send',
-										})}
-										_variant="primary"
-										_href="mailto:kolibri@itzbund.de?subject=Feedback%20zu%20KoliBri-Webcomponents&body=Hallo%20KoliBri-Team,%0A%0Ahier%20ist%20mein%20Feedback%20zur%20Dokumentation%20oder%20den%20Webcomponents:%0A%0A%5BEinfach%20hier%20Ihr%20Feedback%20einfügen%5D%0A%0AVielen%20Dank!"
-									>
-									</KolLinkButton>
-								</div>
-							</KolPopoverButton>
-						</div>
 						{/* <div>
 						<KolLinkButton
 							_href="https://discord.com/invite/7ntYFPns6b"
@@ -152,9 +118,36 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 						</div>*/}
 					</div>
 				</section>
-			</div>
-		</div>
-	);
+                        </div>
+                </div>
+                <KolPopoverButton
+                        _label={translate({ id: 'feedback.label' })}
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore - placement is not yet typed
+                        placement="bottom-end"
+                        style={{ position: 'fixed', top: '1rem', right: '1rem', zIndex: 1000 }}
+                >
+                        <div style={{ width: '300px', padding: '1rem' }}>
+                                <h3 style={{ marginTop: 0 }}>{translate({ id: 'feedback.header' })}</h3>
+                                <p style={{ fontSize: '0.9rem' }}>{translate({ id: 'feedback.information' })}</p>
+                                <a
+                                        href="mailto:kolibri@itzbund.de?subject=Feedback%20zu%20KoliBri-Webcomponents&body=Hallo%20KoliBri-Team,%0A%0Ahier%20ist%20mein%20Feedback%20zur%20Dokumentation%20oder%20den%20Webcomponents:%0A%0A%5BEinfach%20hier%20Ihr%20Feedback%20einfügen%5D%0A%0AVielen%20Dank!"
+                                        style={{
+                                                display: 'inline-block',
+                                                marginTop: '0.5rem',
+                                                padding: '0.5rem 1rem',
+                                                backgroundColor: 'var(--kolibri-color-primary)',
+                                                color: 'white',
+                                                borderRadius: '9999px',
+                                                textDecoration: 'none',
+                                        }}
+                                >
+                                        {translate({ id: 'feedback.send' })}
+                                </a>
+                        </div>
+                </KolPopoverButton>
+                </>
+        );
 };
 
 export default NavbarWrapper;
