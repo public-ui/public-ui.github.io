@@ -1,0 +1,79 @@
+---
+slug: buttonlink-vs-linkbutton
+title: "ButtonLink vs. LinkButton – Was zählt für Assistivität?"
+authors:
+  - name: deleonio
+tags: [Accessibility, KoliBri]
+date: 2025-08-22
+---
+
+In der Entwicklung barrierefreier Komponenten stehen wir oft vor spannenden Detailfragen, die mehr Wirkung haben, als man auf den ersten Blick denkt. Ein aktuelles Beispiel aus dem KoliBri-Projekt: Wie sollen unsere Hybrid-Komponenten **ButtonLink** und **LinkButton** von Screenreadern vorgelesen werden?
+
+---
+
+## Die Debatte
+
+Es gibt zwei mögliche Ansätze:
+
+**1. Nach Design – "So wie es aussieht, wird es vorgelesen."**
+
+- Ein *ButtonLink*, der wie ein Link aussieht, wird als Link vorgelesen.
+- Ein *LinkButton*, der wie ein Button aussieht, wird als Button vorgelesen.
+
+*Vorteil*: Homogenität – Links klingen gleich, Buttons klingen gleich.
+*Nachteil*: Verhalten und Erwartung können auseinanderfallen.
+
+**2. Nach Verhalten – "So wie es sich verhält, wird es vorgelesen."**
+
+- Ein *ButtonLink*, der eine Aktion im aktuellen Kontext ausführt, wird als Button vorgelesen.
+- Ein *LinkButton*, der eine Navigation auslöst, wird als Link vorgelesen.
+
+*Vorteil*: Erwartungskonformität – Nutzer wissen, ob sie klicken oder navigieren.
+*Nachteil*: Das visuelle Signal passt nicht immer zum auditiven Signal.
+
+---
+
+## Die Entscheidung
+
+Nach Diskussion mit Design- und Accessibility-Perspektive war klar:
+
+> **Die Erwartung ist wichtiger als die Optik.**
+
+Screenreader-Nutzer verlassen sich darauf, dass Links navigieren und Buttons Aktionen auslösen. Selbst wenn das visuelle Erscheinungsbild abweicht, ist es entscheidender, dass Verhalten und Ansage übereinstimmen.
+
+---
+
+## Warum ist das wichtig?
+
+- **Barrierefreiheit bedeutet Verlässlichkeit.** Nutzer:innen sollen nicht raten müssen, ob ein "Link" eine Seite wechselt oder nur ein Formular absendet.
+- **Design kann täuschen, Verhalten nicht.** Ein Button, der wie ein Link aussieht, bleibt eine Aktion. Ein Link, der wie ein Button aussieht, bleibt eine Navigation.
+- **Konsistenz schafft Vertrauen.** Gerade beim Vorlesen durch Screenreader ist Klarheit das höchste Gut.
+
+---
+
+## Fazit
+
+Die Entscheidung im KoliBri-Projekt lautet:
+
+- **ButtonLink** wird als **Button** vorgelesen.
+- **LinkButton** wird als **Link** vorgelesen.
+
+Damit setzen wir auf Erwartungskonformität und stärken die Assistivität für alle Nutzer:innen.
+
+---
+
+```text
++------------------+---------------------------+------------------+
+| Komponente       | Sieht aus wie …           | Verhält sich wie |
++==================+===========================+==================+
+| ButtonLink       | Link                      | Button           |
++------------------+---------------------------+------------------+
+| LinkButton       | Button                    | Link             |
++------------------+---------------------------+------------------+
+```
+
+---
+
+**👉 Was meinst du?**
+Bist du Team "Design" oder Team "Verhalten"? Diskutiere mit uns – denn jede kleine Entscheidung macht barrierefreie Software besser.
+
