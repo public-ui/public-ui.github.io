@@ -1,78 +1,79 @@
 ---
 slug: buttonlink-vs-linkbutton
-title: "ButtonLink vs. LinkButton – What matters for assistivity?"
+title: "ButtonLink vs. LinkButton – Was zählt für Assistivität?"
 authors:
   - name: deleonio
 tags: [Accessibility, KoliBri]
 date: 2025-08-22
 ---
 
-Building accessible components often confronts us with small details that have a bigger impact than expected. A recent example from the KoliBri project raises the question: how should our hybrid components **ButtonLink** and **LinkButton** be announced by screen readers?
+In der Entwicklung barrierefreier Komponenten stehen wir oft vor spannenden Detailfragen, die mehr Wirkung haben, als man auf den ersten Blick denkt. Ein aktuelles Beispiel aus dem KoliBri-Projekt: Wie sollen unsere Hybrid-Komponenten **ButtonLink** und **LinkButton** von Screenreadern vorgelesen werden?
 
 ---
 
-## The debate
+## Die Debatte
 
-There are two possible approaches:
+Es gibt zwei mögliche Ansätze:
 
-**1. By design – "It is announced as it looks."**
+**1. Nach Design – "So wie es aussieht, wird es vorgelesen."**
 
-- A *ButtonLink* that looks like a link is announced as a link.
-- A *LinkButton* that looks like a button is announced as a button.
+- Ein *ButtonLink*, der wie ein Link aussieht, wird als Link vorgelesen.
+- Ein *LinkButton*, der wie ein Button aussieht, wird als Button vorgelesen.
 
-*Pro*: Consistency – links sound alike, buttons sound alike.
-*Con*: Behavior and expectation may diverge.
+*Vorteil*: Homogenität – Links klingen gleich, Buttons klingen gleich.
+*Nachteil*: Verhalten und Erwartung können auseinanderfallen.
 
-**2. By behavior – "It is announced as it acts."**
+**2. Nach Verhalten – "So wie es sich verhält, wird es vorgelesen."**
 
-- A *ButtonLink* that performs an action in the current context is announced as a button.
-- A *LinkButton* that triggers navigation is announced as a link.
+- Ein *ButtonLink*, der eine Aktion im aktuellen Kontext ausführt, wird als Button vorgelesen.
+- Ein *LinkButton*, der eine Navigation auslöst, wird als Link vorgelesen.
 
-*Pro*: Meets expectations – users know whether they are activating or navigating.
-*Con*: The visual cue might not match the audible cue.
-
----
-
-## The decision
-
-After discussion from design and accessibility perspectives, the conclusion was clear:
-
-> **Expectation outweighs appearance.**
-
-Screen-reader users rely on links to navigate and buttons to perform actions. Even when the visual style differs, alignment between behavior and announcement is more important.
+*Vorteil*: Erwartungskonformität – Nutzer wissen, ob sie klicken oder navigieren.
+*Nachteil*: Das visuelle Signal passt nicht immer zum auditiven Signal.
 
 ---
 
-## Why does this matter?
+## Die Entscheidung
 
-- **Accessibility means reliability.** Users shouldn't have to guess whether a "link" changes the page or just submits a form.
-- **Design can mislead; behavior cannot.** A button that looks like a link is still an action. A link that looks like a button is still navigation.
-- **Consistency builds trust.** Clarity is essential, especially for screen reader announcements.
+Nach Diskussion mit Design- und Accessibility-Perspektive war klar:
+
+> **Die Erwartung ist wichtiger als die Optik.**
+
+Screenreader-Nutzer verlassen sich darauf, dass Links navigieren und Buttons Aktionen auslösen. Selbst wenn das visuelle Erscheinungsbild abweicht, ist es entscheidender, dass Verhalten und Ansage übereinstimmen.
 
 ---
 
-## Conclusion
+## Warum ist das wichtig?
 
-The decision in the KoliBri project is:
+- **Barrierefreiheit bedeutet Verlässlichkeit.** Nutzer:innen sollen nicht raten müssen, ob ein "Link" eine Seite wechselt oder nur ein Formular absendet.
+- **Design kann täuschen, Verhalten nicht.** Ein Button, der wie ein Link aussieht, bleibt eine Aktion. Ein Link, der wie ein Button aussieht, bleibt eine Navigation.
+- **Konsistenz schafft Vertrauen.** Gerade beim Vorlesen durch Screenreader ist Klarheit das höchste Gut.
 
-- **ButtonLink** is announced as a **button**.
-- **LinkButton** is announced as a **link**.
+---
 
-This choice emphasizes expected behavior and strengthens assistivity for all users.
+## Fazit
+
+Die Entscheidung im KoliBri-Projekt lautet:
+
+- **ButtonLink** wird als **Button** vorgelesen.
+- **LinkButton** wird als **Link** vorgelesen.
+
+Damit setzen wir auf Erwartungskonformität und stärken die Assistivität für alle Nutzer:innen.
 
 ---
 
 ```text
-+------------------+--------------------------+------------------+
-| Component        | Looks like …            | Acts like …     |
-+==================+==========================+==================+
-| ButtonLink       | Link                     | Button           |
-+------------------+--------------------------+------------------+
-| LinkButton       | Button                   | Link             |
-+------------------+--------------------------+------------------+
++------------------+---------------------------+------------------+
+| Komponente       | Sieht aus wie …           | Verhält sich wie |
++==================+===========================+==================+
+| ButtonLink       | Link                      | Button           |
++------------------+---------------------------+------------------+
+| LinkButton       | Button                    | Link             |
++------------------+---------------------------+------------------+
 ```
 
 ---
 
-**👉 What do you think?**
-Are you Team "Design" or Team "Behavior"? Join the discussion—every small decision makes accessible software better.
+**👉 Was meinst du?**
+Bist du Team "Design" oder Team "Verhalten"? Diskutiere mit uns – denn jede kleine Entscheidung macht barrierefreie Software besser.
+
