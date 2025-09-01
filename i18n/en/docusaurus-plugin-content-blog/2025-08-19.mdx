@@ -1,0 +1,36 @@
+---
+authors: deleonio
+date: '2025-06-22'
+title: Components Package, Themes and Peer Dependencies
+---
+
+# Components Package, Themes and Peer Dependencies
+
+Our project uses several NPM packages that work together to build reusable interfaces. The core is the components package. It delivers the Web Components with their functionality but without fixed styling. This keeps each component lean and allows it to fit into different design concepts.
+
+## Headless components
+
+The components are intentionally built in a headless way. They contain no defaults for colors, spacing or fonts. This freedom allows every organization to define the look completely on its own and seamlessly embed the components into existing design systems.
+
+## Themes provide the styling
+
+The visual appearance is added via separate theme packages. A theme describes the design of buttons, form fields or tables—it delivers the visual look. Users of the components can write their own theme and combine the same functionality with an individual interface.
+
+## Peer dependencies ensure version compatibility
+
+To make clear which theme version matches which components version, we rely on peer dependencies. In a theme package the peer dependency specifies the version range of the components package for which the theme is intended. We follow a simple rule: one theme version belongs exactly to one components version.
+
+## Installation and checks
+
+During `npm install`, NPM automatically verifies whether the peer dependencies are satisfied. If the versions do not match, an error message appears. This hint is intentional, because it prevents installing a combination that could cause problems later.
+
+## No legacy mode
+
+NPM offers the `legacy peer deps` option to skip this verification. In our setup this mode must not be used. Without the error messages it is easy to end up with wrong or broken installations.
+
+## Summary
+
+- Components package: provides the functional building blocks without styling.
+- Theme package: provides the appearance.
+- Peer dependencies: ensure both fit together exactly.
+- NPM error messages: desired and important.
