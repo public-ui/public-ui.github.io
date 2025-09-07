@@ -13,6 +13,10 @@ Dieser Artikel beschreibt, wie Scss zur Erstellung von KoliBri-Themes genutzt we
   KoliBri bietet zum Erstellen von Themes auch einen <KolLink _label="Designer" _href="/docs/concepts/styling/designer" /> an. Je nach persönlichen Präferenzen kann Scss oder der Designer verwendet werden.
 </KolAlert><br/>
 
+<KolAlert _label="CSS-Properties" _type="warning" _variant="card">
+  CSS-Custom-Properties wirken global und sind nicht durch den Shadow DOM geschützt. Verwende präfixierte Namen und bilde interne Werte über SASS-Variablen ab, damit es zu keinen Kollisionen mit Variablen der hostenden Seite kommt.
+</KolAlert><br/>
+
 Scss ist eine Erweiterung von CSS, die es ermöglicht, Variablen, Funktionen, Mixins und vieles mehr zu verwenden. Scss kann für die Erstellung von KoliBri-Themes genutzt. Hierfür hat das Entwicklungsteam vom Projekt <KolLink _label="KERN" _href="https://gitlab.opencode.de/kern-designsystem/pattern-library" _target="_blank" /> ein Build-Script geschrieben, um aus Scss-Dateien die entsprechenden KoliBri-Themes zu generieren.
 
 ## Hintergrund
