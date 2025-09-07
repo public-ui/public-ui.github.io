@@ -145,7 +145,7 @@ const config = {
 							},
 							{
 								label: 'Impressum',
-								to: '/docs/impressum',
+								to: '/docs/legal-notice',
 							},
 						],
 					},
