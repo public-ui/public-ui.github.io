@@ -18,7 +18,7 @@ export const ExampleLink: FC<ComponentProps> = ({ component }) => {
 				})}
 			</Heading>
 			<KolLink
-				_href={`/${VERSION_ID}/sample-react/#/${component}`}
+				_href={`${VERSION_ID}/#/${component}`}
 				_label={translate({
 					id: 'custom.view-component-example',
 					message: 'Beispiel der Komponente ansehen',
