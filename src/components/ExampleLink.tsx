@@ -3,7 +3,7 @@ import React from 'react';
 import { KolLink } from '@public-ui/react';
 import { translate } from '@docusaurus/Translate';
 import Heading from '@theme/Heading';
-import { VERSION_ID } from '@site/src/shares/version';
+import { NETLIFLY_LINK } from '@site/src/shares/version';
 
 interface ComponentProps {
 	component: string;
@@ -18,7 +18,7 @@ export const ExampleLink: FC<ComponentProps> = ({ component }) => {
 				})}
 			</Heading>
 			<KolLink
-				_href={`/${VERSION_ID}/sample-react/#/${component}`}
+				_href={`${NETLIFLY_LINK}/#/${component}`}
 				_label={translate({
 					id: 'custom.view-component-example',
 					message: 'Beispiel der Komponente ansehen',
