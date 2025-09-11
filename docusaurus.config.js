@@ -202,6 +202,24 @@ const config = {
 		mermaid: true,
 	},
 	plugins: [
+		// @ts-ignore
+		function mcpProxy() {
+			return {
+				name: 'mcp-proxy',
+				configureWebpack() {
+					return {
+						devServer: {
+							proxy: {
+								'/mcp': {
+									target: 'http://localhost:3001',
+									pathRewrite: { '^/mcp': '' },
+								},
+							},
+						},
+					};
+				},
+			};
+		},
 		async () => {
 			return {
 				name: 'docusaurus-tailwindcss',
