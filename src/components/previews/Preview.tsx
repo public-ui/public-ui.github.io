@@ -1,6 +1,6 @@
 import type { ReactNode, ReactElement } from 'react';
 import React, { useState, cloneElement } from 'react';
-import { KolCard, KolButton, KolHeading } from '@public-ui/react';
+import { KolCard, KolButton, KolHeading, KolDetails } from '@public-ui/react';
 
 type PropertyComponent = ReactElement<{
 	_on?: {
@@ -15,6 +15,7 @@ type PreviewProps<TProps> = {
 	propertyComponents?: Partial<Record<keyof TProps, PropertyComponent>>;
 	componentName?: string;
 	visibleProperties?: (keyof TProps)[];
+	codeCollapsable?: boolean;
 };
 
 const Preview = <TProps,>({
@@ -23,8 +24,10 @@ const Preview = <TProps,>({
 	propertyComponents,
 	componentName,
 	visibleProperties,
+	codeCollapsable,
 }: PreviewProps<TProps>) => {
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
+	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(codeCollapsable ?? false);
 
 	const updateProperty = (key: keyof TProps, value: unknown) => {
 		setCurrentProps((prev) => ({
@@ -80,10 +83,11 @@ const Preview = <TProps,>({
 		};
 
 		return (
-			<div className="border-2 bg-gray-100 border-solid border-gray-200 rounded-md p-4">
+			<div className="flex flex-col align-stretch border-2 bg-gray-100 border-solid border-gray-200 rounded-md p-4">
 				<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-					<KolHeading _label="Source Code" _level={4} />
+					<KolHeading _label="Source Code" _level={4} style={{ background: 'transparent' }} />
 					<KolButton
+						style={{ background: 'transparent' }}
 						_label="Copy"
 						_variant="secondary"
 						_icons="codicon codicon-copy"
@@ -102,6 +106,8 @@ const Preview = <TProps,>({
 						fontFamily: 'monospace',
 						margin: 0,
 						border: '1px solid #ddd',
+						overflowX: 'auto',
+						width: '100%',
 					}}
 				>
 					<code>{sourceCode}</code>
@@ -120,40 +126,57 @@ const Preview = <TProps,>({
 
 		return (
 			<KolCard _label="Playground">
-				{filteredEntries.map(([key, component]) => {
-					if (!React.isValidElement(component)) return null;
+				<div className="flex flex-col flex-wrap max-h-[500px] gap-x-4">
+					{filteredEntries.map(([key, component]) => {
+						if (!React.isValidElement(component)) return null;
 
-					// Get the current value for this property
-					const currentValue = currentProps[key];
+						// Get the current value for this property
+						const currentValue = currentProps[key];
 
-					return (
-						<div key={key as string} style={{ marginBottom: '10px' }}>
-							{cloneElement(component, {
-								...component.props,
-								_value: currentValue,
-								_on: {
-									...component.props?._on,
-									onInput: (event: Event, value: unknown) => {
-										updateProperty(key, value);
-										// Call original onInput if it exists
-										component.props?._on?.onInput?.(event, value);
+						return (
+							<div key={key as string} style={{ marginBottom: '10px' }}>
+								{cloneElement(component, {
+									...component.props,
+									_value: currentValue,
+									_on: {
+										...component.props?._on,
+										onInput: (event: Event, value: unknown) => {
+											updateProperty(key, value);
+											// Call original onInput if it exists
+											component.props?._on?.onInput?.(event, value);
+										},
 									},
-								},
-							})}
-						</div>
-					);
-				})}
+								})}
+							</div>
+						);
+					})}
+				</div>
 			</KolCard>
 		);
 	};
 
 	return (
-		<div className="grid grid-cols-2 grid-rows-[1fr_auto] gap-4 border-2 border-solid border-gray-200 rounded-md p-2">
+		<div
+			className={`grid grid-cols-[${
+				visibleProperties?.length !== 0 ? '1fr_1fr' : '1fr'
+			}] grid-rows-[1fr_auto] gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}
+		>
 			<div className="flex mb-4">
-				<span className="m-auto">{children(currentProps)}</span>
+				<span className="m-auto min-w-lg">{children(currentProps)}</span>
 			</div>
-			<div className="row-span-2">{renderPropertyComponents()}</div>
-			{renderSourceCode()}
+			<div>{visibleProperties?.length !== 0 && renderPropertyComponents()}</div>
+			{codeCollapsable ? (
+				<KolDetails
+					className="col-span-2"
+					_label="Source Code"
+					_open={codeCollapsed}
+					_on={{ onToggle: (_, open) => setCodeCollapsed(open) }}
+				>
+					{renderSourceCode()}
+				</KolDetails>
+			) : (
+				<div className="col-span-2">{renderSourceCode()}</div>
+			)}
 		</div>
 	);
 };

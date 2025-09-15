@@ -1,7 +1,7 @@
 import { KolInputCheckbox } from '@public-ui/react';
 import React from 'react';
 
-const CheckProperty = (props: {
+const ResizeProperty = (props: {
 	label: string;
 	_value?: boolean;
 	_on?: {
@@ -15,7 +15,7 @@ const CheckProperty = (props: {
 			_labelAlign="left"
 			_on={{
 				onInput: (event: Event, value: unknown) => {
-					props._on?.onInput?.(event, !!value);
+					props._on?.onInput?.(event, value ? 'vertical' : 'none');
 				},
 			}}
 			_checked={props._value}
@@ -23,4 +23,4 @@ const CheckProperty = (props: {
 	);
 };
 
-export default CheckProperty;
+export default ResizeProperty;
