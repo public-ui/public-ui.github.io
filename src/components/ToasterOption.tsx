@@ -19,9 +19,14 @@ export const ToasterOption: FC = () => {
 				<p>
 					<em>{translate({ id: 'toaster.type.example.label', message: 'Beispiel:' })}</em>{' '}
 					{translate({ id: 'toaster.type.example.firstFor', message: 'Bei' })} <code>kol-button</code>:{' '}
-					<code>"button" | "submit" | "reset"</code>,{' '}
-					{translate({ id: 'toaster.type.example.secondFor', message: 'bei' })} <code>kol-alert</code>:{' '}
-					<code>"info" | "success" | "warning" | "error"</code>.
+					<code>
+						{'"'}button{'"'} | {'"'}submit{'"'} | {'"'}reset{'"'}
+					</code>
+					, {translate({ id: 'toaster.type.example.secondFor', message: 'bei' })} <code>kol-alert</code>:{' '}
+					<code>
+						{'"'}info{'"'} | {'"'}success{'"'} | {'"'}warning{'"'} | {'"'}error{'"'}
+					</code>
+					.
 				</p>
 
 				<li>
@@ -31,7 +36,18 @@ export const ToasterOption: FC = () => {
 					{translate({ id: 'toaster.level.variant.prefix', message: '→ steuert das ' })}
 					<strong>{translate({ id: 'toaster.level.variant.bold', message: 'visuelle Erscheinungsbild' })}</strong>
 					{translate({ id: 'toaster.level.variant.suffix', message: ', z. B. ' })}
-					<code>"primary"</code>, <code>"secondary"</code>, <code>"ghost"</code>.
+					<code>
+						{'"'}primary{'"'}
+					</code>
+					,{' '}
+					<code>
+						{'"'}secondary{'"'}
+					</code>
+					,{' '}
+					<code>
+						{'"'}ghost{'"'}
+					</code>
+					.
 				</li>
 
 				<li>
@@ -45,7 +61,14 @@ export const ToasterOption: FC = () => {
 				<p>
 					<em>{translate({ id: 'toaster.behavior.example.label', message: 'Beispiel:' })}</em>{' '}
 					{translate({ id: 'toaster.behavior.example.for', message: 'Bei' })} <code>kol-tabs</code>:{' '}
-					<code>"select-automatic"</code> vs. <code>"select-manual"</code>.
+					<code>
+						{'"'}select-automatic{'"'}
+					</code>{' '}
+					vs.{' '}
+					<code>
+						{'"'}select-manual{'"'}
+					</code>
+					.
 				</p>
 			</ul>
 
