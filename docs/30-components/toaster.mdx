@@ -10,6 +10,7 @@ tags:
 
 import Readme from '../../readmes/toaster/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import { ToasterOption } from '@site/src/components/ToasterOption';
 
 # Toaster
 
@@ -29,7 +30,7 @@ import { ToasterService } from '@public-ui/components';
 
 // Get the toaster instance for the current HTML document.
 const toaster = ToasterService.getInstance(document, {
-	defaultAlertType: 'msg', // Standard: 'card'
+	defaultVariant: 'msg', // Standard: 'card'
 });
 
 // Enqueue a new toast to the toaster to display:
@@ -73,15 +74,9 @@ const closeToast = toaster.enqueue({
 /* Optional: Toast wieder schließen mit `closeToast()` */
 ```
 
-### Anzeigetyp des Toast
+### Anzeige-Option des Toast
 
-Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögliche Werte sind:
-
-- `default`
-- `error`
-- `info`
-- `success`
-- `warning`
+<ToasterOption />
 
 <Readme />
 
