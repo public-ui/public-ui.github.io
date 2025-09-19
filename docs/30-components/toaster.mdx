@@ -10,7 +10,6 @@ tags:
 
 import Readme from '../../readmes/toaster/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
-import { ToasterOption } from '@site/src/components/ToasterOption';
 
 # Toaster
 
@@ -76,7 +75,20 @@ const closeToast = toaster.enqueue({
 
 ### Anzeige-Option des Toast
 
-<ToasterOption />
+In KoliBri unterscheiden wir drei Ebenen:  
+
+- **`_type`** → definiert die **semantische Bedeutung** oder logische Funktion einer Komponente.  
+  *Beispiel*: Bei `kol-button`: `"button" | "submit" | "reset"`, bei `kol-alert`: `"info" | "success" | "warning" | "error"`.  
+
+- **`_variant`** → steuert das **visuelle Erscheinungsbild**, z. B. `"primary"`, `"secondary"`, `"ghost"`.  
+
+- **`_behavior`** → bestimmt das **Interaktionsverhalten** der Komponente.  
+  *Beispiel*: Bei `kol-tabs`: `"select-automatic"` vs. `"select-manual"`.  
+
+👉 Kurz gesagt:  
+- `_type` = Bedeutung & Logik  
+- `_variant` = Look & Styling  
+- `_behavior` = Interaktion & Verhalten  
 
 <Readme />
 

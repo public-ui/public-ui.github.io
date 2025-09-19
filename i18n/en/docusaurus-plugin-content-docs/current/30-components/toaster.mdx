@@ -1,0 +1,95 @@
+---
+title: Toaster
+description: Beschreibung, Spezifikation und Beispiele für die Toast-Komponente.
+tags:
+  - Toast
+  - Beschreibung
+  - Spezifikation
+  - Beispiele
+---
+
+import Readme from '/readmes/toaster/readme.md';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Toaster
+
+Synonyms: Notification, Snackbar
+
+With the **Toast** service, you provide visual feedback to users. It is displayed at the top of the browser window
+ until it is closed. If multiple toasts are opened without the previous ones being closed, they are displayed one below the other.
+
+## Construction
+
+The Toast components are not used directly, but are always constructed via the ToasterService.
+
+### Code
+
+```js
+import { ToasterService } from '@public-ui/components';
+
+// Get the toaster instance for the current HTML document.
+const toaster = ToasterService.getInstance(document, {
+	defaultVariant: 'msg', // Standard: 'card'
+});
+
+// Enqueue a new toast to the toaster to display:
+toaster.enqueue({
+	label: 'This is the title',
+	description: 'Magna eu sit adipisicing cillum amet esse in aute quis in dolore.',
+	type: 'info',
+	variant: 'msg', // Standard: 'card'
+});
+```
+
+### Other service methods
+
+- `closeAll`: Closes all toasts
+- `dispose`: Removes the Toast container. The Toaster instance can no longer be used.
+
+## Usage
+
+### Headline
+
+Use the **`_label`** attribute to specify the toast's title.
+
+### Content
+
+Use the **`_description`** attribute to specify the text content of the toast.
+
+As an alternative to the static description, you can define your own render function using the **`_render`** attribute. This is called with a reference
+to the HTML element of the Toast component. An object is also passed that provides a `close`-function for closing the Toast.
+
+```ts
+const closeToast = toaster.enqueue({
+	render: (element: HTMLElement, { close }) => {
+		element.textContent = 'Mein Inhalt';
+		const customCloseButton = document.createElement('button');
+		customCloseButton.textContent = 'Toast schließen';
+		element.appendChild(customCloseButton);
+		customCloseButton.addEventListener('click', close, { once: true });
+	},
+});
+
+/* Optional: Close Toast again with `closeToast()` */
+```
+
+### Toast display option
+
+In KoliBri we distinguish three levels:  
+
+- **`_type`** → defines the **semantic meaning** or logical function of a component.  
+  *Example*: For `kol-button`: `"button" | "submit" | "reset"`, for `kol-alert`: `"info" | "success" | "warning" | "error"`.  
+
+- **`_variant`** → controls the **visual appearance**, e.g. `"primary"`, `"secondary"`, `"ghost"`.  
+
+- **`_behavior`** → determines the **interaction behavior** of the component.  
+  *Example*: For `kol-tabs`: `"select-automatic"` vs. `"select-manual"`.  
+
+👉 In short:  
+- `_type` = meaning & logic  
+- `_variant` = look & styling  
+- `_behavior` = interaction & behavior   
+
+<Readme />
+
+<ExampleLink component="toast" />
