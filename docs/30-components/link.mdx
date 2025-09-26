@@ -87,27 +87,7 @@ Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links 
 ## Verwendung mit React Router
 
 Um den **React Router** mit der Link-Komponente zu nutzen, kann der `onClick`-Handler des Links überschrieben werden.
-Dabei wird der `navigate`-Hook aus React Router im Handler aufgerufen:
-
-```tsx
-import {useNavigate} from "react-router";
-
-export function MyComponent() {
-  const navigate = useNavigate();
-
-  return (
-    <kol-link
-      _on={{
-        onClick: () => navigate('/overview'),
-      }}
-    >
-      Gehe zur Übersicht
-    </kol-link>
-  );
-}
-````
-
-Damit lassen sich `kol-link`-Komponenten nahtlos in eine React Router Navigation integrieren.
+Dabei wird der `navigate`-Hook aus React Router im Handler aufgerufen. So bleibt die Navigation im SPA‑Kontext, ohne die Seite neu zu laden.
 
 ## Barrierefreiheit
 
@@ -132,3 +112,4 @@ Damit lassen sich `kol-link`-Komponenten nahtlos in eine React Router Navigation
 <Configurator component="link" sample="icons" />
 <Configurator component="link" sample="image" />
 <Configurator component="link" sample="target" />
+<Configurator component="link" sample="react-router" />
