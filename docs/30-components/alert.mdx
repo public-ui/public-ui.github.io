@@ -102,6 +102,42 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 - Die Schriftfarbe ist abhängig von der Hintergrundfarbe und wechselt immer auf die Schriftfarbe mit dem größeren Farbkontrast zur Hintergrundfarbe.
 - Ist der Farbkontrast für AA nicht ausreichend, wird die Hintergrundfarbe überschrieben.
 
+### Barrierefreie Benachrichtigungen mit `_alert`
+
+Die **Alert**-Komponente bietet über das Attribut `_alert` die Möglichkeit, Screenreader-Benachrichtigungen zu aktivieren. Wenn `_alert` gesetzt ist, wird die ARIA-Rolle `alert` bzw. `aria-live="assertive"` verwendet, damit Screenreader die Benachrichtigung automatisch vorlesen.
+
+**Wichtiger Hinweis zum Verhalten:**
+Das `_alert`-Attribut funktioniert nur, wenn:
+- Die **Alert**-Komponente initial neu gerendert wird, oder
+- Sich der **Inhalt** des Alerts ändert
+
+Ohne eine inhaltliche Änderung erkennen Screenreader keine neue Information und lesen den Alert nicht vor.
+
+**Beispiele für wirksame Nutzung:**
+```html
+<!-- Alert wird neu hinzugefügt (initial rendering) -->
+<kol-alert _label="Erfolgreich gespeichert" _type="success" _alert>
+  Ihre Daten wurden erfolgreich übertragen.
+</kol-alert>
+
+<!-- Inhalt ändert sich dynamisch -->
+<kol-alert _label="Status-Update" _type="info" _alert>
+  {dynamicMessage}
+</kol-alert>
+```
+
+**Nicht wirksam:**
+```html
+<!-- Alert bereits vorhanden, kein Re-Render, keine Inhaltsänderung -->
+<kol-alert _label="Statische Meldung" _type="info" _alert>
+  Diese Meldung wird nicht vorgelesen.
+</kol-alert>
+```
+
+### Hinweis zu `_alert` und Screenreadern
+
+Beim `<kol-alert>` lassen sich `role="alert"` und `aria-live="polite"` nachträglich nicht wirksam setzen; beide verhalten sich gleich und werden im Screenreader erst ausgelöst, wenn sich der Inhalt ändert.
+
 ## Links und Referenzen
 
 - <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#alert" _target="_blank"></kol-link>
