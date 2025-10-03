@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const rimraf = require('rimraf');
+const { rimraf } = require('rimraf');
 
 function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
@@ -120,7 +120,7 @@ const mkDirs = (dirs, index = 0) => {
 	}
 };
 
-rimraf([...DOC_FOLDERS, '**/*.md'].join('/'), () => {
+rimraf([...DOC_FOLDERS, '**/*.md'].join('/')).then(() => {
 	README_PATHS.forEach((readmePath) => {
 		const name = path.basename(readmePath).replace(/\..+/g, '');
 		const folders = [...DOC_FOLDERS, name];
