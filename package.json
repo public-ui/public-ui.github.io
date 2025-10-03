@@ -25,7 +25,9 @@
 		"postinstall": "npm-run-all2 postinstall:*",
 		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" static/assets --dot",
 		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" static/assets --dot",
-		"update": "pnpm ncu:minor && pnpm ncu:major"
+		"update": "pnpm ncu:minor && pnpm ncu:major",
+		"mcp": "tsx mcp/server.ts",
+		"dev": "npm-run-all2 --parallel mcp start"
 	},
 	"files": [
 		"build"
@@ -47,6 +49,7 @@
 		"@public-ui/theme-default": "3.0.3",
 		"classnames": "2.5.1",
 		"docusaurus-lunr-search": "3.6.1",
+		"express": "^5.1.0",
 		"mermaid": "11.10.0",
 		"prettier": "2.8.8",
 		"react": "19.1.1",
@@ -64,6 +67,7 @@
 		"@eslint/eslintrc": "3.3.1",
 		"@eslint/js": "9.33.0",
 		"@tsconfig/docusaurus": "2.0.3",
+		"@types/express": "^5.0.3",
 		"@types/node": "24.3.0",
 		"@types/prettier": "2.7.3",
 		"@types/react": "19.1.10",
@@ -88,6 +92,7 @@
 		"rimraf": "3.0.2",
 		"sass": "1.90.0",
 		"tailwindcss": "3.4.17",
+		"tsx": "^4.20.5",
 		"typescript": "5.9.2"
 	},
 	"browserslist": {
@@ -101,5 +106,6 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
-	}
+	},
+	"packageManager": "pnpm@10.15.1+sha512.34e538c329b5553014ca8e8f4535997f96180a1d0f614339357449935350d924e22f8614682191264ec33d1462ac21561aff97f6bb18065351c162c7e8f6de67"
 }
