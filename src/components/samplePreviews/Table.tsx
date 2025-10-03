@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolTableStateful } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react-v19';
 
 const DATA = [
 	{ left: 'Left', center: 'Center', right: 'Right' },

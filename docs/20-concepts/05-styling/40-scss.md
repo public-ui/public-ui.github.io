@@ -3,7 +3,7 @@ title: Scss
 description: Auf dieser Seite wird beschrieben, wie Scss zur Erstellung von KoliBri-Themes verwendet werden kann.
 ---
 
-import { KolAlert, KolLink } from '@public-ui/react';
+import { KolAlert, KolLink } from '@public-ui/react-v19';
 
 # Scss
 

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import React from 'react';
-import { KolSelect } from '@public-ui/react';
+import { KolSelect } from '@public-ui/react-v19';
 
 type Props = {
 	label: ReactNode;

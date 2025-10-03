@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import React from 'react';
-import { KolLink } from '@public-ui/react';
+import { KolLink } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import Heading from '@theme/Heading';
 import { DEV_NETLIFLY_LINK } from '@site/src/shares/version';

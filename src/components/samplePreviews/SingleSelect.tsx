@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolSingleSelect } from '@public-ui/react';
+import { KolSingleSelect } from '@public-ui/react-v19';
 import type { Option, StencilUnknown } from '@public-ui/components';
 
 const COUNTRY_OPTIONS = [

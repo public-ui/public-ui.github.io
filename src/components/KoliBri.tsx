@@ -1,5 +1,5 @@
 import { translate } from '@docusaurus/Translate';
-import { KolAbbr } from '@public-ui/react';
+import { KolAbbr } from '@public-ui/react-v19';
 import type { FunctionComponent } from 'react';
 import React from 'react';
 

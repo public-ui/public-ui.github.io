@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolInputText } from '@public-ui/react';
+import { KolInputText } from '@public-ui/react-v19';
 
 const InputText = () => <KolInputText _placeholder="Placeholder" _label="Label" _hideLabel _type="search" />;
 

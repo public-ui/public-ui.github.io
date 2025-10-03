@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolForm, KolInputText } from '@public-ui/react';
+import { KolForm, KolInputText } from '@public-ui/react-v19';
 
 const Form = () => (
 	<KolForm _requiredText={false}>

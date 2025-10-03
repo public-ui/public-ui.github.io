@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolToolbar } from '@public-ui/react';
+import { KolToolbar } from '@public-ui/react-v19';
 
 const Toolbar = () => (
 	<KolToolbar

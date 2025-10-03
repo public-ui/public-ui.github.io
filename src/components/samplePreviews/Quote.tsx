@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolQuote } from '@public-ui/react';
+import { KolQuote } from '@public-ui/react-v19';
 
 const Quote = () => (
 	<KolQuote

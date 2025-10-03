@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolDetails } from '@public-ui/react';
+import { KolDetails } from '@public-ui/react-v19';
 
 const Details = () => (
 	<KolDetails _label="Label" _open>

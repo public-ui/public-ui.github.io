@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 import type { Attribute } from '../../LiveEditorCompact/types';
-import { KolButton, KolDetails } from '@public-ui/react';
+import { KolButton, KolDetails } from '@public-ui/react-v19';
 import type { KoliBriIconsProp } from '@public-ui/components';
 
 type Props = {

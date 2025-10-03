@@ -1,6 +1,6 @@
 import { translate } from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { KolLink } from '@public-ui/react';
+import { KolLink } from '@public-ui/react-v19';
 import React, { type ReactNode } from 'react';
 
 export default function DocumentationVersionHint(): ReactNode {

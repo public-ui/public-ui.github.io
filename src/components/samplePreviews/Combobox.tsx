@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolCombobox } from '@public-ui/react';
+import { KolCombobox } from '@public-ui/react-v19';
 
 const COUNTRY_SUGGESTIONS = ['Dänemark', 'Deutschland', 'Dominica'];
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolButton } from '@public-ui/react';
+import { KolButton } from '@public-ui/react-v19';
 
 const Button = () => (
 	<KolButton
