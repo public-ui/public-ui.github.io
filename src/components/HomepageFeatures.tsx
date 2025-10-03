@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
-import { KolIcon, KolLink, KolLinkButton } from '@public-ui/react';
+import { KolIcon, KolLink, KolLinkButton } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import Heading from '@theme/Heading';
 import { VERSION_ID } from '@site/src/shares/version';

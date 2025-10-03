@@ -1,4 +1,4 @@
-import { KolLink, KolTabs } from '@public-ui/react';
+import { KolLink, KolTabs } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useState } from 'react';
 

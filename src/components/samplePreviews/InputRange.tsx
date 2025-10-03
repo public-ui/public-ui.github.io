@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolInputRange } from '@public-ui/react';
+import { KolInputRange } from '@public-ui/react-v19';
 
 const InputRange = () => (
 	<KolInputRange

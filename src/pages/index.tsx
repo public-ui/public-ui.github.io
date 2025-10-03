@@ -1,5 +1,5 @@
 import { translate } from '@docusaurus/Translate';
-import { KolKolibri, KolLink, KolLinkButton } from '@public-ui/react';
+import { KolKolibri, KolLink, KolLinkButton } from '@public-ui/react-v19';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';

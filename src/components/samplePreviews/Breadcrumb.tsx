@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolBreadcrumb } from '@public-ui/react';
+import { KolBreadcrumb } from '@public-ui/react-v19';
 
 const Breadcrumb = () => (
 	<KolBreadcrumb

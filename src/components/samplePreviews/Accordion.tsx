@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolAccordion } from '@public-ui/react';
+import { KolAccordion } from '@public-ui/react-v19';
 
 const Accordion = () => (
 	<>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolInputPassword } from '@public-ui/react';
+import { KolInputPassword } from '@public-ui/react-v19';
 
 const InputPassword = () => <KolInputPassword _hideLabel _label="Password (Disabled)" _touched _value="XXXXXXXXXX" />;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolTabs } from '@public-ui/react';
+import { KolTabs } from '@public-ui/react-v19';
 
 const tabs = [
 	{

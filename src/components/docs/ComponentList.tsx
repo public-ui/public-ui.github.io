@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import Link from '@docusaurus/Link';
-import { KolBadge, KolCard } from '@public-ui/react';
+import { KolBadge, KolCard } from '@public-ui/react-v19';
 
 import type { Language, Locale } from '../../shares/language';
 import { COMPONENT_SYNONYMS } from '../../shares/synonyms';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolAbbr } from '@public-ui/react';
+import { KolAbbr } from '@public-ui/react-v19';
 
 const Abbr = () => (
 	<p>

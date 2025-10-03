@@ -1,4 +1,4 @@
-import { KolHeading, KolLinkButton, KolPopoverButton } from '@public-ui/react';
+import { KolHeading, KolLinkButton, KolPopoverButton } from '@public-ui/react-v19';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import React from 'react';
 // import { getDarkMode, setDarkMode } from '../../shares/store';

@@ -1,5 +1,5 @@
 import allElements from '@public-ui/components/custom-elements.json';
-import { KolBadge, KolHeading, KolTabs } from '@public-ui/react';
+import { KolBadge, KolHeading, KolTabs } from '@public-ui/react-v19';
 import React, { useEffect, useMemo, useState } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolInputColor } from '@public-ui/react';
+import { KolInputColor } from '@public-ui/react-v19';
 
 const InputColor = () => (
 	<KolInputColor

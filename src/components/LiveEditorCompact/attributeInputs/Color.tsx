@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import React, { useEffect } from 'react';
-import { KolInputColor } from '@public-ui/react';
+import { KolInputColor } from '@public-ui/react-v19';
 
 type Props = {
 	label: ReactNode;
