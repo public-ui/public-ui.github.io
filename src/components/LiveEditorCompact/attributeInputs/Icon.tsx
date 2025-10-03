@@ -1,4 +1,4 @@
-import type { ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 import type { Attribute } from '../../LiveEditorCompact/types';
 import { KolButton, KolDetails } from '@public-ui/react';
