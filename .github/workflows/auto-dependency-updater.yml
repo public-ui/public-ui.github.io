@@ -73,10 +73,13 @@ jobs:
         with:
           base: ${{ matrix.base }}
           branch: ${{ env.issue }}-${{ env.version }}/auto-update-deps
+          author: 'deleonio <6279703+deleonio@users.noreply.github.com>'
           commit-message: 'chore: update dependencies and lock file'
+          # committer: 'deleonio <6279703+deleonio@users.noreply.github.com>'
           title: 'chore(${{ env.version }}): update dependencies and lock file'
           body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
           delete-branch: true
+          # token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Quality Checks
         if: steps.verify-changed-files.outputs.changed == 'true'
