@@ -1,0 +1,26 @@
+name: Add Issues to Project
+
+# Requires a repository variable named `PUBLIC_UI_PROJECT_URL` that contains the
+# GitHub Project (beta) URL and a secret named `PUBLIC_UI_PROJECT_TOKEN` holding
+# a fine-grained PAT with `project: write` access to that board.
+
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+      - transferred
+
+permissions:
+  contents: read
+
+jobs:
+  add-to-project:
+    name: Add issue to roadmap project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add issue to organization project
+        uses: actions/add-to-project@v1.0.1
+        with:
+          project-url: ${{ vars.PUBLIC_UI_PROJECT_URL }}
+          github-token: ${{ secrets.PUBLIC_UI_PROJECT_TOKEN }}
