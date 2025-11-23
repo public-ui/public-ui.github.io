@@ -93,14 +93,15 @@ const config = {
 				},
 				items: [
 					{
-						label: 'Version 3',
+						label: 'Version 4 (next)',
 						position: 'right',
 						items: [
 							{
 								type: 'html',
 								className: 'dropdown-archived-versions',
-								value: '<strong class="dropdown__link">Version 3</strong>',
+								value: '<strong class="dropdown__link">Version 4 (next)</strong>',
 							},
+							{ to: `${PUBLIC_BASE_URL}/`, label: 'Version 3' },
 							{ to: `${PUBLIC_BASE_URL}/v2/`, label: 'Version 2' },
 							{
 								type: 'html',

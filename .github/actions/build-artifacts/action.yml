@@ -7,34 +7,42 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - uses: ./.github/actions/pnpm-setup
+    # ========================================
+    # Setup: pnpm, Node.js, dependencies
+    # ========================================
+    - name: Setup pnpm and install dependencies
+      uses: ./.github/actions/pnpm-setup
 
-    - name: Build Docs
+    # ========================================
+    # Build current v4 documentation → /next
+    # ========================================
+    - name: Build v4 Docs (current)
       shell: bash
       run: npm run build
 
-    - uses: actions/setup-node@v4
+    - name: Move v4 build to /next directory
+      shell: bash
+      run: |
+        mkdir -p build-temp
+        mv build/* build-temp/
+        mkdir -p build/next
+        mv build-temp/* build/next/
+        rmdir build-temp
+
+    # ========================================
+    # Setup Node.js for package downloads
+    # ========================================
+    - name: Setup Node.js with GitHub Package Registry
+      uses: actions/setup-node@v4
       with:
         node-version: 22
         registry-url: 'https://npm.pkg.github.com'
         scope: '@public-ui'
 
-    - name: Download Docs (v2)
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
-      shell: bash
-      run: |
-        rm -rf package *.tgz
-        npm pack @public-ui/docs-v2@latest > /dev/null
-        tar -xzvf public-ui-docs-*.tgz > /dev/null
-
-        rm -rf build/docs/2.2 build/v2
-        mkdir -p build/v2
-        mv package/build/* build/v2/
-
-        rm -rf package *.tgz
-
-    - name: Download designer (v1)
+    # ========================================
+    # Version 1 - Docs, Designer, Sample React
+    # ========================================
+    - name: Download v1 Designer → /v1/designer
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
       shell: bash
@@ -42,14 +50,12 @@ runs:
         rm -rf package *.tgz
         npm pack @public-ui/designer@^1
         tar -xzvf public-ui-designer-*.tgz
-
         rm -rf build/v1/designer
         mkdir -p build/v1
         mv package/dist build/v1/designer
-
         rm -rf package *.tgz
 
-    - name: Download sample react (v1)
+    - name: Download v1 Sample React → /v1/sample-react
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
       shell: bash
@@ -57,14 +63,28 @@ runs:
         rm -rf package *.tgz
         npm pack @public-ui/sample-react@^1
         tar -xzvf public-ui-sample-react-*.tgz
-
         rm -rf build/v1/sample-react
         mkdir -p build/v1
         mv package/dist build/v1/sample-react
-
         rm -rf package *.tgz
 
-    - name: Download designer (v2)
+    # ========================================
+    # Version 2 - Docs, Designer, Sample React
+    # ========================================
+    - name: Download v2 Docs → /v2
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
+      run: |
+        rm -rf package *.tgz
+        npm pack @public-ui/docs-v2@latest > /dev/null
+        tar -xzvf public-ui-docs-*.tgz > /dev/null
+        rm -rf build/docs/2.2 build/v2
+        mkdir -p build/v2
+        mv package/build/* build/v2/
+        rm -rf package *.tgz
+
+    - name: Download v2 Designer → /v2/designer
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
       shell: bash
@@ -72,14 +92,12 @@ runs:
         rm -rf package *.tgz
         npm pack @public-ui/designer@^2
         tar -xzvf public-ui-designer-*.tgz
-
         rm -rf build/v2/designer
         mkdir -p build/v2
         mv package/dist build/v2/designer
-
         rm -rf package *.tgz
 
-    - name: Download sample react (v2)
+    - name: Download v2 Sample React → /v2/sample-react
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
       shell: bash
@@ -87,14 +105,26 @@ runs:
         rm -rf package *.tgz
         npm pack @public-ui/sample-react@^2
         tar -xzvf public-ui-sample-react-*.tgz
-
         rm -rf build/v2/sample-react
         mkdir -p build/v2
         mv package/dist build/v2/sample-react
-
         rm -rf package *.tgz
 
-    - name: Download sample react (v3)
+    # ========================================
+    # Version 3 - Docs, Sample React (no Designer)
+    # ========================================
+    - name: Download v3 Docs → / (root)
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
+      run: |
+        rm -rf package *.tgz
+        npm pack @public-ui/docs-v3@latest > /dev/null
+        tar -xzvf public-ui-docs-*.tgz > /dev/null
+        mv package/build/* build/
+        rm -rf package *.tgz
+
+    - name: Download v3 Sample React → /sample-react
       env:
         NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
       shell: bash
@@ -102,9 +132,7 @@ runs:
         rm -rf package *.tgz
         npm pack @public-ui/sample-react@">=3.0.0-rc.1" --include-prerelease
         tar -xzvf public-ui-sample-react-*.tgz
-
-        rm -rf build/v3/sample-react
-        mkdir -p build/v3
-        mv package/dist build/v3/sample-react
-
+        rm -rf build/sample-react
+        mkdir -p build
+        mv package/dist build/sample-react
         rm -rf package *.tgz
