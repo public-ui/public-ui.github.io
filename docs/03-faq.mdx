@@ -17,43 +17,40 @@ import { KolLink } from '@public-ui/react-v19';
 ## Allgemeines
 
 - **Was ist das Besondere an KoliBri?**<br/>
-  KoliBri bietet granulare, gut wiederverwendbare HTML-Kompositionen an, die in sich semantisch barrierefrei und von der Gestaltung entkoppelt sind. Mittels des Basis-Stylings, welches sich ausschließlich auf das Layout beschränkt, können die Komponenten einfacher an eigene Corporate Designs angepasst werden.
+  KoliBri liefert klar zugeschnittene HTML-Kompositionen, die von Haus aus semantisch barrierefrei und optisch entkoppelt sind. Das Basis-Styling deckt nur das Layout ab, sodass Sie die Optik schnell an Ihr Corporate Design anpassen können.
 - **Wie spart man mit KoliBri ein?**<br/>
-  Webseiten/-anwendungen werden mit unterschiedlichen HTML-Elementen und Varianten von Elementen umgesetzt. Jede dieser HTML-Strukturen muss semantisch barrierefrei aufgebaut und ausgezeichnet werden. KoliBri fokussiert sich auf genau solche HTML-Strukturen und deren Varianten und fasst sie in klar definierte Komponenten zusammen. Die Entwicklungsteams, die KoliBri später wiederverwenden, können diese Komponenten nun einsetzen und über Parameter anpassen, um unterschiedliche Varianten barrierefrei darzustellen, ohne dabei über die Korrektheit der HTML-Struktur innerhalb der Komponente nachdenken zu müssen. Sie werden entlastet und können ihren Fokus mehr auf die Umsetzung der eigentlichen Fachlichkeit legen.<br/>
+  Jede HTML-Struktur muss barrierefrei aufgebaut werden. KoliBri bündelt typische Strukturen und Varianten in fertige, barrierefreie Komponenten. Teams nutzen sie direkt, passen sie per Parameter an und sparen so Zeit für die Fachlogik, statt die HTML-Korrektheit erneut prüfen zu müssen.<br/>
 - **Wie kann man KoliBri nicht technisch erklären?**<br/>
-  KoliBri ist für die Barrierefreiheit wie ein Thermomix® für das Kochen. Er erleichtert das Kochen, indem man sich einfach ein passendes Gericht (Komponente) aussuchen kann, ohne wissen zu müssen, wie man es genau kochen muss. Der Thermomix® (KoliBri) führt einen beim Kochen durch den Prozess (Parameter für unterschiedliche Varianten) und stellt sicher, dass am Ende das passende Gericht (barrierefreie Benutzeroberfläche) herauskommt.
+  KoliBri ist für Barrierefreiheit wie ein Thermomix® fürs Kochen: Sie wählen die passende Komponente und steuern Varianten über Parameter. Der Prozess führt Sie sicher zur barrierefreien Oberfläche, ohne dass Sie jedes Detail selbst kochen müssen.
 - **Wie abhängig mache ich mich, wenn ich KoliBri einsetze?**<br/>
-  Vergleicht man KoliBri mit einem LEGO®-Set, dann kann man die enthaltenen Bausteine einfach mit anderen Bausteinen mischen, um die Gesamtanwendung abzubilden. Man begibt sich in eine teilweise Abhängigkeit (logisch), um im Gegenzug Vorteile bei der Sicherstellung der Barrierefreiheit zu erhalten.
+  KoliBri verhält sich wie ein LEGO®-Set: Die Bausteine lassen sich mit anderen kombinieren. Sie gehen eine bewusste, moderate Abhängigkeit ein und gewinnen dafür Sicherheit bei der Barrierefreiheit.
 - **Wie kann ich eine Komponente beeinflussen, wenn nötig?**<br/>
-  KoliBri-Komponenten sind zur Sicherstellung der Barrierefreiheit sehr restriktiv und werden durch Komposition wiederverwendet. Anpassungen von außen lassen sich nur durch das Wrappen oder den Expert-Slot vornehmen. Das Styling lässt sich über das Theme-Konzept konfigurieren.
+  KoliBri-Komponenten sind bewusst restriktiv, damit sie barrierefrei bleiben. Externe Eingriffe gelingen nur über Wrapping oder den Expert-Slot. Das Styling steuern Sie über das Theme-Konzept.
 - **Was mache ich, wenn eine Komponente oder Funktion fehlt?**<br/>
-  Neue fachlich neutrale Komponenten oder Funktionen sollen innerhalb von KoliBri realisiert werden. Hierbei ist das Mitwirken ausdrücklich erwünscht und beschleunigt die Umsetzung.
+  Fachlich neutrale Komponenten oder Funktionen sollten direkt in KoliBri entstehen. Mitarbeit ist ausdrücklich willkommen und beschleunigt die Umsetzung.
 - **Was besagt die Lizenzierung?**<br/>
-  Die EUPL erlaubt die uneingeschränkte Nutzung der Artefakte, die auf konfigurative Weise an die eigenen Bedürfnisse angepasst werden können.
-  Andererseits erzwingt sie die Offenlegung von Änderungen, die beim Kopieren von Quellcode aus KoliBri hervorgegangen sind (Copy-Left).
-  Mehr hierzu finden Sie in der <KolLink _label="Lizenz" _href="/docs/project/license" />.
+  Die EUPL erlaubt die freie Nutzung und konfigurative Anpassung der Artefakte. Änderungen am kopierten Quellcode müssen offengelegt werden (Copy-Left). Details stehen in der <KolLink _label="Lizenz" _href="/docs/project/license" />.
 
 ## Theming und Styling
 
 - **Wer erstellt ein Theme, wenn es noch nicht existiert?**<br/>
-  Aktuell ist es so, dass das ITZBund zahlreiche Themes seiner Kundenbehörden und Beispiel-Themes umgesetzt hat und pflegt. Das Theme-Konzept sieht allerdings vor, dass Themes unabhängig erstellt und gepflegt werden können. Gerne stehen wir für Rückfragen zur Verfügung und können punktuell unterstützen. Sobald ein eigenes Theme erstellt wurde, ist ein eigenständiger Barrierefreiheitstest notwendig, um beispielsweise die Kontrastverhältnisse der Farbwerte ebenfalls sicherzustellen. Einmal erstellte und getestete Themes können von nun an in anderen Projekten wiederverwendet werden.
+  Das ITZBund liefert viele Kunden- und Beispiel-Themes. Das Konzept erlaubt aber unabhängige Erstellung und Pflege. Wir unterstützen bei Fragen. Nach dem Aufbau eines eigenen Themes ist ein eigener Barrierefreiheitstest nötig, zum Beispiel für Farbkontraste. Fertige, getestete Themes lassen sich wiederverwenden.
 - **Wie funktioniert das Theming?**<br/>
-  In der Regel werden Web Components mit festem Styling erstellt. KoliBri trennt die semantisch barrierefreien Komponenten vom Styling und stellt dafür eine Register-Methode zum Kombinieren zur Verfügung. Da die Web Components im Browser grundsätzlich registriert (define) werden müssen, besteht hier die Möglichkeit, die Komponenten mit einem definierten Theme zu laden.
+  Übliche Web Components bringen fixes Styling mit. KoliBri trennt barrierefreie Komponenten und Styling und kombiniert beides über eine Register-Methode. Beim Registrieren im Browser (define) wählen Sie, mit welchem Theme die Komponenten geladen werden.
 - **Wie kann man ein eigenes Theme erstellen?**<br/>
-  Wir arbeiten stets daran, das Erstellen und Pflegen von Themes weiter zu vereinfachen. Hierzu dient z.B. das Basis-Styling (reines Layout) der Komponenten ab Version 1.5. Das Aufsetzen gelingt einfach durch die Erstellung einer Theme-Definition, z.B. mit einem eigenen Theme-Projekt (NPM-Paket) mittels der <KolLink _label="TS-Datei" _href="https://github.com/public-ui/kolibri/blob/45726c50d7f28c9c595442b2241582816eca5670/packages/create-kolibri/templates/kolibri-library/packages/components/src/global/script.ts#L8" _target="_blank" />. Hilfreich für das Erstellen und Pflegen von Themes ist auch unser <KolLink _label="Theme-Designer" _href="/designer/" _target="_blank" />.
+  Ab Version 1.5 gibt es Basis-Styling für das Layout. Ein Theme richten Sie über eine eigene Theme-Definition ein, etwa als NPM-Paket mit der <KolLink _label="TS-Datei" _href="https://github.com/public-ui/kolibri/blob/45726c50d7f28c9c595442b2241582816eca5670/packages/create-kolibri/templates/kolibri-library/packages/components/src/global/script.ts#L8" _target="_blank" />. Beim Erstellen und Pflegen unterstützt der <KolLink _label="Theme-Designer" _href="/designer/" _target="_blank" />.
 - **Warum muss CSS in JavaScript verwaltet werden?**<br/>
-  Das Stylen von KoliBri-Komponenten erfolgt nicht allein durch eingebundenes CSS oder die Verwendung von CSS-Frameworks (wie z.B. Bootstrap, Material-UI, Tailwind CSS, etc.), sondern
-  über das technische Setzen von CSS an der Komponente. Das hat den Vorteil, dass die Komponenten vom äußeren CSS unabhängig sind. Die Robustheit ist ein architektonisches Qualitätsziel. Sie spiegelt sich darin wider, dass nur die Komponente selbst über ihr Styling entscheidet.
+  KoliBri-Komponenten werden nicht nur mit externem CSS oder Frameworks gestylt, sondern per CSS-Zuweisung direkt an der Komponente. So bleiben sie vom äußeren CSS unabhängig. Diese Robustheit ist ein Architekturziel: Die Komponente entscheidet selbst über ihr Styling.
 - **Wozu braucht man das Schema?**<br/>
-  KoliBri basiert auf einer ausgeklügelten <KolLink _label="Architektur" _href="/docs/concepts/architecture" />. Beispielsweise dient das kleine Schema-Paket (@public-ui/schema) dazu, die Tag-Namen und Sprach-Keys der KoliBri-Komponenten unabhängig von der konkreten Implementierung zu definieren. Dies ermöglicht bei der Theme-Erstellung ein komplett losgelöstes Arbeiten mit Autovervollständigung, ohne aber die Komponenten und deren Abhängigkeiten zu benötigen. Das hat Vorteile bei manchen Integrationsszenarien, wie z.B. bei statischen Seiten oder Content-Management-Systemen (CMS).
+  KoliBri stützt sich auf eine durchdachte <KolLink _label="Architektur" _href="/docs/concepts/architecture" />. Das Paket @public-ui/schema definiert Tag-Namen und Sprach-Keys unabhängig von der konkreten Implementierung. Bei der Theme-Erstellung können Sie damit mit Autovervollständigung arbeiten, ohne die Komponenten oder deren Abhängigkeiten laden zu müssen—praktisch etwa für statische Seiten oder CMS.
 
 ## Technisches
 
 - **Wieso können KoliBri-Komponenten wirklich barrierefrei sein?**<br/>
-  Die KoliBri-Komponenten sind softwarearchitektonisch so designed, dass sie sich nur über Properties instrumentieren lassen und nicht über eigenes eingebbares HTML. Das bedeutet, dass die Komponenten nur über die API (Properties) gesteuert werden können. Das ist ein Qualitätsmerkmal, da die Komponenten so nicht von außen manipuliert werden können. Die Komponenten sind sehr restriktiv und können somit in sich immer barrierefrei sein.<br/>
-  Um aus dieser Restriktivität ausbrechen zu können, gibt es den <KolLink _label="Expert-Slot" _href="/docs/concepts/expert-slot" />, der es ermöglicht, eigenes HTML in die Komponente einzubetten. Die Barrierefreiheit über den Expert-Slot liegt in den Händen der Experten (Developers) und sollte nur in Ausnahmefällen verwendet werden.
+  KoliBri-Komponenten lassen sich ausschließlich über Properties steuern, nicht über eingebettetes HTML. Dadurch bleiben sie von außen unverändert und in sich barrierefrei.<br/>
+  Wer mehr Freiraum braucht, nutzt den <KolLink _label="Expert-Slot" _href="/docs/concepts/expert-slot" />, um eigenes HTML einzubetten. Dort tragen die Entwickler die Verantwortung für Barrierefreiheit und sollten ihn nur sparsam einsetzen.
 - **Warum werden die Eigenschaften von Komponenten manchmal abweichend vom HTML-Naming benannt?**<br/>
-  Um die Erlernbarkeit von KoliBri einfach zu halten, wird in der Regel die Benennung aus dem HTML übernommen. Doch auch der HTML-Standard ist in seinem Naming über mehrere Elemente (Komponenten) nicht einheitlich. Und daher kommt es dazu, dass wir in KoliBri für gleichartige Eigenschaften übergreifend einheitliche Namen gewählt haben. Mehr dazu finden Sie im Konzept <KolLink _label="Eigenschaften" _href="/docs/concepts/properties" />.
+  Meist übernehmen wir HTML-Bezeichnungen, um KoliBri leicht erlernbar zu halten. Wo der HTML-Standard uneinheitlich ist, vergeben wir durchgängig gleiche Eigenschaftsnamen. Mehr dazu im Konzept <KolLink _label="Eigenschaften" _href="/docs/concepts/properties" />.
 
 ## Barrierefreiheit
 
