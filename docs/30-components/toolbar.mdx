@@ -15,14 +15,14 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 Die Komponente **Toolbar** ist eine Sammlung häufig verwendeter Steuerelemente für Schaltflächen und Links, die in einer kompakten visuellen Form zusammengefasst sind. Die Toolbar ist in der Regel eine Untermenge von Funktionen, die in einer Menüleiste zu finden sind, um den Aufwand für den Benutzer zu verringern.
 
 ```html
-<kol-toolbar _label="Label" _items='[{"_label": "Button", type="button"}, {"_href": "#", "_label": "Link",  type="link"}]'> </kol-toolbar>
+<kol-toolbar _label="Label" _items='[{"_label": "Button"}, {"_href": "#", "_label": "Link"}]'> </kol-toolbar>
 ```
 
 ### Beispiel
 
 <kol-toolbar
         _label="Label"
-        _items='[{"_label": "Button", type="button"}, {"_href": "#", "_label": "Link", type="link"}]'>
+        _items='[{"_label": "Button"}, {"_href": "#", "_label": "Link"}]'>
 </kol-toolbar>
 
 ## Verwendung
@@ -37,7 +37,7 @@ Der **`tabIndex`** wird von der **Toolbar**-Komponente gesteuert. Default ist hi
 - Link
 - Button
 
-Der **Toolbar**-Komponente wird mit dem **`type`**-Attribut mitgeteilt, ob es sich um eine **Link**- oder **Button**-Komponente handelt.
+Die **Toolbar**-Komponente erkennt hierbei selbständig durch das **`_href`**-Attribut, ob es sich um eine **Link**- oder **Button**-Komponente handelt.
 
 ## Barrierefreiheit
 
