@@ -17,7 +17,7 @@ export default function DocumentationVersionHint(): ReactNode {
 	return (
 		<p className="version-hint">
 			{beforeVersion}
-			<b>v3</b>
+			<b>v4</b>
 			{beforeLink}
 			<KolLink
 				style={{
