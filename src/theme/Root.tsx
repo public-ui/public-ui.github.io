@@ -1,5 +1,5 @@
 import { KoliBriDevHelper, register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import React, { useEffect } from 'react';
