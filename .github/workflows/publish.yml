@@ -44,7 +44,7 @@ jobs:
         run: pnpm version prerelease --no-git-tag-version
 
       - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: 'chore: Bump version [skip actions]'
           file_pattern: 'package.json'
