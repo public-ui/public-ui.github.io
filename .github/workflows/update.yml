@@ -28,7 +28,7 @@ jobs:
       - name: Build Artifacts
         uses: ./.github/actions/build-artifacts
         with:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
