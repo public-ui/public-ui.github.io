@@ -14,8 +14,6 @@ jobs:
 
       - name: Build Docs
         uses: ./.github/actions/build-artifacts
-        with:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Move docs
         shell: bash
