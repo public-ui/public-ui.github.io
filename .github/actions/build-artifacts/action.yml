@@ -7,6 +7,18 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@public-ui'
+
+    - name: Download Docs (v2)
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+      shell: bash
+      run: npm pack @public-ui/docs-v2@latest > /dev/null
+
     - uses: ./.github/actions/pnpm-setup
 
     - name: Build Docs
