@@ -1,89 +1,25 @@
-import {KolCard, KolLink,} from '@public-ui/react-v19';
+import { KolCard, KolLink } from '@public-ui/react-v19';
 
-# Designer
+# Create a KoliBri theme
 
-<div className="grid grid-cols-2">
-	<KolCard _label="Create own theme" _level={2}>
-		<KolLink _label="Click here to open the designer in a new browser window." _href="/designer" _target="_blank" _icons={{ left:'codicon codicon-paintcan' }} />
-	</KolCard>
+> Note: The former Designer is no longer available; themes are now maintained directly in code.
+
+<div className="grid grid-cols-2 gap-4">
+<KolCard _label="Theme guide" _level={2}>
+<KolLink _label="Guide in the KERN Developer Kit" _href="https://gitlab.opencode.de/kern-ux/kern-developer-kit/-/blob/main/CONTRIBUTING.md" _target="_blank" _icons={{ left: 'codicon codicon-repo-forked' }} />
+</KolCard>
 </div>
 
-<br />
+Creating a custom theme now happens entirely in a Git repository. The approach follows the documentation in the [KERN Developer Kit](https://gitlab.opencode.de/kern-ux/kern-developer-kit/-/blob/main/CONTRIBUTING.en.md).
 
-Thanks to KoliBri Designer, users can quickly develop their own style for the KoliBri library. The effects of their own CSS instructions are visible directly on the component.<br/>
-The finished styles can then be downloaded as a theme and inserted into the user's own project.
+## Steps
 
-## Global CSS
+1. **Fork an existing theme:** Use a current theme as a baseline and create your own repository from it (for example via a fork or `git clone`). This keeps the structure KoliBri expects for styling.
+2. **Apply your style guide:** Adapt the existing styles, variables, and tokens to your style guide. Work directly in the code of the forked theme to derive colors, spacing, typography, and component variants consistently.
+3. **Version the theme:** Commit your changes regularly and keep the theme repository well documented. This ensures the theme remains traceable and reusable over time.
+4. **Use the theme:** Consume the finished theme from your repository in your projects so applications can use the customized styles without the Designer.
 
-To ensure that all HTML elements behave optimally when using assistive tools and at high zoom levels, specific CSS styles must be set. For this purpose, the following CSS are initially set for all components and can be overridden by the theme-specific CSS if required.
+## Notes
 
-```css
-* {
-	font-size: inherit; /* allows proportional scaling */
-	hyphens: auto; /* activates the language-specific hyphenation */
-	letter-spacing: inherit; /* allows changing the letter spacing */
-	word-break: break-word; /* enables word wrapping */
-	word-spacing: inherit; /* allows changing the word spacing */
-}
-```
-
-## Structure
-
-The KoliBri Designer is divided into three sections.
-
-### Top left: Theme
-
-The custom theme can be built either based on a standard theme (default) or directly with an empty theme. By default, a standard <b>theme</b> is selected as the basis in the Theme field by the <i>“default”</i> entry. Here, for illustration purposes, some CSS statements are inserted into the editor area, the effect of which is applied to the default <b>Button</b> component as an example.<br/>
-If you enter your value for the theme to be created in the <b>Theme</b> field, the KoliBri Designer resets all styling instructions, and you can start with an empty theme.
-
-<kol-indented-text>Please note that some KoliBri components are naturally displayed either not at all, unfamiliar or with browser default layout, when selecting an empty default theme.</kol-indented-text>
-
-### Center left: Editor
-
-For easy input of own CSS instructions, the KoliBri Designer has a <i>VS Code Editor</i>. Instructions that users write in the editor area are automatically taken over after pressing the key combination <code>Ctrl + S</code> or <code>Command + S</code> and the effects are transferred to the currently selected component.
-
-### Top right: Componoents
-
-Via the selection box <b>Components</b>, the KoliBri component to be edited can be selected. All KoliBri components are available, that have a visual output. Not included are purely functional components, such as Modal, InputLeandUpAdapter or SkipNav.<br/>
-After selecting a component, the KoliBri designer loads a typical basic output of the component. For components that have different variants, such as Button, all variants are output.
-
-<kol-indented-text>Kindly note that some KoliBri components have dependencies on each other. For example, the <b>LinkGroup</b> component consists of the Link component, IconIcofont component and Tooltip component. It is recommended to start with the <i>smallest</i> component first and then switch to the actual main component. A detailed description follows below.</kol-indented-text>
-
-### Top center: Preview
-
-This area displays the currently loaded component with a typical output. Depending on the selection of the default theme, the component either presents itself in the default browser layout or already has styling features that come from the default theme.
-
-### Bottom: Import / Export / Reset
-
-The KoliBri Designer offers different possibilities to save your settings and load them again for further editing.
-
-The button <b>“Create Theme”</b> summarizes your CSS instructions as a standalone theme and makes them available in the editor for viewing and copying.<br/>
-The <b>“Download Theme”</b> button allows you to save your theme as a JSON file.<br/>
-To undo all changes, click the <b>“Discard all changes”</b> button. The KoliBri Designer will be reset to the default theme <b>“default”</b>.<br/>
-With the upload field <b>“Load Theme”</b> an already created theme file (JSON file) can be loaded into the KoliBri Designer for editing again.
-
-## Interdependencies of the components
-
-Most KoliBri components are technically made up of a collection of other KoliBri components, which together then make up a new KoliBri component and have similar, but broader, fields of application.<br/>
-Knowing the technical construction of the component you are working on is important for the correct sequence when creating your own theme.
-
-<kol-indented-text>The dependencies of the KoliBri components on each other are described in detail by a diagram in the Storybook, in the section Description of the respective component.</kol-indented-text>
-
-<p>
-	<b>Example:</b>
-</p>
-
-<kol-link-group _heading="Headline" _links="[{'_label':'Link 1', '_icon':'icofont-home','_href':'test'},{'_label':'Link 2', '_icon':'icofont-phone','_href':'test'}]" _list-style-type="none"></kol-link-group>
-
-The LinkGroup used in this example consists of the other KoliBri components:
-
-- kol-heading
-- kol-link → also uses kol-tooltip and kol-badge
-- kol-icon-icofont
-
-1. First, set the CSS instructions for the LinkGroup heading. The heading consists of the KoliBri component “kol-heading”. Therefore, change in the selection field <b>Components</b> to the component <b>kol-heading</b>. Adjust here in the editor, e.g. for h1 the font color. This setting now applies to all components in which the kol-heading component is used. The font color has changed not only for the kol-heading component itself, but also for all components that use <b>kol-heading</b>. Among others, the <b>kol-link-group</b> used in the example.<br/>
-   Switch back to the <b>kol-link-group</b> component in the <b>Components</b> selection box. Again, the font color of the heading has changed according to the CSS statement of the <b>kol-eading</b> component.
-2. Now change the font color of the links. In the <b>Components</b> selection box, switch to <b>kol-link</b>. In the editor, change the Color value for <b>a</b>. Switch back to the <b>kol-link-group</b> component. The font color of the individual links has also changed.
-3. If you try to change the previously mentioned settings directly in the <b>kol-link-group</b> component, you will not see any changes. However, it would be possible here, for example, to change the background color of the entire <b>kol-link-group</b> component.
-4. Note that you can only style components that are inside a shadow DOM via the KoliBri designer. For the <b>kol-link-group</b> example, it would not be possible to style the <b><kol-link-group></kol-link-group></b> element itself because it is not inside a shadow DOM.
-5. Note that changes in KoliBri Designer are possible only for those KoliBri components that have a shadow DOM during rendering. This is not the case, for example, with the <b>kol-icon-icofont</b> or <b>kol-icon-fontawesome</b> component.
+- If you need global CSS rules (for example for zoom levels, hyphenation, or spacing), add them directly in your theme.
+- For Sass workflows you can still use the [Scss approach](/docs/concepts/styling/scss) to organize your styles modularly.

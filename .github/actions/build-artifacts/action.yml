@@ -1,8 +1,8 @@
 name: Build Docs Artifacts
 description: Builds the documentation artifacts including Docusaus, Sample App and Designer
 inputs:
-  PERSONAL_ACCESS_TOKEN:
-    description: 'A Github PAT'
+  GITHUB_TOKEN:
+    description: 'GitHub token for package registry authentication'
     required: true
 runs:
   using: 'composite'
@@ -11,24 +11,39 @@ runs:
 
     - name: Build Docs
       shell: bash
-      run: npm run build
+      run: |
+        rm -rf build
+        npm run build
+        mv build next
 
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v6
       with:
         node-version: 22
-        registry-url: 'https://npm.pkg.github.com'
+        registry-url: https://npm.pkg.github.com
         scope: '@public-ui'
+
+    - name: Download Docs (v3)
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+      shell: bash
+      run: |
+        npm pack @public-ui/docs-v3@latest > /dev/null
+        tar -xzvf public-ui-*.tgz > /dev/null
+
+        mv package/build build
+        mv next build/next
+
+        rm -rf package *.tgz
 
     - name: Download Docs (v2)
       env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ inputs.GITHUB_TOKEN }}
       shell: bash
       run: |
-        rm -rf package *.tgz
         npm pack @public-ui/docs-v2@latest > /dev/null
-        tar -xzvf public-ui-docs-*.tgz > /dev/null
+        tar -xzvf public-ui-*.tgz > /dev/null
 
-        rm -rf build/docs/2.2 build/v2
+        rm -rf build/v2
         mkdir -p build/v2
         mv package/build/* build/v2/
 
@@ -36,12 +51,11 @@ runs:
 
     - name: Download designer (v1)
       env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ inputs.GITHUB_TOKEN }}
       shell: bash
       run: |
-        rm -rf package *.tgz
         npm pack @public-ui/designer@^1
-        tar -xzvf public-ui-designer-*.tgz
+        tar -xzvf public-ui-*.tgz > /dev/null
 
         rm -rf build/v1/designer
         mkdir -p build/v1
@@ -49,62 +63,16 @@ runs:
 
         rm -rf package *.tgz
 
-    - name: Download sample react (v1)
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
-      shell: bash
-      run: |
-        rm -rf package *.tgz
-        npm pack @public-ui/sample-react@^1
-        tar -xzvf public-ui-sample-react-*.tgz
-
-        rm -rf build/v1/sample-react
-        mkdir -p build/v1
-        mv package/dist build/v1/sample-react
-
-        rm -rf package *.tgz
-
     - name: Download designer (v2)
       env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ inputs.GITHUB_TOKEN }}
       shell: bash
       run: |
-        rm -rf package *.tgz
         npm pack @public-ui/designer@^2
-        tar -xzvf public-ui-designer-*.tgz
+        tar -xzvf public-ui-*.tgz > /dev/null
 
         rm -rf build/v2/designer
         mkdir -p build/v2
         mv package/dist build/v2/designer
-
-        rm -rf package *.tgz
-
-    - name: Download sample react (v2)
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
-      shell: bash
-      run: |
-        rm -rf package *.tgz
-        npm pack @public-ui/sample-react@^2
-        tar -xzvf public-ui-sample-react-*.tgz
-
-        rm -rf build/v2/sample-react
-        mkdir -p build/v2
-        mv package/dist build/v2/sample-react
-
-        rm -rf package *.tgz
-
-    - name: Download sample react (v3)
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.PERSONAL_ACCESS_TOKEN }}
-      shell: bash
-      run: |
-        rm -rf package *.tgz
-        npm pack @public-ui/sample-react@">=3.0.0-rc.1" --include-prerelease
-        tar -xzvf public-ui-sample-react-*.tgz
-
-        rm -rf build/v3/sample-react
-        mkdir -p build/v3
-        mv package/dist build/v3/sample-react
 
         rm -rf package *.tgz
