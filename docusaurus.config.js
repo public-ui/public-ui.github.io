@@ -10,10 +10,9 @@ const config = {
 	title: 'KoliBri - Public UI',
 	tagline: 'The accessible Web Component Library',
 	url: PUBLIC_BASE_URL,
-	baseUrl: '/',
+	baseUrl: '/next/',
 	onBrokenLinks: 'throw',
 	trailingSlash: false,
-	onBrokenMarkdownLinks: 'warn',
 	favicon: 'assets/favicon.ico',
 
 	// GitHub pages deployment config.
@@ -93,14 +92,15 @@ const config = {
 				},
 				items: [
 					{
-						label: 'Version 3',
+						label: 'Version 4 (next)',
 						position: 'right',
 						items: [
 							{
 								type: 'html',
 								className: 'dropdown-archived-versions',
-								value: '<strong class="dropdown__link">Version 3</strong>',
+								value: '<strong class="dropdown__link">Version 4 (next)</strong>',
 							},
+							{ to: `${PUBLIC_BASE_URL}/`, label: 'Version 3' },
 							{ to: `${PUBLIC_BASE_URL}/v2/`, label: 'Version 2' },
 							{
 								type: 'html',
@@ -200,6 +200,9 @@ const config = {
 		}),
 	markdown: {
 		mermaid: true,
+		hooks: {
+			onBrokenMarkdownLinks: 'warn',
+		},
 	},
 	plugins: [
 		async () => {

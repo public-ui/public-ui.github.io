@@ -37,7 +37,7 @@ Im ersten Schritt empfiehlt es sich zunächst mit der Art und Weise des Themings
 
 ```tsx
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { KoliBri } from '@public-ui/schema';
 
 // ts-prune-ignore-next
@@ -112,7 +112,7 @@ Möchte man später das Theme optimieren, ist es möglich dies über das Patchin
 
 ```tsx
 import { register, KoliBriDevHelper } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { KoliBri } from '@public-ui/schema';
 
 // ts-prune-ignore-next

@@ -6,6 +6,7 @@ const Toolbar = () => (
 		_label="Toolbar"
 		_items={[
 			{
+				type: 'button',
 				_label: 'Back',
 				_hideLabel: true,
 				_icons: {
@@ -15,6 +16,7 @@ const Toolbar = () => (
 				},
 			},
 			{
+				type: 'button',
 				_label: 'Next',
 				_hideLabel: true,
 				_icons: {
@@ -24,10 +26,12 @@ const Toolbar = () => (
 				},
 			},
 			{
+				type: 'link',
 				_href: '#',
 				_label: 'Link',
 			},
 			{
+				type: 'button',
 				_label: 'Button',
 			},
 		]}
