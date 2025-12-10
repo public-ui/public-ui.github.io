@@ -131,8 +131,10 @@ kol-link-button {
 }
 
 .popover-container {
-	width: 300px;
+	border: var(--border-width) solid var(--color-primary);
+	display: none;
 	padding: 1rem;
+	width: 300px;
 }
 
 .popover-paragraph {
