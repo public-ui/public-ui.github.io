@@ -126,8 +126,9 @@ kol-link-button {
 }
 
 .popover-container {
-	width: 300px;
+	display: none;
 	padding: 1rem;
+	width: 300px;
 }
 
 .popover-paragraph {
@@ -136,8 +137,8 @@ kol-link-button {
 }
 
 .popover-link-button {
-	display: inline-block; 
-	border-radius: 9999px; 
+	display: inline-block;
+	border-radius: 9999px;
 	text-decoration: none;
 }
 
