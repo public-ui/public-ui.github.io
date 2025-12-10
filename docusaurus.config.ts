@@ -79,6 +79,8 @@ const config: Config = {
 						label: 'Version 2',
 						position: 'right',
 						items: [
+							{ to: `${PUBLIC_BASE_URL}/next/`, label: 'Version 4' },
+							{ to: `${PUBLIC_BASE_URL}/`, label: 'Version 3' },
 							{
 								type: 'html',
 								className: 'dropdown-archived-versions',
