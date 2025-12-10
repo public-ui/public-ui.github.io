@@ -102,7 +102,7 @@ const config = {
 								className: 'dropdown-archived-versions',
 								value: '<strong class="dropdown__link">Version 3</strong>',
 							},
-							{ to: `${PUBLIC_BASE_URL}/v2/`, label: 'Version 2 (LTS)' },
+							{ to: `${PUBLIC_BASE_URL}/v2/`, label: 'Version 2' },
 							{
 								type: 'html',
 								value: '<hr class="dropdown-separator">',
