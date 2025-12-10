@@ -5,16 +5,12 @@ env:
 
 on:
   schedule:
-    - cron: '0 2 * * 0'
+    - cron: '0 2 * * 1' # Runs weekly on Monday at 02:00 UTC
   workflow_dispatch:
 
 permissions:
   contents: write
   pull-requests: write
-
-concurrency:
-  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
-  cancel-in-progress: true
 
 jobs:
   update:
@@ -24,9 +20,13 @@ jobs:
       matrix:
         include:
           - base: main
+            version: v4
+          - base: release/3
             version: v3
           - base: release/2
             version: v2
+          # - base: release/1
+          #   version: v1
     env:
       version: ${{ matrix.version }}
     steps:
@@ -57,10 +57,15 @@ jobs:
 
       - name: Install
         run: pnpm i --no-frozen-lockfile
-      - name: Update dependencies
-        run: pnpm run update
+      - name: Update dependencies (minor)
+        run: |
+          pnpm ncu:minor
+          # Run the recursive update twice so peer and dev dependency bumps align after the first pass adjusts peer ranges.
+          pnpm ncu:minor
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
+      - name: Fix format
+        run: pnpm format -w
 
       - name: Check for changes
         id: verify-changed-files
@@ -82,10 +87,21 @@ jobs:
           body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
           delete-branch: true
 
-      - name: Quality Checks
+      - name: Run audit
         if: steps.verify-changed-files.outputs.changed == 'true'
-        run: |
-          pnpm build
-          pnpm format
-          pnpm lint
-          pnpm unused
+        run: pnpm audit --audit-level high
+      - name: Run build
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm build
+      - name: Run format
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm format
+      - name: Run lint
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm lint
+      - name: Run unused
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm unused
+
+      - name: Update dependencies (major)
+        run: pnpm ncu:major
