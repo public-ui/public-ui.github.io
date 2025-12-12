@@ -1,11 +1,6 @@
 ---
 title: Accordion
 description: Beschreibung, Spezifikation und Beispiele für die Accordion-Komponente.
-tags:
-  - Accordion
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/accordion/readme.md';
@@ -17,177 +12,102 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 Synonyme: Collapse
 
-Die **Accordion**-Komponente ist ein Aufklapp-Menü. Klickt man auf den Kopfbereich, bestehend aus Icon und Überschrift, klappt der Inhalt mit zusätzlichen Informationen auf. Somit ist es ein interaktives Navigationselement, welches dazu dient, umfangreiche Inhalte platzsparend darzustellen.
+Das **Accordion** ist ein Aufklapp-Menü: Klick auf den Kopfbereich mit Icon und Überschrift blendet den zugehörigen Inhalt ein oder aus. Es dient dazu, umfangreiche Inhalte platzsparend und thematisch sortiert darzustellen.
 
-Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zugeordnete Inhalte angezeigt oder verborgen werden sollen. Sie erlauben umfangreichere Detailinformationen zu einem Oberbegriff, als es aus Gründen der Übersichtlichkeit eigentlich sinnvoll wäre. Sie überlassen es den Besucher:innen selbst, ob sie sich diese Informationen anzeigen lassen möchten.
-
-## Konstruktion
-
-### Code
+## Beispiel (Default)
+Das Accordion zeigt standardmäßig einen geschlossenen Abschnitt mit Label. Optionales Verhalten wie geöffnete Zustände oder angepasste Überschriftenebenen ist nicht gesetzt.
 
 ```html
-<div class="grid gap-2">
-	<kol-accordion _label="Element 1">
-		<div>
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-		</div>
-	</kol-accordion>
-	<kol-accordion _label="Element 2">
-		<div>
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-		</div>
-	</kol-accordion>
-</div>
+<kol-accordion _label="Element 1">Accordion-Inhalt</kol-accordion>
 ```
 
-### Events
+## Barrierefreiheit
+Das Öffnen-/Schließen-Icon ist links ausgerichtet, um Nutzer:innen mit eingeschränktem Sichtfeld die Orientierung zu erleichtern. Statt Pfeil-Icons werden bewusst die Zeichen `+` und `-` verwendet, da sie den offenen beziehungsweise geschlossenen Zustand klarer kommunizieren. Die Farbgestaltung ist auf hohen Kontrast in der Standardansicht ausgelegt, damit Zustände gut unterscheidbar sind.
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event   | Auslöser                | Value |
-|---------|-------------------------|-------|
-| `click` | Element wird angeklickt | -     |
-
-### Beispiel
-
-<div class="grid gap-2">
-	<kol-accordion _label="Element 1">
-		<div>
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-		</div>
-	</kol-accordion>
-	<kol-accordion _label="Element 2">
-		<div>
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-		</div>
-	</kol-accordion>
-</div>
+### Links und Referenzen
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#accordion" _target="_blank"></kol-link>
 
 ## Verwendung
-
-### Überschrift im Accordion-Tab
-
-Der Text, der als Überschrift im Accordion-Tab angezeigt werden soll, wird durch das Attribut **`_label`** übergeben. Der Text kann neben Sonderzeichen auch Umlaute oder Leerzeichen enthalten.
-
-### Überschriftenebene
-
-Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglich sind die Level **1** bis **6**
-
-### Inhalt des Accordion
-
-Der Hauptinhalt des Accordions wird über den Slot übergeben.
-
-**`<kol-accordion _label="Element 1">Accordion-Inhalt</kol-accordion>`**
-
-### Accordion geöffnet anzeigen
-
-Standardmäßig wird das Accordion nach dem Laden der Seite im geschlossenen Zustand angezeigt. Soll das Accordion geöffnet angezeigt werden, setzen Sie das Attribut **\_open** zusätzlich ein.
-
-### Vorteile
-
-1. **Platzersparnis**: Ideal für Inhalte, die sonst viel Platz einnehmen würden.
-2. **Verbesserte Nutzererfahrung**: Nutzer:innen können Inhalte gezielt ein- und ausklappen.
-3. **Struktur und Übersicht**: Inhalte werden logisch gegliedert und wirken weniger überfordernd.
-
-### Best practices
-
-1. **Zweckmäßiger Einsatz**  
-   Verwenden Sie Accordions, um Inhalte unter einem thematischen Oberbegriff zu gruppieren, insbesondere bei langen Textabschnitten oder detaillierten Informationen.
-
-2. **Unterstützende Informationen**  
-   Platzieren Sie in Accordions eher ergänzende oder weniger wichtige Informationen, die nicht unbedingt sofort sichtbar sein müssen.
-
-3. **Reduktion der Seitenlänge**  
-   Nutzen Sie Accordions, um die visuelle Länge einer Webseite zu reduzieren, ohne die Zugänglichkeit von Inhalten einzuschränken.
-
-4. **Eindeutige und beschreibende Überschriften**  
-   Verwenden Sie prägnante und aussagekräftige Überschriften, die den Inhalt des jeweiligen Abschnitts klar beschreiben, um die Orientierung zu erleichtern.
-
-5. **Wichtige Aktionen und Inhalte sichtbar halten**  
-   Vermeiden Sie es, kritische `Call-to-Action`-Elemente oder zentrale Informationen innerhalb eines Accordions zu verstecken.
-
-6. **Sichtbarkeit von Fehlermeldungen sicherstellen**  
-   Platzieren Sie Fehlermeldungen immer außerhalb eines Accordions um zu vermeiden, dass wichtige Informationen übersehen werden.
-
-7. **Nicht als Auswahl-Element verwenden**  
-   Verwenden Sie Accordions nicht als interaktive Auswahl- oder Filterelemente, da sie für solche Interaktionen nicht intuitiv sind.
-
-8. **Wichtige rechtliche Informationen außerhalb platzieren**  
-   Anzeigen wie Datenschutz- oder rechtliche Hinweise sollten nicht in Accordions versteckt werden, da diese stets leicht zugänglich und sichtbar sein müssen.
-
-9. **Maximale Lesbarkeit**  
-    Halten Sie die Inhalte innerhalb eines Accordions kurz und übersichtlich. Verwenden Sie Listen, Absätze oder visuelle Trennungen, um eine Überforderung zu vermeiden.
-
-10. **Standardmäßig wichtige Inhalte sichtbar machen**  
-    Überlegen Sie, ob es sinnvoll ist, einen oder mehrere Accordion-Abschnitte standardmäßig geöffnet zu lassen, insbesondere wenn diese Inhalte oft benötigt werden.
-
-11. **Performance berücksichtigen**  
-    Stellen Sie sicher, dass das Accordion keine Ladezeitprobleme verursacht, insbesondere bei dynamisch geladenen Inhalten. Inhalte sollten möglichst asynchron und effizient geladen werden.
-
-### Anwendungsfälle
-
-- Häufig gestellte Fragen (FAQ)
-- Darstellung von Details, Eigenschaften oder Varianten eines Elements
-- Gruppierungen von
-  - Formularen mit vielen Optionen
-  - Daten in Dashboards
-  - Filterfunktionen
-- Darstellung von Menüs auf kleinen Bildschirmen, bei denen Platz begrenzt ist
-- Gliederung in Einstellungsseiten
-- Aufteilung langer Artikel oder Dokumentationen in logische Abschnitte
-- Dynamisches Laden von Inhalten, welche nur bei Bedarf geladen werden
-- Darstellung eines Prozesses oder einer Anleitung, bei der einzelne Schritte ausgeklappt werden
-
-## Barrierefreiheit
-
-In der **Accordion**-Komponente wird das Öffnen-/Schließen-Icon links ausgerichtet, um Nutzer:innen mit eingeschränktem Sichtfeld eine bessere Bedienbarkeit zu ermöglichen.
-
-Es wurde bewusst auf die Verwendung von Icons, wie z.B. `<` oder `>` verzichtet. Die Verwendung der Icons `+` und `-` gewährleistet eine bessere Sicht- und Erkennbarkeit bezüglich des Geöffnet- und Geschlossen-Status.
-
-Bei der farblichen Gestaltung wurde besonders Wert auf einen höchstmöglichen Kontrast in der
-Standardansicht gelegt.
-
 ### Tastatursteuerung
-
 | Taste   | Funktion                                             |
 | ------- | ---------------------------------------------------- |
 | `Tab`   | Springt die einzelnen Accordion-Tabs an.             |
 | `Enter` | Öffnet bzw. schließt den fokussierten Accordion-Tab. |
 
-## Links und Referenzen
+### Best Practices / Empfehlungen
+1. **Zweckmäßiger Einsatz**: Gruppieren Sie thematisch verwandte Inhalte, besonders bei langen Abschnitten oder Detailinformationen.
+2. **Unterstützende Informationen**: Platzieren Sie ergänzende oder weniger kritische Inhalte im Accordion, nicht jedoch zentrale `Call-to-Action`-Elemente.
+3. **Eindeutige Überschriften**: Nutzen Sie prägnante Labels, die den Inhalt des Abschnitts klar ankündigen.
+4. **Sichtbarkeit sicherstellen**: Platzieren Sie Fehlermeldungen sowie rechtliche Hinweise außerhalb des Accordions.
+5. **Performance beachten**: Laden Sie dynamische Inhalte effizient, um Verzögerungen beim Öffnen zu vermeiden.
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#accordion" _target="_blank"></kol-link>
+### Anwendungsfälle
+- Häufig gestellte Fragen (FAQ)
+- Details, Eigenschaften oder Varianten eines Elements
+- Gruppierungen von Formularen mit vielen Optionen
+- Daten in Dashboards oder Filterfunktionen
+- Menüs auf kleinen Bildschirmen
+- Einstellungsseiten mit logisch gegliederten Abschnitten
+- Schrittweise Darstellungen von Prozessen oder Anleitungen
 
-<Readme />
-
+## Konstruktion / Technik (Arbeitstitel)
+### Playground
 <ExampleLink component="accordion" />
-
-## Live-Editor
-
 <LiveEditorCompact component="accordion" />
 
-## Beispiele
+### Funktionalitäten (mit Code)
+**Überschrift im Accordion-Tab**
+
+Der Text für die Überschrift wird über das Attribut **`_label`** übergeben und darf Sonderzeichen, Umlaute sowie Leerzeichen enthalten.
+
+```html
+<kol-accordion _label="Element 1">Accordion-Inhalt</kol-accordion>
+```
+
+**Überschriftenebene**
+
+Die Überschriftenebene wird durch das Attribut **`_level`** festgelegt. Möglich sind die Level **1** bis **6**.
+
+```html
+<kol-accordion _label="Element 1" _level="2">Accordion-Inhalt</kol-accordion>
+```
+
+**Inhalt des Accordions**
+
+Der Hauptinhalt wird über den Default-Slot übergeben und kann beliebige HTML-Elemente enthalten.
+
+```html
+<kol-accordion _label="Element 1">
+<div>Individueller Accordion-Inhalt</div>
+</kol-accordion>
+```
+
+**Accordion geöffnet anzeigen**
+
+Standardmäßig startet das Accordion geschlossen. Setzen Sie das Attribut **`_open`**, um einen Abschnitt initial geöffnet darzustellen.
+
+```html
+<kol-accordion _label="Element 1" _open>Accordion-Inhalt</kol-accordion>
+```
+
+**Events**
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event   | Auslöser                | Value |
+| ------- | ----------------------- | ----- |
+| `click` | Element wird angeklickt | -     |
+
+**Beispiele**
 
 ### Einfache Accordions
-
 <Configurator component="accordion" sample="basic" />
 
 ### Accordions mit Überschriften
-
 <Configurator component="accordion" sample="headlines" />
 
 ### Accordions mit Header-Slot
-
 <Configurator component="accordion" sample="header" />
+
+## API
+<Readme />
