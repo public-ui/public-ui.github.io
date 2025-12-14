@@ -7,6 +7,7 @@ import type { FunctionComponent, ReactElement } from 'react';
 import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
 import { ITZLogo } from '@site/src/components/ITZLogo';
+import { VERSION_ID } from '../shares/version';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -30,7 +31,7 @@ const HomepageButtons: FunctionComponent = () => {
 				_icons={{
 					right: 'codicon codicon-dashboard',
 				}}
-				_href="/docs/get-started/first-steps"
+				_href={`/${VERSION_ID}/docs/get-started/first-steps`}
 				_label={translate({
 					id: 'custom.get-started-button',
 				})}
@@ -38,7 +39,7 @@ const HomepageButtons: FunctionComponent = () => {
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href="/docs"
+				_href={`/${VERSION_ID}/docs`}
 				_label={translate({
 					id: 'custom.documentation-button',
 				})}
