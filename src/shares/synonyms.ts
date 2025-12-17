@@ -8,7 +8,6 @@ export const COMPONENT_SYNONYMS: ComponentSynonyms = {
 	avatar: ['Persona'],
 	combobox: ['Autocomplete', 'Select', 'Dropdown'],
 	details: ['Disclosure', 'Collapse', 'Summary Detail'],
-	dialog: ['Modal', 'Modal dialog', 'Corner Dialog', 'Prompt'],
 	image: ['Img', 'Thumbnail'],
 	'input-date': ['Date Picker', 'Datetime Picker', 'Week Picker Month Picker', 'Time Picker', 'Calendar'],
 	'input-file': ['Upload', 'File Uploader', 'File Picker', 'File Selector'],
