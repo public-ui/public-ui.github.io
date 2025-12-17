@@ -1,0 +1,38 @@
+---
+title: Form
+description: Description, specification and examples for the Form component.
+---
+
+import Readme from '/readmes/form/readme.md';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Form
+
+The **Form** component is used to enclose all input fields, to correctly position the information text for mandatory fields and to forward the `submit` and `reset` events.
+
+## Construction
+
+### Code
+
+```html
+<kol-form _requiredText="Sternchen heißt Pflichtfeld.">
+	<kol-input-text _label="Vorname"></kol-input-text>
+	<kol-input-text _label="Nachname"></kol-input-text>
+</kol-form>
+```
+
+### Example
+
+<kol-form _requiredText="Sternchen heißt Pflichtfeld.">
+	<kol-input-text _label="Vorname"></kol-input-text>
+	<kol-input-text _label="Nachname"></kol-input-text>
+</kol-form>
+
+<Readme />
+
+<ExampleLink component="form" />
+
+## Live editor
+
+<LiveEditorCompact component="form" />

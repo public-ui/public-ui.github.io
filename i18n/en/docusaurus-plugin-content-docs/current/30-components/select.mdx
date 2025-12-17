@@ -1,0 +1,127 @@
+---
+title: Select
+description: Description, specification and examples for the Select component.
+---
+
+import Readme from '/readmes/select/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Select
+
+Synonyms: Datalist, Dropdown
+
+The **Select** component creates a selection list from which one or more predefined options can be selected.
+
+## Construction
+
+### Code
+
+```html
+<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _value="Mrs."> Auswahlfeld </kol-select>
+<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _multiple _value="['Mr.','Company']">
+        Auswahlfeld (Mehrfachauswahl)
+</kol-select>
+<kol-select
+        _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'},{'label':'Herr','value':'Mr2'},{'label':'Frau','value':'Mrs2'},{'label':'Firma','value':'Company2'}]"
+        _rows="4"
+        _value="Mrs."
+>
+        Auswahlfeld mit _rows
+</kol-select>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|-----------------------------|-----------------------------|
+| `click` | Input field is clicked | - |
+| `focus` | Input field is focused | - |
+| `blur` | Input field loses focus | - |
+| `input` | Option is selected | `value` attribute of option |
+| `change` | Option is selected | `value` attribute of option |
+
+### Example
+
+<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _value="Mrs."> Auswahlfeld </kol-select>
+<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _multiple _value="['Mr.','Company']">
+Selection field (multiple selection)
+</kol-select>
+<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'},{'label':'Herr','value':'Mr2'},{'label':'Frau','value':'Mrs2'},{'label':'Firma','value':'Company2'}]" _rows="4" _value="Mrs.">Auswahlfeld mit rows</kol-select>
+
+## Usage
+
+The choices are passed to the component as an object or JSON string via the **`_options`** attribute. The values ​​**`label`** and **`value`** must be specified for each option.
+
+Example of the construction of the JSON object:
+
+```json
+[
+        { "label": "Herr", "value": "Mr." },
+        { "label": "Frau", "value": "Mrs." },
+        { "label": "Firma", "value": "Company" }
+]
+```
+
+### Specify individual height
+
+Using the **`_rows`** attribute you can switch from a selection menu to a selection field (like **`_multiple`**) and set its height.
+
+### Best practices
+
+- Do not deactivate options of a select using `disabled`. Screen readers (tested with NVDA) count deactivated options and thus display a higher number of choices.
+- Often the first option is created as “Please select an option” and then deactivated to force a selection. This approach should be avoided.
+- Hiding a disabled option using `aria-hidden` is now blocked by modern browsers. If a wildcard option is needed, use a selectable option with an empty value instead.
+- Use validators to check whether a valid option has been chosen instead of disabling options without giving reasons.
+
+<!-- ## Barrierefreiheit -->
+
+### Keyboard controls
+
+| button | Function |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab` | Focuses the selection field.                                                                                                                                                                                                   |
+| `Enter` | Opens or closes the selection list.                                                                                                                                                                                         |
+| `Arrow keys (up/down)` | Changes the activated element in the selection list. This function is also active when the selection list is collapsed. With multiple selection, you must also hold down the shift key to select several entries. |
+
+### `Single-Select-Filter` for Select component
+
+When a value is selected, the Select component returns a list (array) with exactly one
+Return value (in single mode). This can lead to unnecessary effort during further processing. It is easier here to filter the value of the Select component using a <b>SingeSelectFormatter</b>. To do this, insert the following class into the form:
+
+```html
+class SingleSelectFormatter extends AbstractFormatter { public format(value: unknown): unknown { return [value]; } public parse(value: unknown): unknown { if
+(Array.isArray(value) && value.length > 0) { return value[0]; } return value; } }
+```
+
+Then add the formatter to the Select component:
+
+```html
+const singleSelectFormatHandler = new FormatHandler(); singleSelectFormatHandler.formatters.add([new SingleSelectFormatter()]); (this.getInput('kategorie') as
+InputControl).setFormatHandler(singleSelectFormatHandler);
+```
+
+Note that the FormatHandler is first imported into the form.
+
+```html
+import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
+```
+
+## Links and references
+
+- https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
+
+<Readme />
+
+<ExampleLink component="select" />
+
+## Live editor
+
+<LiveEditorCompact component="select" />
+
+## Examples
+
+<Configurator component="select" sample="basic" />

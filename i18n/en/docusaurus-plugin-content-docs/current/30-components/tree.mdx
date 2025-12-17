@@ -1,0 +1,82 @@
+---
+title: Tree
+description: Description, specification and examples for the Tree component.
+---
+
+import Readme from '/readmes/tree/readme.md';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+#Tree
+
+Synonyms: cunning, navigation
+
+The **Tree** component represents a hierarchical list in which each element can contain child entries. Elements with child elements can be collapsed or expanded to show or hide the child level.
+
+### Code
+
+```html
+<kol-tree _label="Sitemap">
+	<kol-tree-item _label="Home" _href="#" _active></kol-tree-item>
+	<kol-tree-item _label="Page 1" _href="#" _open>
+		<kol-tree-item _label="Subpage 1" _href="#" _open>
+			<kol-tree-item _label="Product 1" _href="#"></kol-tree-item>
+			<kol-tree-item _label="Product 2" _href="#"></kol-tree-item>
+			<kol-tree-item _label="Product 3" _href="#"></kol-tree-item>
+			<kol-tree-item _label="Product 4" _href="#"></kol-tree-item>
+		</kol-tree-item>
+		<kol-tree-item _label="Subpage 2" _href="#"></kol-tree-item>
+		<kol-tree-item _label="Subpage 3" _href="#"></kol-tree-item>
+		<kol-tree-item _label="Subpage 4" _href="#"></kol-tree-item>
+	</kol-tree-item>
+	<kol-tree-item _label="Page 2" _href="#"></kol-tree-item>
+</kol-tree>
+```
+
+### Example
+
+<kol-tree _label="Sitemap">
+	<kol-tree-item _label="Home" _href="#" _active></kol-tree-item>
+	<kol-tree-item _label="Page 1" _href="#" _open>
+		<kol-tree-item _label="Subpage 1" _href="#" _open>
+			<kol-tree-item _label="Product 1" _href="#"></kol-tree-item>
+			<kol-tree-item _label="Product 2" _href="#"></kol-tree-item>
+			<kol-tree-item _label="Product 3" _href="#"></kol-tree-item>
+			<kol-tree-item _label="Product 4" _href="#"></kol-tree-item>
+		</kol-tree-item>
+		<kol-tree-item _label="Subpage 2" _href="#"></kol-tree-item>
+		<kol-tree-item _label="Subpage 3" _href="#"></kol-tree-item>
+		<kol-tree-item _label="Subpage 4" _href="#"></kol-tree-item>
+	</kol-tree-item>
+	<kol-tree-item _label="Page 2" _href="#"></kol-tree-item>
+</kol-tree>
+
+## Usage
+
+The Tree component is used to visually display complex, hierarchically structured data and make it user-friendly and navigable. It allows users to move efficiently through nested structures while providing a clear overview of the relationships between parent and child elements.
+
+Typical areas of application include: E.g. navigation bars, organizational structures, file directories or product catalogs – wherever content needs to be displayed in a structured and multi-level manner.
+
+Each navigation point is labeled using the `_label` attribute and can optionally be linked to a destination via `_href`. The `_active` attribute can be used to mark an element as currently active, while `_open` controls whether an element is opened when initially loaded.
+
+### Keyboard controls
+
+| button | Function |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab` | Focuses the Tree component so that it can be operated using the keyboard.                                                                                                                                                  |
+| `↑ / ↓` | Navigates between visible elements on the same layer.                                                                                                                                                                  |
+| `→` | Opens the submenu of the currently focused item (if any).                                                                                                                                                    |
+| `←` | Closes the submenu (if open) or moves focus to the parent item.                                                                                                                             |
+| `Enter` | Activates the currently focused element. If a `_href` attribute is present, navigation to the destination occurs.                                                                                                         |
+| `Pos1` | Focuses on the first element of the Tree component.                                                                                                                                                                             |
+| `end` | Focuses on the last element of the Tree component.                                                                                                                                                                            |
+| `*` | Opens all closed sibling elements on the currently focused layer.                                                                                                                                             |
+| Alphanumeric | Entering a letter will focus the next element whose `_label` starts with that character. Pressing the same letter repeatedly will jump to the next appropriate element. |
+
+## Links and references
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tree_role" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/treeview/" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="tree" />

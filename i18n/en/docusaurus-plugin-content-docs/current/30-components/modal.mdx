@@ -1,0 +1,107 @@
+---
+title: Modal
+description: Description, specification and examples for the Modal component.
+---
+
+import Readme from '/readmes/modal/readme.md';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Modal
+
+Synonyms: dialogue, prompt
+
+Using the **Modal** component, additional information or input forms can be displayed in a dialog window. An open **modal** can be closed via **ESC**.
+The **Modal** component is hidden by default. It is usually only displayed after clicking on a button or other trigger. The background of the window is deactivated and only the content of the modal window is active.
+
+### How it works
+
+The **Modal** creates the basis for barrier-free overlays and makes it possible to display any HTML content. For example, a Dialog component would be a composition of a Card component inserted into a **Modal** component.
+
+As soon as a **modal** is opened, all selectable elements in the website are deactivated, except those within the active modal.
+
+### Construction
+
+#### Code
+
+```html
+<kol-modal id="test-modal" _label="Beschreibung zur Modalbox">
+	<kol-card _label="Vorgang löschen">
+		<div>
+			<p>Wollen Sie den Vorgang wirklich löschen?</p>
+			<kol-button class="close-modal" _label="Ok" _variant="primary"></kol-button>
+			<kol-button class="close-modal" _label="Abbrechen"></kol-button>
+		</div>
+	</kol-card>
+</kol-modal>
+
+<kol-button id="modal-open-button" _label="Modal öffnen"></kol-button>
+
+<script>
+	const modal = document.querySelector('#test-modal');
+	const modalOpenButton = document.querySelector('#modal-open-button');
+
+	document.querySelectorAll('.close-modal').forEach((buttonElement) => {
+		buttonElement._on = {
+			onClick: () => modal.closeModal(),
+		};
+	});
+	modalOpenButton._on = { onClick: () => modal.openModal() };
+</script>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|---------|-----------------------------|-------|
+| `close` | Component is closing | - |
+
+### Usage
+
+Use the **`_width`** attribute to specify the desired width of the modal box. It is always displayed in the middle of the screen in the selected size.
+
+Since the modal is decoupled from the actual page content but provides partial blocking of the content, it must also provide a way to enable closing (unblocking) from the modal context.
+
+<kol-alert _type="info">Es wird empfohlen einen Close-Button oben rechts einzubauen.</kol-alert>
+
+To open the modal you can use `openModal` method using a DOM reference, to close `closeModal`.
+
+#### Best practices
+
+- Use the modal box to display further information on a topic.
+- Use Modalbox to make large content visually more compact.
+- Avoid placing important information such as legal topics that users need to respond to in modal boxes.
+
+#### Use cases
+
+- Use the modal box to help explain individual input fields in forms.
+- Use the modal box to display additional information only after the user requests it.
+- Use the modal box to display feedback on save processes or similar, e.g. **_Thank you for your feedback_** after submitting a form.
+
+### Accessibility
+
+> The standard optical output of the component is optimized to implement accessibility. If you use your own custom styles, this may limit accessibility.
+
+The **modal** is implemented so that the focus is on it when it is opened. Elements outside the modal can then no longer be focused.
+
+For optimal output of the **Modal** component in screen readers, make sure to set the **`aria-label`** attribute correctly.
+
+Furthermore, there is only ever a maximum of one active modal, which deactivates all selectable elements except those within its own modal. It is important to note that KoliBri only disables elements that are in the browser side area. Focusing the browser menu is still possible.
+
+#### Keyboard controls
+
+| button | Function |
+| ----- | ----------------------------------------------------------------------------------------------- |
+| `Tab` | When the modal is open, all focusable elements are jumped to in order. |
+| `ESC` | Closes the modal.                                                                         |
+
+### Links and references
+
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="modal" />

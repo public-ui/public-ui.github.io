@@ -1,0 +1,63 @@
+---
+title: SingleSelect
+description: Description, specification and examples for the SingleSelect component.
+---
+
+import Readme from '/readmes/single-select/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# SingleSelect
+
+The **SingleSelect** component creates a selection box that combines an input field with a list of selectable options underneath. It also offers a search function to filter the selection.
+
+## Construction
+
+### Code
+
+```html
+<kol-single-select
+	_options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]"
+	_label="Beispiel"
+	_value="1"
+></kol-single-select>
+```
+
+## Usage
+
+The choices are passed to the component as an object or JSON string via the **`_options`** attribute. The values ​​**`label`** and **`value`** must be specified for each option.
+
+Example of the construction of the JSON object:
+
+```json
+[
+	{ "label": "Herr", "value": 0 },
+	{ "label": "Frau", "value": 1 },
+	{ "label": "Firma", "value": 2 }
+]
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|---------------------------------|---------------------------------|
+| `click` | Input field is clicked | - |
+| `focus` | Input field is focused | - |
+| `blur` | Input field loses focus | - |
+| `input` | Option is selected | `value` attribute of option |
+| `change` | Option is selected | `value` attribute of option |
+
+<Readme />
+
+<ExampleLink component="single-select" />
+
+## Live editor
+
+<LiveEditorCompact component="single-select" />
+
+## Examples
+
+<Configurator component="single-select" sample="basic" />

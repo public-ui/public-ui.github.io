@@ -1,0 +1,47 @@
+---
+title: Tooltip
+description: Description and specification for the tooltip component.
+---
+
+# Tooltip
+
+Synonyms: Inline dialog, popover
+
+<kol-alert _type="info" _variant="card">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
+
+The **Tooltip** component implements the counterpart of the `Aria label`. It is therefore explicitly intended only to show the label of an element to the user without a screen reader.
+
+An open tooltip can be closed with the 'Escape' key in order to make any overlaid page information visible again.
+
+**Note:** In order for the tooltip to align correctly, the reference element must not have `display: inline`.
+
+## Accessibility
+
+The tooltip component is displayed when the focus is on or when the mouse is moved over the reference element and is intended exclusively for the sighted user to be able to read the label (Aria label) without a screen reader. The text of the tooltip cannot be accessed with the keyboard and is also hidden from screen readers using Aria-Hidden.
+
+<kol-alert _type="info">
+From an accessibility testing perspective, tooltips can be ignored as long as development also ensures that the tooltip text is read out in the same way by the screen reader.
+</kol-alert>
+
+## Width
+
+The width of the tooltip usually depends on its content.
+To configure the width of a tooltip, a [CSS-Custom-Property](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) can be defined on the surrounding container as follows:
+
+```css
+.container {
+  --kol-tooltip-width': '40rem';
+}
+```
+
+## Known issues
+
+When using CSS `contain: layout` within the tooltip element, the positioning may be incorrect. The cause is a <kol-link _href="https://github.com/floating-ui/floating-ui/issues/3067" _target="_blank">Bug in floating-ui</kol-link>, which was documented in <kol-link _href="https://github.com/public-ui/kolibri/pull/8062" _target="_blank">PR #8062</kol-link>.
+
+**Workaround:** Do not put `contain: layout` directly on the tooltip. Instead, the property should only be used where container queries are needed.
+
+**Outlook:** In the long term, the native <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor" _target="_blank">`anchor()` function</kol-link> could be used instead of `floating-ui`. This is currently only available in Chrome; `floating-ui` is still required for Firefox and Safari.
+
+## Links and references
+
+- <kol-link _href="https://tollwerk.de/projekte/tipps-technik-inklusiv-barrierfrei/title-tooltips-toggletips" _target="_blank"></kol-link>

@@ -1,0 +1,106 @@
+---
+title: Breadcrumb
+description: Description, specification and examples for the Breadcrumb component.
+---
+
+import Readme from '/readmes/breadcrumb/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Breadcrumb
+
+With the help of the **Breadcrumb** component, the path to the current position of a web page can be displayed in a hierarchical structure.
+
+## How it works
+
+The **Breadcrumb** component displays the current position of a web page in a horizontal navigation structure. The last element on the right represents the current page itself.
+This is not provided with a link. All elements to the left of the current page have a link to the linked page.
+
+## Construction
+
+### Code
+
+```html
+<div>
+	<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/"},{"_label":"Unterseite von Startseite","_href":"#/unterseite"}]'></kol-breadcrumb>
+</div>
+```
+
+### Example
+
+<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/"},{"_label":"Unterseite von Startseite","_href":"#/unterseite"}]'></kol-breadcrumb>
+
+## Usage
+
+### Definition of links
+
+The **\_links** attribute expects a JSON object to be passed, from which the structure of the breadcrumb paths to be displayed results. The JSON object passes any number of elements, each providing a number of properties and values.
+
+Each property and its associated value must be enclosed in double quotes.
+
+Individual elements are written in curly brackets and separated by **commas**.
+
+The entire JSON object must be passed to the **`_links`** attribute in square brackets.
+
+<b>Folgende Eigenschaften stehen zur Verfügung:</b>
+
+- **`_href`** passes the link to be used for this element.
+- **`_icon`** (optional) passes the name of the icon if an icon should be displayed in addition to the text of the element. The <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Codicons"></kol-link> are available
+- **`_hide-label`** (optional). If the value is set to **true**, only the icon appears in the link, without any other text. The `_icon` property must be set.
+- **`_label`** passes the text to be displayed for this element.
+
+Example of a JSON object passed to the **`_links`** attribute:
+
+```JSON
+[
+  { '_label': 'Startseite', '_href': '#/', '_icons': 'codicon codicon-home', '_hide-label': true },
+  { '_label': '1. Unterseite', '_href': '/unterseite_eins' },
+  { '_label': '2. Unterseite', '_href': '/unterseite_zwei' }
+]
+```
+
+<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/","_icons":"codicon codicon-home","hide-label": "true"},{"_label":"1. Unterseite","_href":"#/1_unterseite"},{"_label":"2. Unterseite","_href":"#/2_unterseite"}]'></kol-breadcrumb>
+
+### Best practices
+
+- The **Breadcrumb** component is an important element for effective search engine optimization of your website.
+- Breadcrumb navigation also provides additional overview for users of the website.
+- Position the breadcrumb as high as possible on your content pages to ensure that search engines can use it as an additional source of information about the structure of your website.
+- Position the breadcrumb component on each content page of your website. This ensures that visitors can find their way around at any time and recognize their current position.
+- Avoid placing breadcrumb navigation on the homepage.
+- Only use breadcrumb navigation if it offers real added value for users.
+- Breadcrumb navigation may not make sense on mobile versions of a website.
+
+### Use cases
+
+Breadcrumb navigation can be found on a large majority of current websites. The classic application case therefore describes the general installation of this component.
+
+## Accessibility
+
+For optimal accessibility, make sure to label the `_label` attribute correctly. Please pay particular attention to this note if you use the `_hide-label` option and would therefore forego descriptive text in the link.
+
+Note that the last element in the breadcrumb component can also be accessed using the Tab key, even though there is no link there. This means that this element can also be accessed and read out by the screen reader.
+
+### Keyboard controls
+
+| button | Function |
+| ------- | ---------------------------------------------------------------- |
+| `Tab` | Jumps to the individual elements of the breadcrumb navigation. |
+| `Enter` | Opens the link of the current item.                      |
+
+## Links and references
+
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#breadcrumb" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="breadcrumb" />
+
+## Live editor
+
+<LiveEditorCompact component="breadcrumb" />
+
+## Examples
+
+<Configurator component="breadcrumb" sample="basic" />

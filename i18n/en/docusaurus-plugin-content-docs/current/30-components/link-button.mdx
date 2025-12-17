@@ -1,0 +1,56 @@
+---
+title: LinkButton
+description: Description, specification and examples for the LinkButton component.
+---
+
+import Readme from '/readmes/link-button/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# LinkButton
+
+The LinkButton is semantically a link and has the design of a button. For this purpose, all relevant properties of the link component are adopted and expanded to include the design-determining properties of the button.
+For more information about the appearance, see the <kol-link _href="../components/button" _label="Button page"></kol-link>.
+
+## Construction
+
+### Code
+
+```html
+<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
+<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
+<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
+<kol-link-button _href="#" _label="Secondary" _variant="danger"></kol-link-button>
+<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|---------|-----------------------|------------------|
+| `click` | Element is clicked | `_href` property |
+
+### Example
+
+<div class="flex gap-2">
+	<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
+	<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
+	<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
+	<kol-link-button _href="#" _label="Danger" _variant="danger"></kol-link-button>
+	<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
+</div>
+
+<Readme />
+
+<ExampleLink component="link-button" />
+
+## Live editor
+
+<LiveEditorCompact component="link-button" />
+
+## Examples
+
+<Configurator component="link-button" sample="basic" />
