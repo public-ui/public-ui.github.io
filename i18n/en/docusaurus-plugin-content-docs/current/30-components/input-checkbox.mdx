@@ -1,0 +1,94 @@
+---
+title: InputCheckbox
+description: Description, specification and examples for the InputCheckbox component.
+---
+
+import Readme from '/readmes/input-checkbox/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+
+# InputCheckbox
+
+The input type **_Checkbox_** generates a rectangular box that is activated and deactivated again by clicking on it. When activated, there is a colored tick in the box.
+
+## Construction
+
+### Code
+
+```html
+<kol-input-checkbox _label="false">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
+<kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
+<kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
+<kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
+```
+
+### Example
+
+<kol-input-checkbox _label="false">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
+<kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
+<kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
+<kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|---------------------------------------------------------------------|----------------------------------------------------------------|
+| `focus` | Input field is focused | - |
+| `click` | Input field is clicked | - |
+| `input` | Checkbox is checked or unchecked (corresponds to native `input` event) | Defined `_value` if active, otherwise `null` |
+| `change` | Checkbox is checked or unchecked (corresponds to native `change` event) | Defined `_value` if active, otherwise `null` |
+| `blur` | Input field loses focus | - |
+
+## Usage
+
+Checkboxes are used as a single element or as a list of any number of checkboxes. They allow users to select one or more from a predefined number of options.
+
+### Variants
+
+Using the **`_variant`** attribute, the following variants can be selected (see examples above):
+
+- `button`: changes the icon depending on the status (example 3+4)
+- `switch`: turns the checkbox into a horizontal switch, where the right is considered active and the left is considered inactive. (Example 2)
+
+### Best practices
+
+- Use a single checkbox if you want a simple confirmation from users, e.g. accepting the data protection declaration.
+- Use a group of checkboxes to give users the opportunity to select one or more values.
+
+## Accessibility
+
+Avoid using many checkboxes on one page, as this will quickly make your content confusing and long. In such use cases, consider using a <kol-link _href="/docs/components/select" _label="/docs/components/select">Select box with **`_multiple`**</kol-link>.
+
+Make sure to assign a label to each checkbox, as this is read out by screen readers and thus enables the input field to be clearly identified.
+
+### Keyboard controls
+
+| button | Function |
+| ------ | ------------------------------------------------------------------------------------------------------------------ |
+| `Tab` | Focuses the checkbox or allows you to switch between checkboxes in a list.                               |
+| `Empty` | Activates or deactivates the checkbox. The **_Indeterminate_** state cannot be established via the keyboard. |
+
+## Links and references
+
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#checkbox" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+
+<Readme />
+
+## Usage _msg
+
+<PropertyMsgUsage />
+
+<ExampleLink component="input-checkbox" />
+
+## Live editor
+
+<LiveEditorCompact component="input-checkbox" />
+
+## Examples
+
+<Configurator component="input-checkbox" sample="basic" />

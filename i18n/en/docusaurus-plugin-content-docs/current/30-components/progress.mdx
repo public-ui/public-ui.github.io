@@ -1,0 +1,62 @@
+---
+title: Progress
+description: Description, specification and examples for the Progress component.
+---
+import Readme from '/readmes/progress/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+#Progress
+
+The **Progress** component creates a progress bar that can be used to provide visual feedback.
+
+## Construction
+
+### Code
+
+```html
+<div>
+	<kol-progress _label="Fortschritt" _variant="bar" _max="100" _value="20"></kol-progress>
+	<kol-progress _label="Fortschritt" _variant="cycle" _max="100" _value="20"></kol-progress>
+</div>
+```
+
+### Example
+
+<kol-progress _label="Fortschritt" _variant="bar" _max="100" _value="20"></kol-progress>
+<kol-progress _label="Fortschritt" _variant="cycle" _max="100" _value="20"></kol-progress>
+
+## Usage
+
+Use the **`_variant`** attribute to control the visual output of the component. Possible values ​​are:
+
+- `bar`: for output as a horizontal progress bar
+- `cycle`: for output as a circular progress bar
+
+Use the **`_max`** attribute to determine the maximum value of the component, the minimum is always 0.
+
+Use the **`_value`** attribute to determine the current value of the component.
+
+<!--### Best practices
+
+### Use cases-->
+
+<!-- ## Barrierefreiheit -->
+
+## Links and references
+
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/progress" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_progressbar_role" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="progress" />
+
+## Live editor
+
+<LiveEditorCompact component="progress" />
+
+## Examples
+
+<Configurator component="progress" sample="basic" />

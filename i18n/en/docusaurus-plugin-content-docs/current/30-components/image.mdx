@@ -1,0 +1,68 @@
+---
+title: Image
+description: Description, specification and examples for the Image component.
+---
+
+import Readme from '/readmes/image/readme.md';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+#Image
+
+Synonyms: Img, Thumbnail
+
+> <kol-badge _label="untested"></kol-badge> This new component is marked as untested because the full accessibility test is still pending. The full test of new components and functionalities can only take place after a completed release.
+
+The **Image** component is used to display images.
+
+## Construction
+
+The **Image** component is created using the HTML tag `<kol-image>`.
+
+### Code
+
+```html
+<kol-image _src="url-zum-bild.jpg" _alt="Beschreibung des Bildes"></kol-image>
+<kol-image _src="nur-dekoratives-bild.jpg" _alt=""></kol-image>
+<kol-image _src="hintergrundbild-der-hero-sektion.jpg" _alt="" _loading="eager"></kol-image>
+```
+
+### Examples
+
+<kol-image _src="https://placehold.co/100x100/cc006e/white" _alt="Beispielbild: 100 × 100"></kol-image>
+
+## Usage
+
+### Images in different resolutions and/or aspect ratios
+
+Using **`_srcset`** (and **`_sizes`**), different images can be stored for different resolutions and pixel densities (of the display) in order to deliver sharp images on large screens and not use up bandwidth unnecessarily on small monitors.
+Furthermore, different file formats can be specified using **`_srcset`** in order to save bandwidth for modern browsers, but still support older devices.
+Even when using **`_srcset`**, **`_src`** should be used, as this is used by browsers as the last option if a) **`srcset`** is not supported, or b) no suitable image was found there.
+<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset" _target="_blank" _label="MDN Artikel zu srcset"></kol-link>
+<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes" _target="_blank" _label="MDN Artikel zu sizes"></kol-link>
+For more information about **`_srcset`** see [Links and References](#links-and-references)
+
+### Loading behavior
+
+The **`_loading`** attribute is optional. Either `eager` or `lazy` can be set here, provided that `lazy` is used unset.
+`eager` ensures that the image is loaded as soon as you enter the page; with `lazy` the browser only loads the image shortly before it becomes visible. As a rule, `eager` does not have to be set, only set it if loading delays occur or the image is safely in the visible area when entering the page. (e.g.: logo in the header or hero)
+<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading" _target="_blank" _label="MDN Artikel zu loading"></kol-link>
+
+## Accessibility
+
+### Alternative text
+
+The **`_alt`** attribute is mandatory, but can be left blank (`_alt=""`) for purely decorative images.
+This description is read by screen readers and displayed by browsers if the image cannot/should not be loaded.
+
+## Links and references
+
+Detailed explanation of `_srcset` and `_sizes`: <kol-link _href="https://www.mediaevent.de/html/srcset.html" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="image" />
+
+## Live editor
+
+<LiveEditorCompact component="image" />

@@ -1,0 +1,111 @@
+---
+title: Details
+description: Description, specification and examples for the Details component.
+---
+
+import Readme from '/readmes/details/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Details
+
+Synonyms: Disclosure, Collapse, Summary Detail
+
+With the help of the **Detail** component, further information can initially be displayed with a short introductory text, which is only available after clicking
+can be expanded by the user to a full-size arrow icon.
+
+By default, the **Detail** component appears as a single-line layout element consisting of an arrow icon and a subsequent,
+short introductory text is formed. The actual content of the component is only opened downwards after clicking on the header area. The arrow icon changes
+its orientation from **_right_** to **_bottom_**.
+In the same way, the component can also be closed again and the contents can be hidden.
+
+## Construction
+
+### Code
+
+```html
+<kol-details _label="Nach Laden der Seite geschlossen">
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+	vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+</kol-details>
+```
+
+### Example
+
+<kol-details _label="Nach Laden der Seite geschlossen">
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+</kol-details>
+
+## Usage
+
+### Show Open
+
+Use the **`_open`** attribute to represent the component open.
+
+### Introductory text
+
+Use the **`_label`** attribute to define the text to display as a heading.
+
+### Best practices
+
+- Use the **Detail** component to arrange supplementary content on a main topic to save space.
+- The **Detail** component is well suited for realizing an FAQ page, where the question can be output via the **`_label`** attribute and the answer in the content area.
+- Avoid displaying important information, such as legal aspects, in a hidden area. There is no guarantee that the user will read this information safely.
+- Avoid using too many **Detail** components, as the clarity of the page may suffer.
+
+### Use cases
+
+#### Details component within a body of text
+
+<div>
+	<p>
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+	</p>
+	<kol-details _label="Erst nach Klick offen">
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+	</kol-details>
+	<p>
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+	</p>
+</div>
+
+## Accessibility
+
+- The **Details** component is ideal for implementing context-sensitive help for accessibility.
+
+### Keyboard controls
+
+| button | Function |
+| ------- | ----------------------------------------------- |
+| `Tab` | Focuses the Details component.              |
+| `Enter` | Opens or closes the contents of the component. |
+
+## Links and references
+
+- <kol-link _href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-context-help.html" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="details" />
+
+## Live editor
+
+<LiveEditorCompact component="details" />
+
+## Examples
+
+<Configurator component="details" sample="basic" />

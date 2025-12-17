@@ -1,0 +1,83 @@
+---
+title: InputColor
+description: Description, specification and examples for the InputColor component.
+---
+
+import Readme from '/readmes/input-color/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+
+#InputColor
+
+The input type **Color** creates a selection field for defining any color. The color can be entered in hexadecimal notation, in RGB notation or in HSL notation. It is possible to select a color using a picker or to enter exact color values.
+
+## Construction
+
+### Code
+
+```html
+<kol-input-color _value="#d4fcf4" _label="Hintergrundfarbe" _icons='{"right": "codicon codicon-symbol-color"}'></kol-input-color>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|----------------------------------|---------------------------------|
+| `click` | Input field is clicked | - |
+| `focus` | Input field is focused | - |
+| `blur` | Input field loses focus | - |
+| `input` | Value is changed by entering | Current value of the input field |
+| `change` | Entry has been completed | Current value of the input field |
+
+### Example
+
+<kol-input-color _value="#d4fcf4" _label="Hintergrundfarbe" _icons='{"right": "codicon codicon-symbol-color"}'></kol-input-color>
+
+## Usage
+
+Set the default color using the `_value` attribute. Use hexadecimal notation (#xxxxxx) for this.
+
+### Best practices
+
+- Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
+
+## Accessibility
+
+Note that the **InputColor** component is not fully accessible. Selecting a color is possible via keyboard control. However, the output of the selected color via screen readers is technically limited.
+See also: [https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md#input-color](Known Issues).
+
+For complete accessibility, consider using a ready-made color selection list, e.g. via checkboxes or select fields.
+
+### Keyboard controls
+
+| button | Function |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab` | Focuses the input field. When the dialog box is open, you can use the Tab key to switch between the control fields.                  |
+| `Enter` | Opens or closes the component's dialog box. When the pipette is focused, the **_Pipette_** function is started using the Enter key. |
+| `ESC` | Ends the pipette function. Closes the dialog box if the eyedropper function is not active.                                           |
+| `Arrow keys (right/left)` | Move the selection point when the **_color spectrum_** field is focused.                                                                      |
+| `Arrow keys (up/down)` | Changes the selection when the **_color system_** field is focused.                                                                                  |
+
+## Links and references
+
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+
+<Readme />
+
+## Usage _msg
+
+<PropertyMsgUsage />
+
+<ExampleLink component="input-color" />
+
+## Live editor
+
+<LiveEditorCompact component="input-color" />
+
+## Examples
+
+<Configurator component="input-color" sample="basic" />

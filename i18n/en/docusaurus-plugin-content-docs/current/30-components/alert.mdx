@@ -1,0 +1,160 @@
+---
+title: Alert
+description: Description, specification and examples for the Alert component.
+---
+import Readme from '/readmes/alert/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+#Alert
+
+Synonyms: Message
+
+The **Alert** component provides visual feedback to the users. It consists of a colored container, a heading, a content text and an icon. The icon used and the color design depend on the type `_type` of the alert.
+
+## Construction
+
+### Code
+
+```html
+<kol-alert _label="Überschrift im Alert" _level="1" _type="success">Textbereich im Alert</kol-alert>
+<kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|---------|-----------------------------|-------|
+| `close` | Component is closing | - |
+
+### Example
+
+<kol-alert _label="Überschrift im Alert" _level="1" _type="success" >Textbereich im Alert</kol-alert>
+<kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
+
+## Usage
+
+### Headline
+
+The **Heading** of the Alert component is determined via the `_label` attribute.
+
+### Heading level
+
+The heading level is passed through the **`_level`** attribute. Levels **1** to **6** are possible
+
+### Type of alert
+
+The **Alert** component offers **four** different types, each of which relates to the color design and the icon used in the alert. You can choose from:
+
+<ul>
+	<li>Success</li>
+	<li>Error</li>
+	<li>Info</li>
+	<li>Warning</li>
+</ul>
+
+The type of an alert is specified using the `_type` attribute.
+
+### Contents of the alert
+
+The content of the alert is written between the opening element `<kol-alert>` and the closing `</kol-alert>`. The content can consist of any **HTML code**, but also of other **KoliBri** components.
+
+### Variant of the alert
+
+The **`_variant`** attribute can be used to specify the display variant in which the alert is displayed. `msg` makes the left, colored column with the icon extend over the entire height of the alert, `card` only sets the left column next to the heading.
+
+### Best practices
+
+- Use the **Alert** component in appropriate locations on your website to present information in the correct context.
+- Always use the correct **Type** of the **Alert** component to generate the desired reaction from users. For example, avoid the **_Error_** type if you want to indicate the successful completion of a save process.
+- Avoid placing too many **Alert** components on one page, as the information content is then often no longer perceived as particularly important by users.
+
+### Use cases
+
+- Use the **Alert** component if you want to alert users to errors when entering forms.
+- Use the **Alert** component to notify users of the successful execution of functions, e.g. **`Your request has been successfully saved`**.
+- Use the **Alert** component to provide users with further information on a topic.
+
+## Accessibility
+
+The **Alert** component has been optimized to display with the highest possible contrast.
+
+The additional icon (depending on the type selected) ensures that the user does not have to classify the information based on color alone.
+
+When using a screen reader, the icon is always read.
+The title should therefore not start with the **Alert** type, as this will result in the **Alert** type being read twice.
+
+**Example:**
+Correct: Label = "Fill in the field." → Output: "Error - fill in the field."
+Incorrect: Label = "Error: Fill in the field." → "Output: Error - Error: Fill in the field."
+
+The following accessibility points were particularly considered in the **Alert** component:
+
+- Font color is either white or black.
+- The font color depends on the background color and always changes to the font color with the greater color contrast to the background color.
+- If the color contrast is not sufficient for AA, the background color will be overwritten.
+
+### Accessible notifications with `_alert`
+
+The **Alert** component provides the ability to enable screen reader notifications via the `_alert` attribute. If `_alert` is set, the ARIA role `alert` or `aria-live="assertive"` is used to have screen readers automatically read the notification.
+
+**Important note on behavior:**
+The `_alert` attribute only works if:
+- The **Alert** component is initially re-rendered, or
+- The **content** of the alert changes
+
+Without a change in content, screen readers will not recognize new information and will not read the alert.
+
+**Examples of effective use:**
+```html
+<!-- Alert wird neu hinzugefügt (initial rendering) -->
+<kol-alert _label="Erfolgreich gespeichert" _type="success" _alert>
+  Ihre Daten wurden erfolgreich übertragen.
+</kol-alert>
+
+<!-- Inhalt ändert sich dynamisch -->
+<kol-alert _label="Status-Update" _type="info" _alert>
+  {dynamicMessage}
+</kol-alert>
+```
+
+**Not effective:**
+```html
+<!-- Alert bereits vorhanden, kein Re-Render, keine Inhaltsänderung -->
+<kol-alert _label="Statische Meldung" _type="info" _alert>
+  Diese Meldung wird nicht vorgelesen.
+</kol-alert>
+```
+
+### Note on `_alert` and screen readers
+
+With `<kol-alert>`, `role="alert"` and `aria-live="polite"` cannot be set into effect later; Both behave the same and are only triggered in the screen reader when the content changes.
+
+## Links and references
+
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#alert" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="alert" />
+
+## Live editor
+
+<LiveEditorCompact component="alert" />
+
+## Examples
+
+### Simply reports
+
+<Configurator component="alert" sample="basic" />
+
+### Card or as Msg
+
+<Configurator component="alert" sample="card-msg" />
+
+### With HTML structure
+
+<Configurator component="alert" sample="html" />

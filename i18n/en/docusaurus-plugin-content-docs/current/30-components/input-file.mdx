@@ -1,0 +1,79 @@
+---
+title: InputFile
+description: Description, specification and examples for the InputFile component.
+---
+
+import Readme from '/readmes/input-file/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+
+# InputFile
+
+Synonyms: Upload, File Uploader, File Picker, File Selector
+
+The input type **File** creates an input field for uploads, for example. One or more files can be selected.
+
+## Construction
+
+### Code
+
+```html
+<kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icons='{"right": "codicon codicon-device-camera"}'></kol-input-file>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|---------|--------------------------------------------------------------------------------|--------------------------------|
+| `focus` | Input field is focused | - |
+| `click` | Input field is clicked | - |
+| `input` | One or more files are selected (corresponds to native `input` event) | Selected files as FileList |
+| `change` | One or more files are selected (corresponds to native `change` event) | Selected files as FileList |
+| `blur` | Input field loses focus | - |
+
+### Example
+
+<kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icons='{"right": "codicon codicon-device-camera"}'></kol-input-file>
+
+## Usage
+
+Use the **`_accept`** attribute to specify which file types are allowed for selection. If the attribute is not passed or is passed empty, all file types are permitted.
+Possible values ​​and further information can be found in the <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept" _target="_blank" _label="MDN article on the accept attribute"></kol-link>.
+
+### Best practices
+
+- Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
+- Allow only the file types needed for program execution to be uploaded. Failure to restrict the file types that can be uploaded can be a significant security risk.
+- Limit the size of files you want to allow for upload.
+
+## Accessibility
+
+### Keyboard controls
+
+| button | Function |
+| ----- | --------------------------------------------------------------- |
+| `Tab` | Focuses the input field and calls the file selection dialog. |
+
+## Links and references
+
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+
+<Readme />
+
+## Usage _msg
+
+<PropertyMsgUsage />
+
+<ExampleLink component="input-file" />
+
+## Live editor
+
+<LiveEditorCompact component="input-file" />
+
+## Examples
+
+<Configurator component="input-file" sample="basic" />
