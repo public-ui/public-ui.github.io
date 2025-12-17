@@ -2,6 +2,7 @@ import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
 import { KolIcon, KolLink, KolLinkButton } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Heading from '@theme/Heading';
 import { VERSION_ID } from '@site/src/shares/version';
 
@@ -26,6 +27,11 @@ function Feature({ title, icon, description, button }: FeatureItem) {
 }
 
 export default function HomepageFeatures(): ReactElement {
+	const designerUrl = useBaseUrl(`/${VERSION_ID}/designer`);
+	const themingUrl = useBaseUrl('/docs/concepts/styling/theming');
+	const frameworksUrl = useBaseUrl('/docs/get-started/frameworks');
+	const componentsUrl = useBaseUrl('/docs/components');
+
 	const FeatureList: FeatureItem[] = [
 		{
 			icon: 'codicon codicon-paintcan',
@@ -38,7 +44,7 @@ export default function HomepageFeatures(): ReactElement {
 							message:
 								'Die semantisch barrierefreien Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet werden. Mittels des',
 						})}{' '}
-						<KolLink _href={`/${VERSION_ID}/designer`} _label="Designers" _target="designer" />{' '}
+						<KolLink _href={designerUrl} _label="Designers" _target="designer" />{' '}
 						{translate({
 							id: 'custom.designer-short-description-part-2',
 							message: 'können die Komponenten an beliebige Styleguides oder Designs angepasst werden.',
@@ -46,13 +52,7 @@ export default function HomepageFeatures(): ReactElement {
 					</p>
 				</>
 			),
-			button: (
-				<KolLinkButton
-					className="w-72"
-					_href="/docs/concepts/styling/theming"
-					_label="Styling & Design"
-				></KolLinkButton>
-			),
+			button: <KolLinkButton className="w-72" _href={themingUrl} _label="Styling & Design"></KolLinkButton>,
 		},
 		{
 			icon: 'codicon codicon-code',
@@ -68,7 +68,7 @@ export default function HomepageFeatures(): ReactElement {
 					</p>
 				</>
 			),
-			button: <KolLinkButton className="w-72" _href="/docs/get-started/frameworks" _label="Frameworks"></KolLinkButton>,
+			button: <KolLinkButton className="w-72" _href={frameworksUrl} _label="Frameworks"></KolLinkButton>,
 		},
 		{
 			icon: 'codicon codicon-layers',
@@ -90,7 +90,7 @@ export default function HomepageFeatures(): ReactElement {
 			button: (
 				<KolLinkButton
 					className="w-72"
-					_href="/docs/components"
+					_href={componentsUrl}
 					_label={translate({
 						id: 'custom.components',
 						message: 'Components',

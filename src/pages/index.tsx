@@ -8,6 +8,7 @@ import type { FunctionComponent, ReactElement } from 'react';
 import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
 import { ITZLogo } from '@site/src/components/ITZLogo';
+import { VERSION_ID } from '../shares/version';
 
 const HomepageHeader: FunctionComponent = () => (
 	<header className="p-8 grid justify-center">
@@ -24,29 +25,29 @@ const HomepageHeader: FunctionComponent = () => (
 	</header>
 );
 const HomepageButtons: FunctionComponent = () => {
-        const docsHref = useBaseUrl('/docs');
-        const firstStepsHref = useBaseUrl('/docs/get-started/first-steps');
+	const getStartedUrl = useBaseUrl(`/${VERSION_ID}/docs/get-started/first-steps`);
+	const docsUrl = useBaseUrl(`/${VERSION_ID}/docs`);
 
-        return (
-                <div className="grid sm:flex gap-4 justify-center mt-4">
-                        <KolLinkButton
-                                className="w-72"
-                                _icons={{
-                                        right: 'codicon codicon-dashboard',
-                                }}
-                                _href={firstStepsHref}
-                                _label={translate({
-                                        id: 'custom.get-started-button',
-                                })}
-                                _variant="primary"
-                        ></KolLinkButton>
-                        <KolLinkButton
-                                className="w-72"
-                                _href={docsHref}
-                                _label={translate({
-                                        id: 'custom.documentation-button',
-                                })}
-                        ></KolLinkButton>
+	return (
+		<div className="grid sm:flex gap-4 justify-center mt-4">
+			<KolLinkButton
+				className="w-72"
+				_icons={{
+					right: 'codicon codicon-dashboard',
+				}}
+				_href={getStartedUrl}
+				_label={translate({
+					id: 'custom.get-started-button',
+				})}
+				_variant="primary"
+			></KolLinkButton>
+			<KolLinkButton
+				className="w-72"
+				_href={docsUrl}
+				_label={translate({
+					id: 'custom.documentation-button',
+				})}
+			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
 				_href="https://develop--kolibri-public-ui.netlify.app"
