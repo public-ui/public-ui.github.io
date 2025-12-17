@@ -1,0 +1,135 @@
+---
+title: Drawer
+description: Description, specification and examples for the Drawer component.
+---
+
+import Readme from '/readmes/drawer/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+Synonyms: Corner Dialog, Prompt
+Using the **Drawer** component, additional information or navigation elements can be displayed in a fold-out side window. An open drawer can be closed via ESC.
+
+The **Drawer** component is hidden by default. It is usually only displayed after clicking on a button or other trigger or controlled with the `_open` attribute.
+
+```html
+<kol-drawer _label="Drawer" _open  _align="top"></kol-drawer>
+```
+
+### Example
+
+#### Uncontrolled
+
+In _Uncontrolled_ mode, the drawer is controlled via the `open()` and `close()` methods.
+
+```html
+<kol-drawer id="example-drawer" _align="left" _label="Drawer">
+	<div>
+		<p>Dies ist der Inhalt des Drawers. Hier können Sie beliebige HTML-Elemente einfügen.</p>
+		<kol-button class="close-drawer" _label="Schließen"></kol-button>
+	</div>
+</kol-drawer>
+<kol-button id="drawer-open-button" _label="Drawer öffnen"></kol-button>
+
+<script>
+	const drawer = document.querySelector('#example-drawer');
+	const drawerOpenButton = document.querySelector('#drawer-open-button');
+
+	function openDrawer() {
+		drawer.open();
+	}
+
+	function closeDrawer() {
+		drawer.close();
+	}
+
+	document.querySelectorAll('.close-drawer').forEach((b) => (b.onclick = closeDrawer));
+	drawerOpenButton.onclick = openDrawer;
+</script>
+```
+
+#### Controlled
+
+In _Controlled_ mode, the drawer is controlled via the `_open` attribute.
+
+```html
+<kol-drawer _open="true" _align="left" _label="Drawer">
+	<p>Drawer Inhalt</p>
+</kol-drawer>
+```
+
+## Usage
+
+To open and close the **Drawer** programmatically, use the **`open()`** and **`close()`** methods. Make sure the **`_label`** attribute is set to ensure accessibility. You can adjust the drawer's alignment using the **`_align`** attribute and the **left**, **top**, **right** or **bottom** values ​​to display it on the desired side of the screen. Use the **`_on`** attribute to perform custom actions when closing the drawer. An open **Drawer** can be closed via **ESC**.
+
+## Accessibility
+
+The `_label` attribute provides a clear and understandable label for the drawer. This improves usability for people using screen readers, as the label acts as an **`aria-label`**, thus explaining the meaning and function of the drawer.
+
+### Drawer
+
+When the **Drawer** is opened, the focus is automatically set to the contents of the drawer. This ensures that screen reader users immediately know that a new area has opened and can interact directly. When the drawer is closed, the focus returns to the previous active element, providing a seamless user experience.
+
+The **Drawer** component supports full keyboard navigation. Users can use the Tab key to navigate through the interactive elements within the drawer. In addition, the **Drawer** can be closed quickly and easily with the ESC key, which makes it easier to use.
+
+While the **Drawer** is open, all selectable elements outside the drawer are deactivated. This prevents unwanted interactions with the background content and draws users' attention to the **Drawer** content.
+
+### Keyboard controls
+
+| button | Function |
+| ----------- | ------------------------------------------------------------------------------------------------ |
+| `Tab` | When the drawer is open, all focusable elements are accessed in order. |
+| `ESC key` | Closes the drawer.                                                                         |
+
+## Animations
+
+Optionally, animations with keyframes can be added. It is important that the keyframes contain the names `slideIn` or `slideOut` and are defined on the `drawer__wrapper` class.
+
+**Example:**
+
+```scss
+.drawer__wrapper {
+	&--left {
+		animation: slideInLeft $duration forwards;
+		&.is-closing {
+			animation: slideOutLeft $duration forwards !important;
+		}
+	}
+	&--right {
+		animation: slideInRight $duration forwards;
+		&.is-closing {
+			animation: slideOutRight $duration forwards;
+		}
+	}
+	&--top {
+		animation: slideInTop $duration forwards;
+		&.is-closing {
+			animation: slideOutTop $duration forwards;
+		}
+	}
+	&--bottom {
+		animation: slideInBottom $duration forwards;
+		&.is-closing {
+			animation: slideOutBottom $duration forwards;
+		}
+	}
+}
+```
+
+## Links and references
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="drawer" />
+
+## Live editor
+
+<LiveEditorCompact component="drawer" />
+
+## Examples
+
+<Configurator component="drawer" sample="basic" />

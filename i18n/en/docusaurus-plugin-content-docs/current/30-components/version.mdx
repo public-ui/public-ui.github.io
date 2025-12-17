@@ -1,0 +1,46 @@
+---
+title: Version
+description: Description, specification and examples for the Version component.
+---
+
+import Readme from '/readmes/version/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Version
+
+The **Version** component displays short content on a colored background. The **Version** component is closely related to the **Tag** component, but only provides one attribute for configuration. It is optimized for specifying versions of a page, for example.
+
+## Construction
+
+### Code
+
+```html
+<div>
+	<kol-version _label="1.44.0"></kol-version>
+</div>
+```
+
+### Example
+
+<kol-version _label="1.44.0"></kol-version>
+
+## Usage
+
+The attribute **`_label`** is available for configuration and accepts any text preceded by a `v` in the component.
+
+The **version** is output as an **_inline element_** by default.
+
+<Readme />
+
+<ExampleLink component="version" />
+
+## Live editor
+
+<LiveEditorCompact component="version" />
+
+## Examples
+
+<Configurator component="version" sample="basic" />
+<Configurator component="version" sample="context" />
