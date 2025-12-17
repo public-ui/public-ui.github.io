@@ -25,6 +25,9 @@ const HomepageHeader: FunctionComponent = () => (
 	</header>
 );
 const HomepageButtons: FunctionComponent = () => {
+	const getStartedUrl = useBaseUrl(`/${VERSION_ID}/docs/get-started/first-steps`);
+	const docsUrl = useBaseUrl(`/${VERSION_ID}/docs`);
+
 	return (
 		<div className="grid sm:flex gap-4 justify-center mt-4">
 			<KolLinkButton
@@ -32,7 +35,7 @@ const HomepageButtons: FunctionComponent = () => {
 				_icons={{
 					right: 'codicon codicon-dashboard',
 				}}
-				_href={`/${VERSION_ID}/docs/get-started/first-steps`}
+				_href={getStartedUrl}
 				_label={translate({
 					id: 'custom.get-started-button',
 				})}
@@ -40,7 +43,7 @@ const HomepageButtons: FunctionComponent = () => {
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href={`/${VERSION_ID}/docs`}
+				_href={docsUrl}
 				_label={translate({
 					id: 'custom.documentation-button',
 				})}
