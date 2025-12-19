@@ -3,7 +3,6 @@ import React from 'react';
 import { KolIcon, KolLink, KolLinkButton } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import Heading from '@theme/Heading';
-import { VERSION_ID } from '@site/src/shares/version';
 
 type FeatureItem = {
 	icon: string;
@@ -28,20 +27,24 @@ function Feature({ title, icon, description, button }: FeatureItem) {
 export default function HomepageFeatures(): ReactElement {
 	const FeatureList: FeatureItem[] = [
 		{
-			icon: 'codicon codicon-paintcan',
-			title: 'Designer',
+			icon: 'codicon codicon-symbol-color',
+			title: 'Theming',
 			description: (
 				<>
 					<p>
 						{translate({
-							id: 'custom.designer-short-description-part-1',
-							message:
-								'Die semantisch barrierefreien Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet werden. Mittels des',
+							id: 'custom.theme-template-short-description-part-1',
+							message: 'Vorgegebene Styleguides lassen sich mit KoliBri leicht umsetzen. Das',
 						})}{' '}
-						<KolLink _href={`/${VERSION_ID}/designer`} _label="Designers" _target="designer" />{' '}
+						<KolLink
+							_href="https://github.com/public-ui/template-theme"
+							_label="Template Repository"
+							_target="template-theme"
+						/>{' '}
 						{translate({
-							id: 'custom.designer-short-description-part-2',
-							message: 'können die Komponenten an beliebige Styleguides oder Designs angepasst werden.',
+							id: 'custom.theme-template-short-description-part-2',
+							message:
+								'liefert die technische Grundlage und ein SCSS-basiertes Setup, um schnell ein eigenes Theme zu implementieren.',
 						})}
 					</p>
 				</>
