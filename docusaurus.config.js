@@ -10,10 +10,9 @@ const config = {
 	title: 'KoliBri - Public UI',
 	tagline: 'The accessible Web Component Library',
 	url: PUBLIC_BASE_URL,
-	baseUrl: '/',
+	baseUrl: '/v3/',
 	onBrokenLinks: 'throw',
 	trailingSlash: false,
-	onBrokenMarkdownLinks: 'warn',
 	favicon: 'assets/favicon.ico',
 
 	// GitHub pages deployment config.
@@ -96,7 +95,7 @@ const config = {
 						label: 'Version 3',
 						position: 'right',
 						items: [
-							{ to: `${PUBLIC_BASE_URL}/next/`, label: 'Version 4 (Next)' },
+							{ to: `${PUBLIC_BASE_URL}`, label: 'Version 4' },
 							{
 								type: 'html',
 								className: 'dropdown-archived-versions',
