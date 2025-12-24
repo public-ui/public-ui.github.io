@@ -100,7 +100,7 @@ const config = {
 								className: 'dropdown-archived-versions',
 								value: '<strong class="dropdown__link">Version 4</strong>',
 							},
-							{ to: `${PUBLIC_BASE_URL}/`, label: 'Version 3' },
+							{ to: `${PUBLIC_BASE_URL}/v3/`, label: 'Version 3' },
 							{ to: `${PUBLIC_BASE_URL}/v2/`, label: 'Version 2' },
 							{
 								type: 'html',
