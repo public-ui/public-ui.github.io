@@ -24,29 +24,29 @@ const HomepageHeader: FunctionComponent = () => (
 	</header>
 );
 const HomepageButtons: FunctionComponent = () => {
-        const docsHref = useBaseUrl('/docs');
-        const firstStepsHref = useBaseUrl('/docs/get-started/first-steps');
+	const docsHref = useBaseUrl('/docs');
+	const firstStepsHref = useBaseUrl('/docs/get-started/first-steps');
 
-        return (
-                <div className="grid sm:flex gap-4 justify-center mt-4">
-                        <KolLinkButton
-                                className="w-72"
-                                _icons={{
-                                        right: 'codicon codicon-dashboard',
-                                }}
-                                _href={firstStepsHref}
-                                _label={translate({
-                                        id: 'custom.get-started-button',
-                                })}
-                                _variant="primary"
-                        ></KolLinkButton>
-                        <KolLinkButton
-                                className="w-72"
-                                _href={docsHref}
-                                _label={translate({
-                                        id: 'custom.documentation-button',
-                                })}
-                        ></KolLinkButton>
+	return (
+		<div className="grid sm:flex gap-4 justify-center mt-4">
+			<KolLinkButton
+				className="w-72"
+				_icons={{
+					right: 'codicon codicon-dashboard',
+				}}
+				_href={firstStepsHref}
+				_label={translate({
+					id: 'custom.get-started-button',
+				})}
+				_variant="primary"
+			></KolLinkButton>
+			<KolLinkButton
+				className="w-72"
+				_href={docsHref}
+				_label={translate({
+					id: 'custom.documentation-button',
+				})}
+			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
 				_href="https://develop--kolibri-public-ui.netlify.app"
