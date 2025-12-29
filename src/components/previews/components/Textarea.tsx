@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview from '../Preview';
-import { BooleanProperty, MultiLineTextProperty, ResizeProperty } from '../properties';
+import { BooleanProperty, ResizeProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolInputNumber, KolTextarea, KolSelect } from '@public-ui/react-v19';
 
