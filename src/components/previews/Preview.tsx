@@ -163,7 +163,7 @@ const Preview = <TProps,>({
 			}] grid-rows-[1fr_auto] gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}
 		>
 			<div className="flex mb-4 items-center">
-				<span className="p-4 min-w-lg grow">{children(currentProps)}</span>
+				<span className="px-4 min-w-lg grow">{children(currentProps)}</span>
 			</div>
 			<div>{visibleProperties?.length !== 0 && renderPropertyComponents()}</div>
 			{codeCollapsable ? (
