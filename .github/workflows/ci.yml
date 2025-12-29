@@ -5,22 +5,23 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
+  group: "workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}"
   cancel-in-progress: true
 
 jobs:
   build-and-check:
+    name: ${{ matrix.task }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [build, lint]
     steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-          persist-credentials: false
+      - name: Checkout
+        uses: actions/checkout@v6
 
-      - uses: ./.github/actions/pnpm-setup
+      - name: Setup pnpm and install dependencies
+        uses: ./.github/actions/pnpm-setup
 
-      - name: Lint
-        run: pnpm run lint
-
-      - name: Build
-        run: pnpm run build
+      - name: Run ${{ matrix.task }}
+        run: pnpm run ${{ matrix.task }}
