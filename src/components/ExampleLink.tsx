@@ -14,7 +14,6 @@ export const ExampleLink: FC<ComponentProps> = ({ component }) => {
 				_href={`${DEV_NETLIFLY_LINK}/#/${component}`}
 				_label={translate({
 					id: 'custom.view-component-example',
-					message: 'Beispiel der Komponente ansehen',
 				})}
 				_target="_blank"
 			/>

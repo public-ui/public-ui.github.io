@@ -16,6 +16,8 @@ type PreviewProps<TProps> = {
 	componentName?: string;
 	visibleProperties?: (keyof TProps)[];
 	codeCollapsable?: boolean;
+	codeCollapsed?: boolean;
+	centerComponent?: boolean;
 };
 
 const Preview = <TProps,>({
@@ -25,9 +27,11 @@ const Preview = <TProps,>({
 	componentName,
 	visibleProperties,
 	codeCollapsable,
+	codeCollapsed: codeInitialCollapsed,
+	centerComponent,
 }: PreviewProps<TProps>) => {
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
-	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(codeCollapsable ?? false);
+	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(codeInitialCollapsed ?? false);
 
 	const updateProperty = (key: keyof TProps, value: unknown) => {
 		setCurrentProps((prev) => ({
@@ -162,8 +166,8 @@ const Preview = <TProps,>({
 				visibleProperties?.length !== 0 ? '1fr_1fr' : '1fr'
 			}] grid-rows-[1fr_auto] gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}
 		>
-			<div className="flex mb-4 items-center">
-				<span className="px-4 min-w-lg grow">{children(currentProps)}</span>
+			<div className={`flex ${centerComponent ? '' : 'items-center'}`}>
+				<span className={`px-4 min-w-lg ${centerComponent ? 'm-auto' : 'grow'} `}>{children(currentProps)}</span>
 			</div>
 			<div>{visibleProperties?.length !== 0 && renderPropertyComponents()}</div>
 			{codeCollapsable ? (
