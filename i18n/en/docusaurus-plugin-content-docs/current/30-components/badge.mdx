@@ -1,0 +1,133 @@
+---
+title: Badge
+description: Description, specification and examples for the Badge component.
+---
+
+import Readme from '/readmes/badge/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+#Badge
+
+With **Badges** you can visually highlight certain information on your website.
+In addition to specifying the background color and automatically calculating the text color, KoliBri also offers the option of giving a badge an icon and/or a different font style.
+
+## Construction
+
+### Code
+
+```html
+<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
+<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|---------------|----------------------------------------------------------------------------------------------------------------|-------|
+| `click` | Smart button is clicked | - |
+| `onMouseDown` | A button on a pointing device is pressed while the pointer is inside the Smart Button | - |
+
+### Example
+
+<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
+<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
+
+## Context for badges
+
+To improve usability and accessibility, badges should
+always be used in the context of a meaningful headline.
+
+Make sure each group of badges is accompanied by a heading that describes the shared context or theme. Avoid presenting badges without such descriptive headings.
+
+### Example
+
+```html
+<kol-heading _label="Beispielüberschrift" _level="2"></kol-heading>
+<div>
+	<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
+	<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
+</div>
+```
+
+## Usage
+
+### Label in the badge
+
+The text to be displayed in the badge is passed via the **\_label** attribute. In addition to special characters, the text can also contain umlauts or spaces.
+The element `<kol-badge></kol-badge>` does not contain any text itself.
+
+### Badge background color
+
+By default, a badge without any further information about the background color is displayed with a light gray font color on a black background. Other background colors can be selected using the **\_color** attribute.
+
+The desired background color is specified in hexadecimal notation, e.g. **\_color="#000000"** for black.
+
+The text color is automatically calculated as a contrast color to the selected background color.
+
+### Icons
+
+An icon (**`_icon`**) can be specified either as a string or as an object.
+Pass the icon class as a string (e.g.: `_icons="codicon codicon-home`); the icon is displayed to the left of the text.
+The object is of type `KoliBriAllIcon`, so it can have one or more of the keys `top`, `right`, `bottom` and `left`. These are then either a string (see above) or an object of type `KoliBriCustomIcon`, which consists of `icon` (string, see above) and `style` (optional, style object).
+
+<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Übersicht Codicons"></kol-link>
+
+### Font style
+
+The font style is adopted by the host and can therefore be set externally via CSS.
+
+### Best practices
+
+- Use badges to display important information close to each item.
+- Use badges to draw attention to changed values ​​or status.
+- A badge informs the user that something has been newly created or updated, e.g. E.g. an “unread report” or an activity notification.
+- Always maintain the same position of the badge in the same use cases to ensure a consistent appearance.
+
+## Use cases
+
+### Use badge as bullet point
+
+<ul class="m-0 p-0">
+	<li class="flex gap-2">
+		<kol-badge _label="1" _color="#0747a6"></kol-badge>
+		<kol-heading _level="2" _label="Auswahl Anliegen"></kol-heading>
+	</li>
+	<li class="flex gap-2">
+		<kol-badge _label="2" _color="#0747a6"></kol-badge>
+		<kol-heading _level="2" _label="Auswahl Amtsstelle"></kol-heading>
+	</li>
+	<li class="flex gap-2">
+		<kol-badge _label="3" _color="#0747a6"></kol-badge>
+		<kol-heading _level="2" _label="Terminauswahl"></kol-heading>
+	</li>
+</ul>
+
+## Accessibility
+
+To comply with accessibility rules, an optimal contrast between the background color and text color of the badge is essential. KoliBri therefore offers an automatic calculation of the text color from the selected background color. The text colors **black** and **white** are possible and are output depending on the background color.
+
+The additional output of an **icon** ensures that the user can also record the type of information.
+
+<kol-alert _type="info">Eine explizite Angabe der Textfarbe ist nicht möglich.</kol-alert>
+
+<Readme />
+
+<ExampleLink component="badge" />
+
+## Live editor
+
+<LiveEditorCompact component="badge" />
+
+## Examples
+
+### Simple badges
+
+<Configurator component="badge" sample="basic" />
+
+### Badges with switches
+
+<Configurator component="badge" sample="button" />

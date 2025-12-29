@@ -1,0 +1,49 @@
+---
+title: Abbr
+description: Description, specification and examples for the Abbr component.
+---
+
+import Readme from '/readmes/abbr/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Abbr
+
+The **Abbr** component implements the HTML tag `abbr` to represent an abbreviation. Optionally, a label can be passed, which is displayed in brackets after the abbreviation.
+
+## Construction
+
+### Code
+
+```html
+<p>Ich <kol-abbr _label="zum Beispiel">z. B.</kol-abbr> bin eine Abkürzung mit Label.</p>
+<p>Ich <kol-abbr>z. B.</kol-abbr> bin eine Abkürzung ohne Label.</p>
+```
+
+### Example
+
+<p>Ich <kol-abbr _label="zum Beispiel">z. B.</kol-abbr> bin eine Abkürzung mit Label.</p>
+<p>Ich <kol-abbr>z. B.</kol-abbr> bin eine Abkürzung ohne Label.</p>
+
+## Usage
+
+### Specify the description of the abbreviation
+
+The term or explanation is passed via the **`_label`** attribute, the abbreviation or the term worthy of explanation comes between the tags in the HTML.
+
+## Links and references
+
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="abbr" />
+
+## Live editor
+
+<LiveEditorCompact component="abbr" />
+
+## Examples
+
+<Configurator component="abbr" sample="basic" />

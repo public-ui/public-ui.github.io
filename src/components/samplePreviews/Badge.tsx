@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolBadge } from '@public-ui/react';
+import { KolBadge } from '@public-ui/react-v19';
 
 const Badge = () => <KolBadge _color="#214f86" _label="Label" />;
 

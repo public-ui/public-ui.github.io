@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolIcon } from '@public-ui/react';
+import { KolIcon } from '@public-ui/react-v19';
 
 const Icon = () => (
 	<>

@@ -1,4 +1,4 @@
-import { KolTextarea } from '@public-ui/react';
+import { KolTextarea } from '@public-ui/react-v19';
 import React from 'react';
 
 const MultiLineTextProperty = (props: {

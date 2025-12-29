@@ -1,6 +1,6 @@
 import type { ReactNode, ReactElement } from 'react';
 import React, { useState, cloneElement } from 'react';
-import { KolCard, KolButton, KolHeading, KolDetails } from '@public-ui/react';
+import { KolCard, KolButton, KolHeading, KolDetails } from '@public-ui/react-v19';
 
 type PropertyComponent = ReactElement<{
 	_on?: {

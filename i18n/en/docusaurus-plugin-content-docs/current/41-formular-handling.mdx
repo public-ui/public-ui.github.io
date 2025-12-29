@@ -28,7 +28,7 @@ In **KoliBri** the form components are decoupled from the form handling. This ha
 
 ## Input-components
 
-The **input** components are the components that can be used to make form inputs. That means primarily <KolLink _label="inputs, select and textarea" _href="/docs/konzepte/formular-input" />.
+The **input** components are the components that can be used to make form inputs. That means primarily <KolLink _label="inputs, select and textarea" _href="/docs/concepts/form-input" />.
 
 ## Handling adapters
 
@@ -81,8 +81,8 @@ import ReactDOM from 'react-dom';
 import { AppComponent } from './components/app/component';
 
 import { register } from '@public-ui/components';
-import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
-import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
+import { defineCustomElements as kolibri } from '@public-ui/components/loader';
+import { defineCustomElements as leanup } from '@leanup/kolibri-components/loader';
 import { BMF } from '@public-ui/themes';
 
 register([BMF], [kolibri, leanup])

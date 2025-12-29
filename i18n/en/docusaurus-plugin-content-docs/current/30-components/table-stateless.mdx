@@ -1,0 +1,137 @@
+---
+title: TableStateless
+description: Description, specification and examples for the TableStateless component.
+---
+
+import Readme from '/readmes/table-stateless/readme.md';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+Synonyms: Data Table, Details List, Data Grid
+
+The **TableStateless** component is responsible for purely displaying the KoliBri table. For a table component that can automatically sort and paginate with the data provided, see <kol-link _href="table-stateful" _label="KolTableStateful" />.
+
+TableStateless is particularly useful for larger amounts of data if it is not practical to deliver the entire amount of data to the browser for filtering and sorting.
+
+## Direction of data playback
+
+The KolTableStateless component provides a flexible table implementation that supports bi-directional data playback. The direction of data playback is determined by the header configuration:
+
+- Horizontal Headers (Default): The data is rendered from top to bottom when keys are present in the horizontal headers. Each column represents a key, and the rows represent individual data entries.
+- Vertical headers: The data is presented from left to right when the keys are present in the vertical headers and not present in the horizontal headers. Each row represents a key, and columns represent individual data entries.
+
+The display direction is automatically determined by examining the header cells:
+
+- If horizontal headers contain keys, horizontal representation is used.
+- If only vertical headers contain keys, renders vertically.
+- If no headers contain keys, horizontal rendering is used by default.
+
+
+## Selection
+
+The “selection mode” of the component can be activated and controlled via the `_selection` property. If `_selection` is defined, each line receives a checkbox that can be used to select or deselect the line.
+
+- **label**: Function that is called for each line and returns a label for the checkbox.
+- **selectedKeys**: Array of strings containing the key properties of the selected lines.
+- **disabledKeys**: Array of strings containing the key properties of the disabled lines. For lines that occur in `disabledKeys`, the checkbox or radio button is deactivated.
+- **keyPropertyName**: Property referenced by `selectedKeys` and `disabledKeys`. Default value: `id`.
+
+```ts
+const data = [
+	{ id: '1001', name: 'Marianne Musterfrau' },
+	{ id: '1002', name: 'Max Mustermann' },
+];
+const selection: KoliBriTableSelection = {
+	label: (row: KoliBriTableDataType) => `Selection for ${row.name}`,
+  selectedKeys: ['1002'],
+  disabledKeys: ['1001'],
+  keyPropertyName: 'id',
+};
+```
+
+## Settings
+
+Tables automatically have a settings menu that allows users to:
+
+* Show and hide columns
+* Adjust column widths
+* Change column order
+
+By default, all horizontal table columns are taken into account.
+
+The _tableSettings property can be used to load predefined or already saved table configurations. These overwrite the default values, and only the columns listed there are then displayed in the menu.
+
+Example:
+
+```jsx
+<KolTableStateful
+	_tableSettings={{
+		columns: [
+			{ key: 'columnA', visible: false, label: 'Column A', position: 2 },
+			{ key: 'columnB', visible: true, label: 'Column B', position: 1, width: 20 },
+			{ key: 'columnC', visible: true, label: 'Column C', position: 0, width: 45 },
+		],
+	}}
+	// ...
+/>
+```
+
+If users change the settings, they are automatically transferred to the table view and a <nobr>`settingsChange`</nobr> DOM event is triggered (see Events).
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|-------------------|--------------------------------------------------------|----------------------------------------------------------------------|
+| `sort` | The sorting has changed | Object of type `SortEventPayload` with `key` and `currentSortDirection` |
+| `selectionChange` | The selection of table rows has changed | Array of selected IDs or selected ID for single selection |
+| `settingsChange` | The table settings were changed by the user. | Object of type `TableSettings` |
+
+## Example
+
+```jsx
+<KolTableStateless
+  _label="Table for demonstration purposes"
+  _headerCells={{
+    horizontal: [
+      [
+        { key: 'value', label: 'Value', sortDirection: 'ASC' },
+      ],
+    ],
+  }}
+  _data={DATA}
+  _selection={{
+    label: (row: KoliBriTableDataType) => `Selection for ${row.name}`,
+    selectedKeys: ['1002'],
+    keyPropertyName: 'id',
+  }}
+  _on={{
+    /**
+     * @param {MouseEvent} _
+     * @param {SortEventPayload} payload
+     * @param {string} payload.key
+     * @param {KoliBriSortDirection} payload.currentSortDirection
+     */
+    onSort: (_: MouseEvent, payload: SortEventPayload) => {
+      /* Perform sort, update `DATA` and headers `sortDirection` */
+    },
+
+    /**
+     * @param {Event} _
+     * @param {string[]} selection - Array of selected keys
+     */
+    onSelectionChange: (_: Event, selection: string[]) => {
+      /* Update selection.selectedKeys state */
+    }
+  }}
+/>
+```
+
+<Readme />
+
+<ExampleLink component="table-stateless" />
+
+## Live editor
+
+<LiveEditorCompact component="table-stateless" />

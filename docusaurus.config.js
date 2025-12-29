@@ -13,7 +13,6 @@ const config = {
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
 	trailingSlash: false,
-	onBrokenMarkdownLinks: 'warn',
 	favicon: 'assets/favicon.ico',
 
 	// GitHub pages deployment config.
@@ -93,14 +92,15 @@ const config = {
 				},
 				items: [
 					{
-						label: 'Version 3',
+						label: 'Version 4',
 						position: 'right',
 						items: [
 							{
 								type: 'html',
 								className: 'dropdown-archived-versions',
-								value: '<strong class="dropdown__link">Version 3</strong>',
+								value: '<strong class="dropdown__link">Version 4</strong>',
 							},
+							{ to: `${PUBLIC_BASE_URL}/v3/`, label: 'Version 3' },
 							{ to: `${PUBLIC_BASE_URL}/v2/`, label: 'Version 2' },
 							{
 								type: 'html',
@@ -145,7 +145,7 @@ const config = {
 							},
 							{
 								label: 'Impressum',
-								to: '/docs/impressum',
+								to: '/docs/legal-notice',
 							},
 						],
 					},
@@ -200,6 +200,9 @@ const config = {
 		}),
 	markdown: {
 		mermaid: true,
+		hooks: {
+			onBrokenMarkdownLinks: 'warn',
+		},
 	},
 	plugins: [
 		async () => {

@@ -8,7 +8,7 @@ tags:
   - concept
 ---
 
-import { KolLink } from '@public-ui/react';
+import { KolLink } from '@public-ui/react-v19';
 
 ## Motivation
 

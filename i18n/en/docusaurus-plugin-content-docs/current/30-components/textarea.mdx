@@ -1,0 +1,168 @@
+---
+title: Textarea
+description: Description, specification and examples for the Textarea component.
+---
+
+import Readme from '/readmes/textarea/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Textarea
+
+The **Textarea** component provides a larger input field for content. In contrast to the <kol-link _href="../components/input-text" _label="/docs/components/input-text" _label="InputText"></kol-link>, extensive content can also be entered here, which can also contain line breaks.
+
+## Construction
+
+### Code
+
+```html
+<kol-textarea
+  _label="Beschreibung"
+  _resize="none"
+  _rows="5"
+  _value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+    elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
+    et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+    sit amet."
+></kol-textarea>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|----------------------------------|---------------------------------|
+| `click` | Input field is clicked | - |
+| `focus` | Input field is focused | - |
+| `blur` | Input field loses focus | - |
+| `input` | Value is changed by entering | Current value of the input field |
+| `change` | Entry has been completed | Current value of the input field |
+
+### Example
+
+```html
+<kol-textarea
+  _label="Beschreibung"
+  _resize="none"
+  _rows="5"
+  _value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.">
+</kol-textarea>
+```
+## Usage
+
+Use the **Textarea** component if the entry of larger amounts of text is required, e.g. when entering a request within a form.
+The height of the text area in lines can be determined using the **`_rows`** attribute.
+The **`_resize`** attribute can also be used to specify whether and in which direction the text area can be enlarged. The value **`none`** locks the text area against size changes.
+
+<!--### Best practices
+
+### Use cases-->
+
+## Accessibility
+
+### Keyboard controls
+
+| button | Function |
+| -------------- | ------------------------------------------------------------------------------- |
+| `Tab` | Focuses the text area.                                                        |
+| `arrow keys` | Can be used to navigate the content of the focused text area. |
+
+
+## Character limit and character counter
+
+With the three attributes `_max-length`, `_max-length-behavior` and `_has-counter`, the input length can be flexibly limited and at the same time provide visual feedback.
+
+### Attributes
+
+| Attribute | Type | Default | Description |
+| ---------------------- | ------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_has-counter` | `boolean` | `false` | Global switch for the character counter. Only if this attribute is **set (= true)** will a counter be output.                                                                                                                                                           |
+| `_max-length` | `number` | — | Maximum number of characters allowed. Effective only if `_has-counter` is active.                                                                                                                                                                                                              |
+| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Specifies how the limit is handled **if** `_max-length` is set:<br />- **hard**: Additionally sets the native `maxlength` attribute and prevents further input.<br />- **soft**: Allows further input; the counter shows remaining or exceeded characters. |
+
+### Output variants
+
+| case | `_has-counter` | `_max-length` | `_max-length-behavior` | Visible text |
+| ---: | --------------------- | ------------- | ---------------------- | -------------------------------------------------------- |
+| 1 | *(empty)* or `false` | — | — | — (no counter) |
+| 2 | `true` | *(empty)* | — | `n character` |
+| 3 | `true` | 5 | *(empty)* or `hard` | `n/5 characters` |
+| 4 | `true` | 5 | `soft` | `3 characters still available`<br />*(or `3 characters too many`)* |
+
+> If `_max-length-behavior="soft"` is used, **the native `maxlength` attribute is *not* set** - so the input field is not hard-limited.
+
+### Accessibility
+
+* The counter updates with a **500ms** delay so that screen reader events are concentrated and do not interrupt typing.
+* For screen readers, a hidden text that is only visible to assistive technologies is also displayed, such as:
+*“You can enter up to 10 characters.”*
+
+### Examples
+
+```html
+<!-- Nur Zähler -->
+<kol-textarea _label="Beschreibung" _has-counter></kol-textarea>
+
+<!-- Harte Begrenzung auf 5 Zeichen -->
+<kol-textarea _label="Beschreibung" _has-counter _max-length="5"></kol-textarea>
+
+<!-- Weiche Begrenzung auf 5 Zeichen -->
+<kol-textarea
+  _label="Beschreibung"
+  _has-counter
+  _max-length="5"
+  _max-length-behavior="soft">
+</kol-textarea>
+```
+
+### Summary
+
+* Without `_has-counter` there is **never** a counter.
+* With `_has-counter` **and without** `_max-length` only the currently entered number of characters is displayed.
+* With `_has-counter` **and** `_max-length`, `_max-length-behavior` determines whether the limit is implemented hard (`hard`) or softly (`soft`).
+
+## Links and references
+
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="textarea" />
+
+## Live editor
+
+<LiveEditorCompact component="textarea" />
+
+## Examples
+
+### Simply
+
+<Configurator component="textarea" sample="basic" />
+
+### Automatic line adjustment
+
+<Configurator component="textarea" sample="adjust-height" />
+
+### Disabled
+
+<Configurator component="textarea" sample="disabled" />
+
+### Placeholders
+
+<Configurator component="textarea" sample="placeholder" />
+
+### Readonly
+
+<Configurator component="textarea" sample="readonly" />
+
+### Resizable text area
+
+<Configurator component="textarea" sample="resize" />
+
+### Line length
+
+<Configurator component="textarea" sample="rows" />

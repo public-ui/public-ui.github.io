@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolAlert } from '@public-ui/react';
+import { KolAlert } from '@public-ui/react-v19';
 
 const Alert = () => (
 	<KolAlert _label="Title" _level={5} _type="warning" _variant="card">

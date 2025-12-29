@@ -1,44 +1,107 @@
 name: Auto dependency updater
 
+env:
+  issue: 6350
+
 on:
   schedule:
-    - cron: "0 2 * * *"
+    - cron: '0 2 * * 1' # Runs weekly on Monday at 02:00 UTC
   workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - base: main
+            version: v4
+          - base: release/3
+            version: v3
+          - base: release/2
+            version: v2
+          # - base: release/1
+          #   version: v1
+    env:
+      version: ${{ matrix.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          ref: ${{ matrix.base }}
           persist-credentials: false
-          ref: "main"
-      - uses: ./.github/actions/pnpm-setup
-      - name: Create new branch
-        run: git checkout -b chore/auto-update-deps
-      - name: Show code
-        run: ls -la
-        working-directory: dev
-      - name: Install tools
-        run: npm i npm-check-updates --no-save --legacy-peer-deps
-        working-directory: dev
-      - name: Update dependencies
-        run: npm run update
-        working-directory: dev
-      - name: Reinstall dependencies
-        run: pnpm install --no-frozen-lockfile
-        working-directory: dev
-      - name: Commit changed files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add **/package.json **/pnpm-lock.yaml
-          git status
-          git commit -m "chore: auto dependency update"
-
-      - uses: ad-m/github-push-action@master
+      - uses: actions/setup-node@v6
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: "chore/auto-update-deps"
-          force: true
+          # cache: pnpm
+          node-version: 22
+      - uses: pnpm/action-setup@v4
+        id: pnpm-install
+        with:
+          version: 10
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v5
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store
+
+      - name: Install
+        run: pnpm i --no-frozen-lockfile
+      - name: Update dependencies (minor)
+        run: |
+          pnpm ncu:minor
+          # Run the recursive update twice so peer and dev dependency bumps align after the first pass adjusts peer ranges.
+          pnpm ncu:minor
+      - name: Reinstall dependencies
+        run: pnpm i --no-frozen-lockfile
+      - name: Fix format
+        run: pnpm format -w
+
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          base: ${{ matrix.base }}
+          branch: ${{ env.issue }}-${{ env.version }}/auto-update-deps
+          commit-message: 'chore: update dependencies and lock file'
+          title: 'chore(${{ env.version }}): update dependencies and lock file'
+          body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
+          delete-branch: true
+
+      - name: Run audit
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm audit --audit-level high
+      - name: Run build
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm build
+      - name: Run format
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm format
+      - name: Run lint
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm lint
+      - name: Run unused
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: pnpm unused
+
+      - name: Update dependencies (major)
+        run: pnpm ncu:major

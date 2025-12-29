@@ -43,7 +43,7 @@ import {
 	KolTabs,
 	KolTextarea,
 	KolVersion,
-} from '@public-ui/react';
+} from '@public-ui/react-v19';
 import React from 'react';
 import type { ImplementedTagName } from '../LiveEditorCompact/types';
 import type { AttributesAndDefaultValues } from '../LiveEditorCompact';

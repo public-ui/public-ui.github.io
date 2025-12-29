@@ -12,6 +12,7 @@ import Readme from '../../readmes/input-date/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 
 # InputDate
 
@@ -98,11 +99,17 @@ Die Komponente zeichnet sich dadurch aus, dass sie zahlreiche Ziffern-basierte E
 
 ### Best practices
 
-- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
+- Achten Sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ## Barrierefreiheit
 
-Die Icons in der Komponente sind per Tab-Taste nicht erreichbar. Die Auswahlhilfen der Komponente werden über die **Leertaste** geöffnet. So erhalten Sie beispielsweise beim Typ **date** ein Kalendermodul, über das per Maus oder über die Tastatur das gewünschte Datum ausgewählt werden kann. Die manuelle Eingabe der Werte ist alternativ möglich.
+Die Icons in der Komponente sind per Tab-Taste nicht erreichbar. Die Auswahlhilfen der Komponente werden über die **Leertaste** oder **Enter** geöffnet. So erhalten Sie beispielsweise beim Typ **date** ein Kalendermodul, über das per Maus oder über die Tastatur das gewünschte Datum ausgewählt werden kann. Die manuelle Eingabe der Werte ist alternativ möglich.
+
+### Bekannte Probleme
+
+Es gibt <kol-link _href="/docs/known-issues#kol-input-date">bekannte Einschränkungen</kol-link> der Barrierefreiheit für das Input Date.
+
+
 
 ### Tastatursteuerung
 
@@ -126,6 +133,10 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <Readme />
+
+## Verwendung _msg
+
+<PropertyMsgUsage />
 
 <ExampleLink component="input-date" />
 

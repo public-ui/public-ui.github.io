@@ -330,11 +330,11 @@
 	"custom.homepage-message-part-2": {
 		"message": "Open Source zur Wiederverwendung und Weiterentwicklung freigegeben."
 	},
-	"custom.designer-short-description-part-1": {
-		"message": "Die semantisch barrierefreien Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet werden. Mittels des"
+	"custom.theme-template-short-description-part-1": {
+		"message": "Vorgegebene Styleguides lassen sich mit KoliBri leicht umsetzen. Das"
 	},
-	"custom.designer-short-description-part-2": {
-		"message": "können die Komponenten an beliebige Styleguides oder Designs angepasst werden."
+	"custom.theme-template-short-description-part-2": {
+		"message": "liefert die technische Grundlage und ein SCSS-basiertes Setup, um schnell ein eigenes Theme zu implementieren."
 	},
 	"custom.developer-short-description": {
 		"message": "Die robusten Web Components (Shadow-Root) lassen sich in allen webbasierten Projekten wiederverwenden. Neben der direkten Verwendung der Web Components bieten wir auch Framework-Adapter für Angular, React, Preact und Solid an."
@@ -352,7 +352,7 @@
 		"message": "Beispiel der Komponente ansehen"
 	},
 	"custom.docs-version-hint": {
-		"message": "Wir haben KoliBri - Public UI {version} veröffentlicht. Für die LTS Version, siehe {link}."
+		"message": "Wir haben KoliBri - Public UI {version} veröffentlicht. Für die aktuellste Version, siehe {link}."
 	},
 	"email.send": {
 		"message": "E-Mail senden"
@@ -362,5 +362,32 @@
 	},
 	"feedback.information": {
 		"message": "Ihre Meinung ist uns wichtig! Gemeinsam mit Ihnen möchten wir KoliBri stetig verbessern. Teilen Sie uns Ihre Ideen, Wünsche oder Anregungen mit – schnell und unkompliziert."
+	},
+	"property.msg.usage": {
+		"message": "Verwendung _msg"
+	},
+	"property.msg.case": {
+		"message": "Fall"
+	},
+	"property.msg.value": {
+		"message": "_msg-Wert"
+	},
+	"property.msg.case.no.msg": {
+		"message": "Keine Message"
+	},
+	"property.msg.value.undefined": {
+		"message": "undefined"
+	},
+	"property.msg.case.standard": {
+		"message": "\"Standard\"-Fehlermeldung"
+	},
+	"property.msg.value.string": {
+		"message": "string"
+	},
+	"property.msg.case.message": {
+		"message": "Meldung"
+	},
+	"property.msg.value.message": {
+		"message": "{_type: 'success', _description: 'Erfolgs-Meldung'}"
 	}
 }

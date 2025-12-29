@@ -1,0 +1,59 @@
+---
+title: ButtonLink
+description: Description, specification and examples for the ButtonLink component.
+---
+
+import Readme from '/readmes/button-link/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# ButtonLink
+
+The ButtonLink is semantically a button and has the design of a link. For this purpose, all relevant properties of the button component are adopted and expanded to include the design-determining properties of the link.
+
+A button can be deactivated and therefore a ButtonLink has the property `_disabled`. The UX designer decides how this will be visually designed.
+
+Instead of using `_href` like with a link, with a ButtonLink the property is controlled via the `click callback`. The `_on` property is used for this.
+
+A link has the property `target`, which may open the link in a new window/tab. The behavior has not yet been implemented.
+
+Since the link, unlike the button, is offered in several variants (primary or secondary, etc.), the properties `_customClass` and `_variant` are not available.
+
+## Construction
+
+### Code
+
+```html
+<kol-button-link _on="" _label="Schalter sieht wie ein Link aus"></kol-button-link>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|---------------|-----------------------------------------------------------------------------------------------------|-------------------|
+| `click` | Element is clicked | `_value` property |
+| `onMouseDown` | A pointing device key is pressed while the pointer is inside the element | - |
+
+### Example
+
+<div class="flex gap-2">
+	<kol-button-link _on="" _label="Schalter sieht wie ein Link aus"></kol-button-link>
+</div>
+
+<Readme />
+
+<ExampleLink component="button-link" />
+
+## Live editor
+
+<LiveEditorCompact component="button-link" />
+
+## Examples
+
+<Configurator component="button-link" sample="basic" />
+<Configurator component="button-link" sample="icons" />
+<Configurator component="button-link" sample="image" />
+<Configurator component="button-link" sample="target" />

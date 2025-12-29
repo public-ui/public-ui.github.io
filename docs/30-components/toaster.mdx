@@ -1,5 +1,5 @@
 ---
-title: Toaster
+title: Toaster [deprecated]
 description: Beschreibung, Spezifikation und Beispiele für die Toast-Komponente.
 tags:
   - Toast
@@ -11,7 +11,14 @@ tags:
 import Readme from '../../readmes/toaster/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
-# Toaster
+<kol-alert _label="Toaster werden mit Version 5 entfernt" _level="1" _type="error" _variant="card">
+	Wir von KoliBri werden die Toaster Komponente und Service mit Version 5 entfernen, da sie mit den bestehenden Barrierefreiheitsvorgaben nicht verienbar ist. 
+	Statt noch mehr Ressourcen in ein wahrscheinlich nie barrierefreies Konzept zu investieren, möchten wir die Energie in die Entwicklung und Dokumentation robuster, barrierefreier Alternativen lenken. <br/>
+	Siehe dazu auch [die Diskussion in unserem Github #8372](https://github.com/public-ui/kolibri/issues/8372). <br/>
+	In den kommenden Wochen werden wir unsere Beispiele und Dokumentation auf empfehlenswerte Alternativen umstellen, z. B. Inline-Feedback, ARIA-konforme Statusmeldungen, Dialoge für kritische Informationen.
+</kol-alert>
+
+# Toaster [deprecated]
 
 Synonyme: Notification, Snackbar
 
@@ -29,7 +36,7 @@ import { ToasterService } from '@public-ui/components';
 
 // Get the toaster instance for the current HTML document.
 const toaster = ToasterService.getInstance(document, {
-	defaultAlertType: 'msg', // Standard: 'card'
+	defaultVariant: 'msg', // Standard: 'card'
 });
 
 // Enqueue a new toast to the toaster to display:
@@ -73,15 +80,22 @@ const closeToast = toaster.enqueue({
 /* Optional: Toast wieder schließen mit `closeToast()` */
 ```
 
-### Anzeigetyp des Toast
+### Anzeige-Option des Toast
 
-Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögliche Werte sind:
+In KoliBri unterscheiden wir drei Ebenen:  
 
-- `default`
-- `error`
-- `info`
-- `success`
-- `warning`
+- **`_type`** → definiert die **semantische Bedeutung** oder logische Funktion einer Komponente.  
+  *Beispiel*: Bei `kol-button`: `"button" | "submit" | "reset"`, bei `kol-alert`: `"info" | "success" | "warning" | "error"`.  
+
+- **`_variant`** → steuert das **visuelle Erscheinungsbild**, z. B. `"primary"`, `"secondary"`, `"ghost"`.  
+
+- **`_behavior`** → bestimmt das **Interaktionsverhalten** der Komponente.  
+  *Beispiel*: Bei `kol-tabs`: `"select-automatic"` vs. `"select-manual"`.  
+
+👉 Kurz gesagt:  
+- `_type` = Bedeutung & Logik  
+- `_variant` = Look & Styling  
+- `_behavior` = Interaktion & Verhalten  
 
 <Readme />
 

@@ -1,10 +1,6 @@
 ---
 title: Tooltip
 description: Beschreibung und Spezifikation für die Tooltip-Komponente.
-tags:
-  - Tooltip
-  - Beschreibung
-  - Spezifikation
 ---
 
 # Tooltip
@@ -37,6 +33,14 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
   --kol-tooltip-width': '40rem';
 }
 ```
+
+## Bekannte Probleme
+
+Bei der Nutzung von CSS `contain: layout` innerhalb des Tooltip-Elements kann die Positionierung fehlerhaft sein. Ursache ist ein <kol-link _href="https://github.com/floating-ui/floating-ui/issues/3067" _target="_blank">Bug in floating-ui</kol-link>, der im <kol-link _href="https://github.com/public-ui/kolibri/pull/8062" _target="_blank">PR #8062</kol-link> dokumentiert wurde.
+
+**Workaround:** `contain: layout` nicht direkt auf dem Tooltip setzen. Stattdessen sollte die Eigenschaft nur dort verwendet werden, wo Container Queries benötigt werden.
+
+**Ausblick:** Langfristig könnte die native <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor" _target="_blank">`anchor()`-Funktion</kol-link> anstelle von `floating-ui` eingesetzt werden. Diese ist derzeit nur in Chrome verfügbar; für Firefox und Safari wird weiterhin `floating-ui` benötigt.
 
 ## Links und Referenzen
 

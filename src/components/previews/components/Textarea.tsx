@@ -2,7 +2,7 @@ import React from 'react';
 import Preview from '../Preview';
 import { BooleanProperty, MultiLineTextProperty, ResizeProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
-import { KolInputText, KolInputNumber, KolTextarea, KolSelect } from '@public-ui/react';
+import { KolInputText, KolInputNumber, KolTextarea, KolSelect } from '@public-ui/react-v19';
 
 const TextAreaPreview: React.FC = (props: {
 	initialProps?: JSX.KolTextarea;

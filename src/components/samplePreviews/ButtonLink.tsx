@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolButtonLink } from '@public-ui/react';
+import { KolButtonLink } from '@public-ui/react-v19';
 
 const ButtonLink = () => (
 	<p>

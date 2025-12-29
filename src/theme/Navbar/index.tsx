@@ -1,4 +1,4 @@
-import { KolHeading, KolLinkButton, KolPopoverButton } from '@public-ui/react';
+import { KolHeading, KolLinkButton, KolPopoverButton } from '@public-ui/react-v19';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import React from 'react';
 // import { getDarkMode, setDarkMode } from '../../shares/store';
@@ -103,7 +103,17 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								_popoverAlign="bottom"
 								_variant="ghost"
 							>
-								<div className="popover-container">
+								<div
+									className="popover-container"
+									ref={(el) => {
+										if (el) {
+											const timeout = setTimeout(() => {
+												clearTimeout(timeout);
+												el.style.setProperty('display', 'block');
+											}, 2500);
+										}
+									}}
+								>
 									<KolHeading
 										_label={translate({
 											id: 'feedback.header',

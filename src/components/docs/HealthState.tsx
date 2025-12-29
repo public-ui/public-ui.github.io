@@ -1,4 +1,4 @@
-import { KolTableStateful } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { dangerouslySetInnerHTML, getPackageName } from '../../shares/utils';
@@ -32,11 +32,7 @@ const DATA_V1 = [
 	},
 	{
 		scope: '@public-ui',
-		name: 'angular-v17',
-	},
-	{
-		scope: '@public-ui',
-		name: 'angular-v16',
+		name: 'angular-v19',
 	},
 	{
 		scope: '@public-ui',
@@ -61,6 +57,10 @@ const DATA_V1 = [
 	{
 		scope: '@public-ui',
 		name: 'preact',
+	},
+	{
+		scope: '@public-ui',
+		name: 'react-v19',
 	},
 	{
 		scope: '@public-ui',
@@ -98,11 +98,7 @@ const DATA_V2 = [
 	},
 	{
 		scope: '@public-ui',
-		name: 'angular-v17',
-	},
-	{
-		scope: '@public-ui',
-		name: 'angular-v16',
+		name: 'angular-v19',
 	},
 	{
 		scope: '@public-ui',

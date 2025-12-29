@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolTree, KolTreeItem } from '@public-ui/react';
+import { KolTree, KolTreeItem } from '@public-ui/react-v19';
 
 const Tree = () => (
 	<KolTree _label="Sitemap" class="block w-fit">

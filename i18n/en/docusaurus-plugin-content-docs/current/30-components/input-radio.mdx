@@ -1,0 +1,112 @@
+---
+title: InputRadio
+description: Description, specification and examples for the InputRadio component.
+---
+
+import Readme from '/readmes/input-radio/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+
+# InputRadio
+
+Synonyms: Choice Group, Radio Buttons
+
+The **InputRadio** component consists of a collection of radio elements and thus represents a choice between different values. Only a single value can be selected at a time. Selected radio elements are usually displayed with a filled and visually highlighted circle.
+
+<kol-alert _alert _heading="Hinweis" _level="1" _type="info">
+The input radio is used to display a selection option where at least and a maximum of one selection can be made. This means that an input radio cannot occur individually. Because of this, we implemented the component as a list component.
+</kol-alert><br/>
+
+## Construction
+
+### Code
+
+```html
+<kol-input-radio _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
+```
+
+### Example
+
+<kol-input-radio _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
+
+## Usage
+
+The individual radio elements within the **InputRadio** component are passed as a JSON object via the **_\_options_** attribute.
+
+The JSON object expects the following values ​​for each radio element:
+
+**`label`** = Label of the radio element
+
+**`value`** = Value of the radio element
+
+Example of creating the JSON object to define the radio elements:
+
+```html
+[ { label: 'Herr', value: 'Herr', }, { label: 'Frau', value: 'Frau', }, { label: 'Firma', value: 'Firma', }, ];
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|-----------------------------|-----------------------------|
+| `focus` | An option is focused | - |
+| `blur` | An option loses focus | - |
+| `input` | Option is selected | `value` attribute of option |
+| `change` | Option is selected | `value` attribute of option |
+
+### onChange
+
+<kol-alert _heading="Hinweis für Versionen <2" _type="info">event.target.value enthält die Nummer der Checkbox mit einem '-' davor.</kol-alert>
+
+```jsx
+<kol-input-radio
+	_options={[
+		{ label: 'Herr', value: 'Herr' },
+		{ label: 'Frau', value: 'Frau' },
+		{ label: 'Firma', value: 'Firma' },
+	]}
+	_on={{ onChange: (_event, value) => setValue(value) }}
+></kol-input-radio>
+```
+
+### Best practices
+
+- Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
+- At least one value is always selected. Similar to the behavior of a Select selection. (<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#selecting_a_radio_button_by_default" _target="_blank"></kol-link>)
+
+## Accessibility
+
+### Keyboard controls
+
+| button | Function |
+| -------------- | ------------------------------------------------------------------------------------------------ |
+| `Tab` | Focuses on the first radio element, but does not activate it.                                     |
+| `Empty` | Activates the first radio element after the RadioGroup has been jumped to using the Tab key. |
+| `arrow keys` | Cycles through all radio elements and activates the currently focused element.                   |
+
+## Links and references
+
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#radiobutton" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3schools.com/tags/att_input_type_radio.asp" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+
+<Readme />
+
+## Usage _msg
+
+<PropertyMsgUsage />
+
+<ExampleLink component="input-radio" />
+
+## Live editor
+
+<LiveEditorCompact component="input-radio" />
+
+## Examples
+
+<Configurator component="input-radio" sample="basic" />

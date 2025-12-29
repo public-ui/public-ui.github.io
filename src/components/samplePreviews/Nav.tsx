@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ButtonOrLinkOrTextWithChildrenProps } from '@public-ui/components';
-import { KolNav } from '@public-ui/react';
+import { KolNav } from '@public-ui/react-v19';
 
 export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{

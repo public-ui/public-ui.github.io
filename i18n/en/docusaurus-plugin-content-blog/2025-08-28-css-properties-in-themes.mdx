@@ -1,0 +1,33 @@
+---
+authors:
+- deleonio
+- chatgpt
+date: '2025-08-28'
+title: Using CSS Custom Properties Safely in Themes
+---
+
+
+# Using CSS Custom Properties Safely in Themes
+
+KoliBri, also known as Public UI Components, relies on adaptive styles to enable flexible theming. CSS custom properties provide a convenient way to control colors, spacing and other design values. However, the Shadow DOM does not shield them: custom properties cascade globally and may collide with variables on the host page.
+
+## Problem
+
+Extensive use of custom properties in a theme increases the risk of name clashes with root-level variables. Such conflicts can unexpectedly change the appearance of an application and confuse both users and developers.
+
+## Strategies to Avoid Collisions
+
+- **Use namespaces:** Prefixes like `--kolibri-` lower the chance of overlapping variable names, yet they are no absolute guarantee.
+- **Map internal values to SCSS:** Calculations and intermediate values should rely on SASS variables (`$variable`). They are resolved at build time and do not appear as global custom properties.
+- **Expose only what is necessary:** Keep the set of external custom properties as small as possible to minimize collision risks.
+
+## Checklist
+
+1. **Start from design tokens:** Use the prefixed tokens defined in Figma as your foundation.
+2. **Switch to SCSS variables:** Replace internal custom properties with SASS variables to keep computations encapsulated.
+3. **Update documentation:** Clearly state which properties are public and which remain internal.
+
+## Conclusion
+
+By combining SCSS with a minimal set of custom properties, themes stay maintainable and collision-free. Following these guidelines results in robust designs that integrate smoothly into any host environment.
+

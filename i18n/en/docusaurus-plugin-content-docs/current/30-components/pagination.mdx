@@ -1,0 +1,74 @@
+---
+title: Pagination
+description: Description, specification and examples for the Pagination component.
+---
+
+import Readme from '/readmes/pagination/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Pagination
+
+With the help of the **Pagination** component, extensive, divided content, such as search results, can be scrolled through in order.
+
+## Construction
+
+### Code
+
+```html
+<div>
+	<kol-pagination _max="100" _page="6"></kol-pagination>
+	<kol-pagination _max="100" _page="6" _sibling-count="2"></kol-pagination>
+	<kol-pagination _max="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
+</div>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|------------------|------------------------- |----------------------------------|
+| `click` | Page is clicked | Number of selected page |
+| `changePage` | Page is clicked | Number of selected page |
+| `changePageSize` | Page size is changed | New page size |
+
+### Example
+
+<div class="grid gap-2">
+	<kol-heading _level="3" _label="Standardausgabe nur mit aktuellem Element"></kol-heading>
+	<kol-pagination _max="100" _page="6" _has-buttons="false"></kol-pagination>
+	<kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts dem aktuellen Element (_sibling)"></kol-heading>
+	<kol-pagination _max="100" _page="6" _sibling-count="2"></kol-pagination>
+	<kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts (_boundary-count)"></kol-heading>
+	<kol-pagination _max="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
+</div>
+
+## Usage
+
+The **Pagination** component can be configured via your properties.
+
+- The **`_max`** attribute determines the total number of elements.
+- The **`boundary-count`** attribute determines the number of elements that are displayed on the right and left in the **Pagination** component, while the remaining elements
+- The **`_page`** attribute sets the currently active element. This is highlighted in color.
+- The **`_sibling-count`** attribute can be used to determine how many elements should be displayed to the left and right of the current one.
+
+<!-- ### Best practices -->
+
+### Use cases
+
+The **Pagination** component can be used in a variety of ways. Especially where extensive content is to be displayed on a content page, it helps to improve the structure and clarity.
+Classic areas of application for pagination include blog-like content, lists and tables. Pagination can also be used for certain navigation tasks within a page.
+
+<Readme />
+
+<ExampleLink component="pagination" />
+
+## Live editor
+
+<LiveEditorCompact component="pagination" />
+
+## Examples
+
+<Configurator component="pagination" sample="basic" />

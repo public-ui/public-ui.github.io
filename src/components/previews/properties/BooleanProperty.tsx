@@ -1,4 +1,4 @@
-import { KolInputCheckbox } from '@public-ui/react';
+import { KolInputCheckbox } from '@public-ui/react-v19';
 import React from 'react';
 
 const CheckProperty = (props: {

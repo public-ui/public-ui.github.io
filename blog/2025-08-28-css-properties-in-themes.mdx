@@ -1,0 +1,33 @@
+---
+authors:
+- deleonio
+- chatgpt
+date: '2025-08-28'
+title: CSS-Properties in Themes sicher nutzen
+---
+
+
+# CSS-Properties in Themes sicher nutzen
+
+KoliBri, auch bekannt als Public UI Components, ermöglicht durch adaptive Styles ein flexibles Theming. Über CSS-Properties lassen sich Farben, Abstände und weitere Designwerte zentral steuern. Allerdings greift der Schutz des Shadow DOMs hier nicht: CSS-Properties wirken global und können ungewollt mit Variablen der hostenden Seite kollidieren.
+
+## Problemstellung
+
+Wer in seinen Themes viele Custom Properties verwendet, riskiert Konflikte mit gleichnamigen Variablen auf der Root-Seite. Diese Überschneidungen können das Erscheinungsbild einer Anwendung unerwartet verändern und damit sowohl Nutzende als auch Entwickler:innen irritieren.
+
+## Strategien zur Konfliktvermeidung
+
+- **Namensräume nutzen:** Präfixe wie `--kolibri-` reduzieren die Wahrscheinlichkeit, dass sich Variablen überschneiden. Vollständige Sicherheit bietet dieser Ansatz jedoch nicht.
+- **Interne Werte in SCSS abbilden:** Für Berechnungen und Zwischenschritte sollten SASS-Variablen (`$variable`) verwendet werden. Sie werden zur Build-Zeit aufgelöst und tauchen nicht mehr als globale CSS-Properties auf.
+- **Nur notwendige Properties exponieren:** Externe Custom Properties sollten auf ein Minimum reduziert werden. Je weniger globale Variablen, desto geringer die Kollisionsgefahr.
+
+## Handreichung
+
+1. **Design Tokens als Basis:** Übernehmt die in Figma definierten, bereits präfixierten Tokens als Ausgangspunkt.
+2. **SCSS-Variablen einsetzen:** Wandelt interne Custom Properties in SASS-Variablen um, um Berechnungen kapselnd zu halten.
+3. **Dokumentation erweitern:** Beschreibt klar, welche Properties extern verfügbar sind und welche ausschließlich intern genutzt werden.
+
+## Fazit
+
+Durch den bewussten Einsatz von SCSS und einem schlanken Satz an Custom Properties bleiben Themes wartbar und kollisionsfrei. Wer diese einfachen Regeln beachtet, schafft robuste und leicht integrierbare Designs.
+

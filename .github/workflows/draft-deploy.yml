@@ -4,18 +4,22 @@ on:
   workflow_dispatch:
   pull_request:
 
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     if: ${{ github.event.pull_request.base.repo.clone_url == github.event.pull_request.head.repo.clone_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Build Artifacts
         uses: ./.github/actions/build-artifacts
         with:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Netlify Deploy
         uses: netlify/actions/cli@master
@@ -27,7 +31,7 @@ jobs:
           args: deploy --dir=build --no-build
 
       - name: Find comment
-        uses: peter-evans/find-comment@v3
+        uses: peter-evans/find-comment@v4
         id: fc
         with:
           issue-number: ${{ github.event.pull_request.number }}
@@ -35,7 +39,7 @@ jobs:
           body-includes: Netlify Draft Deployment
 
       - name: Create or update comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}

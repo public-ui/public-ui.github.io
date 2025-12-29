@@ -1,0 +1,31 @@
+name: Add Issues to Project
+
+# Requires a repository variable named `PUBLIC_UI_PROJECT_URL` that contains the
+# GitHub Project (beta) URL. The workflow uses the default `GITHUB_TOKEN`, so no
+# additional PAT secret is necessary.
+
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+      - transferred
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  add-to-project:
+    name: Add issue to roadmap project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add issue to organization project
+        uses: actions/add-to-project@v1.0.2
+        with:
+          project-url: ${{ vars.PUBLIC_UI_PROJECT_URL }} // see https://github.com/organizations/public-ui/settings/variables/actions
+          github-token: ${{ secrets.GITHUB_TOKEN }}

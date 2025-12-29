@@ -1,4 +1,4 @@
-import { KolAlert, KolLink } from '@public-ui/react';
+import { KolAlert, KolLink } from '@public-ui/react-v19';
 
 # Erste Schritte
 
@@ -90,7 +90,7 @@ import App from "./App.tsx";
 import "./index.css";
 
 +import { register } from "@public-ui/components";
-+import { defineCustomElements } from "@public-ui/components/dist/loader";
++import { defineCustomElements } from "@public-ui/components/loader";
 +import { DEFAULT } from "@public-ui/themes";
 
 +register(DEFAULT, defineCustomElements)
@@ -129,7 +129,7 @@ index.html
 
 ```tsx
 import React from 'react';
-import { KolSpin } from '@public-ui/react';
+import { KolSpin } from '@public-ui/react-v19';
 
 export const AppComponent = () => {
 	return (
@@ -156,7 +156,7 @@ kolibri.plugin.ts
 
 ```js
 import type { Plugin } from 'vue';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { register } from '@public-ui/components';
 import { DEFAULT } from '@public-ui/theme-default';
 export const ComponentLibrary: Plugin = {
@@ -274,7 +274,7 @@ import ReactDOM from 'react-dom';
 import { AppComponent } from './components/app/component';
 
 import { register } from '@public-ui/core';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/themes';
 
 register(DEFAULT, defineCustomElements)
@@ -292,7 +292,7 @@ register(DEFAULT, defineCustomElements)
 
 ```tsx
 import React from 'react';
-import { KolSpin } from '@public-ui/react';
+import { KolSpin } from '@public-ui/react-v19';
 
 export const AppComponent = () => {
 	return (
@@ -346,7 +346,7 @@ Sofern Schriftarten und/oder Icons verwendet werden, müssen diese, wie oben bes
 ```html
 <script type="module">
 	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/dist/loader/index.js';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.js';
 	import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default/dist/index.mjs';
 	register(DEFAULT, defineCustomElements).catch(console.warn);
 </script>

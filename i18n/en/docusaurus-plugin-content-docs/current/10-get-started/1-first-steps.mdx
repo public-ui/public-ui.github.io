@@ -1,4 +1,4 @@
-import {KolAlert, KolLink,} from '@public-ui/react';
+import {KolAlert, KolLink,} from '@public-ui/react-v19';
 
 # First steps
 
@@ -85,7 +85,7 @@ import App from "./App.tsx";
 import "./index.css";
 
 +import { register } from "@public-ui/components";
-+import { defineCustomElements } from "@public-ui/components/dist/loader";
++import { defineCustomElements } from "@public-ui/components/loader";
 +import { DEFAULT } from "@public-ui/themes";
 
 +register(DEFAULT, defineCustomElements)
@@ -124,7 +124,7 @@ index.html
 
 ```tsx
 import React from 'react';
-import { KolSpin } from '@public-ui/react';
+import { KolSpin } from '@public-ui/react-v19';
 
 export const AppComponent = () => {
 	return (
@@ -151,7 +151,7 @@ kolibri.plugin.ts
 
 ```js
 import type { Plugin } from 'vue';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { register } from '@public-ui/components';
 import { ITZBund } from '@public-ui/themes';
 export const ComponentLibrary: Plugin = {
@@ -269,7 +269,7 @@ import ReactDOM from 'react-dom';
 import { AppComponent } from './components/app/component';
 
 import { register } from '@public-ui/core';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/themes';
 
 register(DEFAULT, defineCustomElements)
@@ -287,7 +287,7 @@ register(DEFAULT, defineCustomElements)
 
 ```tsx
 import React from 'react';
-import { KolSpin } from '@public-ui/react';
+import { KolSpin } from '@public-ui/react-v19';
 
 export const AppComponent = () => {
 	return (
@@ -341,7 +341,7 @@ If fonts and/or icons are used, they must be included as described above.
 ```html
 <script type="module">
 	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/dist/loader/index.js';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.js';
 	import { ITZBund } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
 	register(ITZBund, defineCustomElements).catch(console.warn);
 </script>
@@ -433,7 +433,7 @@ import ReactDOM from 'react-dom';
 import { AppComponent } from './components/app/component';
 
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { BMF } from '@public-ui/themes';
 
 register(BMF, defineCustomElements)
@@ -461,7 +461,7 @@ YARN `yarn add @public-ui/react`
 
 ```tsx
 import React, { FunctionComponent } from 'react';
-import { KolSpin } from '@public-ui/react';
+import { KolSpin } from '@public-ui/react-v19';
 
 export const App: FunctionComponent = () => <KolSpin _show />;
 ```

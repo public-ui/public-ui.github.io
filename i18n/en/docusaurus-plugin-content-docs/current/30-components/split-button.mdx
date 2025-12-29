@@ -1,0 +1,49 @@
+---
+title: Split-Button
+description: Description, specification and examples for the Split Button component.
+---
+import Readme from '/readmes/split-button/readme.md';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Split-Button
+
+<kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+
+The SplitButton component can be used to display a button that is split into two. This becomes the primary button
+usually used for a main action, while the secondary button opens a context menu ("popover") behind
+which further actions are hidden.
+
+- The secondary button basically toggles the context menu.
+- An individual event handler can be stored for the primary button; if this is not done, it will also toggle the context menu.
+
+## Construction
+
+### Code
+
+```html
+<kol-split-button _label="Split-Button">Split-Button Popover</kol-split-button>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|---------------|-----------------------------------------------------------------------------------------------------|-------------------|
+| `click` | Element is clicked | `_value` property |
+| `onMouseDown` | A pointing device key is pressed while the pointer is inside the element | - |
+
+### Example
+
+<kol-split-button _label="Split-Button">
+Split button popover
+</kol-split-button>
+
+<Readme />
+
+<ExampleLink component="split-button" />
+
+## Live editor
+
+<LiveEditorCompact component="split-button" />

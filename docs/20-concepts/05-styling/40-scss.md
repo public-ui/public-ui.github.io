@@ -3,7 +3,7 @@ title: Scss
 description: Auf dieser Seite wird beschrieben, wie Scss zur Erstellung von KoliBri-Themes verwendet werden kann.
 ---
 
-import { KolAlert, KolLink } from '@public-ui/react';
+import { KolAlert, KolLink } from '@public-ui/react-v19';
 
 # Scss
 
@@ -11,6 +11,10 @@ Dieser Artikel beschreibt, wie Scss zur Erstellung von KoliBri-Themes genutzt we
 
 <KolAlert _label="Designer oder Scss" _type="info" _variant="card">
   KoliBri bietet zum Erstellen von Themes auch einen <KolLink _label="Designer" _href="/docs/concepts/styling/designer" /> an. Je nach persönlichen Präferenzen kann Scss oder der Designer verwendet werden.
+</KolAlert><br/>
+
+<KolAlert _label="CSS-Properties" _type="warning" _variant="card">
+  CSS-Custom-Properties wirken global und sind nicht durch den Shadow DOM geschützt. Verwende präfixierte Namen und bilde interne Werte über SASS-Variablen ab, damit es zu keinen Kollisionen mit Variablen der hostenden Seite kommt.
 </KolAlert><br/>
 
 Scss ist eine Erweiterung von CSS, die es ermöglicht, Variablen, Funktionen, Mixins und vieles mehr zu verwenden. Scss kann für die Erstellung von KoliBri-Themes genutzt. Hierfür hat das Entwicklungsteam vom Projekt <KolLink _label="KERN" _href="https://gitlab.opencode.de/kern-designsystem/pattern-library" _target="_blank" /> ein Build-Script geschrieben, um aus Scss-Dateien die entsprechenden KoliBri-Themes zu generieren.
@@ -33,7 +37,7 @@ Im ersten Schritt empfiehlt es sich zunächst mit der Art und Weise des Themings
 
 ```tsx
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { KoliBri } from '@public-ui/schema';
 
 // ts-prune-ignore-next
@@ -108,7 +112,7 @@ Möchte man später das Theme optimieren, ist es möglich dies über das Patchin
 
 ```tsx
 import { register, KoliBriDevHelper } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { defineCustomElements } from '@public-ui/components/loader';
 import { KoliBri } from '@public-ui/schema';
 
 // ts-prune-ignore-next

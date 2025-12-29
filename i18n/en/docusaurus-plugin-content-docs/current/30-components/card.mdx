@@ -1,0 +1,109 @@
+---
+title: Card
+description: Description, specification and examples for the Card component.
+---
+
+import Readme from '/readmes/card/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+#Card
+
+The **Card** component is ideal for visually highlighting individual areas of your website. With their help you can structure your content very easily.
+
+The **Card** component consists of a **_Title area_**, a **_Content area_**.
+
+The **title area** is displayed in a larger font. The **content area** is visually separated by a horizontal dividing line below the title area and is output in the standard font.
+
+## Construction
+
+### Code
+
+```html
+<kol-card _label="Testtitel">
+	<div>
+		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+		At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+		dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
+		et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	</div>
+</kol-card>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|---------|-----------------------------|-------|
+| `close` | Component is closing | - |
+
+### Example
+
+<kol-card _label="Testtitel">
+	<div>
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem Ipsum
+dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
+et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	</div>
+</kol-card>
+
+## Usage
+
+### Simple standard card
+
+In the standard view, a **Card** consists of a title area and an empty content area.
+KoliBri automatically sets the horizontal dividing line between the two areas.
+
+### Title of the Card component
+
+You determine the title of the card by setting the **`_label`** attribute. Here you can enter any text, including special characters and umlauts.
+Note that **HTML code** is not allowed. If not set, three dots are shown.
+The heading level of the title is passed through the **`_level`** attribute. Levels **1** to **6** are possible
+
+### Content containers
+
+You determine the contents in the content area of ​​the card by inserting a **content container** within the `<kol-card></kol-card> element`. You can insert any **HTML code** here.
+
+Please note that while you can use any HTML tag as a content container, it is recommended to use a `<div></div>` tag.
+
+```html
+<kol-card _label="Beispiel" _level="1">
+	<div>Text im Inhalts-Bereich</div>
+</kol-card>
+```
+
+### Best practices
+
+- Use the **Card** component to visually encapsulate self-contained subject areas.
+- Use the **Card** component to semantically structure your content.
+- Avoid using too many cards on a content page.
+- Avoid placing important content within the Card component if the associated action elements (buttons, links, etc.) are not within the same Card.
+
+<Readme />
+
+<ExampleLink component="card" />
+
+## Live editor
+
+<LiveEditorCompact component="card" />
+
+## Examples
+
+###Card
+
+<Configurator component="card" sample="basic" />
+
+### Confirmation card
+
+<Configurator component="card" sample="confirm" />
+
+### Cards in the grid flow
+
+<Configurator component="card" sample="flex" />
+
+### Card as an item list
+
+<Configurator component="card" sample="selection" />
