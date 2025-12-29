@@ -11,10 +11,10 @@ const TextAreaPreview: React.FC = (props: {
 }) => {
 	const defaultProps: JSX.KolTextarea = {
 		_label: 'Beschreibung',
-		_touched: true,
-		_rows: 4,
 		_value: '',
 	};
+
+	const [value, setValue] = React.useState<string>(defaultProps._value || '');
 
 	return (
 		<Preview<JSX.KolTextarea>
@@ -23,7 +23,6 @@ const TextAreaPreview: React.FC = (props: {
 				_placeholder: <KolInputText _label="Placeholder" />,
 				_hint: <KolInputText _label="Hint" />,
 				_msg: <KolInputText _label="Error message" />,
-				_value: <MultiLineTextProperty label="Value" />,
 				_rows: <KolInputNumber _label="Rows" _min={1} _max={20} />,
 				_maxLength: <KolInputNumber _label="Max Length" _min={1} _max={1000} />,
 				_maxLengthBehavior: (
@@ -49,7 +48,9 @@ const TextAreaPreview: React.FC = (props: {
 			visibleProperties={props.visibleProperties}
 			codeCollapsable={props.codeCollapsable}
 		>
-			{(props) => <KolTextarea {...props} />}
+			{(props) => (
+				<KolTextarea {...props} _on={{ onInput: (_: Event, v: unknown) => setValue(v as string) }} _value={value} />
+			)}
 		</Preview>
 	);
 };

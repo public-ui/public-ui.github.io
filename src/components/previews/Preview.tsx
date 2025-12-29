@@ -62,6 +62,7 @@ const Preview = <TProps,>({
 				return formattedValue ? `\n  ${key}=${formattedValue}` : '';
 			})
 			.filter(Boolean)
+			.sort()
 			.join('');
 
 		return `<${componentName}${propsString}\n/>`;
@@ -161,8 +162,8 @@ const Preview = <TProps,>({
 				visibleProperties?.length !== 0 ? '1fr_1fr' : '1fr'
 			}] grid-rows-[1fr_auto] gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}
 		>
-			<div className="flex mb-4">
-				<span className="m-auto min-w-lg">{children(currentProps)}</span>
+			<div className="flex mb-4 items-center">
+				<span className="p-4 min-w-lg grow">{children(currentProps)}</span>
 			</div>
 			<div>{visibleProperties?.length !== 0 && renderPropertyComponents()}</div>
 			{codeCollapsable ? (
