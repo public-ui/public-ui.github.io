@@ -3,7 +3,7 @@ import React from 'react';
 
 const ResizeProperty = (props: {
 	label: string;
-	_value?: boolean;
+	_value?: 'vertical' | 'none';
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
@@ -13,12 +13,13 @@ const ResizeProperty = (props: {
 			_label={props.label}
 			_variant="switch"
 			_labelAlign="left"
+			_value="vertical"
 			_on={{
 				onInput: (event: Event, value: unknown) => {
 					props._on?.onInput?.(event, value ? 'vertical' : 'none');
 				},
 			}}
-			_checked={props._value}
+			_checked={props._value === 'vertical'}
 		/>
 	);
 };
