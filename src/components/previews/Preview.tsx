@@ -1,6 +1,7 @@
 import type { ReactNode, ReactElement } from 'react';
 import React, { useState, cloneElement } from 'react';
-import { KolCard, KolButton, KolHeading, KolDetails } from '@public-ui/react-v19';
+import { KolCard, KolButton, KolDetails } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 type PropertyComponent = ReactElement<{
 	_on?: {
@@ -32,6 +33,7 @@ const Preview = <TProps,>({
 }: PreviewProps<TProps>) => {
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
 	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(codeInitialCollapsed ?? false);
+	const [copySuccess, setCopySuccess] = useState<boolean>(false);
 
 	const updateProperty = (key: keyof TProps, value: unknown) => {
 		setCurrentProps((prev) => ({
@@ -80,43 +82,27 @@ const Preview = <TProps,>({
 		const copyToClipboard = async () => {
 			try {
 				await navigator.clipboard.writeText(sourceCode);
-				// You could add a toast notification here if available
-				console.log('Code copied to clipboard!');
+				setCopySuccess(true);
+				setTimeout(() => setCopySuccess(false), 2000);
 			} catch (err) {
 				console.error('Failed to copy code: ', err);
 			}
 		};
 
 		return (
-			<div className="flex flex-col align-stretch border-2 bg-gray-100 border-solid border-gray-200 rounded-md p-4">
-				<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-					<KolHeading _label="Source Code" _level={4} style={{ background: 'transparent' }} />
-					<KolButton
-						style={{ background: 'transparent' }}
-						_label="Copy"
-						_variant="secondary"
-						_icons="codicon codicon-copy"
-						_on={{
-							onClick: () => void copyToClipboard(),
-						}}
-					/>
-				</div>
-				<pre
-					style={{
-						background: '#f5f5f5',
-						padding: '12px',
-						borderRadius: '4px',
-						overflow: 'auto',
-						fontSize: '14px',
-						fontFamily: 'monospace',
-						margin: 0,
-						border: '1px solid #ddd',
-						overflowX: 'auto',
-						width: '100%',
-					}}
-				>
+			<div className="grid grid-cols-[1fr_max-content] gap-1 p-2 my-2 bg-gray-100 border-solid border-gray-300 rounded-md">
+				<pre className="overflow-auto m-0 p-1">
 					<code>{sourceCode}</code>
 				</pre>
+				<KolButton
+					style={{ backgroundColor: 'transparent' }}
+					_label={translate({ id: 'preview.sourceCode.copyButton' })}
+					_variant="secondary"
+					_icons={copySuccess ? 'fa-solid fa-check' : 'fa-solid fa-copy'}
+					_on={{
+						onClick: () => void copyToClipboard(),
+					}}
+				/>
 			</div>
 		);
 	};
@@ -130,57 +116,51 @@ const Preview = <TProps,>({
 			.filter(([key]) => !visibleProperties || visibleProperties.includes(key));
 
 		return (
-			<KolCard _label="Playground">
-				<div className="flex flex-col flex-wrap max-h-[500px] gap-x-4">
+			<KolCard _label={translate({ id: 'preview.props.heading' })} className="p-4">
+				<div className="flex flex-col flex-wrap gap-x-4 gap-y-2">
 					{filteredEntries.map(([key, component]) => {
 						if (!React.isValidElement(component)) return null;
 
 						// Get the current value for this property
 						const currentValue = currentProps[key];
 
-						return (
-							<div key={key as string} style={{ marginBottom: '10px' }}>
-								{cloneElement(component, {
-									...component.props,
-									_value: currentValue,
-									_on: {
-										...component.props?._on,
-										onInput: (event: Event, value: unknown) => {
-											updateProperty(key, value);
-											// Call original onInput if it exists
-											component.props?._on?.onInput?.(event, value);
-										},
-									},
-								})}
-							</div>
-						);
+						return cloneElement(component, {
+							...component.props,
+							key: key as string,
+							_value: currentValue,
+							_on: {
+								...component.props?._on,
+								onInput: (event: Event, value: unknown) => {
+									updateProperty(key, value);
+									// Call original onInput if it exists
+									component.props?._on?.onInput?.(event, value);
+								},
+							},
+						});
 					})}
 				</div>
 			</KolCard>
 		);
 	};
 
+	const hasProp = visibleProperties?.length !== 0;
 	return (
-		<div
-			className={`grid grid-cols-[${
-				visibleProperties?.length !== 0 ? '1fr_1fr' : '1fr'
-			}] grid-rows-[1fr_auto] gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}
-		>
+		<div className={`preview ${hasProp ? 'props' : ''} gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}>
 			<div className={`flex ${centerComponent ? '' : 'items-center'}`}>
-				<span className={`px-4 min-w-lg ${centerComponent ? 'm-auto' : 'grow'} `}>{children(currentProps)}</span>
+				<span className={`px-4 py-2 ${centerComponent ? 'm-auto' : 'grow'} `}>{children(currentProps)}</span>
 			</div>
-			<div>{visibleProperties?.length !== 0 && renderPropertyComponents()}</div>
+			{hasProp && renderPropertyComponents()}
 			{codeCollapsable ? (
 				<KolDetails
-					className="col-span-2"
-					_label="Source Code"
+					className={`${hasProp ? 'col-span-2' : ''}`}
+					_label={translate({ id: 'preview.sourceCode.heading' })}
 					_open={codeCollapsed}
 					_on={{ onToggle: (_, open) => setCodeCollapsed(open) }}
 				>
 					{renderSourceCode()}
 				</KolDetails>
 			) : (
-				<div className="col-span-2">{renderSourceCode()}</div>
+				<div className={`${hasProp ? 'col-span-2' : ''}`}>{renderSourceCode()}</div>
 			)}
 		</div>
 	);

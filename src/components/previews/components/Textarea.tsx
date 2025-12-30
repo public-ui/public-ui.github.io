@@ -43,7 +43,7 @@ const TextAreaPreview: React.FC = (props: {
 				_hasCounter: <BooleanProperty label="Has Counter" />,
 				_adjustHeight: <BooleanProperty label="Adjust Height" />,
 			}}
-			initialProps={{ ...props.initialProps, ...defaultProps }}
+			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTextarea"
 			visibleProperties={props.visibleProperties}
 			codeCollapsable={props.codeCollapsable}
