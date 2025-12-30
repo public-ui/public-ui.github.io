@@ -11,6 +11,7 @@ tags:
 import Readme from '../../readmes/button/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import ButtonPreview from '@site/src/components/previews/components/Button';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Button
@@ -21,13 +22,12 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 ### Code
 
-```html
-<kol-button _label="Primary" _variant="primary"></kol-button>
-<kol-button _label="Secondary" _variant="secondary"></kol-button>
-<kol-button _label="Normal" _variant="normal"></kol-button>
-<kol-button _label="Danger" _variant="danger"></kol-button>
-<kol-button _label="Ghost" _variant="ghost"></kol-button>
-```
+<ButtonPreview 
+  initialProps={{ _label: "Click me" }}
+  visibleProperties={['_label', '_variant', '_disabled', '_icons', '_hideLabel']}
+  codeCollapsable
+  codeCollapsed  
+/>
 
 ### Events
 
