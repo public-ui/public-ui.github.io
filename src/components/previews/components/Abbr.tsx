@@ -30,10 +30,11 @@ const AbbrPreview: React.FC = (props: {
 			slotKey="_slot"
 		>
 			{(props) => {
+				// eslint-disable-next-line react/prop-types
 				const { _slot, ...abbrProps } = props;
 				return (
 					<KolAbbr {...abbrProps} className="">
-						<span dangerouslySetInnerHTML={{ __html: (_slot as string) ?? '' }} />
+						<span dangerouslySetInnerHTML={{ __html: _slot ?? '' }} />
 					</KolAbbr>
 				);
 			}}

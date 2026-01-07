@@ -76,8 +76,15 @@ const Preview = <TProps,>({
 			.sort()
 			.join('');
 
-		if (slotKey) {
-			const slotContent = slotValue === undefined || slotValue === null ? '' : String(slotValue);
+		if (slotKey !== undefined) {
+			let slotContent = '';
+			if (typeof slotValue === 'string') {
+				slotContent = slotValue;
+			} else if (typeof slotValue === 'number' || typeof slotValue === 'boolean') {
+				slotContent = String(slotValue);
+			} else if (slotValue !== undefined && slotValue !== null) {
+				slotContent = JSON.stringify(slotValue);
+			}
 			const openTag = propsString ? `<${componentName}${propsString}\n>` : `<${componentName}>`;
 			return `${openTag}${slotContent}</${componentName}>`;
 		}
