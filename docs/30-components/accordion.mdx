@@ -9,8 +9,7 @@ tags:
 ---
 
 import Readme from '../../readmes/accordion/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import AccordionPreview from '@site/src/components/previews/components/Accordion';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Accordion
@@ -25,26 +24,10 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 
 ### Code
 
-```html
-<div class="grid gap-2">
-	<kol-accordion _label="Element 1">
-		<div>
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-		</div>
-	</kol-accordion>
-	<kol-accordion _label="Element 2">
-		<div>
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-		</div>
-	</kol-accordion>
-</div>
-```
+<AccordionPreview 
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Events
 
@@ -172,22 +155,6 @@ Standardansicht gelegt.
 
 <Readme />
 
-<ExampleLink component="accordion" />
-
-## Live-Editor
-
-<LiveEditorCompact component="accordion" />
-
 ## Beispiele
 
-### Einfache Accordions
-
-<Configurator component="accordion" sample="basic" />
-
-### Accordions mit Überschriften
-
-<Configurator component="accordion" sample="headlines" />
-
-### Accordions mit Header-Slot
-
-<Configurator component="accordion" sample="header" />
+<ExampleLink component="accordion" />

@@ -10,6 +10,12 @@ type PropertyComponent = ReactElement<{
 	[key: string]: unknown;
 }>;
 
+export enum PreviewLayout {
+	DEFAULT,
+	CENTERED,
+	FULL_SIZE,
+}
+
 type PreviewProps<TProps> = {
 	children: (props: TProps) => ReactNode;
 	initialProps: TProps;
@@ -18,8 +24,8 @@ type PreviewProps<TProps> = {
 	visibleProperties?: (keyof TProps)[];
 	codeCollapsable?: boolean;
 	codeCollapsed?: boolean;
-	centerComponent?: boolean;
-	slotKey?: keyof TProps;
+	layout?: PreviewLayout;
+  slotKey?: keyof TProps;
 };
 
 const Preview = <TProps,>({
@@ -30,7 +36,7 @@ const Preview = <TProps,>({
 	visibleProperties,
 	codeCollapsable,
 	codeCollapsed: codeInitialCollapsed,
-	centerComponent,
+	layout = PreviewLayout.DEFAULT,
 	slotKey,
 }: PreviewProps<TProps>) => {
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
@@ -164,8 +170,8 @@ const Preview = <TProps,>({
 	const hasProp = visibleProperties?.length !== 0;
 	return (
 		<div className={`preview ${hasProp ? 'props' : ''} gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}>
-			<div className={`flex ${centerComponent ? '' : 'items-center'}`}>
-				<span className={`px-4 py-2 ${centerComponent ? 'm-auto' : 'grow'} `}>{children(currentProps)}</span>
+			<div className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''}`}>
+				<span className={`${layout === PreviewLayout.FULL_SIZE ? 'w-full h-full' : `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`}`}>{children(currentProps)}</span>
 			</div>
 			{hasProp && renderPropertyComponents()}
 			{codeCollapsable ? (

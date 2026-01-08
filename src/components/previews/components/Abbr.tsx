@@ -1,5 +1,5 @@
 import React from 'react';
-import Preview from '../Preview';
+import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAbbr } from '@public-ui/react-v19';
 import { MultiLineTextProperty } from '../properties';
@@ -26,7 +26,7 @@ const AbbrPreview: React.FC = (props: {
 			componentName="KolAbbr"
 			visibleProperties={props.visibleProperties}
 			codeCollapsable={props.codeCollapsable}
-			centerComponent
+			layout={PreviewLayout.CENTERED}
 			slotKey="_slot"
 		>
 			{(props) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Preview from '../Preview';
+import Preview, { PreviewLayout } from '../Preview';
 import { BoundedNumberProperty, ClampedNumberProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolProgress, KolSelect } from '@public-ui/react-v19';
@@ -61,7 +61,7 @@ const ProgressPreview: React.FC = (props: {
             componentName="KolProgress"
             visibleProperties={props.visibleProperties}
             codeCollapsable={props.codeCollapsable}
-            centerComponent
+            layout={PreviewLayout.CENTERED}
         >
             {(componentProps) => <KolProgress {...componentProps} />}
         </Preview>

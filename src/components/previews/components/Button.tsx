@@ -1,5 +1,5 @@
 import React from 'react';
-import Preview from '../Preview';
+import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, AlignProperty, IconProperty, VariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButton, KolSelect } from '@public-ui/react-v19';
@@ -47,7 +47,7 @@ const ButtonPreview: React.FC = (props: {
 			componentName="KolButton"
 			visibleProperties={props.visibleProperties}
 			codeCollapsable={props.codeCollapsable}
-			centerComponent
+			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolButton {...props} />}
 		</Preview>
