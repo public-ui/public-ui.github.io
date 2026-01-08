@@ -25,6 +25,7 @@ type PreviewProps<TProps> = {
 	codeCollapsable?: boolean;
 	codeCollapsed?: boolean;
 	layout?: PreviewLayout;
+  slotKey?: keyof TProps;
 };
 
 const Preview = <TProps,>({
@@ -36,6 +37,7 @@ const Preview = <TProps,>({
 	codeCollapsable,
 	codeCollapsed: codeInitialCollapsed,
 	layout = PreviewLayout.DEFAULT,
+	slotKey,
 }: PreviewProps<TProps>) => {
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
 	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(codeInitialCollapsed ?? false);
@@ -50,6 +52,8 @@ const Preview = <TProps,>({
 
 	const generateSourceCode = () => {
 		if (!componentName) return '';
+
+		const slotValue = slotKey ? (currentProps as Record<string, unknown>)[slotKey as string] : undefined;
 
 		const formatValue = (value: unknown): string => {
 			if (typeof value === 'string') {
@@ -68,6 +72,7 @@ const Preview = <TProps,>({
 		};
 
 		const propsString = Object.entries(currentProps as Record<string, unknown>)
+			.filter(([key]) => (slotKey ? key !== slotKey : true))
 			.filter(([, value]) => value !== undefined && value !== null && value !== '')
 			.map(([key, value]) => {
 				const formattedValue = formatValue(value);
@@ -76,6 +81,19 @@ const Preview = <TProps,>({
 			.filter(Boolean)
 			.sort()
 			.join('');
+
+		if (slotKey !== undefined) {
+			let slotContent = '';
+			if (typeof slotValue === 'string') {
+				slotContent = slotValue;
+			} else if (typeof slotValue === 'number' || typeof slotValue === 'boolean') {
+				slotContent = String(slotValue);
+			} else if (slotValue !== undefined && slotValue !== null) {
+				slotContent = JSON.stringify(slotValue);
+			}
+			const openTag = propsString ? `<${componentName}${propsString}\n>` : `<${componentName}>`;
+			return `${openTag}${slotContent}</${componentName}>`;
+		}
 
 		return `<${componentName}${propsString}\n/>`;
 	};

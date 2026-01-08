@@ -12,6 +12,7 @@ import Readme from '../../readmes/abbr/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import AbbrPreview from '@site/src/components/previews/components/Abbr';
 
 # Abbr
 
@@ -47,8 +48,13 @@ Der Begriff bzw. die Erklärung wird über das Attribut **`_label`** übergeben,
 
 ## Live-Editor
 
-<LiveEditorCompact component="abbr" />
+<AbbrPreview
+  visibleProperties={['_label', '_slot']}
+  initialProps={{ _label: "zum Beispiel", _slot: "z. B." }}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ## Beispiele
 
-<Configurator component="abbr" sample="basic" />
+<ExampleLink component="abbr" />
