@@ -20,12 +20,12 @@ Die **Abbr**-Komponente implementiert den HTML-Tag `abbr` um eine Abkürzung dar
 
 ## Konstruktion
 
-### Code
-
-```html
-<p>Ich <kol-abbr _label="zum Beispiel">z. B.</kol-abbr> bin eine Abkürzung mit Label.</p>
-<p>Ich <kol-abbr>z. B.</kol-abbr> bin eine Abkürzung ohne Label.</p>
-```
+<AbbrPreview
+  visibleProperties={['_label', '_slot']}
+  initialProps={{ _label: "zum Beispiel", _slot: "z. B." }}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Beispiel
 
@@ -43,17 +43,6 @@ Der Begriff bzw. die Erklärung wird über das Attribut **`_label`** übergeben,
 - <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank"></kol-link>
 
 <Readme />
-
-<ExampleLink component="abbr" />
-
-## Live-Editor
-
-<AbbrPreview
-  visibleProperties={['_label', '_slot']}
-  initialProps={{ _label: "zum Beispiel", _slot: "z. B." }}
-  codeCollapsable
-  codeCollapsed
-/>
 
 ## Beispiele
 
