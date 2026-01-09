@@ -152,7 +152,6 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 			<KolTableStateful
 				className="col-12"
 				_label="List of status values for the packages"
-				_minWidth="95em"
 				_headers={{
 					horizontal: [
 						[
@@ -160,7 +159,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Package',
 								key: 'name',
 								render: (_el, _cell, tupel) => `${getPackageName((tupel as Tupel).scope, (tupel as Tupel).name)}`,
-								width: '15em',
+								width: 120,
 							},
 							{
 								label: 'Version',
@@ -290,7 +289,6 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 			<KolTableStateful
 				className="col-12"
 				_label="Liste von Statuswerte zu den Paketen"
-				_minWidth="95em"
 				_headers={{
 					horizontal: [
 						[
@@ -298,7 +296,7 @@ export const HealthStateTable: FC<Props> = ({ lang, version }) => {
 								label: 'Package',
 								key: 'name',
 								render: (_el, _cell, tupel) => `${getPackageName((tupel as Tupel).scope, (tupel as Tupel).name)}`,
-								width: '15em',
+								width: 120,
 							},
 							{
 								label: 'Version',

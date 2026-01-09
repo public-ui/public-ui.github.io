@@ -75,7 +75,6 @@ export const BitvTestResult: FC = () => {
 				],
 			}}
 			_data={data}
-			_minWidth="50rem"
 		/>
 	);
 };

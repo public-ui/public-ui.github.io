@@ -20,7 +20,6 @@ const Table = () => (
 		}}
 		_data={DATA}
 		className="block"
-		_minWidth="100px"
 		style={{ maxWidth: '600px' }}
 	/>
 );
