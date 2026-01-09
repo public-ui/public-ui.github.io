@@ -32,7 +32,7 @@ const HomepageButtons: FunctionComponent = () => {
 			<KolLinkButton
 				className="w-72"
 				_icons={{
-					right: 'codicon codicon-dashboard',
+					right: 'kolicon-chevron-right',
 				}}
 				_href={firstStepsHref}
 				_label={translate({
@@ -42,6 +42,9 @@ const HomepageButtons: FunctionComponent = () => {
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
+				_icons={{
+					right: 'kolicon-version',
+				}}
 				_href={docsHref}
 				_label={translate({
 					id: 'custom.documentation-button',

@@ -18,8 +18,8 @@ In addition to specifying the background color and automatically calculating the
 ### Code
 
 ```html
-<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
-<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
+<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="kolicon-house"></kol-badge>
+<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="kolicon-house"></kol-badge>
 ```
 
 ### Events
@@ -33,8 +33,8 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 
 ### Example
 
-<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
-<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
+<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="kolicon-house"></kol-badge>
+<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="kolicon-house"></kol-badge>
 
 ## Context for badges
 
@@ -48,8 +48,8 @@ Make sure each group of badges is accompanied by a heading that describes the sh
 ```html
 <kol-heading _label="Beispielüberschrift" _level="2"></kol-heading>
 <div>
-	<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
-	<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
+	<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="kolicon-house"></kol-badge>
+	<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="kolicon-house"></kol-badge>
 </div>
 ```
 
@@ -71,10 +71,10 @@ The text color is automatically calculated as a contrast color to the selected b
 ### Icons
 
 An icon (**`_icon`**) can be specified either as a string or as an object.
-Pass the icon class as a string (e.g.: `_icons="codicon codicon-home`); the icon is displayed to the left of the text.
+Pass the icon class as a string (e.g.: `_icons="kolicon-house`); the icon is displayed to the left of the text.
 The object is of type `KoliBriAllIcon`, so it can have one or more of the keys `top`, `right`, `bottom` and `left`. These are then either a string (see above) or an object of type `KoliBriCustomIcon`, which consists of `icon` (string, see above) and `style` (optional, style object).
 
-<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Übersicht Codicons"></kol-link>
+<kol-link _href="https://public-ui.github.io/assets/kolicons/kolicons.svg" _target="_blank" _label="Kolicons overview"></kol-link>
 
 ### Font style
 

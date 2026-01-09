@@ -97,8 +97,9 @@ The reason lies in the `font` CSS definition in the icon font itself and in the 
 apply (inherit) when setting icons from outside.
 
 ```css
-.codicon[class*='codicon-'] {
-	font: 16px / 1 codicon;
+[class^='kolicon-'],
+[class*=' kolicon-'] {
+	font-family: 'kolicons';
 }
 :host > i,
 :host > i::before {

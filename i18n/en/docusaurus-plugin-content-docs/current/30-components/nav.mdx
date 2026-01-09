@@ -32,24 +32,24 @@ the icons are still output.
 	_links="[
     {
       '_href': 'startseite',
-      '_icons': 'codicon codicon-home',
+      '_icons': 'kolicon-house',
       '_label': 'Startseite2',
       '_children': [
         {
           '_href': 'startseite/1-untermenuepunkt',
-          '_icons': 'codicon codicon-home',
+          '_icons': 'kolicon-house',
           '_label': '1. Untermenüpunkt'
         },
         {
           '_href': 'startseite/2-untermenuepunkt',
-          '_icons': 'codicon codicon-home',
+          '_icons': 'kolicon-house',
           '_label': '2. Untermenüpunkt'
         }
       ]
     },
     {
       '_href': 'unterseite',
-      '_icons': 'codicon codicon-home',
+      '_icons': 'kolicon-house',
       '_label': '2. Menüpunkt'
     }
   ]"
@@ -59,7 +59,7 @@ the icons are still output.
 
 ### Example
 
-<kol-nav _label="Hauptmenü" _links="[{'_href':'startseite','_icons':'codicon codicon-home','_label':'Startseite','_children':[{'_href':'startseite/1-untermenuepunkt','_icons':'codicon codicon-home','_label':'1. Untermenüpunkt'},{'_href':'startseite/2-untermenuepunkt','_icons':'codicon codicon-home','_label':'2. Untermenüpunkt'}]},{'_href':'unterseite','_icons':'codicon codicon-home','_label':'2. Menüpunkt'}]" _has-compact-button></kol-nav>
+<kol-nav _label="Hauptmenü" _links="[{'_href':'startseite','_icons':'kolicon-house','_label':'Startseite','_children':[{'_href':'startseite/1-untermenuepunkt','_icons':'kolicon-house','_label':'1. Untermenüpunkt'},{'_href':'startseite/2-untermenuepunkt','_icons':'kolicon-house','_label':'2. Untermenüpunkt'}]},{'_href':'unterseite','_icons':'kolicon-house','_label':'2. Menüpunkt'}]" _has-compact-button></kol-nav>
 
 ## Usage
 
@@ -72,14 +72,14 @@ To create submenu items, extend the JSON structure with the additional attribute
 [
 	{
 		_href: 'startseite',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 		_label: 'Startseite',
 		_children: [
-			{ _href: 'startseite/1-untermenuepunkt', _icons: 'codicon codicon-home', _label: '1. Untermenüpunkt' },
-			{ _href: 'startseite/2-untermenuepunkt', _icons: 'codicon codicon-home', _label: '2. Untermenüpunkt' },
+			{ _href: 'startseite/1-untermenuepunkt', _icons: 'kolicon-house', _label: '1. Untermenüpunkt' },
+			{ _href: 'startseite/2-untermenuepunkt', _icons: 'kolicon-house', _label: '2. Untermenüpunkt' },
 		],
 	},
-	{ _href: 'unterseite', _icons: 'codicon codicon-home', _label: '2. Menüpunkt' },
+	{ _href: 'unterseite', _icons: 'kolicon-house', _label: '2. Menüpunkt' },
 ];
 ```
 
