@@ -97,8 +97,9 @@ Der Grund liegt in der `font` CSS-Definition in der Icon-Font selbst und in der 
 bei Icons von Außen setzen übernehmen (erben).
 
 ```css
-.codicon[class*='codicon-'] {
-	font: 16px / 1 codicon;
+[class^='kolicon-'],
+[class*=' kolicon-'] {
+	font-family: 'kolicons';
 }
 :host > i,
 :host > i::before {
