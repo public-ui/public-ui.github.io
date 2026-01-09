@@ -8,7 +8,7 @@ export default function DocumentationVersionHint(): ReactNode {
 	const versionHint = translate(
 		{
 			id: 'custom.docs-version-hint',
-			message: 'Wir haben KoliBri - Public UI {version} veröffentlicht. Für die LTS Version, siehe {link}.',
+			message: 'Diese Dokumentation behandelt KoliBri - Public UI {version}. Für die aktuellste Version, siehe {link}.',
 		},
 		{ version: 'VERSION', link: 'LINK' }
 	);
@@ -23,8 +23,8 @@ export default function DocumentationVersionHint(): ReactNode {
 				style={{
 					padding: '0 .25rem',
 				}}
-				_href={`https://public-ui.github.io/v2${i18n.currentLocale === 'en' ? '/en' : ''}`}
-				_label={'https://public-ui.github.io/v2'}
+				_href={`https://public-ui.github.io/${i18n.currentLocale === 'en' ? 'en' : ''}`}
+				_label={'https://public-ui.github.io/'}
 			></KolLink>
 			{afterLink}
 		</p>
