@@ -24,7 +24,7 @@ The most important changes are:
 - Improvements
 
   - Performance
-    - Performance was affected by the oversized CSS definitions in the icon component. The background are the many icon selectors in the icon fonts. However, only a fraction of these CSS definitions are really needed for a design system. For the components we went with the lightweight Visual Studio Code (Codicon) icon font and removed Iconont and Font-Awesome by default (can be upgraded again). Thus, this release brings with it a significant performance improvement when rendering the components.
+    - Performance was affected by the oversized CSS definitions in the icon component. The background are the many icon selectors in the icon fonts. However, only a fraction of these CSS definitions are really needed for a design system. For the components we went with the lightweight Kolicons icon font and removed Iconont and Font-Awesome by default (can be upgraded again). Thus, this release brings with it a significant performance improvement when rendering the components.
   - Assets (Fonts and Icons)
 
     - Icon font versions have been updated
@@ -49,7 +49,7 @@ The most important changes are:
       ```gitignore
       # .gitignore
       /public/assets/bundes/
-      /public/assets/codicons/
+      /public/assets/kolicons/
       /public/assets/fontawesome-free/
       /public/assets/icofont/
       /public/assets/kreon/
@@ -61,7 +61,7 @@ The most important changes are:
       /public/assets/kolibri.ico
       ```
     - More icon fonts have been used in themes:
-      - Microsoft Codicons
+      - Kolicons
       - Google Material Icons
       - Google Material Symbols
       - Tabler Icons

@@ -41,19 +41,25 @@ export function Icon(props: Props) {
 
 	useEffect(() => {
 		if (left && !right && !top && !bottom) {
-			update(attribute.name, `codicon codicon-${left}`);
+			update(attribute.name, left);
 		} else {
 			const result: KoliBriIconsProp = {};
-			if (left) result.left = `codicon codicon-${left}`;
-			if (right) result.right = `codicon codicon-${right}`;
-			if (top) result.top = `codicon codicon-${top}`;
-			if (bottom) result.bottom = `codicon codicon-${bottom}`;
+			if (left) result.left = left;
+			if (right) result.right = right;
+			if (top) result.top = top;
+			if (bottom) result.bottom = bottom;
 
 			if (Object.keys(result).length) update(attribute.name, JSON.stringify(result));
 		}
 	}, [left, right, top, bottom]);
 
-	const iconList = ['home', 'arrow-up', 'arrow-right', 'arrow-down', 'arrow-left'];
+	const iconList = [
+		'kolicon-house',
+		'kolicon-chevron-up',
+		'kolicon-chevron-right',
+		'kolicon-chevron-down',
+		'kolicon-chevron-left',
+	];
 	return (
 		<div>
 			{label}
@@ -63,7 +69,7 @@ export function Icon(props: Props) {
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
-								_icons={`codicon codicon-${icon}`}
+								_icons={icon}
 								_hideLabel
 								_label=""
 								_on={{ onClick: () => setLeft(icon) }}
@@ -80,7 +86,7 @@ export function Icon(props: Props) {
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
-								_icons={`codicon codicon-${icon}`}
+								_icons={icon}
 								_hideLabel
 								_label=""
 								_on={{ onClick: () => setRight(icon) }}
@@ -97,7 +103,7 @@ export function Icon(props: Props) {
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
-								_icons={`codicon codicon-${icon}`}
+								_icons={icon}
 								_hideLabel
 								_label=""
 								_on={{ onClick: () => setTop(icon) }}
@@ -114,7 +120,7 @@ export function Icon(props: Props) {
 						{iconList.map((icon) => (
 							<KolButton
 								key={icon}
-								_icons={`codicon codicon-${icon}`}
+								_icons={icon}
 								_hideLabel
 								_label=""
 								_on={{ onClick: () => setBottom(icon) }}

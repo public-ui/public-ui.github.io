@@ -6,12 +6,12 @@ const tabs = [
 		_label: 'Label 1',
 	},
 	{
-		_icons: 'codicon codicon-calendar',
+		_icons: 'fa-solid fa-calendar',
 		_label: 'Label 2',
 	},
 	{
 		_disabled: true,
-		_icons: 'codicon codicon-briefcase',
+		_icons: 'fa-solid fa-briefcase',
 		_label: 'Label 3',
 	},
 ];

@@ -16,7 +16,7 @@ export const LanguageSwitch: FC = () => {
 					_href={`/en${location.pathname}`}
 					_label="Switch to English"
 					_hideLabel
-					_icons="codicon codicon-globe"
+					_icons="fa-solid fa-globe"
 					_tooltipAlign="left"
 					_variant="ghost"
 				/>
@@ -25,7 +25,7 @@ export const LanguageSwitch: FC = () => {
 					_href={`${location.pathname.replace(/^\/en/, '')}`}
 					_label="Zu Deutsch wechseln"
 					_hideLabel
-					_icons="codicon codicon-globe"
+					_icons="fa-solid fa-globe"
 					_tooltipAlign="left"
 					_variant="ghost"
 				/>

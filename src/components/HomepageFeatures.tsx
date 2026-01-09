@@ -27,7 +27,7 @@ function Feature({ title, icon, description, button }: FeatureItem) {
 export default function HomepageFeatures(): ReactElement {
 	const FeatureList: FeatureItem[] = [
 		{
-			icon: 'codicon codicon-symbol-color',
+			icon: 'fa-solid fa-palette',
 			title: 'Theming',
 			description: (
 				<>
@@ -58,7 +58,7 @@ export default function HomepageFeatures(): ReactElement {
 			),
 		},
 		{
-			icon: 'codicon codicon-code',
+			icon: 'fa-solid fa-code',
 			title: 'Developer',
 			description: (
 				<>
@@ -74,7 +74,7 @@ export default function HomepageFeatures(): ReactElement {
 			button: <KolLinkButton className="w-72" _href="/docs/get-started/frameworks" _label="Frameworks"></KolLinkButton>,
 		},
 		{
-			icon: 'codicon codicon-layers',
+			icon: 'fa-solid fa-layer-group',
 			title: translate({
 				id: 'custom.components',
 				message: 'Komponenten',

@@ -7,9 +7,9 @@ const Button = () => (
 		_variant="primary"
 		_icons={{
 			left: {
-				icon: 'codicon codicon-arrow-left',
+				icon: 'kolicon-chevron-left',
 			},
-			right: 'codicon codicon-arrow-right',
+			right: 'kolicon-chevron-right',
 		}}
 	/>
 );

@@ -4,7 +4,7 @@ import { KolInputColor } from '@public-ui/react-v19';
 const InputColor = () => (
 	<KolInputColor
 		_icons={{
-			left: 'codicon codicon-symbol-color',
+			left: 'fa-solid fa-palette',
 		}}
 		_hideLabel
 		_label="Color"
