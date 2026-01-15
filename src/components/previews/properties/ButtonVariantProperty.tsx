@@ -1,7 +1,7 @@
 import { KolInputCheckbox } from '@public-ui/react-v19';
 import React from 'react';
 
-const VariantProperty = (props: {
+const ButtonVariantProperty = (props: {
 	label: string;
 	defaultValue: string;
 	_value?: string;
@@ -35,4 +35,4 @@ const VariantProperty = (props: {
 	);
 };
 
-export default VariantProperty;
+export default ButtonVariantProperty;
