@@ -10,6 +10,7 @@ const MultiLineTextProperty = (props: {
 }) => {
 	return (
 		<KolTextarea
+			_adjustHeight
 			_label={props.label}
 			_on={{
 				onInput: (event: Event, value: unknown) => {

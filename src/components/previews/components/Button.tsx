@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, AlignProperty, IconProperty, VariantProperty } from '../properties';
+import { BooleanProperty, AlignProperty, IconProperty, ButtonVariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButton, KolSelect } from '@public-ui/react-v19';
 
@@ -17,7 +17,7 @@ const ButtonPreview: React.FC = (props: {
 		<Preview<JSX.KolButton>
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_variant: <VariantProperty label="Variant" defaultValue="normal" />,
+				_variant: <ButtonVariantProperty label="Variant" defaultValue="normal" />,
 				_type: (
 					<KolSelect
 						_label="Type"
