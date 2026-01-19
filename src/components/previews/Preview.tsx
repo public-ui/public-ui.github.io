@@ -25,7 +25,7 @@ type PreviewProps<TProps> = {
 	codeCollapsable?: boolean;
 	codeCollapsed?: boolean;
 	layout?: PreviewLayout;
-  slotKey?: keyof TProps;
+	slotKey?: keyof TProps;
 };
 
 const Preview = <TProps,>({
@@ -170,8 +170,20 @@ const Preview = <TProps,>({
 	const hasProp = visibleProperties?.length !== 0;
 	return (
 		<div className={`preview ${hasProp ? 'props' : ''} gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}>
-			<div className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''}`}>
-				<span className={`${layout === PreviewLayout.FULL_SIZE ? 'w-full h-full' : `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`}`}>{children(currentProps)}</span>
+			<div
+				className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${
+					layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''
+				}`}
+			>
+				<span
+					className={`${
+						layout === PreviewLayout.FULL_SIZE
+							? 'w-full h-full'
+							: `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`
+					}`}
+				>
+					{children(currentProps)}
+				</span>
 			</div>
 			{hasProp && renderPropertyComponents()}
 			{codeCollapsable ? (

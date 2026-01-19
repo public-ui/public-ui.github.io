@@ -11,7 +11,7 @@ const AvatarPreview: React.FC = (props: {
 }) => {
 	const defaultProps: JSX.KolAvatar = {
 		_label: 'Erika Maria Mustermann',
-        _color: '#5A5FEE',
+		_color: '#5A5FEE',
 	};
 
 	return (
