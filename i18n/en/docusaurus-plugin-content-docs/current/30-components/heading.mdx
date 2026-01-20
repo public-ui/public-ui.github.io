@@ -1,0 +1,58 @@
+---
+title: Heading
+description: Description, specification and examples for the heading component.
+---
+
+import Readme from '/readmes/heading/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Heading
+
+The **Heading** component can be used anywhere a heading should be displayed. By using different sizes, content can be clearly structured and pages can be presented effectively and varied. It separates styling from semantics and allows for flexibility.
+
+## Construction
+
+### Code
+
+```html
+<kol-heading _level="1" _label="Inhalt einer H1-Überschrift"></kol-heading>
+<kol-heading _level="2" _label="Inhalt einer H2-Überschrift"></kol-heading>
+<kol-heading _level="3" _label="Inhalt einer H3-Überschrift"></kol-heading>
+<kol-heading _level="4" _label="Inhalt einer H4-Überschrift"></kol-heading>
+<kol-heading _level="5" _label="Inhalt einer H5-Überschrift"></kol-heading>
+<kol-heading _level="6" _label="Inhalt einer H6-Überschrift"></kol-heading>
+```
+
+### Example
+
+<kol-heading _level="1" _label="Inhalt einer H1-Überschrift"></kol-heading>
+<kol-heading _level="2" _label="Inhalt einer H2-Überschrift"></kol-heading>
+<kol-heading _level="3" _label="Inhalt einer H3-Überschrift"></kol-heading>
+<kol-heading _level="4" _label="Inhalt einer H4-Überschrift"></kol-heading>
+<kol-heading _level="5" _label="Inhalt einer H5-Überschrift"></kol-heading>
+<kol-heading _level="6" _label="Inhalt einer H6-Überschrift"></kol-heading>
+
+## Usage
+
+The heading level is passed through the **`_level`** attribute. Levels **1** to **6** are possible
+
+### Best practices
+
+- When using headings, pay attention to the recommended semantics for search engine optimization.
+- Use headings of different sizes to create a meaningful structure for your content.
+
+<Readme />
+
+<ExampleLink component="heading" />
+
+## Live editor
+
+<LiveEditorCompact component="heading" />
+
+## Examples
+
+<Configurator component="heading" sample="basic" />
+<Configurator component="heading" sample="paragraph" />
+<Configurator component="heading" sample="badged" />

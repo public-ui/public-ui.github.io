@@ -12,6 +12,7 @@ import Readme from '../../readmes/abbr/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import AbbrPreview from '@site/src/components/previews/components/Abbr';
 
 # Abbr
 
@@ -19,12 +20,12 @@ Die **Abbr**-Komponente implementiert den HTML-Tag `abbr` um eine Abkürzung dar
 
 ## Konstruktion
 
-### Code
-
-```html
-<p>Ich <kol-abbr _label="zum Beispiel">z. B.</kol-abbr> bin eine Abkürzung mit Label.</p>
-<p>Ich <kol-abbr>z. B.</kol-abbr> bin eine Abkürzung ohne Label.</p>
-```
+<AbbrPreview
+  visibleProperties={['_label', '_slot']}
+  initialProps={{ _label: "zum Beispiel", _slot: "z. B." }}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Beispiel
 
@@ -43,12 +44,6 @@ Der Begriff bzw. die Erklärung wird über das Attribut **`_label`** übergeben,
 
 <Readme />
 
-<ExampleLink component="abbr" />
-
-## Live-Editor
-
-<LiveEditorCompact component="abbr" />
-
 ## Beispiele
 
-<Configurator component="abbr" sample="basic" />
+<ExampleLink component="abbr" />

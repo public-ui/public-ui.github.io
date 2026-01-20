@@ -1,0 +1,104 @@
+---
+title: Link
+description: Description, specification and examples for the Link component.
+---
+
+import Readme from '/readmes/link/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+#Link
+
+The **Link** component renders a link optimized for accessibility, which can be output as text, as an icon or in combination.
+
+## Construction
+
+### Code
+
+```html
+<p>
+	In diesem Absatz wird ein Link gesetzt, der keine weiteren Attribute enthält.
+	<kol-link _href="https://www.w3.org" _target="_blank">Hier steht ein Link</kol-link>Er wird standardmäßig als
+	<i>
+		<b>inline-Element</b>
+	</i>
+	ausgegeben.
+</p>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|---------|-----------------------|------------------|
+| `click` | Element is clicked | `_href` property |
+
+### Example
+
+<p>
+In this paragraph a link is set that does not contain any other attributes.
+	<kol-link _href="https://www.w3.org" _target="_blank">Hier steht ein Link</kol-link>Er wird standardmäßig als <i>
+	<b>inline-Element</b>
+</i> ausgegeben.
+</p>
+
+## Usage
+
+### Link within a continuous text with icon and text
+
+<p>
+	<kol-link _icons="kolicon-house">Ich bin ein Link mit Icon links</kol-link><br/>
+	<kol-link _icons="kolicon-house">
+I am a link with an icon on the right
+	</kol-link>
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
+nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
+	<kol-link _icons="kolicon-house">Ich bin ein Link mit Icon links</kol-link>. Lorem, ipsum dolor sit amet consectetur adipisicing
+elite Ea optio deleniti fuga quos molestias, voluptate nobis nemo, incidunt excepturi
+	<kol-link _icons="kolicon-house">Ich bin ein Link mit Icon rechts</kol-link>
+facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
+</p>
+
+## `aria-current` service
+
+So that the link component automatically creates a [`aria-current` tag](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+can set, it must be informed via the ariaCurrent service which page is currently active:
+
+```typescript
+import { setCurrentLocation } from '@public-ui/components';
+
+/* Bei jedem Seitenwechsel aufrufen: */
+setCurrentLocation('/path/to/page');
+```
+
+The location string passed must correspond exactly to the `href` attribute of the link.
+
+<!--### Best practices
+
+### Use cases-->
+
+## Accessibility
+
+### Keyboard controls
+
+| button | Function |
+| ------- | ------------------------------- |
+| `Tab` | Focuses the link element.    |
+| `Enter` | Calls up the provided link. |
+
+<Readme />
+
+<ExampleLink component="link" />
+
+## Live editor
+
+<LiveEditorCompact component="link" />
+
+## Examples
+
+<Configurator component="link" sample="basic" />
+<Configurator component="link" sample="icons" />
+<Configurator component="link" sample="image" />
+<Configurator component="link" sample="target" />

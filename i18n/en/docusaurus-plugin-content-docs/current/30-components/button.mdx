@@ -1,0 +1,139 @@
+---
+title: Button
+description: Description, specification and examples for the Button component.
+---
+
+import Readme from '/readmes/button/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Button
+
+**Buttons** are used to show users choices for actions and to arrange them in a clear hierarchy. They help users find the most important actions on a page or within a viewport and enable them to carry out these actions. The button label is used to clearly show users which action is triggered. Buttons allow users to confirm a change, complete steps in a task, or make decisions.
+
+## Construction
+
+### Code
+
+```html
+<kol-button _label="Primary" _variant="primary"></kol-button>
+<kol-button _label="Secondary" _variant="secondary"></kol-button>
+<kol-button _label="Normal" _variant="normal"></kol-button>
+<kol-button _label="Danger" _variant="danger"></kol-button>
+<kol-button _label="Ghost" _variant="ghost"></kol-button>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | Value |
+|---------------|:-----------------:|
+| `onClick` | `_value` property |
+| `onMouseDown` | - |
+
+### Example
+
+default
+
+<div class="flex flex-wrap gap-2">
+	<kol-button _label="Primary" _variant="primary"></kol-button>
+	<kol-button _label="Secondary" _variant="secondary"></kol-button>
+	<kol-button _label="Normal" _variant="normal"></kol-button>
+	<kol-button _label="Danger" _variant="danger"></kol-button>
+	<kol-button _label="Ghost" _variant="ghost"></kol-button>
+</div>
+
+Disabled
+
+<div class="flex flex-wrap gap-2">
+	<kol-button _label="Primary" _variant="primary" _disabled></kol-button>
+	<kol-button _label="Secondary" _variant="secondary" _disabled></kol-button>
+	<kol-button _label="Normal" _variant="normal" _disabled></kol-button>
+	<kol-button _label="Danger" _variant="danger" _disabled></kol-button>
+	<kol-button _label="Ghost" _variant="ghost" _disabled></kol-button>
+</div>
+
+## Usage
+
+### Caption
+
+To clearly label the button, use the **`_label`** attribute.
+`_label="Button label"`
+
+### Icons
+
+Icons (**`_icons`**) can be specified either as a string or as an object.
+Pass the icon class as a string (e.g.: `_icons="kolicon-house`); the icon is displayed to the left of the text.
+The object is of type `KoliBriAllIcon`, so it can have one or more of the keys `top`, `right`, `bottom` and `left`. These are then either a string (see above) or an object of type `KoliBriCustomIcon`, which consists of `icon` (string, see above) and `style` (optional, style object).
+
+<kol-link _href="https://public-ui.github.io/assets/kolicons/kolicons.svg" _target="_blank" _label="Kolicons overview"></kol-link>
+
+### Button without text
+
+Using **`_hide-label`** the button will only show the icon (<kol-link _href="#icon" _label="see icon"></kol-link>)
+
+<kol-alert _type="info">Beachten Sie, dass das Attribut **`_label`** auch dann gesetzt werden muss, wenn nur ein Icon angezeigt werden soll, dieses wird von Screenreadern vorgelesen und in den Tooltip gesetzt.</kol-alert>
+
+### Specify representation
+
+To control the display, use the **`_variant`** attribute. The default value is `primary`, alternatively `primary`, `secondary`, `normal`, `danger`, `ghost`, or `custom` can also be set.<br/>
+
+You can choose your own display by using the value `custom`. In this case, it is mandatory to set the **`_custom-class`** attribute so that the button can be selected in the shadow dome using CSS.
+
+### Best practices
+
+- Use a primary button for the next best action. Remaining calls to action should be presented as a secondary button.
+- Use buttons in consistent locations in the interface to improve user experience.
+- Use only one primary button per viewport. A button style can appear any number of times throughout the page.
+- The button label must describe the action the button performs. It should contain a verb (e.g. save). Use concise, specific, self-explanatory labels.
+- Button labels should always include a noun when there is room for interpretation about what the verb is responsible for. Do not use generic terms such as "OK", especially in the event of an error. Mistakes are never “OK”.
+- Do not use multiple buttons in the “primary” style within a grouping.
+- Do not use buttons as a link or as a navigation element.
+
+## Accessibility
+
+For people with a limited field of vision, positioning the **icon** in the button to the left of the label is optimal.
+
+Problems with Disabled status
+
+- Display contrasts
+- Possibility of user feedback
+
+### Keyboard controls
+
+| button | Function |
+| ------- | ---------------------------------------------------------------- |
+| `Tab` | Jumps to the individual button and focuses on it.          |
+| `Enter` | Executes the focused button's onClick method. |
+
+## Links and references
+
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#button" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="button" />
+
+## Live editor
+
+<LiveEditorCompact component="button" />
+
+## Examples
+
+### Buttons
+
+<Configurator component="button" sample="basic" />
+
+### Icon buttons
+
+<Configurator component="button" sample="icon-only" />
+
+### Button with icons
+
+<Configurator component="button" sample="icons" />
+
+### Buttons with uniform width
+
+<Configurator component="button" sample="width" />

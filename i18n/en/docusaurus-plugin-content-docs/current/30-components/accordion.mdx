@@ -1,0 +1,188 @@
+---
+title: Accordion
+description: Description, specification and examples for the Accordion component.
+---
+
+import Readme from '/readmes/accordion/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Accordion
+
+Synonyms: Collapse
+
+The **Accordion** component is a drop-down menu. If you click on the header area, consisting of the icon and heading, the content opens with additional information. It is therefore an interactive navigation element that is used to display extensive content in a space-saving manner.
+
+Accordions are always used when content associated with a thematic general term needs to be displayed or hidden. They allow more detailed information about a general term than would actually be useful for reasons of clarity. You leave it to the visitors themselves whether they want to display this information.
+
+## Construction
+
+### Code
+
+```html
+<div class="grid gap-2">
+	<kol-accordion _label="Element 1">
+		<div>
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+		</div>
+	</kol-accordion>
+	<kol-accordion _label="Element 2">
+		<div>
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+		</div>
+	</kol-accordion>
+</div>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|---------|------------------------|-------|
+| `click` | Element is clicked | - |
+
+### Example
+
+<div class="grid gap-2">
+	<kol-accordion _label="Element 1">
+		<div>
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+		</div>
+	</kol-accordion>
+	<kol-accordion _label="Element 2">
+		<div>
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+		</div>
+	</kol-accordion>
+</div>
+
+## Usage
+
+### Heading in the Accordion tab
+
+The text to be displayed as a heading in the Accordion tab is passed through the **`_label`** attribute. In addition to special characters, the text can also contain umlauts or spaces.
+
+### Heading level
+
+The heading level is passed through the **`_level`** attribute. Levels **1** to **6** are possible
+
+### Contents of the Accordion
+
+The main content of the accordion is transferred via the slot.
+
+**`<kol-accordion _label="Element 1">Accordion content</kol-accordion>`**
+
+### Show Accordion open
+
+By default, the Accordion will appear closed after the page loads. If you want the accordion to be displayed open, use the **\_open** attribute additionally.
+
+### Advantages
+
+1. **Space saving**: Ideal for content that would otherwise take up a lot of space.
+2. **Improved user experience**: Users can collapse and expand content in a targeted manner.
+3. **Structure and overview**: Content is structured logically and appears less overwhelming.
+
+### Best practices
+
+1. **Appropriate use**
+Use accordions to group content under a thematic umbrella, especially for long sections of text or detailed information.
+
+2. **Supporting Information**
+Place additional or less important information in accordions that doesn't necessarily have to be immediately visible.
+
+3. **Reduction of side length**
+Use Accordions to reduce the visual length of a webpage without limiting content accessibility.
+
+4. **Clear and descriptive headings**
+Use concise and meaningful headings that clearly describe the content of each section to make it easier to navigate.
+
+5. **Keep important actions and content visible**
+Avoid hiding critical call-to-action elements or key information within an accordion.
+
+6. **Ensure visibility of error messages**
+Always place error messages outside of an accordion to avoid missing important information.
+
+7. **Do not use as a selection element**
+Do not use accordions as interactive selectors or filter elements as they are not intuitive for such interactions.
+
+8. **Place important legal information outside**
+Ads such as privacy or legal notices should not be hidden in accordions as they must always be easily accessible and visible.
+
+9. **Maximum readability**
+Keep the content within an accordion short and clear. Use lists, paragraphs, or visual separations to avoid overwhelming.
+
+10. **Make important content visible by default**
+Consider whether it makes sense to leave one or more Accordion sections open by default, especially if this content is needed often.
+
+11. **Consider performance**
+Make sure the Accordion doesn't cause loading time issues, especially with dynamically loaded content. Content should be loaded as asynchronously and efficiently as possible.
+
+### Use cases
+
+- Frequently Asked Questions (FAQ)
+- Representation of details, properties or variants of an element
+- Groupings of
+- Forms with many options
+- Data in dashboards
+- Filter functions
+- Display menus on small screens where space is limited
+- Structured into settings pages
+- Splitting long articles or documentation into logical sections
+- Dynamic loading of content, which is only loaded when needed
+- Representation of a process or instructions in which individual steps are expanded
+
+## Accessibility
+
+In the **Accordion** component, the open/close icon is aligned to the left to enable better usability for users with limited field of vision.
+
+The use of icons such as `<` or `>` was deliberately avoided. The use of the `+` and `-` icons ensures better visibility and recognition of the open and closed status.
+
+When designing the color, particular emphasis was placed on achieving the highest possible contrast
+Default view placed.
+
+### Keyboard controls
+
+| button | Function |
+| ------- | ---------------------------------------------------- |
+| `Tab` | Jumps to the individual Accordion tabs.             |
+| `Enter` | Opens or closes the focused Accordion tab. |
+
+## Links and references
+
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#accordion" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="accordion" />
+
+## Live editor
+
+<LiveEditorCompact component="accordion" />
+
+## Examples
+
+### Simple accordions
+
+<Configurator component="accordion" sample="basic" />
+
+### Accordions with headings
+
+<Configurator component="accordion" sample="headlines" />
+
+### Accordions with header slot
+
+<Configurator component="accordion" sample="header" />

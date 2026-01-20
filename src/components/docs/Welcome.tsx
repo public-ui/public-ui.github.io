@@ -21,14 +21,13 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 			<KolTableStateful
 				className="col-12"
 				_label="Prioritized qualities"
-				_minWidth="50em"
 				_headers={{
 					horizontal: [
 						[
 							{
 								label: 'Quality',
 								key: 'quality',
-								width: '12em',
+								width: 96,
 								textAlign: 'left',
 								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${(row as Tupel).quality}</b>`),
 							},
@@ -36,7 +35,7 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 								label: 'Priority',
 								key: 'prio',
 								textAlign: 'left',
-								width: '8em',
+								width: 64,
 							},
 							{
 								label: 'Description',
@@ -90,14 +89,13 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 			<KolTableStateful
 				className="col-12"
 				_label="Priorisierte Qualitäten"
-				_minWidth="50em"
 				_headers={{
 					horizontal: [
 						[
 							{
 								label: 'Qualität',
 								key: 'quality',
-								width: '12em',
+								width: 96,
 								textAlign: 'left',
 								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${(row as Tupel).quality}</b>`),
 							},
@@ -105,7 +103,7 @@ export const WelcomeQualityTable: FC<Props> = ({ lang }) => {
 								label: 'Priorität',
 								key: 'prio',
 								textAlign: 'left',
-								width: '8em',
+								width: 64,
 							},
 							{
 								label: 'Erläuterung',
@@ -163,35 +161,34 @@ export const WelcomeSupportTable: FC<Props> = ({ lang }) => {
 			<KolTableStateful
 				className="col-12"
 				_label="Aims for device, operating system, browser and screen reader compatibility"
-				_minWidth="40em"
 				_headers={{
 					horizontal: [
 						[
 							{
 								label: 'Device',
 								key: 'device',
-								width: '10em',
+								width: 80,
 								textAlign: 'left',
 								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${(row as Tupel).device}</b>`),
 							},
 							{
 								label: 'Operating system',
 								key: 'os',
-								width: '10em',
+								width: 80,
 								textAlign: 'left',
 								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).os),
 							},
 							{
 								label: 'Browser',
 								key: 'browser',
-								width: '10em',
+								width: 80,
 								textAlign: 'left',
 								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).os),
 							},
 							{
 								label: 'Screen reader',
 								key: 'screenreader',
-								width: '10em',
+								width: 80,
 								textAlign: 'left',
 								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).screenreader),
 							},
@@ -224,35 +221,34 @@ export const WelcomeSupportTable: FC<Props> = ({ lang }) => {
 			<KolTableStateful
 				className="col-12"
 				_label="Angestrebt Geräte-, Betriebssystem-, Browser und Screenreader-Kompatibilität"
-				_minWidth="40em"
 				_headers={{
 					horizontal: [
 						[
 							{
 								label: 'Gerät',
 								key: 'device',
-								width: '10em',
+								width: 80,
 								textAlign: 'left',
 								render: (el, _col, row) => dangerouslySetInnerHTML(el, `<b>${(row as Tupel).device}</b>`),
 							},
 							{
 								label: 'Betriebssystem',
 								key: 'os',
-								width: '10em',
+								width: 80,
 								textAlign: 'left',
 								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).os),
 							},
 							{
 								label: 'Browser',
 								key: 'browser',
-								width: '10em',
+								width: 80,
 								textAlign: 'left',
 								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).browser),
 							},
 							{
 								label: 'Screenreader',
 								key: 'screenreader',
-								width: '10em',
+								width: 80,
 								textAlign: 'left',
 								render: (el, _col, row) => dangerouslySetInnerHTML(el, (row as Tupel).screenreader),
 							},

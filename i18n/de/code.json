@@ -330,11 +330,11 @@
 	"custom.homepage-message-part-2": {
 		"message": "Open Source zur Wiederverwendung und Weiterentwicklung freigegeben."
 	},
-	"custom.designer-short-description-part-1": {
-		"message": "Die semantisch barrierefreien Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet werden. Mittels des"
+	"custom.theme-template-short-description-part-1": {
+		"message": "Vorgegebene Styleguides lassen sich mit KoliBri leicht umsetzen. Das"
 	},
-	"custom.designer-short-description-part-2": {
-		"message": "können die Komponenten an beliebige Styleguides oder Designs angepasst werden."
+	"custom.theme-template-short-description-part-2": {
+		"message": "liefert die technische Grundlage und ein SCSS-basiertes Setup, um schnell ein eigenes Theme zu implementieren."
 	},
 	"custom.developer-short-description": {
 		"message": "Die robusten Web Components (Shadow-Root) lassen sich in allen webbasierten Projekten wiederverwenden. Neben der direkten Verwendung der Web Components bieten wir auch Framework-Adapter für Angular, React, Preact und Solid an."
@@ -346,10 +346,10 @@
 		"message": "Heute umfasst die Komponentenvielfalt mehr als 40 Komponenten mit einem hohen Funktionsumfang zur Umsetzung verschiedenster Fachanwendungen und Darstellung von webbasierten Inhalten."
 	},
 	"custom.view-example": {
-		"message": "Beispiel ansehen"
+		"message": "Beispiele ansehen"
 	},
 	"custom.view-component-example": {
-		"message": "Beispiel der Komponente ansehen"
+		"message": "Beispiele der Komponente ansehen"
 	},
 	"custom.docs-version-hint": {
 		"message": "Wir haben KoliBri - Public UI {version} veröffentlicht. Für die aktuellste Version, siehe {link}."
@@ -389,5 +389,17 @@
 	},
 	"property.msg.value.message": {
 		"message": "{_type: 'success', _description: 'Erfolgs-Meldung'}"
+	},
+	"preview.props.heading": {
+		"message": "Eigenschaften"
+	},
+	"preview.sourceCode.heading": {
+		"message": "Quellcode"
+	},
+	"preview.sourceCode.copyButton": {
+		"message": "Kopieren"
+	},
+	"preview.component.progress.label": {
+		"message": "Fortschritt"
 	}
 }

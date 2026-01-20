@@ -8,7 +8,7 @@ const Icon = () => (
 				fontSize: '2rem',
 			}}
 			_label="Label"
-			_icons="codicon codicon-home"
+			_icons="kolicon-house"
 		/>
 		<KolIcon
 			style={{
@@ -16,7 +16,7 @@ const Icon = () => (
 				fontSize: '2rem',
 			}}
 			_label=""
-			_icons="codicon codicon-home"
+			_icons="kolicon-house"
 		/>
 	</>
 );

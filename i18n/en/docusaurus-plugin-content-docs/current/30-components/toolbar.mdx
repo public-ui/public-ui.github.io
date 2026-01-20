@@ -1,0 +1,54 @@
+---
+title: Toolbar
+description: Description and specification for the toolbar component.
+---
+
+import Readme from '/readmes/toolbar/readme.md';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Toolbar
+
+The **Toolbar** component is a collection of commonly used button and link controls summarized in a compact visual form. The toolbar is typically a subset of functions found in a menu bar to reduce user effort.
+
+```html
+<kol-toolbar _label="Label" _items='[{"_label": "Button", type="button"}, {"_href": "#", "_label": "Link",  type="link"}]'> </kol-toolbar>
+```
+
+### Example
+
+<kol-toolbar
+_label="Label"
+_items='[{"_label": "Button", type="button"}, {"_href": "#", "_label": "Link", type="link"}]'>
+</kol-toolbar>
+
+## Usage
+
+Use the **Toolbar** component if you want to enable navigation of various buttons and links, e.g. to format the content of a text area.
+The **`aria-label`** can be set using the **`_label`** attribute.
+The individual functions are set in the toolbar using the **`_items`** attribute.
+The **`tabIndex`** is controlled by the **Toolbar** component. The default is always the first active element in the **Toolbar**.
+
+### Supported **Toolbar** components
+
+- Link
+- button
+
+The **Toolbar** component is told whether it is a **Link** or **Button** component using the **`type`** attribute.
+
+## Accessibility
+
+### Keyboard controls
+
+| button | Function |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Tab` | First tab focuses on the toolbar. Second the first active element and third restores the default. |
+| `arrow keys` | Can be used to navigate elements in the focused toolbar.                            |
+
+## Links and references
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/toolbar_role" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="toolbar" />

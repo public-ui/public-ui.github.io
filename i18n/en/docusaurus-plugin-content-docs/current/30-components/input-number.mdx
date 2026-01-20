@@ -1,0 +1,71 @@
+---
+title: InputNumber
+description: Description, specification and examples for the InputNumber component.
+---
+
+import Readme from '/readmes/input-number/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+
+# InputNumber
+
+The input type **Number** creates an input field for numbers.
+
+## Construction
+
+### Code
+
+```html
+<kol-input-number _value="74" _label="ZAHL!" _icons='{"right": "fa-solid fa-gauge"}'></kol-input-number>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|----------------------------------|---------------------------------|
+| `click` | Input field is clicked | - |
+| `focus` | Input field is focused | - |
+| `blur` | Input field loses focus | - |
+| `input` | Value is changed by entering | Current value of the input field |
+| `change` | Entry has been completed | Current value of the input field |
+
+### Example
+
+<kol-input-number _value="74" _label="ZAHL!" _icons='{"right": "fa-solid fa-gauge"}'></kol-input-number>
+
+## Usage
+
+### Best practices
+
+- Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
+
+### Keyboard controls
+
+| button | Function |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab` | Focuses the input field.                                                                                                                          |
+| `Arrow keys (up/down)` | Increases or decreases the value within the **`_min`** and **`_max`** attributes according to the step size specified in the **`_step`** attribute. |
+
+## Links and references
+
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+
+<Readme />
+
+## Usage _msg
+
+<PropertyMsgUsage />
+
+<ExampleLink component="input-number" />
+
+## Live editor
+
+<LiveEditorCompact component="input-number" />
+
+## Examples
+
+<Configurator component="input-number" sample="basic" />

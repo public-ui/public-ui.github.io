@@ -1,0 +1,72 @@
+---
+title: SkipNav
+description: Description, specification and examples for the SkipNav component.
+---
+
+import Readme from '/readmes/skip-nav/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+#SkipNav
+
+A hidden navigation can be created using the **SkipNav** component. It is used to enable visually impaired people to skip over side areas. It only becomes visible after clicking the **Tab key**.
+
+## Construction
+
+### Code
+
+```html
+<kol-skip-nav
+	_label="Ein versteckter Link"
+	_links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"
+></kol-skip-nav>
+```
+
+### Example
+
+To see the **SkipNav**, click on this text and then go one step further with the Tab key.
+
+<kol-skip-nav _label="Ein versteckter Link" _links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"></kol-skip-nav>
+
+## Usage
+
+The **SkipNav** is created by passing a JSON object that is responsible for rendering the hidden links.
+
+```js
+[
+	{ _label: 'Navigation', _href: '#nav' },
+	{ _label: 'Inhalt', _href: '#main' },
+	{ _label: 'Kontakt', _href: '#kontakt' },
+	{ _label: 'Links', _href: '#links' },
+];
+```
+
+<!--### Best practices
+
+### Use cases-->
+
+<!-- ## Barrierefreiheit -->
+
+### Keyboard controls
+
+| button | Function |
+| ------- | --------------------------------------------------------------------- |
+| `Tab` | Focuses the SkipNav and allows you to scroll through the menu items. |
+| `Enter` | Calls the link of the focused menu item.                        |
+
+## Links and references
+
+- <kol-link _href="https://webaim.org/techniques/skipnav/" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="skip-nav" />
+
+## Live editor
+
+<LiveEditorCompact component="skip-nav" />
+
+## Examples
+
+<Configurator component="skip-nav" sample="basic" />

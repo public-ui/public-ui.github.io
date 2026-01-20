@@ -1,0 +1,62 @@
+---
+title: Avatar
+description: Description, specification and examples for the Avatar component.
+---
+
+import Readme from '/readmes/avatar/readme.md';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Avatar
+
+Synonyms: Persona
+
+The **Avatar** component displays either a small image of the user or their initials if no image is available.
+
+## Construction
+
+### Code
+
+```html
+<kol-avatar _label="Erika Maria Mustermann"></kol-avatar>
+<kol-avatar _label="Erika"></kol-avatar>
+<kol-avatar _src="https://www.w3schools.com/howto/img_avatar.png" _label="Erika Maria Mustermann"></kol-avatar>
+```
+
+### Examples
+
+<kol-avatar _label="Erika Maria Mustermann"></kol-avatar>
+<kol-avatar _label="Erika"></kol-avatar>
+<kol-avatar _src="https://www.w3schools.com/howto/img_avatar.png" _label="Erika Maria Mustermann"></kol-avatar>
+
+## Usage
+
+### With picture
+
+In the default view, the **Avatar** component displays an avatar image. To do this, the `_src` attribute must be specified with a URL to the image.
+Additionally, it is necessary to specify the `_label` attribute with the user's name so that alternative text can be marked.
+
+### Without picture
+
+The **Avatar** component can also be used without the `_src` attribute and in this case will show the user's initials based on the
+`_label` attribute.
+
+### Use cases
+
+Use the **Avatar** component to display a user's image.
+
+## Accessibility
+
+For the **Avatar** component, the following accessibility points were particularly considered:
+
+- The component is labeled as an aria label with a description text that includes the user's name.
+- The initials shown as an alternative to the avatar image are considered a purely visual, semantically irrelevant element and for screen readers
+hidden accordingly.
+
+<Readme />
+
+<ExampleLink component="avatar" />
+
+## Live editor
+
+<LiveEditorCompact component="avatar" />

@@ -1,0 +1,126 @@
+---
+title: Tabs
+description: Description, specification and examples for the Tabs component.
+---
+
+import Readme from '/readmes/tabs/readme.md';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Tabs
+
+Synonyms: Navigation, Nav
+
+The **Tabs** component is used to organize and navigate between related content on the same page. Tabs make it easier for users to organize large amounts of content. Tabs are arranged in tab bars called tab groups, where the tab label gives users an indication of what content will be displayed when the tab is selected.
+
+## Construction
+
+After loading the component, the first tab on the left will automatically be visually highlighted as **_active_**. Each tab takes on the status **_active_** after being clicked. The status **_active_** can also be set manually to the index of the registry card using the **`_selected`** attribute.
+The individual contents of the tab are noted in a separate `HTMLDivElement` as `<div>Contents of the tab</div>` within `<kol-tabs></kol-tabs>`.
+
+The data in the **`_tabs`** attribute is assigned to the div elements automatically.
+
+### Code
+
+```html
+<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icons":"kolicon-house"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
+	<div>Inhalt von Tab 1</div>
+	<div>Inhalt von Tab 2</div>
+	<div>Inhalt von Tab 3</div>
+</kol-tabs>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|--------------------------------|----------------------------|
+| `select` | Tab has been selected | Index of the selected tab |
+| `create` | Create button was clicked | - |
+
+### Example
+
+<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icons":"kolicon-house"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
+	<div>Inhalt von Tab 1</div>
+	<div>Inhalt von Tab 2</div>
+	<div>Inhalt von Tab 3</div>
+</kol-tabs>
+
+## Usage
+
+### Definition of tabs
+
+The data for the tabs can be passed to the **`_tabs`** attribute as objects or a JSON string.
+
+```json
+[{ "_label": "Tab 1", "_icons": "kolicon-house" }, { "_label": "Tab 2", "_on": { "onClose": true } }, { "_label": "Tab 3" }]
+```
+
+### Disable tab
+
+To disable a tab, use the **`_disabled`** attribute.
+
+### Create button
+
+The attribute **`_has-create-button`** can be used to activate an additional button in the tab navigation. This button appears at the end of the tab bar and allows users to dynamically add new tabs.
+
+#### Code
+
+```html
+<kol-tabs _tabs='[{"_label":"Tab 1"},{"_label":"Tab 2"}]' _has-create-button>
+	<div>Inhalt von Tab 1</div>
+	<div>Inhalt von Tab 2</div>
+</kol-tabs>
+```
+
+<kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/tabs/create-button" _target="_blank" _label="Beispiel in der Sample App"></kol-link>
+
+### Best practices
+
+- Use tabs to organize and group related content so users don't have to leave the page.
+- Tabs should be positioned in a single, scrollable (if necessary) line above the content they relate to.
+- Use the tab label to clearly and concisely describe the contents of that tab and to distinguish between the different sections.
+- Don't use tabs to create a sequence or history of content that you want the user to read in a specific order.
+- Do not use tabs to compare content (e.g. different specifications).
+- Consider the number of tabs you include in the tab group. If you feel like the number is getting too large, consider breaking up the content further or using a different navigation pattern/component.
+
+### Use cases
+
+- Using tabs you can, for example, divide services or benefits into different categories.
+- Use tabs to organize user profiles into different sections (e.g. personal information, appointments, active services).
+- Use tabs to divide FAQs into different categories.
+
+## Accessibility
+
+### Keyboard controls
+
+When you jump to them using the **Tab key**, selected tabs are surrounded by a clear focus frame. The individual tabs can be scrolled through using the **left** and **right** arrow keys.
+
+After opening a tab, you can use the **Tab key** to switch from the header to the content area of ​​the tab.
+
+Regardless of whether the tab switches are located at the top, right, bottom or left, the keyboard controls remain the same. The background is that the layout plays no role when using a screen reader. A different arrow key control due to the layout arrangement would therefore not correspond to the usual W3C operating concept.
+
+The implementation of the keyboard control was based on the W3C examples.
+
+The focus here is always on the impaired user. In order to navigate as efficiently as possible across the entire page/application, only 1 switch from the Tab series can be focused. Once the user is on the tab navigation itself, the arrow keys are used to switch between the tabs themselves.
+
+| button | Function |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `Tab` | Focuses on the first active tab. Existing close icons can be accessed with the Tab key. |
+| `Arrow keys (left \| right)` | Switches between tabs.                                                                             |
+
+## Links and references
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role" _target="_blank"></kol-link>
+- <kol-link _href="https://dequeuniversity.com/library/aria/tabpanel" _target="_blank"></kol-link>
+- <kol-link _href="https://design-system.service.gov.uk/components/tabs/" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="tabs" />
+
+## Live editor
+
+<LiveEditorCompact component="tabs" />

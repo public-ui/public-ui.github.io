@@ -3,6 +3,7 @@ import { KolKolibri, KolLink, KolLinkButton } from '@public-ui/react-v19';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import type { FunctionComponent, ReactElement } from 'react';
 import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
@@ -23,14 +24,17 @@ const HomepageHeader: FunctionComponent = () => (
 	</header>
 );
 const HomepageButtons: FunctionComponent = () => {
+	const docsHref = useBaseUrl('/docs');
+	const firstStepsHref = useBaseUrl('/docs/get-started/first-steps');
+
 	return (
 		<div className="grid sm:flex gap-4 justify-center mt-4">
 			<KolLinkButton
 				className="w-72"
 				_icons={{
-					right: 'codicon codicon-dashboard',
+					right: 'kolicon-chevron-right',
 				}}
-				_href="/docs/get-started/first-steps"
+				_href={firstStepsHref}
 				_label={translate({
 					id: 'custom.get-started-button',
 				})}
@@ -38,7 +42,10 @@ const HomepageButtons: FunctionComponent = () => {
 			></KolLinkButton>
 			<KolLinkButton
 				className="w-72"
-				_href="/docs"
+				_icons={{
+					right: 'kolicon-version',
+				}}
+				_href={docsHref}
 				_label={translate({
 					id: 'custom.documentation-button',
 				})}

@@ -1,0 +1,133 @@
+---
+title: InputEmail
+description: Description, specification and examples for the InputEmail component.
+---
+
+import Readme from '/readmes/input-email/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+
+# InputEmail
+
+The input type **Email** creates an input field for emails.
+
+## Construction
+
+### Code
+
+```html
+<kol-input-email _label="E-Mail-Adresse" _icons='{"right": "fa-solid fa-envelope"}'></kol-input-email>
+```
+
+### Example
+
+<kol-input-email _label="E-Mail-Adresse" _icons='{"right": "fa-solid fa-envelope"}'></kol-input-email>
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|----------------------------------|---------------------------------|
+| `click` | Input field is clicked | - |
+| `focus` | Input field is focused | - |
+| `blur` | Input field loses focus | - |
+| `input` | Value is changed by entering | Current value of the input field |
+| `change` | Entry has been completed | Current value of the input field |
+
+## Usage
+
+Use the **InputEmail** component on forms that require the entry of one or more email addresses.
+
+By default, the component is designed to capture a single email address. Set the **`_multiple`** attribute to capture multiple email addresses. Separate each email address with a comma (,).
+
+### Best practices
+
+- Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
+
+## Accessibility
+
+There is no validation of the recorded email addresses within the component.
+To indicate failed validation, use the `_msg` and `_touched` attributes.
+
+### Keyboard controls
+
+| button | Function |
+| ----- | --------------------------- |
+| `Tab` | Focuses the input field. |
+
+## Character limit and character counter
+
+With the three attributes `_max-length`, `_max-length-behavior` and `_has-counter`, the input length can be flexibly limited and at the same time provide visual feedback.
+
+### Attributes
+
+| Attribute | Type | Default | Description |
+| ---------------------- | ------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_has-counter` | `boolean` | `false` | Global switch for the character counter. Only if this attribute is **set (= true)** will a counter be output.                                                                                                                                                           |
+| `_max-length` | `number` | — | Maximum number of characters allowed. Effective only if `_has-counter` is active.                                                                                                                                                                                                              |
+| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Specifies how the limit is handled **if** `_max-length` is set:<br />- **hard**: Additionally sets the native `maxlength` attribute and prevents further input.<br />- **soft**: Allows further input; the counter shows remaining or exceeded characters. |
+
+### Output variants
+
+| case | `_has-counter` | `_max-length` | `_max-length-behavior` | Visible text |
+| ---: | --------------------- | ------------- | ---------------------- | -------------------------------------------------------- |
+| 1 | *(empty)* or `false` | — | — | — (no counter) |
+| 2 | `true` | *(empty)* | — | `n character` |
+| 3 | `true` | 5 | *(empty)* or `hard` | `n/5 characters` |
+| 4 | `true` | 5 | `soft` | `3 characters still available`<br />*(or `3 characters too many`)* |
+
+> If `_max-length-behavior="soft"` is used, **the native `maxlength` attribute is *not* set** - so the input field is not hard-limited.
+
+### Accessibility
+
+* The counter updates with a **500ms** delay so that screen reader events are concentrated and do not interrupt typing.
+* For screen readers, a hidden text that is only visible to assistive technologies is also displayed, such as:
+*“You can enter up to 10 characters.”*
+
+### Examples
+
+```html
+<!-- Nur Zähler -->
+<kol-input-email _label="E-Mail-Adresse" _has-counter></kol-input-email>
+
+<!-- Harte Begrenzung auf 5 Zeichen -->
+<kol-input-email _label="E-Mail-Adresse" _has-counter _max-length="5"></kol-input-email>
+
+<!-- Weiche Begrenzung auf 5 Zeichen -->
+<kol-input-email
+  _label="E-Mail-Adresse"
+  _has-counter
+  _max-length="5"
+  _max-length-behavior="soft">
+</kol-input-email>
+```
+
+### Summary
+
+* Without `_has-counter` there is **never** a counter.
+* With `_has-counter` **and without** `_max-length` only the currently entered number of characters is displayed.
+* With `_has-counter` **and** `_max-length`, `_max-length-behavior` determines whether the limit is implemented hard (`hard`) or softly (`soft`).
+
+## Links and references
+
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- <kol-link _href="https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/" _target="_blank"></kol-link>
+
+<Readme />
+
+## Usage _msg
+
+<PropertyMsgUsage />
+
+<ExampleLink component="input-email" />
+
+## Live editor
+
+<LiveEditorCompact component="input-email" />
+
+## Examples
+
+<Configurator component="input-email" sample="basic" />

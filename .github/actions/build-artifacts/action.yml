@@ -14,7 +14,6 @@ runs:
       run: |
         rm -rf build
         npm run build
-        mv build next
 
     - uses: actions/setup-node@v6
       with:
@@ -30,8 +29,9 @@ runs:
         npm pack @public-ui/docs-v3@latest > /dev/null
         tar -xzvf public-ui-*.tgz > /dev/null
 
-        mv package/build build
-        mv next build/next
+        rm -rf build/v3
+        mkdir -p build/v3
+        mv package/build/* build/v3/
 
         rm -rf package *.tgz
 

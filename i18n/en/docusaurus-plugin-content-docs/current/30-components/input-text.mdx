@@ -1,0 +1,149 @@
+---
+title: InputText
+description: Description, specification and examples for the InputText component.
+---
+
+import Readme from '/readmes/input-text/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+
+# InputText
+
+Synonyms: Text Field
+
+The input type **Text** creates an input field for normal text, search terms, URLs or phone numbers.
+
+The component has known issues regarding browser dependency and accessibility. Further information can be found at [KNOWN_ISSUES.md](https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md).
+
+## Construction
+
+### Code
+
+```html
+<kol-input-text
+  _type="text"
+  _label="Texteingabe"
+  _icons='{"left": "kolicon-chevron-left", "right": {"icon": "kolicon-chevron-right", "style": {"font-size": "200%"}}}'
+></kol-input-text>
+<kol-input-text _type="text" _label="Deaktiviert" _disabled></kol-input-text>
+<kol-input-text _type="text" _label="Schreibgeschützt" _read-only></kol-input-text>
+<kol-input-text
+  _type="text"
+  _label="Mit Button"
+  _smart-button='{"_icons": "kolicon-cross", "_hideLabel": true, "_label": "Löschen"}'
+></kol-input-text>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|----------------------------------|---------------------------------|
+| `click` | Input field is clicked | - |
+| `focus` | Input field is focused | - |
+| `blur` | Input field loses focus | - |
+| `input` | Value is changed by entering | Current value of the input field |
+| `change` | Entry has been completed | Current value of the input field |
+
+### Example
+
+<kol-input-text _type="text" _label="Texteingabe" _icons='{"left": "kolicon-chevron-left", "right": {"icon": "kolicon-chevron-right", "style": {"font-size": "200%"}}}'></kol-input-text>
+<kol-input-text _type="text" _label="Deaktiviert" _disabled></kol-input-text>
+<kol-input-text _type="text" _label="Schreibgeschützt" _read-only></kol-input-text>
+<kol-input-text
+_type="text"
+_label="With button"
+_smart-button='{"_icons": "kolicon-cross", "_hideLabel": true, "_label": "Delete"}'></kol-input-text>
+
+
+## Usage
+
+### Best practices
+
+- Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
+
+## Accessibility
+
+### Keyboard controls
+
+| button | Function |
+| ----- | ------------------------------------- |
+| `Tab` | Focuses the input field.           |
+| `ESC` | Deletes the content (Type = Search only). |
+
+## Character limit and character counter
+
+With the three attributes `_max-length`, `_max-length-behavior` and `_has-counter`, the input length can be flexibly limited and at the same time provide visual feedback.
+
+### Attributes
+
+| Attribute | Type | Default | Description |
+| ---------------------- | ------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_has-counter` | `boolean` | `false` | Global switch for the character counter. Only if this attribute is **set (= true)** will a counter be output.                                                                                                                                                           |
+| `_max-length` | `number` | — | Maximum number of characters allowed. Effective only if `_has-counter` is active.                                                                                                                                                                                                              |
+| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Specifies how the limit is handled **if** `_max-length` is set:<br />- **hard**: Additionally sets the native `maxlength` attribute and prevents further input.<br />- **soft**: Allows further input; the counter shows remaining or exceeded characters. |
+
+### Output variants
+
+| case | `_has-counter` | `_max-length` | `_max-length-behavior` | Visible text |
+| ---: | --------------------- | ------------- | ---------------------- | -------------------------------------------------------- |
+| 1 | *(empty)* or `false` | — | — | — (no counter) |
+| 2 | `true` | *(empty)* | — | `n character` |
+| 3 | `true` | 5 | *(empty)* or `hard` | `n/5 characters` |
+| 4 | `true` | 5 | `soft` | `3 characters still available`<br />*(or `3 characters too many`)* |
+
+> If `_max-length-behavior="soft"` is used, **the native `maxlength` attribute is *not* set** - so the input field is not hard-limited.
+
+### Accessibility
+
+* The counter updates with a **500ms** delay so that screen reader events are concentrated and do not interrupt typing.
+* For screen readers, a hidden text that is only visible to assistive technologies is also displayed, such as:
+*“You can enter up to 10 characters.”*
+
+### Examples
+
+```html
+<!-- Nur Zähler -->
+<kol-input-text _label="Texteingabe" _has-counter></kol-input-text>
+
+<!-- Harte Begrenzung auf 5 Zeichen -->
+<kol-input-text _label="Texteingabe" _has-counter _max-length="5"></kol-input-text>
+
+<!-- Weiche Begrenzung auf 5 Zeichen -->
+<kol-input-text
+  _label="Texteingabe"
+  _has-counter
+  _max-length="5"
+  _max-length-behavior="soft">
+</kol-input-text>
+```
+
+### Summary
+
+* Without `_has-counter` there is **never** a counter.
+* With `_has-counter` **and without** `_max-length` only the currently entered number of characters is displayed.
+* With `_has-counter` **and** `_max-length`, `_max-length-behavior` determines whether the limit is implemented hard (`hard`) or softly (`soft`).
+
+## Links and references
+
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- <kol-link _href="https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/" _target="_blank"></kol-link>
+
+<Readme />
+
+## Usage _msg
+
+<PropertyMsgUsage />
+
+<ExampleLink component="input-text" />
+
+## Live editor
+
+<LiveEditorCompact component="input-text" />
+
+## Examples
+
+<Configurator component="input-text" sample="basic" />

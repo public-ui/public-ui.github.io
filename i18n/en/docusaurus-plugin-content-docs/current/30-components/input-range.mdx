@@ -1,0 +1,88 @@
+---
+title: InputRange
+description: Description, specification, and examples for the InputRange component.
+---
+
+import Readme from '/readmes/input-range/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+
+#InputRange
+
+Synonyms: Slider
+
+The **Range** input type creates an interactive element that allows values ​​to be changed by moving a slider.
+
+## Construction
+
+### Code
+
+```html
+<kol-input-range
+	_label="Wertebereich"
+	_min="100"
+	_max="200"
+	_value="100"
+	_step="20"
+	_icons='{"left": "kolicon-chevron-down", "right": "kolicon-chevron-up"}'
+></kol-input-range>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|----------------------------------|---------------------------------|
+| `click` | Input field is clicked | - |
+| `focus` | Input field is focused | - |
+| `blur` | Input field loses focus | - |
+| `input` | Value is changed by entering | Current value of the input field |
+| `change` | Entry has been completed | Current value of the input field |
+
+### Example
+
+<kol-input-range
+_label="value range"
+_min="100"
+_max="200"
+_value="100"
+_step="20"
+_icons='{"left": "kolicon-chevron-down", "right": "kolicon-chevron-up"}'></kol-input-range>
+
+## Usage
+
+### Best practices
+
+- Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
+
+## Accessibility
+
+### Keyboard controls
+
+| button | Function |
+| -------------- | ------------------------------------------------------ |
+| `Tab` | Focuses the input field.              |
+| `arrow keys` | Change the value of the range component. |
+
+## Links and references
+
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+
+<Readme />
+
+## Usage _msg
+
+<PropertyMsgUsage />
+
+<ExampleLink component="input-range" />
+
+## Live editor
+
+<LiveEditorCompact component="input-range" />
+
+## Examples
+
+<Configurator component="input-range" sample="basic" />

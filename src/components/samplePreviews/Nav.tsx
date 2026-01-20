@@ -5,12 +5,12 @@ import { KolNav } from '@public-ui/react-v19';
 export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_label: 'Home',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 	},
 	{
 		_label: '1 Nav',
 		_href: '#',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 		_children: [
 			{
 				_label: '3.1 Nav',
@@ -20,7 +20,7 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	},
 	{
 		_label: '2 Nav',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 		_children: [
 			{
 				_label: 'Link',
@@ -30,7 +30,7 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	},
 	{
 		_label: '3 Nav',
-		_icons: 'codicon codicon-home',
+		_icons: 'kolicon-house',
 		_active: true,
 		_children: [
 			{

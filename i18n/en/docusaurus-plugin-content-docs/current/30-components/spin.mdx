@@ -1,0 +1,134 @@
+---
+title: Spin
+description: Description, specification and examples for the spin component.
+---
+import Readme from '/readmes/spin/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+#Spin
+
+Synonyms: Placeholder, Skeleton, Shimmer
+
+Loading indicators, such as the **Spin** component, inform users about loading or computing processes being carried out by the system. Progress can be communicated through a repeated animation.
+
+## Construction
+
+### Code
+
+```html
+<style>
+	/* https://github.com/vineethtrv/css-loader */
+	.loader {
+		animation: rotation 2s linear infinite;
+		border-color: #444;
+		border-radius: 50%;
+		border-style: solid solid dotted dotted;
+		border-width: 3px;
+		box-sizing: border-box;
+		display: inline-block;
+		height: 48px;
+		position: relative;
+		width: 48px;
+	}
+	.loader::after {
+		animation: rotationBack 1s linear infinite;
+		border-color: #ff3d00;
+		border-radius: 50%;
+		border-style: solid solid dotted;
+		border-width: 3px;
+		box-sizing: border-box;
+		bottom: 0;
+		content: '';
+		height: 24px;
+		left: 0;
+		margin: auto;
+		position: absolute;
+		right: 0;
+		top: 0;
+		transform-origin: center center;
+		width: 24px;
+	}
+
+	@keyframes rotation {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+	@keyframes rotationBack {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(-360deg);
+		}
+	}
+
+	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
+	@media (prefers-reduced-motion) {
+		.loader {
+			animation-duration: 6s;
+		}
+		.loader::after {
+			animation-duration: 3s;
+		}
+	}
+</style>
+<div>
+	<kol-spin _show></kol-spin>
+	<kol-spin _show _variant="cycle"></kol-spin>
+	<!-- for a11y experts - own animation -->
+	<kol-spin _show _variant="none">
+		<!-- slot for own animation : https://github.com/vineethtrv/css-loader -->
+		<span className="loader" slot="expert"></span>
+	</kol-spin>
+</div>
+```
+
+<kol-alert _label_="Reduce Motion" _level="4" _type="warning">
+If possible, animations should always be avoided. If animations are used, care should always be taken to offer a variant with reduced animation speed. More information can be found here:
+	<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _label="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _target="_blank"></kol-link>
+</kol-alert>
+
+### Example
+
+<kol-spin _show></kol-spin>
+<kol-spin _show _variant="cycle"></kol-spin>
+<kol-spin _show _variant="none"><span className="loader" slot="expert"></span></kol-spin>
+
+<kol-details _label="CSS Loaders & Spinners" _open>
+There are many different CSS loaders and spinners on the internet. For example, _Vineeth_ offers a whole range of interesting CSS loaders. These can also be used in the KoliBri library. All you have to do is include the link to the corresponding CSS file in the head of the HTML file. The desired animation can then be integrated into the KoliBri component via the Expert slot. Here are some examples (without reduced animation speed):
+	<kol-link _href="https://github.com/vineethtrv/css-loader" _target="_blank" _target="_blank"></kol-link>
+</kol-details>
+
+## Usage
+
+Use the `_show` attribute to specify whether the spin is displayed.
+
+### Best practices
+
+- Use charging indicators to inform users about a charging status or a running process.
+- Use loading indicators in consistent places in the interface to improve user experience.
+
+### Use cases
+
+- Retrieve new or updated search results.
+- Log in to protected areas.
+- Download content.
+- Loading extensive content, e.g. videos.
+
+<Readme />
+
+<ExampleLink component="spin" />
+
+## Live editor
+
+<LiveEditorCompact component="spin" />
+
+## Examples
+
+<Configurator component="spin" sample="basic" />

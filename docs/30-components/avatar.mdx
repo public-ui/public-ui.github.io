@@ -9,8 +9,8 @@ tags:
 ---
 
 import Readme from '../../readmes/avatar/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import AvatarPreview from '@site/src/components/previews/components/Avatar';
 
 # Avatar
 
@@ -18,21 +18,10 @@ Synonyme: Persona
 
 Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder dessen Initialen an, falls kein Bild vorhanden ist.
 
-## Konstruktion
-
-### Code
-
-```html
-<kol-avatar _label="Erika Maria Mustermann"></kol-avatar>
-<kol-avatar _label="Erika"></kol-avatar>
-<kol-avatar _src="https://www.w3schools.com/howto/img_avatar.png" _label="Erika Maria Mustermann"></kol-avatar>
-```
-
-### Beispiele
-
-<kol-avatar _label="Erika Maria Mustermann"></kol-avatar>
-<kol-avatar _label="Erika"></kol-avatar>
-<kol-avatar _src="https://www.w3schools.com/howto/img_avatar.png" _label="Erika Maria Mustermann"></kol-avatar>
+<AvatarPreview
+	visibleProperties={['_label', '_color']}
+	codeCollapsable
+/>
 
 ## Verwendung
 
@@ -60,8 +49,6 @@ entsprechend versteckt.
 
 <Readme />
 
+## Beispiele
+
 <ExampleLink component="avatar" />
-
-## Live-Editor
-
-<LiveEditorCompact component="avatar" />

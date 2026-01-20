@@ -1,0 +1,80 @@
+---
+title: Quote
+description: Description, specification and examples for the Quote component.
+---
+
+import Readme from '/readmes/quote/readme.md';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Quote
+
+> <kol-badge _label="untested"></kol-badge> This new component is marked as untested because the full accessibility test is still pending. The full test of new components and functionalities can only take place after a completed release.
+
+The **Quote** component has two variants, a short body text ("inline") and an indented ("block") variant. Both versions contain a link to the source of the quote.
+
+## Construction
+
+### Code
+
+```html
+<kol-quote
+	_label="RFC 1149"
+	_href="https://datatracker.ietf.org/doc/html/rfc1149"
+	_quote="Avian carriers can provide high delay, low throughput, and low altitude
+								service. The connection topology is limited to a single point-to-point path
+								for each carrier, used with standard carriers, but many carriers can be used
+								without significant interference with each other, outside early spring.
+								This is because of the 3D ether space available to the carriers, in contrast
+								to the 1D ether used by IEEE802.3. The carriers have an intrinsic collision
+								avoidance system, which increases availability."
+	_variant="block"
+>
+</kol-quote>
+<kol-quote
+	_label="RFC 1149"
+	_href="https://datatracker.ietf.org/doc/html/rfc1149"
+	_quote="Avian carriers can provide high delay."
+	_variant="inline"
+></kol-quote>
+```
+
+### Examples
+
+<kol-quote
+_label="RFC 1149"
+_href="https://datatracker.ietf.org/doc/html/rfc1149"
+_quote="Avian carriers can provide high delay, low throughput, and low altitude
+service. The connection topology is limited to a single point-to-point path
+for each carrier, used with standard carriers, but many carriers can be used
+without significant interference with each other, outside early spring.
+This is because of the 3D ether space available to the carriers, in contrast
+to the 1D ether used by IEEE802.3. The carriers have an intrinsic collision
+avoidance system, which increases availability."
+_variant="block"></kol-quote>
+<kol-quote
+_label="RFC 1149"
+_href="https://datatracker.ietf.org/doc/html/rfc1149"
+_quote="Avian carriers can provide high delay."
+_variant="inline"></kol-quote>
+
+## Usage
+
+A heading can be set using **`_label`**, while **`_quote`** contains the actual quote. The origin is set via **`_href`**.
+The `inline` variant is standard, if indented is desired, **`_variant`** can be set to `block`.
+
+## References
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _target="_blank"></kol-link>
+- <kol-link _href="https://www.mediaevent.de/html/quote.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.mediaevent.de/html/cite.html" _target="_blank"></kol-link>
+- <kol-link _href="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _target="_blank"></kol-link>
+
+<Readme />
+
+<ExampleLink component="quote" />
+
+## Live editor
+
+<LiveEditorCompact component="quote" />

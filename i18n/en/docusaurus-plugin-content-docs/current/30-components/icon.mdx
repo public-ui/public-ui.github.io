@@ -1,0 +1,65 @@
+---
+title: Icon
+description: Description, specification and examples for the Icon component.
+---
+
+import Readme from '/readmes/icon/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Icon
+
+With the help of the **Icon** component, icons from integrated icon fonts can be displayed at any position. The output of the icon can be controlled using the **`_icon`** attribute and is made barrier-free using the **`_label`** attribute. By default the output is as an _`inline`_ element.
+
+Currently the icons are supported by <kol-link _href="https://public-ui.github.io/assets/kolicons/kolicons.svg" _target="_blank" _label="Kolicons"></kol-link> and <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link>.
+
+<kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite (`index.html`) die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>
+
+## Construction
+
+The **Icon** component is created via the HTML tag `kol-icon`.
+
+### Code
+
+```html
+<kol-icon _label="Zu Hause" _icons="kolicon-house"></kol-icon>
+```
+
+### Example
+
+<kol-icon _label="Zu Hause" _icons="kolicon-house"></kol-icon>
+
+### Icons
+
+The property `_icons` expects a string with the class names of the icons to be shown (e.g.: `_icons="kolicon-house`).
+
+<kol-link _href="https://public-ui.github.io/assets/kolicons/kolicons.svg" _target="_blank" _label="Kolicons overview"></kol-link>
+
+## Accessibility
+
+It is important for context-relevant graphics to be labeled.
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/"></kol-link>
+
+### Labels
+
+A context-relevant icon must be labeled using the `_label` property.
+
+## Links and references
+
+- <kol-link _href="https://public-ui.github.io/assets/kolicons/kolicons.svg" _target="_blank" _label="Kolicons"></kol-link>
+- <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link>
+- <kol-link _href="https://icofont.com" _target="_blank" _label="Icofont"></kol-link>
+
+<Readme />
+
+<ExampleLink component="icon" />
+
+## Live editor
+
+<LiveEditorCompact component="icon" />
+
+## Examples
+
+<Configurator component="icon" sample="basic" />

@@ -1,0 +1,45 @@
+---
+title: PopoverButton
+description: Description and specification for the PopoverButton component.
+---
+
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '/readmes/popover-button/readme.md';
+
+# PopoverButton
+
+The PopoverButton is a component that combines a button with an associated popover menu. The popover is shown and hidden by clicking on the button. The label of the button can be set using the `_label` attribute. The position of the popover can be controlled via `_popover-align`, whereby the popover can be placed either above, to the right, below or to the left of the button.
+
+The PopoverButton is particularly suitable for:
+
+- Additional Information
+- Context menus
+- Fold-out controls
+
+## Construction
+
+### Code
+
+```html
+<kol-popover-button _label="Weitere Informationen" _icons="fa-solid fa-circle-info" _popover-align="right">
+	Weitere Informationen im Popover.
+</kol-popover-button>
+```
+
+### Example
+
+<kol-popover-button _label="Weitere Informationen" _icons="fa-solid fa-circle-info" _popover-align="right">
+Further information in the popover.
+</kol-popover-button>
+
+<Readme />
+
+<ExampleLink component="popover-button" />
+
+## Live editor
+
+[//]: # (<LiveEditorCompact component="popover-button" />)
+
+## Examples
+
+[//]: # (<Configurator component="popover-button" sample="basic" />)

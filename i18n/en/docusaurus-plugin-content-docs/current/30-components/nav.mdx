@@ -1,0 +1,125 @@
+---
+title: Nav
+description: Description, specification and examples for the Nav component.
+---
+
+import Readme from '/readmes/nav/readme.md';
+import { Configurator } from '@site/src/components/Configurator';
+import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Nav
+
+Synonyms: navigation, menu, sidebar, dropdowns (menu)
+
+A **Navigation Bar** is a group of related links or navigation elements that, when clicked, perform an action or display content. It navigates users directly to specific content on the current page or to external pages. It also serves as a control (similar to tabs) for users to show, hide and switch between content.
+
+**KoliBri** provides an extensively configurable, vertical **navigation bar** that displays several levels and can be varied in width.
+Higher-level menu items that contain submenu items are displayed with a **plus icon** on the right edge. If the higher-level menu item is opened with the plus icon, the plus icon automatically changes to a **minus icon**, with which the menu item can be closed again.
+
+Active menu items are shown with a colored marker.
+
+The width of the **Nav** component can be changed using an optional button below the navigation. In the smallest width the menu titles are hidden and only
+the icons are still output.
+
+## Construction
+
+### Code
+
+```html
+<kol-nav
+	_label="Hauptmenü"
+	_links="[
+    {
+      '_href': 'startseite',
+      '_icons': 'kolicon-house',
+      '_label': 'Startseite2',
+      '_children': [
+        {
+          '_href': 'startseite/1-untermenuepunkt',
+          '_icons': 'kolicon-house',
+          '_label': '1. Untermenüpunkt'
+        },
+        {
+          '_href': 'startseite/2-untermenuepunkt',
+          '_icons': 'kolicon-house',
+          '_label': '2. Untermenüpunkt'
+        }
+      ]
+    },
+    {
+      '_href': 'unterseite',
+      '_icons': 'kolicon-house',
+      '_label': '2. Menüpunkt'
+    }
+  ]"
+	_has-compact-button
+></kol-nav>
+```
+
+### Example
+
+<kol-nav _label="Hauptmenü" _links="[{'_href':'startseite','_icons':'kolicon-house','_label':'Startseite','_children':[{'_href':'startseite/1-untermenuepunkt','_icons':'kolicon-house','_label':'1. Untermenüpunkt'},{'_href':'startseite/2-untermenuepunkt','_icons':'kolicon-house','_label':'2. Untermenüpunkt'}]},{'_href':'unterseite','_icons':'kolicon-house','_label':'2. Menüpunkt'}]" _has-compact-button></kol-nav>
+
+## Usage
+
+### Define links in the navigation bar
+
+The navigation structure is passed to the **`_links`** attribute as an object or JSON string. The structure is built as a value/parameter pair:
+To create submenu items, extend the JSON structure with the additional attribute **`_children`** in the parent element.
+
+```js
+[
+	{
+		_href: 'startseite',
+		_icons: 'kolicon-house',
+		_label: 'Startseite',
+		_children: [
+			{ _href: 'startseite/1-untermenuepunkt', _icons: 'kolicon-house', _label: '1. Untermenüpunkt' },
+			{ _href: 'startseite/2-untermenuepunkt', _icons: 'kolicon-house', _label: '2. Untermenüpunkt' },
+		],
+	},
+	{ _href: 'unterseite', _icons: 'kolicon-house', _label: '2. Menüpunkt' },
+];
+```
+
+### Show compact navigation bar
+
+To display the navigation bar in the compact view, set the **`_hide-label`** attribute.
+
+### Best practices
+
+- Use **navigation bars** to represent **navigation** or navigation-like actions (e.g. internal or external links, logging out, controlling visibility on the page).
+- Use the label to provide a clear and concise description of the content related to that particular navigation element.
+- Do not use **navigation bars** for actions that are better presented as buttons (e.g. “Save”, “Delete”, “Add Item to Cart”).
+- Do not stack multiple **navigation bars** right next to each other.
+- Do not use **navigation bars** to compare content (e.g. different performances).
+- Consider the number of navigation items you add to the **Navigation Bar**. If you feel the number is becoming too large, consider alternative approaches to presenting the content or use a different navigation pattern/component.
+
+### Use cases
+
+- Use **Navigation Bars** as in-page navigation on a landing page.
+- Use **Navigation Bars** to organize related information on a landing page.
+- Use **navigation bars** to classify offers or benefits into different categories (e.g. forms).
+- Use **Navigation Bars** to divide FAQs into different categories.
+
+## Accessibility
+
+### Keyboard controls
+
+| button | Function |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab` | Focuses on the first menu item in the navigation. Each menu item can then be accessed using the Tab key. If the Has-compact button has been activated, it can also be accessed with the Tab key. |
+| `Enter` | Expands/closes sub-items if a collapse button is focused, activates the button or opens the link otherwise.                                                                                  |
+
+<Readme />
+
+<ExampleLink component="nav" />
+
+## Live editor
+
+<LiveEditorCompact component="nav" />
+
+## Examples
+
+<Configurator component="nav" sample="basic" />

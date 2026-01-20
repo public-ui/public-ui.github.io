@@ -1,0 +1,70 @@
+---
+title: Combobox
+description: Description and specification for the Combobox component.
+---
+
+import Readme from '/readmes/combobox/readme.md';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+
+# Combobox
+
+Synonyms: Autocomplete, Select, Dropdown
+
+The **Combobox** component creates a selection list that combines an input field with a list of selectable options displayed below.
+
+## Construction
+
+### Code
+
+```html
+<kol-combobox _suggestions="['Herr','Frau','Firma']" _label="Anrede" _value="Herr"></kol-combobox>
+```
+
+### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | trigger | Value |
+|----------|----------------------------------|---------------------------------|
+| `click` | Input field is clicked | - |
+| `focus` | Input field is focused | - |
+| `blur` | Input field loses focus | - |
+| `input` | Value is changed by entering | Current value of the input field |
+| `change` | Entry has been completed | Current value of the input field |
+
+### Example
+
+<kol-combobox  _suggestions="['Herr','Frau','Firma']" _label="Anrede" _value="Herr"></kol-combobox>
+
+## Usage
+
+The choices are passed to the component as a JSON array via the **`_suggestions`** attribute.
+
+Example of constructing the JSON array:
+
+```json
+["Herr", "Frau", "Firma"]
+```
+
+<!--### Best practices-->
+
+<!-- ## Barrierefreiheit -->
+
+### Keyboard controls
+
+| button | Function |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab` | Focuses the selection field.                                                                                                                                                                         |
+| `Enter` | If the listbox is open and an option is focused, this function selects the focused option and closes the listbox. If no option is focused, it just opens the listbox. |
+| `ArrowDown` | Opens the listbox when it is closed and moves the visual focus down one option when the listbox is open.                                                              |
+| `ArrowUp` | Opens the listbox when it is closed and moves the visual focus up one option when the listbox is open.                                                               |
+| `Escape (Esc)` | Closes the listbox and removes visual focus from the combobox without making a selection.                                                                                                |
+| `Home` | Moves visual focus to the first option in the listbox.                                                                                                                                     |
+| `End` | Moves the visual focus to the last option in the listbox.                                                                                                                                    |
+| `PageUp(PageUp)` | Jumps ten options up in the list box and focuses on the corresponding option.                                                                                                             |
+| `PageDown(PageDown)` | Jumps ten options down in the list box and focuses on the corresponding option.                                                                                                            |
+| `Printable Characters` | Focuses on the first option that begins with the pressed character.                                                                                                                                |
+
+<Readme />
+
+<ExampleLink component="combobox" />
