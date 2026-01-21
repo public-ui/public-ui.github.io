@@ -247,16 +247,6 @@ kol-link-button {
 	padding: 0 8px;
 }
 
-.preview {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: auto max-content;
-}
-
-.preview.props {
-	grid-template-columns: 1fr minmax(min-content, 400px);
-}
-
 @media (max-width: 1536px) {
 	:root {
 		--kol-header-height: 7.7rem;
