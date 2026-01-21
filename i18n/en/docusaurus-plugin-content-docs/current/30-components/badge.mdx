@@ -4,8 +4,6 @@ description: Description, specification and examples for the Badge component.
 ---
 
 import Readme from '/readmes/badge/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 #Badge
@@ -13,14 +11,12 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 With **Badges** you can visually highlight certain information on your website.
 In addition to specifying the background color and automatically calculating the text color, KoliBri also offers the option of giving a badge an icon and/or a different font style.
 
+<BadgePreview
+	codeCollapsable
+	codeCollapsed
+/>
+
 ## Construction
-
-### Code
-
-```html
-<kol-badge _label="Beispieltext auf hellem Hintergrund mit dunkler Schriftfarbe" _color="#b7e4b4" _icons="kolicon-house"></kol-badge>
-<kol-badge _label="Beispieltext auf dunklem Hintergrund mit heller Schriftfarbe" _color="#0c8703" _icons="kolicon-house"></kol-badge>
-```
 
 ### Events
 
@@ -116,18 +112,6 @@ The additional output of an **icon** ensures that the user can also record the t
 
 <Readme />
 
-<ExampleLink component="badge" />
-
-## Live editor
-
-<LiveEditorCompact component="badge" />
-
 ## Examples
 
-### Simple badges
-
-<Configurator component="badge" sample="basic" />
-
-### Badges with switches
-
-<Configurator component="badge" sample="button" />
+<ExampleLink component="badge" />
