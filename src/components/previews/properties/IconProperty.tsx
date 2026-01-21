@@ -8,7 +8,7 @@ type IconValues = {
 	left?: string;
 };
 
-const PREDEFINED_ICONS = [
+export const PREDEFINED_ICONS = [
 	{ label: 'None', value: '' },
 	{ label: 'House', value: 'fa-solid fa-house' },
 	{ label: 'Search', value: 'fa-solid fa-search' },
@@ -18,7 +18,7 @@ const PREDEFINED_ICONS = [
 	{ label: 'Gear', value: 'fa-solid fa-gear' },
 ];
 
-const IconProperty = (props: {
+const IconsProperty = (props: {
 	label: string;
 	_value?: IconValues | string;
 	_on?: {
@@ -90,4 +90,4 @@ const IconProperty = (props: {
 	);
 };
 
-export default IconProperty;
+export default IconsProperty;

@@ -4,32 +4,22 @@ description: Description, specification and examples for the Breadcrumb componen
 ---
 
 import Readme from '/readmes/breadcrumb/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import BreadcrumbPreview from '@site/src/components/previews/components/Breadcrumb';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Breadcrumb
 
 With the help of the **Breadcrumb** component, the path to the current position of a web page can be displayed in a hierarchical structure.
 
+<BreadcrumbPreview
+  codeCollapsable
+  codeCollapsed
+/>
+
 ## How it works
 
 The **Breadcrumb** component displays the current position of a web page in a horizontal navigation structure. The last element on the right represents the current page itself.
 This is not provided with a link. All elements to the left of the current page have a link to the linked page.
-
-## Construction
-
-### Code
-
-```html
-<div>
-	<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/"},{"_label":"Unterseite von Startseite","_href":"#/unterseite"}]'></kol-breadcrumb>
-</div>
-```
-
-### Example
-
-<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/"},{"_label":"Unterseite von Startseite","_href":"#/unterseite"}]'></kol-breadcrumb>
 
 ## Usage
 
@@ -95,12 +85,6 @@ Note that the last element in the breadcrumb component can also be accessed usin
 
 <Readme />
 
-<ExampleLink component="breadcrumb" />
-
-## Live editor
-
-<LiveEditorCompact component="breadcrumb" />
-
 ## Examples
 
-<Configurator component="breadcrumb" sample="basic" />
+<ExampleLink component="breadcrumb" />
