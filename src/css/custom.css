@@ -4,8 +4,8 @@
 
 @import url('./loader.css');
 
-@import url('https://public-ui.github.io/v3/assets/codicons/codicon.css');
-@import url('https://public-ui.github.io/v3/assets/fontawesome-free/css/all.min.css');
+@import url('https://public-ui.github.io/assets/fontawesome-free/css/all.min.css');
+@import url('https://public-ui.github.io/assets/kolicons/style.css');
 
 /**
  * Any CSS included here will be global. The classic template
@@ -15,7 +15,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
-	--ifm-color-primary: #324454;
+	--ifm-color-primary: #003a5c;
 	--ifm-color-primary-dark: #2d3d4c;
 	--ifm-color-primary-darker: #2b3a47;
 	--ifm-color-primary-darkest: #23303b;
@@ -24,8 +24,10 @@
 	--ifm-color-primary-lightest: #41586d;
 	--ifm-code-font-size: 95%;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-	--ifm-navbar-height: 5rem;
+	--kol-version-hint-height: 0px;
+	--kol-header-height: 5rem;
 	/* 3rem (select) + 2rem (padding) */
+	--ifm-navbar-height: var(--kol-header-height) + var(--kol-version-hint-height);
 }
 
 .footer__link-item:hover {
@@ -243,4 +245,24 @@ kol-link-button {
 .indented-text {
 	border-left: 2px solid #004b76;
 	padding: 0 8px;
+}
+
+.preview {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto max-content;
+}
+
+.preview.props {
+	grid-template-columns: 1fr minmax(min-content, 400px);
+}
+
+@media (max-width: 1536px) {
+	:root {
+		--kol-header-height: 7.7rem;
+	}
+}
+
+:root:has(.kolibri-navbar-wrapper > .version-hint) {
+	--kol-version-hint-height: 3rem;
 }
