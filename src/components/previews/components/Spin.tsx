@@ -66,7 +66,7 @@ const SpinPreview: React.FC = (props: {
                 const customCss = currentProps._customCss?.toString().trim();
                 if (!customCss) return undefined;
 
-                const { _customCss, _variant, ...rest } = currentProps;
+                const { ...rest } = currentProps;
                 const propsWithVariant: Record<string, unknown> = {
                     ...rest,
                     _variant: 'none',
