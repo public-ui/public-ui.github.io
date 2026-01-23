@@ -3,9 +3,8 @@ title: Spin
 description: Description, specification and examples for the spin component.
 ---
 import Readme from '/readmes/spin/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import SpinPreview from '@site/src/components/previews/components/Spin';
 
 #Spin
 
@@ -15,7 +14,12 @@ Loading indicators, such as the **Spin** component, inform users about loading o
 
 ## Construction
 
-### Code
+<SpinPreview
+	codeCollapsable
+	codeCollapsed
+/>
+
+### Custom Animations
 
 ```html
 <style>
@@ -102,7 +106,7 @@ If possible, animations should always be avoided. If animations are used, care s
 
 <kol-details _label="CSS Loaders & Spinners" _open>
 There are many different CSS loaders and spinners on the internet. For example, _Vineeth_ offers a whole range of interesting CSS loaders. These can also be used in the KoliBri library. All you have to do is include the link to the corresponding CSS file in the head of the HTML file. The desired animation can then be integrated into the KoliBri component via the Expert slot. Here are some examples (without reduced animation speed):
-	<kol-link _href="https://github.com/vineethtrv/css-loader" _target="_blank" _target="_blank"></kol-link>
+	<kol-link _href="https://github.com/vineethtrv/css-loader" _target="_blank"></kol-link>
 </kol-details>
 
 ## Usage
@@ -123,12 +127,6 @@ Use the `_show` attribute to specify whether the spin is displayed.
 
 <Readme />
 
-<ExampleLink component="spin" />
-
-## Live editor
-
-<LiveEditorCompact component="spin" />
-
 ## Examples
 
-<Configurator component="spin" sample="basic" />
+<ExampleLink component="spin" />

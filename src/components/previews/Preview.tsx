@@ -26,6 +26,7 @@ type PreviewProps<TProps> = {
 	codeCollapsed?: boolean;
 	layout?: PreviewLayout;
 	slotKey?: keyof TProps;
+	sourceFormatter?: (props: TProps) => string | undefined;
 };
 
 const Preview = <TProps,>({
@@ -38,6 +39,7 @@ const Preview = <TProps,>({
 	codeCollapsed: codeInitialCollapsed,
 	layout = PreviewLayout.DEFAULT,
 	slotKey,
+	sourceFormatter,
 }: PreviewProps<TProps>) => {
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
 	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(codeInitialCollapsed ?? false);
@@ -52,6 +54,11 @@ const Preview = <TProps,>({
 
 	const generateSourceCode = () => {
 		if (!componentName) return '';
+
+		if (sourceFormatter) {
+			const customSource = sourceFormatter(currentProps);
+			if (customSource) return customSource;
+		}
 
 		const slotValue = slotKey ? (currentProps as Record<string, unknown>)[slotKey as string] : undefined;
 
@@ -171,16 +178,14 @@ const Preview = <TProps,>({
 	return (
 		<div className={`preview ${hasProp ? 'props' : ''} gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}>
 			<div
-				className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${
-					layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''
-				}`}
+				className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''
+					}`}
 			>
 				<span
-					className={`${
-						layout === PreviewLayout.FULL_SIZE
+					className={`${layout === PreviewLayout.FULL_SIZE
 							? 'w-full h-full'
 							: `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`
-					}`}
+						}`}
 				>
 					{children(currentProps)}
 				</span>
