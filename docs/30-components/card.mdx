@@ -12,6 +12,7 @@ import Readme from '../../readmes/card/readme.md';
 import { Configurator } from '@site/src/components/Configurator';
 import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import CardPreview from '@site/src/components/previews/components/Card';
 
 # Card
 
@@ -23,18 +24,10 @@ Der **Titel-Bereich** wird in einer größeren Schrift dargestellt. Der **Inhalt
 
 ## Konstruktion
 
-### Code
-
-```html
-<kol-card _label="Testtitel">
-	<div>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-		At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-		dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-		et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</div>
-</kol-card>
-```
+<CardPreview 
+	codeCollapsable
+	codeCollapsed 
+/>
 
 ### Events
 
@@ -43,17 +36,6 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | Event   | Auslöser                    | Value |
 |---------|-----------------------------|-------|
 | `close` | Komponente wird geschlossen | -     |
-
-### Beispiel
-
-<kol-card _label="Testtitel">
-	<div>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-		At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-		dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-		et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</div>
-</kol-card>
 
 ## Verwendung
 
@@ -89,26 +71,6 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 
 <Readme />
 
-<ExampleLink component="card" />
-
-## Live-Editor
-
-<LiveEditorCompact component="card" />
-
 ## Beispiele
 
-### Card
-
-<Configurator component="card" sample="basic" />
-
-### Bestätigingscard
-
-<Configurator component="card" sample="confirm" />
-
-### Cards im Grid-Fluß
-
-<Configurator component="card" sample="flex" />
-
-### Card als Artikelliste
-
-<Configurator component="card" sample="selection" />
+<ExampleLink component="card" />

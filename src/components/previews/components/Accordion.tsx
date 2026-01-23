@@ -1,54 +1,45 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty } from '../properties';
+import { BooleanProperty, LevelProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
-import { KolInputText, KolAccordion, KolSelect } from '@public-ui/react-v19';
+import { KolInputText, KolAccordion } from '@public-ui/react-v19';
+
+type AccordionPreviewProps = JSX.KolAccordion & { _slot?: string };
 
 const AccordionPreview: React.FC = (props: {
-	initialProps?: JSX.KolAccordion;
-	visibleProperties?: (keyof JSX.KolAccordion)[];
+	initialProps?: AccordionPreviewProps;
+	visibleProperties?: (keyof JSX.KolAccordion | '_slot')[];
 	codeCollapsable?: boolean;
 }) => {
-	const defaultProps: JSX.KolAccordion = {
+	const defaultProps: AccordionPreviewProps = {
 		_label: 'Accordion Element',
+		_slot: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
 	};
 
 	return (
-		<Preview<JSX.KolAccordion>
+		<Preview<AccordionPreviewProps>
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_level: (
-					<KolSelect
-						_label="Heading Level"
-						_options={[
-							{ label: 'No Heading (Bold Text)', value: '0' },
-							{ label: 'H1', value: '1' },
-							{ label: 'H2', value: '2' },
-							{ label: 'H3', value: '3' },
-							{ label: 'H4', value: '4' },
-							{ label: 'H5', value: '5' },
-							{ label: 'H6', value: '6' },
-						]}
-					/>
-				),
+				_level: <LevelProperty label="Heading Level" defaultValue={1} />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_open: <BooleanProperty label="Open" />,
+				_slot: <MultiLineTextProperty label="Content" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolAccordion"
 			visibleProperties={props.visibleProperties}
 			codeCollapsable={props.codeCollapsable}
 			layout={PreviewLayout.FULL_SIZE}
+			slotKey="_slot"
 		>
-			{(props) => (
-				<KolAccordion {...props}>
-					<div>
-						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-						dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-						clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-					</div>
-				</KolAccordion>
-			)}
+			{(componentProps) => {
+				const { _slot, ...accordionProps } = componentProps;
+				return (
+					<KolAccordion {...accordionProps}>
+						<div dangerouslySetInnerHTML={{ __html: _slot ?? '' }} />
+					</KolAccordion>
+				);
+			}}
 		</Preview>
 	);
 };
