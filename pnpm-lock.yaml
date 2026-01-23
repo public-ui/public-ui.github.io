@@ -42,14 +42,14 @@ importers:
         specifier: 4.7.0
         version: 4.7.0(monaco-editor@0.52.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@public-ui/components':
-        specifier: 3.1.1-rc.0
-        version: 3.1.1-rc.0(adopted-style-sheets@1.1.9-rc.20)
+        specifier: 3.1.1
+        version: 3.1.1(adopted-style-sheets@1.1.9-rc.20)
       '@public-ui/react-v19':
-        specifier: 3.1.1-rc.0
-        version: 3.1.1-rc.0(@public-ui/components@3.1.1-rc.0(adopted-style-sheets@1.1.9-rc.20))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 3.1.1
+        version: 3.1.1(@public-ui/components@3.1.1(adopted-style-sheets@1.1.9-rc.20))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@public-ui/theme-default':
-        specifier: 3.1.1-rc.0
-        version: 3.1.1-rc.0(@public-ui/components@3.1.1-rc.0(adopted-style-sheets@1.1.9-rc.20))
+        specifier: 3.1.1
+        version: 3.1.1(@public-ui/components@3.1.1(adopted-style-sheets@1.1.9-rc.20))
       classnames:
         specifier: 2.5.1
         version: 2.5.1
@@ -1812,22 +1812,22 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
-  '@public-ui/components@3.1.1-rc.0':
-    resolution: {integrity: sha512-q58WE7P/5xa2ob9f2L+fNlfnU++uiKEcuuQYuwl71+7sazaqlybNWjSVYLIj/zfUMq2V47K9ftXUeTNNIVbZ4Q==}
+  '@public-ui/components@3.1.1':
+    resolution: {integrity: sha512-EH3IhiQN1c6e2K5VZu0PLD33nc6W2rvRmR4CcYGfG+p1yww2Udn7oCqqppPPEXD8uS+eL8AZF5B/S75g1r3ITA==}
     peerDependencies:
       adopted-style-sheets: 1.1.9-rc.20
 
-  '@public-ui/react-v19@3.1.1-rc.0':
-    resolution: {integrity: sha512-SJP3/VlfJy0VjzypUpctAgulhZMzQss14rYLb7hUcabXVEGAknHVO9vP+pGQ7b3wp6DmcH3pe07C078HCVM6BA==}
+  '@public-ui/react-v19@3.1.1':
+    resolution: {integrity: sha512-nm5AOBqKX4PciZYDbai9WJWeFOgawMaHFkbtwZHWULCI3ZQaly0Zl36c7QeebtECHMSGWBXyZpURME2aMRkfZQ==}
     peerDependencies:
-      '@public-ui/components': 3.1.1-rc.0
+      '@public-ui/components': 3.1.1
       react: ^19.2.3
       react-dom: ^19.2.3
 
-  '@public-ui/theme-default@3.1.1-rc.0':
-    resolution: {integrity: sha512-2RtiHLLwbPQtE5h/3PLgvroWYECUHz9+ZU9z+IejCAQ2hinS7Ts5yYQmuWkFGSd31vfp4x1uIF/cifkt7HfnSA==}
+  '@public-ui/theme-default@3.1.1':
+    resolution: {integrity: sha512-byCTLe3B8STEXfzvQrDN7zMmYqvDD59yBMusLcblGkDNIA7dYhkgO0bkhcbMPBoyeDQ5RvEL47B5Txi/9PGwng==}
     peerDependencies:
-      '@public-ui/components': 3.1.1-rc.0
+      '@public-ui/components': 3.1.1
 
   '@rollup/plugin-babel@5.3.1':
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
@@ -10270,7 +10270,7 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@public-ui/components@3.1.1-rc.0(adopted-style-sheets@1.1.9-rc.20)':
+  '@public-ui/components@3.1.1(adopted-style-sheets@1.1.9-rc.20)':
     dependencies:
       '@floating-ui/dom': 1.7.4
       adopted-style-sheets: 1.1.9-rc.20
@@ -10288,15 +10288,15 @@ snapshots:
       typed-bem: 1.0.2
       wcag-contrast: 3.0.0
 
-  '@public-ui/react-v19@3.1.1-rc.0(@public-ui/components@3.1.1-rc.0(adopted-style-sheets@1.1.9-rc.20))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@public-ui/react-v19@3.1.1(@public-ui/components@3.1.1(adopted-style-sheets@1.1.9-rc.20))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
-      '@public-ui/components': 3.1.1-rc.0(adopted-style-sheets@1.1.9-rc.20)
+      '@public-ui/components': 3.1.1(adopted-style-sheets@1.1.9-rc.20)
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
-  '@public-ui/theme-default@3.1.1-rc.0(@public-ui/components@3.1.1-rc.0(adopted-style-sheets@1.1.9-rc.20))':
+  '@public-ui/theme-default@3.1.1(@public-ui/components@3.1.1(adopted-style-sheets@1.1.9-rc.20))':
     dependencies:
-      '@public-ui/components': 3.1.1-rc.0(adopted-style-sheets@1.1.9-rc.20)
+      '@public-ui/components': 3.1.1(adopted-style-sheets@1.1.9-rc.20)
 
   '@rollup/plugin-babel@5.3.1(@babel/core@7.26.0)(rollup@2.79.2)':
     dependencies:
