@@ -6,6 +6,7 @@ export { default as BoundedNumberProperty } from './BoundedNumberProperty';
 export { default as ButtonVariantProperty } from './ButtonVariantProperty';
 export { default as ClampedNumberProperty } from './ClampedNumberProperty';
 export { default as IconProperty } from './IconProperty';
+export { default as LevelProperty } from './LevelProperty';
 export { default as MultiLineTextProperty } from './MultiLineText';
 export { default as ResizeProperty } from './ResizeProperty';
 export { default as SmartButtonProperty } from './SmartButtonProperty';
