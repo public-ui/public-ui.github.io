@@ -1,0 +1,41 @@
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property              | Attribute       | Description                                                                                                        | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Default     |
+| --------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_color`              | `_color`        | Defines the backgroundColor and foregroundColor.                                                                   | `string \| undefined \| { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `'#000'`    |
+| `_icons`              | `_icons`        | Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).                                                    | `KoliBriHorizontalIcons & KoliBriVerticalIcons \| string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
+| `_label` _(required)_ | `_label`        | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `undefined` |
+| `_smartButton`        | `_smart-button` | Allows to add a button with an arbitrary action within the element (_hide-label only).                             | `string \| undefined \| { _label: string; } & { _ariaExpanded?: boolean \| undefined; _tabIndex?: number \| undefined; _value?: StencilUnknown; _accessKey?: string \| undefined; _role?: "tab" \| "treeitem" \| undefined; _ariaControls?: string \| undefined; _ariaDescription?: string \| undefined; _ariaSelected?: boolean \| undefined; _on?: ButtonCallbacksPropType<StencilUnknown> \| undefined; _type?: "button" \| "reset" \| "submit" \| undefined; _variant?: "primary" \| "secondary" \| "normal" \| "tertiary" \| "danger" \| "ghost" \| "custom" \| undefined; _customClass?: string \| undefined; _disabled?: boolean \| undefined; _hideLabel?: boolean \| undefined; _icons?: IconsPropType \| undefined; _id?: string \| undefined; _inline?: boolean \| undefined; _name?: string \| undefined; _shortKey?: string \| undefined; _syncValueBySelector?: string \| undefined; _tooltipAlign?: AlignPropType \| undefined; }` | `undefined` |
+
+
+## Methods
+
+### focus
+
+`focus() => Promise<void | undefined>`
+
+Sets focus on the internal element.
+
+#### Returns
+
+Type: `Promise<void | undefined>`
+
+
+
+### `kolFocus() => Promise<void | undefined>`
+
+<span className="text-red-500">**[DEPRECATED]**</span> Use {@link focus} instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void | undefined>`
+
+
+
+
+----------------------------------------------
+
+
