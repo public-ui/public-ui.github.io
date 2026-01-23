@@ -81,6 +81,12 @@ Mit dem Attribut **`_has-create-button`** lässt sich ein zusätzlicher Button i
 
 <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/tabs/create-button" _target="_blank" _label="Beispiel in der Sample App"></kol-link>
 
+### Verhalten Fokus und Selektion
+
+Mit der Poperty _behavior kann man zwischen zwei Modi wählen:
+- "select-automatic" -> Pfeiltasten setzen Fokus und Selektion gleichzeitig
+- "select-manual" -> Pfeiltasten setzen nur den Fokus - Selektion stuert der Nutzer mit Enter
+
 ### Best practices
 
 - Verwenden Sie Registerkarten, um verwandte Inhalte so zu organisieren und zu gruppieren, dass Nutzer:innen die Seite nicht verlassen müssen.
@@ -108,12 +114,17 @@ Unabhängig davon ob die Tab-Schalter oben, rechts, unten oder links angeordnet 
 
 Bei der Umsetzung der Tastatursteuerung wurde sich an den Beispielen des W3C's orientiert.
 
-Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effizient über die gesamte Seite/Anwendung zu navigieren, ist nur 1 Schalter aus der Tab-Serie fokussierbar. Sobald der Nutzende auf der Tab-Navigation selbst ist, werden die Pfeiltasten verwendet, um zwischen den Tabs selbst wechseln.
+Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effizient über die gesamte Seite/Anwendung zu navigieren, ist nur 1 Schalter aus der Tab-Serie fokussierbar. Sobald der Nutzende auf der Tab-Navigation selbst ist, werden die Pfeiltasten verwendet, um zwischen den Tabs selbst zu wechseln.
 
 | Taste                            | Funktion                                                                                                |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `Tab`                            | Fokussiert den ersten aktiven Tab. Auf vorhandene Close-Icons können mit der Tab-Taste erreicht werden. |
 | `Pfeil-Tasten (links \| rechts)` | Wechselt zwischen den Tabs.                                                                             |
+| `Enter/Leertaste` bei select-manual | Selektiert den fokussierten Tab.                                                                     |
+
+### Sprachausgabe
+
+Sowohl wenn ein Tab fokussiert wird als auch wenn er selektiert wird, liest der Screenreader das Label des Tabs vor. Deswegen kann es im Modus "select-automatic" dazu kommen, dass das Label sofort 2x ausgegeben wird (Focus und Select). Bei den getesteten Screenreader sieht man die Doppelausgabe aber nur im Sprachbetrachter, gesprochen wird das Label nur einmal.
 
 ## Links und Referenzen
 

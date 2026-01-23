@@ -9,3 +9,4 @@ export { default as IconsProperty } from './IconProperty';
 export { default as LinksProperty } from './LinksProperty';
 export { default as MultiLineTextProperty } from './MultiLineText';
 export { default as ResizeProperty } from './ResizeProperty';
+export { default as SmartButtonProperty } from './SmartButtonProperty';

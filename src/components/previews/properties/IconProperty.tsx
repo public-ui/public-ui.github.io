@@ -10,12 +10,11 @@ type IconValues = {
 
 export const PREDEFINED_ICONS = [
 	{ label: 'None', value: '' },
-	{ label: 'House', value: 'fa-solid fa-house' },
-	{ label: 'Search', value: 'fa-solid fa-search' },
-	{ label: 'User', value: 'fa-solid fa-user' },
-	{ label: 'Heart', value: 'fa-solid fa-heart' },
-	{ label: 'Star', value: 'fa-solid fa-star' },
-	{ label: 'Gear', value: 'fa-solid fa-gear' },
+	{ label: 'KoliBri', value: 'kolicon-kolibri' },
+	{ label: 'Check', value: 'kolicon-check' },
+	{ label: 'House', value: 'kolicon-house' },
+	{ label: 'Wheel', value: 'kolicon-cogwheel' },
+	{ label: 'Eye', value: 'kolicon-eye' },
 ];
 
 const IconsProperty = (props: {
