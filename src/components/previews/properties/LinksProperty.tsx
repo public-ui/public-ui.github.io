@@ -1,5 +1,5 @@
 import type { BreadcrumbLinkProps } from '@public-ui/components';
-import { KolInputNumber, KolInputText, KolButton, KolInputCheckbox, KolDrawer, KolSingleSelect } from '@public-ui/react-v19';
+import { KolInputNumber, KolInputText, KolButton, KolInputCheckbox, KolDrawer, KolSingleSelect, KolCard } from '@public-ui/react-v19';
 import React, { useEffect, useState } from 'react';
 import { PREDEFINED_ICONS } from './IconProperty';
 import { translate } from '@docusaurus/Translate';
@@ -61,11 +61,10 @@ const LinksProperty = (props: {
             )}
 
             <KolDrawer _label={translate({ id: 'preview.component.breadcrumb.links.edit' })} _open={isEditing} _align='right' _hasCloser _on={{ onClose: () => setIsEditing(false) }}>
-                <div className='h-full overscroll-y-auto'>
-                    <div className='flex flex-col gap 4'>
-                        {currentLinks.map((link, index) => (
-                            <div key={index} className='flex flex-col gap-2'>
-                                <strong>Link {index + 1}</strong>
+                <div className='flex flex-col gap-4 py-4'>
+                    {currentLinks.map((link, index) => (
+                        <KolCard key={index} _label={`Link ${index + 1}`}>
+                            <div className='flex flex-col gap-2'>
 
                                 <KolInputText
                                     _label="Label"
@@ -111,10 +110,10 @@ const LinksProperty = (props: {
                                     }}
                                 />
                             </div>
-                        ))}
+                        </KolCard>
+                    ))}
 
-                        <KolButton _label={translate({ id: 'preview.component.breadcrumb.links.closeedit' })} _variant="primary" _on={{ onClick: () => setIsEditing(false) }} />
-                    </div>
+                    <KolButton _label={translate({ id: 'preview.component.breadcrumb.links.closeedit' })} _variant="primary" _on={{ onClick: () => setIsEditing(false) }} />
                 </div>
             </KolDrawer>
         </div>
