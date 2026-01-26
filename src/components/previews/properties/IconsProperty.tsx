@@ -19,6 +19,7 @@ export const PREDEFINED_ICONS = [
 
 const IconsProperty = (props: {
 	label: string;
+	directions?: ('top' | 'right' | 'bottom' | 'left')[];
 	_value?: IconValues | string;
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
@@ -44,46 +45,50 @@ const IconsProperty = (props: {
 		<fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
 			<legend>{props.label}</legend>
 			<div className="grid grid-cols-2 gap-2">
-				<KolSingleSelect
-					_label="Left"
-					_options={PREDEFINED_ICONS}
-					_value={icons.left}
-					_on={{
-						onInput: (_: Event, value: unknown) => {
-							handleIconChange('left', value as string);
-						},
-					}}
-				/>
-				<KolSingleSelect
-					_label="Right"
-					_options={PREDEFINED_ICONS}
-					_value={icons.right}
-					_on={{
-						onInput: (_: Event, value: unknown) => {
-							handleIconChange('right', value as string);
-						},
-					}}
-				/>
-				<KolSingleSelect
-					_label="Top"
-					_options={PREDEFINED_ICONS}
-					_value={icons.top}
-					_on={{
-						onInput: (_: Event, value: unknown) => {
-							handleIconChange('top', value as string);
-						},
-					}}
-				/>
-				<KolSingleSelect
-					_label="Bottom"
-					_options={PREDEFINED_ICONS}
-					_value={icons.bottom}
-					_on={{
-						onInput: (_: Event, value: unknown) => {
-							handleIconChange('bottom', value as string);
-						},
-					}}
-				/>
+				{props.directions?.includes('left') !== false &&
+					<KolSingleSelect
+						_label="Left"
+						_options={PREDEFINED_ICONS}
+						_value={icons.left}
+						_on={{
+							onInput: (_: Event, value: unknown) => {
+								handleIconChange('left', value as string);
+							},
+						}}
+					/>}
+				{props.directions?.includes('right') !== false &&
+					<KolSingleSelect
+						_label="Right"
+						_options={PREDEFINED_ICONS}
+						_value={icons.right}
+						_on={{
+							onInput: (_: Event, value: unknown) => {
+								handleIconChange('right', value as string);
+							},
+						}}
+					/>}
+				{props.directions?.includes('top') !== false &&
+					<KolSingleSelect
+						_label="Top"
+						_options={PREDEFINED_ICONS}
+						_value={icons.top}
+						_on={{
+							onInput: (_: Event, value: unknown) => {
+								handleIconChange('top', value as string);
+							},
+						}}
+					/>}
+				{props.directions?.includes('bottom') !== false &&
+					<KolSingleSelect
+						_label="Bottom"
+						_options={PREDEFINED_ICONS}
+						_value={icons.bottom}
+						_on={{
+							onInput: (_: Event, value: unknown) => {
+								handleIconChange('bottom', value as string);
+							},
+						}}
+					/>}
 			</div>
 		</fieldset>
 	);
