@@ -6,7 +6,7 @@ export { default as BoundedNumberProperty } from './BoundedNumberProperty';
 export { default as ButtonVariantProperty } from './ButtonVariantProperty';
 export { default as ClampedNumberProperty } from './ClampedNumberProperty';
 export { default as CustomCssProperty } from './CustomCssProperty';
-export { default as IconsProperty } from './IconProperty';
+export { default as IconsProperty } from './IconsProperty';
 export { default as LevelProperty } from './LevelProperty';
 export { default as LinksProperty } from './LinksProperty';
 export { default as MultiLineTextProperty } from './MultiLineText';

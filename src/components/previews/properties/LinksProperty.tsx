@@ -1,7 +1,7 @@
 import type { BreadcrumbLinkProps } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolButton, KolInputCheckbox, KolDrawer, KolSingleSelect, KolCard } from '@public-ui/react-v19';
 import React, { useEffect, useState } from 'react';
-import { PREDEFINED_ICONS } from './IconProperty';
+import { PREDEFINED_ICONS } from './IconsProperty';
 import { translate } from '@docusaurus/Translate';
 
 const LINKS_POOL = [
