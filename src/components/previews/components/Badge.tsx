@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { IconProperty, SmartButtonProperty } from '../properties';
+import { IconsProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolBadge, KolInputColor } from '@public-ui/react-v19';
 
@@ -20,7 +20,7 @@ const BadgePreview: React.FC = (props: {
             propertyComponents={{
                 _label: <KolInputText _label="Label" />,
                 _color: <KolInputColor _label="Color" />,
-                _icons: <IconProperty label="Icons" />,
+                _icons: <IconsProperty label="Icons" />,
                 _smartButton: <SmartButtonProperty label="Smart Button" />,
             }}
             initialProps={{ ...defaultProps, ...props.initialProps }}
