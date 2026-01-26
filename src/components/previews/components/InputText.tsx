@@ -51,7 +51,7 @@ const InputTextPreview: React.FC = (props: {
             codeCollapsed={props.codeCollapsed}
             layout={PreviewLayout.CENTERED}
         >
-            {(props) => <KolInputText {...props} />}
+            {(props) => <KolInputText _touched {...props} />}
         </Preview>
     );
 };
