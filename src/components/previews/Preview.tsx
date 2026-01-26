@@ -26,6 +26,7 @@ type PreviewProps<TProps> = {
 	codeCollapsed?: boolean;
 	layout?: PreviewLayout;
 	slotKey?: keyof TProps;
+	sourceFormatter?: (props: TProps) => string | undefined;
 };
 
 const Preview = <TProps,>({
@@ -38,6 +39,7 @@ const Preview = <TProps,>({
 	codeCollapsed: codeInitialCollapsed,
 	layout = PreviewLayout.DEFAULT,
 	slotKey,
+	sourceFormatter,
 }: PreviewProps<TProps>) => {
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
 	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(codeInitialCollapsed ?? false);
@@ -52,6 +54,11 @@ const Preview = <TProps,>({
 
 	const generateSourceCode = () => {
 		if (!componentName) return '';
+
+		if (sourceFormatter) {
+			const customSource = sourceFormatter(currentProps);
+			if (customSource) return customSource;
+		}
 
 		const slotValue = slotKey ? (currentProps as Record<string, unknown>)[slotKey as string] : undefined;
 
@@ -176,8 +183,8 @@ const Preview = <TProps,>({
 			>
 				<span
 					className={`${layout === PreviewLayout.FULL_SIZE
-						? 'w-full h-full'
-						: `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`
+							? 'w-full h-full'
+							: `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`
 						}`}
 				>
 					{children(currentProps)}

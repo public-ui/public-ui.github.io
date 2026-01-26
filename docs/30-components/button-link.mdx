@@ -9,9 +9,8 @@ tags:
 ---
 
 import Readme from '../../readmes/button-link/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import ButtonLinkPreview from '@site/src/components/previews/components/ButtonLink';
 
 # ButtonLink
 
@@ -27,11 +26,17 @@ Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `seconda
 
 ## Konstruktion
 
-### Code
-
-```html
-<kol-button-link _on="" _label="Schalter sieht wie ein Link aus"></kol-button-link>
-```
+<ButtonLinkPreview 
+  initialProps={{ _label: 'Schalter sieht wie ein Link aus' }}
+  visibleProperties={[
+    '_label',
+    '_disabled',
+    '_hideLabel',
+    '_icons'
+  ]}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Events
 
@@ -42,23 +47,8 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | `click`       | Element wird angeklickt                                                                             | `_value`-Property |
 | `onMouseDown` | Eine Taste eines Zeigegeräts wird gedrückt, während der Zeiger sich innerhalb des Elements befindet | -                 |
 
-### Beispiel
-
-<div class="flex gap-2">
-	<kol-button-link _on="" _label="Schalter sieht wie ein Link aus"></kol-button-link>
-</div>
-
 <Readme />
-
-<ExampleLink component="button-link" />
-
-## Live-Editor
-
-<LiveEditorCompact component="button-link" />
 
 ## Beispiele
 
-<Configurator component="button-link" sample="basic" />
-<Configurator component="button-link" sample="icons" />
-<Configurator component="button-link" sample="image" />
-<Configurator component="button-link" sample="target" />
+<ExampleLink component="button-link" />
