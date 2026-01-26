@@ -4,10 +4,9 @@ description: Description, specification and examples for the InputText component
 ---
 
 import Readme from '/readmes/input-text/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import InputTextPreview from '@site/src/components/previews/components/InputText';
 
 # InputText
 
@@ -19,22 +18,20 @@ The component has known issues regarding browser dependency and accessibility. F
 
 ## Construction
 
-### Code
-
-```html
-<kol-input-text
-  _type="text"
-  _label="Texteingabe"
-  _icons='{"left": "kolicon-chevron-left", "right": {"icon": "kolicon-chevron-right", "style": {"font-size": "200%"}}}'
-></kol-input-text>
-<kol-input-text _type="text" _label="Deaktiviert" _disabled></kol-input-text>
-<kol-input-text _type="text" _label="Schreibgeschützt" _read-only></kol-input-text>
-<kol-input-text
-  _type="text"
-  _label="Mit Button"
-  _smart-button='{"_icons": "kolicon-cross", "_hideLabel": true, "_label": "Löschen"}'
-></kol-input-text>
-```
+<InputTextPreview 
+  initialProps={{ _label: 'Texteingabe'  }}
+  visibleProperties={[
+    '_label',
+    '_type',
+    '_msg',
+    '_icons',
+    '_disabled',
+    '_readOnly',
+    '_smartButton'
+  ]}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Events
 
@@ -47,17 +44,6 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 | `blur` | Input field loses focus | - |
 | `input` | Value is changed by entering | Current value of the input field |
 | `change` | Entry has been completed | Current value of the input field |
-
-### Example
-
-<kol-input-text _type="text" _label="Texteingabe" _icons='{"left": "kolicon-chevron-left", "right": {"icon": "kolicon-chevron-right", "style": {"font-size": "200%"}}}'></kol-input-text>
-<kol-input-text _type="text" _label="Deaktiviert" _disabled></kol-input-text>
-<kol-input-text _type="text" _label="Schreibgeschützt" _read-only></kol-input-text>
-<kol-input-text
-_type="text"
-_label="With button"
-_smart-button='{"_icons": "kolicon-cross", "_hideLabel": true, "_label": "Delete"}'></kol-input-text>
-
 
 ## Usage
 
@@ -103,24 +89,6 @@ With the three attributes `_max-length`, `_max-length-behavior` and `_has-counte
 * For screen readers, a hidden text that is only visible to assistive technologies is also displayed, such as:
 *“You can enter up to 10 characters.”*
 
-### Examples
-
-```html
-<!-- Nur Zähler -->
-<kol-input-text _label="Texteingabe" _has-counter></kol-input-text>
-
-<!-- Harte Begrenzung auf 5 Zeichen -->
-<kol-input-text _label="Texteingabe" _has-counter _max-length="5"></kol-input-text>
-
-<!-- Weiche Begrenzung auf 5 Zeichen -->
-<kol-input-text
-  _label="Texteingabe"
-  _has-counter
-  _max-length="5"
-  _max-length-behavior="soft">
-</kol-input-text>
-```
-
 ### Summary
 
 * Without `_has-counter` there is **never** a counter.
@@ -138,12 +106,6 @@ With the three attributes `_max-length`, `_max-length-behavior` and `_has-counte
 
 <PropertyMsgUsage />
 
-<ExampleLink component="input-text" />
-
-## Live editor
-
-<LiveEditorCompact component="input-text" />
-
 ## Examples
 
-<Configurator component="input-text" sample="basic" />
+<ExampleLink component="input-text" />

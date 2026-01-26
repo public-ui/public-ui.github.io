@@ -195,7 +195,7 @@ const Preview = <TProps,>({
 				<KolDetails
 					className={`${hasProp ? 'col-span-2' : ''}`}
 					_label={translate({ id: 'preview.sourceCode.heading' })}
-					_open={codeCollapsed}
+					_open={!codeCollapsed}
 					_on={{ onToggle: (_, open) => setCodeCollapsed(open) }}
 				>
 					{renderSourceCode()}

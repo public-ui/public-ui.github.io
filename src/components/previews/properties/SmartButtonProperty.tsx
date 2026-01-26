@@ -4,6 +4,8 @@ import React from 'react';
 
 const SmartButtonProperty = (props: {
     label: string;
+    buttonLabel?: string;
+    buttonIcon?: string;
     _value?: { _label: string } | string;
     _on?: {
         onInput?: (event: Event, value: unknown) => void;
@@ -19,7 +21,7 @@ const SmartButtonProperty = (props: {
             _on={{
                 onInput: (event: Event, value: unknown) => {
                     // Return an object with button configuration when enabled, undefined when disabled
-                    const newValue = !!value ? { _label: translate({ id: 'preview.property.remove' }), _icons: 'kolicon-cross' } : undefined;
+                    const newValue = !!value ? { _label: props.buttonLabel ?? translate({ id: 'preview.property.remove' }), _icons: props.buttonIcon ?? 'kolicon-cross' } : undefined;
                     props._on?.onInput?.(event, newValue);
                 },
             }}
