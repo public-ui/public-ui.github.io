@@ -59,49 +59,50 @@ const SAMPLE_CSS = `.loader {
 }`;
 
 const CustomCssProperty = (props: {
-    label: string;
-    _value?: string;
-    _on?: {
-        onInput?: (event: Event, value: unknown) => void;
-    };
+	label: string;
+	_value?: string;
+	_on?: {
+		onInput?: (event: Event, value: unknown) => void;
+	};
 }) => {
-    const handlePasteSample = () => {
-        props._on?.onInput?.(new Event('input'), SAMPLE_CSS);
-    };
+	const handlePasteSample = () => {
+		props._on?.onInput?.(new Event('input'), SAMPLE_CSS);
+	};
 
-    return (
-        <KolDetails _label={props.label}>
-            <div className="flex flex-col gap-2">
-                <KolTextarea
-                    _label={"Style CSS"}
-                    _on={{
-                        onInput: (event: Event, value: unknown) => {
-                            props._on?.onInput?.(event, value);
-                        },
-                    }}
-                    _value={props._value}
-                    _rows={6}
-                    className="flex-grow"
-                />
-                <div className='flex gap-2'>
-                    <KolButton
-                        _label="Paste Sample"
-                        _on={{
-                            onClick: handlePasteSample,
-                        }}
-                        className="h-fit"
-                    />
-                    <KolButton
-                        _label="Clear CSS"
-                        _variant="danger"
-                        _on={{
-                            onClick: () => props._on?.onInput?.(new Event('input'), ''),
-                        }}
-                        className="h-fit grow"
-                    /></div>
-            </div>
-        </KolDetails>
-    );
+	return (
+		<KolDetails _label={props.label}>
+			<div className="flex flex-col gap-2">
+				<KolTextarea
+					_label={'Style CSS'}
+					_on={{
+						onInput: (event: Event, value: unknown) => {
+							props._on?.onInput?.(event, value);
+						},
+					}}
+					_value={props._value}
+					_rows={6}
+					className="flex-grow"
+				/>
+				<div className="flex gap-2">
+					<KolButton
+						_label="Paste Sample"
+						_on={{
+							onClick: handlePasteSample,
+						}}
+						className="h-fit"
+					/>
+					<KolButton
+						_label="Clear CSS"
+						_variant="danger"
+						_on={{
+							onClick: () => props._on?.onInput?.(new Event('input'), ''),
+						}}
+						className="h-fit grow"
+					/>
+				</div>
+			</div>
+		</KolDetails>
+	);
 };
 
 export default CustomCssProperty;
