@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, SmartButtonProperty } from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 
@@ -24,7 +24,7 @@ const InputTextPreview: React.FC = (props: {
                 _accessKey: <KolInputText _label="Access Key" />,
                 _name: <KolInputText _label="Name" />,
                 _hint: <KolInputText _label="Hint" />,
-                _msg: <KolInputText _label="Message" />,
+                _msg: <MsgProperty label="Message" />,
                 _maxLength: <KolInputNumber _label="Max Length" _min={0} />,
                 _maxLengthBehavior: (
                     <KolSelect

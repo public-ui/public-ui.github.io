@@ -9,6 +9,7 @@ tags:
 
 import Readme from '../../readmes/combobox/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import ComboboxPreview from '@site/src/components/previews/components/Combobox';
 
 # Combobox
 
@@ -16,13 +17,18 @@ Synonyme: Autocomplete, Select, Dropdown
 
 Die **Combobox**-Komponente erzeugt eine Auswahlliste, die ein Eingabefeld mit einer darunter angezeigten Liste von auswählbaren Optionen kombiniert.
 
+<ComboboxPreview
+  initialProps={{ _label: 'Freie Eingabe mit Vorschlägen'  }}
+  visibleProperties={[
+    '_label',
+    '_msg',
+    '_icons',
+    '_disabled'
+  ]}
+  codeCollapsable
+  codeCollapsed
+/>
 ## Konstruktion
-
-### Code
-
-```html
-<kol-combobox _suggestions="['Herr','Frau','Firma']" _label="Anrede" _value="Herr"></kol-combobox>
-```
 
 ### Events
 
@@ -36,10 +42,6 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
 | `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
 
-### Beispiel
-
-<kol-combobox  _suggestions="['Herr','Frau','Firma']" _label="Anrede" _value="Herr"></kol-combobox>
-
 ## Verwendung
 
 Die Auswahlmöglichkeiten werden über das Attribut **`_suggestions`** als JSON-Array an die Komponente übergeben.
@@ -49,10 +51,6 @@ Beispiel für die Konstruktion des JSON-Array:
 ```json
 ["Herr", "Frau", "Firma"]
 ```
-
-<!--### Best practices-->
-
-<!-- ## Barrierefreiheit -->
 
 ### Tastatursteuerung
 
@@ -70,5 +68,7 @@ Beispiel für die Konstruktion des JSON-Array:
 | `Druckbare Zeichen`            | Fokussiert die erste Option, die mit dem gedrückten Zeichen beginnt.                                                                                                                                |
 
 <Readme />
+
+## Beispiele 
 
 <ExampleLink component="combobox" />
