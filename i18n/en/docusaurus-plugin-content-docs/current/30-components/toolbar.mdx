@@ -5,21 +5,17 @@ description: Description and specification for the toolbar component.
 
 import Readme from '/readmes/toolbar/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import ToolbarPreview from '@site/src/components/previews/components/Toolbar';
 
 # Toolbar
 
 The **Toolbar** component is a collection of commonly used button and link controls summarized in a compact visual form. The toolbar is typically a subset of functions found in a menu bar to reduce user effort.
 
-```html
-<kol-toolbar _label="Label" _items='[{"_label": "Button", type="button"}, {"_href": "#", "_label": "Link",  type="link"}]'> </kol-toolbar>
-```
-
-### Example
-
-<kol-toolbar
-_label="Label"
-_items='[{"_label": "Button", type="button"}, {"_href": "#", "_label": "Link", type="link"}]'>
-</kol-toolbar>
+<ToolbarPreview 
+  visibleProperties={['_orientation'  ]}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ## Usage
 
