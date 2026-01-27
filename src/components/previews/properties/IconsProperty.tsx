@@ -8,7 +8,7 @@ type IconValues = {
 	left?: string;
 };
 
-const PREDEFINED_ICONS = [
+export const PREDEFINED_ICONS = [
 	{ label: 'None', value: '' },
 	{ label: 'KoliBri', value: 'kolicon-kolibri' },
 	{ label: 'Check', value: 'kolicon-check' },
@@ -17,7 +17,7 @@ const PREDEFINED_ICONS = [
 	{ label: 'Eye', value: 'kolicon-eye' },
 ];
 
-const IconProperty = (props: {
+const IconsProperty = (props: {
 	label: string;
 	directions?: ('top' | 'right' | 'bottom' | 'left')[];
 	_value?: IconValues | string;
@@ -94,4 +94,4 @@ const IconProperty = (props: {
 	);
 };
 
-export default IconProperty;
+export default IconsProperty;

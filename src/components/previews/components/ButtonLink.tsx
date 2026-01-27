@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, AlignProperty, IconProperty } from '../properties';
+import { BooleanProperty, AlignProperty, IconsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButtonLink } from '@public-ui/react-v19';
 
@@ -19,7 +19,7 @@ const ButtonLinkPreview: React.FC = (props: {
             propertyComponents={{
                 _label: <KolInputText _label="Label" />,
                 _tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
-                _icons: <IconProperty label="Icons" />,
+                _icons: <IconsProperty label="Icons" />,
                 _accessKey: <KolInputText _label="Access Key" />,
                 _ariaControls: <KolInputText _label="ARIA Controls" />,
                 _ariaDescription: <KolInputText _label="ARIA Description" />,

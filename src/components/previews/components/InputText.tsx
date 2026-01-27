@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconProperty, SmartButtonProperty } from '../properties';
+import { BooleanProperty, IconsProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 
@@ -20,7 +20,7 @@ const InputTextPreview: React.FC = (props: {
                 _label: <KolInputText _label="Label" />,
                 _placeholder: <KolInputText _label="Placeholder" />,
                 _value: <KolInputText _label="Value" />,
-                _icons: <IconProperty label="Icons" directions={['right', 'left']} />,
+                _icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
                 _accessKey: <KolInputText _label="Access Key" />,
                 _name: <KolInputText _label="Name" />,
                 _hint: <KolInputText _label="Hint" />,
