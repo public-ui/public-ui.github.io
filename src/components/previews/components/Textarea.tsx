@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview from '../Preview';
-import { BooleanProperty, ResizeProperty } from '../properties';
+import { BooleanProperty, MsgProperty, ResizeProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolInputNumber, KolTextarea, KolSelect } from '@public-ui/react-v19';
 
@@ -22,7 +22,7 @@ const TextAreaPreview: React.FC = (props: {
 				_label: <KolInputText _label="Label" />,
 				_placeholder: <KolInputText _label="Placeholder" />,
 				_hint: <KolInputText _label="Hint" />,
-				_msg: <KolInputText _label="Error message" />,
+				_msg: <MsgProperty label="Message" />,
 				_rows: <KolInputNumber _label="Rows" _min={1} _max={20} />,
 				_maxLength: <KolInputNumber _label="Max Length" _min={1} _max={1000} />,
 				_maxLengthBehavior: (
