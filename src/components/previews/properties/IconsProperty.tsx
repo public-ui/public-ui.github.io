@@ -1,4 +1,4 @@
-import { KolSingleSelect } from '@public-ui/react-v19';
+import { KolSelect } from '@public-ui/react-v19';
 import React, { useState } from 'react';
 
 type IconValues = {
@@ -42,11 +42,11 @@ const IconsProperty = (props: {
 	};
 
 	return (
-		<fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
+		<fieldset >
 			<legend>{props.label}</legend>
 			<div className="grid grid-cols-2 gap-2">
 				{props.directions?.includes('left') !== false &&
-					<KolSingleSelect
+					<KolSelect
 						_label="Left"
 						_options={PREDEFINED_ICONS}
 						_value={icons.left}
@@ -57,7 +57,7 @@ const IconsProperty = (props: {
 						}}
 					/>}
 				{props.directions?.includes('right') !== false &&
-					<KolSingleSelect
+					<KolSelect
 						_label="Right"
 						_options={PREDEFINED_ICONS}
 						_value={icons.right}
@@ -68,7 +68,7 @@ const IconsProperty = (props: {
 						}}
 					/>}
 				{props.directions?.includes('top') !== false &&
-					<KolSingleSelect
+					<KolSelect
 						_label="Top"
 						_options={PREDEFINED_ICONS}
 						_value={icons.top}
@@ -79,7 +79,7 @@ const IconsProperty = (props: {
 						}}
 					/>}
 				{props.directions?.includes('bottom') !== false &&
-					<KolSingleSelect
+					<KolSelect
 						_label="Bottom"
 						_options={PREDEFINED_ICONS}
 						_value={icons.bottom}
