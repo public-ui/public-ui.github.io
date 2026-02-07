@@ -64,8 +64,8 @@ jobs:
           pnpm ncu:minor
       - name: Reinstall dependencies
         run: pnpm i --no-frozen-lockfile
-      - name: Fix format
-        run: pnpm format -w
+      # - name: Fix format
+      #   run: pnpm format -w
 
       - name: Check for changes
         id: verify-changed-files
