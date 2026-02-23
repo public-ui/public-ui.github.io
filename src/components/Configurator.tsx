@@ -15,7 +15,7 @@ const STYLES = {
 };
 
 export const Configurator: FC<ConfiguratorProps> = ({ component, sample }) => {
-	const sampleUrl = `/sample-react/#/${component}/${sample}?hideMenus`;
+	const sampleUrl = `https://develop--kolibri-public-ui.netlify.app/#/${component}/${sample}?hideMenus`;
 
 	return (
 		<KolTabs
