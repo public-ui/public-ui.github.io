@@ -1,69 +1,22 @@
 ---
 title: Quote
 description: Beschreibung, Spezifikation und Beispiele für die Quote-Komponente.
-tags:
-  - Quote
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/quote/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import QuotePreview from '@site/src/components/previews/components/Quote';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Quote
-
-> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
 
 Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`inline`) und eine eingerückte(`block`) Variante. Beide Varianten enthalten einen Link auf die Quelle des Zitates.
 
 ## Konstruktion
 
-### Code
-
-```html
-<kol-quote
-	_label="RFC 1149"
-	_href="https://datatracker.ietf.org/doc/html/rfc1149"
-	_quote="Avian carriers can provide high delay, low throughput, and low altitude
-								service. The connection topology is limited to a single point-to-point path
-								for each carrier, used with standard carriers, but many carriers can be used
-								without significant interference with each other, outside early spring.
-								This is because of the 3D ether space available to the carriers, in contrast
-								to the 1D ether used by IEEE802.3. The carriers have an intrinsic collision
-								avoidance system, which increases availability."
-	_variant="block"
->
-</kol-quote>
-<kol-quote
-	_label="RFC 1149"
-	_href="https://datatracker.ietf.org/doc/html/rfc1149"
-	_quote="Avian carriers can provide high delay."
-	_variant="inline"
-></kol-quote>
-```
-
-### Beispiele
-
-<kol-quote
-	_label="RFC 1149"
-	_href="https://datatracker.ietf.org/doc/html/rfc1149"
-	_quote="Avian carriers can provide high delay, low throughput, and low altitude
-					service. The connection topology is limited to a single point-to-point path
-					for each carrier, used with standard carriers, but many carriers can be used
-					without significant interference with each other, outside early spring.
-					This is because of the 3D ether space available to the carriers, in contrast
-					to the 1D ether used by IEEE802.3. The carriers have an intrinsic collision
-					avoidance system, which increases availability."
-	_variant="block"></kol-quote>
-<kol-quote
-	_label="RFC 1149"
-	_href="https://datatracker.ietf.org/doc/html/rfc1149"
-	_quote="Avian carriers can provide high delay."
-	_variant="inline"></kol-quote>
-
-## Verwendung
+<QuotePreview
+	codeCollapsable
+	codeCollapsed
+/>
 
 Mittels **`_label`** kann eine Überschrift gesetzt werden, während **`_quote`** das eigentliche Zitat enthält. Der Ursprung wird über **`_href`** gesetzt.
 Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann **`_variant`** auf `block` gesetzt werden.
@@ -76,10 +29,10 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 - <kol-link _href="https://www.mediaevent.de/html/cite.html" _target="_blank"></kol-link>
 - <kol-link _href="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _target="_blank"></kol-link>
 
+## API
+
 <Readme />
 
+## Beispiele
+
 <ExampleLink component="quote" />
-
-## Live-Editor
-
-<LiveEditorCompact component="quote" />
