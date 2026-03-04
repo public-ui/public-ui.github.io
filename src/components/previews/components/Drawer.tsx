@@ -8,12 +8,14 @@ import { translate } from '@docusaurus/Translate';
 
 type DrawerPreviewProps = JSX.KolDrawer & { _slot?: string };
 
-const DrawerPreview: React.FC = (props: {
-    initialProps?: DrawerPreviewProps;
-    visibleProperties?: (keyof JSX.KolDrawer | '_slot')[];
-    codeCollapsable?: boolean;
-    codeCollapsed?: boolean;
-}) => {
+interface DrawerPreviewComponentProps {  
+    initialProps?: DrawerPreviewProps;  
+    visibleProperties?: (keyof JSX.KolDrawer | '_slot')[];  
+    codeCollapsable?: boolean;  
+    codeCollapsed?: boolean;  
+}  
+
+const DrawerPreview = (props: DrawerPreviewComponentProps) => {  
     const drawerRef = useRef<HTMLKolDrawerElement>(null);
 
     const defaultProps: DrawerPreviewProps = {
