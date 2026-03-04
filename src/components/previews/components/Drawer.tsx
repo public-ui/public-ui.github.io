@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import { AlignProperty, BooleanProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolButton, KolDrawer, KolInputText } from '@public-ui/react-v19';
+import DOMPurify from 'dompurify';
 
 type DrawerPreviewProps = JSX.KolDrawer & { _slot?: string };
 
@@ -39,6 +40,7 @@ const DrawerPreview: React.FC = (props: {
         >
             {(componentProps) => {
                 const { _slot, ...drawerProps } = componentProps;
+                const sanitizedHtml = DOMPurify.sanitize(_slot ?? '');  
                 return (
                     <>
                         <KolButton
@@ -53,7 +55,7 @@ const DrawerPreview: React.FC = (props: {
                             {...drawerProps}
                             ref={drawerRef}
                         >
-                            <div dangerouslySetInnerHTML={{ __html: _slot ?? '' }} />
+                            <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
                         </KolDrawer>
                     </>
                 );
