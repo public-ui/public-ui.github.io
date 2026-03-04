@@ -3,19 +3,19 @@ import Preview, { PreviewLayout } from '../Preview';
 import { AlignProperty, BooleanProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolButton, KolDrawer, KolInputText } from '@public-ui/react-v19';
-import DOMPurify from 'dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 import { translate } from '@docusaurus/Translate';
 
 type DrawerPreviewProps = JSX.KolDrawer & { _slot?: string };
 
-interface DrawerPreviewComponentProps {  
-    initialProps?: DrawerPreviewProps;  
-    visibleProperties?: (keyof JSX.KolDrawer | '_slot')[];  
-    codeCollapsable?: boolean;  
-    codeCollapsed?: boolean;  
-}  
+interface DrawerPreviewComponentProps {
+    initialProps?: DrawerPreviewProps;
+    visibleProperties?: (keyof JSX.KolDrawer | '_slot')[];
+    codeCollapsable?: boolean;
+    codeCollapsed?: boolean;
+}
 
-const DrawerPreview = (props: DrawerPreviewComponentProps) => {  
+const DrawerPreview = (props: DrawerPreviewComponentProps) => {
     const drawerRef = useRef<HTMLKolDrawerElement>(null);
 
     const defaultProps: DrawerPreviewProps = {
@@ -43,7 +43,7 @@ const DrawerPreview = (props: DrawerPreviewComponentProps) => {
         >
             {(componentProps) => {
                 const { _slot, ...drawerProps } = componentProps;
-                const sanitizedHtml = DOMPurify.sanitize(_slot ?? '');  
+                const sanitizedHtml = DOMPurify.sanitize(_slot ?? '');
                 return (
                     <>
                         <KolButton
