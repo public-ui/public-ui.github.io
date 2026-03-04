@@ -45,7 +45,7 @@ const DrawerPreview: React.FC = (props: {
                             _label="Drawer öffnen"
                             _on={{
                                 onClick: () => {
-                                    drawerRef.current?.open();
+                                    void drawerRef.current?.open();
                                 },
                             }}
                         />
