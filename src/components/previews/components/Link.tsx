@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, AlignProperty, IconsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolLink } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 type LinkPreviewProps = JSX.KolLink;
 
@@ -15,8 +16,8 @@ interface LinkPreviewComponentProps {
 
 const LinkPreview = (props: LinkPreviewComponentProps) => {
     const defaultProps: LinkPreviewProps = {
-        _label: 'Link',
-        _href: 'https://www.w3.org',
+        _label: translate({id: "preview.component.link.label"}),
+        _href: translate({id: "preview.component.link.href"}),
         _target: '_blank',
     };
 
