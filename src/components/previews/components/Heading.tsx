@@ -4,12 +4,14 @@ import { LevelProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolHeading } from '@public-ui/react-v19';
 
-const HeadingPreview: React.FC = (props: {
+interface HeadingPreviewProps {
     initialProps?: JSX.KolHeading;
     visibleProperties?: (keyof JSX.KolHeading)[];
     codeCollapsable?: boolean;
     codeCollapsed?: boolean;
-}) => {
+}
+
+const HeadingPreview = (props: HeadingPreviewProps) => {
     const defaultProps: JSX.KolHeading = {
         _label: 'Heading',
         _level: 1,
