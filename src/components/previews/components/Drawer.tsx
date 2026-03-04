@@ -4,6 +4,7 @@ import { AlignProperty, BooleanProperty, MultiLineTextProperty } from '../proper
 import type { JSX } from '@public-ui/components';
 import { KolButton, KolDrawer, KolInputText } from '@public-ui/react-v19';
 import DOMPurify from 'dompurify';
+import { translate } from '@docusaurus/Translate';
 
 type DrawerPreviewProps = JSX.KolDrawer & { _slot?: string };
 
@@ -19,7 +20,7 @@ const DrawerPreview: React.FC = (props: {
         _label: 'Drawer',
         _align: 'left',
         _hasCloser: true,
-        _slot: '<p>Dies ist der Inhalt des Drawers.</p>',
+        _slot: `<p>${translate({ id: 'preview.component.drawer.content' })}</p>`,
     };
 
     return (
@@ -44,7 +45,7 @@ const DrawerPreview: React.FC = (props: {
                 return (
                     <>
                         <KolButton
-                            _label="Drawer öffnen"
+                            _label={translate({ id: 'preview.component.drawer.openButton' })}
                             _on={{
                                 onClick: () => {
                                     void drawerRef.current?.open();
