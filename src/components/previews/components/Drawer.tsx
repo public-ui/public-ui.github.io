@@ -19,7 +19,7 @@ const DrawerPreview = (props: DrawerPreviewComponentProps) => {
     const drawerRef = useRef<HTMLKolDrawerElement>(null);
 
     const defaultProps: DrawerPreviewProps = {
-        _label: 'Drawer',
+        _label: translate({ id: 'preview.component.drawer.label' }),
         _align: 'left',
         _hasCloser: true,
         _slot: `<p>${translate({ id: 'preview.component.drawer.content' })}</p>`,
