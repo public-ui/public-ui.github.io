@@ -2,6 +2,7 @@ import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSelect, KolTextarea, KolToolbar } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 const ToolbarPreview: React.FC = (props: {
 	initialProps?: JSX.KolToolbar;
@@ -10,7 +11,7 @@ const ToolbarPreview: React.FC = (props: {
 	codeCollapsed?: boolean;
 }) => {
 	const defaultProps: JSX.KolToolbar = {
-		_label: 'Toolbar',
+		_label: translate({ id: 'preview.component.toolbar.label' }),
 		_items: [
 			{
 				type: 'button',

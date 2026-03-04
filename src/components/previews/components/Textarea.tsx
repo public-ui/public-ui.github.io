@@ -3,6 +3,7 @@ import Preview from '../Preview';
 import { BooleanProperty, MsgProperty, ResizeProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolInputNumber, KolTextarea, KolSelect } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 const TextAreaPreview: React.FC = (props: {
 	initialProps?: JSX.KolTextarea;
@@ -10,7 +11,7 @@ const TextAreaPreview: React.FC = (props: {
 	codeCollapsable?: boolean;
 }) => {
 	const defaultProps: JSX.KolTextarea = {
-		_label: 'Beschreibung',
+		_label: translate({ id: 'preview.component.textarea.label' }),
 		_value: '',
 	};
 

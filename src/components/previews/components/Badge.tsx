@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import { IconsProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolBadge, KolInputColor } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 const BadgePreview: React.FC = (props: {
     initialProps?: JSX.KolBadge;
@@ -11,7 +12,7 @@ const BadgePreview: React.FC = (props: {
     codeCollapsed?: boolean;
 }) => {
     const defaultProps: JSX.KolBadge = {
-        _label: 'Badge',
+        _label: translate({ id: 'preview.component.badge.label' }),
         _color: '#0c8703',
     };
 

@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAbbr } from '@public-ui/react-v19';
 import { MultiLineTextProperty } from '../properties';
+import { translate } from '@docusaurus/Translate';
 
 type AbbrPreviewProps = JSX.KolAbbr & { _slot?: string };
 
@@ -12,8 +13,8 @@ const AbbrPreview: React.FC = (props: {
 	codeCollapsable?: boolean;
 }) => {
 	const defaultProps: AbbrPreviewProps = {
-		_label: 'zum Beispiel',
-		_slot: 'z. B.',
+		_label: translate({ id: 'preview.component.abbr.label' }),
+		_slot: translate({ id: 'preview.component.abbr.slot' }),
 	};
 
 	return (

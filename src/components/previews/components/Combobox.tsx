@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, IconsProperty, MsgProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolCombobox, KolInputText, KolTextarea } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 const ComboboxPreview: React.FC = (props: {
     initialProps?: JSX.KolCombobox;
@@ -11,7 +12,7 @@ const ComboboxPreview: React.FC = (props: {
     codeCollapsed?: boolean;
 }) => {
     const defaultProps: JSX.KolCombobox = {
-        _label: 'Anrede',
+        _label: translate({ id: 'preview.component.combobox.label' }),
         _suggestions: ['Herr', 'Frau', 'Firma'],
     };
 

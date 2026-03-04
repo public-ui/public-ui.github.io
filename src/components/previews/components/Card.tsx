@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, LevelProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolCard } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 type CardPreviewProps = JSX.KolCard & { _slot?: string };
 
@@ -13,8 +14,8 @@ const CardPreview: React.FC = (props: {
     codeCollapsed?: boolean;
 }) => {
     const defaultProps: CardPreviewProps = {
-        _label: 'Card Title',
-        _slot: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+        _label: translate({ id: 'preview.component.card.label' }),
+        _slot: translate({ id: 'preview.component.card.content' }),
     };
 
     return (

@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, AlignProperty, IconsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButtonLink } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 const ButtonLinkPreview: React.FC = (props: {
     initialProps?: JSX.KolButtonLink;
@@ -11,7 +12,7 @@ const ButtonLinkPreview: React.FC = (props: {
     codeCollapsed?: boolean;
 }) => {
     const defaultProps: JSX.KolButtonLink = {
-        _label: 'ButtonLink',
+        _label: translate({ id: 'preview.component.button-link.label' }),
     };
 
     return (

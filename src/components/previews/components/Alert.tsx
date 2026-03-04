@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import { AlertTypeProperty, AlertVariantProperty, BooleanProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolAlert, KolInputText, KolSelect } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 type AlertPreviewProps = JSX.KolAlert & { _slot?: string };
 
@@ -12,13 +13,13 @@ const AlertPreview: React.FC = (props: {
 	codeCollapsable?: boolean;
 }) => {
 	const defaultProps: AlertPreviewProps = {
-		_label: 'Hinweis',
+		_label: translate({ id: 'preview.component.alert.label' }),
 		_level: 3,
 		_type: 'info',
 		_variant: 'msg',
 		_alert: false,
 		_hasCloser: false,
-		_slot: 'Dies ist eine <strong>Beispielmeldung</strong> mit weiteren Details.',
+		_slot: translate({ id: 'preview.component.alert.content' }),
 	};
 
 	return (
