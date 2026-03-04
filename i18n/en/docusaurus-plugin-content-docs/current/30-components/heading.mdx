@@ -4,8 +4,7 @@ description: Description, specification and examples for the heading component.
 ---
 
 import Readme from '/readmes/heading/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import HeadingPreview from '@site/src/components/previews/components/Heading';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Heading
@@ -14,25 +13,10 @@ The **Heading** component can be used anywhere a heading should be displayed. By
 
 ## Construction
 
-### Code
-
-```html
-<kol-heading _level="1" _label="Inhalt einer H1-Überschrift"></kol-heading>
-<kol-heading _level="2" _label="Inhalt einer H2-Überschrift"></kol-heading>
-<kol-heading _level="3" _label="Inhalt einer H3-Überschrift"></kol-heading>
-<kol-heading _level="4" _label="Inhalt einer H4-Überschrift"></kol-heading>
-<kol-heading _level="5" _label="Inhalt einer H5-Überschrift"></kol-heading>
-<kol-heading _level="6" _label="Inhalt einer H6-Überschrift"></kol-heading>
-```
-
-### Example
-
-<kol-heading _level="1" _label="Inhalt einer H1-Überschrift"></kol-heading>
-<kol-heading _level="2" _label="Inhalt einer H2-Überschrift"></kol-heading>
-<kol-heading _level="3" _label="Inhalt einer H3-Überschrift"></kol-heading>
-<kol-heading _level="4" _label="Inhalt einer H4-Überschrift"></kol-heading>
-<kol-heading _level="5" _label="Inhalt einer H5-Überschrift"></kol-heading>
-<kol-heading _level="6" _label="Inhalt einer H6-Überschrift"></kol-heading>
+<HeadingPreview
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Usage
 
@@ -43,16 +27,10 @@ The heading level is passed through the **`_level`** attribute. Levels **1** to 
 - When using headings, pay attention to the recommended semantics for search engine optimization.
 - Use headings of different sizes to create a meaningful structure for your content.
 
+## API
+
 <Readme />
-
-<ExampleLink component="heading" />
-
-## Live editor
-
-<LiveEditorCompact component="heading" />
 
 ## Examples
 
-<Configurator component="heading" sample="basic" />
-<Configurator component="heading" sample="paragraph" />
-<Configurator component="heading" sample="badged" />
+<ExampleLink component="heading" />

@@ -1,16 +1,10 @@
 ---
 title: Heading
 description: Beschreibung, Spezifikation und Beispiele für die Heading-Komponente.
-tags:
-  - Heading
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/heading/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import HeadingPreview from '@site/src/components/previews/components/Heading';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Heading
@@ -19,25 +13,10 @@ Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Übersch
 
 ## Konstruktion
 
-### Code
-
-```html
-<kol-heading _level="1" _label="Inhalt einer H1-Überschrift"></kol-heading>
-<kol-heading _level="2" _label="Inhalt einer H2-Überschrift"></kol-heading>
-<kol-heading _level="3" _label="Inhalt einer H3-Überschrift"></kol-heading>
-<kol-heading _level="4" _label="Inhalt einer H4-Überschrift"></kol-heading>
-<kol-heading _level="5" _label="Inhalt einer H5-Überschrift"></kol-heading>
-<kol-heading _level="6" _label="Inhalt einer H6-Überschrift"></kol-heading>
-```
-
-### Beispiel
-
-<kol-heading _level="1" _label="Inhalt einer H1-Überschrift"></kol-heading>
-<kol-heading _level="2" _label="Inhalt einer H2-Überschrift"></kol-heading>
-<kol-heading _level="3" _label="Inhalt einer H3-Überschrift"></kol-heading>
-<kol-heading _level="4" _label="Inhalt einer H4-Überschrift"></kol-heading>
-<kol-heading _level="5" _label="Inhalt einer H5-Überschrift"></kol-heading>
-<kol-heading _level="6" _label="Inhalt einer H6-Überschrift"></kol-heading>
+<HeadingPreview
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Verwendung
 
@@ -48,16 +27,10 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 - Achten Sie bei der Verwendung von Headings auf die empfohlene Semantik für die Suchmaschinenoptimierung.
 - Setzen Sie Headings in verschiedenen Größen ein, um eine sinnvolle Struktur Ihrer Inhalte zu erzeugen.
 
+## API
+
 <Readme />
-
-<ExampleLink component="heading" />
-
-## Live-Editor
-
-<LiveEditorCompact component="heading" />
 
 ## Beispiele
 
-<Configurator component="heading" sample="basic" />
-<Configurator component="heading" sample="paragraph" />
-<Configurator component="heading" sample="badged" />
+<ExampleLink component="heading" />
