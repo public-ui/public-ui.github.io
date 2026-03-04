@@ -4,9 +4,8 @@ description: Description, specification and examples for the Link component.
 ---
 
 import Readme from '/readmes/link/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import LinkPreview from '@site/src/components/previews/components/Link';
 
 #Link
 
@@ -14,35 +13,11 @@ The **Link** component renders a link optimized for accessibility, which can be 
 
 ## Construction
 
-### Code
-
-```html
-<p>
-	In diesem Absatz wird ein Link gesetzt, der keine weiteren Attribute enthält.
-	<kol-link _href="https://www.w3.org" _target="_blank">Hier steht ein Link</kol-link>Er wird standardmäßig als
-	<i>
-		<b>inline-Element</b>
-	</i>
-	ausgegeben.
-</p>
-```
-
-### Events
-
-For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event | trigger | Value |
-|---------|-----------------------|------------------|
-| `click` | Element is clicked | `_href` property |
-
-### Example
-
-<p>
-In this paragraph a link is set that does not contain any other attributes.
-	<kol-link _href="https://www.w3.org" _target="_blank">Hier steht ein Link</kol-link>Er wird standardmäßig als <i>
-	<b>inline-Element</b>
-</i> ausgegeben.
-</p>
+<LinkPreview
+	visibleProperties={['_label', '_disabled', '_hideLabel', '_icons']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Usage
 
@@ -88,17 +63,10 @@ The location string passed must correspond exactly to the `href` attribute of th
 | `Tab` | Focuses the link element.    |
 | `Enter` | Calls up the provided link. |
 
+## API
+
 <Readme />
-
-<ExampleLink component="link" />
-
-## Live editor
-
-<LiveEditorCompact component="link" />
 
 ## Examples
 
-<Configurator component="link" sample="basic" />
-<Configurator component="link" sample="icons" />
-<Configurator component="link" sample="image" />
-<Configurator component="link" sample="target" />
+<ExampleLink component="link" />
