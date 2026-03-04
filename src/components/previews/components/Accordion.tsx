@@ -4,7 +4,7 @@ import { BooleanProperty, LevelProperty, MultiLineTextProperty } from '../proper
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAccordion } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import DOMPurify from 'isomorphic-dompurify';
+import { sanitizeHtml } from '../../../shares/sanitize';
 
 type AccordionPreviewProps = JSX.KolAccordion & { _slot?: string };
 
@@ -36,7 +36,7 @@ const AccordionPreview: React.FC = (props: {
 		>
 			{(componentProps) => {
 				const { _slot, ...accordionProps } = componentProps;
-				const sanitizedHtml = DOMPurify.sanitize(_slot ?? '');
+				const sanitizedHtml = sanitizeHtml(_slot ?? '');
 				return (
 					<KolAccordion {...accordionProps}>
 						<div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />

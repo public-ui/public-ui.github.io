@@ -4,7 +4,7 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAbbr } from '@public-ui/react-v19';
 import { MultiLineTextProperty } from '../properties';
 import { translate } from '@docusaurus/Translate';
-import DOMPurify from 'isomorphic-dompurify';
+import { sanitizeHtml } from '../../../shares/sanitize';
 
 type AbbrPreviewProps = JSX.KolAbbr & { _slot?: string };
 
@@ -34,7 +34,7 @@ const AbbrPreview: React.FC = (props: {
 			{(props) => {
 				// eslint-disable-next-line react/prop-types
 				const { _slot, ...abbrProps } = props;
-				const sanitizedHtml = DOMPurify.sanitize(_slot ?? '');
+				const sanitizedHtml = sanitizeHtml(_slot ?? '');
 				return (
 					<KolAbbr {...abbrProps} className="">
 						<span dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />

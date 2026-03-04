@@ -4,7 +4,7 @@ import { BooleanProperty, LevelProperty, MultiLineTextProperty } from '../proper
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolCard } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import DOMPurify from 'isomorphic-dompurify';
+import { sanitizeHtml } from '../../../shares/sanitize';
 
 type CardPreviewProps = JSX.KolCard & { _slot?: string };
 
@@ -37,7 +37,7 @@ const CardPreview: React.FC = (props: {
         >
             {(componentProps) => {
                 const { _slot, ...cardProps } = componentProps;
-                const sanitizedHtml = DOMPurify.sanitize(_slot ?? '');
+                const sanitizedHtml = sanitizeHtml(_slot ?? '');
                 return (
                     <KolCard {...cardProps}>
                         <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
