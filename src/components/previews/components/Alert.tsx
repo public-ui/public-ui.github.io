@@ -4,6 +4,7 @@ import { AlertTypeProperty, AlertVariantProperty, BooleanProperty, MultiLineText
 import type { JSX } from '@public-ui/components';
 import { KolAlert, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import DOMPurify from 'isomorphic-dompurify';
 
 type AlertPreviewProps = JSX.KolAlert & { _slot?: string };
 
@@ -55,9 +56,10 @@ const AlertPreview: React.FC = (props: {
 		>
 			{(componentProps) => {
 				const { _slot, ...alertProps } = componentProps;
+				const sanitizedHtml = DOMPurify.sanitize(_slot ?? '');
 				return (
 					<KolAlert {...alertProps}>
-						<span dangerouslySetInnerHTML={{ __html: _slot ?? '' }} />
+						<span dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
 					</KolAlert>
 				);
 			}}
