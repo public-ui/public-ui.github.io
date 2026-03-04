@@ -11,5 +11,6 @@ export { default as LevelProperty } from './LevelProperty';
 export { default as LinksProperty } from './LinksProperty';
 export { default as MsgProperty } from './MsgProperty';
 export { default as MultiLineTextProperty } from './MultiLineText';
+export { default as QuoteVariantProperty } from './QuoteVariantProperty';
 export { default as ResizeProperty } from './ResizeProperty';
 export { default as SmartButtonProperty } from './SmartButtonProperty';
