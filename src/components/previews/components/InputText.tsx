@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 const InputTextPreview: React.FC = (props: {
     initialProps?: JSX.KolInputText;
@@ -11,7 +12,7 @@ const InputTextPreview: React.FC = (props: {
     codeCollapsed?: boolean;
 }) => {
     const defaultProps: JSX.KolInputText = {
-        _label: 'Text Input',
+        _label: translate({ id: 'preview.component.input-text.label' }),
     };
 
     return (

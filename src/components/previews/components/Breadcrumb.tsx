@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolBreadcrumb } from '@public-ui/react-v19';
 import LinksProperty from '../properties/LinksProperty';
+import { translate } from '@docusaurus/Translate';
 
 const BreadcrumbPreview: React.FC = (props: {
     initialProps?: JSX.KolBreadcrumb;
@@ -10,7 +11,7 @@ const BreadcrumbPreview: React.FC = (props: {
     codeCollapsable?: boolean;
 }) => {
     const defaultProps: JSX.KolBreadcrumb = {
-        _label: 'Breadcrumb',
+        _label: translate({ id: 'preview.component.breadcrumb.label' }),
         _links: [],
     };
 

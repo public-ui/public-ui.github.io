@@ -3,6 +3,8 @@ import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, LevelProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAccordion } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
+import { sanitizeHtml } from '../../../shares/sanitize';
 
 type AccordionPreviewProps = JSX.KolAccordion & { _slot?: string };
 
@@ -12,8 +14,8 @@ const AccordionPreview: React.FC = (props: {
 	codeCollapsable?: boolean;
 }) => {
 	const defaultProps: AccordionPreviewProps = {
-		_label: 'Accordion Element',
-		_slot: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+		_label: translate({ id: 'preview.component.accordion.label' }),
+		_slot: translate({ id: 'preview.component.accordion.content' }),
 	};
 
 	return (
@@ -34,9 +36,10 @@ const AccordionPreview: React.FC = (props: {
 		>
 			{(componentProps) => {
 				const { _slot, ...accordionProps } = componentProps;
+				const sanitizedHtml = sanitizeHtml(_slot ?? '');
 				return (
 					<KolAccordion {...accordionProps}>
-						<div dangerouslySetInnerHTML={{ __html: _slot ?? '' }} />
+						<div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
 					</KolAccordion>
 				);
 			}}

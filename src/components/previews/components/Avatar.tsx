@@ -2,6 +2,7 @@ import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAvatar, KolInputColor } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 const AvatarPreview: React.FC = (props: {
 	initialProps?: JSX.KolAvatar;
@@ -10,7 +11,7 @@ const AvatarPreview: React.FC = (props: {
 	codeCollapsed?: boolean;
 }) => {
 	const defaultProps: JSX.KolAvatar = {
-		_label: 'Erika Maria Mustermann',
+		_label: translate({ id: 'preview.component.avatar.label' }),
 		_color: '#5A5FEE',
 	};
 
