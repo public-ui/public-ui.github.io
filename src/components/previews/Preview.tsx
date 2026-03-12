@@ -2,6 +2,11 @@ import type { ReactNode, ReactElement } from 'react';
 import React, { useState, cloneElement } from 'react';
 import { KolCard, KolButton, KolDetails } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import hljs from 'highlight.js/lib/core';
+import xml from 'highlight.js/lib/languages/xml';
+import 'highlight.js/styles/github.css';
+
+hljs.registerLanguage('xml', xml);
 
 type PropertyComponent = ReactElement<{
 	_on?: {
@@ -120,10 +125,13 @@ const Preview = <TProps,>({
 			}
 		};
 
+		// highlight.js escapes HTML entities in its output, making it safe to use with dangerouslySetInnerHTML
+		const highlightedCode = hljs.highlight(sourceCode, { language: 'xml' }).value;
+
 		return (
 			<div className="grid grid-cols-[1fr_max-content] gap-1 p-2 my-2 bg-gray-100 border-solid border-gray-300 rounded-md">
 				<pre className="overflow-auto m-0 p-1">
-					<code>{sourceCode}</code>
+					<code className="hljs" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
 				</pre>
 				<KolButton
 					style={{ backgroundColor: 'transparent' }}
@@ -178,14 +186,16 @@ const Preview = <TProps,>({
 	return (
 		<div className={`preview ${hasProp ? 'props' : ''} gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}>
 			<div
-				className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''
-					}`}
+				className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${
+					layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''
+				}`}
 			>
 				<span
-					className={`${layout === PreviewLayout.FULL_SIZE
+					className={`${
+						layout === PreviewLayout.FULL_SIZE
 							? 'w-full h-full'
 							: `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`
-						}`}
+					}`}
 				>
 					{children(currentProps)}
 				</span>
