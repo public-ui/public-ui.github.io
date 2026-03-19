@@ -8,11 +8,13 @@ import { sanitizeHtml } from '../../../shares/sanitize';
 
 type AlertPreviewProps = JSX.KolAlert & { _slot?: string };
 
-const AlertPreview: React.FC = (props: {
+interface AlertPreviewComponentProps {
 	initialProps?: AlertPreviewProps;
 	visibleProperties?: (keyof JSX.KolAlert | '_slot')[];
 	codeCollapsable?: boolean;
-}) => {
+}
+
+const AlertPreview = (props: AlertPreviewComponentProps) => {
 	const defaultProps: AlertPreviewProps = {
 		_label: translate({ id: 'preview.component.alert.label' }),
 		_level: 3,

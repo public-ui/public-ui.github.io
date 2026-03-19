@@ -5,12 +5,14 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolBadge, KolInputColor } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
-const BadgePreview: React.FC = (props: {
+interface BadgePreviewComponentProps {
     initialProps?: JSX.KolBadge;
     visibleProperties?: (keyof JSX.KolBadge)[];
     codeCollapsable?: boolean;
     codeCollapsed?: boolean;
-}) => {
+}
+
+const BadgePreview = (props: BadgePreviewComponentProps) => {
     const defaultProps: JSX.KolBadge = {
         _label: translate({ id: 'preview.component.badge.label' }),
         _color: '#0c8703',

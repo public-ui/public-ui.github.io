@@ -8,12 +8,14 @@ import { sanitizeHtml } from '../../../shares/sanitize';
 
 type CardPreviewProps = JSX.KolCard & { _slot?: string };
 
-const CardPreview: React.FC = (props: {
+interface CardPreviewComponentProps {
     initialProps?: CardPreviewProps;
     visibleProperties?: (keyof JSX.KolCard | '_slot')[];
     codeCollapsable?: boolean;
     codeCollapsed?: boolean;
-}) => {
+}
+
+const CardPreview = (props: CardPreviewComponentProps) => {
     const defaultProps: CardPreviewProps = {
         _label: translate({ id: 'preview.component.card.label' }),
         _slot: translate({ id: 'preview.component.card.content' }),

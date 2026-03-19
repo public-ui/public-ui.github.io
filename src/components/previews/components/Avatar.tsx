@@ -4,12 +4,14 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAvatar, KolInputColor } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
-const AvatarPreview: React.FC = (props: {
+interface AvatarPreviewComponentProps {
 	initialProps?: JSX.KolAvatar;
 	visibleProperties?: (keyof JSX.KolAvatar)[];
 	codeCollapsable?: boolean;
 	codeCollapsed?: boolean;
-}) => {
+}
+
+const AvatarPreview = (props: AvatarPreviewComponentProps) => {
 	const defaultProps: JSX.KolAvatar = {
 		_label: translate({ id: 'preview.component.avatar.label' }),
 		_color: '#5A5FEE',

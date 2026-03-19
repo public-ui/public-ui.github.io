@@ -5,12 +5,14 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButtonLink } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
-const ButtonLinkPreview: React.FC = (props: {
+interface ButtonLinkPreviewComponentProps {
     initialProps?: JSX.KolButtonLink;
     visibleProperties?: (keyof JSX.KolButtonLink)[];
     codeCollapsable?: boolean;
     codeCollapsed?: boolean;
-}) => {
+}
+
+const ButtonLinkPreview = (props: ButtonLinkPreviewComponentProps) => {
     const defaultProps: JSX.KolButtonLink = {
         _label: translate({ id: 'preview.component.button-link.label' }),
     };

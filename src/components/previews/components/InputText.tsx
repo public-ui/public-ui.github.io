@@ -5,12 +5,14 @@ import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
-const InputTextPreview: React.FC = (props: {
+interface InputTextPreviewComponentProps {
     initialProps?: JSX.KolInputText;
     visibleProperties?: (keyof JSX.KolInputText)[];
     codeCollapsable?: boolean;
     codeCollapsed?: boolean;
-}) => {
+}
+
+const InputTextPreview = (props: InputTextPreviewComponentProps) => {
     const defaultProps: JSX.KolInputText = {
         _label: translate({ id: 'preview.component.input-text.label' }),
     };

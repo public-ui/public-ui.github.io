@@ -8,11 +8,13 @@ import { sanitizeHtml } from '../../../shares/sanitize';
 
 type AccordionPreviewProps = JSX.KolAccordion & { _slot?: string };
 
-const AccordionPreview: React.FC = (props: {
+interface AccordionPreviewComponentProps {
 	initialProps?: AccordionPreviewProps;
 	visibleProperties?: (keyof JSX.KolAccordion | '_slot')[];
 	codeCollapsable?: boolean;
-}) => {
+}
+
+const AccordionPreview = (props: AccordionPreviewComponentProps) => {
 	const defaultProps: AccordionPreviewProps = {
 		_label: translate({ id: 'preview.component.accordion.label' }),
 		_slot: translate({ id: 'preview.component.accordion.content' }),
