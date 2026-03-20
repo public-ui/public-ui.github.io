@@ -3,17 +3,21 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAbbr } from '@public-ui/react-v19';
 import { MultiLineTextProperty } from '../properties';
+import { translate } from '@docusaurus/Translate';
+import { sanitizeHtml } from '../../../shares/sanitize';
 
 type AbbrPreviewProps = JSX.KolAbbr & { _slot?: string };
 
-const AbbrPreview: React.FC = (props: {
+interface AbbrPreviewComponentProps {
 	initialProps?: AbbrPreviewProps;
 	visibleProperties?: (keyof JSX.KolAbbr | '_slot')[];
 	codeCollapsable?: boolean;
-}) => {
+}
+
+const AbbrPreview = (props: AbbrPreviewComponentProps) => {
 	const defaultProps: AbbrPreviewProps = {
-		_label: 'zum Beispiel',
-		_slot: 'z. B.',
+		_label: translate({ id: 'preview.component.abbr.label' }),
+		_slot: translate({ id: 'preview.component.abbr.slot' }),
 	};
 
 	return (
@@ -32,9 +36,10 @@ const AbbrPreview: React.FC = (props: {
 			{(props) => {
 				// eslint-disable-next-line react/prop-types
 				const { _slot, ...abbrProps } = props;
+				const sanitizedHtml = sanitizeHtml(_slot ?? '');
 				return (
 					<KolAbbr {...abbrProps} className="">
-						<span dangerouslySetInnerHTML={{ __html: _slot ?? '' }} />
+						<span dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
 					</KolAbbr>
 				);
 			}}

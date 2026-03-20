@@ -1,16 +1,10 @@
 ---
 title: Drawer
 description: Beschreibung, Spezifikation und Beispiele für die Drawer-Komponente.
-tags:
-  - Drawer
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/drawer/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import DrawerPreview from '@site/src/components/previews/components/Drawer';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 Synonyme: Corner Dialog, Prompt
@@ -18,51 +12,12 @@ Mithilfe der **Drawer**-Komponente können zusätzliche Informationen oder auch 
 
 Die **Drawer**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt bzw. controlled mit dem Attribut `_open` gesteuert.
 
-```html
-<kol-drawer _label="Drawer" _open  _align="top"></kol-drawer>
-```
+## Konstruktion
 
-### Beispiel
-
-#### Uncontrolled
-
-Im _Uncontrolled_-Modus wird der Drawer über die Methoden `open()` und `close()` gesteuert.
-
-```html
-<kol-drawer id="example-drawer" _align="left" _label="Drawer">
-	<div>
-		<p>Dies ist der Inhalt des Drawers. Hier können Sie beliebige HTML-Elemente einfügen.</p>
-		<kol-button class="close-drawer" _label="Schließen"></kol-button>
-	</div>
-</kol-drawer>
-<kol-button id="drawer-open-button" _label="Drawer öffnen"></kol-button>
-
-<script>
-	const drawer = document.querySelector('#example-drawer');
-	const drawerOpenButton = document.querySelector('#drawer-open-button');
-
-	function openDrawer() {
-		drawer.open();
-	}
-
-	function closeDrawer() {
-		drawer.close();
-	}
-
-	document.querySelectorAll('.close-drawer').forEach((b) => (b.onclick = closeDrawer));
-	drawerOpenButton.onclick = openDrawer;
-</script>
-```
-
-#### Controlled
-
-Im _Controlled_-Modus wird der Drawer über das `_open` Attribut gesteuert.
-
-```html
-<kol-drawer _open="true" _align="left" _label="Drawer">
-	<p>Drawer Inhalt</p>
-</kol-drawer>
-```
+<DrawerPreview
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Verwendung
 
@@ -127,14 +82,10 @@ Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wic
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" _target="_blank"></kol-link>
 
+## API
+
 <Readme />
-
-<ExampleLink component="drawer" />
-
-## Live-Editor
-
-<LiveEditorCompact component="drawer" />
 
 ## Beispiele
 
-<Configurator component="drawer" sample="basic" />
+<ExampleLink component="drawer" />

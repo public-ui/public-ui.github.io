@@ -9,11 +9,13 @@ type SpinPreviewProps = JSX.KolSpin & {
     _customCss?: string;
 };
 
-const SpinPreview: React.FC = (props: {
+interface SpinPreviewComponentProps {
     initialProps?: SpinPreviewProps;
     visibleProperties?: (keyof SpinPreviewProps)[];
     codeCollapsable?: boolean;
-}) => {
+}
+
+const SpinPreview = (props: SpinPreviewComponentProps) => {
     const defaultProps: SpinPreviewProps = {
         _label: translate({
             id: 'preview.component.spin.label',
