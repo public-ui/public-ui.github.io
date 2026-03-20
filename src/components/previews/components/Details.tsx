@@ -6,12 +6,14 @@ import { KolInputText, KolDetails } from '@public-ui/react-v19';
 
 type DetailsPreviewProps = JSX.KolDetails & { _slot?: string };
 
-const DetailsPreview: React.FC = (props: {
-    initialProps?: DetailsPreviewProps;
-    visibleProperties?: (keyof JSX.KolDetails | '_slot')[];
-    codeCollapsable?: boolean;
-    codeCollapsed?: boolean;
-}) => {
+interface DetailsPreviewComponentProps {  
+    initialProps?: DetailsPreviewProps;  
+    visibleProperties?: (keyof JSX.KolDetails | '_slot')[];  
+    codeCollapsable?: boolean;  
+    codeCollapsed?: boolean;  
+};  
+
+const DetailsPreview: React.FC<DetailsPreviewComponentProps> = (props) => {  
     const defaultProps: DetailsPreviewProps = {
         _label: 'Details Element',
         _slot: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
