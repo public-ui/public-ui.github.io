@@ -4,8 +4,7 @@ description: Description, specification and examples for the Drawer component.
 ---
 
 import Readme from '/readmes/drawer/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import DrawerPreview from '@site/src/components/previews/components/Drawer';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 Synonyms: Corner Dialog, Prompt
@@ -13,51 +12,12 @@ Using the **Drawer** component, additional information or navigation elements ca
 
 The **Drawer** component is hidden by default. It is usually only displayed after clicking on a button or other trigger or controlled with the `_open` attribute.
 
-```html
-<kol-drawer _label="Drawer" _open  _align="top"></kol-drawer>
-```
+## Construction
 
-### Example
-
-#### Uncontrolled
-
-In _Uncontrolled_ mode, the drawer is controlled via the `open()` and `close()` methods.
-
-```html
-<kol-drawer id="example-drawer" _align="left" _label="Drawer">
-	<div>
-		<p>Dies ist der Inhalt des Drawers. Hier können Sie beliebige HTML-Elemente einfügen.</p>
-		<kol-button class="close-drawer" _label="Schließen"></kol-button>
-	</div>
-</kol-drawer>
-<kol-button id="drawer-open-button" _label="Drawer öffnen"></kol-button>
-
-<script>
-	const drawer = document.querySelector('#example-drawer');
-	const drawerOpenButton = document.querySelector('#drawer-open-button');
-
-	function openDrawer() {
-		drawer.open();
-	}
-
-	function closeDrawer() {
-		drawer.close();
-	}
-
-	document.querySelectorAll('.close-drawer').forEach((b) => (b.onclick = closeDrawer));
-	drawerOpenButton.onclick = openDrawer;
-</script>
-```
-
-#### Controlled
-
-In _Controlled_ mode, the drawer is controlled via the `_open` attribute.
-
-```html
-<kol-drawer _open="true" _align="left" _label="Drawer">
-	<p>Drawer Inhalt</p>
-</kol-drawer>
-```
+<DrawerPreview
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Usage
 
@@ -122,14 +82,10 @@ Optionally, animations with keyframes can be added. It is important that the key
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" _target="_blank"></kol-link>
 
+## API
+
 <Readme />
-
-<ExampleLink component="drawer" />
-
-## Live editor
-
-<LiveEditorCompact component="drawer" />
 
 ## Examples
 
-<Configurator component="drawer" sample="basic" />
+<ExampleLink component="drawer" />

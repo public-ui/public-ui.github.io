@@ -3,18 +3,22 @@ import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, LevelProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolCard } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
+import { sanitizeHtml } from '../../../shares/sanitize';
 
 type CardPreviewProps = JSX.KolCard & { _slot?: string };
 
-const CardPreview: React.FC = (props: {
+interface CardPreviewComponentProps {
     initialProps?: CardPreviewProps;
     visibleProperties?: (keyof JSX.KolCard | '_slot')[];
     codeCollapsable?: boolean;
     codeCollapsed?: boolean;
-}) => {
+}
+
+const CardPreview = (props: CardPreviewComponentProps) => {
     const defaultProps: CardPreviewProps = {
-        _label: 'Card Title',
-        _slot: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+        _label: translate({ id: 'preview.component.card.label' }),
+        _slot: translate({ id: 'preview.component.card.content' }),
     };
 
     return (
@@ -35,9 +39,10 @@ const CardPreview: React.FC = (props: {
         >
             {(componentProps) => {
                 const { _slot, ...cardProps } = componentProps;
+                const sanitizedHtml = sanitizeHtml(_slot ?? '');
                 return (
                     <KolCard {...cardProps}>
-                        <div dangerouslySetInnerHTML={{ __html: _slot ?? '' }} />
+                        <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
                     </KolCard>
                 );
             }}

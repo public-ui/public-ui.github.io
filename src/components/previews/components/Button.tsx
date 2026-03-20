@@ -3,14 +3,17 @@ import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, AlignProperty, IconsProperty, ButtonVariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButton, KolSelect } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
-const ButtonPreview: React.FC = (props: {
+interface ButtonPreviewComponentProps {
 	initialProps?: JSX.KolButton;
 	visibleProperties?: (keyof JSX.KolButton)[];
 	codeCollapsable?: boolean;
-}) => {
+}
+
+const ButtonPreview = (props: ButtonPreviewComponentProps) => {
 	const defaultProps: JSX.KolButton = {
-		_label: 'Button',
+		_label: translate({ id: 'preview.component.button.label' }),
 	};
 
 	return (

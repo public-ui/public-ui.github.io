@@ -5,11 +5,13 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolProgress, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
-const ProgressPreview: React.FC = (props: {
+interface ProgressPreviewComponentProps {
 	initialProps?: JSX.KolProgress;
 	visibleProperties?: (keyof JSX.KolProgress)[];
 	codeCollapsable?: boolean;
-}) => {
+}
+
+const ProgressPreview = (props: ProgressPreviewComponentProps) => {
 	const defaultProps: JSX.KolProgress = {
 		_label: translate({
 			id: 'preview.component.progress.label',
