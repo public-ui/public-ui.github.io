@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, LevelProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolDetails } from '@public-ui/react-v19';
+import { sanitizeHtml } from '../../../shares/sanitize';
 
 type DetailsPreviewProps = JSX.KolDetails & { _slot?: string };
 
@@ -38,10 +39,11 @@ const DetailsPreview: React.FC<DetailsPreviewComponentProps> = (props) => {
         >
             {(componentProps) => {
                 const { _slot, ...detailsProps } = componentProps;
+                const sanitizedHtml = sanitizeHtml(_slot ?? '');
                 return (
-                    <div className='h-44'>
+                    <div className='min-h-44'>
                         <KolDetails {...detailsProps}>
-                            <div dangerouslySetInnerHTML={{ __html: _slot ?? '' }} />
+                            <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
                         </KolDetails>
                     </div>
                 );
