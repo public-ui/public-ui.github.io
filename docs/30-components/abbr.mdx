@@ -1,24 +1,20 @@
 ---
 title: Abbr
 description: Beschreibung, Spezifikation und Beispiele für die Abbr-Komponente.
-tags:
-  - Abbr
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
-import Readme from '../../readmes/abbr/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import ReadMe from '../../readmes/abbr/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import AbbrPreview from '@site/src/components/previews/components/Abbr';
 
 # Abbr
 
-Die **Abbr**-Komponente implementiert den HTML-Tag `abbr` um eine Abkürzung darzustellen. Optional kann ein Label übergeben werden, das in Klammern nach der Abkürzung angezeigt wird.
+Synonyme: Abkürzung, Akronym
 
-## Konstruktion
+Die Komponente kennzeichnet eine Abkürzung im Fließtext und kann die ausgeschriebene Bedeutung direkt ergänzen.
+So bleibt Inhalt verständlich, auch wenn Leser:innen die Kurzform nicht kennen.
+
+## Beispiel (Default)
 
 <AbbrPreview
   visibleProperties={['_label', '_slot']}
@@ -27,22 +23,67 @@ Die **Abbr**-Komponente implementiert den HTML-Tag `abbr` um eine Abkürzung dar
   codeCollapsed
 />
 
-### Beispiel
+## Barrierefreiheit
+
+`abbr` ist ein semantisches HTML-Element und signalisiert assistiven Technologien, dass es sich um eine Abkürzung handelt.
+Die KoliBri-Variante nutzt diese Semantik und ergänzt bei Bedarf die ausgeschriebene Form sichtbar im Text.
+So ist die Erklärung nicht nur per Hover verfügbar, sondern für alle Nutzergruppen direkt lesbar.
+
+Die Komponente ist bewusst nicht interaktiv und besitzt daher keine eigenen Tastaturfunktionen.
+Interaktionen wie Klick, Expand/Collapse oder Fokuszustände wurden absichtlich nicht ergänzt,
+weil sie fachlich nicht zum Zweck einer reinen Textauszeichnung gehören.
+
+### Links und Referenzen
+
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank" _label="MDN: &lt;abbr&gt;" ></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/quickref/" _target="_blank" _label="WCAG 2.1 Quick Reference" ></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+Die Komponente selbst hat keine eigene Tastaturinteraktion, da sie keine Aktion ausführt.
+Sie wird als normaler Textinhalt gelesen und verhält sich entsprechend der umgebenden Textstruktur.
+
+### Best Practices / Empfehlungen
+
+- Verwende `abbr`, wenn eine Abkürzung nicht allgemein bekannt ist.
+- Gib bei Bedarf die ausgeschriebene Form über `_label` an, damit Bedeutung direkt sichtbar ist.
+- Nutze die Komponente im Fließtext und nicht als interaktives Bedienelement.
+- Verwende konsistente Schreibweisen (z. B. immer `z. B.` statt wechselnder Kurzformen).
+
+### Anwendungsfälle
+
+- Fachbegriffe in Formularen und Hinweisen (z. B. `z. B.`, `u. a.`, `MwSt.`)
+- Organisatorische Kurzformen in Verwaltungstexten
+- Technische Akronyme in Dokumentationen, wenn die Langform mitgeführt werden soll
+
+## Konstruktion / Technik (Arbeitstitel)
+
+### Playground
+
+Platzhalter
+
+### Funktionalitäten (mit Code)
+
+Abkürzung mit ausgeschriebener Erklärung:
+
+```html
+<p>Ich <kol-abbr _label="zum Beispiel">z. B.</kol-abbr> bin eine Abkürzung mit Label.</p>
+```
+
+Abkürzung ohne zusätzliche Erklärung:
+
+```html
+<p>Ich <kol-abbr>z. B.</kol-abbr> bin eine Abkürzung ohne Label.</p>
+```
 
 <p>Ich <kol-abbr _label="zum Beispiel">z. B.</kol-abbr> bin eine Abkürzung mit Label.</p>
 <p>Ich <kol-abbr>z. B.</kol-abbr> bin eine Abkürzung ohne Label.</p>
 
-## Verwendung
+## API
 
-### Angabe der Beschreibung zur Abkürzung
-
-Der Begriff bzw. die Erklärung wird über das Attribut **`_label`** übergeben, die Abkürzung bzw. der erklärungswürdige Begriff kommt zwischen die Tags im HTML.
-
-## Links und Referenzen
-
-- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank"></kol-link>
-
-<Readme />
+<ReadMe />
 
 ## Beispiele
 
