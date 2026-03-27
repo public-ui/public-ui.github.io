@@ -4,10 +4,9 @@ description: Description, specification and examples for the InputEmail componen
 ---
 
 import Readme from '/readmes/input-email/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import InputEmailPreview from '@site/src/components/previews/components/InputEmail';
 
 # InputEmail
 
@@ -15,15 +14,11 @@ The input type **Email** creates an input field for emails.
 
 ## Construction
 
-### Code
-
-```html
-<kol-input-email _label="E-Mail-Adresse" _icons='{"right": "fa-solid fa-envelope"}'></kol-input-email>
-```
-
-### Example
-
-<kol-input-email _label="E-Mail-Adresse" _icons='{"right": "fa-solid fa-envelope"}'></kol-input-email>
+<InputEmailPreview
+  visibleProperties={['_label', '_multiple', '_disabled']}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Events
 
@@ -122,12 +117,6 @@ With the three attributes `_max-length`, `_max-length-behavior` and `_has-counte
 
 <PropertyMsgUsage />
 
-<ExampleLink component="input-email" />
-
-## Live editor
-
-<LiveEditorCompact component="input-email" />
-
 ## Examples
 
-<Configurator component="input-email" sample="basic" />
+<ExampleLink component="input-email" />
