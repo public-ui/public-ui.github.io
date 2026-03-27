@@ -6,10 +6,10 @@ import DOMPurify from 'dompurify';
  * issues with server-side rendering in Docusaurus static site generation.
  */
 export function sanitizeHtml(html: string): string {
-    if (typeof window === 'undefined') {
-        // During SSR/SSG there is no DOM; return the content as-is.
-        // The actual sanitization happens on the client side.
-        return html;
-    }
-    return DOMPurify.sanitize(html);
+	if (typeof window === 'undefined') {
+		// During SSR/SSG there is no DOM; return the content as-is.
+		// The actual sanitization happens on the client side.
+		return html;
+	}
+	return DOMPurify.sanitize(html);
 }
