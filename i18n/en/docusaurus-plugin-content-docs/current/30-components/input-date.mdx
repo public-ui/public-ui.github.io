@@ -4,8 +4,7 @@ description: Description, specification and examples for the InputDate component
 ---
 
 import Readme from '/readmes/input-date/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import InputDatePreview from '@site/src/components/previews/components/InputDate';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 
@@ -17,11 +16,11 @@ The input type **Date** creates an input field for date values. These can be spe
 
 ## Construction
 
-### Code
-
-```html
-<kol-input-date _type="date" _label="Erstellungsdatum" _icons='{"right": "fa-solid fa-calendar"}'></kol-input-date>
-```
+<InputDatePreview
+  visibleProperties={['_label', '_type', '_disabled', '_required']}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Events
 
@@ -36,8 +35,6 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 | `change` | Entry has been completed | Current value of the input field |
 
 ### Example
-
-<kol-input-date _type="date" _label="Erstellungsdatum" _icons='{"right": "fa-solid fa-calendar"}'></kol-input-date>
 
 #### Remove date
 
@@ -127,18 +124,14 @@ The input field for time information comes in different versions (date, time, et
 - <kol-link _href="https://a11ysupport.io/tech/html/input(type-date)_element" _target="_blank"></kol-link>
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
+# API
+
 <Readme />
 
 ## Usage _msg
 
 <PropertyMsgUsage />
 
-<ExampleLink component="input-date" />
-
-## Live editor
-
-<LiveEditorCompact component="input-date" />
-
 ## Examples
 
-<Configurator component="input-date" sample="basic" />
+<ExampleLink component="input-date" />
