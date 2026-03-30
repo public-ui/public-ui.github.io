@@ -52,7 +52,12 @@ const TextAreaPreview = (props: TextAreaPreviewComponentProps) => {
 			codeCollapsable={props.codeCollapsable}
 		>
 			{(props) => (
-				<KolTextarea _touched {...props} _on={{ onInput: (_: Event, v: unknown) => setValue(v as string) }} _value={value} />
+				<KolTextarea
+					_touched
+					{...props}
+					_on={{ onInput: (_: Event, v: unknown) => setValue(v as string) }}
+					_value={value}
+				/>
 			)}
 		</Preview>
 	);

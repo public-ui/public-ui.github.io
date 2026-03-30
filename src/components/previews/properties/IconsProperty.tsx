@@ -42,10 +42,10 @@ const IconsProperty = (props: {
 	};
 
 	return (
-		<fieldset >
+		<fieldset>
 			<legend>{props.label}</legend>
 			<div className="grid grid-cols-2 gap-2">
-				{props.directions?.includes('left') !== false &&
+				{props.directions?.includes('left') !== false && (
 					<KolSelect
 						_label="Left"
 						_options={PREDEFINED_ICONS}
@@ -55,8 +55,9 @@ const IconsProperty = (props: {
 								handleIconChange('left', value as string);
 							},
 						}}
-					/>}
-				{props.directions?.includes('right') !== false &&
+					/>
+				)}
+				{props.directions?.includes('right') !== false && (
 					<KolSelect
 						_label="Right"
 						_options={PREDEFINED_ICONS}
@@ -66,8 +67,9 @@ const IconsProperty = (props: {
 								handleIconChange('right', value as string);
 							},
 						}}
-					/>}
-				{props.directions?.includes('top') !== false &&
+					/>
+				)}
+				{props.directions?.includes('top') !== false && (
 					<KolSelect
 						_label="Top"
 						_options={PREDEFINED_ICONS}
@@ -77,8 +79,9 @@ const IconsProperty = (props: {
 								handleIconChange('top', value as string);
 							},
 						}}
-					/>}
-				{props.directions?.includes('bottom') !== false &&
+					/>
+				)}
+				{props.directions?.includes('bottom') !== false && (
 					<KolSelect
 						_label="Bottom"
 						_options={PREDEFINED_ICONS}
@@ -88,7 +91,8 @@ const IconsProperty = (props: {
 								handleIconChange('bottom', value as string);
 							},
 						}}
-					/>}
+					/>
+				)}
 			</div>
 		</fieldset>
 	);
