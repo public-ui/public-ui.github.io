@@ -1,18 +1,12 @@
 ---
 title: InputCheckbox
 description: Beschreibung, Spezifikation und Beispiele für die InputCheckbox-Komponente.
-tags:
-  - InputCheckbox
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/input-checkbox/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import InputCheckboxPreview from '@site/src/components/previews/components/InputCheckbox';
 
 # Checkbox
 
@@ -20,21 +14,11 @@ Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken
 
 ## Konstruktion
 
-### Code
-
-```html
-<kol-input-checkbox _label="false">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
-<kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
-```
-
-### Beispiel
-
-<kol-input-checkbox _label="false">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
-<kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
+<InputCheckboxPreview
+	visibleProperties={['_label', '_variant', '_checked', '_disabled']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
@@ -88,12 +72,7 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 
 <PropertyMsgUsage />
 
-<ExampleLink component="input-checkbox" />
-
-## Live-Editor
-
-<LiveEditorCompact component="input-checkbox" />
-
 ## Beispiele
 
-<Configurator component="input-checkbox" sample="basic" />
+<ExampleLink component="input-checkbox" />
+

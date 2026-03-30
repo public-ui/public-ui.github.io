@@ -4,10 +4,9 @@ description: Description, specification and examples for the InputCheckbox compo
 ---
 
 import Readme from '/readmes/input-checkbox/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import InputCheckboxPreview from '@site/src/components/previews/components/InputCheckbox';
 
 # InputCheckbox
 
@@ -15,21 +14,11 @@ The input type **_Checkbox_** generates a rectangular box that is activated and 
 
 ## Construction
 
-### Code
-
-```html
-<kol-input-checkbox _label="false">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
-<kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
-```
-
-### Example
-
-<kol-input-checkbox _label="false">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
-<kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
-<kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
+<InputCheckboxPreview
+	visibleProperties={['_label', '_variant', '_checked', '_disabled']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
@@ -83,12 +72,7 @@ Make sure to assign a label to each checkbox, as this is read out by screen read
 
 <PropertyMsgUsage />
 
-<ExampleLink component="input-checkbox" />
-
-## Live editor
-
-<LiveEditorCompact component="input-checkbox" />
-
 ## Examples
 
-<Configurator component="input-checkbox" sample="basic" />
+<ExampleLink component="input-checkbox" />
+
