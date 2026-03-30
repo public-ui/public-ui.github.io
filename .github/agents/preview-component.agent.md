@@ -35,7 +35,7 @@ zu laden — das gibt dir einen schnellen Überblick über Properties und Verwen
 Suche dann die TypeScript-Typen der Ziel-Komponente im Repo:
 
 ```bash
-grep -r "Kol<COMPONENT>" node_modules/@public-ui/components/dist/types/components/ --include="*.d.ts" -l
+grep -r "Kol<ComponentName>" node_modules/@public-ui/components/dist/types/components/ --include="*.d.ts" -l
 ```
 
 Lies die gefundene `.d.ts`-Datei vollständig. Erfasse alle Properties und
@@ -82,7 +82,7 @@ Datei: `src/components/previews/components/<ComponentName>.tsx`
 ```tsx
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty } from '../properties';
+import { /* BooleanProperty, EnumProperty, ... je nach Komponente */ } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, Kol<ComponentName> } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -125,9 +125,10 @@ export default <ComponentName>Preview;
 ```tsx
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, MultiLineTextProperty } from '../properties';
+import { MultiLineTextProperty, /* BooleanProperty, EnumProperty, ... je nach Komponente */ } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, Kol<ComponentName> } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 
 type <ComponentName>PreviewProps = JSX.Kol<ComponentName> & { _slot?: string };
@@ -141,7 +142,7 @@ interface <ComponentName>PreviewComponentProps {
 
 const <ComponentName>Preview: React.FC<<ComponentName>PreviewComponentProps> = (props) => {
   const defaultProps: <ComponentName>PreviewProps = {
-    _label: '<ComponentName> Element',
+    _label: translate({ id: 'preview.component.<component-name>.label' }),
     _slot: 'Lorem ipsum dolor sit amet.',
   };
 
@@ -215,14 +216,23 @@ Datei: `docs/30-components/<component-name>.mdx`
 +import <ComponentName>Preview from '@site/src/components/previews/components/<ComponentName>';
 ```
 
-3. Ersetze statisches Beispiel:
+3. Im Abschnitt Konstruktion den HTML-Code und das statische Beispiel entfernen und durch die interaktive Preview-Komponente ersetzen:
 
-```mdx
-<<ComponentName>Preview
-  visibleProperties={['_label', '_disabled']}
-  codeCollapsable
-  codeCollapsed
-/>
+```diff
+- ### Code
+-
+- ```html
+- <kol-<component-name> _label="..."></kol-<component-name>>
+- ```
+-
+- ### Beispiel
+-
+- <kol-<component-name> ...></kol-<component-name>>
++ <<ComponentName>Preview
++   visibleProperties={['_label', '_disabled']}
++   codeCollapsable
++   codeCollapsed
++ />
 ```
 
 4. Entferne `## Live-Editor` Abschnitt vollständig
@@ -252,8 +262,6 @@ Dieselben Änderungen wie Schritt 5. Der `@site/`-Alias bleibt identisch.
 ## Schritt 7: Qualitätsprüfung
 
 ```bash
-pnpm run lint
-
 npx prettier \
   src/components/previews/components/<ComponentName>.tsx \
   docs/30-components/<component-name>.mdx \
@@ -261,6 +269,8 @@ npx prettier \
   i18n/de/code.json \
   i18n/en/code.json \
   --write
+
+pnpm run lint
 ```
 
 Bei Lint-Fehlern: beheben und erneut prüfen. Nicht abbrechen.
