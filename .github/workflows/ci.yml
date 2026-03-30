@@ -1,8 +1,9 @@
 name: CI-Pipeline
 
 on:
-  pull_request:
   workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
 
 concurrency:
   group: "workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}"
