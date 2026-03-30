@@ -4,8 +4,7 @@ description: Description, specification and examples for the Icon component.
 ---
 
 import Readme from '/readmes/icon/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import IconPreview from '@site/src/components/previews/components/Icon';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Icon
@@ -20,15 +19,11 @@ Currently the icons are supported by <kol-link _href="https://develop--kolibri-p
 
 The **Icon** component is created via the HTML tag `kol-icon`.
 
-### Code
-
-```html
-<kol-icon _label="Zu Hause" _icons="kolicon-house"></kol-icon>
-```
-
-### Example
-
-<kol-icon _label="Zu Hause" _icons="kolicon-house"></kol-icon>
+<IconPreview
+	visibleProperties={['_label', '_icons']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Icons
 
@@ -52,14 +47,11 @@ A context-relevant icon must be labeled using the `_label` property.
 - <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link>
 - <kol-link _href="https://icofont.com" _target="_blank" _label="Icofont"></kol-link>
 
+# API
+
 <Readme />
-
-<ExampleLink component="icon" />
-
-## Live editor
-
-<LiveEditorCompact component="icon" />
 
 ## Examples
 
-<Configurator component="icon" sample="basic" />
+<ExampleLink component="icon" />
+

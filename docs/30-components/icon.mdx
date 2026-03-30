@@ -1,16 +1,10 @@
 ---
 title: Icon
 description: Beschreibung, Spezifikation und Beispiele für die Icon-Komponente.
-tags:
-  - Icon
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/icon/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import IconPreview from '@site/src/components/previews/components/Icon';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Icon
@@ -25,15 +19,11 @@ Aktuell werden die Icons von <kol-link _href="https://develop--kolibri-public-ui
 
 Die Komponente **Icon** wird über das HTML-Tag `kol-icon` erzeugt.
 
-### Code
-
-```html
-<kol-icon _label="Zu Hause" _icons="kolicon-house"></kol-icon>
-```
-
-### Beispiel
-
-<kol-icon _label="Zu Hause" _icons="kolicon-house"></kol-icon>
+<IconPreview
+	visibleProperties={['_label', '_icons']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Icons
 
@@ -57,14 +47,11 @@ Mittels der Property `_label` muss ein Kontext-relevantes Icon beschriftet werde
 - <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link>
 - <kol-link _href="https://icofont.com"  _target="_blank" _label="Icofont"></kol-link>
 
+# API
+
 <Readme />
-
-<ExampleLink component="icon" />
-
-## Live-Editor
-
-<LiveEditorCompact component="icon" />
 
 ## Beispiele
 
-<Configurator component="icon" sample="basic" />
+<ExampleLink component="icon" />
+
