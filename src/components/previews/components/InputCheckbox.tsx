@@ -25,7 +25,7 @@ const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
 					<KolSelect
 						_label="Variant"
 						_options={[
-							{ label: 'Checkbox', value: 'checkbox' },
+							{ label: 'Checkbox', value: 'default' },
 							{ label: 'Switch', value: 'switch' },
 							{ label: 'Button', value: 'button' },
 						]}
