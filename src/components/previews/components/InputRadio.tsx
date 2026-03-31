@@ -1,8 +1,8 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, MsgProperty } from '../properties';
-import type { JSX } from '@public-ui/components';
-import { KolInputRadio, KolInputText, KolSelect, KolTextarea } from '@public-ui/react-v19';
+import { BooleanProperty, MsgProperty, OptionsProperty } from '../properties';
+import type { JSX, SelectOption } from '@public-ui/components';
+import { KolInputRadio, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
 interface InputRadioPreviewComponentProps {
@@ -19,14 +19,14 @@ const InputRadioPreview = (props: InputRadioPreviewComponentProps) => {
 			{ label: 'Herr', value: 'Herr' },
 			{ label: 'Frau', value: 'Frau' },
 			{ label: 'Firma', value: 'Firma' },
-		],
+		] satisfies SelectOption<string>[],
 	};
 
 	return (
 		<Preview<JSX.KolInputRadio>
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_options: <KolTextarea _label="Options (JSON Array)" _rows={5} />,
+				_options: <OptionsProperty label="Options" />,
 				_orientation: (
 					<KolSelect
 						_label="Orientation"
