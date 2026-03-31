@@ -11,7 +11,7 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 **Synonyme:** Message, Hinweis, Benachrichtigung
 
-**Beschreibung:** Die **Alert**-Komponente gibt optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext und einem Icon, das zusammen mit der Farbe den Typ der Nachricht signalisiert.
+**Beschreibung:** Die **Alert**-Komponente gibt Feedback an die Nutzer:innen. Sie besteht aus einem Container, einer Überschrift, einem Inhaltstext und einem Icon, das den Typ der Nachricht signalisiert.
 
 ## Beispiel
 
@@ -26,13 +26,10 @@ Standard-Alert mit Typ, Variante und Inhalt:
 
 ## Barrierefreiheit
 
-- Die **Alert**-Komponente wurde auf höchstmöglichen Kontrast optimiert.
 - Das Icon (abhängig vom gewählten Typ) gewährleistet, dass Informationen nicht ausschließlich über die Farbe wahrgenommen werden müssen.
 - Bei der Nutzung von Screenreadern wird das Icon immer mitgelesen. Der Titel sollte daher **nicht** mit dem Alert-Typ beginnen, da dies zu einem doppelten Vorlesen führt.
   - **Richtig:** Label = „Füllen Sie das Feld aus." → Ausgabe: „Fehler – Füllen Sie das Feld aus."
   - **Falsch:** Label = „Fehler: Füllen Sie das Feld aus." → Ausgabe: „Fehler – Fehler: Füllen Sie das Feld aus."
-- Die Schriftfarbe ist entweder weiß oder schwarz und wechselt automatisch auf die Farbe mit dem höheren Kontrast zur Hintergrundfarbe.
-- Ist der Farbkontrast für AA nicht ausreichend, wird die Hintergrundfarbe überschrieben.
 - Das Attribut `_alert` aktiviert Screenreader-Benachrichtigungen (`role="alert"` / `aria-live="assertive"`). Es wirkt nur beim initialen Rendern der Komponente oder bei einer Inhaltsänderung.
 
 ### Links und Referenzen
@@ -67,7 +64,7 @@ Standard-Alert mit Typ, Variante und Inhalt:
 
 #### Typ des Alert
 
-Der Typ des Alert wird über das Attribut `_type` festgelegt und beeinflusst die farbliche Gestaltung sowie das verwendete Icon.
+Der Typ des Alert wird über das Attribut `_type` festgelegt und bestimmt die semantische Bedeutung sowie das verwendete Icon.
 
 <AlertPreview
 	visibleProperties={['_type']}
@@ -76,12 +73,12 @@ Der Typ des Alert wird über das Attribut `_type` festgelegt und beeinflusst die
 	codeCollapsed
 />
 
-| Typ       | Farbe | Bedeutung                       |
-| --------- | ----- | ------------------------------- |
-| `success` | Grün  | Erfolgreiche Aktion             |
-| `error`   | Rot   | Fehler oder kritisches Problem  |
-| `info`    | Blau  | Allgemeiner Hinweis             |
-| `warning` | Gelb  | Warnung, Vorsicht geboten       |
+| Typ       | Bedeutung                       |
+| --------- | ------------------------------- |
+| `success` | Erfolgreiche Aktion             |
+| `error`   | Fehler oder kritisches Problem  |
+| `info`    | Allgemeiner Hinweis             |
+| `warning` | Warnung, Vorsicht geboten       |
 
 #### Variante des Alert
 
@@ -94,10 +91,10 @@ Der Typ des Alert wird über das Attribut `_type` festgelegt und beeinflusst die
 	codeCollapsed
 />
 
-| Variante | Beschreibung                                                                          |
-| -------- | ------------------------------------------------------------------------------------- |
-| `msg`    | Die linke, farbige Spalte mit Icon erstreckt sich über die gesamte Höhe des Alerts.  |
-| `card`   | Die linke Spalte mit Icon befindet sich nur neben der Überschrift.                   |
+| Variante | Beschreibung                                                                        |
+| -------- | ----------------------------------------------------------------------------------- |
+| `msg`    | Die linke Spalte mit Icon erstreckt sich über die gesamte Höhe des Alerts.         |
+| `card`   | Die linke Spalte mit Icon befindet sich nur neben der Überschrift.                 |
 
 #### Überschrift und Überschriftenebene
 

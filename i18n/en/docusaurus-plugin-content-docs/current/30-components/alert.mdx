@@ -11,7 +11,7 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 **Synonyms:** Message, Notice, Notification
 
-**Description:** The **Alert** component provides visual feedback to users. It consists of a colored container, a heading, content text and an icon that, together with the color, signals the type of message.
+**Description:** The **Alert** component provides feedback to users. It consists of a container, a heading, content text and an icon that signals the type of message.
 
 ## Example
 
@@ -26,13 +26,10 @@ Standard alert with type, variant and content:
 
 ## Accessibility
 
-- The **Alert** component has been optimized for the highest possible contrast.
 - The icon (depending on the selected type) ensures that information does not have to be perceived by color alone.
 - When using screen readers, the icon is always read aloud. The title should therefore **not** begin with the alert type, as this leads to the alert type being read twice.
   - **Correct:** Label = "Fill in the field." → Output: "Error – Fill in the field."
   - **Incorrect:** Label = "Error: Fill in the field." → Output: "Error – Error: Fill in the field."
-- The font color is either white or black and automatically switches to the color with the greater contrast to the background color.
-- If the color contrast is not sufficient for AA, the background color will be overwritten.
 - The `_alert` attribute enables screen reader notifications (`role="alert"` / `aria-live="assertive"`). It only works on initial render or when content changes.
 
 ### Links and References
@@ -67,7 +64,7 @@ Standard alert with type, variant and content:
 
 #### Type of Alert
 
-The type of the alert is set via the `_type` attribute and influences the color design and the icon used.
+The type of the alert is set via the `_type` attribute and determines the semantic meaning and the icon used.
 
 <AlertPreview
 	visibleProperties={['_type']}
@@ -76,12 +73,12 @@ The type of the alert is set via the `_type` attribute and influences the color 
 	codeCollapsed
 />
 
-| Type      | Color  | Meaning                        |
-| --------- | ------ | ------------------------------ |
-| `success` | Green  | Successful action              |
-| `error`   | Red    | Error or critical issue        |
-| `info`    | Blue   | General notice                 |
-| `warning` | Yellow | Warning, caution required      |
+| Type      | Meaning                        |
+| --------- | ------------------------------ |
+| `success` | Successful action              |
+| `error`   | Error or critical issue        |
+| `info`    | General notice                 |
+| `warning` | Warning, caution required      |
 
 #### Variant of the Alert
 
@@ -94,10 +91,10 @@ The `_variant` attribute controls the display variant.
 	codeCollapsed
 />
 
-| Variant  | Description                                                                              |
-| -------- | ---------------------------------------------------------------------------------------- |
-| `msg`    | The left, colored column with icon extends over the entire height of the alert.         |
-| `card`   | The left column with icon is only placed next to the heading.                           |
+| Variant  | Description                                                                      |
+| -------- | -------------------------------------------------------------------------------- |
+| `msg`    | The left column with icon extends over the entire height of the alert.          |
+| `card`   | The left column with icon is only placed next to the heading.                   |
 
 #### Heading and Heading Level
 
