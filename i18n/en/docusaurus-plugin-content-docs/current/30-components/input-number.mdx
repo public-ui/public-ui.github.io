@@ -4,8 +4,7 @@ description: Description, specification and examples for the InputNumber compone
 ---
 
 import Readme from '/readmes/input-number/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import InputNumberPreview from '@site/src/components/previews/components/InputNumber';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 
@@ -15,11 +14,11 @@ The input type **Number** creates an input field for numbers.
 
 ## Construction
 
-### Code
-
-```html
-<kol-input-number _value="74" _label="ZAHL!" _icons='{"right": "fa-solid fa-gauge"}'></kol-input-number>
-```
+<InputNumberPreview
+  visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Events
 
@@ -32,10 +31,6 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 | `blur` | Input field loses focus | - |
 | `input` | Value is changed by entering | Current value of the input field |
 | `change` | Entry has been completed | Current value of the input field |
-
-### Example
-
-<kol-input-number _value="74" _label="ZAHL!" _icons='{"right": "fa-solid fa-gauge"}'></kol-input-number>
 
 ## Usage
 
@@ -54,18 +49,14 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
+# API
+
 <Readme />
 
 ## Usage _msg
 
 <PropertyMsgUsage />
 
-<ExampleLink component="input-number" />
-
-## Live editor
-
-<LiveEditorCompact component="input-number" />
-
 ## Examples
 
-<Configurator component="input-number" sample="basic" />
+<ExampleLink component="input-number" />
