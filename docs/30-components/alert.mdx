@@ -1,149 +1,156 @@
 ---
 title: Alert
 description: Beschreibung, Spezifikation und Beispiele für die Alert-Komponente.
-tags:
-  - Alert
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
+
 import Readme from '../../readmes/alert/readme.md';
 import AlertPreview from '@site/src/components/previews/components/Alert';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Alert
 
-Synonyme: Message
+**Synonyme:** Message, Hinweis, Benachrichtigung
 
-Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ `_type` des Alert.
+**Beschreibung:** Die **Alert**-Komponente gibt optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext und einem Icon, das zusammen mit der Farbe den Typ der Nachricht signalisiert.
 
-## Konstruktion
+## Beispiel
 
-### Code
+Standard-Alert mit Typ, Variante und Inhalt:
 
 <AlertPreview
-  visibleProperties={['_label', '_type', '_variant', '_hasCloser', '_slot']}
-  codeCollapsable
-  codeCollapsed
+	visibleProperties={['_label', '_type', '_variant', '_hasCloser', '_slot']}
+	initialProps={{ _label: 'Hinweis', _type: 'info', _variant: 'msg' }}
+	codeCollapsable
+	codeCollapsed
 />
 
-### Events
+## Barrierefreiheit
+
+- Die **Alert**-Komponente wurde auf höchstmöglichen Kontrast optimiert.
+- Das Icon (abhängig vom gewählten Typ) gewährleistet, dass Informationen nicht ausschließlich über die Farbe wahrgenommen werden müssen.
+- Bei der Nutzung von Screenreadern wird das Icon immer mitgelesen. Der Titel sollte daher **nicht** mit dem Alert-Typ beginnen, da dies zu einem doppelten Vorlesen führt.
+  - **Richtig:** Label = „Füllen Sie das Feld aus." → Ausgabe: „Fehler – Füllen Sie das Feld aus."
+  - **Falsch:** Label = „Fehler: Füllen Sie das Feld aus." → Ausgabe: „Fehler – Fehler: Füllen Sie das Feld aus."
+- Die Schriftfarbe ist entweder weiß oder schwarz und wechselt automatisch auf die Farbe mit dem höheren Kontrast zur Hintergrundfarbe.
+- Ist der Farbkontrast für AA nicht ausreichend, wird die Hintergrundfarbe überschrieben.
+- Das Attribut `_alert` aktiviert Screenreader-Benachrichtigungen (`role="alert"` / `aria-live="assertive"`). Es wirkt nur beim initialen Rendern der Komponente oder bei einer Inhaltsänderung.
+
+### Links und Referenzen
+
+- <ExampleLink component="alert" />
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#alert" _target="_blank" _label="WAI-ARIA Authoring Practices – Alert Pattern"></kol-link>
+
+## Verwendung
+
+### Best Practices / Empfehlungen
+
+- Verwenden Sie immer den zum Inhalt passenden **Typ** (`_type`): `success`, `error`, `info` oder `warning`.
+- Verwenden Sie **Alert** an geeigneten Stellen auf der Seite, um Informationen im richtigen Kontext darzustellen.
+- Platzieren Sie nicht zu viele **Alert**-Komponenten auf einer Seite, da der Informationsgehalt sonst an Wichtigkeit verliert.
+- Der **Titel** (Label) sollte nicht mit dem Alert-Typ beginnen, um doppeltes Vorlesen durch Screenreader zu vermeiden.
+- Nutzen Sie `_alert` nur für dynamisch eingefügte oder geänderte Benachrichtigungen – statische Alerts werden von Screenreadern beim initialen Laden nicht automatisch vorgelesen.
+
+### Anwendungsfälle
+
+- Hinweis auf Fehler bei der Formulareingabe
+- Bestätigung einer erfolgreichen Aktion (z.B. „Ihre Anfrage wurde erfolgreich gespeichert")
+- Allgemeiner Informationshinweis zu einem Thema oder einer Funktion
+- Warnmeldungen bei kritischen Aktionen
+
+## Konstruktion / Technik
+
+### Playground
+
+<AlertPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Typ des Alert
+
+Der Typ des Alert wird über das Attribut `_type` festgelegt und beeinflusst die farbliche Gestaltung sowie das verwendete Icon.
+
+<AlertPreview
+	visibleProperties={['_type']}
+	initialProps={{ _label: 'Hinweis', _type: 'info' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+| Typ       | Farbe | Bedeutung                       |
+| --------- | ----- | ------------------------------- |
+| `success` | Grün  | Erfolgreiche Aktion             |
+| `error`   | Rot   | Fehler oder kritisches Problem  |
+| `info`    | Blau  | Allgemeiner Hinweis             |
+| `warning` | Gelb  | Warnung, Vorsicht geboten       |
+
+#### Variante des Alert
+
+Über das Attribut `_variant` wird die Darstellungsvariante gesteuert.
+
+<AlertPreview
+	visibleProperties={['_variant']}
+	initialProps={{ _label: 'Hinweis', _type: 'info', _variant: 'msg' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+| Variante | Beschreibung                                                                          |
+| -------- | ------------------------------------------------------------------------------------- |
+| `msg`    | Die linke, farbige Spalte mit Icon erstreckt sich über die gesamte Höhe des Alerts.  |
+| `card`   | Die linke Spalte mit Icon befindet sich nur neben der Überschrift.                   |
+
+#### Überschrift und Überschriftenebene
+
+Die Überschrift wird über `_label` festgelegt, die semantische Ebene über `_level` (1–6, oder 0 für Fettschrift ohne semantisches Heading).
+
+<AlertPreview
+	visibleProperties={['_label', '_level']}
+	initialProps={{ _label: 'Überschrift', _type: 'info', _level: 3 }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Inhalt des Alert
+
+Der Inhalt des Alert wird als Slot-Inhalt übergeben und kann beliebigen HTML-Code oder KoliBri-Komponenten enthalten.
+
+<AlertPreview
+	visibleProperties={['_slot']}
+	initialProps={{ _label: 'Hinweis', _type: 'info' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Schließen-Funktion
+
+Mit dem Attribut `_has-closer` wird ein Schließen-Button eingeblendet.
+
+<AlertPreview
+	visibleProperties={['_hasCloser']}
+	initialProps={{ _label: 'Schließbarer Alert', _type: 'info', _hasCloser: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Screenreader-Benachrichtigungen (`_alert`)
+
+Das Attribut `_alert` aktiviert `role="alert"` bzw. `aria-live="assertive"`, sodass Screenreader die Benachrichtigung automatisch vorlesen. Es wirkt nur beim initialen Rendern der Komponente oder bei einer Inhaltsänderung.
+
+<AlertPreview
+	visibleProperties={['_alert']}
+	initialProps={{ _label: 'Statusmeldung', _type: 'info', _alert: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
 | Event   | Auslöser                    | Value |
-|---------|-----------------------------|-------|
+| ------- | --------------------------- | ----- |
 | `close` | Komponente wird geschlossen | -     |
 
-### Beispiel
-
-<kol-alert _label="Überschrift im Alert" _level="1" _type="success" >Textbereich im Alert</kol-alert>
-<kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
-
-## Verwendung
-
-### Überschrift
-
-Die **Überschrift** der Alert-Komponente wird über das Attribut `_label` bestimmt.
-
-### Überschriftenebene
-
-Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglich sind die Level **1** bis **6**
-
-### Typ des Alert
-
-Die **Alert**-Komponente bietet **vier** unterschiedliche Typen, die sich jeweils auf die farbliche Gestaltung und das verwendetet Icon im Alert beziehen. Zur Wahl stehen:
-
-<ul>
-	<li>Success</li>
-	<li>Error</li>
-	<li>Info</li>
-	<li>Warning</li>
-</ul>
-
-Der Typ eines Alert wird über das Attribut `_type` festgelegt.
-
-### Inhalt des Alert
-
-Der Inhalt des Alert wird zwischen das öffnende Element `<kol-alert>` und das schließende `</kol-alert>` geschrieben. Der Inhalt kann aus beliebigem **HTML-Code**, aber auch aus weiteren **KoliBri**-Komponenten bestehen.
-
-### Variante des Alert
-
-Über das Attribut **`_variant`** kann festgelegt werden, in welcher Darstellungsvariante das Alert angezeigt wird. `msg` lässt die linke, farbig hinterlegte Spalte mit dem Icon über die gesamte Höhe des Alerts gehen, `card` setzt die linke Spalte nur neben die Überchrift.
-
-### Best practices
-
-- Verwenden Sie die **Alert**-Komponente an geeigneten Positionen auf Ihrer Webseite, um Informationen im richtigen Zusammenhang darzustellen.
-- Verwenden Sie immer den richtigen **Type** der **Alert**-Komponente, um bei den Benutzer:innen die gewünschte Reaktion zu erzeugen. Vermeiden Sie bspw. den Typ **_Error_**, wenn Sie auf den erfolgreichen Abschluss eines Speichervorgangs hinweisen möchten.
-- Vermeiden Sie, zu viele **Alert**-Komponenten auf einer Seite zu platzieren, da der Informationsgehalt von den Benutzer:innen dann oft nicht mehr als besonders wichtig wahrgenommen wird.
-
-### Anwendungsfälle
-
-- Verwenden Sie die **Alert**-Komponente, wenn Sie die Benutzer:innen auf Fehler bei der Eingabe in Formularen hinweisen möchten.
-- Verwenden Sie die **Alert**-Komponente, um Nutzer:innen auf die erfolgreiche Ausführung von Funktionen hinzuweisen, z.B. **`Ihre Anfrage wurde erfolgreich gespeichert`**.
-- Verwenden Sie die **Alert**-Komponente, um Nutzer:innen weitere Informationen zu einem Thema zur Verfügung zu stellen.
-
-## Barrierefreiheit
-
-Die **Alert**-Komponente wurde auf die Darstellung mit höchstmöglichen Kontrast optimiert.
-
-Das zusätzliche Icon (je nach gewähltem Typ) gewährleistet, dass die Information vom Nutzer nicht allein über die Farbe klassifiziert werden muss.
-
-Bei der Nutzung eines Screenreaders wird immer das Icon mitgelesen.
-Der Titel sollte daher nicht mit dem **Alert**-Typ beginnen, da das zu einem doppelten Vorlesen des **Alert**-Typs führt.
-
-**Beispiel:**
-Richtig: Label = "Füllen Sie das Feld aus." → Ausgabe: "Fehler - Füllen Sie das Feld aus."
-Falsch: Label = "Fehler: Füllen Sie das Feld aus." → "Ausgabe: Fehler - Fehler: Füllen Sie das Feld aus."
-
-Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefreiheit betrachtet:
-
-- Die Schriftfarbe ist entweder weiß oder schwarz.
-- Die Schriftfarbe ist abhängig von der Hintergrundfarbe und wechselt immer auf die Schriftfarbe mit dem größeren Farbkontrast zur Hintergrundfarbe.
-- Ist der Farbkontrast für AA nicht ausreichend, wird die Hintergrundfarbe überschrieben.
-
-### Barrierefreie Benachrichtigungen mit `_alert`
-
-Die **Alert**-Komponente bietet über das Attribut `_alert` die Möglichkeit, Screenreader-Benachrichtigungen zu aktivieren. Wenn `_alert` gesetzt ist, wird die ARIA-Rolle `alert` bzw. `aria-live="assertive"` verwendet, damit Screenreader die Benachrichtigung automatisch vorlesen.
-
-**Wichtiger Hinweis zum Verhalten:**
-Das `_alert`-Attribut funktioniert nur, wenn:
-- Die **Alert**-Komponente initial neu gerendert wird, oder
-- Sich der **Inhalt** des Alerts ändert
-
-Ohne eine inhaltliche Änderung erkennen Screenreader keine neue Information und lesen den Alert nicht vor.
-
-**Beispiele für wirksame Nutzung:**
-```html
-<!-- Alert wird neu hinzugefügt (initial rendering) -->
-<kol-alert _label="Erfolgreich gespeichert" _type="success" _alert>
-  Ihre Daten wurden erfolgreich übertragen.
-</kol-alert>
-
-<!-- Inhalt ändert sich dynamisch -->
-<kol-alert _label="Status-Update" _type="info" _alert>
-  {dynamicMessage}
-</kol-alert>
-```
-
-**Nicht wirksam:**
-```html
-<!-- Alert bereits vorhanden, kein Re-Render, keine Inhaltsänderung -->
-<kol-alert _label="Statische Meldung" _type="info" _alert>
-  Diese Meldung wird nicht vorgelesen.
-</kol-alert>
-```
-
-### Hinweis zu `_alert` und Screenreadern
-
-Beim `<kol-alert>` lassen sich `role="alert"` und `aria-live="polite"` nachträglich nicht wirksam setzen; beide verhalten sich gleich und werden im Screenreader erst ausgelöst, wenn sich der Inhalt ändert.
-
-## Links und Referenzen
-
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#alert" _target="_blank"></kol-link>
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="alert" />
