@@ -1,18 +1,12 @@
 ---
 title: InputFile
 description: Beschreibung, Spezifikation und Beispiele für die InputFile-Komponente.
-tags:
-  - InputFile
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/input-file/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import InputFilePreview from '@site/src/components/previews/components/InputFile';
 
 # InputFile
 
@@ -22,11 +16,11 @@ Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es kö
 
 ## Konstruktion
 
-### Code
-
-```html
-<kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icons='{"right": "fa-solid fa-camera"}'></kol-input-file>
-```
+<InputFilePreview
+  visibleProperties={['_label', '_accept', '_multiple', '_disabled']}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Events
 
@@ -39,10 +33,6 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | `input`  | Eine oder mehrere Dateien werden ausgewählt (entspricht nativem `input`-Event)  | Ausgwählte Dateien als FileList |
 | `change` | Eine oder mehrere Dateien werden ausgewählt (entspricht nativem `change`-Event) | Ausgwählte Dateien als FileList |
 | `blur`   | Eingabefeld verliert Fokus                                                      | -                               |
-
-### Beispiel
-
-<kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icons='{"right": "fa-solid fa-camera"}'></kol-input-file>
 
 ## Verwendung
 
@@ -67,18 +57,15 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
+# API
+
 <Readme />
 
 ## Verwendung _msg
 
 <PropertyMsgUsage />
 
-<ExampleLink component="input-file" />
-
-## Live-Editor
-
-<LiveEditorCompact component="input-file" />
-
 ## Beispiele
 
-<Configurator component="input-file" sample="basic" />
+<ExampleLink component="input-file" />
+

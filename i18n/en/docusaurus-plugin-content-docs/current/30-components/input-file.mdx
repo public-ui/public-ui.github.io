@@ -4,10 +4,9 @@ description: Description, specification and examples for the InputFile component
 ---
 
 import Readme from '/readmes/input-file/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import InputFilePreview from '@site/src/components/previews/components/InputFile';
 
 # InputFile
 
@@ -17,11 +16,11 @@ The input type **File** creates an input field for uploads, for example. One or 
 
 ## Construction
 
-### Code
-
-```html
-<kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icons='{"right": "fa-solid fa-camera"}'></kol-input-file>
-```
+<InputFilePreview
+  visibleProperties={['_label', '_accept', '_multiple', '_disabled']}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Events
 
@@ -34,10 +33,6 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 | `input` | One or more files are selected (corresponds to native `input` event) | Selected files as FileList |
 | `change` | One or more files are selected (corresponds to native `change` event) | Selected files as FileList |
 | `blur` | Input field loses focus | - |
-
-### Example
-
-<kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icons='{"right": "fa-solid fa-camera"}'></kol-input-file>
 
 ## Usage
 
@@ -62,18 +57,15 @@ Possible values ​​and further information can be found in the <kol-link _hre
 
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
+# API
+
 <Readme />
 
 ## Usage _msg
 
 <PropertyMsgUsage />
 
-<ExampleLink component="input-file" />
-
-## Live editor
-
-<LiveEditorCompact component="input-file" />
-
 ## Examples
 
-<Configurator component="input-file" sample="basic" />
+<ExampleLink component="input-file" />
+
