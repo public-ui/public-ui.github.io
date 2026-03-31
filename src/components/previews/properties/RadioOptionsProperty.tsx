@@ -1,18 +1,18 @@
 import { KolButton, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import React, { useState } from 'react';
-import type { Option } from '@public-ui/components';
+import type { RadioOption } from '@public-ui/components';
 
-const OptionsProperty = (props: {
+const RadioOptionsProperty = (props: {
 	label: string;
-	_value?: Option<string>[];
+	_value?: RadioOption<string>[];
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
 }) => {
-	const [options, setOptions] = useState<Option<string>[]>(() => props._value ?? []);
+	const [options, setOptions] = useState<RadioOption<string>[]>(() => props._value ?? []);
 
-	const emit = (newOptions: Option<string>[]) => {
+	const emit = (newOptions: RadioOption<string>[]) => {
 		setOptions(newOptions);
 		props._on?.onInput?.(new Event('input'), newOptions);
 	};
@@ -25,7 +25,7 @@ const OptionsProperty = (props: {
 		emit(options.filter((_, i) => i !== index));
 	};
 
-	const handleChange = (index: number, field: keyof Option<string>, value: string) => {
+	const handleChange = (index: number, field: keyof RadioOption<string>, value: string) => {
 		const updated = [...options];
 		updated[index] = { ...updated[index], [field]: value };
 		emit(updated);
@@ -57,6 +57,16 @@ const OptionsProperty = (props: {
 								},
 							}}
 						/>
+						<KolInputText
+							_label="Hint"
+							_hideLabel
+							_value={option.hint ?? ""}
+							_on={{
+								onInput: (_event: Event, value: unknown) => {
+									handleChange(index, 'hint', value as string);
+								},
+							}}
+						/>
 						<KolButton
 							_label={translate({ id: 'preview.property.remove' })}
 							_variant="danger"
@@ -77,4 +87,4 @@ const OptionsProperty = (props: {
 	);
 };
 
-export default OptionsProperty;
+export default RadioOptionsProperty;
