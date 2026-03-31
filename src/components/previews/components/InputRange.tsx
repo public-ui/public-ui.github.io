@@ -41,7 +41,7 @@ const InputRangePreview = (props: InputRangePreviewComponentProps) => {
 			visibleProperties={props.visibleProperties}
 			codeCollapsable={props.codeCollapsable}
 			codeCollapsed={props.codeCollapsed}
-			layout={PreviewLayout.CENTERED}
+			layout={PreviewLayout.DEFAULT}
 		>
 			{(componentProps) => <KolInputRange _touched {...componentProps} />}
 		</Preview>
