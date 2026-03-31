@@ -1,18 +1,12 @@
 ---
 title: InputRadio
 description: Beschreibung, Spezifikation und Beispiele für die InputRadio-Komponente.
-tags:
-  - InputRadio
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/input-radio/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import InputRadioPreview from '@site/src/components/previews/components/InputRadio';
 
 # InputRadio
 
@@ -26,15 +20,11 @@ Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und
 
 ## Konstruktion
 
-### Code
-
-```html
-<kol-input-radio _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
-```
-
-### Beispiel
-
-<kol-input-radio _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
+<InputRadioPreview
+	visibleProperties={['_label', '_options', '_orientation', '_disabled']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Verwendung
 
@@ -106,12 +96,6 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 
 <PropertyMsgUsage />
 
+# API
+
 <ExampleLink component="input-radio" />
-
-## Live-Editor
-
-<LiveEditorCompact component="input-radio" />
-
-## Beispiele
-
-<Configurator component="input-radio" sample="basic" />
