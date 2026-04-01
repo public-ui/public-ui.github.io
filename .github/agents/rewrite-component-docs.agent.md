@@ -160,19 +160,21 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 ### Regeln
 
 1. **Niemals Features halluzinieren.** Wenn eine Information nicht in der alten Doku, im README oder in der Preview-Komponente steht, markiere sie mit `[Information nicht im Code gefunden]`.
-2. **Bestehende `visibleProperties`-Arrays aus der alten Doku übernehmen.** Nicht erfinden.
-3. **Wenn kein Preview-Komponente existiert** (d.h. keine `.tsx`-Datei in `src/components/previews/components/`), nutze direkte `<kol-*>`-Tag-Beispiele statt Preview-Komponenten.
-4. **Sprache:** Immer Deutsch. Technische Begriffe, Attributnamen und Code bleiben Englisch.
-5. **Keine `tags:` im Frontmatter.** Diese werden entfernt.
-6. **Kein `slug:` im Frontmatter.** Auto-generiert.
-7. **Kein leerer `## Links und Referenzen`-Abschnitt am Ende** (nur in der `## Barrierefreiheit > ### Links und Referenzen` Sektion).
-8. **Events-Tabelle** gehört nach den Funktionalitäten in `## Konstruktion / Technik`, nicht in `## API`.
-9. **`<Readme />`-Import** verwendet den Bezeichner aus der bestehenden Datei (`Readme`).
-10. **Formatierung**: Tabs für Einrückung (außer in Markdown-Dateien: Spaces), 120 Zeichen Zeilenbreite, Single Quotes in JSX.
+2. **Kein Styling dokumentieren.** Die Dokumentation beschreibt ausschließlich Funktionalität und Verhalten – niemals Farben, Abstände, Anordnung oder andere visuelle Eigenschaften. Das Styling stammt aus den verschiedenen Styleguides, die in KoliBri als Themes umgesetzt sind. Die Sample-App setzt lediglich das Default-Theme, das auch in der Dokumentation verwendet wird. In anderen Themes können Farben, Anordnung, Abstände usw. aufgrund unterschiedlicher Styleguide-Vorgaben abweichen.
+3. **Bestehende `visibleProperties`-Arrays aus der alten Doku übernehmen.** Nicht erfinden.
+4. **Wenn kein Preview-Komponente existiert** (d.h. keine `.tsx`-Datei in `src/components/previews/components/`), nutze direkte `<kol-*>`-Tag-Beispiele statt Preview-Komponenten.
+5. **Sprache:** Immer Deutsch. Technische Begriffe, Attributnamen und Code bleiben Englisch.
+6. **Keine `tags:` im Frontmatter.** Diese werden entfernt.
+7. **Kein `slug:` im Frontmatter.** Auto-generiert.
+8. **Kein leerer `## Links und Referenzen`-Abschnitt am Ende** (nur in der `## Barrierefreiheit > ### Links und Referenzen` Sektion).
+9. **Events-Tabelle** gehört nach den Funktionalitäten in `## Konstruktion / Technik`, nicht in `## API`.
+10. **`<Readme />`-Import** verwendet den Bezeichner aus der bestehenden Datei (`Readme`).
+11. **Formatierung**: Tabs für Einrückung (außer in Markdown-Dateien: Spaces), 120 Zeichen Zeilenbreite, Single Quotes in JSX.
 
 ### Qualitätsprüfung vor dem Speichern
 
 - [ ] Alle Abschnitte des Templates vorhanden (oder begründet weggelassen)?
+- [ ] Kein Styling (Farben, Abstände, Anordnung) dokumentiert?
 - [ ] Keine halluzinierten Props oder Features?
 - [ ] `visibleProperties` aus bestehender Doku übernommen?
 - [ ] Links als `<kol-link>`-Komponenten formatiert?

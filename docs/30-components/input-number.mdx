@@ -1,16 +1,10 @@
 ---
 title: InputNumber
 description: Beschreibung, Spezifikation und Beispiele für die InputNumber-Komponente.
-tags:
-  - InputNumber
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/input-number/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import InputNumberPreview from '@site/src/components/previews/components/InputNumber';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 
@@ -20,11 +14,11 @@ Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
 
 ## Konstruktion
 
-### Code
-
-```html
-<kol-input-number _value="74" _label="ZAHL!" _icons='{"right": "fa-solid fa-gauge"}'></kol-input-number>
-```
+<InputNumberPreview
+  visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Events
 
@@ -37,10 +31,6 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | `blur`   | Eingabefeld verliert Fokus       | -                               |
 | `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
 | `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
-
-### Beispiel
-
-<kol-input-number _value="74" _label="ZAHL!" _icons='{"right": "fa-solid fa-gauge"}'></kol-input-number>
 
 ## Verwendung
 
@@ -59,18 +49,14 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
+# API
+
 <Readme />
 
 ## Verwendung _msg
 
 <PropertyMsgUsage />
 
-<ExampleLink component="input-number" />
-
-## Live-Editor
-
-<LiveEditorCompact component="input-number" />
-
 ## Beispiele
 
-<Configurator component="input-number" sample="basic" />
+<ExampleLink component="input-number" />
