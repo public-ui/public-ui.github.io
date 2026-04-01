@@ -2,7 +2,7 @@ import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
-import { KolInputFile, KolInputText } from '@public-ui/react-v19';
+import { KolInputFile, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
 interface InputFilePreviewComponentProps {
@@ -21,7 +21,20 @@ const InputFilePreview = (props: InputFilePreviewComponentProps) => {
 		<Preview<JSX.KolInputFile>
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_accept: <KolInputText _label="Accept" />,
+				_accept: (
+					<KolSelect
+						_label="Accept"
+						_options={[
+							{ label: 'All files', value: '' },
+							{ label: 'Images (image/*)', value: 'image/*' },
+							{ label: 'PDF (.pdf)', value: '.pdf' },
+							{ label: 'Text (.txt)', value: '.txt' },
+							{ label: 'Markdown (.md)', value: '.md' },
+							{ label: 'Word (.doc, .docx)', value: '.doc,.docx' },
+							{ label: 'Excel (.xls, .xlsx)', value: '.xls,.xlsx' },
+						]}
+					/>
+				),
 				_icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
 				_accessKey: <KolInputText _label="Access Key" />,
 				_name: <KolInputText _label="Name" />,
