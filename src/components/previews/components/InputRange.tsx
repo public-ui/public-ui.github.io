@@ -17,6 +17,7 @@ const InputRangePreview = (props: InputRangePreviewComponentProps) => {
 		_label: translate({ id: 'preview.component.input-range.label' }),
 		_min: 0,
 		_max: 100,
+		_step: 1,
 		_value: 50,
 	};
 
