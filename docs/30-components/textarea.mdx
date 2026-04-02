@@ -5,8 +5,6 @@ description: Beschreibung, Spezifikation und Beispiele für die Textarea-Kompone
 
 import Readme from '../../readmes/textarea/readme.md';
 import TextAreaPreview from '@site/src/components/previews/components/Textarea';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Textarea
@@ -90,7 +88,7 @@ Testen Sie die verschiedenen Eigenschaften der Textarea-Komponente:
 
 <TextAreaPreview 
   _value="" 
-  visibleProperties={["_value", "_placeholder", "_disabled", "_label", "_hint", "_rows", "_resize", "_required", "_readOnly"]} 
+  visibleProperties={["_value", "_placeholder", "_disabled", "_label", "_hint", "_rows", "_resize", "_required", "_readOnly", "_hideLabel"]} 
   initialProps={{ _label: "Beschreibung", _placeholder: "Bitte geben Sie eine Beschreibung ein...", _hint: "Hinweistext", _rows: 4 }}
 />
 
@@ -124,7 +122,7 @@ Standard-Attribute für Formulare:
 
 <TextAreaPreview 
   _value="" 
-  visibleProperties={["_label", "_value", "_msg", "_hint", "_disabled", "_readOnly", "_required"]} 
+  visibleProperties={["_label", "_value", "_msg", "_hint", "_disabled", "_readOnly", "_required", "_hideLabel"]} 
   initialProps={{ _label: "Beschreibung" }}
   codeCollapsable
   codeCollapsed
@@ -136,6 +134,7 @@ Standard-Attribute für Formulare:
 - `_disabled`: Deaktiviert das Eingabefeld (mit Begründung verwenden!)
 - `_readOnly`: Verhindert die Bearbeitung des Feldes
 - `_required`: Kennzeichnet Pflichtfelder
+- `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
 
 #### Placeholder
 
