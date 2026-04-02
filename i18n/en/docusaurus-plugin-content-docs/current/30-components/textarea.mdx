@@ -68,11 +68,11 @@ The **Textarea** component is based on the native `<textarea>` HTML element and 
 
 ### Semantics and ARIA
 
-- The component renders a native `<textarea>` element that is programmatically associated with a `<label>` element. This association ensures that screen readers announce the input field correctly.
+- The component renders a native `<textarea>` element linked to a `<label>` element via the standard `for`/`id` pattern. This native HTML association ensures that screen readers announce the input correctly — no additional ARIA attributes are needed.
 - Hint texts (`_hint`) and error messages (`_msg`) are linked to the textarea via `aria-describedby`, so that assistive technologies read these together with the field label.
-- Required fields (`_required`) set the native `required` attribute as well as `aria-required="true"`, so that screen readers inform users of the mandatory field designation.
-- In the error state, `aria-invalid="true"` is set to communicate the error condition to assistive technologies.
-- Disabled fields (`_disabled`) use the native `disabled` attribute; read-only fields (`_readOnly`) set `readonly`.
+- Required fields (`_required`) set the native `required` attribute. A redundant `aria-required` is not set, as the native attribute is sufficient for assistive technologies.
+- Error states are communicated via `aria-describedby`, which points to the displayed error message. No `aria-invalid` is set — the error description in the linked element is sufficient for screen readers.
+- Disabled fields (`_disabled`) use the native `disabled` attribute; read-only fields (`_readOnly`) set the native `readonly` attribute. ARIA equivalents are deliberately not set (minimal-ARIA principle).
 
 ### Labels and text alternatives
 
@@ -87,18 +87,6 @@ The **Textarea** component is based on the native `<textarea>` HTML element and 
 - An additional text that is hidden for sighted users (e.g. "You can enter up to 100 characters.") is output exclusively for assistive technologies.
 - With `_max-length-behavior="soft"`, the native `maxlength` attribute is **not** set; the counter shows exceeded characters without blocking input.
 
-### Keyboard controls
-
-| Key | Function |
-| --- | -------- |
-| `Tab` | Focuses the textarea or moves to the next interactive element. |
-| `Shift + Tab` | Moves to the previous interactive element. |
-| `Arrow keys` | Navigate within the text content of the focused textarea. |
-| `Home` | Jumps to the beginning of the current line. |
-| `End` | Jumps to the end of the current line. |
-| `Ctrl + A` | Selects all text in the textarea. |
-| `Enter` | Inserts a line break (unlike single-line input fields). |
-
 ### Relevant WCAG 2.2 success criteria
 
 | Success criterion | Description | Conformance level |
@@ -111,7 +99,7 @@ The **Textarea** component is based on the native `<textarea>` HTML element and 
 | 2.4.7 | Focus Visible — the focused state of the textarea is visually recognisable | AA |
 | 2.4.11 | Focus Not Obscured (Minimum) — the focused textarea is not completely hidden by other content | AA |
 | 2.5.8 | Target Size (Minimum) — the input field meets the minimum size of 24×24 CSS pixels | AA |
-| 3.3.1 | Error Identification — invalid input is communicated with `aria-invalid` and a descriptive error message (`_msg`) | A |
+| 3.3.1 | Error Identification — invalid input is communicated via `aria-describedby` with a descriptive error message (`_msg`) | A |
 | 3.3.2 | Labels or Instructions — `_label` is mandatory and provides the accessible name; when `_hideLabel` is used, the accessible name is preserved but the label is only visible as a tooltip on focus | A |
 | 4.1.2 | Name, Role, Value — name (label), role (textarea) and state (required, disabled, invalid) are programmatically determinable | A |
 | 4.1.3 | Status Messages — the character counter uses a time-delayed update to bundle screen reader events | AA |
@@ -120,9 +108,12 @@ The **Textarea** component is based on the native `<textarea>` HTML element and 
 
 BITV 2.0 (§ 3 para. 1) refers to EN 301 549 as the binding technical standard. All WCAG 2.2 success criteria listed above are covered by Chapter 9 (Web) of EN 301 549 v3.2.1. For use in native web applications, the requirements of Chapter 11 (Software) of EN 301 549 additionally apply. BITV-specific requirements such as sign language videos or easy language alternatives are not directly relevant for this component.
 
+The [Handreichung zur BITV 2.0 — Barrierefreie Gestaltung von User Interface-Elementen](https://handreichungen.bfit-bund.de/barrierefreie-uie/) from bfit-bund provides specific test instructions for text input fields, covering programmatic labelling (9.1.3.1h), error identification (9.3.3.1) and keyboard operability (9.2.1.1), which align with the criteria listed above.
+
 ### Links and references
 
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" _target="_blank" _label="MDN Web Docs: textarea element"></kol-link>
+- <kol-link _href="https://handreichungen.bfit-bund.de/barrierefreie-uie/" _target="_blank" _label="Handreichung zur BITV 2.0: Accessible UI Elements (bfit-bund)"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.2: Understanding Success Criterion 3.3.2 Labels or Instructions"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.2: Understanding Success Criterion 3.3.1 Error Identification"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html" _target="_blank" _label="WCAG 2.2: Understanding Success Criterion 4.1.2 Name, Role, Value"></kol-link>

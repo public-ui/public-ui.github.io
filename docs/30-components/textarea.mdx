@@ -33,11 +33,11 @@ Die **Textarea**-Komponente basiert auf dem nativen `<textarea>`-HTML-Element un
 
 ### Semantik und ARIA
 
-- Die Komponente rendert ein natives `<textarea>`-Element, das programmatisch mit einem `<label>`-Element verknüpft ist. Diese Verknüpfung stellt sicher, dass Screenreader das Eingabefeld korrekt ansagen.
+- Die Komponente rendert ein natives `<textarea>`-Element, das über das `for`/`id`-Muster mit einem `<label>`-Element verknüpft ist. Diese native HTML-Verknüpfung stellt sicher, dass Screenreader das Eingabefeld korrekt ansagen — ohne zusätzliche ARIA-Attribute.
 - Hinweistexte (`_hint`) und Fehlermeldungen (`_msg`) werden über `aria-describedby` mit der Textarea verknüpft, sodass assistive Technologien diese Informationen zusammen mit der Feldbezeichnung vorlesen.
-- Pflichtfelder (`_required`) setzen das native `required`-Attribut sowie `aria-required="true"`, damit Screenreader Nutzende auf die Pflichtfeldkennzeichnung hinweisen.
-- Im Fehlerfall wird `aria-invalid="true"` gesetzt, um den Fehlerzustand an assistive Technologien zu übermitteln.
-- Deaktivierte Felder (`_disabled`) verwenden das native `disabled`-Attribut; schreibgeschützte Felder (`_readOnly`) setzen `readonly`.
+- Pflichtfelder (`_required`) setzen das native `required`-Attribut. Ein redundantes `aria-required` wird nicht gesetzt, da das native Attribut für assistive Technologien ausreicht.
+- Fehlerzustände werden über `aria-describedby` kommuniziert, das auf die angezeigte Fehlermeldung verweist. Es wird kein `aria-invalid` gesetzt — die Fehlerbeschreibung im verknüpften Element ist für Screenreader ausreichend.
+- Deaktivierte Felder (`_disabled`) verwenden das native `disabled`-Attribut; schreibgeschützte Felder (`_readOnly`) setzen das native `readonly`-Attribut. ARIA-Entsprechungen werden bewusst nicht gesetzt (Minimal-ARIA-Prinzip).
 
 ### Beschriftung und Textalternativen
 
@@ -52,10 +52,6 @@ Die **Textarea**-Komponente basiert auf dem nativen `<textarea>`-HTML-Element un
 - Zusätzlich wird ein für sehende Nutzende versteckter Text ausgegeben (z.B. „Sie können bis zu 100 Zeichen eingeben"), der ausschließlich für assistive Technologien sichtbar ist.
 - Bei `_max-length-behavior="soft"` wird das native `maxlength`-Attribut **nicht** gesetzt; der Zähler zeigt überschrittene Zeichen an, ohne die Eingabe zu sperren.
 
-### Tastatursteuerung
-
-Siehe [Tastatursteuerung](#tastatursteuerung) im Abschnitt Nutzung.
-
 ### Relevante WCAG 2.2 Erfolgskriterien
 
 | Erfolgskriterium | Beschreibung | Konformitätsstufe |
@@ -68,7 +64,7 @@ Siehe [Tastatursteuerung](#tastatursteuerung) im Abschnitt Nutzung.
 | 2.4.7 | Sichtbarer Fokus — Der Fokuszustand der Textarea ist visuell erkennbar | AA |
 | 2.4.11 | Fokus nicht verdeckt (Minimum) — Die fokussierte Textarea wird nicht vollständig durch andere Inhalte überdeckt | AA |
 | 2.5.8 | Zielgröße (Minimum) — Das Eingabefeld erfüllt die Mindestgröße von 24×24 CSS-Pixeln | AA |
-| 3.3.1 | Fehlererkennung — Fehlerhafte Eingaben werden mit `aria-invalid` und einer beschreibenden Fehlermeldung (`_msg`) kommuniziert | A |
+| 3.3.1 | Fehlererkennung — Fehlerhafte Eingaben werden über `aria-describedby` mit einer beschreibenden Fehlermeldung (`_msg`) kommuniziert | A |
 | 3.3.2 | Beschriftungen oder Anweisungen — `_label` ist verpflichtend und stellt den barrierefreien Namen bereit; bei Verwendung von `_hideLabel` bleibt der accessible name erhalten, das Label ist jedoch nur als Tooltip beim Fokus sichtbar | A |
 | 4.1.2 | Name, Rolle, Wert — Name (label), Rolle (textarea), Zustand (required, disabled, invalid) sind programmatisch bestimmbar | A |
 | 4.1.3 | Statusmeldungen — Der Zeichenzähler nutzt eine zeitlich verzögerte Aktualisierung, um Screenreader-Ereignisse zu bündeln | AA |
@@ -77,9 +73,12 @@ Siehe [Tastatursteuerung](#tastatursteuerung) im Abschnitt Nutzung.
 
 Die BITV 2.0 verweist in § 3 Abs. 1 auf die EN 301 549 als verbindlichen technischen Standard. Alle oben genannten WCAG 2.2 Erfolgskriterien sind über Kapitel 9 (Web) der EN 301 549 v3.2.1 abgedeckt. Für den Einsatz in nativen Web-Applikationen gelten ergänzend die Anforderungen aus Kapitel 11 der EN 301 549 (Software). Spezifische BITV-Anforderungen wie Gebärdensprachvideos oder Leichte-Sprache-Alternativen sind für diese Komponente nicht direkt relevant.
 
+Die [Handreichung zur BITV 2.0 — Barrierefreie Gestaltung von User Interface-Elementen](https://handreichungen.bfit-bund.de/barrierefreie-uie/) des bfit-bund enthält konkrete Prüfanleitungen für Texteingabefelder (Kategorie *Texteingabe*), die insbesondere die programmatische Beschriftung (9.1.3.1h), die Fehleridentifikation (9.3.3.1) sowie die Tastaturbedienbarkeit (9.2.1.1) abdecken und mit den oben aufgeführten Kriterien übereinstimmen.
+
 ### Links und Referenzen
 
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" _target="_blank" _label="MDN Web Docs: textarea-Element"></kol-link>
+- <kol-link _href="https://handreichungen.bfit-bund.de/barrierefreie-uie/" _target="_blank" _label="Handreichung zur BITV 2.0: Barrierefreie Gestaltung von User Interface-Elementen (bfit-bund)"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.2: Erfolgskriterium 3.3.2 Beschriftungen oder Anweisungen verstehen"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.2: Erfolgskriterium 3.3.1 Fehlererkennung verstehen"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html" _target="_blank" _label="WCAG 2.2: Erfolgskriterium 4.1.2 Name, Rolle, Wert verstehen"></kol-link>
