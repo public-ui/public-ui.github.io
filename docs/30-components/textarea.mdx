@@ -29,21 +29,60 @@ Standard-Textarea mit Beschriftung und Platzhaltertext:
 
 ## Barrierefreiheit
 
-Die **Textarea**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt und unterstützt verschiedene assistive Technologien:
+Die **Textarea**-Komponente basiert auf dem nativen `<textarea>`-HTML-Element und wurde konsequent nach den Anforderungen der WCAG 2.2, BITV 2.0 und EN 301 549 entwickelt.
 
-- **Label-Pflicht**: Jede Textarea muss über das Attribut `_label` eine sichtbare Beschriftung erhalten. Dies gewährleistet, dass Screenreader-Nutzer verstehen, welchen Zweck das Eingabefeld erfüllt.
-- **Hinweistexte**: Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die für alle Nutzer zugänglich sind und von Screenreadern vorgelesen werden.
-- **Fehlermeldungen**: Fehlerhafte Eingaben können über das Attribut `_msg` mit aussagekräftigen Fehlermeldungen versehen werden, die von assistiven Technologien erkannt und vorgelesen werden.
-- **Zeichenzähler**: Bei aktiviertem Zeichenzähler (`_has-counter`) wird der Status mit einer Verzögerung von 500 ms aktualisiert, um Screenreader nicht bei jeder Eingabe zu unterbrechen. Zusätzlich wird ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet (z.B. "Sie können bis zu 100 Zeichen eingeben").
-- **Fokusmanagement**: Die Textarea ist vollständig über die Tastatur bedienbar und bietet klare Fokusindikatoren.
-- **Pflichtfelder**: Mit `_required` gekennzeichnete Felder werden korrekt an assistive Technologien kommuniziert.
+### Semantik und ARIA
+
+- Die Komponente rendert ein natives `<textarea>`-Element, das programmatisch mit einem `<label>`-Element verknüpft ist. Diese Verknüpfung stellt sicher, dass Screenreader das Eingabefeld korrekt ansagen.
+- Hinweistexte (`_hint`) und Fehlermeldungen (`_msg`) werden über `aria-describedby` mit der Textarea verknüpft, sodass assistive Technologien diese Informationen zusammen mit der Feldbezeichnung vorlesen.
+- Pflichtfelder (`_required`) setzen das native `required`-Attribut sowie `aria-required="true"`, damit Screenreader Nutzende auf die Pflichtfeldkennzeichnung hinweisen.
+- Im Fehlerfall wird `aria-invalid="true"` gesetzt, um den Fehlerzustand an assistive Technologien zu übermitteln.
+- Deaktivierte Felder (`_disabled`) verwenden das native `disabled`-Attribut; schreibgeschützte Felder (`_readOnly`) setzen `readonly`.
+
+### Beschriftung und Textalternativen
+
+- Das Attribut `_label` ist verpflichtend und stellt sicher, dass jede Textarea eine sichtbare, programmatisch verknüpfte Beschriftung besitzt (WCAG 2.2 Erfolgskriterium 3.3.2).
+- Ergänzende Hinweise werden über `_hint` bereitgestellt und über `aria-describedby` mit dem Eingabefeld verknüpft.
+- Fehlermeldungen werden über `_msg` übergeben, ebenfalls per `aria-describedby` verknüpft und von Screenreadern vorgelesen.
+
+### Zeichenzähler
+
+- Bei aktiviertem Zeichenzähler (`_has-counter`) aktualisiert sich die Anzeige mit einer **Verzögerung von 500 ms**, damit Screenreader-Ankündigungen gebündelt werden und das Tippen nicht unterbrechen.
+- Zusätzlich wird ein für sehende Nutzende versteckter Text ausgegeben (z.B. „Sie können bis zu 100 Zeichen eingeben"), der ausschließlich für assistive Technologien sichtbar ist.
+- Bei `_max-length-behavior="soft"` wird das native `maxlength`-Attribut **nicht** gesetzt; der Zähler zeigt überschrittene Zeichen an, ohne die Eingabe zu sperren.
+
+### Tastatursteuerung
+
+Siehe [Tastatursteuerung](#tastatursteuerung) im Abschnitt Nutzung.
+
+### Relevante WCAG 2.2 Erfolgskriterien
+
+| Erfolgskriterium | Beschreibung | Konformitätsstufe |
+| ---------------- | ------------ | ----------------- |
+| 1.3.1 | Informationen und Beziehungen — Label-Verknüpfung und `aria-describedby` für Hinweise und Fehlermeldungen | A |
+| 1.3.5 | Eingabezweck bestimmen — Unterstützung von `autocomplete`-Attribut für bekannte Eingabetypen | AA |
+| 1.4.3 | Kontrast (Minimum) — Text im Eingabefeld und Beschriftung erfüllen das Kontrastverhältnis von 4,5:1 | AA |
+| 1.4.11 | Nicht-Text-Kontrast — Fokusindikator und Rahmen des Eingabefelds erfüllen ein Kontrastverhältnis von mindestens 3:1 | AA |
+| 2.1.1 | Tastatur — Die Komponente ist vollständig per Tastatur bedienbar | A |
+| 2.4.7 | Sichtbarer Fokus — Der Fokuszustand der Textarea ist visuell erkennbar | AA |
+| 2.4.11 | Fokus nicht verdeckt (Minimum) — Die fokussierte Textarea wird nicht vollständig durch andere Inhalte überdeckt | AA |
+| 2.5.8 | Zielgröße (Minimum) — Das Eingabefeld erfüllt die Mindestgröße von 24×24 CSS-Pixeln | AA |
+| 3.3.1 | Fehlererkennung — Fehlerhafte Eingaben werden mit `aria-invalid` und einer beschreibenden Fehlermeldung (`_msg`) kommuniziert | A |
+| 3.3.2 | Beschriftungen oder Anweisungen — Jede Textarea erhält eine sichtbare Beschriftung über `_label` | A |
+| 4.1.2 | Name, Rolle, Wert — Name (label), Rolle (textarea), Zustand (required, disabled, invalid) sind programmatisch bestimmbar | A |
+| 4.1.3 | Statusmeldungen — Der Zeichenzähler nutzt eine zeitlich verzögerte Aktualisierung, um Screenreader-Ereignisse zu bündeln | AA |
+
+### BITV 2.0 und EN 301 549
+
+Die BITV 2.0 verweist in § 3 Abs. 1 auf die EN 301 549 als verbindlichen technischen Standard. Alle oben genannten WCAG 2.2 Erfolgskriterien sind über Kapitel 9 (Web) der EN 301 549 v3.2.1 abgedeckt. Für den Einsatz in nativen Web-Applikationen gelten ergänzend die Anforderungen aus Kapitel 11 der EN 301 549 (Software). Spezifische BITV-Anforderungen wie Gebärdensprachvideos oder Leichte-Sprache-Alternativen sind für diese Komponente nicht direkt relevant.
 
 ### Links und Referenzen
 
-- <ExampleLink component="textarea" />
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" _target="_blank" _label="MDN Web Docs - textarea Element"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" _target="_blank" _label="MDN Web Docs: textarea-Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.2: Erfolgskriterium 3.3.2 Beschriftungen oder Anweisungen verstehen"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.2: Erfolgskriterium 3.3.1 Fehlererkennung verstehen"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html" _target="_blank" _label="WCAG 2.2: Erfolgskriterium 4.1.2 Name, Rolle, Wert verstehen"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html" _target="_blank" _label="WCAG 2.2: Erfolgskriterium 2.1.1 Tastatur verstehen"></kol-link>
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
 
 ## Nutzung
