@@ -184,11 +184,21 @@ Führe nun die Änderungen durch. Beachte dabei strikt folgende Regeln:
 
 ### Dateien ändern
 
-- `docs/30-components/{component}.mdx` – Hauptdokumentation (Deutsch)
-- Optional: `i18n/en/docusaurus-plugin-content-docs/current/30-components/{component}.mdx`
-  – falls eine englische Version existiert, dieselben Änderungen anwenden
-- Optional: `src/components/previews/components/{Component}.tsx`
+**Pflicht – immer beide Sprachversionen aktualisieren:**
+
+1. `docs/30-components/{component}.mdx` – Hauptdokumentation (Deutsch)
+2. `i18n/en/docusaurus-plugin-content-docs/current/30-components/{component}.mdx`
+   – Englische Version; dieselben inhaltlichen Änderungen anwenden.
+   Lies die Datei zuerst vollständig, dann übertrage alle Änderungen sinngemäß
+   ins Englische. Technische Begriffe, Property-Namen und Code bleiben identisch.
+
+**Optional:**
+
+- `src/components/previews/components/{Component}.tsx`
   – falls neue Properties zu `visibleProperties` hinzugefügt werden
+
+> **Wichtig**: Beide Sprachversionen müssen nach dem Sync inhaltlich identisch
+> sein. Eine Änderung, die nur in einer Sprache landet, ist ein Fehler.
 
 ---
 
@@ -199,8 +209,11 @@ Erstelle am Ende einen kurzen Bericht:
 ```
 ## Sync-Bericht: {Component}
 
-### Geändert
+### Geändert (DE: docs/30-components/{component}.mdx)
 - [Liste aller vorgenommenen Änderungen mit Begründung]
+
+### Geändert (EN: i18n/en/.../30-components/{component}.mdx)
+- [Dieselben Änderungen auf Englisch – oder Abweichungen vermerken]
 
 ### Nicht geändert (korrekt)
 - [Was bereits korrekt war]
@@ -213,10 +226,13 @@ Erstelle am Ende einen kurzen Bericht:
 
 ## Schritt 6: Qualitätsprüfung
 
-Prüfe die geänderten Dateien auf Formatierung:
+Prüfe alle geänderten Dateien auf Formatierung:
 
 ```bash
-npx prettier docs/30-components/{component}.mdx --write
+npx prettier \
+  docs/30-components/{component}.mdx \
+  i18n/en/docusaurus-plugin-content-docs/current/30-components/{component}.mdx \
+  --write
 ```
 
 Falls eine Preview-Komponente geändert wurde:
