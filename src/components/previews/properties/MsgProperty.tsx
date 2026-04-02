@@ -35,7 +35,7 @@ const MsgProperty = (props: {
 			<div className="flex flex-row gap-2">
 				<KolSelect
 					_label="Type"
-					_value={[type]}
+					_value={type}
 					_options={[
 						{ label: 'Error', value: 'error' },
 						{ label: 'Warning', value: 'warning' },
