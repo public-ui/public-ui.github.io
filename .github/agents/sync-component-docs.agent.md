@@ -79,11 +79,21 @@ Rufe den TypeScript-Quellcode der Komponente direkt aus dem KoliBri-Repository a
 Der Pfad im Repository ist:
 `packages/components/src/components/{component}/`
 
-Verwende `fetch`, um folgende GitHub-URLs abzurufen
-(ersetze `{component}` entsprechend):
+Ermittle zunächst den aktuellen Default-Branch des KoliBri-Repositories:
 
 ```
-https://raw.githubusercontent.com/public-ui/kolibri/main/packages/components/src/components/{component}/component.ts
+https://api.github.com/repos/public-ui/kolibri
+```
+
+Das Feld `default_branch` im JSON-Response gibt den Branch an (typischerweise
+`main` oder `develop`). Verwende diesen Wert als `{branch}` in allen
+folgenden URLs.
+
+Verwende dann `fetch`, um folgende GitHub-URLs abzurufen
+(ersetze `{component}` und `{branch}` entsprechend):
+
+```
+https://raw.githubusercontent.com/public-ui/kolibri/{branch}/packages/components/src/components/{component}/component.ts
 ```
 
 Falls diese URL 404 liefert, versuche Varianten:
@@ -92,7 +102,7 @@ Falls diese URL 404 liefert, versuche Varianten:
 
 Suche außerdem nach der Props-/Types-Datei:
 ```
-https://raw.githubusercontent.com/public-ui/kolibri/main/packages/components/src/components/{component}/types.ts
+https://raw.githubusercontent.com/public-ui/kolibri/{branch}/packages/components/src/components/{component}/types.ts
 ```
 
 Analysiere den Quellcode auf:
@@ -106,7 +116,7 @@ Analysiere den Quellcode auf:
 
 Nutze `fetch` auf:
 ```
-https://api.github.com/repos/public-ui/kolibri/contents/packages/components/src/components/{component}
+https://api.github.com/repos/public-ui/kolibri/contents/packages/components/src/components/{component}?ref={branch}
 ```
 
 Der Response enthält die Dateiliste als JSON-Array. Lese dann die relevanten
@@ -180,7 +190,8 @@ Führe nun die Änderungen durch. Beachte dabei strikt folgende Regeln:
 7. **Events-Tabelle** gehört in `## Konstruktion / Technik`, nicht in `## API`.
 8. **`<Readme />`** bleibt immer am Ende unter `## API` erhalten.
 9. **Formatierung**: Tabs für Einrückung in MDX/TSX, 120 Zeichen Zeilenbreite,
-   Single Quotes in JSX/TSX.
+   Single Quotes in JS/TS-Strings, Double Quotes in JSX/TSX-Attributen
+   (Prettier-Standard: `singleQuote: true`, `jsxSingleQuote` nicht gesetzt).
 
 ### Dateien ändern
 
