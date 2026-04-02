@@ -4,165 +4,257 @@ description: Description, specification and examples for the Textarea component.
 ---
 
 import Readme from '/readmes/textarea/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import TextAreaPreview from '@site/src/components/previews/components/Textarea';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Textarea
 
-The **Textarea** component provides a larger input field for content. In contrast to the <kol-link _href="../components/input-text" _label="/docs/components/input-text" _label="InputText"></kol-link>, extensive content can also be entered here, which can also contain line breaks.
+**Synonyms:** Multi-line input field, text area, text input field
 
-## Construction
+A **Textarea** is a multi-line input field that allows users to enter longer texts with line breaks. Unlike single-line input fields, the textarea provides enough space for extensive text content such as descriptions, comments, or structured information. The component supports various configuration options such as resizing, character limits, accessibility, and automatic height adjustment.
 
-### Code
+## Example
 
-```html
-<kol-textarea
-  _label="Beschreibung"
-  _resize="none"
-  _rows="5"
-  _value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-    elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-    et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-    sit amet."
-></kol-textarea>
-```
+Standard textarea with label and placeholder text:
+
+<TextAreaPreview
+	_value=""
+	visibleProperties={['_value', '_placeholder', '_label', '_hint', '_msg']}
+	initialProps={{ _label: 'Description', _placeholder: 'Please enter your description...', _hint: 'Additional hints for the input field', _rows: 4 }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## Accessibility
+
+The **Textarea** component was developed with a focus on accessibility and supports various assistive technologies:
+
+- **Label requirement**: Every textarea must have a visible label via the `_label` attribute. This ensures that screen reader users understand the purpose of the input field.
+- **Hint texts**: With `_hint`, additional information can be provided that is accessible to all users and read aloud by screen readers.
+- **Error messages**: Invalid input can be provided with meaningful error messages via the `_msg` attribute, which are recognized and read aloud by assistive technologies.
+- **Character counter**: When the character counter is enabled (`_has-counter`), the status is updated with a 500ms delay to avoid interrupting screen readers with every keystroke. Additionally, a hidden text visible only to assistive technologies is displayed (e.g., "You can enter up to 100 characters").
+- **Focus management**: The textarea is fully operable via keyboard and provides clear focus indicators.
+- **Required fields**: Fields marked with `_required` are correctly communicated to assistive technologies.
+
+### Links and references
+
+- <ExampleLink component="textarea" />
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" _target="_blank" _label="MDN Web Docs - textarea Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus and Accessibility"></kol-link>
+
+## Usage
+
+### Keyboard controls
+
+The textarea supports the following keyboard shortcuts:
+
+| Key           | Function                                                           |
+| ------------- | ------------------------------------------------------------------ |
+| `Tab`         | Focuses the textarea or switches to the next interactive element.  |
+| `Shift + Tab` | Switches to the previous interactive element.                      |
+| `Arrow keys`  | Navigation within the text content of the focused textarea.        |
+| `Home`        | Jumps to the beginning of the current line.                        |
+| `End`         | Jumps to the end of the current line.                              |
+| `Ctrl + A`    | Selects all text in the textarea.                                  |
+| `Enter`       | Inserts a line break (unlike single-line input fields).            |
+
+### Best Practices / Recommendations
+
+- **Choose a sensible height**: Start with a few rows (e.g., `_rows="4"`) and allow resizing via `_resize` if needed, but avoid horizontal scrolling.
+- **Sensible maximum length**: Set a technically justified maximum character length and make it transparent with `_has-counter` and `_max-length`. For softer limits, use `_max-length-behavior="soft"`.
+- **Provide help texts**: Provide format specifications or hints via the `_hint` attribute before input, not only after an error.
+- **Leave control to the user**: Do not force capitalization. Users retain control over the entered text.
+- **Transparency with truncation**: Never truncate or modify content without notice. Communicate clearly when truncation occurs.
+- **Choose the right component**: For short, single-line input, use the <kol-link _href="../components/input-text" _label="Input-Text component"></kol-link> instead. Textareas are intended for multi-line content.
+- **Meaningful labels**: Use clear and precise labels that clearly communicate the purpose of the input field.
+- **Error messages**: For validation errors, provide specific, understandable hints via the `_msg` attribute.
+
+### Use cases
+
+- **Comments and feedback**: Capturing user comments, feedback, or reviews.
+- **Descriptions**: Entering product, article, or person descriptions.
+- **Form fields**: Capturing requests, inquiries, or justifications in forms.
+- **Structured data**: Entering multi-line addresses, notes, or instructions.
+- **Messages**: Composing emails, messages, or communications.
+- **Documentation**: Entering longer texts for documentation or content management systems.
+
+## Construction / Technology
+
+### Playground
+
+Test the various properties of the Textarea component:
+
+<TextAreaPreview
+	_value=""
+	visibleProperties={['_value', '_placeholder', '_disabled', '_label', '_hint', '_rows', '_resize', '_required', '_readOnly', '_hideLabel']}
+	initialProps={{ _label: 'Description', _placeholder: 'Please enter a description...', _hint: 'Hint text', _rows: 4 }}
+/>
+
+### Functionalities
+
+#### Simple Textarea
+
+Standard textarea without special configuration:
+
+<TextAreaPreview initialProps={{ _label: 'Description' }} visibleProperties={[]} codeCollapsable codeCollapsed />
+
+#### Automatic height adjustment
+
+The textarea automatically adjusts its height to the content:
+
+<TextAreaPreview
+	initialProps={{
+		_label: 'Description',
+		_value: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
+
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.`,
+		_adjustHeight: true,
+	}}
+	visibleProperties={['_adjustHeight']}
+	codeCollapsable
+/>
+
+#### Form attributes
+
+Standard attributes for forms:
+
+<TextAreaPreview
+	_value=""
+	visibleProperties={['_label', '_value', '_msg', '_hint', '_disabled', '_readOnly', '_required', '_hideLabel']}
+	initialProps={{ _label: 'Description' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Available attributes:**
+- `_msg`: Error messages or validation hints
+- `_hint`: Additional hints for the input
+- `_disabled`: Disables the input field (use with justification!)
+- `_readOnly`: Prevents editing of the field
+- `_required`: Marks required fields
+- `_hideLabel`: Visually hides the label (remains visible to assistive technologies)
+
+#### Placeholder
+
+The placeholder text is displayed when the input field is empty:
+
+<TextAreaPreview
+	_value=""
+	visibleProperties={['_placeholder']}
+	initialProps={{ _label: 'Description', _placeholder: 'Please enter a description...' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Note**: The placeholder should only serve as supplementary help and should not contain mandatory information, as the text disappears when typing.
+
+#### Read-only mode
+
+The textarea is read-only but not editable:
+
+<TextAreaPreview
+	_value="This is a read-only text area."
+	visibleProperties={['_readOnly']}
+	initialProps={{ _label: 'Description', _readOnly: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Resize
+
+The textarea can be resized using the `_resize` attribute:
+
+<TextAreaPreview
+	_value=""
+	visibleProperties={['_resize']}
+	initialProps={{ _label: 'Description', _resize: 'vertical' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Available values:**
+- `vertical`: Only vertically resizable (default)
+- `horizontal`: Only horizontally resizable
+- `both`: Resizable in both directions
+- `none`: No resizing possible
+
+#### Number of rows
+
+The initial height of the textarea can be specified in rows using the `_rows` attribute:
+
+<TextAreaPreview
+	_value=""
+	visibleProperties={['_rows']}
+	initialProps={{ _label: 'Description', _rows: 6 }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Character limit and character counter
+
+With the attributes `_max-length`, `_max-length-behavior` and `_has-counter`, the input length can be flexibly limited and at the same time provide visual feedback:
+
+<TextAreaPreview
+	initialProps={{ _label: 'Description', _hasCounter: true, _maxLength: 100, _value: 'Initial text', _rows: 3 }}
+	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+##### Attributes
+
+| Attribute              | Type               | Default  | Description                                                                                                                                                                                                                                                              |
+| ---------------------- | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `_has-counter`         | `boolean`          | `false`  | Global switch for the character counter. Only if this attribute is **set (= true)** will a counter be output.                                                                                                                                                            |
+| `_max-length`          | `number`           | —        | Maximum number of characters allowed. Effective only if `_has-counter` is active.                                                                                                                                                                                       |
+| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Specifies how the limit is handled **if** `_max-length` is set:<br />- **hard**: Additionally sets the native `maxlength` attribute and prevents further input.<br />- **soft**: Allows further input; the counter shows remaining or exceeded characters. |
+
+##### Output variants
+                                                                                                                                                            |
+| `_max-length`          | `number`           | —        | Maximum number of characters allowed. Effective only if `_has-counter` is active.                                                                                                                                                                                       |
+| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Specifies how the limit is handled **if** `_max-length` is set:<br />- **hard**: Additionally sets the native `maxlength` attribute and prevents further input.<br />- **soft**: Allows further input; the counter shows remaining or exceeded characters. |
+
+##### Output variants
+
+| Case | `_has-counter`       | `_max-length` | `_max-length-behavior` | Visible text                                                        |
+| ---: | -------------------- | ------------- | ---------------------- | ------------------------------------------------------------------- |
+| 1    | *(empty)* or `false` | —             | —                      | — (no counter)                                                      |
+| 2    | `true`               | *(empty)*     | —                      | `n characters`                                                      |
+| 3    | `true`               | 100           | *(empty)* or `hard`    | `n/100 characters`                                                  |
+| 4    | `true`               | 100           | `soft`                 | `50 characters still available`<br />*(or `5 characters too many`)* |
+             | —                      | — (no counter)                                                      |
+
+
+
+**Note**: If `_max-length-behavior="soft"` is used, **the native `maxlength` attribute is *not* set** – so the input field is not hard-limited.
+
+##### Accessibility of the character counter
+
+- The counter updates with a delay of **500ms** so that screen reader events are bundled and do not interrupt typing.
+- For screen readers, a hidden text visible only to assistive technologies is additionally displayed, such as: *"You can enter up to 100 characters."*
+
+##### Summary
+
+- Without `_has-counter` there is **never** a counter.
+- With `_has-counter` **and without** `_max-length` only the currently entered number of characters is displayed.
+- With `_has-counter` **and** `_max-length`, `_max-length-behavior` determines whether the limit is implemented hard (`hard`) or softly (`soft`).
+
+## API
+
+<Readme />
 
 ### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event | trigger | Value |
-|----------|----------------------------------|---------------------------------|
-| `click` | Input field is clicked | - |
-| `focus` | Input field is focused | - |
-| `blur` | Input field loses focus | - |
-| `input` | Value is changed by entering | Current value of the input field |
-| `change` | Entry has been completed | Current value of the input field |
-
-### Example
-
-```html
-<kol-textarea
-  _label="Beschreibung"
-  _resize="none"
-  _rows="5"
-  _value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.">
-</kol-textarea>
-```
-## Usage
-
-Use the **Textarea** component if the entry of larger amounts of text is required, e.g. when entering a request within a form.
-The height of the text area in lines can be determined using the **`_rows`** attribute.
-The **`_resize`** attribute can also be used to specify whether and in which direction the text area can be enlarged. The value **`none`** locks the text area against size changes.
-
-<!--### Best practices
-
-### Use cases-->
-
-## Accessibility
-
-### Keyboard controls
-
-| button | Function |
-| -------------- | ------------------------------------------------------------------------------- |
-| `Tab` | Focuses the text area.                                                        |
-| `arrow keys` | Can be used to navigate the content of the focused text area. |
-
-
-## Character limit and character counter
-
-With the three attributes `_max-length`, `_max-length-behavior` and `_has-counter`, the input length can be flexibly limited and at the same time provide visual feedback.
-
-### Attributes
-
-| Attribute | Type | Default | Description |
-| ---------------------- | ------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_has-counter` | `boolean` | `false` | Global switch for the character counter. Only if this attribute is **set (= true)** will a counter be output.                                                                                                                                                           |
-| `_max-length` | `number` | — | Maximum number of characters allowed. Effective only if `_has-counter` is active.                                                                                                                                                                                                              |
-| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Specifies how the limit is handled **if** `_max-length` is set:<br />- **hard**: Additionally sets the native `maxlength` attribute and prevents further input.<br />- **soft**: Allows further input; the counter shows remaining or exceeded characters. |
-
-### Output variants
-
-| case | `_has-counter` | `_max-length` | `_max-length-behavior` | Visible text |
-| ---: | --------------------- | ------------- | ---------------------- | -------------------------------------------------------- |
-| 1 | *(empty)* or `false` | — | — | — (no counter) |
-| 2 | `true` | *(empty)* | — | `n character` |
-| 3 | `true` | 5 | *(empty)* or `hard` | `n/5 characters` |
-| 4 | `true` | 5 | `soft` | `3 characters still available`<br />*(or `3 characters too many`)* |
-
-> If `_max-length-behavior="soft"` is used, **the native `maxlength` attribute is *not* set** - so the input field is not hard-limited.
-
-### Accessibility
-
-* The counter updates with a **500ms** delay so that screen reader events are concentrated and do not interrupt typing.
-* For screen readers, a hidden text that is only visible to assistive technologies is also displayed, such as:
-*“You can enter up to 10 characters.”*
-
-### Examples
-
-```html
-<!-- Nur Zähler -->
-<kol-textarea _label="Beschreibung" _has-counter></kol-textarea>
-
-<!-- Harte Begrenzung auf 5 Zeichen -->
-<kol-textarea _label="Beschreibung" _has-counter _max-length="5"></kol-textarea>
-
-<!-- Weiche Begrenzung auf 5 Zeichen -->
-<kol-textarea
-  _label="Beschreibung"
-  _has-counter
-  _max-length="5"
-  _max-length-behavior="soft">
-</kol-textarea>
-```
-
-### Summary
-
-* Without `_has-counter` there is **never** a counter.
-* With `_has-counter` **and without** `_max-length` only the currently entered number of characters is displayed.
-* With `_has-counter` **and** `_max-length`, `_max-length-behavior` determines whether the limit is implemented hard (`hard`) or softly (`soft`).
-
-## Links and references
-
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
-
-<Readme />
-
-<ExampleLink component="textarea" />
-
-## Live editor
-
-<LiveEditorCompact component="textarea" />
-
-## Examples
-
-### Simply
-
-<Configurator component="textarea" sample="basic" />
-
-### Automatic line adjustment
-
-<Configurator component="textarea" sample="adjust-height" />
-
-### Disabled
-
-<Configurator component="textarea" sample="disabled" />
-
-### Placeholders
-
-<Configurator component="textarea" sample="placeholder" />
-
-### Readonly
-
-<Configurator component="textarea" sample="readonly" />
-
-### Resizable text area
-
-<Configurator component="textarea" sample="resize" />
-
-### Line length
-
-<Configurator component="textarea" sample="rows" />
+| Event    | Trigger                   | Value                            |
+| -------- | ------------------------- | -------------------------------- |
+| `click`  | Input field is clicked    | -                                |
+| `focus`  | Input field is focused    | -                                |
+| `blur`   | Input field loses focus   | -                                |
+| `input`  | Value is changed by input | Current value of the input field |
+| `change` | Input has been completed  | Current value of the input field |
