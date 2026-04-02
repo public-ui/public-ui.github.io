@@ -36,7 +36,7 @@ Du bekommst einen Komponentennamen (z.B. `Alert`, `Button`, `input-text`). Deine
 
 Lese folgende Dateien (passe `{component}` und `{Component}` entsprechend an):
 
-- **Bestehende Doku**: `docs/30-components/{component}.mdx`
+- **Bestehende Doku**: `docs/30-components/{component}.mdx` (Deutsch) und/oder `i18n/en/docusaurus-plugin-content-docs/current/30-components/{component}.mdx` (Englisch)
 - **README der Komponente**: `readmes/{component}/readme.md` (enthält API-Informationen, Props, Events)
 - **Preview-Komponente** (falls vorhanden): `src/components/previews/components/{Component}.tsx`
 
@@ -219,7 +219,7 @@ Der Abschnitt `### Links und Referenzen` unter `## Barrierefreiheit` muss releva
 1. **Nur den `## Barrierefreiheit`-Abschnitt ändern.** Alles andere bleibt unverändert.
 2. **Niemals Barrierefreiheits-Features halluzinieren.** Wenn eine Information nicht aus dem Code, der bestehenden Doku oder dem MCP-Server ableitbar ist, markiere sie mit `[Implementierung prüfen]`.
 3. **Kein Styling dokumentieren.** Die Barrierefreiheits-Dokumentation beschreibt semantisches Verhalten, ARIA-Attribute und Interaktionsmuster — nicht konkrete Farben, Abstände oder visuelle Gestaltung. Ausnahme: allgemeine Aussagen zu Kontrastanforderungen.
-4. **Sprache:** Immer Deutsch. Technische Begriffe, Attributnamen, ARIA-Rollen und Code bleiben Englisch.
+4. **Sprache:** Erkenne die Sprache der Zieldatei automatisch. Dateien unter `docs/30-components/` sind Deutsch, Dateien unter `i18n/en/docusaurus-plugin-content-docs/current/30-components/` sind Englisch. Schreibe den aktualisierten Abschnitt in der gleichen Sprache wie die restliche Datei. Technische Begriffe, Attributnamen, ARIA-Rollen und Code bleiben immer Englisch.
 5. **WCAG 2.2 referenzieren**, nicht WCAG 2.1. Die WCAG 2.2 ist die aktuelle Version und enthält alle Kriterien aus 2.1 plus neue Kriterien wie 2.4.11 (Fokus nicht verdeckt), 2.4.12 (Fokus nicht verdeckt — erweitert), 2.4.13 (Fokus-Erscheinungsbild), 2.5.7 (Ziehbewegungen) und 2.5.8 (Zielgröße — Minimum).
 6. **Links als `<kol-link>`-Komponenten formatieren**, nicht als Markdown-Links.
 7. **Formatierung**: Tabs für Einrückung (außer in Markdown-Dateien: Spaces), 120 Zeichen Zeilenbreite, Single Quotes in JSX.
@@ -237,4 +237,4 @@ Der Abschnitt `### Links und Referenzen` unter `## Barrierefreiheit` muss releva
 - [ ] Tastatursteuerung nicht dupliziert (Verweis auf bestehenden Abschnitt)?
 - [ ] WCAG 2.2 referenziert (nicht 2.1)?
 - [ ] Kein konkretes Styling dokumentiert (keine Farben, Abstände)?
-- [ ] Sprache: Deutsch mit englischen Fachbegriffen?
+- [ ] Sprache: Konsistent mit der restlichen Datei (Deutsch oder Englisch), technische Begriffe auf Englisch?
