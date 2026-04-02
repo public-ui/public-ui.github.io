@@ -76,7 +76,8 @@ The **Textarea** component is based on the native `<textarea>` HTML element and 
 
 ### Labels and text alternatives
 
-- The `_label` attribute is mandatory and ensures that every textarea has a visible, programmatically associated label (WCAG 2.2 success criterion 3.3.2).
+- The `_label` attribute is mandatory and programmatically provides the accessible name of the input field. Screen readers announce this name when the textarea receives focus (WCAG 2.2 success criterion 3.3.2).
+- When `_hideLabel` is set, the label is visually hidden and only appears as a tooltip when the component receives focus. The accessible name is preserved because `_label` remains available in the accessibility tree. However, persistently visible labels are strongly preferred for accessibility: users with cognitive impairments rely on persistent labels, and touch users typically never see tooltips.
 - Supplementary hints are provided via `_hint` and linked to the input field via `aria-describedby`.
 - Error messages are passed via `_msg`, also linked via `aria-describedby` and read out by screen readers.
 
@@ -111,7 +112,7 @@ The **Textarea** component is based on the native `<textarea>` HTML element and 
 | 2.4.11 | Focus Not Obscured (Minimum) — the focused textarea is not completely hidden by other content | AA |
 | 2.5.8 | Target Size (Minimum) — the input field meets the minimum size of 24×24 CSS pixels | AA |
 | 3.3.1 | Error Identification — invalid input is communicated with `aria-invalid` and a descriptive error message (`_msg`) | A |
-| 3.3.2 | Labels or Instructions — every textarea receives a visible label via `_label` | A |
+| 3.3.2 | Labels or Instructions — `_label` is mandatory and provides the accessible name; when `_hideLabel` is used, the accessible name is preserved but the label is only visible as a tooltip on focus | A |
 | 4.1.2 | Name, Role, Value — name (label), role (textarea) and state (required, disabled, invalid) are programmatically determinable | A |
 | 4.1.3 | Status Messages — the character counter uses a time-delayed update to bundle screen reader events | AA |
 

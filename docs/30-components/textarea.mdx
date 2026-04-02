@@ -41,7 +41,8 @@ Die **Textarea**-Komponente basiert auf dem nativen `<textarea>`-HTML-Element un
 
 ### Beschriftung und Textalternativen
 
-- Das Attribut `_label` ist verpflichtend und stellt sicher, dass jede Textarea eine sichtbare, programmatisch verknüpfte Beschriftung besitzt (WCAG 2.2 Erfolgskriterium 3.3.2).
+- Das Attribut `_label` ist verpflichtend und stellt den barrierefreien Namen (accessible name) des Eingabefelds programmatisch bereit. Screenreader lesen diesen Namen beim Fokussieren der Textarea vor (WCAG 2.2 Erfolgskriterium 3.3.2).
+- Wird `_hideLabel` gesetzt, wird das Label visuell ausgeblendet und erscheint nur als Tooltip, wenn die Komponente den Fokus erhält. Der barrierefreie Name bleibt erhalten, da `_label` weiterhin im Accessibility Tree verfügbar ist. Aus Barrierefreiheitssicht sind dauerhaft sichtbare Labels jedoch zu bevorzugen: Nutzende mit kognitiven Einschränkungen sind auf persistente Beschriftungen angewiesen, und Touch-Nutzende sehen Tooltips in der Regel nicht.
 - Ergänzende Hinweise werden über `_hint` bereitgestellt und über `aria-describedby` mit dem Eingabefeld verknüpft.
 - Fehlermeldungen werden über `_msg` übergeben, ebenfalls per `aria-describedby` verknüpft und von Screenreadern vorgelesen.
 
@@ -68,7 +69,7 @@ Siehe [Tastatursteuerung](#tastatursteuerung) im Abschnitt Nutzung.
 | 2.4.11 | Fokus nicht verdeckt (Minimum) — Die fokussierte Textarea wird nicht vollständig durch andere Inhalte überdeckt | AA |
 | 2.5.8 | Zielgröße (Minimum) — Das Eingabefeld erfüllt die Mindestgröße von 24×24 CSS-Pixeln | AA |
 | 3.3.1 | Fehlererkennung — Fehlerhafte Eingaben werden mit `aria-invalid` und einer beschreibenden Fehlermeldung (`_msg`) kommuniziert | A |
-| 3.3.2 | Beschriftungen oder Anweisungen — Jede Textarea erhält eine sichtbare Beschriftung über `_label` | A |
+| 3.3.2 | Beschriftungen oder Anweisungen — `_label` ist verpflichtend und stellt den barrierefreien Namen bereit; bei Verwendung von `_hideLabel` bleibt der accessible name erhalten, das Label ist jedoch nur als Tooltip beim Fokus sichtbar | A |
 | 4.1.2 | Name, Rolle, Wert — Name (label), Rolle (textarea), Zustand (required, disabled, invalid) sind programmatisch bestimmbar | A |
 | 4.1.3 | Statusmeldungen — Der Zeichenzähler nutzt eine zeitlich verzögerte Aktualisierung, um Screenreader-Ereignisse zu bündeln | AA |
 
