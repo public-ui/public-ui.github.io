@@ -11,7 +11,7 @@ function minifyFiles(dir) {
 	dirItems.forEach((dirItem) => {
 		const dirItemPath = path.resolve(dir, dirItem);
 		const stats = fs.lstatSync(dirItemPath);
-		if (stats.isFile() && /(htaccess|robots)/.test(dirItemPath) === false) {
+		if (stats.isFile() && /(htaccess|robots)/.test(dirItemPath) === false && !dirItemPath.endsWith('.json')) {
 			let code = fs.readFileSync(dirItemPath, { encoding: 'utf-8' });
 			minify(code, options)
 				.then((result) => {
