@@ -8,7 +8,6 @@ tags:
   - Beispiele
 ---
 
-import Readme from '../../readmes/toaster/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 <kol-alert _label="Toaster werden mit Version 5 entfernt" _level="1" _type="error" _variant="card">
@@ -97,6 +96,38 @@ In KoliBri unterscheiden wir drei Ebenen:
 - `_variant` = Look & Styling  
 - `_behavior` = Interaktion & Verhalten  
 
-<Readme />
+## API
+
+### Methods
+
+#### closeAll
+
+Closes all toasts.
+
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| immediate | boolean | Whether to close the toasts immediately|
+
+**Returns**
+
+Type: `Promise<void>`
+
+#### enqueue
+
+Adds a toast to the queue.
+
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| toast | \{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; variant?: "card" \| undefined; onClose?: (() => void) \| undefined; \} | The toast object to enqueue |
+
+**Returns**
+
+Type: `Promise<() => void>`
+
+## Beispiele
 
 <ExampleLink component="toast" />
