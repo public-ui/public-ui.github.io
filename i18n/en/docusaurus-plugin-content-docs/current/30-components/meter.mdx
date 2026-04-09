@@ -1,0 +1,111 @@
+---
+title: Meter
+description: Description, specification and examples for the Meter component.
+---
+
+import Readme from '/readmes/meter/readme.md';
+import MeterPreview from '@site/src/components/previews/components/Meter';
+
+# Meter
+
+**Synonyms:** Gauge, Meter value, Measuring device
+
+The **Meter** component visualizes a measured value within a defined value range. It graphically displays how a measured value is positioned in relation to its limits and can optionally display different states (optimal, suboptimal, critical).
+
+## Example
+
+Meter component with measured value display and status indicator:
+
+<MeterPreview
+	visibleProperties={['_label', '_value', '_min', '_max', '_low', '_high', '_optimum', '_unit', '_orientation']}
+	initialProps={{ _label: 'Load', _min: 0, _max: 100, _value: 65, _low: 30, _optimum: 70, _high: 80, _unit: '%' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## Accessibility
+
+The **Meter** component was developed with a focus on accessibility:
+
+- **Label requirement**: Every meter component must have a visible label via the `_label` attribute, which is recognized by screen readers.
+- **Semantic output**: A hidden `<meter>` HTML element with complete attributes ensures that assistive technologies can also understand the measured value.
+- **Live value announcement**: Screen readers are informed when the measured value changes (e.g., "Load – critical").
+- **Status indication**: Automatic status message (optimum, suboptimal, critical) is communicated by assistive technologies.
+- **Keyboard access**: The component does not provide interactive elements as it is only data display.
+
+### Links and references
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter" _target="_blank" _label="MDN Web Docs - meter Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 – Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#meter" _target="_blank" _label="WAI-ARIA Authoring Practices – Meter"></kol-link>
+
+## Best Practices / Recommendations
+
+- **Meaningful label**: Use clear, understandable labels (e.g., "Load", "Memory", "Battery Level").
+- **Set meaningful boundaries**: Define `_min`, `_max`, and `_optimum` correctly to produce meaningful displays.
+- **Use states**: Use the `_low`, `_high`, and `_optimum` attributes to mark ranges – this helps users quickly recognize critical states.
+- **Clear unit**: Set `_unit` to a clear unit of measurement (e.g., %, GB, °C) to avoid misunderstandings.
+- **Provide context**: Optionally supplement the meter component with additional text that explains the current value or temporal trends.
+- **Choose the right orientation**: Use `_orientation="vertical"` only when horizontal space is limited; horizontal is the standard display.
+
+## Use cases
+
+- **System load**: Displaying CPU, RAM, or storage load.
+- **Battery level**: Visualizing the battery status of devices.
+- **Room climate**: Display of temperature, humidity, or air quality.
+- **Progress with limits**: Visualization of a value approaching a critical limit (e.g., inventory levels).
+- **Quality indicators**: Graphical display of rating metrics with defined boundaries.
+
+## Construction / Technical
+
+### Playground
+
+Test the various properties of the meter component:
+
+<MeterPreview codeCollapsable />
+
+### Functionalities
+
+#### Basic meter with value range
+
+Simple meter component with minimum, maximum and current value:
+
+<MeterPreview
+	visibleProperties={['_label', '_value', '_min', '_max']}
+	initialProps={{ _label: 'Storage load', _min: 0, _max: 1024, _value: 512, _unit: 'MB' }}
+	codeCollapsable
+/>
+
+#### States with critical boundaries
+
+Meter component with defined ranges (low, optimum, high) for status display:
+
+<MeterPreview
+	visibleProperties={['_label', '_value', '_min', '_max', '_low', '_high', '_optimum']}
+	initialProps={{ _label: 'CPU load', _min: 0, _max: 100, _value: 45, _low: 20, _optimum: 60, _high: 80, _unit: '%' }}
+	codeCollapsable
+/>
+
+#### Vertical meter
+
+Meter component with vertical orientation for space-saving layouts:
+
+<MeterPreview
+	visibleProperties={['_label', '_value', '_min', '_max', '_orientation']}
+	initialProps={{ _label: 'Liquid level', _min: 0, _max: 100, _value: 75, _orientation: 'vertical', _unit: '%' }}
+	codeCollapsable
+/>
+
+#### Meter without states
+
+Meter component without defined ranges (`_low`, `_high`, `_optimum`):
+
+<MeterPreview
+	visibleProperties={['_label', '_value', '_min', '_max']}
+	initialProps={{ _label: 'Input signal', _min: -100, _max: 100, _value: 25, _unit: 'dBm' }}
+	codeCollapsable
+/>
+
+## API
+
+<Readme />

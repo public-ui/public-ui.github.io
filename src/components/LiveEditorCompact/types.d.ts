@@ -163,6 +163,7 @@ export type TagName =
 	| 'kolibri'
 	| 'link'
 	| 'link-button'
+	| 'meter'
 	| 'modal'
 	| 'nav'
 	| 'pagination'
