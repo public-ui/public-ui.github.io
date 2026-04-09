@@ -3,7 +3,6 @@ title: Toaster
 description: Description, specification and examples for the Toast component.
 ---
 
-import Readme from '/readmes/toaster/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Toaster
@@ -85,6 +84,38 @@ In KoliBri we differentiate between three levels:
 - `_variant` = Look & Styling
 - `_behavior` = interaction & behavior
 
-<Readme />
+## API
+
+### Methods
+
+#### closeAll
+
+Closes all toasts.
+
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| immediate | boolean | Whether to close the toasts immediately|
+
+**Returns**
+
+Type: `Promise<void>`
+
+#### enqueue
+
+Adds a toast to the queue.
+
+**Parameters**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| toast | \{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; variant?: "card" \| undefined; onClose?: (() => void) \| undefined; \} | The toast object to enqueue |
+
+**Returns**
+
+Type: `Promise<() => void>`
+
+## Examples
 
 <ExampleLink component="toast" />

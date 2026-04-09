@@ -57,6 +57,52 @@ const Preview = <TProps,>({
 		}));
 	};
 
+	// Add event handlers to automatically update state for interactive components
+	const enhancePropsWithEventHandlers = (props: TProps): TProps => {
+		const enhanced = { ...props };
+		const existingOn = (enhanced as Record<string, unknown>)._on as Record<string, unknown> | undefined;
+
+		// Mapping of events to the properties they should update
+		const eventPropertyMap: Record<string, string> = {
+			onInput: '_value', // For input components (text, number, range, etc.)
+			onToggle: '_open', // For accordion, details, drawer
+			onChange: '_checked', // For checkbox, radio (fallback)
+		};
+
+		// Create enhanced _on object with auto-updating handlers
+		const enhancedOn: Record<string, unknown> = { ...existingOn };
+
+		Object.entries(eventPropertyMap).forEach(([eventName, propertyName]) => {
+			// Check if the component has this property
+			if (propertyName in (props as object)) {
+				// Only add handler if not already defined by user
+				if (!existingOn?.[eventName]) {
+					enhancedOn[eventName] = (_event: Event, value: unknown) => {
+						// Update the corresponding property
+						updateProperty(propertyName as keyof TProps, value);
+					};
+				} else {
+					// If user provided a handler, wrap it to also update state
+					const userHandler = existingOn[eventName] as (event: Event, value: unknown) => void;
+					enhancedOn[eventName] = (event: Event, value: unknown) => {
+						updateProperty(propertyName as keyof TProps, value);
+						userHandler(event, value);
+					};
+				}
+			}
+		});
+
+		// Special case for checkbox: onInput updates _checked
+		if ('_checked' in (props as object) && !existingOn?.onInput) {
+			enhancedOn.onInput = (_event: Event, value: unknown) => {
+				updateProperty('_checked' as keyof TProps, value);
+			};
+		}
+
+		(enhanced as Record<string, unknown>)._on = enhancedOn;
+		return enhanced;
+	};
+
 	const generateSourceCode = () => {
 		if (!componentName) return '';
 
@@ -186,18 +232,16 @@ const Preview = <TProps,>({
 	return (
 		<div className={`preview ${hasProp ? 'props' : ''} gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}>
 			<div
-				className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${
-					layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''
-				}`}
+				className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''
+					}`}
 			>
 				<span
-					className={`${
-						layout === PreviewLayout.FULL_SIZE
-							? 'w-full h-full'
-							: `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`
-					}`}
+					className={`${layout === PreviewLayout.FULL_SIZE
+						? 'w-full h-full'
+						: `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`
+						}`}
 				>
-					{children(currentProps)}
+					{children(enhancePropsWithEventHandlers(currentProps))}
 				</span>
 			</div>
 			{hasProp && renderPropertyComponents()}
