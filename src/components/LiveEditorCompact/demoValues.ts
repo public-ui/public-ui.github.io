@@ -19,6 +19,12 @@ const demoValues: Partial<Record<ImplementedTagName, Record<string, string>>> = 
 	image: {
 		_src: 'https://placehold.co/100x100/cc006e/white',
 	},
+	meter: {
+		_label: 'Auslastung',
+		_max: '100',
+		_value: '65',
+		_unit: '%',
+	},
 	nav: {
 		_links: `[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]`,
 	},
