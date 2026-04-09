@@ -4,10 +4,10 @@ description: Description, specification and examples for the Image component.
 ---
 
 import Readme from '/readmes/image/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import ImagePreview from '@site/src/components/previews/components/Image';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
-#Image
+# Image
 
 Synonyms: Img, Thumbnail
 
@@ -17,19 +17,11 @@ The **Image** component is used to display images.
 
 ## Construction
 
-The **Image** component is created using the HTML tag `<kol-image>`.
-
-### Code
-
-```html
-<kol-image _src="url-zum-bild.jpg" _alt="Beschreibung des Bildes"></kol-image>
-<kol-image _src="nur-dekoratives-bild.jpg" _alt=""></kol-image>
-<kol-image _src="hintergrundbild-der-hero-sektion.jpg" _alt="" _loading="eager"></kol-image>
-```
-
-### Examples
-
-<kol-image _src="https://placehold.co/100x100/cc006e/white" _alt="Beispielbild: 100 × 100"></kol-image>
+<ImagePreview
+	visibleProperties={['_src', '_alt']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Usage
 
@@ -59,10 +51,10 @@ This description is read by screen readers and displayed by browsers if the imag
 
 Detailed explanation of `_srcset` and `_sizes`: <kol-link _href="https://www.mediaevent.de/html/srcset.html" _target="_blank"></kol-link>
 
+## API
+
 <Readme />
 
+## Examples
+
 <ExampleLink component="image" />
-
-## Live editor
-
-<LiveEditorCompact component="image" />
