@@ -4,10 +4,9 @@ description: Description, specification and examples for the InputRadio componen
 ---
 
 import Readme from '/readmes/input-radio/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import InputRadioPreview from '@site/src/components/previews/components/InputRadio';
 
 # InputRadio
 
@@ -21,15 +20,11 @@ The input radio is used to display a selection option where at least and a maxim
 
 ## Construction
 
-### Code
-
-```html
-<kol-input-radio _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
-```
-
-### Example
-
-<kol-input-radio _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
+<InputRadioPreview
+	visibleProperties={['_label', '_options', '_orientation', '_disabled']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Usage
 
@@ -101,12 +96,6 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 
 <PropertyMsgUsage />
 
+# API
+
 <ExampleLink component="input-radio" />
-
-## Live editor
-
-<LiveEditorCompact component="input-radio" />
-
-## Examples
-
-<Configurator component="input-radio" sample="basic" />
