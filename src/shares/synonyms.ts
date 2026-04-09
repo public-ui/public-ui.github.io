@@ -15,6 +15,7 @@ export const COMPONENT_SYNONYMS: ComponentSynonyms = {
 	'input-range': ['Slider'],
 	'input-text': ['Text Field'],
 	modal: ['Dialog', 'Prompt'],
+	meter: ['Gauge', 'Messwert', 'Messgerät'],
 	nav: ['Navigation', 'Menu', 'Sidebar', 'Dropdowns (menu)'],
 	select: ['Datalist', 'Dropdown'],
 	spin: ['Placeholder', 'Skeleton', 'Shimmer'],

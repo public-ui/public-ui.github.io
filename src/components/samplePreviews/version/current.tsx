@@ -114,6 +114,10 @@ export const COMPONENTS_CURRENT = [
 		loadComponent: () => lazy(() => import('../LinkButton')),
 	},
 	{
+		name: 'meter',
+		loadComponent: () => lazy(() => import('../Meter')),
+	},
+	{
 		name: 'modal',
 		loadComponent: () => lazy(() => import('../Modal')),
 	},
