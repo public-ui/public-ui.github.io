@@ -13,9 +13,12 @@ interface ButtonLinkPreviewComponentProps {
 }
 
 const ButtonLinkPreview = (props: ButtonLinkPreviewComponentProps) => {
-	const defaultProps: JSX.KolButtonLink = {
-		_label: translate({ id: 'preview.component.button-link.label' }),
-	};
+	const defaultProps = React.useMemo<JSX.KolButtonLink>(
+		() => ({
+			_label: translate({ id: 'preview.component.button-link.label' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolButtonLink>

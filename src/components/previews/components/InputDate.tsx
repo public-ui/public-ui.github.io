@@ -13,10 +13,13 @@ interface InputDatePreviewComponentProps {
 }
 
 const InputDatePreview = (props: InputDatePreviewComponentProps) => {
-	const defaultProps: JSX.KolInputDate = {
-		_label: translate({ id: 'preview.component.input-date.label' }),
-		_type: 'date',
-	};
+	const defaultProps = React.useMemo<JSX.KolInputDate>(
+		() => ({
+			_label: translate({ id: 'preview.component.input-date.label' }),
+			_type: 'date',
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolInputDate>

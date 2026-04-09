@@ -13,9 +13,12 @@ interface InputNumberPreviewComponentProps {
 }
 
 const InputNumberPreview = (props: InputNumberPreviewComponentProps) => {
-	const defaultProps: JSX.KolInputNumber = {
-		_label: translate({ id: 'preview.component.input-number.label' }),
-	};
+	const defaultProps = React.useMemo<JSX.KolInputNumber>(
+		() => ({
+			_label: translate({ id: 'preview.component.input-number.label' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolInputNumber>

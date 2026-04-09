@@ -12,11 +12,14 @@ interface ImagePreviewProps {
 }
 
 const ImagePreview = (props: ImagePreviewProps) => {
-    const defaultProps: JSX.KolImage = {
-        _src: '/assets/sample-image.png',
-        _alt: translate({ id: 'preview.component.image.label' }),
-        _loading: 'lazy',
-    };
+    const defaultProps = React.useMemo<JSX.KolImage>(
+        () => ({
+            _src: '/assets/sample-image.png',
+            _alt: translate({ id: 'preview.component.image.label' }),
+            _loading: 'lazy',
+        }),
+        [],
+    );
 
     return (
         <Preview<JSX.KolImage>

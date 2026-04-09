@@ -15,11 +15,14 @@ interface LinkPreviewComponentProps {
 }
 
 const LinkPreview = (props: LinkPreviewComponentProps) => {
-	const defaultProps: LinkPreviewProps = {
-		_label: translate({ id: 'preview.component.link.label' }),
-		_href: translate({ id: 'preview.component.link.href' }),
-		_target: '_blank',
-	};
+	const defaultProps = React.useMemo<LinkPreviewProps>(
+		() => ({
+			_label: translate({ id: 'preview.component.link.label' }),
+			_href: translate({ id: 'preview.component.link.href' }),
+			_target: '_blank',
+		}),
+		[],
+	);
 
 	return (
 		<Preview<LinkPreviewProps>

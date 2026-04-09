@@ -15,10 +15,13 @@ interface AbbrPreviewComponentProps {
 }
 
 const AbbrPreview = (props: AbbrPreviewComponentProps) => {
-	const defaultProps: AbbrPreviewProps = {
-		_label: translate({ id: 'preview.component.abbr.label' }),
-		_slot: translate({ id: 'preview.component.abbr.slot' }),
-	};
+	const defaultProps = React.useMemo<AbbrPreviewProps>(
+		() => ({
+			_label: translate({ id: 'preview.component.abbr.label' }),
+			_slot: translate({ id: 'preview.component.abbr.slot' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<AbbrPreviewProps>

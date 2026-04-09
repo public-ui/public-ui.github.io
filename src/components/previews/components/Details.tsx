@@ -15,11 +15,14 @@ interface DetailsPreviewComponentProps {
 }
 
 const DetailsPreview: React.FC<DetailsPreviewComponentProps> = (props) => {
-	const defaultProps: DetailsPreviewProps = {
-		_label: 'Details Element',
-		_slot:
-			'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-	};
+	const defaultProps = React.useMemo<DetailsPreviewProps>(
+		() => ({
+			_label: 'Details Element',
+			_slot:
+				'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+		}),
+		[],
+	);
 
 	return (
 		<Preview<DetailsPreviewProps>

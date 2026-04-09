@@ -13,12 +13,15 @@ interface QuotePreviewProps {
 }
 
 const QuotePreview: React.FC<QuotePreviewProps> = (props) => {
-	const defaultProps: JSX.KolQuote = {
-		_label: translate({ id: 'preview.component.quote.label' }),
-		_href: translate({ id: 'preview.component.quote.href' }),
-		_quote: translate({ id: 'preview.component.quote.quote' }),
-		_variant: 'block',
-	};
+	const defaultProps = React.useMemo<JSX.KolQuote>(
+		() => ({
+			_label: translate({ id: 'preview.component.quote.label' }),
+			_href: translate({ id: 'preview.component.quote.href' }),
+			_quote: translate({ id: 'preview.component.quote.quote' }),
+			_variant: 'block',
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolQuote>

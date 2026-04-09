@@ -13,14 +13,17 @@ interface InputRadioPreviewComponentProps {
 }
 
 const InputRadioPreview = (props: InputRadioPreviewComponentProps) => {
-	const defaultProps: JSX.KolInputRadio = {
-		_label: translate({ id: 'preview.component.input-radio.label' }),
-		_options: [
-			{ label: 'Herr', value: 'Herr' },
-			{ label: 'Frau', value: 'Frau' },
-			{ label: 'Firma', value: 'Firma' },
-		] satisfies SelectOption<string>[],
-	};
+	const defaultProps = React.useMemo<JSX.KolInputRadio>(
+		() => ({
+			_label: translate({ id: 'preview.component.input-radio.label' }),
+			_options: [
+				{ label: 'Herr', value: 'Herr' },
+				{ label: 'Frau', value: 'Frau' },
+				{ label: 'Firma', value: 'Firma' },
+			] satisfies SelectOption<string>[],
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolInputRadio>

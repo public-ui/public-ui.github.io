@@ -12,10 +12,13 @@ interface AvatarPreviewComponentProps {
 }
 
 const AvatarPreview = (props: AvatarPreviewComponentProps) => {
-	const defaultProps: JSX.KolAvatar = {
-		_label: translate({ id: 'preview.component.avatar.label' }),
-		_color: '#5A5FEE',
-	};
+	const defaultProps = React.useMemo<JSX.KolAvatar>(
+		() => ({
+			_label: translate({ id: 'preview.component.avatar.label' }),
+			_color: '#5A5FEE',
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolAvatar>

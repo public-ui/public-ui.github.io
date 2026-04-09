@@ -12,14 +12,17 @@ interface ProgressPreviewComponentProps {
 }
 
 const ProgressPreview = (props: ProgressPreviewComponentProps) => {
-	const defaultProps: JSX.KolProgress = {
-		_label: translate({
-			id: 'preview.component.progress.label',
-			message: 'Progress',
+	const defaultProps = React.useMemo<JSX.KolProgress>(
+		() => ({
+			_label: translate({
+				id: 'preview.component.progress.label',
+				message: 'Progress',
+			}),
+			_value: 20,
+			_max: 100,
 		}),
-		_value: 20,
-		_max: 100,
-	};
+		[],
+	);
 
 	const [maxValue, setMaxValue] = React.useState<number>(props.initialProps?._max ?? defaultProps._max);
 

@@ -16,10 +16,13 @@ interface CardPreviewComponentProps {
 }
 
 const CardPreview = (props: CardPreviewComponentProps) => {
-	const defaultProps: CardPreviewProps = {
-		_label: translate({ id: 'preview.component.card.label' }),
-		_slot: translate({ id: 'preview.component.card.content' }),
-	};
+	const defaultProps = React.useMemo<CardPreviewProps>(
+		() => ({
+			_label: translate({ id: 'preview.component.card.label' }),
+			_slot: translate({ id: 'preview.component.card.content' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<CardPreviewProps>

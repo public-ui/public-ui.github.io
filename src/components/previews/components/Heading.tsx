@@ -12,10 +12,13 @@ interface HeadingPreviewProps {
 }
 
 const HeadingPreview = (props: HeadingPreviewProps) => {
-	const defaultProps: JSX.KolHeading = {
-		_label: 'Heading',
-		_level: 1,
-	};
+	const defaultProps = React.useMemo<JSX.KolHeading>(
+		() => ({
+			_label: 'Heading',
+			_level: 1,
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolHeading>

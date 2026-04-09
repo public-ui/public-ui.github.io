@@ -18,12 +18,15 @@ interface DrawerPreviewComponentProps {
 const DrawerPreview = (props: DrawerPreviewComponentProps) => {
 	const drawerRef = useRef<HTMLKolDrawerElement>(null);
 
-	const defaultProps: DrawerPreviewProps = {
-		_label: translate({ id: 'preview.component.drawer.label' }),
-		_align: 'left',
-		_hasCloser: true,
-		_slot: `<p>${translate({ id: 'preview.component.drawer.content' })}</p>`,
-	};
+	const defaultProps = React.useMemo<DrawerPreviewProps>(
+		() => ({
+			_label: translate({ id: 'preview.component.drawer.label' }),
+			_align: 'left',
+			_hasCloser: true,
+			_slot: `<p>${translate({ id: 'preview.component.drawer.content' })}</p>`,
+		}),
+		[],
+	);
 
 	return (
 		<Preview<DrawerPreviewProps>

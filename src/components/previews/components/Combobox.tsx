@@ -13,10 +13,13 @@ interface ComboboxPreviewComponentProps {
 }
 
 const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
-	const defaultProps: JSX.KolCombobox = {
-		_label: translate({ id: 'preview.component.combobox.label' }),
-		_suggestions: ['Herr', 'Frau', 'Firma'],
-	};
+	const defaultProps = React.useMemo<JSX.KolCombobox>(
+		() => ({
+			_label: translate({ id: 'preview.component.combobox.label' }),
+			_suggestions: ['Herr', 'Frau', 'Firma'],
+		}),
+		[],
+	);
 
 	const [value, setValue] = React.useState<string>('');
 
