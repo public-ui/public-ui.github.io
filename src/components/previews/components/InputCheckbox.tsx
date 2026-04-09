@@ -13,9 +13,12 @@ interface InputCheckboxPreviewComponentProps {
 }
 
 const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
-	const defaultProps: JSX.KolInputCheckbox = {
-		_label: translate({ id: 'preview.component.input-checkbox.label' }),
-	};
+	const defaultProps = React.useMemo<JSX.KolInputCheckbox>(
+		() => ({
+			_label: translate({ id: 'preview.component.input-checkbox.label' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolInputCheckbox>

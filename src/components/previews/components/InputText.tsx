@@ -13,9 +13,12 @@ interface InputTextPreviewComponentProps {
 }
 
 const InputTextPreview = (props: InputTextPreviewComponentProps) => {
-	const defaultProps: JSX.KolInputText = {
-		_label: translate({ id: 'preview.component.input-text.label' }),
-	};
+	const defaultProps = React.useMemo<JSX.KolInputText>(
+		() => ({
+			_label: translate({ id: 'preview.component.input-text.label' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolInputText>

@@ -12,10 +12,13 @@ interface TextAreaPreviewComponentProps {
 }
 
 const TextAreaPreview = (props: TextAreaPreviewComponentProps) => {
-	const defaultProps: JSX.KolTextarea = {
-		_label: translate({ id: 'preview.component.textarea.label' }),
-		_value: '',
-	};
+	const defaultProps = React.useMemo<JSX.KolTextarea>(
+		() => ({
+			_label: translate({ id: 'preview.component.textarea.label' }),
+			_value: '',
+		}),
+		[],
+	);
 
 	const [value, setValue] = React.useState<string>(defaultProps._value || '');
 

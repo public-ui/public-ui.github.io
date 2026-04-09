@@ -12,9 +12,12 @@ interface ButtonPreviewComponentProps {
 }
 
 const ButtonPreview = (props: ButtonPreviewComponentProps) => {
-	const defaultProps: JSX.KolButton = {
-		_label: translate({ id: 'preview.component.button.label' }),
-	};
+	const defaultProps = React.useMemo<JSX.KolButton>(
+		() => ({
+			_label: translate({ id: 'preview.component.button.label' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolButton>

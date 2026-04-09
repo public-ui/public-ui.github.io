@@ -13,9 +13,12 @@ interface InputEmailPreviewComponentProps {
 }
 
 const InputEmailPreview = (props: InputEmailPreviewComponentProps) => {
-	const defaultProps: JSX.KolInputEmail = {
-		_label: translate({ id: 'preview.component.input-email.label' }),
-	};
+	const defaultProps = React.useMemo<JSX.KolInputEmail>(
+		() => ({
+			_label: translate({ id: 'preview.component.input-email.label' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolInputEmail>

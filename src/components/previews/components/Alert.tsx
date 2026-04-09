@@ -15,15 +15,18 @@ interface AlertPreviewComponentProps {
 }
 
 const AlertPreview = (props: AlertPreviewComponentProps) => {
-	const defaultProps: AlertPreviewProps = {
-		_label: translate({ id: 'preview.component.alert.label' }),
-		_level: 3,
-		_type: 'info',
-		_variant: 'msg',
-		_alert: false,
-		_hasCloser: false,
-		_slot: translate({ id: 'preview.component.alert.content' }),
-	};
+	const defaultProps = React.useMemo<AlertPreviewProps>(
+		() => ({
+			_label: translate({ id: 'preview.component.alert.label' }),
+			_level: 3,
+			_type: 'info',
+			_variant: 'msg',
+			_alert: false,
+			_hasCloser: false,
+			_slot: translate({ id: 'preview.component.alert.content' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<AlertPreviewProps>

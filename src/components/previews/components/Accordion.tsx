@@ -15,10 +15,13 @@ interface AccordionPreviewComponentProps {
 }
 
 const AccordionPreview = (props: AccordionPreviewComponentProps) => {
-	const defaultProps: AccordionPreviewProps = {
-		_label: translate({ id: 'preview.component.accordion.label' }),
-		_slot: translate({ id: 'preview.component.accordion.content' }),
-	};
+	const defaultProps = React.useMemo<AccordionPreviewProps>(
+		() => ({
+			_label: translate({ id: 'preview.component.accordion.label' }),
+			_slot: translate({ id: 'preview.component.accordion.content' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<AccordionPreviewProps>

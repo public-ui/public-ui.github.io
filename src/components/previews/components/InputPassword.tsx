@@ -13,10 +13,13 @@ interface InputPasswordPreviewComponentProps {
 }
 
 const InputPasswordPreview = (props: InputPasswordPreviewComponentProps) => {
-	const defaultProps: JSX.KolInputPassword = {
-		_label: translate({ id: 'preview.component.input-password.label' }),
-		_variant: 'visibility-toggle',
-	};
+	const defaultProps = React.useMemo<JSX.KolInputPassword>(
+		() => ({
+			_label: translate({ id: 'preview.component.input-password.label' }),
+			_variant: 'visibility-toggle',
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolInputPassword>

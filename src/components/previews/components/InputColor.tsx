@@ -13,10 +13,13 @@ interface InputColorPreviewComponentProps {
 }
 
 const InputColorPreview = (props: InputColorPreviewComponentProps) => {
-	const defaultProps: JSX.KolInputColor = {
-		_label: translate({ id: 'preview.component.input-color.label' }),
-		_value: '#d4fcf4',
-	};
+	const defaultProps = React.useMemo<JSX.KolInputColor>(
+		() => ({
+			_label: translate({ id: 'preview.component.input-color.label' }),
+			_value: '#d4fcf4',
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolInputColor>

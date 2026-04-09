@@ -12,40 +12,43 @@ interface ToolbarPreviewComponentProps {
 }
 
 const ToolbarPreview = (props: ToolbarPreviewComponentProps) => {
-	const defaultProps: JSX.KolToolbar = {
-		_label: translate({ id: 'preview.component.toolbar.label' }),
-		_items: [
-			{
-				type: 'button',
-				_label: 'Back',
-				_hideLabel: true,
-				_icons: {
-					left: {
-						icon: 'kolicon-chevron-left',
+	const defaultProps = React.useMemo<JSX.KolToolbar>(
+		() => ({
+			_label: translate({ id: 'preview.component.toolbar.label' }),
+			_items: [
+				{
+					type: 'button',
+					_label: 'Back',
+					_hideLabel: true,
+					_icons: {
+						left: {
+							icon: 'kolicon-chevron-left',
+						},
 					},
 				},
-			},
-			{
-				type: 'button',
-				_label: 'Next',
-				_hideLabel: true,
-				_icons: {
-					right: {
-						icon: 'kolicon-chevron-right',
+				{
+					type: 'button',
+					_label: 'Next',
+					_hideLabel: true,
+					_icons: {
+						right: {
+							icon: 'kolicon-chevron-right',
+						},
 					},
 				},
-			},
-			{
-				type: 'link',
-				_href: '#',
-				_label: 'Link',
-			},
-			{
-				type: 'button',
-				_label: 'Button',
-			},
-		],
-	};
+				{
+					type: 'link',
+					_href: '#',
+					_label: 'Link',
+				},
+				{
+					type: 'button',
+					_label: 'Button',
+				},
+			],
+		}),
+		[],
+	);
 
 	const [itemsJson, setItemsJson] = React.useState<string>(JSON.stringify(defaultProps._items, null, 2));
 	const [itemsError, setItemsError] = React.useState<string>('');

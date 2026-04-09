@@ -12,10 +12,13 @@ interface BreadcrumbPreviewComponentProps {
 }
 
 const BreadcrumbPreview = (props: BreadcrumbPreviewComponentProps) => {
-	const defaultProps: JSX.KolBreadcrumb = {
-		_label: translate({ id: 'preview.component.breadcrumb.label' }),
-		_links: [],
-	};
+	const defaultProps = React.useMemo<JSX.KolBreadcrumb>(
+		() => ({
+			_label: translate({ id: 'preview.component.breadcrumb.label' }),
+			_links: [],
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolBreadcrumb>

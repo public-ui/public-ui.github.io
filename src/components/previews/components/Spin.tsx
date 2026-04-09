@@ -16,15 +16,18 @@ interface SpinPreviewComponentProps {
 }
 
 const SpinPreview = (props: SpinPreviewComponentProps) => {
-	const defaultProps: SpinPreviewProps = {
-		_label: translate({
-			id: 'preview.component.spin.label',
-			message: 'Ladevorgang',
+	const defaultProps = React.useMemo<SpinPreviewProps>(
+		() => ({
+			_label: translate({
+				id: 'preview.component.spin.label',
+				message: 'Ladevorgang',
+			}),
+			_show: true,
+			_variant: 'dot',
+			_customCss: '',
 		}),
-		_show: true,
-		_variant: 'dot',
-		_customCss: '',
-	};
+		[],
+	);
 
 	const formatValue = (value: unknown): string => {
 		if (typeof value === 'string') {

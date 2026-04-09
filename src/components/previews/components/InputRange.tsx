@@ -13,13 +13,16 @@ interface InputRangePreviewComponentProps {
 }
 
 const InputRangePreview = (props: InputRangePreviewComponentProps) => {
-	const defaultProps: JSX.KolInputRange = {
-		_label: translate({ id: 'preview.component.input-range.label' }),
-		_min: 0,
-		_max: 100,
-		_step: 1,
-		_value: 50,
-	};
+	const defaultProps = React.useMemo<JSX.KolInputRange>(
+		() => ({
+			_label: translate({ id: 'preview.component.input-range.label' }),
+			_min: 0,
+			_max: 100,
+			_step: 1,
+			_value: 50,
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolInputRange>

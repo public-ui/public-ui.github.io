@@ -13,10 +13,13 @@ interface BadgePreviewComponentProps {
 }
 
 const BadgePreview = (props: BadgePreviewComponentProps) => {
-	const defaultProps: JSX.KolBadge = {
-		_label: translate({ id: 'preview.component.badge.label' }),
-		_color: '#0c8703',
-	};
+	const defaultProps = React.useMemo<JSX.KolBadge>(
+		() => ({
+			_label: translate({ id: 'preview.component.badge.label' }),
+			_color: '#0c8703',
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolBadge>

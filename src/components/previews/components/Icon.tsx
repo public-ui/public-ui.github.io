@@ -13,10 +13,13 @@ interface IconPreviewProps {
 }
 
 const IconPreview = (props: IconPreviewProps) => {
-	const defaultProps: JSX.KolIcon = {
-		_label: translate({ id: 'preview.component.icon.label' }),
-		_icons: 'kolicon-house',
-	};
+	const defaultProps = React.useMemo<JSX.KolIcon>(
+		() => ({
+			_label: translate({ id: 'preview.component.icon.label' }),
+			_icons: 'kolicon-house',
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolIcon>

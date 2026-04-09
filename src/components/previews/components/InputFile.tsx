@@ -13,9 +13,12 @@ interface InputFilePreviewComponentProps {
 }
 
 const InputFilePreview = (props: InputFilePreviewComponentProps) => {
-	const defaultProps: JSX.KolInputFile = {
-		_label: translate({ id: 'preview.component.input-file.label' }),
-	};
+	const defaultProps = React.useMemo<JSX.KolInputFile>(
+		() => ({
+			_label: translate({ id: 'preview.component.input-file.label' }),
+		}),
+		[],
+	);
 
 	return (
 		<Preview<JSX.KolInputFile>

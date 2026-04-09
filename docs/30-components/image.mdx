@@ -1,15 +1,10 @@
 ---
 title: Image
 description: Beschreibung, Spezifikation und Beispiele für die Image-Komponente.
-tags:
-  - Image
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/image/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import ImagePreview from '@site/src/components/previews/components/Image';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Image
@@ -22,19 +17,11 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.
 
 ## Konstruktion
 
-Die Komponente **Image** wird über das HTML-Tag `<kol-image>` erzeugt.
-
-### Code
-
-```html
-<kol-image _src="url-zum-bild.jpg" _alt="Beschreibung des Bildes"></kol-image>
-<kol-image _src="nur-dekoratives-bild.jpg" _alt=""></kol-image>
-<kol-image _src="hintergrundbild-der-hero-sektion.jpg" _alt="" _loading="eager"></kol-image>
-```
-
-### Beispiele
-
-<kol-image _src="https://placehold.co/100x100/cc006e/white" _alt="Beispielbild: 100 × 100"></kol-image>
+<ImagePreview
+  visibleProperties={['_src', '_alt']}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ## Verwendung
 
@@ -64,10 +51,10 @@ Diese Beschreibung wird von Screenreadern vorgelesen und von Browsern angezeigt,
 
 Ausführliche Erklärung zu `_srcset` und `_sizes`: <kol-link _href="https://www.mediaevent.de/html/srcset.html" _target="_blank"></kol-link>
 
+## API
+
 <Readme />
 
+## Beispiele
+
 <ExampleLink component="image" />
-
-## Live-Editor
-
-<LiveEditorCompact component="image" />
