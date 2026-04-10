@@ -4,11 +4,12 @@ description: Description, specification and examples for the TableStateless comp
 ---
 
 import Readme from '/readmes/table-stateless/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import TableStatefulPreview from '@site/src/components/previews/components/TableStateful';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
+# Table (stateless)
 
 <BetaDocsBanner />
 <UntestedBanner />
@@ -16,7 +17,11 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 
 Synonyms: Data Table, Details List, Data Grid
 
-The **TableStateless** component is responsible for purely displaying the KoliBri table. For a table component that can automatically sort and paginate with the data provided, see <kol-link _href="table-stateful" _label="KolTableStateful" />.
+The **TableStateless** component is responsible for purely displaying the KoliBri table.
+
+## Construction
+
+<TableStatefulPreview codeCollapsable codeCollapsed /> For a table component that can automatically sort and paginate with the data provided, see <kol-link _href="table-stateful" _label="KolTableStateful" />.
 
 TableStateless is particularly useful for larger amounts of data if it is not practical to deliver the entire amount of data to the browser for filtering and sorting.
 
@@ -135,10 +140,10 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 />
 ```
 
+## API
+
 <Readme />
 
+## Examples
+
 <ExampleLink component="table-stateless" />
-
-## Live editor
-
-<LiveEditorCompact component="table-stateless" />
