@@ -2,159 +2,152 @@
 title: Alert
 description: Description, specification and examples for the Alert component.
 ---
+
 import Readme from '/readmes/alert/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import AlertPreview from '@site/src/components/previews/components/Alert';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
-#Alert
+# Alert
 
-Synonyms: Message
+**Synonyms:** Message, Notice, Notification
 
-The **Alert** component provides visual feedback to the users. It consists of a colored container, a heading, a content text and an icon. The icon used and the color design depend on the type `_type` of the alert.
+**Description:** The **Alert** component provides feedback to users. It consists of a container, a heading, content text and an icon that signals the type of message.
 
-## Construction
+## Example
 
-### Code
+Standard alert with type, variant and content:
 
-```html
-<kol-alert _label="Überschrift im Alert" _level="1" _type="success">Textbereich im Alert</kol-alert>
-<kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
-```
-
-### Events
-
-For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event | trigger | Value |
-|---------|-----------------------------|-------|
-| `close` | Component is closing | - |
-
-### Example
-
-<kol-alert _label="Überschrift im Alert" _level="1" _type="success" >Textbereich im Alert</kol-alert>
-<kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
-
-## Usage
-
-### Headline
-
-The **Heading** of the Alert component is determined via the `_label` attribute.
-
-### Heading level
-
-The heading level is passed through the **`_level`** attribute. Levels **1** to **6** are possible
-
-### Type of alert
-
-The **Alert** component offers **four** different types, each of which relates to the color design and the icon used in the alert. You can choose from:
-
-<ul>
-	<li>Success</li>
-	<li>Error</li>
-	<li>Info</li>
-	<li>Warning</li>
-</ul>
-
-The type of an alert is specified using the `_type` attribute.
-
-### Contents of the alert
-
-The content of the alert is written between the opening element `<kol-alert>` and the closing `</kol-alert>`. The content can consist of any **HTML code**, but also of other **KoliBri** components.
-
-### Variant of the alert
-
-The **`_variant`** attribute can be used to specify the display variant in which the alert is displayed. `msg` makes the left, colored column with the icon extend over the entire height of the alert, `card` only sets the left column next to the heading.
-
-### Best practices
-
-- Use the **Alert** component in appropriate locations on your website to present information in the correct context.
-- Always use the correct **Type** of the **Alert** component to generate the desired reaction from users. For example, avoid the **_Error_** type if you want to indicate the successful completion of a save process.
-- Avoid placing too many **Alert** components on one page, as the information content is then often no longer perceived as particularly important by users.
-
-### Use cases
-
-- Use the **Alert** component if you want to alert users to errors when entering forms.
-- Use the **Alert** component to notify users of the successful execution of functions, e.g. **`Your request has been successfully saved`**.
-- Use the **Alert** component to provide users with further information on a topic.
+<AlertPreview
+	visibleProperties={['_label', '_type', '_variant', '_hasCloser', '_slot']}
+	initialProps={{ _label: 'Notice', _type: 'info', _variant: 'msg' }}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Accessibility
 
-The **Alert** component has been optimized to display with the highest possible contrast.
+- The icon (depending on the selected type) ensures that information does not have to be perceived by color alone.
+- When using screen readers, the icon is always read aloud. The title should therefore **not** begin with the alert type, as this leads to the alert type being read twice.
+  - **Correct:** Label = "Fill in the field." → Output: "Error – Fill in the field."
+  - **Incorrect:** Label = "Error: Fill in the field." → Output: "Error – Error: Fill in the field."
+- The `_alert` attribute enables screen reader notifications (`role="alert"` / `aria-live="assertive"`). It only works on initial render or when content changes.
 
-The additional icon (depending on the type selected) ensures that the user does not have to classify the information based on color alone.
+### Links and References
 
-When using a screen reader, the icon is always read.
-The title should therefore not start with the **Alert** type, as this will result in the **Alert** type being read twice.
+- <ExampleLink component="alert" />
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#alert" _target="_blank" _label="WAI-ARIA Authoring Practices – Alert Pattern"></kol-link>
 
-**Example:**
-Correct: Label = "Fill in the field." → Output: "Error - fill in the field."
-Incorrect: Label = "Error: Fill in the field." → "Output: Error - Error: Fill in the field."
+## Usage
 
-The following accessibility points were particularly considered in the **Alert** component:
+### Best Practices / Recommendations
 
-- Font color is either white or black.
-- The font color depends on the background color and always changes to the font color with the greater color contrast to the background color.
-- If the color contrast is not sufficient for AA, the background color will be overwritten.
+- Always use the **type** (`_type`) matching the content: `success`, `error`, `info` or `warning`.
+- Use **Alert** in appropriate locations on the page to present information in the correct context.
+- Avoid placing too many **Alert** components on one page, as the information will lose its perceived importance.
+- The **title** (label) should not begin with the alert type to avoid double reading by screen readers.
+- Use `_alert` only for dynamically inserted or changed notifications – statically present alerts are not automatically read by screen readers on initial load.
 
-### Accessible notifications with `_alert`
+### Use Cases
 
-The **Alert** component provides the ability to enable screen reader notifications via the `_alert` attribute. If `_alert` is set, the ARIA role `alert` or `aria-live="assertive"` is used to have screen readers automatically read the notification.
+- Indicating errors in form input
+- Confirming a successful action (e.g. "Your request has been successfully saved")
+- General informational notice about a topic or feature
+- Warning messages for critical actions
 
-**Important note on behavior:**
-The `_alert` attribute only works if:
-- The **Alert** component is initially re-rendered, or
-- The **content** of the alert changes
+## Construction / Technical
 
-Without a change in content, screen readers will not recognize new information and will not read the alert.
+### Playground
 
-**Examples of effective use:**
-```html
-<!-- Alert wird neu hinzugefügt (initial rendering) -->
-<kol-alert _label="Erfolgreich gespeichert" _type="success" _alert>
-  Ihre Daten wurden erfolgreich übertragen.
-</kol-alert>
+<AlertPreview codeCollapsable />
 
-<!-- Inhalt ändert sich dynamisch -->
-<kol-alert _label="Status-Update" _type="info" _alert>
-  {dynamicMessage}
-</kol-alert>
-```
+### Functionalities (with Code)
 
-**Not effective:**
-```html
-<!-- Alert bereits vorhanden, kein Re-Render, keine Inhaltsänderung -->
-<kol-alert _label="Statische Meldung" _type="info" _alert>
-  Diese Meldung wird nicht vorgelesen.
-</kol-alert>
-```
+#### Type of Alert
 
-### Note on `_alert` and screen readers
+The type of the alert is set via the `_type` attribute and determines the semantic meaning and the icon used.
 
-With `<kol-alert>`, `role="alert"` and `aria-live="polite"` cannot be set into effect later; Both behave the same and are only triggered in the screen reader when the content changes.
+<AlertPreview
+	visibleProperties={['_type']}
+	initialProps={{ _label: 'Notice', _type: 'info' }}
+	codeCollapsable
+	codeCollapsed
+/>
 
-## Links and references
+| Type      | Meaning                        |
+| --------- | ------------------------------ |
+| `success` | Successful action              |
+| `error`   | Error or critical issue        |
+| `info`    | General notice                 |
+| `warning` | Warning, caution required      |
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#alert" _target="_blank"></kol-link>
+#### Variant of the Alert
+
+The `_variant` attribute controls the display variant.
+
+<AlertPreview
+	visibleProperties={['_variant']}
+	initialProps={{ _label: 'Notice', _type: 'info', _variant: 'msg' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+| Variant  | Description                                                                      |
+| -------- | -------------------------------------------------------------------------------- |
+| `msg`    | The left column with icon extends over the entire height of the alert.          |
+| `card`   | The left column with icon is only placed next to the heading.                   |
+
+#### Heading and Heading Level
+
+The heading is set via `_label`, the semantic level via `_level` (1–6, or 0 for bold text without a semantic heading element).
+
+<AlertPreview
+	visibleProperties={['_label', '_level']}
+	initialProps={{ _label: 'Heading', _type: 'info', _level: 3 }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Content of the Alert
+
+The content of the alert is passed as slot content and can contain any HTML code or KoliBri components.
+
+<AlertPreview
+	visibleProperties={['_slot']}
+	initialProps={{ _label: 'Notice', _type: 'info' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Close Function
+
+The `_has-closer` attribute shows a close button.
+
+<AlertPreview
+	visibleProperties={['_hasCloser']}
+	initialProps={{ _label: 'Closable Alert', _type: 'info', _hasCloser: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Screen Reader Notifications (`_alert`)
+
+The `_alert` attribute activates `role="alert"` or `aria-live="assertive"`, so that screen readers automatically read the notification. It only works on initial render or when content changes.
+
+<AlertPreview
+	visibleProperties={['_alert']}
+	initialProps={{ _label: 'Status Message', _type: 'info', _alert: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Events
+
+For handling events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event   | Trigger                     | Value |
+| ------- | --------------------------- | ----- |
+| `close` | Component is being closed   | -     |
+
+## API
 
 <Readme />
-
-<ExampleLink component="alert" />
-
-## Live editor
-
-<LiveEditorCompact component="alert" />
-
-## Examples
-
-### Simply reports
-
-<Configurator component="alert" sample="basic" />
-
-### Card or as Msg
-
-<Configurator component="alert" sample="card-msg" />
-
-### With HTML structure
-
-<Configurator component="alert" sample="html" />
