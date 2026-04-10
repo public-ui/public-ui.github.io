@@ -1,16 +1,10 @@
 ---
 title: Nav
 description: Beschreibung, Spezifikation und Beispiele für die Nav-Komponente.
-tags:
-  - Nav
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/nav/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import NavPreview from '@site/src/components/previews/components/Nav';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Nav
@@ -29,42 +23,11 @@ noch die Icons ausgegeben.
 
 ## Konstruktion
 
-### Code
-
-```html
-<kol-nav
-	_label="Hauptmenü"
-	_links="[
-    {
-      '_href': 'startseite',
-      '_icons': 'kolicon-house',
-      '_label': 'Startseite2',
-      '_children': [
-        {
-          '_href': 'startseite/1-untermenuepunkt',
-          '_icons': 'kolicon-house',
-          '_label': '1. Untermenüpunkt'
-        },
-        {
-          '_href': 'startseite/2-untermenuepunkt',
-          '_icons': 'kolicon-house',
-          '_label': '2. Untermenüpunkt'
-        }
-      ]
-    },
-    {
-      '_href': 'unterseite',
-      '_icons': 'kolicon-house',
-      '_label': '2. Menüpunkt'
-    }
-  ]"
-	_has-compact-button
-></kol-nav>
-```
-
-### Beispiel
-
-<kol-nav _label="Hauptmenü" _links="[{'_href':'startseite','_icons':'kolicon-house','_label':'Startseite','_children':[{'_href':'startseite/1-untermenuepunkt','_icons':'kolicon-house','_label':'1. Untermenüpunkt'},{'_href':'startseite/2-untermenuepunkt','_icons':'kolicon-house','_label':'2. Untermenüpunkt'}]},{'_href':'unterseite','_icons':'kolicon-house','_label':'2. Menüpunkt'}]" _has-compact-button></kol-nav>
+<NavPreview
+	visibleProperties={['_hasCompactButton']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Verwendung
 
@@ -119,12 +82,7 @@ Um die Navigationsleiste in der kompakten Darstellung auszugeben, setzen Sie das
 
 <Readme />
 
-<ExampleLink component="nav" />
-
-## Live-Editor
-
-<LiveEditorCompact component="nav" />
-
 ## Beispiele
 
-<Configurator component="nav" sample="basic" />
+<ExampleLink component="nav" />
+
