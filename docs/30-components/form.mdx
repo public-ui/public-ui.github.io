@@ -9,8 +9,8 @@ tags:
 ---
 
 import Readme from '../../readmes/form/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import FormPreview from '@site/src/components/previews/components/Form';
 
 # Form
 
@@ -18,26 +18,12 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 
 ## Konstruktion
 
-### Code
+<FormPreview visibleProperties={['_requiredText']} codeCollapsable codeCollapsed />
 
-```html
-<kol-form _requiredText="Sternchen heißt Pflichtfeld.">
-	<kol-input-text _label="Vorname"></kol-input-text>
-	<kol-input-text _label="Nachname"></kol-input-text>
-</kol-form>
-```
-
-### Beispiel
-
-<kol-form _requiredText="Sternchen heißt Pflichtfeld.">
-	<kol-input-text _label="Vorname"></kol-input-text>
-	<kol-input-text _label="Nachname"></kol-input-text>
-</kol-form>
+# API
 
 <Readme />
 
+## Beispiele
+
 <ExampleLink component="form" />
-
-## Live-Editor
-
-<LiveEditorCompact component="form" />
