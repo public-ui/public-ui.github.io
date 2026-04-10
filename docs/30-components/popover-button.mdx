@@ -1,13 +1,11 @@
 ---
 title: PopoverButton
 description: Beschreibung und Spezifikation für die PopoverButton-Komponente.
-tags:
-  - Dropdown
-  - ContextMenu
 ---
 
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import Readme from '../../readmes/popover-button/readme.md';
+import PopoverButtonPreview from '@site/src/components/previews/components/PopoverButton';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
@@ -28,28 +26,17 @@ Der PopoverButton eignet sich besonders für:
 
 ## Konstruktion
 
-### Code
+<PopoverButtonPreview
+	visibleProperties={['_label', '_popoverAlign', '_icons', '_slot', '_disabled', '_hideLabel']}
+	codeCollapsable
+	codeCollapsed
+/>
 
-```html
-<kol-popover-button _label="Weitere Informationen" _icons="fa-solid fa-circle-info" _popover-align="right">
-	Weitere Informationen im Popover.
-</kol-popover-button>
-```
-
-### Beispiel
-
-<kol-popover-button _label="Weitere Informationen" _icons="fa-solid fa-circle-info" _popover-align="right">
-	Weitere Informationen im Popover.
-</kol-popover-button>
+# API
 
 <Readme />
 
-<ExampleLink component="popover-button" />
-
-## Live-Editor
-
-[//]: # (<LiveEditorCompact component="popover-button" />)
-
 ## Beispiele
 
-[//]: # (<Configurator component="popover-button" sample="basic" />)
+<ExampleLink component="popover-button" />
+
