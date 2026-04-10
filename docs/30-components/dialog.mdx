@@ -1,0 +1,67 @@
+---
+title: Dialog
+slug: dialog
+icon: /icons/dialog.svg
+version: 1.0.0
+description: Ein modales Dialog-Overlay, das zur Abfrage einer Bestätigung, Anzeige von Nachrichten oder zur Erfassung kleiner, fokussierter Eingaben verwendet wird, die die sofortige Aufmerksamkeit des Benutzers erfordern und die Interaktion mit dem Hauptinhalt blockieren, bis das Dialogfenster geschlossen wird.
+---
+
+import DialogPreview from '@site/src/components/previews/components/Dialog';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
+# Dialog
+
+<BetaDocsBanner />
+<UntestedBanner />
+
+Die `Dialog`-Komponente bietet ein Vollbild- oder fokussiertes modales Overlay zur Übermittlung kritischer, zeitkritischer Informationen oder zur Erfassung fokussierter Benutzereingaben, die die sofortige Aufmerksamkeit des Benutzers erfordern. Sie ist dafür konzipiert, über allen anderen Seiteninhalten zu erscheinen.
+
+<DialogPreview componentName="dialog" />
+
+## Verwendung
+
+Verwenden Sie die `Dialog`-Komponente, wenn Sie Folgendes tun müssen:
+*   Eine irreversible Aktion bestätigen (z.B. „Sind Sie sicher, dass Sie diesen Datensatz löschen möchten?“).
+*   Wichtige, nicht überspringbare Benachrichtigungen anzeigen.
+*   Ein kleines, kritisches Stück Information sammeln (z.B. einen Bestätigungscode).
+
+### API
+
+Die `Dialog`-Komponente wird durch Props gesteuert, die ihre Sichtbarkeit, ihren Titel, ihren Inhalt und ihre Aktionen verwalten.
+
+**Props:**
+
+| Name | Typ | Standardwert | Beschreibung |
+| :--- | :--- | :--- | :--- |
+| `isOpen` | `boolean` | `false` | Steuert die Sichtbarkeit des Dialogs. Muss durch den Zustand der übergeordneten Komponente explizit verwaltet werden. |
+| `onClose` | `() => void` | `() => {}` | Callback-Funktion, die aufgerufen wird, wenn der Benutzer das Dialogfeld schließt (z.B. durch Klicken außerhalb oder Drücken von Escape). |
+| `title` | `string` | `"Dialog"` | Der Haupttitel, der oben im Modal angezeigt wird. |
+| `primaryActionLabel` | `string` | `"Bestätigen"` | Die Beschriftung für die primäre Aktion. |
+| `secondaryActionLabel` | `string` | `"Abbrechen"` | Die Beschriftung für die sekundäre/Abbrechen-Aktion. |
+| `children` | `ReactNode` | `null` | Der Inhalt, der im Modal-Body angezeigt werden soll. Dies ist der primäre Bereich für Benutzereingaben oder Formulare. |
+
+### Varianten
+
+| Variante | Anwendungsfall | Hinweise |
+| :--- | :--- | :--- |
+| `confirm` | Für zwingende Benutzerbestätigungen. | Enthält sowohl eine primäre als auch eine sekundäre Schaltfläche. |
+| `alert` | Zur Anzeige von Informationen, die eine Bestätigung erfordern. | Zeigt nur einen Schließen-Button. |
+| `input` | Zur Erfassung einzelner Eingaben. | Sollte einen Eingabekomponenten innerhalb seiner `children` umhüllen. |
+
+## Beispiel
+
+Hier ist ein interaktives Beispiel für die `Dialog`-Komponente in Aktion.
+
+
+
+### API Details
+
+*   **`isOpen`**: `boolean`. Steuert die Sichtbarkeit.
+*   **`onClose`**: `() => void`. Der erforderliche Callback für die Handhabung des Schließvorgangs.
+*   **`title`**: `string`. Setzt den Text des Kopfbereichs.
+*   **`primaryActionLabel`**: `string`. Setzt die Beschriftung der Hauptschaltfläche.
+*   **`secondaryActionLabel`**: `string`. Setzt die Beschriftung der Abbrechen-Schaltfläche.
+*   **`children`**: `ReactNode`. Muss den Kerninhalt, Formularelemente oder strukturierten Text enthalten.
+
+*Hinweis: Der Dialog muss durch den Zustand seiner übergeordneten Komponente gesteuert werden. Verwenden Sie immer die Callbacks `isOpen` und `onClose` zusammen.*
