@@ -1,15 +1,10 @@
 ---
 title: Tabs
 description: Beschreibung, Spezifikation und Beispiele für die Tabs-Komponente.
-tags:
-  - Tabs
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/tabs/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import TabsPreview from '@site/src/components/previews/components/Tabs';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
@@ -27,20 +22,16 @@ Die **Tabs**-Komponente wird verwendet, um verwandte Inhalte auf derselben Seite
 
 ## Konstruktion
 
+<TabsPreview
+	visibleProperties={['_label', '_tabs', '_align', '_hasCreateButton']}
+	codeCollapsable
+	codeCollapsed
+/>
+
 Nach dem Laden der Komponente wird die erste Registerkarte links automatisch optisch als **_aktiv_** hervorgehoben. Jede Registerkarte übernimmt den Status **_aktiv_** nach dem Anklicken. Der Status **_aktiv_** kann mit dem Attribut **`_selected`** auch manuell auf den Index der Registrierkarte gesetzt werden.
 Die einzelnen Inhalte der Registerkarte werden in einem eigenen `HTMLDivElement` als `<div>Inhalt der Registerkarte</div>` innerhalb von `<kol-tabs></kol-tabs>` notiert.
 
 Die Zuordnung der Daten im Attribut **`_tabs`** zu den Div-Elementen erfolgt automatisch.
-
-### Code
-
-```html
-<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icons":"kolicon-house"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
-	<div>Inhalt von Tab 1</div>
-	<div>Inhalt von Tab 2</div>
-	<div>Inhalt von Tab 3</div>
-</kol-tabs>
-```
 
 ### Events
 
@@ -51,13 +42,6 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | `select` | Tab wurde ausgewählt           | Index des ausgewählten Tab |
 | `create` | Create-Button wurde angeklickt | -                          |
 
-### Beispiel
-
-<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icons":"kolicon-house"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
-	<div>Inhalt von Tab 1</div>
-	<div>Inhalt von Tab 2</div>
-	<div>Inhalt von Tab 3</div>
-</kol-tabs>
 
 ## Verwendung
 
@@ -142,8 +126,6 @@ Sowohl wenn ein Tab fokussiert wird als auch wenn er selektiert wird, liest der 
 
 <Readme />
 
+## Beispiele
+
 <ExampleLink component="tabs" />
-
-## Live-Editor
-
-<LiveEditorCompact component="tabs" />

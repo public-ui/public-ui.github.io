@@ -4,7 +4,7 @@ description: Description, specification and examples for the Tabs component.
 ---
 
 import Readme from '/readmes/tabs/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import TabsPreview from '@site/src/components/previews/components/Tabs';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
@@ -22,20 +22,16 @@ The **Tabs** component is used to organize and navigate between related content 
 
 ## Construction
 
+<TabsPreview
+	visibleProperties={['_label', '_tabs', '_align', '_hasCreateButton']}
+	codeCollapsable
+	codeCollapsed
+/>
+
 After loading the component, the first tab on the left will automatically be visually highlighted as **_active_**. Each tab takes on the status **_active_** after being clicked. The status **_active_** can also be set manually to the index of the registry card using the **`_selected`** attribute.
 The individual contents of the tab are noted in a separate `HTMLDivElement` as `<div>Contents of the tab</div>` within `<kol-tabs></kol-tabs>`.
 
 The data in the **`_tabs`** attribute is assigned to the div elements automatically.
-
-### Code
-
-```html
-<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icons":"kolicon-house"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
-	<div>Inhalt von Tab 1</div>
-	<div>Inhalt von Tab 2</div>
-	<div>Inhalt von Tab 3</div>
-</kol-tabs>
-```
 
 ### Events
 
@@ -45,14 +41,6 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 |----------|--------------------------------|----------------------------|
 | `select` | Tab has been selected | Index of the selected tab |
 | `create` | Create button was clicked | - |
-
-### Example
-
-<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icons":"kolicon-house"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
-	<div>Inhalt von Tab 1</div>
-	<div>Inhalt von Tab 2</div>
-	<div>Inhalt von Tab 3</div>
-</kol-tabs>
 
 ## Usage
 
@@ -126,8 +114,6 @@ The focus here is always on the impaired user. In order to navigate as efficient
 
 <Readme />
 
+## Examples
+
 <ExampleLink component="tabs" />
-
-## Live editor
-
-<LiveEditorCompact component="tabs" />
