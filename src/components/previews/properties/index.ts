@@ -20,3 +20,5 @@ export { default as SelectOptionsProperty } from './SelectOptionsProperty';
 export { default as ResizeProperty } from './ResizeProperty';
 export { default as SmartButtonProperty } from './SmartButtonProperty';
 export { default as TableColumnsProperty } from './TableColumnsProperty';
+export { default as TreeItemsProperty } from './TreeItemsProperty';
+export type { TreeItemData } from './TreeItemsProperty';
