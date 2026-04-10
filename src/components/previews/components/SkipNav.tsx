@@ -49,6 +49,7 @@ const SkipNavPreview = (props: SkipNavPreviewProps) => {
 				<>
 					<div className='flex flex-col'>
 						<div
+							// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
 							tabIndex={0}
 							className="p-2 text-sm text-gray-500 border border-gray-300 rounded"
 						>
