@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, OrientationProperty } from '../properties';
+import { BooleanProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolNav, KolTextarea } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -66,7 +66,6 @@ const NavPreview: React.FC<NavPreviewProps> = (props) => {
 					/>
 				),
 				_hasCompactButton: <BooleanProperty label="Has Compact Button" />,
-				_orientation: <OrientationProperty label="Orientation" defaultValue="vertical" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolNav"
