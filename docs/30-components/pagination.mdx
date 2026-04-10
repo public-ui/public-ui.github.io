@@ -1,16 +1,10 @@
 ---
 title: Pagination
 description: Beschreibung, Spezifikation und Beispiele für die Pagination-Komponente.
-tags:
-  - Pagination
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/pagination/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import PaginationPreview from '@site/src/components/previews/components/Pagination';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Pagination
@@ -19,15 +13,11 @@ Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte I
 
 ## Konstruktion
 
-### Code
-
-```html
-<div>
-	<kol-pagination _max="100" _page="6"></kol-pagination>
-	<kol-pagination _max="100" _page="6" _sibling-count="2"></kol-pagination>
-	<kol-pagination _max="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
-</div>
-```
+<PaginationPreview
+	visibleProperties={['_max', '_page', '_pageSize', '_siblingCount', '_boundaryCount', '_hasButtons']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
@@ -38,17 +28,6 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | `click`          | Seite wird angeklickt     | Nummer der ausgewählten Seite |
 | `changePage`     | Seite wird angeklickt     | Nummer der ausgewählten Seite |
 | `changePageSize` | Seitengröße wird geändert | Neue Seitengröße              |
-
-### Beispiel
-
-<div class="grid gap-2">
-	<kol-heading _level="3" _label="Standardausgabe nur mit aktuellem Element"></kol-heading>
-	<kol-pagination _max="100" _page="6" _has-buttons="false"></kol-pagination>
-	<kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts dem aktuellen Element (_sibling)"></kol-heading>
-	<kol-pagination _max="100" _page="6" _sibling-count="2"></kol-pagination>
-	<kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts (_boundary-count)"></kol-heading>
-	<kol-pagination _max="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
-</div>
 
 ## Verwendung
 
@@ -66,14 +45,11 @@ Die **Paginierung**-Komponente kann über Ihre Properties konfiguriert werden.
 Die **Paginierung**-Komponente kann auf vielfältige Art eingesetzt werden. Insbesondere dort, wo auf einer Inhaltsseite umfangreiche Inhalte dargestellt werden sollen, trägt sie zur Verbesserung der Struktur und Übersichtlichkeit bei.
 Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte, Listen und Tabellen. Auch für bestimmte Navigationsaufgaben innerhalb einer Seite kann die Paginierung gut verwendet werden.
 
+# API
+
 <Readme />
-
-<ExampleLink component="pagination" />
-
-## Live-Editor
-
-<LiveEditorCompact component="pagination" />
 
 ## Beispiele
 
-<Configurator component="pagination" sample="basic" />
+<ExampleLink component="pagination" />
+
