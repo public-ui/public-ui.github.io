@@ -17,3 +17,5 @@ export { default as QuoteVariantProperty } from './QuoteVariantProperty';
 export { default as RadioOptionsProperty } from './RadioOptionsProperty';
 export { default as ResizeProperty } from './ResizeProperty';
 export { default as SmartButtonProperty } from './SmartButtonProperty';
+export { default as TreeItemsProperty } from './TreeItemsProperty';
+export type { TreeItemData } from './TreeItemsProperty';
