@@ -71,7 +71,10 @@ const TableColumnsProperty = (props: {
 			>
 				<div className="flex flex-col gap-4 py-4">
 					{currentColumns.map((col, index) => (
-						<KolCard key={col.key} _label={`${translate({ id: 'preview.component.table-stateful.column.label' })} ${index + 1}`}>
+						<KolCard
+							key={col.key}
+							_label={`${translate({ id: 'preview.component.table-stateful.column.label' })} ${index + 1}`}
+						>
 							<div className="flex flex-col gap-2">
 								<KolInputText
 									_label="Label"
