@@ -4,9 +4,8 @@ description: Description, specification and examples for the Version component.
 ---
 
 import Readme from '/readmes/version/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import VersionPreview from '@site/src/components/previews/components/Version';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 # Version
@@ -17,17 +16,11 @@ The **Version** component displays short content on a colored background. The **
 
 ## Construction
 
-### Code
-
-```html
-<div>
-	<kol-version _label="1.44.0"></kol-version>
-</div>
-```
-
-### Example
-
-<kol-version _label="1.44.0"></kol-version>
+<VersionPreview
+	visibleProperties={['_label']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Usage
 
@@ -35,15 +28,11 @@ The attribute **`_label`** is available for configuration and accepts any text p
 
 The **version** is output as an **_inline element_** by default.
 
+# API
+
 <Readme />
-
-<ExampleLink component="version" />
-
-## Live editor
-
-<LiveEditorCompact component="version" />
 
 ## Examples
 
-<Configurator component="version" sample="basic" />
-<Configurator component="version" sample="context" />
+<ExampleLink component="version" />
+
