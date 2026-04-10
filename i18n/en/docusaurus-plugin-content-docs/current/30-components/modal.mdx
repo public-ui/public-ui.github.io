@@ -4,6 +4,7 @@ description: Description, specification and examples for the Modal component.
 ---
 
 import Readme from '/readmes/modal/readme.md';
+import ModalPreview from '@site/src/components/previews/components/Modal';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
@@ -28,33 +29,10 @@ As soon as a **modal** is opened, all selectable elements in the website are dea
 
 ### Construction
 
-#### Code
-
-```html
-<kol-modal id="test-modal" _label="Beschreibung zur Modalbox">
-	<kol-card _label="Vorgang löschen">
-		<div>
-			<p>Wollen Sie den Vorgang wirklich löschen?</p>
-			<kol-button class="close-modal" _label="Ok" _variant="primary"></kol-button>
-			<kol-button class="close-modal" _label="Abbrechen"></kol-button>
-		</div>
-	</kol-card>
-</kol-modal>
-
-<kol-button id="modal-open-button" _label="Modal öffnen"></kol-button>
-
-<script>
-	const modal = document.querySelector('#test-modal');
-	const modalOpenButton = document.querySelector('#modal-open-button');
-
-	document.querySelectorAll('.close-modal').forEach((buttonElement) => {
-		buttonElement._on = {
-			onClick: () => modal.closeModal(),
-		};
-	});
-	modalOpenButton._on = { onClick: () => modal.openModal() };
-</script>
-```
+<ModalPreview
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
@@ -109,6 +87,11 @@ Furthermore, there is only ever a maximum of one active modal, which deactivates
 - <kol-link _href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html" _target="_blank"></kol-link>
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
 
+## API
+
 <Readme />
 
+## Examples
+
 <ExampleLink component="modal" />
+
