@@ -158,6 +158,13 @@ All methods are also demonstrated in this example: [render-cell.tsx](https://git
 
 ```tsx
 import { createReactRenderElement } from '@public-ui/react-v19';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
+
+<BetaDocsBanner />
+<UntestedBanner />
+
 {
   render: (el) => {
     getRoot(createReactRenderElement(el)).render(

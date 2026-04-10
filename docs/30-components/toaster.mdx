@@ -19,6 +19,10 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Toaster [deprecated]
 
+
+<BetaDocsBanner />
+<UntestedBanner />
+
 Synonyme: Notification, Snackbar
 
 Mit dem **Toast**-Service geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird am Kopf des Browserfenster
@@ -32,6 +36,9 @@ Die Toast-Komponenten werden nicht direkt verwendet, sondern immer über den Toa
 
 ```js
 import { ToasterService } from '@public-ui/components';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 // Get the toaster instance for the current HTML document.
 const toaster = ToasterService.getInstance(document, {

@@ -524,5 +524,21 @@
 	},
 	"preview.property.options.add": {
 		"message": "Hinzufügen"
+	},
+	"custom.untested-banner.label": {
+		"message": "Barrierefreiheitstest ausstehend",
+		"description": "Überschrift des Banners für Komponenten ohne abgeschlossenen Barrierefreiheitstest"
+	},
+	"custom.untested-banner.message": {
+		"message": "Diese Komponente wird erneut auf Barrierefreiheit getestet. Der vollständige Test steht noch aus und kann erst nach einem abgeschlossenen Release erfolgen.",
+		"description": "Text des Banners für Komponenten ohne abgeschlossenen Barrierefreiheitstest"
+	},
+	"custom.beta-docs-banner.label": {
+		"message": "Dokumentation in Überarbeitung",
+		"description": "Überschrift des Beta-Banners auf überarbeiteten Dokumentationsseiten"
+	},
+	"custom.beta-docs-banner.message": {
+		"message": "Diese Dokumentation wird aktuell überarbeitet und befindet sich im Beta-Status. Inhalte können sich noch ändern.",
+		"description": "Text des Beta-Banners auf überarbeiteten Dokumentationsseiten"
 	}
 }

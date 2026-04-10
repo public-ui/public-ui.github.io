@@ -9,6 +9,10 @@ import LinkPreview from '@site/src/components/previews/components/Link';
 
 #Link
 
+
+<BetaDocsBanner />
+<UntestedBanner />
+
 The **Link** component renders a link optimized for accessibility, which can be output as text, as an icon or in combination.
 
 ## Construction
@@ -43,6 +47,9 @@ can set, it must be informed via the ariaCurrent service which page is currently
 
 ```typescript
 import { setCurrentLocation } from '@public-ui/components';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 /* Bei jedem Seitenwechsel aufrufen: */
 setCurrentLocation('/path/to/page');

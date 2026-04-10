@@ -9,6 +9,10 @@ import LinkPreview from '@site/src/components/previews/components/Link';
 
 # Link
 
+
+<BetaDocsBanner />
+<UntestedBanner />
+
 Die **Link**-Komponente rendert einen auf Barrierefreiheit optimierten Link, der als Text, als Icon oder auch in Kombination ausgegeben werden kann.
 
 ## Konstruktion
@@ -43,6 +47,9 @@ setzen kann, muss ihr über den ariaCurrent-Service mitgeteilt werden, welche Se
 
 ```typescript
 import { setCurrentLocation } from '@public-ui/components';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 /* Bei jedem Seitenwechsel aufrufen: */
 setCurrentLocation('/path/to/page');

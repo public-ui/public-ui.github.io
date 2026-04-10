@@ -7,6 +7,10 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Toaster
 
+
+<BetaDocsBanner />
+<UntestedBanner />
+
 Synonyms: notification, snack bar
 
 With the **Toast** service you give visual feedback to the users. It will appear at the top of the browser window
@@ -20,6 +24,9 @@ The Toast components are not used directly, but are always constructed via the T
 
 ```js
 import { ToasterService } from '@public-ui/components';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 // Get the toaster instance for the current HTML document.
 const toaster = ToasterService.getInstance(document, {

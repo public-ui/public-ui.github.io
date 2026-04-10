@@ -524,5 +524,21 @@
 	},
 	"preview.property.options.add": {
 		"message": "Add"
+	},
+	"custom.untested-banner.label": {
+		"message": "Accessibility test pending",
+		"description": "Heading of the banner for components without a completed accessibility test"
+	},
+	"custom.untested-banner.message": {
+		"message": "This component is being retested for accessibility. The full test is still pending and can only be completed after a release.",
+		"description": "Text of the banner for components without a completed accessibility test"
+	},
+	"custom.beta-docs-banner.label": {
+		"message": "Documentation under revision",
+		"description": "Heading of the beta banner on revised documentation pages"
+	},
+	"custom.beta-docs-banner.message": {
+		"message": "This documentation is currently being revised and is in beta status. Content may still change.",
+		"description": "Text of the beta banner on revised documentation pages"
 	}
 }
