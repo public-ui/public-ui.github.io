@@ -1,8 +1,8 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, RadioOptionsProperty } from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty } from '../properties';
 import type { JSX, SelectOption } from '@public-ui/components';
-import { KolInputText, KolSingleSelect } from '@public-ui/react-v19';
+import { KolInputText, KolSingleSelect, KolTextarea } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
 interface SingleSelectPreviewComponentProps {
@@ -17,21 +17,21 @@ const SingleSelectPreview = (props: SingleSelectPreviewComponentProps) => {
 		() => ({
 			_label: translate({ id: 'preview.component.single-select.label' }),
 			_options: [
-				{ label: 'Herr', value: 0 },
-				{ label: 'Frau', value: 1 },
-				{ label: 'Firma', value: 2 },
-			] satisfies SelectOption<number>[],
+				{ label: 'Herr', value: 'Herr' },
+				{ label: 'Frau', value: 'Frau' },
+				{ label: 'Firma', value: 'Firma' },
+			] satisfies SelectOption<string>[],
 		}),
 		[],
 	);
 
-	const [value, setValue] = React.useState<number | undefined>(undefined);
+	const [value, setValue] = React.useState<string | undefined>(undefined);
 
 	return (
 		<Preview<JSX.KolSingleSelect>
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_options: <RadioOptionsProperty label="Options" />,
+				_options: <KolTextarea _label="Options (JSON Array)" _rows={5} />,
 				_placeholder: <KolInputText _label="Placeholder" />,
 				_icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
 				_accessKey: <KolInputText _label="Access Key" />,
@@ -56,7 +56,7 @@ const SingleSelectPreview = (props: SingleSelectPreviewComponentProps) => {
 				<KolSingleSelect
 					_touched
 					{...componentProps}
-					_on={{ onInput: (_: Event, v: unknown) => setValue(v as number) }}
+					_on={{ onInput: (_: Event, v: unknown) => setValue(v as string) }}
 					_value={value}
 				/>
 			)}
