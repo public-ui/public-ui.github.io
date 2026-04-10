@@ -4,8 +4,7 @@ description: Description, specification and examples for the Select component.
 ---
 
 import Readme from '/readmes/select/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import SelectPreview from '@site/src/components/previews/components/Select';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Select
@@ -20,21 +19,11 @@ The **Select** component creates a selection list from which one or more predefi
 
 ## Construction
 
-### Code
-
-```html
-<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _value="Mrs."> Auswahlfeld </kol-select>
-<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _multiple _value="['Mr.','Company']">
-        Auswahlfeld (Mehrfachauswahl)
-</kol-select>
-<kol-select
-        _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'},{'label':'Herr','value':'Mr2'},{'label':'Frau','value':'Mrs2'},{'label':'Firma','value':'Company2'}]"
-        _rows="4"
-        _value="Mrs."
->
-        Auswahlfeld mit _rows
-</kol-select>
-```
+<SelectPreview
+	visibleProperties={['_label', '_options', '_multiple', '_rows', '_disabled', '_required']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
@@ -47,14 +36,6 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 | `blur` | Input field loses focus | - |
 | `input` | Option is selected | `value` attribute of option |
 | `change` | Option is selected | `value` attribute of option |
-
-### Example
-
-<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _value="Mrs."> Auswahlfeld </kol-select>
-<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'}]" _multiple _value="['Mr.','Company']">
-Selection field (multiple selection)
-</kol-select>
-<kol-select _options="[{'label':'Herr','value':'Mr.'},{'label':'Frau','value':'Mrs.'},{'label':'Firma','value':'Company'},{'label':'Herr','value':'Mr2'},{'label':'Frau','value':'Mrs2'},{'label':'Firma','value':'Company2'}]" _rows="4" _value="Mrs.">Auswahlfeld mit rows</kol-select>
 
 ## Usage
 
@@ -121,14 +102,10 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 
 - https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
 
+# API
+
 <Readme />
-
-<ExampleLink component="select" />
-
-## Live editor
-
-<LiveEditorCompact component="select" />
 
 ## Examples
 
-<Configurator component="select" sample="basic" />
+<ExampleLink component="select" />

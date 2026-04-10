@@ -16,6 +16,7 @@ export { default as PaginationHasButtonsProperty } from './PaginationHasButtonsP
 export { default as PasswordVariantProperty } from './PasswordVariantProperty';
 export { default as QuoteVariantProperty } from './QuoteVariantProperty';
 export { default as RadioOptionsProperty } from './RadioOptionsProperty';
+export { default as SelectOptionsProperty } from './SelectOptionsProperty';
 export { default as ResizeProperty } from './ResizeProperty';
 export { default as SmartButtonProperty } from './SmartButtonProperty';
 export { default as TableColumnsProperty } from './TableColumnsProperty';
