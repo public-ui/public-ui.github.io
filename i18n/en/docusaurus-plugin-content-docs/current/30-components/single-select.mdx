@@ -4,9 +4,8 @@ description: Description, specification and examples for the SingleSelect compon
 ---
 
 import Readme from '/readmes/single-select/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import SingleSelectPreview from '@site/src/components/previews/components/SingleSelect';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
@@ -19,17 +18,11 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 
 The **SingleSelect** component creates a selection box that combines an input field with a list of selectable options underneath. It also offers a search function to filter the selection.
 
-## Construction
-
-### Code
-
-```html
-<kol-single-select
-	_options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]"
-	_label="Beispiel"
-	_value="1"
-></kol-single-select>
-```
+<SingleSelectPreview
+  visibleProperties={['_label', '_msg', '_icons', '_disabled']}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ## Usage
 
@@ -57,14 +50,11 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 | `input` | Option is selected | `value` attribute of option |
 | `change` | Option is selected | `value` attribute of option |
 
+# API
+
 <Readme />
-
-<ExampleLink component="single-select" />
-
-## Live editor
-
-<LiveEditorCompact component="single-select" />
 
 ## Examples
 
-<Configurator component="single-select" sample="basic" />
+<ExampleLink component="single-select" />
+
