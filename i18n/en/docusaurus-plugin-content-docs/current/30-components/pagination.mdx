@@ -4,8 +4,7 @@ description: Description, specification and examples for the Pagination componen
 ---
 
 import Readme from '/readmes/pagination/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import PaginationPreview from '@site/src/components/previews/components/Pagination';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
@@ -21,15 +20,11 @@ With the help of the **Pagination** component, extensive, divided content, such 
 
 ## Construction
 
-### Code
-
-```html
-<div>
-	<kol-pagination _max="100" _page="6"></kol-pagination>
-	<kol-pagination _max="100" _page="6" _sibling-count="2"></kol-pagination>
-	<kol-pagination _max="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
-</div>
-```
+<PaginationPreview
+	visibleProperties={['_max', '_page', '_siblingCount', '_boundaryCount', '_hasButtons']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
@@ -40,17 +35,6 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 | `click` | Page is clicked | Number of selected page |
 | `changePage` | Page is clicked | Number of selected page |
 | `changePageSize` | Page size is changed | New page size |
-
-### Example
-
-<div class="grid gap-2">
-	<kol-heading _level="3" _label="Standardausgabe nur mit aktuellem Element"></kol-heading>
-	<kol-pagination _max="100" _page="6" _has-buttons="false"></kol-pagination>
-	<kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts dem aktuellen Element (_sibling)"></kol-heading>
-	<kol-pagination _max="100" _page="6" _sibling-count="2"></kol-pagination>
-	<kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts (_boundary-count)"></kol-heading>
-	<kol-pagination _max="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
-</div>
 
 ## Usage
 
@@ -68,14 +52,11 @@ The **Pagination** component can be configured via your properties.
 The **Pagination** component can be used in a variety of ways. Especially where extensive content is to be displayed on a content page, it helps to improve the structure and clarity.
 Classic areas of application for pagination include blog-like content, lists and tables. Pagination can also be used for certain navigation tasks within a page.
 
+# API
+
 <Readme />
-
-<ExampleLink component="pagination" />
-
-## Live editor
-
-<LiveEditorCompact component="pagination" />
 
 ## Examples
 
-<Configurator component="pagination" sample="basic" />
+<ExampleLink component="pagination" />
+

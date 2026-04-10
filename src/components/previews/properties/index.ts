@@ -12,6 +12,7 @@ export { default as LinksProperty } from './LinksProperty';
 export { default as MsgProperty } from './MsgProperty';
 export { default as MultiLineTextProperty } from './MultiLineText';
 export { default as OrientationProperty } from './OrientationProperty';
+export { default as PaginationHasButtonsProperty } from './PaginationHasButtonsProperty';
 export { default as PasswordVariantProperty } from './PasswordVariantProperty';
 export { default as QuoteVariantProperty } from './QuoteVariantProperty';
 export { default as RadioOptionsProperty } from './RadioOptionsProperty';
