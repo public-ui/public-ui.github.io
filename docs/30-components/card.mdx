@@ -1,18 +1,11 @@
 ---
 title: Card
 description: Beschreibung, Spezifikation und Beispiele für die Card-Komponente.
-tags:
-  - Card
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/card/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import CardPreview from '@site/src/components/previews/components/Card';
+import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
@@ -23,61 +16,99 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-Um einzelne Bereiche Ihrer Webseite optisch hervorzuheben, bietet sich die **Card**-Komponente an. Mit ihrer Hilfe können Sie Ihre Inhalte sehr einfach strukturieren.
+**Synonyme:** Container, Box, Panel
 
-Die **Card**-Komponente besteht aus einem **_Titel-Bereich_**, einem **_Inhalts-Bereich_**.
+**Beschreibung:** Die **Card**-Komponente ist ideal, um einzelne Bereiche einer Webseite optisch hervorzuheben und Inhalte zu strukturieren. Sie besteht aus einem Titel-Bereich und einem Inhalts-Bereich, die durch eine visuelle Trennlinie voneinander abgegrenzt sind.
 
-Der **Titel-Bereich** wird in einer größeren Schrift dargestellt. Der **Inhalts-Bereich** ist optisch durch eine horizontale Trennlinie unterhalb des Titel-Bereichs abgetrennt und wird in der Standardschrift ausgegeben.
+## Beispiel
 
-## Konstruktion
+Darstellung einer einfachen Card mit Titel und Inhaltsbereich. Code kann eingeblendet werden.
 
-<CardPreview 
+<CardPreview
+	visibleProperties={[]}
+	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich mit beliebigem HTML' }}
 	codeCollapsable
-	codeCollapsed 
+	codeCollapsed
 />
 
-### Events
+## Barrierefreiheit
+
+- Der Titel wird semantisch korrekt als Überschrift ausgezeichnet und kann über das Attribut `_level` in seiner Hierarchieebene (1–6 oder 0 für Text ohne Überschrift) festgelegt werden.
+- Der Inhaltsbereich ist vollständig zugänglich und kann beliebiges HTML enthalten.
+- Das optionale Schließen-Symbol (über `_has-closer`) wird mit entsprechenden ARIA-Attributen gekennzeichnet.
+- Die Card ist vollständig über die Tastatur bedienbar.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/language-of-page.html" _target="_blank" _label="WCAG 2.1 - Language of Page"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/" _target="_blank" _label="WAI-ARIA Authoring Practices"></kol-link>
+
+## Verwendung
+
+### Best Practices / Empfehlungen
+
+- Nutzen Sie die **Card**-Komponente, um zusammenhängende Inhalte visuell zu gruppieren und zu strukturieren.
+- Verwenden Sie prägnante, aussagekräftige Beschriftungen über das Attribut `_label`.
+- Setzen Sie die Überschriftenebene (`_level`) konsistent ein, um eine sinnvolle Dokumentstruktur zu bewahren.
+- Berücksichtigen Sie auf mobilen Geräten, dass zu viele Cards übereinander stapeln können – nutzen Sie die Schließ-Funktion (`_has-closer`), um Platz zu sparen.
+- Platzieren Sie kritische Aktionselemente nicht ausschließlich innerhalb geschlossener Cards, wenn diese die Kernfunktionalität betreffen.
+- Vermeiden Sie übermäßige Verschachtelung von Cards innerhalb von Cards.
+
+### Anwendungsfälle
+
+- Darstellung von Produktinformationen oder Dienstleistungsbeschreibungen
+- Gruppierung von zugehörigen Formularbereichen
+- Strukturierung von Dashboard-Übersichtselementen
+- Hervorhebung von Informationsblöcken oder Tipps
+- Erstellung von Kachel-Layouts für Inhaltsübersichten
+- Kollapsible Bereiche für schlanke Layouts auf mobilen Geräten
+
+## Konstruktion / Technik
+
+### Playground
+
+<CardPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basisinhalt und Beschriftung
+
+Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird über den Slot befüllt.
+
+<CardPreview
+	visibleProperties={['_label', '_slot']}
+	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich' }}
+	codeCollapsable
+/>
+
+#### Überschriftenstruktur
+
+Die Überschriftenebene wird über `_level` gesteuert. Möglich sind die Level 0–6, wobei 0 den Titel als Bold-Text ohne Überschriftenelement darstellt.
+
+<CardPreview
+	visibleProperties={['_level']}
+	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich', _level: 2 }}
+	codeCollapsable
+/>
+
+#### Schließ-Funktion
+
+Das Attribut `_has-closer` ermöglicht dem Nutzer, die Card zu schließen und damit Platz zu sparen.
+
+<CardPreview
+	visibleProperties={['_has-closer']}
+	initialProps={{ _label: 'Schließbare Card', _slot: 'Inhaltsbereich', _hasCloser: true }}
+	codeCollapsable
+/>
+
+#### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
 | Event   | Auslöser                    | Value |
-|---------|-----------------------------|-------|
+| ------- | --------------------------- | ----- |
 | `close` | Komponente wird geschlossen | -     |
 
-## Verwendung
-
-### Einfache Standard-Card
-
-In der Standardansicht besteht eine **Card** aus einem Titel-Bereich, und einem leeren Inhalts-Bereich.
-Die horizontale Trennlinie zwischen beiden Bereichen setzt KoliBri automatisch.
-
-### Titel der Card-Komponente
-
-Den Titel der Card bestimmen Sie durch Setzen des Attributs **`_label`**. Hier können Sie beliebigen Text, auch Sonderzeichen und Umlaute, eingeben.
-Beachten Sie, dass **HTML-Code** nicht erlaubt ist. Sofern nicht gesetzt werden drei Punkte dargestellt.
-Die Überschriftenebene des Titels wird durch das Attribut **`_level`** übergeben. Möglich sind die Level **1** bis **6**
-
-### Inhalts-Container
-
-Die Inhalte im Content-Bereich der Card bestimmen Sie durch Einfügen eines **Inhalts-Containers** innerhalb des `<kol-card></kol-card>-Elements`. Hier können Sie beliebigen **HTML-Code** einfügen.
-
-Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container verwenden können, es aber empfohlen wird ein `<div></div>`-Tag zu verwenden.
-
-```html
-<kol-card _label="Beispiel" _level="1">
-	<div>Text im Inhalts-Bereich</div>
-</kol-card>
-```
-
-### Best practices
-
-- Verwenden Sie die **Card**-Komponente, um in sich geschlossene Themenbereiche optisch zu kapseln.
-- Verwenden Sie die **Card**-Komponente, um Ihre Inhalte semantisch zu strukturieren.
-- Vermeiden Sie, zu viele Cards auf einer Inhaltsseite zu verwenden.
-- Vermeiden Sie, wichtige Inhalte innerhalb der Card-Komponente zu platzieren, wenn sich die zugehörigen Aktions-Elemente (Buttons, Links, etc.) nicht innerhalb der gleichen Card befinden.
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="card" />

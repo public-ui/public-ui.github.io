@@ -12,12 +12,20 @@ type: project
 
 ### Progress (as of 2026-04-10)
 
-**Recently merged/in progress:**
-- accordion.mdx — completed
-- alert.mdx — completed (copilot branch merged)
-- textarea.mdx — completed (copilot branch merged)
+**All 54 component docs rewritten** — complete bulk rewrite finished on 2026-04-10.
 
-**Remaining components:** ~49 components still need rewriting
+Components completed:
+- accordion.mdx, alert.mdx, textarea.mdx — reference examples (previously done)
+- abbr, avatar, badge, breadcrumb, button, button-link, card, combobox
+- details, dialog, drawer, form, heading, icon, image, input-checkbox
+- input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range
+- input-text, link, link-button, meter, modal, nav, pagination, popover-button
+- popover, progress, quote, select, single-select, skip-nav, spin, split-button
+- table-stateful, table-stateless, tabs, toaster, toolbar, tooltip, tree, tree-item
+- version, kolibri
+- index.mdx — tags removed (overview page, not a component)
+
+**Remaining components:** None — all docs rewritten.
 
 ### Reference Components
 

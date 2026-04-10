@@ -8,16 +8,14 @@ import MeterPreview from '@site/src/components/previews/components/Meter';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
-
 # Meter
-
 
 <BetaDocsBanner />
 <UntestedBanner />
 
 **Synonyme:** Messwert, Gauge, Messgerät
 
-Die **Meter**-Komponente visualisiert einen Messwert innerhalb eines definierten Wertebereichs. Sie zeigt grafisch an, wie ein Messwert im Verhältnis zu seinen Grenzen positioniert ist, und kann optional verschiedene Zustände (optimal, suboptimal, kritisch) anzeigen.
+**Beschreibung:** Die **Meter**-Komponente visualisiert einen Messwert innerhalb eines definierten Wertebereichs. Sie zeigt grafisch an, wie ein Messwert im Verhältnis zu seinen Grenzen positioniert ist, und kann optional verschiedene Zustände (optimal, suboptimal, kritisch) anzeigen.
 
 ## Beispiel
 
@@ -38,7 +36,6 @@ Die **Meter**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 - **Semantische Ausgabe**: Ein verstecktes `<meter>`-HTML-Element mit vollständigen Attributen sorgt dafür, dass auch assistive Technologien den Messwert verstehen können.
 - **Live-Wert-Ankündigung**: Screenreader werden über Änderungen des Messwerts informiert (z.B. "Auslastung – kritisch").
 - **Zustandsindikation**: Automatische Statusmeldung (optimum, suboptimal, kritisch) wird von assistiven Technologien mitgeteilt.
-- **Tastaturzugriff**: Die Komponente bildet keine interaktiven Elemente ab, da sie nur Datendarstellung ist.
 
 ### Links und Referenzen
 
@@ -46,7 +43,9 @@ Die **Meter**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 - <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 – Labels or Instructions"></kol-link>
 - <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#meter" _target="_blank" _label="WAI-ARIA Authoring Practices – Meter"></kol-link>
 
-## Best Practices / Empfehlungen
+## Verwendung
+
+### Best Practices / Empfehlungen
 
 - **Aussagekräftiges Label**: Verwenden Sie klare, verständliche Beschriftungen (z.B. „Auslastung", „Speicher", „Akku-Level").
 - **Sinnvolle Grenzen setzen**: Definieren Sie `_min`, `_max` und `_optimum` fachlich korrekt, um aussagekräftige Darstellungen zu erzeugen.
@@ -55,7 +54,7 @@ Die **Meter**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 - **Kontext bereitstellen**: Ergänzen Sie die Meter-Komponente ggf. mit zusätzlichem Text, der den aktuellen Wert oder zeitliche Trends erklärt.
 - **Richtige Orientierung wählen**: Nutzen Sie `_orientation="vertical"` nur, wenn der verfügbare Platz horizontal begrenzt ist; horizontal ist die Standarddarstellung.
 
-## Anwendungsfälle
+### Anwendungsfälle
 
 - **Systemauslastung**: Anzeige von CPU-, RAM- oder Speicherauslastung.
 - **Batterielevel**: Visualisierung des Akkustands von Geräten.
@@ -71,7 +70,7 @@ Testen Sie die verschiedenen Eigenschaften der Meter-Komponente:
 
 <MeterPreview codeCollapsable />
 
-### Funktionalitäten
+### Funktionalitäten (mit Code)
 
 #### Grundlegende Meter mit Wertbereich
 

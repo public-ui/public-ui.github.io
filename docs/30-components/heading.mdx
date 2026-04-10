@@ -5,7 +5,6 @@ description: Beschreibung, Spezifikation und Beispiele für die Heading-Komponen
 
 import Readme from '../../readmes/heading/readme.md';
 import HeadingPreview from '@site/src/components/previews/components/Heading';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
@@ -16,28 +15,95 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Überschrift angezeigt werden soll. Durch die Verwendung der unterschiedlichen Größen, lassen sich Inhalte klar strukturieren und Seiten wirkungsvoll und abwechslungsreich präsentieren. Sie trennt Styling von Semantik und ermöglicht Flexibilität.
+**Synonyme:** Überschrift, Titel, Heading-Level, H1–H6
 
-## Konstruktion
+**Beschreibung:** Die **Heading**-Komponente dient zur semantischen strukturierten Gliederung von Seiteninhalten. Sie ermöglicht es, verschiedene Überschriftenebenen (1–6) zu kombinieren und trennt dabei Styling von semantischer Bedeutung. Dies unterstützt die Barrierefreiheit und Suchmaschinenoptimierung.
+
+## Beispiel
+
+Darstellung einer Überschrift der Ebene 1 ohne optional gesetzte Felder. Code kann eingeblendet werden.
 
 <HeadingPreview
+	codeCollapsable
+	initialProps={{ _label: 'Heading Level 1' }}
+	visibleProperties={[]}
+/>
+
+## Barrierefreiheit
+
+- **Semantische Struktur**: Die Komponente nutzt echte HTML-Heading-Elemente (H1–H6), um die Dokumentstruktur für assistive Technologien korrekt abzubilden.
+- **Logische Verschachtelung**: Überschriften sollten logisch verschachtelt sein (H1 → H2 → H3 etc.), um eine konsistente Dokumentgliederung zu gewährleisten.
+- **Label-Attribut**: Das erforderliche Attribut `_label` enthält den Überschriftentext und wird von Screenreadern vorgelesen.
+- **Suchmaschinenoptimierung**: Richtig strukturierte Headings unterstützen die Suchmaschinenoptimierung und verbessern die Auffindbarkeit von Inhalten.
+- **Flexible Darstellung**: Mit `_level="0"` kann die Komponente als visuell Bold-Text dargestellt werden, während die Semantik neutral bleibt.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA12" _target="_blank" _label="WCAG 2.1 - ARIA12: Using role=heading to identify headings"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/tutorials/page-structure/headings/" _target="_blank" _label="WAI Web Accessibility Tutorials - Headings"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements" _target="_blank" _label="MDN Web Docs - Heading Elements"></kol-link>
+
+## Verwendung
+
+### Best Practices / Empfehlungen
+
+- **Hierarchische Struktur**: Beginnen Sie mit einer H1-Überschrift pro Seite und nutzen Sie H2, H3 etc. für Unterkategorien. Vermeiden Sie Sprünge in der Hierarchie (z.B. H1 direkt zu H3).
+- **Aussagekräftige Texte**: Verwenden Sie klare, prägnante Überschriftentexte, die den Inhalt des folgenden Abschnitts präzise beschreiben.
+- **Nicht für Styling nutzen**: Verwenden Sie Headings nicht nur wegen ihrer visuellen Größe. Nutzen Sie dafür stattdessen CSS oder andere Komponenten für reine Designzwecke.
+- **Sekundäre Überschriften**: Die optionale `_secondaryHeadline` kann für Untertitel oder ergänzende Informationen genutzt werden.
+- **Suchmaschinen unterstützen**: Relevante Keywords in Headings können die Suchmaschinenoptimierung unterstützen, sollten aber nicht erzwungen wirken.
+
+### Anwendungsfälle
+
+- **Seitenkopf**: Hauptüberschrift einer Seite oder eines Inhaltsbereichs
+- **Abschnittsgliederung**: Strukturierung längerer Inhalte in thematische Abschnitte
+- **Dialog- und Modal-Titel**: Überschriften für Modal-Fenster und Dialoge
+- **Artikelüberschriften**: Titel von Artikeln, Blogbeiträgen oder News-Items
+- **Unterabschnitte**: Gliederung komplexer Inhalte in mehreren Ebenen
+
+## Konstruktion / Technik
+
+### Playground
+
+<HeadingPreview
+	codeCollapsable
+/>
+
+### Funktionalitäten
+
+#### Standardüberschriften
+
+Überschriften mit verschiedenen Ebenen von Level 1 bis 6:
+
+<HeadingPreview
+	initialProps={{ _label: 'Level 1 Überschrift', _level: 1 }}
+	visibleProperties={['_level']}
 	codeCollapsable
 	codeCollapsed
 />
 
-## Verwendung
+#### Mit sekundärer Überschrift
 
-Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglich sind die Level **1** bis **6**
+Eine Hauptüberschrift kann mit einer sekundären Überschrift kombiniert werden:
 
-### Best practices
+<HeadingPreview
+	initialProps={{ _label: 'Hauptüberschrift', _secondaryHeadline: 'Subheading oder Untertitel', _level: 1 }}
+	visibleProperties={['_label', '_secondaryHeadline', '_level']}
+	codeCollapsable
+	codeCollapsed
+/>
 
-- Achten Sie bei der Verwendung von Headings auf die empfohlene Semantik für die Suchmaschinenoptimierung.
-- Setzen Sie Headings in verschiedenen Größen ein, um eine sinnvolle Struktur Ihrer Inhalte zu erzeugen.
+#### Heading ohne semantisches Level
+
+Mit `_level="0"` wird die Komponente ohne semantisches Heading-Element dargestellt und erscheint visuell als Bold-Text:
+
+<HeadingPreview
+	initialProps={{ _label: 'Text ohne Heading-Semantik', _level: 0 }}
+	visibleProperties={['_level']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="heading" />

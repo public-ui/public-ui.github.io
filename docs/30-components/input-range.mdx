@@ -5,69 +5,157 @@ description: Beschreibung, Spezifikation und Beispiele für die InputRange-Kompo
 
 import Readme from '../../readmes/input-range/readme.md';
 import InputRangePreview from '@site/src/components/previews/components/InputRange';
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
-
 # InputRange
-
 
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyme: Slider
+**Synonyme:** Slider
 
-Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Verschieben eines Reglers verändert werden können.
+**Beschreibung:** Die **InputRange**-Komponente erzeugt ein interaktives Steuerelement zum Wählen eines numerischen Wertes innerhalb eines definierten Bereichs. Der Wert wird durch Verschieben eines Reglers oder Pfeiltasten angepasst.
 
-## Konstruktion
+## Beispiel
+
+Darstellung einer InputRange-Komponente mit Standardausstattung:
 
 <InputRangePreview
-	visibleProperties={['_label', '_min', '_max', '_step', '_disabled']}
+	visibleProperties={[]}
+	initialProps={{ _label: 'Lautstärke' }}
 	codeCollapsable
 	codeCollapsed
 />
 
-### Events
+## Barrierefreiheit
+
+- Das Label ist über das Attribut `_label` erforderlich und wird von assistiven Technologien korrekt gelesen.
+- Der aktuelle Wert wird der Komponente als `aria-valuenow` mitgeteilt.
+- Minimum und Maximum werden über `aria-valuemin` und `aria-valuemax` kommuniziert.
+- Der Schieberegler ist vollständig über die Tastatur bedienbar.
+- Hinweistexte über `_hint` werden von Screenreadern erkannt.
+- Fehlermeldungen über `_msg` werden von assistiven Technologien vorgelesen.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/slider/" _target="_blank" _label="WAI-ARIA Slider Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/quickref/" _target="_blank" _label="WCAG 2.2 Guidelines"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste          | Funktion                                  |
+| -------------- | ----------------------------------------- |
+| `Tab`          | Fokussiert das Eingabefeld.               |
+| `Pfeil rechts` | Erhöht den Wert.                          |
+| `Pfeil links`  | Erniedrigt den Wert.                      |
+| `Pfeil oben`   | Erhöht den Wert.                          |
+| `Pfeil unten`  | Erniedrigt den Wert.                      |
+| `Pos1`         | Springt zum Minimumwert.                  |
+| `Ende`         | Springt zum Maximumwert.                  |
+
+### Best Practices / Empfehlungen
+
+- Verwenden Sie aussagekräftige Beschriftungen über `_label`, um die Funktion des Schiebereglers deutlich zu machen.
+- Setzen Sie `_min` und `_max` konzeptionell sinnvoll. Die Standardwerte sind `_min="0"` und `_max="100"`.
+- Nutzen Sie `_step`, um größere oder kleinere Schrittweiten zu definieren (z.B. `_step="5"` für 5er-Schritte).
+- Geben Sie Hinweise über die Bedeutung von Minimal- und Maximalwert via `_hint`.
+- Kombinieren Sie die InputRange mit einer Textanzeige des aktuellen Wertes, um die Bedienbarkeit zu verbessern.
+- Achten Sie darauf, dass `_name` und `_id` gesetzt sind, damit die Daten beim Formularversand mitgesendet werden.
+
+### Anwendungsfälle
+
+- Lautstärkeregelung in Multimedia-Anwendungen
+- Helligkeits- oder Kontrastanpassung
+- Altersfiltration, Preisbereichswahl in Suchformularen
+- Schwellenwerteinstellung in Verwaltungsoberflächen
+- Skalierung oder Zoom-Kontrolle
+- Gewichtung oder Wertfestlegung in Bewertungssystemen
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften der InputRange-Komponente:
+
+<InputRangePreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Konfiguration
+
+Standard-InputRange mit Beschriftung, Minimum und Maximum:
+
+<InputRangePreview
+	visibleProperties={['_label', '_min', '_max', '_step']}
+	initialProps={{ _label: 'Wert auswählen', _min: 0, _max: 100, _step: 1 }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Wertbereich und Schrittweite
+
+Die Eigenschaften `_min`, `_max` und `_step` bestimmen den Wertebereich und die Schrittweite:
+
+<InputRangePreview
+	visibleProperties={['_min', '_max', '_step', '_value']}
+	initialProps={{ _label: 'Preisspanne (€)', _min: 0, _max: 1000, _step: 50, _value: 250 }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Hinweistexte
+
+Zusätzliche Informationen können über `_hint` bereitgestellt werden:
+
+<InputRangePreview
+	visibleProperties={['_label', '_hint']}
+	initialProps={{ _label: 'Lautstärke', _hint: 'Schiebереgler um die Lautstärke zu regulieren (0-100%)' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Deaktivierter Zustand
+
+Ein deaktiviertes Eingabefeld kann über das Attribut `_disabled` erreicht werden:
+
+<InputRangePreview
+	visibleProperties={['_disabled']}
+	initialProps={{ _label: 'Deaktiviertes Feld', _disabled: true, _value: 50 }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Fehlermeldungen
+
+Das Attribut `_msg` erlaubt die Anzeige von Validierungshinweisen:
+
+<InputRangePreview
+	visibleProperties={['_label', '_msg']}
+	initialProps={{
+		_label: 'Wertbereich',
+		_msg: { _description: 'Der Wert muss zwischen 10 und 90 liegen', _level: 'error' },
+		_value: 5,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
 | Event    | Auslöser                         | Value                           |
-|----------|----------------------------------|---------------------------------|
+| -------- | -------------------------------- | ------------------------------- |
 | `click`  | Eingabefeld wird angeklickt      | -                               |
 | `focus`  | Eingabefeld wird fokussiert      | -                               |
 | `blur`   | Eingabefeld verliert Fokus       | -                               |
 | `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
 | `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
 
-## Verwendung
-
-### Best practices
-
-- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
-
-## Barrierefreiheit
-
-### Tastatursteuerung
-
-| Taste          | Funktion                                 |
-| -------------- | ---------------------------------------- |
-| `Tab`          | Fokussiert das Eingabefeld.              |
-| `Pfeil-Tasten` | Verändern den Wert der Range-Komponente. |
-
-## Links und Referenzen
-
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
-
-# API
+## API
 
 <Readme />
-
-## Verwendung _msg
-
-<PropertyMsgUsage />
-
-## Beispiele
-
-<ExampleLink component="input-range" />

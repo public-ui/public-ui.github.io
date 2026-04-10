@@ -4,7 +4,6 @@ description: Beschreibung, Spezifikation und Beispiele für die Version-Komponen
 ---
 
 import Readme from '../../readmes/version/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import VersionPreview from '@site/src/components/previews/components/Version';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
@@ -12,27 +11,69 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-Die **Version**-Komponente stellt kurze Inhalte auf einem farbigen Hintergrund dar. Die **Version**-Komponente ist mit der **Tag**-Komponente eng verwandt, bietet aber nur ein Attribut zur Konfiguration. Sie ist optimiert für die Angabe z.B. von Versionen einer Seite.
+**Synonyme:** Versionsnummer, Releasebezeichnung
 
-## Konstruktion
+**Beschreibung:** Die **Version**-Komponente zeigt eine Versionsnummer oder Releasebezeichnung als kompaktes Inline-Element an. Sie ist optimal für die Darstellung von Versionsangaben an Seiten, Komponenten oder Funktionen geeignet und wird standardmäßig mit dem Präfix `v` ausgegeben.
+
+## Beispiel
+
+Darstellung der Komponente mit einer einfachen Versionsnummer:
 
 <VersionPreview
-	visibleProperties={['_label']}
+	visibleProperties={[]}
+	initialProps={{ _label: '1.2.3' }}
 	codeCollapsable
 	codeCollapsed
 />
 
+## Barrierefreiheit
+
+Die **Version**-Komponente ist ein semantisches Inline-Element und wird von assistiven Technologien als solches erkannt:
+
+- **Label-Beschriftung**: Das über `_label` definierte Text wird von Screenreadern vorgelesen und vermittelt den Versionsstand.
+- **Inline-Positionierung**: Die Komponente ist ein Inline-Element und passt sich der Fließrichtung des Textes an.
+- **Klare Kennzeichnung**: Das automatisch vorangestellte `v` macht die Versionskennzeichnung eindeutig erkennbar.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+
 ## Verwendung
 
-Für die Konfiguration steht das Attribut **`_label`** zur Verfügung und nimmt einen beliebigen Text auf, dem in der Komponente ein `v` vorgestellt wird.
+### Best Practices / Empfehlungen
 
-Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
+- **Aussagekräftige Versionsnummern**: Verwenden Sie standardisierte Versionsnummern (z.B. semantische Versionierung wie `1.2.3`).
+- **Kontextuelle Platzierung**: Setzen Sie die Version an Stellen, wo Nutzer:innen schnell den aktuellen Stand erfassen müssen (z.B. im Header, in der Statusleiste).
+- **Redundanz vermeiden**: Zeigen Sie die Version nicht mehrfach hintereinander an.
+- **Lesbarkeit**: Die Komponente ist als Inline-Element konzipiert und passt sich dem bestehenden Zeilenfluss an.
 
-# API
+### Anwendungsfälle
+
+- Anzeige der aktuellen Softwareversion im Header oder Footer
+- Markierung von Dokumentversionen oder Änderungsständen
+- Vergleich mehrerer Versionen nebeneinander
+- Indikator für Releasekanäle (z.B. `1.0.0-beta`, `2.1.0-staging`)
+
+## Konstruktion / Technik
+
+### Playground
+
+<VersionPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Versionsnummer
+
+Die sichtbare Versionsnummer wird über `_label` definiert. Das Präfix `v` wird automatisch hinzugefügt.
+
+<VersionPreview
+	visibleProperties={['_label']}
+	initialProps={{ _label: '2.0.0' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="version" />
 

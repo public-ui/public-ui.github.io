@@ -1,141 +1,169 @@
 ---
-title: Toaster [deprecated]
-description: Beschreibung, Spezifikation und Beispiele für die Toast-Komponente.
-tags:
-  - Toast
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
+title: Toaster
+description: Beschreibung, Spezifikation und Beispiele für die Toaster-Komponente.
 ---
 
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
-<kol-alert _label="Toaster werden mit Version 5 entfernt" _level="1" _type="error" _variant="card">
-	Wir von KoliBri werden die Toaster Komponente und Service mit Version 5 entfernen, da sie mit den bestehenden Barrierefreiheitsvorgaben nicht verienbar ist. 
-	Statt noch mehr Ressourcen in ein wahrscheinlich nie barrierefreies Konzept zu investieren, möchten wir die Energie in die Entwicklung und Dokumentation robuster, barrierefreier Alternativen lenken. <br/>
-	Siehe dazu auch [die Diskussion in unserem Github #8372](https://github.com/public-ui/kolibri/issues/8372). <br/>
-	In den kommenden Wochen werden wir unsere Beispiele und Dokumentation auf empfehlenswerte Alternativen umstellen, z. B. Inline-Feedback, ARIA-konforme Statusmeldungen, Dialoge für kritische Informationen.
-</kol-alert>
-
-# Toaster [deprecated]
+# Toaster
 
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyme: Notification, Snackbar
+<kol-alert _label="Toaster werden mit Version 5 entfernt" _level="1" _type="error" _variant="card">
+	Wir von KoliBri werden die Toaster-Komponente und den ToasterService mit Version 5 entfernt, da sie mit den bestehenden Barrierefreiheitsvorgaben nicht vereinbar ist.
+	Statt noch mehr Ressourcen in ein wahrscheinlich nie barrierefreies Konzept zu investieren, möchten wir die Energie in die Entwicklung und Dokumentation robuster, barrierefreier Alternativen lenken. <br/>
+	Siehe dazu auch <kol-link _href="https://github.com/public-ui/kolibri/issues/8372" _target="_blank" _label="die Diskussion in unserem Github #8372"></kol-link>. <br/>
+	In den kommenden Wochen werden wir unsere Beispiele und Dokumentation auf empfehlenswerte Alternativen umstellen, z. B. Inline-Feedback, ARIA-konforme Statusmeldungen, Dialoge für kritische Informationen.
+</kol-alert>
 
-Mit dem **Toast**-Service geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird am Kopf des Browserfenster
-angezeigt, bis sie geschlossen wird. Werden mehrere Toasts geöffnet, ohne das die bisherigen geschlossen wurden, so werden diese untereinander angezeigt.
+**Synonyme:** Notification, Snackbar
 
-## Konstruktion
+**Beschreibung:** Der **Toaster**-Service bietet eine Möglichkeit, optische Rückmeldungen an Nutzer:innen zu geben. Toasts werden am oberen Rand des Browserfensters angezeigt und können geschlossen werden. Werden mehrere Toasts hintereinander angezeigt, ohne dass die vorherigen geschlossen wurden, werden sie untereinander dargestellt.
 
-Die Toast-Komponenten werden nicht direkt verwendet, sondern immer über den ToasterService konstruiert.
+## Beispiel
 
-### Code
+Grundlegende Verwendung des ToasterService zur Anzeige einer Toast-Nachricht:
 
-```js
+```ts
 import { ToasterService } from '@public-ui/components';
-import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
-import UntestedBanner from '@site/src/components/UntestedBanner';
 
-
-// Get the toaster instance for the current HTML document.
+// Toaster-Instanz für das aktuelle HTML-Dokument abrufen
 const toaster = ToasterService.getInstance(document, {
 	defaultVariant: 'msg', // Standard: 'card'
 });
 
-// Enqueue a new toast to the toaster to display:
+// Neue Toast zur Warteschlange hinzufügen
 toaster.enqueue({
-	label: 'This is the title',
-	description: 'Magna eu sit adipisicing cillum amet esse in aute quis in dolore.',
+	label: 'Dies ist der Titel',
+	description: 'Dies ist der Inhaltstext der Toast-Nachricht.',
 	type: 'info',
-	variant: 'msg', // Standard: 'card'
+	variant: 'msg',
 });
 ```
 
-### Weitere Service-Methoden
+## Barrierefreiheit
 
-- `closeAll`: Schließt alle Toasts
-- `dispose`: Entfernt den Toast Container. Die Toaster-Instanz kann nicht weiter genutzt werden.
+⚠️ **Wichtig**: Der Toaster hat bekannte Barrierefreiheitsprobleme und wird daher mit Version 5 entfernt. Die Verwendung wird nicht empfohlen.
 
-## Verwendung
+Die Komponente erfüllt nicht die Standards für barrierefreie Benachrichtigungen:
+- Toasts werden oft nicht von Screenreadern angekündigt
+- Es gibt keine zuverlässige Möglichkeit, Nutzer:innen von Screenreadern auf neue Toasts hinzuweisen
+- Die zeitgesteuerte Anzeige und automatische Ausblendung können für Menschen mit vestibülren Störungen problematisch sein
 
-### Überschrift
+### Links und Referenzen
 
-Verwenden Sie das Attribut **`_label`**, um die Überschrift des Toasts zu bestimmen.
+- <kol-link _href="https://github.com/public-ui/kolibri/issues/8372" _target="_blank" _label="Diskussion zum Toaster-Deprecation"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html" _target="_blank" _label="WCAG 2.1 – Status-Meldungen"></kol-link>
+- <kol-link _href="https://www.nngroup.com/articles/toast-notification-list/" _target="_blank" _label="Best Practices für Toast-Benachrichtigungen (Nielsen Norman Group)"></kol-link>
 
-### Inhalt
+## Konstruktion / Technik
 
-Verwenden Sie das Attribut **`_description`**, um den Text-Inhalt des Toasts zu bestimmen.
+### Service-Initialisierung
 
-Alternativ zur statischen Description können Sie über das Attribut **`_render`** eine eigene Render-Funktion definieren. Diese wird mit einer Referenz zum
-HTMLElement der Toast-Komponente aufgerufen. Zudem wird auch ein Objekt übergeben, das eine `close`-Funktion zum Schließen des Toasts bereitstellt.
+Der Toaster ist kein HTML-Element und wird nicht direkt verwendet. Stattdessen wird der `ToasterService` verwendet, um eine Toaster-Instanz zu erstellen und zu verwalten:
 
 ```ts
-const closeToast = toaster.enqueue({
-	render: (element: HTMLElement, { close }) => {
-		element.textContent = 'Mein Inhalt';
-		const customCloseButton = document.createElement('button');
-		customCloseButton.textContent = 'Toast schließen';
-		element.appendChild(customCloseButton);
-		customCloseButton.addEventListener('click', close, { once: true });
+import { ToasterService } from '@public-ui/components';
+
+// Toaster-Instanz für das aktuelle Dokument erstellen
+const toaster = ToasterService.getInstance(document, {
+	defaultVariant: 'msg', // oder 'card' als Standard-Variante
+});
+```
+
+### Toast hinzufügen
+
+Toasts werden über die Methode `enqueue()` zur Warteschlange hinzugefügt:
+
+```ts
+const closeToastFn = await toaster.enqueue({
+	label: 'Titel der Toast-Nachricht',
+	description: 'Beschreibender Text',
+	type: 'info', // 'default', 'info', 'success', 'warning', 'error'
+	variant: 'msg', // oder 'card'
+	onClose: () => {
+		console.log('Toast wurde geschlossen');
 	},
 });
 
-/* Optional: Toast wieder schließen mit `closeToast()` */
+// Toast später programmgesteuert schließen
+closeToastFn();
 ```
 
-### Anzeige-Option des Toast
+#### Parameter der `enqueue()`-Methode
 
-In KoliBri unterscheiden wir drei Ebenen:  
+| Parameter | Typ | Erforderlich | Beschreibung |
+| --- | --- | --- | --- |
+| `label` | `string` | Ja | Titel oder Überschrift der Toast-Nachricht |
+| `description` | `string` | Nein | Beschreibender Inhaltstext der Toast-Nachricht |
+| `type` | `"default" \| "info" \| "success" \| "warning" \| "error"` | Nein | Semantische Art der Nachricht (bestimmt das Aussehen) |
+| `variant` | `"msg" \| "card"` | Nein | Visuelle Darstellung (Standard: von `defaultVariant` bestimmt) |
+| `render` | `(element: HTMLElement, { close: Function }) => void` | Nein | Alternative zu `description`: Benutzerdefinierte Render-Funktion |
+| `onClose` | `() => void` | Nein | Callback-Funktion, die aufgerufen wird, wenn die Toast geschlossen wird |
 
-- **`_type`** → definiert die **semantische Bedeutung** oder logische Funktion einer Komponente.  
-  *Beispiel*: Bei `kol-button`: `"button" | "submit" | "reset"`, bei `kol-alert`: `"info" | "success" | "warning" | "error"`.  
+### Benutzerdefinierte Darstellung
 
-- **`_variant`** → steuert das **visuelle Erscheinungsbild**, z. B. `"primary"`, `"secondary"`, `"ghost"`.  
+Statt einen statischen `description`-Text zu verwenden, können Sie eine benutzerdefinierte Render-Funktion bereitstellen:
 
-- **`_behavior`** → bestimmt das **Interaktionsverhalten** der Komponente.  
-  *Beispiel*: Bei `kol-tabs`: `"select-automatic"` vs. `"select-manual"`.  
+```ts
+const closeToastFn = await toaster.enqueue({
+	label: 'Benutzerdefinierte Toast',
+	render: (element: HTMLElement, { close }) => {
+		// Eigenen HTML-Inhalt erstellen
+		element.innerHTML = '<p>Dies ist benutzerdefinierter Inhalt</p>';
 
-👉 Kurz gesagt:  
-- `_type` = Bedeutung & Logik  
-- `_variant` = Look & Styling  
-- `_behavior` = Interaktion & Verhalten  
+		// Benutzerdefinierten Close-Button hinzufügen
+		const button = document.createElement('button');
+		button.textContent = 'Schließen';
+		button.addEventListener('click', close, { once: true });
+		element.appendChild(button);
+	},
+});
+```
 
-## API
+### Service-Verwaltung
 
-### Methods
+Der ToasterService bietet zusätzliche Methoden zur Verwaltung von Toasts:
 
-#### closeAll
+#### `closeAll(immediate?: boolean): Promise<void>`
 
-Closes all toasts.
+Schließt alle aktuell angezeigten Toasts.
 
-**Parameters**
+```ts
+// Alle Toasts mit Animation schließen (Standard)
+await toaster.closeAll();
 
-| Name | Type | Description |
+// Alle Toasts sofort ohne Animation schließen
+await toaster.closeAll(true);
+```
+
+#### `dispose(): void`
+
+Entfernt den Toast-Container aus dem DOM. Die Toaster-Instanz kann danach nicht mehr verwendet werden. Alle angezeigten Toasts werden geschlossen.
+
+```ts
+toaster.dispose();
+// Weitere toaster-Aufrufe sind jetzt nicht mehr möglich
+```
+
+### Toast-Typen und deren Bedeutung
+
+In KoliBri unterscheiden wir drei Ebenen für Toast-Konfiguration:
+
+- **`type`** → definiert die **semantische Bedeutung** der Nachricht.
+  Mögliche Werte: `"default"`, `"info"`, `"success"`, `"warning"`, `"error"`
+
+- **`variant`** → steuert das **visuelle Erscheinungsbild**.
+  Mögliche Werte: `"msg"` (Inline-Nachricht), `"card"` (Kartenformat)
+
+#### Verwendungsempfehlungen nach Typ
+
+| Typ | Empfehlung | Beispiel |
 | --- | --- | --- |
-| immediate | boolean | Whether to close the toasts immediately|
-
-**Returns**
-
-Type: `Promise<void>`
-
-#### enqueue
-
-Adds a toast to the queue.
-
-**Parameters**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| toast | \{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; variant?: "card" \| undefined; onClose?: (() => void) \| undefined; \} | The toast object to enqueue |
-
-**Returns**
-
-Type: `Promise<() => void>`
-
-## Beispiele
-
-<ExampleLink component="toast" />
+| `"info"` | Neutral informative Meldungen | „Datei wurde hochgeladen" |
+| `"success"` | Erfolgreiche Operationen | „Änderungen gespeichert" |
+| `"warning"` | Wichtige Hinweise, die Aufmerksamkeit erfordern | „Diese Aktion kann nicht rückgängig gemacht werden" |
+| `"error"` | Fehler oder kritische Probleme | „Fehler beim Speichern: Netzwerk nicht verfügbar" |
+| `"default"` | Neutrale Meldungen ohne spezifische Semantik | Allgemeine Benachrichtigungen |

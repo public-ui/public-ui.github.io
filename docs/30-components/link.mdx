@@ -4,7 +4,6 @@ description: Beschreibung, Spezifikation und Beispiele für die Link-Komponente.
 ---
 
 import Readme from '../../readmes/link/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import LinkPreview from '@site/src/components/previews/components/Link';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
@@ -14,65 +13,170 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-Die **Link**-Komponente rendert einen auf Barrierefreiheit optimierten Link, der als Text, als Icon oder auch in Kombination ausgegeben werden kann.
+**Synonyme:** Hyperlink, Verweis, Anker
 
-## Konstruktion
+**Beschreibung:** Die **Link**-Komponente rendert einen auf Barrierefreiheit optimierten Link. Sie unterstützt verschiedene Anzeigevarianten mit Text, Icons oder einer Kombination aus beiden und kann als Inline-Element oder Block-Element dargestellt werden.
+
+## Beispiel
+
+Standard-Link mit Text und optionalem Icon-Symbol:
 
 <LinkPreview
-	visibleProperties={['_label', '_disabled', '_hideLabel', '_icons']}
+	visibleProperties={[]}
+	initialProps={{ _label: 'Beispiel-Link', _href: 'https://example.com' }}
 	codeCollapsable
 	codeCollapsed
 />
 
+## Barrierefreiheit
+
+- Die Link-Komponente ist vollständig über die Tastatur bedienbar.
+- Das Label (`_label`) wird als sichtbarer Text ausgegeben und ist für alle Nutzer:innen verfügbar.
+- Icons können zusätzlich zum Label angezeigt werden und verdeutlichen visuell den Linkzweck.
+- Für versteckte Label-Texte (`_hideLabel: true`) wird automatisch ein Tooltip beim Fokussieren oder Hovern angezeigt.
+- Das Attribut `_ariaCurrentValue` kann verwendet werden, um eine aktive/aktuelle Seite zu kennzeichnen (z. B. `_ariaCurrentValue="page"`).
+- Mit dem `_ariaDescription` können zusätzliche Accessibility-Informationen bereitgestellt werden.
+
+### Links und Referenzen
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" _target="_blank" _label="MDN Web Docs - a Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-link-only.html" _target="_blank" _label="WCAG 2.1 - Link Purpose (Link Only)"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/link/" _target="_blank" _label="ARIA Authoring Practices - Link Pattern"></kol-link>
+
 ## Verwendung
 
-### Link innerhalb eines Fließtextes mit Icon und Text
+### Tastatursteuerung
 
-<p>
-	<kol-link _icons="kolicon-house">Ich bin ein Link mit Icon links</kol-link><br/>
-	<kol-link _icons="kolicon-house">
-		Ich bin ein Link mit Icon rechts
-	</kol-link>
-	Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
-	nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
-	<kol-link _icons="kolicon-house">Ich bin ein Link mit Icon links</kol-link>. Lorem, ipsum dolor sit amet consectetur adipisicing
-	elit. Ea optio deleniti fuga quos molestias, voluptate nobis nemo, incidunt excepturi
-	<kol-link _icons="kolicon-house">Ich bin ein Link mit Icon rechts</kol-link>
-	facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
-</p>
+| Taste   | Funktion                         |
+| ------- | -------------------------------- |
+| `Tab`   | Fokussiert das Link-Element.     |
+| `Enter` | Öffnet den Hyperlink.            |
+| `Space` | Öffnet den Hyperlink (je nach Browser und Kontext). |
 
-## `aria-current` Service
+### Best Practices / Empfehlungen
 
-Damit die Link-Komponente automatisch ein [`aria-current`-Tag](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-setzen kann, muss ihr über den ariaCurrent-Service mitgeteilt werden, welche Seite gerade aktiv ist:
+- **Aussagekräftige Link-Texte**: Verwenden Sie beschreibende Link-Texte wie „Weitere Informationen" statt „Hier klicken".
+- **Kontext bewahren**: Links sollten auch out-of-context verständlich sein, z. B. für Screenreader-Nutzer:innen die eine Linkliste höherer (z. B. nur Links).
+- **Inline vs. Block**: Nutzen Sie `_inline: true` (Standard) für Links im Fließtext. Verwenden Sie `_inline: false` für Links, die als eigenständige Blöcke dargestellt werden sollen.
+- **Icons sinnvoll einsetzen**: Icons sollten den Link-Zweck verdeutlichen, z. B. ein Download-Icon bei Dateilinks. Das Label bleibt das Primäre.
+- **Download-Attribute nutzen**: Verwenden Sie `_download` für Links zu Dateien, um dem Browser zu signalisieren, dass eine Datei heruntergeladen werden soll: `_download="dateiname.pdf"`.
+- **Ziel klar machen**: Wenn der Link ein neues Fenster/Tab öffnet (`_target="_blank"`), erwähnen Sie dies im Label oder mit einem Icon.
+- **Externe vs. interne Links**: Icon-Konventionen helfen Nutzer:innen, externe Links zu erkennen.
+- **Nicht deaktivieren ohne Grund**: Das Attribut `_disabled` sollte nur mit guter Begründung verwendet werden.
+
+### Anwendungsfälle
+
+- Navigation in Menüs und Navigationsleisten
+- Links im Fließtext und in Absätzen
+- Verlinkungen zu externen Ressourcen und Dokumentationen
+- Download-Links für Dateien
+- Breadcrumb-Navigation
+- Links in Tabellen und Listen
+- Call-to-Action-Links
+
+### FAQ
+
+**Wie aktiviere ich die automatische Erkennung der aktuellen Seite (`aria-current`)?**
+Nutzen Sie den `setCurrentLocation()`-Service von KoliBri. Siehe hierzu den Abschnitt _aria-current_ Service unten.
+
+**Wann sollte ich `_hideLabel: true` verwenden?**
+Nutzen Sie dies, wenn ein aussagekräftiges Icon vorhanden ist und der Label-Text aus Platzgründen versteckt werden soll, aber dennoch von Screenreadern gelesen wird. Der Text wird dann als Tooltip angezeigt.
+
+**Kann ich mehrere Icons anzeigen?**
+Ja, Sie können mehrere Icon-Klassen über das `_icons`-Attribut kombinieren.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften der Link-Komponente:
+
+<LinkPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Link
+
+Ein einfacher Link mit Label und href:
+
+<LinkPreview
+	visibleProperties={[]}
+	initialProps={{ _label: 'Beispiel-Link', _href: 'https://example.com' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Link mit Icon
+
+Link mit einem Icon, das den Linkzweck visualisiert:
+
+<LinkPreview
+	visibleProperties={['_icons']}
+	initialProps={{ _label: 'Mit Icon', _href: 'https://example.com', _icons: 'kolicon-external' }}
+	codeCollapsable
+/>
+
+#### Link-Variationen
+
+Verschiedene Anzeigevarianten und Zustände:
+
+<LinkPreview
+	visibleProperties={['_disabled', '_hideLabel', '_inline', '_target']}
+	initialProps={{ _label: 'Link-Variation', _href: 'https://example.com' }}
+	codeCollapsable
+/>
+
+#### Download-Link
+
+Link mit Download-Funktionalität:
+
+<LinkPreview
+	visibleProperties={['_download']}
+	initialProps={{ _label: 'Datei herunterladen', _href: 'https://example.com/datei.pdf', _download: 'datei.pdf' }}
+	codeCollapsable
+/>
+
+#### Tooltip-Alignment
+
+Konfiguration der Tooltip-Positionierung (bei `_hideLabel: true`):
+
+<LinkPreview
+	visibleProperties={['_hideLabel', '_tooltipAlign']}
+	initialProps={{ _label: 'Nur Icon', _href: 'https://example.com', _hideLabel: true, _icons: 'kolicon-external', _tooltipAlign: 'top' }}
+	codeCollapsable
+/>
+
+#### ARIA-Attribute und Accessibility
+
+Erweiterte Accessibility-Konfigurationen:
+
+<LinkPreview
+	visibleProperties={['_ariaCurrentValue', '_ariaDescription']}
+	initialProps={{ _label: 'Aktive Seite', _href: '/current-page', _ariaCurrentValue: 'page', _ariaDescription: 'Dies ist die aktuelle Seite' }}
+	codeCollapsable
+/>
+
+#### aria-current Service
+
+Damit die Link-Komponente automatisch ein `aria-current`-Attribut setzen kann, muss ihr über den `setCurrentLocation()`-Service mitgeteilt werden, welche Seite gerade aktiv ist:
 
 ```typescript
 import { setCurrentLocation } from '@public-ui/components';
-import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
-import UntestedBanner from '@site/src/components/UntestedBanner';
-
 
 /* Bei jedem Seitenwechsel aufrufen: */
 setCurrentLocation('/path/to/page');
 ```
 
-Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links entsprechen.
+Der übergebene Location-String muss dabei exakt dem `_href`-Attribut des Links entsprechen.
 
-### Anwendungsfälle-->
+#### Events
 
-## Barrierefreiheit
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-### Tastatursteuerung
-
-| Taste   | Funktion                        |
-| ------- | ------------------------------- |
-| `Tab`   | Fokussiert das Link-Element.    |
-| `Enter` | Ruft den hinterlegten Link auf. |
+| Event   | Auslöser                    | Value |
+| ------- | --------------------------- | ----- |
+| `click` | Der Link wird angeklickt     | -     |
 
 ## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="link" />

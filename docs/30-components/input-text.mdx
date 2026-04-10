@@ -1,16 +1,9 @@
 ---
 title: InputText
 description: Beschreibung, Spezifikation und Beispiele für die InputText-Komponente.
-tags:
-  - InputText
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/input-text/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 import InputTextPreview from '@site/src/components/previews/components/InputText';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
@@ -22,30 +15,221 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyme: Text Field
+**Synonyme:** Text Field, Eingabefeld, Textfeld
 
-Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe, URLs oder Telefonnummern.
+**Beschreibung:** Die **InputText**-Komponente erzeugt ein Eingabefeld für normale Texteingaben, Suchbegriffe, URLs oder Telefonnummern. Sie unterstützt verschiedene Konfigurationsoptionen wie Zeichenbegrenzung, Icons und Validierungs-Feedback.
 
-Die Komponente hat Known-Issues bezüglich Browserabhängigkeit und Barrierefreiheit. Näheres kann unter [KNOWN_ISSUES.md](https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md) nachgelssen werden.
+## Beispiel
 
-## Konstruktion
+Standard-Eingabefeld mit Beschriftung:
 
-<InputTextPreview 
-  initialProps={{ _label: 'Texteingabe'  }}
-  visibleProperties={[
-    '_label',
-    '_type',
-    '_msg',
-    '_icons',
-    '_disabled',
-    '_readOnly',
-    '_smartButton'
-  ]}
+<InputTextPreview
+  initialProps={{ _label: 'Texteingabe' }}
+  visibleProperties={[]}
+  codeCollapsable
+/>
+
+## Barrierefreiheit
+
+- **Label erforderlich**: Jedes Eingabefeld muss über das Attribut `_label` eine Beschriftung erhalten, um Screenreader-Nutzer:innen die Feldfunktion deutlich zu machen.
+- **Tastaturnavigation**: Das Eingabefeld ist vollständig über die Tastatur bedienbar.
+- **Hinweistexte**: Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die von Screenreadern vorgelesen werden.
+- **Fehlermeldungen**: Das Attribut `_msg` ermöglicht aussagekräftige Fehlermeldungen, die von assistiven Technologien erkannt werden.
+- **Zeichenzähler**: Bei Aktivierung (`_has-counter`) wird der Zähler mit einer Verzögerung von 500 ms aktualisiert, um Screenreader nicht zu unterbrechen. Ein versteckter, nur für assistive Technologien sichtbarer Text wird eingeblendet (z.B. „Sie können bis zu 10 Zeichen eingeben").
+- **Fokusmanagement**: Klare Fokusindikatoren unterstützen visuelle und tastaturgesteuerte Navigation.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" _target="_blank" _label="MDN Web Docs - input Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste   | Funktion                              |
+| ------- | ------------------------------------- |
+| `Tab`   | Fokussiert das Eingabefeld.           |
+### Best Practices / Empfehlungen
+
+- Achten Sie darauf, `_id` und `_name` korrekt zu setzen, damit die Daten beim Formular-Versand mitgesendet werden.
+- Verwenden Sie aussagekräftige Label-Texte, die den Zweck des Eingabefelds klar kommunizieren.
+- Nutzen Sie `_hint` für ergänzende Hinweise zur erwarteten Eingabe (z.B. Formatvorgaben).
+- Bei Validierungsfehlern geben Sie konkrete, verständliche Fehlermeldungen über `_msg`.
+- Verwenden Sie `_placeholder` nur als zusätzliche Orientierung, nicht als Ersatz für das Label.
+- Nutzen Sie `_disabled` sparsam und begründen Sie deaktivierte Felder immer.
+- Bei langen Eingaben erwägen Sie stattdessen die <kol-link _href="../components/textarea" _label="Textarea-Komponente"></kol-link>.
+
+### Anwendungsfälle
+
+- Erfassung einfacher Texteingaben (Namen, Adressen, Beschreibungen)
+- Suchfelder mit Suchtext-Eingabe
+- Kontaktdaten (E-Mail, Telefon via _type="tel")
+- URL-Eingaben via _type="url"
+- Formularfelder in Masken und Dialogen
+
+### FAQ
+
+**Wann sollte ich `_hideLabel` verwenden?**  
+Nur in Spezialfällen, wenn das Label visuell verborgen sein soll. Das Label bleibt für assistive Technologien sichtbar. Nutzen Sie `_hint` zur zusätzlichen Unterstützung.
+
+**Wie kann ich Eingaben validieren?**  
+Mit `_pattern` können Sie ein reguläres Ausdruck-Muster zum Validieren der Eingabe verwenden. Fehlermeldungen geben Sie über `_msg` aus.
+
+**Kann ich Vorschläge anzeigen?**  
+Ja, über das Attribut `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen.
+
+## Konstruktion / Technik
+
+- **Label erforderlich**: Jedes Eingabefeld muss über das Attribut `_label` eine Beschriftung erhalten, um Screenreader-Nutzer:innen die Feldfunktion deutlich zu machen.
+- **Tastaturnavigation**: Das Eingabefeld ist vollständig über die Tastatur bedienbar.
+- **Hinweistexte**: Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die von Screenreadern vorgelesen werden.
+- **Fehlermeldungen**: Das Attribut `_msg` ermöglicht aussagekräftige Fehlermeldungen, die von assistiven Technologien erkannt werden.
+- **Zeichenzähler**: Bei Aktivierung (`_has-counter`) wird der Zähler mit einer Verzögerung von 500 ms aktualisiert, um Screenreader nicht zu unterbrechen. Ein versteckter, nur für assistive Technologien sichtbarer Text wird eingeblendet (z.B. „Sie können bis zu 10 Zeichen eingeben").
+- **Fokusmanagement**: Klare Fokusindikatoren unterstützen visuelle und tastaturgesteuerte Navigation.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" _target="_blank" _label="MDN Web Docs - input Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Eingabefeld
+
+Ein einfaches Eingabefeld mit Label:
+
+<InputTextPreview
+  initialProps={{ _label: 'Texteingabe' }}
+  visibleProperties={['_label', '_placeholder']}
   codeCollapsable
   codeCollapsed
 />
 
-### Events
+#### Eingabefeld-Typen
+
+InputText unterstützt verschiedene Eingabe-Typen über das Attribut `_type`:
+
+<InputTextPreview
+  initialProps={{ _label: 'Eingabetyp', _type: 'text' }}
+  visibleProperties={['_type']}
+  codeCollapsable
+  codeCollapsed
+/>
+
+**Verfügbare Typen:**
+- `text` (Standard): Normales Textfeld
+- `search`: Suchfeld mit ESC-Funktion zum Löschen
+- `tel`: Für Telefonnummern
+- `url`: Für URLs mit entsprechender Validierung
+
+#### Icons
+
+Links und rechts vom Eingabefeld können Icons platziert werden:
+
+<InputTextPreview
+  initialProps={{ _label: 'Mit Icons', _icons: { left: 'kolibri-icon-24', right: 'kolibri-icon-24' } }}
+  visibleProperties={['_icons']}
+  codeCollapsable
+  codeCollapsed
+/>
+
+#### Validierungszustände
+
+Status-Eigenschaften zur Steuerung von Validierung und Interaktion:
+
+<InputTextPreview
+  initialProps={{ _label: 'Eingabefeld' }}
+  visibleProperties={['_disabled', '_readOnly', '_required', '_touched']}
+  codeCollapsable
+  codeCollapsed
+/>
+
+**Verfügbare Zustände:**
+- `_disabled`: Deaktiviert das Feld (mit Begründung nutzen)
+- `_readOnly`: Feld ist lesbar, aber nicht editierbar
+- `_required`: Kennzeichnet Pflichtfelder
+- `_touched`: Zeigt an, ob das Feld vom Nutzer angefasst wurde
+
+#### Label-Verwaltung
+
+Label können visuell verborgen sein, bleiben aber für assistive Technologien sichtbar:
+
+<InputTextPreview
+  initialProps={{ _label: 'Verborgenes Label', _hideLabel: true, _placeholder: 'Platzhalter' }}
+  visibleProperties={['_hideLabel']}
+  codeCollapsable
+  codeCollapsed
+/>
+
+#### Zeichenbegrenzung und Zeichenzähler
+
+Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen und gleichzeitig visuelles Feedback geben:
+
+<InputTextPreview
+  initialProps={{ _label: 'Mit Zeichenzähler', _hasCounter: true, _maxLength: 50 }}
+  visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
+  codeCollapsable
+  codeCollapsed
+/>
+
+##### Attribute
+
+| Attribut | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_has-counter`         | `boolean`          | `false`  | Globaler Schalter für den Zeichenzähler. Nur wenn dieses Attribut **gesetzt (= true)** ist, wird überhaupt ein Zähler ausgegeben.                                                                                                                                                           |
+| `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
+| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`-Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
+
+### Ausgabevarianten
+
+| Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
+| ---: | --------------------- | ------------- | ---------------------- | ---------------------------------------------------------- |
+| 1    | *(leer)* oder `false` | —             | —                      | — (kein Zähler)                                            |
+| 2    | `true`                | *(leer)*      | —                      | `n Zeichen`                                                |
+| 3    | `true`                | 50            | *(leer)* oder `hard`   | `n/50 Zeichen`                                             |
+| 4    | `true`                | 50            | `soft`                 | `noch 30 Zeichen verfügbar`<br />*(bzw. `5 Zeichen zu viel`)* |
+
+>  Wird `_max-length-behavior="soft"` verwendet, **wird das native `maxlength`-Attribut **nicht** gesetzt** – das Eingabefeld wird also nicht hart begrenzt.
+
+### Barrierefreiheit
+
+* Der Zähler aktualisiert sich mit einer Verzögerung von **500 ms**, damit Screenreader-Ereignisse gebündelt werden und das Tippen nicht unterbrechen.
+* Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa:
+  *„Sie können bis zu 10 Zeichen eingeben.“*
+
+##### Zusammenfassung
+
+- Ohne `_has-counter` gibt es **nie** einen Zähler.
+- Mit `_has-counter` **und ohne** `_max-length` wird nur die aktuell eingegebene Zeichenzahl angezeigt.
+- Mit `_has-counter` **und** `_max-length` bestimmt `_max-length-behavior`, ob die Grenze hart (`hard`) oder weich (`soft`) umgesetzt wird.
+
+#### SmartButton
+
+Ein Schaltfläche mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLabel`):
+
+<InputTextPreview
+  initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
+  visibleProperties={['_smartButton']}
+  codeCollapsable
+  codeCollapsed
+/>
+
+#### Hinweistexte und Fehlermeldungen
+
+Zusätzliche Informationen und Fehler-Feedback:
+
+<InputTextPreview
+  initialProps={{ _label: 'Mit Hinweis', _hint: 'Das ist ein Hinweis', _msg: 'Das ist eine Fehlermeldung' }}
+  visibleProperties={['_hint', '_msg']}
+  codeCollapsable
+  codeCollapsed
+/>
+
+#### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
@@ -57,67 +241,6 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
 | `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
 
-## Verwendung
-
-### Best practices
-
-- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
-
-## Barrierefreiheit
-
-### Tastatursteuerung
-
-| Taste | Funktion                              |
-| ----- | ------------------------------------- |
-| `Tab` | Fokussiert das Eingabefeld.           |
-| `ESC` | Löscht den Inhalt (nur Typ = Search). |
-
-## Zeichenbegrenzung und Zeichenzähler
-
-Mit den drei Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen und gleichzeitig visuelles Feedback geben.
-
-### Attribute
-
-| Attribut               | Typ                | Standard | Beschreibung                                                                                                                                                                                                                                                                                |
-| ---------------------- | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_has-counter`         | `boolean`          | `false`  | Globaler Schalter für den Zeichenzähler. Nur wenn dieses Attribut **gesetzt (= true)** ist, wird überhaupt ein Zähler ausgegeben.                                                                                                                                                           |
-| `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
-| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`‑Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
-
-### Ausgabevarianten
-
-| Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
-| ---: | --------------------- | ------------- | ---------------------- | ---------------------------------------------------------- |
-| 1    | *(leer)* oder `false` | —             | —                      | — (kein Zähler)                                            |
-| 2    | `true`                | *(leer)*      | —                      | `n Zeichen`                                                |
-| 3    | `true`                | 5             | *(leer)* oder `hard`   | `n/5 Zeichen`                                              |
-| 4    | `true`                | 5             | `soft`                 | `noch 3 Zeichen verfügbar`<br />*(bzw. `3 Zeichen zu viel`)* |
-
-> Wird `_max-length-behavior="soft"` verwendet, **wird das native `maxlength`‑Attribut *nicht* gesetzt** – das Eingabefeld wird also nicht hart begrenzt.
-
-### Barrierefreiheit
-
-* Der Zähler aktualisiert sich mit einer Verzögerung von **500 ms**, damit Screenreader‑Ereignisse gebündelt werden und das Tippen nicht unterbrechen.
-* Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa:
-  *„Sie können bis zu 10 Zeichen eingeben.“*
-
-### Zusammenfassung
-
-* Ohne `_has-counter` gibt es **nie** einen Zähler.
-* Mit `_has-counter` **und ohne** `_max-length` wird nur die aktuell eingegebene Zeichenzahl angezeigt.
-* Mit `_has-counter` **und** `_max-length` bestimmt `_max-length-behavior`, ob die Grenze hart (`hard`) oder weich (`soft`) umgesetzt wird.
-
-## Links und Referenzen
-
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
-- <kol-link _href="https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/" _target="_blank"></kol-link>
+## API
 
 <Readme />
-
-## Verwendung _msg
-
-<PropertyMsgUsage />
-
-## Beispiele
-
-<ExampleLink component="input-text" />

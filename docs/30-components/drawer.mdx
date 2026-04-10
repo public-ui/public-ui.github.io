@@ -5,94 +5,127 @@ description: Beschreibung, Spezifikation und Beispiele für die Drawer-Komponent
 
 import Readme from '../../readmes/drawer/readme.md';
 import DrawerPreview from '@site/src/components/previews/components/Drawer';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
+# Drawer
 
 <BetaDocsBanner />
 <UntestedBanner />
 
+**Synonyme:** Seitenpanel, Navigationsschublade, Side Panel
 
-Synonyme: Corner Dialog, Prompt
-Mithilfe der **Drawer**-Komponente können zusätzliche Informationen oder auch Navigationselemente in einem ausklappbaren Seitenfenster angezeigt werden. Ein offener Drawer kann via ESC geschlossen werden.
+**Beschreibung:** Die **Drawer**-Komponente ist ein ausklappbares Seitenfenster, das zusätzliche Informationen oder Navigationselemente anzeigt. Sie wird typischerweise von der Seite in den Viewportbereich eingeklappt und kann durch Benutzer oder programmgesteuert geöffnet und geschlossen werden.
 
-Die **Drawer**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt bzw. controlled mit dem Attribut `_open` gesteuert.
+## Beispiel
 
-## Konstruktion
+Standard-Drawer mit Label und Inhalt:
 
 <DrawerPreview
+	visibleProperties={[]}
+	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
 	codeCollapsable
 	codeCollapsed
 />
 
-## Verwendung
-
-Um den **Drawer** programmgesteuert zu öffnen und zu schließen, verwenden Sie die Methoden **`open()`** und **`close()`**. Stellen Sie sicher, dass das **`_label`** Attribut gesetzt ist, um die Zugänglichkeit zu gewährleisten. Die Ausrichtung des Drawers können Sie mit dem **`_align`** Attribut und den Werten **left**, **top**, **right** oder **bottom** anpassen, um ihn auf der gewünschten Seite des Bildschirms anzuzeigen. Nutzen Sie das **`_on`** Attribut, um benutzerdefinierte Aktionen beim Schließen des Drawers auszuführen. Ein offener **Drawer** kann via **ESC** geschlossen werden.
-
 ## Barrierefreiheit
 
-Das `_label` Attribut stellt eine klare und verständliche Beschriftung für den Drawer bereit. Dies verbessert die Nutzung für Personen, die Screenreader verwenden, da das Label als **`aria-label`** fungiert und somit die Bedeutung und Funktion des Drawers erklärt.
+- Das **`_label`**-Attribut bietet eine semantische Beschriftung für die Komponente, die von Screenreadern als `aria-label` verwendet wird.
+- Beim Öffnen des Drawers wird der Fokus automatisch in den Drawer-Inhalt verschoben, um Screenreader-Nutzer zu benachrichtigen, dass ein neuer UI-Bereich verfügbar ist.
+- Beim Schließen wird der Fokus zum ursprünglichen Element zurückgeführt.
+- Alle fokussierbaren Elemente außerhalb des Drawers werden deaktiviert, um unbeabsichtigte Interaktionen mit dem Hintergrund zu verhindern.
+- Die Komponente unterstützt vollständige Tastaturnavigation.
 
-### Drawer
+### Links und Referenzen
 
-Beim Öffnen des **Drawers** wird der Fokus automatisch auf den Inhalt des Drawers gesetzt. Dies stellt sicher, dass Benutzer von Screenreadern sofort wissen, dass ein neuer Bereich geöffnet wurde, und dass sie direkt interagieren können. Beim Schließen des Drawers wird der Fokus zum vorherigen aktiven Element zurückgeführt, was eine nahtlose Benutzererfahrung bietet.
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank" _label="MDN - HTML dialog Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/" _target="_blank" _label="WAI-ARIA - Dialog (Modal) Pattern"></kol-link>
 
-Die **Drawer**-Komponente unterstützt die vollständige Navigation über die Tastatur. Benutzer können mit der Tab-Taste durch die interaktiven Elemente innerhalb des Drawers navigieren. Zudem kann der **Drawer** mit der ESC-Taste schnell und einfach geschlossen werden, was die Bedienung erleichtert.
-
-Während der **Drawer** geöffnet ist, werden alle selektierbaren Elemente außerhalb des Drawers deaktiviert. Dies verhindert ungewollte Interaktionen mit dem Hintergrundinhalt und lenkt die Aufmerksamkeit der Benutzer auf den **Drawer**-Inhalt.
+## Verwendung
 
 ### Tastatursteuerung
 
-| Taste       | Funktion                                                                                     |
-| ----------- | -------------------------------------------------------------------------------------------- |
-| `Tab`       | Bei geöffnetem Drawer werden alle fokussierbaren Elemente der Reihenfolge nach angesprungen. |
-| `ESC-Taste` | Schließt den Drawer.                                                                         |
+| Taste | Funktion |
+| ----- | -------- |
+| `Tab` | Navigiert durch die fokussierbaren Elemente innerhalb des Drawers. |
+| `Shift + Tab` | Navigiert rückwärts durch die fokussierbaren Elemente. |
+| `ESC` | Schließt den geöffneten Drawer. |
 
-## Animationen
+### Best Practices / Empfehlungen
 
-Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wichtig, dass die Keyframes die Namen `slideIn` bzw. `slideOut` enthalten und auf der Klasse `drawer__wrapper` definiert werden.
+- Setzen Sie immer das **`_label`**-Attribut, um die Komponente zugänglich und für Benutzer verständlich zu machen.
+- Verwenden Sie die **`_align`**-Option zur Ausrichtung, um den Drawer an den Kontext anzupassen (z.B. `left` für Navigationsmenüs, `right` für sekundäre Inhalte).
+- Aktivieren Sie **`_hasCloser`**, um Benutzern einen visuellen Schließ-Button anzubieten.
+- Nutzen Sie die Methoden `open()` und `close()` oder das Attribut `_open` zur programmgesteuerten Steuerung.
+- Verwenden Sie **`_on`** mit `onClose`-Callback, um Aktionen nach dem Schließen auszuführen.
+- Der Drawer sollte nicht für kritische Primärinhalte genutzt werden, sondern für sekundäre Informationen oder Navigationshilfen.
+- Begrenzen Sie die Inhalte auf wesentliche Informationen, um Ablenkung zu vermeiden.
 
-**Beispiel:**
+### Anwendungsfälle
 
-```scss
-.drawer__wrapper {
-	&--left {
-		animation: slideInLeft $duration forwards;
-		&.is-closing {
-			animation: slideOutLeft $duration forwards !important;
-		}
-	}
-	&--right {
-		animation: slideInRight $duration forwards;
-		&.is-closing {
-			animation: slideOutRight $duration forwards;
-		}
-	}
-	&--top {
-		animation: slideInTop $duration forwards;
-		&.is-closing {
-			animation: slideOutTop $duration forwards;
-		}
-	}
-	&--bottom {
-		animation: slideInBottom $duration forwards;
-		&.is-closing {
-			animation: slideOutBottom $duration forwards;
-		}
-	}
-}
-```
+- Navigationsmenüs und Menü-Toggle in responsiven Designs
+- Filter- und Suchoptionen in Listen oder Tabellen
+- Zusätzliche Aktionen und Einstellungen
+- Kontextabhängige Informationen und Details
+- Seitliche Navigationshilfen (z.B. Inhaltsverzeichnis, Kategorien)
 
-## Links und Referenzen
+## Konstruktion / Technik
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" _target="_blank"></kol-link>
+### Playground
+
+<DrawerPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Drawer mit Label und Inhalt
+
+Der Drawer zeigt einen definierten Inhaltsbereich über den Slot an:
+
+<DrawerPreview
+	visibleProperties={['_label', '_slot']}
+	initialProps={{ _label: 'Drawer Titel', _align: 'left', _hasCloser: true }}
+	codeCollapsable
+/>
+
+#### Ausrichtung
+
+Die Position des Drawers wird über das **`_align`**-Attribut gesteuert:
+
+<DrawerPreview
+	visibleProperties={['_align']}
+	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
+	codeCollapsable
+/>
+
+#### Schließ-Button
+
+Aktivieren Sie **`_hasCloser`**, um einen visuellen Schließ-Button anzuzeigen:
+
+<DrawerPreview
+	visibleProperties={['_hasCloser']}
+	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
+	codeCollapsable
+/>
+
+#### Programmgesteuerte Kontrolle
+
+Verwenden Sie das **`_open`**-Attribut zur React-State-basierten Steuerung oder die Methoden `open()` und `close()`:
+
+<DrawerPreview
+	visibleProperties={['_open']}
+	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true, _open: false }}
+	codeCollapsable
+/>
+
+#### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | Auslöser | Value |
+| ----- | -------- | ----- |
+| `close` | Der Drawer wird geschlossen (durch Benutzer oder Programm) | `undefined` |
 
 ## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="drawer" />

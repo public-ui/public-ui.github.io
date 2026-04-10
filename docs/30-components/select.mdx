@@ -5,7 +5,6 @@ description: Beschreibung, Spezifikation und Beispiele für die Select-Komponent
 
 import Readme from '../../readmes/select/readme.md';
 import SelectPreview from '@site/src/components/previews/components/Select';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
@@ -14,97 +13,123 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyme: Datalist, Dropdown
+**Synonyme:** Dropdown, Auswahlliste, Auswahlfeld
 
-Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.
+**Beschreibung:** Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Optionen ausgewählt werden können. Sie unterstützt Einfach- und Mehrfachauswahl sowie barrierefreie Bedienung über Tastatur und Screenreader.
 
-## Konstruktion
+## Beispiel
+
+Standard-Auswahlliste mit Pflichtfeld-Markierung:
 
 <SelectPreview
-	visibleProperties={['_label', '_options', '_multiple', '_rows', '_disabled', '_required']}
-	codeCollapsable
-	codeCollapsed
+visibleProperties={['_label', '_options', '_multiple', '_rows', '_disabled', '_required']}
+codeCollapsable
+codeCollapsed
 />
 
-### Events
+## Barrierefreiheit
+
+- Jede Select-Komponente benötigt eine sichtbare Beschriftung über `_label`. Diese wird von Screenreadern vorgelesen.
+- Deaktivierte Optionen (`disabled`) werden von Screenreadern (z. B. NVDA) mitgezählt und können eine höhere Anzahl an Auswahlmöglichkeiten suggieren als tatsächlich verfügbar sind — daher möglichst vermeiden.
+- Häufig wird die erste Option als Platzhalter angelegt und deaktiviert, um eine Auswahl zu erzwingen. Stattdessen sollte eine auswählbare Option mit leerem Wert verwendet werden.
+- Das Ausblenden deaktivierter Optionen über `aria-hidden` wird von modernen Browsern blockiert und ist keine empfohlene Lösung.
+- Bei Mehrfachauswahl (`_multiple`) müssen Nutzer:innen explizit über die Bedienung (Shift + Pfeiltasten) informiert werden.
+- Fehlermeldungen werden über `_msg` übermittelt und von assistiven Technologien korrekt erkannt.
+
+### Links und Referenzen
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select" _target="_blank" _label="MDN Web Docs – select Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 – Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/listbox/" _target="_blank" _label="WAI-ARIA APG – Listbox Pattern"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste                         | Funktion                                                                                               |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `Tab`                         | Fokussiert das Auswahlfeld.                                                                            |
+| `Enter`                       | Öffnet bzw. schließt die Auswahlliste.                                                                 |
+| `Pfeil-Tasten (oben / unten)` | Wechselt das aktive Element in der Liste. Auch bei eingeklappter Liste aktiv.                          |
+| `Shift + Pfeil-Tasten`        | Wählt bei Mehrfachauswahl (`_multiple`) mehrere Einträge gleichzeitig aus.                             |
+
+### Best Practices / Empfehlungen
+
+- Übergeben Sie die Optionen über `_options` als Array mit `label` und `value` pro Eintrag.
+- Verwenden Sie Select für feste, vordefinierte Auswahllisten. Für filterbare Suchen ist die Combobox-Komponente besser geeignet.
+- Vermeiden Sie deaktivierte Optionen — nutzen Sie stattdessen eine auswählbare Option mit leerem Wert als Platzhalter.
+- Setzen Sie `_required`, wenn eine Auswahl zwingend erforderlich ist, und validieren Sie serverseitig.
+- Nutzen Sie `_multiple` bewusst: Mehrfachauswahl ist für viele Nutzer:innen schwer zu bedienen. Eine Checkboxgruppe kann eine verständlichere Alternative sein.
+
+### Anwendungsfälle
+
+- Anredeauswahl in Kontaktformularen
+- Länder- oder Sprachauswahl
+- Kategorieauswahl in Formularen
+- Filterkriterien in Suchmasken
+- Mehrfachauswahl bei Einstellungen oder Tags
+
+### FAQ
+
+**Warum gibt Select beim Einzelwert eine Liste zurück?**
+Im Single-Modus liefert Select ein Array mit einem Element. Verwenden Sie einen `SingleSelectFormatter`, um den Wert direkt als Einzelwert zu erhalten.
+
+**Kann ich Optionsgruppen verwenden?**
+Ja, neben einfachen Optionsobjekten (`{ label, value }`) unterstützt `_options` auch Optgroup-Objekte.
+
+## Konstruktion / Technik
+
+### Playground
+
+<SelectPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Optionen und Beschriftung
+
+Mindestangaben für eine funktionsfähige Select-Komponente: `_label` und `_options`.
+
+<SelectPreview
+visibleProperties={['_label', '_options']}
+codeCollapsable
+/>
+
+#### Mehrfachauswahl
+
+Über `_multiple` können mehrere Optionen gleichzeitig ausgewählt werden. Mit `_rows` wird die sichtbare Höhe der Liste gesteuert.
+
+<SelectPreview
+visibleProperties={['_multiple', '_rows']}
+codeCollapsable
+/>
+
+#### Formularattribute
+
+<SelectPreview
+visibleProperties={['_disabled', '_required', '_name']}
+codeCollapsable
+/>
+
+#### Hinweise und Fehlermeldungen
+
+<SelectPreview
+visibleProperties={['_hint', '_msg']}
+codeCollapsable
+/>
+
+#### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
 | Event    | Auslöser                    | Value                       |
-|----------|-----------------------------|-----------------------------|
-| `click`  | Eingabefeld wird angeklickt | -                           |
-| `focus`  | Eingabefeld wird fokussiert | -                           |
-| `blur`   | Eingabefeld verliert Fokus  | -                           |
+| -------- | --------------------------- | --------------------------- |
+| `click`  | Eingabefeld wird angeklickt | –                           |
+| `focus`  | Eingabefeld wird fokussiert | –                           |
+| `blur`   | Eingabefeld verliert Fokus  | –                           |
 | `input`  | Option wird ausgewählt      | `value`-Attribut der Option |
 | `change` | Option wird ausgewählt      | `value`-Attribut der Option |
 
-## Verwendung
-
-Die Auswahlmöglichkeiten werden über das Attribut **`_options`** als Objekt oder JSON-String an die Komponente übergeben. Je Option müssen die Werte **`label`** und **`value`** angegeben werden.
-
-Beispiel für die Konstruktion des JSON-Objektes:
-
-```json
-[
-        { "label": "Herr", "value": "Mr." },
-        { "label": "Frau", "value": "Mrs." },
-        { "label": "Firma", "value": "Company" }
-]
-```
-
-### Individuelle Höhe angeben
-
-Über das Attribut **`_rows`** kann von einem Auswahlmenü auf ein Auswahlfeld (wie bei **`_multiple`**) gewechselt werden und dessen Höhe gesetzt werden.
-
-### Best practices
-
-- Verzichten Sie darauf, Optionen eines Selects über `disabled` zu deaktivieren. Screenreader (getestet mit NVDA) zählen deaktivierte Optionen mit und geben so eine höhere Anzahl an Auswahlmöglichkeiten aus.
-- Häufig wird die erste Option als „Bitte Option wählen“ angelegt und anschließend deaktiviert, um eine Auswahl zu erzwingen. Dieses Vorgehen sollte vermieden werden.
-- Das Ausblenden einer deaktivierten Option mittels `aria-hidden` wird mittlerweile von modernen Browsern blockiert. Verwenden Sie stattdessen eine auswählbare Option mit leerem Wert, wenn eine Platzhalteroption benötigt wird.
-- Prüfen Sie mit Validatoren, ob eine gültige Option gewählt wurde, anstatt Optionen ohne Angabe von Gründen zu deaktivieren.
-
-### Tastatursteuerung
-
-| Taste                         | Funktion                                                                                                                                                                                                                      |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                         | Fokussiert das Auswahlfeld.                                                                                                                                                                                                   |
-| `Enter`                       | Öffnet bzw.schließt die Auswahlliste.                                                                                                                                                                                         |
-| `Pfeil-Tasten (oben / unten)` | Wechselt in der Auswahlliste das aktivierte Element. Diese Funktion ist auch bei eingeklappter Auswahlliste aktiv. Bei Mehrfachauswahl muss zur Auswahl mehrerer Einträge zusätzlich die Shift-Taste gedrück gehalten werden. |
-
-### `Single-Select-Filter` für Select-Komponente
-
-Die Select-Komponente liefert bei Auswahl eines Wertes eine Liste (Array) mit genau einem
-Wert zurück (im Single-Modus). Das kann bei der weiteren Verarbeitung zu unnötigem Aufwand führen. Einfacher ist es hier, den Wert der Select-Komponente über einen <b>SingeSelectFormatter</b> zu Filtern. Fügen Sie hierzu im Formular nachfolgende Klasse ein:
-
-```html
-class SingleSelectFormatter extends AbstractFormatter { public format(value: unknown): unknown { return [value]; } public parse(value: unknown): unknown { if
-(Array.isArray(value) && value.length > 0) { return value[0]; } return value; } }
-```
-
-Fügen Sie den Formatter anschließend der Select-Komponente hinzu:
-
-```html
-const singleSelectFormatHandler = new FormatHandler(); singleSelectFormatHandler.formatters.add([new SingleSelectFormatter()]); (this.getInput('kategorie') as
-InputControl).setFormatHandler(singleSelectFormatHandler);
-```
-
-Beachten Sie, dass der FormatHandler zunächst in die Form importiert wird.
-
-```html
-import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
-import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
-import UntestedBanner from '@site/src/components/UntestedBanner';
-
-```
-
-## Links und Referenzen
-
-- https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
-
-# API
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="select" />

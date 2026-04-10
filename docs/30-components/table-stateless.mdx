@@ -1,16 +1,9 @@
 ---
-title: TableStateless
+title: Table (Stateless)
 description: Beschreibung, Spezifikation und Beispiele für die TableStateless-Komponente.
-tags:
-  - Table
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/table-stateless/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import TableStatefulPreview from '@site/src/components/previews/components/TableStateful';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
@@ -19,136 +12,300 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
+**Synonyme:** Data Table, Datentabelle, stateless Tabelle, einfache Tabelle
 
-Synonyme: Data Table, Details List, Data Grid
-
-Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich.
-
-## Konstruktion
-
-<TableStatefulPreview codeCollapsable codeCollapsed /> Für eine Tabellen-Komponente, die Sortierung und Paginierung mit den zur Verfügung gestellten Daten automatisch übernehmen kann, siehe <kol-link _href="table-stateful" _label="KolTableStateful" />.
-
-TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es nicht praktikabel ist, die komplette Datenmenge zur Filterung und Sortierung in den Browser auszuliefern.
-
-## Richtung der Datenwiedergabe
-
-Die Komponente KolTableStateless bietet eine flexible Tabellenimplementierung, die die bi-direktionale Datenwiedergabe unterstützt. Die Richtung der Datenwiedergabe wird durch die Header-Konfiguration bestimmt:
-
-- Horizontale Kopfzeilen (Standard): Die Daten werden von oben nach unten gerendert, wenn Schlüssel in den horizontalen Kopfzeilen vorhanden sind. Jede Spalte steht für einen Schlüssel, und die Zeilen stehen für einzelne Dateneinträge.
-- Vertikale Kopfzeilen: Die Daten werden von links nach rechts dargestellt, wenn die Schlüssel in den vertikalen Kopfzeilen vorhanden und in den horizontalen Kopfzeilen nicht vorhanden sind. Jede Zeile stellt einen Schlüssel dar, und Spalten stellen einzelne Dateneinträge dar.
-
-Die Darstellungsrichtung wird automatisch durch die Untersuchung der Kopfzeilenzellen bestimmt:
-
-- Wenn horizontale Kopfzeilen Schlüssel enthalten, wird die horizontale Darstellung verwendet.
-- Wenn nur vertikale Kopfzeilen Schlüssel enthalten, wird vertikal gerendert.
-- Wenn keine Kopfzeilen Schlüssel enthalten, wird standardmäßig das horizontale Rendering verwendet.
-
-
-## Selektion
-
-Über die `_selection`-Property kann der "Selection-Modus" der Komponente aktiviert und gesteuert werden. Ist `_selection` definiert, erhält jede Zeile eine Checkbox, über die sich die Zeile aus- oder abwählen lässt.
-
-- **label**: Funktion, welche für jede Zeile ausgerufen wird, und ein Label für die Checkbox zurückgibt.
-- **selectedKeys**: Array von Strings, das die Key-Properties der gewählten Zeilen beinhaltet.
-- **disabledKeys**: Array von Strings, das die Key-Properties der deaktivierten Zeilen beinhaltet. Bei Zeilen, die in `disabledKeys` vorkommen, wird die Checkbox bzw. der Radio Button deaktiviert.
-- **keyPropertyName**: Eigenschaft, auf die sich `selectedKeys` und `disabledKeys` beziehen. Standardwert: `id`.
-
-```ts
-const data = [
-	{ id: '1001', name: 'Marianne Musterfrau' },
-	{ id: '1002', name: 'Max Mustermann' },
-];
-const selection: KoliBriTableSelection = {
-	label: (row: KoliBriTableDataType) => `Selection for ${row.name}`,
-  selectedKeys: ['1002'],
-  disabledKeys: ['1001'],
-  keyPropertyName: 'id',
-};
-```
-
-## Einstellungen
-
-Tabellen verfügen automatisch über ein Einstellungsmenü, mit dem Nutzende:
-
-* Spalten ein- und ausblenden
-* Spaltenbreiten anpassen
-* Spaltenreihenfolge ändern
-
-Standardmäßig werden alle horizontalen Tabellenspalten berücksichtigt.
-
-Mithilfe der Property _tableSettings lassen sich vordefinierte oder bereits gespeicherte Tabellenkonfigurationen laden. Diese überschreiben die Standardwerte, und im Menü werden dann nur noch die dort aufgeführten Spalten angezeigt.
-
-Beispiel:
-
-```jsx
-<KolTableStateful
-	_tableSettings={{
-		columns: [
-			{ key: 'columnA', visible: false, label: 'Column A', position: 2 },
-			{ key: 'columnB', visible: true, label: 'Column B', position: 1, width: 20 },
-			{ key: 'columnC', visible: true, label: 'Column C', position: 0, width: 45 },
-		],
-	}}
-	// ...
-/>
-```
-
-Ändern Nutzende die Einstellungen, werden diese automatisch auf die Tabellenansicht übertragen und ein <nobr>`settingsChange`</nobr>-DOM-Event ausgelöst (siehe Events).
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event             | Auslöser                                                  | Value                                                                  |
-|-------------------|-----------------------------------------------------------|------------------------------------------------------------------------|
-| `sort`            | Die Sortierung hat sich geändert                          | Objekt vom Typ `SortEventPayload` mit `key` und `currentSortDirection` |
-| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert          | Array von ausgewählten IDs bzw. ausgewählt ID bei Einfachauswahl       |
-| `settingsChange`  | Die Tabelleneinstellungen wurden durch den User geändert. | Objekt vom Typ `TableSettings`                                         |
+**Beschreibung:** Die **TableStateless**-Komponente ermöglicht die reine, statusfreie Darstellung von tabellarischen Daten. Im Gegensatz zu TableStateful verwaltet diese Komponente keine Sortierung oder Paginierung automatisch. Sie bietet sich besonders bei großen Datenmengen an, wenn Sortierung und Paginierung vom Client (z.B. via Backend) kontrolliert werden müssen.
 
 ## Beispiel
 
-```jsx
-<KolTableStateless
-  _label="Table for demonstration purposes"
-  _headerCells={{
-    horizontal: [
-      [
-        { key: 'value', label: 'Value', sortDirection: 'ASC' },
-      ],
-    ],
-  }}
-  _data={DATA}
-  _selection={{
-    label: (row: KoliBriTableDataType) => `Selection for ${row.name}`,
-    selectedKeys: ['1002'],
-    keyPropertyName: 'id',
-  }}
-  _on={{
-    /**
-     * @param {MouseEvent} _
-     * @param {SortEventPayload} payload
-     * @param {string} payload.key
-     * @param {KoliBriSortDirection} payload.currentSortDirection
-     */
-    onSort: (_: MouseEvent, payload: SortEventPayload) => {
-      /* Perform sort, update `DATA` and headers `sortDirection` */
-    },
+Basale Tabelle mit horizontalen Spaltenüberschriften:
 
-    /**
-     * @param {Event} _
-     * @param {string[]} selection - Array of selected keys
-     */
-    onSelectionChange: (_: Event, selection: string[]) => {
-      /* Update selection.selectedKeys state */
-    }
-  }}
+```jsx
+<kol-table-stateless
+	_label="Beispielhafte Datentabelle"
+	_headerCells={{
+		horizontal: [
+			[
+				{ key: 'name', label: 'Name' },
+				{ key: 'alter', label: 'Alter' },
+				{ key: 'stadt', label: 'Stadt' },
+			],
+		],
+	}}
+	_data={[
+		{ name: 'Anna Schmidt', alter: 28, stadt: 'Berlin' },
+		{ name: 'Max Müller', alter: 34, stadt: 'München' },
+		{ name: 'Eva Wagner', alter: 31, stadt: 'Hamburg' },
+	]}
 />
 ```
+
+## Barrierefreiheit
+
+- **Label erforderlich**: Jede TableStateless-Komponente muss über das Attribut `_label` eine beschreibende Beschriftung haben. Dies ist essentiell für Screenreader-Nutzer.
+- **Semantische Struktur**: Die Komponente verwendet semantische HTML-Tabellenlemente (`table`, `thead`, `tbody`, `th`, `td`), die Assistivtechnologien korrekt interpretieren können.
+- **Spaltenüberschriften**: Spalten und Zeilenüberschriften werden als `<th>`-Elemente markiert, sodass Screenreader die Zuordnung von Daten zu Überschriften erkennen.
+- **Tastaturnavigation**: Das Tabellenlayout unterstützt Tastaturnavigation und Fokusmanagement.
+- **Sortierindikator**: Sortierbare Spalten werden mit visuellen und programmatischen Indikatoren versehen.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/tutorials/tables/" _target="_blank" _label="W3C WAI: Web Accessibility Tutorials - Tables"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" _target="_blank" _label="WCAG 2.1: Info and Relationships"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table" _target="_blank" _label="MDN: HTML table Element"></kol-link>
+
+## Verwendung
+
+### Best Practices / Empfehlungen
+
+- **Wann TableStateless einsetzen:** Nutzen Sie TableStateless, wenn Sie Sortierung, Paginierung oder Filterung manuell (z.B. via Backend-API) verwalten möchten.
+- **Datenmengen**: Besonders geeignet für sehr große Datenmengen, die paginiert oder lazy-loaded werden.
+- **Kontrolle behalten**: Diese Komponente gibt Ihnen volle Kontrolle über Datenverwaltung und Benutzerinteraktionen.
+- **Vergleich mit TableStateful**: Verwenden Sie <kol-link _href="table-stateful" _label="TableStateful"></kol-link>, wenn die Komponente automatisch Sortierung und Paginierung übernehmen soll.
+- **Label setzen**: Vergeben Sie immer ein aussagekräftiges `_label`, das die Tabelle beschreibt.
+
+### Anwendungsfälle
+
+- **Backend-gesteuerte Daten:** Tabellen, deren Daten von einem Server paginiert oder gefiltert werden.
+- **Echtzeit-Updates:** Dynamische Tabellen, die regelmäßig aktualisiert werden.
+- **Custom Datenverarbeitung:** Szenarien, in denen Sie spezielle Such-, Filter- oder Sortierlogik implementieren müssen.
+- **Performance-kritische Anwendungen:** Große Datenmengen, bei denen Client-seitige Paginierung ineffizient wäre.
+- **Externe API-Integration:** Daten, die von einer externen API in Echtzeit abgefragt werden.
+
+## Konstruktion / Technik
+
+### Playground
+
+Interaktive Beispiele für die wesentlichen Funktionalitäten von TableStateless:
+
+```jsx
+<kol-table-stateless
+	_label="Mitarbeiter Übersicht"
+	_headerCells={{
+		horizontal: [
+			[
+				{ key: 'id', label: 'ID', sortDirection: 'ASC' },
+				{ key: 'name', label: 'Name' },
+				{ key: 'position', label: 'Position' },
+				{ key: 'abteilung', label: 'Abteilung' },
+			],
+		],
+	}}
+	_data={[
+		{ id: 1, name: 'Alice Wagner', position: 'Senior Dev', abteilung: 'Engineering' },
+		{ id: 2, name: 'Bob Schmidt', position: 'Product Manager', abteilung: 'Produkt' },
+		{ id: 3, name: 'Carol Müller', position: 'Designer', abteilung: 'Design' },
+		{ id: 4, name: 'David Klein', position: 'QA Ingenieur', abteilung: 'Quality' },
+	]}
+/>
+```
+
+### Funktionalitäten (mit Code)
+
+#### Horizontale Tabellenkopfzeile
+
+Standard-Tabelle mit horizontalen Spaltenüberschriften:
+
+```jsx
+<kol-table-stateless
+	_label="Produktliste"
+	_headerCells={{
+		horizontal: [
+			[
+				{ key: 'sku', label: 'SKU' },
+				{ key: 'name', label: 'Produktname' },
+				{ key: 'preis', label: 'Preis' },
+			],
+		],
+	}}
+	_data={[
+		{ sku: 'P001', name: 'Laptop', preis: '999,00 €' },
+		{ sku: 'P002', name: 'Monitor', preis: '299,00 €' },
+		{ sku: 'P003', name: 'Keyboard', preis: '79,99 €' },
+	]}
+/>
+```
+
+#### Vertikale Tabellenkopfzeile
+
+Tabelle mit vertikalen Zeilenüberschriften (transponiertes Layout):
+
+```jsx
+<kol-table-stateless
+	_label="Jahresbericht"
+	_headerCells={{
+		vertical: [
+			[
+				{ key: 'metriken', label: 'Metriken' },
+				{ key: 'umsatz', label: 'Umsatz' },
+				{ key: 'gewinn', label: 'Gewinn' },
+				{ key: 'wachstum', label: 'Wachstum' },
+			],
+		],
+	}}
+	_data={[
+		{ metriken: 'Q1 2024', umsatz: '5.2M', gewinn: '1.1M', wachstum: '+12%' },
+		{ metriken: 'Q2 2024', umsatz: '6.1M', gewinn: '1.5M', wachstum: '+17%' },
+	]}
+/>
+```
+
+#### Sortierung
+
+Aktivierung der Sortierbarkeit durch `sortDirection` auf Spalten:
+
+```jsx
+<kol-table-stateless
+	_label="Sortierbare Personen-Tabelle"
+	_headerCells={{
+		horizontal: [
+			[
+				{ key: 'name', label: 'Name', sortDirection: 'ASC' },
+				{ key: 'email', label: 'E-Mail' },
+				{ key: 'registriert', label: 'Registriert seit', sortDirection: 'DESC' },
+			],
+		],
+	}}
+	_data={[
+		{ name: 'Alice', email: 'alice@example.com', registriert: '2023-01-15' },
+		{ name: 'Bob', email: 'bob@example.com', registriert: '2024-06-20' },
+	]}
+	_on={{
+		onSort: (_: MouseEvent, payload: SortEventPayload) => {
+			console.log('Sortiert nach:', payload.key, 'Richtung:', payload.currentSortDirection);
+		},
+	}}
+/>
+```
+
+#### Zeilenauswahl (Selection)
+
+Aktivierung von Checkboxen zur Zeilenauswahl:
+
+```jsx
+<kol-table-stateless
+	_label="Auswählbare Datensätze"
+	_headerCells={{
+		horizontal: [
+			[
+				{ key: 'id', label: 'ID' },
+				{ key: 'artikel', label: 'Artikel' },
+				{ key: 'menge', label: 'Menge' },
+			],
+		],
+	}}
+	_data={[
+		{ id: '101', artikel: 'Artikel A', menge: 5 },
+		{ id: '102', artikel: 'Artikel B', menge: 3 },
+		{ id: '103', artikel: 'Artikel C', menge: 8 },
+	]}
+	_selection={{
+		label: (row) => `Auswahl für Artikel ${row.artikel}`,
+		selectedKeys: ['102'],
+		keyPropertyName: 'id',
+	}}
+	_on={{
+		onSelectionChange: (_: Event, selection: KoliBriTableSelectionKeys) => {
+			console.log('Ausgewählte Zeilen:', selection);
+		},
+	}}
+/>
+```
+
+#### Einstellungsmenü
+
+Aktivierung des Einstellungsmenüs für Spaltenmanagement:
+
+```jsx
+<kol-table-stateless
+	_label="Tabelle mit Spalteneinstellungen"
+	_headerCells={{
+		horizontal: [
+			[
+				{ key: 'name', label: 'Name' },
+				{ key: 'email', label: 'E-Mail' },
+				{ key: 'telefon', label: 'Telefon' },
+				{ key: 'stadt', label: 'Stadt' },
+			],
+		],
+	}}
+	_data={[
+		{ name: 'Anna', email: 'anna@example.com', telefon: '+49123456', stadt: 'Berlin' },
+		{ name: 'Bruno', email: 'bruno@example.com', telefon: '+49654321', stadt: 'München' },
+	]}
+	_hasSettingsMenu={true}
+	_on={{
+		onChangeHeaderCells: (_: Event, headerCells: TableHeaderCells) => {
+			console.log('Spalten aktualisiert:', headerCells);
+		},
+	}}
+/>
+```
+
+#### Fussfzeile
+
+Daten in der Tabellenzeile mit `_dataFoot`:
+
+```jsx
+<kol-table-stateless
+	_label="Verkaufsdaten mit Summen"
+	_headerCells={{
+		horizontal: [
+			[
+				{ key: 'produkt', label: 'Produkt' },
+				{ key: 'verkauft', label: 'Verkauft' },
+				{ key: 'umsatz', label: 'Umsatz' },
+			],
+		],
+	}}
+	_data={[
+		{ produkt: 'Widget A', verkauft: 45, umsatz: '4.500 €' },
+		{ produkt: 'Widget B', verkauft: 32, umsatz: '3.200 €' },
+	]}
+	_dataFoot={[
+		{ produkt: 'Gesamt', verkauft: 77, umsatz: '7.700 €' },
+	]}
+/>
+```
+
+#### Fixierte Spalten
+
+Fixierung von Spalten am Anfang und Ende mit `_fixedCols`:
+
+```jsx
+<kol-table-stateless
+	_label="Tabelle mit fixierten Spalten"
+	_headerCells={{
+		horizontal: [
+			[
+				{ key: 'id', label: 'ID' },
+				{ key: 'name', label: 'Name' },
+				{ key: 'details', label: 'Weitere Infos' },
+				{ key: 'aktion', label: 'Aktion' },
+			],
+		],
+	}}
+	_data={[
+		{ id: '1', name: 'Datensatz 1', details: 'Info 1', aktion: 'Bearbeiten' },
+		{ id: '2', name: 'Datensatz 2', details: 'Info 2', aktion: 'Löschen' },
+	]}
+	_fixedCols={[1, 1]}
+/>
+```
+
+#### Events
+
+Umgang mit Tabelleninteraktionen und Events, die von TableStateless ausgelöst werden:
+
+| Event | Auslöser | Value |
+| ----- | -------- | ----- |
+| `sort` | Eine Spalte wurde zum Sortieren angeklickt. | Objekt mit `key` (Spaltenschlüssel) und `currentSortDirection` ('ASC', 'DESC', 'NONE'). |
+| `selectionChange` | Nutzer hat eine oder mehrere Zeilen ausgewählt/abgewählt. | Array von Zeilen-Keys (oder einzelner Key bei Einfachauswahl). |
+| `settingsChange` | Nutzer hat Spalteneinstellungen im Menü geändert. | Objekt vom Typ `TableSettings` mit aktualisierten Spalten. |
+| `changeHeaderCells` | Spaltenüberschriften wurden durch `_on.onChangeHeaderCells` aktualisiert. | Aktualisierte Kopfzeilendaten als `TableHeaderCells`. |
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
 ## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="table-stateless" />

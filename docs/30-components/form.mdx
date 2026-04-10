@@ -1,15 +1,9 @@
 ---
 title: Form
 description: Beschreibung, Spezifikation und Beispiele für die Form-Komponente.
-tags:
-  - Form
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/form/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import FormPreview from '@site/src/components/previews/components/Form';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
@@ -21,16 +15,97 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinweistext für Pflichtfelder korrekt zu positionieren und die Events `submit` und `reset` weiterzuleiten.
+**Synonyme:** Formularelement-Wrapper, Eingabefeld-Container, Formular-Grundgerüst
 
-## Konstruktion
+**Beschreibung:** Die **Form**-Komponente ist ein zweckgebundener Container, der sämtliche Eingabefelder semantisch korrekt umschließt. Sie stellt sicher, dass Pflichtfeld-Hinweistexte korrekt positioniert werden, leitet Browser-Events (`submit` und `reset`) weiter und ermöglicht strukturierte Fehlerbehandlung mit Fokus-Management für Barrierefreiheit.
 
-<FormPreview visibleProperties={['_requiredText']} codeCollapsable codeCollapsed />
+## Beispiel
 
-# API
+Standard-Formular mit Eingabefeldern und Buttons:
+
+<FormPreview
+	visibleProperties={[]}
+	initialProps={{ _requiredText: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## Barrierefreiheit
+
+Die **Form**-Komponente unterstützt barrierefreie Formularstrukturen nach modernen Standards:
+
+- **Semantische Struktur**: Die Verwendung des nativen `<form>`-Elements gewährleistet, dass von Screenreadern das Formular als solches erkannt wird.
+- **Pflichtfeld-Hinweis**: Mit `_requiredText` wird ein global sichtbarer und von assistiven Technologien interpretierbarer Hinweis auf Pflichtfelder angezeigt.
+- **Fehlerbehandlung**: Die `_errorList`-Eigenschaft ermöglicht strukturierte Fehlerausgaben, die mit der Methode `focusErrorList()` angesteuert werden – ideal für Barrierefreiheit.
+- **Event-Weitergabe**: Die Komponente leitet native `submit`- und `reset`-Events korrekt weiter, was notwendig für Frameworks und Validierungsbibliotheken ist.
+- **Fokus-Management**: Über die Methode `focusErrorList()` können Nutzer:innen mit Tastatur und Screenreader direkt zu Fehlern navigiert werden.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/TUTORIALS/forms/" _target="_blank" _label="WAI-ARIA Authoring Practices - Forms"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form" _target="_blank" _label="MDN Web Docs - form Element"></kol-link>
+
+## Verwendung
+
+### Best Practices / Empfehlungen
+
+- **Alle Eingabefelder einschließen**: Umschließen Sie jeden zusammenhängenden Satz von Eingabefeldern mit einer Form-Komponente.
+- **Pflichtfelder kennzeichnen**: Nutzen Sie `_requiredText` um transparent zu machen, welche Felder erforderlich sind.
+- **Fehler strukturiert behandeln**: Setzen Sie die `_errorList` mit Objekten, die Message und Selector enthalten, und nutzen Sie `focusErrorList()` um Nutzer:innen zu fehlerhaften Feldern zu navigieren.
+- **Submit und Reset Events**: Der Einfachheit halber: nutzen Sie die Standard-Button-Type `submit` und `reset` und handeln Sie die Form-Events über die `_on`-Callbacks ab.
+- **Nicht verschachteln**: Forms sollten nicht verschachtelt werden. Falls mehrere Formularbereiche notwendig sind, nutzen Sie `<fieldset>` und `<legend>` zur Strukturierung innerhalb einer Form.
+- **Mit responsivem Layout**: Die Form selbst hat keine Größe – sie passt sich ihrem Container an. Nutzen Sie CSS-Grid oder Flexbox für die innere Anordnung.
+
+### Anwendungsfälle
+
+- **Kontaktformulare**: Sammlung von Name, E-Mail und Nachricht mit Validierung
+- **Registrierung und Anmeldung**: Sichere Erfassung von Zugangsdaten
+- **Datensätze**: Bearbeitung von mehreren Feldern zu einem Datensatz mit Speichern/Abbrechen
+- **Suchmasken**: Strukturierte Eingabe von Suchparametern
+- **Einstellungen und Konfiguration**: Erfassung und Speicherung von Präferenzen
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die Form mit verschiedenen Konfigurationen:
+
+<FormPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Pflichtfeld-Hinweis
+
+Der Text für Pflichtfeld-Hinweise wird über `_requiredText` gesteuert:
+
+<FormPreview
+	visibleProperties={['_requiredText']}
+	initialProps={{ _requiredText: true }}
+	codeCollapsable
+/>
+
+Mit `_requiredText="false"` wird der Hinweis ausgeblendet. Mit einem benutzerdefinierten String kann der Standard-Text überschrieben werden:
+
+<FormPreview
+	visibleProperties={['_requiredText']}
+	initialProps={{ _requiredText: 'Felder mit * sind erforderlich' }}
+	codeCollapsable
+/>
+
+#### Event-Anbindung
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+Die Form-Komponente leitet folgende Events weiter:
+
+| Event   | Auslöser                         | Value                       |
+| ------- | -------------------------------- | --------------------------- |
+| `submit` | Submit-Button wird geklickt      | Das native `submit`-Event   |
+| `reset`  | Reset-Button wird geklickt       | Das native `reset`-Event    |
+
+Die Callbacks werden über die `_on`-Eigenschaft registriert und ermöglichen es, beispielsweise Formulardaten vor dem Versand zu verarbeiten oder den Formular-Zustand zurückzusetzen.
+
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="form" />

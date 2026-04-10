@@ -1,67 +1,162 @@
 ---
 title: Dialog
-slug: dialog
-icon: /icons/dialog.svg
-version: 1.0.0
-description: Ein modales Dialog-Overlay, das zur Abfrage einer Bestätigung, Anzeige von Nachrichten oder zur Erfassung kleiner, fokussierter Eingaben verwendet wird, die die sofortige Aufmerksamkeit des Benutzers erfordern und die Interaktion mit dem Hauptinhalt blockieren, bis das Dialogfenster geschlossen wird.
+description: Beschreibung, Spezifikation und Beispiele für die Dialog-Komponente.
 ---
 
+import Readme from '../../readmes/dialog/readme.md';
 import DialogPreview from '@site/src/components/previews/components/Dialog';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Dialog
 
+
 <BetaDocsBanner />
 <UntestedBanner />
 
-Die `Dialog`-Komponente bietet ein Vollbild- oder fokussiertes modales Overlay zur Übermittlung kritischer, zeitkritischer Informationen oder zur Erfassung fokussierter Benutzereingaben, die die sofortige Aufmerksamkeit des Benutzers erfordern. Sie ist dafür konzipiert, über allen anderen Seiteninhalten zu erscheinen.
+**Synonyme:** Modal, Modales Fenster, Overlay
 
-<DialogPreview componentName="dialog" />
-
-## Verwendung
-
-Verwenden Sie die `Dialog`-Komponente, wenn Sie Folgendes tun müssen:
-*   Eine irreversible Aktion bestätigen (z.B. „Sind Sie sicher, dass Sie diesen Datensatz löschen möchten?“).
-*   Wichtige, nicht überspringbare Benachrichtigungen anzeigen.
-*   Ein kleines, kritisches Stück Information sammeln (z.B. einen Bestätigungscode).
-
-### API
-
-Die `Dialog`-Komponente wird durch Props gesteuert, die ihre Sichtbarkeit, ihren Titel, ihren Inhalt und ihre Aktionen verwalten.
-
-**Props:**
-
-| Name | Typ | Standardwert | Beschreibung |
-| :--- | :--- | :--- | :--- |
-| `isOpen` | `boolean` | `false` | Steuert die Sichtbarkeit des Dialogs. Muss durch den Zustand der übergeordneten Komponente explizit verwaltet werden. |
-| `onClose` | `() => void` | `() => {}` | Callback-Funktion, die aufgerufen wird, wenn der Benutzer das Dialogfeld schließt (z.B. durch Klicken außerhalb oder Drücken von Escape). |
-| `title` | `string` | `"Dialog"` | Der Haupttitel, der oben im Modal angezeigt wird. |
-| `primaryActionLabel` | `string` | `"Bestätigen"` | Die Beschriftung für die primäre Aktion. |
-| `secondaryActionLabel` | `string` | `"Abbrechen"` | Die Beschriftung für die sekundäre/Abbrechen-Aktion. |
-| `children` | `ReactNode` | `null` | Der Inhalt, der im Modal-Body angezeigt werden soll. Dies ist der primäre Bereich für Benutzereingaben oder Formulare. |
-
-### Varianten
-
-| Variante | Anwendungsfall | Hinweise |
-| :--- | :--- | :--- |
-| `confirm` | Für zwingende Benutzerbestätigungen. | Enthält sowohl eine primäre als auch eine sekundäre Schaltfläche. |
-| `alert` | Zur Anzeige von Informationen, die eine Bestätigung erfordern. | Zeigt nur einen Schließen-Button. |
-| `input` | Zur Erfassung einzelner Eingaben. | Sollte einen Eingabekomponenten innerhalb seiner `children` umhüllen. |
+**Beschreibung:** Der **Dialog** ist ein modales Overlay-Element, das sich über dem gesamten Seiteninhalt darstellt und die Interaktion mit anderen Elementen blockiert, bis der Dialog geschlossen wird. Er wird typischerweise für Bestätigungen, Benachrichtigungen oder fokussierte Benutzereingaben verwendet, die sofortige Aufmerksamkeit erfordern.
 
 ## Beispiel
 
-Hier ist ein interaktives Beispiel für die `Dialog`-Komponente in Aktion.
+Standard-Dialog mit Beschriftung und Inhalt:
 
+<DialogPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
 
+## Barrierefreiheit
 
-### API Details
+Die **Dialog**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 
-*   **`isOpen`**: `boolean`. Steuert die Sichtbarkeit.
-*   **`onClose`**: `() => void`. Der erforderliche Callback für die Handhabung des Schließvorgangs.
-*   **`title`**: `string`. Setzt den Text des Kopfbereichs.
-*   **`primaryActionLabel`**: `string`. Setzt die Beschriftung der Hauptschaltfläche.
-*   **`secondaryActionLabel`**: `string`. Setzt die Beschriftung der Abbrechen-Schaltfläche.
-*   **`children`**: `ReactNode`. Muss den Kerninhalt, Formularelemente oder strukturierten Text enthalten.
+- **Label erforderlich**: Die `_label`-Eigenschaft ist erforderlich und wird als ARIA-Label verwendet, um Screenreader-Nutzern den Zweck des Dialogs zu kommunizieren.
+- **Fokusmanagement**: Der Fokus wird beim Öffnen automatisch auf den Dialog verschoben und beim Schließen an das auslösende Element zurückgegeben.
+- **Escape-Taste**: Der Dialog kann mit der Escape-Taste geschlossen werden.
+- **Modal-Kontext**: Das Overlay blockiert Interaktionen mit dem Hintergrund und signalisiert so seine Wichtigkeit.
+- **Inhaltsflexibilität**: Der Slot ermöglicht beliebige Inhalte, einschließlich Formulare und Eingabefelder.
 
-*Hinweis: Der Dialog muss durch den Zustand seiner übergeordneten Komponente gesteuert werden. Verwenden Sie immer die Callbacks `isOpen` und `onClose` zusammen.*
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/" _target="_blank" _label="WAI-ARIA Dialog (Modal) Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order" _target="_blank" _label="WCAG 2.1 - Focus Order"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible" _target="_blank" _label="WCAG 2.1 - Focus Visible"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste | Funktion |
+| ----- | -------- |
+| `Tab` | Navigation zwischen interaktiven Elementen innerhalb des Dialogs |
+| `Shift + Tab` | Rückwärts-Navigation zwischen interaktiven Elementen |
+| `Escape` | Schließt den Dialog (falls aktiviert) |
+
+### Best Practices / Empfehlungen
+
+- **Nur für wichtige Aktionen**: Nutzen Sie einen Dialog nur für wirklich wichtige Informationen oder Aktionen, die sofortige Aufmerksamkeit erfordern.
+- **Klare Beschriftung**: Die `_label`-Eigenschaft sollte den Zweck oder die Aktion des Dialogs klar beschreiben.
+- **Einfacher Inhalt**: Halten Sie den Dialog-Inhalt fokussiert und prägnant. Komplexe Formulare werden besser auf einer separaten Seite dargestellt.
+- **Deutliche Schließmöglichkeit**: Bieten Sie immer eine eindeutige Möglichkeit, den Dialog zu schließen (z. B. einen Schließen-Button oder Escape-Taste).
+- **Fokus-Fallback**: Stellen Sie sicher, dass ein fokussierbares Element im Dialog vorhanden ist (z. B. ein Button).
+- **Varianten sinnvoll wählen**: Verwenden Sie `_variant="card"` für Inhalte mit Abstand, `_variant="blank"` für volle Bildschirmbreite.
+
+### Anwendungsfälle
+
+- **Bestätigungen**: „Sind Sie sicher, dass Sie fortfahren möchten?"–Dialoge vor irreversiblen Aktionen.
+- **Benachrichtigungen**: Wichtige, nicht überspringbare Meldungen für den Nutzer.
+- **Kleine Eingaben**: Erfassung von Codes, Passwörtern oder kurzen Textinputs.
+- **Fehlerbehandlung**: Kritische Fehlermeldungen, die sofortige Aufmerksamkeit erfordern.
+- **Bestätigung von Datenverlust**: Warnung vor dem Verlust von Daten oder ungespeicherten Änderungen.
+
+### FAQ
+
+**Kann ich mehrere Dialoge verschachtelt öffnen?**
+Dies wird nicht empfohlen, da es zu Fokus- und Barrierefreiheitsproblemen führen kann. Verwenden Sie stattdessen eine einzelne Dialog-Instanz.
+
+**Wie schließe ich den Dialog programmatisch?**
+Nutzen Sie die Methode `closeModal()` auf der Dialog-Elementreferenz oder triggern Sie die `_on.onClose`-Callback.
+
+**Wie öffne ich den Dialog programmatisch?**
+Nutzen Sie die Methode `openModal()` auf der Dialog-Elementreferenz.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften des Dialogs:
+
+<DialogPreview
+	visibleProperties={['_label', '_variant', '_width', '_slot']}
+	initialProps={{}}
+	codeCollapsable
+/>
+
+### Funktionalitäten (mit Code)
+
+#### Label und Inhalt
+
+Die Beschriftung wird über `_label` gesetzt. Der Inhalt wird über den Slot bereitgestellt:
+
+<DialogPreview
+	visibleProperties={['_label', '_slot']}
+	initialProps={{
+		_label: 'Dialog Titel',
+		_slot: '<p>Dies ist der Dialoginhalt.</p>',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Varianten
+
+Der Dialog unterstützt zwei Varianten:
+
+<DialogPreview
+	visibleProperties={['_variant']}
+	initialProps={{
+		_label: 'Dialog mit Card-Variante',
+		_variant: 'card',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Varianten:**
+- `blank`: Volle Breite, minimales Styling (Standard)
+- `card`: Mit Abstand und Kartendesign
+
+#### Breite
+
+Die Breite des Dialogs wird über `_width` gesteuert:
+
+<DialogPreview
+	visibleProperties={['_width']}
+	initialProps={{
+		_label: 'Dialog mit Custom-Breite',
+		_width: '500px',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Hinweis:** Die maximale Breite ist auf 100% begrenzt.
+
+#### Callback-Handling
+
+Der Dialog kann mit der `_on`-Eigenschaft auf Events reagieren:
+
+```html
+<kol-dialog _label="Bestätigung" _on='{"onClose": () => console.log("Dialog closed")}'>
+	Inhalt des Dialogs
+</kol-dialog>
+```
+
+Der `onClose`-Callback wird aufgerufen, wenn der Dialog geschlossen wird (durch ESC, Klick außerhalb oder programmatisch).
+
+## API
+
+<Readme />

@@ -1,61 +1,214 @@
 ---
 title: Toolbar
-description: Beschreibung und Spezifikation für die Toolbar-Komponente.
-tags:
-  - Toolbar
-  - Beschreibung
-  - Spezifikation
+description: Beschreibung, Spezifikation und Beispiele für die Toolbar-Komponente.
 ---
 
 import Readme from '../../readmes/toolbar/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import ToolbarPreview from '@site/src/components/previews/components/Toolbar';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
-
 # Toolbar
-
 
 <BetaDocsBanner />
 <UntestedBanner />
 
-Die Komponente **Toolbar** ist eine Sammlung häufig verwendeter Steuerelemente für Schaltflächen und Links, die in einer kompakten visuellen Form zusammengefasst sind. Die Toolbar ist in der Regel eine Untermenge von Funktionen, die in einer Menüleiste zu finden sind, um den Aufwand für den Benutzer zu verringern.
+**Synonyme:** Symbolleiste, Werkzeugleiste, Funktionsspalte
 
-<ToolbarPreview 
-  visibleProperties={['_orientation'  ]}
-  codeCollapsable
-  codeCollapsed
+**Beschreibung:** Die **Toolbar**-Komponente stellt eine Sammlung von Steuerelementen (Buttons und Links) dar, die in einer kompakten visuellen Form zusammengefasst sind. Sie ermöglicht es Nutzern, über Tastatursteuerung schnell zwischen den einzelnen Elementen zu navigieren und ist ideal für häufig genutzte Funktionen wie Formatierungswerkzeuge oder Navigationssteuerelemente.
+
+## Beispiel
+
+Darstellung der Toolbar mit verschiedenen Steuerelementen (Buttons und Links):
+
+<ToolbarPreview
+	visibleProperties={[]}
+	codeCollapsable
 />
-
-## Verwendung
-
-Verwenden Sie die **Toolbar**-Komponente wenn die Navigation von verschiedenen Buttons und Links ermöglicht werden soll, z.B. um den Inhalt einer Textarea zu formatieren.
-Mit Hilfe des Attributs **`_label`** kann das **`aria-label`** gesetzt werden.
-Über das Attribut **`_items`** werden die einzelnen Funktionen in der Toolbar gesetzt.
-Der **`tabIndex`** wird von der **Toolbar**-Komponente gesteuert. Default ist hierbei immer das erste aktive Elemente in der **Toolbar**.
-
-### Unterstützte **Toolbar**-Komponenten
-
-- Link
-- Button
-
-Der **Toolbar**-Komponente wird mit dem **`type`**-Attribut mitgeteilt, ob es sich um eine **Link**- oder **Button**-Komponente handelt.
 
 ## Barrierefreiheit
 
+Die **Toolbar**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
+
+- **Semantisches Label**: Das Attribut `_label` dient als `aria-label` und beschreibt den Zweck der Toolbar für Screenreader-Nutzer.
+- **Fokusmanagement**: Die Toolbar verwaltet den Fokus automatisch. Der erste aktive Element erhält standardmäßig den Fokus.
+- **Tastaturnavigation**: Die Navigation zwischen den Elementen erfolgt über Pfeiltasten, was die Bedienbarkeit für Nutzer mit motorischen Einschränkungen verbessert.
+- **Orientierungsflexibilität**: Durch die Möglichkeit, die Orientierung auf vertikal oder horizontal zu setzen, kann die Toolbar an verschiedene Anforderungen angepasst werden.
+- **Disabled-Status**: Deaktivierte Elemente werden von der Tastaturnavigation übersprungen und sind für Screenreader erkennbar.
+
+### Links und Referenzen
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/toolbar_role" _target="_blank" _label="MDN: toolbar role"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/" _target="_blank" _label="WAI-ARIA Authoring Practices Guide: Toolbar"></kol-link>
+
+## Verwendung
+
 ### Tastatursteuerung
 
-| Taste          | Funktion                                                                                                       |
-| -------------- | -------------------------------------------------------------------------------------------------------------- |
-| `Tab`          | Erster Tab fokussiert die Toolbar. Zweiter das erste aktive Element und dritter setzt den Standard wieder her. |
-| `Pfeil-Tasten` | Können für die Navigation der Element in der fokussierten Toolbar verwendet werden.                            |
+| Taste          | Funktion                                                                              |
+| -------------- | ------------------------------------------------------------------------------------- |
+| `Tab`          | Fokussiert die Toolbar (oder springt zum nächsten Element, wenn bereits fokussiert).  |
+| `Pfeil rechts` | Bewegt den Fokus zum nächsten aktiven Element in der Toolbar (horizontal).            |
+| `Pfeil links`  | Bewegt den Fokus zum vorherigen aktiven Element in der Toolbar (horizontal).          |
+| `Pfeil unten`  | Bewegt den Fokus zum nächsten aktiven Element in der Toolbar (vertikal).              |
+| `Pfeil oben`   | Bewegt den Fokus zum vorherigen aktiven Element in der Toolbar (vertikal).            |
 
-## Links und Referenzen
+### Best Practices / Empfehlungen
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/toolbar_role" _target="_blank"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/" _target="_blank"></kol-link>
+- **Sinnvolle Gruppierung**: Nutzen Sie die Toolbar für zusammenhängende Funktionen, z. B. Formatierungswerkzeuge in einem Editor.
+- **Klare Labels**: Geben Sie jeder Toolbar ein aussagekräftiges `_label`, das ihren Zweck beschreibt.
+- **Konsistente Orientierung**: Wählen Sie eine Orientierung (horizontal oder vertikal) basierend auf dem verfügbaren Platz und der Nutzungsweise.
+- **Deaktivierte Elemente**: Nutzen Sie `_disabled` für die Elemente in `_items`, um Funktionen zu deaktivieren, die in bestimmten Kontexten nicht verfügbar sind.
+- **Intuitive Reihenfolge**: Ordnen Sie die Elemente in einer logischen Reihenfolge, die dem Workflow des Nutzers entspricht.
+- **Icons mit Labels**: Verwenden Sie Icons in Kombination mit Labels oder Tooltips, um die Bedienbarkeit zu verbessern.
+
+### Anwendungsfälle
+
+- **Formatierungswerkzeuge**: Textbearbeitung mit Funktionen wie Fettdruck, Kursiv, Unterstreichen
+- **Navigation**: Schaltflächen für „Zurück" und „Weiter" in mehrstufigen Prozessen
+- **Dokumentesteuerung**: Funktionen wie Speichern, Drucken, Exportieren
+- **Medienkontrolle**: Play, Pause, Stop und weitere Kontrollen für Multimedia-Inhalte
+- **Datenbearbeitung**: Aktionen wie Hinzufügen, Bearbeiten, Löschen von Datensätzen in Tabellen oder Listen
+
+### FAQ
+
+**Welches Element ist standardmäßig fokussiert?**  
+Der erste aktive (nicht deaktivierte) Element in der `_items`-Array erhält standardmäßig den Fokus.
+
+**Kann ich die Reihenfolge der Elemente ändern?**  
+Ja, die Reihenfolge wird durch die `_items`-Array definiert. Ändern Sie die Reihenfolge der Objekte in dem Array, um die Reihenfolge der Elemente zu ändern.
+
+**Wie deaktiviere ich einzelne Elemente?**  
+Setzen Sie die `_disabled`-Eigenschaft auf `true` für das betreffende Element in der `_items`-Array.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften der Toolbar-Komponente:
+
+<ToolbarPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Grundlegende Toolbar mit mehreren Elementen
+
+Eine Toolbar mit einer Sammlung von Button- und Link-Elementen:
+
+<ToolbarPreview
+	visibleProperties={['_label', '_items']}
+	initialProps={{
+		_label: 'Bearbeitungswerkzeuge',
+		_items: [
+			{
+				type: 'button',
+				_label: 'Speichern',
+				_icons: {
+					left: {
+						icon: 'kolicon-save',
+					},
+				},
+			},
+			{
+				type: 'button',
+				_label: 'Drucken',
+				_icons: {
+					left: {
+						icon: 'kolicon-printer',
+					},
+				},
+			},
+			{
+				type: 'button',
+				_label: 'Löschen',
+				_icons: {
+					left: {
+						icon: 'kolicon-trash',
+					},
+				},
+			},
+		],
+	}}
+	codeCollapsable
+/>
+
+#### Orientierung
+
+Die Toolbar kann horizontal (Standard) oder vertikal ausgerichtet werden:
+
+<ToolbarPreview
+	visibleProperties={['_label', '_orientation']}
+	initialProps={{
+		_label: 'Navigationssteuerung',
+		_orientation: 'vertical',
+		_items: [
+			{
+				type: 'button',
+				_label: 'Zurück',
+				_hideLabel: true,
+				_icons: {
+					left: {
+						icon: 'kolicon-chevron-up',
+					},
+				},
+			},
+			{
+				type: 'button',
+				_label: 'Weiter',
+				_hideLabel: true,
+				_icons: {
+					left: {
+						icon: 'kolicon-chevron-down',
+					},
+				},
+			},
+		],
+	}}
+	codeCollapsable
+/>
+
+#### Deaktivierte Elemente
+
+Einzelne Elemente können deaktiviert werden:
+
+<ToolbarPreview
+	visibleProperties={['_label', '_items']}
+	initialProps={{
+		_label: 'Formatierungswerkzeuge',
+		_items: [
+			{
+				type: 'button',
+				_label: 'Fettdruck',
+				_icons: {
+					left: {
+						icon: 'kolicon-bold',
+					},
+				},
+			},
+			{
+				type: 'button',
+				_label: 'Kursiv',
+				_disabled: true,
+				_icons: {
+					left: {
+						icon: 'kolicon-italic',
+					},
+				},
+			},
+			{
+				type: 'button',
+				_label: 'Unterstreichen',
+				_icons: {
+					left: {
+						icon: 'kolicon-underline',
+					},
+				},
+			},
+		],
+	}}
+	codeCollapsable
+/>
+
+## API
 
 <Readme />
-
-<ExampleLink component="toolbar" />

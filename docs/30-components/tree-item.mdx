@@ -1,23 +1,231 @@
 ---
-title: Tree Item
-description: Beschreibung, Spezifikation und Beispiele für die Tree-Komponente.
-tags:
-  - Tree Item
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
+title: Tree-Item
+description: Beschreibung, Spezifikation und Beispiele für die Tree-Item-Komponente.
 ---
+
 import Readme from '../../readmes/tree-item/readme.md';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
-
 # Tree-Item
-
 
 <BetaDocsBanner />
 <UntestedBanner />
 
-Weitere Informationen zum Tree finden Sie auf der <kol-link _href="../components/tree" _label="Seite der Tree-Komponente"></kol-link>.
+**Synonyme:** Tree-Node, Baum-Element, Knoten
+
+**Beschreibung:** Die **Tree-Item**-Komponente stellt ein einzelnes Element innerhalb einer hierarchischen Liste dar. Tree-Items werden als untergeordnete Elemente einer <kol-link _href="../components/tree" _label="Tree-Komponente"></kol-link> verwendet und können optional untergeordnete Tree-Items enthalten. Jedes Tree-Item kann als Link fungieren, aktiv markiert werden und Kindelemente ein- oder ausblenden.
+
+## Beispiel
+
+Darstellung einer Tree-Struktur mit Tree-Items. Elemente mit Kindelementen können eingeklappt werden.
+
+```html
+<kol-tree>
+	<kol-tree-item _label="Element 1" _href="/">
+		<kol-tree-item _label="Unterelement 1.1" _href="/sub1"></kol-tree-item>
+		<kol-tree-item _label="Unterelement 1.2" _href="/sub2"></kol-tree-item>
+	</kol-tree-item>
+	<kol-tree-item _label="Element 2" _href="/" _active></kol-tree-item>
+	<kol-tree-item _label="Element 3" _href="/">
+		<kol-tree-item _label="Unterelement 3.1" _href="/sub3"></kol-tree-item>
+	</kol-tree-item>
+</kol-tree>
+```
+
+## Barrierefreiheit
+
+Die **Tree-Item**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
+
+- **ARIA-Rollen**: Tree-Items verwenden die semantische `treeitem`-Rolle für vollständige Screenreader-Unterstützung.
+- **Link-Semantik**: Jedes Tree-Item besitzt ein `_href`-Attribut und funktioniert semantisch wie ein Link.
+- **Expand/Collapse-Feedback**: Der Zustand (offen/geschlossen) wird über ARIA-Attribute kommuniziert.
+- **Tastaturbedienung**: Die Navigation wird vollständig über Tastatur unterstützt und ist mit der Parent-<kol-link _href="../components/tree" _label="Tree-Komponente"></kol-link> integriert.
+- **Aktiver Zustand**: Mit `_active` gekennzeichnete Items signalisieren die aktuelle Seite oder Position.
+
+### Links und Referenzen
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tree_role" _target="_blank" _label="MDN - ARIA tree role"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/treeview/" _target="_blank" _label="W3C WAI-ARIA - Treeview Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose.html" _target="_blank" _label="WCAG 2.1 - Link Purpose"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+Tree-Items werden über die Parent-<kol-link _href="../components/tree" _label="Tree-Komponente"></kol-link> gesteuert. Die Tastatursteuerung folgt dem Standard WAI-ARIA TreeView-Muster:
+
+| Taste          | Funktion                                                                                                                                                                                                                      |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`          | Fokussiert die Tree-Komponente, sodass Tree-Items per Tastatur bedient werden können.                                                                                                                                        |
+| `↑ / ↓`        | Navigiert zwischen sichtbaren Tree-Items auf derselben Ebene.                                                                                                                                                                |
+| `→`            | Öffnet das Untermenü des aktuell fokussierten Tree-Items (sofern Kindelemente vorhanden sind).                                                                                                                                |
+| `←`            | Schließt das Untermenü (sofern geöffnet) oder verschiebt den Fokus auf das übergeordnete Tree-Item.                                                                                                                        |
+| `Enter`        | Aktiviert das aktuell fokussierte Tree-Item. Navigation erfolgt zum Ziel des `_href`-Attributes.                                                                                                                            |
+| `Pos1`         | Fokussiert das erste Tree-Item der Ebene.                                                                                                                                                                                   |
+| `Ende`         | Fokussiert das letzte Tree-Item der Ebene.                                                                                                                                                                                  |
+| `*`            | Öffnet alle geschlossenen Geschwister-Tree-Items auf der aktuellen Ebene.                                                                                                                                                   |
+
+### Best Practices / Empfehlungen
+
+- **Hierarchie gestalten**: Limit Sie die Verschachtelungstiefe auf 3–4 Ebenen, um die Übersicht zu bewahren. Tiefere Hierarchien erschweren die Navigation.
+- **Aussagekräftige Labels**: Verwenden Sie klare, präzise `_label`-Texte, die den Inhalt oder das Ziel deutlich machen.
+- **Link-Ziele setzen**: Nutzen Sie `_href`, um jedes Tree-Item mit einem Navigationsziel zu verbinden.
+- **Aktiven Zustand markieren**: Setzen Sie `_active` auf das Tree-Item, das die aktuelle Seite repräsentiert, um Nutzerinnen und Nutzern Orientierung zu geben.
+- **Initial-Zustände**: Verwenden Sie `_open`, um bestimmte Äste beim Laden vorgeklappt zu zeigen – sparen Sie sich aber die Öffnung aller Äste, wenn nicht nötig.
+- **Tree in Kontext nutzen**: Tree und Tree-Item sind nur zusammen sinnvoll. Nutzen Sie die <kol-link _href="../components/tree" _label="Tree-Komponente</kol-link> als Wrapper.
+- **Icons und Symbole**: Falls Sie Icons neben Labels verwenden möchten, müssen diese auf Anwendungsebene erfolgen; `_label` akzeptiert nur Text.
+
+### Anwendungsfälle
+
+- **Navigationshierarchie**: Menüs und Navigationsstrukturen auf Websites oder in Anwendungen
+- **Dateibaum**: Darstellung von Verzeichnissen und Dateien in Dateibrowsern
+- **Organisationsstruktur**: Hierarchische Darstellung von Organisationseinheiten, Teams oder Abteilungen
+- **Kategoriebaum**: Verschachtelte Kategorien in Produktkatalogen oder Content-Management-Systemen
+- **Dokumentenliste**: Inhaltsverzeichnis mit mehreren Ebenen in Dokumentationen
+- **Systemnavigation**: Einstellungs- oder Admin-Dashboards mit verschachtelten Optionen
+
+## Konstruktion / Technik
+
+### Playground
+
+Ein interaktives Beispiel einer Tree-Struktur mit verschiedenen Tree-Items:
+
+```html
+<kol-tree>
+	<kol-tree-item _label="Startseite" _href="/" _active></kol-tree-item>
+	<kol-tree-item _label="Produkte" _href="/products">
+		<kol-tree-item _label="Kategorie A" _href="/products/a"></kol-tree-item>
+		<kol-tree-item _label="Kategorie B" _href="/products/b">
+			<kol-tree-item _label="Unterkategorie B1" _href="/products/b/b1"></kol-tree-item>
+			<kol-tree-item _label="Unterkategorie B2" _href="/products/b/b2"></kol-tree-item>
+		</kol-tree-item>
+	</kol-tree-item>
+	<kol-tree-item _label="Dokumentation" _href="/docs"></kol-tree-item>
+	<kol-tree-item _label="Support" _href="/support">
+		<kol-tree-item _label="FAQ" _href="/support/faq"></kol-tree-item>
+		<kol-tree-item _label="Kontakt" _href="/support/contact"></kol-tree-item>
+	</kol-tree-item>
+</kol-tree>
+```
+
+### Funktionalitäten (mit Code)
+
+#### Basisches Tree-Item
+
+Ein einzelnes Tree-Item mit Label und Link:
+
+```html
+<kol-tree>
+	<kol-tree-item _label="Element" _href="/"></kol-tree-item>
+</kol-tree>
+```
+
+#### Aktiver Zustand
+
+Markierung des aktuellen/aktiven Tree-Items mit `_active`:
+
+```html
+<kol-tree>
+	<kol-tree-item _label="Startseite" _href="/" _active></kol-tree-item>
+	<kol-tree-item _label="Über uns" _href="/about"></kol-tree-item>
+</kol-tree>
+```
+
+#### Verschachtelte Tree-Items
+
+Tree-Items können andere Tree-Items enthalten, um Hierarchien zu bilden:
+
+```html
+<kol-tree>
+	<kol-tree-item _label="Parent" _href="/">
+		<kol-tree-item _label="Child 1" _href="/child1"></kol-tree-item>
+		<kol-tree-item _label="Child 2" _href="/child2"></kol-tree-item>
+	</kol-tree-item>
+</kol-tree>
+```
+
+#### Initial geöffnet
+
+Mit `_open` werden Tree-Items beim Laden vorgeklappt angezeigt:
+
+```html
+<kol-tree>
+	<kol-tree-item _label="Offenes Element" _href="/" _open>
+		<kol-tree-item _label="Sichtbarer Unter-Eintrag" _href="/sub"></kol-tree-item>
+	</kol-tree-item>
+</kol-tree>
+```
+
+#### Methoden
+
+Zur programmatischen Kontrolle stehen folgende Methoden zur Verfügung:
+
+| Methode | Beschreibung | Rückgabewert |
+| ------- | ------------ | ------------ |
+| `expand()` | Öffnet/expandiert das Tree-Item | `Promise<void \| undefined>` |
+| `collapse()` | Schließt/kollabiert das Tree-Item | `Promise<void \| undefined>` |
+| `focus()` | Fokussiert das Link-Element des Tree-Items | `Promise<any>` |
+| `isOpen()` | Gibt zurück, ob das Tree-Item expandiert ist | `Promise<boolean>` |
+
+#### Events
+
+Tree-Items sind Links und können durch Nutzerinnen und Nutzer aktiviert werden. Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+Das primäre Event ist `click`, das ausgelöst wird, wenn das Tree-Item aktiviert wird:
+
+| Event | Auslöser | Value |
+| ----- | -------- | ----- |
+| `click` | Tree-Item wird aktiviert | Depends on browser/context |
+
+## API
+
+<Readme />
+
+Tree-Items können andere Tree-Items enthalten, um Hierarchien zu bilden:
+
+```html
+<kol-tree>
+	<kol-tree-item _label="Parent" _href="/">
+		<kol-tree-item _label="Child 1" _href="/child1"></kol-tree-item>
+		<kol-tree-item _label="Child 2" _href="/child2"></kol-tree-item>
+	</kol-tree-item>
+</kol-tree>
+```
+
+#### Initial geöffnet
+
+Mit `_open` werden Tree-Items beim Laden vorgeklappt angezeigt:
+
+```html
+<kol-tree>
+	<kol-tree-item _label="Offenes Element" _href="/" _open>
+		<kol-tree-item _label="Sichtbarer Unter-Eintrag" _href="/sub"></kol-tree-item>
+	</kol-tree-item>
+</kol-tree>
+```
+
+#### Methoden
+
+Zur programmatischen Kontrolle stehen folgende Methoden zur Verfügung:
+
+| Methode | Beschreibung | Rückgabewert |
+| ------- | ------------ | ------------ |
+| `expand()` | Öffnet/expandiert das Tree-Item | `Promise<void \| undefined>` |
+| `collapse()` | Schließt/kollabiert das Tree-Item | `Promise<void \| undefined>` |
+| `focus()` | Fokussiert das Link-Element des Tree-Items | `Promise<any>` |
+| `isOpen()` | Gibt zurück, ob das Tree-Item expandiert ist | `Promise<boolean>` |
+
+#### Events
+
+Tree-Items sind Links und können durch Nutzerinnen und Nutzer aktiviert werden. Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+Das primäre Event ist `click`, das ausgelöst wird, wenn das Tree-Item aktiviert wird:
+
+| Event | Auslöser | Value |
+| ----- | -------- | ----- |
+| `click` | Tree-Item wird aktiviert | Depends on browser/context |
+
+## API
 
 <Readme />

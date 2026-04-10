@@ -5,7 +5,6 @@ description: Beschreibung, Spezifikation und Beispiele für die Quote-Komponente
 
 import Readme from '../../readmes/quote/readme.md';
 import QuotePreview from '@site/src/components/previews/components/Quote';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
@@ -16,30 +15,100 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`inline`) und eine eingerückte(`block`) Variante. Beide Varianten enthalten einen Link auf die Quelle des Zitates.
+**Synonyme:** Blockzitat, Zitat, Textzitat
 
-## Konstruktion
+**Beschreibung:** Die **Quote**-Komponente präsentiert Zitate mit Quellenangabe. Sie unterstützt zwei Darstellungsvarianten: eine inline-Variante für kurze Zitate im Fließtext und eine block-Variante für hervorgehobene, eingerückte Zitate. Die Komponente verbindet das Zitat semantisch mit der Quelle über einen Link.
+
+## Beispiel
+
+Darstellung der Standard-Block-Variante mit Zitat und Quellenangabe:
 
 <QuotePreview
+	visibleProperties={[]}
+	initialProps={{ _variant: 'block' }}
 	codeCollapsable
 	codeCollapsed
 />
 
-Mittels **`_label`** kann eine Überschrift gesetzt werden, während **`_quote`** das eigentliche Zitat enthält. Der Ursprung wird über **`_href`** gesetzt.
-Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann **`_variant`** auf `block` gesetzt werden.
+## Barrierefreiheit
 
-## References
+- Die Komponente verwendet semantisches HTML (`<blockquote>` oder `<q>`) je nach Variante, um Screenreader und assistive Technologien korrekt von der Struktur zu informieren.
+- Der optionale `_label` wird als Überschrift oder Beschriftung des Zitats ausgegeben und verbessert die Orientierung.
+- Der Quellenlink (`_href`) ist vollständig zugänglich und kann per Tastatur angesteuert werden.
+- Das Zitat (`_quote`) wird als Textinhalt direkt vorgelesen.
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _target="_blank"></kol-link>
-- <kol-link _href="https://www.mediaevent.de/html/quote.html" _target="_blank"></kol-link>
-- <kol-link _href="https://www.mediaevent.de/html/cite.html" _target="_blank"></kol-link>
-- <kol-link _href="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _target="_blank"></kol-link>
+### Links und Referenzen
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote" _target="_blank" _label="MDN Web Docs - blockquote Element"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q" _target="_blank" _label="MDN Web Docs - q Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-link-only.html" _target="_blank" _label="WCAG 2.1 - Link Purpose (Link Only)"></kol-link>
+
+## Verwendung
+
+### Best Practices / Empfehlungen
+
+- **Inline für Fließtext**: Nutzen Sie die `inline`-Variante für kurze Zitate im fortlaufenden Text oder in Sätzen.
+- **Block für Hervorhebung**: Verwenden Sie die `block`-Variante für längere, eigenständige Zitate, die visuelle Aufmerksamkeit erhalten sollen.
+- **Quellenangabe erfordern**: Geben Sie immer eine Quelle (`_href`) an, damit Leser die Herkunft des Zitats nachvollziehen können.
+- **Aussagekräftige Labels**: Nutzen Sie `_label` für Autoren-, Werk- oder Kontextangaben, um das Zitat zu kontextualisieren.
+- **Genaue Zitate**: Reproduzieren Sie Zitate exakt und vermeiden Sie Paraphrasing ohne Hinweis.
+- **Korrekte Variante wählen**: Entscheiden Sie basierend auf Länge und Bedeutung des Zitats zwischen inline und block – Konsistenz innerhalb des Dokuments wahren.
+
+### Anwendungsfälle
+
+- **Testimonials**: Kundenbewertungen oder Nutzer-Feedback auf Websites oder in Marketing-Material.
+- **Literarische Verweise**: Zitate aus Büchern, Artikeln oder Reden in redaktionellen Inhalten.
+- **Forschung**: Zitate aus wissenschaftlichen Arbeiten, Studien oder Quellen in akademischen oder informativ-journalistischen Texten.
+- **Autorisierungen**: Genehmigungen, Empfehlungen oder Bestätigungen durch Autoritäten oder Experten.
+- **Design-Elemente**: Visuelle Highlights in Broschüren, Webseiten oder Präsentationen, um Botschaften zu verstärken.
+
+### FAQ
+
+**Wann sollte ich die block-Variante verwenden?**  
+Die block-Variante ist sinnvoll für längere, eigenständige Zitate, die sich vom Fließtext abheben sollen. Verwenden Sie sie, wenn das Zitat mindestens ein bis zwei Sätze umfasst.
+
+**Welches Zitierformat sollte ich für `_label` nutzen?**  
+Das Trennzeichen ist flexibel – gängig sind Formate wie „Autor, Werk", „Quelle (Datum)" oder einfach nur „Autorname". Wichtig ist Konsistenz innerhalb des Dokuments.
+
+**Kann ich das Zitat mit HTML oder Markdown formatieren?**  
+Das `_quote`-Attribut erwartet reinen Text. Formatierungen sollten über CSS oder zusätzliche strukturelle Elemente außerhalb der Komponente erfolgen.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften der Quote-Komponente:
+
+<QuotePreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Varianten
+
+Die Quote-Komponente bietet zwei Darstellungsvarianten:
+
+<QuotePreview
+	visibleProperties={['_variant']}
+	initialProps={{ _variant: 'inline' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Varianten:**
+- `inline`: Kurzes Zitat im Fließtext (Standard)
+- `block`: Hervorgehobenes, eingerücktes Zitat
+
+#### Label und Quellenangabe
+
+Der optionale Label kann als Autor- oder Werkangabe dienen, während `_href` die Quellenverifizierung ermöglicht:
+
+<QuotePreview
+	visibleProperties={['_label', '_href']}
+	initialProps={{ _variant: 'block', _label: 'Albert Einstein' }}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="quote" />

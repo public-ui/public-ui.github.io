@@ -1,6 +1,6 @@
 ---
 title: Tooltip
-description: Beschreibung und Spezifikation für die Tooltip-Komponente.
+description: Beschreibung, Spezifikation und Beispiele für die Tooltip-Komponente.
 ---
 
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
@@ -8,47 +8,146 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Tooltip
 
-
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyme: Inline Dialog, Popover
+**Synonyme:** Inline Dialog, Popover
 
-<kol-alert _type="info" _variant="card">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
+**Beschreibung:** Die **Tooltip**-Komponente zeigt kontextuelle Informationen an, wenn Nutzer:innen über ein Referenzelement fahren oder dieses fokussieren. Sie dient als visuelles Gegenstück zum Aria-Label und richtet sich ausschließlich an sehende Nutzer:innen ohne Screenreader-Unterstützung. Die Komponente ist primär als interne Komponente innerhalb von KoliBri konzipiert.
 
-Die **Tooltip**-Komponente implementiert das Gegenstück zum `Aria-Label`. Es ist also explizit nur dafür vorgesehen, dem/der Nutzer:in ohne Screenreader die Beschriftung eines Elementes anzuzeigen.
+<kol-alert _type="info" _variant="card">
+	Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird. Sie ist nicht für den direkten Einsatz in der Anwendungsentwicklung gedacht.
+</kol-alert>
 
-Ein geöffneter Tooltip lässt sich mit der `Escape`-Taste schließen, um ggf. überlagerte Seiteninformationen wieder sichtbar zu machen.
+## Beispiel
 
-**Hinweis:** Damit der Tooltip korrekt ausgerichtet wird, darf das Referenz-Element nicht `display: inline` haben.
+Das Tooltip erscheint, wenn über das Referenzelement gefahren wird oder es fokussiert wird:
+
+```html
+<div style="display: flex; gap: 1rem;">
+	<button aria-label="Startseite">
+		<kol-icon _icon="codicon codicon-home"></kol-icon>
+		<kol-tooltip>Zur Startseite</kol-tooltip>
+	</button>
+</div>
+```
 
 ## Barrierefreiheit
 
-Die Tooltip-Komponente wird bei Fokus oder bei Bewegen der Maus über dem Referenzelement angezeigt und dient ausschließlich dem/der sehenden Nutzer:in ohne Screenreader die Beschriftung (Aria-Label) lesen zu können. Der Text des Tooltips ist selbst nicht mit der Tastatur erreichbar und zudem mittels Aria-Hidden für die Screenreader versteckt.
+- **Für Screenreader unsichtbar**: Der Tooltip-Text ist mittels Aria-Hidden für Screenreader verborgen. Die Beschriftung sollte bereits im Aria-Label des Referenzelements vorhanden sein.
+- **Nur für sehende Nutzer**: Das Tooltip dient ausschließlich der visuellen Ergänzung und ist kein Ersatz für aussagekräftige Beschriftungen.
+- **Nicht tastaturzugänglich**: Der Text des Tooltips ist selbst nicht mit der Tastatur direkt erreichbar, wird aber zusammen mit dem Fokus auf das Referenzelement angezeigt.
+- **Barrierefreiheitstests**: Tooltips können bei Tests ignoriert werden, sofern sichergestellt ist, dass der Tooltip-Text in gleicher Weise vom Screenreader des Referenzelements vorgelesen wird.
 
-<kol-alert _type="info">
-	Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange zudem von der Entwicklung sichergestellt wurde, dass der Tooltip-Text auch in gleicher Weise vom Screenreader vorgelesen wird.
-</kol-alert>
+### Links und Referenzen
 
-## Breite
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank" _label="Tollwerk – Tooltips & Toggletips"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/" _target="_blank" _label="WAI-ARIA APG – Tooltip Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/text-alternatives.html" _target="_blank" _label="WCAG 2.1 – Text Alternatives"></kol-link>
 
-Die Breite des Tooltips richtet sich normalerweise nach ihrem Inhalt.
-Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container eine [CSS-Custom-Property](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) wie folgt definiert werden:
+## Verwendung
 
-```css
-.container {
-  --kol-tooltip-width': '40rem';
-}
+### Tastatursteuerung
+
+| Taste      | Funktion                                                                           |
+| ---------- | ---------------------------------------------------------------------------------- |
+| `Escape`   | Schließt das Tooltip, um überlagerte Seiteninformationen wieder sichtbar zu machen. |
+| `Tab`      | Fokussiert das Referenzelement; das Tooltip wird dann angezeigt.                   |
+
+### Best Practices / Empfehlungen
+
+- **Kurze, prägnante Texte**: Tooltips sollten aus wenigen Worten bestehen – max. ein bis zwei kurze Sätze.
+- **Referenzelement mit Block-Display**: Das Referenzelement muss `display: block`, `display: flex`, `display: grid` oder ähnlich sein – nicht `display: inline`. Sonst wird die Positionierung fehlerhaft.
+- **Aria-Label vorhanden**: Das Referenzelement muss immer ein Aria-Label haben, damit Screenreader-Nutzer die Information erhalten.
+- **Keine kritischen Informationen**: Verwenden Sie Tooltips nicht für sicherheitskritische oder rechtlich relevante Hinweise – diese müssen für alle Nutzer sichtbar sein.
+- **Konsistenz**: Einheitliche Platzierung, Stil und Latenz verbessern die Benutzerfreundlichkeit.
+
+### Anwendungsfälle
+
+- Icon-Buttons mit zusätzlicher visueller Beschriftung
+- Kontextuelle Hinweise neben Formularfeldern
+- Ergänzende Erklärungen bei kompakten UI-Elementen
+- Schnelle Orientierungshilfen beim Üherfahren mit der Maus
+
+### FAQ
+
+**Kann ich das Tooltip für alle Nutzer sichtbar machen?**  
+Verwenden Sie stattdessen ein `<kol-popover-button>` oder eine andere Komponente, die auch für Screenreader-Nutzer zugänglich ist.
+
+**Muss das Referenzelement auf dem Client liegen?**  
+Ja, das Tooltip wird positioniert relativ zum Referenzelement im DOM.
+
+**Kann ich HTML-Inhalte im Tooltip verwenden?**  
+Das ist möglich über den Slot, sollte aber sparsam eingesetzt werden – Tooltips sind für einfache, kurze Texte vorgesehen.
+
+## Konstruktion / Technik
+
+### Playground
+
+Beispiel eines Tooltip-Elements in einer Button-Komponente:
+
+```html
+<div style="display: flex; gap: 1rem;">
+	<button aria-label="Einstellungen öffnen">
+		<kol-icon _icon="codicon codicon-settings"></kol-icon>
+		<kol-tooltip>Einstellungen</kol-tooltip>
+	</button>
+	<button aria-label="Hilfe anzeigen">
+		<kol-icon _icon="codicon codicon-info"></kol-icon>
+		<kol-tooltip>Hilfe</kol-tooltip>
+	</button>
+</div>
 ```
 
-## Bekannte Probleme
+### Funktionalitäten (mit Code)
 
-Bei der Nutzung von CSS `contain: layout` innerhalb des Tooltip-Elements kann die Positionierung fehlerhaft sein. Ursache ist ein <kol-link _href="https://github.com/floating-ui/floating-ui/issues/3067" _target="_blank">Bug in floating-ui</kol-link>, der im <kol-link _href="https://github.com/public-ui/kolibri/pull/8062" _target="_blank">PR #8062</kol-link> dokumentiert wurde.
+#### Breite konfigurieren
 
-**Workaround:** `contain: layout` nicht direkt auf dem Tooltip setzen. Stattdessen sollte die Eigenschaft nur dort verwendet werden, wo Container Queries benötigt werden.
+Die Breite des Tooltips richtet sich normalerweise nach dem Inhalt. Um die Breite eines Tooltips zu konfigurieren, setzen Sie auf dem umgebenden Container eine CSS-Custom-Property:
 
-**Ausblick:** Langfristig könnte die native <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor" _target="_blank">`anchor()`-Funktion</kol-link> anstelle von `floating-ui` eingesetzt werden. Diese ist derzeit nur in Chrome verfügbar; für Firefox und Safari wird weiterhin `floating-ui` benötigt.
+```html
+<div style="--kol-tooltip-width: 15rem;">
+	<button aria-label="Beschreibung">
+		<kol-icon _icon="codicon codicon-info"></kol-icon>
+		<kol-tooltip>Dies ist ein längerer Tooltip-Text, der auf mehrere Zeilen umgebrochen wird, wenn die definierte Breite nicht ausreicht.</kol-tooltip>
+	</button>
+</div>
+```
 
-## Links und Referenzen
+#### Verschiedene Referenzelemente
 
-- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank"></kol-link>
+Das Tooltip funktioniert mit verschiedenen Referenzelementen:
+
+```html
+<!-- Mit Button -->
+<button aria-label="Button mit Tooltip">
+	Button Text
+	<kol-tooltip>Tooltip Text</kol-tooltip>
+</button>
+
+<!-- Mit Link -->
+<a href="#" aria-label="Link mit Tooltip">
+	Link
+	<kol-tooltip>Link-Tooltip</kol-tooltip>
+</a>
+
+<!-- Mit benutzerdefinierten Elementen -->
+<div role="button" aria-label="Div mit Tooltip" style="display: inline-block; cursor: pointer;">
+	Interaktives Element
+	<kol-tooltip>Element-Tooltip</kol-tooltip>
+</div>
+```
+
+### Bekannte Probleme und Workarounds
+
+#### CSS `contain: layout` mit Positionierungsfehlern
+
+Bei Nutzung von CSS `contain: layout` innerhalb oder auf dem Tooltip-Element kann die Positionierung fehlerhaft sein. Dies ist ein <kol-link _href="https://github.com/floating-ui/floating-ui/issues/3067" _target="_blank" _label="bekannter Bug in floating-ui"></kol-link>, der im <kol-link _href="https://github.com/public-ui/kolibri/pull/8062" _target="_blank" _label="PR #8062"></kol-link> dokumentiert wurde.
+
+**Workaround:** `contain: layout` nicht direkt auf dem Tooltip setzen. Nutzen Sie diese Eigenschaft nur dort, wo sie für Container Queries benötigt wird.
+
+**Ausblick:** Langfristig könnte die native <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor" _target="_blank" _label="`anchor()`-Funktion"></kol-link> anstelle von `floating-ui` eingesetzt werden. Diese ist derzeit nur in Chrome verfügbar; für Firefox und Safari wird weiterhin `floating-ui` benötigt.
+
+#### Inline-Display auf Referenzelement
+
+Das Referenzelement darf nicht `display: inline` haben, sondern sollte mindestens `display: inline-block` oder ein Block-Kontext-Element sein. Andernfalls wird das Tooltip nicht korrekt positioniert.

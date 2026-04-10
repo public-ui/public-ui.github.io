@@ -1,47 +1,145 @@
 ---
 title: ButtonLink
 description: Beschreibung, Spezifikation und Beispiele für die ButtonLink-Komponente.
-tags:
-  - ButtonLink
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/button-link/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import ButtonLinkPreview from '@site/src/components/previews/components/ButtonLink';
+import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
-
 
 # ButtonLink
 
 <BetaDocsBanner />
 <UntestedBanner />
 
-Der ButtonLink ist semantisch ein Button und hat das Design eines Links. Hierzu werden alle relevanten Properties der Button-Komponente übernommen und um die Design-bestimmenden Properties des Links erweitert.
+**Synonyme:** Button-Link, Pseudo-Link
 
-Einen Button kann man deaktivieren und daher gibt es bei einem ButtonLink das Property `_disabled`. Wie das optisch ausgestaltet wird, entscheidet die UX-Designer:in.
+**Beschreibung:** Die **ButtonLink**-Komponente ist semantisch ein Button, besitzt aber sowohl visuell als auch funktional das Verhalten eines Links. Sie kombiniert alle relevanten Properties des Buttons mit den Design-Eigenschaften eines Links und ermöglicht damit eine flexiblere Gestaltung interaktiver Elemente.
 
-Statt, wie bei einem Link, `_href` zu verwenden, wird bei einem ButtonLink das Property über den `Click-Callback` gesteuert. Hierzu wird das `_on`-Property verwendet.
+## Beispiel
 
-Bei einem Link gibt es das Property `target`, welches ggf. den Link in einem neuen Fenster/Tab öffnet. Das Verhalten ist aktuell noch nicht umgesetzt.
+Ein Button, der wie ein Link aussieht und sich wie ein Link verhält:
 
-Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `secondary` usw.) angeboten wird, stehen die Properties `_customClass` und `_variant` nicht zur Verfügung.
+<ButtonLinkPreview
+	initialProps={{ _label: 'Schalter sieht wie ein Link aus' }}
+	visibleProperties={[]}
+	codeCollapsable
+	codeCollapsed
+/>
 
-## Konstruktion
+## Barrierefreiheit
 
-<ButtonLinkPreview 
-  initialProps={{ _label: 'Schalter sieht wie ein Link aus' }}
-  visibleProperties={[
-    '_label',
-    '_disabled',
-    '_hideLabel',
-    '_icons'
-  ]}
-  codeCollapsable
-  codeCollapsed
+- Die Komponente ist semantisch ein Button, was wichtig für die Barrierefreiheit ist – Screenreader präsentieren das Element korrekt als Button.
+- Das visual Link-Design wird durch CSS umgesetzt und beeinflusst nicht die semantische Rolle.
+- Die Komponente unterstützt alle Standard-Button-Eigenschaften für Zugänglichkeit wie `_disabled`, `_ariaExpanded`, `_ariaSelected` und `_ariaControls`.
+- Keyboard-Navigation und Fokusmanagement folgen den Standard-Button-Mustern.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/button/" _target="_blank" _label="WAI-ARIA APG - Button Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html" _target="_blank" _label="WCAG 2.1 - Name, Role, Value"></kol-link>
+
+## Verwendung
+
+### Unterschied zu Button und Link
+
+Die ButtonLink-Komponente eignet sich für Fälle, in denen der semantische Aufbau eines Buttons erforderlich ist, aber die visuelle Erscheinung eines Links gewünscht ist:
+
+- **Button**: Semantisch und visuell ein Button – verwenden Sie diesen für primäre Handlungen.
+- **Link**: Semantisch und visuell ein Link – verwenden Sie diesen für Navigation.
+- **ButtonLink**: Semantisch ein Button, visuell ein Link – verwenden Sie diesen, wenn Sie ein Link-ähnliches Erscheinungsbild mit Button-Semantik benötigen.
+
+### Best Practices / Empfehlungen
+
+- Nutzen Sie ButtonLink nur, wenn es fachlich sinnvoll ist, ein Link-ähnliches Erscheinungsbild mit Button-Semantik zu verbinden.
+- Verwenden Sie das `_disabled`-Property mit Begründung – deaktivierte ButtonLinks sollten erklären, warum sie nicht verfügbar sind.
+- Icons sollten über das `_icons`-Property sparsam und aussagekräftig eingesetzt werden.
+- Verwenden Sie das `_on`-Property mit einem Click-Callback, um die Komponente zu steuern – nicht `_href`.
+
+### Anwendungsfälle
+
+- Kontextuelle Aktionen, die Link-ähnlich aussehen sollen, aber semantisch Buttons erfordern
+- Navigationen in Tabellen oder Listen, die Button-Semantik für Accessibility benötigen
+- Geschäftslogik-Triggern, die optisch unauffällig wie Links wirken sollen
+
+## Konstruktion / Technik
+
+### Playground
+
+<ButtonLinkPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basis-ButtonLink
+
+Ein einfacher ButtonLink mit grundlegenden Eigenschaften:
+
+<ButtonLinkPreview
+	initialProps={{ _label: 'Funktioniert wie ein Button' }}
+	visibleProperties={['_label']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Mit Icons
+
+ButtonLink mit Icons vor und/oder nach dem Label:
+
+<ButtonLinkPreview
+	initialProps={{ _label: 'Mit Icon', _icons: 'fa-solid fa-heart' }}
+	visibleProperties={['_label', '_icons']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Mit verstecktem Label
+
+Das Label wird versteckt und nur als Tooltip angezeigt:
+
+<ButtonLinkPreview
+	initialProps={{ _label: 'Tooltip', _hideLabel: true }}
+	visibleProperties={['_hideLabel']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Deaktiviert
+
+Ein deaktivierter ButtonLink reagiert nicht auf Interaktionen:
+
+<ButtonLinkPreview
+	initialProps={{ _label: 'Deaktiviert', _disabled: true }}
+	visibleProperties={['_disabled']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Mit Tastaturkürzel
+
+Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
+
+<ButtonLinkPreview
+	initialProps={{ _label: 'Mit Shortkey', _shortKey: 's' }}
+	visibleProperties={['_shortKey']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### ARIA-Attribute
+
+ButtonLink mit ARIA-Attributen für erweiterte Semantik:
+
+<ButtonLinkPreview
+	initialProps={{
+		_label: 'Menü',
+		_ariaExpanded: false,
+		_ariaControls: 'menu-content',
+	}}
+	visibleProperties={['_ariaControls', '_ariaExpanded', '_ariaSelected']}
+	codeCollapsable
+	codeCollapsed
 />
 
 ### Events
@@ -49,12 +147,14 @@ Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `seconda
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
 | Event         | Auslöser                                                                                            | Value             |
-|---------------|-----------------------------------------------------------------------------------------------------|-------------------|
+| ------------- | --------------------------------------------------------------------------------------------------- | ----------------- |
 | `click`       | Element wird angeklickt                                                                             | `_value`-Property |
-| `onMouseDown` | Eine Taste eines Zeigegeräts wird gedrückt, während der Zeiger sich innerhalb des Elements befindet | -                 |
+| `onMouseDown` | Eine Taste eines Zeigegeräts wird gedrückt, während der Zeiger sich innerhalb des Elements befindet | –                 |
+
+## API
 
 <Readme />
 
-## Beispiele
+### Weitere Informationen
 
 <ExampleLink component="button-link" />

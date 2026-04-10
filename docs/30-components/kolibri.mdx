@@ -1,37 +1,129 @@
 ---
 title: KoliBri
 description: Beschreibung, Spezifikation und Beispiele für die KoliBri-Komponente.
-tags:
-  - KoliBri
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/kolibri/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
-# KoliBri-Logo
+# KoliBri
 
-Diese Komponente implementiert das Logo von KoliBri.
+<BetaDocsBanner />
+<UntestedBanner />
 
-## Konstruktion
+**Synonyme:** Logo, Branding-Element, Markensymbol
 
-### Code
+**Beschreibung:** Die **KoliBri**-Komponente stellt das Logo der KoliBri Web Component Library dar. Sie ermöglicht eine konsistente Darstellung des Markenlogos auf Webseiten und Anwendungen mit Optionen zur Beschriftung und Farbkustomisierung.
+
+## Beispiel
+
+Darstellung des KoliBri-Logos mit und ohne Beschriftung:
 
 ```html
-<kol-kolibri></kol-kolibri> <kol-kolibri _labeled="false"></kol-kolibri>
+<kol-kolibri></kol-kolibri>
+<kol-kolibri _labeled="false"></kol-kolibri>
 ```
-
-## Beispiele
 
 <kol-kolibri></kol-kolibri>
 <kol-kolibri _labeled="false"></kol-kolibri>
 
 ## Barrierefreiheit
 
+Die **KoliBri**-Komponente wurde basierend auf Best Practices für Unternehmenslogos entwickelt:
+
+- **Semantische Kennzeichnung**: Das Logo wird als dekorativ oder als Markenzeichen gekennzeichnet, je nachdem, ob es navigierbar ist.
+- **Alternative Darstellung**: Die Komponente sollte in Kontexten mit aktiviertem Hoch-Kontrast-Modus deutlich sichtbar bleiben.
+- **Größenanpassung**: Das Logo passt sich responsiv an die Containergröße an und bleibt auf allen Geräten lesbar.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" _target="_blank" _label="WCAG 2.1 - Contrast (Minimum)"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/images-of-text.html" _target="_blank" _label="WCAG 2.1 - Images of Text"></kol-link>
+
+## Verwendung
+
+### Best Practices / Empfehlungen
+
+- **Konsistente Platzierung**: Nutzen Sie das Logo konsistent in Kopf- und Fußzeilen sowie in Navigationselementen.
+- **Größe beachten**: Stellen Sie sicher, dass das Logo groß genug ist, um auf mobilen Geräten erkannt zu werden.
+- **Farbkontrastierung**: Bei benutzerdefinierten Farben sollte genügend Kontrast zum Hintergrund vorhanden sein.
+- **Responsive Darstellung**: Passen Sie die Breite des Logo-Containers an die verfügbare Bildschirmbreite an.
+- **Beschriftung sinnvoll einsetzen**: Die Beschriftung sollte in Kontexten aktiviert sein, in denen das Logo allein nicht erkannt wird.
+
+### Anwendungsfälle
+
+- **Kopfzeile**: Platzierung in der Website-Kopfzeile als Branding-Element
+- **Fußzeile**: Integration in Fußzeilen von Webseiten und Anwendungen
+- **Navigation**: Verwendung als klickbares Logo in der Hauptnavigation
+- **Dokumentations-Seiten**: Branding bei Dokumentations- und Tutorial-Seiten
+- **Fehlerseiten**: Darstellung auf 404- oder Fehlerseiten als Erkennungsmerkmal
+- **Druckseiten**: Einsatz in druckoptimierter Form auf Druckansichten
+- **Social Media**: Integration in digitale Medien und Metadaten
+
+### FAQ
+
+**Kann ich die Größe des Logos ändern?**  
+Die Komponente passt sich automatisch an die Breite ihres Containers an. Sie können die Containergröße per CSS steuern.
+
+**Wie kann ich das Logo als Link verwenden?**  
+Umhüllen Sie die `<kol-kolibri>`-Komponente mit einem `<a>`-Tag oder platzieren Sie sie innerhalb eines `<kol-link-button>`-Elements.
+
+**Welche Farben sind als `_color` möglich?**  
+Sie können beliebige CSS-Farbwerte anwenden oder ein Objekt mit `backgroundColor` und `foregroundColor` verwenden.
+
+## Konstruktion / Technik
+
+### Playground
+
+<div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center' }}>
+	<div>
+		<p><strong>Standard-Logo mit Beschriftung:</strong></p>
+		<kol-kolibri></kol-kolibri>
+	</div>
+	<div>
+		<p><strong>Logo ohne Beschriftung:</strong></p>
+		<kol-kolibri _labeled="false"></kol-kolibri>
+	</div>
+</div>
+
+### Funktionalitäten (mit Code)
+
+#### Beschriftung steuern
+
+Die Komponente kann mit oder ohne Beschriftung "KoliBri" dargestellt werden. Das Standard-Verhalten zeigt die Beschriftung an.
+
+```html
+<!-- Mit Beschriftung (Standard) -->
+<kol-kolibri></kol-kolibri>
+
+<!-- Ohne Beschriftung -->
+<kol-kolibri _labeled="false"></kol-kolibri>
+```
+
+#### Farbe anpassen
+
+Die Farbe des Logos kann über das Attribut `_color` angepasst werden. Folgende Format werden unterstützt:
+
+```html
+<!-- Mit einfacher Farbe (Hex, RGB, Named Colors) -->
+<kol-kolibri _color="#cc006e"></kol-kolibri>
+
+<!-- Mit separaten Farben für Hintergrund und Vordergrund -->
+<kol-kolibri _color='{ "backgroundColor": "#003c78", "foregroundColor": "#cc006e" }'></kol-kolibri>
+```
+
+<div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center' }}>
+	<div>
+		<p><strong>Standardfarbe (Blau #003c78):</strong></p>
+		<kol-kolibri></kol-kolibri>
+	</div>
+	<div>
+		<p><strong>Benutzerdefinierte Farbe (Magenta #cc006e):</strong></p>
+		<kol-kolibri _color="#cc006e"></kol-kolibri>
+	</div>
+</div>
+
+## API
+
 <Readme />
-
-## Live-Editor
-
-<LiveEditorCompact component="kolibri" />

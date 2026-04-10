@@ -1,53 +1,26 @@
 ---
 title: LinkButton
 description: Beschreibung, Spezifikation und Beispiele für die LinkButton-Komponente.
-tags:
-  - LinkButton
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/link-button/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
-
 # LinkButton
-
 
 <BetaDocsBanner />
 <UntestedBanner />
 
-Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
-Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="../components/button" _label="Seite des Buttons"></kol-link>.
+**Synonyme:** Link mit Button-Stil, stilisierter Link
 
-## Konstruktion
+**Beschreibung:** Die **LinkButton**-Komponente ist semantisch ein Link, hat aber das visuelle Erscheinungsbild eines Buttons. Sie kombiniert die Semantik der Link-Komponente mit den Design-Eigenschaften der Button-Komponente und eignet sich zur Verlinkung mit Betonung durch Button-artige Darstellung.
 
-### Code
+## Beispiel
 
-```html
-<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
-<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
-<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
-<kol-link-button _href="#" _label="Secondary" _variant="danger"></kol-link-button>
-<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
-```
+Standard-LinkButton mit verschiedenen Varianten:
 
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event   | Auslöser                | Value            |
-|---------|-------------------------|------------------|
-| `click` | Element wird angeklickt | `_href`-Property |
-
-### Beispiel
-
-<div class="flex gap-2">
+<div className="flex gap-2 flex-wrap">
 	<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
 	<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
 	<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
@@ -55,14 +28,257 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 	<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
 </div>
 
+## Barrierefreiheit
+
+Die **LinkButton**-Komponente wird als Link-Element renders und ist daher vollständig auf Barrierefreiheit optimiert:
+
+- Die Komponente behält die **semantische Rolle des Links**, was von assistiven Technologien korrekt erkannt wird.
+- Das Label (`_label`) wird als sichtbarer Text ausgegeben und als `aria-label` für Screenreader bereitgestellt.
+- Die Komponente unterstützt **vollständig Tastaturnavigation** (Tab, Enter).
+- Icons können zur visuellen Verdeutlichung hinzugefügt werden, ohne die Barrierefreiheit zu beeinträchtigen.
+- Das Attribut `_hideLabel` ermöglicht die visuell versteckte Beschriftung mit automatisch angezeigtem Tooltip beim Fokussieren.
+- Das Attribut `_shortKey` kann zur Anzeige von Tastaturkürzeln genutzt werden.
+
+### Links und Referenzen
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" _target="_blank" _label="MDN Web Docs - a Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-link-only.html" _target="_blank" _label="WCAG 2.1 - Link Purpose (Link Only)"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/link/" _target="_blank" _label="ARIA Authoring Practices - Link Pattern"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste   | Funktion                          |
+| ------- | --------------------------------- |
+| `Tab`   | Fokussiert die LinkButton.        |
+| `Enter` | Öffnet den Hyperlink.             |
+| `Space` | Öffnet den Hyperlink (optional). |
+
+### Best Practices / Empfehlungen
+
+- **Semantik über Stil**: Verwenden Sie LinkButton nur, wenn Sie semantisch einen Link benötigen, die Benutzer:innen aber eine Button-ähnliche Darstellung erwarten.
+- **Button vs. LinkButton**: Verwenden Sie einen echten <kol-link _href="../components/button" _label="Button"></kol-link> für Aktionen (speichern, löschen), und LinkButton für Navigation.
+- **Aussagekräftige Labels**: Der Link-Text sollte das Ziel oder den Kontext der Navigation deutlich machen (z. B. „Zur Startseite" statt „Hier").
+- **Zielangabe**: Verwenden Sie `_target="_blank"` nur, wenn sich der Link tatsächlich in einem neuen Tab öffnen soll, und kommunizieren Sie dies deutlich im Label.
+- **Download-Links**: Für Download-Links verwenden Sie `_download="dateiname"` um dem Browser zu signalisieren, dass eine Datei heruntergeladen werden soll.
+- **Externe Links kennzeichnen**: Nutzen Sie Icons oder klare Beschriftungen, um externe Links von internen zu unterscheiden.
+
+### Anwendungsfälle
+
+- Navigation zu primären oder hervorgehobenen Bereichen einer Anwendung
+- Call-to-Action-Links, die visuell als Buttons prominenter erscheinen sollen
+- Navigation in Footern oder Sidebars mit Button-ähnlichem Styling
+- Kontextuelle Navigation mit Button-Styling (z. B. „Weitere Informationen")
+- Rückwärts-Navigation oder ähnliche primäre Navigationsziele
+
+### FAQ
+
+**Wann sollte ich LinkButton statt Button verwenden?**
+Verwenden Sie LinkButton, wenn Sie semantisch einen Link benötigen (Navigation), diesen aber mit Button-Styling betonen möchten. Für echte Aktionen (wie Formularabsendung) verwenden Sie stattdessen einen Button.
+
+**Kann ich LinkButton mit Icons verwenden?**
+Ja, das Attribut `_icons` unterstützt Icon-Klassennamen (z. B. `_icons="fa-solid fa-arrow-right"`).
+
+**Was ist der Unterschied zu button-link?**
+LinkButton ist semantisch ein Link mit Button-Styling. <kol-link _href="../components/button-link" _label="ButtonLink"></kol-link> ist dagegen semantisch ein Button mit Link-Styling.
+
+## Konstruktion / Technik
+
+### Playground
+
+Erkunden Sie die verschiedenen Konfigurationen der LinkButton-Komponente:
+
+<div className="space-y-4">
+
+```html
+<kol-link-button
+	_href="https://example.com"
+	_label="Standard LinkButton"
+>
+</kol-link-button>
+```
+
+```html
+<kol-link-button
+	_href="https://example.com"
+	_label="Mit Icon"
+	_icons="fa-solid fa-arrow-right"
+>
+</kol-link-button>
+```
+
+```html
+<kol-link-button
+	_href="https://example.com"
+	_label="In neuem Tab"
+	_target="_blank"
+>
+</kol-link-button>
+```
+
+```html
+<kol-link-button
+	_href="document.pdf"
+	_label="PDF herunterladen"
+	_download="document.pdf"
+>
+</kol-link-button>
+```
+
+```html
+<kol-link-button
+	_href="https://example.com"
+	_label="Deaktiviert"
+	_disabled
+>
+</kol-link-button>
+```
+
+</div>
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Variante
+
+Standard-LinkButton ohne Styling-Variante:
+
+```html
+<kol-link-button
+	_href="https://example.com"
+	_label="Normal"
+	_variant="normal"
+>
+</kol-link-button>
+```
+
+#### Varianten
+
+Die Darstellung wird über `_variant` gesteuert:
+
+```html
+<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
+<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
+<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
+<kol-link-button _href="#" _label="Tertiary" _variant="tertiary"></kol-link-button>
+<kol-link-button _href="#" _label="Danger" _variant="danger"></kol-link-button>
+<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
+<kol-link-button _href="#" _label="Custom" _variant="custom" _custom-class="custom-style"></kol-link-button>
+```
+
+#### Icons
+
+Icons können über das Attribut `_icons` hinzugefügt werden:
+
+```html
+<kol-link-button
+	_href="https://example.com"
+	_label="Mit Icon"
+	_icons="fa-solid fa-arrow-right"
+>
+</kol-link-button>
+```
+
+#### Zielverhalten
+
+Kontrolle darüber, wo der Link öffnet:
+
+```html
+<kol-link-button
+	_href="https://example.com"
+	_label="Im gleichen Tab"
+	_target="_self"
+>
+</kol-link-button>
+
+<kol-link-button
+	_href="https://example.com"
+	_label="Im neuen Tab"
+	_target="_blank"
+>
+</kol-link-button>
+```
+
+#### Download-Links
+
+Signalisieren Sie dem Browser, dass eine Datei heruntergeladen werden soll:
+
+```html
+<kol-link-button
+	_href="/files/dokument.pdf"
+	_label="PDF herunterladen"
+	_download="dokument.pdf"
+>
+</kol-link-button>
+```
+
+#### Zustände
+
+Die Komponente unterstützt verschiedene Zustände:
+
+```html
+<kol-link-button
+	_href="https://example.com"
+	_label="Standard"
+>
+</kol-link-button>
+
+<kol-link-button
+	_href="https://example.com"
+	_label="Deaktiviert"
+	_disabled
+>
+</kol-link-button>
+
+<kol-link-button
+	_href="https://example.com"
+	_label="Mit verstecktem Label"
+	_hideLabel
+>
+</kol-link-button>
+```
+
+#### ARIA-Attribute
+
+Zusätzliche Accessibility-Informationen:
+
+```html
+<kol-link-button
+	_href="https://example.com"
+	_label="Aktuelle Seite"
+	_ariaCurrentValue="page"
+>
+</kol-link-button>
+
+<kol-link-button
+	_href="https://example.com"
+	_label="Mit Beschreibung"
+	_ariaDescription="Navigiert zur Dokumentation"
+>
+</kol-link-button>
+```
+
+#### Tastaturkürzel
+
+Anzeige von Tastaturkürzeln:
+
+```html
+<kol-link-button
+	_href="https://example.com"
+	_label="Startseite"
+	_shortKey="H"
+>
+</kol-link-button>
+```
+
+#### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event   | Auslöser                | Value   |
+| ------- | ----------------------- | ------- |
+| `click` | Element wird angeklickt | -       |
+
+## API
+
 <Readme />
-
-<ExampleLink component="link-button" />
-
-## Live-Editor
-
-<LiveEditorCompact component="link-button" />
-
-## Beispiele
-
-<Configurator component="link-button" sample="basic" />

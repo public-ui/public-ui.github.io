@@ -1,37 +1,116 @@
 ---
 title: Spin
 description: Beschreibung, Spezifikation und Beispiele für die Spin-Komponente.
-tags:
-  - Spin
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
+
 import Readme from '../../readmes/spin/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import SpinPreview from '@site/src/components/previews/components/Spin';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
-
 # Spin
-
 
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyme: Placeholder, Skeleton, Shimmer
+**Synonyme:** Ladeindikator, Spinner, Ladeanzeige, Warteanimation
 
-Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.
+**Beschreibung:** Die **Spin**-Komponente ist ein visueller Ladeindikator, der Nutzer:innen darüber informiert, dass ein Prozess im Hintergrund lädt oder läuft. Sie unterstützt mehrere Animationsvarianten und kann mit einem semantischen Label versehen werden, um die Barrierefreiheit zu gewährleisten.
 
-## Konstruktion
+## Beispiel
+
+Standard-Ladeindikator mit der Standardvariante:
 
 <SpinPreview
+	visibleProperties={[]}
+	initialProps={{ _show: true }}
 	codeCollapsable
 	codeCollapsed
 />
 
-### Eigene Animationen
+## Barrierefreiheit
+
+- Die Komponente benötigt ein semantisches Label über `_label`, das den Ladezustand beschreibt (z. B. „Inhalte werden geladen"). Dies wird von Screenreadern vorgelesen und informiert Nutzer:innen über den Status.
+- Animationen können für Nutzer:innen mit vestibulären oder neurologischen Beeinträchtigungen problematisch sein. Berücksichtigen Sie die Systemeinstellung `prefers-reduced-motion` und reduzieren Sie die Animationsgeschwindigkeit entsprechend.
+- Die Komponente sollte nur dann angezeigt werden, wenn tatsächlich ein Prozess läuft. Verwenden Sie `_show` zum sicheren Aus- und Einblenden.
+- Achten Sie darauf, dass Nutzer:innen nicht unbegrenzt auf ein Laden warten. Setzen Sie Timeouts und zeigen Sie entsprechende Fehlermeldungen an, falls der Prozess fehlschlägt.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html" _target="_blank" _label="WCAG 2.1 - Animation from Interactions"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _target="_blank" _label="MDN Web Docs - prefers-reduced-motion"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/progress/" _target="_blank" _label="WAI-ARIA APG - Progress Pattern"></kol-link>
+
+## Verwendung
+
+### Best Practices / Empfehlungen
+
+- Verwenden Sie die Spin-Komponente, um Nutzer:innen über laufende Prozesse zu informieren und Verwirrung zu vermeiden.
+- Platzieren Sie Ladeindikatoren an konsistenten Stellen in der Benutzeroberfläche, um die User Experience zu verbessern.
+- Vermeiden Sie mehrere gleichzeitige Ladeindikatoren, da dies die Benutzeroberfläche überlasten kann.
+- Kombinieren Sie den Ladeindikator mit informativem Text, um Nutzer:innen mitzuteilen, was gerade geladen wird (z. B. „Suchergebnisse werden geladen…").
+- Respektieren Sie die Systemeinstellung `prefers-reduced-motion`, indem Sie Animationen verlangsamen oder deaktivieren, falls die Nutzer:in dies bevorzugt.
+- Setzen Sie sinnvolle Timeouts und informieren Sie Nutzer:innen, wenn ein Prozess unerwartet lange dauert.
+
+### Anwendungsfälle
+
+- Abrufen neuer oder aktualisierter Suchergebnisse
+- Einloggen in geschützte Bereiche und Authentifizierung
+- Download und Upload von Inhalten
+- Laden von Videos oder großen Mediendateien
+- Speichern von Formularinhalten
+- Abrufen von Daten aus externen APIs
+- Verarbeitung von längeren Rechenvorgängen
+
+### FAQ
+
+**Kann ich eine benutzerdefinierte Animation verwenden?**
+Ja, mit der Variante `_variant="none"` können Sie eine eigene Animation über den `expert`-Slot einbinden. Dies ermöglicht volle Kontrolle über das Animationsdesign.
+
+**Wie respektiere ich die Einstellung „Bewegung reduzieren" (prefers-reduced-motion)?**
+Verwenden Sie CSS Media-Queries, um die Animationsdauer zu erhöhen oder Animationen zu deaktivieren, wenn `prefers-reduced-motion` aktiv ist.
+
+**Sollte der Ladeindikator immer mit Text kombiniert werden?**
+Ja, kombinieren Sie den visuellen Indikator mit erklärendem Text oder einem Label, um Klarheit zu schaffen.
+
+## Konstruktion / Technik
+
+### Playground
+
+<SpinPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Sichtbarkeitskontrolle
+
+Das Attribut `_show` bestimmt, ob der Ladeindikator angezeigt wird.
+
+<SpinPreview
+	visibleProperties={['_show']}
+	codeCollapsable
+/>
+
+#### Animationsvarianten
+
+Die verfügbaren Varianten können über `_variant` ausgewählt werden: `dot`, `cycle` oder `none` (für benutzerdefinierte Animationen).
+
+<SpinPreview
+	visibleProperties={['_variant']}
+	codeCollapsable
+/>
+
+#### Label und Semantik
+
+Das Attribut `_label` definiert ein semantisches Label, das von Screenreadern vorgelesen wird.
+
+<SpinPreview
+	visibleProperties={['_label']}
+	codeCollapsable
+/>
+
+#### Benutzerdefinierte Animationen
+
+Mit `_variant="none"` können Sie eine eigene Animation über CSS einbinden und diese über den `expert`-Slot darstellen:
 
 ```html
 <style>
@@ -84,7 +163,6 @@ Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über La
 		}
 	}
 
-	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
 	@media (prefers-reduced-motion) {
 		.loader {
 			animation-duration: 6s;
@@ -94,51 +172,12 @@ Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über La
 		}
 	}
 </style>
-<div>
-	<kol-spin _show></kol-spin>
-	<kol-spin _show _variant="cycle"></kol-spin>
-	<!-- for a11y experts - own animation -->
-	<kol-spin _show _variant="none">
-		<!-- slot for own animation : https://github.com/vineethtrv/css-loader -->
-		<span className="loader" slot="expert"></span>
-	</kol-spin>
-</div>
+
+<kol-spin _show _variant="none">
+	<span className="loader" slot="expert"></span>
+</kol-spin>
 ```
 
-<kol-alert _label_="Reduce Motion" _level="4" _type="warning">
-	Wenn möglich sollte stets auf Animationen verzichtet werden. Wenn Animationen genutzt werden, sollte immer darauf geachtet werden, eine Variante mit reduzierter Animationsgeschwindigkeit anzubieten. Mehr Informationen dazu findet sich hier:
-	<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _label="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _target="_blank"></kol-link>
-</kol-alert>
-
-### Beispiel
-
-<kol-spin _show></kol-spin>
-<kol-spin _show _variant="cycle"></kol-spin>
-<kol-spin _show _variant="none"><span className="loader" slot="expert"></span></kol-spin>
-
-<kol-details _label="CSS Loaders & Spinners" _open>
-	Es gibt im Internet viele verschiedene CSS Loaders und Spinners. Beispielsweise bietet _Vineeth_ eine ganze Reihe interessanter CSS Loaders an. Diese können auch in der KoliBri Bibliothek genutzt werden. Dazu muss lediglich der Link zu der entsprechenden CSS Datei in den Head der HTML Datei eingebunden werden. Anschließend kann die gewünschte Animation über den Expert-Slot in die KoliBri-Komponente eingebunden werden. Hier sind einige Beispiele (ohne reduzierte Animationsgeschwindigkeit):
-	<kol-link _href="https://github.com/vineethtrv/css-loader" _target="_blank"></kol-link>
-</kol-details>
-
-## Verwendung
-
-Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
-
-### Best practices
-
-- Verwenden Sie Ladeanzeigen, um die Nutzer:innen über einen Ladezustand oder einen laufenden Prozess zu informieren.
-- Verwenden Sie Ladeanzeigen an konsistenten Stellen in der Benutzeroberfläche, um die Benutzererfahrung zu verbessern.
-
-### Anwendungsfälle
-
-- Abrufen neuer oder aktualisierter Suchergebnisse.
-- Einloggen in geschützte Bereiche.
-- Download von Inhalten.
-- Laden von umfangreichen Inhalten, z.B. Videos.
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="spin" />
