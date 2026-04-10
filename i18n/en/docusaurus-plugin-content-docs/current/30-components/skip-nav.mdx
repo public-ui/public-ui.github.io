@@ -4,14 +4,13 @@ description: Description, specification and examples for the SkipNav component.
 ---
 
 import Readme from '/readmes/skip-nav/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import SkipNavPreview from '@site/src/components/previews/components/SkipNav';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
 
-#SkipNav
+# SkipNav
 
 
 <BetaDocsBanner />
@@ -21,20 +20,11 @@ A hidden navigation can be created using the **SkipNav** component. It is used t
 
 ## Construction
 
-### Code
-
-```html
-<kol-skip-nav
-	_label="Ein versteckter Link"
-	_links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"
-></kol-skip-nav>
-```
-
-### Example
-
-To see the **SkipNav**, click on this text and then go one step further with the Tab key.
-
-<kol-skip-nav _label="Ein versteckter Link" _links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"></kol-skip-nav>
+<SkipNavPreview
+	visibleProperties={['_label', '_links']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Usage
 
@@ -66,14 +56,11 @@ The **SkipNav** is created by passing a JSON object that is responsible for rend
 
 - <kol-link _href="https://webaim.org/techniques/skipnav/" _target="_blank"></kol-link>
 
+# API
+
 <Readme />
-
-<ExampleLink component="skip-nav" />
-
-## Live editor
-
-<LiveEditorCompact component="skip-nav" />
 
 ## Examples
 
-<Configurator component="skip-nav" sample="basic" />
+<ExampleLink component="skip-nav" />
+
