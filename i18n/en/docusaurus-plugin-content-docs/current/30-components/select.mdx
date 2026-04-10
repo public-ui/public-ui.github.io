@@ -6,9 +6,10 @@ description: Description, specification and examples for the Select component.
 import Readme from '/readmes/select/readme.md';
 import SelectPreview from '@site/src/components/previews/components/Select';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Select
-
 
 <BetaDocsBanner />
 <UntestedBanner />
@@ -61,8 +62,6 @@ Using the **`_rows`** attribute you can switch from a selection menu to a select
 - Often the first option is created as “Please select an option” and then deactivated to force a selection. This approach should be avoided.
 - Hiding a disabled option using `aria-hidden` is now blocked by modern browsers. If a wildcard option is needed, use a selectable option with an empty value instead.
 - Use validators to check whether a valid option has been chosen instead of disabling options without giving reasons.
-
-<!-- ## Barrierefreiheit -->
 
 ### Keyboard controls
 

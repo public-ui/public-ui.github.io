@@ -6,9 +6,10 @@ description: Beschreibung, Spezifikation und Beispiele für die Select-Komponent
 import Readme from '../../readmes/select/readme.md';
 import SelectPreview from '@site/src/components/previews/components/Select';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Select
-
 
 <BetaDocsBanner />
 <UntestedBanner />
@@ -61,8 +62,6 @@ Beispiel für die Konstruktion des JSON-Objektes:
 - Häufig wird die erste Option als „Bitte Option wählen“ angelegt und anschließend deaktiviert, um eine Auswahl zu erzwingen. Dieses Vorgehen sollte vermieden werden.
 - Das Ausblenden einer deaktivierten Option mittels `aria-hidden` wird mittlerweile von modernen Browsern blockiert. Verwenden Sie stattdessen eine auswählbare Option mit leerem Wert, wenn eine Platzhalteroption benötigt wird.
 - Prüfen Sie mit Validatoren, ob eine gültige Option gewählt wurde, anstatt Optionen ohne Angabe von Gründen zu deaktivieren.
-
-<!-- ## Barrierefreiheit -->
 
 ### Tastatursteuerung
 
