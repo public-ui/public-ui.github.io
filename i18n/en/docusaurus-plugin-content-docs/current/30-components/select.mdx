@@ -71,37 +71,14 @@ Using the **`_rows`** attribute you can switch from a selection menu to a select
 | `Enter` | Opens or closes the selection list.                                                                                                                                                                                         |
 | `Arrow keys (up/down)` | Changes the activated element in the selection list. This function is also active when the selection list is collapsed. With multiple selection, you must also hold down the shift key to select several entries. |
 
-### `Single-Select-Filter` for Select component
-
-When a value is selected, the Select component returns a list (array) with exactly one
-Return value (in single mode). This can lead to unnecessary effort during further processing. It is easier here to filter the value of the Select component using a <b>SingeSelectFormatter</b>. To do this, insert the following class into the form:
-
-```html
-class SingleSelectFormatter extends AbstractFormatter { public format(value: unknown): unknown { return [value]; } public parse(value: unknown): unknown { if
-(Array.isArray(value) && value.length > 0) { return value[0]; } return value; } }
-```
-
-Then add the formatter to the Select component:
-
-```html
-const singleSelectFormatHandler = new FormatHandler(); singleSelectFormatHandler.formatters.add([new SingleSelectFormatter()]); (this.getInput('kategorie') as
-InputControl).setFormatHandler(singleSelectFormatHandler);
-```
-
-Note that the FormatHandler is first imported into the form.
-
-```html
-import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
-import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
-import UntestedBanner from '@site/src/components/UntestedBanner';
-
-```
+**Why does Select return a list for a single value?**
+In single mode, Select returns an array with exactly one element. Use a custom value transformer to obtain the single value directly.
 
 ## Links and references
 
 - https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
 
-# API
+## API
 
 <Readme />
 

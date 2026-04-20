@@ -201,49 +201,7 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 ## API
 
 <Readme />
-		_label: 'Startseite',
-		_children: [
-			{ _href: 'startseite/1-untermenuepunkt', _icons: 'kolicon-house', _label: '1. Untermenüpunkt' },
-			{ _href: 'startseite/2-untermenuepunkt', _icons: 'kolicon-house', _label: '2. Untermenüpunkt' },
-		],
-	},
-	{ _href: 'unterseite', _icons: 'kolicon-house', _label: '2. Menüpunkt' },
-];
-```
 
-### Kompakte Navigationsleiste anzeigen
-
-Um die Navigationsleiste in der kompakten Darstellung auszugeben, setzen Sie das Attribut **`_hide-label`**.
-
-### Best practices
-
-- Verwenden Sie **Navigationsleisten**, um **Navigation** oder navigationsähnliche Aktionen darzustellen (z. B. interne oder externe Links, Abmelden, Kontrolle der Sichtbarkeit auf der Seite).
-- Verwenden Sie das Label, um eine klare und präzise Beschreibung des Inhalts zu diesem bestimmten Navigationselement bereitzustellen.
-- Verwenden Sie keine **Navigationsleisten** für Aktionen, die besser als Schaltflächen dargestellt werden (z. B. „Speichern“, „Löschen“, „Artikel in den Warenkorb legen“).
-- Stapeln Sie nicht mehrere **Navigationsleisten** direkt nebeneinander.
-- Verwenden Sie keine **Navigationsleisten** zum Vergleichen von Inhalten (z. B. unterschiedliche Leistungen).
-- Berücksichtigen Sie die Anzahl der Navigationselemente, die Sie in die **Navigationsleiste** einfügen. Wenn Sie das Gefühl haben, dass die Zahl zu groß wird, ziehen Sie alternative Ansätze zur Präsentation des Inhalts in Betracht oder verwenden Sie ein anderes Navigationsmuster/eine andere Komponente.
-
-### Anwendungsfälle
-
-- Verwenden Sie **Navigationsleisten** als In-Page-Navigation auf einer Landingpage.
-- Verwenden Sie **Navigationsleisten**, um verwandte Informationen auf einer Landingpage zu organisieren.
-- Nutzen Sie **Navigationsleisten**, um Angebote oder Vorteile in verschiedene Kategorien einzuordnen (z.B. Formulare).
-- Verwenden Sie **Navigationsleisten**, um FAQs in verschiedene Kategorien zu unterteilen.
-
-## Barrierefreiheit
-
-- Die Navigation wird als semantische Landmark mit `<nav>`-Element ausgegeben, um Nutzer:innen mit Screenreadern zu helfen.
-- Alle Navigationspunkte sind über die Tastatur erreichbar und fokussierbar.
-- Übergeordnete Menüpunkte mit Untermenüs werden durch visuell erkennbare Symbole (Plus/Minus) gekennzeichnet.
-- Die aktive Navigationsposition wird visuell und semantisch gekennzeichnet.
-- Labels sind zwingend erforderlich und werden von assistiven Technologien erkannt.
-
-### Links und Referenzen
-
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/navigation/" _target="_blank" _label="WAI-ARIA APG - Navigation Pattern"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/navigation-mechanisms.html" _target="_blank" _label="WCAG 2.1 - Navigation Mechanisms"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav" _target="_blank" _label="MDN Web Docs - nav Element"></kol-link>
 
 ## Verwendung
 

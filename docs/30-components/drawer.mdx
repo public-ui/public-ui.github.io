@@ -5,6 +5,7 @@ description: Beschreibung, Spezifikation und Beispiele für die Drawer-Komponent
 
 import Readme from '../../readmes/drawer/readme.md';
 import DrawerPreview from '@site/src/components/previews/components/Drawer';
+import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
@@ -126,6 +127,45 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | ----- | -------- | ----- |
 | `close` | Der Drawer wird geschlossen (durch Benutzer oder Programm) | `undefined` |
 
+## Animationen
+
+Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wichtig, dass die Keyframe-Namen `slideIn` bzw. `slideOut` enthalten und auf der Klasse `drawer__wrapper` definiert sind.
+
+**Beispiel:**
+
+```scss
+.drawer__wrapper {
+	&--left {
+		animation: slideInLeft $duration forwards;
+		&.is-closing {
+			animation: slideOutLeft $duration forwards !important;
+		}
+	}
+	&--right {
+		animation: slideInRight $duration forwards;
+		&.is-closing {
+			animation: slideOutRight $duration forwards;
+		}
+	}
+	&--top {
+		animation: slideInTop $duration forwards;
+		&.is-closing {
+			animation: slideOutTop $duration forwards;
+		}
+	}
+	&--bottom {
+		animation: slideInBottom $duration forwards;
+		&.is-closing {
+			animation: slideOutBottom $duration forwards;
+		}
+	}
+}
+```
+
 ## API
 
 <Readme />
+
+## Beispiele
+
+<ExampleLink component="drawer" />

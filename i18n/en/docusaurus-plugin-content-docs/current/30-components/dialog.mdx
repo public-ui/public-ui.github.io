@@ -1,11 +1,9 @@
 ---
 title: Dialog
-slug: dialog
-icon: /icons/dialog.svg
-version: 1.0.0
-description: A modal dialog overlay used to prompt the user for confirmation, display messages, or gather small amounts of focused input that requires immediate user attention, blocking interaction with the main content until dismissed.
+description: Description, specification and examples for the Dialog component.
 ---
 
+import Readme from '/readmes/dialog/readme.md';
 import DialogPreview from '@site/src/components/previews/components/Dialog';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
@@ -15,53 +13,149 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-The `Dialog` component provides a full-screen or focused modal overlay for delivering critical, time-sensitive information or capturing focused user input that requires the user's immediate attention. It is designed to appear on top of all other page content.
+**Synonyms:** Modal, Modal Window, Overlay
 
-<DialogPreview componentName="dialog" />
-
-## Usage
-
-Use the `Dialog` component when you need to:
-*   Confirm an irreversible action (e.g., "Are you sure you want to delete this record?").
-*   Display important, non-dismissible alerts.
-*   Collect a small, critical piece of information (e.g., a confirmation code).
-
-### API
-
-The `Dialog` component is controlled by props that manage its visibility, title, content, and actions.
-
-**Props:**
-
-| Name | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `isOpen` | `boolean` | `false` | Controls the visibility of the dialog. Must be explicitly managed by the parent component state. |
-| `onClose` | `() => void` | `() => {}` | Callback function fired when the user dismisses the dialog (e.g., by clicking outside or pressing Escape). |
-| `title` | `string` | `"Dialog"` | The main title displayed at the top of the modal. |
-| `primaryActionLabel` | `string` | `"Confirm"` | The label for the primary action button. |
-| `secondaryActionLabel` | `string` | `"Cancel"` | The label for the secondary/dismiss action button. |
-| `children` | `ReactNode` | `null` | The content to be displayed inside the modal body. This is the primary area for user feedback or forms. |
-
-### Variants
-
-| Variant | Use Case | Notes |
-| :--- | :--- | :--- |
-| `confirm` | For mandatory user confirmation. | Includes both primary and secondary action buttons. |
-| `alert` | For displaying information that requires acknowledgement. | Only shows a dismiss button. |
-| `input` | For collecting single pieces of input. | Should wrap an input component within its `children`. |
+**Description:** The **Dialog** is a modal overlay element that appears above all page content and blocks interaction with other elements until the dialog is dismissed. It is typically used for confirmations, notifications, or focused user input that requires immediate attention.
 
 ## Example
 
-Here is an interactive example of the `Dialog` component in action.
+Standard dialog with a label and content:
 
-***
+<DialogPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-### API Details
+## Accessibility
 
-*   **`isOpen`**: `boolean`. Controls visibility.
-*   **`onClose`**: `() => void`. The required callback for dismissal handling.
-*   **`title`**: `string`. Sets the header text.
-*   **`primaryActionLabel`**: `string`. Sets the main button label.
-*   **`secondaryActionLabel`**: `string`. Sets the cancel button label.
-*   **`children`**: `ReactNode`. Must contain the core content, form elements, or structured text.
+The **Dialog** component was developed with a focus on accessibility:
 
-*Note: The dialog must be controlled by its parent component's state. Always use `isOpen` and `onClose` callbacks together.*
+- **Label required**: The `_label` property is required and is used as the ARIA label to communicate the dialog's purpose to screen reader users.
+- **Focus management**: Focus is automatically moved to the dialog when opened and returned to the triggering element when closed.
+- **Escape key**: The dialog can be closed using the Escape key.
+- **Modal context**: The overlay blocks interaction with the background, signalling its importance.
+- **Content flexibility**: The slot allows arbitrary content, including forms and input fields.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/" _target="_blank" _label="WAI-ARIA Dialog (Modal) Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order" _target="_blank" _label="WCAG 2.1 - Focus Order"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible" _target="_blank" _label="WCAG 2.1 - Focus Visible"></kol-link>
+
+## Usage
+
+### Keyboard Control
+
+| Key | Function |
+| --- | -------- |
+| `Tab` | Navigate between interactive elements within the dialog |
+| `Shift + Tab` | Navigate backwards between interactive elements |
+| `Escape` | Closes the dialog (if enabled) |
+
+### Best Practices / Recommendations
+
+- **Only for important actions**: Use a dialog only for truly important information or actions that require immediate attention.
+- **Clear label**: The `_label` property should clearly describe the purpose or action of the dialog.
+- **Simple content**: Keep the dialog content focused and concise. Complex forms are better presented on a separate page.
+- **Clear close option**: Always provide an unambiguous way to close the dialog (e.g. a close button or Escape key).
+- **Focus fallback**: Ensure a focusable element exists in the dialog (e.g. a button).
+- **Choose variants wisely**: Use `_variant="card"` for content with padding, `_variant="blank"` for full-width layout.
+
+### Use Cases
+
+- **Confirmations**: "Are you sure you want to proceed?" dialogs before irreversible actions.
+- **Notifications**: Important, non-skippable messages for the user.
+- **Small inputs**: Capturing codes, passwords, or short text inputs.
+- **Error handling**: Critical error messages that require immediate attention.
+- **Data loss confirmation**: Warning about data loss or unsaved changes.
+
+### FAQ
+
+**Can I open multiple nested dialogs?**
+This is not recommended, as it can lead to focus and accessibility issues. Use a single dialog instance instead.
+
+**How do I close the dialog programmatically?**
+Use the `closeModal()` method on the dialog element reference or trigger the `_on.onClose` callback.
+
+**How do I open the dialog programmatically?**
+Use the `openModal()` method on the dialog element reference.
+
+## Construction / Technique
+
+### Playground
+
+Test the various properties of the dialog:
+
+<DialogPreview
+	visibleProperties={['_label', '_variant', '_width', '_slot']}
+	initialProps={{}}
+	codeCollapsable
+/>
+
+### Features (with Code)
+
+#### Label and Content
+
+The label is set via `_label`. The content is provided via the slot:
+
+<DialogPreview
+	visibleProperties={['_label', '_slot']}
+	initialProps={{
+		_label: 'Dialog Title',
+		_slot: '<p>This is the dialog content.</p>',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Variants
+
+The dialog supports two variants:
+
+<DialogPreview
+	visibleProperties={['_variant']}
+	initialProps={{
+		_label: 'Dialog with Card Variant',
+		_variant: 'card',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Available variants:**
+- `blank`: Full width, minimal styling (default)
+- `card`: With padding and card design
+
+#### Width
+
+The width of the dialog is controlled via `_width`:
+
+<DialogPreview
+	visibleProperties={['_width']}
+	initialProps={{
+		_label: 'Dialog with Custom Width',
+		_width: '500px',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Note:** The maximum width is limited to 100%.
+
+#### Callback Handling
+
+The dialog can respond to events using the `_on` property:
+
+```html
+<kol-dialog _label="Confirmation" _on='{"onClose": () => console.log("Dialog closed")}'>
+	Dialog content
+</kol-dialog>
+```
+
+The `onClose` callback is called when the dialog is closed (via ESC, clicking outside, or programmatically).
+
+## API
+
+<Readme />

@@ -4,29 +4,126 @@ description: Description, specification and examples for the KoliBri component.
 ---
 
 import Readme from '/readmes/kolibri/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # KoliBri
 
-This component implements the KoliBri logo.
+<BetaDocsBanner />
+<UntestedBanner />
 
-## Construction
+**Synonyms:** Logo, Branding Element, Brand Symbol
 
-### Code
+**Description:** The **KoliBri** component renders the logo of the KoliBri Web Component Library. It enables a consistent display of the brand logo on websites and applications, with options for labeling and color customization.
+
+## Example
+
+Rendering the KoliBri logo with and without a label:
 
 ```html
-<kol-kolibri></kol-kolibri> <kol-kolibri _labeled="false"></kol-kolibri>
+<kol-kolibri></kol-kolibri>
+<kol-kolibri _labeled="false"></kol-kolibri>
 ```
-
-## Examples
 
 <kol-kolibri></kol-kolibri>
 <kol-kolibri _labeled="false"></kol-kolibri>
 
 ## Accessibility
 
+The **KoliBri** component was developed based on best practices for corporate logos:
+
+- **Semantic labeling**: The logo is marked as decorative or as a brand element depending on whether it is navigable.
+- **Alternative rendering**: The component should remain clearly visible in environments with high contrast mode enabled.
+- **Responsive sizing**: The logo adapts responsively to the container size and remains legible on all devices.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" _target="_blank" _label="WCAG 2.1 - Contrast (Minimum)"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/images-of-text.html" _target="_blank" _label="WCAG 2.1 - Images of Text"></kol-link>
+
+## Usage
+
+### Best Practices / Recommendations
+
+- **Consistent placement**: Use the logo consistently in headers, footers, and navigation elements.
+- **Mind the size**: Ensure the logo is large enough to be recognized on mobile devices.
+- **Color contrast**: When using custom colors, ensure sufficient contrast against the background.
+- **Responsive rendering**: Adapt the logo container width to the available screen width.
+- **Use labels purposefully**: Enable the label in contexts where the logo alone would not be recognized.
+
+### Use Cases
+
+- **Header**: Placement in the website header as a branding element
+- **Footer**: Integration into footers of websites and applications
+- **Navigation**: Use as a clickable logo in main navigation
+- **Documentation pages**: Branding on documentation and tutorial pages
+- **Error pages**: Display on 404 or error pages as a recognizable element
+- **Print pages**: Use in print-optimized views
+- **Social media**: Integration into digital media and metadata
+
+### FAQ
+
+**Can I change the size of the logo?**  
+The component automatically adapts to the width of its container. You can control the container size via CSS.
+
+**How can I use the logo as a link?**  
+Wrap the `<kol-kolibri>` component with an `<a>` tag or place it inside a `<kol-link-button>` element.
+
+**What colors are valid for `_color`?**  
+You can use any CSS color value or an object with `backgroundColor` and `foregroundColor`.
+
+## Construction / Technik
+
+### Playground
+
+<div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center' }}>
+	<div>
+		<p><strong>Default logo with label:</strong></p>
+		<kol-kolibri></kol-kolibri>
+	</div>
+	<div>
+		<p><strong>Logo without label:</strong></p>
+		<kol-kolibri _labeled="false"></kol-kolibri>
+	</div>
+</div>
+
+### Functionality (with Code)
+
+#### Control the label
+
+The component can be rendered with or without the "KoliBri" label. The default behavior shows the label.
+
+```html
+<!-- With label (default) -->
+<kol-kolibri></kol-kolibri>
+
+<!-- Without label -->
+<kol-kolibri _labeled="false"></kol-kolibri>
+```
+
+#### Customize the color
+
+The color of the logo can be customized via the `_color` attribute. The following formats are supported:
+
+```html
+<!-- With a simple color (hex, RGB, named colors) -->
+<kol-kolibri _color="#cc006e"></kol-kolibri>
+
+<!-- With separate colors for background and foreground -->
+<kol-kolibri _color='{ "backgroundColor": "#003c78", "foregroundColor": "#cc006e" }'></kol-kolibri>
+```
+
+<div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center' }}>
+	<div>
+		<p><strong>Default color (blue #003c78):</strong></p>
+		<kol-kolibri></kol-kolibri>
+	</div>
+	<div>
+		<p><strong>Custom color (magenta #cc006e):</strong></p>
+		<kol-kolibri _color="#cc006e"></kol-kolibri>
+	</div>
+</div>
+
+## API
+
 <Readme />
-
-## Live editor
-
-<LiveEditorCompact component="kolibri" />

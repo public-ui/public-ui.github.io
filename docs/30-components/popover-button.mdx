@@ -107,15 +107,17 @@ Der PopoverButton unterstützt verschiedene visuelle Varianten:
 
 <PopoverButtonPreview
 	initialProps={{ _label: "Styled Button" }}
-	visibleProperties={['_variant', '_icons', '_inline']}
+	visibleProperties={['_variant', '_icons', '_inline', '_tooltipAlign']}
 	codeCollapsable
 	codeCollapsed
 />
 
 **Verfügbare Attribute:**
 - `_variant`: Visueller Stil (`normal`, `primary`, `secondary`, `tertiary`, `danger`, `ghost`, `custom`)
+- `_customClass`: Benutzerdefinierte CSS-Klasse, wenn `_variant="custom"` gesetzt ist
 - `_icons`: Icon-Klassennamen für Icon-Schriftarten (z.B. Font Awesome)
 - `_inline`: Zeigt die Komponente inline ohne Mindestgröße von 44px
+- `_tooltipAlign`: Bevorzugte Position des Tooltips (`top`, `right`, `bottom`, `left`)
 
 #### Popover-Positionierung
 

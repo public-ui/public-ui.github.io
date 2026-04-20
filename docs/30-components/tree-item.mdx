@@ -21,7 +21,7 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 Darstellung einer Tree-Struktur mit Tree-Items. Elemente mit Kindelementen können eingeklappt werden.
 
 ```html
-<kol-tree>
+<kol-tree _label="Seitennavigation">
 	<kol-tree-item _label="Element 1" _href="/">
 		<kol-tree-item _label="Unterelement 1.1" _href="/sub1"></kol-tree-item>
 		<kol-tree-item _label="Unterelement 1.2" _href="/sub2"></kol-tree-item>
@@ -73,7 +73,7 @@ Tree-Items werden über die Parent-<kol-link _href="../components/tree" _label="
 - **Link-Ziele setzen**: Nutzen Sie `_href`, um jedes Tree-Item mit einem Navigationsziel zu verbinden.
 - **Aktiven Zustand markieren**: Setzen Sie `_active` auf das Tree-Item, das die aktuelle Seite repräsentiert, um Nutzerinnen und Nutzern Orientierung zu geben.
 - **Initial-Zustände**: Verwenden Sie `_open`, um bestimmte Äste beim Laden vorgeklappt zu zeigen – sparen Sie sich aber die Öffnung aller Äste, wenn nicht nötig.
-- **Tree in Kontext nutzen**: Tree und Tree-Item sind nur zusammen sinnvoll. Nutzen Sie die <kol-link _href="../components/tree" _label="Tree-Komponente</kol-link> als Wrapper.
+- **Tree im Kontext nutzen**: Tree und Tree-Item sind nur zusammen sinnvoll. Nutzen Sie die <kol-link _href="../components/tree" _label="Tree-Komponente"></kol-link> als Wrapper.
 - **Icons und Symbole**: Falls Sie Icons neben Labels verwenden möchten, müssen diese auf Anwendungsebene erfolgen; `_label` akzeptiert nur Text.
 
 ### Anwendungsfälle
@@ -92,7 +92,8 @@ Tree-Items werden über die Parent-<kol-link _href="../components/tree" _label="
 Ein interaktives Beispiel einer Tree-Struktur mit verschiedenen Tree-Items:
 
 ```html
-<kol-tree>
+
+<kol-tree _label="Navigationsbaum">
 	<kol-tree-item _label="Startseite" _href="/" _active></kol-tree-item>
 	<kol-tree-item _label="Produkte" _href="/products">
 		<kol-tree-item _label="Kategorie A" _href="/products/a"></kol-tree-item>
@@ -116,7 +117,7 @@ Ein interaktives Beispiel einer Tree-Struktur mit verschiedenen Tree-Items:
 Ein einzelnes Tree-Item mit Label und Link:
 
 ```html
-<kol-tree>
+<kol-tree _label="Beispielbaum">
 	<kol-tree-item _label="Element" _href="/"></kol-tree-item>
 </kol-tree>
 ```
@@ -126,7 +127,7 @@ Ein einzelnes Tree-Item mit Label und Link:
 Markierung des aktuellen/aktiven Tree-Items mit `_active`:
 
 ```html
-<kol-tree>
+<kol-tree _label="Aktive Navigation">
 	<kol-tree-item _label="Startseite" _href="/" _active></kol-tree-item>
 	<kol-tree-item _label="Über uns" _href="/about"></kol-tree-item>
 </kol-tree>
@@ -137,7 +138,7 @@ Markierung des aktuellen/aktiven Tree-Items mit `_active`:
 Tree-Items können andere Tree-Items enthalten, um Hierarchien zu bilden:
 
 ```html
-<kol-tree>
+<kol-tree _label="Hierarchie">
 	<kol-tree-item _label="Parent" _href="/">
 		<kol-tree-item _label="Child 1" _href="/child1"></kol-tree-item>
 		<kol-tree-item _label="Child 2" _href="/child2"></kol-tree-item>
@@ -150,55 +151,7 @@ Tree-Items können andere Tree-Items enthalten, um Hierarchien zu bilden:
 Mit `_open` werden Tree-Items beim Laden vorgeklappt angezeigt:
 
 ```html
-<kol-tree>
-	<kol-tree-item _label="Offenes Element" _href="/" _open>
-		<kol-tree-item _label="Sichtbarer Unter-Eintrag" _href="/sub"></kol-tree-item>
-	</kol-tree-item>
-</kol-tree>
-```
-
-#### Methoden
-
-Zur programmatischen Kontrolle stehen folgende Methoden zur Verfügung:
-
-| Methode | Beschreibung | Rückgabewert |
-| ------- | ------------ | ------------ |
-| `expand()` | Öffnet/expandiert das Tree-Item | `Promise<void \| undefined>` |
-| `collapse()` | Schließt/kollabiert das Tree-Item | `Promise<void \| undefined>` |
-| `focus()` | Fokussiert das Link-Element des Tree-Items | `Promise<any>` |
-| `isOpen()` | Gibt zurück, ob das Tree-Item expandiert ist | `Promise<boolean>` |
-
-#### Events
-
-Tree-Items sind Links und können durch Nutzerinnen und Nutzer aktiviert werden. Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-Das primäre Event ist `click`, das ausgelöst wird, wenn das Tree-Item aktiviert wird:
-
-| Event | Auslöser | Value |
-| ----- | -------- | ----- |
-| `click` | Tree-Item wird aktiviert | Depends on browser/context |
-
-## API
-
-<Readme />
-
-Tree-Items können andere Tree-Items enthalten, um Hierarchien zu bilden:
-
-```html
-<kol-tree>
-	<kol-tree-item _label="Parent" _href="/">
-		<kol-tree-item _label="Child 1" _href="/child1"></kol-tree-item>
-		<kol-tree-item _label="Child 2" _href="/child2"></kol-tree-item>
-	</kol-tree-item>
-</kol-tree>
-```
-
-#### Initial geöffnet
-
-Mit `_open` werden Tree-Items beim Laden vorgeklappt angezeigt:
-
-```html
-<kol-tree>
+<kol-tree _label="Geoeffneter Zweig">
 	<kol-tree-item _label="Offenes Element" _href="/" _open>
 		<kol-tree-item _label="Sichtbarer Unter-Eintrag" _href="/sub"></kol-tree-item>
 	</kol-tree-item>

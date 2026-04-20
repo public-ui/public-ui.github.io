@@ -64,7 +64,7 @@ Darstellung einer InputRange-Komponente mit Standardausstattung:
 - Nutzen Sie `_step`, um größere oder kleinere Schrittweiten zu definieren (z.B. `_step="5"` für 5er-Schritte).
 - Geben Sie Hinweise über die Bedeutung von Minimal- und Maximalwert via `_hint`.
 - Kombinieren Sie die InputRange mit einer Textanzeige des aktuellen Wertes, um die Bedienbarkeit zu verbessern.
-- Achten Sie darauf, dass `_name` und `_id` gesetzt sind, damit die Daten beim Formularversand mitgesendet werden.
+- Achten Sie darauf, dass `_name` gesetzt ist, damit die Daten beim Formularversand mitgesendet werden.
 
 ### Anwendungsfälle
 
@@ -113,7 +113,7 @@ Zusätzliche Informationen können über `_hint` bereitgestellt werden:
 
 <InputRangePreview
 	visibleProperties={['_label', '_hint']}
-	initialProps={{ _label: 'Lautstärke', _hint: 'Schiebереgler um die Lautstärke zu regulieren (0-100%)' }}
+	initialProps={{ _label: 'Lautstärke', _hint: 'Schieberegler um die Lautstärke zu regulieren (0-100%)' }}
 	codeCollapsable
 	codeCollapsed
 />

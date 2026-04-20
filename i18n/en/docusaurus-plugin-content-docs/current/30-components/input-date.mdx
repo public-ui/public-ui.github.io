@@ -5,8 +5,6 @@ description: Description, specification and examples for the InputDate component
 
 import Readme from '/readmes/input-date/readme.md';
 import InputDatePreview from '@site/src/components/previews/components/InputDate';
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
@@ -17,128 +15,180 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyms: Date Picker, Datetime Picker, Week Picker Month Picker, Time Picker, Calendar
+**Synonyms:** Date Picker, Datetime Picker, Week Picker, Month Picker, Time Picker, Calendar
 
-The input type **Date** creates an input field for date values. These can be specific dates, but also weeks, months or times.
+**Description:** The **InputDate** component is an input field for date values in various formats: specific dates, weeks, months, or time values. Depending on the browser and device type, it provides specialized selection dialogs (e.g. calendar, time picker) or input masking functions for intuitive date input.
 
-## Construction
+## Example
+
+Standard date field with type `date`. Input is done via direct digit entry with automation or via the device-specific selection helper.
 
 <InputDatePreview
-  visibleProperties={['_label', '_type', '_disabled', '_required']}
-  codeCollapsable
-  codeCollapsed
+	visibleProperties={[]}
+	initialProps={{ _label: 'Date of birth' }}
+	codeCollapsable
+	codeCollapsed
 />
-
-### Events
-
-For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event | trigger | Value |
-|----------|----------------------------------|---------------------------------|
-| `click` | Input field is clicked | - |
-| `focus` | Input field is focused | - |
-| `blur` | Input field loses focus | - |
-| `input` | Value is changed by entering | Current value of the input field |
-| `change` | Entry has been completed | Current value of the input field |
-
-### Example
-
-#### Remove date
-
-The following example shows a component in React that offers the option of removing the value in the date field using a button.
-
-```jsx
-const ClearableDateInput = () => {
-  const [value, setValue] = useState<Date>();
-  return (
-    <>
-        <KolInputDate
-          _label="Lorem ipsum dolor sit"
-          _value={value}
-          _on={{ onChange: (_, v: Date) => setValue(v) }}
-        />
-        {/* Set null as value to clear the inputs value. */}
-        <KolButton _on={{ onClick: () => setValue(null) }} _label="Clear" />
-    </>
-  );
-};
-```
-
-### Events
-
-Component events can be handled via a `_on` property, which consists of an object with various callback functions:
-
-```js
-kolibriElement._on = {
-	onFocus: (event) => {
-		/* Do something on focus */
-	},
-	onInput: (event, value) => {
-		/* Do something with value or event */
-	},
-	// ...
-};
-```
-
-| Event | trigger | Value |
-| -------- | ------------------------------------------------------------------------------- | ------------------------------------- |
-| onFocus | Element is focused | - |
-| onClick | Element is clicked | - |
-| onInput | Date is set or changes (corresponds to native `input` event) | Date entered as ISO8601 String |
-| onChange | Date is set or changes (corresponds to native `change` event) | Date entered as ISO8601 String |
-| onBlur | Element loses focus | - |
-
-## Usage
-
-The **InputDate** component can be used to capture data. It internally uses the InputNumber component.
-
-<kol-alert _type="info">Beachten Sie, dass im **Firefox** nicht alle **`_types`** der **InputDate**-Komponente funktional sind. Es werden bei den Typen `month`, `time` und `week` keine Auswahldialoge angezeigt.</kol-alert>
-
-The component stands out because it supports numerous number-based input patterns. It is important to note that input behavior can vary from browser to browser and device to device. For example, it is possible to enter 01/01/999999 for the date, even if max=2022-02-02. The field value is still 2022-02-02.
-
-### Best practices
-
-- Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
 
 ## Accessibility
 
-The icons in the component cannot be accessed using the Tab key. The component selection aids are opened using the **space bar** or **Enter**. For example, with the type **date** you get a calendar module that can be used to select the desired date using the mouse or keyboard. Alternatively, you can enter the values ​​manually.
+- **Focus management**: The input field is reached via the `Tab` key. Selection helpers (e.g. calendar module) can be opened via the **Space** or **Enter** key.
+- **Keyboard navigation**: Within the selection dialog, **arrow keys** allow navigation between dates, **Enter** confirms the selection.
+- **Manual entry**: Allows users to type values directly, which is particularly important for keyboard users without access to the graphical selection helper.
+- **Non-functional icons**: Icons are not reachable via the Tab key; selection helpers are opened exclusively via the input field.
+- **Browser-dependent limitations**: In Firefox, the types `month`, `time`, and `week` do not work with graphical selection dialogs.
 
-### Known issues
+### Links and references
 
-There are <kol-link _href="/docs/known-issues#kol-input-date">known accessibility limitations</kol-link> for the input date.
+- <kol-link _href="https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html" _target="_blank" _label="W3C: Input Type Date"></kol-link>
+- <kol-link _href="https://a11ysupport.io/tech/html/input(type-date)_element" _target="_blank" _label="a11ySupport: Input Type Date"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1: Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/" _target="_blank" _label="WAI-ARIA APG"></kol-link>
 
-
+## Usage
 
 ### Keyboard controls
 
-The input field for time information comes in different versions (date, time, etc.). The 'Tab' key sets the focus on the input field. The device-specific selection dialog can then be opened using the 'Space' key.
+| Key                              | Function                                                                                                                                                                                                                                                  |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                            | Focuses the input field. After receiving focus, `Tab` switches through input areas (day/month/year), then to the next element.                                                                                                                            |
+| `Space` / `Enter`                | Opens the device-specific selection helper (e.g. calendar module, time picker) if available. Closes the selection helper after confirmation.                                                                                                              |
+| `Arrow keys (left/right)`        | Switches between input areas (day, month, year) when the input field is focused.                                                                                                                                                                          |
+| `Arrow keys (up/down)`           | Increases or decreases the value in the currently focused input area.                                                                                                                                                                                     |
+| `Esc`                            | Closes an open selection dialog.                                                                                                                                                                                                                          |
 
-> Note: We found in our tests that, depending on the browser version, it is sometimes possible to focus on the calendar icon and sometimes not. Without the implementation of the component having changed. We don't yet know why this is the case. Nevertheless, opening the selection dialog is always possible using the 'Space' key.
+### Best practices / Recommendations
 
-| button | Function |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab` | Focuses the input field. After receiving focus, the 'Tab' key switches through the input areas. Only then does the 'Tab' key switch to the next input field.                                                                                            |
-| `Empty` | If the input field is focused, a selection dialog can be opened or closed in the browser using the 'space' key. Navigation and selection is done here using the 'Tab' key, the 'arrow' keys and confirmation with the 'Enter' key. |
-| `Arrow keys (left/right)` | When the input field is focused, you can use the 'arrow' keys to switch between the input areas.                                                                                                                                               |
-| `Arrow keys (up/down)` | If an input area is activated, the values ​​can be changed using the arrow keys up and down.                                                                                                                                                 |
-| `Esc` | If a selection dialog is available, it can be closed alternatively using the 'Space' key or the 'Esc' key.                                                                                                                                      |
+- **Mark required fields clearly**: Use `_required` to clearly mark mandatory fields.
+- **Validation with `_min` and `_max`**: Limit the valid date range e.g. for dates of birth or appointment bookings.
+- **Correct naming**: Ensure `_name` and `_id` are set correctly for form submission.
+- **Use hint texts**: Use `_hint` for information about the expected format or restrictions.
+- **Communicate browser differences**: Inform users about Firefox behavior with `month`, `time`, and `week` if these types are used.
+- **Allow fallback input**: Verify that manual digit input works when the graphical selection helper is unavailable.
 
-## Links and references
+### Use cases
 
-- <kol-link _href="https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html" _target="_blank"></kol-link>
-- <kol-link _href="https://www.hassellinclusion.com/blog/input-type-date-ready-for-use/" _target="_blank"></kol-link>
-- <kol-link _href="https://a11ysupport.io/tech/html/input(type-date)_element" _target="_blank"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- **Date of birth**: Capturing date of birth with type `date`
+- **Appointment booking**: Selecting a date and optionally a time with type `datetime-local`
+- **Invoice month**: Selecting a month with type `month`
+- **Shift planning**: Selecting a calendar week with type `week`
+- **Time range**: Selecting start and end times with type `time`
 
-# API
+### FAQ
+
+**Why does the `week` type not work in Firefox?**  
+Firefox does not provide a graphical selection module for weeks. In this case, only manual text input is possible.
+
+**Can I set predefined values?**  
+Yes, via the `_value` attribute with the corresponding format (e.g. `"2024-01-15"` for type `date`).
+
+**How can I clear the date field?**  
+Set `_value` to `null` or `undefined` to clear the field.
+
+## Construction / Technical
+
+### Playground
+
+<InputDatePreview codeCollapsable />
+
+### Functionality (with code)
+
+#### Label and hint texts
+
+The input field is given a label via `_label`. Additional information can be provided via `_hint`.
+
+<InputDatePreview
+	visibleProperties={['_label', '_hint']}
+	initialProps={{ _label: 'Date of birth', _hint: 'Please enter your date of birth.' }}
+	codeCollapsable
+/>
+
+#### Input types
+
+The `_type` attribute determines the format and selection dialog:
+
+<InputDatePreview
+	visibleProperties={['_type']}
+	initialProps={{ _label: 'Date', _type: 'date' }}
+	codeCollapsable
+/>
+
+**Available types:**
+- `date`: Full date (default)
+- `datetime-local`: Date and time without timezone
+- `month`: Month and year only
+- `time`: Time only (HH:MM)
+- `week`: Calendar week and year
+
+#### Range restriction
+
+The `_min` and `_max` attributes define the valid date range:
+
+<InputDatePreview
+	visibleProperties={['_min', '_max']}
+	initialProps={{
+		_label: 'Reservation date',
+		_min: '2025-01-01',
+		_max: '2025-12-31',
+	}}
+	codeCollapsable
+/>
+
+#### Step size for time input
+
+For type `time`, the step size can be set via `_step`:
+
+<InputDatePreview
+	visibleProperties={['_step']}
+	initialProps={{
+		_label: 'Time',
+		_type: 'time',
+		_step: '15',
+	}}
+	codeCollapsable
+/>
+
+#### Form attributes
+
+Standard form attributes for validation and interaction:
+
+<InputDatePreview
+	visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
+	initialProps={{ _label: 'Date', _required: true }}
+	codeCollapsable
+/>
+
+**Available attributes:**
+- `_disabled`: Disables the input field (use with justification!)
+- `_readOnly`: Prevents editing but allows focus
+- `_required`: Marks required fields
+- `_hideLabel`: Visually hides the label (remains visible to assistive technologies)
+
+#### Error messages
+
+Validation errors or hint messages are displayed via the `_msg` attribute:
+
+<InputDatePreview
+	visibleProperties={['_msg']}
+	initialProps={{
+		_label: 'Date',
+		_msg: 'The entered date is outside the permitted range.',
+	}}
+	codeCollapsable
+/>
+
+#### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event    | Trigger                                               | Value                                  |
+| -------- | ----------------------------------------------------- | -------------------------------------- |
+| `click`  | Input field is clicked                                | -                                      |
+| `focus`  | Input field is focused                                | -                                      |
+| `blur`   | Input field loses focus                               | -                                      |
+| `input`  | Value is changed by input or selection                | Current value in ISO8601 format        |
+| `change` | Input completed by focus loss or Enter                | Current value in ISO8601 format        |
+
+## API
 
 <Readme />
-
-## Usage _msg
-
-<PropertyMsgUsage />
-
-## Examples
-
-<ExampleLink component="input-date" />

@@ -27,6 +27,17 @@ const InputTextPreview = (props: InputTextPreviewComponentProps) => {
 				_placeholder: <KolInputText _label="Placeholder" />,
 				_value: <KolInputText _label="Value" />,
 				_icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
+				_type: (
+					<KolSelect
+						_label="Type"
+						_options={[
+							{ label: 'text', value: 'text' },
+							{ label: 'search', value: 'search' },
+							{ label: 'tel', value: 'tel' },
+							{ label: 'url', value: 'url' },
+						]}
+					/>
+				),
 				_accessKey: <KolInputText _label="Access Key" />,
 				_name: <KolInputText _label="Name" />,
 				_hint: <KolInputText _label="Hint" />,

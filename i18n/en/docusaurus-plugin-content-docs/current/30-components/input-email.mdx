@@ -48,11 +48,57 @@ By default, the component is designed to capture a single email address. Set the
 ### Best practices
 
 - Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
+- Use `_hint` to explain to users when multiple addresses are expected (with `_multiple`).
+- Use `_placeholder` as a supplementary hint only, not for critical information.
+
+### Form attributes
+
+<InputEmailPreview
+	visibleProperties={['_label', '_disabled', '_readOnly', '_required', '_hideLabel', '_hideMsg', '_shortKey', '_tooltipAlign']}
+	initialProps={{ _label: 'Email address' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Available attributes:**
+- `_disabled`: Disables the input field (use with justification!)
+- `_readOnly`: Prevents editing of the field
+- `_required`: Marks mandatory fields
+- `_hideLabel`: Hides the label visually (remains visible to assistive technologies)
+- `_hideMsg`: Hides the error message visually but keeps it in the DOM for `aria-describedby`
+- `_shortKey`: Adds a visual shortcut hint after the label and instructs screen readers to read it aloud
+- `_tooltipAlign`: Defines where the tooltip is preferably shown (`'top'` | `'right'` | `'bottom'` | `'left'`)
+
+### Auto-complete and suggestions
+
+Use `_autoComplete` to control whether the browser may display completion suggestions. The default is `'off'`. For fields where browser autofill is desired, set `_autoComplete="email"`.
+
+Use `_suggestions` to provide a list of suggested values that are displayed to the user as a selectable datalist during input:
+
+<InputEmailPreview
+	visibleProperties={['_autoComplete']}
+	initialProps={{ _label: 'Email address', _autoComplete: 'email' }}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Accessibility
 
 There is no validation of the recorded email addresses within the component.
-To indicate failed validation, use the `_msg` and `_touched` attributes.
+To indicate failed validation, use the `_msg` and `_touched` attributes. Additionally, `_pattern` can be used to specify a regular expression pattern for input validation.
+
+Use `_msg` with `_touched` to show validation errors:
+
+<InputEmailPreview
+	visibleProperties={['_msg', '_touched', '_pattern']}
+	initialProps={{
+		_label: 'Email address',
+		_msg: { _description: 'Please enter a valid email address.' },
+		_touched: true,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Keyboard controls
 

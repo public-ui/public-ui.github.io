@@ -126,7 +126,7 @@ Ein Placeholder-Text wird angezeigt, wenn noch keine Option ausgewählt wurde:
 Standard-Attribute für Formulare:
 
 <SingleSelectPreview
-	visibleProperties={['_label', '_required', '_disabled', '_hideLabel', '_msg']}
+	visibleProperties={['_label', '_required', '_disabled', '_hideLabel', '_msg', '_hideMsg']}
 	initialProps={{
 		_label: 'Auswählen',
 	}}
@@ -139,6 +139,7 @@ Standard-Attribute für Formulare:
 - `_disabled`: Deaktiviert das Eingabefeld
 - `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
 - `_msg`: Fehlermeldungen oder Validierungshinweise
+- `_hideMsg`: Blendet die Fehlermeldung visuell aus, erhält sie aber im DOM für `aria-describedby`
 
 #### Clear-Button
 

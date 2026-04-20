@@ -84,6 +84,9 @@ Die Pfeiltasten addieren/subtrahieren den `_step`-Wert. Die Grenzen `_min` und `
 **Muss ich `_name` setzen?**  
 Ja, wenn das Feld Teil eines Formulars ist. Der `_name` wird beim Absenden als Feldname mitgesendet.
 
+**Kann ich Vorschlagswerte anzeigen?**  
+Ja, über das Attribut `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen, die dem Nutzer als Autocomplete-Optionen angeboten werden.
+
 ## Konstruktion / Technik
 
 ### Playground
@@ -197,6 +200,34 @@ Definieren Sie linke und/oder rechte Icons für zusätzlichen Kontext:
 **Verfügbare Positionen:**
 - `left`: Icon links vom Eingabefeld
 - `right`: Icon rechts vom Eingabefeld
+
+#### SmartButton
+
+Ein Button mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLabel`):
+
+<InputNumberPreview
+	initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
+	visibleProperties={['_smartButton']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Vorschlagswerte (Suggestions)
+
+Über `_suggestions` können Vorschlagswerte für die Autovervollständigung bereitgestellt werden:
+
+<InputNumberPreview
+	visibleProperties={['_label', '_suggestions']}
+	initialProps={{
+		_label: 'Anzahl',
+		_suggestions: [1, 5, 10, 25, 50, 100],
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Attribute:**
+- `_suggestions`: Liste von Vorschlagswerten für die Datalist-Autovervollständigung
 
 #### Events
 

@@ -16,7 +16,9 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyms: dialogue, prompt
+**Synonyms:** dialogue, prompt
+
+> **⚠️ Deprecated:** This component has been superseded by the <kol-link _href="../components/dialog" _label="Dialog component"></kol-link>, which provides improved accessibility and conforms to the HTML dialog specification.
 
 Using the **Modal** component, additional information or input forms can be displayed in a dialog window. An open **modal** can be closed via **ESC**.
 The **Modal** component is hidden by default. It is usually only displayed after clicking on a button or other trigger. The background of the window is deactivated and only the content of the modal window is active.
@@ -38,9 +40,9 @@ As soon as a **modal** is opened, all selectable elements in the website are dea
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event | trigger | Value |
-|---------|-----------------------------|-------|
-| `close` | Component is closing | - |
+| Event | Trigger | Value |
+| ----- | ------- | ----- |
+| `close` | Component is closing via `closeModal()` or ESC key | - |
 
 ### Usage
 

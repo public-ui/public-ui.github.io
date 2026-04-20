@@ -41,7 +41,7 @@ Darstellung einer einfachen Radio-Auswahlgruppe mit drei Optionen:
 - **Tastatursteuerung:** Alle Radio-Elemente sind vollständig über die Tastatur bedienbar. Nach dem Fokussieren der Gruppe kann zwischen den Optionen navigiert werden.
 - **Fokusmanagement:** Die Komponente markiert das aktuell fokussierte Element deutlich und unterstützt eine intuitive Navigation mit Pfeiltasten.
 - **Hinweistexte:** Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die von Screenreadern vorgelesen werden.
-- **Fehlermeldungen:** Validierungsfehler können über `_msg` aussagekräftig kommuniziert werden.
+- **Fehlermeldungen:** Validierungsfehler können über `_msg` aussagekräftig kommuniziert werden. Mit `_hideMsg` wird die Fehlermeldung visuell ausgeblendet, bleibt aber im DOM für Screenreader erhalten.
 
 ### Links und Referenzen
 
@@ -88,7 +88,7 @@ Darstellung einer einfachen Radio-Auswahlgruppe mit drei Optionen:
 Testen Sie die verschiedenen Eigenschaften der InputRadio-Komponente:
 
 <InputRadioPreview
-	visibleProperties={['_label', '_options', '_orientation', '_hint', '_disabled', '_required', '_hideLabel']}
+	visibleProperties={['_label', '_options', '_orientation', '_hint', '_hideMsg', '_disabled', '_required', '_hideLabel']}
 	initialProps={{
 		_label: 'Anrede',
 		_options: [
@@ -144,7 +144,7 @@ Die Ausrichtung der Radio-Elemente kann horizontal oder vertikal erfolgen:
 Hinweistexte und Validierungsfeedback können über `_hint` und `_msg` bereitgestellt werden:
 
 <InputRadioPreview
-	visibleProperties={['_label', '_hint', '_msg', '_disabled', '_required', '_hideLabel']}
+	visibleProperties={['_label', '_hint', '_msg', '_hideMsg', '_disabled', '_required', '_hideLabel']}
 	initialProps={{
 		_label: 'Versandart',
 		_hint: 'Wählen Sie die gewünschte Versandart aus.',

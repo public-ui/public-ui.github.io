@@ -33,13 +33,14 @@ The input type **File** creates an input field for uploads, for example. One or 
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event | trigger | Value |
-|---------|--------------------------------------------------------------------------------|--------------------------------|
-| `focus` | Input field is focused | - |
-| `click` | Input field is clicked | - |
-| `input` | One or more files are selected (corresponds to native `input` event) | Selected files as FileList |
-| `change` | One or more files are selected (corresponds to native `change` event) | Selected files as FileList |
-| `blur` | Input field loses focus | - |
+| Event      | Trigger                                                                    | Value                      |
+|------------|----------------------------------------------------------------------------|----------------------------|
+| `focus`    | Input field is focused                                                     | -                          |
+| `click`    | Input field is clicked                                                     | -                          |
+| `keydown`  | A key is pressed while the input field is focused                          | -                          |
+| `input`    | One or more files are selected (corresponds to native `input` event)       | Selected files as FileList |
+| `change`   | One or more files are selected (corresponds to native `change` event)      | Selected files as FileList |
+| `blur`     | Input field loses focus                                                    | -                          |
 
 ## Usage
 
@@ -64,7 +65,7 @@ Possible values ​​and further information can be found in the <kol-link _hre
 
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
-# API
+## API
 
 <Readme />
 

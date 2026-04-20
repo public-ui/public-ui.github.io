@@ -16,25 +16,101 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-The **Quote** component has two variants, a short body text ("inline") and an indented ("block") variant. Both versions contain a link to the source of the quote.
+**Synonyms:** Block quote, Quotation, Text citation
 
-## Construction
+**Description:** The **Quote** component presents quotations with a source reference. It supports two display variants: an inline variant for short quotations within body text and a block variant for highlighted, indented quotations. The component semantically connects the quotation with the source via a link.
+
+## Example
+
+Display of the standard block variant with quote and source reference:
 
 <QuotePreview
+	visibleProperties={[]}
+	initialProps={{ _variant: 'block' }}
 	codeCollapsable
 	codeCollapsed
 />
 
-A heading can be set using **`_label`**, while **`_quote`** contains the actual quote. The origin is set via **`_href`**.
-The `inline` variant is standard, if indented is desired, **`_variant`** can be set to `block`.
+## Accessibility
 
-## References
+- The component uses semantic HTML (`<blockquote>` or `<q>`) depending on the variant, to correctly inform screen readers and assistive technologies about the structure.
+- The optional `_label` is rendered as a heading or label for the quotation and improves orientation.
+- The source link (`_href`) is fully accessible and can be focused via keyboard.
+- The quotation (`_quote`) is read directly as text content.
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _target="_blank"></kol-link>
-- <kol-link _href="https://www.mediaevent.de/html/quote.html" _target="_blank"></kol-link>
-- <kol-link _href="https://www.mediaevent.de/html/cite.html" _target="_blank"></kol-link>
-- <kol-link _href="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _target="_blank"></kol-link>
+### Links and References
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote" _target="_blank" _label="MDN Web Docs - blockquote Element"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q" _target="_blank" _label="MDN Web Docs - q Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-link-only.html" _target="_blank" _label="WCAG 2.1 - Link Purpose (Link Only)"></kol-link>
+
+## Usage
+
+### Best Practices / Recommendations
+
+- **Inline for body text**: Use the `inline` variant for short quotations within running text or sentences.
+- **Block for emphasis**: Use the `block` variant for longer, standalone quotations that should receive visual attention.
+- **Require source attribution**: Always provide a source (`_href`) so readers can trace the origin of the quotation.
+- **Meaningful labels**: Use `_label` for author, work, or context information to contextualise the quotation.
+- **Accurate quotations**: Reproduce quotations exactly and avoid paraphrasing without indication.
+- **Choose the correct variant**: Decide between inline and block based on the length and significance of the quotation – maintain consistency within the document.
+
+### Use Cases
+
+- **Testimonials**: Customer reviews or user feedback on websites or in marketing material.
+- **Literary references**: Quotations from books, articles, or speeches in editorial content.
+- **Research**: Quotations from academic papers, studies, or sources in academic or informative-journalistic texts.
+- **Endorsements**: Approvals, recommendations, or confirmations from authorities or experts.
+- **Design elements**: Visual highlights in brochures, web pages, or presentations to reinforce messages.
+
+### FAQ
+
+**When should I use the block variant?**  
+The block variant is suitable for longer, standalone quotations that should stand out from body text. Use it when the quotation spans at least one or two sentences.
+
+**What citation format should I use for `_label`?**  
+The separator is flexible – common formats include "Author, Work", "Source (Date)", or simply just the author's name. Consistency within the document is key.
+
+**Can I format the quotation with HTML or Markdown?**  
+The `_quote` attribute expects plain text. Formatting should be done via CSS or additional structural elements outside the component.
+
+## Construction / Technology
+
+### Playground
+
+Test the various properties of the Quote component:
+
+<QuotePreview codeCollapsable />
+
+### Functionality (with Code)
+
+#### Variants
+
+The Quote component offers two display variants:
+
+<QuotePreview
+	visibleProperties={['_variant']}
+	initialProps={{ _variant: 'inline' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Available variants:**
+- `inline`: Short quotation within body text (default)
+- `block`: Highlighted, indented quotation
+
+#### Label and Source Reference
+
+The optional label can serve as an author or work reference, while `_href` enables source verification:
+
+<QuotePreview
+	visibleProperties={['_label', '_href']}
+	initialProps={{ _variant: 'block', _label: 'Albert Einstein' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## API
 
 <Readme />
 

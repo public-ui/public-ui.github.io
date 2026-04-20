@@ -135,7 +135,7 @@ Hilfstexte für bessere Usability:
 Standard-Attribute für Formulare:
 
 <InputEmailPreview
-	visibleProperties={['_label', '_disabled', '_readOnly', '_required', '_hideLabel']}
+	visibleProperties={['_label', '_disabled', '_readOnly', '_required', '_hideLabel', '_hideMsg', '_shortKey', '_tooltipAlign']}
 	initialProps={{ _label: 'E-Mail-Adresse' }}
 	codeCollapsable
 	codeCollapsed
@@ -146,6 +146,9 @@ Standard-Attribute für Formulare:
 - `_readOnly`: Verhindert die Bearbeitung des Feldes
 - `_required`: Kennzeichnet Pflichtfelder
 - `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
+- `_hideMsg`: Blendet die Fehlermeldung visuell aus, hält sie aber im DOM für `aria-describedby`
+- `_shortKey`: Fügt einen visuellen Shortcut-Hinweis nach dem Label hinzu und liest ihn für Screenreader vor
+- `_tooltipAlign`: Legt fest, wo der Tooltip bevorzugt angezeigt wird (`'top'` | `'right'` | `'bottom'` | `'left'`)
 
 #### Icons
 
@@ -173,6 +176,19 @@ Technische Kennzeichnung für Formulare:
 />
 
 **Hinweis**: `_name` wird als HTML-Attribut `name` verwendet und ist wichtig für das Absenden des Formulars.
+
+#### Auto-Vervollständigung und Vorschläge
+
+Mit `_autoComplete` steuern Sie, ob der Browser Eingabevorschläge anzeigen soll. Der Standardwert ist `'off'`. Für Felder, bei denen Browser-Autofill erwünscht ist, setzen Sie `_autoComplete="email"`.
+
+Mit `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen, die dem Nutzer während der Eingabe als auswählbare Datenliste angezeigt werden:
+
+<InputEmailPreview
+	visibleProperties={['_autoComplete']}
+	initialProps={{ _label: 'E-Mail-Adresse', _autoComplete: 'email' }}
+	codeCollapsable
+	codeCollapsed
+/>
 
 #### Zeichenbegrenzung und Zeichenzähler
 
@@ -215,10 +231,10 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 
 #### Fehlermeldung und Validierung
 
-Fehlerhafte Eingaben können über `_msg` mit aussagekräftigen Meldungen versehen werden:
+Fehlerhafte Eingaben können über `_msg` mit aussagekräftigen Meldungen versehen werden. Mit `_pattern` lässt sich zusätzlich ein reguläres Ausdrucks-Muster zur Eingabevalidierung hinterlegen:
 
 <InputEmailPreview
-	visibleProperties={['_msg', '_touched']}
+	visibleProperties={['_msg', '_touched', '_pattern']}
 	initialProps={{
 		_label: 'E-Mail-Adresse',
 		_msg: { _description: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' },
@@ -244,77 +260,12 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 
 <Readme />
 
-## Verwendung _msg
-
-Standardmäßig ist die Komponente für die Erfassung einer einzelnen E-Mail-Adresse vorgesehen. Setzen Sie das Attribut **`_multiple`**, um mehrere E-Mail-Adressen zu erfassen. Trennen Sie die einzelnen E-Mail-Adressen mit einem Komma (,) voneinander.
-
-### Best practices
-
-- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
-
-## Barrierefreiheit
-
-Eine Validierung der erfassten E-Mail-Adressen innerhalb der Komponente erfolgt nicht.
-Um eine fehlgeschlagene Validierung anzuzeigen, verwenden Sie die Attribute `_msg` und `_touched`.
-
-### Tastatursteuerung
-
-| Taste | Funktion                    |
-| ----- | --------------------------- |
-| `Tab` | Fokussiert das Eingabefeld. |
-
-## Zeichenbegrenzung und Zeichenzähler
-
-Mit den drei Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen und gleichzeitig visuelles Feedback geben.
-
-### Attribute
-
 | Attribut               | Typ                | Standard | Beschreibung                                                                                                                                                                                                                                                                                |
 | ---------------------- | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `_has-counter`         | `boolean`          | `false`  | Globaler Schalter für den Zeichenzähler. Nur wenn dieses Attribut **gesetzt (= true)** ist, wird überhaupt ein Zähler ausgegeben.                                                                                                                                                           |
 | `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
 | `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`‑Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
 
-### Ausgabevarianten
-
-| Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
-| ---: | --------------------- | ------------- | ---------------------- | ---------------------------------------------------------- |
-| 1    | *(leer)* oder `false` | —             | —                      | — (kein Zähler)                                            |
-| 2    | `true`                | *(leer)*      | —                      | `n Zeichen`                                                |
-| 3    | `true`                | 5             | *(leer)* oder `hard`   | `n/5 Zeichen`                                              |
-| 4    | `true`                | 5             | `soft`                 | `noch 3 Zeichen verfügbar`<br />*(bzw. `3 Zeichen zu viel`)* |
-
-> Wird `_max-length-behavior="soft"` verwendet, **wird das native `maxlength`‑Attribut *nicht* gesetzt** – das Eingabefeld wird also nicht hart begrenzt.
-
-### Barrierefreiheit
-
-* Der Zähler aktualisiert sich mit einer Verzögerung von **500 ms**, damit Screenreader‑Ereignisse gebündelt werden und das Tippen nicht unterbrechen.
-* Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa:
-  *„Sie können bis zu 10 Zeichen eingeben.“*
-
-### Beispiele
-
-```html
-<!-- Nur Zähler -->
-<kol-input-email _label="E-Mail-Adresse" _has-counter></kol-input-email>
-
-<!-- Harte Begrenzung auf 5 Zeichen -->
-<kol-input-email _label="E-Mail-Adresse" _has-counter _max-length="5"></kol-input-email>
-
-<!-- Weiche Begrenzung auf 5 Zeichen -->
-<kol-input-email
-  _label="E-Mail-Adresse"
-  _has-counter
-  _max-length="5"
-  _max-length-behavior="soft">
-</kol-input-email>
-```
-
-### Zusammenfassung
-
-* Ohne `_has-counter` gibt es **nie** einen Zähler.
-* Mit `_has-counter` **und ohne** `_max-length` wird nur die aktuell eingegebene Zeichenzahl angezeigt.
-* Mit `_has-counter` **und** `_max-length` bestimmt `_max-length-behavior`, ob die Grenze hart (`hard`) oder weich (`soft`) umgesetzt wird.
 
 ## Verwendung _msg
 

@@ -52,11 +52,36 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 | `Tab` | Focuses the input field.                                                                                                                          |
 | `Arrow keys (up/down)` | Increases or decreases the value within the **`_min`** and **`_max`** attributes according to the step size specified in the **`_step`** attribute. |
 
+### SmartButton
+
+A button with an arbitrary action can be placed within the field (`_hide-label` only):
+
+<InputNumberPreview
+  initialProps={{ _label: 'With SmartButton', _hideLabel: true, _placeholder: 'Placeholder', _smartButton: { _label: 'Action' } }}
+  visibleProperties={['_smartButton']}
+  codeCollapsable
+  codeCollapsed
+/>
+
+### Suggestions
+
+Use `_suggestions` to provide a list of suggested values for autocomplete:
+
+<InputNumberPreview
+  visibleProperties={['_label', '_suggestions']}
+  initialProps={{
+    _label: 'Quantity',
+    _suggestions: [1, 5, 10, 25, 50, 100],
+  }}
+  codeCollapsable
+  codeCollapsed
+/>
+
 ## Links and references
 
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
-# API
+## API
 
 <Readme />
 

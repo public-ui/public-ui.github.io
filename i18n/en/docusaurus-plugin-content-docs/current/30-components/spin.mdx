@@ -2,31 +2,115 @@
 title: Spin
 description: Description, specification and examples for the spin component.
 ---
+
 import Readme from '/readmes/spin/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import SpinPreview from '@site/src/components/previews/components/Spin';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
-
-#Spin
-
+# Spin
 
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyms: Placeholder, Skeleton, Shimmer
+**Synonyms:** Loader, Spinner, Loading Indicator, Waiting Animation
 
-Loading indicators, such as the **Spin** component, inform users about loading or computing processes being carried out by the system. Progress can be communicated through a repeated animation.
+**Description:** The **Spin** component is a visual loading indicator that informs users that a process is loading or running in the background. It supports multiple animation variants and can be given a semantic label to ensure accessibility.
 
-## Construction
+## Example
+
+Default loading indicator with the standard variant:
 
 <SpinPreview
+	visibleProperties={[]}
+	initialProps={{ _show: true }}
 	codeCollapsable
 	codeCollapsed
 />
 
-### Custom Animations
+## Accessibility
+
+- The component requires a semantic label via `_label` that describes the loading state (e.g. "Content is loading"). This is read by screen readers and informs users about the status.
+- Animations can be problematic for users with vestibular or neurological impairments. Take into account the system setting `prefers-reduced-motion` and reduce the animation speed accordingly.
+- The component should only be displayed when a process is actually running. Use `_show` to safely hide and show it.
+- Make sure that users do not wait indefinitely for something to load. Set timeouts and display appropriate error messages if the process fails.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html" _target="_blank" _label="WCAG 2.1 - Animation from Interactions"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _target="_blank" _label="MDN Web Docs - prefers-reduced-motion"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/progress/" _target="_blank" _label="WAI-ARIA APG - Progress Pattern"></kol-link>
+
+## Usage
+
+### Best Practices / Recommendations
+
+- Use the Spin component to inform users about ongoing processes and avoid confusion.
+- Place loading indicators in consistent locations in the user interface to improve user experience.
+- Avoid multiple simultaneous loading indicators, as this can overload the user interface.
+- Combine the loading indicator with informative text to tell users what is currently loading (e.g. "Search results are loading…").
+- Respect the system setting `prefers-reduced-motion` by slowing down or disabling animations if the user prefers this.
+- Set sensible timeouts and inform users when a process takes unexpectedly long.
+
+### Use Cases
+
+- Retrieving new or updated search results
+- Logging in to protected areas and authentication
+- Downloading and uploading content
+- Loading videos or large media files
+- Saving form data
+- Retrieving data from external APIs
+- Processing longer computations
+
+### FAQ
+
+**Can I use a custom animation?**
+Yes, with the variant `_variant="none"` you can include your own animation via CSS and display it through the `expert` slot. This enables full control over the animation design.
+
+**How do I respect the "reduce motion" setting (prefers-reduced-motion)?**
+Use CSS media queries to increase the animation duration or disable animations when `prefers-reduced-motion` is active.
+
+**Should the loading indicator always be combined with text?**
+Yes, combine the visual indicator with explanatory text or a label to provide clarity.
+
+## Construction / Technical
+
+### Playground
+
+<SpinPreview codeCollapsable />
+
+### Features (with Code)
+
+#### Visibility Control
+
+The `_show` attribute determines whether the loading indicator is displayed.
+
+<SpinPreview
+	visibleProperties={['_show']}
+	codeCollapsable
+/>
+
+#### Animation Variants
+
+The available variants can be selected via `_variant`: `dot`, `cycle` or `none` (for custom animations).
+
+<SpinPreview
+	visibleProperties={['_variant']}
+	codeCollapsable
+/>
+
+#### Label and Semantics
+
+The `_label` attribute defines a semantic label that is read by screen readers.
+
+<SpinPreview
+	visibleProperties={['_label']}
+	codeCollapsable
+/>
+
+#### Custom Animations
+
+With `_variant="none"` you can include your own animation via CSS and display it through the `expert` slot:
 
 ```html
 <style>
@@ -89,51 +173,12 @@ Loading indicators, such as the **Spin** component, inform users about loading o
 		}
 	}
 </style>
-<div>
-	<kol-spin _show></kol-spin>
-	<kol-spin _show _variant="cycle"></kol-spin>
-	<!-- for a11y experts - own animation -->
-	<kol-spin _show _variant="none">
-		<!-- slot for own animation : https://github.com/vineethtrv/css-loader -->
-		<span className="loader" slot="expert"></span>
-	</kol-spin>
-</div>
+
+<kol-spin _show _variant="none">
+	<span className="loader" slot="expert"></span>
+</kol-spin>
 ```
 
-<kol-alert _label_="Reduce Motion" _level="4" _type="warning">
-If possible, animations should always be avoided. If animations are used, care should always be taken to offer a variant with reduced animation speed. More information can be found here:
-	<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _label="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _target="_blank"></kol-link>
-</kol-alert>
-
-### Example
-
-<kol-spin _show></kol-spin>
-<kol-spin _show _variant="cycle"></kol-spin>
-<kol-spin _show _variant="none"><span className="loader" slot="expert"></span></kol-spin>
-
-<kol-details _label="CSS Loaders & Spinners" _open>
-There are many different CSS loaders and spinners on the internet. For example, _Vineeth_ offers a whole range of interesting CSS loaders. These can also be used in the KoliBri library. All you have to do is include the link to the corresponding CSS file in the head of the HTML file. The desired animation can then be integrated into the KoliBri component via the Expert slot. Here are some examples (without reduced animation speed):
-	<kol-link _href="https://github.com/vineethtrv/css-loader" _target="_blank"></kol-link>
-</kol-details>
-
-## Usage
-
-Use the `_show` attribute to specify whether the spin is displayed.
-
-### Best practices
-
-- Use charging indicators to inform users about a charging status or a running process.
-- Use loading indicators in consistent places in the interface to improve user experience.
-
-### Use cases
-
-- Retrieve new or updated search results.
-- Log in to protected areas.
-- Download content.
-- Loading extensive content, e.g. videos.
+## API
 
 <Readme />
-
-## Examples
-
-<ExampleLink component="spin" />

@@ -185,8 +185,6 @@ The textarea can be resized using the `_resize` attribute:
 
 **Available values:**
 - `vertical`: Only vertically resizable (default)
-- `horizontal`: Only horizontally resizable
-- `both`: Resizable in both directions
 - `none`: No resizing possible
 
 #### Number of rows
@@ -221,11 +219,6 @@ With the attributes `_max-length`, `_max-length-behavior` and `_has-counter`, th
 | `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Specifies how the limit is handled **if** `_max-length` is set:<br />- **hard**: Additionally sets the native `maxlength` attribute and prevents further input.<br />- **soft**: Allows further input; the counter shows remaining or exceeded characters. |
 
 ##### Output variants
-                                                                                                                                                            |
-| `_max-length`          | `number`           | —        | Maximum number of characters allowed. Effective only if `_has-counter` is active.                                                                                                                                                                                       |
-| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Specifies how the limit is handled **if** `_max-length` is set:<br />- **hard**: Additionally sets the native `maxlength` attribute and prevents further input.<br />- **soft**: Allows further input; the counter shows remaining or exceeded characters. |
-
-##### Output variants
 
 | Case | `_has-counter`       | `_max-length` | `_max-length-behavior` | Visible text                                                        |
 | ---: | -------------------- | ------------- | ---------------------- | ------------------------------------------------------------------- |
@@ -233,7 +226,6 @@ With the attributes `_max-length`, `_max-length-behavior` and `_has-counter`, th
 | 2    | `true`               | *(empty)*     | —                      | `n characters`                                                      |
 | 3    | `true`               | 100           | *(empty)* or `hard`    | `n/100 characters`                                                  |
 | 4    | `true`               | 100           | `soft`                 | `50 characters still available`<br />*(or `5 characters too many`)* |
-             | —                      | — (no counter)                                                      |
 
 
 

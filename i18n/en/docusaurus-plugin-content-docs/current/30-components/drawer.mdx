@@ -10,9 +10,10 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
 
+# Drawer
+
 <BetaDocsBanner />
 <UntestedBanner />
-
 
 Synonyms: Corner Dialog, Prompt
 Using the **Drawer** component, additional information or navigation elements can be displayed in a fold-out side window. An open drawer can be closed via ESC.
@@ -83,6 +84,14 @@ Optionally, animations with keyframes can be added. It is important that the key
 	}
 }
 ```
+
+## Events
+
+For handling events and callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | Trigger | Value |
+| ----- | ------- | ----- |
+| `close` | The drawer is closed (by user or programmatically) | `undefined` |
 
 ## Links and references
 

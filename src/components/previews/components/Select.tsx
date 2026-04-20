@@ -39,6 +39,7 @@ const SelectPreview = (props: SelectPreviewComponentProps) => {
 				_disabled: <BooleanProperty label="Disabled" />,
 				_required: <BooleanProperty label="Required" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
+				_shortKey: <KolInputText _label="Short Key" />,
 				_touched: <BooleanProperty label="Touched" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}

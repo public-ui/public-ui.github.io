@@ -57,6 +57,10 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 ### Best practices
 
 - Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
+- Set `_auto-complete` deliberately: the default is `'off'`. Use `'on'` or a specific token (e.g. `'email'`) when browser autofill is desired.
+- Use `_hide-msg` to hide the error message visually while keeping it in the DOM for screen readers via `aria-describedby`.
+- Use `_short-key` to display a visual keyboard shortcut hint after the label (also announced by screen readers).
+- Use `_spell-check` to control whether the browser activates spell checking for the input field.
 
 ## Accessibility
 

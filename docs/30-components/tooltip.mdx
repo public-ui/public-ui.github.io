@@ -13,10 +13,14 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 
 **Synonyme:** Inline Dialog, Popover
 
-**Beschreibung:** Die **Tooltip**-Komponente zeigt kontextuelle Informationen an, wenn Nutzer:innen über ein Referenzelement fahren oder dieses fokussieren. Sie dient als visuelles Gegenstück zum Aria-Label und richtet sich ausschließlich an sehende Nutzer:innen ohne Screenreader-Unterstützung. Die Komponente ist primär als interne Komponente innerhalb von KoliBri konzipiert.
+**Beschreibung:** Die **Tooltip**-Komponente zeigt kontextuelle Informationen an, wenn Nutzer:innen über ein Referenzelement fahren oder dieses fokussieren. Sie dient als visuelles Gegenstück zum Aria-Label und richtet sich ausschließlich an sehende Nutzer:innen ohne Screenreader-Unterstützung. Die Komponente ist primär als interne Komponente innerhalb von KoliBri konzipiert und als veraltet markiert.
 
 <kol-alert _type="info" _variant="card">
 	Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird. Sie ist nicht für den direkten Einsatz in der Anwendungsentwicklung gedacht.
+</kol-alert>
+
+<kol-alert _type="warning" _variant="card">
+	Die Komponente ist im Quellcode als veraltet markiert und soll in einer kommenden Hauptversion entfernt werden.
 </kol-alert>
 
 ## Beispiel
@@ -67,7 +71,7 @@ Das Tooltip erscheint, wenn über das Referenzelement gefahren wird oder es foku
 - Icon-Buttons mit zusätzlicher visueller Beschriftung
 - Kontextuelle Hinweise neben Formularfeldern
 - Ergänzende Erklärungen bei kompakten UI-Elementen
-- Schnelle Orientierungshilfen beim Üherfahren mit der Maus
+- Schnelle Orientierungshilfen beim Überfahren mit der Maus
 
 ### FAQ
 

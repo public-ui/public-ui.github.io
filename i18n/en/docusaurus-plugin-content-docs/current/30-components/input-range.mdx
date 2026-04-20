@@ -5,69 +5,157 @@ description: Description, specification, and examples for the InputRange compone
 
 import Readme from '/readmes/input-range/readme.md';
 import InputRangePreview from '@site/src/components/previews/components/InputRange';
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
-
 # InputRange
-
 
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyms: Slider
+**Synonyms:** Slider
 
-The **Range** input type creates an interactive element that allows values ​​to be changed by moving a slider.
+**Description:** The **InputRange** component creates an interactive control for selecting a numeric value within a defined range. The value is adjusted by moving a slider or using arrow keys.
 
-## Construction
+## Example
+
+Rendering of an InputRange component with default settings:
 
 <InputRangePreview
-	visibleProperties={['_label', '_min', '_max', '_step', '_disabled']}
+	visibleProperties={[]}
+	initialProps={{ _label: 'Volume' }}
 	codeCollapsable
 	codeCollapsed
 />
 
-### Events
+## Accessibility
 
-For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+- The label is required via the `_label` attribute and is correctly read by assistive technologies.
+- The current value is communicated to the component as `aria-valuenow`.
+- Minimum and maximum are communicated via `aria-valuemin` and `aria-valuemax`.
+- The slider is fully operable via keyboard.
+- Hint texts via `_hint` are recognized by screen readers.
+- Error messages via `_msg` are read aloud by assistive technologies.
 
-| Event | trigger | Value |
-|----------|----------------------------------|---------------------------------|
-| `click` | Input field is clicked | - |
-| `focus` | Input field is focused | - |
-| `blur` | Input field loses focus | - |
-| `input` | Value is changed by entering | Current value of the input field |
-| `change` | Entry has been completed | Current value of the input field |
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/slider/" _target="_blank" _label="WAI-ARIA Slider Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/quickref/" _target="_blank" _label="WCAG 2.2 Guidelines"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus and Accessibility"></kol-link>
 
 ## Usage
 
-### Best practices
+### Keyboard Controls
 
-- Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
+| Key           | Function                    |
+| ------------- | --------------------------- |
+| `Tab`         | Focuses the input field.    |
+| `Arrow right` | Increases the value.        |
+| `Arrow left`  | Decreases the value.        |
+| `Arrow up`    | Increases the value.        |
+| `Arrow down`  | Decreases the value.        |
+| `Home`        | Jumps to the minimum value. |
+| `End`         | Jumps to the maximum value. |
 
-## Accessibility
+### Best Practices / Recommendations
 
-### Keyboard controls
+- Use meaningful labels via `_label` to make the slider's purpose clear.
+- Set `_min` and `_max` to conceptually meaningful values. The default values are `_min="0"` and `_max="100"`.
+- Use `_step` to define larger or smaller step sizes (e.g., `_step="5"` for steps of 5).
+- Provide hints about the meaning of minimum and maximum values via `_hint`.
+- Combine the InputRange with a text display of the current value to improve usability.
+- Make sure `_name` is set so that the data is sent when the form is submitted.
 
-| button | Function |
-| -------------- | ------------------------------------------------------ |
-| `Tab` | Focuses the input field.              |
-| `arrow keys` | Change the value of the range component. |
+### Use Cases
 
-## Links and references
+- Volume control in multimedia applications
+- Brightness or contrast adjustment
+- Age filtering, price range selection in search forms
+- Threshold setting in administration interfaces
+- Scaling or zoom control
+- Weighting or value setting in rating systems
 
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+## Construction / Technology
 
-# API
+### Playground
+
+Test the various properties of the InputRange component:
+
+<InputRangePreview codeCollapsable />
+
+### Functionality (with Code)
+
+#### Basic Configuration
+
+Standard InputRange with label, minimum, and maximum:
+
+<InputRangePreview
+	visibleProperties={['_label', '_min', '_max', '_step']}
+	initialProps={{ _label: 'Select value', _min: 0, _max: 100, _step: 1 }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Value Range and Step Size
+
+The properties `_min`, `_max`, and `_step` determine the value range and step size:
+
+<InputRangePreview
+	visibleProperties={['_min', '_max', '_step', '_value']}
+	initialProps={{ _label: 'Price range (€)', _min: 0, _max: 1000, _step: 50, _value: 250 }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Hint Texts
+
+Additional information can be provided via `_hint`:
+
+<InputRangePreview
+	visibleProperties={['_label', '_hint']}
+	initialProps={{ _label: 'Volume', _hint: 'Slider to control the volume (0-100%)' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Disabled State
+
+A disabled input field can be achieved via the `_disabled` attribute:
+
+<InputRangePreview
+	visibleProperties={['_disabled']}
+	initialProps={{ _label: 'Disabled field', _disabled: true, _value: 50 }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Error Messages
+
+The `_msg` attribute allows displaying validation hints:
+
+<InputRangePreview
+	visibleProperties={['_label', '_msg']}
+	initialProps={{
+		_label: 'Value range',
+		_msg: { _description: 'The value must be between 10 and 90', _level: 'error' },
+		_value: 5,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event    | Trigger                      | Value                            |
+| -------- | ---------------------------- | -------------------------------- |
+| `click`  | Input field is clicked       | -                                |
+| `focus`  | Input field is focused       | -                                |
+| `blur`   | Input field loses focus      | -                                |
+| `input`  | Value is changed by entering | Current value of the input field |
+| `change` | Entry has been completed     | Current value of the input field |
+
+## API
 
 <Readme />
-
-## Usage _msg
-
-<PropertyMsgUsage />
-
-## Examples
-
-<ExampleLink component="input-range" />

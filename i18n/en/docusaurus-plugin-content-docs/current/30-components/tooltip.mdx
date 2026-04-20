@@ -8,47 +8,154 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Tooltip
 
-
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyms: Inline dialog, popover
+**Synonyms:** Inline dialog, popover
 
-<kol-alert _type="info" _variant="card">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
+**Description:** The **Tooltip** component shows contextual information when users hover over or focus a reference element. It acts as the visual counterpart of an aria label and is intended only for sighted users without screen reader support. The component is primarily an internal KoliBri component and is marked as deprecated.
 
-The **Tooltip** component implements the counterpart of the `Aria label`. It is therefore explicitly intended only to show the label of an element to the user without a screen reader.
+<kol-alert _type="info" _variant="card">
+  The **Tooltip** component is used internally in KoliBri and is only truly accessible when a reference element points to the tooltip. It is not intended for direct use in application development.
+</kol-alert>
 
-An open tooltip can be closed with the 'Escape' key in order to make any overlaid page information visible again.
+<kol-alert _type="warning" _variant="card">
+  The component is marked as deprecated in the source code and is planned for removal in a future major release.
+</kol-alert>
 
-**Note:** In order for the tooltip to align correctly, the reference element must not have `display: inline`.
+## Example
+
+The tooltip is displayed when the reference element is hovered or focused:
+
+```html
+<div style="display: flex; gap: 1rem;">
+  <button aria-label="Home page">
+    <kol-icon _icon="codicon codicon-home"></kol-icon>
+    <kol-tooltip>Go to the home page</kol-tooltip>
+  </button>
+</div>
+```
 
 ## Accessibility
 
-The tooltip component is displayed when the focus is on or when the mouse is moved over the reference element and is intended exclusively for the sighted user to be able to read the label (Aria label) without a screen reader. The text of the tooltip cannot be accessed with the keyboard and is also hidden from screen readers using Aria-Hidden.
+- **Hidden from screen readers**: The tooltip text is hidden from screen readers via `aria-hidden`. The accessible name must already be present on the reference element.
+- **Sighted users only**: The tooltip is a visual supplement and must not replace meaningful labels or announcements.
+- **Not keyboard-focusable itself**: The tooltip content is not directly reachable with the keyboard, but appears together with focus on the reference element.
+- **Accessibility testing**: Tooltips can be ignored in testing as long as the same information is exposed by the reference element for assistive technology.
 
 <kol-alert _type="info">
-From an accessibility testing perspective, tooltips can be ignored as long as development also ensures that the tooltip text is read out in the same way by the screen reader.
+  From an accessibility testing perspective, tooltips can be ignored as long as development also ensures that the tooltip text is conveyed by the reference element for screen reader users.
 </kol-alert>
 
-## Width
+### Links and references
 
-The width of the tooltip usually depends on its content.
-To configure the width of a tooltip, a [CSS-Custom-Property](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) can be defined on the surrounding container as follows:
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank" _label="Tollwerk - Tooltips and toggletips"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/" _target="_blank" _label="WAI-ARIA APG - Tooltip pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/text-alternatives.html" _target="_blank" _label="WCAG 2.1 - Text alternatives"></kol-link>
 
-```css
-.container {
-  --kol-tooltip-width': '40rem';
-}
+## Usage
+
+### Keyboard interaction
+
+| Key      | Function                                                                 |
+| -------- | ------------------------------------------------------------------------ |
+| `Escape` | Closes the tooltip so overlaid page information becomes visible again.   |
+| `Tab`    | Focuses the reference element; the tooltip is then displayed.            |
+
+### Best practices
+
+- **Keep text short**: Tooltips should contain only a few words or one short sentence.
+- **Use a block-capable reference element**: The reference element must not use `display: inline`; use `block`, `inline-block`, `flex`, `grid`, or a similar layout context.
+- **Provide an accessible name**: The reference element must already have an aria label or equivalent accessible naming.
+- **Do not put critical information in tooltips**: Important legal, security, or workflow-relevant information must remain visible to all users.
+- **Stay consistent**: Consistent placement, timing, and visual style improve usability.
+
+### Use cases
+
+- Icon buttons with an additional visible label
+- Contextual hints next to form fields
+- Supplemental explanations for compact UI elements
+- Quick orientation hints on hover
+
+### FAQ
+
+**Can I use a tooltip for information that all users must perceive?**  
+No. Use a component such as `kol-popover-button` or another accessible disclosure pattern instead.
+
+**Does the reference element need to be present on the client?**  
+Yes. The tooltip is positioned relative to its reference element in the DOM.
+
+**Can I place HTML content inside the tooltip?**  
+Yes, via the slot, but keep the content minimal. Tooltips are meant for short, simple text.
+
+## Construction / Technical
+
+### Playground
+
+Example of tooltip usage inside button elements:
+
+```html
+<div style="display: flex; gap: 1rem;">
+  <button aria-label="Open settings">
+    <kol-icon _icon="codicon codicon-settings"></kol-icon>
+    <kol-tooltip>Settings</kol-tooltip>
+  </button>
+  <button aria-label="Show help">
+    <kol-icon _icon="codicon codicon-info"></kol-icon>
+    <kol-tooltip>Help</kol-tooltip>
+  </button>
+</div>
 ```
 
-## Known issues
+### Features with code
 
-When using CSS `contain: layout` within the tooltip element, the positioning may be incorrect. The cause is a <kol-link _href="https://github.com/floating-ui/floating-ui/issues/3067" _target="_blank">Bug in floating-ui</kol-link>, which was documented in <kol-link _href="https://github.com/public-ui/kolibri/pull/8062" _target="_blank">PR #8062</kol-link>.
+#### Configure width
 
-**Workaround:** Do not put `contain: layout` directly on the tooltip. Instead, the property should only be used where container queries are needed.
+Tooltip width normally follows its content. To configure the width, define a CSS custom property on the surrounding container:
 
-**Outlook:** In the long term, the native <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor" _target="_blank">`anchor()` function</kol-link> could be used instead of `floating-ui`. This is currently only available in Chrome; `floating-ui` is still required for Firefox and Safari.
+```html
+<div style="--kol-tooltip-width: 15rem;">
+  <button aria-label="Description">
+    <kol-icon _icon="codicon codicon-info"></kol-icon>
+    <kol-tooltip>This is a longer tooltip text that wraps across multiple lines when space is limited.</kol-tooltip>
+  </button>
+</div>
+```
 
-## Links and references
+#### Different reference elements
 
-- <kol-link _href="https://tollwerk.de/projekte/tipps-technik-inklusiv-barrierfrei/title-tooltips-toggletips" _target="_blank"></kol-link>
+The tooltip works with different kinds of reference elements:
+
+```html
+<!-- With a button -->
+<button aria-label="Button with tooltip">
+  Button text
+  <kol-tooltip>Tooltip text</kol-tooltip>
+</button>
+
+<!-- With a link -->
+<a href="#" aria-label="Link with tooltip" style="display: inline-block;">
+  Link
+  <kol-tooltip>Link tooltip</kol-tooltip>
+</a>
+
+<!-- With a custom element -->
+<div role="button" aria-label="Div with tooltip" style="display: inline-block; cursor: pointer;">
+  Interactive element
+  <kol-tooltip>Element tooltip</kol-tooltip>
+</div>
+```
+
+### Known issues and workarounds
+
+#### CSS `contain: layout` can break positioning
+
+When CSS `contain: layout` is used within or on the tooltip element, positioning may become incorrect. This is a <kol-link _href="https://github.com/floating-ui/floating-ui/issues/3067" _target="_blank" _label="known floating-ui bug"></kol-link> documented in <kol-link _href="https://github.com/public-ui/kolibri/pull/8062" _target="_blank" _label="PR #8062"></kol-link>.
+
+**Workaround:** Do not apply `contain: layout` directly to the tooltip. Use it only where it is needed for container queries.
+
+**Outlook:** In the long term, the native <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor" _target="_blank" _label="anchor() function"></kol-link> could replace `floating-ui`. At the moment it is only available in Chrome, so `floating-ui` is still required for Firefox and Safari.
+
+#### Inline display on the reference element
+
+The reference element must not use `display: inline`. Use at least `display: inline-block` or another block-like layout context, otherwise the tooltip cannot be positioned correctly.

@@ -39,6 +39,8 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 |---------------|:-----------------:|
 | `onClick` | `_value` property |
 | `onMouseDown` | - |
+| `onFocus` | - |
+| `onBlur` | - |
 
 ### Example
 
@@ -107,6 +109,17 @@ Problems with Disabled status
 
 - Display contrasts
 - Possibility of user feedback
+
+### ARIA properties
+
+The button supports the following ARIA attributes:
+
+| Property | Description |
+| --- | --- |
+| `_ariaControls` | Defines which elements are controlled by this button (`aria-controls`). |
+| `_ariaDescription` | Sets the `aria-description` attribute for an extended description read by screen readers. |
+| `_ariaExpanded` | Indicates whether the button controls an expanded element (`aria-expanded`). |
+| `_ariaSelected` | Indicates whether the interactive element is selected, e.g. for `role="tab"` (`aria-selected`). |
 
 ### Keyboard controls
 

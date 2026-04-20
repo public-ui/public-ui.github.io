@@ -28,8 +28,7 @@ const PopoverButtonPreview: React.FC<PopoverButtonPreviewComponentProps> = (prop
 		<Preview<PopoverButtonPreviewProps>
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_popoverAlign: <AlignProperty label="Popover Align" defaultValue="bottom" />,
-				_variant: <ButtonVariantProperty label="Variant" defaultValue="normal" />,
+				_popoverAlign: <AlignProperty label="Popover Align" defaultValue="bottom" />, _tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />, _variant: <ButtonVariantProperty label="Variant" defaultValue="normal" />,
 				_icons: <IconsProperty label="Icons" />,
 				_slot: <MultiLineTextProperty label="Content" />,
 				_disabled: <BooleanProperty label="Disabled" />,

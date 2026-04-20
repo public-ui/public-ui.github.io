@@ -233,7 +233,7 @@ Die Komponente unterstützt verschiedene Zustände:
 <kol-link-button
 	_href="https://example.com"
 	_label="Mit verstecktem Label"
-	_hideLabel
+	_hide-label
 >
 </kol-link-button>
 ```
@@ -246,14 +246,14 @@ Zusätzliche Accessibility-Informationen:
 <kol-link-button
 	_href="https://example.com"
 	_label="Aktuelle Seite"
-	_ariaCurrentValue="page"
+	_aria-current-value="page"
 >
 </kol-link-button>
 
 <kol-link-button
 	_href="https://example.com"
 	_label="Mit Beschreibung"
-	_ariaDescription="Navigiert zur Dokumentation"
+	_aria-description="Navigiert zur Dokumentation"
 >
 </kol-link-button>
 ```
@@ -266,7 +266,7 @@ Anzeige von Tastaturkürzeln:
 <kol-link-button
 	_href="https://example.com"
 	_label="Startseite"
-	_shortKey="H"
+	_short-key="H"
 >
 </kol-link-button>
 ```
@@ -275,9 +275,9 @@ Anzeige von Tastaturkürzeln:
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event   | Auslöser                | Value   |
-| ------- | ----------------------- | ------- |
-| `click` | Element wird angeklickt | -       |
+| Event   | Auslöser                | Value         |
+| ------- | ----------------------- | ------------- |
+| `click` | Element wird angeklickt | `_href`-Wert  |
 
 ## API
 

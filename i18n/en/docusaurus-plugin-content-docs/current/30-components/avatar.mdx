@@ -4,8 +4,7 @@ description: Description, specification and examples for the Avatar component.
 ---
 
 import Readme from '/readmes/avatar/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import AvatarPreview from '@site/src/components/previews/components/Avatar';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
@@ -16,54 +15,113 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyms: Persona
+**Synonyms:** Persona, Profile Picture, User Avatar
 
-The **Avatar** component displays either a small image of the user or their initials if no image is available.
+**Description:** The **Avatar** component displays either a small image of a user or their initials if no image is available. It is typically used in user profiles, comment sections, or user listings to enable quick visual identification.
 
-## Construction
+## Example
 
-### Code
+Standard view of the component. Code can be shown.
 
-```html
-<kol-avatar _label="Erika Maria Mustermann"></kol-avatar>
-<kol-avatar _label="Erika"></kol-avatar>
-<kol-avatar _src="https://www.w3schools.com/howto/img_avatar.png" _label="Erika Maria Mustermann"></kol-avatar>
-```
-
-### Examples
-
-<kol-avatar _label="Erika Maria Mustermann"></kol-avatar>
-<kol-avatar _label="Erika"></kol-avatar>
-<kol-avatar _src="https://www.w3schools.com/howto/img_avatar.png" _label="Erika Maria Mustermann"></kol-avatar>
-
-## Usage
-
-### With picture
-
-In the default view, the **Avatar** component displays an avatar image. To do this, the `_src` attribute must be specified with a URL to the image.
-Additionally, it is necessary to specify the `_label` attribute with the user's name so that alternative text can be marked.
-
-### Without picture
-
-The **Avatar** component can also be used without the `_src` attribute and in this case will show the user's initials based on the
-`_label` attribute.
-
-### Use cases
-
-Use the **Avatar** component to display a user's image.
+<AvatarPreview
+	visibleProperties={[]}
+	initialProps={{ _label: 'Max Mustermann' }}
+	codeCollapsable
+/>
 
 ## Accessibility
 
-For the **Avatar** component, the following accessibility points were particularly considered:
+- **Semantic Name**: The component is labeled with the `_label` attribute, which contains the user's name and is read by screen readers.
+- **Familiar Initials**: If no image is available, initials are automatically generated from the `_label` and displayed as a visual element.
+- **Initials Hidden**: The automatically generated initials are purely visual and are intentionally hidden from assistive technologies, since the semantic information is already available via `_label`.
 
-- The component is labeled as an aria label with a description text that includes the user's name.
-- The initials shown as an alternative to the avatar image are considered a purely visual, semantically irrelevant element and for screen readers
-hidden accordingly.
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html" _target="_blank" _label="WCAG 2.1 - Non-Text Content"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role" _target="_blank" _label="MDN - ARIA: img role"></kol-link>
+
+## Usage
+
+### Best Practices / Recommendations
+
+- **Set label with real name**: Always use the `_label` attribute with the user's real name or a meaningful description. This is essential for accessibility and user comprehension.
+- **Consistent colors**: Use the `_color` attribute to distinguish different users by color. This improves visual readability and recognition.
+- **Fallback to initials**: If user images are not always available, rely on automatic initials display as a fallback.
+- **Size compatibility**: The component is suitable for various contexts – from compact lists to larger profile views.
+
+### Use Cases
+
+- User profiles and account information
+- Comment sections and discussion forums
+- User lists and team areas
+- Chat applications and messaging systems
+- Sharing permissions and collaboration features
+- Activity feeds with user information
+
+## Construction / Technical
+
+### Playground
+
+Test the various properties of the Avatar component:
+
+<AvatarPreview
+	visibleProperties={['_label', '_src', '_color']}
+	initialProps={{ _label: 'Max Mustermann', _color: '#5A5FEE' }}
+	codeCollapsable
+/>
+
+### Functionalities
+
+#### Standalone Avatar with Initials
+
+Display of the component without an image – initials are automatically generated from the name:
+
+<AvatarPreview
+	visibleProperties={['_label']}
+	initialProps={{ _label: 'Anna Schmidt' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Avatar with Image
+
+Display of an avatar image via the `_src` attribute:
+
+<AvatarPreview
+	visibleProperties={['_src']}
+	initialProps={{
+		_label: 'The image shown is a standard avatar from Font Awesome',
+		_src: 'https://gravatar.com/avatar/12345?d=mp&s=256',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Colored Initials
+
+Using the `_color` attribute to distinguish users by color. The attribute accepts either a simple color value or an object with separate background and foreground colors:
+
+<AvatarPreview
+	visibleProperties={['_color']}
+	initialProps={{ _label: 'Peter Meyer', _color: '#FF6B6B' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Avatar with Separate Colors
+
+Precise control over background and foreground color:
+
+<AvatarPreview
+	visibleProperties={['_color']}
+	initialProps={{
+		_label: 'Julia Wolf',
+		_color: { backgroundColor: '#4ECDC4', foregroundColor: '#FFFFFF' },
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## API
 
 <Readme />
-
-<ExampleLink component="avatar" />
-
-## Live editor
-
-<LiveEditorCompact component="avatar" />

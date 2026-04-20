@@ -4,129 +4,177 @@ description: Description, specification and examples for the TableStateful compo
 ---
 
 import Readme from '/readmes/table-stateful/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import TableStatefulPreview from '@site/src/components/previews/components/TableStateful';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
-Synonyms: Data Table, Details List, Data Grid
+# TableStateful
 
-The **TableStateful** component is primarily used to clearly display datasets. It is designed in such a way that it automatically determines all values ​​dependent on the data and displays the table accordingly. These include, for example, the optional column sorting or pagination functions.
+<BetaDocsBanner />
+<UntestedBanner />
 
-<kol-indented-text _summary="Backend-seitige Pagination">
-For very large amounts of data, manual use of the TableStateless component is also possible. This means that the table is filled “manually” page by page. To do this, you can simply use a “own” pagination under the table using the pagination component instead of the table pagination. A possible sorting must also be implemented via the `onSort` events themselves. See <kol-link _href="table-stateless" _label="KolTableStateless" />.
-</kol-indented-text>
+**Synonyms:** Data Table, Data Representation, Details List
 
-## Construction
+**Description:** The **TableStateful** component is used for the structured and clear presentation of datasets. It automatically determines all data-related values (such as sorting or pagination) and updates the table view accordingly. This makes it ideal for presenting larger datasets where interactive features such as column sorting or pagination are required.
 
-<TableStatefulPreview codeCollapsable codeCollapsed />
+## Example
 
-### Events
+Display of a simple data table with automatic functionalities:
 
-For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+<TableStatefulPreview
+	codeCollapsable
+	codeCollapsed
+	visibleProperties={[]}
+	initialProps={{}}
+/>
 
-| Event | trigger | Value |
-|-------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------|
-| `selectionChange` | The selection of table rows has changed | Array of selected row objects or row object with single selection |
-| `settingsChange` | The table settings were changed by the user. | Object of type `TableSettings` |
+## Accessibility
 
-### Functionalities
+The **TableStateful** component automatically implements a complete accessibility structure:
 
-The Table component supports the following functionalities:
+- **Automatic ARIA attributes**: The component automatically manages `role`, `scope` and `aria-*` attributes for optimal screen reader support.
+- **Column headings**: Headings automatically receive the role `colheader` or `rowheader`, depending on context.
+- **Scope management**: The scope is automatically set to `col`, `colgroup`, `row` or `rowgroup` to semantically describe the table structure correctly.
+- **Focusable region**: The table has a tabindex so that it is recognized as a focusable region (scrollable regions should be focusable).
+- **Label requirement**: The `_label` attribute defines the semantic or visible label of the table and is transmitted to screen readers.
 
-- Table description using a **`label`** attribute.
-- Multi-line column headings in horizontal or vertical direction.
-- Sorting function for either horizontal and vertical orientation.
-- Different rendering function for the cells.
-- Pagination for the table.
+### Links and references
 
-The Table component **does not** support the following functionalities:
-
-- Filtering the table is currently not provided within the table.
-- Selecting rows is currently not provided in the table.
-
-> However, both could be implemented using the render function.
-
-### Pagination
-
-A variety of additional properties to control pagination can optionally be passed via the **`_pagination`** attribute. The exact description of the options can be found on the page <kol-link _href="../pagination" _label="/docs/components/pagination" _label="Pagination"></kol-link>.
-
-#### KoliBriTableHeaders
-
-```ts
-{
-  horizontal: [
-    [
-      {
-        label: string,
-        key?: string,
-        colsSpan?: number,
-        rowSpan?: number,
-        useTdInsteadOfTh?: boolean,
-        render?: (data) => string,
-        compareFn?: (dataA, dataB) => number,
-      },
-      …
-    ],
-    …
-  ],
-  vertical: [
-    [
-      {
-        label: string,
-        key?: string,
-        colsSpan?: number,
-        rowSpan?: number,
-        useTdInsteadOfTh?: boolean,
-        render?: (data) => string,
-        compareFn?: (dataA, dataB) => number,
-      },
-      …
-    ],
-    …
-  ],
-};
-```
-
-### Code
-
-```html
-<kol-table-stateful
-	_label="Tabellenbeschreibung"
-	_headers='{"horizontal": [[{"label":"Montag","key":"montag"}]]}'
-	_pagination='[{"page":2}]'
-></kol-table-stateful>
-```
-
-### Footer
-
-By using the **`_dataFoot_`** attribute, summary information or additional details can be displayed at the end of the table. The information is tied to the column definitions.
+- <kol-link _href="https://www.w3.org/WAI/tutorials/tables/" _target="_blank" _label="WAI Web Accessibility Tutorials - Tables"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" _target="_blank" _label="WCAG 2.1 - Info and Relationships"></kol-link>
+- <kol-link _href="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable" _target="_blank" _label="Scrollable Region Focusable"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort" _target="_blank" _label="MDN - ARIA Sort"></kol-link>
 
 ## Usage
 
-### Sorting
+### Best practices / recommendations
 
-- You can define a sorting function for each header.
-- Exactly one or no sorting function is activated.
-- **Multi-Sort Functionality**: If the multi-sort option (`_allowMultiSort`) is enabled, the user can sort multiple columns at the same time. By default, this feature is disabled and only one column can be sorted at a time. The sorting switches between ascending, descending and no sorting. If multi-sort is disabled, the previous column will be unsorted whenever a new column is sorted.
-- Currently it is not supported that with two-dimensional headers, the headers of the other header page are also sorted. When requesting sorting, we recommend using only one header dimension (either horizontal or vertical).
+- **Appropriate data volume**: Use TableStateful for larger datasets. For very large datasets (> 1000 rows), consider using <kol-link _href="table-stateless" _label="TableStateless"></kol-link> with backend pagination.
+- **Number of columns**: Limit the number of columns to the essentials – too many columns affect readability.
+- **Meaningful headers**: Use concise, understandable column headings.
+- **Sorting**: Only enable sorting for columns with meaningful content (e.g., not for action columns).
+- **Use multi-sort**: The `_allowMultiSort` option allows sorting by multiple columns simultaneously – useful for complex datasets.
+- **Adjust pagination**: Choose `_pageSize` and `_pageSizeOptions` based on the usage context.
+- **Render functions**: Use render functions for complex cell representations (e.g., links, icons, custom formatting).
+- **Responsiveness**: On small screens, consider alternative representations or reduce visible columns.
 
-### Render function
+### Use cases
 
-Render functions are defined as part of the table headers. See the KoliBriTableHeaders section. If there are both horizontal and vertical headers, the render function must be defined for the _horizontal_ headers. If there are only vertical headers, the render functions can be defined there.
+- Display of product catalogs, user or transaction lists
+- Administration interfaces with sorting and filter requirements
+- Data queries with pagination for clear navigation
+- Combined display of structured data (vertical and horizontal)
+- Reports with summary rows (footer)
 
-The `render` function can be used in various ways as follows.
-All methods are also demonstrated in this example: [render-cell.tsx](https://github.com/public-ui/kolibri/blob/23ebb42d1ce3c8d1e4c74a5c7972842d5e4203fe/packages/samples/react/src/components/table/render-cell.tsx#L34)
+### FAQ
 
-1. String return value:
+**How do I use backend pagination?**
+For very large datasets, use <kol-link _href="table-stateless" _label="TableStateless"></kol-link> with manual pagination. You can fill the table page by page and implement external sorting.
 
-```tsx
+**Can I render complex content in cells?**
+Yes, via render functions in the header definitions you can display any content – strings, DOM manipulations or even React components.
+
+**Does the component support row selection?**
+The `_selection` attribute enables row selection (single or multiple). Selection changes are transmitted via the `selectionChange` event.
+
+## Construction / Technique
+
+### Playground
+
+Test all functionalities of the TableStateful component interactively:
+
+<TableStatefulPreview codeCollapsable />
+
+### Functionalities (with code)
+
+#### Label and table description
+
+The `_label` attribute defines the semantic label of the table and is used for accessibility:
+
+<TableStatefulPreview
+	visibleProperties={['_label']}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Column headings and layout
+
+Headers are defined via the `_headers` attribute. Horizontal and vertical headers with arbitrary nesting are supported:
+
+<TableStatefulPreview
+	visibleProperties={['_headers']}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Header structure:**
+- `horizontal`: Array of column headings
+- `vertical`: Array of row headings
+- Per header, properties such as `label`, `key`, `colsSpan`, `rowSpan`, `render` and `compareFn` can be defined
+
+#### Sorting
+
+The component supports automatic sorting per column via the `compareFn` function in the header definitions:
+
+<TableStatefulPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Sorting behavior:**
+- Single sort (default): Only one column is sorted at a time. When sorting a new column, the sorting of the previous one is cancelled.
+- Multi-sort with `_allowMultiSort`: The user can sort multiple columns simultaneously. The sort direction toggles between ascending, descending and no sorting.
+
+**Note on multi-dimensional headers:** When both horizontal and vertical headers are used simultaneously, it is recommended to define the render function only in the horizontal headers.
+
+#### Pagination
+
+The `_pagination` property activates automatic pagination and provides various configuration options:
+
+<TableStatefulPreview
+	visibleProperties={['_pagination']}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Configurable options:**
+- `_page`: Current page number (default: 1)
+- `_pageSize`: Rows per page
+- `_pageSizeOptions`: Available options for rows per page
+- `_max`: Maximum number of pages displayed in the control
+- Further options: see <kol-link _href="../pagination" _label="Pagination component"></kol-link>
+
+**Positioning:** With `_paginationPosition` the position of the pagination can be controlled (top, bottom, or both).
+
+#### Data and cell rendering
+
+The `_data` property contains the table rows. Cell content can be individually formatted via render functions:
+
+<TableStatefulPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Render functions – implementation variants:**
+
+1. **String return value:**
+
+```jsx
 {
   render: (_el, cell) => `Index: ${cell.label}`,
 }
 ```
 
-2. Fill node with textContent
+2. **DOM manipulation with textContent:**
 
-```tsx
+```jsx
 {
   render: (el, cell) => {
     el.textContent = `Index: ${cell.label}`;
@@ -134,9 +182,9 @@ All methods are also demonstrated in this example: [render-cell.tsx](https://git
 }
 ```
 
-3. Fill node with innerHTML - ⚠️ Make sure to sanitize values ​​to avoid XXS.
+3. **innerHTML (⚠️ Sanitization required!):**
 
-```tsx
+```jsx
 {
   render: (el, cell) => {
     el.innerHTML = `<strong>${cell.label}</strong>`;
@@ -144,17 +192,10 @@ All methods are also demonstrated in this example: [render-cell.tsx](https://git
 }
 ```
 
-4. Use React render function
+4. **React components (with createReactRenderElement):**
 
-```tsx
+```jsx
 import { createReactRenderElement } from '@public-ui/react-v19';
-import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
-import UntestedBanner from '@site/src/components/UntestedBanner';
-
-
-<BetaDocsBanner />
-<UntestedBanner />
-
 {
   render: (el) => {
     getRoot(createReactRenderElement(el)).render(
@@ -167,39 +208,65 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 }
 ```
 
-### Settings
+#### Table footer
 
-Table settings (`_table-settings`) are passed through to the kol-table-stateless component. See <kol-link _href="table-stateless#settings" _label="kol-table-stateless documentation" />.
+The `_dataFoot` attribute enables summary rows or additional information at the end of the table:
 
-<!--### Best practices
+<TableStatefulPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-### Use cases-->
+#### Row selection
 
-## Accessibility
+The `_selection` attribute activates row selection (single or multiple). Selection changes are transmitted via the `selectionChange` event:
 
-The Table component adds numerous attribute definitions to the table markup to best support screen readers.
+<TableStatefulPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-The following attributes are currently managed by the component: `role`, `scope` and `aria-\*`.
+**Configurable options:**
+- `multiple`: Single selection (default) or multiple selection
+- `label`: Function for generating labels for each row
+- `selectedKeys`: Currently selected row identifiers
+- `keyPropertyName`: Property name for identifying rows (e.g., `id`)
 
-This means, for example, that either the `colheader` or `rowheader` role is automatically set for the column headings. In addition, the scope is set to either `col`/`colgroup` or `row`/`rowgroup`. Similar to these automatisms, the `aria-\*` attributes are also set depending on relevance.
+#### Settings menu
 
-Why the table has a **tab index** is described on the following website: <kol-link _href="" _label=""></kol-link>https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
+With `_hasSettingsMenu`, a menu is activated through which users can adjust table settings (e.g., visible columns):
 
-## Links and references
+<TableStatefulPreview
+	visibleProperties={['_hasSettingsMenu']}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-- <kol-link _href="https://www.w3.org/WAI/tutorials/tables/" _target="_blank"></kol-link>
-- <kol-link _href="https://www.sperrfreies-webdesign.de/knowhow/datentafeln/scope.html" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/ARIA_Live_Regions" _target="_blank"></kol-link>
-- <kol-link _href="https://tollwerk.de/projekte/tipps-technik-inklusiv-barrierfrei/aria-live-regionen" _target="_blank"></kol-link>
-- <kol-link _href="https://www.sperrfreies-webdesign.de/knowhow/live-regions/attribute.html" _target="_blank"></kol-link>
-- <kol-link _href="https://www.digitala11y.com/aria-sort-properties/" _target="_blank"></kol-link>
-- <kol-link _href="https://dequeuniversity.com/library/aria/table-sortable" _target="_blank"></kol-link>
-- <kol-link _href="https://www.maxability.co.in/2016/06/07/aria-sort-property/" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort" _target="_blank"></kol-link>
-- <kol-link _href="https://tollwerk.de/projekte/tipps-technik-inklusiv-barrierfrei/aria-live-regionen" _target="_blank"></kol-link>
-- <kol-link _href="https://stackoverflow.com/questions/1312236/" _target="_blank"></kol-link>
-- <kol-link _href="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable" _target="_blank"></kol-link>
+#### Fixed columns
+
+The `_fixedCols` attribute defines columns that remain visible during horizontal scrolling – specified as `[start, end]`:
+
+<TableStatefulPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | Trigger | Value |
+| ----- | ------- | ----- |
+| `selectionChange` | The selection of table rows has changed | Array of selected rows (or single row for single selection) |
+| `settingsChange` | Table settings were changed by the user | Object of type `TableSettings` |
+
+## API
 
 <Readme />
-
-<ExampleLink component="table-stateful" />

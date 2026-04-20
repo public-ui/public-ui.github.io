@@ -19,7 +19,26 @@ const TreePreview: React.FC<TreePreviewComponentProps> = (props) => {
 	const defaultProps = React.useMemo<TreePreviewProps>(
 		() => ({
 			_label: translate({ id: 'preview.component.tree.label' }),
-			_items: [],
+			_items: [
+				{
+					_label: 'Home',
+					_href: '#/',
+					_active: true,
+				},
+				{
+					_label: 'Page 1',
+					_href: '#/page-1',
+					_open: true,
+					_children: [
+						{ _label: 'Page 1.1', _href: '#/page-1/1' },
+						{ _label: 'Page 1.2', _href: '#/page-1/2' },
+					],
+				},
+				{
+					_label: 'Page 2',
+					_href: '#/page-2',
+				},
+			],
 		}),
 		[],
 	);

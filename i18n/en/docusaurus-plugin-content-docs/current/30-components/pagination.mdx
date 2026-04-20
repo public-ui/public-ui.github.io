@@ -41,9 +41,10 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 The **Pagination** component can be configured via your properties.
 
 - The **`_max`** attribute determines the total number of elements.
-- The **`boundary-count`** attribute determines the number of elements that are displayed on the right and left in the **Pagination** component, while the remaining elements
+- The **`_boundaryCount`** attribute determines the number of elements that are displayed on the right and left in the **Pagination** component, while the remaining elements are hidden.
 - The **`_page`** attribute sets the currently active element. This is highlighted in color.
-- The **`_sibling-count`** attribute can be used to determine how many elements should be displayed to the left and right of the current one.
+- The **`_siblingCount`** attribute can be used to determine how many elements should be displayed to the left and right of the current one.
+- The **`_label`** attribute provides an optional label that communicates the purpose of the pagination to screen reader users.
 
 <!-- ### Best practices -->
 
@@ -52,7 +53,7 @@ The **Pagination** component can be configured via your properties.
 The **Pagination** component can be used in a variety of ways. Especially where extensive content is to be displayed on a content page, it helps to improve the structure and clarity.
 Classic areas of application for pagination include blog-like content, lists and tables. Pagination can also be used for certain navigation tasks within a page.
 
-# API
+## API
 
 <Readme />
 

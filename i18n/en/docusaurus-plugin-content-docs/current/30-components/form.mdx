@@ -4,7 +4,6 @@ description: Description, specification and examples for the Form component.
 ---
 
 import Readme from '/readmes/form/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
 import FormPreview from '@site/src/components/previews/components/Form';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
@@ -16,16 +15,97 @@ import UntestedBanner from '@site/src/components/UntestedBanner';
 <BetaDocsBanner />
 <UntestedBanner />
 
-The **Form** component is used to enclose all input fields, to correctly position the information text for mandatory fields and to forward the `submit` and `reset` events.
+**Synonyms:** Form element wrapper, Input field container, Form framework
 
-## Construction
+**Description:** The **Form** component is a dedicated container that semantically wraps all input fields. It ensures that mandatory field hint texts are correctly positioned, forwards browser events (`submit` and `reset`), and enables structured error handling with focus management for accessibility.
 
-<FormPreview visibleProperties={['_requiredText']} codeCollapsable codeCollapsed />
+## Example
 
-# API
+Standard form with input fields and buttons:
+
+<FormPreview
+	visibleProperties={[]}
+	initialProps={{ _requiredText: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## Accessibility
+
+The **Form** component supports accessible form structures according to modern standards:
+
+- **Semantic structure**: The use of the native `<form>` element ensures that screen readers recognise the form as such.
+- **Mandatory field hint**: With `_requiredText`, a globally visible hint about mandatory fields is displayed that can be interpreted by assistive technologies.
+- **Error handling**: The `_errorList` property enables structured error output, which can be navigated to using the `focusErrorList()` method – ideal for accessibility.
+- **Event forwarding**: The component correctly forwards native `submit` and `reset` events, which is necessary for frameworks and validation libraries.
+- **Focus management**: The `focusErrorList()` method allows keyboard and screen reader users to navigate directly to errors.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/TUTORIALS/forms/" _target="_blank" _label="WAI-ARIA Authoring Practices - Forms"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form" _target="_blank" _label="MDN Web Docs - form Element"></kol-link>
+
+## Usage
+
+### Best Practices / Recommendations
+
+- **Include all input fields**: Wrap every related set of input fields with a Form component.
+- **Mark mandatory fields**: Use `_requiredText` to make clear which fields are required.
+- **Handle errors structurally**: Set `_errorList` with objects containing a message and a selector, and use `focusErrorList()` to navigate users to erroneous fields.
+- **Submit and Reset Events**: For simplicity, use the standard button types `submit` and `reset` and handle form events via the `_on` callbacks.
+- **Do not nest**: Forms should not be nested. If multiple form areas are necessary, use `<fieldset>` and `<legend>` for structuring within a single Form.
+- **With responsive layout**: The Form itself has no size – it adapts to its container. Use CSS Grid or Flexbox for the inner layout.
+
+### Use Cases
+
+- **Contact forms**: Collecting name, email, and message with validation
+- **Registration and login**: Secure collection of access data
+- **Data records**: Editing multiple fields for a record with save/cancel actions
+- **Search forms**: Structured input of search parameters
+- **Settings and configuration**: Capturing and saving preferences
+
+## Construction / Technic
+
+### Playground
+
+Test the Form with various configurations:
+
+<FormPreview codeCollapsable />
+
+### Functionalities (with Code)
+
+#### Mandatory Field Hint
+
+The text for mandatory field hints is controlled via `_requiredText`:
+
+<FormPreview
+	visibleProperties={['_requiredText']}
+	initialProps={{ _requiredText: true }}
+	codeCollapsable
+/>
+
+With `_requiredText="false"` the hint is hidden. With a custom string the default text can be overridden:
+
+<FormPreview
+	visibleProperties={['_requiredText']}
+	initialProps={{ _requiredText: 'Fields marked with * are required' }}
+	codeCollapsable
+/>
+
+#### Event Handling
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+The Form component forwards the following events:
+
+| Event    | Trigger                  | Value                     |
+| -------- | ------------------------ | ------------------------- |
+| `submit` | Submit button is clicked | The native `submit` event |
+| `reset`  | Reset button is clicked  | The native `reset` event  |
+
+Callbacks are registered via the `_on` property and allow, for example, processing form data before submission or resetting the form state.
+
+## API
 
 <Readme />
-
-## Examples
-
-<ExampleLink component="form" />

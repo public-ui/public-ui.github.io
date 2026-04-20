@@ -4,105 +4,172 @@ description: Description, specification and examples for the InputRadio componen
 ---
 
 import Readme from '/readmes/input-radio/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 import InputRadioPreview from '@site/src/components/previews/components/InputRadio';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import UntestedBanner from '@site/src/components/UntestedBanner';
 
-
 # InputRadio
-
 
 <BetaDocsBanner />
 <UntestedBanner />
 
-Synonyms: Choice Group, Radio Buttons
+**Synonyms:** Choice Group, Radio Buttons, Selection Group
 
-The **InputRadio** component consists of a collection of radio elements and thus represents a choice between different values. Only a single value can be selected at a time. Selected radio elements are usually displayed with a filled and visually highlighted circle.
+**Description:** The **InputRadio** component consists of a collection of radio elements and represents a choice between different values. Only a single value can be selected at a time.
 
-<kol-alert _alert _heading="Hinweis" _level="1" _type="info">
-The input radio is used to display a selection option where at least and a maximum of one selection can be made. This means that an input radio cannot occur individually. Because of this, we implemented the component as a list component.
-</kol-alert><br/>
+## Example
 
-## Construction
+Simple radio selection group with three options:
 
 <InputRadioPreview
-	visibleProperties={['_label', '_options', '_orientation', '_disabled']}
+	visibleProperties={[]}
+	initialProps={{
+		_label: 'Salutation',
+		_options: [
+			{ label: 'Mr.', value: 'male' },
+			{ label: 'Ms.', value: 'female' },
+			{ label: 'Company', value: 'company' },
+		],
+	}}
+	codeCollapsable
+/>
+
+## Accessibility
+
+- **Grouped radio elements:** The component groups multiple radio elements into a selection group. Only one option can be selected at a time.
+- **Label required:** Every InputRadio component must have a description via the `_label` attribute that clarifies the purpose of the selection group.
+- **Keyboard control:** All radio elements are fully operable via keyboard. After focusing the group, navigation between options is possible.
+- **Focus management:** The component clearly marks the currently focused element and supports intuitive navigation with arrow keys.
+- **Hint texts:** Using `_hint`, additional information can be provided that is read by screen readers.
+- **Error messages:** Validation errors can be communicated meaningfully via `_msg`. The `_hideMsg` property hides the error message visually while keeping it in the DOM for screen readers.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/radio-group/" _target="_blank" _label="WAI-ARIA Radio Group APG Pattern"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio" _target="_blank" _label="MDN Web Docs - Input Type Radio"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+
+## Usage
+
+### Keyboard Controls
+
+| Key               | Function                                                                                 |
+| ----------------- | ---------------------------------------------------------------------------------------- |
+| `Tab`             | Focuses the radio selection group.                                                       |
+| `Shift + Tab`     | Switches to the previous interactive element.                                            |
+| `Arrow keys ↑↓`   | Navigates between radio options in the group.                                            |
+| `Arrow keys ←→`   | Navigates horizontally between radio options (when orientation is "horizontal").         |
+| `Space` / `Enter` | Selects the currently focused radio option.                                              |
+
+### Best Practices / Recommendations
+
+- **Descriptive labels:** Use a clear, concise label for the selection group that clearly indicates its purpose (e.g., "Salutation", "Gender").
+- **Sensible options:** Limit the number of radio options to 3–7 choices. For many options, a <kol-link _href="../components/select" _label="Select component"></kol-link> is better suited.
+- **Descriptive option labels:** Each radio option should have an understandable label with a concise description.
+- **Default value:** Pre-select a sensible default value to support user guidance.
+- **Consider orientation:** Use `_orientation="vertical"` for more options and easier list scanning. `_orientation="horizontal"` saves space for fewer options.
+- **Form integration:** Set `_name` correctly so form data is sent when the form is submitted.
+- **Hint texts:** Provide additional explanations via `_hint` when the options are not self-explanatory.
+- **Avoid disabling:** Avoid disabling radio elements without explanation – use <kol-link _href="../components/combobox" _label="Combobox"></kol-link> or other components for dynamic filtering instead.
+
+### Use Cases
+
+- Selecting a salutation or gender
+- Choosing between payment methods (credit card, bank transfer, PayPal)
+- Selecting shipping options (express, standard, economy)
+- Answering single-choice questions in surveys
+- Business type selection during registration (private person, company)
+- Priority levels in ticketing systems
+
+## Construction / Technical Details
+
+### Playground
+
+Test the various properties of the InputRadio component:
+
+<InputRadioPreview
+	visibleProperties={['_label', '_options', '_orientation', '_hint', '_hideMsg', '_disabled', '_required', '_hideLabel']}
+	initialProps={{
+		_label: 'Salutation',
+		_options: [
+			{ label: 'Mr.', value: 'male' },
+			{ label: 'Ms.', value: 'female' },
+			{ label: 'Company', value: 'company' },
+		],
+	}}
+	codeCollapsable
+/>
+
+### Features (with Code)
+
+#### Basic Options and Labels
+
+The selection options are defined via `_options` as an array of objects with `label` and `value`:
+
+<InputRadioPreview
+	visibleProperties={['_label', '_options']}
+	initialProps={{
+		_label: 'Gender',
+		_options: [
+			{ label: 'Male', value: 'male' },
+			{ label: 'Female', value: 'female' },
+			{ label: 'Diverse', value: 'diverse' },
+		],
+	}}
 	codeCollapsable
 	codeCollapsed
 />
 
-## Usage
+#### Orientation
 
-The individual radio elements within the **InputRadio** component are passed as a JSON object via the **_\_options_** attribute.
+The alignment of the radio elements can be horizontal or vertical:
 
-The JSON object expects the following values ​​for each radio element:
+<InputRadioPreview
+	visibleProperties={['_orientation']}
+	initialProps={{
+		_label: 'Payment method',
+		_options: [
+			{ label: 'Credit card', value: 'card' },
+			{ label: 'Bank transfer', value: 'transfer' },
+			{ label: 'PayPal', value: 'paypal' },
+		],
+		_orientation: 'horizontal',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-**`label`** = Label of the radio element
+#### Hint Texts and Form Attributes
 
-**`value`** = Value of the radio element
+Hint texts and validation feedback can be provided via `_hint` and `_msg`:
 
-Example of creating the JSON object to define the radio elements:
+<InputRadioPreview
+	visibleProperties={['_label', '_hint', '_msg', '_hideMsg', '_disabled', '_required', '_hideLabel']}
+	initialProps={{
+		_label: 'Shipping method',
+		_hint: 'Select your preferred shipping method.',
+		_options: [
+			{ label: 'Express (1–2 days)', value: 'express' },
+			{ label: 'Standard (3–5 days)', value: 'standard' },
+			{ label: 'Economy (5–10 days)', value: 'economy' },
+		],
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-```html
-[ { label: 'Herr', value: 'Herr', }, { label: 'Frau', value: 'Frau', }, { label: 'Firma', value: 'Firma', }, ];
-```
+#### Events
 
-### Events
+For handling events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
-For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+| Event    | Trigger                      | Value                        |
+| -------- | ---------------------------- | ---------------------------- |
+| `focus`  | Radio option is focused      | —                            |
+| `blur`   | Radio option loses focus     | —                            |
+| `input`  | Option is selected           | `value` attribute of option  |
+| `change` | Option is selected           | `value` attribute of option  |
+| `click`  | Option is clicked            | —                            |
 
-| Event | trigger | Value |
-|----------|-----------------------------|-----------------------------|
-| `focus` | An option is focused | - |
-| `blur` | An option loses focus | - |
-| `input` | Option is selected | `value` attribute of option |
-| `change` | Option is selected | `value` attribute of option |
-
-### onChange
-
-<kol-alert _heading="Hinweis für Versionen <2" _type="info">event.target.value enthält die Nummer der Checkbox mit einem '-' davor.</kol-alert>
-
-```jsx
-<kol-input-radio
-	_options={[
-		{ label: 'Herr', value: 'Herr' },
-		{ label: 'Frau', value: 'Frau' },
-		{ label: 'Firma', value: 'Firma' },
-	]}
-	_on={{ onChange: (_event, value) => setValue(value) }}
-></kol-input-radio>
-```
-
-### Best practices
-
-- Make sure to set `id` and `name` correctly so that the data is sent when you submit the form.
-- At least one value is always selected. Similar to the behavior of a Select selection. (<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#selecting_a_radio_button_by_default" _target="_blank"></kol-link>)
-
-## Accessibility
-
-### Keyboard controls
-
-| button | Function |
-| -------------- | ------------------------------------------------------------------------------------------------ |
-| `Tab` | Focuses on the first radio element, but does not activate it.                                     |
-| `Empty` | Activates the first radio element after the RadioGroup has been jumped to using the Tab key. |
-| `arrow keys` | Cycles through all radio elements and activates the currently focused element.                   |
-
-## Links and references
-
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#radiobutton" _target="_blank"></kol-link>
-- <kol-link _href="https://www.w3schools.com/tags/att_input_type_radio.asp" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio" _target="_blank"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+## API
 
 <Readme />
-
-## Usage _msg
-
-<PropertyMsgUsage />
-
-# API
-
-<ExampleLink component="input-radio" />

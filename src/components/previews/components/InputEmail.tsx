@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
+import { AlignProperty, BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputEmail, KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -42,12 +42,17 @@ const InputEmailPreview = (props: InputEmailPreviewComponentProps) => {
 						]}
 					/>
 				),
+				_autoComplete: <KolInputText _label="Auto Complete" />,
 				_multiple: <BooleanProperty label="Multiple" />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_readOnly: <BooleanProperty label="Read Only" />,
 				_required: <BooleanProperty label="Required" />,
 				_hasCounter: <BooleanProperty label="Has Counter" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
+				_hideMsg: <BooleanProperty label="Hide Message" />,
+				_pattern: <KolInputText _label="Pattern" />,
+				_shortKey: <KolInputText _label="Short Key" _maxLength={1} />,
+				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
 				_touched: <BooleanProperty label="Touched" />,
 				_smartButton: <SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />,
 			}}

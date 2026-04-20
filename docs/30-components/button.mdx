@@ -163,15 +163,19 @@ Mit `_disabled` wird der Button deaktiviert:
 
 #### Weitere Eigenschaften
 
-| Eigenschaft      | Beschreibung                                                                                      |
-| --------------- | ------------------------------------------------------------------------------------------------- |
-| `_accessKey`    | Definiert die Tastenkombination zum Auslösen oder Fokussieren des Buttons                         |
-| `_tooltipAlign` | Position des Tooltips: `top` (Standard), `right`, `bottom`, `left`                               |
-| `_shortKey`     | Definiert einen visuellen Shortcut-Hinweis und liest ihn in Screenreadern vor                    |
-| `_customClass`  | Benutzerdefinierte CSS-Klasse (nur für `_variant="custom"`)                                      |
-| `_name`         | Technischer Name des Buttons im Formular                                                          |
-| `_value`        | Wert des Elements                                                                                  |
-| `_inline`       | Displaymodus ohne Mindestgröße von 44px                                                           |
+| Eigenschaft        | Beschreibung                                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------------- |
+| `_accessKey`       | Definiert die Tastenkombination zum Auslösen oder Fokussieren des Buttons                                     |
+| `_tooltipAlign`    | Position des Tooltips: `top` (Standard), `right`, `bottom`, `left`                                           |
+| `_shortKey`        | Definiert einen visuellen Shortcut-Hinweis und liest ihn in Screenreadern vor                                |
+| `_customClass`     | Benutzerdefinierte CSS-Klasse (nur für `_variant="custom"`)                                                  |
+| `_name`            | Technischer Name des Buttons im Formular                                                                      |
+| `_value`           | Wert des Elements                                                                                             |
+| `_inline`          | Displaymodus ohne Mindestgröße von 44px                                                                       |
+| `_ariaControls`    | Definiert, welche Elemente durch diesen Button gesteuert werden (`aria-controls`)                             |
+| `_ariaDescription` | Setzt das `aria-description`-Attribut für eine erweiterte Beschreibung durch Screenreader                     |
+| `_ariaExpanded`    | Gibt an, ob der Button ein erweitertes Element steuert (`aria-expanded`)                                      |
+| `_ariaSelected`    | Gibt an, ob das interaktive Element ausgewählt ist, z.B. bei `role="tab"` (`aria-selected`)                   |
 
 #### Events
 
@@ -181,6 +185,8 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | ------------- | ---------------------------------------- | ----------------- |
 | `onClick`     | Button wird angeklickt                   | `_value`-Property |
 | `onMouseDown` | Maustaste wird über dem Button gedrückt  | -                 |
+| `onFocus`     | Button erhält den Fokus                  | -                 |
+| `onBlur`      | Button verliert den Fokus                | -                 |
 
 ## API
 

@@ -25,21 +25,15 @@ The Toast components are not used directly, but are always constructed via the T
 
 ```js
 import { ToasterService } from '@public-ui/components';
-import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
-import UntestedBanner from '@site/src/components/UntestedBanner';
-
 
 // Get the toaster instance for the current HTML document.
-const toaster = ToasterService.getInstance(document, {
-	defaultVariant: 'msg', // Standard: 'card'
-});
+const toaster = ToasterService.getInstance(document);
 
 // Enqueue a new toast to the toaster to display:
 toaster.enqueue({
 	label: 'This is the title',
 	description: 'Magna eu sit adipisicing cillum amet esse in aute quis in dolore.',
 	type: 'info',
-	variant: 'msg', // Standard: 'card'
 });
 ```
 
@@ -77,20 +71,12 @@ const closeToast = toaster.enqueue({
 
 ### Toast display option
 
-In KoliBri we differentiate between three levels:
+In KoliBri we differentiate between two relevant configuration levels for toasts:
 
-- **`_type`** → defines the **semantic meaning** or logical function of a component.
-*Example*: For `kol-button`: `"button" | "submit" | "reset"`, at `kol-alert`: `"info" | "success" | "warning" | "error"`.
+- **`type`** → defines the **semantic meaning** of the message.
+  Possible values: `"default"`, `"info"`, `"success"`, `"warning"`, `"error"`.
 
-- **`_variant`** → controls the **visual appearance**, e.g. E.g. `"primary"`, `"secondary"`, `"ghost"`.
-
-- **`_behavior`** → determines the **interaction behavior** of the component.
-*Example*: For `kol-tabs`: `"select-automatic"` vs. `"select-manual"`.
-
-👉 In short:
-- `_type` = meaning & logic
-- `_variant` = Look & Styling
-- `_behavior` = interaction & behavior
+- **`variant`** → controls the **visual appearance**. **Deprecated** – the only valid and always-applied variant is `"card"`.
 
 ## API
 
@@ -108,9 +94,7 @@ Closes all toasts.
 
 **Returns**
 
-Type: `Promise<void>`
-
-#### enqueue
+Type: `void`
 
 Adds a toast to the queue.
 
@@ -118,7 +102,7 @@ Adds a toast to the queue.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| toast | \{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; variant?: "card" \| undefined; onClose?: (() => void) \| undefined; \} | The toast object to enqueue |
+| toast | \{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; variant?: "card" \| undefined (**deprecated**); onClose?: (() => void) \| undefined; \} | The toast object to enqueue |
 
 **Returns**
 

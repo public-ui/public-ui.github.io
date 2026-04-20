@@ -30,16 +30,13 @@ Grundlegende Verwendung des ToasterService zur Anzeige einer Toast-Nachricht:
 import { ToasterService } from '@public-ui/components';
 
 // Toaster-Instanz für das aktuelle HTML-Dokument abrufen
-const toaster = ToasterService.getInstance(document, {
-	defaultVariant: 'msg', // Standard: 'card'
-});
+const toaster = ToasterService.getInstance(document);
 
 // Neue Toast zur Warteschlange hinzufügen
 toaster.enqueue({
 	label: 'Dies ist der Titel',
 	description: 'Dies ist der Inhaltstext der Toast-Nachricht.',
 	type: 'info',
-	variant: 'msg',
 });
 ```
 
@@ -68,9 +65,7 @@ Der Toaster ist kein HTML-Element und wird nicht direkt verwendet. Stattdessen w
 import { ToasterService } from '@public-ui/components';
 
 // Toaster-Instanz für das aktuelle Dokument erstellen
-const toaster = ToasterService.getInstance(document, {
-	defaultVariant: 'msg', // oder 'card' als Standard-Variante
-});
+const toaster = ToasterService.getInstance(document);
 ```
 
 ### Toast hinzufügen
@@ -82,7 +77,6 @@ const closeToastFn = await toaster.enqueue({
 	label: 'Titel der Toast-Nachricht',
 	description: 'Beschreibender Text',
 	type: 'info', // 'default', 'info', 'success', 'warning', 'error'
-	variant: 'msg', // oder 'card'
 	onClose: () => {
 		console.log('Toast wurde geschlossen');
 	},
@@ -99,7 +93,7 @@ closeToastFn();
 | `label` | `string` | Ja | Titel oder Überschrift der Toast-Nachricht |
 | `description` | `string` | Nein | Beschreibender Inhaltstext der Toast-Nachricht |
 | `type` | `"default" \| "info" \| "success" \| "warning" \| "error"` | Nein | Semantische Art der Nachricht (bestimmt das Aussehen) |
-| `variant` | `"msg" \| "card"` | Nein | Visuelle Darstellung (Standard: von `defaultVariant` bestimmt) |
+| `variant` | `"card"` | Nein | **Veraltet.** Die Variante ist stets `"card"`; diese Property wird in einer zukünftigen Version entfernt. |
 | `render` | `(element: HTMLElement, { close: Function }) => void` | Nein | Alternative zu `description`: Benutzerdefinierte Render-Funktion |
 | `onClose` | `() => void` | Nein | Callback-Funktion, die aufgerufen wird, wenn die Toast geschlossen wird |
 
@@ -127,16 +121,16 @@ const closeToastFn = await toaster.enqueue({
 
 Der ToasterService bietet zusätzliche Methoden zur Verwaltung von Toasts:
 
-#### `closeAll(immediate?: boolean): Promise<void>`
+#### `closeAll(immediate?: boolean): void`
 
 Schließt alle aktuell angezeigten Toasts.
 
 ```ts
 // Alle Toasts mit Animation schließen (Standard)
-await toaster.closeAll();
+toaster.closeAll();
 
 // Alle Toasts sofort ohne Animation schließen
-await toaster.closeAll(true);
+toaster.closeAll(true);
 ```
 
 #### `dispose(): void`
@@ -155,8 +149,7 @@ In KoliBri unterscheiden wir drei Ebenen für Toast-Konfiguration:
 - **`type`** → definiert die **semantische Bedeutung** der Nachricht.
   Mögliche Werte: `"default"`, `"info"`, `"success"`, `"warning"`, `"error"`
 
-- **`variant`** → steuert das **visuelle Erscheinungsbild**.
-  Mögliche Werte: `"msg"` (Inline-Nachricht), `"card"` (Kartenformat)
+- **`variant`** → steuert das **visuelle Erscheinungsbild**. **Veraltet** – die einzig gültige und immer verwendete Variante ist `"card"`.
 
 #### Verwendungsempfehlungen nach Typ
 

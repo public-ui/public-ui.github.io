@@ -61,6 +61,10 @@ Standard-Eingabefeld mit Beschriftung:
 - Verwenden Sie `_placeholder` nur als zusätzliche Orientierung, nicht als Ersatz für das Label.
 - Nutzen Sie `_disabled` sparsam und begründen Sie deaktivierte Felder immer.
 - Bei langen Eingaben erwägen Sie stattdessen die <kol-link _href="../components/textarea" _label="Textarea-Komponente"></kol-link>.
+- Setzen Sie `_auto-complete` bewusst: Der Standard ist `'off'`. Verwenden Sie `'on'` oder einen spezifischen Token (z.B. `'email'`), wenn Browser-Autofill erwünscht ist.
+- Mit `_hide-msg` lässt sich die Fehlermeldung visuell ausblenden – sie bleibt aber im DOM und ist für Screenreader über `aria-describedby` weiterhin verfügbar.
+- Nutzen Sie `_short-key`, um einen visuellen Tastaturkürzel-Hinweis nach dem Label anzuzeigen (wird auch dem Screenreader mitgeteilt).
+- Mit `_spell-check` steuern Sie, ob der Browser die Rechtschreibprüfung für das Eingabefeld aktiviert.
 
 ### Anwendungsfälle
 
@@ -82,20 +86,6 @@ Mit `_pattern` können Sie ein reguläres Ausdruck-Muster zum Validieren der Ein
 Ja, über das Attribut `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen.
 
 ## Konstruktion / Technik
-
-- **Label erforderlich**: Jedes Eingabefeld muss über das Attribut `_label` eine Beschriftung erhalten, um Screenreader-Nutzer:innen die Feldfunktion deutlich zu machen.
-- **Tastaturnavigation**: Das Eingabefeld ist vollständig über die Tastatur bedienbar.
-- **Hinweistexte**: Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die von Screenreadern vorgelesen werden.
-- **Fehlermeldungen**: Das Attribut `_msg` ermöglicht aussagekräftige Fehlermeldungen, die von assistiven Technologien erkannt werden.
-- **Zeichenzähler**: Bei Aktivierung (`_has-counter`) wird der Zähler mit einer Verzögerung von 500 ms aktualisiert, um Screenreader nicht zu unterbrechen. Ein versteckter, nur für assistive Technologien sichtbarer Text wird eingeblendet (z.B. „Sie können bis zu 10 Zeichen eingeben").
-- **Fokusmanagement**: Klare Fokusindikatoren unterstützen visuelle und tastaturgesteuerte Navigation.
-
-### Links und Referenzen
-
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" _target="_blank" _label="MDN Web Docs - input Element"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
 
 ### Funktionalitäten (mit Code)
 
