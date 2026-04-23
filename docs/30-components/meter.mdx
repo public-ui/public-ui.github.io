@@ -42,8 +42,8 @@ Die **Meter**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 ## Best Practices / Empfehlungen
 
 - **Aussagekräftiges Label**: Verwenden Sie klare, verständliche Beschriftungen (z.B. „Auslastung", „Speicher", „Akku-Level").
-- **Sinnvolle Grenzen setzen**: Definieren Sie `_min`, `_max` und `_optimum` fachlich korrekt, um aussagekräftige Darstellungen zu erzeugen.
-- **Zustände nutzen**: Verwenden Sie die Attribute `_low`, `_high` und `_optimum`, um Bereiche zu kennzeichnen – dies hilft Nutzern, kritische Zustände schnell zu erkennen.
+- **Sinnvolle Grenzen setzen**: Definieren Sie `_min` und `_max` fachlich korrekt, um aussagekräftige Darstellungen zu erzeugen.
+- **Zustände nutzen**: Verwenden Sie die Attribute `_low`, `_high` und `_optimum`, um Bereiche zu kennzeichnen – dies hilft Nutzern, kritische Zustände schnell zu erkennen. 
 - **Eindeutige Einheit**: Setzen Sie `_unit` auf eine verständliche Maßeinheit (z.B. %, GB, °C), um Missverständnisse zu vermeiden.
 - **Kontext bereitstellen**: Ergänzen Sie die Meter-Komponente ggf. mit zusätzlichem Text, der den aktuellen Wert oder zeitliche Trends erklärt.
 - **Richtige Orientierung wählen**: Nutzen Sie `_orientation="vertical"` nur, wenn der verfügbare Platz horizontal begrenzt ist; horizontal ist die Standarddarstellung.
@@ -58,12 +58,6 @@ Die **Meter**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 
 ## Konstruktion / Technik
 
-### Playground
-
-Testen Sie die verschiedenen Eigenschaften der Meter-Komponente:
-
-<MeterPreview codeCollapsable />
-
 ### Funktionalitäten
 
 #### Grundlegende Meter mit Wertbereich
@@ -71,38 +65,34 @@ Testen Sie die verschiedenen Eigenschaften der Meter-Komponente:
 Einfache Meter-Komponente mit Minimum, Maximum und aktuellem Wert:
 
 <MeterPreview
-	visibleProperties={['_label', '_value', '_min', '_max']}
+	visibleProperties={['_label', '_value', '_min', '_max', '_unit']}
 	initialProps={{ _label: 'Speicherauslastung', _min: 0, _max: 1024, _value: 512, _unit: 'MB' }}
 	codeCollapsable
 />
 
-#### Zustände mit kritischen Grenzen
+#### Meter mit Zustandsbereichen
 
-Meter-Komponente mit definierten Bereichen (low, optimum, high) zur Zustandsanzeige:
+  - Zwischen `_min=0` und `_low=20` ist der niedrige Bereich
+  - Zwischen `_low=20` und `_high=70` ist der mittlere Bereich
+  - Zwischen `_high=70` und `_max=100` ist der hohe Bereich 
+  - `_optimum=10` legt den niedrigen Bereich als optimalen Bereich fest
+  - wenn `_value=15` => optimum => Meter Farbe grün
+  - wenn `_value=35` => suboptimum => Meter Farbe gelb
+  - wenn `_value=85` => critical => Meter Farbe rot
 
 <MeterPreview
-	visibleProperties={['_label', '_value', '_min', '_max', '_low', '_high', '_optimum']}
-	initialProps={{ _label: 'CPU-Auslastung', _min: 0, _max: 100, _value: 45, _low: 20, _optimum: 60, _high: 80, _unit: '%' }}
+	visibleProperties={['_value', '_min', '_max', '_low', '_high', '_optimum']}
+	initialProps={{ _label: 'CPU-Auslastung', _min: 0, _max: 100, _value: 15, _low: 20, _optimum: 10, _high: 70 }}
 	codeCollapsable
 />
 
-#### Vertikale Meter
+#### Vertikaler Meter
 
 Meter-Komponente mit vertikaler Ausrichtung für platzsparende Layouts:
 
 <MeterPreview
 	visibleProperties={['_label', '_value', '_min', '_max', '_orientation']}
-	initialProps={{ _label: 'Flüssigkeitsstand', _min: 0, _max: 100, _value: 75, _orientation: 'vertical', _unit: '%' }}
-	codeCollapsable
-/>
-
-#### Meter ohne Zustände
-
-Meter-Komponente ohne definierte Bereiche (`_low`, `_high`, `_optimum`):
-
-<MeterPreview
-	visibleProperties={['_label', '_value', '_min', '_max']}
-	initialProps={{ _label: 'Eingangssignal', _min: -100, _max: 100, _value: 25, _unit: 'dBm' }}
+	initialProps={{ _label: 'Flüssigkeitsstand', _min: 0, _max: 1000, _value: 650, _orientation: 'vertical', _unit: 'l' }}
 	codeCollapsable
 />
 
