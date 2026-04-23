@@ -9,6 +9,7 @@ tags:
 ---
 
 import Readme from '../../readmes/tree/readme.md';
+import TreePreview from '@site/src/components/previews/components/Tree';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Tree
@@ -17,43 +18,10 @@ Synonyme: List, Navigation
 
 Die **Tree**-Komponente stellt eine hierarchische Liste dar, in der jedes Element untergeordnete Einträge enthalten kann. Elemente mit Kindelementen lassen sich ein- oder ausklappen, um die untergeordnete Ebene anzuzeigen oder auszublenden.
 
-### Code
-
-```html
-<kol-tree _label="Sitemap">
-	<kol-tree-item _label="Home" _href="#" _active></kol-tree-item>
-	<kol-tree-item _label="Page 1" _href="#" _open>
-		<kol-tree-item _label="Subpage 1" _href="#" _open>
-			<kol-tree-item _label="Product 1" _href="#"></kol-tree-item>
-			<kol-tree-item _label="Product 2" _href="#"></kol-tree-item>
-			<kol-tree-item _label="Product 3" _href="#"></kol-tree-item>
-			<kol-tree-item _label="Product 4" _href="#"></kol-tree-item>
-		</kol-tree-item>
-		<kol-tree-item _label="Subpage 2" _href="#"></kol-tree-item>
-		<kol-tree-item _label="Subpage 3" _href="#"></kol-tree-item>
-		<kol-tree-item _label="Subpage 4" _href="#"></kol-tree-item>
-	</kol-tree-item>
-	<kol-tree-item _label="Page 2" _href="#"></kol-tree-item>
-</kol-tree>
-```
-
-### Beispiel
-
-<kol-tree _label="Sitemap">
-	<kol-tree-item _label="Home" _href="#" _active></kol-tree-item>
-	<kol-tree-item _label="Page 1" _href="#" _open>
-		<kol-tree-item _label="Subpage 1" _href="#" _open>
-			<kol-tree-item _label="Product 1" _href="#"></kol-tree-item>
-			<kol-tree-item _label="Product 2" _href="#"></kol-tree-item>
-			<kol-tree-item _label="Product 3" _href="#"></kol-tree-item>
-			<kol-tree-item _label="Product 4" _href="#"></kol-tree-item>
-		</kol-tree-item>
-		<kol-tree-item _label="Subpage 2" _href="#"></kol-tree-item>
-		<kol-tree-item _label="Subpage 3" _href="#"></kol-tree-item>
-		<kol-tree-item _label="Subpage 4" _href="#"></kol-tree-item>
-	</kol-tree-item>
-	<kol-tree-item _label="Page 2" _href="#"></kol-tree-item>
-</kol-tree>
+<TreePreview
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Verwendung
 
