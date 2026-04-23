@@ -34,7 +34,7 @@ const LinkButtonPreview = (props: LinkButtonPreviewProps) => {
                 _disabled: <BooleanProperty label="Disabled" />,
                 _hideLabel: <BooleanProperty label="Hide Label" />,
                 _download: <KolInputText _label="Download" />,
-                _accessKey: <KolInputText _label="Access Key" />,
+                _accessKey: <KolInputText _label="Access Key" _maxLength={1} />,
                 _ariaControls: <KolInputText _label="ARIA Controls" />,
                 _ariaDescription: <KolInputText _label="ARIA Description" />,
                 _customClass: <KolInputText _label="Custom Class" />,
