@@ -4,8 +4,8 @@ description: Description, specification and examples for the TableStateful compo
 ---
 
 import Readme from '/readmes/table-stateful/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import TableStatefulPreview from '@site/src/components/previews/components/TableStateful';
 
 Synonyms: Data Table, Details List, Data Grid
 
@@ -17,9 +17,7 @@ For very large amounts of data, manual use of the TableStateless component is al
 
 ## Construction
 
-The Table component is designed in such a way that the entire table structure does not have to be described in the markup itself. The component itself takes care of how exactly the table needs to be structured in a markup-specific manner in order to be barrier-free.
-
-Because the table component dynamically assembles the valid and accessible markup, the complex markup for the assistive systems can be taken away from the developer.
+<TableStatefulPreview codeCollapsable codeCollapsed />
 
 ### Events
 
@@ -98,17 +96,9 @@ A variety of additional properties to control pagination can optionally be passe
 ></kol-table-stateful>
 ```
 
-### Example
-
-<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _pagination='{"page":2}'></kol-table-stateful>
-
 ### Footer
 
 By using the **`_dataFoot_`** attribute, summary information or additional details can be displayed at the end of the table. The information is tied to the column definitions.
-
-### Example
-
-<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination, DataFoot" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _dataFoot='[{"montag":"Ruhetag"}]' _pagination='{"page":2}'></kol-table-stateful>
 
 ## Usage
 
@@ -206,7 +196,3 @@ Why the table has a **tab index** is described on the following website: <kol-li
 <Readme />
 
 <ExampleLink component="table-stateful" />
-
-## Live editor
-
-<LiveEditorCompact component="table-stateful" />
