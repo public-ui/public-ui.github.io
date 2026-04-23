@@ -3,8 +3,8 @@ title: Split-Button
 description: Description, specification and examples for the Split Button component.
 ---
 import Readme from '/readmes/split-button/readme.md';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import SplitButtonPreview from '@site/src/components/previews/components/SplitButton';
 
 # Split-Button
 
@@ -19,11 +19,11 @@ which further actions are hidden.
 
 ## Construction
 
-### Code
-
-```html
-<kol-split-button _label="Split-Button">Split-Button Popover</kol-split-button>
-```
+<SplitButtonPreview
+  visibleProperties={['_label', '_variant', '_tooltipAlign', '_icons', '_disabled', '_hideLabel', '_slot']}
+  codeCollapsable
+  codeCollapsed
+/>
 
 ### Events
 
@@ -36,14 +36,16 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 
 ### Example
 
-<kol-split-button _label="Split-Button">
-Split button popover
-</kol-split-button>
+<SplitButtonPreview
+  visibleProperties={[]}
+  codeCollapsable
+  codeCollapsed
+/>
+
+# API
 
 <Readme />
 
+## Examples
+
 <ExampleLink component="split-button" />
-
-## Live editor
-
-<LiveEditorCompact component="split-button" />

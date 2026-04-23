@@ -4,9 +4,8 @@ description: Description, specification and examples for the LinkButton componen
 ---
 
 import Readme from '/readmes/link-button/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import LinkButtonPreview from '@site/src/components/previews/components/LinkButton';
 
 # LinkButton
 
@@ -15,15 +14,11 @@ For more information about the appearance, see the <kol-link _href="../component
 
 ## Construction
 
-### Code
-
-```html
-<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
-<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
-<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
-<kol-link-button _href="#" _label="Secondary" _variant="danger"></kol-link-button>
-<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
-```
+<LinkButtonPreview
+	visibleProperties={['_label', '_href', '_variant', '_disabled']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
@@ -33,24 +28,10 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 |---------|-----------------------|------------------|
 | `click` | Element is clicked | `_href` property |
 
-### Example
-
-<div class="flex gap-2">
-	<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
-	<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
-	<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
-	<kol-link-button _href="#" _label="Danger" _variant="danger"></kol-link-button>
-	<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
-</div>
+# API
 
 <Readme />
 
-<ExampleLink component="link-button" />
-
-## Live editor
-
-<LiveEditorCompact component="link-button" />
-
 ## Examples
 
-<Configurator component="link-button" sample="basic" />
+<ExampleLink component="link-button" />

@@ -1,17 +1,11 @@
 ---
 title: LinkButton
 description: Beschreibung, Spezifikation und Beispiele für die LinkButton-Komponente.
-tags:
-  - LinkButton
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
 import Readme from '../../readmes/link-button/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import LinkButtonPreview from '@site/src/components/previews/components/LinkButton';
 
 # LinkButton
 
@@ -20,15 +14,11 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="../compon
 
 ## Konstruktion
 
-### Code
-
-```html
-<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
-<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
-<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
-<kol-link-button _href="#" _label="Secondary" _variant="danger"></kol-link-button>
-<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
-```
+<LinkButtonPreview
+	visibleProperties={['_label', '_href', '_variant', '_disabled']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
@@ -38,24 +28,10 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 |---------|-------------------------|------------------|
 | `click` | Element wird angeklickt | `_href`-Property |
 
-### Beispiel
-
-<div class="flex gap-2">
-	<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
-	<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
-	<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
-	<kol-link-button _href="#" _label="Danger" _variant="danger"></kol-link-button>
-	<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
-</div>
+# API
 
 <Readme />
 
-<ExampleLink component="link-button" />
-
-## Live-Editor
-
-<LiveEditorCompact component="link-button" />
-
 ## Beispiele
 
-<Configurator component="link-button" sample="basic" />
+<ExampleLink component="link-button" />
