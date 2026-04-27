@@ -15,7 +15,13 @@ const BreadcrumbPreview = (props: BreadcrumbPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolBreadcrumb>(
 		() => ({
 			_label: translate({ id: 'preview.component.breadcrumb.label' }),
-			_links: [],
+			_links: [
+				{ _label: 'Startseite', _href: '#/', _icons: 'kolicon-house', _hideLabel: true },
+				{ _label: 'Unterseite 1', _href: '#/page-1' },
+				{ _label: 'Unterseite 1.1', _href: '#/page-1-1' },
+				{ _label: 'Unterseite 1.1.1', _href: '#/page-1-1-1' },
+				{ _label: 'Aktuelle Seite', _href: '#/current' },
+			],
 		}),
 		[],
 	);
