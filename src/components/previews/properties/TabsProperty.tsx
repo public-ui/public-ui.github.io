@@ -12,23 +12,29 @@ const TOOLTIP_ALIGN_OPTIONS = [
     { label: 'Left', value: 'left' },
 ];
 
-const DEFAULT_TABS: TabButtonProps[] = [
-    { _label: 'Tab 1', _icons: 'kolicon-house' },
-    { _label: 'Tab 2', _disabled: true },
-    { _label: 'Tab 3' },
-    { _label: 'Tab 4' },
-    { _label: 'Tab 5' },
-];
+const MAX_TAB_COUNT = 20;
+
+const createDefaultTab = (index: number): TabButtonProps => {
+    return { _label: `Tab ${index + 1}` };
+};
+
+const buildTabs = (count: number, seedTabs: TabButtonProps[]): TabButtonProps[] => {
+    return Array.from({ length: count }, (_, index) => {
+        const seedTab = seedTabs[index];
+        return seedTab ? { ...seedTab } : createDefaultTab(index);
+    });
+};
 
 const TabsProperty = (props: {
     label: string;
+    _value?: TabButtonProps[];
     _on?: {
         onInput?: (event: Event, value: unknown) => void;
     };
 }) => {
+    const [tabCount, setTabCount] = useState(props._value?.length ?? 0);
     const [isEditing, setIsEditing] = useState(false);
-    const [tabCount, setTabCount] = useState(3);
-    const [tabs, setTabs] = useState<TabButtonProps[]>(DEFAULT_TABS);
+    const [tabs, setTabs] = useState<TabButtonProps[]>(props._value ?? []);
 
     const currentTabs = tabs.slice(0, tabCount);
 
@@ -37,8 +43,9 @@ const TabsProperty = (props: {
     }, [tabs, tabCount]);
 
     const handleCountChange = (_event: Event, value: unknown) => {
-        const count = Math.min(Math.max(Number(value) || 1, 1), DEFAULT_TABS.length);
+        const count = Math.min(Math.max(Number(value) || 1, 1), MAX_TAB_COUNT);
         setTabCount(count);
+        setTabs((prevTabs) => buildTabs(count, prevTabs));
     };
 
     const handleTabFieldChange = (index: number, field: keyof TabButtonProps, value: unknown) => {
@@ -52,7 +59,7 @@ const TabsProperty = (props: {
             <KolInputNumber
                 _label={props.label}
                 _min={1}
-                _max={DEFAULT_TABS.length}
+                _max={MAX_TAB_COUNT}
                 _value={tabCount}
                 _on={{ onInput: handleCountChange }}
             />
@@ -80,9 +87,8 @@ const TabsProperty = (props: {
                                     _label="Label"
                                     _value={tab._label}
                                     _on={{
-                                        onInput: (e: Event) => {
-                                            const target = e.target as HTMLInputElement;
-                                            handleTabFieldChange(index, '_label', target.value);
+                                        onInput: (_e: Event, value: unknown) => {
+                                            handleTabFieldChange(index, '_label', value);
                                         },
                                     }}
                                 />

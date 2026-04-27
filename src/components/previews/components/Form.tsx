@@ -32,7 +32,7 @@ const FormPreview: React.FC<FormPreviewComponentProps> = (props) => {
             layout={PreviewLayout.FULL_SIZE}
         >
             {(componentProps) => (
-                <KolForm {...componentProps} className="block w-full" style={{ width: '100%' }}>
+                <KolForm {...componentProps} className="block w-full">
                     <div className="grid w-full gap-2">
                         <KolInputText _label={translate({ id: 'preview.component.form.first-name' })} _required _name="first-name" />
                         <KolInputText _label={translate({ id: 'preview.component.form.last-name' })} _required _name="last-name" />

@@ -2,9 +2,17 @@ import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import { AlignProperty, BooleanProperty, TabBehaviorProperty } from '../properties';
 import TabsProperty from '../properties/TabsProperty';
-import type { JSX } from '@public-ui/components';
+import type { JSX, TabButtonProps } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolTabs } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+
+const DEFAULT_TABS: TabButtonProps[] = [
+    { _label: 'Tab 1', _icons: 'kolicon-house' },
+    { _label: 'Tab 2', _disabled: true },
+    { _label: 'Tab 3' },
+    { _label: 'Tab 4' },
+    { _label: 'Tab 5' },
+];
 
 interface TabsPreviewComponentProps {
     initialProps?: JSX.KolTabs;
@@ -16,7 +24,7 @@ interface TabsPreviewComponentProps {
 const TabsPreview: React.FC<TabsPreviewComponentProps> = (props) => {
     const defaultProps: JSX.KolTabs = React.useMemo(() => ({
         _label: translate({ id: 'preview.component.tabs.label' }),
-        _tabs: [],
+        _tabs: DEFAULT_TABS,
         _align: 'top',
     }), []);
 
