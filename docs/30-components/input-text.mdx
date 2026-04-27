@@ -52,6 +52,7 @@ Standard-Eingabefeld mit Beschriftung:
 | Taste   | Funktion                              |
 | ------- | ------------------------------------- |
 | `Tab`   | Fokussiert das Eingabefeld.           |
+
 ### Best Practices / Empfehlungen
 
 - Achten Sie darauf, `_id` und `_name` korrekt zu setzen, damit die Daten beim Formular-Versand mitgesendet werden.
@@ -169,7 +170,8 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 
 ##### Attribute
 
-| Attribut | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Attribut | Typ | Standard | Beschreibung |
+| ------------------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `_has-counter`         | `boolean`          | `false`  | Globaler Schalter für den Zeichenzähler. Nur wenn dieses Attribut **gesetzt (= true)** ist, wird überhaupt ein Zähler ausgegeben.                                                                                                                                                           |
 | `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
 | `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`-Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
@@ -183,7 +185,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 | 3    | `true`                | 50            | *(leer)* oder `hard`   | `n/50 Zeichen`                                             |
 | 4    | `true`                | 50            | `soft`                 | `noch 30 Zeichen verfügbar`<br />*(bzw. `5 Zeichen zu viel`)* |
 
->  Wird `_max-length-behavior="soft"` verwendet, **wird das native `maxlength`-Attribut **nicht** gesetzt** – das Eingabefeld wird also nicht hart begrenzt.
+>  Wird `_max-length-behavior="soft"` verwendet, wird das native `maxlength`-Attribut **nicht** gesetzt – das Eingabefeld wird also nicht hart begrenzt.
 
 ### Barrierefreiheit
 
