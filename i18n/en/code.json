@@ -1,9 +1,39 @@
 {
-	"custom.title": {
-		"message": "KoliBri - Public UI"
+	"custom.accessible-standard": {
+		"message": "Accessible Standard"
+	},
+	"custom.component-library-for-the-accessibility": {
+		"message": "Component library for the accessibility"
+	},
+	"custom.component-stands-for": {
+		"message": "stands for"
+	},
+	"custom.components": {
+		"message": "Components"
+	},
+	"custom.components-short-description": {
+		"message": "Today, the variety of components includes more than 40 components with a wide range of functions for the implementation of a wide variety of specialist applications and the display of web-based content."
+	},
+	"custom.developer-short-description": {
+		"message": "The robust web components (shadow root) can be reused in all web-based projects. In addition to using the Web Components directly, we also offer framework adapters for Angular, React, Preact and Solid."
+	},
+	"custom.docs-version-hint": {
+		"message": "We have released KoliBri - Public UI {version}. For the LTS version, see {link}."
 	},
 	"custom.documentation-button": {
 		"message": "Documentation"
+	},
+	"custom.get-started-button": {
+		"message": "Get Started - 5min"
+	},
+	"custom.homepage-message-part-1": {
+		"message": "and was from the"
+	},
+	"custom.homepage-message-part-2": {
+		"message": "open source released for reuse and further development."
+	},
+	"custom.meta.description": {
+		"message": "custom.meta.description"
 	},
 	"custom.sample-app-button": {
 		"message": "Samples"
@@ -11,39 +41,411 @@
 	"custom.subtitle": {
 		"message": "The accessible Web Component library"
 	},
-	"custom.get-started-button": {
-		"message": "Get Started - 5min"
+	"custom.theme-template-short-description-part-1": {
+		"message": "Predefined style guides can be easily implemented with KoliBri. The"
+	},
+	"custom.theme-template-short-description-part-2": {
+		"message": "provides the technical foundation and an SCSS-based setup to quickly implement your own theme."
+	},
+	"custom.title": {
+		"message": "KoliBri - Public UI"
+	},
+	"custom.view-component-example": {
+		"message": "View the examples of the component"
+	},
+	"custom.view-example": {
+		"message": "View examples"
+	},
+	"email.send": {
+		"message": "Send email"
+	},
+	"feedback.header": {
+		"message": "Your feedback for KoliBri"
+	},
+	"feedback.information": {
+		"message": "Your opinion matters! Together with you, we want to continuously improve KoliBri. Share your ideas, wishes, or suggestions—quickly and easily."
+	},
+	"preview.component.abbr.label": {
+		"message": "for example"
+	},
+	"preview.component.abbr.slot": {
+		"message": "e.g."
+	},
+	"preview.component.accordion.content": {
+		"message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+	},
+	"preview.component.accordion.label": {
+		"message": "Accordion Element"
+	},
+	"preview.component.alert.content": {
+		"message": "This is an <strong>example message</strong> with additional details."
+	},
+	"preview.component.alert.label": {
+		"message": "Notice"
+	},
+	"preview.component.avatar.label": {
+		"message": "Jane Doe"
+	},
+	"preview.component.badge.label": {
+		"message": "Badge"
+	},
+	"preview.component.breadcrumb.label": {
+		"message": "Breadcrumb"
+	},
+	"preview.component.breadcrumb.links.closeedit": {
+		"message": "Close Editor"
+	},
+	"preview.component.breadcrumb.links.edit": {
+		"message": "Edit Links"
+	},
+	"preview.component.button-link.label": {
+		"message": "ButtonLink"
+	},
+	"preview.component.button.label": {
+		"message": "Button"
+	},
+	"preview.component.card.content": {
+		"message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+	},
+	"preview.component.card.label": {
+		"message": "Card Title"
+	},
+	"preview.component.combobox.label": {
+		"message": "Salutation"
+	},
+	"preview.component.drawer.content": {
+		"message": "This is the content of the drawer."
+	},
+	"preview.component.drawer.label": {
+		"message": "Drawer"
+	},
+	"preview.component.drawer.openButton": {
+		"message": "Open Drawer"
+	},
+	"preview.component.form.email": {
+		"message": "Email"
+	},
+	"preview.component.form.first-name": {
+		"message": "First name"
+	},
+	"preview.component.form.label": {
+		"message": "Asterisk means required field."
+	},
+	"preview.component.form.last-name": {
+		"message": "Last name"
+	},
+	"preview.component.form.reset": {
+		"message": "Reset"
+	},
+	"preview.component.form.submit": {
+		"message": "Submit"
+	},
+	"preview.component.icon.label": {
+		"message": "Home"
+	},
+	"preview.component.image.label": {
+		"message": "Sample image"
+	},
+	"preview.component.input-checkbox.label": {
+		"message": "Checkbox"
+	},
+	"preview.component.input-color.label": {
+		"message": "Background Color"
+	},
+	"preview.component.input-date.label": {
+		"message": "Creation Date"
+	},
+	"preview.component.input-email.label": {
+		"message": "Email Address"
+	},
+	"preview.component.input-file.label": {
+		"message": "Upload File"
+	},
+	"preview.component.input-number.label": {
+		"message": "Number Input"
+	},
+	"preview.component.input-password.label": {
+		"message": "Password"
+	},
+	"preview.component.input-radio.label": {
+		"message": "Salutation"
+	},
+	"preview.component.input-range.label": {
+		"message": "Value Range"
+	},
+	"preview.component.input-text.label": {
+		"message": "Text Input"
+	},
+	"preview.component.link-button.href": {
+		"message": "https://public-ui.github.io/en/docs"
+	},
+	"preview.component.link-button.label": {
+		"message": "LinkButton"
+	},
+	"preview.component.link.href": {
+		"message": "https://public-ui.github.io/en/docs"
+	},
+	"preview.component.link.label": {
+		"message": "KoliBri - Public UI"
+	},
+  "preview.component.nav.label": {
+		"message": "Main navigation"
+	},
+  "preview.component.pagination.label": {
+		"message": "Page navigation"
+  },
+	"preview.component.popover-button.label": {
+		"message": "Password help"
+	},
+	"preview.component.popover-button.slot": {
+		"message": "<strong>Password requirements</strong><ul><li>Minimum 8 characters</li><li>Upper and lowercase letters (A–Z, a–z)</li><li>At least one number (0–9)</li><li>At least one special character (e.g. !@#$%)</li></ul>"
+	},
+	"preview.component.progress.label": {
+		"message": "Progress"
+	},
+	"preview.component.quote.href": {
+		"message": "https://public-ui.github.io/en/docs"
+	},
+	"preview.component.quote.label": {
+		"message": "KoliBri"
+	},
+	"preview.component.quote.quote": {
+		"message": "Together, we make HTML semantically accessible using reusable Web Components to ensure usability and accessibility."
+	},
+	"preview.component.select.label": {
+		"message": "Salutation"
+	},
+	"preview.component.single-select.label": {
+		"message": "Salutation"
+	},
+	"preview.component.skip-nav.hint": {
+		"message": "Press Tab to show the skip navigation"
+	},
+	"preview.component.skip-nav.label": {
+		"message": "Skip Navigation"
+	},
+	"preview.component.skip-nav.links": {
+		"message": "Links"
+	},
+	"preview.component.spin.label": {
+		"message": "Loading animation"
+	},
+	"preview.component.split-button.label": {
+		"message": "Split Button"
+	},
+	"preview.component.split-button.menu.archive": {
+		"message": "Archive"
+	},
+	"preview.component.split-button.menu.copy": {
+		"message": "Copy"
+	},
+	"preview.component.split-button.menu.delete": {
+		"message": "Delete"
+	},
+	"preview.component.split-button.menu.edit": {
+		"message": "Edit"
+	},
+	"preview.component.table-stateful.column.family": {
+		"message": "Family"
+	},
+	"preview.component.table-stateful.column.label": {
+		"message": "Column"
+	},
+	"preview.component.table-stateful.column.name": {
+		"message": "Name"
+	},
+	"preview.component.table-stateful.column.origin": {
+		"message": "Origin"
+	},
+	"preview.component.table-stateful.column.type": {
+		"message": "Type"
+	},
+	"preview.component.table-stateful.columns.closeedit": {
+		"message": "Close Editor"
+	},
+	"preview.component.table-stateful.columns.edit": {
+		"message": "Edit Columns"
+	},
+	"preview.component.table-stateful.columns.label": {
+		"message": "Columns"
+	},
+	"preview.component.table-stateful.label": {
+		"message": "Plant List"
+	},
+	"preview.component.table-stateful.origin.africa": {
+		"message": "Africa"
+	},
+	"preview.component.table-stateful.origin.americas": {
+		"message": "Americas"
+	},
+	"preview.component.table-stateful.origin.asia": {
+		"message": "Asia"
+	},
+	"preview.component.table-stateful.origin.europe": {
+		"message": "Europe"
+	},
+	"preview.component.table-stateful.origin.worldwide": {
+		"message": "Worldwide"
+	},
+	"preview.component.table-stateful.plant.aloe-vera": {
+		"message": "Aloe Vera"
+	},
+	"preview.component.table-stateful.plant.bamboo": {
+		"message": "Bamboo"
+	},
+	"preview.component.table-stateful.plant.basil": {
+		"message": "Basil"
+	},
+	"preview.component.table-stateful.plant.cactus": {
+		"message": "Cactus"
+	},
+	"preview.component.table-stateful.plant.cherry-blossom": {
+		"message": "Cherry Blossom"
+	},
+	"preview.component.table-stateful.plant.chrysanthemum": {
+		"message": "Chrysanthemum"
+	},
+	"preview.component.table-stateful.plant.fern": {
+		"message": "Fern"
+	},
+	"preview.component.table-stateful.plant.geranium": {
+		"message": "Geranium"
+	},
+	"preview.component.table-stateful.plant.ivy": {
+		"message": "Ivy"
+	},
+	"preview.component.table-stateful.plant.lavender": {
+		"message": "Lavender"
+	},
+	"preview.component.table-stateful.plant.lily": {
+		"message": "Lily"
+	},
+	"preview.component.table-stateful.plant.mint": {
+		"message": "Mint"
+	},
+	"preview.component.table-stateful.plant.oak": {
+		"message": "Oak"
+	},
+	"preview.component.table-stateful.plant.orchid": {
+		"message": "Orchid"
+	},
+	"preview.component.table-stateful.plant.rose": {
+		"message": "Rose"
+	},
+	"preview.component.table-stateful.plant.rosemary": {
+		"message": "Rosemary"
+	},
+	"preview.component.table-stateful.plant.sunflower": {
+		"message": "Sunflower"
+	},
+	"preview.component.table-stateful.plant.thyme": {
+		"message": "Thyme"
+	},
+	"preview.component.table-stateful.plant.tulip": {
+		"message": "Tulip"
+	},
+	"preview.component.table-stateful.plant.wisteria": {
+		"message": "Wisteria"
+	},
+	"preview.component.table-stateful.type.cactus": {
+		"message": "Cactus"
+	},
+	"preview.component.table-stateful.type.climber": {
+		"message": "Climbing Plant"
+	},
+	"preview.component.table-stateful.type.grass": {
+		"message": "Grass"
+	},
+	"preview.component.table-stateful.type.herb": {
+		"message": "Herb"
+	},
+	"preview.component.table-stateful.type.perennial": {
+		"message": "Perennial"
+	},
+	"preview.component.table-stateful.type.shrub": {
+		"message": "Shrub"
+	},
+	"preview.component.table-stateful.type.tree": {
+		"message": "Tree"
+	},
+	"preview.component.tabs.label": {
+		"message": "Tabs"
+	},
+	"preview.component.tabs.tab-content": {
+		"message": "Content of Tab"
+	},
+	"preview.component.tabs.tabs.closeedit": {
+		"message": "Close editing"
+	},
+	"preview.component.tabs.tabs.edit": {
+		"message": "Edit tabs"
+	},
+	"preview.component.textarea.label": {
+		"message": "Description"
+	},
+	"preview.component.toolbar.label": {
+		"message": "Toolbar"
+	},
+	"preview.component.tree.items.closeedit": {
+		"message": "Close Editor"
+	},
+	"preview.component.tree.items.edit": {
+		"message": "Edit Items"
+	},
+	"preview.component.tree.label": {
+		"message": "Sitemap"
+	},
+	"preview.component.version.label": {
+		"message": "1.44.0"
+	},
+	"preview.property.options.add": {
+		"message": "Add"
+	},
+	"preview.property.remove": {
+		"message": "Remove"
+	},
+	"preview.props.heading": {
+		"message": "Properties"
+	},
+	"preview.sourceCode.copyButton": {
+		"message": "Copy"
+	},
+	"preview.sourceCode.heading": {
+		"message": "Source Code"
+	},
+	"property.msg.case": {
+		"message": "Case"
+	},
+	"property.msg.case.message": {
+		"message": "Message"
+	},
+	"property.msg.case.no.msg": {
+		"message": "No message"
+	},
+	"property.msg.case.standard": {
+		"message": "Default error message"
+	},
+	"property.msg.usage": {
+		"message": "Usage _msg"
+	},
+	"property.msg.value": {
+		"message": "_msg-Value"
+	},
+	"property.msg.value.message": {
+		"message": "{_type: 'success', _description: 'Success message'}"
+	},
+	"property.msg.value.string": {
+		"message": "string"
+	},
+	"property.msg.value.undefined": {
+		"message": "undefined"
 	},
 	"Seite wird geladen": {
 		"message": "Page is being loaded."
 	},
-	"theme.ErrorPageContent.title": {
-		"message": "The page crashed.",
-		"description": "The title of the fallback page when the page crashed"
-	},
-	"theme.ErrorPageContent.tryAgain": {
-		"message": "Try again.",
-		"description": "The label of the button to try again rendering when the React error boundary captures an error"
-	},
-	"theme.NotFound.title": {
-		"message": "Page not found.",
-		"description": "The title of the 404 page"
-	},
-	"theme.NotFound.p1": {
-		"message": "We could not find, what you were looking for.",
-		"description": "The first paragraph of the 404 page"
-	},
-	"theme.NotFound.p2": {
-		"message": "Please contact the person/website, that gave you this link and tell them it is incorrect.",
-		"description": "The 2nd paragraph of the 404 page"
-	},
-	"theme.admonition.note": {
-		"message": "note",
-		"description": "The default label used for the Note admonition (:::note)"
-	},
-	"theme.admonition.tip": {
-		"message": "tip",
-		"description": "The default label used for the Tip admonition (:::tip)"
+	"theme.admonition.caution": {
+		"message": "caution",
+		"description": "The default label used for the Caution admonition (:::caution)"
 	},
 	"theme.admonition.danger": {
 		"message": "danger",
@@ -53,21 +455,29 @@
 		"message": "info",
 		"description": "The default label used for the Info admonition (:::info)"
 	},
-	"theme.admonition.caution": {
-		"message": "caution",
-		"description": "The default label used for the Caution admonition (:::caution)"
+	"theme.admonition.note": {
+		"message": "note",
+		"description": "The default label used for the Note admonition (:::note)"
+	},
+	"theme.admonition.tip": {
+		"message": "tip",
+		"description": "The default label used for the Tip admonition (:::tip)"
+	},
+	"theme.AnnouncementBar.closeButtonAriaLabel": {
+		"message": "Schließen",
+		"description": "The ARIA label for close button of announcement bar"
 	},
 	"theme.BackToTopButton.buttonAriaLabel": {
 		"message": "Back to top.",
 		"description": "The ARIA label for the back to top button"
 	},
-	"theme.blog.archive.title": {
-		"message": "Archive",
-		"description": "The page & hero title of the blog archive page"
-	},
 	"theme.blog.archive.description": {
 		"message": "Archive",
 		"description": "The page & hero description of the blog archive page"
+	},
+	"theme.blog.archive.title": {
+		"message": "Archive",
+		"description": "The page & hero title of the blog archive page"
 	},
 	"theme.blog.paginator.navAriaLabel": {
 		"message": "Navigation of the Blog-overview.",
@@ -97,13 +507,41 @@
 		"message": "One post|{count} posts",
 		"description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
 	},
+	"theme.blog.post.readingTime.plurals": {
+		"message": "One minute reading time|{readingTime} minutes of reading time",
+		"description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+	},
+	"theme.blog.post.readMore": {
+		"message": "Read more",
+		"description": "The label used in blog post item excerpts to link to full blog posts"
+	},
+	"theme.blog.post.readMoreLabel": {
+		"message": "Read more about {title}",
+		"description": "The ARIA label for the link to full blog posts from excerpts"
+	},
+	"theme.blog.sidebar.navAriaLabel": {
+		"message": "Navigation der letzten Beiträge im Blog",
+		"description": "The ARIA label for recent posts in the blog sidebar"
+	},
 	"theme.blog.tagTitle": {
 		"message": "{nPosts} tagged with \"{tagName}\"",
 		"description": "The title of the page for a blog tag"
 	},
-	"theme.tags.tagsPageLink": {
-		"message": "Show all Tags",
-		"description": "The label of the link targeting the tag list page"
+	"theme.CodeBlock.copied": {
+		"message": "Kopiert",
+		"description": "The copied button label on code blocks"
+	},
+	"theme.CodeBlock.copy": {
+		"message": "Kopieren",
+		"description": "The copy button label on code blocks"
+	},
+	"theme.CodeBlock.copyButtonAriaLabel": {
+		"message": "In die Zwischenablage kopieren",
+		"description": "The ARIA label for copy code blocks button"
+	},
+	"theme.CodeBlock.wordWrapToggle": {
+		"message": "Toggle word wrap",
+		"description": "The title attribute for toggle word wrapping button of code block lines"
 	},
 	"theme.colorToggle.ariaLabel": {
 		"message": "Umschalten zwischen dunkler und heller Ansicht (momentan {mode})",
@@ -116,6 +554,18 @@
 	"theme.colorToggle.ariaLabel.mode.light": {
 		"message": "heller Modus",
 		"description": "The name for the light color mode"
+	},
+	"theme.common.editThisPage": {
+		"message": "Diese Seite bearbeiten",
+		"description": "The link label to edit the current page"
+	},
+	"theme.common.headingLinkTitle": {
+		"message": "Direkter Link zur Überschrift",
+		"description": "Title for link to heading"
+	},
+	"theme.common.skipToMainContent": {
+		"message": "Skip to main content",
+		"description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
 	},
 	"theme.docs.breadcrumbs.home": {
 		"message": "Home page",
@@ -133,48 +583,95 @@
 		"message": "Dokumentation Seiten Navigation",
 		"description": "The ARIA label for the docs pagination"
 	},
-	"theme.docs.paginator.previous": {
-		"message": "Zurück",
-		"description": "The label used to navigate to the previous doc"
-	},
 	"theme.docs.paginator.next": {
 		"message": "Weiter",
 		"description": "The label used to navigate to the next doc"
 	},
-	"theme.docs.tagDocListPageTitle.nDocsTagged": {
-		"message": "Ein doc getaggt|{count} docs getaggt",
-		"description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+	"theme.docs.paginator.previous": {
+		"message": "Zurück",
+		"description": "The label used to navigate to the previous doc"
+	},
+	"theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+		"message": "Close navigation bar",
+		"description": "The ARIA label for close button of mobile sidebar"
+	},
+	"theme.docs.sidebar.collapseButtonAriaLabel": {
+		"message": "Collapse sidebar",
+		"description": "The title attribute for collapse button of doc sidebar"
+	},
+	"theme.docs.sidebar.collapseButtonTitle": {
+		"message": "Collapse sidebar",
+		"description": "The title attribute for collapse button of doc sidebar"
+	},
+	"theme.docs.sidebar.expandButtonAriaLabel": {
+		"message": "Expand sidebar",
+		"description": "The ARIA label and title attribute for expand button of doc sidebar"
+	},
+	"theme.docs.sidebar.expandButtonTitle": {
+		"message": "Expand sidebar",
+		"description": "The ARIA label and title attribute for expand button of doc sidebar"
+	},
+	"theme.docs.sidebar.navAriaLabel": {
+		"message": "Docs sidebar",
+		"description": "The ARIA label for the sidebar navigation"
+	},
+	"theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+		"message": "Toggle navigation bar",
+		"description": "The ARIA label for hamburger menu button of mobile navigation"
 	},
 	"theme.docs.tagDocListPageTitle": {
 		"message": "{nDocsTagged} mit \"{tagName}\"",
 		"description": "The title of the page for a docs tag"
 	},
+	"theme.docs.tagDocListPageTitle.nDocsTagged": {
+		"message": "Ein doc getaggt|{count} docs getaggt",
+		"description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+	},
 	"theme.docs.versionBadge.label": {
 		"message": "Version: {versionLabel}"
-	},
-	"theme.docs.versions.unreleasedVersionLabel": {
-		"message": "Das ist die unveröffentlichte Dokumentation für {siteTitle} {versionLabel}.",
-		"description": "The label used to tell the user that he's browsing an unreleased doc version"
-	},
-	"theme.docs.versions.unmaintainedVersionLabel": {
-		"message": "Das ist die Dokumentation für {siteTitle} {versionLabel} und wird nicht weiter gewartet.",
-		"description": "The label used to tell the user that he's browsing an unmaintained doc version"
-	},
-	"theme.docs.versions.latestVersionSuggestionLabel": {
-		"message": "Für die aktuellste Dokumentation bitte auf {latestVersionLink} ({versionLabel}) gehen.",
-		"description": "The label used to tell the user to check the latest version"
 	},
 	"theme.docs.versions.latestVersionLinkLabel": {
 		"message": "letzte Version",
 		"description": "The label used for the latest version suggestion link label"
 	},
-	"theme.common.editThisPage": {
-		"message": "Diese Seite bearbeiten",
-		"description": "The link label to edit the current page"
+	"theme.docs.versions.latestVersionSuggestionLabel": {
+		"message": "Für die aktuellste Dokumentation bitte auf {latestVersionLink} ({versionLabel}) gehen.",
+		"description": "The label used to tell the user to check the latest version"
 	},
-	"theme.common.headingLinkTitle": {
-		"message": "Direkter Link zur Überschrift",
-		"description": "Title for link to heading"
+	"theme.docs.versions.unmaintainedVersionLabel": {
+		"message": "Das ist die Dokumentation für {siteTitle} {versionLabel} und wird nicht weiter gewartet.",
+		"description": "The label used to tell the user that he's browsing an unmaintained doc version"
+	},
+	"theme.docs.versions.unreleasedVersionLabel": {
+		"message": "Das ist die unveröffentlichte Dokumentation für {siteTitle} {versionLabel}.",
+		"description": "The label used to tell the user that he's browsing an unreleased doc version"
+	},
+	"theme.DocSidebarItem.toggleCollapsedCategoryAriaLabel": {
+		"message": "Umschalten der Seitenleiste mit einklappbarer Kategorie '{label}'",
+		"description": "The ARIA label to toggle the collapsible sidebar category"
+	},
+	"theme.ErrorPageContent.title": {
+		"message": "The page crashed.",
+		"description": "The title of the fallback page when the page crashed"
+	},
+	"theme.ErrorPageContent.tryAgain": {
+		"message": "Try again.",
+		"description": "The label of the button to try again rendering when the React error boundary captures an error"
+	},
+	"theme.IdealImageMessage.404error": {
+		"message": "404. Image not found."
+	},
+	"theme.IdealImageMessage.error": {
+		"message": "Mistake. Click to reload"
+	},
+	"theme.IdealImageMessage.load": {
+		"message": "Click to load {sizeMessage}"
+	},
+	"theme.IdealImageMessage.loading": {
+		"message": "Loading..."
+	},
+	"theme.IdealImageMessage.offline": {
+		"message": "Browser is offline. Image not loaded"
 	},
 	"theme.lastUpdated.atDate": {
 		"message": " am {date}",
@@ -188,104 +685,36 @@
 		"message": "Letztes Update{atDate}{byUser}",
 		"description": "The sentence used to display when a page has been last updated, and by who"
 	},
-	"theme.navbar.mobileVersionsDropdown.label": {
-		"message": "Versionen",
-		"description": "The label for the navbar versions dropdown on mobile view"
-	},
-	"theme.tags.tagsListLabel": {
-		"message": "Tags:",
-		"description": "The label alongside a tag list"
-	},
-	"theme.AnnouncementBar.closeButtonAriaLabel": {
-		"message": "Schließen",
-		"description": "The ARIA label for close button of announcement bar"
-	},
-	"theme.blog.sidebar.navAriaLabel": {
-		"message": "Navigation der letzten Beiträge im Blog",
-		"description": "The ARIA label for recent posts in the blog sidebar"
-	},
-	"theme.CodeBlock.copied": {
-		"message": "Kopiert",
-		"description": "The copied button label on code blocks"
-	},
-	"theme.CodeBlock.copyButtonAriaLabel": {
-		"message": "In die Zwischenablage kopieren",
-		"description": "The ARIA label for copy code blocks button"
-	},
-	"theme.CodeBlock.copy": {
-		"message": "Kopieren",
-		"description": "The copy button label on code blocks"
-	},
-	"theme.CodeBlock.wordWrapToggle": {
-		"message": "Toggle word wrap",
-		"description": "The title attribute for toggle word wrapping button of code block lines"
-	},
-	"theme.DocSidebarItem.toggleCollapsedCategoryAriaLabel": {
-		"message": "Umschalten der Seitenleiste mit einklappbarer Kategorie '{label}'",
-		"description": "The ARIA label to toggle the collapsible sidebar category"
-	},
 	"theme.navbar.mobileLanguageDropdown.label": {
 		"message": "Languages",
 		"description": "The label for the mobile language switcher dropdown"
-	},
-	"theme.TOCCollapsible.toggleButtonLabel": {
-		"message": "On this page",
-		"description": "The label used by the button on the collapsible TOC component"
-	},
-	"theme.blog.post.readMore": {
-		"message": "Read more",
-		"description": "The label used in blog post item excerpts to link to full blog posts"
-	},
-	"theme.blog.post.readMoreLabel": {
-		"message": "Read more about {title}",
-		"description": "The ARIA label for the link to full blog posts from excerpts"
-	},
-	"theme.blog.post.readingTime.plurals": {
-		"message": "One minute reading time|{readingTime} minutes of reading time",
-		"description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
-	},
-	"theme.docs.sidebar.collapseButtonTitle": {
-		"message": "Collapse sidebar",
-		"description": "The title attribute for collapse button of doc sidebar"
-	},
-	"theme.docs.sidebar.collapseButtonAriaLabel": {
-		"message": "Collapse sidebar",
-		"description": "The title attribute for collapse button of doc sidebar"
-	},
-	"theme.docs.sidebar.closeSidebarButtonAriaLabel": {
-		"message": "Close navigation bar",
-		"description": "The ARIA label for close button of mobile sidebar"
 	},
 	"theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
 		"message": "← Back to main menu",
 		"description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
 	},
-	"theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
-		"message": "Toggle navigation bar",
-		"description": "The ARIA label for hamburger menu button of mobile navigation"
+	"theme.navbar.mobileVersionsDropdown.label": {
+		"message": "Versionen",
+		"description": "The label for the navbar versions dropdown on mobile view"
 	},
-	"theme.docs.sidebar.expandButtonTitle": {
-		"message": "Expand sidebar",
-		"description": "The ARIA label and title attribute for expand button of doc sidebar"
+	"theme.NavBar.navAriaLabel": {
+		"message": "Main",
+		"description": "The ARIA label for the main navigation"
 	},
-	"theme.docs.sidebar.expandButtonAriaLabel": {
-		"message": "Expand sidebar",
-		"description": "The ARIA label and title attribute for expand button of doc sidebar"
+	"theme.NotFound.p1": {
+		"message": "We could not find, what you were looking for.",
+		"description": "The first paragraph of the 404 page"
 	},
-	"theme.IdealImageMessage.loading": {
-		"message": "Loading..."
+	"theme.NotFound.p2": {
+		"message": "Please contact the person/website, that gave you this link and tell them it is incorrect.",
+		"description": "The 2nd paragraph of the 404 page"
 	},
-	"theme.IdealImageMessage.load": {
-		"message": "Click to load {sizeMessage}"
+	"theme.NotFound.title": {
+		"message": "Page not found.",
+		"description": "The title of the 404 page"
 	},
-	"theme.IdealImageMessage.offline": {
-		"message": "Browser is offline. Image not loaded"
-	},
-	"theme.IdealImageMessage.404error": {
-		"message": "404. Image not found."
-	},
-	"theme.IdealImageMessage.error": {
-		"message": "Mistake. Click to reload"
+	"theme.PwaReloadPopup.closeButtonAriaLabel": {
+		"message": "Close"
 	},
 	"theme.PwaReloadPopup.info": {
 		"message": "New version available"
@@ -293,239 +722,20 @@
 	"theme.PwaReloadPopup.refreshButtonText": {
 		"message": "To update"
 	},
-	"theme.PwaReloadPopup.closeButtonAriaLabel": {
-		"message": "Close"
+	"theme.tags.tagsListLabel": {
+		"message": "Tags:",
+		"description": "The label alongside a tag list"
 	},
-	"theme.common.skipToMainContent": {
-		"message": "Skip to main content",
-		"description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+	"theme.tags.tagsPageLink": {
+		"message": "Show all Tags",
+		"description": "The label of the link targeting the tag list page"
 	},
 	"theme.tags.tagsPageTitle": {
 		"message": "Tags",
 		"description": "The title of the tag list page"
 	},
-	"custom.meta.description": {
-		"message": "custom.meta.description"
-	},
-	"theme.NavBar.navAriaLabel": {
-		"message": "Main",
-		"description": "The ARIA label for the main navigation"
-	},
-	"theme.docs.sidebar.navAriaLabel": {
-		"message": "Docs sidebar",
-		"description": "The ARIA label for the sidebar navigation"
-	},
-	"custom.component-library-for-the-accessibility": {
-		"message": "Component library for the accessibility"
-	},
-	"custom.component-stands-for": {
-		"message": "stands for"
-	},
-	"custom.accessible-standard": {
-		"message": "Accessible Standard"
-	},
-	"custom.homepage-message-part-1": {
-		"message": "and was from the"
-	},
-	"custom.homepage-message-part-2": {
-		"message": "open source released for reuse and further development."
-	},
-	"custom.theme-template-short-description-part-1": {
-		"message": "Predefined style guides can be easily implemented with KoliBri. The"
-	},
-	"custom.theme-template-short-description-part-2": {
-		"message": "provides the technical foundation and an SCSS-based setup to quickly implement your own theme."
-	},
-	"custom.developer-short-description": {
-		"message": "The robust web components (shadow root) can be reused in all web-based projects. In addition to using the Web Components directly, we also offer framework adapters for Angular, React, Preact and Solid."
-	},
-	"custom.components": {
-		"message": "Components"
-	},
-	"custom.components-short-description": {
-		"message": "Today, the variety of components includes more than 40 components with a wide range of functions for the implementation of a wide variety of specialist applications and the display of web-based content."
-	},
-	"custom.view-example": {
-		"message": "View examples"
-	},
-	"custom.view-component-example": {
-		"message": "View the examples of the component"
-	},
-	"custom.docs-version-hint": {
-		"message": "We have released KoliBri - Public UI {version}. For the LTS version, see {link}."
-	},
-	"email.send": {
-		"message": "Send email"
-	},
-	"feedback.header": {
-		"message": "Your feedback for KoliBri"
-	},
-	"feedback.information": {
-		"message": "Your opinion matters! Together with you, we want to continuously improve KoliBri. Share your ideas, wishes, or suggestions—quickly and easily."
-	},
-	"property.msg.usage": {
-		"message": "Usage _msg"
-	},
-	"property.msg.case": {
-		"message": "Case"
-	},
-	"property.msg.value": {
-		"message": "_msg-Value"
-	},
-	"property.msg.case.no.msg": {
-		"message": "No message"
-	},
-	"property.msg.value.undefined": {
-		"message": "undefined"
-	},
-	"property.msg.case.standard": {
-		"message": "Default error message"
-	},
-	"property.msg.value.string": {
-		"message": "string"
-	},
-	"property.msg.case.message": {
-		"message": "Message"
-	},
-	"property.msg.value.message": {
-		"message": "{_type: 'success', _description: 'Success message'}"
-	},
-	"preview.props.heading": {
-		"message": "Properties"
-	},
-	"preview.sourceCode.heading": {
-		"message": "Source Code"
-	},
-	"preview.sourceCode.copyButton": {
-		"message": "Copy"
-	},
-	"preview.component.breadcrumb.links.edit": {
-		"message": "Edit Links"
-	},
-	"preview.component.breadcrumb.links.closeedit": {
-		"message": "Close Editor"
-	},
-	"preview.component.drawer.content": {
-		"message": "This is the content of the drawer."
-	},
-	"preview.component.drawer.label": {
-		"message": "Drawer"
-	},
-	"preview.component.drawer.openButton": {
-		"message": "Open Drawer"
-	},
-	"preview.component.link.href": {
-		"message": "https://public-ui.github.io/en/docs"
-	},
-	"preview.component.link.label": {
-		"message": "KoliBri - Public UI"
-	},
-	"preview.component.progress.label": {
-		"message": "Progress"
-	},
-	"preview.component.quote.label": {
-		"message": "KoliBri"
-	},
-	"preview.component.quote.href": {
-		"message": "https://public-ui.github.io/en/docs"
-	},
-	"preview.component.quote.quote": {
-		"message": "Together, we make HTML semantically accessible using reusable Web Components to ensure usability and accessibility."
-	},
-	"preview.component.spin.label": {
-		"message": "Loading animation"
-	},
-	"preview.component.abbr.label": {
-		"message": "for example"
-	},
-	"preview.component.abbr.slot": {
-		"message": "e.g."
-	},
-	"preview.component.accordion.label": {
-		"message": "Accordion Element"
-	},
-	"preview.component.accordion.content": {
-		"message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-	},
-	"preview.component.alert.label": {
-		"message": "Notice"
-	},
-	"preview.component.alert.content": {
-		"message": "This is an <strong>example message</strong> with additional details."
-	},
-	"preview.component.avatar.label": {
-		"message": "Jane Doe"
-	},
-	"preview.component.badge.label": {
-		"message": "Badge"
-	},
-	"preview.component.breadcrumb.label": {
-		"message": "Breadcrumb"
-	},
-	"preview.component.button.label": {
-		"message": "Button"
-	},
-	"preview.component.button-link.label": {
-		"message": "ButtonLink"
-	},
-	"preview.component.card.label": {
-		"message": "Card Title"
-	},
-	"preview.component.card.content": {
-		"message": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
-	},
-	"preview.component.combobox.label": {
-		"message": "Salutation"
-	},
-	"preview.component.input-checkbox.label": {
-		"message": "Checkbox"
-	},
-	"preview.component.input-radio.label": {
-		"message": "Salutation"
-	},
-	"preview.component.input-color.label": {
-		"message": "Background Color"
-	},
-	"preview.component.input-date.label": {
-		"message": "Creation Date"
-	},
-	"preview.component.input-email.label": {
-		"message": "Email Address"
-	},
-	"preview.component.input-file.label": {
-		"message": "Upload File"
-	},
-	"preview.component.input-number.label": {
-		"message": "Number Input"
-	},
-	"preview.component.input-password.label": {
-		"message": "Password"
-	},
-	"preview.component.input-range.label": {
-		"message": "Value Range"
-	},
-	"preview.component.input-text.label": {
-		"message": "Text Input"
-	},
-	"preview.component.textarea.label": {
-		"message": "Description"
-	},
-	"preview.component.toolbar.label": {
-		"message": "Toolbar"
-	},
-	"preview.component.icon.label": {
-		"message": "Home"
-	},
-	"preview.component.image.label": {
-		"message": "Sample image"
-	},
-	"preview.component.nav.label": {
-		"message": "Main navigation"
-	},
-	"preview.property.remove": {
-		"message": "Remove"
-	},
-	"preview.property.options.add": {
-		"message": "Add"
+	"theme.TOCCollapsible.toggleButtonLabel": {
+		"message": "On this page",
+		"description": "The label used by the button on the collapsible TOC component"
 	}
 }
