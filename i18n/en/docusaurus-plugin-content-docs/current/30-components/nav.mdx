@@ -4,8 +4,7 @@ description: Description, specification and examples for the Nav component.
 ---
 
 import Readme from '/readmes/nav/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
+import NavPreview from '@site/src/components/previews/components/Nav';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # Nav
@@ -24,42 +23,11 @@ the icons are still output.
 
 ## Construction
 
-### Code
-
-```html
-<kol-nav
-	_label="Hauptmenü"
-	_links="[
-    {
-      '_href': 'startseite',
-      '_icons': 'kolicon-house',
-      '_label': 'Startseite2',
-      '_children': [
-        {
-          '_href': 'startseite/1-untermenuepunkt',
-          '_icons': 'kolicon-house',
-          '_label': '1. Untermenüpunkt'
-        },
-        {
-          '_href': 'startseite/2-untermenuepunkt',
-          '_icons': 'kolicon-house',
-          '_label': '2. Untermenüpunkt'
-        }
-      ]
-    },
-    {
-      '_href': 'unterseite',
-      '_icons': 'kolicon-house',
-      '_label': '2. Menüpunkt'
-    }
-  ]"
-	_has-compact-button
-></kol-nav>
-```
-
-### Example
-
-<kol-nav _label="Hauptmenü" _links="[{'_href':'startseite','_icons':'kolicon-house','_label':'Startseite','_children':[{'_href':'startseite/1-untermenuepunkt','_icons':'kolicon-house','_label':'1. Untermenüpunkt'},{'_href':'startseite/2-untermenuepunkt','_icons':'kolicon-house','_label':'2. Untermenüpunkt'}]},{'_href':'unterseite','_icons':'kolicon-house','_label':'2. Menüpunkt'}]" _has-compact-button></kol-nav>
+<NavPreview
+	visibleProperties={['_hasCompactButton']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## Usage
 
@@ -114,12 +82,7 @@ To display the navigation bar in the compact view, set the **`_hide-label`** att
 
 <Readme />
 
-<ExampleLink component="nav" />
-
-## Live editor
-
-<LiveEditorCompact component="nav" />
-
 ## Examples
 
-<Configurator component="nav" sample="basic" />
+<ExampleLink component="nav" />
+
