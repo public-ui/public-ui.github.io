@@ -12,7 +12,7 @@ title: {KomponentenName}
 description: Beschreibung, Spezifikation und Beispiele für die {KomponentenName}-Komponente.
 ---
 
-import Readme from '../../readmes/{component}/readme.md';
+import Readme from '@site/readmes/{component}/readme.md';
 import {Component}Preview from '@site/src/components/previews/components/{Component}';
 
 # {KomponentenName}
