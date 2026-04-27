@@ -8,13 +8,14 @@ import MeterPreview from '@site/src/components/previews/components/Meter';
 
 # Meter
 
-**Synonyme:** Messwert, Gauge, Messgerät
+**Synonyme:** Messwertanzeige, Gauge, Messgerät
 
-Die **Meter**-Komponente visualisiert einen Messwert innerhalb eines definierten Wertebereichs. Sie zeigt grafisch an, wie ein Messwert im Verhältnis zu seinen Grenzen positioniert ist, und kann optional verschiedene Zustände (optimal, suboptimal, kritisch) anzeigen.
+**Beschreibung:** Die **Meter**-Komponente visualisiert einen numerischen Messwert innerhalb eines definierten
+Wertebereichs. Sie unterstützt die Einordnung des Werts über optionale Schwellen und einen Optimalwert.
 
 ## Beispiel
 
-Meter-Komponente mit Messwertanzeige und Zustandsindikator:
+Das Beispiel zeigt eine Meter-Anzeige mit definiertem Wertebereich, Schwellenwerten und Einheit.
 
 <MeterPreview
 	visibleProperties={['_label', '_value', '_min', '_max', '_low', '_high', '_optimum', '_unit', '_orientation']}
@@ -25,44 +26,45 @@ Meter-Komponente mit Messwertanzeige und Zustandsindikator:
 
 ## Barrierefreiheit
 
-Die **Meter**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
-
-- **Label-Pflicht**: Jede Meter-Komponente muss über das Attribut `_label` eine sichtbare Beschriftung erhalten, die von Screenreadern erkannt wird.
-- **Semantische Ausgabe**: Ein verstecktes `<meter>`-HTML-Element mit vollständigen Attributen sorgt dafür, dass auch assistive Technologien den Messwert verstehen können.
-- **Live-Wert-Ankündigung**: Screenreader werden über Änderungen des Messwerts informiert (z.B. "Auslastung – kritisch").
-- **Zustandsindikation**: Automatische Statusmeldung (optimum, suboptimal, kritisch) wird von assistiven Technologien mitgeteilt.
-- **Tastaturzugriff**: Die Komponente bildet keine interaktiven Elemente ab, da sie nur Datendarstellung ist.
+- **Label-Pflicht:** Jede Meter-Komponente benötigt `_label`, damit der Messwert korrekt zugeordnet werden kann.
+- **Semantische Ausgabe:** Ein semantisches `<meter>`-Element stellt die Informationen auch für assistive Technologien bereit.
+- **Wertänderungen:** Änderungen des Messwerts können von assistiven Technologien erkannt und vorgelesen werden.
+- **Nicht interaktiv:** Die Komponente dient der Darstellung und bietet keine eigene Eingabeinteraktion.
 
 ### Links und Referenzen
 
 - <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/meter" _target="_blank" _label="MDN Web Docs - meter-Element"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 – Labels or Instructions"></kol-link>
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#meter" _target="_blank" _label="WAI-ARIA Authoring Practices – Meter"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/quickref/" _target="_blank" _label="WCAG 2.2 Quick Reference"></kol-link>
 
-## Best Practices / Empfehlungen
+## Verwendung
 
-- **Aussagekräftiges Label**: Verwenden Sie klare, verständliche Beschriftungen (z.B. „Auslastung", „Speicher", „Akku-Level").
-- **Sinnvolle Grenzen setzen**: Definieren Sie `_min` und `_max` fachlich korrekt, um aussagekräftige Darstellungen zu erzeugen.
-- **Zustände nutzen**: Verwenden Sie die Attribute `_low`, `_high` und `_optimum`, um Bereiche zu kennzeichnen – dies hilft Nutzern, kritische Zustände schnell zu erkennen. 
-- **Eindeutige Einheit**: Setzen Sie `_unit` auf eine verständliche Maßeinheit (z.B. %, GB, °C), um Missverständnisse zu vermeiden.
-- **Kontext bereitstellen**: Ergänzen Sie die Meter-Komponente ggf. mit zusätzlichem Text, der den aktuellen Wert oder zeitliche Trends erklärt.
-- **Richtige Orientierung wählen**: Nutzen Sie `_orientation="vertical"` nur, wenn der verfügbare Platz horizontal begrenzt ist; horizontal ist die Standarddarstellung.
+### Best Practices / Empfehlungen
 
-## Anwendungsfälle
+- Verwenden Sie ein präzises `_label`, das den Messkontext beschreibt (z. B. Auslastung, Füllstand, Temperatur).
+- Setzen Sie `_min` und `_max` fachlich korrekt, damit die Einordnung des Werts nachvollziehbar ist.
+- Nutzen Sie `_low`, `_high` und `_optimum`, um den Messwert in sinnvolle Bereiche einzuordnen.
+- Geben Sie mit `_unit` eine eindeutige Einheit an, wenn der Wert ohne Einheit missverständlich wäre.
+- Nutzen Sie `Meter` für Status- und Messanzeigen. Für editierbare Eingaben ist eine Input-Komponente geeignet.
 
-- **Systemauslastung**: Anzeige von CPU-, RAM- oder Speicherauslastung.
-- **Batterielevel**: Visualisierung des Akkustands von Geräten.
-- **Raumklima**: Anzeige von Temperatur, Luftfeuchtigkeit oder Luftqualität.
-- **Fortschritt bei Grenzwerten**: Visualisierung eines Wertes, der sich einer kritischen Grenze nähert (z.B. Lagerhaltung).
-- **Qualitätsindikatoren**: Grafische Darstellung von Bewertungsmetriken mit definierten Grenzwerten.
+### Anwendungsfälle
+
+- Systemauslastung (z. B. CPU, RAM, Speicher)
+- Batteriestand oder Füllstände
+- Messwerte mit Grenzbereichen (z. B. Temperatur, Luftfeuchte)
+- Qualitäts- oder Gesundheitsindikatoren mit Optimalbereich
 
 ## Konstruktion / Technik
 
-### Funktionalitäten
+### Playground
+
+<MeterPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
 
 #### Grundlegende Meter mit Wertbereich
 
-Einfache Meter-Komponente mit Minimum, Maximum und aktuellem Wert:
+Einfache Meter-Anzeige mit Minimum, Maximum, aktuellem Wert und Einheit.
 
 <MeterPreview
 	visibleProperties={['_label', '_value', '_min', '_max', '_unit']}
@@ -72,13 +74,12 @@ Einfache Meter-Komponente mit Minimum, Maximum und aktuellem Wert:
 
 #### Meter mit Zustandsbereichen
 
-  - Zwischen `_min=0` und `_low=20` ist der niedrige Bereich
-  - Zwischen `_low=20` und `_high=70` ist der mittlere Bereich
-  - Zwischen `_high=70` und `_max=100` ist der hohe Bereich 
-  - `_optimum=10` legt den niedrigen Bereich als optimalen Bereich fest
-  - wenn `_value=15` => optimum => Meter Farbe grün
-  - wenn `_value=35` => suboptimum => Meter Farbe gelb
-  - wenn `_value=85` => critical => Meter Farbe rot
+Mit `_low`, `_high` und `_optimum` lassen sich Messbereiche semantisch einordnen.
+
+- `_min` bis `_low`: niedriger Bereich
+- `_low` bis `_high`: mittlerer Bereich
+- `_high` bis `_max`: hoher Bereich
+- `_optimum` definiert den optimalen Zielbereich
 
 <MeterPreview
 	visibleProperties={['_value', '_min', '_max', '_low', '_high', '_optimum']}
@@ -88,7 +89,7 @@ Einfache Meter-Komponente mit Minimum, Maximum und aktuellem Wert:
 
 #### Vertikaler Meter
 
-Meter-Komponente mit vertikaler Ausrichtung für platzsparende Layouts:
+Die Ausrichtung kann über `_orientation` zwischen horizontal und vertikal umgeschaltet werden.
 
 <MeterPreview
 	visibleProperties={['_label', '_value', '_min', '_max', '_orientation']}
