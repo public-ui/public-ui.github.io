@@ -62,7 +62,7 @@ const SuggestionsProperty = (props: SuggestionsPropertyProps) => {
                             _value={String(suggestion)}
                             _on={{
                                 onInput: (_event: Event, value: unknown) => {
-                                    handleChange(index, String(value ?? ''));
+                                    handleChange(index, String(value));
                                 },
                             }}
                         />
