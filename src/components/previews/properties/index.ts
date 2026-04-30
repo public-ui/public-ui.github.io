@@ -20,6 +20,7 @@ export { default as RadioOptionsProperty } from './RadioOptionsProperty';
 export { default as SelectOptionsProperty } from './SelectOptionsProperty';
 export { default as ResizeProperty } from './ResizeProperty';
 export { default as SmartButtonProperty } from './SmartButtonProperty';
+export { default as SuggestionsProperty } from './SuggestionsProperty';
 export { default as TabBehaviorProperty } from './TabBehaviorProperty';
 export { default as TabsProperty } from './TabsProperty';
 export { default as TableColumnsProperty } from './TableColumnsProperty';

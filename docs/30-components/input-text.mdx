@@ -157,6 +157,24 @@ Label können visuell verborgen sein, bleiben aber für assistive Technologien s
   codeCollapsed
 />
 
+#### Vorschlagswerte (Suggestions)
+
+Über `_suggestions` können Vorschlagswerte bereitgestellt werden, die während der Eingabe als auswählbare Datenliste angezeigt werden:
+
+<InputTextPreview
+  visibleProperties={['_label', '_suggestions']}
+  initialProps={{
+    _label: 'Anrede',
+    _suggestions: ['Herr', 'Frau', 'Firma'],
+  }}
+  codeCollapsable
+  codeCollapsed
+/>
+
+**Verfügbares Attribut:**
+- `_suggestions`: Liste von Vorschlagswerten für die Datalist-Autovervollständigung
+
+
 #### Zeichenbegrenzung und Zeichenzähler
 
 Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen und gleichzeitig visuelles Feedback geben:
@@ -176,7 +194,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 | `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
 | `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`-Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
 
-### Ausgabevarianten
+##### Ausgabevarianten
 
 | Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
 | ---: | --------------------- | ------------- | ---------------------- | ---------------------------------------------------------- |
@@ -187,7 +205,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 
 >  Wird `_max-length-behavior="soft"` verwendet, wird das native `maxlength`-Attribut **nicht** gesetzt – das Eingabefeld wird also nicht hart begrenzt.
 
-### Barrierefreiheit
+##### Barrierefreiheit
 
 * Der Zähler aktualisiert sich mit einer Verzögerung von **500 ms**, damit Screenreader-Ereignisse gebündelt werden und das Tippen nicht unterbrechen.
 * Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa:
