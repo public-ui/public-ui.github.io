@@ -3,86 +3,361 @@ title: Nav
 description: Beschreibung, Spezifikation und Beispiele für die Nav-Komponente.
 ---
 
-import Readme from '../../readmes/nav/readme.md';
+import Readme from '@site/readmes/nav/readme.md';
 import NavPreview from '@site/src/components/previews/components/Nav';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Nav
 
-Synonyme: Navigation, Menu, Sidebar, Dropdowns (menu)
 
-Eine **Navigationsleiste** ist eine Gruppe von verwandten Links oder Navigationselementen, die durch Anklicken eine Aktion ausführen oder Inhalte anzeigen. Sie navigiert Nutzer:innen direkt zu bestimmten Inhalten der aktuellen Seite oder zu externen Seiten. Außerdem dient sie Nutzer:innen (ähnlich wie Registerkarten) als Steuerelement, um Inhalte anzuzeigen, auszublenden und zwischen ihnen zu wechseln.
+<BetaDocsBanner />
+<UntestedBanner />
 
-**KoliBri** stellt eine umfangreich konfigurierbare, vertikale **Navigationsleiste** zur Verfügung, die mehrere Ebenen darstellen und in der Breite variiert werden kann.
-Übergeordnete Menüpunkte die Untermenüpunkte enthalten, werden mit einem **Plus-Icon** am rechten Rand angezeigt. Wird der übergeordnete Menüpunkt mit dem Plus-Icon geöffnet, ändert sich das Plus-Icon automatisch zu einem **Minus-Icon**, mit dem der Menüpunkt wieder geschlossen werden kann.
+**Synonyme:** Navigation, Menu, Sidebar
 
-Aktive Menüpunkte werden mit einer farbigen Markierung dargestellt.
+**Beschreibung:** Eine **Nav**-Komponente ist eine Gruppe von verwandten Links oder Navigationselementen, die Nutzer:innen direkt zu bestimmten Inhalten oder externen Seiten führen. Sie ermöglicht hierarchische Navigationsstrukturen mit mehreren Ebenen und unterstützt kompakte Darstellungsmodi für platzbegrenzte Layouts.
 
-Über eine optionale Schaltfläche unterhalb der Navigation kann die Breite der **Nav**-Komponente verändert werden. In der kleinsten Breite werden die Menütitel ausgeblendet und nur
-noch die Icons ausgegeben.
+## Beispiel
 
-## Konstruktion
+Darstellung der Navigationsleiste mit Hierarchie und Icons.
 
 <NavPreview
-	visibleProperties={['_hasCompactButton']}
+	visibleProperties={[]}
+	codeCollapsable
+	initialProps={{}}
+	codeCollapsed
+/>
+
+## Barrierefreiheit
+
+- Die Navigation wird als semantische Landmark mit `<nav>`-Element ausgegeben, um Nutzer:innen mit Screenreadern zu helfen.
+- Alle Navigationspunkte sind über die Tastatur erreichbar und fokussierbar.
+- Übergeordnete Menüpunkte mit Untermenüs werden durch visuell erkennbare Symbole (Plus/Minus) gekennzeichnet.
+- Die aktive Navigationsposition wird visuell und semantisch gekennzeichnet.
+- Labels sind zwingend erforderlich und werden von assistiven Technologien erkannt.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/navigation/" _target="_blank" _label="WAI-ARIA APG - Navigation Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/navigation-mechanisms.html" _target="_blank" _label="WCAG 2.1 - Navigation Mechanisms"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav" _target="_blank" _label="MDN Web Docs - nav Element"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste   | Funktion                                                                                                     |
+| ------- | ------------------------------------------------------------------------------------------------------------ |
+| `Tab`   | Fokussiert Navigationspunkte und den optionalen Compact-Button. Navigation durch alle fokussierbaren Elemente. |
+| `Enter` | Aktiviert den fokussierten Link oder öffnet/schließt Untermenüs bei fokussierten Eltern-Navigationspunkten.  |
+
+### Best Practices / Empfehlungen
+
+- Verwenden Sie die **Nav**-Komponente für Hauptnavigation, Seitennavigation und strukturierte Inhaltsverzeichnisse.
+- Strukturieren Sie die Navigationshierarchie logisch, mit maximal 2–3 Ebenen, um Nutzer:innen nicht zu überfordern.
+- Nutzen Sie aussagekräftige, prägnante Labels, die das Ziel oder den Inhalt klar beschreiben.
+- Verwenden Sie Icons nur ergänzend zu Labels – nie als Ersatz.
+- Deaktivieren Sie `_collapsible` nur, wenn die Navigation klein genug ist und keine Komprimierung nötig ist.
+- Nutzen Sie `_hasCompactButton` für Navigationen mit vielen Einträgen, um Platz zu sparen.
+- Verwenden Sie `_hideLabel` und den Compact-Modus, um eine kompakte Seiten-Navigation zur Verfügung zu stellen.
+- Vermeiden Sie zu tiefe Verschachtelungen – verwenden Sie stattdessen mehrere flachere Ebenen oder alternative Navigationsmuster.
+
+### Anwendungsfälle
+
+- Hauptnavigation einer Website oder Anwendung
+- Seiten-Sidebar mit Inhaltsverzeichnis
+- Nicht-lineare Navigation mit mehreren Ebenen
+- Admin-Dashboards oder Verwaltungsoberflächen mit kategorisierter Funktionalität
+- Breadcrumb-ähnliche Navigationsstrukturen
+- Filterverwaltung und Kategorie-Navigation in e-Commerce-Anwendungen
+
+### FAQ
+
+**Kann ich die Navigation horizontal darstellen?**  
+Die aktuelle Komponente ist für vertikale Layouts optimiert. [Information nicht im Code gefunden]
+
+**Wie viele Ebenen werden unterstützt?**  
+Unbegrenzt viele Ebenen sind theoretisch möglich, aber praktisch sollten es maximal 2–3 sein, um die Usability zu gewährleisten.
+
+**Wie kann ich die Navigationsbreite ändern?**  
+Nutzen Sie `_hasCompactButton`, um einen Button unterhalb der Navigation anzuzeigen, der zwischen normaler und kompakter Darstellung (nur Icons) umschaltet.
+
+## Konstruktion / Technik
+
+### Playground
+
+<NavPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Navigation
+
+Einfache flache Navigation ohne Untermenüs.
+
+<NavPreview
+	visibleProperties={['_label']}
+	initialProps={{
+		_label: 'Navigation',
+		_links: [
+			{ _href: '#start', _icons: 'kolicon-house', _label: 'Startseite' },
+			{ _href: '#about', _icons: 'kolicon-info', _label: 'Über uns' },
+		],
+	}}
 	codeCollapsable
 	codeCollapsed
 />
 
-## Verwendung
+#### Hierarchische Navigation mit Untermenüs
 
-### Links in der Navigationsleiste definieren
+Navigation mit mehreren Ebenen durch Nutzung von `_children`:
 
-Die Navigationsstruktur wird als Objekt oder JSON-String an das Attribut **`_links`** übergeben. Die Struktur ist als Wert/Parameter-Paar aufgebaut:
-Um Untermenüpunkte zu erzeugen, erweitern Sie die JSON-Struktur um das zusätzliche Attribut **`_children`** im übergeordneten Element.
-
-```js
-[
-	{
-		_href: 'startseite',
-		_icons: 'kolicon-house',
-		_label: 'Startseite',
-		_children: [
-			{ _href: 'startseite/1-untermenuepunkt', _icons: 'kolicon-house', _label: '1. Untermenüpunkt' },
-			{ _href: 'startseite/2-untermenuepunkt', _icons: 'kolicon-house', _label: '2. Untermenüpunkt' },
+<NavPreview
+	visibleProperties={['_label']}
+	initialProps={{
+		_label: 'Navigation',
+		_links: [
+			{
+				_href: '#start',
+				_icons: 'kolicon-house',
+				_label: 'Startseite',
+				_children: [
+					{ _href: '#start/sub1', _icons: 'kolicon-house', _label: '1. Untermenüpunkt' },
+					{ _href: '#start/sub2', _icons: 'kolicon-house', _label: '2. Untermenüpunkt' },
+				],
+			},
+			{ _href: '#about', _icons: 'kolicon-info', _label: 'Über uns' },
 		],
-	},
-	{ _href: 'unterseite', _icons: 'kolicon-house', _label: '2. Menüpunkt' },
-];
-```
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-### Kompakte Navigationsleiste anzeigen
+#### Kompatter Modus mit Button
 
-Um die Navigationsleiste in der kompakten Darstellung auszugeben, setzen Sie das Attribut **`_hide-label`**.
+Compact-Button zum Umschalten zwischen voller und Icon-nur Anzeige:
 
-### Best practices
+<NavPreview
+	visibleProperties={['_hasCompactButton']}
+	initialProps={{
+		_label: 'Navigation',
+		_hasCompactButton: true,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-- Verwenden Sie **Navigationsleisten**, um **Navigation** oder navigationsähnliche Aktionen darzustellen (z. B. interne oder externe Links, Abmelden, Kontrolle der Sichtbarkeit auf der Seite).
-- Verwenden Sie das Label, um eine klare und präzise Beschreibung des Inhalts zu diesem bestimmten Navigationselement bereitzustellen.
-- Verwenden Sie keine **Navigationsleisten** für Aktionen, die besser als Schaltflächen dargestellt werden (z. B. „Speichern“, „Löschen“, „Artikel in den Warenkorb legen“).
-- Stapeln Sie nicht mehrere **Navigationsleisten** direkt nebeneinander.
-- Verwenden Sie keine **Navigationsleisten** zum Vergleichen von Inhalten (z. B. unterschiedliche Leistungen).
-- Berücksichtigen Sie die Anzahl der Navigationselemente, die Sie in die **Navigationsleiste** einfügen. Wenn Sie das Gefühl haben, dass die Zahl zu groß wird, ziehen Sie alternative Ansätze zur Präsentation des Inhalts in Betracht oder verwenden Sie ein anderes Navigationsmuster/eine andere Komponente.
+#### Icons auch im erweiterten Modus
 
-### Anwendungsfälle
+Icons werden neben Labels auch in der normalen (nicht kompakten) Darstellung angezeigt:
 
-- Verwenden Sie **Navigationsleisten** als In-Page-Navigation auf einer Landingpage.
-- Verwenden Sie **Navigationsleisten**, um verwandte Informationen auf einer Landingpage zu organisieren.
-- Nutzen Sie **Navigationsleisten**, um Angebote oder Vorteile in verschiedene Kategorien einzuordnen (z.B. Formulare).
-- Verwenden Sie **Navigationsleisten**, um FAQs in verschiedene Kategorien zu unterteilen.
+<NavPreview
+	visibleProperties={['_hasIconsWhenExpanded']}
+	initialProps={{
+		_label: 'Navigation',
+		_hasIconsWhenExpanded: true,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-## Barrierefreiheit
+#### Kompakte Labels mit Tooltips
 
-### Tastatursteuerung
+Hide-Label-Modus versteckt die Beschriftung und zeigt sie nur als Tooltip bei Hover/Focus:
 
-| Taste   | Funktion                                                                                                                                                                                                                   |
-| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`   | Fokussiert den ersten Menüpunkt in der Navigation. Nachfolgend kann mit der Tab-Taste jeder Menüpunkt angesprungen werden. Wenn der Has-compact-Button aktiviert wurde, ist dieser ebenfalls mit der Tab-Taste erreichbar. |
-| `Enter` | Klappt Unterpunkte auf/zu, sofern eine Ausklappschaltfläche fokussiert ist, aktiviert die Schaltfläche oder öffnet den Link anderenfalls.                                                                                  |
+<NavPreview
+	visibleProperties={['_hideLabel']}
+	initialProps={{
+		_label: 'Navigation',
+		_hideLabel: true,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Nicht-kollabierbare Navigation
+
+Wenn `_collapsible` deaktiviert ist, können Untermenüs nicht geöffnet/geschlossen werden:
+
+<NavPreview
+	visibleProperties={['_collapsible']}
+	initialProps={{
+		_label: 'Navigation',
+		_collapsible: false,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event   | Auslöser                              | Value |
+| ------- | ------------------------------------- | ----- |
+| `click` | Navigationspunkt oder Kompakt-Button wird angeklickt | -     |
+
+## API
 
 <Readme />
 
-## Beispiele
 
-<ExampleLink component="nav" />
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste   | Funktion                                                                                                     |
+| ------- | ------------------------------------------------------------------------------------------------------------ |
+| `Tab`   | Fokussiert Navigationspunkte und den optionalen Compact-Button. Navigation durch alle fokussierbaren Elemente. |
+| `Enter` | Aktiviert den fokussierten Link oder öffnet/schließt Untermenüs bei fokussierten Eltern-Navigationspunkten.  |
+
+### Best Practices / Empfehlungen
+
+- Verwenden Sie die **Nav**-Komponente für Hauptnavigation, Seitennavigation und strukturierte Inhaltsverzeichnisse.
+- Strukturieren Sie die Navigationshierarchie logisch, mit maximal 2–3 Ebenen, um Nutzer:innen nicht zu überfordern.
+- Nutzen Sie aussagekräftige, prägnante Labels, die das Ziel oder den Inhalt klar beschreiben.
+- Verwenden Sie Icons nur ergänzend zu Labels – nie als Ersatz.
+- Deaktivieren Sie `_collapsible` nur, wenn die Navigation klein genug ist und keine Komprimierung nötig ist.
+- Nutzen Sie `_hasCompactButton` für Navigationen mit vielen Einträgen, um Platz zu sparen.
+- Verwenden Sie `_hideLabel` und den Compact-Modus, um eine kompakte Seiten-Navigation zur Verfügung zu stellen.
+- Vermeiden Sie zu tiefe Verschachtelungen – verwenden Sie stattdessen mehrere flachere Ebenen oder alternative Navigationsmuster.
+
+### Anwendungsfälle
+
+- Hauptnavigation einer Website oder Anwendung
+- Seiten-Sidebar mit Inhaltsverzeichnis
+- Nicht-lineare Navigation mit mehreren Ebenen
+- Admin-Dashboards oder Verwaltungsoberflächen mit kategorisierter Funktionalität
+- Breadcrumb-ähnliche Navigationsstrukturen
+- Filterverwaltung und Kategorie-Navigation in e-Commerce-Anwendungen
+
+### FAQ
+
+**Kann ich die Navigation horizontal darstellen?**  
+Die aktuelle Komponente ist für vertikale Layouts optimiert. [Information nicht im Code gefunden]
+
+**Wie viele Ebenen werden unterstützt?**  
+Unbegrenzt viele Ebenen sind theoretisch möglich, aber praktisch sollten es maximal 2–3 sein, um die Usability zu gewährleisten.
+
+**Wie kann ich die Navigationsbreite ändern?**  
+Nutzen Sie `_hasCompactButton`, um einen Button unterhalb der Navigation anzuzeigen, der zwischen normaler und kompakter Darstellung (nur Icons) umschaltet.
+
+## Konstruktion / Technik
+
+### Playground
+
+<NavPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Navigation
+
+Einfache flache Navigation ohne Untermenüs.
+
+<NavPreview
+	visibleProperties={['_label']}
+	initialProps={{
+		_label: 'Navigation',
+		_links: [
+			{ _href: '#start', _icons: 'kolicon-house', _label: 'Startseite' },
+			{ _href: '#about', _icons: 'kolicon-info', _label: 'Über uns' },
+		],
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Hierarchische Navigation mit Untermenüs
+
+Navigation mit mehreren Ebenen durch Nutzung von `_children`:
+
+<NavPreview
+	visibleProperties={['_label']}
+	initialProps={{
+		_label: 'Navigation',
+		_links: [
+			{
+				_href: '#start',
+				_icons: 'kolicon-house',
+				_label: 'Startseite',
+				_children: [
+					{ _href: '#start/sub1', _icons: 'kolicon-house', _label: '1. Untermenüpunkt' },
+					{ _href: '#start/sub2', _icons: 'kolicon-house', _label: '2. Untermenüpunkt' },
+				],
+			},
+			{ _href: '#about', _icons: 'kolicon-info', _label: 'Über uns' },
+		],
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Kompatter Modus mit Button
+
+Compact-Button zum Umschalten zwischen voller und Icon-nur Anzeige:
+
+<NavPreview
+	visibleProperties={['_hasCompactButton']}
+	initialProps={{
+		_label: 'Navigation',
+		_hasCompactButton: true,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Icons auch im erweiterten Modus
+
+Icons werden neben Labels auch in der normalen (nicht kompakten) Darstellung angezeigt:
+
+<NavPreview
+	visibleProperties={['_hasIconsWhenExpanded']}
+	initialProps={{
+		_label: 'Navigation',
+		_hasIconsWhenExpanded: true,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Kompakte Labels mit Tooltips
+
+Hide-Label-Modus versteckt die Beschriftung und zeigt sie nur als Tooltip bei Hover/Focus:
+
+<NavPreview
+	visibleProperties={['_hideLabel']}
+	initialProps={{
+		_label: 'Navigation',
+		_hideLabel: true,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Nicht-kollabierbare Navigation
+
+Wenn `_collapsible` deaktiviert ist, können Untermenüs nicht geöffnet/geschlossen werden:
+
+<NavPreview
+	visibleProperties={['_collapsible']}
+	initialProps={{
+		_label: 'Navigation',
+		_collapsible: false,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event   | Auslöser                              | Value |
+| ------- | ------------------------------------- | ----- |
+| `click` | Navigationspunkt oder Kompakt-Button wird angeklickt | -     |
+
+## API
+
+<Readme />
 

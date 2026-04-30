@@ -3,33 +3,77 @@ title: Version
 description: Description, specification and examples for the Version component.
 ---
 
-import Readme from '/readmes/version/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '@site/readmes/version/readme.md';
 import VersionPreview from '@site/src/components/previews/components/Version';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 # Version
 
-The **Version** component displays short content on a colored background. The **Version** component is closely related to the **Tag** component, but only provides one attribute for configuration. It is optimized for specifying versions of a page, for example.
+<BetaDocsBanner />
 
-## Construction
+**Synonyms:** Version number, release label
+
+**Description:** The **Version** component displays a version number or release label as a compact inline element. It is well suited for showing version information next to pages, components, or features and automatically prefixes the value with `v`.
+
+## Example
+
+Rendering the component with a simple version number:
 
 <VersionPreview
-	visibleProperties={['_label']}
+	visibleProperties={[]}
+	initialProps={{ _label: '1.2.3' }}
 	codeCollapsable
 	codeCollapsed
 />
 
+## Accessibility
+
+The **Version** component is a semantic inline element and is exposed as such to assistive technology:
+
+- **Label output**: The text defined via `_label` is read by screen readers and communicates the version value.
+- **Inline positioning**: The component flows within surrounding text and does not introduce interactive behavior.
+- **Clear prefixing**: The automatically added `v` prefix makes the content recognizable as a version string.
+
+### Links and references
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or instructions"></kol-link>
+
 ## Usage
 
-The attribute **`_label`** is available for configuration and accepts any text preceded by a `v` in the component.
+### Best practices
 
-The **version** is output as an **_inline element_** by default.
+- **Use meaningful version strings**: Prefer standardized version identifiers such as semantic versions like `1.2.3`.
+- **Place versions contextually**: Show the version where users need to understand the current state quickly, for example in a header or status area.
+- **Avoid redundancy**: Do not repeat the same version string unnecessarily in the same context.
+- **Preserve readability**: The component is inline by default and should be used where it integrates cleanly into the text flow.
 
-# API
+### Use cases
+
+- Displaying the current software version in a header or footer
+- Marking document revisions or release states
+- Comparing multiple versions side by side
+- Indicating release channels such as `1.0.0-beta` or `2.1.0-staging`
+
+## Construction / Technical
+
+### Playground
+
+<VersionPreview codeCollapsable />
+
+### Features with code
+
+#### Basic version number
+
+The visible version number is defined via `_label`. The `v` prefix is added automatically.
+
+<VersionPreview
+	visibleProperties={['_label']}
+	initialProps={{ _label: '2.0.0' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## API
 
 <Readme />
-
-## Examples
-
-<ExampleLink component="version" />
 

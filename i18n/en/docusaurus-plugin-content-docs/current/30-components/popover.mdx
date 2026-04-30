@@ -1,21 +1,91 @@
 ---
 title: Popover
-description: Description and specification for the Popover component.
+description: Description, specification, and examples for the Popover component.
 ---
+
+import Readme from '@site/readmes/popover-button/readme.md';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Popover
 
-<kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+<BetaDocsBanner />
+<UntestedBanner />
 
-The **Popover** component provides a way to put additional content in a temporary element that is arranged around its trigger element, similar to <kol-link _href="" _label="Tooltip"></kol-link>.
-The trigger element is always the preceding element in the HTML (previousSibling).
+**Synonyms:** Overlay, Popup, dynamic overlay
+
+**Description:** The **Popover** component provides a lightweight, non-modal overlay solution that temporarily displays additional content next to a trigger element. It uses the native HTML Popover API for optimised performance.
+
+<kol-alert _type="info" _variant="card">
+	The **Popover** component is used internally within KoliBri (e.g. in the{' '}
+	<kol-link _href="../components/popover-button" _label="PopoverButton"></kol-link>) and is not intended for direct use in
+	application development. Use the <kol-link _href="../components/popover-button" _label="PopoverButton component"></kol-link>{' '}
+	instead.
+</kol-alert>
+
+## Example
+
+Simple popover with default configuration:
+
+```html
+<button popovertarget="my-popover">Trigger</button>
+<div id="my-popover" popover>
+	<p>This is the popover content.</p>
+</div>
+```
+
+## Accessibility
+
+- The Popover component uses the native HTML Popover API for improved support by assistive technologies.
+- The trigger element and the popover content should be semantically linked.
+- The popover content should have sufficient size and contrast for readability.
+- With nested or multiple popovers, focus management can become complex; in such cases, using{' '}
+  <kol-link _href="../components/dialog" _label="Dialog"></kol-link> or{' '}
+  <kol-link _href="../components/modal" _label="Modal"></kol-link> is recommended.
+
+### Links and references
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/Popover_API" _target="_blank" _label="MDN - Popover API"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/popover.html" _target="_blank" _label="HTML Standard - Popover"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html" _target="_blank" _label="WCAG 2.1 - Focus Visible"></kol-link>
+
+## Usage
+
+### Best practices / Recommendations
+
+- Use this component primarily for internal KoliBri implementations.
+- Ensure that the popover content is not too large and can be adapted to different screen sizes.
+- Make sure the popover can be closed, e.g. by clicking outside or via an explicit close button.
+- Use meaningful labels and descriptions for the trigger element (`_label`, `_ariaDescription`).
+- Consider the position of the popover content (`_popoverAlign`) to avoid visibility issues.
+
+### Use cases
+
+- Internal use in the PopoverButton component
+- Flexible, lightweight overlay solutions for special requirements
+- Context-sensitive help information or action menus
+
+## Construction / Technical
+
+### Positioning
+
+The popover position is controlled via `_popoverAlign`:
+
+| Value    | Description                                              |
+| -------- | -------------------------------------------------------- |
+| `top`    | The popover is placed above the trigger element.         |
+| `bottom` | The popover is placed below the trigger element (default). |
+| `left`   | The popover is placed to the left of the trigger element. |
+| `right`  | The popover is placed to the right of the trigger element. |
 
 ### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event | trigger | Value |
-|---------|-----------------------------|-------|
-| `close` | Component is closing | - |
+| Event   | Trigger                                               | Value |
+| ------- | ----------------------------------------------------- | ----- |
+| `close` | The popover is closed [Not found in source – please verify] | -     |
 
-<kol-alert _type="info" _variant="card">Die **Popover**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden.</kol-alert>
+## API
+
+<Readme />

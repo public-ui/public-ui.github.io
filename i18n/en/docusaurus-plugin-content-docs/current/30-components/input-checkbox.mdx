@@ -3,12 +3,19 @@ title: InputCheckbox
 description: Description, specification and examples for the InputCheckbox component.
 ---
 
-import Readme from '/readmes/input-checkbox/readme.md';
+import Readme from '@site/readmes/input-checkbox/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 import InputCheckboxPreview from '@site/src/components/previews/components/InputCheckbox';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # InputCheckbox
+
+
+<BetaDocsBanner />
+<UntestedBanner />
 
 The input type **_Checkbox_** generates a rectangular box that is activated and deactivated again by clicking on it. When activated, there is a colored tick in the box.
 
@@ -31,6 +38,7 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 | `input` | Checkbox is checked or unchecked (corresponds to native `input` event) | Defined `_value` if active, otherwise `null` |
 | `change` | Checkbox is checked or unchecked (corresponds to native `change` event) | Defined `_value` if active, otherwise `null` |
 | `blur` | Input field loses focus | - |
+| `keydown` | A key is pressed | - |
 
 ## Usage
 

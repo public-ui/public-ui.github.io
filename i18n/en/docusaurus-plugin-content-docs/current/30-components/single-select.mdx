@@ -3,51 +3,213 @@ title: SingleSelect
 description: Description, specification and examples for the SingleSelect component.
 ---
 
-import Readme from '/readmes/single-select/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '@site/readmes/single-select/readme.md';
 import SingleSelectPreview from '@site/src/components/previews/components/SingleSelect';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # SingleSelect
 
-The **SingleSelect** component creates a selection box that combines an input field with a list of selectable options underneath. It also offers a search function to filter the selection.
+<BetaDocsBanner />
+<UntestedBanner />
+
+**Synonyms:** Dropdown, Selection field, Simple selection
+
+**Description:** The **SingleSelect** component creates a selection box that allows users to select exactly one predefined option from a list. The input field combines the functionality of a text field with a dropdown list and optionally offers a search function to filter the available options.
+
+## Example
+
+Rendering of the component with the essential properties. Code can be displayed.
 
 <SingleSelectPreview
-  visibleProperties={['_label', '_msg', '_icons', '_disabled']}
-  codeCollapsable
-  codeCollapsed
+	visibleProperties={['_label', '_options', '_placeholder']}
+	initialProps={{
+		_label: 'Select',
+		_placeholder: 'Please select an option',
+	}}
+	codeCollapsable
+	codeCollapsed
 />
+
+## Accessibility
+
+The **SingleSelect** component was developed with a focus on accessibility:
+
+- **Label requirement**: Every instance must have a unique description via the `_label` attribute. This ensures that screen reader users understand what selection they are making.
+- **Hint texts**: With `_hint`, additional information can be provided that is read aloud by screen readers.
+- **Error messages**: With `_msg`, error messages can be output that are automatically linked to the input field.
+- **Keyboard navigation**: The component is fully operable via keyboard with intuitive navigation through the options list.
+- **Status display**: The selected state is correctly communicated to assistive technologies.
+- **Required fields**: Fields marked with `_required` are signalled to assistive technologies.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/" _target="_blank" _label="WAI-ARIA APG - Combobox Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/combobox_role" _target="_blank" _label="MDN - ARIA: combobox role"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
 
 ## Usage
 
-The choices are passed to the component as an object or JSON string via the **`_options`** attribute. The values ​​**`label`** and **`value`** must be specified for each option.
+### Keyboard Control
 
-Example of the construction of the JSON object:
+| Key               | Function                                                                |
+| ----------------- | ----------------------------------------------------------------------- |
+| `Tab`             | Focuses the SingleSelect field or moves to the next element.            |
+| `Shift + Tab`     | Moves to the previous interactive element.                              |
+| `Space` / `Enter` | Opens the dropdown list or selects the focused option.                  |
+| `Arrow up`        | Navigates to the previous option in the list.                           |
+| `Arrow down`      | Navigates to the next option in the list.                               |
+| `Home`            | Jumps to the first option in the list.                                  |
+| `End`             | Jumps to the last option in the list.                                   |
+| `Escape`          | Closes the dropdown list without saving.                                |
+| `Character`       | Filters the options by input (when search function is enabled).         |
 
-```json
-[
-	{ "label": "Herr", "value": 0 },
-	{ "label": "Frau", "value": 1 },
-	{ "label": "Firma", "value": 2 }
-]
-```
+### Best Practices / Recommendations
+
+- **Meaningful labels**: Use clear, understandable descriptions that make the purpose of the selection obvious.
+- **Sensible options**: Do not make the options list too long; use grouping or pagination if needed.
+- **Use placeholder wisely**: The placeholder should only serve as supplementary help, not as an instruction.
+- **Check default value**: Consider whether a reasonable default value should be set to minimise user errors.
+- **Concrete error messages**: Provide meaningful validation error messages via `_msg`.
+- **Clear grouping**: For many options (more than 15), consider a different component such as a table or [Combobox](../components/combobox).
+- **Clear button**: If needed, set an explicit submit button to give users confidence.
+
+### Use Cases
+
+- Selection of title, salutation or gender in forms
+- Selection of a country or region
+- Selection of a category or status
+- Filtering by a single criterion
+- Selection of a date or time from predefined values
+- Single selection in settings or configurations
+
+## Construction / Technology
+
+### Playground
+
+Test the various properties of the SingleSelect component:
+
+<SingleSelectPreview codeCollapsable />
+
+### Functionality (with Code)
+
+#### Simple Selection
+
+Standard selection with label and options list:
+
+<SingleSelectPreview
+	visibleProperties={['_label', '_options']}
+	initialProps={{
+		_label: 'Select',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Placeholder
+
+A placeholder text is displayed when no option has been selected yet:
+
+<SingleSelectPreview
+	visibleProperties={['_placeholder']}
+	initialProps={{
+		_label: 'Select',
+		_placeholder: 'Please select an option',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Form Attributes
+
+Standard attributes for forms:
+
+<SingleSelectPreview
+	visibleProperties={['_label', '_required', '_disabled', '_hideLabel', '_msg', '_hideMsg']}
+	initialProps={{
+		_label: 'Select',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Available attributes:**
+- `_required`: Marks the field as required
+- `_disabled`: Disables the input field
+- `_hideLabel`: Hides the label visually (remains visible to assistive technologies)
+- `_msg`: Error messages or validation hints
+- `_hideMsg`: Hides the error message visually but keeps it in the DOM for `aria-describedby`
+
+#### Clear Button
+
+The clear button allows the current selection to be deleted:
+
+<SingleSelectPreview
+	visibleProperties={['_hasClearButton']}
+	initialProps={{
+		_label: 'Select',
+		_hasClearButton: true,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Icons
+
+Icons can be displayed to the left and right of the input field:
+
+<SingleSelectPreview
+	visibleProperties={['_icons']}
+	initialProps={{
+		_label: 'Select',
+		_icons: 'fa-solid fa-location-dot',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Hint Text and Error Message
+
+Hint texts can be provided before input, error messages after invalid selection:
+
+<SingleSelectPreview
+	visibleProperties={['_hint', '_msg']}
+	initialProps={{
+		_label: 'Select',
+		_hint: 'Additional hints for the selection',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Dropdown Height
+
+The maximum number of visible options is controlled via `_rows`:
+
+<SingleSelectPreview
+	visibleProperties={['_rows']}
+	initialProps={{
+		_label: 'Select',
+		_rows: 3,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event | trigger | Value |
-|----------|---------------------------------|---------------------------------|
-| `click` | Input field is clicked | - |
-| `focus` | Input field is focused | - |
-| `blur` | Input field loses focus | - |
-| `input` | Option is selected | `value` attribute of option |
-| `change` | Option is selected | `value` attribute of option |
+| Event    | Trigger                  | Value                       |
+| -------- | ------------------------ | --------------------------- |
+| `click`  | Input field is clicked   | -                           |
+| `focus`  | Input field is focused   | -                           |
+| `blur`   | Input field loses focus  | -                           |
+| `input`  | Option is selected       | `value` attribute of option |
+| `change` | Option is selected       | `value` attribute of option |
 
-# API
+## API
 
 <Readme />
-
-## Examples
-
-<ExampleLink component="single-select" />
 

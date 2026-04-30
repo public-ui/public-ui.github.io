@@ -3,69 +3,178 @@ title: InputFile
 description: Beschreibung, Spezifikation und Beispiele für die InputFile-Komponente.
 ---
 
-import Readme from '../../readmes/input-file/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import Readme from '@site/readmes/input-file/readme.md';
 import InputFilePreview from '@site/src/components/previews/components/InputFile';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # InputFile
 
-Synonyme: Upload, File Uploader, File Picker, File Selector
 
-Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.
+<BetaDocsBanner />
+<UntestedBanner />
 
-## Konstruktion
+**Synonyme:** Upload, File Uploader, File Picker, Dateiauswahl
+
+**Beschreibung:** Die **InputFile**-Komponente erzeugt ein Eingabefeld für Datei-Uploads. Sie ermöglicht Nutzern, eine oder mehrere Dateien auszuwählen und einzureichen – ideal für Formular-basierte Dateiübergaben, Dokumentationen oder Medien-Uploads.
+
+## Beispiel
+
+Einfaches Datei-Eingabefeld mit Beschriftung und Konfigurationsmöglichkeiten:
 
 <InputFilePreview
-  visibleProperties={['_label', '_accept', '_multiple', '_disabled']}
-  codeCollapsable
-  codeCollapsed
+	visibleProperties={['_label', '_accept', '_multiple', '_disabled']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## Barrierefreiheit
+
+Die **InputFile**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
+
+- **Label-Pflicht**: Jedes Eingabefeld muss über das Attribut `_label` eine aussagekräftige Beschriftung erhalten, die von Screenreadern erkannt wird.
+- **Dateitypbeschränkung**: Die Attribute `_accept` und `_multiple` werden korrekt an die zugrundeliegende HTML5-API übermittelt und von assistiven Technologien erkannt.
+- **Fehlerbehandlung**: Mit dem Attribut `_msg` können Fehlermeldungen angegeben werden, die von Screenreadern vorgelesen werden.
+- **Tastatursteuerung**: Die Komponente ist vollständig über die Tastatur bedienbar. `Tab` fokussiert das Eingabefeld und öffnet den vordefinierten Dateiauswahldialog des Betriebssystems.
+- **Fokusmanagement**: Klare visuelle Fokusindikatoren für Nutzer mit Sehbehinderungen.
+
+### Links und Referenzen
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept" _target="_blank" _label="MDN: HTML Attribute Accept"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1: Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/textbox/" _target="_blank" _label="WAI-ARIA APG: Textbox Pattern"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste | Funktion                                                      |
+|-------|---------------------------------------------------------------|
+| `Tab` | Fokussiert das Eingabefeld und öffnet den Dateiauswahldialog. |
+
+### Best Practices / Empfehlungen
+
+- **Dateitypbeschränkung**: Verwenden Sie das Attribut `_accept`, um nur die erforderlichen Dateitypen zuzulassen. Dies verhindert unnötige Upload-Versuche und verbessert die User Experience. Beachten Sie die MIME-Type-Syntax: z.B. `image/*` für alle Bilder, `.pdf` für PDF-Dateien oder `.doc,.docx` für Microsoft Word.
+- **Sicherheit**: Das Attribut `_accept` ist lediglich eine Benutzerfreundlichkeits-Funktion. Validieren Sie Dateitypen **zwingend auf dem Server**, da die Client-seitige Filterung umgangen werden kann.
+- **Größenbegrenzung**: Begrenzen Sie die maximale Dateigröße auf dem Server, um Speicher- und Upload-Kapazität zu schützen. Dies muss auf dem Server erfolgt, nicht im Client.
+- **Mehrfachauswahl**: Nutzen Sie `_multiple`, wenn Nutzer mehrere Dateien gleichzeitig hochladen sollen.
+- **ID und Name**: Setzen Sie `_name` korrekt, damit die Dateien beim Formular-Submit mitgesendet werden.
+- **Aussagekräftige Label**: Verwenden Sie beschreibende Labels, die den Zweck des Uploads deutlich machen, z.B. „Beilagedokumente" statt nur „Datei".
+- **Fehlerbehandlung**: Geben Sie bei ungültigen Dateien konkrete Fehlermeldungen über `_msg` aus – nicht nur „Fehler", sondern z.B. „Nur PDF-Dateien erlaubt" oder „Maximale Größe: 5 MB".
+
+### Anwendungsfälle
+
+- Hochladen von Profilbildern oder Avataren
+- Einreichung von Bewerbungsdokumenten oder Lebensläufen
+- Upload von Anhängen in Kontaktformularen
+- Batch-Import von Daten (z.B. CSV, Excel)
+- Einreichen von Szenarien-Dateien oder Konfigurationen
+- Bildergalerie oder Dateimanagement-Interfaces
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften der InputFile-Komponente:
+
+<InputFilePreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basisfeld mit Beschriftung
+
+Standard-Datei-Eingabefeld ohne Konfiguration:
+
+<InputFilePreview
+	initialProps={{ _label: 'Datei auswählen' }}
+	visibleProperties={[]}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Dateitypbeschränkung
+
+Beschränkung der erlaubten Dateitypen über das Attribut `_accept`:
+
+<InputFilePreview
+	visibleProperties={['_accept']}
+	initialProps={{ _label: 'Datei auswählen', _accept: 'image/*' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Beispiele für `_accept`-Werte:**
+- `image/*` – Alle Bildformate
+- `.pdf` – Nur PDF-Dateien
+- `.doc,.docx` – Microsoft Word-Dokumente
+- `.csv,.xlsx` – Tabellendaten
+- `*` oder leer – Alle Dateitypen (Standard)
+
+#### Mehrfachauswahl
+
+Ermöglichen Sie die Auswahl mehrerer Dateien gleichzeitig:
+
+<InputFilePreview
+	visibleProperties={['_multiple']}
+	initialProps={{ _label: 'Mehrere Dateien auswählen', _multiple: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Deaktivierter Zustand
+
+Das Eingabefeld ist nicht interaktiv:
+
+<InputFilePreview
+	visibleProperties={['_disabled']}
+	initialProps={{ _label: 'Datei auswählen', _disabled: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Fehlermeldung
+
+Fehler oder Validierungshinweise:
+
+<InputFilePreview
+	visibleProperties={['_msg']}
+	initialProps={{
+		_label: 'Datei auswählen',
+		_msg: { _description: 'Nur PDF-Dateien bis 5 MB erlaubt' },
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Hilfetexte und Beschriftung
+
+Additionale Informationen für Nutzer:
+
+<InputFilePreview
+	visibleProperties={['_label', '_hint', '_hideLabel']}
+	initialProps={{
+		_label: 'Dokument hochladen',
+		_hint: 'Akzeptierte Formate: PDF, DOC, DOCX. Max. Größe: 10 MB.',
+	}}
+	codeCollapsable
+	codeCollapsed
 />
 
 ### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event    | Auslöser                                                                        | Value                           |
-|----------|---------------------------------------------------------------------------------|---------------------------------|
-| `focus`  | Eingabefeld wird fokussiert                                                     | -                               |
-| `click`  | Eingabefeld wird angeklickt                                                     | -                               |
-| `input`  | Eine oder mehrere Dateien werden ausgewählt (entspricht nativem `input`-Event)  | Ausgwählte Dateien als FileList |
-| `change` | Eine oder mehrere Dateien werden ausgewählt (entspricht nativem `change`-Event) | Ausgwählte Dateien als FileList |
-| `blur`   | Eingabefeld verliert Fokus                                                      | -                               |
+| Event      | Auslöser                                                                  | Value                            |
+|------------|---------------------------------------------------------------------------|----------------------------------|
+| `focus`    | Eingabefeld wird fokussiert                                               | -                                |
+| `click`    | Eingabefeld wird angeklickt                                               | -                                |
+| `keydown`  | Eine Taste wird gedrückt, während das Eingabefeld fokussiert ist          | -                                |
+| `input`    | Eine oder mehrere Dateien werden ausgewählt (natives `input`-Event)      | Ausgewählte Dateien als FileList |
+| `change`   | Eine oder mehrere Dateien werden ausgewählt (natives `change`-Event)     | Ausgewählte Dateien als FileList |
+| `blur`     | Eingabefeld verliert Fokus                                                | -                                |
 
-## Verwendung
-
-Geben Sie über das Attribut **`_accept`** an, welche Dateitypen zur Auswahl erlaubt sind. Wird das Attribut nicht oder leer übergeben, sind alle Dateitypen erlaubt.
-Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept" _target="_blank" _label="MDN Artikel zum Attribut accept"></kol-link>.
-
-### Best practices
-
-- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
-- Lassen Sie nur die Dateitypen zum Upload zu, die für die Programmausführung benötigt werden. Eine fehlende Einschränkung der hochladbaren Dateitypen kann ein erhebliches Sicherheitsrisiko sein.
-- Begrenzen Sie die Größe der Dateien, die Sie zum Upload zulassen möchten.
-
-## Barrierefreiheit
-
-### Tastatursteuerung
-
-| Taste | Funktion                                                        |
-| ----- | --------------------------------------------------------------- |
-| `Tab` | Fokussiert das Eingabefeld und ruft den Dateiauswahldialog auf. |
-
-## Links und Referenzen
-
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
-
-# API
+## API
 
 <Readme />
-
-## Verwendung _msg
-
-<PropertyMsgUsage />
-
-## Beispiele
-
-<ExampleLink component="input-file" />
 

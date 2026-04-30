@@ -1,50 +1,214 @@
 ---
 title: Toolbar
-description: Description and specification for the toolbar component.
+description: Description, specification and examples for the Toolbar component.
 ---
 
-import Readme from '/readmes/toolbar/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '@site/readmes/toolbar/readme.md';
 import ToolbarPreview from '@site/src/components/previews/components/Toolbar';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Toolbar
 
-The **Toolbar** component is a collection of commonly used button and link controls summarized in a compact visual form. The toolbar is typically a subset of functions found in a menu bar to reduce user effort.
+<BetaDocsBanner />
+<UntestedBanner />
 
-<ToolbarPreview 
-  visibleProperties={['_orientation'  ]}
-  codeCollapsable
-  codeCollapsed
+**Synonyms:** Toolstrip, Action Bar, Command Bar
+
+**Description:** The **Toolbar** component presents a collection of controls (buttons and links) grouped in a compact visual form. It enables users to navigate between individual elements quickly using keyboard controls and is ideal for frequently used functions such as formatting tools or navigation controls.
+
+## Example
+
+Toolbar with various controls (buttons and links):
+
+<ToolbarPreview
+	visibleProperties={[]}
+	codeCollapsable
 />
-
-## Usage
-
-Use the **Toolbar** component if you want to enable navigation of various buttons and links, e.g. to format the content of a text area.
-The **`aria-label`** can be set using the **`_label`** attribute.
-The individual functions are set in the toolbar using the **`_items`** attribute.
-The **`tabIndex`** is controlled by the **Toolbar** component. The default is always the first active element in the **Toolbar**.
-
-### Supported **Toolbar** components
-
-- Link
-- button
-
-The **Toolbar** component is told whether it is a **Link** or **Button** component using the **`type`** attribute.
 
 ## Accessibility
 
+The **Toolbar** component was developed with a focus on accessibility:
+
+- **Semantic label**: The `_label` attribute serves as `aria-label` and describes the purpose of the toolbar for screen reader users.
+- **Focus management**: The toolbar manages focus automatically. The first active element receives focus by default.
+- **Keyboard navigation**: Navigation between elements is done using arrow keys, improving usability for users with motor impairments.
+- **Orientation flexibility**: By setting the orientation to vertical or horizontal, the toolbar can be adapted to different requirements.
+- **Disabled state**: Disabled elements are skipped during keyboard navigation and are recognizable by screen readers.
+
+### Links and references
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/toolbar_role" _target="_blank" _label="MDN: toolbar role"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/" _target="_blank" _label="WAI-ARIA Authoring Practices Guide: Toolbar"></kol-link>
+
+## Usage
+
 ### Keyboard controls
 
-| button | Function |
-| -------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `Tab` | First tab focuses on the toolbar. Second the first active element and third restores the default. |
-| `arrow keys` | Can be used to navigate elements in the focused toolbar.                            |
+| Key             | Function                                                                               |
+| --------------- | -------------------------------------------------------------------------------------- |
+| `Tab`           | Focuses the toolbar (or moves to the next element if already focused).                  |
+| `Arrow right`   | Moves focus to the next active element in the toolbar (horizontal).                    |
+| `Arrow left`    | Moves focus to the previous active element in the toolbar (horizontal).                |
+| `Arrow down`    | Moves focus to the next active element in the toolbar (vertical).                      |
+| `Arrow up`      | Moves focus to the previous active element in the toolbar (vertical).                  |
 
-## Links and references
+### Best practices / Recommendations
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/toolbar_role" _target="_blank"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/" _target="_blank"></kol-link>
+- **Meaningful grouping**: Use the toolbar for related functions, e.g. formatting tools in an editor.
+- **Clear labels**: Give each toolbar a meaningful `_label` that describes its purpose.
+- **Consistent orientation**: Choose an orientation (horizontal or vertical) based on the available space and usage pattern.
+- **Disabled elements**: Use `_disabled` on items in `_items` to disable functions that are not available in certain contexts.
+- **Intuitive order**: Arrange elements in a logical order that matches the user's workflow.
+- **Icons with labels**: Use icons in combination with labels or tooltips to improve usability.
+
+### Use cases
+
+- **Formatting tools**: Text editing with functions like bold, italic, underline
+- **Navigation**: Buttons for "Back" and "Next" in multi-step processes
+- **Document control**: Functions like save, print, export
+- **Media control**: Play, pause, stop and other controls for multimedia content
+- **Data editing**: Actions like add, edit, delete records in tables or lists
+
+### FAQ
+
+**Which element is focused by default?**  
+The first active (non-disabled) element in the `_items` array receives focus by default.
+
+**Can I change the order of elements?**  
+Yes, the order is defined by the `_items` array. Change the order of objects in the array to change the order of elements.
+
+**How do I disable individual elements?**  
+Set the `_disabled` property to `true` for the relevant element in the `_items` array.
+
+## Construction / Technical
+
+### Playground
+
+Test the various properties of the Toolbar component:
+
+<ToolbarPreview codeCollapsable />
+
+### Functionality (with code)
+
+#### Basic toolbar with multiple elements
+
+A toolbar with a collection of button and link elements:
+
+<ToolbarPreview
+	visibleProperties={['_label', '_items']}
+	initialProps={{
+		_label: 'Editing tools',
+		_items: [
+			{
+				type: 'button',
+				_label: 'Save',
+				_icons: {
+					left: {
+						icon: 'kolicon-save',
+					},
+				},
+			},
+			{
+				type: 'button',
+				_label: 'Print',
+				_icons: {
+					left: {
+						icon: 'kolicon-printer',
+					},
+				},
+			},
+			{
+				type: 'button',
+				_label: 'Delete',
+				_icons: {
+					left: {
+						icon: 'kolicon-trash',
+					},
+				},
+			},
+		],
+	}}
+	codeCollapsable
+/>
+
+#### Orientation
+
+The toolbar can be aligned horizontally (default) or vertically:
+
+<ToolbarPreview
+	visibleProperties={['_label', '_orientation']}
+	initialProps={{
+		_label: 'Navigation controls',
+		_orientation: 'vertical',
+		_items: [
+			{
+				type: 'button',
+				_label: 'Back',
+				_hideLabel: true,
+				_icons: {
+					left: {
+						icon: 'kolicon-chevron-up',
+					},
+				},
+			},
+			{
+				type: 'button',
+				_label: 'Next',
+				_hideLabel: true,
+				_icons: {
+					left: {
+						icon: 'kolicon-chevron-down',
+					},
+				},
+			},
+		],
+	}}
+	codeCollapsable
+/>
+
+#### Disabled elements
+
+Individual elements can be disabled:
+
+<ToolbarPreview
+	visibleProperties={['_label', '_items']}
+	initialProps={{
+		_label: 'Formatting tools',
+		_items: [
+			{
+				type: 'button',
+				_label: 'Bold',
+				_icons: {
+					left: {
+						icon: 'kolicon-bold',
+					},
+				},
+			},
+			{
+				type: 'button',
+				_label: 'Italic',
+				_disabled: true,
+				_icons: {
+					left: {
+						icon: 'kolicon-italic',
+					},
+				},
+			},
+			{
+				type: 'button',
+				_label: 'Underline',
+				_icons: {
+					left: {
+						icon: 'kolicon-underline',
+					},
+				},
+			},
+		],
+	}}
+	codeCollapsable
+/>
+
+## API
 
 <Readme />
-
-<ExampleLink component="toolbar" />

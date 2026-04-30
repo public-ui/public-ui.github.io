@@ -1,0 +1,161 @@
+---
+title: Dialog
+description: Description, specification and examples for the Dialog component.
+---
+
+import Readme from '@site/readmes/dialog/readme.md';
+import DialogPreview from '@site/src/components/previews/components/Dialog';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
+# Dialog
+
+<BetaDocsBanner />
+<UntestedBanner />
+
+**Synonyms:** Modal, Modal Window, Overlay
+
+**Description:** The **Dialog** is a modal overlay element that appears above all page content and blocks interaction with other elements until the dialog is dismissed. It is typically used for confirmations, notifications, or focused user input that requires immediate attention.
+
+## Example
+
+Standard dialog with a label and content:
+
+<DialogPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## Accessibility
+
+The **Dialog** component was developed with a focus on accessibility:
+
+- **Label required**: The `_label` property is required and is used as the ARIA label to communicate the dialog's purpose to screen reader users.
+- **Focus management**: Focus is automatically moved to the dialog when opened and returned to the triggering element when closed.
+- **Escape key**: The dialog can be closed using the Escape key.
+- **Modal context**: The overlay blocks interaction with the background, signalling its importance.
+- **Content flexibility**: The slot allows arbitrary content, including forms and input fields.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/" _target="_blank" _label="WAI-ARIA Dialog (Modal) Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order" _target="_blank" _label="WCAG 2.1 - Focus Order"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible" _target="_blank" _label="WCAG 2.1 - Focus Visible"></kol-link>
+
+## Usage
+
+### Keyboard Control
+
+| Key | Function |
+| --- | -------- |
+| `Tab` | Navigate between interactive elements within the dialog |
+| `Shift + Tab` | Navigate backwards between interactive elements |
+| `Escape` | Closes the dialog (if enabled) |
+
+### Best Practices / Recommendations
+
+- **Only for important actions**: Use a dialog only for truly important information or actions that require immediate attention.
+- **Clear label**: The `_label` property should clearly describe the purpose or action of the dialog.
+- **Simple content**: Keep the dialog content focused and concise. Complex forms are better presented on a separate page.
+- **Clear close option**: Always provide an unambiguous way to close the dialog (e.g. a close button or Escape key).
+- **Focus fallback**: Ensure a focusable element exists in the dialog (e.g. a button).
+- **Choose variants wisely**: Use `_variant="card"` for content with padding, `_variant="blank"` for full-width layout.
+
+### Use Cases
+
+- **Confirmations**: "Are you sure you want to proceed?" dialogs before irreversible actions.
+- **Notifications**: Important, non-skippable messages for the user.
+- **Small inputs**: Capturing codes, passwords, or short text inputs.
+- **Error handling**: Critical error messages that require immediate attention.
+- **Data loss confirmation**: Warning about data loss or unsaved changes.
+
+### FAQ
+
+**Can I open multiple nested dialogs?**
+This is not recommended, as it can lead to focus and accessibility issues. Use a single dialog instance instead.
+
+**How do I close the dialog programmatically?**
+Use the `closeModal()` method on the dialog element reference or trigger the `_on.onClose` callback.
+
+**How do I open the dialog programmatically?**
+Use the `openModal()` method on the dialog element reference.
+
+## Construction / Technique
+
+### Playground
+
+Test the various properties of the dialog:
+
+<DialogPreview
+	visibleProperties={['_label', '_variant', '_width', '_slot']}
+	initialProps={{}}
+	codeCollapsable
+/>
+
+### Features (with Code)
+
+#### Label and Content
+
+The label is set via `_label`. The content is provided via the slot:
+
+<DialogPreview
+	visibleProperties={['_label', '_slot']}
+	initialProps={{
+		_label: 'Dialog Title',
+		_slot: '<p>This is the dialog content.</p>',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Variants
+
+The dialog supports two variants:
+
+<DialogPreview
+	visibleProperties={['_variant']}
+	initialProps={{
+		_label: 'Dialog with Card Variant',
+		_variant: 'card',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Available variants:**
+- `blank`: Full width, minimal styling (default)
+- `card`: With padding and card design
+
+#### Width
+
+The width of the dialog is controlled via `_width`:
+
+<DialogPreview
+	visibleProperties={['_width']}
+	initialProps={{
+		_label: 'Dialog with Custom Width',
+		_width: '500px',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Note:** The maximum width is limited to 100%.
+
+#### Callback Handling
+
+The dialog can respond to events using the `_on` property:
+
+```html
+<kol-dialog _label="Confirmation" _on='{"onClose": () => console.log("Dialog closed")}'>
+	Dialog content
+</kol-dialog>
+```
+
+The `onClose` callback is called when the dialog is closed (via ESC, clicking outside, or programmatically).
+
+## API
+
+<Readme />

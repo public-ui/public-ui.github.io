@@ -1,35 +1,174 @@
 ---
 title: PopoverButton
-description: Beschreibung und Spezifikation für die PopoverButton-Komponente.
+description: Beschreibung, Spezifikation und Beispiele für die PopoverButton-Komponente.
 ---
 
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import Readme from '../../readmes/popover-button/readme.md';
+import Readme from '@site/readmes/popover-button/readme.md';
 import PopoverButtonPreview from '@site/src/components/previews/components/PopoverButton';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # PopoverButton
 
-Der PopoverButton ist eine Komponente, die einen Button mit einem zugehörigen Popover-Menü kombiniert. Das Popover wird durch Klicken auf den Button ein- und ausgeblendet. Die Beschriftung des Buttons kann über das `_label`-Attribut festgelegt werden. Die Position des Popovers lässt sich über `_popover-align` steuern, wobei das Popover wahlweise oberhalb, rechts, unterhalb oder links vom Button platziert werden kann.
 
-Der PopoverButton eignet sich besonders für:
+<BetaDocsBanner />
+<UntestedBanner />
 
-- Zusätzliche Informationen
-- Kontextmenüs
-- Ausklappbare Bedienelemente
+**Synonyme:** Popover-Menü, Überlagerungsmenü, Context-Button
 
-## Konstruktion
+**Beschreibung:** Der **PopoverButton** kombiniert einen Button mit einer zugehörigen Popover-Overlay, die auf Knopfdruck ein- und ausgeblendet wird. Das Popover nutzt die native HTML Popover API für leichte, nicht-modale Überlagering beliebigen Inhalts. Der Button kontrolliert die Sichtbarkeit des Popovers per Klick, während die Position flexibel konfiguriert werden kann.
+
+## Beispiel
+
+Darstellung eines PopoverButtons mit Beispielinhalt im Popover:
 
 <PopoverButtonPreview
-	visibleProperties={['_label', '_popoverAlign', '_icons', '_slot', '_disabled', '_hideLabel']}
+	codeCollapsable
+	codeCollapsed
+	initialProps={{}}
+	visibleProperties={[]}
+/>
+
+## Barrierefreiheit
+
+- **Fokusmanagement**: Das Popover wird als native HTML Popover dargestellt, was eine automatische Fokusbehandlung ermöglicht. Der Button bewahrt seinen Fokuszustand nach dem Schließen.
+- **Label-Pflicht**: Das Attribut `_label` ist erforderlich und stellt die semantische Beschriftung des Buttons bereit. Für Screenreader wird dies als aria-label verwendet.
+- **Tastatursteuerung**: Der PopoverButton ist vollständig über die Tastatur bedienbar und unterstützt Standard-Shortcuts für Buttons.
+- **Semantische Struktur**: Das Popover wird mit korrekter ARIA-Struktur für non-modal overlays bereitgestellt.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/button/" _target="_blank" _label="ARIA Button Pattern"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/popover" _target="_blank" _label="MDN Web API - Popover"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste | Funktion |
+| ----- | -------- |
+| `Tab` | Fokussiert den Button oder springt zum nächsten interaktiven Element. |
+| `Shift + Tab` | Wechselt zum vorherigen interaktiven Element. |
+| `Enter` | Aktiviert den Button und zeigt oder verbirgt das Popover. |
+| `Space` | Alternative Aktivierung des Buttons (zeigt oder verbirgt das Popover). |
+
+### Best Practices / Empfehlungen
+
+- **Aussagekräftige Labels**: Verwenden Sie klare Button-Labels, die den Zweck oder die Folge des Klicks deutlich machen (z.B. „Optionen", „Menü", „Filter").
+- **Kontextuelle Positionierung**: Nutzen Sie `_popoverAlign`, um das Popover sinnvoll zu positionieren. Ein nach unten ausgerichtetes Popover ist Standard, nach oben ausgerichtete Popover sind sinnvoll, wenn wenig Platz darunter verfügbar ist.
+- **Inhalt beschränken**: Die Popover sollten keinen umfangreichen Inhalt enthalten. Für komplexere Dialoge nutzen Sie die <kol-link _href="../components/dialog" _label="Dialog-Komponente"></kol-link>.
+- **Eindeutiger Schließ-State**: Der Button zeigt visuell, ob das Popover offen ist. Stellen Sie sicher, dass die Nutzer das verstehen.
+- **Click-Outside-Verhalten**: Das native Popover API schließt das Popover automatisch, wenn außerhalb geklickt wird (Standard-Verhalten).
+- **Keine Verschachtelung**: Vermeiden Sie verschachtelte Popover oder mehrere gleichzeitig offene Popover.
+
+### Anwendungsfälle
+
+- **Kontextmenüs**: Aktionsmenüs neben oder über Elementen (Bearbeiten, Löschen, Mehr-Optionen).
+- **Filter oder Sortieroptionen**: Kompakte Optionsbereiche in einer Tabelle oder Liste.
+- **Zusätzliche Informationen**: Tooltips mit interaktivem Content, Hilfehinweise.
+- **Schnellaktionen**: Häufige Aktionen an bzw. neben Elementen ohne zusätzliche Seite.
+- **Settings oder Konfiguration**: Schnelle Einstellungen für ein Element oder eine Komponente.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften des PopoverButtons:
+
+<PopoverButtonPreview
+	codeCollapsable
+	visibleProperties={['_label', '_popoverAlign', '_variant', '_icons', '_slot', '_disabled', '_hideLabel']}
+/>
+
+### Funktionalitäten
+
+#### Grundlegende Button-Eigenschaften
+
+Der PopoverButton unterstützt die Standard-Button-Attribute:
+
+<PopoverButtonPreview
+	initialProps={{ _label: "Button" }}
+	visibleProperties={['_label', '_hideLabel', '_disabled', '_type']}
 	codeCollapsable
 	codeCollapsed
 />
 
-# API
+**Verfügbare Attribute:**
+- `_label`: Sichtbare oder semantische Beschriftung des Buttons
+- `_hideLabel`: Blendet das Label visuell aus, bleibt aber für Screenreader sichtbar
+- `_disabled`: Deaktiviert den Button (Interaktion nicht möglich)
+- `_type`: Button-Typ (`button`, `submit`, `reset`)
+
+#### Button-Varianten und Styling
+
+Der PopoverButton unterstützt verschiedene visuelle Varianten:
+
+<PopoverButtonPreview
+	initialProps={{ _label: "Styled Button" }}
+	visibleProperties={['_variant', '_icons', '_inline', '_tooltipAlign']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Attribute:**
+- `_variant`: Visueller Stil (`normal`, `primary`, `secondary`, `tertiary`, `danger`, `ghost`, `custom`)
+- `_customClass`: Benutzerdefinierte CSS-Klasse, wenn `_variant="custom"` gesetzt ist
+- `_icons`: Icon-Klassennamen für Icon-Schriftarten (z.B. Font Awesome)
+- `_inline`: Zeigt die Komponente inline ohne Mindestgröße von 44px
+- `_tooltipAlign`: Bevorzugte Position des Tooltips (`top`, `right`, `bottom`, `left`)
+
+#### Popover-Positionierung
+
+Die Position des Popovers relativ zum Button kann gesteuert werden:
+
+<PopoverButtonPreview
+	initialProps={{ _label: "Position", _popoverAlign: "bottom" }}
+	visibleProperties={['_popoverAlign']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Positionen:**
+- `bottom`: Unterhalb des Buttons (Standard)
+- `top`: Oberhalb des Buttons
+- `left`: Links des Buttons
+- `right`: Rechts des Buttons
+
+#### Popover-Inhalt
+
+Das Popover-Inhalt wird über den Standard-Slot bereitgestellt:
+
+<PopoverButtonPreview
+	initialProps={{
+		_label: "Menü",
+		_slot: "<ul style='margin:0; padding:0; list-style:none;'><li style='padding:8px;'><strong>Option 1</strong></li><li style='padding:8px;'><strong>Option 2</strong></li><li style='padding:8px;'><strong>Option 3</strong></li></ul>"
+	}}
+	visibleProperties={['_slot']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Hinweis**: Der Slot-Inhalt wird mit HTML-Sanitierung verarbeitet für Sicherheit. Der Inhalt sollte prägnant und fokussiert bleiben.
+
+#### Shortcuts und Fokus
+
+Der PopoverButton unterstützt Accessibility-Features für erweiterte Tastaturinteraktion:
+
+<PopoverButtonPreview
+	initialProps={{ _label: "Alt+O" }}
+	visibleProperties={['_accessKey', '_tabIndex']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Attribute:**
+- `_accessKey`: Tastenkombi für schnelle Aktivierung (z.B. `"o"` für Alt+O)
+- `_tabIndex`: Tab-Reihenfolge im Formular
+- `_shortKey`: Visuelle Anzeige des Shortcuts im Button-Label
+
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="popover-button" />
 

@@ -1,113 +1,125 @@
 ---
 title: Modal
 description: Beschreibung, Spezifikation und Beispiele für die Modal-Komponente.
-tags:
-  - Dialog
-  - Modal
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
-import Readme from '../../readmes/modal/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '@site/readmes/modal/readme.md';
+import ModalPreview from '@site/src/components/previews/components/Modal';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Modal
 
-Synonyme: Dialog, Prompt
 
-Mithilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Ein offenes **Modal** kann via **ESC** geschlossen werden.
-Die **Modal**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt des Modal-Fensters ist aktiv.
+<BetaDocsBanner />
+<UntestedBanner />
 
-### Funktionsweise
+**Synonyme:** Dialog, Overlay, Popup
 
-Das **Modal** realisiert die Basis für barrierefreie Overlays und ermöglicht es beliebige HTML-Inhalte anzuzeigen. Beispielsweise wäre eine Dialog-Komponente eine Komposition aus einer Card-Komponente, die in einer **Modal**-Komponente eingefügt wird.
+**Beschreibung:** Die **Modal**-Komponente stellt eine barrierefreie Overlay-Basis bereit, um beliebige HTML-Inhalte in einem modalen Fenster anzuzeigen. Sie deaktiviert beim Öffnen alle Elemente außerhalb des Modals und implementiert automatisch Fokus-Management sowie Tastatursteuerung. Das Modal wird standardmäßig versteckt und über Methoden (`openModal()`, `closeModal()`) oder Callbacks gesteuert.
 
-Sobald ein **Modal** geöffnet wird, werden alle selektierbaren Elemente in der Webseite deaktiviert, außer die innerhalb des aktiven Modals.
+> **⚠️ Deprecated:** Diese Komponente ist zugunsten der <kol-link _href="../components/dialog" _label="Dialog-Komponente"></kol-link> veraltet, die verbesserte Barrierefreiheit und Konformität mit der HTML-Spezifikation bietet.
 
-### Konstruktion
+## Beispiel
 
-#### Code
+Darstellung der Komponente mit Beschriftung und Inhaltsbereich. Der Button öffnet das Modal, das Modal-Content kann beliebige HTML-Elemente enthalten.
 
-```html
-<kol-modal id="test-modal" _label="Beschreibung zur Modalbox">
-	<kol-card _label="Vorgang löschen">
-		<div>
-			<p>Wollen Sie den Vorgang wirklich löschen?</p>
-			<kol-button class="close-modal" _label="Ok" _variant="primary"></kol-button>
-			<kol-button class="close-modal" _label="Abbrechen"></kol-button>
-		</div>
-	</kol-card>
-</kol-modal>
+<ModalPreview
+	visibleProperties={[]}
+	codeCollapsable
+	codeCollapsed
+/>
 
-<kol-button id="modal-open-button" _label="Modal öffnen"></kol-button>
+## Barrierefreiheit
 
-<script>
-	const modal = document.querySelector('#test-modal');
-	const modalOpenButton = document.querySelector('#modal-open-button');
+Das **Modal** implementiert umfangreiche Barrierefreiheits-Features:
 
-	document.querySelectorAll('.close-modal').forEach((buttonElement) => {
-		buttonElement._on = {
-			onClick: () => modal.closeModal(),
-		};
-	});
-	modalOpenButton._on = { onClick: () => modal.openModal() };
-</script>
-```
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event   | Auslöser                    | Value |
-|---------|-----------------------------|-------|
-| `close` | Komponente wird geschlossen | -     |
-
-### Verwendung
-
-Über das Attribut **`_width`** geben Sie die gewünschte Breite der Modalbox an. Sie wird in der gewählten Größe immer mittig auf dem Bildschirm angezeigt.
-
-Da das Modal vom eigentlichen Seiteninhalt entkoppelt ist, aber für eine teilweise Sperrung der Inhalte sorgt, muss es auch eine Möglichkeit bieten, das Schließen (Sperrung aufheben) aus dem Modal-Kontext zu ermöglichen.
-
-<kol-alert _type="info">Es wird empfohlen einen Close-Button oben rechts einzubauen.</kol-alert>
-
-Zum Öffnen des Modals können Sie mithilfe einer DOM-Referenz die Methode `openModal` verwenden, zum Schließen `closeModal`.
-
-#### Best practices
-
-- Verwenden Sie die Modalbox, um weiterführende Informationen zu einem Thema anzuzeigen.
-- Verwenden Sie die Modalbox, um umfangreiche Inhalte optisch kompakter zu gestalten.
-- Vermeiden Sie es, wichtige Informationen wie z.B. rechtliche Themen, auf die Nutzer:innen reagieren müssen, in Modalboxen zu platzieren.
-
-#### Anwendungsfälle
-
-- Nutzen Sie die Modalbox, als Erklärungshilfe zu einzelnen Eingabefeldern in Formularen.
-- Nutzen Sie die Modalbox, um ergänzende Informationen erst nach Anforderung durch die Nutzer:innen anzuzeigen.
-- Nutzen Sie die Modalbox, um ein Feedback zu Speichervorgängen oder ähnliches anzuzeigen, z.B. **_Vielen Dank für Ihre Rückmeldung_** nach Absenden eines Formulars.
-
-### Barrierefreiheit
-
-> Die optische Standardausgabe der Komponente ist auf die Umsetzung der Barrierefreiheit hin optimiert. Wenn Sie eigene Custom Styles verwenden, kann das zu einer Einschränkung der Barrierefreiheit führen.
-
-Das **Modal** ist so realisiert, dass der Fokus darauf liegt, wenn es geöffnet wird. Elemente außerhalb des Modals sind dann nicht mehr fokussierbar.
-
-Achten Sie für eine optimale Ausgabe der **Modal**-Komponente in Screenreadern darauf, das Attribut **`aria-label`** korrekt zu setzen.
-
-Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektierbaren Elemente deaktiviert außer die innerhalb des eigenen Modals. Hierbei ist zu beachten, dass KoliBri nur Elemente deaktiviert, die sich im Browser-Seitenbereich befinden. Das Fokussieren des Browser-Menüs ist weiterhin möglich.
-
-#### Tastatursteuerung
-
-| Taste | Funktion                                                                                    |
-| ----- | ------------------------------------------------------------------------------------------- |
-| `Tab` | Bei geöffnetem Modal werden alle fokussierbaren Elemente der Reihenfolge nach angesprungen. |
-| `ESC` | Schließt das Modal.                                                                         |
+- **Fokus-Sperrung**: Beim Öffnen wird der Fokus auf das Modal gesetzt; Elemente außerhalb sind nicht mehr fokussierbar, bis das Modal geschlossen wird.
+- **Label-Pflicht**: Das Attribut `_label` definiert die Beschriftung für Screenreader und sollte sinnvoll gesetzt sein.
+- **Maximal ein aktives Modal**: Es gibt immer nur ein aktives Modal, alle selektierbaren Elemente außerhalb werden deaktiviert außer den Elementen im Modal selbst.
+- **Tastatursteuerung**: Vollständig navigation mit Tab und ESC zum Schließen.
+- **Browser-Menü bleibt zugänglich**: KoliBri deaktiviert nur Elemente im Seiten-Inhaltsbereich, nicht im Browser-Menü.
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal" _target="_blank"></kol-link>
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal" _target="_blank" _label="WAI-ARIA Dialog Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/" _target="_blank" _label="ARIA Authoring Practices Guide - Modal Dialog"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank" _label="MDN Web Docs - dialog Element"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste | Funktion |
+| ----- | -------- |
+| `Tab` | Navigiert durch die fokussierbaren Elemente innerhalb des geöffneten Modals. |
+| `Shift + Tab` | Navigiert rückwärts durch die fokussierbaren Elemente. |
+| `ESC` | Schließt das Modal. |
+
+### Best Practices / Empfehlungen
+
+- Verwenden Sie ein Modal, um weiterführende oder zusätzliche Informationen zu einem Thema anzuzeigen.
+- Nutzen Sie ein Modal, um Inhalte optisch kompakter zu gestalten und Platz im Hauptseiten-Bereich zu sparen.
+- **Vermeiden Sie**, kritische oder rechtliche Informationen ausschließlich in Modalen zu platzieren, wenn Nutzer:innen darauf reagieren müssen.
+- Integrieren Sie einen gut sichtbaren Close-Button (z.B. oben rechts oder unten in einer Fußzeile), um das Schließen einfach zu machen.
+- Nutzen Sie die Methoden `openModal()` und `closeModal()` über DOM-Referenzen, um das Modal programmatisch zu steuern.
+- Setzen Sie die `_width` auf einen für den Inhalt sinnvollen Wert (z.B. `500px`, `80%`); das Modal wird immer zentriert angezeigt.
+
+### Anwendungsfälle
+
+- Detaillierte Informationen oder Erklärungen zu Eingabefeldern in Formularen
+- Ergänzende Inhalte, die erst auf Anforderung der Nutzer:innen angezeigt werden
+- Bestätigungsmeldungen oder Feedback nach Formulareingaben (z.B. „Vielen Dank für Ihre Rückmeldung")
+- Konfiguration oder Einstellungen, die sich deutlich vom Hauptinhalt unterscheiden
+- Warnungen oder wichtige Mitteilungen, die Aufmerksamkeit erfordern
+
+## Konstruktion / Technik
+
+### Playground
+
+<ModalPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Beschriftung und Inhalt
+
+Die Beschriftung wird über `_label` gesetzt und stellt den Titel/die Identifikation des Modals dar. Der Inhaltsbereich wird über den Standard-Slot befüllt.
+
+<ModalPreview
+	visibleProperties={['_label', '_slot']}
+	codeCollapsable
+/>
+
+#### Breite des Modals
+
+Die Breite wird über das Attribut `_width` gesteuert (Standard: `100%`). Das Modal wird immer zentriert auf dem Bildschirm angezeigt.
+
+<ModalPreview
+	visibleProperties={['_width']}
+	initialProps={{ _width: '500px' }}
+	codeCollapsable
+/>
+
+#### Varianten
+
+Das Attribut `_variant` definiert die Variante des Modals (`blank` oder `card`).
+
+<ModalPreview
+	visibleProperties={['_variant']}
+	initialProps={{ _variant: 'card' }}
+	codeCollapsable
+/>
+
+#### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | Auslöser | Value |
+| ----- | -------- | ----- |
+| `close` | Modal wird via `closeModal()` oder ESC-Taste geschlossen | - |
+
+## API
 
 <Readme />
 
-<ExampleLink component="modal" />

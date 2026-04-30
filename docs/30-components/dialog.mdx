@@ -1,0 +1,162 @@
+---
+title: Dialog
+description: Beschreibung, Spezifikation und Beispiele für die Dialog-Komponente.
+---
+
+import Readme from '@site/readmes/dialog/readme.md';
+import DialogPreview from '@site/src/components/previews/components/Dialog';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
+# Dialog
+
+
+<BetaDocsBanner />
+<UntestedBanner />
+
+**Synonyme:** Modal, Modales Fenster, Overlay
+
+**Beschreibung:** Der **Dialog** ist ein modales Overlay-Element, das sich über dem gesamten Seiteninhalt darstellt und die Interaktion mit anderen Elementen blockiert, bis der Dialog geschlossen wird. Er wird typischerweise für Bestätigungen, Benachrichtigungen oder fokussierte Benutzereingaben verwendet, die sofortige Aufmerksamkeit erfordern.
+
+## Beispiel
+
+Standard-Dialog mit Beschriftung und Inhalt:
+
+<DialogPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## Barrierefreiheit
+
+Die **Dialog**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
+
+- **Label erforderlich**: Die `_label`-Eigenschaft ist erforderlich und wird als ARIA-Label verwendet, um Screenreader-Nutzern den Zweck des Dialogs zu kommunizieren.
+- **Fokusmanagement**: Der Fokus wird beim Öffnen automatisch auf den Dialog verschoben und beim Schließen an das auslösende Element zurückgegeben.
+- **Escape-Taste**: Der Dialog kann mit der Escape-Taste geschlossen werden.
+- **Modal-Kontext**: Das Overlay blockiert Interaktionen mit dem Hintergrund und signalisiert so seine Wichtigkeit.
+- **Inhaltsflexibilität**: Der Slot ermöglicht beliebige Inhalte, einschließlich Formulare und Eingabefelder.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/" _target="_blank" _label="WAI-ARIA Dialog (Modal) Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order" _target="_blank" _label="WCAG 2.1 - Focus Order"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible" _target="_blank" _label="WCAG 2.1 - Focus Visible"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste | Funktion |
+| ----- | -------- |
+| `Tab` | Navigation zwischen interaktiven Elementen innerhalb des Dialogs |
+| `Shift + Tab` | Rückwärts-Navigation zwischen interaktiven Elementen |
+| `Escape` | Schließt den Dialog (falls aktiviert) |
+
+### Best Practices / Empfehlungen
+
+- **Nur für wichtige Aktionen**: Nutzen Sie einen Dialog nur für wirklich wichtige Informationen oder Aktionen, die sofortige Aufmerksamkeit erfordern.
+- **Klare Beschriftung**: Die `_label`-Eigenschaft sollte den Zweck oder die Aktion des Dialogs klar beschreiben.
+- **Einfacher Inhalt**: Halten Sie den Dialog-Inhalt fokussiert und prägnant. Komplexe Formulare werden besser auf einer separaten Seite dargestellt.
+- **Deutliche Schließmöglichkeit**: Bieten Sie immer eine eindeutige Möglichkeit, den Dialog zu schließen (z. B. einen Schließen-Button oder Escape-Taste).
+- **Fokus-Fallback**: Stellen Sie sicher, dass ein fokussierbares Element im Dialog vorhanden ist (z. B. ein Button).
+- **Varianten sinnvoll wählen**: Verwenden Sie `_variant="card"` für Inhalte mit Abstand, `_variant="blank"` für volle Bildschirmbreite.
+
+### Anwendungsfälle
+
+- **Bestätigungen**: „Sind Sie sicher, dass Sie fortfahren möchten?"–Dialoge vor irreversiblen Aktionen.
+- **Benachrichtigungen**: Wichtige, nicht überspringbare Meldungen für den Nutzer.
+- **Kleine Eingaben**: Erfassung von Codes, Passwörtern oder kurzen Textinputs.
+- **Fehlerbehandlung**: Kritische Fehlermeldungen, die sofortige Aufmerksamkeit erfordern.
+- **Bestätigung von Datenverlust**: Warnung vor dem Verlust von Daten oder ungespeicherten Änderungen.
+
+### FAQ
+
+**Kann ich mehrere Dialoge verschachtelt öffnen?**
+Dies wird nicht empfohlen, da es zu Fokus- und Barrierefreiheitsproblemen führen kann. Verwenden Sie stattdessen eine einzelne Dialog-Instanz.
+
+**Wie schließe ich den Dialog programmatisch?**
+Nutzen Sie die Methode `closeModal()` auf der Dialog-Elementreferenz oder triggern Sie die `_on.onClose`-Callback.
+
+**Wie öffne ich den Dialog programmatisch?**
+Nutzen Sie die Methode `openModal()` auf der Dialog-Elementreferenz.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften des Dialogs:
+
+<DialogPreview
+	visibleProperties={['_label', '_variant', '_width', '_slot']}
+	initialProps={{}}
+	codeCollapsable
+/>
+
+### Funktionalitäten (mit Code)
+
+#### Label und Inhalt
+
+Die Beschriftung wird über `_label` gesetzt. Der Inhalt wird über den Slot bereitgestellt:
+
+<DialogPreview
+	visibleProperties={['_label', '_slot']}
+	initialProps={{
+		_label: 'Dialog Titel',
+		_slot: '<p>Dies ist der Dialoginhalt.</p>',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Varianten
+
+Der Dialog unterstützt zwei Varianten:
+
+<DialogPreview
+	visibleProperties={['_variant']}
+	initialProps={{
+		_label: 'Dialog mit Card-Variante',
+		_variant: 'card',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Varianten:**
+- `blank`: Volle Breite, minimales Styling (Standard)
+- `card`: Mit Abstand und Kartendesign
+
+#### Breite
+
+Die Breite des Dialogs wird über `_width` gesteuert:
+
+<DialogPreview
+	visibleProperties={['_width']}
+	initialProps={{
+		_label: 'Dialog mit Custom-Breite',
+		_width: '500px',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Hinweis:** Die maximale Breite ist auf 100% begrenzt.
+
+#### Callback-Handling
+
+Der Dialog kann mit der `_on`-Eigenschaft auf Events reagieren:
+
+```html
+<kol-dialog _label="Bestätigung" _on='{"onClose": () => console.log("Dialog closed")}'>
+	Inhalt des Dialogs
+</kol-dialog>
+```
+
+Der `onClose`-Callback wird aufgerufen, wenn der Dialog geschlossen wird (durch ESC, Klick außerhalb oder programmatisch).
+
+## API
+
+<Readme />

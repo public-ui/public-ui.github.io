@@ -3,11 +3,18 @@ title: Breadcrumb
 description: Description, specification and examples for the Breadcrumb component.
 ---
 
-import Readme from '/readmes/breadcrumb/readme.md';
+import Readme from '@site/readmes/breadcrumb/readme.md';
 import BreadcrumbPreview from '@site/src/components/previews/components/Breadcrumb';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Breadcrumb
+
+
+<BetaDocsBanner />
+<UntestedBanner />
 
 With the help of the **Breadcrumb** component, the path to the current position of a web page can be displayed in a hierarchical structure.
 
@@ -36,8 +43,8 @@ The entire JSON object must be passed to the **`_links`** attribute in square br
 <b>Folgende Eigenschaften stehen zur Verfügung:</b>
 
 - **`_href`** passes the link to be used for this element.
-- **`_icon`** (optional) passes the name of the icon if an icon should be displayed in addition to the text of the element. <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/icon/all-kolicons" _target="_blank" _label="Kolicons"></kol-link> and <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link> are available.
-- **`_hide-label`** (optional). If the value is set to **true**, only the icon appears in the link, without any other text. The `_icon` property must be set.
+- **`_icons`** (optional) passes the name of the icon if an icon should be displayed in addition to the text of the element. <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/icon/all-kolicons" _target="_blank" _label="Kolicons"></kol-link> and <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link> are available.
+- **`_hide-label`** (optional). If the value is set to **true**, only the icon appears in the link, without any other text. The `_icons` property must be set.
 - **`_label`** passes the text to be displayed for this element.
 
 Example of a JSON object passed to the **`_links`** attribute:

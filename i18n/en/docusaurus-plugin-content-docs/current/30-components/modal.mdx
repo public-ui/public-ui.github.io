@@ -3,12 +3,22 @@ title: Modal
 description: Description, specification and examples for the Modal component.
 ---
 
-import Readme from '/readmes/modal/readme.md';
+import Readme from '@site/readmes/modal/readme.md';
+import ModalPreview from '@site/src/components/previews/components/Modal';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Modal
 
-Synonyms: dialogue, prompt
+
+<BetaDocsBanner />
+<UntestedBanner />
+
+**Synonyms:** dialogue, prompt
+
+> **⚠️ Deprecated:** This component has been superseded by the <kol-link _href="../components/dialog" _label="Dialog component"></kol-link>, which provides improved accessibility and conforms to the HTML dialog specification.
 
 Using the **Modal** component, additional information or input forms can be displayed in a dialog window. An open **modal** can be closed via **ESC**.
 The **Modal** component is hidden by default. It is usually only displayed after clicking on a button or other trigger. The background of the window is deactivated and only the content of the modal window is active.
@@ -21,41 +31,18 @@ As soon as a **modal** is opened, all selectable elements in the website are dea
 
 ### Construction
 
-#### Code
-
-```html
-<kol-modal id="test-modal" _label="Beschreibung zur Modalbox">
-	<kol-card _label="Vorgang löschen">
-		<div>
-			<p>Wollen Sie den Vorgang wirklich löschen?</p>
-			<kol-button class="close-modal" _label="Ok" _variant="primary"></kol-button>
-			<kol-button class="close-modal" _label="Abbrechen"></kol-button>
-		</div>
-	</kol-card>
-</kol-modal>
-
-<kol-button id="modal-open-button" _label="Modal öffnen"></kol-button>
-
-<script>
-	const modal = document.querySelector('#test-modal');
-	const modalOpenButton = document.querySelector('#modal-open-button');
-
-	document.querySelectorAll('.close-modal').forEach((buttonElement) => {
-		buttonElement._on = {
-			onClick: () => modal.closeModal(),
-		};
-	});
-	modalOpenButton._on = { onClick: () => modal.openModal() };
-</script>
-```
+<ModalPreview
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event | trigger | Value |
-|---------|-----------------------------|-------|
-| `close` | Component is closing | - |
+| Event | Trigger | Value |
+| ----- | ------- | ----- |
+| `close` | Component is closing via `closeModal()` or ESC key | - |
 
 ### Usage
 
@@ -102,6 +89,11 @@ Furthermore, there is only ever a maximum of one active modal, which deactivates
 - <kol-link _href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html" _target="_blank"></kol-link>
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
 
+## API
+
 <Readme />
 
+## Examples
+
 <ExampleLink component="modal" />
+

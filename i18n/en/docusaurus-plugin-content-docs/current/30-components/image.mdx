@@ -3,19 +3,23 @@ title: Image
 description: Description, specification and examples for the Image component.
 ---
 
-import Readme from '/readmes/image/readme.md';
+import Readme from '@site/readmes/image/readme.md';
 import ImagePreview from '@site/src/components/previews/components/Image';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Image
 
-Synonyms: Img, Thumbnail
+<BetaDocsBanner />
+<UntestedBanner />
 
-> <kol-badge _label="untested"></kol-badge> This new component is marked as untested because the full accessibility test is still pending. The full test of new components and functionalities can only take place after a completed release.
+**Synonyms:** Img, Thumbnail
 
-The **Image** component is used to display images.
+**Description:** The **Image** component renders images and supports responsive display with different resolutions, pixel densities, and file formats. It provides optimized loading through lazy loading and ensures full accessibility with alternative texts.
 
-## Construction
+## Example
+
+Basic display of an image with the required alternative text:
 
 <ImagePreview
 	visibleProperties={['_src', '_alt']}
@@ -23,38 +27,104 @@ The **Image** component is used to display images.
 	codeCollapsed
 />
 
-## Usage
-
-### Images in different resolutions and/or aspect ratios
-
-Using **`_srcset`** (and **`_sizes`**), different images can be stored for different resolutions and pixel densities (of the display) in order to deliver sharp images on large screens and not use up bandwidth unnecessarily on small monitors.
-Furthermore, different file formats can be specified using **`_srcset`** in order to save bandwidth for modern browsers, but still support older devices.
-Even when using **`_srcset`**, **`_src`** should be used, as this is used by browsers as the last option if a) **`srcset`** is not supported, or b) no suitable image was found there.
-<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset" _target="_blank" _label="MDN Artikel zu srcset"></kol-link>
-<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes" _target="_blank" _label="MDN Artikel zu sizes"></kol-link>
-For more information about **`_srcset`** see [Links and References](#links-and-references)
-
-### Loading behavior
-
-The **`_loading`** attribute is optional. Either `eager` or `lazy` can be set here, provided that `lazy` is used unset.
-`eager` ensures that the image is loaded as soon as you enter the page; with `lazy` the browser only loads the image shortly before it becomes visible. As a rule, `eager` does not have to be set, only set it if loading delays occur or the image is safely in the visible area when entering the page. (e.g.: logo in the header or hero)
-<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading" _target="_blank" _label="MDN Artikel zu loading"></kol-link>
-
 ## Accessibility
 
-### Alternative text
+- **Alternative text required**: The `_alt` attribute is mandatory and is read by screen readers. For purely decorative images it can be empty (`_alt=""`), which causes assistive technologies to ignore it.
+- **Fallback for missing images**: The alternative text is displayed by browsers if the image cannot be loaded or is unavailable.
+- **Semantically correct**: The component uses native HTML5 `<img>` elements and supports all standard image formats and browser features.
 
-The **`_alt`** attribute is mandatory, but can be left blank (`_alt=""`) for purely decorative images.
-This description is read by screen readers and displayed by browsers if the image cannot/should not be loaded.
+### Links and References
 
-## Links and references
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/text-alternatives.html" _target="_blank" _label="WCAG 2.1 – Text Alternatives for Images"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img" _target="_blank" _label="MDN Web Docs – img Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/tutorials/images/" _target="_blank" _label="Web Accessibility Tutorials – Images"></kol-link>
 
-Detailed explanation of `_srcset` and `_sizes`: <kol-link _href="https://www.mediaevent.de/html/srcset.html" _target="_blank"></kol-link>
+## Usage
+
+### Best Practices / Recommendations
+
+- **Meaningful alternative texts**: Write concise descriptions that convey the content and purpose of the image. Avoid "Image of..." or generic descriptions.
+- **Decorative images**: Leave `_alt` empty for purely decorative images that carry no semantic information.
+- **Responsive images**: Use `_srcset` and `_sizes` for different device resolutions and pixel densities to save bandwidth and deliver sharp images on high-resolution displays.
+- **Modern file formats**: Use `_srcset` with different file formats (e.g. WebP for modern browsers, JPEG as fallback) to optimize performance.
+- **Use lazy loading**: Set `_loading="lazy"` for images outside the initial viewport to improve page loading performance.
+- **Eager loading for critical images**: Use `_loading="eager"` only for images in the visible area (e.g. logo, hero image) that should be loaded immediately.
+
+### Use Cases
+
+- Product images and galleries in e-commerce applications
+- User photos and avatars (in combination with other components)
+- Illustrations and icons to visualize content
+- Hero images and banner graphics on landing pages
+- Responsive images in articles, blog posts or documentation
+- Background images and branding elements
+
+### FAQ
+
+**When should I use `_srcset`?**
+Use `_srcset` when you want to provide the same image in different resolutions or sizes. This allows browsers to select the best variant based on device resolution and viewport size.
+
+**What is the difference between `_loading="eager"` and `_loading="lazy"`?**
+`eager` loads the image immediately when the page loads. `lazy` delays loading until just before the image appears in the viewport. `lazy` is the default and improves page loading performance.
+
+**Can I use arbitrary image formats?**
+Yes, all common formats are supported (PNG, JPEG, WebP, SVG, GIF etc.). Use `_srcset` with different formats for maximum browser compatibility and performance.
+
+## Construction / Technical
+
+### Playground
+
+<ImagePreview codeCollapsable />
+
+### Features (with Code)
+
+#### Image source
+
+The image source is set via the required `_src` attribute. This is the fallback URL used when `_srcset` is not supported or no suitable variant is available.
+
+<ImagePreview
+	visibleProperties={['_src']}
+	initialProps={{ _src: '/assets/sample-image.png' }}
+	codeCollapsable
+/>
+
+#### Alternative text
+
+The required `_alt` attribute provides a text description or alternative for the image. For decorative images it can be empty.
+
+<ImagePreview
+	visibleProperties={['_alt']}
+	initialProps={{ _alt: 'Example image description' }}
+	codeCollapsable
+/>
+
+#### Responsive images with Srcset and Sizes
+
+With `_srcset` different image versions can be specified for different resolutions, pixel densities and file formats. The `_sizes` attribute helps the browser understand what widths the image will have at different viewport sizes.
+
+<ImagePreview
+	visibleProperties={['_srcset', '_sizes']}
+	initialProps={{
+		_srcset: '/assets/image-small.png 600w, /assets/image-large.png 1200w',
+		_sizes: '(max-width: 600px) 100vw, 50vw',
+	}}
+	codeCollapsable
+/>
+
+#### Loading behavior
+
+The `_loading` attribute controls when the browser loads the image. `lazy` is the default and improves performance, `eager` should only be used for images in the visible area.
+
+<ImagePreview
+	visibleProperties={['_loading']}
+	initialProps={{ _loading: 'lazy' }}
+	codeCollapsable
+/>
+
+**Available values:**
+- `lazy`: Defers loading until the viewport is reached (default)
+- `eager`: Immediate loading when entering the page
 
 ## API
 
 <Readme />
-
-## Examples
-
-<ExampleLink component="image" />

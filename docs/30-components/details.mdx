@@ -1,100 +1,121 @@
 ---
 title: Details
 description: Beschreibung, Spezifikation und Beispiele für die Details-Komponente.
-tags:
-  - Details
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
-import Readme from '../../readmes/details/readme.md';
+import Readme from '@site/readmes/details/readme.md';
 import DetailsPreview from '@site/src/components/previews/components/Details';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Details
 
-Synonyme: Disclosure, Collapse, Summary Detail
+<BetaDocsBanner />
+<UntestedBanner />
 
-Mit Hilfe der **Detail**-Komponente können weiterführende Informationen zunächst mit einem kurzen Einleitungstext angezeigt werden, die erst nach Klick
-durch die Nutzer:innen auf ein Pfeil-Icon in voller Größe aufgeklappt werden.
+**Synonyme:** Disclosure, Collapse, Summary
 
-Die **Detail**-Komponente stellt sich standardmäßig als einzeiliges Layout-Element dar, das aus einem Pfeil-Icon und einem nachfolgenden,
-kurzen Einleitungstext gebildet wird. Der eigentliche Inhalt der Komponente wird erst nach Klick auf den Kopfbereich nach unten hin geöffnet. Das Pfeil-Icon ändert dabei
-seine Ausrichtung von **_rechts_** nach **_unten_**.
-Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit verbergen.
+**Beschreibung:** Die **Details**-Komponente ermöglicht es, weiterführende Informationen zunächst ausgeblendet zu halten und erst
+nach Klick durch die Nutzer:innen sichtbar zu machen. Sie besteht aus einer Überschrift mit Pfeil-Icon (der sich von rechts nach
+unten ausrichtet) und einem aufklappbaren Inhaltsbereich, der platzsparendes Arbeiten mit ergänzenden Informationen ermöglicht.
 
-## Konstruktion
+## Beispiel
 
-### Code
+Darstellung der Komponente mit Beispieltext:
 
 <DetailsPreview
-  visibleProperties={['_label','_disabled']}
-  codeCollapsable
-  codeCollapsed
+	visibleProperties={[]}
+	initialProps={{ _label: 'Weitere Informationen' }}
+	codeCollapsable
+	codeCollapsed
 />
-
-## Verwendung
-
-### Geöffnet anzeigen
-
-Verwenden Sie das Attribut **`_open`**, um die Komponente geöffnet darzustellen.
-
-### Einleitungstext
-
-Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Überschrift angezeigt werden soll.
-
-### Best practices
-
-- Verwenden Sie die **Detail**-Komponente, um ergänzende Inhalte zu einem Hauptthema platzsparend anzuordnen.
-- Die **Detail**-Komponente eignet sich gut für die Realisierung einer FAQ-Seite, wobei die Frage über das Attribut **`_label`** und die Antwort im Inhaltsbereich ausgegeben werden kann.
-- Vermeiden Sie es, wichtige Informationen, die z.B. rechtliche Aspekte betreffen, in einem verborgenen Bereich auszugeben. Es kann nicht sichergestellt werden, dass der Benutzer diese Informationen auch sicher liest.
-- Vermeiden Sie es, zu viele **Detail**-Komponenten zu verwenden, da die Übersichtlichkeit der Seite hierunter leiden kann.
-
-### Anwendungsfälle
-
-#### Details-Komponente innerhalb eines Fließtextes
-
-<div>
-	<p>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-		dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-		kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-		sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
-	</p>
-	<kol-details _label="Erst nach Klick offen">
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-		dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-		kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-		sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
-	</kol-details>
-	<p>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-		dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-		kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-		sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
-	</p>
-</div>
 
 ## Barrierefreiheit
 
-- Die **Details**-Komponente bietet sich an, um eine Kontext-sensitive Hilfe für die Barrierefreiheit umzusetzen.
+- Die **Details**-Komponente ermöglicht barrierefreie Darstellung von Zusatzinformationen ohne Ablenkung vom Hauptinhalt.
+- Das Öffnen und Schließen erfolgt über die semantische HTML-Struktur der `<details>`-Element-Serie.
+- Screenreader erkennen automatisch den Zustand (geöffnet oder geschlossen) der Komponente.
+- Das Pfeil-Icon wird als visueller Indikator für den Zustand verwendet, über die semantische Struktur wird der Zustand auch für assistive Technologien vermittelt.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#disclosure" _target="_blank" _label="WAI-ARIA Disclosure (Details) Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/minimize-error-context-help.html" _target="_blank" _label="WCAG 2.1 - Context Help"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details" _target="_blank" _label="MDN Web Docs - Details Element"></kol-link>
+
+## Verwendung
 
 ### Tastatursteuerung
 
-| Taste   | Funktion                                        |
-| ------- | ----------------------------------------------- |
-| `Tab`   | Fokussiert die Details-Komponente.              |
-| `Enter` | Öffnet bzw. schließt den Inhalt der Komponente. |
+| Taste   | Funktion                                              |
+| ------- | ----------------------------------------------------- |
+| `Tab`   | Fokussiert die Details-Komponente.                    |
+| `Enter` | Öffnet oder schließt den Inhalt der Komponente.       |
 
-## Links und Referenzen
+### Best Practices / Empfehlungen
 
-- <kol-link _href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-context-help.html" _target="_blank"></kol-link>
+- Nutzen Sie die **Details**-Komponente, um ergänzende oder sekundäre Informationen platzsparend anzuordnen.
+- Setzen Sie wichtige, rechtlich relevante oder primäre Inhalte nicht ausschließlich in eingeklappte Bereiche.
+- Die Komponente eignet sich besonders gut für FAQ-Seiten, wobei die Frage im `_label` und die Antwort im Inhaltsbereich ausgegeben wird.
+- Verwenden Sie aussagekräftige Labels, die den Inhalt der eingeklappten Information deutlich machen.
+- Vermeiden Sie es, zu viele **Details**-Komponenten ohne Struktur zu verwenden, da dies die Übersichtlichkeit beeinträchtigt.
 
-# API
+### Anwendungsfälle
+
+- FAQ-Bereiche mit vielen Fragen und Antworten
+- Zusätzliche oder weiterführende Erklärungen zu wichtigen Konzepten
+- Ergänzende Informationen in technischer Dokumentation
+- Kontextabhängige Hilfe und Zusatzinformationen in Formularen
+- Detailansichten zu Produkteigenschaften oder Varianten
+
+## Konstruktion / Technik
+
+### Playground
+
+<DetailsPreview
+	codeCollapsable
+/>
+
+### Funktionalitäten (mit Code)
+
+#### Beschriftung und Inhalt
+
+Das Label wird über `_label` definiert, der Inhaltsbereich wird über den Slot befüllt.
+
+<DetailsPreview
+	visibleProperties={['_label']}
+	initialProps={{ _label: 'Details anzeigen' }}
+	codeCollapsable
+/>
+
+#### Offener Zustand
+
+Mit `_open` wird die Komponente initial geöffnet angezeigt. Im deaktivierten Zustand (`_disabled`) wird die Komponente nicht interaktiv.
+
+<DetailsPreview
+	visibleProperties={['_open', '_disabled']}
+	initialProps={{ _label: 'Details anzeigen', _open: true }}
+	codeCollapsable
+/>
+
+#### Überschriftenstruktur
+
+Die Überschriftenebene wird über `_level` (0–6) gesteuert. Wert `0` zeigt den Text als fetten Text ohne semantische Heading-Struktur.
+
+<DetailsPreview
+	visibleProperties={['_level']}
+	initialProps={{ _label: 'Details anzeigen', _level: 2 }}
+	codeCollapsable
+/>
+
+#### Event-Anbindung
+
+Für Event-Handling und Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event      | Auslöser                          | Value   |
+| ---------- | --------------------------------- | ------- |
+| `onToggle` | Komponente wird geöffnet/geschlossen | `boolean` |
+
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="details" />

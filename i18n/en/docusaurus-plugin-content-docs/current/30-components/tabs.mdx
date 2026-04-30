@@ -3,11 +3,18 @@ title: Tabs
 description: Description, specification and examples for the Tabs component.
 ---
 
-import Readme from '/readmes/tabs/readme.md';
+import Readme from '@site/readmes/tabs/readme.md';
 import TabsPreview from '@site/src/components/previews/components/Tabs';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Tabs
+
+
+<BetaDocsBanner />
+<UntestedBanner />
 
 Synonyms: Navigation, Nav
 
@@ -64,6 +71,13 @@ The attribute **`_has-create-button`** can be used to activate an additional but
 
 <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/tabs/create-button" _target="_blank" _label="Beispiel in der Sample App"></kol-link>
 
+### Behavior
+
+The `_behavior` attribute controls how users switch between tabs:
+
+- `"select-automatic"` (default): Arrow keys switch the active tab directly (W3C standard).
+- `"select-manual"`: Arrow keys move focus only; `Enter` / `Space` activates the focused tab.
+
 ### Best practices
 
 - Use tabs to organize and group related content so users don't have to leave the page.
@@ -96,12 +110,26 @@ The focus here is always on the impaired user. In order to navigate as efficient
 | button | Function |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `Tab` | Focuses on the first active tab. Existing close icons can be accessed with the Tab key. |
-| `Arrow keys (left \| right)` | Switches between tabs.                                                                             |
+| `Arrow keys (left \| right)` | Switches between tabs. |
+| `Enter` / `Space` (with `select-manual`) | Activates the focused tab. |
+
+## FAQ
+
+**How is the active tab determined?**  
+By default, the first tab (index 0) is active on initial load. You can set the active tab manually using the `_selected` attribute or control it via the `select` event.
+
+**Can a tab be disabled?**  
+Yes, by setting the `_disabled` attribute to `true` in the tab definition.
+
+**What behaviors (`_behavior`) are available?**  
+`"select-automatic"` (default): Arrow keys switch focus and selection simultaneously.  
+`"select-manual"`: Arrow keys move focus only; selection is made with `Enter` / `Space`.
 
 ## Links and references
 
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html" _target="_blank" _label="W3C APG: Tabs (Manual activation)"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-automatic.html" _target="_blank" _label="W3C APG: Tabs (Automatic activation)"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role" _target="_blank" _label="MDN: tab role"></kol-link>
 - <kol-link _href="https://dequeuniversity.com/library/aria/tabpanel" _target="_blank"></kol-link>
 - <kol-link _href="https://design-system.service.gov.uk/components/tabs/" _target="_blank"></kol-link>
 

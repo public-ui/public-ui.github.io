@@ -4,28 +4,172 @@ description: Description and specification for the PopoverButton component.
 ---
 
 import { ExampleLink } from '@site/src/components/ExampleLink';
-import Readme from '/readmes/popover-button/readme.md';
+import Readme from '@site/readmes/popover-button/readme.md';
 import PopoverButtonPreview from '@site/src/components/previews/components/PopoverButton';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # PopoverButton
 
-The PopoverButton is a component that combines a button with an associated popover menu. The popover is shown and hidden by clicking on the button. The label of the button can be set using the `_label` attribute. The position of the popover can be controlled via `_popover-align`, whereby the popover can be placed either above, to the right, below or to the left of the button.
 
-The PopoverButton is particularly suitable for:
+<BetaDocsBanner />
+<UntestedBanner />
 
-- Additional Information
-- Context menus
-- Fold-out controls
+**Synonyms:** Popover Menu, Overlay Menu, Context Button
 
-## Construction
+**Description:** The **PopoverButton** combines a button with an associated popover overlay that is shown and hidden on click. The popover uses the native HTML Popover API for lightweight, non-modal overlaying of arbitrary content. The button controls the visibility of the popover via click, while the position can be configured flexibly.
+
+## Example
+
+Example of a PopoverButton with sample content inside the popover:
 
 <PopoverButtonPreview
-	visibleProperties={['_label', '_popoverAlign', '_icons', '_slot', '_disabled', '_hideLabel']}
+	codeCollapsable
+	codeCollapsed
+	initialProps={{}}
+	visibleProperties={[]}
+/>
+
+## Accessibility
+
+- **Focus management**: The popover is rendered as a native HTML Popover, which enables automatic focus handling. The button retains its focus state after closing.
+- **Label requirement**: The `_label` attribute is required and provides the semantic label for the button. This is used as aria-label for screen readers.
+- **Keyboard control**: The PopoverButton is fully operable via keyboard and supports standard button shortcuts.
+- **Semantic structure**: The popover is provided with correct ARIA structure for non-modal overlays.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/button/" _target="_blank" _label="ARIA Button Pattern"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/popover" _target="_blank" _label="MDN Web API - Popover"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+
+## Usage
+
+### Keyboard Control
+
+| Key | Function |
+| --- | -------- |
+| `Tab` | Focuses the button or moves to the next interactive element. |
+| `Shift + Tab` | Moves to the previous interactive element. |
+| `Enter` | Activates the button and shows or hides the popover. |
+| `Space` | Alternative activation of the button (shows or hides the popover). |
+
+### Best Practices / Recommendations
+
+- **Meaningful labels**: Use clear button labels that clearly indicate the purpose or consequence of the click (e.g. "Options", "Menu", "Filter").
+- **Contextual positioning**: Use `_popoverAlign` to position the popover sensibly. A downward-facing popover is standard; upward-facing popovers are useful when little space is available below.
+- **Limit content**: Popovers should not contain extensive content. For more complex dialogs, use the <kol-link _href="../components/dialog" _label="Dialog component"></kol-link>.
+- **Clear close state**: The button visually indicates whether the popover is open. Make sure users understand this.
+- **Click-outside behavior**: The native Popover API automatically closes the popover when clicking outside (default behavior).
+- **No nesting**: Avoid nested popovers or multiple simultaneously open popovers.
+
+### Use Cases
+
+- **Context menus**: Action menus next to or above elements (Edit, Delete, More options).
+- **Filter or sort options**: Compact option areas in a table or list.
+- **Additional information**: Tooltips with interactive content, help hints.
+- **Quick actions**: Frequent actions on or next to elements without an additional page.
+- **Settings or configuration**: Quick settings for an element or component.
+
+## Construction / Technical
+
+### Playground
+
+Test the various properties of the PopoverButton:
+
+<PopoverButtonPreview
+	codeCollapsable
+	visibleProperties={['_label', '_popoverAlign', '_variant', '_icons', '_slot', '_disabled', '_hideLabel']}
+/>
+
+### Functionality
+
+#### Basic Button Properties
+
+The PopoverButton supports the standard button attributes:
+
+<PopoverButtonPreview
+	initialProps={{ _label: 'Button' }}
+	visibleProperties={['_label', '_hideLabel', '_disabled', '_type']}
 	codeCollapsable
 	codeCollapsed
 />
 
-# API
+**Available attributes:**
+- `_label`: Visible or semantic label of the button
+- `_hideLabel`: Hides the label visually but keeps it visible for screen readers
+- `_disabled`: Disables the button (interaction not possible)
+- `_type`: Button type (`button`, `submit`, `reset`)
+
+#### Button Variants and Styling
+
+The PopoverButton supports various visual variants:
+
+<PopoverButtonPreview
+	initialProps={{ _label: 'Styled Button' }}
+	visibleProperties={['_variant', '_icons', '_inline', '_tooltipAlign']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Available attributes:**
+- `_variant`: Visual style (`normal`, `primary`, `secondary`, `tertiary`, `danger`, `ghost`, `custom`)
+- `_customClass`: Custom CSS class when `_variant="custom"` is set
+- `_icons`: Icon class names for icon fonts (e.g. Font Awesome)
+- `_inline`: Displays the component inline without a minimum size of 44px
+- `_tooltipAlign`: Preferred position of the tooltip (`top`, `right`, `bottom`, `left`)
+
+#### Popover Positioning
+
+The position of the popover relative to the button can be controlled:
+
+<PopoverButtonPreview
+	initialProps={{ _label: 'Position', _popoverAlign: 'bottom' }}
+	visibleProperties={['_popoverAlign']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Available positions:**
+- `bottom`: Below the button (default)
+- `top`: Above the button
+- `left`: To the left of the button
+- `right`: To the right of the button
+
+#### Popover Content
+
+The popover content is provided via the default slot:
+
+<PopoverButtonPreview
+	initialProps={{
+		_label: 'Menu',
+		_slot: "<ul style='margin:0; padding:0; list-style:none;'><li style='padding:8px;'><strong>Option 1</strong></li><li style='padding:8px;'><strong>Option 2</strong></li><li style='padding:8px;'><strong>Option 3</strong></li></ul>",
+	}}
+	visibleProperties={['_slot']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Note**: The slot content is processed with HTML sanitization for security. The content should remain concise and focused.
+
+#### Shortcuts and Focus
+
+The PopoverButton supports accessibility features for extended keyboard interaction:
+
+<PopoverButtonPreview
+	initialProps={{ _label: 'Alt+O' }}
+	visibleProperties={['_accessKey', '_tabIndex']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Available attributes:**
+- `_accessKey`: Key combination for quick activation (e.g. `"o"` for Alt+O)
+- `_tabIndex`: Tab order in the form
+- `_shortKey`: Visual display of the shortcut in the button label
+
+## API
 
 <Readme />
 

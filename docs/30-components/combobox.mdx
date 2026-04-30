@@ -1,52 +1,53 @@
 ---
 title: Combobox
-description: Beschreibung und Spezifikation für die Combobox-Komponente.
-tags:
-  - Combobox
-  - Beschreibung
-  - Spezifikation
+description: Beschreibung, Spezifikation und Beispiele für die Combobox-Komponente.
 ---
 
-import Readme from '../../readmes/combobox/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '@site/readmes/combobox/readme.md';
 import ComboboxPreview from '@site/src/components/previews/components/Combobox';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Combobox
 
-Synonyme: Autocomplete, Select, Dropdown
+<BetaDocsBanner />
+<UntestedBanner />
 
-Die **Combobox**-Komponente erzeugt eine Auswahlliste, die ein Eingabefeld mit einer darunter angezeigten Liste von auswählbaren Optionen kombiniert.
+**Synonyme:** Autocomplete, Select, Dropdown
+
+**Beschreibung:** Die **Combobox** ist eine Eingabekomponente, die ein Textfeld mit einer darunter angezeigten Liste von Vorschlägen kombiniert. Nutzer können eine Auswahl tippen oder aus den Vorschlägen wählen – ideal für Szenarien, in denen sowohl freie Eingabe als auch vordefinierte Optionen sinnvoll sind.
+
+## Beispiel
+
+Standard-Combobox mit Vorschlagsliste:
 
 <ComboboxPreview
-  initialProps={{ _label: 'Freie Eingabe mit Vorschlägen'  }}
-  visibleProperties={[
-    '_label',
-    '_msg',
-    '_icons',
-    '_disabled'
-  ]}
-  codeCollapsable
-  codeCollapsed
+	initialProps={{ _label: 'Freie Eingabe mit Vorschlägen', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	visibleProperties={[]}
+	codeCollapsable
+	codeCollapsed
 />
-## Konstruktion
 
-### Events
+## Barrierefreiheit
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+Die **Combobox**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 
-| Event    | Auslöser                         | Value                           |
-|----------|----------------------------------|---------------------------------|
-| `click`  | Eingabefeld wird angeklickt      | -                               |
-| `focus`  | Eingabefeld wird fokussiert      | -                               |
-| `blur`   | Eingabefeld verliert Fokus       | -                               |
-| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
-| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
+- **Label erforderlich:** Jede Combobox muss über das Attribut `_label` eine sichtbare Beschriftung erhalten, damit Screenreader-Nutzer den Zweck verstehen.
+- **Tastatursteuerung:** Vollständige Unterstützung für Tastaturnavigation mit klaren Fokusindikatoren.
+- **Suggestionsliste:** Die Vorschlagsliste wird als barrierefreie Listbox implementiert und ist für assistive Technologien zugänglich.
+- **Fehlermeldungen:** Validierungsfehler können über das Attribut `_msg` mit aussagekräftigen Meldungen versehen werden.
+- **Hint-Text:** Mit `_hint` können zusätzliche Hinweise bereitgestellt werden, die von Screenreadern vorgelesen werden.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/" _target="_blank" _label="WAI-ARIA APG: Combobox Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
 
 ## Verwendung
 
-Die Auswahlmöglichkeiten werden über das Attribut **`_suggestions`** als JSON-Array an die Komponente übergeben.
+Die Vorschlagsliste wird über das erforderliche Attribut **`_suggestions`** bereitgestellt. Dieses kann entweder ein JSON-Array oder ein String sein.
 
-Beispiel für die Konstruktion des JSON-Array:
+Beispiel für ein JSON-Array:
 
 ```json
 ["Herr", "Frau", "Firma"]
@@ -54,21 +55,140 @@ Beispiel für die Konstruktion des JSON-Array:
 
 ### Tastatursteuerung
 
-| Taste                          | Funktion                                                                                                                                                                                            |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                          | Fokussiert das Auswahlfeld.                                                                                                                                                                         |
-| `Enter`                        | Wenn die Listbox geöffnet ist und eine Option fokussiert ist, wählt diese Funktion die fokussierte Option aus und schließt die Listbox. Wenn keine Optionfokussiert ist, öffnet es nur die Listbox. |
-| `Pfeil nach unten (ArrowDown)` | Öffnet die Listbox, wenn sie geschlossen ist, und bewegt den visuellen Fokus um eine Option nach unten, wenn die Listbox geöffnet ist.                                                              |
-| `Pfeil nach oben (ArrowUp)`    | Öffnet die Listbox, wenn sie geschlossen ist, und bewegt den visuellen Fokus um eine Option nach oben, wenn die Listbox geöffnet ist.                                                               |
-| `Escape (Esc)`                 | Schlißt die Listbox und entfernt den visuellen Fokus von der Combobox, ohne eine Auswahl zu treffen.                                                                                                |
-| `Home`                         | Bewegt den visuellen Fokus auf die erste Option in der Listbox.                                                                                                                                     |
-| `End`                          | Bewegt den visuellen Fokus auf die letzte Option in der Listbox.                                                                                                                                    |
-| `Seite mach oben(PageUp)`      | Springt zehn Optionen nach oben in der Listbox und fokussiert die entsprechende Option.                                                                                                             |
-| `Seite mach unten(PageDown)`   | Springt zehn Optionen nach unten in der Listbox und fokussiert die entsprechende Option.                                                                                                            |
-| `Druckbare Zeichen`            | Fokussiert die erste Option, die mit dem gedrückten Zeichen beginnt.                                                                                                                                |
+| Taste                          | Funktion                                                                                                                                                                                                 |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                          | Fokussiert das Eingabefeld.                                                                                                                                                                              |
+| `Enter`                        | Wenn die Vorschlagsliste geöffnet ist und eine Option fokussiert ist, wählt diese die fokussierte Option aus und schließt die Liste. Ohne fokussierte Option öffnet es die Liste.                        |
+| `Pfeil nach unten (ArrowDown)` | Öffnet die Vorschlagsliste und bewegt den Fokus um eine Option nach unten.                                                                                                                                |
+| `Pfeil nach oben (ArrowUp)`    | Öffnet die Vorschlagsliste und bewegt den Fokus um eine Option nach oben.                                                                                                                                |
+| `Escape (Esc)`                 | Schließt die Vorschlagsliste ohne eine Auswahl zu treffen.                                                                                                                                               |
+| `Home`                         | Bewegt den Fokus auf die erste Option in der Liste.                                                                                                                                                     |
+| `End`                          | Bewegt den Fokus auf die letzte Option in der Liste.                                                                                                                                                    |
+| `PageUp`                       | Springt zehn Optionen nach oben in der Liste.                                                                                                                                                           |
+| `PageDown`                     | Springt zehn Optionen nach unten in der Liste.                                                                                                                                                          |
+| `Druckbare Zeichen`            | Fokussiert die erste Option, die mit dem gedrückten Zeichen beginnt (falls vorhanden).                                                                                                                   |
+
+### Best Practices / Empfehlungen
+
+- **Klare Vorschläge:** Stellen Sie nur relevante und korrekt formatierte Vorschläge bereit.
+- **Label aussagekräftig:** Verwenden Sie prägnante Labels, die deutlich machen, welche Art von Eingabe erwartet wird.
+- **Sinnvolle Vorgaben:** Bei bekannten häufigen Eingaben diese als erste Vorschläge anführen.
+- **Hinweistexte:** Verwenden Sie `_hint`, um Formatvorgaben oder Besonderheiten zu erklären.
+- **Validierung:** Nutzen Sie `_msg`, um Validierungsfehler transparent zu machen.
+- **Freie Eingabe vs. Auswahl:** Die Combobox erlaubt beide – stellen Sie sicher, dass diese Freiheit beabsichtigt ist. Wenn nur Auswahl gewünscht ist, verwenden Sie besser ein Select-Element.
+
+### Anwendungsfälle
+
+- **Länderauswahl:** Vorschläge aller Länder, aber freie Eingabe möglich.
+- **Berufe / Positionen:** Ein Combobox mit häufigen Berufsbezeichnungen, aber Eingabe von Spezialrollen auch möglich.
+- **Anrede:** Begrenzte Liste (Herr, Frau, etc.), aber auch Eingabe von Alternativen möglich.
+- **Produktsuche:** Häufige Produkte als Vorschlag, aber freie Suche möglich.
+- **Tags / Labels:** Vordefinierte Tags mit der Möglichkeit, neue hinzuzufügen.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften der Combobox-Komponente:
+
+<ComboboxPreview
+	visibleProperties={['_label', '_placeholder', '_disabled', '_required', '_hint', '_msg', '_icons', '_hasClearButton', '_hideLabel', '_hideMsg']}
+	initialProps={{ _label: 'Auswahl', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	codeCollapsable
+/>
+
+### Funktionalitäten (mit Code)
+
+#### Label und Beschriftung
+
+Die sichtbare Beschriftung wird über `_label` gesetzt.
+
+<ComboboxPreview
+	visibleProperties={['_label']}
+	initialProps={{ _label: 'Anrede', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Platzhalter und Hint-Text
+
+Der Platzhalter wird angezeigt, wenn das Feld leer ist. Der Hint-Text gibt zusätzliche Hinweise:
+
+<ComboboxPreview
+	visibleProperties={['_placeholder', '_hint']}
+	initialProps={{ _label: 'Anrede', _placeholder: 'Bitte wählen oder eingeben...', _hint: 'Wählen Sie aus der Liste oder geben Sie eine Alternative ein.', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Formularattribute
+
+Standard-Attribute für Formulare wie `_disabled`, `_required` und `_touched`:
+
+<ComboboxPreview
+	visibleProperties={['_disabled', '_required', '_touched']}
+	initialProps={{ _label: 'Anrede', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Fehlermeldungen
+
+Validierungsfehler werden über `_msg` dargestellt:
+
+<ComboboxPreview
+	visibleProperties={['_msg']}
+	initialProps={{ _label: 'Anrede', _msg: 'Die Anrede ist erforderlich.', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Icons
+
+Icons können links oder rechts über `_icons` hinzugefügt werden:
+
+<ComboboxPreview
+	visibleProperties={['_icons']}
+	initialProps={{ _label: 'Anrede', _icons: 'fa-solid fa-user', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Clear-Button
+
+Der Clear-Button kann über `_hasClearButton` gesteuert werden (standardmäßig aktiviert):
+
+<ComboboxPreview
+	visibleProperties={['_hasClearButton']}
+	initialProps={{ _label: 'Anrede', _suggestions: ['Herr', 'Frau', 'Firma'], _hasClearButton: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Versteckte Beschriftung
+
+Die Beschriftung kann über `_hideLabel` visuell verborgen werden (bleibt für Screenreader sichtbar):
+
+<ComboboxPreview
+	visibleProperties={['_hideLabel']}
+	initialProps={{ _label: 'Anrede', _hideLabel: true, _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event     | Auslöser                         | Value                           |
+| --------- | -------------------------------- | ------------------------------- |
+| `click`   | Eingabefeld wird angeklickt      | -                               |
+| `focus`   | Eingabefeld wird fokussiert      | -                               |
+| `blur`    | Eingabefeld verliert Fokus       | -                               |
+| `input`   | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
+| `change`  | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
+| `keydown` | Taste wird gedrückt              | -                               |
+
+## API
 
 <Readme />
-
-## Beispiele 
-
-<ExampleLink component="combobox" />

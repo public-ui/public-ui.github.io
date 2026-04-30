@@ -2,6 +2,14 @@
 	"custom.accessible-standard": {
 		"message": "Accessible Standard"
 	},
+	"custom.untested-banner.label": {
+		"message": "Accessibility test pending",
+		"description": "Heading of the banner for components without a completed accessibility test"
+	},
+	"custom.untested-banner.message": {
+		"message": "This component is being retested for accessibility. The full test is still pending and can only be completed after a release.",
+		"description": "Text of the banner for components without a completed accessibility test"
+	},
 	"custom.component-library-for-the-accessibility": {
 		"message": "Component library for the accessibility"
 	},
@@ -49,6 +57,14 @@
 	},
 	"custom.title": {
 		"message": "KoliBri - Public UI"
+	},
+	"custom.beta-docs-banner.label": {
+		"message": "Documentation under revision",
+		"description": "Heading of the beta banner on revised documentation pages"
+	},
+	"custom.beta-docs-banner.message": {
+		"message": "This documentation is currently being revised and is in beta status. Content may still change.",
+		"description": "Text of the beta banner on revised documentation pages"
 	},
 	"custom.view-component-example": {
 		"message": "View the examples of the component"
@@ -112,6 +128,15 @@
 	},
 	"preview.component.combobox.label": {
 		"message": "Salutation"
+	},
+	"preview.component.dialog.label": {
+		"message": "Dialog"
+	},
+	"preview.component.dialog.openButton": {
+		"message": "Open Dialog"
+	},
+	"preview.component.dialog.content": {
+		"message": "This is an example of dialog content. Press Escape to close."
 	},
 	"preview.component.drawer.content": {
 		"message": "This is the content of the drawer."
@@ -188,12 +213,12 @@
 	"preview.component.link.label": {
 		"message": "KoliBri - Public UI"
 	},
-  "preview.component.nav.label": {
+	"preview.component.nav.label": {
 		"message": "Main navigation"
 	},
-  "preview.component.pagination.label": {
+	"preview.component.pagination.label": {
 		"message": "Page navigation"
-  },
+	},
 	"preview.component.popover-button.label": {
 		"message": "Password help"
 	},

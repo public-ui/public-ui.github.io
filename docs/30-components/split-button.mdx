@@ -2,50 +2,149 @@
 title: Split-Button
 description: Beschreibung, Spezifikation und Beispiele für die Split-Button-Komponente.
 ---
-import Readme from '../../readmes/split-button/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+
+import Readme from '@site/readmes/split-button/readme.md';
 import SplitButtonPreview from '@site/src/components/previews/components/SplitButton';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
-# SplitButton
+# Split-Button
 
-<kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+<BetaDocsBanner />
+<UntestedBanner />
 
-Die SplitButton-Komponente kann genutzt werden, um einen zweigeteilten Button darzustellen. Dabei wird der Primär-Button
-üblicherweise für eine Haupt-Aktion genutzt, während der sekundäre Button ein Kontext-Menü ("Popover") öffnet, hinter
-dem sich weitere Aktionen verbergen.
+**Synonyme:** Geteilter Button, Action-Button mit Menü, Dropdown-Button
 
-- Der Sekundär-Button togglet grundsätzlich das Kontextmenü.
-- Für den Primär-Button kann ein individueller Event-Handler hinterlegt werden, wird dies nicht getan togglet er ebenfalls das Kontextmenü.
+**Beschreibung:** Der **Split-Button** ist ein zweigeteilter Button, der aus einem primären Button für eine Hauptaktion und einem sekundären Button für ein Kontextmenü (Popover) besteht. Der Sekundär-Button öffnet ein Dropdown-Menü mit zusätzlichen Aktionen, während der Primär-Button optional für eine spezifische Haupt-Aktion konfiguriert werden kann. Wenn kein spezieller Event-Handler für den Primär-Button definiert ist, öffnet dieser ebenfalls das Menü.
 
-## Konstruktion
+## Beispiel
+
+Standard Split-Button mit Kontextmenü:
 
 <SplitButtonPreview
-  visibleProperties={['_label', '_variant', '_tooltipAlign', '_icons', '_disabled', '_hideLabel', '_slot']}
-  codeCollapsable
-  codeCollapsed
+	visibleProperties={['_label', '_variant', '_tooltipAlign', '_icons', '_disabled', '_hideLabel']}
+	codeCollapsable
+	codeCollapsed
 />
 
-### Events
+## Barrierefreiheit
+
+- Der Split-Button benötigt ein sichtbares Label über `_label`, um von Screenreadern korrekt erkannt zu werden.
+- Das Dropdown-Menü ist über Tastatur bedienbar und wird von assistiven Technologien als erweiterbares Element erkannt.
+- Der Status des Menüs (geöffnet/geschlossen) sollte durch visuelle und semantische Indikatoren deutlich gemacht werden.
+- Mit `_ariaExpanded` kann der aktuelle Zustand des Menüs für assistive Technologien kommuniziert werden.
+- Mit `_shortKey` können Tastaturkürzel hinzugefügt werden, die von Screenreadern vorgelesen werden.
+- Das `_accessKey` Attribut erlaubt die Definition von Tastenkombinationen für schnellen Zugriff.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/button/" _target="_blank" _label="WAI-ARIA APG - Button Pattern"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded" _target="_blank" _label="MDN - aria-expanded Attribut"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste          | Funktion                                                              |
+| -------------- | --------------------------------------------------------------------- |
+| `Tab`          | Fokussiert den Split-Button.                                          |
+| `Enter`        | Aktiviert den primären Button oder öffnet das Menü (falls konfiguriert). |
+| `Leertaste`    | Öffnet das Dropdown-Menü (sekundärer Button).                         |
+| `Pfeil-Tasten` | Navigation im Dropdown-Menü wenn dieses offen ist.                    |
+| `Escape`       | Schließt das Dropdown-Menü.                                           |
+
+### Best Practices / Empfehlungen
+
+- Verwenden Sie den Split-Button, wenn Sie sowohl eine Primäraktion als auch zusätzliche verwandte Aktionen benötigen.
+- Platzieren Sie die wichtigste/häufigsten Aktion im Primär-Button und Alternativen ins Menü.
+- Nutzen Sie aussagekräftige Icons in der `_icons` Eigenschaft, um die Funktion auf den ersten Blick verständlich zu machen.
+- Definieren Sie einen Event-Handler für den Primär-Button nur, wenn dieser eine separate Aktion haben soll – ansonsten öffnet er ebenfalls das Menü.
+- Begrenzen Sie die Anzahl der Menü-Elemente auf eine übersichtliche Menge (typischerweise 3–6 Einträge).
+- Verwenden Sie Varianten wie `_variant="danger"` für destruktive Aktionen, um Nutzer:innen visuell zu warnen.
+- Mit `_hideLabel` können Sie das Label visuell verstecken und nur als Tooltip und für Screenreader sichtbar machen.
+
+### Anwendungsfälle
+
+- Download-Buttons mit verschiedenen Dateiformaten
+- Bearbeitungsmenüs mit Optionen wie Bearbeiten, Duplizieren, Löschen
+- Schnellaktionen in Tabellenzeilen (z. B. Mehr-Aktionen-Buttons)
+- Media-Player-Steuerelemente mit Wiedergabeoptionen
+- Verwandte Aktionen in Toolbars oder Navigationsleisten
+
+## Konstruktion / Technik
+
+### Playground
+
+<SplitButtonPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Label und grundlegende Konfiguration
+
+Mindestangaben für einen funktionsfähigen Split-Button: `_label`.
+
+<SplitButtonPreview
+	visibleProperties={['_label']}
+	codeCollapsable
+/>
+
+#### Varianten
+
+Der Split-Button unterstützt verschiedene visuelle Varianten für unterschiedliche Kontexte:
+
+<SplitButtonPreview
+	visibleProperties={['_variant']}
+	initialProps={{ _variant: 'primary' }}
+	codeCollapsable
+/>
+
+**Verfügbare Varianten:**
+- `normal`: Standard-Design
+- `primary`: Primäre/Haupt-Aktion
+- `secondary`: Sekundäre Aktion
+- `tertiary`: Tertiäre/subtile Aktion
+- `danger`: Warnung für destruktive Aktionen
+- `ghost`: Dezentes Design ohne Hintergrund
+- `custom`: Benutzerdefiniertes Styling über `_custom-class`
+
+#### Icons und Label-Styling
+
+Icons können über `_icons` hinzugefügt und das Label über `_hideLabel` verborgen werden:
+
+<SplitButtonPreview
+	visibleProperties={['_icons', '_hideLabel']}
+	codeCollapsable
+/>
+
+#### Tooltip und Tastaturkürzel
+
+Tooltip-Position und Tastaturkürzel konfigurieren:
+
+<SplitButtonPreview
+	visibleProperties={['_tooltipAlign', '_shortKey']}
+	codeCollapsable
+/>
+
+#### Deaktivierter Zustand
+
+Der Split-Button kann über `_disabled` deaktiviert werden:
+
+<SplitButtonPreview
+	visibleProperties={['_disabled']}
+	initialProps={{ _disabled: true }}
+	codeCollapsable
+/>
+
+#### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event         | Auslöser                                                                                            | Value             |
-|---------------|-----------------------------------------------------------------------------------------------------|-------------------|
-| `click`       | Element wird angeklickt                                                                             | `_value`-Property |
+| Event        | Auslöser                                                            | Value             |
+| ------------ | ------------------------------------------------------------------- | ----------------- |
+| `click`      | Primärer oder sekundärer Button wird angeklickt                    | `_value`-Property |
 | `onMouseDown` | Eine Taste eines Zeigegeräts wird gedrückt, während der Zeiger sich innerhalb des Elements befindet | -                 |
 
-### Beispiel
-
-<SplitButtonPreview
-  visibleProperties={[]}
-  codeCollapsable
-  codeCollapsed
-/>
-
-# API
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="split-button" />

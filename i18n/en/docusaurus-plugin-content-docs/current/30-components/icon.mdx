@@ -3,17 +3,24 @@ title: Icon
 description: Description, specification and examples for the Icon component.
 ---
 
-import Readme from '/readmes/icon/readme.md';
+import Readme from '@site/readmes/icon/readme.md';
 import IconPreview from '@site/src/components/previews/components/Icon';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Icon
 
-With the help of the **Icon** component, icons from integrated icon fonts can be displayed at any position. The output of the icon can be controlled using the **`_icon`** attribute and is made barrier-free using the **`_label`** attribute. By default the output is as an _`inline`_ element.
+
+<BetaDocsBanner />
+<UntestedBanner />
+
+With the help of the **Icon** component, icons from integrated icon fonts can be displayed at any position. The output of the icon can be controlled using the **`_icons`** attribute and is made barrier-free using the **`_label`** attribute. By default the output is as an _`inline`_ element.
 
 Currently the icons are supported by <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/icon/all-kolicons" _target="_blank" _label="Kolicons"></kol-link> and <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link>.
 
-<kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite (`index.html`) die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>
+<kol-alert _heading="Note" _type="info">It is important that the CSS file(s) of the icon font(s) are included in the host page (`index.html`).</kol-alert>
 
 ## Construction
 
@@ -35,7 +42,7 @@ The property `_icons` expects a string with the class names of the icons to be s
 
 It is important for context-relevant graphics to be labeled.
 
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/" _target="_blank" _label="WAI-ARIA: Names and Descriptions"></kol-link>
 
 ### Labels
 
@@ -47,7 +54,7 @@ A context-relevant icon must be labeled using the `_label` property.
 - <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link>
 - <kol-link _href="https://icofont.com" _target="_blank" _label="Icofont"></kol-link>
 
-# API
+## API
 
 <Readme />
 

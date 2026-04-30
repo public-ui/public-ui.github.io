@@ -1,54 +1,127 @@
 ---
 title: Avatar
 description: Beschreibung, Spezifikation und Beispiele für die Avatar-Komponente.
-tags:
-  - Avatar
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
-import Readme from '../../readmes/avatar/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '@site/readmes/avatar/readme.md';
 import AvatarPreview from '@site/src/components/previews/components/Avatar';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Avatar
 
-Synonyme: Persona
 
-Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder dessen Initialen an, falls kein Bild vorhanden ist.
+<BetaDocsBanner />
+<UntestedBanner />
+
+**Synonyme:** Persona, Profilbild, Benutzerabbild
+
+**Beschreibung:** Die **Avatar**-Komponente zeigt entweder ein kleines Bild eines Benutzers oder dessen Initialen an, falls kein Bild vorhanden ist. Sie wird typischerweise in Benutzerprofilen, Kommentarbereichen oder Nutzerauflistungen verwendet, um eine schnelle visuelle Identifikation zu ermöglichen.
+
+## Beispiel
+
+Darstellung der Komponente in der Standard-Ansicht. Code kann eingeblendet werden.
 
 <AvatarPreview
-	visibleProperties={['_label', '_color']}
+	visibleProperties={[]}
+	initialProps={{ _label: 'Max Mustermann' }}
 	codeCollapsable
 />
 
+## Barrierefreiheit
+
+- **Semantischer Name**: Die Komponente ist mit dem Attribut `_label` beschriftet, das den Namen des Benutzers enthält und von Screenreadern ausgelesen wird.
+- **Vertraute Initialen**: Wenn kein Bild vorhanden ist, werden automatisch die Initialen basierend auf dem `_label` generiert und als visuelles Element angezeigt.
+- **Initialen ausgeblendet**: Die automatisch generierten Initialen sind rein visuell und werden gegenüber assistiven Technologien bewusst ausgeblendet, da die semantische Information bereits über den `_label` verfügbar ist.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html" _target="_blank" _label="WCAG 2.1 - Non-Text Content"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role" _target="_blank" _label="MDN - ARIA: img role"></kol-link>
+
 ## Verwendung
 
-### Mit Bild
+### Best Practices / Empfehlungen
 
-In der Standard-Ansicht zeigt die **Avatar**-Komponente ein Avatar-Bild. Hierzu muss das Attribut `_src` mit einer URL zum Bild angegeben werden.
-Zusätzlich ist es notwendig, das `_label`-Attribut mit dem Namen des Benutzers anzugeben, damit ein Alternativtext ausgezeichnet werden kann.
-
-### Ohne Bild
-
-Die **Avatar**-Komponente kann auch ohne `_src`-Attribut verwendet werden und zeigt in diesem Fall die Initialen des Benutzers, basierend auf dem
-`_label`-Attribut.
+- **Label mit Klarnamen setzen**: Verwenden Sie das Attribut `_label` immer mit dem echten Namen des Benutzers oder einer aussagekräftigen Beschreibung. Dies ist essentiell für Barrierefreiheit und Benutzerverständnis.
+- **Konsistente Farben**: Nutzen Sie das Attribut `_color`, um verschiedene Benutzer farblich zu unterscheiden. Dies verbessert die visuelle Lesebarkeit und Erkennbarkeit.
+- **Fallback auf Initialen**: Wenn nicht immer Benutzerbilder verfügbar sind, verlassen Sie sich auf die automatische Initialendarstellung als Fallback.
+- **Größenkompatibilität**: Die Komponente ist für verschiedene Kontexte nutzbar – von kompakten Auflistungen bis zu größeren Profildarstellungen.
 
 ### Anwendungsfälle
 
-Verwenden Sie die **Avatar**-Komponente, um das Bild eines Users anzuzeigen.
+- Benutzerprofile und Kontoinformationen
+- Kommentarbereiche und Diskussionsforen
+- Benutzerlisten und Teambereiche
+- Chat-Anwendungen und Messaging-Systeme
+- Freigabeberechtigungen und Zusammenarbeitsfunktionen
+- Aktivitätsfeeds mit Benutzerangaben
 
-## Barrierefreiheit
+## Konstruktion / Technik
 
-Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefreiheit betrachtet:
+### Playground
 
-- Die Komponente ist mit einem Beschreibungstext, der den Namen des Users beinhaltet, als aria-label ausgezeichnet.
-- Die Initialen, die alternativ zum Avatar-Bild gezeigt werden, werden als rein visuelles, semantisch nicht relevantes Element betrachtet und für Screenreader
-entsprechend versteckt.
+Testen Sie die verschiedenen Eigenschaften der Avatar-Komponente:
+
+<AvatarPreview
+	visibleProperties={['_label', '_src', '_color']}
+	initialProps={{ _label: 'Max Mustermann', _color: '#5A5FEE' }}
+	codeCollapsable
+/>
+
+### Funktionalitäten
+
+#### Eigenständiger Avatar mit Initialen
+
+Darstellung der Komponente ohne Bild – es werden automatisch die Initialen aus dem Namen generiert:
+
+<AvatarPreview
+	visibleProperties={['_label']}
+	initialProps={{ _label: 'Anna Schmidt' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Avatar mit Bild
+
+Darstellung eines Avatar-Bildes über das Attribut `_src`:
+
+<AvatarPreview
+	visibleProperties={['_src']}
+	initialProps={{ 
+		_label: 'Bei dem gleich gezeigten Bild handelt es sich um einen Standard-Avatar aus Font Awesome', 
+		_src: 'https://gravatar.com/avatar/12345?d=mp&s=256' 
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Farbige Initialen
+
+Verwendung des Attributs `_color` zur farblichen Unterscheidung von Benutzern. Das Attribut akzeptiert sowohl einen einfachen Farbwert als auch ein Objekt mit separaten Hintergrund- und Vordergrundfarben:
+
+<AvatarPreview
+	visibleProperties={['_color']}
+	initialProps={{ _label: 'Peter Meyer', _color: '#FF6B6B' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Avatar mit separaten Farben
+
+Präzise Kontrolle über Hintergrund- und Vordergrundfarbe:
+
+<AvatarPreview
+	visibleProperties={['_color']}
+	initialProps={{ 
+		_label: 'Julia Wolf',
+		_color: { backgroundColor: '#4ECDC4', foregroundColor: '#FFFFFF' }
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="avatar" />

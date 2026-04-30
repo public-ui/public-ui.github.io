@@ -3,53 +3,157 @@ title: Pagination
 description: Beschreibung, Spezifikation und Beispiele für die Pagination-Komponente.
 ---
 
-import Readme from '../../readmes/pagination/readme.md';
+import Readme from '@site/readmes/pagination/readme.md';
 import PaginationPreview from '@site/src/components/previews/components/Pagination';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Pagination
 
-Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte Inhalte, wie zum Beispiel Suchergebnisse, der Reihe nach durchlaufen.
+<BetaDocsBanner />
+<UntestedBanner />
 
-## Konstruktion
+**Synonyme:** Seitennummerierung, Blätter-Navigation, Seiten-Steuerung
+
+**Beschreibung:** Die **Pagination**-Komponente ermöglicht es Nutzern, durch Datensätze oder Inhalte zu navigieren, die auf mehrere Seiten aufgeteilt sind. Sie zeigt die Gesamtanzahl der Seiten an und erlaubt die direkte Auswahl einer bestimmten Seite sowie die Navigation über Schaltflächen (vorherige, nächste, erste, letzte Seite).
+
+## Beispiel
+
+Darstellung einer Pagination mit Standardkonfiguration:
 
 <PaginationPreview
-	visibleProperties={['_max', '_page', '_pageSize', '_siblingCount', '_boundaryCount', '_hasButtons']}
+	visibleProperties={[]}
+	initialProps={{ _max: 100, _page: 1, _pageSize: 5, _siblingCount: 1, _boundaryCount: 1 }}
 	codeCollapsable
 	codeCollapsed
 />
 
-### Events
+## Barrierefreiheit
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+Die **Pagination**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 
-| Event            | Auslöser                  | Value                         |
-|------------------|-------------------------- |-------------------------------|
-| `click`          | Seite wird angeklickt     | Nummer der ausgewählten Seite |
-| `changePage`     | Seite wird angeklickt     | Nummer der ausgewählten Seite |
-| `changePageSize` | Seitengröße wird geändert | Neue Seitengröße              |
+- **Semantische HTML**: Die Komponente nutzt korrekte HTML-Elemente und ARIA-Attribute, um die Struktur für assistive Technologien verständlich zu machen.
+- **Label**: Das Attribut `_label` bietet eine optionale Beschriftung, die Screenreader-Nutzern den Zweck der Pagination vermittelt.
+- **Aktive Seite**: Die aktuell ausgewählte Seite ist visuell deutlich hervorgehoben und wird von Screenreadern als aktiv gekennzeichnet.
+- **Tastaturnavigation**: Alle Navigationsschaltflächen sind über Tastatur erreichbar und fokussierbar.
+- **Tooltip-Ausrichtung**: Das Attribut `_tooltipAlign` ermöglicht es, die Positionierung von Tooltips an verschiedene Benutzerszenarien anzupassen.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/pagination/" _target="_blank" _label="WAI-ARIA APG - Pagination"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/navigation-mechanisms.html" _target="_blank" _label="WCAG 2.1 - Navigation Mechanisms"></kol-link>
 
 ## Verwendung
 
-Die **Paginierung**-Komponente kann über Ihre Properties konfiguriert werden.
+### Tastatursteuerung
 
-- Das Attribut **`_max`** bestimmt die Gesamtanzahl der Elemente.
-- Über das Attribut **`boundary-count`** wird die Anzahl von Elementen bestimmt, die in der **Paginierung**-Komponente rechts und links angezeigt werden, während die übrigen Elemente
-- Das Attribut **`_page`** legt das gerade aktive Element fest. Dieses wird farblich hervorgehoben dargestellt.
-- Über das Attribut **`_sibling-count`** kann festgelegt werden, wie viele Elemente jeweils links und rechts des Aktuellen angezeigt werden sollen.
+| Taste   | Funktion                                              |
+|---------|-------------------------------------------------------|
+| `Tab`   | Fokussiert die nächste Navigation oder Seitennummer. |
+| `Enter` / `Leertaste` | Aktiviert die fokussierte Seite oder Schaltfläche. |
 
-<!-- ### Best practices -->
+### Best Practices / Empfehlungen
+
+- **Seitengröße sinnvoll wählen**: Legen Sie `_pageSize` basierend auf dem Kontext fest – typischerweise 10–50 Elemente pro Seite.
+- **Boundaries und Siblings ausgewogen dimensionieren**: Nutzen Sie `_boundaryCount` und `_siblingCount`, um eine sinnvolle Balance zwischen Übersicht und Navigationsmöglichkeiten zu schaffen.
+- **Navigation-Buttons gezielt einsetzen**: Begrenzen Sie Navigation-Buttons mit `_hasButtons` auf notwendige Funktionen; nicht jede Anwendung braucht „Erste" und „Letzte" Seite.
+- **Seite nach oben springen**: Wenn Nutzer eine neue Seite wählen, sollte die Page zumeist nach oben scrollen, damit der neue Inhalt direkt sichtbar ist.
+- **Kontextuelle Seitengröße**: Bieten Sie über `_pageSizeOptions` Optionen zur Seitengröße an, wenn der Nutzer unterschiedliche Ansichten bevorzugt.
+- **Aktuelle Position kommunizieren**: Ergänzen Sie die Pagination mit Text wie „Seite X von Y", um Nutzern die Orientierung zu erleichtern.
 
 ### Anwendungsfälle
 
-Die **Paginierung**-Komponente kann auf vielfältige Art eingesetzt werden. Insbesondere dort, wo auf einer Inhaltsseite umfangreiche Inhalte dargestellt werden sollen, trägt sie zur Verbesserung der Struktur und Übersichtlichkeit bei.
-Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte, Listen und Tabellen. Auch für bestimmte Navigationsaufgaben innerhalb einer Seite kann die Paginierung gut verwendet werden.
+- **Suchergebnisse**: Navigation durch große Ergebnismengen von Suchvorgängen.
+- **Listen und Tabellen**: Aufteilung langer Datenlisten in verwaltbare Abschnitte.
+- **Blog-Artikel**: Navigation zwischen älteren und neueren Beiträgen.
+- **Kataloge**: Blättern durch Produkten oder Inhalte in Katalogen.
+- **Formularschritte**: Aufteilung mehrteiliger Formulare in navigierbare Schritte.
 
-# API
+### FAQ
+
+**Wann sollte ich `_pageSize` ändern?**  
+Passen Sie `_pageSize` an Ihre Inhaltsart und Kontext an. Für Suchergebnisse sind oft 10–20 Elemente sinnvoll, für Tabellen können es auch 50+ sein.
+
+**Was ist der Unterschied zwischen `_siblingCount` und `_boundaryCount`?**  
+`_siblingCount` bestimmt, wie viele Seitennummern links und rechts der aktuellen Seite angezeigt werden. `_boundaryCount` bestimmt, wie viele Seiten am Anfang und am Ende der Pagination angezeigt werden.
+
+**Kann ich die Seitengröße dynamisch ändern?**  
+Ja, nutzen Sie `_pageSizeOptions`, um Nutzern ein Dropdown-Menü zur Wahl der Seitengröße anzubieten, und reagieren Sie auf das Event `changePageSize`.
+
+## Konstruktion / Technik
+
+### Playground
+
+<PaginationPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Pagination
+
+Einfache Pagination mit Standardwerten:
+
+<PaginationPreview
+	visibleProperties={['_max', '_page', '_pageSize']}
+	initialProps={{ _max: 100, _page: 5, _pageSize: 10 }}
+	codeCollapsable
+/>
+
+#### Sichtbare Seiten konfigurieren
+
+Die Anzahl der sichtbaren Seitennummern wird durch `_siblingCount` (neben der aktuellen Seite) und `_boundaryCount` (an den Rändern) gesteuert:
+
+<PaginationPreview
+	visibleProperties={['_siblingCount', '_boundaryCount']}
+	initialProps={{ _max: 100, _page: 5, _pageSize: 10, _siblingCount: 2, _boundaryCount: 1 }}
+	codeCollapsable
+/>
+
+#### Navigation-Buttons
+
+Das Attribut `_hasButtons` steuert, welche Navigations-Buttons (erste, letzte, vorherige, nächste Seite) angezeigt werden:
+
+<PaginationPreview
+	visibleProperties={['_hasButtons']}
+	initialProps={{ _max: 100, _page: 5, _pageSize: 10, _hasButtons: true }}
+	codeCollapsable
+/>
+
+**Optionen für `_hasButtons`:**
+- `true`: Alle Navigation-Buttons anzeigen (Standard)
+- `false`: Keine Navigation-Buttons anzeigen
+- Objekt mit `{ first: boolean; last: boolean; next: boolean; previous: boolean; }`: Individuelle Kontrolle über jeden Button
+
+#### Seitengröße wählbar machen
+
+Mit `_pageSizeOptions` ermöglichen Sie Nutzern, die Anzahl der Elemente pro Seite zu wählen:
+
+<PaginationPreview
+	visibleProperties={['_pageSize', '_pageSizeOptions']}
+	initialProps={{ _max: 200, _page: 1, _pageSize: 10, _pageSizeOptions: [10, 25, 50, 100] }}
+	codeCollapsable
+/>
+
+#### Label und Tooltip-Ausrichtung
+
+Das Attribut `_label` bietet eine optionale Beschriftung, und `_tooltipAlign` positioniert Tooltips:
+
+<PaginationPreview
+	visibleProperties={['_label', '_tooltipAlign']}
+	initialProps={{ _max: 50, _page: 3, _pageSize: 5, _label: 'Seiten-Navigation', _tooltipAlign: 'top' }}
+	codeCollapsable
+/>
+
+#### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event             | Auslöser                  | Value                   |
+|-------------------|---------------------------|-------------------------|
+| `click`           | Seite wird angeklickt     | Nummer der Seite        |
+| `changePage`      | Seite wird angeklickt     | Nummer der neuen Seite  |
+| `changePageSize`  | Seitengröße wird geändert | Neue Seitengröße        |
+
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="pagination" />
 

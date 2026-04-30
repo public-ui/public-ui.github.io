@@ -1,35 +1,51 @@
 ---
 title: Tree
 description: Beschreibung, Spezifikation und Beispiele für die Tree-Komponente.
-tags:
-  - Tree
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
-import Readme from '../../readmes/tree/readme.md';
+import Readme from '@site/readmes/tree/readme.md';
 import TreePreview from '@site/src/components/previews/components/Tree';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Tree
 
-Synonyme: List, Navigation
 
-Die **Tree**-Komponente stellt eine hierarchische Liste dar, in der jedes Element untergeordnete Einträge enthalten kann. Elemente mit Kindelementen lassen sich ein- oder ausklappen, um die untergeordnete Ebene anzuzeigen oder auszublenden.
+<BetaDocsBanner />
+<UntestedBanner />
+
+**Synonyme:** Hierarchische Liste, Navigationsbaum, Dateibaum
+
+**Beschreibung:** Die **Tree**-Komponente stellt eine hierarchische Liste dar, in der jedes Element untergeordnete Einträge enthalten kann. Elemente mit Kindelementen lassen sich ein- oder ausklappen, um die untergeordnete Ebene anzuzeigen oder auszublenden.
+
+## Beispiel
+
+Standard-Tree mit mehreren Ebenen und expandierbaren Elementen:
 
 <TreePreview
+	visibleProperties={[]}
 	codeCollapsable
 	codeCollapsed
 />
 
+## Barrierefreiheit
+
+Die **Tree**-Komponente wurde mit Fokus auf Barrierefreiheit und Tastaturnavigation entwickelt:
+
+- **Hierarchische Navigation**: Die Baumstruktur wird vollständig über die Tastatur bedienbar gemacht und ist für Screenreader-Nutzer verständlich strukturiert.
+- **ARIA-Rollen und -Attribute**: Die Komponente nutzt die standardisierte Tree-Rolle der WAI-ARIA-Spezifikation, um die semantische Struktur korrekt zu vermitteln.
+- **Tastatursteuerung**: Umfassende Tastaturunterstützung mit Arrow-Keys, Enter, Home/End für effiziente Navigation.
+- **Fokusmanagement**: Klare Fokusindikatoren und vorhersehbare Fokusnavigation.
+- **Label-Anforderung**: Jede Tree-Komponente benötigt ein Label via `_label`, um den Zweck für alle Nutzer deutlich zu machen.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/treeview/" _target="_blank" _label="WAI-ARIA APG - Treeview Pattern"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tree_role" _target="_blank" _label="MDN - ARIA: tree role"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard-accessible.html" _target="_blank" _label="WCAG 2.1 - Keyboard Accessible"></kol-link>
+
 ## Verwendung
-
-Die Tree-Komponente wird verwendet, um komplexe, hierarchisch aufgebaute Daten visuell darzustellen und benutzerfreundlich navigierbar zu machen. Sie ermöglicht es Nutzerinnen und Nutzern, sich effizient durch verschachtelte Strukturen zu bewegen und liefert dabei eine klare Übersicht über die Beziehungen zwischen über- und untergeordneten Elementen.
-
-Typische Einsatzbereiche sind z. B. Navigationsleisten, Organisationsstrukturen, Dateiverzeichnisse oder Produktkataloge – überall dort, wo Inhalte strukturiert und mehrstufig angezeigt werden sollen.
-
-Jeder Navigationspunkt wird über das Attribut `_label` beschriftet und kann optional über `_href` mit einem Ziel verlinkt werden. Mit dem Attribut `_active` lässt sich ein Element als aktuell aktiv markieren, während `_open` steuert, ob ein Element beim initialen Laden aufgeklappt ist.
 
 ### Tastatursteuerung
 
@@ -45,11 +61,82 @@ Jeder Navigationspunkt wird über das Attribut `_label` beschriftet und kann opt
 | `*`            | Öffnet alle geschlossenen Geschwisterelemente auf der aktuell fokussierten Ebene.                                                                                                                                             |
 | Alphanumerisch | Durch Eingabe eines Buchstabens wird das nächste Element fokussiert, dessen `_label` mit diesem Zeichen beginnt. Bei wiederholtem Drücken desselben Buchstabens wird zum jeweils nächsten passenden Element weitergesprungen. |
 
-## Links und Referenzen
+### Best Practices / Empfehlungen
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tree_role" _target="_blank"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/treeview/" _target="_blank"></kol-link>
+- Verwenden Sie die Tree-Komponente für komplexe, hierarchisch aufgebaute Datenmengen, bei denen Elemente mehrere Verschachtelungsebenen haben können.
+- Nutzen Sie `_label` auf der Tree-Komponente, um das Gesamtziel oder den Zweck des Baums zu beschreiben (z.B. "Seitenkarte", "Dateisystem", "Organisationsstruktur").
+- Setzen Sie die Attribute `_label`, `_href` und optional `_active` auf jedem `KolTreeItem` (Kind-Komponente), um einzelne Baumeinträge zu konfigurieren.
+- Nutzen Sie `_open={true}` auf Elementen, die Nutzer:innen sofort sehen sollen, etwa auf der obersten Ebene oder bei primären Navigationspunkten.
+- Begrenzen Sie die initiale Tiefe der sichtbaren Ebenen, um die Übersicht zu bewahren – erlauben Sie das Ausklappen nach Bedarf.
+- Verwenden Sie `_active` nur zur Markierung des aktuellen Standortes oder der Selektion, nicht zur visuellen Dekoration.
+- Vermeiden Sie sehr lange `_label`-Texte, um die Lesbarkeit und das Responsive-Verhalten zu gewährleisten.
+
+### Anwendungsfälle
+
+- **Dateiverzeichnis-Navigation**: Darstellung von Ordner- und Dateistrukturen mit erweiterbaren Ordnern.
+- **Navigationsmenüs**: Hierarchisch strukturierte Seitenkarten oder Produktkataloge.
+- **Organisationsstrukturen**: Darstellung von Hierarchien in Unternehmen oder Projektorganisationen.
+- **Content-Verwaltung**: Baumstruktur von Kategorien und Unterkategorien in CMS oder Dokumentationssystemen.
+- **Dynamische Menüs**: Navigationsmenüs, die sich je nach Benutzerrolle oder Kontext anpassen.
+- **Baumansichten für APIs**: Darstellung von API-Dokumentationen oder Konfigurationsstrukturen.
+
+### FAQ
+
+**Kann ich die Tree-Komponente dynamisch laden (Lazy Loading)?**  
+Die KoliBri Tree-Komponente selbst hat kein eingebautes Lazy-Loading. Sie können dieses Verhalten jedoch über JavaScript implementieren, indem Sie Items bei Bedarf hinzufügen oder entfernen, wenn ein Nutzer ein Element expandiert.
+
+**Wie viele Ebenen kann die Tree-Komponente verschachteln?**  
+Technisch sind beliebig viele Ebenen möglich. Es wird jedoch empfohlen, die initiale Tiefe begrenzt zu halten, um Nutzer:innen nicht zu überlasten. Die Übersicht sollte bewahrt bleiben.
+
+**Kann ich die Tree-Komponente mit einem Filter verwenden?**  
+Ja, Sie können Items dynamisch filtern und nur die gefilterten Items anzeigen – dies erfolgt jedoch auf Anwendungsebene durch Manipulation der übergebenen Daten.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften der Tree-Komponente:
+
+<TreePreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Grundlegende Tree-Struktur
+
+Jeder Baumknoten wird durch eine `KolTreeItem`-Komponente dargestellt. Der Container wird durch `KolTree` mit dem erforderlichen `_label`-Attribut definiert.
+
+<TreePreview 
+	visibleProperties={['_label']} 
+	codeCollapsable 
+	codeCollapsed
+/>
+
+#### Expanded und Collapsed States
+
+Mit dem Attribut `_open` auf `KolTreeItem` wird gesteuert, ob ein Element beim initialen Laden expandiert ist.
+
+<TreePreview 
+	visibleProperties={['_open']} 
+	codeCollapsable 
+	codeCollapsed
+/>
+
+#### Active-Markierung
+
+Das Attribut `_active` markiert einen Baumknoten als aktuell aktiv (z.B. die aktuelle Seite in einer Navigation).
+
+<TreePreview 
+	visibleProperties={['_active']} 
+	codeCollapsable 
+	codeCollapsed
+/>
+
+#### Verschachtelte Hierarchien
+
+Die Tree-Komponente unterstützt beliebig viele Verschachtelungsebenen durch verschachtelte `KolTreeItem`-Elemente.
+
+<TreePreview codeCollapsable />
+
+## API
 
 <Readme />
-
-<ExampleLink component="tree" />

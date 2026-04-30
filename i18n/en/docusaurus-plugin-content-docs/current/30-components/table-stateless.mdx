@@ -3,9 +3,16 @@ title: TableStateless
 description: Description, specification and examples for the TableStateless component.
 ---
 
-import Readme from '/readmes/table-stateless/readme.md';
+import Readme from '@site/readmes/table-stateless/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
-import TableStatefulPreview from '@site/src/components/previews/components/TableStateful';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
+# Table (stateless)
+
+<BetaDocsBanner />
+<UntestedBanner />
+
 
 Synonyms: Data Table, Details List, Data Grid
 
@@ -13,7 +20,7 @@ The **TableStateless** component is responsible for purely displaying the KoliBr
 
 ## Construction
 
-<TableStatefulPreview codeCollapsable codeCollapsed /> For a table component that can automatically sort and paginate with the data provided, see <kol-link _href="table-stateful" _label="KolTableStateful" />.
+For a table component that can automatically sort and paginate with the data provided, see <kol-link _href="table-stateful" _label="KolTableStateful" />.
 
 TableStateless is particularly useful for larger amounts of data if it is not practical to deliver the entire amount of data to the browser for filtering and sorting.
 
@@ -63,24 +70,7 @@ Tables automatically have a settings menu that allows users to:
 
 By default, all horizontal table columns are taken into account.
 
-The _tableSettings property can be used to load predefined or already saved table configurations. These overwrite the default values, and only the columns listed there are then displayed in the menu.
-
-Example:
-
-```jsx
-<KolTableStateful
-	_tableSettings={{
-		columns: [
-			{ key: 'columnA', visible: false, label: 'Column A', position: 2 },
-			{ key: 'columnB', visible: true, label: 'Column B', position: 1, width: 20 },
-			{ key: 'columnC', visible: true, label: 'Column C', position: 0, width: 45 },
-		],
-	}}
-	// ...
-/>
-```
-
-If users change the settings, they are automatically transferred to the table view and a <nobr>`settingsChange`</nobr> DOM event is triggered (see Events).
+The settings menu can be activated by setting `_hasSettingsMenu={true}`. If users change the settings, they are automatically transferred to the table view and a <nobr>`settingsChange`</nobr> DOM event is triggered (see Events).
 
 ### Events
 
@@ -91,6 +81,7 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 | `sort` | The sorting has changed | Object of type `SortEventPayload` with `key` and `currentSortDirection` |
 | `selectionChange` | The selection of table rows has changed | Array of selected IDs or selected ID for single selection |
 | `settingsChange` | The table settings were changed by the user. | Object of type `TableSettings` |
+| `changeHeaderCells` | The header cells were updated via `_on.onChangeHeaderCells`. | Updated header data as `TableHeaderCells`. |
 
 ## Example
 

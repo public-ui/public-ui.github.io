@@ -41,8 +41,19 @@ const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 				_hint: <KolInputText _label="Hint" />,
 				_accessKey: <KolInputText _label="Access Key" />,
+				_shortKey: <KolInputText _label="Short Key" _maxLength={1} />,
 				_name: <KolInputText _label="Name" />,
 				_msg: <MsgProperty label="Message" />,
+				_hideMsg: <BooleanProperty label="Hide Message" />,
+				_labelAlign: (
+					<KolSelect
+						_label="Label Align"
+						_options={[
+							{ label: 'Left', value: 'left' },
+							{ label: 'Right', value: 'right' },
+						]}
+					/>
+				),
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputCheckbox"

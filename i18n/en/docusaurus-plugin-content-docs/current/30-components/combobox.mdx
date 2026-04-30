@@ -1,70 +1,195 @@
 ---
 title: Combobox
-description: Description and specification for the Combobox component.
+description: Description, specification and examples for the Combobox component.
 ---
 
-import Readme from '/readmes/combobox/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '@site/readmes/combobox/readme.md';
+import ComboboxPreview from '@site/src/components/previews/components/Combobox';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Combobox
 
-Synonyms: Autocomplete, Select, Dropdown
+<BetaDocsBanner />
+<UntestedBanner />
 
-The **Combobox** component creates a selection list that combines an input field with a list of selectable options displayed below.
+**Synonyms:** Autocomplete, Select, Dropdown
 
-## Construction
+**Description:** The **Combobox** is an input component that combines a text field with a list of suggestions displayed below it. Users can type a selection or choose from the suggestions – ideal for scenarios where both free input and predefined options make sense.
 
-### Code
+## Example
 
-```html
-<kol-combobox _suggestions="['Herr','Frau','Firma']" _label="Anrede" _value="Herr"></kol-combobox>
+Standard Combobox with suggestion list:
+
+<ComboboxPreview
+	initialProps={{ _label: 'Free input with suggestions', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
+	visibleProperties={[]}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## Accessibility
+
+The **Combobox** component was developed with a focus on accessibility:
+
+- **Label required:** Every Combobox must have a visible label via the `_label` attribute so that screen reader users understand the purpose.
+- **Keyboard control:** Full support for keyboard navigation with clear focus indicators.
+- **Suggestion list:** The suggestion list is implemented as an accessible listbox and is accessible to assistive technologies.
+- **Error messages:** Validation errors can be provided with meaningful messages via the `_msg` attribute.
+- **Hint text:** With `_hint`, additional notes can be provided that are read aloud by screen readers.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/" _target="_blank" _label="WAI-ARIA APG: Combobox Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+
+## Usage
+
+The suggestion list is provided via the required attribute **`_suggestions`**. This can be either a JSON array or a string.
+
+Example of a JSON array:
+
+```json
+["Mr.", "Mrs.", "Company"]
 ```
+
+### Keyboard Controls
+
+| Key                        | Function                                                                                                                                                                                                 |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                      | Focuses the input field.                                                                                                                                                                                 |
+| `Enter`                    | If the suggestion list is open and an option is focused, selects the focused option and closes the list. Without a focused option, opens the list.                                                       |
+| `ArrowDown`                | Opens the suggestion list and moves the focus one option down.                                                                                                                                           |
+| `ArrowUp`                  | Opens the suggestion list and moves the focus one option up.                                                                                                                                             |
+| `Escape (Esc)`             | Closes the suggestion list without making a selection.                                                                                                                                                   |
+| `Home`                     | Moves the focus to the first option in the list.                                                                                                                                                        |
+| `End`                      | Moves the focus to the last option in the list.                                                                                                                                                         |
+| `PageUp`                   | Jumps ten options up in the list.                                                                                                                                                                       |
+| `PageDown`                 | Jumps ten options down in the list.                                                                                                                                                                     |
+| `Printable Characters`     | Focuses the first option that begins with the pressed character (if available).                                                                                                                          |
+
+### Best Practices / Recommendations
+
+- **Clear suggestions:** Only provide relevant and correctly formatted suggestions.
+- **Meaningful label:** Use concise labels that clearly indicate what type of input is expected.
+- **Sensible defaults:** For known frequent inputs, list these as the first suggestions.
+- **Hint texts:** Use `_hint` to explain format requirements or special features.
+- **Validation:** Use `_msg` to make validation errors transparent.
+- **Free input vs. selection:** The Combobox allows both — ensure that this freedom is intentional. If only selection is desired, use a Select element instead.
+
+### Use Cases
+
+- **Country selection:** Suggestions for all countries, but free input possible.
+- **Professions / Positions:** A Combobox with common job titles, but input of special roles also possible.
+- **Salutation:** Limited list (Mr., Mrs., etc.), but input of alternatives also possible.
+- **Product search:** Common products as suggestions, but free search possible.
+- **Tags / Labels:** Predefined tags with the ability to add new ones.
+
+## Construction / Technics
+
+### Playground
+
+Test the various properties of the Combobox component:
+
+<ComboboxPreview
+	visibleProperties={['_label', '_placeholder', '_disabled', '_required', '_hint', '_msg', '_icons', '_hasClearButton', '_hideLabel', '_hideMsg']}
+	initialProps={{ _label: 'Selection', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
+	codeCollapsable
+/>
+
+### Functionality (with Code)
+
+#### Label and Caption
+
+The visible label is set via `_label`.
+
+<ComboboxPreview
+	visibleProperties={['_label']}
+	initialProps={{ _label: 'Salutation', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Placeholder and Hint Text
+
+The placeholder is displayed when the field is empty. The hint text provides additional guidance:
+
+<ComboboxPreview
+	visibleProperties={['_placeholder', '_hint']}
+	initialProps={{ _label: 'Salutation', _placeholder: 'Please select or type...', _hint: 'Choose from the list or enter an alternative.', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Form Attributes
+
+Standard attributes for forms such as `_disabled`, `_required` and `_touched`:
+
+<ComboboxPreview
+	visibleProperties={['_disabled', '_required', '_touched']}
+	initialProps={{ _label: 'Salutation', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Error Messages
+
+Validation errors are displayed via `_msg`:
+
+<ComboboxPreview
+	visibleProperties={['_msg']}
+	initialProps={{ _label: 'Salutation', _msg: 'The salutation is required.', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Icons
+
+Icons can be added on the left or right via `_icons`:
+
+<ComboboxPreview
+	visibleProperties={['_icons']}
+	initialProps={{ _label: 'Salutation', _icons: 'fa-solid fa-user', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Clear Button
+
+The clear button can be controlled via `_hasClearButton` (enabled by default):
+
+<ComboboxPreview
+	visibleProperties={['_hasClearButton']}
+	initialProps={{ _label: 'Salutation', _suggestions: ['Mr.', 'Mrs.', 'Company'], _hasClearButton: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Hidden Caption
+
+The caption can be visually hidden via `_hideLabel` (remains visible for screen readers):
+
+<ComboboxPreview
+	visibleProperties={['_hideLabel']}
+	initialProps={{ _label: 'Salutation', _hideLabel: true, _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event | trigger | Value |
-|----------|----------------------------------|---------------------------------|
-| `click` | Input field is clicked | - |
-| `focus` | Input field is focused | - |
-| `blur` | Input field loses focus | - |
-| `input` | Value is changed by entering | Current value of the input field |
-| `change` | Entry has been completed | Current value of the input field |
+| Event     | Trigger                          | Value                            |
+| --------- | -------------------------------- | -------------------------------- |
+| `click`   | Input field is clicked           | -                                |
+| `focus`   | Input field is focused           | -                                |
+| `blur`    | Input field loses focus          | -                                |
+| `input`   | Value is changed by entering     | Current value of the input field |
+| `change`  | Entry has been completed         | Current value of the input field |
+| `keydown` | Key is pressed                   | -                                |
 
-### Example
-
-<kol-combobox  _suggestions="['Herr','Frau','Firma']" _label="Anrede" _value="Herr"></kol-combobox>
-
-## Usage
-
-The choices are passed to the component as a JSON array via the **`_suggestions`** attribute.
-
-Example of constructing the JSON array:
-
-```json
-["Herr", "Frau", "Firma"]
-```
-
-<!--### Best practices-->
-
-<!-- ## Barrierefreiheit -->
-
-### Keyboard controls
-
-| button | Function |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab` | Focuses the selection field.                                                                                                                                                                         |
-| `Enter` | If the listbox is open and an option is focused, this function selects the focused option and closes the listbox. If no option is focused, it just opens the listbox. |
-| `ArrowDown` | Opens the listbox when it is closed and moves the visual focus down one option when the listbox is open.                                                              |
-| `ArrowUp` | Opens the listbox when it is closed and moves the visual focus up one option when the listbox is open.                                                               |
-| `Escape (Esc)` | Closes the listbox and removes visual focus from the combobox without making a selection.                                                                                                |
-| `Home` | Moves visual focus to the first option in the listbox.                                                                                                                                     |
-| `End` | Moves the visual focus to the last option in the listbox.                                                                                                                                    |
-| `PageUp(PageUp)` | Jumps ten options up in the list box and focuses on the corresponding option.                                                                                                             |
-| `PageDown(PageDown)` | Jumps ten options down in the list box and focuses on the corresponding option.                                                                                                            |
-| `Printable Characters` | Focuses on the first option that begins with the pressed character.                                                                                                                                |
+## API
 
 <Readme />
 
-<ExampleLink component="combobox" />
