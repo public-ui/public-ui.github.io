@@ -1,95 +1,121 @@
 ---
 title: Breadcrumb
 description: Beschreibung, Spezifikation und Beispiele für die Breadcrumb-Komponente.
-tags:
-  - Breadcrumb
-  - Beschreibung
-  - Spezifikation
-  - Beispiele
 ---
 
-import Readme from '../../readmes/breadcrumb/readme.md';
+import Readme from '@site/readmes/breadcrumb/readme.md';
 import BreadcrumbPreview from '@site/src/components/previews/components/Breadcrumb';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Breadcrumb
 
-Mit Hilfe der **Breadcrumb**-Komponente kann der Pfad zur aktuellen Position einer Webseite in einer hierarchischen Struktur dargestellt werden.
+
+<BetaDocsBanner />
+<UntestedBanner />
+
+**Synonyme:** Navigations-Pfad, Brotkrümel-Navigations-Pfad
+
+**Beschreibung:** Die **Breadcrumb**-Komponente visualisiert den Navigations-Pfad zur aktuellen Position innerhalb einer hierarchischen Seitenstruktur. Sie ermöglicht es Nutzer:innen, ihre genaue Position zu sehen und schnell zu übergeordneten Seiten zurückzukehren.
+
+## Beispiel
+
+Darstellung der Komponente mit den grundlegenden Eigenschaften und navigierbaren Links:
+
+<BreadcrumbPreview
+	codeCollapsable
+	visibleProperties={[]}
+	initialProps={{}}
+/>
+
+## Barrierefreiheit
+
+- Die **Breadcrumb**-Komponente ist ein wichtiges Element für die Suchmaschinenoptimierung und die Navigation auf Ihrer Webseite.
+- Das Attribut `_label` muss korrekt gesetzt werden und beschreibt den Zweck der Navigations-Komponente für Screenreader-Nutzer:innen.
+- Das letzte Element in der Breadcrumb-Navigation stellt die aktuelle Seite dar und ist nicht mit einem Link versehen.
+- Alle vorherigen Elemente bieten navigierbare Links zu übergeordneten Seiten.
+- Das letzte Element kann dennoch mittels Tab-Taste erreicht werden, um es von Screenreadern vorlesbbar zu machen.
+- Bei der Verwendung von Icons mit `_hide-label` muss eine aussagekräftige `_label` auf der primären Komponente gesetzt sein, um Zugänglichkeit zu gewährleisten.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#breadcrumb" _target="_blank" _label="WAI-ARIA Authoring Practices Guide - Breadcrumb"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/" _target="_blank" _label="ARIA Authoring Practices - Breadcrumb Pattern"></kol-link>
+
+## Verwendung
+
+### Tastatursteuerung
+
+| Taste   | Funktion                                                     |
+| ------- | ------------------------------------------------------------ |
+| `Tab`   | Springt die einzelnen Link-Elemente der Breadcrumb-Navigation an. |
+| `Enter` | Öffnet den Link des aktuell fokussierten Elements.           |
+
+### Best Practices / Empfehlungen
+
+- Positionieren Sie die **Breadcrumb**-Komponente weit oben auf der Seite, damit sie von Suchmaschinen und Nutzer:innen leicht erkannt wird.
+- Nutzen Sie die Breadcrumb-Navigation konsistent auf allen Inhaltsseiten Ihrer Webseite – dies verbessert die Orientierung.
+- Vermeiden Sie die Breadcrumb-Navigation auf Ihrer Startseite, da dort keine hierarchische Position vorhanden ist.
+- Verwenden Sie aussagekräftige Beschriftungen (`_label`) für jedes Element, die die Position in der Struktur deutlich machen.
+- Nutzen Sie optional Icons (z.B. ein Haus-Icon für „Startseite"), um die Navigation intuitiver zu gestalten. Kombinieren Sie Icons immer mit Text-Labels außer für sehr gebräuchliche Symbole.
+- Stellen Sie sicher, dass beim Einsatz von `_hide-label: true` dennoch eine zugängliche Beschreibung vorhanden ist.
+- Auf mobilen Geräten gilt: Eine Breadcrumb-Navigation bietet nur Mehrwert, wenn ausreichend Platz vorhanden ist und die Links tastbar sind.
+
+### Anwendungsfälle
+
+- **News-Archive oder Blogs**: Darstellung von Kategorie-Hierarchien (z.B. Blog → Kategorie → Artikel)
+- **E-Commerce**: Navigation durch Produkt-Kategorien (z.B. Startseite → Kategorie → Unterkategorie → Produkt)
+- **Dokumentations-Websites**: Aufbau von Dokumentations-Strukturen (z.B. Dokumentation → Kapitel → Unterkapitel)
+- **Informationsportale**: Orientierung innerhalb umfangreicher Inhaltsstrukturen
+- **mehrstufige Formulare oder Workflows**: Anzeige des Fortschritts durch verschiedene Schritte einer Anwendung
+
+## Konstruktion / Technik
+
+### Playground
+
+<BreadcrumbPreview
+	codeCollapsable
+/>
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Breadcrumb mit Links
+
+Die Breadcrumb-Navigation wird über das Attribut `_links` als Array von Link-Objekten konfiguriert. Das letzte Element wird automatisch als aktuelle Seite (ohne Link) behandelt.
 
 <BreadcrumbPreview
   codeCollapsable
   codeCollapsed
 />
 
-## Funktionsweise
+**Link-Eigenschaften:**
 
-Die **Breadcrumb**-Komponente zeigt die aktuelle Position einer Webseite in einer horizontalen Navigationsstruktur an. Das jeweils letzte Element rechts stellt die aktuelle Seite selbst dar.
-Diese ist nicht mit einem Link versehen. Alle Elemente links der aktuellen Seite sind mit einem Link auf die verknüpfte Seite versehen.
+| Eigenschaft   | Typ       | Beschreibung                                                                                                  |
+| ------------- | --------- | ------------------------------------------------------------------------------------------------------------- |
+| `_href`       | `string`  | Die URL oder der Link-Ziel für dieses Element (außer beim letzten Element).                                   |
+| `_label`      | `string`  | Der sichtbare Text-Label des Elements.                                                                        |
+| `_icons`      | `string`  | (Optional) Der Name eines verfügbaren Icons (z.B. `kolicon-house` oder Font Awesome Symbole).                 |
+| `_hide-label` | `boolean` | (Optional) Wenn `true`, wird nur das Icon angezeigt und der Text verborgen. Erfordert das Setzen von `_icon`. |
 
-## Verwendung
+#### Icons in der Breadcrumb
 
-### Definition der Links
+Icons können optional zu jedem Element hinzugefügt werden. Eine häufige Verwendung ist ein Haus-Icon für die Startseite:
 
-Das Attribut **\_links** erwartet die Übergabe eines JSON-Objekts, aus dem sich der Aufbau der anzuzeigenden Breadcrumb-Pfade ergibt. Das JSON-Objekt übergibt beliebig viele Elemente, die jeweils eine Anzahl an Eigenschaften und Werten bereitstellen.
+<BreadcrumbPreview
+	visibleProperties={['_label', '_links']}
+	initialProps={{}}
+	codeCollapsable
+/>
 
-Jede Eigenschaft und der zugehörige Wert müssen in doppelten Anführungszeichen gesetzt werden.
+### Events
 
-Einzelne Elemente werden in geschweiften Klammern und durch **Komma** separiert geschrieben.
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-Das gesamte JSON-Objekt muss in eckigen Klammern an das Attribut **`_links`** übergeben werden.
+| Event   | Auslöser                        | Value |
+| ------- | ------------------------------- | ----- |
+| `click` | Ein Link-Element wird geklickt. | —     |
 
-<b>Folgende Eigenschaften stehen zur Verfügung:</b>
-
-- **`_href`** übergibt den Link, der für dieses Element verwendet werden soll.
-- **`_icon`** (optional) übergibt den Namen des Icon, wenn zusätzlich zum Text des Elements noch ein Icon angezeigt werden soll. Es stehen <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/icon/all-kolicons" _target="_blank" _label="Kolicons"></kol-link> und <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link> zur Verfügung.
-- **`_hide-label`** (optional). Wenn der Wert auf **true** gesetzt wird, erscheint im Link ausschließlich das Icon, ohne weiteren Text. Die Eigenschaft `_icon` muss gesetzt werden.
-- **`_label`** übergibt den Text, der für dieses Element angezeigt werden soll.
-
-Beispiel für ein JSON-Objekt, das an das Attribut **`_links`** übergeben wird:
-
-```JSON
-[
-  { '_label': 'Startseite', '_href': '#/', '_icons': 'kolicon-house', '_hide-label': true },
-  { '_label': '1. Unterseite', '_href': '/unterseite_eins' },
-  { '_label': '2. Unterseite', '_href': '/unterseite_zwei' }
-]
-```
-
-<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/","_icons":"kolicon-house","hide-label": "true"},{"_label":"1. Unterseite","_href":"#/1_unterseite"},{"_label":"2. Unterseite","_href":"#/2_unterseite"}]'></kol-breadcrumb>
-
-### Best practices
-
-- Die **Breadcrumb**-Komponente ist ein wichtiges Element für eine effektive Suchmaschinenoptimierung Ihrer Webseite.
-- Auch für Benutzer:innen der Webseite bietet eine Breadcrumb-Navigation zusätzliche Übersicht.
-- Positionieren Sie die Breadcrumb möglichst weit oben auf Ihren Inhaltsseiten, um zu gewährleisten, dass Suchmaschinen diese als zusätzliche Informationsquelle zur Struktur Ihrer Webseite nutzen können.
-- Positionieren Sie die Breadcrumb-Komponente auf jeder Inhaltsseite Ihre Webseite. Sie gewährleisten so, dass sich Besucher:innen jederzeit zurecht finden und die aktuelle Position erkennen können.
-- Vermeiden Sie, die Breadcrumb-Navigation auf der Startseite zu positionieren.
-- Verwenden Sie eine Breadcrumb-Navigation nur dann, wenn sie für Benutzer:innen einen wirklichen Mehrwert bieten.
-- Auf mobilen Varianten einer Webseite ist eine Breadcrumb-Navigation möglicherweise nicht sinnvoll.
-
-### Anwendungsfälle
-
-Eine Breadcrumb-Navigation ist auf einer großen Mehrzahl der aktuellen Webseiten zu finden. Somit beschreibt der klassische Anwendungsfall den generellen Einbau dieser Komponente.
-
-## Barrierefreiheit
-
-Achten Sie im Sinne der optimalen Barrierefreiheit darauf, das Attribut `_label` korrekt auszuzeichnen. Beachten Sie diesen Hinweis insbesondere dann, wenn Sie die Option `_hide-label` verwenden und so auf einen beschreibenden Text im Link verzichten würden.
-
-Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-Taste angesprungen werden kann, obwohl dort kein Link hinterlegt ist. Hierdurch kann auch dieses Element von Screenreader erreicht und vorgelesen werden.
-
-### Tastatursteuerung
-
-| Taste   | Funktion                                                     |
-| ------- | ------------------------------------------------------------ |
-| `Tab`   | Springt die einzelnen Elemente der Breadcrumb-Navigation an. |
-| `Enter` | Öffnet den Link des aktuellen Elements.                      |
-
-## Links und Referenzen
-
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#breadcrumb" _target="_blank"></kol-link>
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="breadcrumb" />

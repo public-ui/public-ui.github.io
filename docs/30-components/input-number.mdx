@@ -3,60 +3,244 @@ title: InputNumber
 description: Beschreibung, Spezifikation und Beispiele für die InputNumber-Komponente.
 ---
 
-import Readme from '../../readmes/input-number/readme.md';
+import Readme from '@site/readmes/input-number/readme.md';
 import InputNumberPreview from '@site/src/components/previews/components/InputNumber';
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # InputNumber
 
-Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
 
-## Konstruktion
+<BetaDocsBanner />
+<UntestedBanner />
+
+**Synonyme:** Nummernfeld, Zahleneingabe, numerisches Eingabefeld
+
+**Beschreibung:** Die **InputNumber**-Komponente ist ein spezialisiertes Eingabefeld für numerische Werte. Sie unterstützt Beschränkungen durch Minimal- und Maximalwerte sowie configurable Schrittweiten und ermöglicht eine barrierefreie Eingabe von Zahlen.
+
+## Beispiel
+
+Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 <InputNumberPreview
-  visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
-  codeCollapsable
-  codeCollapsed
+	visibleProperties={[]}
+	codeCollapsable
+	codeCollapsed
 />
 
-### Events
+## Barrierefreiheit
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+Die **InputNumber**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 
-| Event    | Auslöser                         | Value                           |
-|----------|----------------------------------|---------------------------------|
-| `click`  | Eingabefeld wird angeklickt      | -                               |
-| `focus`  | Eingabefeld wird fokussiert      | -                               |
-| `blur`   | Eingabefeld verliert Fokus       | -                               |
-| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
-| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
+- **Label-Pflicht**: Jedes InputNumber-Feld muss über das Attribut `_label` eine sichtbare Beschriftung erheben. Dies gewährleistet, dass Screenreader-Nutzer verstehen, welchen Zweck das Eingabefeld erfüllt.
+- **Hinweistexte**: Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die von Screenreadern vorgelesen werden.
+- **Fehlermeldungen**: Das Attribut `_msg` ermöglicht aussagekräftige Fehlermeldungen, die von assistiven Technologien erkannt werden.
+- **Fokusmanagement**: Das Feld ist vollständig über die Tastatur bedienbar mit klaren Fokusindikatoren.
+- **Pflichtfelder**: Mit `_required` gekennzeichnete Felder werden korrekt an assistive Technologien kommuniziert.
+- **Pfeiltasten-Steuerung**: Die Auf- und Ab-Pfeiltasten ermöglichen eine feinkörnige Wertanpassung für Nutzer, die keine genaue Wertangabe eingeben möchten.
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number" _target="_blank" _label="MDN Web Docs - input type number"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
 
 ## Verwendung
-
-### Best practices
-
-- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ### Tastatursteuerung
 
 | Taste                         | Funktion                                                                                                                                             |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                         | Fokussiert das Eingabefeld.                                                                                                                          |
+| `Shift + Tab`                 | Wechselt zum vorherigen interaktiven Element.                                                                                                        |
 | `Pfeil-Tasten (oben / unten)` | Erhöht oder verringert den Wert innerhalb der Attribute **`_min`** und **`_max`** entsprechend der im Attribut **`_step`** angegebenen Schrittgröße. |
 
-## Links und Referenzen
+### Best Practices / Empfehlungen
 
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- **Sinnvolle Grenzen setzen**: Verwenden Sie `_min` und `_max`, um Wertbereiche zu definieren. Dies verbessert sowohl die Nutzererfahrung als auch die Datenvalidierung.
+- **Schrittweite konfigurieren**: Nutzen Sie `_step`, um die Inkrement-Größe bei Pfeiltasten-Navigation festzulegen. Beispiel: `_step="5"` für 5er-Schritte.
+- **Alternative zu direkter Eingabe**: Bieten Sie bei großen Wertbereichen Pfeiltasten oder Spinner-Buttons als visuelle Alternativen zur Direkteingabe an.
+- **Name und ID**: Achten Sie darauf, `_name` und eine eindeutige `_id` korrekt zu setzen, damit die Daten beim Formularabsenden mitgesendet werden.
+- **Placeholder beschreibend nutzen**: Ein Placeholder kann ein Beispielformat zeigen (z.B. "z.B. 150"), sollte aber nie Pflichtinformationen enthalten.
+- **Validierungsfeedback**: Nutzen Sie `_msg` und `_hint` für klare Vorgaben und Fehlermeldungen.
 
-# API
+### Anwendungsfälle
+
+- **Zahleneingaben in Formularen**: Preise, Mengen, Altersangaben
+- **Bereichsangaben**: Minimum/Maximum-Wertfestlegung
+- **Konfigurationsfelder**: Numerische Parameter in Einstellungen
+- **Messgrößen**: Längen, Gewichte, Temperaturen
+- **Identifikatoren**: Nummern, Codes, Referenzen
+
+### FAQ
+
+**Kann ich Dezimalzahlen eingeben?**  
+Ja, mit `_step` können Sie auch Dezimalzahlen unterstützen. Beispiel: `_step="0.5"` für 0,5er-Schritte.
+
+**Wie funktioniert die Schrittweite mit Min/Max?**  
+Die Pfeiltasten addieren/subtrahieren den `_step`-Wert. Die Grenzen `_min` und `_max` verhindern, dass der Wert diese Grenzen überschreitet.
+
+**Muss ich `_name` setzen?**  
+Ja, wenn das Feld Teil eines Formulars ist. Der `_name` wird beim Absenden als Feldname mitgesendet.
+
+**Kann ich Vorschlagswerte anzeigen?**  
+Ja, über das Attribut `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen, die dem Nutzer als Autocomplete-Optionen angeboten werden.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
+
+<InputNumberPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Einfaches Eingabefeld
+
+Minimum-Konfiguration mit Label:
+
+<InputNumberPreview
+	visibleProperties={['_label']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Formularattribute
+
+Standard-Attribute für Formulare wie Deaktivierung, Read-Only-Modus und Pflichtfelder:
+
+<InputNumberPreview
+	visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
+	initialProps={{ _label: 'Anzahl' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Attribute:**
+- `_disabled`: Deaktiviert das Eingabefeld (mit Begründung verwenden!)
+- `_readOnly`: Verhindert die Bearbeitung des Feldes
+- `_required`: Kennzeichnet Pflichtfelder
+
+#### Hinweistexte und Fehlermeldungen
+
+Unterstützung für Hinweistexte und Validierungsmeldungen:
+
+<InputNumberPreview
+	visibleProperties={['_label', '_hint', '_msg']}
+	initialProps={{
+		_label: 'Preis',
+		_hint: 'Bitte geben Sie einen Wert in EUR an',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Attribute:**
+- `_hint`: Ergänzende Hinweise zur Eingabe (wird immer angezeigt)
+- `_msg`: Fehlermeldungen oder Validierungshinweise
+
+#### Numerische Beschränkungen
+
+Konfigurieren Sie Minimal-, Maximalwerte und Schrittweite:
+
+<InputNumberPreview
+	visibleProperties={['_label', '_min', '_max', '_step']}
+	initialProps={{
+		_label: 'Menge',
+		_min: 1,
+		_max: 100,
+		_step: 5,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Attribute:**
+- `_min`: Minimaler erlaubter Wert
+- `_max`: Maximaler erlaubter Wert
+- `_step`: Schrittweite für Pfeiltasten und Spinner
+
+#### Placeholder und Label-Steuerung
+
+Nutzen Sie Placeholder zur Eingabeformatierung und `_hideLabel`, um das Label visuell auszublenden:
+
+<InputNumberPreview
+	visibleProperties={['_label', '_placeholder', '_hideLabel']}
+	initialProps={{
+		_label: 'Alter',
+		_placeholder: 'z.B. 25',
+		_hideLabel: false,
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Attribute:**
+- `_placeholder`: Platzhaltertext (verschwindet beim Tippen)
+- `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
+
+#### Icons
+
+Definieren Sie linke und/oder rechte Icons für zusätzlichen Kontext:
+
+<InputNumberPreview
+	visibleProperties={['_label', '_icons']}
+	initialProps={{
+		_label: 'Preis',
+		_icons: {
+			left: 'kolicon-euro',
+		},
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Positionen:**
+- `left`: Icon links vom Eingabefeld
+- `right`: Icon rechts vom Eingabefeld
+
+#### SmartButton
+
+Ein Button mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLabel`):
+
+<InputNumberPreview
+	initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
+	visibleProperties={['_smartButton']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Vorschlagswerte (Suggestions)
+
+Über `_suggestions` können Vorschlagswerte für die Autovervollständigung bereitgestellt werden:
+
+<InputNumberPreview
+	visibleProperties={['_label', '_suggestions']}
+	initialProps={{
+		_label: 'Anzahl',
+		_suggestions: [1, 5, 10, 25, 50, 100],
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Attribute:**
+- `_suggestions`: Liste von Vorschlagswerten für die Datalist-Autovervollständigung
+
+#### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event    | Auslöser                         | Value                           |
+| -------- | -------------------------------- | ------------------------------- |
+| `click`  | Eingabefeld wird angeklickt      | -                               |
+| `focus`  | Eingabefeld wird fokussiert      | -                               |
+| `blur`   | Eingabefeld verliert Fokus       | -                               |
+| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
+| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
+
+## API
 
 <Readme />
-
-## Verwendung _msg
-
-<PropertyMsgUsage />
-
-## Beispiele
-
-<ExampleLink component="input-number" />

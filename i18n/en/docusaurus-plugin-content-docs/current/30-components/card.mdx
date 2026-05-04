@@ -3,107 +3,111 @@ title: Card
 description: Description, specification and examples for the Card component.
 ---
 
-import Readme from '/readmes/card/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '@site/readmes/card/readme.md';
+import CardPreview from '@site/src/components/previews/components/Card';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
-#Card
 
-The **Card** component is ideal for visually highlighting individual areas of your website. With their help you can structure your content very easily.
+# Card
 
-The **Card** component consists of a **_Title area_**, a **_Content area_**.
 
-The **title area** is displayed in a larger font. The **content area** is visually separated by a horizontal dividing line below the title area and is output in the standard font.
+<BetaDocsBanner />
+<UntestedBanner />
 
-## Construction
+**Synonyms:** Container, Box, Panel
 
-### Code
+**Description:** The **Card** component is ideal for visually highlighting individual sections of a webpage and structuring content. It consists of a title area and a content area, separated from each other by a visual dividing line.
 
-```html
-<kol-card _label="Testtitel">
-	<div>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-		At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-		dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-		et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</div>
-</kol-card>
-```
+## Example
 
-### Events
+Display of a simple card with title and content area. Code can be shown.
 
-For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+<CardPreview
+	visibleProperties={[]}
+	initialProps={{ _label: 'Card Title', _slot: 'Content area with arbitrary HTML' }}
+	codeCollapsable
+	codeCollapsed
+/>
 
-| Event | trigger | Value |
-|---------|-----------------------------|-------|
-| `close` | Component is closing | - |
+## Accessibility
 
-### Example
+- The title is semantically marked up as a heading and its hierarchy level (1–6, or 0 for text without a heading element) can be set via the `_level` attribute.
+- The content area is fully accessible and can contain any HTML.
+- The optional close button (via `_has-closer`) is annotated with appropriate ARIA attributes.
+- The card is fully operable via keyboard.
 
-<kol-card _label="Testtitel">
-	<div>
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem Ipsum
-dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</div>
-</kol-card>
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/language-of-page.html" _target="_blank" _label="WCAG 2.1 - Language of Page"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/" _target="_blank" _label="WAI-ARIA Authoring Practices"></kol-link>
 
 ## Usage
 
-### Simple standard card
+### Best Practices / Recommendations
 
-In the standard view, a **Card** consists of a title area and an empty content area.
-KoliBri automatically sets the horizontal dividing line between the two areas.
+- Use the **Card** component to visually group and structure related content.
+- Use concise, meaningful labels via the `_label` attribute.
+- Apply heading levels (`_level`) consistently to maintain a meaningful document structure.
+- On mobile devices, consider that too many cards can stack up – use the close function (`_has-closer`) to save space.
+- Do not place critical action elements exclusively inside closed cards if they are part of core functionality.
+- Avoid excessive nesting of cards within cards.
 
-### Title of the Card component
+### Use Cases
 
-You determine the title of the card by setting the **`_label`** attribute. Here you can enter any text, including special characters and umlauts.
-Note that **HTML code** is not allowed. If not set, three dots are shown.
-The heading level of the title is passed through the **`_level`** attribute. Levels **1** to **6** are possible
+- Displaying product information or service descriptions
+- Grouping related form sections
+- Structuring dashboard overview elements
+- Highlighting information blocks or tips
+- Creating tile layouts for content overviews
+- Collapsible sections for lean layouts on mobile devices
 
-### Content containers
+## Construction / Technical
 
-You determine the contents in the content area of ​​the card by inserting a **content container** within the `<kol-card></kol-card> element`. You can insert any **HTML code** here.
+### Playground
 
-Please note that while you can use any HTML tag as a content container, it is recommended to use a `<div></div>` tag.
+<CardPreview codeCollapsable />
 
-```html
-<kol-card _label="Beispiel" _level="1">
-	<div>Text im Inhalts-Bereich</div>
-</kol-card>
-```
+### Functionalities (with Code)
 
-### Best practices
+#### Basic Content and Label
 
-- Use the **Card** component to visually encapsulate self-contained subject areas.
-- Use the **Card** component to semantically structure your content.
-- Avoid using too many cards on a content page.
-- Avoid placing important content within the Card component if the associated action elements (buttons, links, etc.) are not within the same Card.
+The visible heading is set via `_label`. The content area is populated via the slot.
+
+<CardPreview
+	visibleProperties={['_label', '_slot']}
+	initialProps={{ _label: 'Card Title', _slot: 'Content area' }}
+	codeCollapsable
+/>
+
+#### Heading Structure
+
+The heading level is controlled via `_level`. Levels 0–6 are possible, where 0 renders the title as bold text without a heading element.
+
+<CardPreview
+	visibleProperties={['_level']}
+	initialProps={{ _label: 'Card Title', _slot: 'Content area', _level: 2 }}
+	codeCollapsable
+/>
+
+#### Close Function
+
+The `_has-closer` attribute allows the user to close the card to save space.
+
+<CardPreview
+	visibleProperties={['_has-closer']}
+	initialProps={{ _label: 'Closable Card', _slot: 'Content area', _hasCloser: true }}
+	codeCollapsable
+/>
+
+#### Events
+
+For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event   | Trigger                    | Value |
+| ------- | -------------------------- | ----- |
+| `close` | Component is being closed  | -     |
+
+## API
 
 <Readme />
-
-<ExampleLink component="card" />
-
-## Live editor
-
-<LiveEditorCompact component="card" />
-
-## Examples
-
-###Card
-
-<Configurator component="card" sample="basic" />
-
-### Confirmation card
-
-<Configurator component="card" sample="confirm" />
-
-### Cards in the grid flow
-
-<Configurator component="card" sample="flex" />
-
-### Card as an item list
-
-<Configurator component="card" sample="selection" />

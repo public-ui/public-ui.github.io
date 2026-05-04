@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty, SuggestionsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -27,6 +27,17 @@ const InputTextPreview = (props: InputTextPreviewComponentProps) => {
 				_placeholder: <KolInputText _label="Placeholder" />,
 				_value: <KolInputText _label="Value" />,
 				_icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
+				_type: (
+					<KolSelect
+						_label="Type"
+						_options={[
+							{ label: 'text', value: 'text' },
+							{ label: 'search', value: 'search' },
+							{ label: 'tel', value: 'tel' },
+							{ label: 'url', value: 'url' },
+						]}
+					/>
+				),
 				_accessKey: <KolInputText _label="Access Key" />,
 				_name: <KolInputText _label="Name" />,
 				_hint: <KolInputText _label="Hint" />,
@@ -42,6 +53,7 @@ const InputTextPreview = (props: InputTextPreviewComponentProps) => {
 						]}
 					/>
 				),
+				_suggestions: <SuggestionsProperty label="Suggestions" />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_readOnly: <BooleanProperty label="Read Only" />,
 				_required: <BooleanProperty label="Required" />,

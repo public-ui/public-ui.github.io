@@ -3,58 +3,128 @@ title: Image
 description: Beschreibung, Spezifikation und Beispiele für die Image-Komponente.
 ---
 
-import Readme from '../../readmes/image/readme.md';
+import Readme from '@site/readmes/image/readme.md';
 import ImagePreview from '@site/src/components/previews/components/Image';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Image
 
-Synonyme: Img, Thumbnail
+<BetaDocsBanner />
+<UntestedBanner />
 
-> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+**Synonyme:** Img, Thumbnail
 
-Die **Image**-Komponente dient dazu, Bilder darzustellen.
+**Beschreibung:** Die **Image**-Komponente stellt Bilder dar und unterstützt responsive Darstellung mit verschiedenen Auflösungen, Pixeldichten und Dateiformaten. Sie bietet optimiertes Laden durch Lazy Loading und gewährleistet volle Barrierefreiheit mit Alternativtexten.
 
-## Konstruktion
+## Beispiel
+
+Grunddarstellung eines Bildes mit erforderlichem Alternativtext:
 
 <ImagePreview
-  visibleProperties={['_src', '_alt']}
-  codeCollapsable
-  codeCollapsed
+	visibleProperties={['_src', '_alt']}
+	codeCollapsable
+	codeCollapsed
 />
-
-## Verwendung
-
-### Bilder in unterschiedlicher Auflösung und/oder Seitenverhältnis
-
-Mittels **`_srcset`** (und **`_sizes`**) können unterschiedliche Bilder für unterschiedliche Auflösungen und Pixeldichten (des Displays) hinterlegt werden, um auf großen Bildschirmen scharfe Bilder zu liefern und auf kleinen Monitoren nicht unnötig Bandbreite zu verbrauchen.
-Des Weiteren können mittels **`_srcset`** auch verschiedene Dateiformate angegeben werden, um für moderne Browser Bandbreite zu sparen, allerdings ältere Geräte weiterhin zu unterstützen.
-Auch bei Verwendung von **`_srcset`** sollte **`_src`** genutzt werden, da dies von den Browsern als letzte Option verwendet wird, sofern a) **`srcset`** nicht unterstützt wird, oder b) dort kein passendes Bild gefunden wurde.
-<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset" _target="_blank" _label="MDN Artikel zu srcset"></kol-link>
-<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes" _target="_blank" _label="MDN Artikel zu sizes"></kol-link>
-Für weitere Infos zu **`_srcset`** siehe [Links und Referenzen](#links-und-referenzen)
-
-### Ladeverhalten
-
-Das Attribut **`_loading`** ist optional. Gesetzt werden kann hier entweder `eager` oder `lazy`, sofern ungesetzt wird `lazy` verwendet.
-`eager` sorgt für ein Laden des Bildes direkt beim Betreten der Seite, bei `lazy` lädt der Browser das Bild erst, kurz bevor es sichtbar wird. In der Regel muss `eager` nicht gesetzt werden, setzen Sie es nur sofern Ladeverzögerungen auftreten, oder das Bild sich sicher im, bei Betreten der Seite, sichtbaren Bereich befindet. (z.B.: Logo im Header oder Hero)
-<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading" _target="_blank" _label="MDN Artikel zu loading"></kol-link>
 
 ## Barrierefreiheit
 
-### Alternativtext
+- **Alternativtext erforderlich**: Das Attribut `_alt` ist verpflichtend und wird von Screenreadern vorgelesen. Bei rein dekorativen Bildern kann es leer (`_alt=""`) sein, wird dann aber von assistiven Technologien ignoriert.
+- **Fallback bei fehlenden Bildern**: Der Alternativtext wird von Browsern angezeigt, wenn das Bild nicht geladen werden kann oder nicht verfügbar ist.
+- **Semantil korrekt**: Die Komponente nutzt native HTML5-`<img>`-Elemente und unterstützt alle Standard-Bildformate und Browser-Features.
 
-Das Attribut **`_alt`** ist verpflichtend, kann jedoch bei rein dekorativen Bildern leer (`_alt=""`) gelassen werden.
-Diese Beschreibung wird von Screenreadern vorgelesen und von Browsern angezeigt, wenn das Bild nicht geladen werden kann/soll.
+### Links und Referenzen
 
-## Links und Referenzen
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/text-alternatives.html" _target="_blank" _label="WCAG 2.1 – Text-Alternativen für Bilder"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img" _target="_blank" _label="MDN Web Docs – img Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/tutorials/images/" _target="_blank" _label="Web Accessibility Tutorials – Bilder"></kol-link>
 
-Ausführliche Erklärung zu `_srcset` und `_sizes`: <kol-link _href="https://www.mediaevent.de/html/srcset.html" _target="_blank"></kol-link>
+## Verwendung
+
+### Best Practices / Empfehlungen
+
+- **Aussagekräftige Alternativtexte**: Schreiben Sie prägnante Beschreibungen, die den Inhalt und Zweck des Bildes vermitteln. Vermeiden Sie „Bild von..." oder generische Beschreibungen.
+- **Decorative Bilder**: Lassen Sie `_alt` leer für rein dekorative Bilder, die keine semantische Information tragen.
+- **Responsive Bilder**: Nutzen Sie `_srcset` und `_sizes` für verschiedene Geräteauflösungen und Pixeldichten, um Bandbreite zu sparen und scharfe Bilder auf hochauflösenden Displays zu liefern.
+- **Moderne Dateiformate**: Verwenden Sie `_srcset` mit verschiedenen Dateiformaten (z. B. WebP für moderne Browser, JPEG als Fallback), um Performance zu optimieren.
+- **Lazy Loading nutzen**: Setzen Sie `_loading="lazy"` für Bilder außerhalb des initialen Sichtbereichs, um die Seitenladeleistung zu verbessern.
+- **Eager Loading für kritische Bilder**: Nutzen Sie `_loading="eager"` nur für Bilder im sichtbaren Bereich (z. B. Logo, Hero-Bild), die sofort geladen werden sollen.
+
+### Anwendungsfälle
+
+- Produktbilder und Galerien in E-Commerce-Anwendungen
+- Benutzerpfotos und Avatare (in Verbindung mit anderen Komponenten)
+- Illustrationen und Icons zur Veranschaulichung von Inhalten
+- Hero-Bilder und Bannergrafiken auf Landingpages
+- Responsive Bilder in Artikeln, Blogeinträgen oder Dokumentationen
+- Hintergrundbilder und Markenelemente
+
+### FAQ
+
+**Wann sollte ich `_srcset` verwenden?**
+Nutzen Sie `_srcset`, wenn Sie dasselbe Bild in verschiedenen Auflösungen oder Größen bereitstellen möchten. Dadurch können Browser die beste Variante basierend auf Geräteauflösung und Betrachtungsgröße auswählen.
+
+**Was ist der Unterschied zwischen `_loading="eager"` und `_loading="lazy"`?**
+`eager` lädt das Bild sofort beim Laden der Seite. `lazy` verzögert das Laden bis kurz bevor das Bild im Sichtbereich erscheint. `lazy` ist Standard und verbessert die Seitenladeleistung.
+
+**Kann ich beliebige Bildformate verwenden?**
+Ja, alle gängigen Formate werden unterstützt (PNG, JPEG, WebP, SVG, GIF usw.). Verwenden Sie `_srcset` mit verschiedenen Formaten für maximale Browser-Kompatibilität und Performance.
+
+## Konstruktion / Technik
+
+### Playground
+
+<ImagePreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Bildquelle
+
+Die Bildquelle wird über das erforderliche Attribut `_src` gesetzt. Dies ist die Fallback-URL, die verwendet wird, wenn `_srcset` nicht unterstützt wird oder keine passende Variante vorhanden ist.
+
+<ImagePreview
+	visibleProperties={['_src']}
+	initialProps={{ _src: '/assets/sample-image.png' }}
+	codeCollapsable
+/>
+
+#### Alternativtext
+
+Das erforderliche Attribut `_alt` bietet eine Textbeschreibung oder Alternative für das Bild. Bei dekorativen Bildern kann es leer sein.
+
+<ImagePreview
+	visibleProperties={['_alt']}
+	initialProps={{ _alt: 'Beispielbildbeschreibung' }}
+	codeCollapsable
+/>
+
+#### Responsive Bilder mit Srcset und Sizes
+
+Mit `_srcset` können verschiedene Bildversionen für unterschiedliche Auflösungen, Pixeldichten und Dateiformate angegeben werden. Das Attribut `_sizes` hilft dem Browser zu verstehen, welche Breiten das Bild auf verschiedenen Viewport-Größen haben wird.
+
+<ImagePreview
+	visibleProperties={['_srcset', '_sizes']}
+	initialProps={{
+		_srcset: '/assets/image-small.png 600w, /assets/image-large.png 1200w',
+		_sizes: '(max-width: 600px) 100vw, 50vw',
+	}}
+	codeCollapsable
+/>
+
+#### Ladeverhalten
+
+Das Attribut `_loading` steuert, wann das Bild vom Browser geladen wird. `lazy` ist der Standard und verbessert die Performance, `eager` sollte nur für Bilder im sichtbaren Bereich verwendet werden.
+
+<ImagePreview
+	visibleProperties={['_loading']}
+	initialProps={{ _loading: 'lazy' }}
+	codeCollapsable
+/>
+
+**Verfügbare Werte:**
+- `lazy`: Ladeverschiebung bis zum Erreichen des Sichtbereichs (Standard)
+- `eager`: Sofortiges Laden beim Seiteneintritt
 
 ## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="image" />

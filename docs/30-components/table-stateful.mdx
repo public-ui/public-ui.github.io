@@ -3,130 +3,176 @@ title: TableStateful
 description: Beschreibung, Spezifikation und Beispiele für die TableStateful-Komponente.
 ---
 
-import Readme from '../../readmes/table-stateful/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '@site/readmes/table-stateful/readme.md';
 import TableStatefulPreview from '@site/src/components/previews/components/TableStateful';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
-Synonyme: Data Table, Details List, Data Grid
+# TableStateful
 
-Die **TableStateful**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+<BetaDocsBanner />
+<UntestedBanner />
 
-<kol-indented-text _summary="Backend-seitige Pagination">
-	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der TableStateless-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden. Eine mögliche Sortierung muss ebenfalls über die `onSort`-Events selber implementiert werden. Siehe <kol-link _href="table-stateless" _label="KolTableStateless" />.
-</kol-indented-text>
+**Synonyme:** Data Table, Datentabelle, Datenrepräsentation, Details-Liste
 
-## Konstruktion
+**Beschreibung:** Die **TableStateful**-Komponente dient der strukturierten und übersichtlichen Darstellung von Datenmengen. Sie bestimmt automatisch alle datenbezogenen Werte (wie Sortierung oder Pagination) und aktualisiert die Tabellenansicht entsprechend. Dies macht sie ideal für die Präsentation größerer Datenmengen, bei denen interaktive Funktionen wie Spaltensortierung oder Seitennummerierung erforderlich sind.
 
-<TableStatefulPreview codeCollapsable codeCollapsed />
+## Beispiel
 
-### Events
+Darstellung einer einfachen Datentabelle mit automatischen Funktionalitäten:
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+<TableStatefulPreview
+	codeCollapsable
+	codeCollapsed
+	visibleProperties={[]}
+	initialProps={{}}
+/>
 
-| Event             | Auslöser                                                  | Value                                                                        |
-|-------------------|-----------------------------------------------------------|------------------------------------------------------------------------------|
-| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert          | Array von ausgewählten Zeilen-Objekten bzw. Zeilen-Objekt bei Einfachauswahl |
-| `settingsChange`  | Die Tabelleneinstellungen wurden durch den User geändert. | Objekt vom Typ `TableSettings`                                               |
+## Barrierefreiheit
 
-### Funktionalitäten
+Die **TableStateful**-Komponente implementiert automatisch eine vollständige Accessibility-Struktur:
 
-Die Table-Komponente unterstützt folgende Funktionalitäten:
+- **Automatische ARIA-Attribute**: Die Komponente verwaltet automatisch `role`, `scope` und `aria-*` Attribute für optimale Unterstützung durch Screenreader.
+- **Spaltenüberschriften**: Überschriften erhalten automatisch die Rolle `colheader` oder `rowheader`, je nach Kontext.
+- **Scope-Management**: Der Scope wird automatisch auf `col`, `colgroup`, `row` oder `rowgroup` gesetzt, um die Tabellenstruktur semantisch korrekt zu beschreiben.
+- **Focusable Region**: Die Tabelle hat einen Tabindex, um als fokussierbare Region erkannt zu werden (scrollbare Bereiche sollten fokussierbar sein).
+- **Label-Pflicht**: Das Attribut `_label` definiert die semantische oder sichtbare Beschriftung der Tabelle und wird an Screenreader übermittelt.
 
-- Tabellenbeschreibung durch ein **`label`**-Attribut.
-- Mehrzeilige Spaltenüberschriften in horizontaler oder vertikaler Richtung.
-- Sortierfunktion für entweder horizontale und vertikale Ausrichtung.
-- Unterschiedliche Render-Funktion für die Zellen.
-- Pagination für die Tabelle.
+### Links und Referenzen
 
-Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
-
-- Das Filtern der Tabelle ist aktuell nicht innerhalb der Tabelle vorgesehen.
-- Das Auswählen von Zeilen ist aktuell in der Tabelle nicht vorgesehen.
-
-> Beides könnte jedoch mittels der Render-Funktion umgesetzt werden.
-
-### Pagination
-
-Über das Attribut **`_pagination`** kann optional eine Vielzahl zusätzlicher Properties zur Steuerung der Pagination übergeben werden. Die genaue Beschreibung der Optionen ist auf der Seite <kol-link _href="../pagination" _label="/docs/components/pagination" _label="Pagination"></kol-link> zu finden.
-
-#### KoliBriTableHeaders
-
-```ts
-{
-  horizontal: [
-    [
-      {
-        label: string,
-        key?: string,
-        colsSpan?: number,
-        rowSpan?: number,
-        useTdInsteadOfTh?: boolean,
-        render?: (data) => string,
-        compareFn?: (dataA, dataB) => number,
-      },
-      …
-    ],
-    …
-  ],
-  vertical: [
-    [
-      {
-        label: string,
-        key?: string,
-        colsSpan?: number,
-        rowSpan?: number,
-        useTdInsteadOfTh?: boolean,
-        render?: (data) => string,
-        compareFn?: (dataA, dataB) => number,
-      },
-      …
-    ],
-    …
-  ],
-};
-```
-
-### Code
-
-```html
-<kol-table-stateful
-	_label="Tabellenbeschreibung"
-	_headers='{"horizontal": [[{"label":"Montag","key":"montag"}]]}'
-	_pagination='[{"page":2}]'
-></kol-table-stateful>
-```
-
-### Footer
-
-Durch die Verwendung des **`_dataFoot_`**-Attribut können zusammenfassende Informationen oder zusätzliche Details am Ende der Tabelle angezeigt werden. Die Informationen sind hierbei an die Spaltendefinitionen gebunden.
+- <kol-link _href="https://www.w3.org/WAI/tutorials/tables/" _target="_blank" _label="WAI Web Accessibility Tutorials - Tables"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" _target="_blank" _label="WCAG 2.1 - Info and Relationships"></kol-link>
+- <kol-link _href="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable" _target="_blank" _label="Scrollable Region Focusable"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort" _target="_blank" _label="MDN - ARIA Sort"></kol-link>
 
 ## Verwendung
 
-### Sortierung
+### Best Practices / Empfehlungen
 
-- Zu jedem Header kann man eine Sortierfunktion definieren.
-- Es ist exakt eine oder keine Sortierfunktion aktiviert.
-- **Multi-Sort-Funktionalität**: Wenn die Multi-Sort-Option (`_allowMultiSort`) aktiviert ist, kann der Benutzer mehrere Spalten gleichzeitig sortieren. Standardmäßig ist diese Funktion deaktiviert, und nur eine Spalte kann auf einmal sortiert werden. Die Sortierung wechselt zwischen aufsteigend, absteigend und ohne Sortierung. Wenn Multi-Sort deaktiviert ist, wird die Sortierung der vorherigen Spalte aufgehoben, sobald eine neue Spalte sortiert wird.
-- Aktuell wird nicht unterstützt, dass bei zweidimensionalen Headern, die Header der jeweils anderen Header-Seite mit sortiert werden. Bei der Anforderung der Sortierung empfehlen wir die Verwendung nur einer Header-Dimension (entweder horizontal oder vertikal).
+- **Angemessene Datenmenge**: Verwenden Sie TableStateful für größere Datenmengen. Für sehr große Datenmengen (> 1000 Zeilen) erwägen Sie die Verwendung von <kol-link _href="table-stateless" _label="TableStateless"></kol-link> mit Backend-Pagination.
+- **Spaltenanzahl**: Limit Sie die Anzahl der Spalten auf das Wesentliche – zu viele Spalten beeinträchtigen die Lesbarkeit.
+- **Aussagekräftige Header**: Verwenden Sie prägnante, verständliche Spaltenüberschriften.
+- **Sortierung**: Aktivieren Sie Sortierung nur für Spalten mit Bedeutung (z.B. nicht für Aktions-Spalten).
+- **Multi-Sort nutzen**: Die `_allowMultiSort` Option ermöglicht Sortierung nach mehreren Spalten gleichzeitig – sinnvoll bei komplexen Datensätzen.
+- **Pagination anpassen**: Wählen Sie `_pageSize` und `_pageSizeOptions` basierend auf dem Nutzungskontext.
+- **Render-Funktionen**: Verwenden Sie Render-Funktionen für komplexe Zelldarstellungen (z.B. Links, Icons, benutzerdefinierte Formatierungen).
+- **Responsivität**: Bei kleinen Bildschirmen erwägen Sie alternative Darstellungsformen oder reduzieren Sie die sichtbaren Spalten.
 
-### Render Funktion
+### Anwendungsfälle
 
-Render-Funktionen werden als Teil der Tabellen-Header definiert. Siehe Abschnitt "KoliBriTableHeaders". Gibt es sowohl horizontale als auch vertikale Header, muss die Render-Funktion für die _horizontalen_ Header definiert werden. Gibt es nur vertikale Header, können die Render-Funktionen dort definiert werden.
+- Darstellung von Produktkatalogen, Benutzer- oder Transaktionslisten
+- Verwaltungsoberflächen mit Sortier- und Filter-Anforderungen
+- Datenabfragen mit Pagination für übersichtliche Navigation
+- Kombinierte Darstellung strukturierter Daten (vertikal und horizontal)
+- Berichte mit Zusammenfassungszeilen (Footer)
 
-Die `render` Funktion kann auf verschiedene Arten wie folgt verwendet werden.
-Alle Methoden sind auch in diesem Beispiel demonstriert: [render-cell.tsx](https://github.com/public-ui/kolibri/blob/23ebb42d1ce3c8d1e4c74a5c7972842d5e4203fe/packages/samples/react/src/components/table/render-cell.tsx#L34)
+### FAQ
 
-1. String Rückgabewert:
+**Wie verwende ich Backend-Pagination?**
+Für sehr große Datenmengen verwenden Sie <kol-link _href="table-stateless" _label="TableStateless"></kol-link> mit manueller Pagination. Sie können die Tabelle seitenweise befüllen und externe Sortierung implementieren.
 
-```tsx
+**Kann ich komplexe Inhalte in Zellen rendern?**
+Ja, über Render-Funktionen in den Header-Definitionen können Sie beliebige Inhalte darstellen – Strings, DOM-Manipulationen oder sogar React-Komponenten.
+
+**Unterstützt die Komponente Zeilenauswahl?**
+Das Attribut `_selection` ermöglicht die Auswahl von Zeilen (einfach oder mehrfach). Die Auswahl wird über das `selectionChange` Event übermittelt.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie alle Funktionalitäten der TableStateful-Komponente interaktiv:
+
+<TableStatefulPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Label und Tabellenbeschreibung
+
+Das Attribut `_label` definiert die semantische Beschriftung der Tabelle und wird für Accessibility verwendet:
+
+<TableStatefulPreview
+	visibleProperties={['_label']}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Spaltenüberschriften und Layout
+
+Titel werden über das Attribut `_headers` definiert. Es werden horizontale und vertikale Header mit beliebiger Verschachtelung unterstützt:
+
+<TableStatefulPreview
+	visibleProperties={['_headers']}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Header-Struktur:**
+- `horizontal`: Array von Spaltenüberschriften
+- `vertical`: Array von Zeilenüberschriften
+- Pro Header können Eigenschaften wie `label`, `key`, `colsSpan`, `rowSpan`, `render` und `compareFn` definiert werden
+
+#### Sortierung
+
+Die Komponente unterstützt automatische Sortierung pro Spalte über die `compareFn` Funktion in den Header-Definitionen:
+
+<TableStatefulPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Sortierungs-Verhalten:**
+- Einzelsortierung (Standard): Es wird nur eine Spalte auf einmal sortiert. Beim Sortieren einer neuen Spalte wird die Sortierung der vorherigen aufgehoben.
+- Multi-Sort mit `_allowMultiSort`: Der Benutzer kann mehrere Spalten gleichzeitig sortieren. Die Sortierrichtung wechselt zwischen aufsteigend, absteigend und keine Sortierung.
+
+**Hinweis zu mehrdimensionalen Headern:** Bei horizontalen und vertikalen Headern gleichzeitig wird empfohlen, die Render-Funktion nur in den horizontalen Headern zu definieren.
+
+#### Pagination
+
+Die `_pagination` Eigenschaft aktiviert automatische Seitennummerierung und bietet verschiedene Konfigurationsoptionen:
+
+<TableStatefulPreview
+	visibleProperties={['_pagination']}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Konfigurierbare Optionen:**
+- `_page`: Aktuelle Seitennummer (Standard: 1)
+- `_pageSize`: Zeilen pro Seite
+- `_pageSizeOptions`: Verfügbare Optionen für Zeilen pro Seite
+- `_max`: Maximale Anzahl angezeigte Seiten im Steuerelement
+- Weitere Optionen: siehe <kol-link _href="../pagination" _label="Pagination-Komponente"></kol-link>
+
+**Positionierung:** Mit `_paginationPosition` kann die Position der Pagination gesteuert werden (oben, unten, oder beides).
+
+#### Daten und Zellendarstellung
+
+Die `_data` Eigenschaft enthält die Tabellenzeilen. Zellinhalte können über Render-Funktionen individuell formatiert werden:
+
+<TableStatefulPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Render-Funktionen – Implementierungsvarianten:**
+
+1. **String-Rückgabewert:**
+```jsx
 {
   render: (_el, cell) => `Index: ${cell.label}`,
 }
 ```
 
-2. Node mit textContent füllen
-
-```tsx
+2. **DOM-Manipulation mit textContent:**
+```jsx
 {
   render: (el, cell) => {
     el.textContent = `Index: ${cell.label}`;
@@ -134,9 +180,8 @@ Alle Methoden sind auch in diesem Beispiel demonstriert: [render-cell.tsx](https
 }
 ```
 
-3. Node mit innerHTML füllen - ⚠️ Hierbei unbedingt darauf achten, Werte zu sanitizen, um XXS vermeiden.
-
-```tsx
+3. **innerHTML (⚠️ Sanitization erforderlich!):**
+```jsx
 {
   render: (el, cell) => {
     el.innerHTML = `<strong>${cell.label}</strong>`;
@@ -144,9 +189,8 @@ Alle Methoden sind auch in diesem Beispiel demonstriert: [render-cell.tsx](https
 }
 ```
 
-4. React render-function verwenden
-
-```tsx
+4. **React-Komponenten (mit createReactRenderElement):**
+```jsx
 import { createReactRenderElement } from '@public-ui/react-v19';
 {
   render: (el) => {
@@ -160,39 +204,65 @@ import { createReactRenderElement } from '@public-ui/react-v19';
 }
 ```
 
-### Einstellungen
+#### Tabellen-Footer
 
-Tabellen-Einstellungen (`_table-settings`) werden an die Komponente kol-table-stateless durchgereicht. Siehe <kol-link _href="table-stateless#einstellungen" _label="kol-table-stateless Dokumentation" />.
+Das Attribut `_dataFoot` ermöglicht Zusammenfassungszeilen oder zusätzliche Informationen am Ende der Tabelle:
 
-<!--### Best practices
+<TableStatefulPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-### Anwendungsfälle-->
+#### Zeilenauswahl
 
-## Barrierefreiheit
+Das Attribut `_selection` aktiviert die Zeilenauswahl (einfach oder mehrfach). Die Auswahländerungen werden über das `selectionChange` Event übermittelt:
 
-Bei der Table-Komponente werden zahlreiche Attribut-Definitionen dem Tabellen-Markup hinzugefügt, um die Screenreader bestmöglich zu unterstützen.
+<TableStatefulPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-Aktuell werden folgende Attribute von der Komponente verwaltet: `role`, `scope` und `aria-\*`.
+**Konfigurierbare Optionen:**
+- `multiple`: Einfachauswahl (default) oder mehrfache Auswahl
+- `label`: Funktion zur Generierung von Labels für jede Zeile
+- `selectedKeys`: Aktuell ausgewählte Zeilenidentifizierer
+- `keyPropertyName`: Property-Name zur Identifikation von Zeilen (z.B. `id`)
 
-Das heißt beispielsweise, dass bei den Spaltenüberschriften automatisch entweder die Rolle `colheader` oder `rowheader` gesetzt wird. Darüber hinaus wird der Scope entweder auf `col`/`colgroup` oder `row`/`rowgroup` gesetzt. Ähnlich dieser Automatismen werden auch die `aria-\*`-Attribute je nach Relevanz gesetzt.
+#### Einstellungsmenü
 
-Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschrieben: <kol-link _href="" _label=""></kol-link>https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
+Mit `_hasSettingsMenu` wird ein Menü aktiviert, über das Benutzer Tabelleneinstellungen anpassen können (z.B. sichtbare Spalten):
 
-## Links und Referenzen
+<TableStatefulPreview
+	visibleProperties={['_hasSettingsMenu']}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
 
-- <kol-link _href="https://www.w3.org/WAI/tutorials/tables/" _target="_blank"></kol-link>
-- <kol-link _href="https://www.barrierefreies-webdesign.de/knowhow/datentabellen/scope.html" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/ARIA_Live_Regions" _target="_blank"></kol-link>
-- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen" _target="_blank"></kol-link>
-- <kol-link _href="https://www.barrierefreies-webdesign.de/knowhow/live-regions/attribute.html" _target="_blank"></kol-link>
-- <kol-link _href="https://www.digitala11y.com/aria-sort-properties/" _target="_blank"></kol-link>
-- <kol-link _href="https://dequeuniversity.com/library/aria/table-sortable" _target="_blank"></kol-link>
-- <kol-link _href="https://www.maxability.co.in/2016/06/07/aria-sort-property/" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort" _target="_blank"></kol-link>
-- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen" _target="_blank"></kol-link>
-- <kol-link _href="https://stackoverflow.com/questions/1312236/" _target="_blank"></kol-link>
-- <kol-link _href="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable" _target="_blank"></kol-link>
+#### Fixierte Spalten
+
+Das Attribut `_fixedCols` definiert Spalten, die beim horizontalen Scrollen sichtbar bleiben – Angabe als `[start, end]`:
+
+<TableStatefulPreview
+	visibleProperties={[]}
+	initialProps={{}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | Auslöser | Value |
+| ----- | -------- | ----- |
+| `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert | Array von ausgewählten Zeilen (oder einzelne Zeile bei Einfachauswahl) |
+| `settingsChange` | Tabelleneinstellungen wurden durch den Benutzer geändert | Objekt vom Typ `TableSettings` |
+
+## API
 
 <Readme />
-
-<ExampleLink component="table-stateful" />

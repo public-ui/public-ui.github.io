@@ -3,47 +3,158 @@ title: ButtonLink
 description: Description, specification and examples for the ButtonLink component.
 ---
 
-import Readme from '/readmes/button-link/readme.md';
+import Readme from '@site/readmes/button-link/readme.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import ButtonLinkPreview from '@site/src/components/previews/components/ButtonLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # ButtonLink
 
-The ButtonLink is semantically a button and has the design of a link. For this purpose, all relevant properties of the button component are adopted and expanded to include the design-determining properties of the link.
+<BetaDocsBanner />
+<UntestedBanner />
 
-A button can be deactivated and therefore a ButtonLink has the property `_disabled`. The UX designer decides how this will be visually designed.
+**Synonyms:** Button-Link, Pseudo-Link
 
-Instead of using `_href` like with a link, with a ButtonLink the property is controlled via the `click callback`. The `_on` property is used for this.
+**Description:** The **ButtonLink** component is semantically a button but has both the visual appearance and functional behavior of a link. It combines all relevant properties of the button with the design characteristics of a link, enabling more flexible styling of interactive elements.
 
-A link has the property `target`, which may open the link in a new window/tab. The behavior has not yet been implemented.
+## Example
 
-Since the link, unlike the button, is offered in several variants (primary or secondary, etc.), the properties `_customClass` and `_variant` are not available.
+A button that looks and behaves like a link:
 
-## Construction
+<ButtonLinkPreview
+	initialProps={{ _label: 'Button looks like a link' }}
+	visibleProperties={[]}
+	codeCollapsable
+	codeCollapsed
+/>
 
-<ButtonLinkPreview 
-  initialProps={{ _label: 'Schalter sieht wie ein Link aus' }}
-  visibleProperties={[
-    '_label',
-    '_disabled',
-    '_hideLabel',
-    '_icons'
-  ]}
-  codeCollapsable
-  codeCollapsed
+## Accessibility
+
+- The component is semantically a button, which is important for accessibility – screen readers present the element correctly as a button.
+- The visual link design is implemented via CSS and does not affect the semantic role.
+- The component supports all standard button accessibility properties such as `_disabled`, `_ariaExpanded`, `_ariaSelected`, `_ariaControls` and `_ariaDescription`.
+- Keyboard navigation and focus management follow standard button patterns.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/button/" _target="_blank" _label="WAI-ARIA APG - Button Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html" _target="_blank" _label="WCAG 2.1 - Name, Role, Value"></kol-link>
+
+## Usage
+
+### Difference between Button and Link
+
+The ButtonLink component is suitable for cases where the semantic structure of a button is required but the visual appearance of a link is desired:
+
+- **Button**: Semantically and visually a button – use this for primary actions.
+- **Link**: Semantically and visually a link – use this for navigation.
+- **ButtonLink**: Semantically a button, visually a link – use this when you need a link-like appearance with button semantics.
+
+### Best Practices / Recommendations
+
+- Use ButtonLink only when it makes sense to combine a link-like appearance with button semantics.
+- Use the `_disabled` property with justification – disabled ButtonLinks should explain why they are not available.
+- Icons should be used sparingly and meaningfully via the `_icons` property.
+- Use the `_on` property with a click callback to control the component – not `_href`.
+
+### Use Cases
+
+- Contextual actions that should look link-like but require button semantics
+- Navigation in tables or lists that require button semantics for accessibility
+- Business logic triggers that should appear visually unobtrusive like links
+
+## Construction / Technology
+
+### Playground
+
+<ButtonLinkPreview codeCollapsable />
+
+### Functionality (with Code)
+
+#### Basic ButtonLink
+
+A simple ButtonLink with basic properties:
+
+<ButtonLinkPreview
+	initialProps={{ _label: 'Works like a button' }}
+	visibleProperties={['_label']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### With Icons
+
+ButtonLink with icons before and/or after the label:
+
+<ButtonLinkPreview
+	initialProps={{ _label: 'With icon', _icons: 'fa-solid fa-heart' }}
+	visibleProperties={['_label', '_icons']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### With Hidden Label
+
+The label is hidden and only displayed as a tooltip:
+
+<ButtonLinkPreview
+	initialProps={{ _label: 'Tooltip', _hideLabel: true }}
+	visibleProperties={['_hideLabel']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Disabled
+
+A disabled ButtonLink does not respond to interactions:
+
+<ButtonLinkPreview
+	initialProps={{ _label: 'Disabled', _disabled: true }}
+	visibleProperties={['_disabled']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### With Keyboard Shortcut
+
+A visual hint for an available keyboard shortcut:
+
+<ButtonLinkPreview
+	initialProps={{ _label: 'With Shortkey', _shortKey: 's' }}
+	visibleProperties={['_shortKey']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### ARIA Attributes
+
+ButtonLink with ARIA attributes for extended semantics:
+
+<ButtonLinkPreview
+	initialProps={{
+		_label: 'Menu',
+		_ariaExpanded: false,
+		_ariaControls: 'menu-content',
+	}}
+	visibleProperties={['_ariaControls', '_ariaExpanded', '_ariaSelected']}
+	codeCollapsable
+	codeCollapsed
 />
 
 ### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event | trigger | Value |
-|---------------|-----------------------------------------------------------------------------------------------------|-------------------|
-| `click` | Element is clicked | `_value` property |
-| `onMouseDown` | A pointing device key is pressed while the pointer is inside the element | - |
+| Event         | Trigger                                                                                          | Value             |
+| ------------- | ------------------------------------------------------------------------------------------------ | ----------------- |
+| `click`       | Element is clicked                                                                               | `_value` property |
+| `onMouseDown` | A pointing device key is pressed while the pointer is inside the element                         | –                 |
+
+## API
 
 <Readme />
 
-## Examples
+### Further Information
 
 <ExampleLink component="button-link" />

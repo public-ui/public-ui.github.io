@@ -3,76 +3,192 @@ title: InputCheckbox
 description: Beschreibung, Spezifikation und Beispiele für die InputCheckbox-Komponente.
 ---
 
-import Readme from '../../readmes/input-checkbox/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import Readme from '@site/readmes/input-checkbox/readme.md';
 import InputCheckboxPreview from '@site/src/components/previews/components/InputCheckbox';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
-# Checkbox
 
-Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken aktiviert und wieder deaktiviert wird. In aktiviertem Zustand befindet sich ein farbiger Haken in der Box.
+# InputCheckbox
 
-## Konstruktion
+
+<BetaDocsBanner />
+<UntestedBanner />
+
+**Synonyme:** Auswahlfeld, Häkchen-Feld, Ankreuzfeld, Toggle
+
+**Beschreibung:** Die **InputCheckbox**-Komponente ist ein Eingabefeld, das Nutzer:innen ermöglicht, Optionen an- oder abzukreuzen. Sie wird als einzelnes Feld oder in Gruppen verwendet und ermöglicht die Auswahl einer oder mehrerer Optionen aus einer vordefinierten Menge.
+
+## Beispiel
+
+Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet werden.
 
 <InputCheckboxPreview
-	visibleProperties={['_label', '_variant', '_checked', '_disabled']}
+	visibleProperties={[]}
+	initialProps={{ _label: 'Akzeptiere die Bedingungen' }}
 	codeCollapsable
 	codeCollapsed
 />
 
-### Events
+## Barrierefreiheit
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+- **Label-Pflicht**: Jede Checkbox muss über das Attribut `_label` eine eindeutige Beschriftung erhalten. Diese wird von Screenreadern vorgelesen und ermöglicht eine klare Identifikation des Eingabefelds.
+- **Fokusmanagement**: Die Komponente ist vollständig über die Tastatur bedienbar mit klaren Fokusindikatoren.
+- **Leer-Taste**: Der Zustand **Indeterminate** kann über die Tastatur nicht direkt hergestellt werden – diese Funktion wird typischerweise programmatisch verwendet.
+- **Hinweistexte**: Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die für alle Nutzer zugänglich sind und von Screenreadern vorgelesen werden.
+- **Fehlermeldungen**: Fehleingaben können über das Attribut `_msg` mit aussagekräftigen Fehlermeldungen versehen werden.
+- **Alternativen bei vielen Optionen**: Bei längeren Listen von Checkbox-Optionen sollte alternativ eine <kol-link _href="../components/select" _label="Select-Box mit `_multiple`"></kol-link> in Betracht gezogen werden, um die Seite übersichtlich zu halten.
 
-| Event    | Auslöser                                                            | Value                                               |
-|----------|---------------------------------------------------------------------|-----------------------------------------------------|
-| `focus`  | Eingabefeld wird fokussiert                                         | -                                                   |
-| `click`  | Eingabefeld wird angeklickt                                         | -                                                   |
-| `input`  | Checkbox wird an- oder abgehakt (entspricht nativem `input`-Event)  | Definierter `_value` wenn aktiv, andernfalls `null` |
-| `change` | Checkbox wird an- oder abgehakt (entspricht nativem `change`-Event) | Definierter `_value` wenn aktiv, andernfalls `null` |
-| `blur`   | Eingabefeld verliert Fokus                                          | -                                                   |
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#checkbox" _target="_blank" _label="WAI-ARIA Checkbox Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/" _target="_blank" _label="WAI-ARIA Authoring Practices Guide - Checkbox"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
 
 ## Verwendung
 
-Checkboxen werden als Einzelelement oder als Liste beliebig vieler Checkboxen verwendet. Sie ermöglichen den Nutzer:innen, aus einer vordefinierten Anzahl von Möglichkeiten eine oder mehrere auszuwählen.
-
-### Varianten
-
-Mittels des Attributs **`_variant`** können folgende Varianten ausgewählt werden (Beispiele siehe oben):
-
-- `button`: wechselt das Icon je nach Zustand (Beispiel 3+4)
-- `switch`: verwandelt die Checkbox in einen horizontalen Schalter, hierbei gilt rechts als aktiv und links als inaktiv. (Beispiel 2)
-
-### Best practices
-
-- Verwenden Sie eine einzelne Checkbox, wenn Sie von den Nutzer:innen eine einfach Bestätigung wünschen, z.B. Akzeptieren der Datenschutzerklärung.
-- Verwenden Sie eine Gruppe von Checkboxen, um den Nutzer:innen die Möglichkeit zu geben einen oder mehrere Werte auszuwählen.
-
-## Barrierefreiheit
-
-Vermeiden Sie die Verwendung von vielen Checkboxen auf einer Seite, da Ihre Inhalte hierdurch schnell unübersichtlich und lang werden. Prüfen Sie in solchen Anwendungsfällen die Verwendung einer <kol-link _href="/docs/components/select" _label="/docs/components/select">Select-Box mit **`_multiple`**</kol-link>.
-
-Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenreadern vorgelesen wird und so eine eindeutige Identifikation des Eingabefeldes ermöglicht.
-
 ### Tastatursteuerung
 
-| Taste  | Funktion                                                                                                           |
-| ------ | ------------------------------------------------------------------------------------------------------------------ |
-| `Tab`  | Fokussiert die Checkbox bzw. ermöglicht den Wechsel zwischen Checkboxen einer Liste.                               |
-| `Leer` | Aktiviert bzw. deaktiviert die Checkbox. Der Zustand **_Indeterminate_** ist über die Tastatur nicht herzustellen. |
+| Taste  | Funktion                                                                                           |
+| ------ | -------------------------------------------------------------------------------------------------- |
+| `Tab`  | Fokussiert die Checkbox bzw. ermöglicht den Wechsel zwischen Checkboxen einer Liste.               |
+| `Leer` | Aktiviert bzw. deaktiviert die Checkbox. Der Zustand **Indeterminate** ist über die Tastatur nicht möglich. |
 
-## Links und Referenzen
+### Best Practices / Empfehlungen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#checkbox" _target="_blank"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- **Einzelne Checkboxen**: Verwenden Sie eine einzelne Checkbox, wenn Sie von Nutzer:innen eine einfache Bestätigung wünschen, z. B. Akzeptieren von Bedingungen oder Einwilligungen.
+- **Checkbox-Gruppen**: Verwenden Sie mehrere Checkboxen, um Nutzer:innen die Möglichkeit zu geben, eine oder mehrere Werte aus einer Menge auszuwählen.
+- **Übersichtlichkeit**: Vermeiden Sie zu viele Checkboxen auf einer Seite, da dies die Inhalte schnell unübersichtlich macht. Erwägen Sie in solchen Fällen eine <kol-link _href="../components/select" _label="Select-Box"></kol-link>.
+- **Sinnvolle Beschriftungen**: Verwenden Sie klare und präzise Labels, die den Zweck der Checkbox deutlich machen.
+- **Pflichtfelder markieren**: Kennzeichnen Sie erforderliche Checkboxen mit `_required`.
+
+### Anwendungsfälle
+
+- Datenschutzerklärung und Nutzungsbedingungen akzeptieren
+- Einwilligungen und Opt-ins erfassen
+- Mehrzellige Auswahl aus einer endlichen Liste von Optionen
+- Zugriff auf Features oder Dienste gewähren/verweigern
+- Filterung oder Auswahl von Eigenschaften in Formularen oder Dashboards
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften der InputCheckbox-Komponente:
+
+<InputCheckboxPreview
+	initialProps={{ _label: 'Beispiel-Checkbox' }}
+	visibleProperties={['_label', '_variant', '_checked', '_indeterminate', '_disabled', '_required', '_hideLabel', '_hint', '_msg', '_hideMsg']}
+	codeCollapsable
+/>
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Checkbox
+
+Eine einfache Checkbox ohne spezielle Konfiguration:
+
+<InputCheckboxPreview
+	initialProps={{ _label: 'Zustimmen' }}
+	visibleProperties={[]}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Varianten
+
+Die Checkbox unterstützt drei verschiedene visuelle Varianten über das Attribut `_variant`:
+
+<InputCheckboxPreview
+	initialProps={{ _label: 'Checkbox-Typ' }}
+	visibleProperties={['_variant']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Varianten:**
+- `default`: Klassische rechteckige Checkbox mit Häkchen (Standard)
+- `switch`: Horizontaler Schalter/Toggle-Button (rechts = aktiv, links = inaktiv)
+- `button`: Button-Stil mit Icon-Wechsel je nach Zustand
+
+#### Zustände
+
+Verschiedene Zustände und Statusanzeigen:
+
+<InputCheckboxPreview
+	initialProps={{ _label: 'Checkbox-Zustand' }}
+	visibleProperties={['_checked', '_indeterminate', '_disabled', '_required']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Zustände:**
+- `_checked`: Markiert die Checkbox als angekreuzt
+- `_indeterminate`: Setzt die Checkbox in einen unbestimmten Zustand (weder vollständig an noch aus) – typisch für Hierarchien
+- `_disabled`: Deaktiviert die Checkbox (mit Begründung verwenden!)
+- `_required`: Kennzeichnet die Checkbox als erforderlich für Formularvalidierung
+
+#### Label und Beschriftung
+
+Kontrolle über Sichtbarkeit und Ausrichtung der Beschriftung:
+
+<InputCheckboxPreview
+	initialProps={{ _label: 'Beschriftung' }}
+	visibleProperties={['_hideLabel', '_labelAlign']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Optionen:**
+- `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
+- `_labelAlign`: Ausrichtung der Beschriftung (`left` oder `right`, Standard: `right`)
+
+#### Formularattribute
+
+Standard-Attribute für die Integration in Formulare:
+
+<InputCheckboxPreview
+	initialProps={{ _label: 'Formular-Beispiel' }}
+	visibleProperties={['_hint', '_msg', '_name', '_accessKey', '_shortKey']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+**Verfügbare Attribute:**
+- `_hint`: Ergänzender Hinweistext unter dem Label
+- `_msg`: Fehlermeldung oder Validierungshinweis
+- `_name`: Technischer Name des Input-Felds
+- `_accessKey`: Tastenkombination zum Fokussieren/Auslösen
+- `_shortKey`: Visuelle Shortcut-Hinweis neben dem Label
+
+#### Benutzerdefinierte Icons
+
+Anpassung der Icon-Darstellung für verschiedene Zustände:
+
+<InputCheckboxPreview
+	initialProps={{ _label: 'Mit benutzerdefinierten Icons', _icons: 'fa-solid fa-check' }}
+	visibleProperties={['_icons']}
+	codeCollapsable
+	codeCollapsed
+/>
+
+Die `_icons`-Eigenschaft ermöglicht die Anpassung der Icons für die Zustände `checked`, `unchecked` und `indeterminate`.
+
+#### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event    | Auslöser                                                           | Value                                              |
+|----------|--------------------------------------------------------------------|----------------------------------------------------|
+| `focus`  | Eingabefeld wird fokussiert                                        | -                                                  |
+| `click`  | Eingabefeld wird angeklickt                                        | -                                                  |
+| `input`  | Checkbox wird an- oder abgehakt (entspricht nativem `input`-Event) | Definierter `_value` wenn aktiv, sonst `null`     |
+| `change` | Checkbox wird an- oder abgehakt (entspricht nativem `change`-Event`) | Definierter `_value` wenn aktiv, sonst `null`     |
+| `blur`   | Eingabefeld verliert Fokus                                         | -                                                  |
+| `keydown` | Eine Taste wird gedrückt                                            | -                                                  |
+
+## API
 
 <Readme />
-
-## Verwendung _msg
-
-<PropertyMsgUsage />
-
-## Beispiele
-
-<ExampleLink component="input-checkbox" />
 

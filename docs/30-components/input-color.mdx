@@ -3,70 +3,169 @@ title: InputColor
 description: Beschreibung, Spezifikation und Beispiele für die InputColor-Komponente.
 ---
 
-import Readme from '../../readmes/input-color/readme.md';
-import { ExampleLink } from '@site/src/components/ExampleLink';
-import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import Readme from '@site/readmes/input-color/readme.md';
 import InputColorPreview from '@site/src/components/previews/components/InputColor';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # InputColor
 
-Der Input-Typ **Color** erzeugt ein Auswahlfeld für die Definition einer beliebigen Farbe. Die Eingabe der Farbe kann in hexadezimaler Schreibweise, in RGB-Schreibweise oder in HSL-Schreibweise erfolgen. Möglich ist die Auswahl einer Farbe über einen Picker oder auch die exakte Eingabe von Farbwerten.
+<BetaDocsBanner />
+<UntestedBanner />
 
-## Konstruktion
+**Synonyme:** Farbwähler, Farbpicker, Color Picker
+
+**Beschreibung:** Die **InputColor**-Komponente erzeugt ein Eingabefeld zur Definition und Auswahl von Farben. Die Farbe kann in hexadezimaler Schreibweise (#xxxxxx), RGB- oder HSL-Schreibweise eingegeben werden. Die Auswahl kann über einen interaktiven Farbpicker oder durch direkte Eingabe von Farbwerten erfolgen.
+
+## Beispiel
+
+Einfaches Farbwahlfeld mit Beschriftung und Standard-Farbe:
 
 <InputColorPreview
-  visibleProperties={['_label', '_icons', '_disabled', '_hideLabel']}
-  codeCollapsable
-  codeCollapsed
+	visibleProperties={[]}
+	initialProps={{ _label: 'Favoriten-Farbe' }}
+	codeCollapsable
+	codeCollapsed
 />
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event    | Auslöser                         | Value                           |
-|----------|----------------------------------|---------------------------------|
-| `click`  | Eingabefeld wird angeklickt      | -                               |
-| `focus`  | Eingabefeld wird fokussiert      | -                               |
-| `blur`   | Eingabefeld verliert Fokus       | -                               |
-| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
-| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
-
-## Verwendung
-
-Stellen Sie die Default-Farbe über das Attribut `_value` ein. Verwenden Sie hierfür eine hexadezimale Schreibweise (#xxxxxx).
-
-### Best practices
-
-- Achten Sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ## Barrierefreiheit
 
-Beachten Sie, dass die **InputColor**-Komponente nicht vollständig barrierefrei ist. Die Auswahl einer Farbe ist über Tastatursteuerung möglich. Die Ausgabe der gewählten Farbe über Screenreader ist jedoch technisch eingeschränkt.
-Siehe auch: [https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md#input-color](Known Issues).
+Die **InputColor**-Komponente hat **bekannte Barrierefreiheits-Einschränkungen**:
 
-Für eine vollständige Barrierefreiheit prüfen Sie die Verwendung einer vorgefertigten Farbauswahlliste, z.B. über Checkboxen oder Select-Felder.
+- **Eingeschränkte Screenreader-Unterstützung**: Die Ausgabe der gewählten Farbe über Screenreader ist technisch begrenzt. Der Farbwert wird möglicherweise nicht aussagekräftig vorgelesen.
+- **Farbpicker-Dialog**: Der interaktive Farbpicker-Dialog ist über Tastatursteuerung erreichbar, aber die Farbauswahl über Screenreader ist schwierig.
+- **Tipp für bessere Barrierefreiheit**: Für Formulare mit verstärktem Fokus auf Barrierefreiheit erwägen Sie alternative Lösungen, wie vordefinierte Farbauswahllisten über Checkboxen oder Select-Felder.
+
+### Links und Referenzen
+
+- <kol-link _href="https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md#input-color" _target="_blank" _label="Known Issues - InputColor"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/color-contrast.html" _target="_blank" _label="WCAG 2.1 - Color Contrast"></kol-link>
+
+## Verwendung
 
 ### Tastatursteuerung
 
-| Taste                           | Funktion                                                                                                                                    |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                           | Fokussiert das Eingabefeld. Bei geöffnetem Dialogfeld kann mit der Tab-Taste zwischen den Steuerfeldern gewechselt werden.                  |
-| `Enter`                         | Öffnet bzw. schließt das Dialogfeld der Komponente. Bei fokussierter Pipette wird mit der Enter-Taste die Funktion **_Pipette_** gestartet. |
-| `ESC`                           | Beendet die Pipettenfunktion. Schließt das Dialogfeld, wenn die Pipettenfunktion nicht aktiv ist.                                           |
-| `Pfeil-Tasten (rechts / links)` | Verschieben bei fokussiertem Feld **_Farbspektrum_** den Auswahlpunkt.                                                                      |
-| `Pfeil-Tasten (oben   / unten)` | Ändert bei fokussiertem Feld **_Farbsystem_** die Auswahl.                                                                                  |
+| Taste | Funktion |
+| ----- | -------- |
+| `Tab` | Fokussiert das Eingabefeld. Bei geöffnetem Dialogfeld wechselt Tab zwischen den Steuerfeldern des Dialogfeldes. |
+| `Enter` | Öffnet oder schließt das Dialogfeld des Farbpickers. Wenn die Pipette fokussiert ist, startet Enter die Pipettenfunktion. |
+| `ESC` | Beendet die Pipettenfunktion. Schließt das Dialogfeld, falls die Pipettenfunktion nicht aktiv ist. |
+| `Pfeiltasten (→ ←)` | Verschieben den Auswahlpunkt im Farbspektrum nach links oder rechts. |
+| `Pfeiltasten (↑ ↓)` | Ändern die Farbauswahl nach oben oder unten. |
 
-## Links und Referenzen
+### Best Practices / Empfehlungen
 
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- **Default-Farbe setzen**: Nutzen Sie das Attribut `_value` mit einem hexadezimalen Farbwert (z.B. `_value="#d4fcf4"`), um eine Vorauswahl zu treffen.
+- **Aussagekräftige Beschriftung**: Setzen Sie `_label` mit einem klaren Beschreibungstext, damit Nutzer wissen, welche Farbe gefordert ist (z.B. "Primärfarbe", "Hintergrundfarbe").
+- **Formular-Integration**: Vergessen Sie nicht, das Attribut `_name` korrekt zu setzen, damit der Farbwert beim Formularversand mitgesendet wird.
+- **Kontext-Hilfe**: Nutzen Sie `_hint`, um zusätzliche Hinweise zu geben, beispielsweise zulässige Farbformate oder Anforderungen.
+- **Alternative für komplexe Szenarien**: Bei vielen Voreinstellungen oder beschränkter Farbauswahl verwenden Sie eine Select-Liste oder Radiobutton-Gruppe mit festen Farben.
+
+### Anwendungsfälle
+
+- Theme- oder Design-Kustomisierung in Anwendungen
+- Brand-Color-Auswahl in CMS-Systemen
+- Personalisierung von Benutzerprofilen (z.B. Akzentfarbe)
+- Grafisches Design und Bild-Bearbeitung
+- Farbschema-Generator für Webseiten
+- Visuelle Markierungen und Tagging-Funktionen
+
+### FAQ
+
+**Kann ich die Farbe in RGB- oder HSL-Format eingeben?**  
+Ja, der Farbpicker unterstützt hexadezimale, RGB- und HSL-Schreibweise. Der Wert wird intern in hexadezimales Format konvertiert.
+
+**Wie stelle ich eine vorausgewählte Farbe ein?**  
+Nutzen Sie das Attribut `_value` mit einem hexadezimalen Farbwert: `_value="#ff0000"`.
+
+**Ist die Komponente in Formularen obligatorisch?**  
+Nein, Sie können sie über `_required` optional oder erforderlich machen. Die Eingabe ist nicht auswahlzwingend.
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
+
+<InputColorPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Basis-Konfiguration
+
+Die Komponente mit Beschriftung, wahlweise mit Tooltip-Stil:
+
+<InputColorPreview
+	visibleProperties={['_label', '_hideLabel']}
+	initialProps={{ _label: 'Wählen Sie eine Farbe' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Mit voreingestelltem Wert
+
+Farbfeld mit einer Standard-Farbe:
+
+<InputColorPreview
+	visibleProperties={['_label', '_value']}
+	initialProps={{ _label: 'Ihre Farbe', _value: '#ff6b6b' }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Mit Hinweis und Icons
+
+Farbfeld mit zusätzlichem Hinweistext und grafischen Symbolen:
+
+<InputColorPreview
+	visibleProperties={['_label', '_hint', '_icons']}
+	initialProps={{
+		_label: 'Primärfarbe',
+		_hint: 'Wählen Sie eine Farbe für Ihr Design',
+		_icons: { left: 'fa-solid fa-palette' },
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Deaktiviert und Nur-Lesen
+
+Deaktiviertes Eingabefeld (nicht fokussierbar und nicht veränderbar):
+
+<InputColorPreview
+	visibleProperties={['_label', '_disabled']}
+	initialProps={{ _label: 'Gespeicherte Farbe', _value: '#3498db', _disabled: true }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Mit Fehlermeldung
+
+Farbfeld mit Validierungsmeldung:
+
+<InputColorPreview
+	visibleProperties={['_label', '_msg']}
+	initialProps={{
+		_label: 'Farbe auswählen',
+		_msg: 'Bitte wählen Sie eine gültige Farbe aus.',
+	}}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Events
+
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+
+| Event | Auslöser | Value |
+| ----- | -------- | ----- |
+| `click` | Eingabefeld wird angeklickt | — |
+| `focus` | Eingabefeld wird fokussiert | — |
+| `blur` | Eingabefeld verliert Fokus | — |
+| `input` | Wert wird durch Eingabe geändert | Aktueller Farbwert des Eingabefelds |
+| `change` | Eingabe wurde abgeschlossen | Aktueller Farbwert des Eingabefelds |
+
+## API
 
 <Readme />
-
-## Verwendung _msg
-
-<PropertyMsgUsage />
-
-## Beispiele
-
-<ExampleLink component="input-color" />

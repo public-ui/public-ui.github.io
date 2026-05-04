@@ -1,9 +1,9 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { AlignProperty, BooleanProperty } from '../properties';
+import { AlignProperty, BooleanProperty, TabBehaviorProperty } from '../properties';
 import TabsProperty from '../properties/TabsProperty';
 import type { JSX, TabButtonProps } from '@public-ui/components';
-import { KolInputText, KolTabs } from '@public-ui/react-v19';
+import { KolInputNumber, KolInputText, KolTabs } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
 const DEFAULT_TABS: TabButtonProps[] = [
@@ -34,7 +34,9 @@ const TabsPreview: React.FC<TabsPreviewComponentProps> = (props) => {
                 _label: <KolInputText _label="Label" />,
                 _tabs: <TabsProperty label="Tabs" />,
                 _align: <AlignProperty label="Alignment" defaultValue="top" />,
+                _behavior: <TabBehaviorProperty label="Behavior" />,
                 _hasCreateButton: <BooleanProperty label="Create Button" />,
+                _selected: <KolInputNumber _label="Selected Tab" _min={0} />,
             }}
             initialProps={{ ...defaultProps, ...props.initialProps }}
             componentName="KolTabs"

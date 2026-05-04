@@ -3,34 +3,107 @@ title: Heading
 description: Description, specification and examples for the heading component.
 ---
 
-import Readme from '/readmes/heading/readme.md';
+import Readme from '@site/readmes/heading/readme.md';
 import HeadingPreview from '@site/src/components/previews/components/Heading';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Heading
 
-The **Heading** component can be used anywhere a heading should be displayed. By using different sizes, content can be clearly structured and pages can be presented effectively and varied. It separates styling from semantics and allows for flexibility.
 
-## Construction
+<BetaDocsBanner />
+<UntestedBanner />
+
+**Synonyms:** Heading, Title, Heading Level, H1–H6
+
+**Description:** The **Heading** component is used for semantically structured organization of page content. It allows combining different heading levels (1–6) and separates styling from semantic meaning. This supports accessibility and search engine optimization.
+
+## Example
+
+Renders a heading at level 1 without any optional properties set. Code can be expanded.
 
 <HeadingPreview
+	codeCollapsable
+	initialProps={{ _label: 'Heading Level 1' }}
+	visibleProperties={[]}
+/>
+
+## Accessibility
+
+- **Semantic structure**: The component uses native HTML heading elements (H1–H6) to correctly represent the document structure for assistive technologies.
+- **Logical nesting**: Headings should be logically nested (H1 → H2 → H3 etc.) to ensure a consistent document outline.
+- **Label attribute**: The required `_label` attribute contains the heading text and is read aloud by screen readers.
+- **Search engine optimization**: Properly structured headings support SEO and improve the discoverability of content.
+- **Flexible rendering**: Using `_level="0"` renders the component as visually bold text while keeping the semantics neutral.
+
+### Links and References
+
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA12" _target="_blank" _label="WCAG 2.1 - ARIA12: Using role=heading to identify headings"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/tutorials/page-structure/headings/" _target="_blank" _label="WAI Web Accessibility Tutorials - Headings"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements" _target="_blank" _label="MDN Web Docs - Heading Elements"></kol-link>
+
+## Usage
+
+### Best Practices / Recommendations
+
+- **Hierarchical structure**: Start with a single H1 heading per page and use H2, H3 etc. for sub-categories. Avoid skipping levels (e.g. H1 directly to H3).
+- **Meaningful text**: Use clear, concise heading text that precisely describes the content of the following section.
+- **Not for styling**: Do not use headings solely for their visual size. Use CSS or other components for purely decorative purposes instead.
+- **Secondary headings**: The optional `_secondaryHeadline` can be used for subtitles or supplementary information.
+- **Support search engines**: Relevant keywords in headings can support SEO, but should not feel forced.
+
+### Use Cases
+
+- **Page header**: Main heading of a page or content area
+- **Section structure**: Organizing longer content into thematic sections
+- **Dialog and modal titles**: Headings for modal windows and dialogs
+- **Article headings**: Titles of articles, blog posts, or news items
+- **Subsections**: Structuring complex content across multiple levels
+
+## Construction / Technique
+
+### Playground
+
+<HeadingPreview
+	codeCollapsable
+/>
+
+### Features
+
+#### Standard headings
+
+Headings at different levels from level 1 to 6:
+
+<HeadingPreview
+	initialProps={{ _label: 'Level 1 Heading', _level: 1 }}
+	visibleProperties={['_level']}
 	codeCollapsable
 	codeCollapsed
 />
 
-## Usage
+#### With secondary headline
 
-The heading level is passed through the **`_level`** attribute. Levels **1** to **6** are possible
+A main heading can be combined with a secondary headline:
 
-### Best practices
+<HeadingPreview
+	initialProps={{ _label: 'Main Heading', _secondaryHeadline: 'Subheading or Subtitle', _level: 1 }}
+	visibleProperties={['_label', '_secondaryHeadline', '_level']}
+	codeCollapsable
+	codeCollapsed
+/>
 
-- When using headings, pay attention to the recommended semantics for search engine optimization.
-- Use headings of different sizes to create a meaningful structure for your content.
+#### Heading without semantic level
+
+Using `_level="0"` renders the component without a semantic heading element and appears visually as bold text:
+
+<HeadingPreview
+	initialProps={{ _label: 'Text without heading semantics', _level: 0 }}
+	visibleProperties={['_level']}
+	codeCollapsable
+	codeCollapsed
+/>
 
 ## API
 
 <Readme />
-
-## Examples
-
-<ExampleLink component="heading" />

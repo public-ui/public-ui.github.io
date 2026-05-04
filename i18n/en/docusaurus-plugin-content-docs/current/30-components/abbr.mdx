@@ -3,47 +3,95 @@ title: Abbr
 description: Description, specification and examples for the Abbr component.
 ---
 
-import Readme from '/readmes/abbr/readme.md';
-import { Configurator } from '@site/src/components/Configurator';
-import { LiveEditorCompact } from '@site/src/components/LiveEditorCompact';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import Readme from '@site/readmes/abbr/readme.md';
+import AbbrPreview from '@site/src/components/previews/components/Abbr';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Abbr
 
-The **Abbr** component implements the HTML tag `abbr` to represent an abbreviation. Optionally, a label can be passed, which is displayed in brackets after the abbreviation.
 
-## Construction
+<BetaDocsBanner />
+<UntestedBanner />
 
-### Code
+**Synonyms:** Abbreviation, Acronym
 
-```html
-<p>Ich <kol-abbr _label="zum Beispiel">z. B.</kol-abbr> bin eine Abkürzung mit Label.</p>
-<p>Ich <kol-abbr>z. B.</kol-abbr> bin eine Abkürzung ohne Label.</p>
-```
+**Description:** The **Abbr** component marks an abbreviation or acronym in running text and can provide the expanded meaning as a tooltip or visible supplement. This improves comprehensibility for all users, especially for those unfamiliar with the short form.
 
-### Example
+## Example
 
-<p>Ich <kol-abbr _label="zum Beispiel">z. B.</kol-abbr> bin eine Abkürzung mit Label.</p>
-<p>Ich <kol-abbr>z. B.</kol-abbr> bin eine Abkürzung ohne Label.</p>
+Standard abbreviation with optional label:
+
+<AbbrPreview
+	visibleProperties={['_label', '_slot']}
+	initialProps={{ _label: "for example", _slot: "e.g." }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## Accessibility
+
+The **Abbr** component uses the semantic HTML element `abbr` and signals to assistive technologies that an abbreviation or acronym is present:
+
+- **Semantic markup**: The HTML element `abbr` is used to correctly identify abbreviations.
+- **Label for screen readers**: The `_label` attribute provides screen readers with the expanded form, which is read aloud.
+- **Visible explanation**: The expanded form is optionally displayed visibly in the text, not just as a tooltip.
+- **No keyboard interaction**: The component is not interactive and requires no keyboard navigation.
+
+### Links and References
+
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr" _target="_blank" _label="MDN: &lt;abbr&gt; Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/abbreviations.html" _target="_blank" _label="WCAG 2.1 - Abbreviations"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/quickref/" _target="_blank" _label="WCAG 2.1 Quick Reference"></kol-link>
 
 ## Usage
 
-### Specify the description of the abbreviation
+### Best Practices / Recommendations
 
-The term or explanation is passed via the **`_label`** attribute, the abbreviation or the term worthy of explanation comes between the tags in the HTML.
+- Use `abbr` to mark abbreviations that are not commonly known.
+- Provide the expanded form via `_label` so the meaning is immediately understandable.
+- Use the component in running text, not as an interactive control.
+- Use consistent spellings (e.g. always `e.g.` rather than alternating short forms).
+- Avoid abbreviations if the full form does not cause space issues.
 
-## Links and references
+### Use Cases
 
-- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank"></kol-link>
+- Technical terms and standard abbreviations in forms and notes (e.g. `e.g.`, `i.e.`, `VAT`)
+- Organizational or legal short forms in administrative texts
+- Technical acronyms in documentation when the long form should be included
+- International abbreviations that may be unclear to users (e.g. `WHO`, `API`)
+
+## Construction / Technical Details
+
+### Playground
+
+<AbbrPreview codeCollapsable />
+
+### Features (with Code)
+
+#### Abbreviation without label
+
+Abbreviation as a plain text element without additional explanation:
+
+<AbbrPreview
+	visibleProperties={['_slot']}
+	initialProps={{ _slot: "e.g." }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+#### Abbreviation with label
+
+Abbreviation with expanded explanation via the `_label` attribute:
+
+<AbbrPreview
+	visibleProperties={['_label', '_slot']}
+	initialProps={{ _label: "for example", _slot: "e.g." }}
+	codeCollapsable
+	codeCollapsed
+/>
+
+## API
 
 <Readme />
-
-<ExampleLink component="abbr" />
-
-## Live editor
-
-<LiveEditorCompact component="abbr" />
-
-## Examples
-
-<Configurator component="abbr" sample="basic" />

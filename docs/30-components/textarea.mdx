@@ -3,11 +3,18 @@ title: Textarea
 description: Beschreibung, Spezifikation und Beispiele für die Textarea-Komponente.
 ---
 
-import Readme from '../../readmes/textarea/readme.md';
+import Readme from '@site/readmes/textarea/readme.md';
 import TextAreaPreview from '@site/src/components/previews/components/Textarea';
 import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
+
 
 # Textarea
+
+
+<BetaDocsBanner />
+<UntestedBanner />
 
 **Synonyme:** Mehrzeiliges Eingabefeld, Textbereich, Texteingabefeld
 
@@ -176,8 +183,6 @@ Die Textarea kann über das Attribut `_resize` in ihrer Größe angepasst werden
 
 **Verfügbare Werte:**
 - `vertical`: Nur vertikal vergrößerbar (Standard)
-- `horizontal`: Nur horizontal vergrößerbar
-- `both`: In beide Richtungen vergrößerbar
 - `none`: Keine Größenanpassung möglich
 
 #### Zeilenanzahl

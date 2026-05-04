@@ -3,55 +3,111 @@ title: Icon
 description: Beschreibung, Spezifikation und Beispiele für die Icon-Komponente.
 ---
 
-import Readme from '../../readmes/icon/readme.md';
+import Readme from '@site/readmes/icon/readme.md';
 import IconPreview from '@site/src/components/previews/components/Icon';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import UntestedBanner from '@site/src/components/UntestedBanner';
 
 # Icon
 
-Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **`_icon`** gesteuert werden und erfolgt durch das Attribut **`_label`** barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
+<BetaDocsBanner />
+<UntestedBanner />
 
-Aktuell werden die Icons von <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/icon/all-kolicons" _target="_blank" _label="Kolicons"></kol-link> und <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link> unterstützt.
+**Synonyme:** Grafik, Symbol, Piktogramm
 
-<kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite (`index.html`) die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>
+**Beschreibung:** Die **Icon**-Komponente stellt Icons aus verschiedenen Icon-Font-Bibliotheken dar. Sie ermöglicht es, Symbole an beliebigen Positionen einzubinden und dabei den Anforderungen der Barrierefreiheit zu entsprechen, indem Icons durch beschreibende Labels versehen werden.
 
-## Konstruktion
+## Beispiel
 
-Die Komponente **Icon** wird über das HTML-Tag `kol-icon` erzeugt.
+Darstellung eines Icons mit beschreibendem Label:
 
 <IconPreview
-	visibleProperties={['_label', '_icons']}
+	visibleProperties={[]}
+	initialProps={{ _label: 'Haus', _icons: 'kolicon-house' }}
 	codeCollapsable
 	codeCollapsed
 />
 
-### Icons
-
-Die Property `_icons` erwartet einen String mit den Klassennamen der zu zeigenden Icons (z.B.: `_icons="kolicon-house`).
-
-<kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/icon/all-kolicons" _target="_blank" _label="Übersicht Kolicons"></kol-link>
-
 ## Barrierefreiheit
 
-Wichtig ist bei Kontext-relevanten Grafiken, dass sie beschriftet werden.
+Icons erfordern eine barrierefreie Beschreibung für Nutzer:innen mit Seheinschränkungen und assistiven Technologien:
 
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/"></kol-link>
+- **Label erforderlich**: Jedes Icon muss über das Attribut `_label` eine aussagekräftige, kontextbezogene Beschreibung erhalten. Das Label wird von Screenreadern vorgelesen.
+- **Vermeidung von reinen Bildbeschreibungen**: Das Label sollte die Funktion oder Bedeutung des Icons beschreiben, nicht die grafische Darstellung (z. B. „Startseite" statt „Haus-Symbol").
+- **Sprechende Beschreibungen**: Nutzen Sie prägnante Texte, die den Nutzungskontext vermitteln.
+- **Icon-Fonts in HTML laden**: Die verwendeten Icon-Font-CSS-Dateien müssen in der `index.html` eingebunden sein, damit die Icons korrekt dargestellt werden.
 
-### Label
+### Links und Referenzen
 
-Mittels der Property `_label` muss ein Kontext-relevantes Icon beschriftet werden.
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/" _target="_blank" _label="WAI-ARIA: Names and Descriptions"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-1.2/#aria-label" _target="_blank" _label="ARIA: aria-label"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html" _target="_blank" _label="WCAG 2.1: Name, Role, Value"></kol-link>
 
-## Links und Referenzen
+## Best Practices / Empfehlungen
 
-- <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/icon/all-kolicons" _target="_blank" _label="Kolicons"></kol-link>
-- <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome"></kol-link>
-- <kol-link _href="https://icofont.com"  _target="_blank" _label="Icofont"></kol-link>
+- **Icons dekoverativ zurück zu Labels**: Icons funktionieren am besten, wenn sie neben Text stehen oder ein aussagekräftiges Label haben.
+- **Sinnvolle Icon-Wahl**: Nutzen Sie Icons, deren Bedeutung intuitiv verständlich ist oder die eine etablierte Konvention folgen (z. B. Lupe für Suche).
+- **Kontextbetrachtung**: Stellen Sie sicher, dass das Icon auch für Nutzer:innen ohne weitere Kontextinformationen verständlich ist.
+- **Icon-Fonts sichern**: Nutzen Sie nur ausgetestete Icon-Font-Bibliotheken wie Kolicons oder Font Awesome.
+- **Konsistente Styling**: Verwenden Sie für themenübergreifend dieselben Icon-Fonts und Größen, um ein konsistentes Bild zu wahren.
+- **Fallbacks vorsehen**: Sollte ein Icon nicht laden, sollte das Label aussagekräftig genug sein, um die Funktion zu vermitteln.
 
-# API
+## Anwendungsfälle
+
+- Navigation und Menüs (z. B. Häuser-Icon für „Startseite")
+- Status- und Zustandsanzeigen (z. B. Häkchen für Erfolg)
+- Schaltflächen mit Symbolen (z. B. Lupe für Suche, Zahnrad für Einstellungen)
+- Visuelle Hervorhebungen in Listen und Tabellen
+- Inhaltsstrukturierung und Gliederung
+- Interaktive Elemente wie Favoriten-Stern oder Benachrichtigungsglocke
+
+## Konstruktion / Technik
+
+### Playground
+
+Testen Sie die verschiedenen Icon-Eigenschaften:
+
+<IconPreview codeCollapsable />
+
+### Funktionalitäten (mit Code)
+
+#### Icon und Label
+
+Das Icon wird über die Property `_icons` mit Klassenamen definiert. Das Label wird über `_label` gesetzt und ist erforderlich für die Barrierefreiheit.
+
+<IconPreview
+	visibleProperties={['_icons', '_label']}
+	initialProps={{ _label: 'Haus', _icons: 'kolicon-house' }}
+	codeCollapsable
+/>
+
+#### Verfügbare Icon-Fonts
+
+Aktuell werden folgende Icon-Font-Systeme unterstützt:
+
+- **Kolicons**: <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/icon/all-kolicons" _target="_blank" _label="Übersicht aller verfügbaren Kolicons"></kol-link>
+- **Font Awesome**: <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font Awesome Icon Library"></kol-link>
+- **IcoFont**: <kol-link _href="https://icofont.com" _target="_blank" _label="IcoFont Icon Library"></kol-link>
+
+Beispiele für Icon-Klassennamen:
+- Kolicons: `kolicon-house`, `kolicon-user`, `kolicon-menu`
+- Font Awesome: `fa-solid fa-user`, `fa-regular fa-heart`, `fa-brands fa-github`
+
+#### CSS-Einbindung erforderlich
+
+Wichtig: Die CSS-Dateien der verwendeten Icon-Font-Bibliotheken müssen in der `index.html` oder einer globalen Stylesheet eingebunden sein. Ohne diese Einbindung werden die Icons nicht angezeigt.
+
+Beispiel für die Einbindung in `index.html`:
+
+```html
+<!-- Kolicons -->
+<link rel="stylesheet" href="path/to/kolicons.css" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+```
+
+## API
 
 <Readme />
-
-## Beispiele
-
-<ExampleLink component="icon" />
 

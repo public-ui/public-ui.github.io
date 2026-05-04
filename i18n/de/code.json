@@ -2,6 +2,14 @@
 	"custom.accessible-standard": {
 		"message": "Barrierefreier Standard"
 	},
+	"custom.beta-docs-banner.label": {
+		"message": "Dokumentation in Überarbeitung",
+		"description": "Überschrift des Beta-Banners auf überarbeiteten Dokumentationsseiten"
+	},
+	"custom.beta-docs-banner.message": {
+		"message": "Diese Dokumentation wird aktuell überarbeitet und befindet sich im Beta-Status. Inhalte können sich noch ändern.",
+		"description": "Text des Beta-Banners auf überarbeiteten Dokumentationsseiten"
+	},
 	"custom.component-library-for-the-accessibility": {
 		"message": "Komponentenbibliothek für die Barrierefreiheit"
 	},
@@ -49,6 +57,14 @@
 	},
 	"custom.title": {
 		"message": "KoliBri - Public UI"
+	},
+	"custom.untested-banner.label": {
+		"message": "Barrierefreiheitstest ausstehend",
+		"description": "Überschrift des Banners für Komponenten ohne abgeschlossenen Barrierefreiheitstest"
+	},
+	"custom.untested-banner.message": {
+		"message": "Diese Komponente wird erneut auf Barrierefreiheit getestet. Der vollständige Test steht noch aus und kann erst nach einem abgeschlossenen Release erfolgen.",
+		"description": "Text des Banners für Komponenten ohne abgeschlossenen Barrierefreiheitstest"
 	},
 	"custom.view-component-example": {
 		"message": "Beispiele der Komponente ansehen"
@@ -112,6 +128,15 @@
 	},
 	"preview.component.combobox.label": {
 		"message": "Anrede"
+	},
+	"preview.component.dialog.label": {
+		"message": "Dialog"
+	},
+	"preview.component.dialog.openButton": {
+		"message": "Dialog öffnen"
+	},
+	"preview.component.dialog.content": {
+		"message": "Dies ist ein Beispielinhalt eines Dialogs. Drücken Sie Escape zum Schließen."
 	},
 	"preview.component.drawer.content": {
 		"message": "Dies ist der Inhalt des Drawers."
@@ -188,12 +213,12 @@
 	"preview.component.link.label": {
 		"message": "KoliBri - Public UI"
 	},
-  "preview.component.nav.label": {
+	"preview.component.nav.label": {
 		"message": "Hauptmenü"
 	},
-  "preview.component.pagination.label": {
+	"preview.component.pagination.label": {
 		"message": "Seitennavigation"
-  },
+	},
 	"preview.component.popover-button.label": {
 		"message": "Passwort-Hilfe"
 	},
