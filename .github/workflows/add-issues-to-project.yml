@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add issue to organization project
-        uses: actions/add-to-project@v1.0.2
+        uses: actions/add-to-project@v2.0.0
         with:
           project-url: ${{ vars.PUBLIC_UI_PROJECT_URL }} // see https://github.com/organizations/public-ui/settings/variables/actions
           github-token: ${{ secrets.GITHUB_TOKEN }}
