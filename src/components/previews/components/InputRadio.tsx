@@ -34,6 +34,7 @@ const InputRadioPreview = (props: InputRadioPreviewComponentProps) => {
 				_hint: <KolInputText _label="Hint" />,
 				_name: <KolInputText _label="Name" />,
 				_msg: <MsgProperty label="Message" />,
+				_hideMsg: <BooleanProperty label="Hide Message" />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_required: <BooleanProperty label="Required" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,

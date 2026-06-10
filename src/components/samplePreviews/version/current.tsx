@@ -46,6 +46,10 @@ export const COMPONENTS_CURRENT = [
 		loadComponent: () => lazy(() => import('../Details')),
 	},
 	{
+		name: 'dialog',
+		loadComponent: () => lazy(() => import('../Dialog')),
+	},
+	{
 		name: 'drawer',
 		loadComponent: () => lazy(() => import('../Drawer')),
 	},

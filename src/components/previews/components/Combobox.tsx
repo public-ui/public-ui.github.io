@@ -40,6 +40,7 @@ const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 				_hideMsg: <BooleanProperty label="Hide Message" />,
 				_touched: <BooleanProperty label="Touched" />,
+				_shortKey: <KolInputText _label="Short Key" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolCombobox"

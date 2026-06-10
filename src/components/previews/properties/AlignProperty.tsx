@@ -14,7 +14,7 @@ const AlignProperty = (props: {
 	return (
 		<fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
 			<legend>{props.label}</legend>
-			<div className="grid grid-cols-2 gap-1">
+			<div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
 				{alignOptions.map((align) => (
 					<KolInputCheckbox
 						key={align}

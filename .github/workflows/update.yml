@@ -4,38 +4,61 @@ on:
   push:
     branches:
       - main
+      - release/1
+      - release/2
+      - release/3
   workflow_dispatch:
 
-permissions:
-  contents: read
-  packages: read
-  pages: write
-  id-token: write
-
 concurrency:
-  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
+  group: 'workflow-${{ github.workflow }}-${{ github.ref_name }}'
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
-  update:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Resolve deploy target
+        id: target
+        run: |
+          case "${{ github.ref_name }}" in
+            main)       echo "folder=" >> $GITHUB_OUTPUT ;;
+            release/1)  echo "folder=v1" >> $GITHUB_OUTPUT ;;
+            release/2)  echo "folder=v2" >> $GITHUB_OUTPUT ;;
+            release/3)  echo "folder=v3" >> $GITHUB_OUTPUT ;;
+          esac
 
       - name: Build Artifacts
         uses: ./.github/actions/build-artifacts
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v6
+      - name: Add .nojekyll
+        run: touch build/.nojekyll
 
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v4.0.0
+      - name: Deploy to gh-pages root
+        if: github.ref_name == 'main'
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: build
+          folder: build
+          branch: gh-pages
+          clean: true
+          clean-exclude: |
+            v1/
+            v2/
+            v3/
+            pr-*/
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+      - name: Deploy to gh-pages subfolder
+        if: github.ref_name != 'main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
+          target-folder: ${{ steps.target.outputs.folder }}
+          branch: gh-pages
+          clean: true
