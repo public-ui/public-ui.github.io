@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_public_ui_docs_v2=self.webpackChunk_public_ui_docs_v2||[]).push([[7010],{27010:(c,o,i)=>{i.r(o),i.d(o,{default:()=>l});i(96363);var _=i(1036),e=i(47259);const l=()=>(0,e.jsx)(_.Q7,{_min:0,_max:50,_hideLabel:!0,_label:"Label",_icons:{left:{icon:"codicon codicon-arrow-left"},right:{icon:"codicon codicon-arrow-right"}},_touched:!0})}}]);
