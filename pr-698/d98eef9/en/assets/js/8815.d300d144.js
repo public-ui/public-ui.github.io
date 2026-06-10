@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v2=self.webpackChunk_public_ui_docs_v2||[]).push([[8815],{51196:(s,i,l)=>{l.r(i),l.d(i,{default:()=>c});l(96363);var e=l(1036),u=l(47259);const c=()=>(0,u.jsxs)("p",{children:["Lorem ipsum"," ",(0,u.jsx)(e.aX,{_label:"Abk\xfcrzung",_tooltipAlign:"right",children:"z.B."})," ","dolor sit amet."]})}}]);

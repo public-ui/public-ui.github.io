@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v2=self.webpackChunk_public_ui_docs_v2||[]).push([[9085],{59085:(u,_,s)=>{s.r(_),s.d(_,{default:()=>l});s(96363);var c=s(1036),e=s(47259);const l=()=>(0,e.jsx)(c.Fu,{_href:"#",_label:"Link"})}}]);
