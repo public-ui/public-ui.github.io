@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunk_public_ui_docs_v3=globalThis.webpackChunk_public_ui_docs_v3||[]).push([[3119],{23119(u,_,l){l.r(_),l.d(_,{default:()=>i});l(59471);var s=l(26631),c=l(62615);const i=()=>(0,c.jsx)(s.Fu,{_href:"#",_label:"Link"})}}]);

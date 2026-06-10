@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunk_public_ui_docs_v3=globalThis.webpackChunk_public_ui_docs_v3||[]).push([[9426],{59426(l,o,c){c.r(o),c.d(o,{default:()=>i});c(59471);var s=c(26631),_=c(62615);const i=()=>(0,_.jsx)(s.su,{_icons:{left:"codicon codicon-symbol-color"},_hideLabel:!0,_label:"Color",_value:"#f08080"})}}]);

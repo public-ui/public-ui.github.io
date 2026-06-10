@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunk_public_ui_docs_v3=globalThis.webpackChunk_public_ui_docs_v3||[]).push([[2017],{82017(l,_,a){a.r(_),a.d(_,{default:()=>c});a(59471);var e=a(26631),i=a(62615);const c=()=>(0,i.jsx)(e.Jg,{_label:"Title",_level:5,_type:"warning",_variant:"card",children:"Content"})}}]);

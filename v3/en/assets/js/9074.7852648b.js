@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunk_public_ui_docs_v3=globalThis.webpackChunk_public_ui_docs_v3||[]).push([[9074],{19074(s,_,l){l.r(_),l.d(_,{default:()=>i});l(59471);var a=l(26631),c=l(62615);const i=()=>(0,c.jsx)(a.I0,{_src:"/assets/samples/tooltip.png",_alt:"",_sizes:"20vw"})}}]);
