@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunk_public_ui_docs_v4=globalThis.webpackChunk_public_ui_docs_v4||[]).push([[347],{20347:(l,o,e)=>{e.r(o),e.d(o,{default:()=>a});e(59471);var i=e(91705),u=e(62615);const a=()=>(0,u.jsx)(i.UO,{_required:!0,_touched:!0,_value:"option1",_options:"[{'label':'Option 1','value':'option1'},{'label':'Option 2','value':'option2'}]",_label:"Label"})}}]);
