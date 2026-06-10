@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunk_public_ui_docs_v4=globalThis.webpackChunk_public_ui_docs_v4||[]).push([[8826],{8826:(_,a,u)=>{u.r(a),u.d(a,{default:()=>n});u(59471);var i=u(91705),l=u(62615);const n=()=>(0,l.jsx)(i.Lp,{_max:14,_page:14,_siblingCount:1,_boundaryCount:2,_label:"Pagination",_on:{}})}}]);

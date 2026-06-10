@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunk_public_ui_docs_v4=globalThis.webpackChunk_public_ui_docs_v4||[]).push([[7825],{7825:(l,u,_)=>{_.r(u),_.d(u,{default:()=>a});_(59471);var c=_(91705),s=_(62615);const a=()=>(0,s.jsx)(c.Cu,{_color:"#214f86",_label:"Label"})}}]);
