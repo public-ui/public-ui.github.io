@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v2=self.webpackChunk_public_ui_docs_v2||[]).push([[9186],{59186:(s,c,_)=>{_.r(c),_.d(c,{default:()=>e});_(96363);var u=_(1036),a=_(47259);const e=()=>(0,a.jsx)(u.Ko,{_src:"https://www.w3schools.com/howto/img_avatar.png",_label:"Elke Mustermann"})}}]);

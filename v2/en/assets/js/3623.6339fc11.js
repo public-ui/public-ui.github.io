@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v2=self.webpackChunk_public_ui_docs_v2||[]).push([[3623],{63623:(e,_,l)=>{l.r(_),l.d(_,{default:()=>i});l(96363);var c=l(1036),a=l(47259);const i=()=>(0,a.jsx)(c.Jg,{_label:"Title",_level:5,_type:"warning",_variant:"card",children:"Content"})}}]);

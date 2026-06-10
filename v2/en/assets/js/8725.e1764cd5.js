@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v2=self.webpackChunk_public_ui_docs_v2||[]).push([[8725],{78725:(c,o,i)=>{i.r(o),i.d(o,{default:()=>t});i(96363);var r=i(1036),n=i(47259);const t=()=>(0,n.jsx)(r.Jo,{_label:"Button",_variant:"primary",_icons:{left:{icon:"codicon codicon-arrow-left"},right:"codicon codicon-arrow-right"}})}}]);
