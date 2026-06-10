@@ -1,0 +1,61 @@
+name: PR Preview - Deploy
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number }}'
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy:
+    if: github.event.pull_request.head.repo.fork == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Get short SHA
+        id: sha
+        run: echo "short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Build Artifacts
+        uses: ./.github/actions/build-artifacts
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add .nojekyll
+        run: touch build/.nojekyll
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
+          target-folder: pr-${{ github.event.pull_request.number }}/${{ steps.sha.outputs.short }}
+          branch: gh-pages
+          clean: false
+
+      - name: Post PR comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const marker = '<!-- gh-pages-preview -->';
+            const pr = context.issue.number;
+            const sha = '${{ steps.sha.outputs.short }}';
+            const url = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${pr}/${sha}/`;
+            const body = `${marker}\n🚀 Preview deployed to GitHub Pages: [${url}](${url})\nCommit: \`${sha}\``;
+            const { owner, repo } = context.repo;
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr });
+            const existing = comments.find(c => c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number: pr, body });
+            }
