@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_public_ui_docs_v4=globalThis.webpackChunk_public_ui_docs_v4||[]).push([[2087],{2087:(a,_,u)=>{u.r(_),u.d(_,{default:()=>i});u(59471);var s=u(91705),c=u(62615);const i=()=>(0,c.jsx)(s.Ov,{_variant:"bar",_max:100,_value:50})}}]);

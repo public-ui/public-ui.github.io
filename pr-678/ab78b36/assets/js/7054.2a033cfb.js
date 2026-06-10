@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_public_ui_docs_v4=globalThis.webpackChunk_public_ui_docs_v4||[]).push([[7054],{37054:(l,e,s)=>{s.r(e),s.d(e,{default:()=>b});s(59471);var a=s(91705),i=s(62615);const _=[{label:"Choose",value:"",disabled:!0}],b=()=>(0,i.jsx)(a.pg,{_options:_,_label:"Select field",_hideLabel:!0})}}]);

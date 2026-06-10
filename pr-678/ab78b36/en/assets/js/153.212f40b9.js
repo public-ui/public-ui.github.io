@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_public_ui_docs_v4=globalThis.webpackChunk_public_ui_docs_v4||[]).push([[153],{50153:(s,_,a)=>{a.r(_),a.d(_,{default:()=>u});a(59471);var c=a(91705),l=a(62615);const u=()=>(0,l.jsx)(c.I0,{_src:"/assets/samples/drawer.png",_alt:"",_sizes:"20vw"})}}]);
