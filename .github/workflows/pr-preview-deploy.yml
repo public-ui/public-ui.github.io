@@ -26,6 +26,16 @@ jobs:
         id: sha
         run: echo "short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
+      - name: Resolve base prefix
+        id: base
+        run: |
+          case "${{ github.base_ref }}" in
+            release/1) echo "prefix=v1/" >> $GITHUB_OUTPUT ;;
+            release/2) echo "prefix=v2/" >> $GITHUB_OUTPUT ;;
+            release/3) echo "prefix=v3/" >> $GITHUB_OUTPUT ;;
+            *)         echo "prefix=" >> $GITHUB_OUTPUT ;;
+          esac
+
       - name: Build Artifacts
         uses: ./.github/actions/build-artifacts
         with:
@@ -38,7 +48,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
-          target-folder: pr-${{ github.event.pull_request.number }}/${{ steps.sha.outputs.short }}
+          target-folder: ${{ steps.base.outputs.prefix }}pr-${{ github.event.pull_request.number }}/${{ steps.sha.outputs.short }}
           branch: gh-pages
           clean: false
 
@@ -49,7 +59,8 @@ jobs:
             const marker = '<!-- gh-pages-preview -->';
             const pr = context.issue.number;
             const sha = '${{ steps.sha.outputs.short }}';
-            const url = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${pr}/${sha}/`;
+            const prefix = '${{ steps.base.outputs.prefix }}';
+            const url = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${prefix}pr-${pr}/${sha}/`;
             const body = `${marker}\n🚀 Preview deployed to GitHub Pages: [${url}](${url})\nCommit: \`${sha}\``;
             const { owner, repo } = context.repo;
             const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr });
