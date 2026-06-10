@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_public_ui_docs_v2=self.webpackChunk_public_ui_docs_v2||[]).push([[1350],{21350:(e,a,_)=>{_.r(a),_.d(a,{default:()=>c});_(96363);var l=_(1036),b=_(47259);const c=()=>(0,b.jsx)(l.uA,{_label:"Breadcrumb from text links",_links:[{_label:"Home",_href:"#/back-page"},{_label:"Page",_href:"#/back-page"},{_label:"Subpage",_href:"#/back-page"}]})}}]);

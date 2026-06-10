@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_public_ui_docs_v2=self.webpackChunk_public_ui_docs_v2||[]).push([[4367],{94367:(e,_,l)=>{l.r(_),l.d(_,{default:()=>u});l(96363);var s=l(1036),c=l(47259);const u=()=>(0,c.jsx)(s.hQ,{_accessKey:"h",_multiple:!0,_hideLabel:!0,_label:"Label"})}}]);

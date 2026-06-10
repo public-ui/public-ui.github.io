@@ -1,0 +1,1 @@
+/*! For license information please see 9783.060b04d7.js.LICENSE.txt */ "use strict";(self.webpackChunk_public_ui_docs_v2=self.webpackChunk_public_ui_docs_v2||[]).push([[2164,9783],{19783:(s,c,t)=>{t.r(c),t.d(c,{test_component:()=>_});var u=t(2770);const _=class{constructor(s){(0,u.r)(this,s)}}}}]);
