@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_public_ui_docs_v3=globalThis.webpackChunk_public_ui_docs_v3||[]).push([[3423],{43423(s,_,a){a.r(_),a.d(_,{default:()=>u});a(59471);var l=a(26631),c=a(62615);const u=()=>(0,c.jsx)(l.I0,{_src:"/assets/samples/modal.png",_alt:"",_sizes:"20vw"})}}]);
