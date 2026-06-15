@@ -43,7 +43,7 @@ jobs:
           clean: false
 
       - name: Post PR comment
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const marker = '<!-- gh-pages-preview -->';
