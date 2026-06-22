@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_public_ui_docs_v3=globalThis.webpackChunk_public_ui_docs_v3||[]).push([[9706],{39706(s,l,i){i.r(l),i.d(l,{default:()=>a});i(12888);var u=i(65321),c=i(11684);const a=()=>(0,c.jsxs)("p",{children:["Lorem ipsum ",(0,c.jsx)(u.aX,{_label:"Abk\xfcrzung",children:"z.B."})," dolor sit amet."]})}}]);
