@@ -107,7 +107,7 @@ const LinksProperty = (props: {
 									_value={typeof link._icons === 'string' ? link._icons : ''}
 									_on={{
 										onInput: (_e: Event, value: unknown) => {
-											handleLinkChange(index, '_icons', value as string);
+											handleLinkChange(index, '_icons', value);
 										},
 									}}
 								/>
