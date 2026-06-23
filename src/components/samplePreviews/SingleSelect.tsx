@@ -1,6 +1,5 @@
 import React from 'react';
 import { KolSingleSelect } from '@public-ui/react-v19';
-import type { Option, StencilUnknown } from '@public-ui/components';
 
 const COUNTRY_OPTIONS = [
 	{ label: 'Dänemark', value: 'dk' },
@@ -14,7 +13,7 @@ const SingleSelect = () => (
 		_label="Label"
 		_placeholder="Placeholder"
 		_required
-		_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
+		_options={COUNTRY_OPTIONS}
 		_value={'Deutschland'}
 	/>
 );
