@@ -114,11 +114,14 @@ Initial opening is done via `_open`. For the non-interactive state, `_disabled` 
 
 For event handling and callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
-Example for the click event:
+The component supports callbacks via the `_on` property as well as native DOM events:
 
-| Event   | Trigger            | Value |
-| ------- | ------------------ | ----- |
-| `click` | Element is clicked | -     |
+| Event    | Trigger                              | Value     |
+| -------- | ------------------------------------ | --------- |
+| `click`  | Element is clicked                   | `boolean` |
+| `toggle` | Open or closed state changes         | `boolean` |
+
+The `_on` property accepts an object with the callbacks `onClick` and `onToggle`. The callback receives the original `MouseEvent` and the new `_open` state (`true` = open) as parameters.
 
 ## API
 
