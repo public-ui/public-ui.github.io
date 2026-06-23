@@ -1,8 +1,8 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty } from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty, SelectOptionsProperty, SuggestionsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
-import { KolCombobox, KolInputText, KolTextarea } from '@public-ui/react-v19';
+import { KolCombobox, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
 interface ComboboxPreviewComponentProps {
@@ -28,7 +28,7 @@ const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_placeholder: <KolInputText _label="Placeholder" />,
-				_suggestions: <KolTextarea _label="Suggestions (JSON Array)" _rows={5} />,
+				_suggestions: <SuggestionsProperty label="Suggestions" />,
 				_icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
 				_accessKey: <KolInputText _label="Access Key" />,
 				_name: <KolInputText _label="Name" />,
