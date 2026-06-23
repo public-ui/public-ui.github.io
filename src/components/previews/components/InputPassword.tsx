@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { AlignProperty, BooleanProperty, IconsProperty, MsgProperty, PasswordVariantProperty, SmartButtonProperty } from '../properties';
+import { AlignProperty, BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputPassword, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -16,7 +16,7 @@ const InputPasswordPreview = (props: InputPasswordPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolInputPassword>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-password.label' }),
-			_variant: 'visibility-toggle',
+			_visibilityToggle: true,
 		}),
 		[],
 	);
@@ -54,7 +54,7 @@ const InputPasswordPreview = (props: InputPasswordPreviewComponentProps) => {
 					<SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />
 				),
 				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue='top' />,
-				_variant: <PasswordVariantProperty label="Variant: Visibility toggle" defaultValue='' />,
+				_visibilityToggle: <BooleanProperty label="Visibility Toggle" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputPassword"
