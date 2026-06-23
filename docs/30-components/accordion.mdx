@@ -114,14 +114,11 @@ Das initiale Öffnen erfolgt über `_open`. Für den nicht interaktiven Zustand 
 
 Für Event-Handling und Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-Die Komponente unterstützt Callbacks über die `_on`-Property sowie native DOM-Events:
+Beispiel für das Click-Event laut Dokumentation:
 
-| Event      | Auslöser                              | Value     |
-| ---------- | ------------------------------------- | --------- |
-| `click`    | Element wird angeklickt               | `boolean` |
-| `toggle`   | Öffnungs- oder Schließzustand ändert sich | `boolean` |
-
-Die `_on`-Property akzeptiert ein Objekt mit den Callbacks `onClick` und `onToggle`. Der Callback erhält das ursprüngliche `MouseEvent` sowie den neuen `_open`-Zustand (`true` = geöffnet) als Parameter.
+| Event   | Auslöser                | Value |
+| ------- | ----------------------- | ----- |
+| `click` | Element wird angeklickt | -     |
 
 ## API
 
