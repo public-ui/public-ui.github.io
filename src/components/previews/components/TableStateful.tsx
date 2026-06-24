@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import type { JSX, KoliBriTablePaginationProps } from '@public-ui/components';
+import type { JSX } from '@public-ui/components';
 import { KolInputText, KolTableStateful } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
@@ -179,9 +179,9 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 						{ key: 'origin', label: translate({ id: 'preview.component.table-stateful.column.origin' }) },
 					],
 				],
-			} as JSX.KolTableStateful['_headers'],
-			_data: plantData as JSX.KolTableStateful['_data'],
-			_pagination: { _page: 1, _pageSize: 2, _pageSizeOptions: [2, 5, 10] } as KoliBriTablePaginationProps,
+			},
+			_data: plantData,
+			_pagination: { _page: 1, _pageSize: 2, _pageSizeOptions: [2, 5, 10] },
 		}),
 		[plantData],
 	);
@@ -218,7 +218,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 		>
 			{(componentProps) => (
 				<div className="w-full h-full overflow-auto">
-					<KolTableStateful {...componentProps} _data={plantData as JSX.KolTableStateful['_data']} />
+					<KolTableStateful {...componentProps} _data={plantData} />
 				</div>
 			)}
 		</Preview>
