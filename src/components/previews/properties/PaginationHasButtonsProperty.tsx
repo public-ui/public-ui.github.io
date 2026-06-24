@@ -1,4 +1,4 @@
-import { PaginationHasButton } from '@public-ui/components';
+import type { PaginationHasButton } from '@public-ui/components';
 import { KolInputCheckbox } from '@public-ui/react-v19';
 import React, { useState } from 'react';
 
