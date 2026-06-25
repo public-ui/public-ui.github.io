@@ -3,12 +3,6 @@ import Link from '@docusaurus/Link';
 import type {Props} from '@theme/TOCItems/Tree';
 import type {TOCTreeNode} from '@docusaurus/theme-common/src/utils/tocUtils.ts';
 
-/*interface headingType {
-  id: string;
-  value: string;
-  children: TOCTreeNode[]
-} */
-
 // Recursive component rendering the toc tree
 function TOCItemTree({
   toc,
