@@ -1,11 +1,11 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
-import { KolInputText, KolTableStateful } from '@public-ui/react-v19';
+import { KolInputCheckbox, KolInputText, KolTableStateful } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
 
-type PlantRecord = {
+export type PlantRecord = {
 	id: number;
 	name: string;
 	family: string;
@@ -164,7 +164,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 				origin: translate({ id: 'preview.component.table-stateful.origin.asia' }),
 			},
 		],
-		[],
+		[]
 	);
 
 	const defaultProps = React.useMemo<JSX.KolTableStateful>(
@@ -173,9 +173,18 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			_headers: {
 				horizontal: [
 					[
-						{ key: 'name', label: translate({ id: 'preview.component.table-stateful.column.name' }) },
-						{ key: 'family', label: translate({ id: 'preview.component.table-stateful.column.family' }) },
-						{ key: 'type', label: translate({ id: 'preview.component.table-stateful.column.type' }) },
+						{
+							key: 'name',
+							label: translate({ id: 'preview.component.table-stateful.column.name' }),
+						},
+						{
+							key: 'family',
+							label: translate({ id: 'preview.component.table-stateful.column.family' }),
+						},
+						{
+							key: 'type',
+							label: translate({ id: 'preview.component.table-stateful.column.type' }),
+						},
 						{ key: 'origin', label: translate({ id: 'preview.component.table-stateful.column.origin' }) },
 					],
 				],
@@ -183,16 +192,15 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			_data: plantData,
 			_pagination: { _page: 1, _pageSize: 2, _pageSizeOptions: [2, 5, 10] },
 		}),
-		[plantData],
+		[plantData]
 	);
 
 	return (
 		<Preview<JSX.KolTableStateful>
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_headers: (
-					<TableColumnsProperty label={translate({ id: 'preview.component.table-stateful.columns.label' })} />
-				),
+				_headers: <TableColumnsProperty label={translate({ id: 'preview.component.table-stateful.columns.label' })} />,
+				_allowMultiSort: <KolInputCheckbox _label="Multisort" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTableStateful"
