@@ -1,7 +1,7 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import type { JSX } from '@public-ui/components';
-import { KolInputText, KolTableStateful } from '@public-ui/react-v19';
+import type { JSX, KoliBriTableSelection } from '@public-ui/components';
+import { KolInputCheckbox, KolInputText, KolTableStateful } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
 
@@ -164,8 +164,13 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 				origin: translate({ id: 'preview.component.table-stateful.origin.asia' }),
 			},
 		],
-		[],
+		[]
 	);
+
+	const selection: KoliBriTableSelection = {
+		label: (row) => `Selection for ${(row as PlantRecord).name}`,
+		keyPropertyName: 'id',
+	};
 
 	const defaultProps = React.useMemo<JSX.KolTableStateful>(
 		() => ({
@@ -182,17 +187,17 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			},
 			_data: plantData,
 			_pagination: { _page: 1, _pageSize: 2, _pageSizeOptions: [2, 5, 10] },
+			_selection: selection,
 		}),
-		[plantData],
+		[plantData]
 	);
 
 	return (
 		<Preview<JSX.KolTableStateful>
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_headers: (
-					<TableColumnsProperty label={translate({ id: 'preview.component.table-stateful.columns.label' })} />
-				),
+				_headers: <TableColumnsProperty label={translate({ id: 'preview.component.table-stateful.columns.label' })} />,
+				_selection: <KolInputCheckbox _label="Selection" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTableStateful"
