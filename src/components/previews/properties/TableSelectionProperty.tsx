@@ -1,104 +1,124 @@
 import React, { useEffect, useState } from 'react';
-import { KolInputNumber, KolInputText, KolButton, KolDrawer, KolCard } from '@public-ui/react-v19';
+import { KolInputNumber, KolInputText, KolButton, KolDrawer, KolCard, KolInputCheckbox } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { KoliBriTableDataType } from '@public-ui/components';
+import { PlantRecord } from '../components/TableStateful';
 
-type TableColumnDef = {
-	key: string;
-	label: string;
+type TableSelectionDef = {
+	label: (row: KoliBriTableDataType) => string;
+	keyPropertyName: string;
+	multiple: boolean;
+	selectedKeys?: string[];
+	disabledKeys?: string[];
 };
 
-const TableColumnsProperty = (props: {
+const TableSelectionProperty = (props: {
 	label: string;
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
 }) => {
-	const defaultColumns = React.useMemo<TableColumnDef[]>(
-		() => [
-			{ key: 'name', label: translate({ id: 'preview.component.table-stateful.column.name' }) },
-			{ key: 'family', label: translate({ id: 'preview.component.table-stateful.column.family' }) },
-			{ key: 'type', label: translate({ id: 'preview.component.table-stateful.column.type' }) },
-			{ key: 'origin', label: translate({ id: 'preview.component.table-stateful.column.origin' }) },
-		],
-		[],
-	);
+	const defaultSelection = React.useMemo<TableSelectionDef>(() => {
+		return { label: (row) => `Selection for ${(row as PlantRecord).name}`, keyPropertyName: 'id', multiple: false };
+	}, []);
 
-	const [isEditing, setIsEditing] = useState(false);
-	const [columnCount, setColumnCount] = useState(defaultColumns.length);
-	const [columns, setColumns] = useState<TableColumnDef[]>(() => [...defaultColumns]);
-
-	const currentColumns = columns.slice(0, columnCount);
+	const [isMultiple, setIsMultiple] = useState(defaultSelection.multiple);
+	const [rowLabel, setRowLabel] = useState('Selection for ${(row as PlantRecord).name}');
+	const [keyPropertyName, setKeyPropertyName] = useState(defaultSelection.keyPropertyName);
+	const [selectedKeys, setSelectedKeys] = useState('');
+	const [disabledKeys, setDisabledKeys] = useState('');
+	const [selection, setSelection] = useState<TableSelectionDef>(defaultSelection);
 
 	useEffect(() => {
-		props._on?.onInput?.(new Event('input'), { horizontal: [currentColumns] });
-	}, [columns, columnCount]);
+		props._on?.onInput?.(new Event('input'), selection);
+	}, [rowLabel, isMultiple, keyPropertyName, selectedKeys, disabledKeys]);
 
-	const handleCountChange = (_event: Event, value: unknown) => {
-		const count = Math.min(Math.max(Number(value) || 1, 1), columns.length);
-		setColumnCount(count);
+	const handleMultipleChange = () => {
+		let newSelection = selection;
+		newSelection.multiple = !isMultiple;
+		setSelection(newSelection);
+		setIsMultiple(!isMultiple);
 	};
 
-	const handleLabelChange = (index: number, value: string) => {
-		const newColumns = [...columns];
-		newColumns[index] = { ...newColumns[index], label: value };
-		setColumns(newColumns);
+	const handleLabelChange = (value: string) => {
+		// wie stelle ich die function editable da?
+		selection.label = (row) => value;
+		setRowLabel(value);
+	};
+
+	const handleKeyPropertyNameChange = (value: string) => {
+		let newSelection = selection;
+		newSelection.keyPropertyName = value;
+		setSelection(newSelection);
+		setKeyPropertyName(value);
+	};
+
+	const handleSelectedKeysChange = (value: string) => {
+		const keys = value.split(',');
+		let newSelection = selection;
+		newSelection.selectedKeys = keys;
+		setSelection(newSelection);
+		setSelectedKeys(value);
+	};
+
+	const handleDisabledKeysChange = (value: string) => {
+		const keys = value.split(',');
+		let newSelection = selection;
+		newSelection.disabledKeys = keys;
+		setSelection(newSelection);
+		setDisabledKeys(value);
 	};
 
 	return (
-		<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-			<KolInputNumber
-				_label={props.label}
-				_min={1}
-				_max={columns.length}
-				_value={columnCount}
-				_on={{ onInput: handleCountChange }}
-			/>
-
-			{currentColumns.length > 0 && (
-				<KolButton
-					_label={translate({ id: 'preview.component.table-stateful.columns.edit' })}
-					_variant="secondary"
-					_on={{ onClick: () => setIsEditing(!isEditing) }}
+		<fieldset>
+			<legend>{props.label}</legend>
+			<div className="flex flex-col gap-2">
+				<KolInputCheckbox _label="Multiple" _value={isMultiple} _on={{ onInput: handleMultipleChange }} />
+				<KolInputText
+					_label="Label for Checkbox"
+					_value={rowLabel}
+					_on={{
+						onInput: (e: Event) => {
+							const target = e.target as HTMLInputElement;
+							handleLabelChange(target.value);
+						},
+					}}
 				/>
-			)}
-
-			<KolDrawer
-				_label={translate({ id: 'preview.component.table-stateful.columns.edit' })}
-				_open={isEditing}
-				_align="right"
-				_hasCloser
-				_on={{ onClose: () => setIsEditing(false) }}
-			>
-				<div className="flex flex-col gap-4 py-4">
-					{currentColumns.map((col, index) => (
-						<KolCard
-							key={col.key}
-							_label={`${translate({ id: 'preview.component.table-stateful.column.label' })} ${index + 1}`}
-						>
-							<div className="flex flex-col gap-2">
-								<KolInputText
-									_label="Label"
-									_value={col.label}
-									_on={{
-										onInput: (e: Event) => {
-											const target = e.target as HTMLInputElement;
-											handleLabelChange(index, target.value);
-										},
-									}}
-								/>
-							</div>
-						</KolCard>
-					))}
-
-					<KolButton
-						_label={translate({ id: 'preview.component.table-stateful.columns.closeedit' })}
-						_variant="primary"
-						_on={{ onClick: () => setIsEditing(false) }}
-					/>
-				</div>
-			</KolDrawer>
-		</div>
+				<KolInputText
+					_label="keyPropertyName"
+					_value={keyPropertyName}
+					_on={{
+						onInput: (e: Event) => {
+							const target = e.target as HTMLInputElement;
+							handleKeyPropertyNameChange(target.value);
+						},
+					}}
+				/>
+				<KolInputText
+					_label="selectedKeys"
+					_value={selectedKeys}
+					_placeholder="z.B. 1,2"
+					_on={{
+						onInput: (e: Event) => {
+							const target = e.target as HTMLInputElement;
+							handleSelectedKeysChange(target.value);
+						},
+					}}
+				/>
+				<KolInputText
+					_label="disabledKeys"
+					_value={disabledKeys}
+					_placeholder="z.B. 1,2"
+					_on={{
+						onInput: (e: Event) => {
+							const target = e.target as HTMLInputElement;
+							handleDisabledKeysChange(target.value);
+						},
+					}}
+				/>
+			</div>
+		</fieldset>
 	);
 };
 
-export default TableColumnsProperty;
+export default TableSelectionProperty;

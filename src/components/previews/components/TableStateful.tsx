@@ -4,8 +4,9 @@ import type { JSX, KoliBriTableSelection } from '@public-ui/components';
 import { KolInputCheckbox, KolInputText, KolTableStateful } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
+import TableSelectionProperty from '../properties/TableSelectionProperty';
 
-type PlantRecord = {
+export type PlantRecord = {
 	id: number;
 	name: string;
 	family: string;
@@ -167,11 +168,6 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 		[]
 	);
 
-	const selection: KoliBriTableSelection = {
-		label: (row) => `Selection for ${(row as PlantRecord).name}`,
-		keyPropertyName: 'id',
-	};
-
 	const defaultProps = React.useMemo<JSX.KolTableStateful>(
 		() => ({
 			_label: translate({ id: 'preview.component.table-stateful.label' }),
@@ -187,7 +183,6 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			},
 			_data: plantData,
 			_pagination: { _page: 1, _pageSize: 2, _pageSizeOptions: [2, 5, 10] },
-			_selection: selection,
 		}),
 		[plantData]
 	);
@@ -197,7 +192,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_headers: <TableColumnsProperty label={translate({ id: 'preview.component.table-stateful.columns.label' })} />,
-				_selection: <KolInputCheckbox _label="Selection" />,
+				_selection: <TableSelectionProperty label="Selection Props" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTableStateful"
@@ -210,13 +205,15 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 				const headers = JSON.stringify(currentProps._headers ?? null, null, 2)
 					.split('\n')
 					.join('\n  ');
-				const pagination = JSON.stringify(currentProps._pagination ?? null);
+				const pagination = JSON.stringify(currentProps._pagination ?? null, null, 6);
+				const selection = JSON.stringify(currentProps._selection ?? null, null, 6);
 				return [
 					`<KolTableStateful`,
 					`  _label=${label}`,
 					`  _headers={${headers}}`,
 					`  _data={PLANT_DATA}`,
 					`  _pagination={${pagination}}`,
+					`  _selection={${selection}}`,
 					`/>`,
 				].join('\n');
 			}}
