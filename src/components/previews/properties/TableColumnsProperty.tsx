@@ -67,7 +67,7 @@ const TableColumnsProperty = (props: {
 		const key = columns[index].key;
 		const val = columns[index].compareFn
 			? undefined
-			: (a, b) => (a as unknown as PlantRecord)[key].localeCompare((b as unknown as PlantRecord)[key]);
+			: (a: any, b: any) => (a as any)[key].localeCompare((b as any)[key]);
 		const newColumns = [...columns];
 		newColumns[index] = { ...newColumns[index], compareFn: val };
 		setColumns(newColumns);
