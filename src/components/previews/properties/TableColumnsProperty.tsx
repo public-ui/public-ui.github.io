@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { KolInputNumber, KolInputText, KolButton, KolDrawer, KolCard, KolInputCheckbox } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { KoliBriDataCompareFn } from '@public-ui/components/dist/types/schema';
-import { PlantRecord } from '../components/TableStateful';
+import type { KoliBriDataCompareFn, KoliBriTableDataType } from '@public-ui/components/dist/types/schema';
+import type { PlantRecord } from '../components/TableStateful';
 
 type TableColumnDef = {
 	key: string;
@@ -65,9 +65,13 @@ const TableColumnsProperty = (props: {
 
 	const handleSortChange = (index: number) => {
 		const key = columns[index].key;
+		const keyTyped = key as keyof PlantRecord;
 		const val = columns[index].compareFn
 			? undefined
-			: (a: any, b: any) => (a as any)[key].localeCompare((b as any)[key]);
+			: (a: KoliBriTableDataType, b: KoliBriTableDataType) =>
+					((a as unknown as PlantRecord)[keyTyped] as string).localeCompare(
+						(b as unknown as PlantRecord)[keyTyped] as string
+					);
 		const newColumns = [...columns];
 		newColumns[index] = { ...newColumns[index], compareFn: val };
 		setColumns(newColumns);
