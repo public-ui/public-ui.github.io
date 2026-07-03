@@ -88,6 +88,22 @@ When focusing the element, it's expected that the `readonly` attribute is announ
 
 ### kol-input-date
 
+#### Screen readers announce empty date fields with unexpected role labels
+
+The native HTML element `<input type="date">` consists internally of three spin button segments
+for day, month, and year (ARIA role `spinbutton`). When the field is empty, the browser assigns
+these segments the value `0`. Screen readers announce this value together with their respective
+translation of the role, resulting in unexpected announcements:
+
+- **NVDA in Chrome**: Each segment is announced as "spin button 0".
+- **NVDA in Firefox**: Each segment is announced as "spin button" (without a value).
+- **VoiceOver in Safari**: Each segment is announced as "stepper".
+
+Since the internal segments of the native date input are rendered by the browser and are not
+accessible via the DOM, KoliBri is unable to modify the announced output.
+
+[🐞 GitHub Issue #427](https://github.com/public-ui/public-ui.github.io/issues/427)
+
 #### VoiceOver Reads Date Inputs with Percentage in Google Chrome
 
 In Google Chrome, when using VoiceOver with empty `date` input fields (no initial value), an unexpected percentage value is read aloud alongside the usual prompt.
