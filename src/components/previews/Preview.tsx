@@ -149,6 +149,7 @@ const Preview = <TProps,>({
 			} else if (slotValue !== undefined && slotValue !== null) {
 				slotContent = JSON.stringify(slotValue);
 			}
+
 			const openTag = propsString ? `<${componentName}${propsString}\n>` : `<${componentName}>`;
 			return `${openTag}${slotContent}</${componentName}>`;
 		}
@@ -232,14 +233,16 @@ const Preview = <TProps,>({
 	return (
 		<div className={`preview ${hasProp ? 'props' : ''} gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}>
 			<div
-				className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''
-					}`}
+				className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${
+					layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''
+				}`}
 			>
 				<span
-					className={`${layout === PreviewLayout.FULL_SIZE
-						? 'w-full h-full'
-						: `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`
-						}`}
+					className={`${
+						layout === PreviewLayout.FULL_SIZE
+							? 'w-full h-full'
+							: `px-4 py-2 ${layout === PreviewLayout.CENTERED ? 'm-auto' : 'grow'}`
+					}`}
 				>
 					{children(enhancePropsWithEventHandlers(currentProps))}
 				</span>

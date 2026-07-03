@@ -4,6 +4,7 @@ import type { JSX } from '@public-ui/components';
 import { KolInputCheckbox, KolInputText, KolTableStateful } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
+import { funcToStringReplacer } from '../../../shares/utils';
 
 export type PlantRecord = {
 	id: number;
@@ -210,7 +211,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			layout={PreviewLayout.FULL_SIZE}
 			sourceFormatter={(currentProps) => {
 				const label = JSON.stringify(currentProps._label ?? '');
-				const headers = JSON.stringify(currentProps._headers ?? null, null, 2)
+				const headers = JSON.stringify(currentProps._headers ?? null, funcToStringReplacer, 2)
 					.split('\n')
 					.join('\n  ');
 				const pagination = JSON.stringify(currentProps._pagination ?? null);
