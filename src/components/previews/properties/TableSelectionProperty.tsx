@@ -31,7 +31,7 @@ const TableSelectionProperty = (props: {
 	}, [rowLabel, isMultiple, keyPropertyName, selectedKeys, disabledKeys]);
 
 	const handleMultipleChange = () => {
-		let newSelection = selection;
+		const newSelection = selection;
 		newSelection.multiple = !isMultiple;
 		setSelection(newSelection);
 		setIsMultiple(!isMultiple);
@@ -44,7 +44,7 @@ const TableSelectionProperty = (props: {
 	};
 
 	const handleKeyPropertyNameChange = (value: string) => {
-		let newSelection = selection;
+		const newSelection = selection;
 		newSelection.keyPropertyName = value;
 		setSelection(newSelection);
 		setKeyPropertyName(value);
@@ -52,7 +52,7 @@ const TableSelectionProperty = (props: {
 
 	const handleSelectedKeysChange = (value: string) => {
 		const keys = value.split(',');
-		let newSelection = selection;
+		const newSelection = selection;
 		newSelection.selectedKeys = keys;
 		setSelection(newSelection);
 		setSelectedKeys(value);
@@ -60,7 +60,7 @@ const TableSelectionProperty = (props: {
 
 	const handleDisabledKeysChange = (value: string) => {
 		const keys = value.split(',');
-		let newSelection = selection;
+		const newSelection = selection;
 		newSelection.disabledKeys = keys;
 		setSelection(newSelection);
 		setDisabledKeys(value);
