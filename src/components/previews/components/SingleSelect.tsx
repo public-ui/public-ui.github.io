@@ -1,8 +1,8 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty } from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty, SelectOptionsProperty } from '../properties';
 import type { JSX, SelectOption } from '@public-ui/components';
-import { KolInputText, KolSingleSelect, KolTextarea } from '@public-ui/react-v19';
+import { KolInputText, KolSingleSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
 interface SingleSelectPreviewComponentProps {
@@ -31,7 +31,7 @@ const SingleSelectPreview = (props: SingleSelectPreviewComponentProps) => {
 		<Preview<JSX.KolSingleSelect>
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_options: <KolTextarea _label="Options (JSON Array)" _rows={5} />,
+				_options: <SelectOptionsProperty label="Options" />,
 				_placeholder: <KolInputText _label="Placeholder" />,
 				_icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
 				_accessKey: <KolInputText _label="Access Key" />,

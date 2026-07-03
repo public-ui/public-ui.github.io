@@ -85,6 +85,22 @@ Die Komponenten InputNumber und InputDate rendern die jeweiligen nativen HTML-El
 
 ### kol-input-date
 
+#### Screenreader lesen leere Datumsfelder mit unerwarteten Rollenbezeichnungen vor
+
+Das native HTML-Element `<input type="date">` besteht intern aus drei Spin-Button-Segmenten
+für Tag, Monat und Jahr (ARIA-Rolle `spinbutton`). Wenn das Feld leer ist, erhalten diese
+Segmente vom Browser den Wert `0`. Screenreader geben diesen Wert zusammen mit ihrer
+jeweiligen Übersetzung der Rolle aus, was zu unerwarteten Ansagen führt:
+
+- **NVDA in Chrome**: Jedes Teilfeld wird als „Drehschalter 0" angesagt.
+- **NVDA in Firefox**: Jedes Teilfeld wird als „Drehschalter" (ohne Wert) angesagt.
+- **VoiceOver in Safari**: Jedes Teilfeld wird als „Stepper" angesagt.
+
+Da die internen Segmente des nativen Date-Inputs vom Browser gerendert werden und über das
+DOM nicht zugänglich sind, ist eine Anpassung der Ausgabe durch KoliBri nicht möglich.
+
+[🐞 GitHub Issue #427](https://github.com/public-ui/public-ui.github.io/issues/427)
+
 #### VoiceOver liest Datumsfelder mit Prozentangabe in Google Chrome vor
 
 In Google Chrome liest VoiceOver bei leeren `date`-Eingabefeldern (ohne Anfangswert) einen unerwarteten Prozentwert zusammen mit der üblichen Eingabeaufforderung vor.
