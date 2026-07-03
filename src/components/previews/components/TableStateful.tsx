@@ -1,7 +1,7 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import type { JSX, KoliBriTableSelection } from '@public-ui/components';
-import { KolInputCheckbox, KolInputText, KolTableStateful } from '@public-ui/react-v19';
+import type { JSX } from '@public-ui/components';
+import { KolInputText, KolTableStateful } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
 import TableSelectionProperty from '../properties/TableSelectionProperty';
@@ -192,7 +192,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_headers: <TableColumnsProperty label={translate({ id: 'preview.component.table-stateful.columns.label' })} />,
-				_selection: <TableSelectionProperty label="Selection Props" />,
+				_selection: <TableSelectionProperty label="Selection" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTableStateful"

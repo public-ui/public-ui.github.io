@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { KolInputNumber, KolInputText, KolButton, KolDrawer, KolCard, KolInputCheckbox } from '@public-ui/react-v19';
-import { translate } from '@docusaurus/Translate';
+import { KolInputText, KolInputCheckbox } from '@public-ui/react-v19';
 import { KoliBriTableDataType } from '@public-ui/components';
 import { PlantRecord } from '../components/TableStateful';
 
@@ -75,7 +74,7 @@ const TableSelectionProperty = (props: {
 			<div className="flex flex-col gap-2">
 				<KolInputCheckbox _label="Multiple" _value={isMultiple} _on={{ onInput: handleMultipleChange }} />
 				<KolInputText
-					_label="Label for Checkbox"
+					_label="label"
 					_value={rowLabel}
 					_on={{
 						onInput: (e: Event) => {
@@ -97,7 +96,7 @@ const TableSelectionProperty = (props: {
 				<KolInputText
 					_label="selectedKeys"
 					_value={selectedKeys}
-					_placeholder="z.B. 1,2"
+					_placeholder="1,2"
 					_on={{
 						onInput: (e: Event) => {
 							const target = e.target as HTMLInputElement;
@@ -108,7 +107,7 @@ const TableSelectionProperty = (props: {
 				<KolInputText
 					_label="disabledKeys"
 					_value={disabledKeys}
-					_placeholder="z.B. 1,2"
+					_placeholder="1,2"
 					_on={{
 						onInput: (e: Event) => {
 							const target = e.target as HTMLInputElement;
