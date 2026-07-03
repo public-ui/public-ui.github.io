@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { KolInputText, KolInputCheckbox } from '@public-ui/react-v19';
-import { KoliBriTableDataType } from '@public-ui/components';
-import { PlantRecord } from '../components/TableStateful';
 
 type TableSelectionDef = {
-	label: (row: KoliBriTableDataType) => string;
+	label: string;
 	keyPropertyName: string;
 	multiple: boolean;
 	selectedKeys?: string[];
@@ -18,7 +16,7 @@ const TableSelectionProperty = (props: {
 	};
 }) => {
 	const defaultSelection = React.useMemo<TableSelectionDef>(() => {
-		return { label: (row) => `Selection for ${(row as PlantRecord).name}`, keyPropertyName: 'id', multiple: false };
+		return { label: 'Selection for ${(row as PlantRecord).name}', keyPropertyName: 'id', multiple: false };
 	}, []);
 
 	const [isMultiple, setIsMultiple] = useState(defaultSelection.multiple);
@@ -41,7 +39,7 @@ const TableSelectionProperty = (props: {
 
 	const handleLabelChange = (value: string) => {
 		// wie stelle ich die function editable da?
-		selection.label = (row) => value;
+		selection.label = value;
 		setRowLabel(value);
 	};
 
