@@ -14,9 +14,9 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Schaltfläche, Call-to-Action, Aktion
+**Synonyme:** Schaltfläche, Schalter, Call-to-Action (CTA), Aktionsschaltfläche
 
-**Beschreibung:** Die **Button**-Komponente zeigt Nutzern Auswahlmöglichkeiten für Aktionen an und ordnet diese in einer klaren Hierarchie an. Sie hilft Nutzern, die wichtigsten Aktionen einer Seite zu finden und ermöglicht es ihnen, diese auszuführen.
+**Beschreibung:** Die **Button**-Komponente stellt Schaltflächen zur Verfügung, mit denen Nutzende Aktionen auslösen können. Unterschiedliche Varianten unterstützen die visuelle Priorisierung und erleichtern die Orientierung innerhalb einer Anwendung.
 
 ## Beispiel
 
@@ -31,41 +31,111 @@ Darstellung der Komponente mit Standard-Label und ohne optional gesetzte Felder.
 
 ## Barrierefreiheit
 
-- Die **Beschriftung** über `_label` ist erforderlich und wird von Screenreadern vorgelesen.
+- Die Property `_label` ist verpflichtend und stellt den zugänglichen Namen (Accessible Name) des Buttons bereit. Die Beschriftung wird von Screenreadern ausgegeben und ermöglicht die Identifikation der Funktion des Buttons.
+- Die Komponente unterstützt die Bedienung per Tastatur.
+- Der Button kann über die Tabulatortaste fokussiert und über Enter oder Leertaste aktiviert werden.
+- Auch bei ausgeblendeter sichtbarer Beschriftung (`_hideLabel`) bleibt der zugängliche Name erhalten. Die Beschriftung wird als **Tooltip** angezeigt und von Screenreadern beim Fokus vorgelesen.
+- Die Komponente stellt einen sichtbaren Fokuszustand bereit.
+- Die Komponente basiert auf dem nativen HTML-Element `button` und unterstützt dadurch etablierte Bedienmuster sowie assistive Technologien.
 - Für Menschen mit eingeschränktem Sichtfeld ist die Positionierung von Icons **links** von der Beschriftung optimal.
-- Bei aktiviertem `_hideLabel` wird die Beschriftung als **Tooltip** angezeigt und von Screenreadern beim Fokus vorgelesen.
-- Die Komponente unterstützt **Tastaturnavigation** über Tab und Enter.
+
+### Konkrete Designentscheidungen
+
+| Entscheidung                                       | Begründung                                                                                                                                     |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Verwendung des nativen HTML-Elements `button`      | Native Buttons bieten bereits die erforderliche Semantik, Tastaturbedienung und Unterstützung durch assistive Technologien.                    |
+| Verpflichtende Angabe von `_label`                 | Jede Schaltfläche benötigt einen zugänglichen Namen, damit ihre Funktion von Screenreadern erkannt werden kann.                                |
+| Unterstützung von Icon-only-Buttons nur mit Label  | Auch bei ausgeblendeter Beschriftung bleibt ein zugänglicher Name erforderlich. Dadurch bleibt die Schaltfläche für Screenreader verständlich. |
+| Orientierung am nativen Tastaturverhalten          | Nutzende profitieren von bekannten Bedienmustern und einer konsistenten Interaktion über verschiedene Anwendungen hinweg.                      |
+| Deaktivierte Schaltflächen sind nicht fokussierbar | Das Verhalten entspricht dem nativen HTML-Standard und reduziert unnötige Fokusziele bei der Tastaturnavigation.                               |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#button" _target="_blank" _label="WAI-ARIA: Button Pattern"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/button/" _target="_blank" _label="ARIA Authoring Practices Guide: Button"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/button/" _target="_blank" _label="WAI-ARIA Authoring Practices Guide: Button Pattern"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button" _target="_blank" _label="MDN Web Docs: HTML Button Element"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element" _target="_blank" _label="HTML Living Standard: Button Element"></kol-link>
 
 ## Verwendung
 
+- Die Button-Komponente wird verwendet, um Aktionen innerhalb einer Anwendung auszulösen.
+- Schaltflächen sollten immer eine konkrete Aktion ausführen und keine reine Navigation übernehmen.
+- Die Beschriftung sollte die auszuführende Aktion möglichst eindeutig beschreiben.
+- Buttons können durch unterschiedliche Varianten visuell priorisiert werden.
+- Die Komponente eignet sich für einzelne Aktionen sowie für Aktionsgruppen innerhalb eines gemeinsamen Kontexts.
+
 ### Tastatursteuerung
 
-| Taste   | Funktion                                              |
-| ------- | ----------------------------------------------------- |
-| `Tab`   | Fokussiert den Button.                                |
-| `Enter` | Führt die onClick-Aktion des fokussierten Buttons aus. |
+| Taste       | Funktion                                              |
+| ----------- | ----------------------------------------------------- |
+| `Tab`       | Fokus auf die nächste Schaltfläche setzen             |
+| `Shift+Tab` | Fokus auf die vorherige Schaltfläche setzen           |
+| `Enter` / `Space` | Schaltfläche aktivieren                         |
 
 ### Best Practices / Empfehlungen
 
-- Verwenden Sie eine **primäre Schaltfläche** für die nächstbeste Aktion. Verbleibende Calls-to-Action sollten als sekundäre Schaltfläche dargestellt werden.
-- Verwenden Sie **nur eine primäre Schaltfläche je Viewport**. Auf der gesamten Seite kann dieser Stil beliebig oft auftreten.
-- Die **Beschriftung** muss die Aktion beschreiben (z.B. „Speichern", „Abbrechen") und sollte ein Verb enthalten.
-- Verwenden Sie **keine generischen Bezeichnungen** wie „OK", insbesondere nicht im Fehlerfall.
+- Verwenden Sie möglichst aussagekräftige Beschriftungen, die die auszuführende Aktion beschreiben.
+- Verwenden Sie Verben wie „Speichern“, „Absenden“ oder „Löschen“ statt allgemeiner Bezeichnungen wie „OK“ oder „Weiter“. Die **Beschriftung** muss die Aktion beschreiben.
+- Heben Sie innerhalb eines Bereichs nur die wichtigste Aktion als primäre Schaltfläche hervor. Weitere Buttons sollten als sekundäre Schaltflächen dargestellt werden.
 - Verwenden Sie **nicht mehrere Buttons** im Stil „primär" innerhalb einer Gruppierung.
-- Verwenden Sie Buttons **nicht als Link** oder als Navigationselement.
+- Verwenden Sie Schaltflächen nicht für Navigation zwischen Seiten. Nutzen Sie hierfür Links oder die LinkButton-Komponente.
+- Verwenden Sie Icons als Ergänzung zur Beschriftung, nicht als deren Ersatz.
+- Verwenden Sie Icon-only-Buttons nur, wenn die Funktion auch ohne sichtbaren Text eindeutig erkennbar bleibt.
+- Gruppieren Sie zusammengehörige Aktionen räumlich und visuell.
 
 ### Anwendungsfälle
 
-- Bestätigung oder Absage von Dialogfenstern
-- Absenden von Formulardaten
-- Auslösen von Aktionen (speichern, löschen, exportieren, etc.)
-- Initiierung von Workflows oder Prozessen
-- Wechsel zwischen Zuständen oder Ansichten
+- Absenden eines Formulars
+- Speichern von Daten
+- Öffnen oder Schließen eines Dialogs
+- Bestätigen oder Abbrechen einer Aktion
+- Starten eines Prozesses oder Workflows
+- Auslösen einer Suche
+- Bearbeiten oder Löschen eines Datensatzes
+- Navigation innerhalb von Wizards oder mehrstufigen Prozessen
+
+## FAQ
+
+**Wann sollte ein Button statt eines Links verwendet werden?**
+- Buttons lösen Aktionen innerhalb der aktuellen Seite oder Anwendung aus.
+- Beispiele: Speichern, Löschen, Absenden, Dialog öffnen.
+- Links dienen der Navigation zu anderen Seiten, Ansichten oder Ressourcen.
+
+**Wann sollte die LinkButton-Komponente statt der Button-Komponente verwendet werden?**
+- LinkButton für Navigation mit schaltflächenähnlicher Darstellung.
+- Button für Aktionen innerhalb der Anwendung.
+- Die Wahl sollte sich an der Funktion und nicht am visuellen Erscheinungsbild orientieren.
+
+**Warum ist die Property _label verpflichtend?**
+- Stellt den zugänglichen Namen (Accessible Name) der Schaltfläche bereit.
+- Wird von Screenreadern ausgegeben.
+- Verhindert unbeschriftete und damit schwer verständliche Schaltflächen.
+
+**Darf ein Button nur aus einem Icon bestehen?**
+- Ja. Die sichtbare Beschriftung kann über _hideLabel ausgeblendet werden.
+- Ein aussagekräftiges `_label` bleibt weiterhin erforderlich.
+- Die Funktion muss auch ohne sichtbaren Text eindeutig erkennbar sein.
+
+**Wie viele primäre Schaltflächen sollten innerhalb eines Bereichs verwendet werden?**
+- In der Regel nur eine primäre Schaltfläche pro Kontext.
+- Die wichtigste Aktion sollte visuell hervorgehoben werden.
+- Mehrere primäre Schaltflächen erschweren die Priorisierung von Aktionen.
+
+**Können Schaltflächen deaktiviert werden?**
+- Ja. Deaktivierte Schaltflächen können weder fokussiert noch aktiviert werden.
+- Das Verhalten entspricht dem nativen HTML-Button.
+
+**Werden eigene Tastaturkürzel unterstützt?**
+- Nein. Die Komponente unterstützt die standardmäßige Tastaturbedienung nativer HTML-Schaltflächen.
+- Zusätzliche Tastaturkürzel müssen durch die Anwendung umgesetzt werden.
+
+**Können Schaltflächen ausschließlich über Farben unterschieden werden?**
+- Davon wird abgeraten. Informationen sollten nicht ausschließlich über Farben vermittelt werden.
+- Beschriftung, Position oder weitere visuelle Merkmale sollten die Bedeutung zusätzlich unterstützen.
+
+**Warum wird die Beschriftung bei `_hideLabel` als Tooltip angezeigt?
+- Die Funktion bleibt auch ohne sichtbare Beschriftung nachvollziehbar.
+- Sehende Nutzende erhalten zusätzliche Orientierung.
+- Der zugängliche Name bleibt für assistive Technologien erhalten.
 
 ## Konstruktion / Technik
 
