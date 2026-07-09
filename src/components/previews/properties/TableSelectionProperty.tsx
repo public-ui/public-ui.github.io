@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { KolInputText, KolInputCheckbox } from '@public-ui/react-v19';
+import { PlantRecord } from '../components/TableStateful';
 
 type TableSelectionDef = {
-	label: string;
+	label: (row: PlantRecord) => string;
 	keyPropertyName: string;
 	multiple: boolean;
 	selectedKeys?: string[];
@@ -16,7 +17,11 @@ const TableSelectionProperty = (props: {
 	};
 }) => {
 	const defaultSelection = React.useMemo<TableSelectionDef>(() => {
-		return { label: 'Selection for ${(row as PlantRecord).name}', keyPropertyName: 'id', multiple: false };
+		return {
+			label: (row: PlantRecord) => `Selection for ${(row as PlantRecord).name}`,
+			keyPropertyName: 'id',
+			multiple: false,
+		};
 	}, []);
 
 	const [isMultiple, setIsMultiple] = useState(defaultSelection.multiple);
@@ -37,11 +42,11 @@ const TableSelectionProperty = (props: {
 		setIsMultiple(!isMultiple);
 	};
 
-	const handleLabelChange = (value: string) => {
-		// wie stelle ich die function editable da?
-		selection.label = value;
-		setRowLabel(value);
-	};
+	// const handleLabelChange = (value: string) => {
+	// 	// wie stelle ich die function editable da?
+	// 	selection.label = value;
+	// 	setRowLabel(value);
+	// };
 
 	const handleKeyPropertyNameChange = (value: string) => {
 		const newSelection = selection;
@@ -74,12 +79,13 @@ const TableSelectionProperty = (props: {
 				<KolInputText
 					_label="label"
 					_value={rowLabel}
-					_on={{
-						onInput: (e: Event) => {
-							const target = e.target as HTMLInputElement;
-							handleLabelChange(target.value);
-						},
-					}}
+					_readOnly
+					// _on={{
+					// 	onInput: (e: Event) => {
+					// 		const target = e.target as HTMLInputElement;
+					// 		handleLabelChange(target.value);
+					// 	},
+					// }}
 				/>
 				<KolInputText
 					_label="keyPropertyName"
