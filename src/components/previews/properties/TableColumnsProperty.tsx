@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { KolInputNumber, KolInputText, KolButton, KolDrawer, KolCard } from '@public-ui/react-v19';
+import { KolInputNumber, KolInputText, KolButton, KolDrawer, KolCard, KolInputCheckbox } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import type { KoliBriDataCompareFn, KoliBriTableDataType } from '@public-ui/components/dist/types/schema';
+import type { PlantRecord } from '../components/TableStateful';
 
 type TableColumnDef = {
 	key: string;
 	label: string;
+	compareFn?: KoliBriDataCompareFn;
 };
 
 const TableColumnsProperty = (props: {
@@ -15,12 +18,28 @@ const TableColumnsProperty = (props: {
 }) => {
 	const defaultColumns = React.useMemo<TableColumnDef[]>(
 		() => [
-			{ key: 'name', label: translate({ id: 'preview.component.table-stateful.column.name' }) },
-			{ key: 'family', label: translate({ id: 'preview.component.table-stateful.column.family' }) },
-			{ key: 'type', label: translate({ id: 'preview.component.table-stateful.column.type' }) },
-			{ key: 'origin', label: translate({ id: 'preview.component.table-stateful.column.origin' }) },
+			{
+				key: 'name',
+				label: translate({ id: 'preview.component.table-stateful.column.name' }),
+				compareFn: (a, b) => (a as unknown as PlantRecord).name.localeCompare((b as unknown as PlantRecord).name),
+			},
+			{
+				key: 'family',
+				label: translate({ id: 'preview.component.table-stateful.column.family' }),
+				compareFn: (a, b) => (a as unknown as PlantRecord).family.localeCompare((b as unknown as PlantRecord).family),
+			},
+			{
+				key: 'type',
+				label: translate({ id: 'preview.component.table-stateful.column.type' }),
+				compareFn: (a, b) => (a as unknown as PlantRecord).type.localeCompare((b as unknown as PlantRecord).type),
+			},
+			{
+				key: 'origin',
+				label: translate({ id: 'preview.component.table-stateful.column.origin' }),
+				compareFn: (a, b) => (a as unknown as PlantRecord).origin.localeCompare((b as unknown as PlantRecord).origin),
+			},
 		],
-		[],
+		[]
 	);
 
 	const [isEditing, setIsEditing] = useState(false);
@@ -41,6 +60,20 @@ const TableColumnsProperty = (props: {
 	const handleLabelChange = (index: number, value: string) => {
 		const newColumns = [...columns];
 		newColumns[index] = { ...newColumns[index], label: value };
+		setColumns(newColumns);
+	};
+
+	const handleSortChange = (index: number) => {
+		const key = columns[index].key;
+		const keyTyped = key as keyof PlantRecord;
+		const val = columns[index].compareFn
+			? undefined
+			: (a: KoliBriTableDataType, b: KoliBriTableDataType) =>
+					((a as unknown as PlantRecord)[keyTyped] as string).localeCompare(
+						(b as unknown as PlantRecord)[keyTyped] as string
+					);
+		const newColumns = [...columns];
+		newColumns[index] = { ...newColumns[index], compareFn: val };
 		setColumns(newColumns);
 	};
 
@@ -86,6 +119,15 @@ const TableColumnsProperty = (props: {
 										},
 									}}
 								/>
+								<KolInputCheckbox
+									_label="Sortierung aktivieren"
+									_checked={col.compareFn ? true : false}
+									_on={{
+										onInput: () => {
+											handleSortChange(index);
+										},
+									}}
+								></KolInputCheckbox>
 							</div>
 						</KolCard>
 					))}

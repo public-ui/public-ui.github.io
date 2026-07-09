@@ -117,11 +117,17 @@ Headers are defined via the `_headers` attribute. Horizontal and vertical header
 The component supports automatic sorting per column via the `compareFn` function in the header definitions:
 
 <TableStatefulPreview
-	visibleProperties={[]}
+	visibleProperties={['_headers', '_allowMultiSort']}
 	initialProps={{}}
 	codeCollapsable
 	codeCollapsed
 />
+
+**Explanation of compareFn:**
+Stencil does not return the objects to be compared with their original Type (here PlantRecord). Therefore, for a clean typing, the detour via unknown must be taken:
+```jsx
+compareFn: (a, b) => (a as unknown as PlantRecord).name.localeCompare((b as unknown as PlantRecord).name)
+```
 
 **Sorting behavior:**
 - Single sort (default): Only one column is sorted at a time. When sorting a new column, the sorting of the previous one is cancelled.
