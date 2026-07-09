@@ -1,9 +1,10 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
-import { KolInputText, KolTableStateful } from '@public-ui/react-v19';
+import { KolInputCheckbox, KolInputText, KolTableStateful } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
+import { funcToStringReplacer } from '../../../shares/utils';
 import TableSelectionProperty from '../properties/TableSelectionProperty';
 
 export type PlantRecord = {
@@ -174,9 +175,18 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			_headers: {
 				horizontal: [
 					[
-						{ key: 'name', label: translate({ id: 'preview.component.table-stateful.column.name' }) },
-						{ key: 'family', label: translate({ id: 'preview.component.table-stateful.column.family' }) },
-						{ key: 'type', label: translate({ id: 'preview.component.table-stateful.column.type' }) },
+						{
+							key: 'name',
+							label: translate({ id: 'preview.component.table-stateful.column.name' }),
+						},
+						{
+							key: 'family',
+							label: translate({ id: 'preview.component.table-stateful.column.family' }),
+						},
+						{
+							key: 'type',
+							label: translate({ id: 'preview.component.table-stateful.column.type' }),
+						},
 						{ key: 'origin', label: translate({ id: 'preview.component.table-stateful.column.origin' }) },
 					],
 				],
@@ -192,6 +202,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_headers: <TableColumnsProperty label={translate({ id: 'preview.component.table-stateful.columns.label' })} />,
+				_allowMultiSort: <KolInputCheckbox _label="Multisort" />,
 				_selection: <TableSelectionProperty label="Selection" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
@@ -202,7 +213,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			layout={PreviewLayout.FULL_SIZE}
 			sourceFormatter={(currentProps) => {
 				const label = JSON.stringify(currentProps._label ?? '');
-				const headers = JSON.stringify(currentProps._headers ?? null, null, 2)
+				const headers = JSON.stringify(currentProps._headers ?? null, funcToStringReplacer, 2)
 					.split('\n')
 					.join('\n  ');
 				const pagination = JSON.stringify(currentProps._pagination ?? null, null, 6);

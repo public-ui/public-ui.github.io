@@ -117,11 +117,18 @@ Titel werden über das Attribut `_headers` definiert. Es werden horizontale und 
 Die Komponente unterstützt automatische Sortierung pro Spalte über die `compareFn` Funktion in den Header-Definitionen:
 
 <TableStatefulPreview
-	visibleProperties={[]}
+	visibleProperties={['_headers', '_allowMultiSort']}
 	initialProps={{}}
 	codeCollapsable
 	codeCollapsed
 />
+
+**Erklärung zur compareFn:**
+Stencil gibt die zu vergleichenden Objekte nicht mit ihrem Ursprünglichen Type (hier PlantRecord) zurück. Deswegen muss für eine saubere Typisierung der Umweg über unknown gegangen werden:
+```jsx
+compareFn: (a, b) => (a as unknown as PlantRecord).name.localeCompare((b as unknown as PlantRecord).name)
+```
+
 
 **Sortierungs-Verhalten:**
 - Einzelsortierung (Standard): Es wird nur eine Spalte auf einmal sortiert. Beim Sortieren einer neuen Spalte wird die Sortierung der vorherigen aufgehoben.
