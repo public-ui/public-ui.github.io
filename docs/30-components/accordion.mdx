@@ -30,7 +30,7 @@ initialProps={{ _open: true }}
 ## Barrierefreiheit
 
 - Die Accordion-Header sind als interaktive Elemente umgesetzt, was die Tastatursteuerung ermöglicht, die Fokussierbarkeit gewährleistet und Screenreadern die Interaktion korrekt ankündigt.
-- Die Öffnen-/Schließen-Icons sind links ausgerichtet, um die Bedienbarkeit für Nutzende mit eingeschränktem Sichtfeld zu unterstützen.
+- Die Öffnen-/Schließen-Icons können frei positioniert werden, allerdings wird empfohlen diese links auszurichten, um die Bedienbarkeit für Nutzende mit eingeschränktem Sichtfeld zu unterstützen.
 - Der Zustand eines Accordions (offen/geschlossen) wird programmatisch vermittelt und ist somit auch für assistive Technologien erreichbar. Zustandsänderungen werden nicht ausschließlich über Icons oder Farben vermittelt.
 - Der Fokus bleibt beim Öffnen eines Accordions im Kontext des Bedienelements.
 
@@ -67,10 +67,11 @@ Je nach Konfiguration kann:
 - nur ein Eintrag gleichzeitig geöffnet sein oder
 - mehrere Einträge parallel geöffnet sein
 
-Accordion ist **nicht geeignet**, wenn:
-- Inhalte zwingend gleichzeitig sichtbar sein müssen
-- Inhalte miteinander verglichen werden müssen
-- Nutzer häufig zwischen Abschnitten wechseln müssen
+Accordion ist **nicht geeignet**,:
+- wenn Inhalte zwingend gleichzeitig sichtbar sein müssen
+- wenn Inhalte miteinander verglichen werden müssen
+- wenn Nutzende häufig zwischen Abschnitten wechseln müssen
+- um Fehlermeldungen darzustellen
 
 ### Tastatursteuerung
 
@@ -103,7 +104,7 @@ Accordion ist **nicht geeignet**, wenn:
 Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvoll ist.
 
 **Welche Überschriftenebenen sind möglich?**  
-Über `_level` sind die Ebenen `1` bis `6` verfügbar.
+Über `_level` sind die Ebenen `1` bis `6` verfügbar. Mit `0` wird die Überschriftenebene deaktiviert und als `strong` dargestellt. Dies ist beim `KolAccordion` standardmäßig voreingestellt.
 
 **Darf ein Accordion verschachtelt werden?**
 Verschachtelungen sind möglich sollten allerdings aus Gründen der Barrierefreiheit mit Bedacht vorgenommen werden.
