@@ -14,9 +14,9 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Collapse, Aufklapp-Menü
+**Synonyme:** Aufklappbereich, Aufklappmenü, Ausklapp-Liste, Ein-/Ausklapp-Komponente, Disclosure, Expand/Collapse
 
-**Beschreibung:** Die **Accordion**-Komponente gliedert Inhalte in ein- und ausklappbare Abschnitte. Sie unterstützt eine kompakte Darstellung, verbessert die Übersicht bei längeren Inhalten und erlaubt es Nutzer:innen, Details bedarfsorientiert einzublenden.
+**Beschreibung:** Die **Accordion**-Komponente gliedert Inhalte in einzelne Abschnitte, deren Detailinformationen ein- oder ausgeblendet werden können. Sie unterstützt eine kompakte und strukturierte Darstellung größerer Informationsmengen auf begrenztem Raum. Die Nutzenden entscheiden selbst, welche Abschnitte geöffnet werden. Dadurch wird die kognitive Belastung reduziert und die Seite bleibt übersichtlich.
 
 ## Beispiel
 
@@ -29,52 +29,85 @@ initialProps={{ _open: true }}
 
 ## Barrierefreiheit
 
-- Das Öffnen-/Schließen-Icon ist links ausgerichtet, um die Bedienbarkeit für Nutzer:innen mit eingeschränktem Sichtfeld zu unterstützen.
-- Für die Zustände „geöffnet“ und „geschlossen“ werden die Zeichen `+` und `-` verwendet.
-- Auf die Verwendung von Zeichen wie `<` oder `>` als Statusanzeige wird bewusst verzichtet.
-- Die Standardansicht ist auf einen möglichst hohen Kontrast ausgelegt.
+- Die Accordion-Header sind als interaktive Elemente umgesetzt, was die Tastatursteuerung ermöglicht, die Fokussierbarkeit gewährleistet und Screenreadern die Interaktion korrekt ankündigt.
+- Die Öffnen-/Schließen-Icons können frei positioniert werden, allerdings wird empfohlen diese links auszurichten, um die Bedienbarkeit für Nutzende mit eingeschränktem Sichtfeld zu unterstützen.
+- Der Zustand eines Accordions (offen/geschlossen) wird programmatisch vermittelt und ist somit auch für assistive Technologien erreichbar. Zustandsänderungen werden nicht ausschließlich über Icons oder Farben vermittelt.
+- Der Fokus bleibt beim Öffnen eines Accordions im Kontext des Bedienelements.
+
+### Konkrete Designentscheidungen
+
+| Entscheidung                                   | Begründung                                                |
+| ---------------------------------------------- | --------------------------------------------------------- |
+| Verwendung eines Buttons für Header            |	Native Tastatursteuerung und Screenreader-Kompatibilität |
+| aria-expanded am Header                        |	Zustand programmatisch erkennbar                         |
+| Panel bleibt im DOM                            |	Screenreader verlieren keinen Kontext                    |
+| Keine Hover-Interaktion als alleiniger Trigger |	Hover ist nicht barrierefrei                             |
+| Klare visuelle Fokusmarkierung                 |	Tastaturnutzer benötigen Orientierung                    |
+| Optional Mehrfachöffnung                       |	Abhängig vom Anwendungsfall                              |
+| Keine automatische Öffnung bei Fokus           |	Verhindert unerwartete Kontextwechsel                    |
+
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#accordion" _target="_blank"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/" _target="_blank"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG22/quickref/" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/" _label="W3C WAI-ARIA Authoring Practices Guide (APG) – Accordion Pattern" _target="_blank"></kol-link>
 
 ## Verwendung
 
+Accordions werden eingesetzt, um:
+- Inhalte zu gruppieren, die nicht zwingend gleichzeitig sichtbar sein müssen
+- lange Seiten zu strukturieren
+- progressive Offenlegung (progressive disclosure) umzusetzen
+
+Typischerweise besteht ein Accordion aus:
+- einem Titel (Header)
+- einem zugehörigen Inhaltsbereich (Panel)
+- einem Zustand (geöffnet/geschlossen)
+
+Je nach Konfiguration kann:
+- nur ein Eintrag gleichzeitig geöffnet sein oder
+- mehrere Einträge parallel geöffnet sein
+
+Accordion ist **nicht geeignet**,:
+- wenn Inhalte zwingend gleichzeitig sichtbar sein müssen
+- wenn Inhalte miteinander verglichen werden müssen
+- wenn Nutzende häufig zwischen Abschnitten wechseln müssen
+- um Fehlermeldungen darzustellen
+
 ### Tastatursteuerung
 
-| Taste   | Funktion                                             |
-| ------- | ---------------------------------------------------- |
-| `Tab`   | Springt die einzelnen Accordion-Tabs an.             |
-| `Enter` | Öffnet bzw. schließt den fokussierten Accordion-Tab. |
+| Taste           | Funktion                                             |
+| --------------- | ---------------------------------------------------- |
+| `Tab`           | Springt zum nächsten Accordion.                      |
+| `Shift+Tab`     | Springt zum vorherigen Accordion.                    |
+| `Enter`/`Space` | Öffnet bzw. schließt den fokussierten Accordion-Tab. |
 
 ### Best Practices / Empfehlungen
 
-- Nutzen Sie ein Accordion für ergänzende oder sekundäre Informationen, die nicht dauerhaft sichtbar sein müssen.
+- Nutzen Sie ein Accordion für ergänzende oder sekundäre Informationen, die nicht dauerhaft sichtbar sein müssen. Für wichtige primäre Inhalte  (z. B. zentrale Handlungsaufforderungen oder rechtlich relevante Hinweise) sind Accordions weniger geeignet.
 - Strukturieren Sie längere Inhalte in klar benannte Abschnitte und verwenden Sie prägnante Überschriften über `_label`.
-- Setzen Sie wichtige primäre Inhalte (z. B. zentrale Handlungsaufforderungen oder rechtlich relevante Hinweise) nicht ausschließlich in eingeklappte Bereiche.
-- Platzieren Sie Fehlermeldungen nicht nur innerhalb geschlossener Accordion-Bereiche.
 - Verwenden Sie ein Accordion nicht als primäres Auswahl- oder Filterelement.
+- Verwenden Sie mehrere Accordions mit wenig Inhalt anstatt ein einzelnes inhaltlich zu überladen.
+- Verzichten Sie auf eine tiefe Verschachtelung mehrerer Accordions.
+- Wählen Sie den initialen Zustand bewusst (offen/geschlossen).
 
 ### Anwendungsfälle
 
-- FAQ-Bereiche mit vielen Fragen und Antworten
-- Detaildarstellungen zu Eigenschaften oder Varianten eines Elements
-- Gruppierung umfangreicher Formularabschnitte
-- Strukturierung von Inhalten auf kleinen Bildschirmen mit begrenztem Platz
 - Gliederung längerer Dokumentations- oder Einstellungsseiten
+- Strukturierung von Inhalten auf kleinen Bildschirmen mit begrenztem Platz
+- Gruppierung umfangreicher Formularabschnitte
+- FAQ-Bereiche
+- Zusätzliche Detailinformationen, optionale Bereiche
 
 ### FAQ
 
 **Wann sollte ein Accordion standardmäßig geöffnet sein?**  
-Wenn ein Inhalt voraussichtlich direkt benötigt wird, kann ein Abschnitt über `_open` initial geöffnet werden.
-
-**Kann ich beliebigen Inhalt im Accordion darstellen?**  
-Ja, der Inhaltsbereich wird über den Slot bereitgestellt.
+Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvoll ist.
 
 **Welche Überschriftenebenen sind möglich?**  
-Über `_level` sind die Ebenen `1` bis `6` verfügbar. Laut API ist zusätzlich `0` möglich.
+Über `_level` sind die Ebenen `1` bis `6` verfügbar. Mit `0` wird die Überschriftenebene deaktiviert und als `strong` dargestellt. Dies ist beim `KolAccordion` standardmäßig voreingestellt.
+
+**Darf ein Accordion verschachtelt werden?**
+Verschachtelungen sind möglich sollten allerdings aus Gründen der Barrierefreiheit mit Bedacht vorgenommen werden.
 
 ## Konstruktion / Technik
 
