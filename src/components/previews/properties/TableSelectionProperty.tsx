@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { KolInputText, KolInputCheckbox } from '@public-ui/react-v19';
-import { PlantRecord } from '../components/TableStateful';
+import type { PlantRecord } from '../components/TableStateful';
 
 type TableSelectionDef = {
 	label: (row: PlantRecord) => string;
@@ -18,14 +18,15 @@ const TableSelectionProperty = (props: {
 }) => {
 	const defaultSelection = React.useMemo<TableSelectionDef>(() => {
 		return {
-			label: (row: PlantRecord) => `Selection for ${(row as PlantRecord).name}`,
+			label: (row: PlantRecord) => `Selection for ${(row).name}`,
 			keyPropertyName: 'id',
 			multiple: false,
 		};
 	}, []);
 
 	const [isMultiple, setIsMultiple] = useState(defaultSelection.multiple);
-	const [rowLabel, setRowLabel] = useState('Selection for ${(row as PlantRecord).name}');
+	// const [rowLabel, setRowLabel] = useState('Selection for ${(row as PlantRecord).name}');
+	const rowLabel = 'Selection for ${(row as PlantRecord).name}';
 	const [keyPropertyName, setKeyPropertyName] = useState(defaultSelection.keyPropertyName);
 	const [selectedKeys, setSelectedKeys] = useState('');
 	const [disabledKeys, setDisabledKeys] = useState('');
