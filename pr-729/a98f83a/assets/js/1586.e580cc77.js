@@ -1,1 +1,0 @@
-/*! For license information please see 1586.e580cc77.js.LICENSE.txt */ "use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[1586,9205],{79205:(s,c,t)=>{t.r(c),t.d(c,{test_component:()=>_});var u=t(57436);t(64460);const _=class{constructor(s){(0,u.r)(this,s)}}}}]);
