@@ -228,7 +228,7 @@ The `_dataFoot` attribute enables summary rows or additional information at the 
 The `_selection` attribute activates row selection (single or multiple). Selection changes are transmitted via the `selectionChange` event:
 
 <TableStatefulPreview
-	visibleProperties={[]}
+	visibleProperties={['_selection']}
 	initialProps={{}}
 	codeCollapsable
 	codeCollapsed
@@ -238,6 +238,7 @@ The `_selection` attribute activates row selection (single or multiple). Selecti
 - `multiple`: Single selection (default) or multiple selection
 - `label`: Function for generating labels for each row
 - `selectedKeys`: Currently selected row identifiers
+- `disabledKeys`: Currently disabled row identifiers
 - `keyPropertyName`: Property name for identifying rows (e.g., `id`)
 
 #### Settings menu

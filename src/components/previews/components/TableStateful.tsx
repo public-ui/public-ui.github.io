@@ -5,6 +5,7 @@ import { KolInputCheckbox, KolInputText, KolTableStateful } from '@public-ui/rea
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
 import { funcToStringReplacer } from '../../../shares/utils';
+import TableSelectionProperty from '../properties/TableSelectionProperty';
 
 export type PlantRecord = {
 	id: number;
@@ -202,6 +203,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 				_label: <KolInputText _label="Label" />,
 				_headers: <TableColumnsProperty label={translate({ id: 'preview.component.table-stateful.columns.label' })} />,
 				_allowMultiSort: <KolInputCheckbox _label="Multisort" />,
+				_selection: <TableSelectionProperty label="Selection" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTableStateful"
@@ -214,13 +216,15 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 				const headers = JSON.stringify(currentProps._headers ?? null, funcToStringReplacer, 2)
 					.split('\n')
 					.join('\n  ');
-				const pagination = JSON.stringify(currentProps._pagination ?? null);
+				const pagination = JSON.stringify(currentProps._pagination ?? null, null, 6);
+				const selection = JSON.stringify(currentProps._selection ?? null, null, 6);
 				return [
 					`<KolTableStateful`,
 					`  _label=${label}`,
 					`  _headers={${headers}}`,
 					`  _data={PLANT_DATA}`,
 					`  _pagination={${pagination}}`,
+					`  _selection={${selection}}`,
 					`/>`,
 				].join('\n');
 			}}
