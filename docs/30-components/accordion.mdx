@@ -46,6 +46,15 @@ initialProps={{ _open: true }}
 | Optional Mehrfachöffnung                       |	Abhängig vom Anwendungsfall                              |
 | Keine automatische Öffnung bei Fokus           |	Verhindert unerwartete Kontextwechsel                    |
 
+#### ARIA-Struktur
+
+Die Komponente implementiert das **WAI-ARIA Accordion Pattern**:
+- Der Toggle-Button trägt `aria-expanded` mit dem aktuellen Öffnungszustand (`true` / `false`). 
+- `aria-controls` auf dem Button verweist auf die ID des Content-Bereichs. 
+- Der Content-Bereich hat `role="region"` und ist über `aria-labelledby` mit der Überschrift verknüpft 
+– Screenreader-Nutzer:innen können ihn als Landmark navigieren. 
+- Im geschlossenen Zustand wird `aria-hidden="true"` auf den Content-Bereich gesetzt. Der Inhalt ist damit für Screenreader vollständig nicht erreichbar.
+
 
 ### Links und Referenzen
 
@@ -100,14 +109,14 @@ Accordion ist **nicht geeignet**,:
 
 ### FAQ
 
-**Wann sollte ein Accordion standardmäßig geöffnet sein?**  
-Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvoll ist.
-
 **Welche Überschriftenebenen sind möglich?**  
 Über `_level` sind die Ebenen `1` bis `6` verfügbar. Mit `0` wird die Überschriftenebene deaktiviert und als `strong` dargestellt. Dies ist beim `KolAccordion` standardmäßig voreingestellt.
 
 **Darf ein Accordion verschachtelt werden?**
 Verschachtelungen sind möglich sollten allerdings aus Gründen der Barrierefreiheit mit Bedacht vorgenommen werden.
+
+**Wann sollte ein Accordion standardmäßig geöffnet sein?**  
+Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvoll ist.
 
 ## Konstruktion / Technik
 
