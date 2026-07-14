@@ -58,7 +58,7 @@ Standard date field with type `date`. Input is done via direct digit entry with 
 ### Best practices / Recommendations
 
 - **Mark required fields clearly**: Use `_required` to clearly mark mandatory fields.
-- **Validation with `_min` and `_max`**: Limit the valid date range e.g. for dates of birth or appointment bookings.
+- **Validation with `_min` and `_max`**: Limit the valid date range e.g. for dates of birth or appointment bookings - only takes effect when selected via the control elements, not with manual text input.
 - **Correct naming**: Ensure `_name` and `_id` are set correctly for form submission.
 - **Use hint texts**: Use `_hint` for information about the expected format or restrictions.
 - **Communicate browser differences**: Inform users about Firefox behavior with `month`, `time`, and `week` if these types are used.
@@ -120,7 +120,7 @@ The `_type` attribute determines the format and selection dialog:
 
 #### Range restriction
 
-The `_min` and `_max` attributes define the valid date range:
+The `_min` and `_max` attributes define the valid date range. They only reliably take effect when a date is selected via the calendar dialog (datepicker). With manual text input, a value outside the defined range can be entered without automatic correction or an error message. Validation of manual input is the responsibility of the consuming application.
 
 <InputDatePreview
 	visibleProperties={['_min', '_max']}

@@ -58,7 +58,7 @@ Standard-Datumsfeld mit dem Typ `date`. Die Eingabe erfolgt über direkte Zahlen
 ### Best Practices / Empfehlungen
 
 - **Sinnvolle Felder kennzeichnen**: Nutzen Sie `_required`, um Pflichtfelder deutlich zu machen.
-- **Validierung mit `_min` und `_max`**: Begrenzen Sie den gültigen Datumsbereich z. B. für Geburtsdaten oder Terminreservierungen.
+- **Validierung mit `_min` und `_max`**: Begrenzen Sie den gültigen Datumsbereich z. B. für Geburtsdaten oder Terminreservierungen – wirkt nur bei Auswahl über die Steuerelemente, nicht bei manueller Texteingabe.
 - **Korrekt benennen**: Stellen Sie sicher, dass `_name` und `_id` korrekt gesetzt sind für Formularübermittlung.
 - **Hinweistexte nutzen**: Verwenden Sie `_hint` für Angaben zum erwarteten Format oder Einschränkungen.
 - **Browserunterschiede kommunizieren**: Machen Sie Nutzer:innen auf das Firefox-Verhalten bei `month`, `time` und `week` aufmerksam, falls diese Typen verwendet werden.
@@ -120,7 +120,7 @@ Das Attribut `_type` bestimmt das Format und den Auswahldialog:
 
 #### Bereichsbeschränkung
 
-Die Attribute `_min` und `_max` definieren den gültigen Datumsbereich:
+Die Attribute `_min` und `_max` definieren den gültigen Datumsbereich. Sie greifen zuverlässig nur bei der Auswahl über den Kalenderdialog (Datepicker). Bei manueller Texteingabe kann ein Wert außerhalb des definierten Bereichs eingegeben werden, ohne dass automatisch eine Korrektur oder Fehlermeldung erfolgt. Die Validierung manueller Eingaben liegt in der Verantwortung der einbindenden Anwendung.
 
 <InputDatePreview
 	visibleProperties={['_min', '_max']}
