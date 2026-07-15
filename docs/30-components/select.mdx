@@ -11,9 +11,13 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Dropdown, Auswahlliste, Auswahlfeld
+**Synonyme:** Dropdown, Dropdown-Liste, Auswahlliste, Auswahlfeld
 
-**Beschreibung:** Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Optionen ausgewählt werden können. Sie unterstützt Einfach- und Mehrfachauswahl sowie barrierefreie Bedienung über Tastatur und Screenreader.
+**Beschreibung:** Die **Select**-Komponente ermöglicht die Auswahl einer oder mehrerer Optionen aus einer vordefinierten Liste.
+
+Sie eignet sich für strukturierte Eingaben, bei denen ausschließlich bekannte Werte zulässig sind und keine freie Texteingabe erfolgen soll. Je nach Konfiguration unterstützt die Komponente sowohl die **Einfachauswahl** als auch die **Mehrfachauswahl.**
+
+Die auswählbaren Optionen werden über die Property `_options` bereitgestellt und können optional mithilfe von **Optionsgruppen (Optgroups)** logisch strukturiert werden.
 
 ## Beispiel
 
@@ -27,12 +31,28 @@ codeCollapsed
 
 ## Barrierefreiheit
 
-- Jede Select-Komponente benötigt eine sichtbare Beschriftung über `_label`. Diese wird von Screenreadern vorgelesen.
+Die Select-Komponente setzt konsequent auf native HTML-Funktionalitäten. Dadurch werden wesentliche Aspekte der Barrierefreiheit bereits durch Browser und assistive Technologien unterstützt. Eigene Accessibility-Implementierungen sind nur dort erforderlich, wo sie über den nativen Funktionsumfang hinausgehen.
+
+- Browser stellen automatisch die korrekte Semantik sowie die erforderlichen ARIA-Rollen bereit.
+- Tastaturbedienung, Fokusverwaltung und Screenreader-Unterstützung werden vollständig vom nativen HTML-Element übernommen.
+- Die Beschriftung erfolgt über die Property `_label` und wird programmatisch mit dem Auswahlfeld verknüpft.
+- Hinweise und Fehlermeldungen können über `_msg` bereitgestellt und von assistiven Technologien ausgegeben werden.
+- Die Unterstützung der Mehrfachauswahl erfolgt über das native HTML-Attribut `multiple`. Dabei müssen Nutzende explizit über die Bedienung (Shift + Pfeiltasten) informiert werden.
+
+
 - Deaktivierte Optionen (`disabled`) werden von Screenreadern (z. B. NVDA) mitgezählt und können eine höhere Anzahl an Auswahlmöglichkeiten suggieren als tatsächlich verfügbar sind — daher möglichst vermeiden.
 - Häufig wird die erste Option als Platzhalter angelegt und deaktiviert, um eine Auswahl zu erzwingen. Stattdessen sollte eine auswählbare Option mit leerem Wert verwendet werden.
 - Das Ausblenden deaktivierter Optionen über `aria-hidden` wird von modernen Browsern blockiert und ist keine empfohlene Lösung.
-- Bei Mehrfachauswahl (`_multiple`) müssen Nutzer:innen explizit über die Bedienung (Shift + Pfeiltasten) informiert werden.
-- Fehlermeldungen werden über `_msg` übermittelt und von assistiven Technologien korrekt erkannt.
+
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ----------------- | ---------------------------- |
+| Verwendung des nativen HTML-Elements `<select>` | Nutzt die standardisierte Semantik des Browsers und gewährleistet eine hohe Kompatibilität mit assistiven Technologien. |
+| Verzicht auf eigene ARIA-Rollen | Das native `<select>` besitzt bereits die erforderliche Semantik. Zusätzliche Rollen wie `role="combobox"` oder `role="listbox"` würden keinen Mehrwert bieten und sollten nicht ergänzt werden. |
+| Nutzung der nativen Browserimplementierung | Tastaturbedienung, Fokusverhalten und Screenreader-Ausgabe entsprechen den etablierten Webstandards und bleiben browserübergreifend konsistent. |
+| Verwendung einer programmatisch verknüpften Beschriftung `(_label)` | Ermöglicht Screenreadern die eindeutige Zuordnung zwischen Beschriftung und Auswahlfeld. |
+
 
 ### Links und Referenzen
 
