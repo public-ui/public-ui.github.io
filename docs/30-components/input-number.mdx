@@ -56,7 +56,7 @@ Die **InputNumber**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 
 ### Best Practices / Empfehlungen
 
-- **Sinnvolle Grenzen setzen**: Verwenden Sie `_min` und `_max`, um Wertbereiche zu definieren. Dies verbessert sowohl die Nutzererfahrung als auch die Datenvalidierung.
+- **Sinnvolle Grenzen setzen**: Verwenden Sie `_min` und `_max`, um Wertbereiche zu definieren – wirkt nur bei Auswahl über die Steuerelemente, nicht bei manueller Texteingabe.
 - **Schrittweite konfigurieren**: Nutzen Sie `_step`, um die Inkrement-Größe bei Pfeiltasten-Navigation festzulegen. Beispiel: `_step="5"` für 5er-Schritte.
 - **Alternative zu direkter Eingabe**: Bieten Sie bei großen Wertbereichen Pfeiltasten oder Spinner-Buttons als visuelle Alternativen zur Direkteingabe an.
 - **Name und ID**: Achten Sie darauf, `_name` und eine eindeutige `_id` korrekt zu setzen, damit die Daten beim Formularabsenden mitgesendet werden.
@@ -141,7 +141,7 @@ Unterstützung für Hinweistexte und Validierungsmeldungen:
 
 #### Numerische Beschränkungen
 
-Konfigurieren Sie Minimal-, Maximalwerte und Schrittweite:
+Konfigurieren Sie Minimal-, Maximalwerte und Schrittweite. `_min` und `_max` greifen zuverlässig nur bei der Auswahl über den Steuerelemente. Bei manueller Texteingabe kann ein Wert außerhalb des definierten Bereichs eingegeben werden, ohne dass automatisch eine Korrektur oder Fehlermeldung erfolgt. Die Validierung manueller Eingaben liegt in der Verantwortung der einbindenden Anwendung.
 
 <InputNumberPreview
 	visibleProperties={['_label', '_min', '_max', '_step']}
