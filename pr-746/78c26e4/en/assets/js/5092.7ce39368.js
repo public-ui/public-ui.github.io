@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[5092],{42711:(e,l,u)=>{u.r(l),u.d(l,{default:()=>a});u(12888);var c=u(23806),s=u(11684);const _=["D\xe4nemark","Deutschland","Dominica"],a=()=>(0,s.jsx)(c.Wj,{_touched:!0,_label:"Label",_placeholder:"Placeholder",_required:!0,_suggestions:_,_value:"Deutschland"})}}]);
