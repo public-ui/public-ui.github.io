@@ -17,13 +17,9 @@ import LinkButtonPreview from '@site/src/components/previews/components/LinkButt
 
 ## Beispiel
 
-Darstellung der Komponente ohne optional gesetzte Felder.:
+Darstellung der Komponente ohne optional gesetzte Felder:
 
-<LinkButtonPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'LinkButton' }}
-	codeCollapsable
-/>
+<LinkButtonPreview visibleProperties={[]} initialProps={{ _label: 'LinkButton' }} codeCollapsable />
 
 ## Barrierefreiheit
 
@@ -46,10 +42,10 @@ Die **LinkButton**-Komponente wird als Link-Element renders und ist daher vollst
 
 ### Tastatursteuerung
 
-| Taste   | Funktion                          |
-| ------- | --------------------------------- |
-| `Tab`   | Fokussiert die LinkButton.        |
-| `Enter` | Öffnet den Hyperlink.             |
+| Taste   | Funktion                         |
+| ------- | -------------------------------- |
+| `Tab`   | Fokussiert die LinkButton.       |
+| `Enter` | Öffnet den Hyperlink.            |
 | `Space` | Öffnet den Hyperlink (optional). |
 
 ### Best Practices / Empfehlungen
@@ -75,7 +71,7 @@ Die **LinkButton**-Komponente wird als Link-Element renders und ist daher vollst
 Verwenden Sie LinkButton, wenn Sie semantisch einen Link benötigen (Navigation), diesen aber mit Button-Styling betonen möchten. Für echte Aktionen (wie Formularabsendung) verwenden Sie stattdessen einen Button.
 
 **Kann ich LinkButton mit Icons verwenden?**
-Ja, das Attribut `_icons` unterstützt Icon-Klassennamen (z. B. `_icons="fa-solid fa-arrow-right"`).
+Ja, das Attribut `_icons` unterstützt Icon-Klassennamen (z. B. `_icons="kolicon-house"`).
 
 **Was ist der Unterschied zu button-link?**
 LinkButton ist semantisch ein Link mit Button-Styling. <kol-link _href="../components/button-link" _label="ButtonLink"></kol-link> ist dagegen semantisch ein Button mit Link-Styling.
@@ -85,7 +81,23 @@ LinkButton ist semantisch ein Link mit Button-Styling. <kol-link _href="../compo
 ### Playground
 
 <LinkButtonPreview
-	visibleProperties={['_label', '_href', '_variant', '_target', '_icons', '_tooltipAlign', '_disabled', '_hideLabel', '_download', '_accessKey', '_ariaControls', '_ariaCurrentValue', '_ariaDescription', '_customClass', '_shortKey']}
+	visibleProperties={[
+		'_label',
+		'_href',
+		'_variant',
+		'_target',
+		'_icons',
+		'_tooltipAlign',
+		'_disabled',
+		'_hideLabel',
+		'_download',
+		'_accessKey',
+		'_ariaControls',
+		'_ariaCurrentValue',
+		'_ariaDescription',
+		'_customClass',
+		'_shortKey',
+	]}
 	initialProps={{ _label: 'LinkButton' }}
 	codeCollapsable
 />
@@ -100,7 +112,7 @@ Die sichtbare Beschriftung wird über `_label` gesetzt:
 
 <LinkButtonPreview
 	visibleProperties={['_label']}
-	initialProps={{ _label: 'Normal', _href: '#'}}
+	initialProps={{ _label: 'Normal', _href: '#' }}
 	codeCollapsable
 	codeCollapsed
 />
@@ -111,12 +123,13 @@ Die Darstellung wird über `_variant` gesteuert:
 
 <LinkButtonPreview
 	visibleProperties={['_variant']}
-	initialProps={{ _label: 'LinkButton', _href: '#', _variant: 'primary'}}
+	initialProps={{ _label: 'LinkButton', _href: '#', _variant: 'primary' }}
 	codeCollapsable
 	codeCollapsed
 />
 
 **Verfügbare Varianten:**
+
 - `primary` – Primäre Handlungsaufforderung (Standard)
 - `secondary` – Sekundäre Aktion
 - `normal` – Standard-Variante
@@ -131,7 +144,7 @@ Icons können über das Attribut `_icons` hinzugefügt werden:
 
 <LinkButtonPreview
 	visibleProperties={['_icons', '_tooltipAlign']}
-	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'fa-solid fa-arrow-right'}}
+	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'kolicon-house' }}
 	codeCollapsable
 	codeCollapsed
 />
@@ -144,7 +157,7 @@ Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip 
 
 <LinkButtonPreview
 	visibleProperties={['_hideLabel', '_icons']}
-	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'fa-solid fa-arrow-right', _hideLabel: true }}
+	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'kolicon-house', _hideLabel: true }}
 	codeCollapsable
 	codeCollapsed
 />
@@ -155,12 +168,13 @@ Kontrolle darüber, wie der Link im Browser geöffnet wird:
 
 <LinkButtonPreview
 	visibleProperties={['_target']}
-	initialProps={{ _label: 'LinkButton', _href: '#', _target: '_self'}}
+	initialProps={{ _label: 'LinkButton', _href: '#', _target: '_self' }}
 	codeCollapsable
 	codeCollapsed
 />
 
 **Verfügbare Targets:**
+
 - `_self` – Der Link wird im aktuellen Tab geöffnet (Standard)
 - `_blank` – Der Link wird in einem neuen Tab geöffnet
 
@@ -170,7 +184,7 @@ Signalisieren Sie dem Browser, dass eine Datei heruntergeladen werden soll:
 
 <LinkButtonPreview
 	visibleProperties={[]}
-	initialProps={{ _label: 'PDF herunterladen', _href: '/files/dokument.pdf', _download: 'dokument.pdf'}}
+	initialProps={{ _label: 'PDF herunterladen', _href: '/files/dokument.pdf', _download: 'dokument.pdf' }}
 	codeCollapsable
 	codeCollapsed
 />
@@ -216,9 +230,9 @@ LinkButton mit ARIA-Attributen für erweiterte Semantik:
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
-| Event   | Auslöser                | Value         |
-| ------- | ----------------------- | ------------- |
-| `click` | Element wird angeklickt | `_href`-Wert  |
+| Event   | Auslöser                | Value        |
+| ------- | ----------------------- | ------------ |
+| `click` | Element wird angeklickt | `_href`-Wert |
 
 ## API
 
