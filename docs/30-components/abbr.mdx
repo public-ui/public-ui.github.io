@@ -13,9 +13,9 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Abkürzung, Akronym
+**Synonyme:** Abkürzung, Kürzel
 
-**Beschreibung:** Die **Abbr**-Komponente kennzeichnet eine Abkürzung oder ein Akronym im Fließtext und kann die ausgeschriebene Bedeutung als Tooltip oder sichtbare Ergänzung bereitstellen. Dies verbessert die Verständlichkeit für alle Nutzer, besonders für diejenigen, die mit der Kurzform nicht vertraut sind.
+**Beschreibung:** Die **Abbr**-Komponente dient zur semantischen Kennzeichnung von Abkürzungen innerhalb von Texten.
 
 ## Beispiel
 
@@ -30,35 +30,41 @@ Standard-Abkürzung mit optionalem Label:
 
 ## Barrierefreiheit
 
-Die **Abbr**-Komponente nutzt das semantische HTML-Element `abbr` und signalisiert assistiven Technologien, dass es sich um eine Abkürzung oder ein Akronym handelt:
+- Die Komponente kennzeichnet Abkürzungen semantisch.
+- Die Bedeutung einer Abkürzung wird direkt im sichtbaren Text vermittelt.
+- Die Komponente besitzt keine interaktiven Funktionen.
 
-- **Semantische Auszeichnung**: Das HTML-Element `abbr` wird verwendet, um Abkürzungen korrekt zu kennzeichnen.
-- **Label für Screen Reader**: Das Attribut `_label` versorgt Screenreader mit der ausgeschriebenen Form, die vorgelesen wird.
-- **Sichtbare Erklärung**: Die ausgeschriebene Form wird optional sichtbar im Text angezeigt, nicht nur als Tooltip.
-- **Keine Tastaturinteraktion**: Die Komponente ist nicht interaktiv und erfordert keine Tastaturnavigation.
+### Konkrete desinentscheidungen
+
+| Entscheidung                                 | Begründung                                                                                                                 |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Semantische Kennzeichnung von Abkürzungen    | Unterstützt Browser und assistive Technologien bei der Interpretation von Inhalten.                                        |
+| Erläuterung der Bedeutung im sichtbaren Text | Alle Nutzenden erhalten dieselben Informationen unabhängig von Browser oder assistiven Technologien.                       |
+| Keine Interaktion                            | Die Komponente dient ausschließlich der semantischen Auszeichnung von Text und benötigt daher keine Tastaturunterstützung. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank" _label="MDN: &lt;abbr&gt; Element"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/abbreviations.html" _target="_blank" _label="WCAG 2.1 - Abbreviations"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/quickref/" _target="_blank" _label="WCAG 2.1 Quick Reference"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank" _label="MDN Web Docs: abbr HTML-Kürzel-Element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/abbreviations.html" _target="_blank" _label="WCAG 2.1 Understanding Docs: Abbreviations"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element" _target="_blank" _label="HTML Living Standard: The abbr Element"></kol-link>
 
 ## Verwendung
 
+Die Komponente eignet sich zur Kennzeichnung von Abkürzungen und Akronymen innerhalb von Fließtexten.
+
 ### Best Practices / Empfehlungen
 
-- Verwenden Sie `abbr`, um Abkürzungen zu kennzeichnen, die nicht allgemein bekannt sind.
-- Geben Sie über `_label` die ausgeschriebene Form an, damit die Bedeutung direkt verständlich ist.
-- Nutzen Sie die Komponente im Fließtext und nicht als interaktives Bedienelement.
-- Verwenden Sie konsistente Schreibweisen (z.B. immer `z. B.` statt wechselnder Kurzformen).
-- Verzichten Sie auf Abkürzungen, wenn die volle Form nicht zu Platzproblemen führt.
+- Erläutern Sie die Bedeutung einer Abkürzung beim ersten Auftreten im sichtbaren Text, z. B. **Barrierefreie-Informationstechnik-Verordnung (BITV)** oder **BITV (Barrierefreie-Informationstechnik-Verordnung)**.
+- Anschließend kann die Abkürzung ohne erneute Erläuterung verwendet werden.
+- Verwenden Sie die Komponente nur für Abkürzungen, deren Bedeutung für die Zielgruppe nicht selbstverständlich ist.
 
 ### Anwendungsfälle
 
-- Fachbegriffe und Standardabkürzungen in Formularen und Hinweisen (z.B. `z. B.`, `u. a.`, `MwSt.`)
-- Organisatorische oder rechtliche Kurzformen in Verwaltungstexten
-- Technische Akronyme in Dokumentationen, wenn die Langform mitgeführt werden soll
-- Internationale Abkürzungen, die für Nutzer unklar sein könnten (z.B. `WHO`, `API`)
+- Fachbegriffe
+- Behördenabkürzungen
+- Organisationen
+- Technische Begriffe
+- Gesetze und Richtlinien
 
 ## Konstruktion / Technik
 
