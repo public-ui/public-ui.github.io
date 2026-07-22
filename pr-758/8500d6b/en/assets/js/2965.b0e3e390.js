@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[2965],{52965:(c,e,i)=>{i.r(e),i.d(e,{default:()=>o});i(12888);var _=i(23806),l=i(11684);const o=()=>(0,l.jsx)(_.Q7,{_min:0,_max:50,_hideLabel:!0,_label:"Label",_icons:{left:{icon:"kolicon-chevron-left"},right:{icon:"kolicon-chevron-right"}},_touched:!0})}}]);
