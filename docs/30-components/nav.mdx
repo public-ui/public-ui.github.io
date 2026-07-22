@@ -256,7 +256,7 @@ Einfache flache Navigation ohne Untermenüs.
 <NavPreview
 	visibleProperties={['_links']}
 	initialProps={{
-		_label: 'Navigation',
+		_label: 'Hauptmenü',
 		_links: [
 			{ _href: '#start', _icons: 'kolicon-house', _label: 'Startseite' },
 			{ _href: '#about', _icons: 'kolicon-info', _label: 'Über uns' },
@@ -275,10 +275,10 @@ Navigation mit mehreren Ebenen durch Nutzung von `_children`:
 	initialProps={{
 		_label: 'Navigation',
 		_links: [
+			{ _href: '#start', _icons: 'kolicon-house', _label: 'Startseite' },
 			{
-				_href: '#start',
 				_icons: 'kolicon-house',
-				_label: 'Startseite',
+				_label: 'Oberseite',
 				_children: [
 					{ _href: '#start/sub1', _icons: 'kolicon-house', _label: '1. Untermenüpunkt' },
 					{ _href: '#start/sub2', _icons: 'kolicon-house', _label: '2. Untermenüpunkt' },

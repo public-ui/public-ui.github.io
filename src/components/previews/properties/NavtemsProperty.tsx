@@ -2,7 +2,6 @@ import { KolInputText, KolButton, KolInputCheckbox, KolDrawer, KolCard, KolSelec
 import React, { useEffect, useState } from 'react';
 import { translate } from '@docusaurus/Translate';
 import { PREDEFINED_ICONS } from './IconsProperty';
-import { defaultLinks } from '../components/Nav';
 
 export type NavItemData = {
 	_label: string;
@@ -130,9 +129,10 @@ const NavItemsProperty = (props: {
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
+	_value: NavItemData[];
 }) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [items, setItems] = useState<NavItemData[]>([]);
+	const [items, setItems] = useState<NavItemData[]>(props._value);
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), items);

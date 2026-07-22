@@ -15,27 +15,6 @@ const createDefaultItem = (label: string): TreeItemData => ({
 	_href: `#/${label.toLowerCase().replace(/\s+/g, '-')}`,
 });
 
-const INITIAL_ITEMS: TreeItemData[] = [
-	{
-		_label: 'Home',
-		_href: '#/',
-		_active: true,
-	},
-	{
-		_label: 'Page 1',
-		_href: '#/page-1',
-		_open: true,
-		_children: [
-			{ _label: 'Page 1.1', _href: '#/page-1/1' },
-			{ _label: 'Page 1.2', _href: '#/page-1/2' },
-		],
-	},
-	{
-		_label: 'Page 2',
-		_href: '#/page-2',
-	},
-];
-
 type UpdateFn = (updater: (item: TreeItemData) => TreeItemData) => void;
 type RemoveFn = () => void;
 
@@ -76,7 +55,13 @@ const TreeItemEditor: React.FC<{
 	};
 
 	return (
-		<div style={{ marginLeft: depth > 0 ? '16px' : undefined, borderLeft: depth > 0 ? '2px solid var(--color-gray-300, #ccc)' : undefined, paddingLeft: depth > 0 ? '12px' : undefined }}>
+		<div
+			style={{
+				marginLeft: depth > 0 ? '16px' : undefined,
+				borderLeft: depth > 0 ? '2px solid var(--color-gray-300, #ccc)' : undefined,
+				paddingLeft: depth > 0 ? '12px' : undefined,
+			}}
+		>
 			<KolCard _label={label}>
 				<div className="flex flex-col gap-2">
 					<KolInputText
@@ -120,16 +105,8 @@ const TreeItemEditor: React.FC<{
 						/>
 					)}
 					<div className="flex gap-2">
-						<KolButton
-							_label="+ Child"
-							_variant="ghost"
-							_on={{ onClick: addChild }}
-						/>
-						<KolButton
-							_label="Remove"
-							_variant="danger"
-							_on={{ onClick: onRemove }}
-						/>
+						<KolButton _label="+ Child" _variant="ghost" _on={{ onClick: addChild }} />
+						<KolButton _label="Remove" _variant="danger" _on={{ onClick: onRemove }} />
 					</div>
 				</div>
 			</KolCard>
@@ -150,12 +127,13 @@ const TreeItemEditor: React.FC<{
 
 const TreeItemsProperty = (props: {
 	label: string;
+
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
 }) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [items, setItems] = useState<TreeItemData[]>(INITIAL_ITEMS);
+	const [items, setItems] = useState<TreeItemData[]>([]);
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), items);
@@ -179,11 +157,7 @@ const TreeItemsProperty = (props: {
 
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-			<KolButton
-				_label={props.label}
-				_variant="secondary"
-				_on={{ onClick: () => setIsEditing(!isEditing) }}
-			/>
+			<KolButton _label={props.label} _variant="secondary" _on={{ onClick: () => setIsEditing(!isEditing) }} />
 
 			<KolDrawer
 				_label={translate({ id: 'preview.component.tree.items.edit' })}
@@ -204,11 +178,7 @@ const TreeItemsProperty = (props: {
 						/>
 					))}
 
-					<KolButton
-						_label="+ Root Item"
-						_variant="secondary"
-						_on={{ onClick: addRootItem }}
-					/>
+					<KolButton _label="+ Root Item" _variant="secondary" _on={{ onClick: addRootItem }} />
 
 					<KolButton
 						_label={translate({ id: 'preview.component.tree.items.closeedit' })}
