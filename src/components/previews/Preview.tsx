@@ -234,7 +234,7 @@ const Preview = <TProps,>({
 		<div className={`preview ${hasProp ? 'props' : ''} gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}>
 			<div
 				className={`flex ${layout === PreviewLayout.CENTERED ? '' : 'items-center'} ${
-					layout === PreviewLayout.FULL_SIZE ? 'h-96' : ''
+					layout === PreviewLayout.FULL_SIZE ? 'h-98' : ''
 				}`}
 			>
 				<span
