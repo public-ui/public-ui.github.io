@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[8962],{28962:(s,u,_)=>{_.r(u),_.d(u,{default:()=>p});_(12888);var c=_(23806),e=_(11684);const p=()=>(0,e.jsx)(c.p,{_show:!0})}}]);
