@@ -138,6 +138,11 @@ rimraf(rimrafPatterns, { glob: true }).then(() => {
 				.replace(/class=/g, 'className=')
 				.replace(/"_target/g, '" _target')
 				.replace(/ *\\_/g, ' _')
+				//Überschriften um eine Ebene tiefer setzen,
+				//um unter die Überschriftenebene unter API (##) zu kommen.
+				//Da in Stencil die Überschriftenebenen Hardcoded sind,
+				//ist ein manueller eingriff notwendig.
+				.replace(/#{2}\s/g, '### ')
 				.replace(/\[([^\]]+)\]\(([^)]+)\/readme\.md\)/g, '[$1]($2)')
 				.replace(
 					/(### )`([^(]+)/,
