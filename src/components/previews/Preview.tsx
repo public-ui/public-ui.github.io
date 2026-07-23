@@ -136,7 +136,7 @@ const Preview = <TProps,>({
 			.filter(([, value]) => value !== undefined && value !== null && value !== '')
 			.map(([key, value]) => {
 				if (hiddenPropsInCode?.some((prop) => prop === key)) {
-					return `\n  ${key}=\{...\}`;
+					return `\n  ${key}={...}`;
 				}
 				const formattedValue = formatValue(value);
 				return formattedValue ? `\n  ${key}=${formattedValue}` : '';

@@ -89,7 +89,7 @@ const NavItemEditor: React.FC<{
 						_value={item._icons}
 						_on={{
 							onInput: (_: Event, value: unknown) => {
-								handleFieldChange('_icons', value as string);
+								handleFieldChange('_icons', value);
 							},
 						}}
 					/>

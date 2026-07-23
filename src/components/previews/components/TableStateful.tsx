@@ -1,19 +1,10 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
-import {
-	KolInputCheckbox,
-	KolInputRange,
-	KolInputText,
-	KolSelect,
-	KolTableStateful,
-	KolTextarea,
-} from '@public-ui/react-v19';
+import { KolInputCheckbox, KolInputText, KolSelect, KolTableStateful, KolTextarea } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
-import { funcToStringReplacer } from '../../../shares/utils';
 import TableSelectionProperty from '../properties/TableSelectionProperty';
-import PaginationPreview from './Pagination';
 
 export type PlantRecord = {
 	id: number;
