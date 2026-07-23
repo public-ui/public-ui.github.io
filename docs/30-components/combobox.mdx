@@ -13,7 +13,11 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 **Synonyme:** Autocomplete, Select, Dropdown
 
-**Beschreibung:** Die **Combobox** ist eine Eingabekomponente, die ein Textfeld mit einer darunter angezeigten Liste von Vorschlägen kombiniert. Nutzer können eine Auswahl tippen oder aus den Vorschlägen wählen – ideal für Szenarien, in denen sowohl freie Eingabe als auch vordefinierte Optionen sinnvoll sind.
+**Beschreibung:** Die **Combobox** kombiniert ein Texteingabefeld mit einer Vorschlagsliste. Nutzende können einen Wert entweder direkt eingeben oder aus passenden Vorschlägen auswählen.
+
+Während der Eingabe werden die verfügbaren Optionen gefiltert und als Liste angezeigt. Die Filterung erfolgt über eine Substring-Suche, sodass der Suchbegriff an beliebiger Stelle eines Eintrags vorkommen kann. Entspricht die Eingabe eindeutig genau einem vorhandenen Eintrag, schließt sich die Vorschlagsliste automatisch.
+
+Die Komponente eignet sich insbesondere für umfangreiche Auswahllisten oder Situationen, in denen Nutzende den gesuchten Eintrag nicht vollständig kennen.
 
 ## Beispiel
 
@@ -28,28 +32,36 @@ Standard-Combobox mit Vorschlagsliste:
 
 ## Barrierefreiheit
 
-Die **Combobox**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
+- Die Combobox orientiert sich am WAI-ARIA Authoring Practices Pattern **„Editable Combobox with List Autocomplete“**.
+- Das Eingabefeld verwendet die ARIA-Rolle `combobox` mit den Attributen `aria-expanded`, `aria-controls` und `aria-activedescendant`.
+- Die Vorschlagsliste wird als eigenständige Listbox (`role="listbox"`) mit Einträgen (`role="option"`) umgesetzt.
+- Die Combobox benötigt einen zugänglichen Namen. Dieser wird in der Regel über `_label` bereitgestellt. Wird `_hideLabel` verwendet, bleibt die Beschriftung für assistive Technologien weiterhin verfügbar.
+- Mit `_hint` können zusätzliche Hinweise bereitgestellt werden, die mit der Combobox verknüpft und von assistiven Technologien ausgegeben werden.
 
-- **Label erforderlich:** Jede Combobox muss über das Attribut `_label` eine sichtbare Beschriftung erhalten, damit Screenreader-Nutzer den Zweck verstehen.
-- **Tastatursteuerung:** Vollständige Unterstützung für Tastaturnavigation mit klaren Fokusindikatoren.
-- **Suggestionsliste:** Die Vorschlagsliste wird als barrierefreie Listbox implementiert und ist für assistive Technologien zugänglich.
-- **Fehlermeldungen:** Validierungsfehler können über das Attribut `_msg` mit aussagekräftigen Meldungen versehen werden.
-- **Hint-Text:** Mit `_hint` können zusätzliche Hinweise bereitgestellt werden, die von Screenreadern vorgelesen werden.
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Die Combobox orientiert sich am WAI-ARIA APG Pattern **„Editable Combobox with List Autocomplete“**, weicht jedoch beim Fokusmodell bewusst davon ab. | Die Implementierung folgt den grundlegenden Interaktions- und ARIA-Konzepten des Patterns, verwendet jedoch ein angepasstes Fokusverhalten, um die Navigation innerhalb der Vorschlagsliste zu vereinfachen. |
+| Die Vorschlagsliste wird als ARIA-basierte Listbox und nicht als natives `<datalist>` umgesetzt. | Native `<datalist>`-Elemente unterscheiden sich je nach Browser hinsichtlich Darstellung, Tastaturbedienung und Unterstützung durch assistive Technologien. Die eigene Umsetzung ermöglicht ein konsistentes Verhalten und Styling über alle unterstützten Plattformen hinweg. |
+| Der Öffnen-/Schließen-Button (Pfeil-Icon) ist nicht Teil der Tab-Reihenfolge. | Er dient ausschließlich als zusätzliche Unterstützung für Maus- und Touch-Nutzende. Die gleiche Funktion steht über die Tastatur (`Pfeil ↓`) im Eingabefeld zur Verfügung, sodass unnötige Tabstopps vermieden werden. |
+| Beim Navigieren innerhalb der Vorschlagsliste wird der Tastaturfokus auf die jeweilige Option verschoben. | Anders als im WAI-ARIA APG Pattern verbleibt der Fokus während der Listennavigation nicht im Eingabefeld. Stattdessen wechselt er auf die jeweils aktive Option. Während der Navigation kann daher kein weiterer Suchtext eingegeben werden. Dieses Verhalten ist eine bewusste Designentscheidung der KoliBri-Combobox. |
 
 ### Links und Referenzen
 
 - <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/" _target="_blank" _label="WAI-ARIA APG: Combobox Pattern"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/" _label="WAI-ARIA APG: Editable Combobox with List Autocomplete"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/combobox_role" _target="_blank" _label="MDN Web Docs – ARIA: combobox role"></kol-link>
 
 ## Verwendung
 
-Die Vorschlagsliste wird über das erforderliche Attribut **`_suggestions`** bereitgestellt. Dieses kann entweder ein JSON-Array oder ein String sein.
-
-Beispiel für ein JSON-Array:
-
-```json
-["Herr", "Frau", "Firma"]
-```
+Verwenden Sie die Combobox, wenn aus einer umfangreichen Menge vordefinierter Optionen ausgewählt werden soll.
+Nutzen Sie die Suchfunktion, um das Auffinden von Einträgen in langen Listen zu erleichtern.
+Verwenden Sie die Combobox ausschließlich für vordefinierte Auswahlmöglichkeiten.
+Verwenden Sie aussagekräftige Beschriftungen (_label).
+Setzen Sie _required, wenn eine Eingabe verpflichtend ist.
+Stellen Sie Validierungsfehler über _msg mit verständlichen und konkreten Fehlermeldungen bereit.
+Verwenden Sie _hint, wenn zusätzliche Hinweise das Ausfüllen des Feldes erleichtern.
 
 ### Tastatursteuerung
 
