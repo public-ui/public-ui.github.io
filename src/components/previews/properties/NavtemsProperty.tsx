@@ -129,10 +129,10 @@ const NavItemsProperty = (props: {
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
-	_value: NavItemData[];
+	_value?: NavItemData[];
 }) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [items, setItems] = useState<NavItemData[]>(props._value);
+	const [items, setItems] = useState<NavItemData[]>(props._value ?? []);
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), items);

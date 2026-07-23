@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import { DialogVariantProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
-import { KolButton, KolInputText, KolModal, KolSelect } from '@public-ui/react-v19';
+import { KolButton, KolInputText, KolModal } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 

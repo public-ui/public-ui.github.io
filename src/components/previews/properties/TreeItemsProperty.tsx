@@ -127,13 +127,13 @@ const TreeItemEditor: React.FC<{
 
 const TreeItemsProperty = (props: {
 	label: string;
-	_value: TreeItemData[];
+	_value?: TreeItemData[];
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
 }) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [items, setItems] = useState<TreeItemData[]>(props._value);
+	const [items, setItems] = useState<TreeItemData[]>(props._value ?? []);
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), items);
