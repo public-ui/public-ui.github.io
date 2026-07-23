@@ -17,7 +17,7 @@ export const defaultLinks: JSX.KolNav['_links'] = [
 	{
 		_href: '#/',
 		_icons: 'kolicon-kolibri',
-		_label: 'Startseite',
+		_label: '1. Menüpunkt',
 		_active: true,
 	},
 	{

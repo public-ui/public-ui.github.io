@@ -155,16 +155,15 @@ Das Popover-Inhalt wird über den Standard-Slot bereitgestellt:
 Der PopoverButton unterstützt Accessibility-Features für erweiterte Tastaturinteraktion:
 
 <PopoverButtonPreview
-	initialProps={{ _label: "Alt+O" }}
-	visibleProperties={['_accessKey', '_tabIndex']}
+	initialProps={{ _label: "Drucken", _accessKey: "p" }}
+	visibleProperties={['_accessKey', '_shortKey']}
 	codeCollapsable
 	codeCollapsed
 />
 
 **Verfügbare Attribute:**
-- `_accessKey`: Tastenkombi für schnelle Aktivierung (z.B. `"o"` für Alt+O)
-- `_tabIndex`: Tab-Reihenfolge im Formular
-- `_shortKey`: Visuelle Anzeige des Shortcuts im Button-Label
+- `_accessKey`: Definiert die Tastenkombination zum Auslösen oder Fokussieren des Buttons
+- `_shortKey`: Definiert einen visuellen Shortcut-Hinweis und liest ihn in Screenreadern vor
 
 ## API
 
