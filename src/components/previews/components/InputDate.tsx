@@ -2,7 +2,7 @@ import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
-import { KolInputDate, KolInputText, KolSelect } from '@public-ui/react-v19';
+import { KolInputDate, KolInputRange, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
 interface InputDatePreviewComponentProps {
@@ -18,7 +18,7 @@ const InputDatePreview = (props: InputDatePreviewComponentProps) => {
 			_label: translate({ id: 'preview.component.input-date.label' }),
 			_type: 'date',
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -49,6 +49,9 @@ const InputDatePreview = (props: InputDatePreviewComponentProps) => {
 				_smartButton: (
 					<SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />
 				),
+				_min: <KolInputDate _label="Min"></KolInputDate>,
+				_max: <KolInputDate _label="Max"></KolInputDate>,
+				_step: <KolInputRange _label="Step" _max={60} _min={0}></KolInputRange>,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputDate"

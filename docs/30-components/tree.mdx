@@ -109,31 +109,12 @@ Jeder Baumknoten wird durch eine `KolTreeItem`-Komponente dargestellt. Der Conta
 	codeCollapsed
 />
 
-#### Expanded und Collapsed States
-
-Mit dem Attribut `_open` auf `KolTreeItem` wird gesteuert, ob ein Element beim initialen Laden expandiert ist.
-
-<TreePreview 
-	visibleProperties={['_open']} 
-	codeCollapsable 
-	codeCollapsed
-/>
-
-#### Active-Markierung
-
-Das Attribut `_active` markiert einen Baumknoten als aktuell aktiv (z.B. die aktuelle Seite in einer Navigation).
-
-<TreePreview 
-	visibleProperties={['_active']} 
-	codeCollapsable 
-	codeCollapsed
-/>
-
 #### Verschachtelte Hierarchien
 
 Die Tree-Komponente unterstützt beliebig viele Verschachtelungsebenen durch verschachtelte `KolTreeItem`-Elemente.
+Am `KolTreeItem` wird mit dem Attribut `_open` gesteuert, ob ein Element beim initialen Laden geöffnet ist und mit dem Attribut `_active`, ob ein Element markiert ist (z.B. die aktuelle Seite in einer Navigation).
 
-<TreePreview codeCollapsable />
+<TreePreview codeCollapsable visibleProperties={['_items']} />
 
 ## API
 

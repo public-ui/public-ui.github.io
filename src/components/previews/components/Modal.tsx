@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { MultiLineTextProperty } from '../properties';
+import { DialogVariantProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolButton, KolInputText, KolModal } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -23,7 +23,7 @@ const ModalPreview = (props: ModalPreviewComponentProps) => {
 			_label: translate({ id: 'preview.component.modal.label' }),
 			_slot: `<p>${translate({ id: 'preview.component.modal.content' })}</p>`,
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -32,6 +32,7 @@ const ModalPreview = (props: ModalPreviewComponentProps) => {
 				_label: <KolInputText _label="Label" />,
 				_width: <KolInputText _label="Width" />,
 				_slot: <MultiLineTextProperty label="Content" />,
+				_variant: <DialogVariantProperty label="Variant" defaultValue="card" />,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolModal"
@@ -70,7 +71,7 @@ const ModalPreview = (props: ModalPreviewComponentProps) => {
 									_label={translate({ id: 'preview.component.modal.closeButton' })}
 									_on={{
 										onClick: () => {
-											void modalRef.current?.closeModal();
+											void modalRef.current?.close();
 										},
 									}}
 								/>

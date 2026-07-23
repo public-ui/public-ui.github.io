@@ -141,31 +141,20 @@ compareFn: (a, b) => (a as unknown as PlantRecord).name.localeCompare((b as unkn
 Die `_pagination` Eigenschaft aktiviert automatische Seitennummerierung und bietet verschiedene Konfigurationsoptionen:
 
 <TableStatefulPreview
-	visibleProperties={['_pagination']}
+	visibleProperties={['_paginationPosition']}
 	initialProps={{}}
 	codeCollapsable
 	codeCollapsed
 />
 
 **Konfigurierbare Optionen:**
-- `_page`: Aktuelle Seitennummer (Standard: 1)
-- `_pageSize`: Zeilen pro Seite
-- `_pageSizeOptions`: Verfügbare Optionen für Zeilen pro Seite
-- `_max`: Maximale Anzahl angezeigte Seiten im Steuerelement
-- Weitere Optionen: siehe <kol-link _href="../pagination" _label="Pagination-Komponente"></kol-link>
+Siehe <kol-link _href="../pagination" _label="Pagination-Komponente"></kol-link>
 
 **Positionierung:** Mit `_paginationPosition` kann die Position der Pagination gesteuert werden (oben, unten, oder beides).
 
 #### Daten und Zellendarstellung
 
 Die `_data` Eigenschaft enthält die Tabellenzeilen. Zellinhalte können über Render-Funktionen individuell formatiert werden:
-
-<TableStatefulPreview
-	visibleProperties={[]}
-	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
-/>
 
 **Render-Funktionen – Implementierungsvarianten:**
 
@@ -215,7 +204,11 @@ Das Attribut `_dataFoot` ermöglicht Zusammenfassungszeilen oder zusätzliche In
 
 <TableStatefulPreview
 	visibleProperties={[]}
-	initialProps={{}}
+	initialProps={{
+		_dataFoot: [{
+			family: 'all beautiful',
+		}]
+	}}
 	codeCollapsable
 	codeCollapsed
 />

@@ -4,6 +4,7 @@ import { BooleanProperty, MsgProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import IconsCheckboxProperty from '../properties/IconsCheckboxProperty';
 
 interface InputCheckboxPreviewComponentProps {
 	initialProps?: JSX.KolInputCheckbox;
@@ -17,7 +18,7 @@ const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
 		() => ({
 			_label: translate({ id: 'preview.component.input-checkbox.label' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -54,6 +55,7 @@ const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
 						]}
 					/>
 				),
+				_icons: <IconsCheckboxProperty label="Icons"></IconsCheckboxProperty>,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputCheckbox"
