@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[8759],{28759:(e,u,_)=>{_.r(u),_.d(u,{default:()=>s});_(12888);var c=_(23806),l=_(11684);const s=()=>(0,l.jsx)(c.eH,{_required:!0,_touched:!0,_value:123,_hideLabel:!0,_label:"Number input"})}}]);
