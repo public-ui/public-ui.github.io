@@ -13,7 +13,11 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 **Synonyme:** Autocomplete, Select, Dropdown
 
-**Beschreibung:** Die **Combobox** ist eine Eingabekomponente, die ein Textfeld mit einer darunter angezeigten Liste von Vorschlägen kombiniert. Nutzer können eine Auswahl tippen oder aus den Vorschlägen wählen – ideal für Szenarien, in denen sowohl freie Eingabe als auch vordefinierte Optionen sinnvoll sind.
+**Beschreibung:** Die **Combobox** kombiniert ein Texteingabefeld mit einer Vorschlagsliste. Nutzende können einen Wert entweder direkt eingeben oder aus passenden Vorschlägen auswählen.
+
+Während der Eingabe werden die verfügbaren Optionen gefiltert und als Liste angezeigt. Die Filterung erfolgt über eine Substring-Suche, sodass der Suchbegriff an beliebiger Stelle eines Eintrags vorkommen kann. Entspricht die Eingabe eindeutig genau einem vorhandenen Eintrag, schließt sich die Vorschlagsliste automatisch.
+
+Die Komponente eignet sich insbesondere für umfangreiche Auswahllisten oder Situationen, in denen Nutzende den gesuchten Eintrag nicht vollständig kennen.
 
 ## Beispiel
 
@@ -28,60 +32,128 @@ Standard-Combobox mit Vorschlagsliste:
 
 ## Barrierefreiheit
 
-Die **Combobox**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
+- Die Combobox orientiert sich am WAI-ARIA Authoring Practices Pattern **„Editable Combobox with List Autocomplete“**.
+- Das Eingabefeld verwendet die ARIA-Rolle `combobox` mit den Attributen `aria-expanded`, `aria-controls` und `aria-activedescendant`.
+- Die Vorschlagsliste wird als eigenständige Listbox (`role="listbox"`) mit Einträgen (`role="option"`) umgesetzt.
+- Die Combobox benötigt einen zugänglichen Namen. Dieser wird in der Regel über `_label` bereitgestellt. Wird `_hideLabel` verwendet, bleibt die Beschriftung für assistive Technologien weiterhin verfügbar.
+- Mit `_hint` können zusätzliche Hinweise bereitgestellt werden, die mit der Combobox verknüpft und von assistiven Technologien ausgegeben werden.
 
-- **Label erforderlich:** Jede Combobox muss über das Attribut `_label` eine sichtbare Beschriftung erhalten, damit Screenreader-Nutzer den Zweck verstehen.
-- **Tastatursteuerung:** Vollständige Unterstützung für Tastaturnavigation mit klaren Fokusindikatoren.
-- **Suggestionsliste:** Die Vorschlagsliste wird als barrierefreie Listbox implementiert und ist für assistive Technologien zugänglich.
-- **Fehlermeldungen:** Validierungsfehler können über das Attribut `_msg` mit aussagekräftigen Meldungen versehen werden.
-- **Hint-Text:** Mit `_hint` können zusätzliche Hinweise bereitgestellt werden, die von Screenreadern vorgelesen werden.
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Die Combobox orientiert sich am WAI-ARIA APG Pattern **„Editable Combobox with List Autocomplete“**, weicht jedoch beim Fokusmodell bewusst davon ab. | Die Implementierung folgt den grundlegenden Interaktions- und ARIA-Konzepten des Patterns, verwendet jedoch ein angepasstes Fokusverhalten, um die Navigation innerhalb der Vorschlagsliste zu vereinfachen. |
+| Die Vorschlagsliste wird als ARIA-basierte Listbox und nicht als natives `<datalist>` umgesetzt. | Native `<datalist>`-Elemente unterscheiden sich je nach Browser hinsichtlich Darstellung, Tastaturbedienung und Unterstützung durch assistive Technologien. Die eigene Umsetzung ermöglicht ein konsistentes Verhalten und Styling über alle unterstützten Plattformen hinweg. |
+| Der Öffnen-/Schließen-Button (Pfeil-Icon) ist nicht Teil der Tab-Reihenfolge. | Er dient ausschließlich als zusätzliche Unterstützung für Maus- und Touch-Nutzende. Die gleiche Funktion steht über die Tastatur (`Pfeil ↓`) im Eingabefeld zur Verfügung, sodass unnötige Tabstopps vermieden werden. |
+| Beim Navigieren innerhalb der Vorschlagsliste wird der Tastaturfokus auf die jeweilige Option verschoben. | Anders als im WAI-ARIA APG Pattern verbleibt der Fokus während der Listennavigation nicht im Eingabefeld. Stattdessen wechselt er auf die jeweils aktive Option. Während der Navigation kann daher kein weiterer Suchtext eingegeben werden. Dieses Verhalten ist eine bewusste Designentscheidung der KoliBri-Combobox. |
 
 ### Links und Referenzen
 
 - <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/" _target="_blank" _label="WAI-ARIA APG: Combobox Pattern"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/" _label="WAI-ARIA APG: Editable Combobox with List Autocomplete"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/combobox_role" _target="_blank" _label="MDN Web Docs – ARIA: combobox role"></kol-link>
 
 ## Verwendung
 
-Die Vorschlagsliste wird über das erforderliche Attribut **`_suggestions`** bereitgestellt. Dieses kann entweder ein JSON-Array oder ein String sein.
+- Verwenden Sie die Combobox, wenn aus einer umfangreichen Menge vordefinierter Optionen ausgewählt werden soll.
+- Nutzen Sie die Suchfunktion, um das Auffinden von Einträgen in langen Listen zu erleichtern.
+- Verwenden Sie die Combobox ausschließlich für vordefinierte Auswahlmöglichkeiten.
+- Verwenden Sie aussagekräftige Beschriftungen (`_label`).
+- Setzen Sie `_required`, wenn eine Eingabe verpflichtend ist.
+- Stellen Sie Validierungsfehler über `_msg` mit verständlichen und konkreten Fehlermeldungen bereit.
+- Verwenden Sie `_hint`, wenn zusätzliche Hinweise das Ausfüllen des Feldes erleichtern.
 
-Beispiel für ein JSON-Array:
+### Implizites Verhalten
 
-```json
-["Herr", "Frau", "Firma"]
-```
+Die Combobox besitzt einige fest implementierte Verhaltensweisen, die bei der Verwendung berücksichtigt werden sollten.
+
+**Substring-Filterung**
+- Die Vorschläge werden über eine **Substring-Suche** gefiltert.
+- Der Suchbegriff muss daher nicht am Anfang eines Eintrags stehen.
+
+	**Eingabe** `üssel` -> **Treffer** Düsseldorf
+
+	**Eingabe** `berg` -> **Treffer** Nürnberg
+
+**Automatsiches Schließen der Vorschlagsliste**
+- Entspricht die Eingabe eindeutig genau einem vorhandenen Eintrag, schließt sich die Vorschlagsliste automatisch.
+- Dadurch wird signalisiert, dass bereits eine eindeutige Auswahl getroffen wurde.
+
+### Combobox vs. Select
+
+| Combobox                                           | Select                                            |
+| -------------------------------------------------- | ------------------------------------------------- |
+| Große oder umfangreiche Auswahllisten              | Kleine bis mittlere Auswahllisten                 |
+| Suchfunktion erforderlich                          | Keine Suchfunktion erforderlich                   |
+| Schnelles Auffinden von Einträgen durch Filtern    | Direkte Auswahl aus allen Optionen                |
+| Geeignet bei vielen thematisch ähnlichen Einträgen | Geeignet bei wenigen, gut überschaubaren Optionen |
 
 ### Tastatursteuerung
 
-| Taste                          | Funktion                                                                                                                                                                                                 |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                          | Fokussiert das Eingabefeld.                                                                                                                                                                              |
-| `Enter`                        | Wenn die Vorschlagsliste geöffnet ist und eine Option fokussiert ist, wählt diese die fokussierte Option aus und schließt die Liste. Ohne fokussierte Option öffnet es die Liste.                        |
-| `Pfeil nach unten (ArrowDown)` | Öffnet die Vorschlagsliste und bewegt den Fokus um eine Option nach unten.                                                                                                                                |
-| `Pfeil nach oben (ArrowUp)`    | Öffnet die Vorschlagsliste und bewegt den Fokus um eine Option nach oben.                                                                                                                                |
-| `Escape (Esc)`                 | Schließt die Vorschlagsliste ohne eine Auswahl zu treffen.                                                                                                                                               |
-| `Home`                         | Bewegt den Fokus auf die erste Option in der Liste.                                                                                                                                                     |
-| `End`                          | Bewegt den Fokus auf die letzte Option in der Liste.                                                                                                                                                    |
-| `PageUp`                       | Springt zehn Optionen nach oben in der Liste.                                                                                                                                                           |
-| `PageDown`                     | Springt zehn Optionen nach unten in der Liste.                                                                                                                                                          |
-| `Druckbare Zeichen`            | Fokussiert die erste Option, die mit dem gedrückten Zeichen beginnt (falls vorhanden).                                                                                                                   |
+| Taste                       | Funktion      |
+| --------------------------- | --------------------------------------------------------------------------- |
+| `Tab`                       | Fokus auf die Combobox bzw. das nächste fokussierbare Element setzen.      |
+| `Shift+Tab`                 | Fokus auf das vorherige fokussierbare Element setzen. |
+| `Pfeil-Taste unten`         | Vorschlagsliste öffnen. Ist die Liste bereits geöffnet, Fokus auf den ersten bzw. nächsten Vorschlag setzen. |
+| `Pfeil-Taste oben`          | Fokus auf den vorherigen Vorschlag setzen. |
+| `Pos1`/`Ende`               | Fokus auf den ersten/letzten Vorschlag setzen. |
+| `Bild-Tasten (hoch/runter)` | Zehn Optionen nach oben/unten springen. |
+| `Enter`                     | Vorschlagsliste öffnen. Ist die Liste bereits geöffnet, den fokussierten Vorschlag übernehmen. Die Vorschlagsliste bleibt geöffnet und der Fokus verbleibt auf der ausgewählten Option. |
+| `Leertaste`                 | Vorschlagsliste öffnen. Ist die Liste bereits geöffnet, den fokussierten Vorschlag übernehmen. Die Vorschlagsliste wird geschlossen und der Fokus auf das Eingabefeld gesetzt. |
+| `Esc`                       | Vorschlagsliste schließen ohne eine Auswahl zu treffen und Fokus auf das Eingabefeld setzen. |
+| `Zeicheneingabe` (Fokus im Eingabefeld) | Vorschlagsliste entsprechend der Eingabe filtern. |
+| `Zeicheneingabe` (Fokus auf einer Option) | Fokus auf den ersten Eintrag setzen, dessen Beschriftung mit dem eingegebenen Zeichen beginnt. Das Zeichen wird nicht in das Eingabefeld übernommen. |
+
+**Fokusmodell**
+
+Die KoliBri-Combobox orientiert sich am WAI-ARIA Authoring Practices Pattern **„Editable Combobox with List Autocomplete“**, verwendet jedoch ein bewusst abweichendes Fokusmodell.
+
+Während der Navigation innerhalb der Vorschlagsliste (Pfeil-Tasten, Pos1/Ende, Bild-Tasten) wird der Tastaturfokus auf die jeweils aktive Option verschoben. Im WAI-ARIA APG Pattern verbleibt der Fokus dagegen während der gesamten Interaktion im Eingabefeld.
+
+Dieses Fokusmodell hat folgende Auswirkungen:
+
+- Während der Navigation innerhalb der Vorschlagsliste kann kein weiterer Suchtext eingegeben werden.
+- Zeicheneingaben bei Fokus auf einer Option setzen den Fokus auf den ersten Eintrag, dessen Beschriftung mit dem eingegebenen Zeichen beginnt. Das Zeichen wird nicht in das Eingabefeld übernommen.
+- Nach dem Schließen der Vorschlagsliste wird der Fokus auf das Eingabefeld gesetzt.
+- Der Öffnen-/Schließen-Button (Pfeil-Icon) ist nicht Teil der Tab-Reihenfolge. Das Öffnen der Vorschlagsliste erfolgt über die `Pfeil-Taste unten`.
 
 ### Best Practices / Empfehlungen
 
-- **Klare Vorschläge:** Stellen Sie nur relevante und korrekt formatierte Vorschläge bereit.
-- **Label aussagekräftig:** Verwenden Sie prägnante Labels, die deutlich machen, welche Art von Eingabe erwartet wird.
-- **Sinnvolle Vorgaben:** Bei bekannten häufigen Eingaben diese als erste Vorschläge anführen.
-- **Hinweistexte:** Verwenden Sie `_hint`, um Formatvorgaben oder Besonderheiten zu erklären.
-- **Validierung:** Nutzen Sie `_msg`, um Validierungsfehler transparent zu machen.
-- **Freie Eingabe vs. Auswahl:** Die Combobox erlaubt beide – stellen Sie sicher, dass diese Freiheit beabsichtigt ist. Wenn nur Auswahl gewünscht ist, verwenden Sie besser ein Select-Element.
+- Verwenden Sie die Combobox bei umfangreichen Auswahllisten, in denen Nutzende gezielt nach einem Eintrag suchen sollen.
+- Stellen Sie nur relevante, eindeutig bezeichnete und unterscheidbare Optionen bereit.
+- Führen Sie häufig verwendete Optionen möglichst am Anfang der Vorschlagsliste auf.
+- Nutzen Sie `_hint`, um Formatvorgaben oder Besonderheiten der Eingabe zu erläutern.
+- Stellen Sie Validierungsfehler über `_msg` mit verständlichen und konkreten Fehlermeldungen bereit.
+- Verwenden Sie ein Select, wenn die Anzahl der Optionen überschaubar ist und keine Suchfunktion benötigt wird.
 
 ### Anwendungsfälle
 
-- **Länderauswahl:** Vorschläge aller Länder, aber freie Eingabe möglich.
-- **Berufe / Positionen:** Ein Combobox mit häufigen Berufsbezeichnungen, aber Eingabe von Spezialrollen auch möglich.
-- **Anrede:** Begrenzte Liste (Herr, Frau, etc.), aber auch Eingabe von Alternativen möglich.
-- **Produktsuche:** Häufige Produkte als Vorschlag, aber freie Suche möglich.
-- **Tags / Labels:** Vordefinierte Tags mit der Möglichkeit, neue hinzuzufügen.
+- Personensuche
+- Kunden- oder Lieferantenauswahl
+- Produktauswahl in umfangreichen Sortimenten
+- Orts- oder Postleitzahlensuche
+- Organisations- oder Behördenauswahl
+- Auswahl aus umfangreichen Datensätzen
+
+## FAQ
+
+**Wann sollte eine Combobox statt eines Select verwendet werden?**
+Verwenden Sie eine Combobox bei umfangreichen Auswahllisten, in denen Nutzende einen Eintrag durch Eingabe schneller finden sollen. Ist die Anzahl der Optionen überschaubar und keine Suchfunktion erforderlich, eignet sich ein Select in der Regel besser.
+
+**Warum wird kein natives `<datalist>` verwendet?**
+Die KoliBri-Combobox verwendet eine eigene ARIA-basierte Listbox, um ein konsistentes Verhalten hinsichtlich Tastatursteuerung, Styling und Unterstützung durch assistive Technologien über alle unterstützten Browser hinweg sicherzustellen.
+
+**Warum weicht die Tastatursteuerung vom WAI-ARIA APG Pattern ab?**
+Die KoliBri-Combobox orientiert sich am WAI-ARIA Authoring Practices Pattern „Editable Combobox with List Autocomplete“, verwendet jedoch ein angepasstes Fokusmodell. Während der Navigation innerhalb der Vorschlagsliste wird der Tastaturfokus auf die aktive Option verschoben. Die daraus resultierenden Unterschiede zur Referenzimplementierung sind im Abschnitt Tastatursteuerung beschrieben.
+
+**Warum ist der Öffnen-/Schließen-Button nicht per Tab erreichbar?**
+Der Öffnen-/Schließen-Button dient ausschließlich als zusätzliche Unterstützung für Maus- und Touch-Nutzende. Die Vorschlagsliste kann vollständig über die Tastatur geöffnet und bedient werden, sodass kein zusätzlicher Tabstopp erforderlich ist.
+
+**Warum kann ich während der Navigation keinen weiteren Suchtext eingeben?**
+Während der Navigation innerhalb der Vorschlagsliste befindet sich der Tastaturfokus auf der aktiven Option und nicht im Eingabefeld. Zeicheneingaben dienen in diesem Zustand der Navigation innerhalb der Vorschlagsliste und werden nicht in das Eingabefeld übernommen.
+
+**Warum schließt sich die Vorschlagsliste bei einem eindeutigen Treffer automatisch?**
+Die Vorschlagsliste schließt sich automatisch, sobald die Eingabe eindeutig einem vorhandenen Eintrag entspricht.
 
 ## Konstruktion / Technik
 
