@@ -13,9 +13,11 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Auswahlfeld, Häkchen-Feld, Ankreuzfeld, Toggle
+**Synonyme:** Auswahlfeld, Häkchen-Feld, Ankreuzfeld
 
-**Beschreibung:** Die **InputCheckbox**-Komponente ist ein Eingabefeld, das Nutzer:innen ermöglicht, Optionen an- oder abzukreuzen. Sie wird als einzelnes Feld oder in Gruppen verwendet und ermöglicht die Auswahl einer oder mehrerer Optionen aus einer vordefinierten Menge.
+**Beschreibung:** Die **InputCheckbox**-Komponente ermöglicht Nutzenden, eine oder mehrere Optionen unabhängig voneinander auszuwählen oder abzuwählen. Sie kann einzeln oder als Teil einer Gruppe verwendet werden.
+
+Die Varianten `_variant="default"`, `_variant="switch"` und `_variant="button"` verändern ausschließlich die visuelle Darstellung der Komponente. Verhalten, Semantik und Tastaturbedienung bleiben unverändert.
 
 ## Beispiel
 
@@ -30,21 +32,34 @@ Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet
 
 ## Barrierefreiheit
 
-- **Label-Pflicht**: Jede Checkbox muss über das Attribut `_label` eine eindeutige Beschriftung erhalten. Diese wird von Screenreadern vorgelesen und ermöglicht eine klare Identifikation des Eingabefelds.
-- **Fokusmanagement**: Die Komponente ist vollständig über die Tastatur bedienbar mit klaren Fokusindikatoren.
-- **Leer-Taste**: Der Zustand **Indeterminate** kann über die Tastatur nicht direkt hergestellt werden – diese Funktion wird typischerweise programmatisch verwendet.
-- **Hinweistexte**: Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die für alle Nutzer zugänglich sind und von Screenreadern vorgelesen werden.
-- **Fehlermeldungen**: Fehleingaben können über das Attribut `_msg` mit aussagekräftigen Fehlermeldungen versehen werden.
-- **Alternativen bei vielen Optionen**: Bei längeren Listen von Checkbox-Optionen sollte alternativ eine <kol-link _href="../components/select" _label="Select-Box mit `_multiple`"></kol-link> in Betracht gezogen werden, um die Seite übersichtlich zu halten.
+- Verwenden Sie eine aussagekräftige Beschriftung (`_label`), damit Nutzende den Zweck der Checkbox eindeutig erkennen können.
+- Wird `_hideLabel` verwendet, bleibt die Beschriftung für assistive Technologien verfügbar. Stellen Sie sicher, dass die ausgeblendete Beschriftung dennoch aussagekräftig ist.
+- Nutzen Sie `_hint`, um zusätzliche Informationen bereitzustellen, wenn diese für das Verständnis der Checkbox erforderlich sind.
+- Stellen Sie Validierungsfehler über `_msg` verständlich und eindeutig dar.
+- Die visuellen Varianten (`default`, `switch`, `button`) beeinflussen ausschließlich das Erscheinungsbild. Für assistive Technologien bleibt die Komponente unabhängig von der Darstellung eine native Checkbox.
+
+### Konkrete Designentscheidungen
+
+| Entscheidung                                           | Begründung |
+| ------------------------------------------------------ | ---------- |
+| Native Checkbox-Semantik unabhängig von `_variant`     | Alle Varianten verwenden technisch eine native Checkbox. Dadurch bleiben Verhalten, Tastatursteuerung und Unterstützung durch assistive Technologien konsistent. |
+| Bewusster Verzicht auf ARIA-Rollen wie `role="switch"` | Die native Checkbox-Semantik wird von Screenreadern browser- und plattformübergreifend zuverlässiger unterstützt als nachgebildete Widget-Rollen. Zusätzliche ARIA-Rollen würden keinen Mehrwert bieten und könnten zu inkonsistentem Verhalten führen. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#checkbox" _target="_blank" _label="WAI-ARIA Checkbox Pattern"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/" _target="_blank" _label="WAI-ARIA Authoring Practices Guide - Checkbox"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/" _target="_blank" _label="WAI-ARIA APG - Checkbox Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/examples/checkbox-mixed/" _target="_blank" _label="WAI-ARIA APG - Checkbox (Mixed State) Example"></kol-link>
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
 
 ## Verwendung
+
+- Verwenden Sie Checkboxen, wenn mehrere Optionen unabhängig voneinander ausgewählt werden können.
+- Verwenden Sie keine Checkbox, wenn sich Nutzende zwischen genau einer Option entscheiden müssen. Nutzen Sie hierfür eine Radio-Button-Gruppe.
+- Kennzeichnen Sie vorausgewählte Optionen nur, wenn dies fachlich sinnvoll ist.
+- Deaktivieren Sie Checkboxen nur, wenn eine Auswahl tatsächlich nicht möglich ist, und erläutern Sie den Grund möglichst im sichtbaren Kontext.
+- Nutzen Sie den Indeterminate-Zustand ausschließlich zur Darstellung eines gemischten Auswahlzustands, beispielsweise bei verschachtelten Auswahllisten oder einer „Alle auswählen“-Funktion.
+- Ergänzen Sie bei Bedarf Hinweise oder Validierungsnachrichten, um die Nutzung der Checkbox verständlich zu unterstützen.
+- Wählen Sie die visuelle Variante ausschließlich nach gestalterischen Anforderungen aus. Das Verhalten der Komponente bleibt in allen Varianten identisch.
 
 ### Tastatursteuerung
 
