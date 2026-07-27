@@ -17,7 +17,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 **Beschreibung:** Die **InputCheckbox**-Komponente ermöglicht Nutzenden, eine oder mehrere Optionen unabhängig voneinander auszuwählen oder abzuwählen. Sie kann einzeln oder als Teil einer Gruppe verwendet werden.
 
-Die Varianten `_variant="default"`, `_variant="switch"` und `_variant="button"` verändern ausschließlich die visuelle Darstellung der Komponente. Verhalten, Semantik und Tastaturbedienung bleiben unverändert.
+Die Varianten `_variant="default"`, `_variant="switch"` und `_variant="button"` verändern ausschließlich die visuelle Darstellung der Komponente. Technisch bleibt die Komponente unabhängig von der gewählten Variante eine native Checkbox. Verhalten, Semantik und Tastaturbedienung bleiben unverändert.
 
 ## Beispiel
 
@@ -57,32 +57,43 @@ Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet
 - Verwenden Sie keine Checkbox, wenn sich Nutzende zwischen genau einer Option entscheiden müssen. Nutzen Sie hierfür eine Radio-Button-Gruppe.
 - Kennzeichnen Sie vorausgewählte Optionen nur, wenn dies fachlich sinnvoll ist.
 - Deaktivieren Sie Checkboxen nur, wenn eine Auswahl tatsächlich nicht möglich ist, und erläutern Sie den Grund möglichst im sichtbaren Kontext.
+- Verwenden Sie den Indeterminate-Zustand, um eine teilweise Auswahl zu kennzeichnen, beispielsweise wenn bei einer „Alle auswählen“-Funktion nur ein Teil der untergeordneten Optionen ausgewählt ist.
 - Nutzen Sie den Indeterminate-Zustand ausschließlich zur Darstellung eines gemischten Auswahlzustands, beispielsweise bei verschachtelten Auswahllisten oder einer „Alle auswählen“-Funktion.
 - Ergänzen Sie bei Bedarf Hinweise oder Validierungsnachrichten, um die Nutzung der Checkbox verständlich zu unterstützen.
 - Wählen Sie die visuelle Variante ausschließlich nach gestalterischen Anforderungen aus. Das Verhalten der Komponente bleibt in allen Varianten identisch.
 
 ### Tastatursteuerung
 
-| Taste  | Funktion                                                                                           |
-| ------ | -------------------------------------------------------------------------------------------------- |
-| `Tab`  | Fokussiert die Checkbox bzw. ermöglicht den Wechsel zwischen Checkboxen einer Liste.               |
-| `Leer` | Aktiviert bzw. deaktiviert die Checkbox. Der Zustand **Indeterminate** ist über die Tastatur nicht möglich. |
+| Taste       | Funktion                                                              |
+| ----------- | --------------------------------------------------------------------- |
+| `Tab`       | Fokus auf die Checkbox bzw. das nächste fokussierbare Element setzen. |
+| `Shift+Tab` | Fokus auf das vorherige fokussierbare Element setzen.                 |
+| `Leertaste` | Auswahlzustand der fokussierten Checkbox ändern.                      |
 
 ### Best Practices / Empfehlungen
 
-- **Einzelne Checkboxen**: Verwenden Sie eine einzelne Checkbox, wenn Sie von Nutzer:innen eine einfache Bestätigung wünschen, z. B. Akzeptieren von Bedingungen oder Einwilligungen.
-- **Checkbox-Gruppen**: Verwenden Sie mehrere Checkboxen, um Nutzer:innen die Möglichkeit zu geben, eine oder mehrere Werte aus einer Menge auszuwählen.
-- **Übersichtlichkeit**: Vermeiden Sie zu viele Checkboxen auf einer Seite, da dies die Inhalte schnell unübersichtlich macht. Erwägen Sie in solchen Fällen eine <kol-link _href="../components/select" _label="Select-Box"></kol-link>.
-- **Sinnvolle Beschriftungen**: Verwenden Sie klare und präzise Labels, die den Zweck der Checkbox deutlich machen.
-- **Pflichtfelder markieren**: Kennzeichnen Sie erforderliche Checkboxen mit `_required`.
+- Gruppieren Sie zusammengehörige Checkboxen logisch und versehen Sie Gruppen bei Bedarf mit einer gemeinsamen Beschriftung.
+- Verstecken Sie Beschriftungen nur, wenn dies aus gestalterischen Gründen erforderlich ist. Auch bei ausgeblendeten Labels sollte die Funktion der Checkbox eindeutig erkennbar bleiben.
+- Verwenden Sie den Indeterminate-Zustand ausschließlich zur Darstellung einer teilweisen Auswahl.
+- Prüfen Sie bei umfangreichen Auswahllisten, ob eine andere Eingabekomponente, beispielsweise **Select** oder **Combobox**, besser geeignet ist.
+- Ergänzen Sie keine zusätzlichen ARIA-Rollen oder ARIA-Attribute, um das Verhalten nativer Checkboxen zu verändern.
 
 ### Anwendungsfälle
 
 - Datenschutzerklärung und Nutzungsbedingungen akzeptieren
 - Einwilligungen und Opt-ins erfassen
-- Mehrzellige Auswahl aus einer endlichen Liste von Optionen
-- Zugriff auf Features oder Dienste gewähren/verweigern
-- Filterung oder Auswahl von Eigenschaften in Formularen oder Dashboards
+- Auswahl mehrerer Interessen oder Kategorien
+- Mehrfachauswahl aus einer Liste von Optionen
+- Aktivieren oder Deaktivieren einzelner Einstellungen oder Funktionen
+- Auswahl mehrerer Filteroptionen
+
+## FAQ
+
+**Ändert `_variant="switch"` die Ansage für Screenreader?**
+Nein. Alle drei Varianten (`default`, `switch` und `button`) bleiben technisch eine Checkbox. Screenreader geben unabhängig von der gewählten Variante eine Checkbox aus und keinen Schalter.
+
+**Kann ich den Indeterminate-Zustand per Tastatur oder Klick setzen?**
+Nein. Der Indeterminate-Zustand kann ausschließlich programmatisch über die API gesetzt werden. Nutzende können diesen Zustand weder per Tastatur noch durch einen Mausklick aktivieren.
 
 ## Konstruktion / Technik
 
