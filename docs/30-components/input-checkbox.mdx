@@ -54,11 +54,10 @@ Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet
 ## Verwendung
 
 - Verwenden Sie Checkboxen, wenn mehrere Optionen unabhängig voneinander ausgewählt werden können.
-- Verwenden Sie keine Checkbox, wenn sich Nutzende zwischen genau einer Option entscheiden müssen. Nutzen Sie hierfür eine Radio-Button-Gruppe.
+- Verwenden Sie keine Checkbox, wenn sich Nutzende zwischen genau einer Option entscheiden müssen. Nutzen Sie hierfür eine **Radio-Button-Gruppe**.
 - Kennzeichnen Sie vorausgewählte Optionen nur, wenn dies fachlich sinnvoll ist.
 - Deaktivieren Sie Checkboxen nur, wenn eine Auswahl tatsächlich nicht möglich ist, und erläutern Sie den Grund möglichst im sichtbaren Kontext.
-- Verwenden Sie den Indeterminate-Zustand, um eine teilweise Auswahl zu kennzeichnen, beispielsweise wenn bei einer „Alle auswählen“-Funktion nur ein Teil der untergeordneten Optionen ausgewählt ist.
-- Nutzen Sie den Indeterminate-Zustand ausschließlich zur Darstellung eines gemischten Auswahlzustands, beispielsweise bei verschachtelten Auswahllisten oder einer „Alle auswählen“-Funktion.
+- Verwenden Sie den **Indeterminate-Zustand**, um eine teilweise Auswahl zu kennzeichnen, beispielsweise wenn bei einer „Alle auswählen“-Funktion nur ein Teil der untergeordneten Optionen ausgewählt ist.
 - Ergänzen Sie bei Bedarf Hinweise oder Validierungsnachrichten, um die Nutzung der Checkbox verständlich zu unterstützen.
 - Wählen Sie die visuelle Variante ausschließlich nach gestalterischen Anforderungen aus. Das Verhalten der Komponente bleibt in allen Varianten identisch.
 
@@ -73,26 +72,25 @@ Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet
 ### Best Practices / Empfehlungen
 
 - Gruppieren Sie zusammengehörige Checkboxen logisch und versehen Sie Gruppen bei Bedarf mit einer gemeinsamen Beschriftung.
-- Verstecken Sie Beschriftungen nur, wenn dies aus gestalterischen Gründen erforderlich ist. Auch bei ausgeblendeten Labels sollte die Funktion der Checkbox eindeutig erkennbar bleiben.
-- Verwenden Sie den Indeterminate-Zustand ausschließlich zur Darstellung einer teilweisen Auswahl.
-- Prüfen Sie bei umfangreichen Auswahllisten, ob eine andere Eingabekomponente, beispielsweise **Select** oder **Combobox**, besser geeignet ist.
+- Prüfen Sie bei umfangreichen Auswahllisten, ob eine **Combobox** mit Mehrfachauswahl besser geeignet ist.
 - Ergänzen Sie keine zusätzlichen ARIA-Rollen oder ARIA-Attribute, um das Verhalten nativer Checkboxen zu verändern.
 
 ### Anwendungsfälle
 
-- Datenschutzerklärung und Nutzungsbedingungen akzeptieren
-- Einwilligungen und Opt-ins erfassen
-- Auswahl mehrerer Interessen oder Kategorien
-- Mehrfachauswahl aus einer Liste von Optionen
-- Aktivieren oder Deaktivieren einzelner Einstellungen oder Funktionen
-- Auswahl mehrerer Filteroptionen
+- Zustimmung zu Datenschutzbestimmungen, Nutzungsbedingungen oder Einwilligungen
+- Auswahl mehrerer unabhängiger Optionen, beispielsweise Interessen, Kategorien oder Filter
+- Aktivieren oder Deaktivieren einzelner Einstellungen, die unabhängig voneinander gewählt werden können
+- „Alle auswählen“-Funktion mit Indeterminate-Zustand, wenn eine Checkbox den Auswahlstatus einer Gruppe von Unter-Checkboxen repräsentiert
+- Formulare, in denen der Auswahlzustand als Formularwert gespeichert und gemeinsam mit den übrigen Eingaben übermittelt werden soll
 
 ## FAQ
 
 **Ändert `_variant="switch"` die Ansage für Screenreader?**
+
 Nein. Alle drei Varianten (`default`, `switch` und `button`) bleiben technisch eine Checkbox. Screenreader geben unabhängig von der gewählten Variante eine Checkbox aus und keinen Schalter.
 
 **Kann ich den Indeterminate-Zustand per Tastatur oder Klick setzen?**
+
 Nein. Der Indeterminate-Zustand kann ausschließlich programmatisch über die API gesetzt werden. Nutzende können diesen Zustand weder per Tastatur noch durch einen Mausklick aktivieren.
 
 ## Konstruktion / Technik
