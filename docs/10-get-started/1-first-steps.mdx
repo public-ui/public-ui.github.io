@@ -152,13 +152,15 @@ export const AppComponent = () => {
 
 #### 2. Plugin
 
+In diesem Schritt registrieren Sie die KoliBri-Komponenten und das Theme bei der Vue-App. Legen Sie dazu eine Datei `kolibri.plugin.ts` an, die ein Vue-Plugin exportiert. Das Plugin ruft `register()` auf, um das Theme zu setzen und die Web Components asynchron (lazy) nachzuladen, sobald sie verwendet werden.
+
 kolibri.plugin.ts
 
 ```js
 import type { Plugin } from 'vue';
 import { defineCustomElements } from '@public-ui/components/loader';
 import { register } from '@public-ui/components';
-import { DEFAULT } from '@public-ui/theme-default';
+import { DEFAULT } from '@public-ui/themes';
 export const ComponentLibrary: Plugin = {
 	install() {
 		register(DEFAULT, defineCustomElements)
@@ -174,7 +176,7 @@ main.ts:
 import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/main.css'
-+ import { ComponentLibrary } from './vue.plugin'
++ import { ComponentLibrary } from './kolibri.plugin'
 
 const app = createApp(App)
 
@@ -237,12 +239,19 @@ export default defineConfig({
 
 #### 5. Beispiel
 
-```html
-<KolInputText :_value="text" :_on="{ onChange: (e: unknown, v: string) => (text = v) }"></KolInputText>
-<KolButton _label="Text löschen" :_on="{ onClick: () => (text = '') }"></KolButton>
-```
+Um eine KoliBri-Komponente zu verwenden, importieren Sie diese aus dem Vue-Adapter und binden sie als Tag ein. Die Komponenten werden in PascalCase (`KolButton`) importiert und im Template verwendet.
 
-Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Parameter und den Wert des Feldes als Zweiten.
+App.vue
+
+```vue
+<script setup lang="ts">
+import { KolButton } from '@public-ui/vue';
+</script>
+
+<template>
+	<KolButton _label="Klick mich" />
+</template>
+```
 
 ### III React
 
