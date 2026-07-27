@@ -109,6 +109,67 @@ Das Vorgehen orientiert sich am bestehenden Theme-Aufbau und wird vollständig i
 
 <KolLink _label="Theme selbst erstellen" _href="/docs/concepts/styling/designer" />
 
+## Häufige Fragen
+
+<details>
+<summary><strong>Komponenten werden nicht angezeigt?</strong></summary>
+
+Stellen Sie sicher, dass `register()` **vor** dem Rendern aufgerufen wurde und das Promise aufgelöst ist.
+
+```tsx
+// ✅ Richtig
+register(DEFAULT, defineCustomElements).then(() => {
+	// Hier App rendern
+});
+
+// ❌ Falsch
+register(DEFAULT, defineCustomElements); // Promise nicht abgewartet
+// App wird sofort gerendert
+```
+
+</details>
+
+<details>
+<summary><strong>Welches Theme soll ich verwenden?</strong></summary>
+
+- **`DEFAULT`** – Neutrales Standard-Theme (empfohlen für den Start)
+- **`ECL_EC`** / **`ECL_EU`** – European Commission / Union Theme
+- **`KERN_V2`** – KERN Design-System Theme
+- Eine Übersicht aller Themes finden Sie oben im Abschnitt [Themes](#themes).
+- [Eigenes Theme erstellen](/docs/concepts/styling/designer)
+
+</details>
+
+<details>
+<summary><strong>TypeScript-Fehler bei Properties?</strong></summary>
+
+Prüfen Sie:
+
+1. `"moduleResolution": "Node"` in `tsconfig.json`
+2. Framework-Adapter installiert (z.B. `@public-ui/react-v19`)
+3. Komponenten aus dem Adapter importieren (nicht aus `@public-ui/components`)
+
+</details>
+
+<details>
+<summary><strong>Kann ich KoliBri ohne Build-Tool nutzen?</strong></summary>
+
+Ja! Laden Sie KoliBri per CDN:
+
+```html
+<script type="module">
+	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.js';
+	import { DEFAULT } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
+
+	register(DEFAULT, defineCustomElements);
+</script>
+```
+
+Für Produktion sollten Sie fixe Versionen statt `@latest` verwenden.
+
+</details>
+
 ## Nächste Schritte: Komponenten
 
 Sobald Ihr Projekt eingerichtet und ein Theme registriert ist, können Sie die KoliBri-Komponenten verwenden.
