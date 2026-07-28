@@ -31,8 +31,8 @@ codeCollapsed
 
 ## Barrierefreiheit
 
-- Die Select-Komponente basiert auf dem nativen HTML-Element `<select>`. Dadurch profitiert sie von der standardisierten Unterstützung durch Browser und assistive Technologien.
-- Tastaturbedienung, Fokusverwaltung und das Ansageverhalten für Screenreader werden vom nativen HTML-Element übernommen.
+- Die Select-Komponente basiert auf dem nativen HTML-Element `<select>`.
+- Der Browser weist dem nativen `<select>` automatisch die korrekten ARIA-Rollen zu und übernimmt zugleich die Tastaturbedienung, das Fokus-Handling und das Ansageverhalten für Screenreader.
 - Die KoliBri-Komponente ergänzt keine eigenen ARIA-Rollen. Zusätzliche ARIA-Rollen (z. B. `role="combobox"` oder `role="listbox"`) sind nicht erforderlich und sollten nicht ergänzt werden.
 - Die Komponente unterstützt die Beschriftung über die Property `_label`. Hinweise und Fehlermeldungen können über die Property `_msg` bereitgestellt werden.
 - Die Mehrfachauswahl basiert auf dem nativen HTML-Attribut `multiple`.
@@ -68,14 +68,16 @@ Die Select-Komponente sollte **nicht** verwendet werden, wenn:
 
 ### Tastatursteuerung
 
-| Taste                         | Funktion                                                                       |
-| ----------------------------- | ------------------------------------------------------------------------------ |
-| `Tab`                         | Fokus auf die Komponente setzen                                                |
-| `Shift`+`Tab`                 | Zum vorherigen fokussierbaren Element wechseln                                 |
+**Hinweis:** Da die Select-Komponente auf dem nativen HTML-Element `<select>` basiert, richtet sich die Tastatursteuerung nach Browser und Betriebssystem. Das konkrete Verhalten einzelner Tasten (insbesondere `Enter` und `Leertaste`) kann daher geringfügig variieren.
+
+| Taste                         | Funktion                                                              |
+| ----------------------------- | --------------------------------------------------------------------- |
+| `Tab`                         | Fokus auf die Komponente setzen                                       |
+| `Shift`+`Tab`                 | Zum vorherigen fokussierbaren Element wechseln                        |
 | `Pfeil-Tasten (oben / unten)` | Zwischen den Optionen navigieren (auch bei geschlossener Auswahlliste möglich) |
-| `Enter`                       | Auswahlliste öffnen, Auswahl einer Option (schließt die Auswahlliste)          |
-| `Leertaste`                   | Auswahlliste öffnen                                                            |
-| `Esc`                         | Auswahlliste schließen                                                         |
+| `Enter`                       | Auswahlliste öffnen, Auswahl einer Option (schließt die Auswahlliste) |
+| `Leertaste`                   | Auswahlliste öffnen                                                   |
+| `Esc`                         | Auswahlliste schließen                                                |
 
 #### Bei Mehrfachauswahl (`_multiple`)
 
@@ -106,11 +108,11 @@ Die Select-Komponente sollte **nicht** verwendet werden, wenn:
 
 ### Anwendungsfälle
 
-- Anredeauswahl in Kontaktformularen
-- Länder- oder Sprachauswahl
+- Auswahl eines Bundeslandes
+- Sprachauswahl
+- Auswahl einer Organisationseinheit oder eines Fachbereichs
 - Kategorieauswahl in Formularen
-- Filterkriterien in Suchmasken
-- Mehrfachauswahl bei Einstellungen oder Tags
+- Statusauswahl aus mehreren festgelegten Bearbeitungsständen
 
 ### FAQ
 
