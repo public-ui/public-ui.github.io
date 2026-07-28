@@ -19,7 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Die Komponente basiert auf den nativen HTML5-Eingabetypen `date`, `datetime-local`, `month`, `time` und `week` und übernimmt deren Semantik, Tastatursteuerung sowie Unterstützung durch Browser und assistive Technologien.
 
-Je nach verwendetem Typ sowie Browser, Betriebssystem und Endgerät erfolgt die Eingabe entweder direkt im Eingabefeld oder über einen nativen Auswahldialog (z. B. Kalenderdialog oder Zeitwähler). Die konkrete Darstellung wird vom Browser bzw. Betriebssystem bestimmt.
+Die Eingabe erfolgt direkt im Eingabefeld oder über einen Auswahldialog. Die konkrete Darstellung und Tastaturbedienung ist dabei abhängig vom verwendeten Browser und Betriebssystem.
 
 ## Beispiel
 
@@ -63,13 +63,13 @@ Die Tastaturbedienung wird vollständig durch den Browser und das Betriebssystem
 
 Typischerweise werden folgende Funktionen unterstützt:
 
-| Taste         | Funktion                 |
-| ------------- | ------------------------ |
-| `Tab`         | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
-| `Shift+Tab`   | Fokus auf das vorherige fokussierbare Element setzen. |
-| `Pfeiltasten` | Innerhalb des Eingabefeldes oder eines geöffneten Auswahldialogs zwischen den verfügbaren Werten navigieren bzw. den Wert ändern. |
-| `Enter`       | Eingabe oder Auswahl bestätigen. |
-| `Esc`         | Geöffneten Auswahldialog schließen.  |
+| Taste                 | Funktion                 |
+| --------------------- | ------------------------ |
+| `Tab`                 | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
+| `Shift+Tab`           | Fokus auf das vorherige fokussierbare Element setzen. |
+| `Pfeiltasten`         | Innerhalb des Eingabefeldes oder eines geöffneten Auswahldialogs zwischen den verfügbaren Werten navigieren bzw. den Wert ändern. |
+| `Enter` / `Leertaste` | Eingabe oder Auswahl bestätigen. |
+| `Esc`                 | Geöffneten Auswahldialog schließen.  |
 
 ### Best Practices / Empfehlungen
 
