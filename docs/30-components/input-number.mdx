@@ -13,9 +13,13 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Nummernfeld, Zahleneingabe, numerisches Eingabefeld
+**Synonyme:** Zahlenfeld, Numerisches Eingabefeld, Zahleneingabe, Number Input, Number Field 
 
-**Beschreibung:** Die **InputNumber**-Komponente ist ein spezialisiertes Eingabefeld für numerische Werte. Sie unterstützt Beschränkungen durch Minimal- und Maximalwerte sowie configurable Schrittweiten und ermöglicht eine barrierefreie Eingabe von Zahlen.
+**Beschreibung:** Mit **InputNumber** können numerische Werte eingegeben und bearbeitet werden.
+
+Die Komponente basiert auf dem nativen HTML5-Eingabetyp `number` und profitiert dadurch von dessen Semantik sowie der standardisierten Unterstützung durch Browser und assistive Technologien.
+
+Neben der direkten Eingabe kann der Wert über die **Erhöhen-/Verringern-Schaltflächen** oder mithilfe der Pfeiltasten angepasst werden.
 
 ## Beispiel
 
@@ -29,20 +33,23 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 ## Barrierefreiheit
 
-Die **InputNumber**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
+- Die nativen HTML5-Eingabetypen werden von Browsern und assistiven Technologien standardisiert unterstützt.
+- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
+- Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
+- Mit `_required` gekennzeichnete Felder werden über das native `required`-Attribut an assistive Technologien kommuniziert.
 
-- **Label-Pflicht**: Jedes InputNumber-Feld muss über das Attribut `_label` eine sichtbare Beschriftung erheben. Dies gewährleistet, dass Screenreader-Nutzer verstehen, welchen Zweck das Eingabefeld erfüllt.
-- **Hinweistexte**: Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die von Screenreadern vorgelesen werden.
-- **Fehlermeldungen**: Das Attribut `_msg` ermöglicht aussagekräftige Fehlermeldungen, die von assistiven Technologien erkannt werden.
-- **Fokusmanagement**: Das Feld ist vollständig über die Tastatur bedienbar mit klaren Fokusindikatoren.
-- **Pflichtfelder**: Mit `_required` gekennzeichnete Felder werden korrekt an assistive Technologien kommuniziert.
-- **Pfeiltasten-Steuerung**: Die Auf- und Ab-Pfeiltasten ermöglichen eine feinkörnige Wertanpassung für Nutzer, die keine genaue Wertangabe eingeben möchten.
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Verwendung des nativen HTML5-Eingabetyps `number` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
+| Erhöhen-/Verringern-Schaltflächen | Neben der direkten Eingabe stellt die Komponente standardmäßig Erhöhen-/Verringern-Schaltflächen für die Bedienung mit Maus und Touch bereit. |
+| Tastaturbedienung | Die Erhöhen-/Verringern-Schaltflächen sind nicht per Tastatur fokussierbar. Tastaturnutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld entsprechend der in `_step` definierten Schrittweite anpassen. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number" _target="_blank" _label="MDN Web Docs - input type number"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number" _target="_blank" _label="MDN Web Docs: Input Type Number"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#number-state-(type=number)" _target="_blank" _label="HTML Living Standard: The input element - type number"></kol-link>
 
 ## Verwendung
 
