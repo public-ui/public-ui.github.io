@@ -8,9 +8,7 @@ import AccordionPreview from '@site/src/components/previews/components/Accordion
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
-
 # Accordion
-
 
 <BetaDocsBanner />
 
@@ -22,9 +20,15 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet werden.
 
-<AccordionPreview codeCollapsable 
-visibleProperties={[]}
-initialProps={{ _open: true }}
+<AccordionPreview
+	codeCollapsable
+	visibleProperties={[]}
+	initialProps={{
+		_label: 'Die Jahreszeiten',
+		_open: true,
+		_slot:
+			'<p>Das Frühjahr bringt den Übergang vom Winter zum Sommer. Die Temperaturen steigen langsam, die Tage werden länger, und die Natur erwacht aus dem Winterschlaf: Pflanzen beginnen zu blühen, Bäume treiben neue Knospen, und viele Tierarten aktivieren ihre Fortpflanzungszyklen. Typisch sind wechselhaftes Wetter mit warmen sonnigen Phasen und kühleren Regentagen.</p><p>Der Sommer ist die wärmste Jahreszeit mit längsten Tagen und kürzesten Nächten. Die Sonne steht höher am Himmel, was zu intensiverer Einstrahlung führt. Temperaturen erreichen ihre Höchstwerte, Niederschläge treten oft als kurze Gewitter statt als langanhaltender Regen auf. Es ist die Hauptsaison für Vegetation und landwirtschaftliches Wachstum.</p><p>Im Herbst nimmt die Tageslänge deutlich ab, die Temperaturen fallen allmählich. Laubbäume verlieren ihr grünes Blattwerk durch die verkürzte Photosyntheseperiode, was zu charakteristischen Braun- und Gelbtönen führt. Die Erntezeit für viele Kulturpflanzen liegt in dieser Jahreszeit. Nebel und spätere Sonnenaufgänge werden häufiger.<p/><p>Die kalte Jahreszeit mit den kürzesten Tagen und längsten Nächten. Die niedrige Sonnenposition sorgt für geringe Einstrahlungsintensität. Temperaturen fallen unter den Gefrierpunkt, was in vielen Regionen Schnee und Eis ermöglicht. Pflanzen ruhen, viele Tiere halten Winterruhe oder migrieren. Die natürliche Lichtverfügbarkeit ist am geringsten.</p>',
+	}}
 />
 
 ## Barrierefreiheit
@@ -36,25 +40,24 @@ initialProps={{ _open: true }}
 
 ### Konkrete Designentscheidungen
 
-| Entscheidung                                   | Begründung                                                |
-| ---------------------------------------------- | --------------------------------------------------------- |
-| Verwendung eines Buttons für Header            |	Native Tastatursteuerung und Screenreader-Kompatibilität |
-| aria-expanded am Header                        |	Zustand programmatisch erkennbar                         |
-| Panel bleibt im DOM                            |	Screenreader verlieren keinen Kontext                    |
-| Keine Hover-Interaktion als alleiniger Trigger |	Hover ist nicht barrierefrei                             |
-| Klare visuelle Fokusmarkierung                 |	Tastaturnutzer benötigen Orientierung                    |
-| Optional Mehrfachöffnung                       |	Abhängig vom Anwendungsfall                              |
-| Keine automatische Öffnung bei Fokus           |	Verhindert unerwartete Kontextwechsel                    |
+| Entscheidung                                   | Begründung                                               |
+| ---------------------------------------------- | -------------------------------------------------------- |
+| Verwendung eines Buttons für Header            | Native Tastatursteuerung und Screenreader-Kompatibilität |
+| aria-expanded am Header                        | Zustand programmatisch erkennbar                         |
+| Panel bleibt im DOM                            | Screenreader verlieren keinen Kontext                    |
+| Keine Hover-Interaktion als alleiniger Trigger | Hover ist nicht barrierefrei                             |
+| Klare visuelle Fokusmarkierung                 | Tastaturnutzer benötigen Orientierung                    |
+| Optional Mehrfachöffnung                       | Abhängig vom Anwendungsfall                              |
+| Keine automatische Öffnung bei Fokus           | Verhindert unerwartete Kontextwechsel                    |
 
 #### ARIA-Struktur
 
 Die Komponente implementiert das **WAI-ARIA Accordion Pattern**:
-- Der Toggle-Button trägt `aria-expanded` mit dem aktuellen Öffnungszustand (`true` / `false`). 
-- `aria-controls` auf dem Button verweist auf die ID des Content-Bereichs. 
-- Der Content-Bereich hat `role="region"` und ist über `aria-labelledby` mit der Überschrift verknüpft 
-– Screenreader-Nutzer:innen können ihn als Landmark navigieren. 
-- Im geschlossenen Zustand wird `aria-hidden="true"` auf den Content-Bereich gesetzt. Der Inhalt ist damit für Screenreader vollständig nicht erreichbar.
 
+- Der Toggle-Button trägt `aria-expanded` mit dem aktuellen Öffnungszustand (`true` / `false`).
+- `aria-controls` auf dem Button verweist auf die ID des Content-Bereichs.
+- Der Content-Bereich hat `role="region"` und ist über `aria-labelledby` mit der Überschrift verknüpft – Screenreader-Nutzer:innen können ihn als Landmark navigieren.
+- Im geschlossenen Zustand wird `aria-hidden="true"` auf den Content-Bereich gesetzt. Der Inhalt ist damit für Screenreader vollständig nicht erreichbar.
 
 ### Links und Referenzen
 
@@ -63,20 +66,24 @@ Die Komponente implementiert das **WAI-ARIA Accordion Pattern**:
 ## Verwendung
 
 Accordions werden eingesetzt, um:
+
 - Inhalte zu gruppieren, die nicht zwingend gleichzeitig sichtbar sein müssen
 - lange Seiten zu strukturieren
 - progressive Offenlegung (progressive disclosure) umzusetzen
 
 Typischerweise besteht ein Accordion aus:
+
 - einem Titel (Header)
 - einem zugehörigen Inhaltsbereich (Panel)
 - einem Zustand (geöffnet/geschlossen)
 
 Je nach Konfiguration kann:
+
 - nur ein Eintrag gleichzeitig geöffnet sein oder
 - mehrere Einträge parallel geöffnet sein
 
 Accordion ist **nicht geeignet**,:
+
 - wenn Inhalte zwingend gleichzeitig sichtbar sein müssen
 - wenn Inhalte miteinander verglichen werden müssen
 - wenn Nutzende häufig zwischen Abschnitten wechseln müssen
@@ -92,7 +99,7 @@ Accordion ist **nicht geeignet**,:
 
 ### Best Practices / Empfehlungen
 
-- Nutzen Sie ein Accordion für ergänzende oder sekundäre Informationen, die nicht dauerhaft sichtbar sein müssen. Für wichtige primäre Inhalte  (z. B. zentrale Handlungsaufforderungen oder rechtlich relevante Hinweise) sind Accordions weniger geeignet.
+- Nutzen Sie ein Accordion für ergänzende oder sekundäre Informationen, die nicht dauerhaft sichtbar sein müssen. Für wichtige primäre Inhalte (z. B. zentrale Handlungsaufforderungen oder rechtlich relevante Hinweise) sind Accordions weniger geeignet.
 - Strukturieren Sie längere Inhalte in klar benannte Abschnitte und verwenden Sie prägnante Überschriften über `_label`.
 - Verwenden Sie ein Accordion nicht als primäres Auswahl- oder Filterelement.
 - Verwenden Sie mehrere Accordions mit wenig Inhalt anstatt ein einzelnes inhaltlich zu überladen.
@@ -122,7 +129,15 @@ Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvol
 
 ### Playground
 
-<AccordionPreview codeCollapsable />
+<AccordionPreview
+	initialProps={{
+		_open: true,
+		_slot:
+			'Das Frühjahr bringt den Übergang vom Winter zum Sommer. Die Temperaturen steigen langsam, die Tage werden länger, und die Natur erwacht aus dem Winterschlaf: Pflanzen beginnen zu blühen, Bäume treiben neue Knospen, und viele Tierarten aktivieren ihre Fortpflanzungszyklen. Typisch sind wechselhaftes Wetter mit warmen sonnigen Phasen und kühleren Regentagen.',
+		_label: 'Der Frühling',
+	}}
+	codeCollapsable
+/>
 
 ### Funktionalitäten (mit Code)
 
@@ -130,7 +145,16 @@ Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvol
 
 Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird über den Slot befüllt.
 
-<AccordionPreview visibleProperties={['_label', '_slot']} codeCollapsable />
+<AccordionPreview
+	visibleProperties={['_label', '_slot']}
+	initialProps={{
+		_open: true,
+		_slot:
+			'Der Sommer ist die wärmste Jahreszeit mit längsten Tagen und kürzesten Nächten. Die Sonne steht höher am Himmel, was zu intensiverer Einstrahlung führt. Temperaturen erreichen ihre Höchstwerte, Niederschläge treten oft als kurze Gewitter statt als langanhaltender Regen auf. Es ist die Hauptsaison für Vegetation und landwirtschaftliches Wachstum.',
+		_label: 'Der Sommer',
+	}}
+	codeCollapsable
+/>
 
 #### Überschriftenstruktur
 
@@ -138,7 +162,12 @@ Die Überschriftenebene wird über `_level` gesteuert.
 
 <AccordionPreview
 	visibleProperties={['_level']}
-	initialProps={{ _label: 'Accordion Element', _level: 2 }}
+	initialProps={{
+		_label: 'Der Herbst',
+		_level: 2,
+		_slot:
+			'Im Herbst nimmt die Tageslänge deutlich ab, die Temperaturen fallen allmählich. Laubbäume verlieren ihr grünes Blattwerk durch die verkürzte Photosyntheseperiode, was zu charakteristischen Braun- und Gelbtönen führt. Die Erntezeit für viele Kulturpflanzen liegt in dieser Jahreszeit. Nebel und spätere Sonnenaufgänge werden häufiger.',
+	}}
 	codeCollapsable
 />
 
@@ -148,7 +177,12 @@ Das initiale Öffnen erfolgt über `_open`. Für den nicht interaktiven Zustand 
 
 <AccordionPreview
 	visibleProperties={['_open', '_disabled']}
-	initialProps={{ _label: 'Accordion Element', _open: true }}
+	initialProps={{
+		_label: 'Der Winter',
+		_open: true,
+		_slot:
+			'Die kalte Jahreszeit mit den kürzesten Tagen und längsten Nächten. Die niedrige Sonnenposition sorgt für geringe Einstrahlungsintensität. Temperaturen fallen unter den Gefrierpunkt, was in vielen Regionen Schnee und Eis ermöglicht. Pflanzen ruhen, viele Tiere halten Winterruhe oder migrieren. Die natürliche Lichtverfügbarkeit ist am geringsten.',
+	}}
 	codeCollapsable
 />
 
