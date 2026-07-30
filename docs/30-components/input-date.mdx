@@ -13,9 +13,13 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Date Picker, Datetime Picker, Week Picker, Month Picker, Time Picker, Kalender
+**Synonyme:** Date Picker, Datumsfeld, Datumseingabe, Datumsauswahl, Date Input
 
-**Beschreibung:** Die **InputDate**-Komponente ist ein Eingabefeld für Datumswerte in verschiedenen Formaten: konkrete Daten, Wochen, Monate oder Zeitangaben. Sie bietet je nach Browser- und Gerätetyp spezialisierte Auswahldialoge (z. B. Kalender, Zeitwähler) oder Eingabemaskierungsfunktionen für intuitive Datumseingabe.
+**Beschreibung:** Mit der **InputDate**-Komponente können Nutzende Datums- und Zeitwerte erfassen.
+
+Die Komponente basiert auf den nativen HTML5-Eingabetypen `date`, `datetime-local`, `month`, `time` und `week` und übernimmt deren Semantik, Tastatursteuerung sowie Unterstützung durch Browser und assistive Technologien.
+
+Die Eingabe erfolgt direkt im Eingabefeld oder über einen Auswahldialog. Die konkrete Darstellung und Tastaturbedienung ist dabei abhängig vom verwendeten Browser und Betriebssystem.
 
 ## Beispiel
 
@@ -30,58 +34,67 @@ Standard-Datumsfeld mit dem Typ `date`. Die Eingabe erfolgt über direkte Zahlen
 
 ## Barrierefreiheit
 
-- **Fokusmanagement**: Das Eingabefeld wird über die `Tab`-Taste erreicht. Die Auswahlhilfen (z. B. Kalendermodul) können über die **Leertaste** oder **Enter** geöffnet werden.
-- **Tastaturnavigation**: Innerhalb des Auswahldialogs ermöglichen **Pfeiltasten** die Navigation zwischen Daten, **Enter** bestätigt die Auswahl.
-- **Manuelle Eingabe**: Ermöglicht Nutzer:innen, Werte direkt zu tippen, besonders wichtig für Tastaturnutzer:innen ohne Zugriff auf die grafische Auswahlhilfe.
-- **Nichtfunktionale Icons**: Die Icons sind per Tab-Taste nicht erreichbar, das Öffnen der Auswahlhilfen erfolgt ausschließlich über das Eingabefeld.
-- **Browserabhängige Einschränkungen**: In Firefox funktionieren die Typen `month`, `time` und `week` nicht mit grafischen Auswahldialogen.
+- Die nativen HTML5-Eingabetypen werden von Browsern und assistiven Technologien standardisiert unterstützt.
+- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden. Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
+- Darstellung, Bedienung und Funktionsumfang der nativen Auswahldialoge können sich je nach Browser, Betriebssystem und Endgerät unterscheiden.
+
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ----------- | ---------- |
+| Verwendung nativer HTML5-Eingabetypen | Die Komponente nutzt bewusst native HTML5-Eingabetypen und profitiert dadurch von deren standardisierter Unterstützung durch Browser und assistive Technologien. |
+| Kein eigener Datepicker bzw. Zeitwähler | Die Komponente verzichtet bewusst auf eine eigene Implementierung und nutzt stattdessen die nativen Auswahldialoge des Browsers bzw. Betriebssystems. Dadurch profitieren Nutzende von einer vertrauten Bedienung und einer guten Unterstützung durch assistive Technologien. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html" _target="_blank" _label="W3C: Input Type Date"></kol-link>
-- <kol-link _href="https://a11ysupport.io/tech/html/input(type-date)_element" _target="_blank" _label="a11ySupport: Input Type Date"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1: Labels or Instructions"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/" _target="_blank" _label="WAI-ARIA APG"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html" _target="_blank" _label="W3C Working Draft: Input Type Date"></kol-link>
+- <kol-link _href="https://a11ysupport.io/tech/html/input(type-date)_element" _target="_blank" _label="Accessibility Support: Input Type Date Element"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/input/date" _target="_blank" _label="MDN Web Docs: Input Type Date"></kol-link>
 
 ## Verwendung
 
+- Verwenden Sie **InputDate** zur Eingabe von Datums- und Zeitwerten in strukturierter Form. Wählen Sie hierfür den zum Anwendungsfall passenden Eingabetyp (`date`, `datetime-local`, `month`, `time` oder `week`).
+- Nutzen Sie `_min` und `_max`, um zulässige Werte fachlich einzuschränken. Verwenden Sie `_step` für den Eingabetyp `time`, um zulässige Zeitintervalle festzulegen.
+- Ergänzen Sie keine zusätzlichen ARIA-Rollen oder ARIA-Attribute, um das Verhalten nativer HTML5-Eingabetypen zu verändern.
+
 ### Tastatursteuerung
 
-| Taste                            | Funktion                                                                                                                                                                                                                                                  |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                            | Fokussiert das Eingabefeld. Nach Fokuserhalt wechselt `Tab` durch Eingabebereiche (Tag/Monat/Jahr), danach zum nächsten Element.                                                                                                                          |
-| `Leertaste` / `Enter`            | Öffnet die gerätespezifische Auswahlhilfe (z. B. Kalendermodul, Zeitwähler), falls verfügbar. Schließt die Auswahlhilfe nach Bestätigung.                                                                                                                |
-| `Pfeil-Tasten (links / rechts)`  | Wechselt zwischen Eingabebereichen (Tag, Monat, Jahr), wenn das Eingabefeld fokussiert ist.                                                                                                                                                              |
-| `Pfeil-Tasten (oben / unten)`    | Erhöht oder erniedrigt den Wert im aktuell fokussierten Eingabebereich.                                                                                                                                                                                    |
-| `Esc`                            | Schließt einen offenen Auswahldialog.                                                                                                                                                                                                                     |
+Die Tastaturbedienung wird vollständig durch den Browser und das Betriebssystem bestimmt. Daher können sich die unterstützten Tastaturfunktionen und Tastenkombinationen je nach Browser, Betriebssystem und Eingabetyp unterscheiden.
+
+Typischerweise werden folgende Funktionen unterstützt:
+
+| Taste                 | Funktion                 |
+| --------------------- | ------------------------ |
+| `Tab`                 | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
+| `Shift+Tab`           | Fokus auf das vorherige fokussierbare Element setzen. |
+| `Pfeiltasten`         | Innerhalb des Eingabefeldes oder eines geöffneten Auswahldialogs zwischen den verfügbaren Werten navigieren bzw. den Wert ändern. |
+| `Enter` / `Leertaste` | Eingabe oder Auswahl bestätigen. |
+| `Esc`                 | Geöffneten Auswahldialog schließen.  |
 
 ### Best Practices / Empfehlungen
 
-- **Sinnvolle Felder kennzeichnen**: Nutzen Sie `_required`, um Pflichtfelder deutlich zu machen.
-- **Validierung mit `_min` und `_max`**: Begrenzen Sie den gültigen Datumsbereich z. B. für Geburtsdaten oder Terminreservierungen – wirkt nur bei Auswahl über die Steuerelemente, nicht bei manueller Texteingabe.
-- **Korrekt benennen**: Stellen Sie sicher, dass `_name` und `_id` korrekt gesetzt sind für Formularübermittlung.
-- **Hinweistexte nutzen**: Verwenden Sie `_hint` für Angaben zum erwarteten Format oder Einschränkungen.
-- **Browserunterschiede kommunizieren**: Machen Sie Nutzer:innen auf das Firefox-Verhalten bei `month`, `time` und `week` aufmerksam, falls diese Typen verwendet werden.
-- **Fallback-Eingabe ermöglichen**: Prüfen Sie, dass manuelle Zahleneingabe funktioniert, falls die grafische Auswahlhilfe nicht verfügbar ist.
+- Verwenden Sie aussagekräftige Beschriftungen (`_label`), damit der erwartete Datums- oder Zeitwert eindeutig erkennbar ist.
+- Ergänzen Sie bei Bedarf zusätzliche Hinweise über `_hint`, beispielsweise zu zulässigen Eingaben oder fachlichen Einschränkungen.
+- Berücksichtigen Sie, dass sich Darstellung und Bedienung der nativen Auswahldialoge je nach Browser, Betriebssystem und Endgerät unterscheiden können.
 
 ### Anwendungsfälle
 
-- **Geburtsdatum**: Erfassung des Geburtsdatums mit Typ `date`
-- **Terminbuchung**: Auswahl eines Datums und optional einer Uhrzeit mit Typ `datetime-local`
-- **Rechnungsmonat**: Auswahl eines Monats mit Typ `month`
-- **Schichtenplanung**: Auswahl einer Karten-Woche mit Typ `week`
-- **Zeitliche Eingrenzung**: Auswahl von Anfangs- und Endzeiten mit Typ `time`
+- Eingabe eines Geburtsdatums in Registrierungs- oder Kontaktformularen
+- Auswahl eines Datums für Terminvereinbarungen oder Reservierungen
+- Erfassung von Uhrzeiten, beispielsweise für Öffnungs-, Start- oder Endzeiten
+- Auswahl eines Monats oder einer Kalenderwoche für Planungs- und Auswertungszeiträume
+- Erfassung eines Datums mit Uhrzeit, beispielsweise für Termine oder Ereignisse
 
 ### FAQ
 
-**Warum funktioniert der Typ `week` in Firefox nicht?**  
-Firefox bietet kein grafisches Wahlmodul für Wochen an. In diesem Fall ist nur die manuelle Texteingabe möglich.
+**Kann die InputDate mit einem Wert vorbelegt werden?**  
+Ja. Über `_value` kann die Komponente mit einem zum gewählten Eingabetyp passenden Wert initialisiert werden.
 
-**Kann ich vordefinierte Werte setzen?**  
-Ja, über das Attribut `_value` mit dem entsprechenden Format (z. B. `"2024-01-15"` für Typ `date`).
+**Wie kann InputDate geleernt werden?**  
+Setzen Sie `_value` auf `null` oder `undefined`, um den aktuellen Wert zu entfernen.
 
-**Wie kann ich das Datumsfeld leeren?**  
-Setzen Sie `_value` auf `null` oder `undefined`, um das Feld zu leeren.
+**Warum sieht InputDate je nach Browser unterschiedlich aus?**  
+Die Komponente nutzt die nativen HTML5-Eingabetypen des Browsers. Darstellung und Bedienung der Auswahldialoge werden daher vom jeweiligen Browser und Betriebssystem bestimmt und können variieren.
 
 ## Konstruktion / Technik
 
