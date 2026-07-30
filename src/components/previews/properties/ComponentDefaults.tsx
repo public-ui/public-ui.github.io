@@ -1,6 +1,6 @@
-import { Option } from '@public-ui/components';
+import { Option, W3CInputValue } from '@public-ui/components';
 
-export const ComboboxSuggestionsDefault: string[] = [
+export const ComboboxSuggestionsDefault: W3CInputValue[] = [
 	'JavaScript',
 	'Python',
 	'SQL',

@@ -4,6 +4,14 @@ import React, { useEffect, useState } from 'react';
 import type { Option } from '@public-ui/components';
 import { SelectOptionsDefault } from './ComponentDefaults';
 
+type SelectOptionsPropertyProps = {
+	label: string;
+	_value?: Option<string>;
+	_on?: {
+		onInput?: (event: Event, value: unknown) => void;
+	};
+};
+
 const createDefaultOption = (label: string): Option<string> => ({
 	label: `Label ${label}`,
 	value: `Value ${label}`,
@@ -59,7 +67,11 @@ const SelectOptionEditor: React.FC<{
 						}}
 					/>
 					<div className="flex gap-2">
-						<KolButton _label="Remove" _variant="danger" _on={{ onClick: onRemove }} />
+						<KolButton
+							_label={translate({ id: 'preview.component.select.options.remove' })}
+							_variant="danger"
+							_on={{ onClick: onRemove }}
+						/>
 					</div>
 				</div>
 			</KolCard>
@@ -67,13 +79,7 @@ const SelectOptionEditor: React.FC<{
 	);
 };
 
-const SelectOptionsProperty = (props: {
-	label: string;
-	_value?: Option<string>;
-	_on?: {
-		onInput?: (event: Event, value: unknown) => void;
-	};
-}) => {
+const SelectOptionsProperty = (props: SelectOptionsPropertyProps) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [options, setOptions] = useState<Option<string>[]>(INITIAL_OPTIONS);
 
