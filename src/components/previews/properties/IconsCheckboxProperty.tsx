@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 type IconValues = {
 	checked?: string;
 	indeterminate?: string;
-	unchecked?: string;
 };
 
 export const PREDEFINED_ICONS = [
@@ -28,7 +27,6 @@ const IconsCheckboxProperty = (props: {
 	const [icons, setIcons] = useState<IconValues>({
 		checked: isObjectValue ? (props._value as IconValues).checked : '',
 		indeterminate: isObjectValue ? (props._value as IconValues).indeterminate : '',
-		unchecked: isObjectValue ? (props._value as IconValues).unchecked : '',
 	});
 
 	const handleIconChange = (position: 'checked' | 'indeterminate' | 'unchecked', value: string) => {
@@ -63,18 +61,6 @@ const IconsCheckboxProperty = (props: {
 						_on={{
 							onInput: (_: Event, value: unknown) => {
 								handleIconChange('checked', value as string);
-							},
-						}}
-					/>
-				)}
-				{props.icons?.includes('unchecked') !== false && (
-					<KolSelect
-						_label="unchecked"
-						_options={PREDEFINED_ICONS}
-						_value={icons.unchecked}
-						_on={{
-							onInput: (_: Event, value: unknown) => {
-								handleIconChange('unchecked', value as string);
 							},
 						}}
 					/>
