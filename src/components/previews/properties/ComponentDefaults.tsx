@@ -1,4 +1,6 @@
-export const ComboboxSuggestionsDefault = [
+import { Option } from '@public-ui/components';
+
+export const ComboboxSuggestionsDefault: string[] = [
 	'JavaScript',
 	'Python',
 	'SQL',
@@ -10,7 +12,7 @@ export const ComboboxSuggestionsDefault = [
 	'PHP',
 	'Go',
 ];
-export const SelectOptionsDefault = [
+export const SelectOptionsDefault: Option<string>[] = [
 	{ label: 'Baden-Württemberg', value: 'BW' },
 	{ label: 'Bayern', value: 'BY' },
 	{ label: 'Berlin', value: 'BE' },

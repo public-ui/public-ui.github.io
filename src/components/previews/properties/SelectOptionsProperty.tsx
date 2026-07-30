@@ -4,31 +4,25 @@ import React, { useEffect, useState } from 'react';
 import type { Option } from '@public-ui/components';
 import { SelectOptionsDefault } from './ComponentDefaults';
 
-export type SelectOptionData = {
-	disabled?: boolean;
-	label: string;
-	value: string;
-};
-
-const createDefaultOption = (label: string): SelectOptionData => ({
+const createDefaultOption = (label: string): Option<string> => ({
 	label: `Label ${label}`,
 	value: `Value ${label}`,
 });
 
-const INITIAL_OPTIONS: SelectOptionData[] = SelectOptionsDefault;
+const INITIAL_OPTIONS: Option<string>[] = SelectOptionsDefault;
 
-type UpdateFn = (updater: (option: SelectOptionData) => SelectOptionData) => void;
+type UpdateFn = (updater: (option: Option<string>) => Option<string>) => void;
 type RemoveFn = () => void;
 
 const SelectOptionEditor: React.FC<{
-	option: SelectOptionData;
+	option: Option<string>;
 	index: number;
 	onUpdate: UpdateFn;
 	onRemove: RemoveFn;
 }> = ({ option, index, onUpdate, onRemove }) => {
 	const label = `Option ${index + 1}`;
 
-	const handleFieldChange = (field: keyof SelectOptionData, value: unknown) => {
+	const handleFieldChange = (field: keyof Option<string>, value: unknown) => {
 		onUpdate((prev) => ({ ...prev, [field]: value }));
 	};
 
@@ -38,7 +32,7 @@ const SelectOptionEditor: React.FC<{
 				<div className="flex flex-col gap-2">
 					<KolInputText
 						_label="Label"
-						_value={option.label}
+						_value={option.label as string}
 						_on={{
 							onInput: (e: Event) => {
 								handleFieldChange('label', (e.target as HTMLInputElement).value);
@@ -75,13 +69,13 @@ const SelectOptionEditor: React.FC<{
 
 const SelectOptionsProperty = (props: {
 	label: string;
-	_value?: Option<string>[];
+	_value?: Option<string>;
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
 }) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [options, setOptions] = useState<SelectOptionData[]>(INITIAL_OPTIONS);
+	const [options, setOptions] = useState<Option<string>[]>(INITIAL_OPTIONS);
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), options);
@@ -91,7 +85,7 @@ const SelectOptionsProperty = (props: {
 		setOptions((prev) => [...prev, createDefaultOption(`Option ${options.length + 1}`)]);
 	};
 
-	const updateOption = (index: number, updater: (option: SelectOptionData) => SelectOptionData) => {
+	const updateOption = (index: number, updater: (option: Option<string>) => Option<string>) => {
 		setOptions((prev) => {
 			const next = [...prev];
 			next[index] = updater(next[index]);
