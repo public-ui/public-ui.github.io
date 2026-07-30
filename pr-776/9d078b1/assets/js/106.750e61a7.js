@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[106],{106:(_,u,s)=>{s.r(u),s.d(u,{default:()=>e});s(12888);var a=s(23806),c=s(11684);const e=()=>(0,c.jsx)(a.lO,{_href:"#",_label:"LinkButton",_variant:"primary"})}}]);
