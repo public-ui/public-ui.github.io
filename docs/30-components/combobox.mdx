@@ -20,7 +20,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 Standard-Combobox mit Vorschlagsliste:
 
 <ComboboxPreview
-	initialProps={{ _label: 'Freie Eingabe mit Vorschlägen', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	initialProps={{ _label: 'Freie Eingabe mit Vorschlägen' }}
 	visibleProperties={[]}
 	codeCollapsable
 	codeCollapsed
@@ -48,23 +48,23 @@ Die Vorschlagsliste wird über das erforderliche Attribut **`_suggestions`** ber
 Beispiel für ein JSON-Array:
 
 ```json
-["Herr", "Frau", "Firma"]
+["String1", "String2", "String3"]
 ```
 
 ### Tastatursteuerung
 
-| Taste                          | Funktion                                                                                                                                                                                                 |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                          | Fokussiert das Eingabefeld.                                                                                                                                                                              |
-| `Enter`                        | Wenn die Vorschlagsliste geöffnet ist und eine Option fokussiert ist, wählt diese die fokussierte Option aus und schließt die Liste. Ohne fokussierte Option öffnet es die Liste.                        |
-| `Pfeil nach unten (ArrowDown)` | Öffnet die Vorschlagsliste und bewegt den Fokus um eine Option nach unten.                                                                                                                                |
-| `Pfeil nach oben (ArrowUp)`    | Öffnet die Vorschlagsliste und bewegt den Fokus um eine Option nach oben.                                                                                                                                |
-| `Escape (Esc)`                 | Schließt die Vorschlagsliste ohne eine Auswahl zu treffen.                                                                                                                                               |
-| `Home`                         | Bewegt den Fokus auf die erste Option in der Liste.                                                                                                                                                     |
-| `End`                          | Bewegt den Fokus auf die letzte Option in der Liste.                                                                                                                                                    |
-| `PageUp`                       | Springt zehn Optionen nach oben in der Liste.                                                                                                                                                           |
-| `PageDown`                     | Springt zehn Optionen nach unten in der Liste.                                                                                                                                                          |
-| `Druckbare Zeichen`            | Fokussiert die erste Option, die mit dem gedrückten Zeichen beginnt (falls vorhanden).                                                                                                                   |
+| Taste                          | Funktion                                                                                                                                                                          |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                          | Fokussiert das Eingabefeld.                                                                                                                                                       |
+| `Enter`                        | Wenn die Vorschlagsliste geöffnet ist und eine Option fokussiert ist, wählt diese die fokussierte Option aus und schließt die Liste. Ohne fokussierte Option öffnet es die Liste. |
+| `Pfeil nach unten (ArrowDown)` | Öffnet die Vorschlagsliste und bewegt den Fokus um eine Option nach unten.                                                                                                        |
+| `Pfeil nach oben (ArrowUp)`    | Öffnet die Vorschlagsliste und bewegt den Fokus um eine Option nach oben.                                                                                                         |
+| `Escape (Esc)`                 | Schließt die Vorschlagsliste ohne eine Auswahl zu treffen.                                                                                                                        |
+| `Home`                         | Bewegt den Fokus auf die erste Option in der Liste.                                                                                                                               |
+| `End`                          | Bewegt den Fokus auf die letzte Option in der Liste.                                                                                                                              |
+| `PageUp`                       | Springt zehn Optionen nach oben in der Liste.                                                                                                                                     |
+| `PageDown`                     | Springt zehn Optionen nach unten in der Liste.                                                                                                                                    |
+| `Druckbare Zeichen`            | Fokussiert die erste Option, die mit dem gedrückten Zeichen beginnt (falls vorhanden).                                                                                            |
 
 ### Best Practices / Empfehlungen
 
@@ -90,8 +90,19 @@ Beispiel für ein JSON-Array:
 Testen Sie die verschiedenen Eigenschaften der Combobox-Komponente:
 
 <ComboboxPreview
-	visibleProperties={['_label', '_placeholder', '_suggestions', '_disabled', '_required', '_hint', '_msg', '_icons', '_hasClearButton', '_hideLabel', '_hideMsg']}
-	initialProps={{ _label: 'Auswahl', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	visibleProperties={[
+		'_label',
+		'_placeholder',
+		'_suggestions',
+		'_disabled',
+		'_required',
+		'_hint',
+		'_msg',
+		'_icons',
+		'_hasClearButton',
+		'_hideLabel',
+		'_hideMsg',
+	]}
 	codeCollapsable
 />
 
@@ -101,12 +112,7 @@ Testen Sie die verschiedenen Eigenschaften der Combobox-Komponente:
 
 Die sichtbare Beschriftung wird über `_label` gesetzt.
 
-<ComboboxPreview
-	visibleProperties={['_label']}
-	initialProps={{ _label: 'Anrede', _suggestions: ['Herr', 'Frau', 'Firma'] }}
-	codeCollapsable
-	codeCollapsed
-/>
+<ComboboxPreview visibleProperties={['_label']} codeCollapsable codeCollapsed />
 
 #### Platzhalter und Hint-Text
 
@@ -114,7 +120,10 @@ Der Platzhalter wird angezeigt, wenn das Feld leer ist. Der Hint-Text gibt zusä
 
 <ComboboxPreview
 	visibleProperties={['_placeholder', '_hint']}
-	initialProps={{ _label: 'Anrede', _placeholder: 'Bitte wählen oder eingeben...', _hint: 'Wählen Sie aus der Liste oder geben Sie eine Alternative ein.', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	initialProps={{
+		_placeholder: 'Bitte wählen oder eingeben...',
+		_hint: 'Wählen Sie aus der Liste oder geben Sie eine Alternative ein.',
+	}}
 	codeCollapsable
 	codeCollapsed
 />
@@ -123,12 +132,7 @@ Der Platzhalter wird angezeigt, wenn das Feld leer ist. Der Hint-Text gibt zusä
 
 Standard-Attribute für Formulare wie `_disabled`, `_required` und `_touched`:
 
-<ComboboxPreview
-	visibleProperties={['_disabled', '_required', '_touched']}
-	initialProps={{ _label: 'Anrede', _suggestions: ['Herr', 'Frau', 'Firma'] }}
-	codeCollapsable
-	codeCollapsed
-/>
+<ComboboxPreview visibleProperties={['_disabled', '_required', '_touched']} codeCollapsable codeCollapsed />
 
 #### Fehlermeldungen
 
@@ -136,7 +140,7 @@ Validierungsfehler werden über `_msg` dargestellt:
 
 <ComboboxPreview
 	visibleProperties={['_msg']}
-	initialProps={{ _label: 'Anrede', _msg: 'Die Anrede ist erforderlich.', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	initialProps={{ _msg: 'Die Programmiersprache ist erforderlich.' }}
 	codeCollapsable
 	codeCollapsed
 />
@@ -147,7 +151,7 @@ Icons können links oder rechts über `_icons` hinzugefügt werden:
 
 <ComboboxPreview
 	visibleProperties={['_icons']}
-	initialProps={{ _label: 'Anrede', _icons: 'fa-solid fa-user', _suggestions: ['Herr', 'Frau', 'Firma'] }}
+	initialProps={{ _icons: 'kolicon-cogwheel' }}
 	codeCollapsable
 	codeCollapsed
 />
@@ -158,7 +162,7 @@ Der Clear-Button kann über `_hasClearButton` gesteuert werden (standardmäßig 
 
 <ComboboxPreview
 	visibleProperties={['_hasClearButton']}
-	initialProps={{ _label: 'Anrede', _suggestions: ['Herr', 'Frau', 'Firma'], _hasClearButton: true }}
+	initialProps={{ _hasClearButton: true }}
 	codeCollapsable
 	codeCollapsed
 />
@@ -167,12 +171,7 @@ Der Clear-Button kann über `_hasClearButton` gesteuert werden (standardmäßig 
 
 Die Beschriftung kann über `_hideLabel` visuell verborgen werden (bleibt für Screenreader sichtbar):
 
-<ComboboxPreview
-	visibleProperties={['_hideLabel']}
-	initialProps={{ _label: 'Anrede', _hideLabel: true, _suggestions: ['Herr', 'Frau', 'Firma'] }}
-	codeCollapsable
-	codeCollapsed
-/>
+<ComboboxPreview visibleProperties={['_hideLabel']} initialProps={{ _hideLabel: true }} codeCollapsable codeCollapsed />
 
 ### Events
 
