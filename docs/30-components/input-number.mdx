@@ -53,44 +53,49 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 ## Verwendung
 
+- Nutzen Sie `_min` und `_max`, um zulässige Wertebereiche einzuschränken.
+- Verwenden Sie `_step`, um die Schrittweite für die Wertänderung festzulegen.
+- Berücksichtigen Sie, dass `_step` sowohl die Bedienung über die Pfeiltasten und Erhöhen-/Verringern-Schaltflächen als auch die zulässigen Eingabewerte beeinflusst.
+
 ### Tastatursteuerung
 
-| Taste                         | Funktion                                                                                                                                             |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                         | Fokussiert das Eingabefeld.                                                                                                                          |
-| `Shift + Tab`                 | Wechselt zum vorherigen interaktiven Element.                                                                                                        |
-| `Pfeil-Tasten (oben / unten)` | Erhöht oder verringert den Wert innerhalb der Attribute **`_min`** und **`_max`** entsprechend der im Attribut **`_step`** angegebenen Schrittgröße. |
+Die Tastaturbedienung wird durch den Browser und das Betriebssystem bestimmt. Daher können sich einzelne Tastaturfunktionen je nach Browser und Endgerät unterscheiden.
+
+Typischerweise werden folgende Funktionen unterstützt:
+
+| Taste                       | Funktion                                                                       |
+| --------------------------- | ------------------------------------------------------------------------------ |
+| `Tab`                       | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen.       |
+| `Shift+Tab`                 | Fokus auf das vorherige fokussierbare Element setzen.                          |
+| `Pfeil-Tasten (oben/unten)` | Wert entsprechend der in `_step` festgelegten Schrittweite erhöhen/verringern. |
+
+Die **Erhöhen-/Verringern-Schaltflächen** sind nicht Teil der Tab-Reihenfolge. Ihre Funktion steht Tastaturnutzenden über die Pfeiltasten im fokussierten Eingabefeld zur Verfügung.
 
 ### Best Practices / Empfehlungen
 
-- **Sinnvolle Grenzen setzen**: Verwenden Sie `_min` und `_max`, um Wertbereiche zu definieren – wirkt nur bei Auswahl über die Steuerelemente, nicht bei manueller Texteingabe.
-- **Schrittweite konfigurieren**: Nutzen Sie `_step`, um die Inkrement-Größe bei Pfeiltasten-Navigation festzulegen. Beispiel: `_step="5"` für 5er-Schritte.
-- **Alternative zu direkter Eingabe**: Bieten Sie bei großen Wertbereichen Pfeiltasten oder Spinner-Buttons als visuelle Alternativen zur Direkteingabe an.
-- **Name und ID**: Achten Sie darauf, `_name` und eine eindeutige `_id` korrekt zu setzen, damit die Daten beim Formularabsenden mitgesendet werden.
-- **Placeholder beschreibend nutzen**: Ein Placeholder kann ein Beispielformat zeigen (z.B. "z.B. 150"), sollte aber nie Pflichtinformationen enthalten.
-- **Validierungsfeedback**: Nutzen Sie `_msg` und `_hint` für klare Vorgaben und Fehlermeldungen.
+- Verwenden Sie InputNumber ausschließlich für Werte, die mathematisch verarbeitet werden. Für Telefonnummern, Postleitzahlen, Kreditkarten- oder Identifikationsnummern sollten stattdessen Texteingabefelder verwendet werden.
+- Wählen Sie `_min`, `_max` und `_step` so, dass sie den fachlichen Anforderungen des jeweiligen Anwendungsfalls entsprechen.
+- Stellen Sie sicher, dass zulässige Wertebereiche oder Einheiten für Nutzende eindeutig erkennbar sind, beispielsweise über die Beschriftung (`_label`) oder ergänzende Hinweise (`_hint`).
+- Berücksichtigen Sie, dass sich Darstellung und Verhalten nativer numerischer Eingabefelder je nach Browser und Betriebssystem unterscheiden können.
 
 ### Anwendungsfälle
 
-- **Zahleneingaben in Formularen**: Preise, Mengen, Altersangaben
-- **Bereichsangaben**: Minimum/Maximum-Wertfestlegung
-- **Konfigurationsfelder**: Numerische Parameter in Einstellungen
-- **Messgrößen**: Längen, Gewichte, Temperaturen
-- **Identifikatoren**: Nummern, Codes, Referenzen
+- Altersangaben in Registrierungs- oder Kontaktformularen
+- Eingabe von Mengen, Stückzahlen oder Preisen
+- Erfassung von Messwerten wie Gewicht, Länge oder Temperatur
+- Konfiguration numerischer Einstellungen, beispielsweise für Grenz- oder Schwellenwerte
+- Eingabe von Prozentwerten oder Rabattangaben
 
 ### FAQ
 
-**Kann ich Dezimalzahlen eingeben?**  
-Ja, mit `_step` können Sie auch Dezimalzahlen unterstützen. Beispiel: `_step="0.5"` für 0,5er-Schritte.
+**Wann sollte ich `_step`, `_min` und `_max` verwenden?**  
+Verwenden Sie `_min` und `_max`, um den zulässigen Wertebereich einzuschränken. Mit `_step` legen Sie fest, in welchen Schritten der Wert angepasst werden kann. Diese Attribute unterstützen dabei, numerische Eingaben an den jeweiligen Anwendungsfall anzupassen.
 
-**Wie funktioniert die Schrittweite mit Min/Max?**  
-Die Pfeiltasten addieren/subtrahieren den `_step`-Wert. Die Grenzen `_min` und `_max` verhindern, dass der Wert diese Grenzen überschreitet.
+**Sind die Erhöhen-/Verringern-Schaltflächen fokussierbar?**  
+Nein. Die Erhöhen-/Verringern-Schaltflächen sind nicht Teil der Tab-Reihenfolge. Tastaturnutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld anpassen.
 
-**Muss ich `_name` setzen?**  
-Ja, wenn das Feld Teil eines Formulars ist. Der `_name` wird beim Absenden als Feldname mitgesendet.
-
-**Kann ich Vorschlagswerte anzeigen?**  
-Ja, über das Attribut `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen, die dem Nutzer als Autocomplete-Optionen angeboten werden.
+**Können die Erhöhen-/Verringern-Schaltflächen ausgeblendet werden?**  
+Ja. Die Erhöhen-/Verringern-Schaltflächen können über ein Theme-seitiges Feature-Flag ausgeblendet werden.
 
 ## Konstruktion / Technik
 
