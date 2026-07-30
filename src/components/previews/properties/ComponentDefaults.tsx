@@ -1,14 +1,14 @@
 export const ComboboxSuggestionsDefault = [
+	'JavaScript',
 	'Python',
-	'C',
-	'C++',
+	'SQL',
+	'TypeScript',
 	'Java',
 	'C#',
-	'JavaScript',
-	'VisualBasic',
-	'SQL',
-	'Pascal',
-	'R',
+	'C++',
+	'C',
+	'PHP',
+	'Go',
 ];
 export const SelectOptionsDefault = [
 	{ label: 'Baden-Württemberg', value: 'BW' },
