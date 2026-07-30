@@ -9,6 +9,7 @@ import {
 } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolCombobox, KolInputText } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 interface ComboboxPreviewComponentProps {
 	initialProps?: JSX.KolCombobox;
@@ -20,7 +21,7 @@ interface ComboboxPreviewComponentProps {
 const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolCombobox>(
 		() => ({
-			_label: 'Programmiersprache',
+			_label: translate({ id: 'preview.component.combobox.label' }),
 			_suggestions: ComboboxSuggestionsDefault,
 		}),
 		[]

@@ -3,6 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import { BooleanProperty, MsgProperty, SelectOptionsDefault, SelectOptionsProperty } from '../properties';
 import type { JSX, SelectOption } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
+import { translate } from '@docusaurus/Translate';
 
 interface SelectPreviewComponentProps {
 	initialProps?: JSX.KolSelect;
@@ -14,7 +15,7 @@ interface SelectPreviewComponentProps {
 const SelectPreview = (props: SelectPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolSelect>(
 		() => ({
-			_label: 'Bundesland',
+			_label: translate({ id: 'preview.component.select.label' }),
 			_options: SelectOptionsDefault satisfies SelectOption<string>[],
 		}),
 		[]
