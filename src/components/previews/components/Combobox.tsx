@@ -1,6 +1,12 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, SuggestionsProperty } from '../properties';
+import {
+	BooleanProperty,
+	ComboboxSuggestionsDefault,
+	IconsProperty,
+	MsgProperty,
+	SuggestionsProperty,
+} from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolCombobox, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -16,9 +22,9 @@ const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolCombobox>(
 		() => ({
 			_label: translate({ id: 'preview.component.combobox.label' }),
-			_suggestions: ['Herr', 'Frau', 'Firma'],
+			_suggestions: ComboboxSuggestionsDefault,
 		}),
-		[],
+		[]
 	);
 
 	const [value, setValue] = React.useState<string>('');

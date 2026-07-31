@@ -1,89 +1,140 @@
-import { KolButton, KolInputCheckbox, KolInputText } from '@public-ui/react-v19';
+import { KolButton, KolCard, KolDrawer, KolInputCheckbox, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Option } from '@public-ui/components';
+import { SelectOptionsDefault } from './ComponentDefaults';
 
-const SelectOptionsProperty = (props: {
+type SelectOptionsPropertyProps = {
 	label: string;
-	_value?: Option<string>[];
+	_value?: Option<string>;
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
-}) => {
-	const [options, setOptions] = useState<Option<string>[]>(() => props._value ?? []);
+};
 
-	const emit = (newOptions: Option<string>[]) => {
-		setOptions(newOptions);
-		props._on?.onInput?.(new Event('input'), newOptions);
-	};
+const createDefaultOption = (label: string): Option<string> => ({
+	label: `Label ${label}`,
+	value: `Value ${label}`,
+});
 
-	const handleAdd = () => {
-		emit([...options, { label: '', value: '' }]);
-	};
+const INITIAL_OPTIONS: Option<string>[] = SelectOptionsDefault;
 
-	const handleRemove = (index: number) => {
-		emit(options.filter((_, i) => i !== index));
-	};
+type UpdateFn = (updater: (option: Option<string>) => Option<string>) => void;
+type RemoveFn = () => void;
 
-	const handleChange = (index: number, field: keyof Option<string>, value: string | boolean) => {
-		const updated = [...options];
-		updated[index] = { ...updated[index], [field]: value };
-		emit(updated);
+const SelectOptionEditor: React.FC<{
+	option: Option<string>;
+	index: number;
+	onUpdate: UpdateFn;
+	onRemove: RemoveFn;
+}> = ({ option, index, onUpdate, onRemove }) => {
+	const label = `Option ${index + 1}`;
+
+	const handleFieldChange = (field: keyof Option<string>, value: unknown) => {
+		onUpdate((prev) => ({ ...prev, [field]: value }));
 	};
 
 	return (
-		<fieldset className="border-0 m-0 p-0">
-			<legend className="text-sm font-medium mb-2">{`${props.label} (Label/Value/Disabled)`}</legend>
-			<div className="flex flex-col gap-2">
-				{options.map((option, index) => (
-					<div key={index} className="flex flex-row items-end gap-2">
-						<KolInputText
-							_label="Label"
-							_hideLabel
-							_value={String(option.label)}
-							_on={{
-								onInput: (_event: Event, value: unknown) => {
-									handleChange(index, 'label', value as string);
-								},
-							}}
-						/>
-						<KolInputText
-							_label="Value"
-							_hideLabel
-							_value={option.value}
-							_on={{
-								onInput: (_event: Event, value: unknown) => {
-									handleChange(index, 'value', value as string);
-								},
-							}}
-						/>
-						<KolInputCheckbox
-							_label="Disabled"
-							_checked={option.disabled ?? false}
-							_on={{
-								onChange: (_event: Event, value: unknown) => {
-									handleChange(index, 'disabled', value as boolean);
-								},
-							}}
-							_hideLabel
-						/>
+		<div style={{ marginLeft: undefined, borderLeft: undefined, paddingLeft: undefined }}>
+			<KolCard _label={label}>
+				<div className="flex flex-col gap-2">
+					<KolInputText
+						_label="Label"
+						_value={option.label as string}
+						_on={{
+							onInput: (e: Event) => {
+								handleFieldChange('label', (e.target as HTMLInputElement).value);
+							},
+						}}
+					/>
+					<KolInputText
+						_label="Value"
+						_value={option.value}
+						_on={{
+							onInput: (e: Event) => {
+								handleFieldChange('value', (e.target as HTMLInputElement).value);
+							},
+						}}
+					/>
+					<KolInputCheckbox
+						_label="Disabled"
+						_checked={option.disabled ?? false}
+						_variant="switch"
+						_on={{
+							onInput: (_e: Event, checked: unknown) => {
+								handleFieldChange('disabled', !!checked);
+							},
+						}}
+					/>
+					<div className="flex gap-2">
 						<KolButton
-							_label={translate({ id: 'preview.property.remove' })}
+							_label={translate({ id: 'preview.component.select.options.remove' })}
 							_variant="danger"
-							_icons="fa-solid fa-trash"
-							_hideLabel
-							_on={{ onClick: () => handleRemove(index) }}
+							_on={{ onClick: onRemove }}
 						/>
 					</div>
-				))}
-				<KolButton
-					_label={translate({ id: 'preview.property.options.add' })}
-					_variant="secondary"
-					_icons="fa-solid fa-plus"
-					_on={{ onClick: handleAdd }}
-				/>
-			</div>
-		</fieldset>
+				</div>
+			</KolCard>
+		</div>
+	);
+};
+
+const SelectOptionsProperty = (props: SelectOptionsPropertyProps) => {
+	const [isEditing, setIsEditing] = useState(false);
+	const [options, setOptions] = useState<Option<string>[]>(INITIAL_OPTIONS);
+
+	useEffect(() => {
+		props._on?.onInput?.(new Event('input'), options);
+	});
+
+	const addOption = () => {
+		setOptions((prev) => [...prev, createDefaultOption(`Option ${options.length + 1}`)]);
+	};
+
+	const updateOption = (index: number, updater: (option: Option<string>) => Option<string>) => {
+		setOptions((prev) => {
+			const next = [...prev];
+			next[index] = updater(next[index]);
+			return next;
+		});
+	};
+
+	const removeOption = (index: number) => {
+		setOptions((prev) => prev.filter((_, i) => i !== index));
+	};
+
+	return (
+		<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+			<KolButton _label={props.label} _variant="secondary" _on={{ onClick: () => setIsEditing(!isEditing) }} />
+
+			<KolDrawer
+				_label={translate({ id: 'preview.component.select.options.edit' })}
+				_open={isEditing}
+				_align="right"
+				_hasCloser
+				_on={{ onClose: () => setIsEditing(false) }}
+			>
+				<div className="flex flex-col gap-4 py-4">
+					{options.map((option, index) => (
+						<SelectOptionEditor
+							key={index}
+							option={option}
+							index={index}
+							onUpdate={(updater) => updateOption(index, updater)}
+							onRemove={() => removeOption(index)}
+						/>
+					))}
+
+					<KolButton _label="+ Option" _variant="secondary" _on={{ onClick: addOption }} />
+
+					<KolButton
+						_label={translate({ id: 'preview.component.select.options.closeedit' })}
+						_variant="primary"
+						_on={{ onClick: () => setIsEditing(false) }}
+					/>
+				</div>
+			</KolDrawer>
+		</div>
 	);
 };
 

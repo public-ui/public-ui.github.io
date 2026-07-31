@@ -1,7 +1,7 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, MsgProperty, SelectOptionsProperty } from '../properties';
-import type { JSX, SelectOption } from '@public-ui/components';
+import { BooleanProperty, MsgProperty, SelectOptionsDefault, SelectOptionsProperty } from '../properties';
+import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
@@ -16,13 +16,9 @@ const SelectPreview = (props: SelectPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolSelect>(
 		() => ({
 			_label: translate({ id: 'preview.component.select.label' }),
-			_options: [
-				{ label: 'Herr', value: 'Mr.' },
-				{ label: 'Frau', value: 'Mrs.' },
-				{ label: 'Firma', value: 'Company' },
-			] satisfies SelectOption<string>[],
+			_options: SelectOptionsDefault,
 		}),
-		[],
+		[]
 	);
 
 	return (

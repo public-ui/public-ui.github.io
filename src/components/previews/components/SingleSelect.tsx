@@ -1,7 +1,13 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, SelectOptionsProperty } from '../properties';
-import type { JSX, SelectOption } from '@public-ui/components';
+import {
+	BooleanProperty,
+	IconsProperty,
+	MsgProperty,
+	SelectOptionsProperty,
+	SelectOptionsDefault,
+} from '../properties';
+import type { JSX } from '@public-ui/components';
 import { KolInputRange, KolInputText, KolSingleSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
@@ -16,11 +22,7 @@ const SingleSelectPreview = (props: SingleSelectPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolSingleSelect>(
 		() => ({
 			_label: translate({ id: 'preview.component.single-select.label' }),
-			_options: [
-				{ label: 'Herr', value: 'Herr' },
-				{ label: 'Frau', value: 'Frau' },
-				{ label: 'Firma', value: 'Firma' },
-			] satisfies SelectOption<string>[],
+			_options: SelectOptionsDefault,
 		}),
 		[]
 	);
