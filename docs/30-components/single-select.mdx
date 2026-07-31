@@ -22,7 +22,6 @@ Darstellung der Komponente mit den wesentlichen Eigenschaften. Code kann eingebl
 <SingleSelectPreview
 	visibleProperties={['_label', '_options', '_placeholder']}
 	initialProps={{
-		_label: 'Auswählen',
 		_placeholder: 'Bitte wählen Sie eine Option',
 	}}
 	codeCollapsable
@@ -51,17 +50,17 @@ Die **SingleSelect**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 
 ### Tastatursteuerung
 
-| Taste              | Funktion                                                              |
-| ------------------ | --------------------------------------------------------------------- |
-| `Tab`              | Fokussiert das SingleSelect-Feld oder wechselt zum nächsten Element. |
-| `Shift + Tab`      | Wechselt zum vorherigen interaktiven Element.                         |
-| `Leer` / `Enter`   | Öffnet die Dropdown-Liste oder wählt die fokussierte Option aus.      |
-| `Pfeil-oben`       | Navigiert zur vorherigen Option in der Liste.                         |
-| `Pfeil-unten`      | Navigiert zur nächsten Option in der Liste.                           |
-| `Pos1`             | Springt zur ersten Option in der Liste.                               |
-| `Ende`             | Springt zur letzten Option in der Liste.                              |
-| `Escape`           | Schließt die Dropdown-Liste ohne zu speichern.                        |
-| `Zeichen`          | Filtert die Optionen nach Eingabe (bei aktivierter Suchfunktion).     |
+| Taste            | Funktion                                                             |
+| ---------------- | -------------------------------------------------------------------- |
+| `Tab`            | Fokussiert das SingleSelect-Feld oder wechselt zum nächsten Element. |
+| `Shift + Tab`    | Wechselt zum vorherigen interaktiven Element.                        |
+| `Leer` / `Enter` | Öffnet die Dropdown-Liste oder wählt die fokussierte Option aus.     |
+| `Pfeil-oben`     | Navigiert zur vorherigen Option in der Liste.                        |
+| `Pfeil-unten`    | Navigiert zur nächsten Option in der Liste.                          |
+| `Pos1`           | Springt zur ersten Option in der Liste.                              |
+| `Ende`           | Springt zur letzten Option in der Liste.                             |
+| `Escape`         | Schließt die Dropdown-Liste ohne zu speichern.                       |
+| `Zeichen`        | Filtert die Optionen nach Eingabe (bei aktivierter Suchfunktion).    |
 
 ### Best Practices / Empfehlungen
 
@@ -96,14 +95,7 @@ Testen Sie die verschiedenen Eigenschaften der SingleSelect-Komponente:
 
 Standard-auswahl mit Beschriftung und Optionsliste:
 
-<SingleSelectPreview
-	visibleProperties={['_label', '_options']}
-	initialProps={{
-		_label: 'Auswählen',
-	}}
-	codeCollapsable
-	codeCollapsed
-/>
+<SingleSelectPreview visibleProperties={['_label', '_options']} codeCollapsable codeCollapsed />
 
 #### Placeholder
 
@@ -112,7 +104,6 @@ Ein Placeholder-Text wird angezeigt, wenn noch keine Option ausgewählt wurde:
 <SingleSelectPreview
 	visibleProperties={['_placeholder']}
 	initialProps={{
-		_label: 'Auswählen',
 		_placeholder: 'Bitte wählen Sie eine Option',
 	}}
 	codeCollapsable
@@ -125,14 +116,12 @@ Standard-Attribute für Formulare:
 
 <SingleSelectPreview
 	visibleProperties={['_label', '_required', '_disabled', '_hideLabel', '_msg', '_hideMsg']}
-	initialProps={{
-		_label: 'Auswählen',
-	}}
 	codeCollapsable
 	codeCollapsed
 />
 
 **Verfügbare Attribute:**
+
 - `_required`: Kennzeichnet das Feld als Pflichtfeld
 - `_disabled`: Deaktiviert das Eingabefeld
 - `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
@@ -146,7 +135,6 @@ Der Clear-Button ermöglicht es, die aktuelle Auswahl zu löschen:
 <SingleSelectPreview
 	visibleProperties={['_hasClearButton']}
 	initialProps={{
-		_label: 'Auswählen',
 		_hasClearButton: true,
 	}}
 	codeCollapsable
@@ -160,8 +148,7 @@ Links und rechts vom Eingabefeld können Icons angezeigt werden:
 <SingleSelectPreview
 	visibleProperties={['_icons']}
 	initialProps={{
-		_label: 'Auswählen',
-		_icons: 'fa-solid fa-location-dot',
+		_icons: 'kolicon-cogwheel',
 	}}
 	codeCollapsable
 	codeCollapsed
@@ -174,7 +161,6 @@ Hinweistexte können vor der Eingabe bereitgestellt werden, Fehlermeldungen nach
 <SingleSelectPreview
 	visibleProperties={['_hint', '_msg']}
 	initialProps={{
-		_label: 'Auswählen',
 		_hint: 'Ergänzende Hinweise zur Auswahl',
 	}}
 	codeCollapsable
@@ -188,7 +174,6 @@ Die maximale Anzahl sichtbarer Optionen wird über `_rows` gesteuert:
 <SingleSelectPreview
 	visibleProperties={['_rows']}
 	initialProps={{
-		_label: 'Auswählen',
 		_rows: 3,
 	}}
 	codeCollapsable
@@ -210,4 +195,3 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 ## API
 
 <Readme />
-

@@ -24,4 +24,5 @@ export { default as TabBehaviorProperty } from './TabBehaviorProperty';
 export { default as TabsProperty } from './TabsProperty';
 export { default as TableColumnsProperty } from './TableColumnsProperty';
 export { default as TreeItemsProperty } from './TreeItemsProperty';
+export { ComboboxSuggestionsDefault, SelectOptionsDefault } from './ComponentDefaults';
 export type { TreeItemData } from './TreeItemsProperty';
