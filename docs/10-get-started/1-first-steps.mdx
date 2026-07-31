@@ -7,8 +7,9 @@ import { KolAlert, KolLink } from '@public-ui/react-v19';
 	werden kann.
 </KolAlert>
 
-**KoliBri** ist eine Bibliothek für barrierefreie Web Components. Die Komponenten sind framework-unabhängig und können
-in nahezu jedem webbasierten Projekt verwendet werden. Diese Seite gibt einen kompakten Überblick, wie Sie starten.
+**KoliBri** ist eine Open-Source-Bibliothek für barrierefreie Web Components, entwickelt von der Bundesregierung.
+Die Komponenten sind framework-unabhängig, nach BITV 2.0 und WCAG 2.2 konform und können in nahezu jedem
+webbasierten Projekt verwendet werden. Diese Seite gibt einen kompakten Überblick, wie Sie starten.
 
 ## Technologien
 
@@ -29,7 +30,11 @@ und Autovervollständigung ermöglichen:
 | `@public-ui/angular-v21` | Angular v21                        |
 | `@public-ui/hydrate`     | Server-Side-Rendering (SSR)        |
 
-Für statische Webseiten oder Projekte ohne Framework können die Web Components auch **direkt** verwendet werden.
+### Web Components ohne Framework
+
+Für statische Webseiten oder Projekte ohne Framework können die Web Components auch **direkt** verwendet werden —
+ohne Adapter, einfach per CDN-Import oder Skript-Tag.
+
 Weitere Details zur Verwendung der Web Components mit und ohne Framework finden Sie auf der Seite
 <KolLink _label="Frameworks" _href="/docs/get-started/frameworks" />.
 
@@ -43,11 +48,6 @@ Es enthält vorgefertigte Starter-Templates für gängige Frameworks und Renderi
 ```
 npm init kolibri@latest my-kolibri-app
 ```
-
-<img
-	src="https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif"
-	alt="Zeigt wie man mit create-kolibri eine neue App anlegen kann."
-/>
 
 ### Direkt aus einem Template (degit)
 
@@ -78,11 +78,11 @@ bestimmt, das bei der Registrierung übergeben wird. Das Paket `@public-ui/theme
 | Theme       | Export       | Beschreibung                                        |
 | ----------- | ------------ | --------------------------------------------------- |
 | Default     | `DEFAULT`    | Das Standard-Theme von KoliBri                      |
-| BWSt        | `BWSt`       | Theme der Baustatistik (Baustatistik-Vorschrift); siehe <KolLink _label="Design-System" _href="/docs/concepts/styling/designer" /> für Styleguide |
-| Desy        | `DesyV11`    | Design-System Theme; siehe <KolLink _label="Design-System" _href="/docs/concepts/styling/designer" /> für Styleguide |
-| ECL (EC)    | `ECL_EC`     | European Commission Theme; siehe <KolLink _label="Design-System" _href="/docs/concepts/styling/designer" /> für Styleguide |
-| ECL (EU)    | `ECL_EU`     | European Union Theme; siehe <KolLink _label="Design-System" _href="/docs/concepts/styling/designer" /> für Styleguide |
-| KERN        | `KERN_V2`    | KERN Design-System Theme; siehe <KolLink _label="Design-System" _href="/docs/concepts/styling/designer" /> für Styleguide |
+| BWSt        | `BWSt`       | Wasserstraßen- und Schifffahrtsverwaltung des Bundes; <KolLink _label="Styleguide ↗" _href="https://wsv.bund.de" _target="_blank" /> |
+| Desy        | `DesyV11`    | Zoll Design-System (Generalzolldirektion); <KolLink _label="Styleguide ↗" _href="https://desy.zoll-portal.de" _target="_blank" /> |
+| ECL (EC)    | `ECL_EC`     | European Commission Design-System; <KolLink _label="Styleguide ↗" _href="https://ec.europa.eu/component-library/ec" _target="_blank" /> |
+| ECL (EU)    | `ECL_EU`     | European Union Design-System; <KolLink _label="Styleguide ↗" _href="https://ec.europa.eu/component-library/eu" _target="_blank" /> |
+| KERN        | `KERN_V2`    | KERN-UX Standard Design-System; <KolLink _label="Styleguide ↗" _href="https://www.kern-ux.de" _target="_blank" /> |
 
 ### Theme registrieren und umschalten
 
@@ -134,8 +134,8 @@ register(DEFAULT, defineCustomElements); // Promise nicht abgewartet
 <summary><strong>Welches Theme soll ich verwenden?</strong></summary>
 
 - **`DEFAULT`** – Neutrales Standard-Theme (empfohlen für den Start)
-- **`ECL_EC`** / **`ECL_EU`** – European Commission / Union Theme
-- **`KERN_V2`** – KERN Design-System Theme
+- **`ECL_EC`** / **`ECL_EU`** – European Commission / European Union Design-System
+- **`KERN_V2`** – KERN-UX Standard Design-System
 - Eine Übersicht aller Themes finden Sie oben im Abschnitt [Themes](#themes).
 - [Eigenes Theme erstellen](/docs/concepts/styling/designer)
 
