@@ -57,7 +57,7 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 - Verwenden Sie `_step`, um die Schrittweite für die Wertänderung festzulegen.
 - Berücksichtigen Sie, dass `_step` sowohl die Bedienung über die Pfeiltasten und Erhöhen-/Verringern-Schaltflächen als auch die zulässigen Eingabewerte beeinflusst.
 
-**Hinweis:** `_min`, `_max` und `_step` verhindern keine manuelle Eingabe außerhalb des zulässigen Wertebereichs bzw. Schrittmaßes. Die Einschränkungen wirken sich hauptsächlich auf die integrierten Erhöhen-/Verringern-Schaltflächen und die Bedienung mit den Pfeiltasten aus. Ungültige Werte werden erst durch die native Browservalidierung erkannt.
+**Hinweis:** `_min`, `_max` und `_step` verhindern keine manuelle Eingabe außerhalb des zulässigen Wertebereichs bzw. Schrittmaßes. Die Einschränkungen wirken sich hauptsächlich auf die integrierten Erhöhen-/Verringern-Schaltflächen und die Bedienung mit den Pfeiltasten aus. Die Validierung der manuell eingegebenen Werte muss auf Anwendungsebene erfolgen.
 
 ### Tastatursteuerung
 
@@ -73,7 +73,7 @@ Typischerweise werden folgende Funktionen unterstützt:
 
 Die **Erhöhen-/Verringern-Schaltflächen** sind nicht Teil der Tab-Reihenfolge. Ihre Funktion steht Tastaturnutzenden über die Pfeiltasten im fokussierten Eingabefeld zur Verfügung.
 
-**Hinweis:** Sind `_min` und/oder `_max` gesetzt, kann der Wert über die Pfeiltasten nur innerhalb dieses Wertebereichs verändert werden. Bei manueller Eingabe können hingegen auch Werte außerhalb des definierten Bereichs eingegeben werden. Diese werden erst durch die native Browservalidierung berücksichtigt.
+**Hinweis:** Sind `_min` und/oder `_max` gesetzt, kann der Wert über die Pfeiltasten nur innerhalb dieses Wertebereichs verändert werden. Bei manueller Eingabe können hingegen auch Werte außerhalb des definierten Bereichs eingegeben werden. Die Validierung der manuell eingegebenen Werte muss auf Anwendungsebene erfolgen.
 
 ### Best Practices / Empfehlungen
 
