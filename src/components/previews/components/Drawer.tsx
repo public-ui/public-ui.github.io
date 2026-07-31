@@ -25,7 +25,7 @@ const DrawerPreview = (props: DrawerPreviewComponentProps) => {
 			_hasCloser: true,
 			_slot: `<p>${translate({ id: 'preview.component.drawer.content' })}</p>`,
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -53,7 +53,7 @@ const DrawerPreview = (props: DrawerPreviewComponentProps) => {
 							_label={translate({ id: 'preview.component.drawer.openButton' })}
 							_on={{
 								onClick: () => {
-									void drawerRef.current?.open();
+									void drawerRef.current?.show(true);
 								},
 							}}
 						/>

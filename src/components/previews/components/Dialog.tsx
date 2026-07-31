@@ -54,7 +54,7 @@ const DialogPreview: React.FC<DialogPreviewComponentProps> = (props) => {
 							_label={translate({ id: 'preview.component.dialog.openButton' })}
 							_on={{
 								onClick: () => {
-									void dialogRef.current?.openModal();
+									void dialogRef.current?.show(true);
 								},
 							}}
 						/>

@@ -8,7 +8,7 @@ import {
 	SelectOptionsDefault,
 } from '../properties';
 import type { JSX } from '@public-ui/components';
-import { KolInputText, KolSingleSelect } from '@public-ui/react-v19';
+import { KolInputRange, KolInputText, KolSingleSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 
 interface SingleSelectPreviewComponentProps {
@@ -46,6 +46,7 @@ const SingleSelectPreview = (props: SingleSelectPreviewComponentProps) => {
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 				_hideMsg: <BooleanProperty label="Hide Message" />,
 				_touched: <BooleanProperty label="Touched" />,
+				_rows: <KolInputRange _label="Rows" _max="3"></KolInputRange>,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolSingleSelect"

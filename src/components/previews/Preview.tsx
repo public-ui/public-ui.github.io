@@ -32,6 +32,7 @@ type PreviewProps<TProps> = {
 	layout?: PreviewLayout;
 	slotKey?: keyof TProps;
 	sourceFormatter?: (props: TProps) => string | undefined;
+	hiddenPropsInCode?: string[] | undefined;
 };
 
 const Preview = <TProps,>({
@@ -45,6 +46,7 @@ const Preview = <TProps,>({
 	layout = PreviewLayout.DEFAULT,
 	slotKey,
 	sourceFormatter,
+	hiddenPropsInCode,
 }: PreviewProps<TProps>) => {
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
 	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(codeInitialCollapsed ?? false);
@@ -126,13 +128,16 @@ const Preview = <TProps,>({
 			if (value === null || value === undefined) {
 				return '';
 			}
-			return `{${JSON.stringify(value)}}`;
+			return `{${JSON.stringify(value, null, 3)}}`;
 		};
 
 		const propsString = Object.entries(currentProps as Record<string, unknown>)
 			.filter(([key]) => (slotKey ? key !== slotKey : true))
 			.filter(([, value]) => value !== undefined && value !== null && value !== '')
 			.map(([key, value]) => {
+				if (hiddenPropsInCode?.some((prop) => prop === key)) {
+					return `\n  ${key}={...}`;
+				}
 				const formattedValue = formatValue(value);
 				return formattedValue ? `\n  ${key}=${formattedValue}` : '';
 			})

@@ -1,25 +1,26 @@
-import { KolInputText, KolButton, KolInputCheckbox, KolDrawer, KolCard } from '@public-ui/react-v19';
+import { KolInputText, KolButton, KolInputCheckbox, KolDrawer, KolCard, KolSelect } from '@public-ui/react-v19';
 import React, { useEffect, useState } from 'react';
 import { translate } from '@docusaurus/Translate';
+import { PREDEFINED_ICONS } from './IconsProperty';
 
-export type TreeItemData = {
+export type NavItemData = {
 	_label: string;
 	_href?: string;
 	_active?: boolean;
-	_open?: boolean;
-	_children?: TreeItemData[];
+	_icons?: string;
+	_children?: NavItemData[];
 };
 
-const createDefaultItem = (label: string): TreeItemData => ({
+const createDefaultItem = (label: string): NavItemData => ({
 	_label: label,
 	_href: `#/${label.toLowerCase().replace(/\s+/g, '-')}`,
 });
 
-type UpdateFn = (updater: (item: TreeItemData) => TreeItemData) => void;
+type UpdateFn = (updater: (item: NavItemData) => NavItemData) => void;
 type RemoveFn = () => void;
 
-const TreeItemEditor: React.FC<{
-	item: TreeItemData;
+const NavItemEditor: React.FC<{
+	item: NavItemData;
 	index: number;
 	depth: number;
 	onUpdate: UpdateFn;
@@ -27,7 +28,7 @@ const TreeItemEditor: React.FC<{
 }> = ({ item, index, depth, onUpdate, onRemove }) => {
 	const label = depth === 0 ? `Item ${index + 1}` : `Child ${index + 1}`;
 
-	const handleFieldChange = (field: keyof TreeItemData, value: unknown) => {
+	const handleFieldChange = (field: keyof NavItemData, value: unknown) => {
 		onUpdate((prev) => ({ ...prev, [field]: value }));
 	};
 
@@ -39,7 +40,7 @@ const TreeItemEditor: React.FC<{
 		}));
 	};
 
-	const updateChild = (childIndex: number, updater: (child: TreeItemData) => TreeItemData) => {
+	const updateChild = (childIndex: number, updater: (child: NavItemData) => NavItemData) => {
 		onUpdate((prev) => {
 			const children = [...(prev._children ?? [])];
 			children[childIndex] = updater(children[childIndex]);
@@ -82,6 +83,16 @@ const TreeItemEditor: React.FC<{
 							},
 						}}
 					/>
+					<KolSelect
+						_label="Icon"
+						_options={PREDEFINED_ICONS}
+						_value={item._icons}
+						_on={{
+							onInput: (_: Event, value: unknown) => {
+								handleFieldChange('_icons', value);
+							},
+						}}
+					/>
 					<KolInputCheckbox
 						_label="Active"
 						_checked={item._active ?? false}
@@ -92,18 +103,6 @@ const TreeItemEditor: React.FC<{
 							},
 						}}
 					/>
-					{item._children && item._children.length > 0 && (
-						<KolInputCheckbox
-							_label="Open"
-							_checked={item._open ?? false}
-							_variant="switch"
-							_on={{
-								onInput: (_e: Event, checked: unknown) => {
-									handleFieldChange('_open', !!checked);
-								},
-							}}
-						/>
-					)}
 					<div className="flex gap-2">
 						<KolButton _label="+ Child" _variant="ghost" _on={{ onClick: addChild }} />
 						<KolButton _label="Remove" _variant="danger" _on={{ onClick: onRemove }} />
@@ -112,7 +111,7 @@ const TreeItemEditor: React.FC<{
 			</KolCard>
 
 			{item._children?.map((child, childIndex) => (
-				<TreeItemEditor
+				<NavItemEditor
 					key={childIndex}
 					item={child}
 					index={childIndex}
@@ -125,15 +124,15 @@ const TreeItemEditor: React.FC<{
 	);
 };
 
-const TreeItemsProperty = (props: {
+const NavItemsProperty = (props: {
 	label: string;
-	_value?: TreeItemData[];
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
+	_value?: NavItemData[];
 }) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [items, setItems] = useState<TreeItemData[]>(props._value ?? []);
+	const [items, setItems] = useState<NavItemData[]>(props._value ?? []);
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), items);
@@ -143,7 +142,7 @@ const TreeItemsProperty = (props: {
 		setItems((prev) => [...prev, createDefaultItem(`Page ${prev.length + 1}`)]);
 	};
 
-	const updateItem = (index: number, updater: (item: TreeItemData) => TreeItemData) => {
+	const updateItem = (index: number, updater: (item: NavItemData) => NavItemData) => {
 		setItems((prev) => {
 			const next = [...prev];
 			next[index] = updater(next[index]);
@@ -160,7 +159,7 @@ const TreeItemsProperty = (props: {
 			<KolButton _label={props.label} _variant="secondary" _on={{ onClick: () => setIsEditing(!isEditing) }} />
 
 			<KolDrawer
-				_label={translate({ id: 'preview.component.tree.items.edit' })}
+				_label={translate({ id: 'preview.component.nav.items.edit' })}
 				_open={isEditing}
 				_align="right"
 				_hasCloser
@@ -168,7 +167,7 @@ const TreeItemsProperty = (props: {
 			>
 				<div className="flex flex-col gap-4 py-4">
 					{items.map((item, index) => (
-						<TreeItemEditor
+						<NavItemEditor
 							key={index}
 							item={item}
 							index={index}
@@ -181,7 +180,7 @@ const TreeItemsProperty = (props: {
 					<KolButton _label="+ Root Item" _variant="secondary" _on={{ onClick: addRootItem }} />
 
 					<KolButton
-						_label={translate({ id: 'preview.component.tree.items.closeedit' })}
+						_label={translate({ id: 'preview.component.nav.items.closeedit' })}
 						_variant="primary"
 						_on={{ onClick: () => setIsEditing(false) }}
 					/>
@@ -191,4 +190,4 @@ const TreeItemsProperty = (props: {
 	);
 };
 
-export default TreeItemsProperty;
+export default NavItemsProperty;

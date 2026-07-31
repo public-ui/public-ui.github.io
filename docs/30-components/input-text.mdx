@@ -13,9 +13,11 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Text Field, Eingabefeld, Textfeld
+**Synonyme:** Texteingabefeld, Textfeld, Eingabefeld, Text Input, Text Field
 
-**Beschreibung:** Die **InputText**-Komponente erzeugt ein Eingabefeld für normale Texteingaben, Suchbegriffe, URLs oder Telefonnummern. Sie unterstützt verschiedene Konfigurationsoptionen wie Zeichenbegrenzung, Icons und Validierungs-Feedback.
+**Beschreibung:** Mit **InputText** können Texte und textbasierte Werte eingegeben und bearbeitet werden.
+
+Die Komponente basiert auf dem nativen HTML5-Element `<input>` und unterstützt verschiedene Eingabetypen wie `text`, `email`, `password`, `search`, `tel` und `url`.
 
 ## Beispiel
 
@@ -29,60 +31,77 @@ Standard-Eingabefeld mit Beschriftung:
 
 ## Barrierefreiheit
 
-- **Label erforderlich**: Jedes Eingabefeld muss über das Attribut `_label` eine Beschriftung erhalten, um Screenreader-Nutzer:innen die Feldfunktion deutlich zu machen.
-- **Tastaturnavigation**: Das Eingabefeld ist vollständig über die Tastatur bedienbar.
-- **Hinweistexte**: Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die von Screenreadern vorgelesen werden.
-- **Fehlermeldungen**: Das Attribut `_msg` ermöglicht aussagekräftige Fehlermeldungen, die von assistiven Technologien erkannt werden.
-- **Zeichenzähler**: Bei Aktivierung (`_has-counter`) wird der Zähler mit einer Verzögerung von 500 ms aktualisiert, um Screenreader nicht zu unterbrechen. Ein versteckter, nur für assistive Technologien sichtbarer Text wird eingeblendet (z.B. „Sie können bis zu 10 Zeichen eingeben").
-- **Fokusmanagement**: Klare Fokusindikatoren unterstützen visuelle und tastaturgesteuerte Navigation.
+- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
+- Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
+- Je nach verwendetem Eingabetyp stellen Browser und assistive Technologien unterschiedliche Funktionen und Eingabehilfen bereit.
+- Vorschlagswerte (`_suggestions`) werden über das native HTML-Element umgesetzt. Die Unterstützung durch Browser und assistive Technologien ist uneinheitlich. Verlassen Sie sich bei unverzichtbaren Eingabehilfen daher nicht ausschließlich auf diese native Autovervollständigung.
+
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Verwendung des nativen HTML5-Elements `<input>` | Die Komponente nutzt bewusst das native HTML5-Element und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
+| Aktualisierung des Zeichenzählers | Bei aktiviertem Zeichenzähler (`_has-counter`) wird dieser mit einer Verzögerung von 1000 ms aktualisiert, um Screenreader nicht zu unterbrechen. Zusätzlich wird ein versteckter, nur für assistive Technologien sichtbarer Hinweis bereitgestellt. |
+| Fokusmanagement | Die Basis-Komponente setzt den nativen Fokusring zurück. Der sichtbare Fokusindikator wird durch das jeweils verwendete Theme bereitgestellt. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" _target="_blank" _label="MDN Web Docs - input Element"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" _target="_blank" _label="MDN Web Docs: Input Element"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/datalist" _target="_blank" _label="MDN Web Docs: Datalist"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#the-input-element" _target="_blank" _label="HTML Living Standard: The Input Element"></kol-link>
 
 ## Verwendung
 
+- Wählen Sie den zum Anwendungsfall passenden Eingabetyp (`text`, `email`, `password`, `search`, `tel` oder `url`).
+- Nutzen Sie `_max-length`, um die maximal zulässige Anzahl an Zeichen zu begrenzen.
+- Verwenden Sie `_max-length-behavior`, um festzulegen, ob die Zeichenbegrenzung nativ durchgesetzt oder lediglich angezeigt wird.
+
 ### Tastatursteuerung
 
-| Taste   | Funktion                              |
-| ------- | ------------------------------------- |
-| `Tab`   | Fokussiert das Eingabefeld.           |
+Die Tastaturbedienung wird durch den Browser und das Betriebssystem bestimmt. Daher können sich einzelne Tastaturfunktionen je nach Browser, Betriebssystem und verwendetem Eingabetyp unterscheiden.
+
+Typischerweise werden folgende Funktionen unterstützt:
+
+| Taste           | Funktion                                                                 |
+| --------------- | ------------------------------------------------------------------------ |
+| `Tab`           | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
+| `Shift+Tab`     | Fokus auf das vorherige fokussierbare Element setzen.                    |
+| `Pfeiltasten`   | Cursor innerhalb des Eingabefelds bewegen.                               |
+| `Pos1` / `Ende` | Cursor an den Anfang/Ende des Eingabewerts setzen.                       |
+
+**Hinweis:** Beim Eingabetyp `search` kann die `Esc`-Taste das Eingabefeld je nach Browser leeren. Dieses Verhalten ist browserabhängig und kann daher nicht für alle Browser konsistent gewährleistet werden. Weitere Informationen finden Sie unter <kol-link _href="https://public-ui.github.io/docs/known-issues" _target="_blank" _label="Bekannte Probleme"></kol-link>.
 
 ### Best Practices / Empfehlungen
 
-- Achten Sie darauf, `_id` und `_name` korrekt zu setzen, damit die Daten beim Formular-Versand mitgesendet werden.
-- Verwenden Sie aussagekräftige Label-Texte, die den Zweck des Eingabefelds klar kommunizieren.
-- Nutzen Sie `_hint` für ergänzende Hinweise zur erwarteten Eingabe (z.B. Formatvorgaben).
-- Bei Validierungsfehlern geben Sie konkrete, verständliche Fehlermeldungen über `_msg`.
-- Verwenden Sie `_placeholder` nur als zusätzliche Orientierung, nicht als Ersatz für das Label.
-- Nutzen Sie `_disabled` sparsam und begründen Sie deaktivierte Felder immer.
-- Bei langen Eingaben erwägen Sie stattdessen die <kol-link _href="../components/textarea" _label="Textarea-Komponente"></kol-link>.
-- Setzen Sie `_auto-complete` bewusst: Der Standard ist `'off'`. Verwenden Sie `'on'` oder einen spezifischen Token (z.B. `'email'`), wenn Browser-Autofill erwünscht ist.
-- Mit `_hide-msg` lässt sich die Fehlermeldung visuell ausblenden – sie bleibt aber im DOM und ist für Screenreader über `aria-describedby` weiterhin verfügbar.
-- Nutzen Sie `_short-key`, um einen visuellen Tastaturkürzel-Hinweis nach dem Label anzuzeigen (wird auch dem Screenreader mitgeteilt).
-- Mit `_spell-check` steuern Sie, ob der Browser die Rechtschreibprüfung für das Eingabefeld aktiviert.
+- Wählen Sie den Eingabetyp passend zum erwarteten Eingabewert, beispielsweise `email` für E-Mail-Adressen oder `url` für Internetadressen.
+- Begrenzen Sie die Eingabelänge bei Bedarf über `_max-length` und wählen Sie mit `_max-length-behavior` das zum Anwendungsfall passende Verhalten.
+- Nutzen Sie Vorschlagswerte (`_suggestions`) als unterstützende Eingabehilfe. Stellen Sie unverzichtbare Informationen jedoch immer zusätzlich auf anderem Wege bereit.
+- Verwenden Sie `_placeholder` ausschließlich als zusätzliche Orientierung und nicht als Ersatz für eine aussagekräftige Beschriftung (`_label`).
+- Verwenden Sie bei längeren Freitexten die <kol-link _href="../components/textarea" _label="Textarea-Komponente"></kol-link> anstelle von InputText.
+Setzen Sie `_auto-complete` bewusst ein. Verwenden Sie `'on'` oder einen passenden Autocomplete-Token, wenn Browser-Autovervollständigung erwünscht ist.
+- Aktivieren oder deaktivieren Sie `_spell-check` abhängig vom Anwendungsfall, beispielsweise für Freitextfelder oder technische Eingaben.
 
 ### Anwendungsfälle
 
-- Erfassung einfacher Texteingaben (Namen, Adressen, Beschreibungen)
-- Suchfelder mit Suchtext-Eingabe
-- Kontaktdaten (E-Mail, Telefon via _type="tel")
-- URL-Eingaben via _type="url"
-- Formularfelder in Masken und Dialogen
+- Erfassung kurzer Texteingaben, beispielsweise Namen oder Adressen
+- Suchfelder
+- Eingabe von Kontaktdaten, beispielsweise E-Mail-Adressen oder Telefonnummern
+- Eingabe von Internetadressen (URLs)
+- Passworteingaben
 
 ### FAQ
 
 **Wann sollte ich `_hideLabel` verwenden?**  
-Nur in Spezialfällen, wenn das Label visuell verborgen sein soll. Das Label bleibt für assistive Technologien sichtbar. Nutzen Sie `_hint` zur zusätzlichen Unterstützung.
+Verwenden Sie `_hideLabel` nur, wenn die Beschriftung visuell ausgeblendet werden soll. Das Label bleibt für assistive Technologien verfügbar und dient weiterhin als zugängliche Beschriftung des Eingabefelds.
 
 **Wie kann ich Eingaben validieren?**  
-Mit `_pattern` können Sie ein reguläres Ausdruck-Muster zum Validieren der Eingabe verwenden. Fehlermeldungen geben Sie über `_msg` aus.
+Nutzen Sie die nativen Validierungsmöglichkeiten des HTML-Elements, beispielsweise `_required`, `_pattern`, `_min-length` oder `_max-length`. Fehlermeldungen können über `_msg` ausgegeben werden.
 
 **Kann ich Vorschläge anzeigen?**  
-Ja, über das Attribut `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen.
+Ja, über `_suggestions` können Vorschlagswerte bereitgestellt werden. Da die Unterstützung von `datalist` je nach Browser und assistiven Technologien unterschiedlich ausfällt, sollten Vorschläge nur als ergänzende Eingabehilfe verwendet werden.
+
+**Wie unterscheiden sich `_max-length` und `_max-length-behavior`?**  
+Mit `_max-length` wird die maximale Anzahl an Zeichen festgelegt. Über `_max-length-behavior` kann gesteuert werden, ob die Eingabe nativ begrenzt oder lediglich die Zeichenanzahl angezeigt wird.
 
 ## Konstruktion / Technik
 
