@@ -1,7 +1,7 @@
 import { KolInputCheckbox } from '@public-ui/react-v19';
 import React from 'react';
 
-const variantOptions = ['card', 'msg'] as const;
+const variantOptions = ['card', 'blank'] as const;
 
 const DialogVariantProperty = (props: {
 	label: string;
