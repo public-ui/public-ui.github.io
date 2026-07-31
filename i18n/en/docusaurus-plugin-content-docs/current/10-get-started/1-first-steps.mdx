@@ -35,7 +35,7 @@ For static websites or projects without a framework, the web components can also
 without an adapter, simply via CDN import or script tag.
 
 Further details on using web components with and without a framework can be found on the
-<KolLink _label="Frameworks" _href="/docs/get-started/frameworks" /> page.
+<KolLink _label="Frameworks" _href="/en/docs/get-started/frameworks" /> page.
 
 ## Create project from templates
 
@@ -83,31 +83,25 @@ passed during registration. The `@public-ui/themes` package contains several pre
 | ECL (EU)    | `ECL_EU`     | European Union Design System; <KolLink _label="Styleguide ↗" _href="https://ec.europa.eu/component-library/eu" _target="_blank" /> |
 | KERN        | `KERN_V2`    | KERN-UX Standard Design System; <KolLink _label="Styleguide ↗" _href="https://www.kern-ux.de" _target="_blank" /> |
 
-### Register and switch themes
+### Register theme
 
-The theme is passed as the first parameter when calling `register()`. To switch between
-multiple themes at runtime, you can pass an array of themes and control the selection via a switch.
+The theme is passed as the first parameter when calling `register()`.
 
 ```ts
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
-import { DEFAULT, ECL_EC, ECL_EU } from '@public-ui/themes';
+import { DEFAULT } from '@public-ui/themes';
 
-// Register a single theme:
+// Register theme
 register(DEFAULT, defineCustomElements).catch(console.warn);
-
-// Or register multiple themes and switch later:
-// register([DEFAULT, ECL_EC, ECL_EU], defineCustomElements);
 ```
-
-You can try out and switch the themes of this page live using the switch in the toolbar at the top.
 
 ### Create your own theme
 
 If none of the included themes matches your corporate design, you can create a **custom theme**.
 The approach follows the existing theme structure and is maintained entirely in code.
 
-<KolLink _label="Create theme yourself" _href="/docs/concepts/styling/designer" />
+<KolLink _label="Theming concept" _href="/en/docs/concepts/styling/theming" />
 
 ## Frequently asked questions
 
@@ -136,7 +130,7 @@ register(DEFAULT, defineCustomElements); // Promise not awaited
 - **`ECL_EC`** / **`ECL_EU`** – European Commission / European Union Design System
 - **`KERN_V2`** – KERN-UX Standard Design System
 - An overview of all themes can be found above in the [Themes](#themes) section.
-- [Create custom theme](/docs/concepts/styling/designer)
+- [Create custom theme](/en/docs/concepts/styling/theming)
 
 </details>
 
@@ -174,4 +168,4 @@ For production, you should use fixed versions instead of `@latest`.
 
 Once your project is set up and a theme is registered, you can use the KoliBri components.
 A complete overview of all available components — with examples, properties and events — can be
-found in the <KolLink _label="component documentation" _href="/docs/components" />.
+found in the <KolLink _label="component documentation" _href="/en/docs/components" />.
