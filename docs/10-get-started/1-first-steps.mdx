@@ -2,7 +2,7 @@ import { KolAlert, KolLink } from '@public-ui/react-v19';
 
 # Erste Schritte
 
-<KolAlert _type="warning" _variant="card">
+<KolAlert _type="warning" _variant="card" style={{ marginBottom: '1rem' }}>
 	Für Projekte im ITZBund gibt es ein vorgegebenes Seed-Projekt, welches über die internen Kommunikationswege angefragt
 	werden kann.
 </KolAlert>
@@ -160,7 +160,7 @@ Ja! Laden Sie KoliBri per CDN:
 ```html
 <script type="module">
 	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.js';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.mjs';
 	import { DEFAULT } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
 
 	register(DEFAULT, defineCustomElements);
