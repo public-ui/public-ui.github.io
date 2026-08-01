@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[8731],{18731:(s,_,u)=>{u.r(_),u.d(_,{default:()=>a});u(12888);var c=u(23806),e=u(11684);const a=()=>(0,e.jsx)(c.I0,{_src:"/assets/abgrenzung.jpg",_alt:"",_sizes:"20vw"})}}]);
