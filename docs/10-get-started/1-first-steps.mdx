@@ -151,17 +151,24 @@ Prüfen Sie:
 
 Ja! Laden Sie KoliBri per CDN:
 
+> ⚠️ **Wichtig:** Öffnen Sie die HTML-Datei **nicht** direkt im Browser (z. B. mit `file://`). Verwenden Sie stattdessen einen lokalen Server wie `python -m http.server` oder `live-server`, da ES-Module sonst blockiert werden.
+
+> 💡 **Tipp:** Für ältere Browser (z. B. Safari < 16.4) sollten Sie das [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) hinzufügen:
+> ```html
+> <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
+> ```
+
 ```html
 <script type="module">
-	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.mjs';
-	import { DEFAULT } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
+	import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
+	import { DEFAULT } from 'https://unpkg.com/@public-ui/themes@4.2.1/dist/index.mjs';
 
-	register(DEFAULT, defineCustomElements);
+	register(DEFAULT, defineCustomElements).catch(console.error);
 </script>
 ```
 
-Für Produktion sollten Sie fixe Versionen statt `@latest` verwenden.
+Für Produktion sollten Sie **feste Versionen** (z. B. `@4.2.1`) statt `@latest` verwenden, um Breaking Changes zu vermeiden.
 
 </details>
 
