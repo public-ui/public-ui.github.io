@@ -156,16 +156,23 @@ Yes! Load KoliBri via CDN:
 > 💡 **Tip:** For older browsers (e.g., Safari < 16.4), you should add the [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs):
 > ```html
 > <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
-> ```
+> **Note:** KoliBri uses `_`-prefixed attributes (e.g., `_label`) for component properties to avoid conflicts with standard HTML attributes.
 
 ```html
-<script type="module">
+<!DOCTYPE html>
+<html>
+<body>
+  <kol-button _label="Click me"></kol-button>
+
+  <script type="module">
 	import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
 	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
 	import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
 
 	register(DEFAULT, defineCustomElements).catch(console.warn);
-</script>
+  </script>
+</body>
+</html>
 ```
 
 For production, you should use **fixed versions** (e.g., `@4.2.1`) instead of `@latest` to avoid breaking changes.
