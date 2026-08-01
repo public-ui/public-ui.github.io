@@ -2,7 +2,7 @@ import { KolAlert, KolLink } from '@public-ui/react-v19';
 
 # Erste Schritte
 
-<KolAlert _type="warning" _variant="card">
+<KolAlert _type="warning" _variant="card" style={{ marginBottom: '1rem' }}>
 	Für Projekte im ITZBund gibt es ein vorgegebenes Seed-Projekt, welches über die internen Kommunikationswege angefragt
 	werden kann.
 </KolAlert>
@@ -84,31 +84,25 @@ bestimmt, das bei der Registrierung übergeben wird. Das Paket `@public-ui/theme
 | ECL (EU)    | `ECL_EU`     | European Union Design-System; <KolLink _label="Styleguide ↗" _href="https://ec.europa.eu/component-library/eu" _target="_blank" /> |
 | KERN        | `KERN_V2`    | KERN-UX Standard Design-System; <KolLink _label="Styleguide ↗" _href="https://www.kern-ux.de" _target="_blank" /> |
 
-### Theme registrieren und umschalten
+### Theme registrieren
 
-Das Theme wird beim Aufruf von `register()` als erster Parameter übergeben. Um zur Laufzeit zwischen
-mehreren Themes zu wechseln, können Sie ein Array von Themes übergeben und die Auswahl per Schalter steuern.
+Das Theme wird beim Aufruf von `register()` als erster Parameter übergeben.
 
 ```ts
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
-import { DEFAULT, ECL_EC, ECL_EU } from '@public-ui/themes';
+import { DEFAULT } from '@public-ui/themes';
 
-// Einzelnes Theme registrieren:
+// Theme registrieren
 register(DEFAULT, defineCustomElements).catch(console.warn);
-
-// Oder mehrere Themes registrieren und später umschalten:
-// register([DEFAULT, ECL_EC, ECL_EU], defineCustomElements);
 ```
-
-Die Themes der Seite können Sie über den Schalter in der Toolbar oben live ausprobieren und umschalten.
 
 ### Eigenes Theme erstellen
 
 Wenn keines der mitgelieferten Themes zu Ihrem Corporate Design passt, können Sie ein **eigenes Theme** erstellen.
 Das Vorgehen orientiert sich am bestehenden Theme-Aufbau und wird vollständig im Code gepflegt.
 
-<KolLink _label="Theme selbst erstellen" _href="/docs/concepts/styling/designer" />
+<KolLink _label="Theming-Konzept" _href="/docs/concepts/styling/theming" />
 
 ## Häufige Fragen
 
@@ -137,7 +131,7 @@ register(DEFAULT, defineCustomElements); // Promise nicht abgewartet
 - **`ECL_EC`** / **`ECL_EU`** – European Commission / European Union Design-System
 - **`KERN_V2`** – KERN-UX Standard Design-System
 - Eine Übersicht aller Themes finden Sie oben im Abschnitt [Themes](#themes).
-- [Eigenes Theme erstellen](/docs/concepts/styling/designer)
+- [Eigenes Theme erstellen](/docs/concepts/styling/theming)
 
 </details>
 
@@ -160,7 +154,7 @@ Ja! Laden Sie KoliBri per CDN:
 ```html
 <script type="module">
 	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.js';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.mjs';
 	import { DEFAULT } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
 
 	register(DEFAULT, defineCustomElements);
