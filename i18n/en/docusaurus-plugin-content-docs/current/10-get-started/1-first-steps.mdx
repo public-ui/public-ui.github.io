@@ -2,8 +2,8 @@ import { KolAlert, KolLink } from '@public-ui/react-v19';
 
 # First steps
 
-<KolAlert _type="warning" _variant="card" style={{ marginBottom: '1rem' }}>
-	For projects at ITZBund, there is a predefined seed project that can be requested via internal communication channels.
+<KolAlert _type="warning" _variant="card" _label="ITZBund starter repositories" style={{ marginBottom: '1rem' }}>
+	For projects at ITZBund, there is a predefined starter repository that can be requested via internal communication channels.
 </KolAlert>
 
 **KoliBri** is an open-source library for accessible web components, developed by the German Federal Government.
@@ -94,7 +94,7 @@ import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/themes';
 
 // Register theme
-register(DEFAULT, defineCustomElements).catch(console.warn);
+register(DEFAULT, defineCustomElements).catch(console.error);
 ```
 
 ### Create your own theme

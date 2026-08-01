@@ -2,8 +2,8 @@ import { KolAlert, KolLink } from '@public-ui/react-v19';
 
 # Erste Schritte
 
-<KolAlert _type="warning" _variant="card" style={{ marginBottom: '1rem' }}>
-	Für Projekte im ITZBund gibt es ein vorgegebenes Seed-Projekt, welches über die internen Kommunikationswege angefragt
+<KolAlert _type="warning" _variant="card" _label="ITZBund Starter-Repositories" style={{ marginBottom: '1rem' }}>
+	Für Projekte im ITZBund gibt es ein vorgegebene Starter-Repository, welches über die internen Kommunikationswege angefragt
 	werden kann.
 </KolAlert>
 
@@ -95,7 +95,7 @@ import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/themes';
 
 // Theme registrieren
-register(DEFAULT, defineCustomElements).catch(console.warn);
+register(DEFAULT, defineCustomElements).catch(console.error);
 ```
 
 ### Eigenes Theme erstellen
