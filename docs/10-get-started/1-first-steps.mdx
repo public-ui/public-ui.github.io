@@ -92,11 +92,18 @@ Das Theme wird beim Aufruf von `register()` als erster Parameter übergeben.
 ```ts
 import { register } from '@public-ui/components@4.2.1';
 import { defineCustomElements } from '@public-ui/components@4.2.1/loader';
-import { DEFAULT } from '@public-ui/themes@4.2.1';
+import { DEFAULT } from '@public-ui/theme-default';
 
 // Theme registrieren
 register(DEFAULT, defineCustomElements).catch(console.warn);
 ```
+
+> 💡 **Tipp:** Sie können das Theme einfach ändern, indem Sie das entsprechende Theme-Paket importieren, z. B.:
+> ```ts
+> import { BWSt } from '@public-ui/theme-bwst';
+> register(BWSt, defineCustomElements).catch(console.warn);
+> ```
+> Verfügbare Themes: `@public-ui/theme-default`, `@public-ui/theme-bwst`, `@public-ui/theme-desy`, `@public-ui/theme-ecl-ec`, `@public-ui/theme-ecl-eu`, `@public-ui/theme-kern`
 
 ### Eigenes Theme erstellen
 
@@ -163,7 +170,7 @@ Ja! Laden Sie KoliBri per CDN:
 <script type="module">
 	import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
 	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
-	import { DEFAULT } from 'https://unpkg.com/@public-ui/themes@4.2.1/dist/index.mjs';
+	import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
 
 	register(DEFAULT, defineCustomElements).catch(console.warn);
 </script>
