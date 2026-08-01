@@ -2,8 +2,8 @@ import { KolAlert, KolLink } from '@public-ui/react-v19';
 
 # Erste Schritte
 
-<KolAlert _type="warning" _variant="card" style={{ marginBottom: '1rem' }}>
-	Für Projekte im ITZBund gibt es ein vorgegebenes Seed-Projekt, welches über die internen Kommunikationswege angefragt
+<KolAlert _type="warning" _variant="card" _label="ITZBund Starter-Repositories" style={{ marginBottom: '1rem' }}>
+	Für Projekte im ITZBund gibt es ein vorgegebenes Starter-Repository, welches über die internen Kommunikationswege angefragt
 	werden kann.
 </KolAlert>
 
@@ -22,9 +22,10 @@ und Autovervollständigung ermöglichen:
 | Adapter                  | Framework                          |
 | ------------------------ | ---------------------------------- |
 | `@public-ui/react-v19`   | React (empfohlen für JSX/TSX)      |
+| `@public-ui/react`       | React 16.4 bis 18                  |
 | `@public-ui/solid`       | Solid                              |
 | `@public-ui/vue`         | Vue                                |
-| `@public-ui/preact`      | Preact (experimentell)             |
+| `@public-ui/preact`      | Preact                           |
 | `@public-ui/angular-v19` | Angular v19                        |
 | `@public-ui/angular-v20` | Angular v20                        |
 | `@public-ui/angular-v21` | Angular v21                        |
@@ -78,24 +79,31 @@ bestimmt, das bei der Registrierung übergeben wird. Das Paket `@public-ui/theme
 | Theme       | Export       | Beschreibung                                        |
 | ----------- | ------------ | --------------------------------------------------- |
 | Default     | `DEFAULT`    | Das Standard-Theme von KoliBri                      |
-| BWSt        | `BWSt`       | Wasserstraßen- und Schifffahrtsverwaltung des Bundes; <KolLink _label="Styleguide ↗" _href="https://wsv.bund.de" _target="_blank" /> |
-| Desy        | `DesyV11`    | Zoll Design-System (Generalzolldirektion); <KolLink _label="Styleguide ↗" _href="https://desy.zoll-portal.de" _target="_blank" /> |
-| ECL (EC)    | `ECL_EC`     | European Commission Design-System; <KolLink _label="Styleguide ↗" _href="https://ec.europa.eu/component-library/ec" _target="_blank" /> |
-| ECL (EU)    | `ECL_EU`     | European Union Design-System; <KolLink _label="Styleguide ↗" _href="https://ec.europa.eu/component-library/eu" _target="_blank" /> |
-| KERN        | `KERN_V2`    | KERN-UX Standard Design-System; <KolLink _label="Styleguide ↗" _href="https://www.kern-ux.de" _target="_blank" /> |
+| BWSt        | `BWSt`       | Wasserstraßen- und Schifffahrtsverwaltung des Bundes; <KolLink _label="Styleguide" _href="https://wsv.bund.de" _target="_blank" /> |
+| Desy        | `DesyV11`    | Zoll Design-System (Generalzolldirektion); <KolLink _label="Styleguide" _href="https://desy.zoll-portal.de" _target="_blank" /> |
+| ECL (EC)    | `ECL_EC`     | European Commission Design-System; <KolLink _label="Styleguide" _href="https://ec.europa.eu/component-library/ec" _target="_blank" /> |
+| ECL (EU)    | `ECL_EU`     | European Union Design-System; <KolLink _label="Styleguide" _href="https://ec.europa.eu/component-library/eu" _target="_blank" /> |
+| KERN        | `KERN_V2`    | KERN-UX Standard Design-System; <KolLink _label="Styleguide" _href="https://www.kern-ux.de" _target="_blank" /> |
 
 ### Theme registrieren
 
 Das Theme wird beim Aufruf von `register()` als erster Parameter übergeben.
 
 ```ts
-import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/loader';
-import { DEFAULT } from '@public-ui/themes';
+import { register } from '@public-ui/components@4.2.1';
+import { defineCustomElements } from '@public-ui/components@4.2.1/loader';
+import { DEFAULT } from '@public-ui/theme-default';
 
 // Theme registrieren
 register(DEFAULT, defineCustomElements).catch(console.warn);
 ```
+
+> 💡 **Tipp:** Sie können das Theme einfach ändern, indem Sie das entsprechende Theme-Paket importieren, z. B.:
+> ```ts
+> import { BWSt } from '@public-ui/theme-bwst';
+> register(BWSt, defineCustomElements).catch(console.warn);
+> ```
+> Verfügbare Themes: `@public-ui/theme-default`, `@public-ui/theme-bwst`, `@public-ui/theme-desy`, `@public-ui/theme-ecl-ec`, `@public-ui/theme-ecl-eu`, `@public-ui/theme-kern`
 
 ### Eigenes Theme erstellen
 
@@ -151,17 +159,24 @@ Prüfen Sie:
 
 Ja! Laden Sie KoliBri per CDN:
 
+> ⚠️ **Wichtig:** Öffnen Sie die HTML-Datei **nicht** direkt im Browser (z. B. mit `file://`). Verwenden Sie stattdessen einen lokalen Server wie `serve` oder `live-server`, da ES-Module sonst blockiert werden.
+
+> 💡 **Tipp:** Für ältere Browser (z. B. Safari < 16.4) sollten Sie das [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) hinzufügen:
+> ```html
+> <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
+> ```
+
 ```html
 <script type="module">
-	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.mjs';
-	import { DEFAULT } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
+	import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
+	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
+	import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
 
-	register(DEFAULT, defineCustomElements);
+	register(DEFAULT, defineCustomElements).catch(console.warn);
 </script>
 ```
 
-Für Produktion sollten Sie fixe Versionen statt `@latest` verwenden.
+Für Produktion sollten Sie **feste Versionen** (z. B. `@4.2.1`) statt `@latest` verwenden, um Breaking Changes zu vermeiden.
 
 </details>
 
