@@ -43,16 +43,9 @@ Further details on using web components with and without a framework can be foun
 The fastest way to a working KoliBri project is the <KolLink _label="template repository" _href="https://github.com/public-ui/templates" _target="_blank" />.
 It contains pre-built starter templates for common frameworks and rendering variants.
 
-### Using the command line wizard
-
-```
-npm init kolibri@latest my-kolibri-app
-```
-
 ### Directly from a template (degit)
 
-Alternatively, a template can be cloned directly from the repository. Replace `<framework>` with the
-desired template name:
+Clone a template directly from the repository. Replace `<framework>` with the desired template name:
 
 | Framework | Template                           |
 | --------- | ---------------------------------- |
@@ -158,7 +151,7 @@ Check:
 
 Yes! Load KoliBri via CDN:
 
-> ⚠️ **Important:** Do **not** open the HTML file directly in the browser (e.g., with `file://`). Use a local server like `serve` or `live-server` instead, as ES modules are blocked otherwise.
+> ⚠️ **Important:** Do **not** open the HTML file directly in the browser (e.g., with `file://`), as ES modules are blocked. Instead, run `npx serve` in your terminal and open the displayed URL (e.g., http://localhost:3000) in your browser.
 
 > 💡 **Tip:** For older browsers (e.g., Safari < 16.4), you should add the [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs):
 > ```html
