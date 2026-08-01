@@ -10,6 +10,11 @@ import { KolAlert, KolLink } from '@public-ui/react-v19';
 The components are framework-independent, compliant with BITV 2.0 and WCAG 2.2, and can be used in almost any
 web-based project. This page provides a compact overview of how to get started.
 
+> **⚠️ Prerequisites**
+> - A **modern browser** (Chrome, Firefox, Edge, Safari ≥ 16.4).
+> - For local development: **[Node.js](https://nodejs.org/)** (required for `npx serve`).
+> - Optional: [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) for older browsers (Safari < 16.4).
+
 ## Technologies
 
 KoliBri is versioned and provided in the public <KolLink _label="NPM registry" _href="https://www.npmjs.com/search?q=%40public-ui" _target="_blank" />.
@@ -33,8 +38,49 @@ type support and autocompletion:
 ### Web Components without a framework
 
 For static websites or projects without a framework, the web components can also be used **directly** —
-without an adapter, simply via CDN import or script tag.
+without an adapter, simply via CDN import. **This is the fastest way to try out KoliBri!**
 
+
+
+#### Quick Start with CDN
+
+Create an `index.html` file with the following content:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KoliBri Minimal Example</title>
+    <!-- Polyfill for older browsers (optional) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
+</head>
+<body>
+    <h1>KoliBri Test</h1>
+    <kol-button _label="Click me" onclick="handleClick()"></kol-button>
+
+    <script type="module">
+        import { register } from 'https://unpkg.com/@public-ui/components@latest/dist/esm/index.mjs';
+        import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@latest/loader/index.mjs';
+        import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@latest/dist/index.mjs';
+
+        await register(DEFAULT, defineCustomElements);
+
+        function handleClick() {
+            alert("Button clicked!");
+        }
+        window.handleClick = handleClick;
+    </script>
+</body>
+</html>
+```
+
+> **🔥 Important:**
+> - Use **`await register()`** to ensure components are registered before rendering.
+> - Do **not** open the HTML file directly in the browser (`file://`). Instead, start a local server:
+>   ```bash
+>   npx -y serve
+>   ```
+>   and open [http://localhost:3000](http://localhost:3000).
 Further details on using web components with and without a framework can be found on the
 <KolLink _label="Frameworks" _href="/en/docs/get-started/frameworks" /> page.
 
@@ -109,7 +155,7 @@ The approach follows the existing theme structure and is maintained entirely in 
 <details>
 <summary><strong>Components are not displayed?</strong></summary>
 
-Make sure that `register()` is called **before** rendering and that the promise is resolved.
+Make sure that `register()` is completed **before** rendering components. Use `await` or `.then()`:
 
 ```tsx
 // ✅ Correct
@@ -168,7 +214,7 @@ Yes! Load KoliBri via CDN:
 </script>
 ```
 
-For production, you should use **fixed versions** (e.g., `@4.2.1`) instead of `@latest` to avoid breaking changes.
+> **💡 Tip for production:** Replace `@latest` with a fixed version (e.g., `@4.2.1`) to avoid breaking changes.
 
 </details>
 
