@@ -90,12 +90,12 @@ bestimmt, das bei der Registrierung übergeben wird. Das Paket `@public-ui/theme
 Das Theme wird beim Aufruf von `register()` als erster Parameter übergeben.
 
 ```ts
-import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/loader';
-import { DEFAULT } from '@public-ui/themes';
+import { register } from '@public-ui/components@4.2.1';
+import { defineCustomElements } from '@public-ui/components@4.2.1/loader';
+import { DEFAULT } from '@public-ui/themes@4.2.1';
 
 // Theme registrieren
-register(DEFAULT, defineCustomElements).catch(console.error);
+register(DEFAULT, defineCustomElements).catch(console.warn);
 ```
 
 ### Eigenes Theme erstellen
@@ -165,7 +165,7 @@ Ja! Laden Sie KoliBri per CDN:
 	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
 	import { DEFAULT } from 'https://unpkg.com/@public-ui/themes@4.2.1/dist/index.mjs';
 
-	register(DEFAULT, defineCustomElements).catch(console.error);
+	register(DEFAULT, defineCustomElements).catch(console.warn);
 </script>
 ```
 

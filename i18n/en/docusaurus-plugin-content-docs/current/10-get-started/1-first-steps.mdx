@@ -89,12 +89,12 @@ passed during registration. The `@public-ui/themes` package contains several pre
 The theme is passed as the first parameter when calling `register()`.
 
 ```ts
-import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/loader';
-import { DEFAULT } from '@public-ui/themes';
+import { register } from '@public-ui/components@4.2.1';
+import { defineCustomElements } from '@public-ui/components@4.2.1/loader';
+import { DEFAULT } from '@public-ui/themes@4.2.1';
 
 // Register theme
-register(DEFAULT, defineCustomElements).catch(console.error);
+register(DEFAULT, defineCustomElements).catch(console.warn);
 ```
 
 ### Create your own theme
@@ -164,7 +164,7 @@ Yes! Load KoliBri via CDN:
 	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
 	import { DEFAULT } from 'https://unpkg.com/@public-ui/themes@4.2.1/dist/index.mjs';
 
-	register(DEFAULT, defineCustomElements).catch(console.error);
+	register(DEFAULT, defineCustomElements).catch(console.warn);
 </script>
 ```
 
