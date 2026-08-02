@@ -84,6 +84,23 @@ Create an `index.html` file with the following content:
 Further details on using web components with and without a framework can be found on the
 <KolLink _label="Frameworks" _href="/en/docs/get-started/frameworks" /> page.
 
+
+### Use KoliBri with AI Assistants (MCP)
+
+KoliBri provides a **Model Context Protocol (MCP) Server** that allows you to access the documentation and components directly in your AI environment (e.g., Cursor, Claude Code, or VS Code with MCP extensions).
+
+🔗 **[Try the MCP Server](https://public-ui-kolibri-mcp.vercel.app/)**
+
+**Benefits:**
+- **Direct access** to KoliBri documentation and API.
+- **Context-aware help** for components, properties, and examples.
+- **Integrated into your development environment** (e.g., autocompletion, tooltips).
+
+**Example:**
+Ask your AI:
+> *"How do I use the kol-button with a custom theme?"*
+→ The AI uses the MCP server to provide **current and accurate answers** from the KoliBri documentation.
+
 ## Create project from templates
 
 The fastest way to a working KoliBri project is the <KolLink _label="template repository" _href="https://github.com/public-ui/templates" _target="_blank" />.
@@ -204,14 +221,23 @@ Yes! Load KoliBri via CDN:
 > <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
 > ```
 
-```html
-<script type="module">
-	import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
-	import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
+> ℹ️ **Note:** KoliBri uses `_`-prefixed attributes (e.g., `_label`) for component properties to avoid conflicts with standard HTML attributes.
 
-	await register(DEFAULT, defineCustomElements);
-</script>
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <kol-button _label="Klick mich"></kol-button>
+
+    <script type="module">
+      import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
+      import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
+      import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
+
+      await register(DEFAULT, defineCustomElements);
+    </script>
+  </body>
+</html>
 ```
 
 > **💡 Tip for production:** Replace `@latest` with a fixed version (e.g., `@4.2.1`) to avoid breaking changes.

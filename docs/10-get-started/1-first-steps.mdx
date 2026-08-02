@@ -85,6 +85,23 @@ Erstellen Sie eine `index.html` mit folgendem Inhalt:
 Weitere Details zur Verwendung der Web Components mit und ohne Framework finden Sie auf der Seite
 <KolLink _label="Frameworks" _href="/docs/get-started/frameworks" />.
 
+
+### KoliBri mit KI-Assistenten nutzen (MCP)
+
+KoliBri bietet einen **Model Context Protocol (MCP) Server**, mit dem Sie die Dokumentation und Komponenten direkt in Ihrer KI-Umgebung (z. B. Cursor, Claude Code, oder VS Code mit MCP-Erweiterungen) nutzen können.
+
+🔗 **[MCP-Server ausprobieren](https://public-ui-kolibri-mcp.vercel.app/)**
+
+**Vorteile:**
+- **Direkter Zugriff** auf die KoliBri-Dokumentation und API.
+- **Kontextbewusste Hilfe** für Komponenten, Properties und Beispiele.
+- **Integriert in Ihre Entwicklungsumgebung** (z. B. Autocompletion, Tool-Tips).
+
+**Beispiel:**
+Fragen Sie Ihre KI:
+> *"Wie verwende ich den kol-button mit einem Custom-Theme?"*
+→ Die KI nutzt den MCP-Server, um **aktuelle und genaue Antworten** aus der KoliBri-Dokumentation zu liefern.
+
 ## Projekt aus Vorlagen erstellen
 
 Der schnellste Weg zu einem lauffähigen KoliBri-Projekt ist das <KolLink _label="Template-Repository" _href="https://github.com/public-ui/templates" _target="_blank" />.
@@ -201,18 +218,27 @@ Ja! Laden Sie KoliBri per CDN:
 > ⚠️ **Wichtig:** Öffnen Sie die HTML-Datei **nicht** direkt im Browser (z. B. mit `file://`), da ES-Module sonst blockiert werden. Führen Sie stattdessen `npx -y serve` in Ihrem Terminal aus und öffnen Sie die angezeigte URL (z. B. http://localhost:3000) in Ihrem Browser.
 
 > 💡 **Tipp:** Für ältere Browser (z. B. Safari < 16.4) sollten Sie das [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) hinzufügen:
-> ```html
+> ```html>
 > <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
 > ```
 
-```html
-<script type="module">
-	import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
-	import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
+> ℹ️ **Hinweis:** KoliBri verwendet `_`-präfixierte Attribute (z. B. `_label`) für Komponenten-Properties, um Konflikte mit Standard-HTML-Attributen zu vermeiden.
 
-	await register(DEFAULT, defineCustomElements);
-</script>
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <kol-button _label="Klick mich"></kol-button>
+
+    <script type="module">
+      import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
+      import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
+      import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
+
+      await register(DEFAULT, defineCustomElements);
+    </script>
+  </body>
+</html>
 ```
 
 > **💡 Tipp für Produktion:** Ersetzen Sie `@latest` durch eine feste Version (z. B. `@4.2.1`), um Breaking Changes zu vermeiden.
