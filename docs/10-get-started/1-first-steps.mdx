@@ -134,7 +134,7 @@ import { defineCustomElements } from '@public-ui/components@4.2.1/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
 // Theme registrieren
-register(DEFAULT, defineCustomElements).catch(console.warn);
+await register(DEFAULT, defineCustomElements);
 ```
 
 > 💡 **Tipp:** Sie können das Theme einfach ändern, indem Sie das entsprechende Theme-Paket importieren, z. B.:
@@ -198,7 +198,7 @@ Prüfen Sie:
 
 Ja! Laden Sie KoliBri per CDN:
 
-> ⚠️ **Wichtig:** Öffnen Sie die HTML-Datei **nicht** direkt im Browser (z. B. mit `file://`), da ES-Module sonst blockiert werden. Führen Sie stattdessen `npx serve` in Ihrem Terminal aus und öffnen Sie die angezeigte URL (z. B. http://localhost:3000) in Ihrem Browser.
+> ⚠️ **Wichtig:** Öffnen Sie die HTML-Datei **nicht** direkt im Browser (z. B. mit `file://`), da ES-Module sonst blockiert werden. Führen Sie stattdessen `npx -y serve` in Ihrem Terminal aus und öffnen Sie die angezeigte URL (z. B. http://localhost:3000) in Ihrem Browser.
 
 > 💡 **Tipp:** Für ältere Browser (z. B. Safari < 16.4) sollten Sie das [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) hinzufügen:
 > ```html
@@ -211,7 +211,7 @@ Ja! Laden Sie KoliBri per CDN:
 	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
 	import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
 
-	register(DEFAULT, defineCustomElements).catch(console.warn);
+	await register(DEFAULT, defineCustomElements);
 </script>
 ```
 
