@@ -3,8 +3,8 @@ import { KolAlert, KolLink } from '@public-ui/react-v19';
 # Erste Schritte
 
 <KolAlert _type="warning" _variant="card" _label="ITZBund Starter-Repositories" style={{ marginBottom: '1rem' }}>
-	Für Projekte im ITZBund gibt es ein vorgegebenes Starter-Repository, welches über die internen Kommunikationswege angefragt
-	werden kann.
+	<p style={{margin:'0'}}>Für Projekte im ITZBund gibt es ein vorgegebenes Starter-Repository, welches über die internen Kommunikationswege angefragt
+	werden kann.</p>
 </KolAlert>
 
 **KoliBri** ist eine Open-Source-Bibliothek für barrierefreie Web Components, entwickelt von der Bundesregierung.
@@ -13,121 +13,65 @@ webbasierten Projekt verwendet werden. Diese Seite gibt einen kompakten Überbli
 
 > **⚠️ Voraussetzungen**
 > - Ein **moderner Browser** (Chrome, Firefox, Edge, Safari ≥ 16.4).
-> - Für lokale Entwicklung: **[Node.js](https://nodejs.org/)** (für `npx serve`).
-> - Optional: [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) für ältere Browser (Safari < 16.4).
+> - Für lokale Entwicklung: **[Node.js](https://nodejs.org/)** (für `npx -y serve`).
 
-## Technologien
+## Statisches Beispiel (2 Schritte)
 
-KoliBri wird in der öffentlichen <KolLink _label="NPM-Registry" _href="https://www.npmjs.com/search?q=%40public-ui" _target="_blank" /> versioniert bereitgestellt.
-Die Komponenten basieren auf dem **Web Components Standard** und können daher in jedem modernen Webprojekt eingesetzt werden.
+Der schnellste Weg, KoliBri auszuprobieren, ist ein statisches HTML-File:
 
-Zusätzlich bieten wir für gängige Frameworks eigene **Adapter** an, die eine nahtlose Integration mit voller Typ-Unterstützung
-und Autovervollständigung ermöglichen:
-
-| Adapter                  | Framework                          |
-| ------------------------ | ---------------------------------- |
-| `@public-ui/react-v19`   | React (empfohlen für JSX/TSX)      |
-| `@public-ui/react`       | React 16.4 bis 18                  |
-| `@public-ui/solid`       | Solid                              |
-| `@public-ui/vue`         | Vue                                |
-| `@public-ui/preact`      | Preact                           |
-| `@public-ui/angular-v19` | Angular v19                        |
-| `@public-ui/angular-v20` | Angular v20                        |
-| `@public-ui/angular-v21` | Angular v21                        |
-| `@public-ui/hydrate`     | Server-Side-Rendering (SSR)        |
-
-### Web Components ohne Framework
-
-Für statische Webseiten oder Projekte ohne Framework können die Web Components auch **direkt** verwendet werden —
-ohne Adapter, einfach per CDN-Import. **Dies ist der schnellste Weg, um KoliBri auszuprobieren!**
-
-
-
-#### Schnellstart mit CDN
-
-Erstellen Sie eine `index.html` mit folgendem Inhalt:
+**Schritt 1:** Erstellen Sie eine `index.html`-Datei:
 
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>KoliBri Minimalbeispiel</title>
-    <!-- Polyfill für ältere Browser (optional) -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
-</head>
-<body>
-    <h1>KoliBri Test</h1>
+  <head>
+    <title>Hello KoliBri!</title>
+  </head>
+  <body>
+    <h1>Hello KoliBri!</h1>
     <kol-button _label="Klick mich" onclick="handleClick()"></kol-button>
-
     <script type="module">
-        import { register } from 'https://unpkg.com/@public-ui/components@latest/dist/esm/index.mjs';
-        import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@latest/loader/index.mjs';
-        import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@latest/dist/index.mjs';
+      import { register } from 'https://unpkg.com/@public-ui/components/dist/index.js';
+      import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.mjs';
+      import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default/dist/index.mjs';
 
-        await register(DEFAULT, defineCustomElements);
+      await register(DEFAULT, defineCustomElements);
 
-        function handleClick() {
-            alert("Button geklickt!");
-        }
-        window.handleClick = handleClick;
+      function handleClick() {
+        alert("Button clicked!");
+      }
+      window.handleClick = handleClick;
     </script>
-</body>
+  </body>
 </html>
 ```
 
-> **🔥 Wichtig:**
-> - Verwenden Sie **`await register()`**, um sicherzustellen, dass die Komponenten vor dem Rendern registriert sind.
-> - Öffnen Sie die HTML-Datei **nicht** direkt im Browser (`file://`). Starten Sie stattdessen einen lokalen Server:
->   ```bash
->   npx -y serve
->   ```
->   und öffnen Sie [http://localhost:3000](http://localhost:3000).
-Weitere Details zur Verwendung der Web Components mit und ohne Framework finden Sie auf der Seite
-<KolLink _label="Frameworks" _href="/docs/get-started/frameworks" />.
-
-
-### KoliBri mit KI-Assistenten nutzen (MCP)
-
-KoliBri bietet einen **Model Context Protocol (MCP) Server**, mit dem Sie die Dokumentation und Komponenten direkt in Ihrer KI-Umgebung (z. B. Cursor, Claude Code, oder VS Code mit MCP-Erweiterungen) nutzen können.
-
-🔗 **[MCP-Server ausprobieren](https://public-ui-kolibri-mcp.vercel.app/)**
-
-**Vorteile:**
-- **Direkter Zugriff** auf die KoliBri-Dokumentation und API.
-- **Kontextbewusste Hilfe** für Komponenten, Properties und Beispiele.
-- **Integriert in Ihre Entwicklungsumgebung** (z. B. Autocompletion, Tool-Tips).
-
-**Beispiel:**
-Fragen Sie Ihre KI:
-> *"Wie verwende ich den kol-button mit einem Custom-Theme?"*
-→ Die KI nutzt den MCP-Server, um **aktuelle und genaue Antworten** aus der KoliBri-Dokumentation zu liefern.
-
-## Projekt aus Vorlagen erstellen
-
-Der schnellste Weg zu einem lauffähigen KoliBri-Projekt ist das <KolLink _label="Template-Repository" _href="https://github.com/public-ui/templates" _target="_blank" />.
-Es enthält vorgefertigte Starter-Templates für gängige Frameworks und Rendering-Varianten.
-
-### Direkt aus einem Template (degit)
-
-Klonen Sie ein Template direkt aus dem Repository. Ersetzen Sie `<framework>` durch den gewünschten Template-Namen:
-
-| Framework | Template                           |
-| --------- | ---------------------------------- |
-| Angular   | `csr/angular`                      |
-| React     | `csr/react-vite` (empfohlen)       |
-| Vue       | `csr/vue-vite`                     |
-| Statisch  | `csr/static-page`                  |
+**Schritt 2:** Starten Sie einen lokalen Server:
 
 ```bash
-npx degit public-ui/templates/<framework> my-kolibri-project
-cd my-kolibri-project
-npm i # oder pnpm i oder yarn
+npx -y serve
 ```
 
-Die vollständige Liste aller Templates — inklusive SSR (Express) und Theme-Vorlagen — finden Sie im
-<KolLink _label="Template-Repository" _href="https://github.com/public-ui/templates#available-templates" _target="_blank" />.
+Dann öffnen Sie `http://localhost:3000` in Ihrem Browser.
 
-## Themes
+> 💡 **Hinweis:** KoliBri verwendet `_`-präfixierte Attribute (z. B. `_label`) für Komponenten-Properties, um Konflikte mit Standard-HTML-Attributen zu vermeiden.
+
+---
+
+## Projekt aus Templates erstellen
+
+Für Framework-Projekte können Sie vorgefertigte Templates verwenden:
+
+```bash
+npx degit public-ui/templates/csr/react-vite my-kolibri-app
+cd my-kolibri-app
+npm i
+npm start
+```
+
+Verfügbare Templates finden Sie im <KolLink _label="Template-Repository" _href="https://github.com/public-ui/templates" _target="_blank" />.
+
+## Theme registrieren
 
 KoliBri liefert die Komponenten **ohne festes Styling** aus. Das visuelle Erscheinungsbild wird über ein **Theme**
 bestimmt, das bei der Registrierung übergeben wird. Das Paket `@public-ui/themes` enthält mehrere vorgefertigte Themes:
@@ -168,22 +112,37 @@ Das Vorgehen orientiert sich am bestehenden Theme-Aufbau und wird vollständig i
 
 <KolLink _label="Theming-Konzept" _href="/docs/concepts/styling/theming" />
 
+## KoliBri mit KI-Assistenten nutzen (MCP)
+
+KoliBri bietet einen **Model Context Protocol (MCP) Server**, mit dem Sie die Dokumentation und Komponenten direkt in Ihrer KI-Umgebung (z. B. Cursor, Claude Code, oder VS Code mit MCP-Erweiterungen) nutzen können.
+
+🔗 **[MCP-Server ausprobieren](https://public-ui-kolibri-mcp.vercel.app/)**
+
+**Vorteile:**
+- **Direkter Zugriff** auf die KoliBri-Dokumentation und API.
+- **Kontextbewusste Hilfe** für Komponenten, Properties und Beispiele.
+- **Integriert in Ihre Entwicklungsumgebung** (z. B. Autocompletion, Tool-Tips).
+
+**Beispiel:**
+Fragen Sie Ihre KI:
+> *"Wie verwende ich den kol-button mit einem Custom-Theme?"*
+→ Die KI nutzt den MCP-Server, um **aktuelle und genaue Antworten** aus der KoliBri-Dokumentation zu liefern.
+
 ## Häufige Fragen
 
 <details>
 <summary><strong>Komponenten werden nicht angezeigt?</strong></summary>
 
-Stellen Sie sicher, dass `register()` **vor** dem Rendern der Komponenten abgeschlossen ist. Verwenden Sie `await` oder `.then()`:
+Stellen Sie sicher, dass `register()` **vor** dem Rendern aufgerufen wurde und das Promise aufgelöst ist.
 
-```tsx
+```javascript
 // ✅ Richtig
-register(DEFAULT, defineCustomElements).then(() => {
-	// Hier App rendern
-});
+await register(DEFAULT, defineCustomElements);
+// Jetzt Komponenten rendern
 
 // ❌ Falsch
 register(DEFAULT, defineCustomElements); // Promise nicht abgewartet
-// App wird sofort gerendert
+// App wird sofort gerendert - Komponenten fehlen
 ```
 
 </details>
@@ -207,41 +166,6 @@ Prüfen Sie:
 1. `"moduleResolution": "Node"` in `tsconfig.json`
 2. Framework-Adapter installiert (z.B. `@public-ui/react-v19`)
 3. Komponenten aus dem Adapter importieren (nicht aus `@public-ui/components`)
-
-</details>
-
-<details>
-<summary><strong>Kann ich KoliBri ohne Build-Tool nutzen?</strong></summary>
-
-Ja! Laden Sie KoliBri per CDN:
-
-> ⚠️ **Wichtig:** Öffnen Sie die HTML-Datei **nicht** direkt im Browser (z. B. mit `file://`), da ES-Module sonst blockiert werden. Führen Sie stattdessen `npx -y serve` in Ihrem Terminal aus und öffnen Sie die angezeigte URL (z. B. http://localhost:3000) in Ihrem Browser.
-
-> 💡 **Tipp:** Für ältere Browser (z. B. Safari < 16.4) sollten Sie das [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) hinzufügen:
-> ```html>
-> <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
-> ```
-
-> ℹ️ **Hinweis:** KoliBri verwendet `_`-präfixierte Attribute (z. B. `_label`) für Komponenten-Properties, um Konflikte mit Standard-HTML-Attributen zu vermeiden.
-
-```html
-<!DOCTYPE html>
-<html>
-  <body>
-    <kol-button _label="Klick mich"></kol-button>
-
-    <script type="module">
-      import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
-      import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
-      import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
-
-      await register(DEFAULT, defineCustomElements);
-    </script>
-  </body>
-</html>
-```
-
-> **💡 Tipp für Produktion:** Ersetzen Sie `@latest` durch eine feste Version (z. B. `@4.2.1`), um Breaking Changes zu vermeiden.
 
 </details>
 
