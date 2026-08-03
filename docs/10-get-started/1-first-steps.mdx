@@ -11,6 +11,11 @@ import { KolAlert, KolLink } from '@public-ui/react-v19';
 Die Komponenten sind framework-unabhängig, nach BITV 2.0 und WCAG 2.2 konform und können in nahezu jedem
 webbasierten Projekt verwendet werden. Diese Seite gibt einen kompakten Überblick, wie Sie starten.
 
+> **⚠️ Voraussetzungen**
+> - Ein **moderner Browser** (Chrome, Firefox, Edge, Safari ≥ 16.4).
+> - Für lokale Entwicklung: **[Node.js](https://nodejs.org/)** (für `npx serve`).
+> - Optional: [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) für ältere Browser (Safari < 16.4).
+
 ## Technologien
 
 KoliBri wird in der öffentlichen <KolLink _label="NPM-Registry" _href="https://www.npmjs.com/search?q=%40public-ui" _target="_blank" /> versioniert bereitgestellt.
@@ -34,8 +39,49 @@ und Autovervollständigung ermöglichen:
 ### Web Components ohne Framework
 
 Für statische Webseiten oder Projekte ohne Framework können die Web Components auch **direkt** verwendet werden —
-ohne Adapter, einfach per CDN-Import oder Skript-Tag.
+ohne Adapter, einfach per CDN-Import. **Dies ist der schnellste Weg, um KoliBri auszuprobieren!**
 
+
+
+#### Schnellstart mit CDN
+
+Erstellen Sie eine `index.html` mit folgendem Inhalt:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KoliBri Minimalbeispiel</title>
+    <!-- Polyfill für ältere Browser (optional) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
+</head>
+<body>
+    <h1>KoliBri Test</h1>
+    <kol-button _label="Klick mich" onclick="handleClick()"></kol-button>
+
+    <script type="module">
+        import { register } from 'https://unpkg.com/@public-ui/components@latest/dist/esm/index.mjs';
+        import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@latest/loader/index.mjs';
+        import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@latest/dist/index.mjs';
+
+        await register(DEFAULT, defineCustomElements);
+
+        function handleClick() {
+            alert("Button geklickt!");
+        }
+        window.handleClick = handleClick;
+    </script>
+</body>
+</html>
+```
+
+> **🔥 Wichtig:**
+> - Verwenden Sie **`await register()`**, um sicherzustellen, dass die Komponenten vor dem Rendern registriert sind.
+> - Öffnen Sie die HTML-Datei **nicht** direkt im Browser (`file://`). Starten Sie stattdessen einen lokalen Server:
+>   ```bash
+>   npx -y serve
+>   ```
+>   und öffnen Sie [http://localhost:3000](http://localhost:3000).
 Weitere Details zur Verwendung der Web Components mit und ohne Framework finden Sie auf der Seite
 <KolLink _label="Frameworks" _href="/docs/get-started/frameworks" />.
 
@@ -105,7 +151,7 @@ import { defineCustomElements } from '@public-ui/components@4.2.1/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 
 // Theme registrieren
-register(DEFAULT, defineCustomElements).catch(console.warn);
+await register(DEFAULT, defineCustomElements);
 ```
 
 > 💡 **Tipp:** Sie können das Theme einfach ändern, indem Sie das entsprechende Theme-Paket importieren, z. B.:
@@ -127,7 +173,7 @@ Das Vorgehen orientiert sich am bestehenden Theme-Aufbau und wird vollständig i
 <details>
 <summary><strong>Komponenten werden nicht angezeigt?</strong></summary>
 
-Stellen Sie sicher, dass `register()` **vor** dem Rendern aufgerufen wurde und das Promise aufgelöst ist.
+Stellen Sie sicher, dass `register()` **vor** dem Rendern der Komponenten abgeschlossen ist. Verwenden Sie `await` oder `.then()`:
 
 ```tsx
 // ✅ Richtig
@@ -169,30 +215,33 @@ Prüfen Sie:
 
 Ja! Laden Sie KoliBri per CDN:
 
-> ⚠️ **Wichtig:** Öffnen Sie die HTML-Datei **nicht** direkt im Browser (z. B. mit `file://`), da ES-Module sonst blockiert werden. Führen Sie stattdessen `npx serve` in Ihrem Terminal aus und öffnen Sie die angezeigte URL (z. B. http://localhost:3000) in Ihrem Browser.
+> ⚠️ **Wichtig:** Öffnen Sie die HTML-Datei **nicht** direkt im Browser (z. B. mit `file://`), da ES-Module sonst blockiert werden. Führen Sie stattdessen `npx -y serve` in Ihrem Terminal aus und öffnen Sie die angezeigte URL (z. B. http://localhost:3000) in Ihrem Browser.
 
 > 💡 **Tipp:** Für ältere Browser (z. B. Safari < 16.4) sollten Sie das [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) hinzufügen:
-> ```html
-> **Hinweis:** KoliBri verwendet `_`-präfixierte Attribute (z. B. `_label`) für Komponenten-Properties, um Konflikte mit Standard-HTML-Attributen zu vermeiden.
+> ```html>
+> <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
+> ```
+
+> ℹ️ **Hinweis:** KoliBri verwendet `_`-präfixierte Attribute (z. B. `_label`) für Komponenten-Properties, um Konflikte mit Standard-HTML-Attributen zu vermeiden.
 
 ```html
 <!DOCTYPE html>
 <html>
-<body>
-  <kol-button _label="Klick mich"></kol-button>
+  <body>
+    <kol-button _label="Klick mich"></kol-button>
 
-  <script type="module">
-	import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
-	import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
+    <script type="module">
+      import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
+      import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
+      import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
 
-	register(DEFAULT, defineCustomElements).catch(console.warn);
-  </script>
-</body>
+      await register(DEFAULT, defineCustomElements);
+    </script>
+  </body>
 </html>
 ```
 
-Für Produktion sollten Sie **feste Versionen** (z. B. `@4.2.1`) statt `@latest` verwenden, um Breaking Changes zu vermeiden.
+> **💡 Tipp für Produktion:** Ersetzen Sie `@latest` durch eine feste Version (z. B. `@4.2.1`), um Breaking Changes zu vermeiden.
 
 </details>
 
