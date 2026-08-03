@@ -3,7 +3,7 @@ import { KolAlert, KolLink } from '@public-ui/react-v19';
 # First steps
 
 <KolAlert _type="warning" _variant="card" _label="ITZBund starter repositories" style={{ marginBottom: '1rem' }}>
-	For projects at ITZBund, there is a predefined starter repository that can be requested via internal communication channels.
+	<p style={{margin:'0'}}>For projects at ITZBund, there is a predefined starter repository that can be requested via internal communication channels.</p>
 </KolAlert>
 
 **KoliBri** is an open-source library for accessible web components, developed by the German Federal Government.
@@ -12,130 +12,74 @@ web-based project. This page provides a compact overview of how to get started.
 
 > **⚠️ Prerequisites**
 > - A **modern browser** (Chrome, Firefox, Edge, Safari ≥ 16.4).
-> - For local development: **[Node.js](https://nodejs.org/)** (required for `npx serve`).
-> - Optional: [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs) for older browsers (Safari < 16.4).
+> - For local development: **[Node.js](https://nodejs.org/)** (for `npx -y serve`).
 
-## Technologies
+## Static example (2 steps)
 
-KoliBri is versioned and provided in the public <KolLink _label="NPM registry" _href="https://www.npmjs.com/search?q=%40public-ui" _target="_blank" />.
-The components are based on the **Web Components Standard** and can therefore be used in any modern web project.
+The fastest way to try KoliBri is a static HTML file:
 
-Additionally, we offer dedicated **adapters** for common frameworks that enable seamless integration with full
-type support and autocompletion:
-
-| Adapter                  | Framework                          |
-| ------------------------ | ---------------------------------- |
-| `@public-ui/react-v19`   | React (recommended for JSX/TSX)    |
-| `@public-ui/react`       | React 16.4 to 18                   |
-| `@public-ui/solid`       | Solid                              |
-| `@public-ui/vue`         | Vue                                |
-| `@public-ui/preact`      | Preact                           |
-| `@public-ui/angular-v19` | Angular v19                        |
-| `@public-ui/angular-v20` | Angular v20                        |
-| `@public-ui/angular-v21` | Angular v21                        |
-| `@public-ui/hydrate`     | Server-Side Rendering (SSR)        |
-
-### Web Components without a framework
-
-For static websites or projects without a framework, the web components can also be used **directly** —
-without an adapter, simply via CDN import. **This is the fastest way to try out KoliBri!**
-
-
-
-#### Quick Start with CDN
-
-Create an `index.html` file with the following content:
+**Step 1:** Create an `index.html` file:
 
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>KoliBri Minimal Example</title>
-    <!-- Polyfill for older browsers (optional) -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
-</head>
-<body>
-    <h1>KoliBri Test</h1>
+  <head>
+    <title>Hello KoliBri!</title>
+  </head>
+  <body>
+    <h1>Hello KoliBri!</h1>
     <kol-button _label="Click me" onclick="handleClick()"></kol-button>
-
     <script type="module">
-        import { register } from 'https://unpkg.com/@public-ui/components@latest/dist/esm/index.mjs';
-        import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@latest/loader/index.mjs';
-        import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@latest/dist/index.mjs';
+      import { register } from "https://unpkg.com/@public-ui/components/dist/index.js";
+      import { defineCustomElements } from "https://unpkg.com/@public-ui/components/loader/index.mjs";
+      import { DEFAULT } from "https://unpkg.com/@public-ui/theme-default/dist/index.mjs";
 
-        await register(DEFAULT, defineCustomElements);
+      await register(DEFAULT, defineCustomElements);
 
-        function handleClick() {
-            alert("Button clicked!");
-        }
-        window.handleClick = handleClick;
+      function handleClick() {
+        alert("Button clicked!");
+      }
+      window.handleClick = handleClick;
     </script>
-</body>
+  </body>
 </html>
 ```
 
-> **🔥 Important:**
-> - Use **`await register()`** to ensure components are registered before rendering.
-> - Do **not** open the HTML file directly in the browser (`file://`). Instead, start a local server:
->   ```bash
->   npx -y serve
->   ```
->   and open [http://localhost:3000](http://localhost:3000).
-Further details on using web components with and without a framework can be found on the
-<KolLink _label="Frameworks" _href="/en/docs/get-started/frameworks" /> page.
+**Step 2:** Start a local server:
 
+```bash
+npx -y serve
+```
 
-### Use KoliBri with AI Assistants (MCP)
+Then open `http://localhost:3000` in your browser.
 
-KoliBri provides a **Model Context Protocol (MCP) Server** that allows you to access the documentation and components directly in your AI environment (e.g., Cursor, Claude Code, or VS Code with MCP extensions).
+> 💡 **Note:** KoliBri uses `_`.prefixed attributes (e.g., `_label`) for component properties to avoid conflicts with standard HTML attributes.
 
-🔗 **[Try the MCP Server](https://public-ui-kolibri-mcp.vercel.app/)**
-
-**Benefits:**
-- **Direct access** to KoliBri documentation and API.
-- **Context-aware help** for components, properties, and examples.
-- **Integrated into your development environment** (e.g., autocompletion, tooltips).
-
-**Example:**
-Ask your AI:
-> *"How do I use the kol-button with a custom theme?"*
-→ The AI uses the MCP server to provide **current and accurate answers** from the KoliBri documentation.
+---
 
 ## Create project from templates
 
-The fastest way to a working KoliBri project is the <KolLink _label="template repository" _href="https://github.com/public-ui/templates" _target="_blank" />.
-It contains pre-built starter templates for common frameworks and rendering variants.
-
-### Directly from a template (degit)
-
-Clone a template directly from the repository. Replace `<framework>` with the desired template name:
-
-| Framework | Template                           |
-| --------- | ---------------------------------- |
-| Angular   | `csr/angular`                      |
-| React     | `csr/react-vite` (recommended)     |
-| Vue       | `csr/vue-vite`                     |
-| Static    | `csr/static-page`                  |
+For framework projects, you can use pre-built templates:
 
 ```bash
-npx degit public-ui/templates/<framework> my-kolibri-project
-cd my-kolibri-project
-npm i # or pnpm i or yarn
+npx degit public-ui/templates/csr/react-vite my-kolibri-app
+cd my-kolibri-app
+npm i
+npm start
 ```
 
-The complete list of all templates — including SSR (Express) and theme templates — can be found in the
-<KolLink _label="template repository" _href="https://github.com/public-ui/templates#available-templates" _target="_blank" />.
+Available templates can be found in the <KolLink _label="template repository" _href="https://github.com/public-ui/templates" _target="_blank" />.
 
-## Themes
+## Register theme
 
 KoliBri ships components **without fixed styling**. The visual appearance is determined by a **theme**
 passed during registration. The `@public-ui/themes` package contains several pre-built themes:
 
 | Theme       | Export       | Description                                        |
-| ----------- | ------------ | -------------------------------------------------- |
-| Default     | `DEFAULT`    | The default theme of KoliBri                       |
+| ----------- | ------------ | --------------------------------------------------- |
+| Default     | `DEFAULT`    | The standard theme of KoliBri                      |
 | BWSt        | `BWSt`       | Federal Waterways and Shipping Administration; <KolLink _label="Styleguide" _href="https://wsv.bund.de" _target="_blank" /> |
-| Desy        | `DesyV11`    | German Customs Design System (Generalzolldirektion); <KolLink _label="Styleguide" _href="https://desy.zoll-portal.de" _target="_blank" /> |
+| Desy        | `DesyV11`    | Customs Design System (General Customs Directorate); <KolLink _label="Styleguide" _href="https://desy.zoll-portal.de" _target="_blank" /> |
 | ECL (EC)    | `ECL_EC`     | European Commission Design System; <KolLink _label="Styleguide" _href="https://ec.europa.eu/component-library/ec" _target="_blank" /> |
 | ECL (EU)    | `ECL_EU`     | European Union Design System; <KolLink _label="Styleguide" _href="https://ec.europa.eu/component-library/eu" _target="_blank" /> |
 | KERN        | `KERN_V2`    | KERN-UX Standard Design System; <KolLink _label="Styleguide" _href="https://www.kern-ux.de" _target="_blank" /> |
@@ -153,36 +97,51 @@ import { DEFAULT } from '@public-ui/theme-default';
 await register(DEFAULT, defineCustomElements);
 ```
 
-> 💡 **Tip:** You can easily switch the theme by importing the corresponding theme package, e.g.:
+> 💡 **Tip:** You can easily change the theme by importing the corresponding theme package, e.g.:
 > ```ts
 > import { BWSt } from '@public-ui/theme-bwst';
 > register(BWSt, defineCustomElements).catch(console.warn);
 > ```
 > Available themes: `@public-ui/theme-default`, `@public-ui/theme-bwst`, `@public-ui/theme-desy`, `@public-ui/theme-ecl-ec`, `@public-ui/theme-ecl-eu`, `@public-ui/theme-kern`
 
-### Create your own theme
+### Create custom theme
 
-If none of the included themes matches your corporate design, you can create a **custom theme**.
+If none of the provided themes match your corporate design, you can create a **custom theme**.
 The approach follows the existing theme structure and is maintained entirely in code.
 
 <KolLink _label="Theming concept" _href="/en/docs/concepts/styling/theming" />
+
+## Use KoliBri with AI Assistants (MCP)
+
+KoliBri provides a **Model Context Protocol (MCP) Server** that allows you to access the documentation and components directly in your AI environment (e.g., Cursor, Claude Code, or VS Code with MCP extensions).
+
+🔗 **[Try the MCP Server](https://public-ui-kolibri-mcp.vercel.app/)**
+
+**Benefits:**
+- **Direct access** to KoliBri documentation and API.
+- **Context-aware help** for components, properties, and examples.
+- **Integrated into your development environment** (e.g., autocompletion, tooltips).
+
+**Example:**
+Ask your AI:
+> *"How do I use the kol-button with a custom theme?"*
+→ The AI uses the MCP server to provide **current and accurate answers** from the KoliBri documentation.
 
 ## Frequently asked questions
 
 <details>
 <summary><strong>Components are not displayed?</strong></summary>
 
-Make sure that `register()` is completed **before** rendering components. Use `await` or `.then()`:
+Make sure `register()` is called **before** rendering and the promise is resolved.
 
-```tsx
+```javascript
 // ✅ Correct
-register(DEFAULT, defineCustomElements).then(() => {
-	// Render app here
-});
+await register(DEFAULT, defineCustomElements);
+// Now render components
 
 // ❌ Wrong
 register(DEFAULT, defineCustomElements); // Promise not awaited
-// App is rendered immediately
+// App is rendered immediately - components missing
 ```
 
 </details>
@@ -204,45 +163,13 @@ register(DEFAULT, defineCustomElements); // Promise not awaited
 Check:
 
 1. `"moduleResolution": "Node"` in `tsconfig.json`
-2. Framework adapter installed (e.g. `@public-ui/react-v19`)
+2. Framework adapter installed (e.g., `@public-ui/react-v19`)
 3. Import components from the adapter (not from `@public-ui/components`)
 
 </details>
 
-<details>
-<summary><strong>Can I use KoliBri without a build tool?</strong></summary>
 
-Yes! Load KoliBri via CDN:
 
-> ⚠️ **Important:** Do **not** open the HTML file directly in the browser (e.g., with `file://`), as ES modules are blocked. Instead, run `npx -y serve` in your terminal and open the displayed URL (e.g., http://localhost:3000) in your browser.
-
-> 💡 **Tip:** For older browsers (e.g., Safari < 16.4), you should add the [Web Components Polyfill](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs):
-> ```html
-> <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.min.js"></script>
-> ```
-
-> ℹ️ **Note:** KoliBri uses `_`-prefixed attributes (e.g., `_label`) for component properties to avoid conflicts with standard HTML attributes.
-
-```html
-<!DOCTYPE html>
-<html>
-  <body>
-    <kol-button _label="Klick mich"></kol-button>
-
-    <script type="module">
-      import { register } from 'https://unpkg.com/@public-ui/components@4.2.1/dist/esm/index.mjs';
-      import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@4.2.1/loader/index.mjs';
-      import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default@4.2.1/dist/index.mjs';
-
-      await register(DEFAULT, defineCustomElements);
-    </script>
-  </body>
-</html>
-```
-
-> **💡 Tip for production:** Replace `@latest` with a fixed version (e.g., `@4.2.1`) to avoid breaking changes.
-
-</details>
 
 ## Next steps: Components
 
