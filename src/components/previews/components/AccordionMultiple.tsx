@@ -1,7 +1,7 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import { AccordionMultipleProperty, GenerateAccordionMultiple } from '../properties';
-import { AccordionPreviewProps } from './Accordion';
+import type { AccordionPreviewProps } from './Accordion';
 import { AccordionMultipleDefault } from '../properties/ComponentDefaults';
 
 export type AccordionMultiplePreviewProps = { _accordions: AccordionPreviewProps[] };

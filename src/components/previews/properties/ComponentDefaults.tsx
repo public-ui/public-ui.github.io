@@ -1,4 +1,5 @@
-import { Option, W3CInputValue } from '@public-ui/components';
+import type { Option, W3CInputValue } from '@public-ui/components';
+import type { AccordionMultiplePreviewProps } from '../components/AccordionMultiple';
 
 export const ComboboxSuggestionsDefault: W3CInputValue[] = [
 	'JavaScript',
@@ -32,7 +33,7 @@ export const SelectOptionsDefault: Option<string>[] = [
 	{ label: 'Thüringen', value: 'TH' },
 ];
 
-export const AccordionMultipleDefault = {
+export const AccordionMultipleDefault: AccordionMultiplePreviewProps = {
 	_accordions: [
 		{
 			_label: 'Der Frühling',

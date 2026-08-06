@@ -1,6 +1,6 @@
 import { KolButton, KolCard, KolDrawer, KolInputCheckbox, KolInputText } from '@public-ui/react-v19';
 import React, { useEffect, useState } from 'react';
-import { AccordionPreviewProps } from '../components/Accordion';
+import type { AccordionPreviewProps } from '../components/Accordion';
 import { AccordionMultipleDefault } from './ComponentDefaults';
 import { translate } from '@docusaurus/Translate';
 
@@ -40,7 +40,7 @@ const AccordionMultipleEditor: React.FC<{
 				<div className="flex flex-col gap-2">
 					<KolInputText
 						_label="Label"
-						_value={accordion._label as string}
+						_value={accordion._label}
 						_on={{
 							onInput: (e: Event) => {
 								handleFieldChange('_label', (e.target as HTMLInputElement).value);
