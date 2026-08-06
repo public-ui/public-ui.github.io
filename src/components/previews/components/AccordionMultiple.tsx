@@ -23,9 +23,9 @@ const AccordionMultiplePreview = (props: AccordionMultiplePreviewComponentProps)
 			const pad = '\n  '.repeat(indent);
 			const { ...accordion } = accordions;
 			const accordionProps = Object.entries(accordion as Record<string, unknown>)
-				.filter(([, value]) => value !== undefined && value !== null && value !== '')
-				.filter(([key]) => key !== '_slot')
 				.map(([key, value]) => {
+					if (key === '_slot') return '';
+					if (value === undefined && value === null && value === '') return '';
 					if (typeof value === 'string') return `${pad}${key}="${value}"`;
 					if (typeof value === 'boolean') return value ? `${pad}${key}={${value}}` : '';
 					if (typeof value === 'number') return `${pad}${key}={${value}}`;

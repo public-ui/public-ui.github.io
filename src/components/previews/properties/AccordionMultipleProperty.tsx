@@ -6,7 +6,7 @@ import { translate } from '@docusaurus/Translate';
 
 type AccordionMultiplePropertyProps = {
 	label: string;
-	_value?: AccordionPreviewProps;
+	_value?: AccordionPreviewProps[];
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
@@ -91,11 +91,11 @@ const AccordionMultipleEditor: React.FC<{
 
 const AccordionMultipleProperty = (props: AccordionMultiplePropertyProps) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [accordions, setAccordions] = useState<AccordionPreviewProps[]>(INITIAL_ACCORDION);
+	const [accordions, setAccordions] = useState<AccordionPreviewProps[]>(props._value ?? INITIAL_ACCORDION);
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), accordions);
-	});
+	}, [accordions]);
 
 	const addAccordion = () => {
 		setAccordions((prev) => [...prev, createDefaultAccordion(`Accordion ${accordions.length + 1}`)]);
