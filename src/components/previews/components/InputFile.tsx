@@ -4,7 +4,7 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputFile, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface InputFilePreviewComponentProps extends PreviewDefaults<JSX.KolInputFile> {}
 
@@ -18,6 +18,7 @@ const InputFilePreview = (props: InputFilePreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolInputFile>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_accept: (
@@ -47,11 +48,7 @@ const InputFilePreview = (props: InputFilePreviewComponentProps) => {
 					<SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />
 				),
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputFile"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputFile _touched {...componentProps} />}

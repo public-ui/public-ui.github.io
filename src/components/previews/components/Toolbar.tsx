@@ -3,7 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSelect, KolTextarea, KolToolbar } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults, ToolbarItemsDefault } from '../utils';
+import { getPreviewDefaults, PreviewDefaults, ToolbarItemsDefault } from '../utils';
 
 interface ToolbarPreviewComponentProps extends PreviewDefaults<JSX.KolToolbar> {}
 
@@ -32,6 +32,7 @@ const ToolbarPreview = (props: ToolbarPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolToolbar>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_orientation: (
@@ -58,11 +59,7 @@ const ToolbarPreview = (props: ToolbarPreviewComponentProps) => {
 					/>
 				),
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolToolbar"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolToolbar {...props} _items={parseItems(itemsJson)} />}

@@ -4,7 +4,7 @@ import { BooleanProperty, AlignProperty, IconsProperty, ButtonVariantProperty } 
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButton, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface ButtonPreviewComponentProps extends PreviewDefaults<JSX.KolButton> {}
 
@@ -18,6 +18,7 @@ const ButtonPreview = (props: ButtonPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolButton>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_variant: <ButtonVariantProperty label="Variant" defaultValue="normal" />,
@@ -46,11 +47,7 @@ const ButtonPreview = (props: ButtonPreviewComponentProps) => {
 				_ariaExpanded: <BooleanProperty label="ARIA Expanded" />,
 				_ariaSelected: <BooleanProperty label="ARIA Selected" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolButton"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolButton {...props} />}

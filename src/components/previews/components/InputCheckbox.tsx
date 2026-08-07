@@ -5,7 +5,7 @@ import type { JSX } from '@public-ui/components';
 import { KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import IconsCheckboxProperty from '../properties/IconsCheckboxProperty';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface InputCheckboxPreviewComponentProps extends PreviewDefaults<JSX.KolInputCheckbox> {}
 
@@ -19,6 +19,7 @@ const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolInputCheckbox>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_variant: (
@@ -53,11 +54,7 @@ const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
 				),
 				_icons: <IconsCheckboxProperty label="Icons"></IconsCheckboxProperty>,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputCheckbox"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputCheckbox _touched {...componentProps} />}

@@ -5,7 +5,7 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAccordion } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface AccordionPreviewProps extends JSX.KolAccordion {
 	_slot?: string;
@@ -24,6 +24,7 @@ const AccordionPreview = (props: AccordionPreviewComponentProps) => {
 
 	return (
 		<Preview<AccordionPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_level: <LevelProperty label="Heading Level" defaultValue={1} />,
@@ -31,11 +32,7 @@ const AccordionPreview = (props: AccordionPreviewComponentProps) => {
 				_open: <BooleanProperty label="Open" />,
 				_slot: <MultiLineTextProperty label="Content" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolAccordion"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.FULL_SIZE}
 			slotKey="_slot"
 		>

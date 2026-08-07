@@ -4,7 +4,7 @@ import { BooleanProperty, AlignProperty, IconsProperty, ButtonVariantProperty } 
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolLinkButton, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface LinkButtonPreviewProps extends PreviewDefaults<JSX.KolLinkButton> {}
 
@@ -20,6 +20,7 @@ const LinkButtonPreview = (props: LinkButtonPreviewProps) => {
 
 	return (
 		<Preview<JSX.KolLinkButton>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_href: <KolInputText _label="Href" />,
@@ -45,11 +46,7 @@ const LinkButtonPreview = (props: LinkButtonPreviewProps) => {
 				_customClass: <KolInputText _label="Custom Class" />,
 				_shortKey: <KolInputText _label="Short Key" _maxLength={1} />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolLinkButton"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolLinkButton {...componentProps} />}

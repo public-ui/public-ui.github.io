@@ -4,7 +4,7 @@ import type { JSX } from '@public-ui/components';
 import { KolBreadcrumb } from '@public-ui/react-v19';
 import LinksProperty from '../properties/LinksProperty';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface BreadcrumbPreviewComponentProps extends PreviewDefaults<JSX.KolBreadcrumb> {}
 
@@ -25,14 +25,11 @@ const BreadcrumbPreview = (props: BreadcrumbPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolBreadcrumb>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_links: <LinksProperty label="Links" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolBreadcrumb"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolBreadcrumb {...props} />}

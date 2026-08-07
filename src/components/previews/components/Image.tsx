@@ -3,7 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolImage, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface ImagePreviewProps extends PreviewDefaults<JSX.KolImage> {}
 
@@ -19,6 +19,7 @@ const ImagePreview = (props: ImagePreviewProps) => {
 
 	return (
 		<Preview<JSX.KolImage>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_src: <KolInputText _label="Source (URL)" />,
 				_alt: <KolInputText _label="Alternative Text" />,
@@ -34,11 +35,7 @@ const ImagePreview = (props: ImagePreviewProps) => {
 				_sizes: <KolInputText _label="Sizes" />,
 				_srcset: <KolInputText _label="Srcset" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolImage"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolImage {...componentProps} />}

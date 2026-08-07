@@ -4,7 +4,7 @@ import { BooleanProperty, MsgProperty, ResizeProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolInputNumber, KolTextarea, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface TextAreaPreviewComponentProps extends PreviewDefaults<JSX.KolTextarea> {}
 
@@ -21,6 +21,7 @@ const TextAreaPreview = (props: TextAreaPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolTextarea>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_placeholder: <KolInputText _label="Placeholder" />,
@@ -46,11 +47,7 @@ const TextAreaPreview = (props: TextAreaPreviewComponentProps) => {
 				_hasCounter: <BooleanProperty label="Has Counter" />,
 				_adjustHeight: <BooleanProperty label="Adjust Height" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTextarea"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 		>
 			{(props) => (
 				<KolTextarea

@@ -5,7 +5,7 @@ import { KolInputText, KolAbbr } from '@public-ui/react-v19';
 import { MultiLineTextProperty } from '../properties';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface AbbrPreviewProps extends JSX.KolAbbr {
 	_slot?: string;
@@ -24,15 +24,12 @@ const AbbrPreview = (props: AbbrPreviewComponentProps) => {
 
 	return (
 		<Preview<AbbrPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_slot: <MultiLineTextProperty label="Abbreviation" />,
 			}}
-			initialProps={{ ...props.initialProps, ...defaultProps }}
 			componentName="KolAbbr"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 			slotKey="_slot"
 		>

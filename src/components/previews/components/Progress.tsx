@@ -4,7 +4,7 @@ import { BoundedNumberProperty, ClampedNumberProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolProgress, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface ProgressPreviewComponentProps extends PreviewDefaults<JSX.KolProgress> {}
 
@@ -29,6 +29,7 @@ const ProgressPreview = (props: ProgressPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolProgress>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_value: (
@@ -53,11 +54,7 @@ const ProgressPreview = (props: ProgressPreviewComponentProps) => {
 					/>
 				),
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolProgress"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolProgress {...componentProps} />}

@@ -4,7 +4,7 @@ import { BooleanProperty, IconsProperty, MsgProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputRange, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface InputRangePreviewComponentProps extends PreviewDefaults<JSX.KolInputRange> {}
 
@@ -22,6 +22,7 @@ const InputRangePreview = (props: InputRangePreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolInputRange>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_min: <KolInputNumber _label="Min" />,
@@ -36,11 +37,7 @@ const InputRangePreview = (props: InputRangePreviewComponentProps) => {
 				_disabled: <BooleanProperty label="Disabled" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputRange"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 		>
 			{(componentProps) => <KolInputRange _touched {...componentProps} />}

@@ -11,7 +11,7 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolPopoverButton } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface PopoverButtonPreviewProps extends JSX.KolPopoverButton {
 	_slot?: string;
@@ -30,6 +30,7 @@ const PopoverButtonPreview: React.FC<PopoverButtonPreviewComponentProps> = (prop
 
 	return (
 		<Preview<PopoverButtonPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_popoverAlign: <AlignProperty label="Popover Align" defaultValue="bottom" />,
@@ -42,11 +43,7 @@ const PopoverButtonPreview: React.FC<PopoverButtonPreviewComponentProps> = (prop
 				_accessKey: <KolInputText _label="Access Key" />,
 				_shortKey: <KolInputText _label="Short Key" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolPopoverButton"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 			slotKey="_slot"
 		>

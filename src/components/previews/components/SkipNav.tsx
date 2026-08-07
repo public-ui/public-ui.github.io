@@ -4,7 +4,7 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSkipNav } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import SkipNavLinksProperty from '../properties/SkipNavLinksProperty';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface SkipNavPreviewProps extends PreviewDefaults<JSX.KolSkipNav> {}
 
@@ -25,17 +25,14 @@ const SkipNavPreview = (props: SkipNavPreviewProps) => {
 
 	return (
 		<Preview<JSX.KolSkipNav>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_links: (
 					<SkipNavLinksProperty label={translate({ id: 'preview.component.skip-nav.links' })} _value={DEFAULT_LINKS} />
 				),
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolSkipNav"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => (

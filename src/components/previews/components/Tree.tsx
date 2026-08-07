@@ -5,7 +5,7 @@ import { KolInputText, KolTree, KolTreeItem } from '@public-ui/react-v19';
 import TreeItemsProperty from '../properties/TreeItemsProperty';
 import type { TreeItemData } from '../properties/TreeItemsProperty';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults, TreeItemsDefault } from '../utils';
+import { getPreviewDefaults, PreviewDefaults, TreeItemsDefault } from '../utils';
 
 interface TreePreviewProps extends JSX.KolTree {
 	_items?: TreeItemData[];
@@ -64,15 +64,12 @@ const TreePreview: React.FC<TreePreviewComponentProps> = (props) => {
 
 	return (
 		<Preview<TreePreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_items: <TreeItemsProperty label="Items" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTree"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 			sourceFormatter={formatSource}
 		>

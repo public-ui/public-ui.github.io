@@ -5,7 +5,7 @@ import TabsProperty from '../properties/TabsProperty';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolTabs } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults, TabDefault } from '../utils';
+import { getPreviewDefaults, PreviewDefaults, TabDefault } from '../utils';
 
 interface TabsPreviewComponentProps extends PreviewDefaults<JSX.KolTabs> {}
 
@@ -21,6 +21,7 @@ const TabsPreview: React.FC<TabsPreviewComponentProps> = (props) => {
 
 	return (
 		<Preview<JSX.KolTabs>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_tabs: <TabsProperty label="Tabs" />,
@@ -29,11 +30,7 @@ const TabsPreview: React.FC<TabsPreviewComponentProps> = (props) => {
 				_hasCreateButton: <BooleanProperty label="Create Button" />,
 				_selected: <KolInputNumber _label="Selected Tab" _min={0} />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTabs"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 		>
 			{(componentProps) => {

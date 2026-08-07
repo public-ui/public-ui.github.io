@@ -5,7 +5,7 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolNav } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import NavItemsProperty from '../properties/NavtemsProperty';
-import { NavLinksDefault, PreviewDefaults } from '../utils';
+import { getPreviewDefaults, NavLinksDefault, PreviewDefaults } from '../utils';
 
 interface NavPreviewProps extends PreviewDefaults<JSX.KolNav> {}
 
@@ -20,6 +20,7 @@ const NavPreview: React.FC<NavPreviewProps> = (props) => {
 
 	return (
 		<Preview<JSX.KolNav>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="_label" />,
 				_links: <NavItemsProperty label="_links" />,
@@ -28,11 +29,7 @@ const NavPreview: React.FC<NavPreviewProps> = (props) => {
 				_hideLabel: <BooleanProperty label="_hideLabel" />,
 				_collapsible: <BooleanProperty label="_collapsible" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolNav"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 		>
 			{(componentProps) => (

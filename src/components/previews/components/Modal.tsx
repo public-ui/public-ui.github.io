@@ -5,7 +5,7 @@ import type { JSX } from '@public-ui/components';
 import { KolButton, KolInputText, KolModal } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface ModalPreviewProps extends JSX.KolModal {
 	_slot?: string;
@@ -26,17 +26,14 @@ const ModalPreview = (props: ModalPreviewComponentProps) => {
 
 	return (
 		<Preview<ModalPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_width: <KolInputText _label="Width" />,
 				_slot: <MultiLineTextProperty label="Content" />,
 				_variant: <DialogVariantProperty label="Variant" defaultValue="card" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolModal"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 			slotKey="_slot"
 		>

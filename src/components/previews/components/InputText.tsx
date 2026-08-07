@@ -4,7 +4,7 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty, Sugge
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface InputTextPreviewComponentProps extends PreviewDefaults<JSX.KolInputText> {}
 
@@ -18,6 +18,7 @@ const InputTextPreview = (props: InputTextPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolInputText>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_placeholder: <KolInputText _label="Placeholder" />,
@@ -60,11 +61,7 @@ const InputTextPreview = (props: InputTextPreviewComponentProps) => {
 					<SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />
 				),
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputText"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolInputText _touched {...props} />}

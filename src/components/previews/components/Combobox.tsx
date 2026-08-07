@@ -4,7 +4,7 @@ import { BooleanProperty, IconsProperty, MsgProperty, SuggestionsProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolCombobox, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { ComboboxSuggestionsDefault, PreviewDefaults } from '../utils';
+import { ComboboxSuggestionsDefault, getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface ComboboxPreviewComponentProps extends PreviewDefaults<JSX.KolCombobox> {}
 
@@ -21,6 +21,7 @@ const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolCombobox>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_placeholder: <KolInputText _label="Placeholder" />,
@@ -38,11 +39,7 @@ const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
 				_touched: <BooleanProperty label="Touched" />,
 				_shortKey: <KolInputText _label="Short Key" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolCombobox"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => (

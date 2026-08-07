@@ -4,7 +4,7 @@ import { BooleanProperty, AlignProperty, IconsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolLink } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface LinkPreviewComponentProps extends PreviewDefaults<JSX.KolLink> {}
 
@@ -20,6 +20,7 @@ const LinkPreview = (props: LinkPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolLink>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_href: <KolInputText _label="Href" />,
@@ -35,11 +36,7 @@ const LinkPreview = (props: LinkPreviewComponentProps) => {
 				_ariaDescription: <KolInputText _label="ARIA Description" />,
 				_shortKey: <KolInputText _label="Short Key" _maxLength={1} />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolLink"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolLink {...componentProps} />}

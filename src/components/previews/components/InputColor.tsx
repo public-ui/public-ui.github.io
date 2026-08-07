@@ -4,7 +4,7 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputColor, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface InputColorPreviewComponentProps extends PreviewDefaults<JSX.KolInputColor> {}
 
@@ -19,6 +19,7 @@ const InputColorPreview = (props: InputColorPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolInputColor>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_hint: <KolInputText _label="Hint" />,
@@ -33,11 +34,7 @@ const InputColorPreview = (props: InputColorPreviewComponentProps) => {
 					<SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />
 				),
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputColor"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputColor _touched {...componentProps} />}

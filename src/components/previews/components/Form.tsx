@@ -3,7 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolButton, KolInputEmail, KolInputText, KolForm } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface FormPreviewComponentProps extends PreviewDefaults<JSX.KolForm> {}
 
@@ -17,14 +17,11 @@ const FormPreview: React.FC<FormPreviewComponentProps> = (props) => {
 
 	return (
 		<Preview<JSX.KolForm>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_requiredText: <KolInputText _label="Required text" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolForm"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.FULL_SIZE}
 		>
 			{(componentProps) => (

@@ -5,7 +5,7 @@ import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 import type { JSX } from '@public-ui/components';
 import { DialogVariantProperty, MultiLineTextProperty } from '../properties';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface DialogPreviewProps extends JSX.KolDialog {
 	_slot?: string;
@@ -28,17 +28,14 @@ const DialogPreview: React.FC<DialogPreviewComponentProps> = (props) => {
 
 	return (
 		<Preview<DialogPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_width: <KolInputText _label="Width" />,
 				_variant: <DialogVariantProperty label="Variant" defaultValue="card" />,
 				_slot: <MultiLineTextProperty label="Content" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolDialog"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 			slotKey="_slot"
 		>

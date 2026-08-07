@@ -5,7 +5,7 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolCard } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface CardPreviewProps extends JSX.KolCard {
 	_slot?: string;
@@ -24,17 +24,14 @@ const CardPreview = (props: CardPreviewComponentProps) => {
 
 	return (
 		<Preview<CardPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_hasCloser: <BooleanProperty label="Closable" />,
 				_level: <LevelProperty label="Level" defaultValue={0} />,
 				_slot: <MultiLineTextProperty label="Content" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolCard"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 			slotKey="_slot"
 		>

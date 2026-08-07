@@ -4,7 +4,7 @@ import { BooleanProperty, AlignProperty, IconsProperty, ButtonVariantProperty } 
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSplitButton, KolToolbar } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface SplitButtonPreviewComponentProps extends PreviewDefaults<JSX.KolSplitButton> {}
 
@@ -41,6 +41,7 @@ const SplitButtonPreview: React.FC<SplitButtonPreviewComponentProps> = (props) =
 
 	return (
 		<Preview<JSX.KolSplitButton>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_variant: <ButtonVariantProperty label="Variant" defaultValue="normal" />,
@@ -49,11 +50,7 @@ const SplitButtonPreview: React.FC<SplitButtonPreviewComponentProps> = (props) =
 				_disabled: <BooleanProperty label="Disabled" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolSplitButton"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => (

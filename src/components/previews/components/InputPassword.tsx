@@ -4,7 +4,7 @@ import { AlignProperty, BooleanProperty, IconsProperty, MsgProperty, SmartButton
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputPassword, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface InputPasswordPreviewComponentProps extends PreviewDefaults<JSX.KolInputPassword> {}
 
@@ -19,6 +19,7 @@ const InputPasswordPreview = (props: InputPasswordPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolInputPassword>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_placeholder: <KolInputText _label="Placeholder" />,
@@ -52,11 +53,7 @@ const InputPasswordPreview = (props: InputPasswordPreviewComponentProps) => {
 				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
 				_visibilityToggle: <BooleanProperty label="Visibility Toggle" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputPassword"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputPassword _touched {...componentProps} />}

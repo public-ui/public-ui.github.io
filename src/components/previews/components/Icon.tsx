@@ -4,7 +4,7 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSelect, KolIcon } from '@public-ui/react-v19';
 import { PREDEFINED_ICONS } from '../properties/IconsProperty';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface IconPreviewProps extends PreviewDefaults<JSX.KolIcon> {}
 
@@ -19,15 +19,12 @@ const IconPreview = (props: IconPreviewProps) => {
 
 	return (
 		<Preview<JSX.KolIcon>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_icons: <KolSelect _label="Icon" _options={PREDEFINED_ICONS.filter((icon) => icon.value !== '')} />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolIcon"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolIcon {...componentProps} />}

@@ -3,7 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolMeter, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface MeterPreviewComponentProps extends PreviewDefaults<JSX.KolMeter> {}
 
@@ -23,6 +23,7 @@ const MeterPreview = (props: MeterPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolMeter>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_value: <KolInputNumber _label="Value" />,
@@ -42,11 +43,7 @@ const MeterPreview = (props: MeterPreviewComponentProps) => {
 					/>
 				),
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolMeter"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolMeter {...componentProps} />}

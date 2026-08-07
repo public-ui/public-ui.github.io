@@ -4,7 +4,7 @@ import { BoundedNumberProperty, ClampedNumberProperty, PaginationHasButtonsPrope
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolPagination } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface PaginationPreviewProps extends PreviewDefaults<JSX.KolPagination> {}
 
@@ -30,6 +30,7 @@ const PaginationPreview = (props: PaginationPreviewProps) => {
 
 	return (
 		<Preview<JSX.KolPagination>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_max: (
@@ -48,11 +49,7 @@ const PaginationPreview = (props: PaginationPreviewProps) => {
 				_boundaryCount: <BoundedNumberProperty label="Boundary Count" min={0} max={10} />,
 				_hasButtons: <PaginationHasButtonsProperty label="Has Buttons" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolPagination"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 		>
 			{(componentProps) => <KolPagination {...componentProps} />}

@@ -5,7 +5,7 @@ import type { JSX } from '@public-ui/components';
 import { KolAlert, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface AlertPreviewProps extends JSX.KolAlert {
 	_slot?: string;
@@ -29,6 +29,7 @@ const AlertPreview = (props: AlertPreviewComponentProps) => {
 
 	return (
 		<Preview<AlertPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_type: <AlertTypeProperty label="Type" defaultValue="info" />,
@@ -51,11 +52,7 @@ const AlertPreview = (props: AlertPreviewComponentProps) => {
 				_hasCloser: <BooleanProperty label="Closable" />,
 				_slot: <MultiLineTextProperty label="Content" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolAlert"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 			slotKey="_slot"
 		>

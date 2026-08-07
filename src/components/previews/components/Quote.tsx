@@ -4,7 +4,7 @@ import { MultiLineTextProperty, QuoteVariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolQuote } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
 interface QuotePreviewProps extends PreviewDefaults<JSX.KolQuote> {}
 
@@ -21,17 +21,14 @@ const QuotePreview: React.FC<QuotePreviewProps> = (props) => {
 
 	return (
 		<Preview<JSX.KolQuote>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_href: <KolInputText _label="Source URL" />,
 				_quote: <MultiLineTextProperty label="Quote" />,
 				_variant: <QuoteVariantProperty label="Variant" defaultValue="block" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolQuote"
-			visibleProperties={props.visibleProperties}
-			hideSourceCodeDetails={props.hideSourceCodeDetails}
-			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolQuote {...componentProps} />}
