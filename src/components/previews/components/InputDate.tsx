@@ -4,13 +4,9 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputDate, KolInputRange, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface InputDatePreviewComponentProps {
-	initialProps?: JSX.KolInputDate;
-	visibleProperties?: (keyof JSX.KolInputDate)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface InputDatePreviewComponentProps extends PreviewDefaults<JSX.KolInputDate> {}
 
 const InputDatePreview = (props: InputDatePreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolInputDate>(
@@ -56,8 +52,8 @@ const InputDatePreview = (props: InputDatePreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputDate"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputDate _touched {...componentProps} />}

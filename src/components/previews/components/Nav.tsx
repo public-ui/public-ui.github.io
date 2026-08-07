@@ -5,49 +5,15 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolNav } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import NavItemsProperty from '../properties/NavtemsProperty';
+import { NavLinksDefault, PreviewDefaults } from '../utils';
 
-interface NavPreviewProps {
-	initialProps?: JSX.KolNav;
-	visibleProperties?: (keyof JSX.KolNav)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
-
-export const defaultLinks: JSX.KolNav['_links'] = [
-	{
-		_href: '#/',
-		_icons: 'kolicon-kolibri',
-		_label: '1. Menüpunkt',
-		_active: true,
-	},
-	{
-		_icons: 'kolicon-house',
-		_label: '2. Menüpunkt',
-		_children: [
-			{ _href: '#/1', _icons: 'kolicon-house', _label: '2.1. Untermenüpunkt' },
-			{ _href: '#/2', _icons: 'kolicon-house', _label: '2.2. Untermenüpunkt' },
-		],
-	},
-	{
-		_icons: 'kolicon-house',
-		_label: '3. Menüpunkt',
-		_href: '#/',
-	},
-	{
-		_icons: 'kolicon-cogwheel',
-		_label: '4. Menüpunkt',
-		_children: [
-			{ _href: '#/1', _icons: 'kolicon-house', _label: '4.1. Untermenüpunkt' },
-			{ _href: '#/2', _icons: 'kolicon-house', _label: '4.2. Untermenüpunkt' },
-		],
-	},
-];
+interface NavPreviewProps extends PreviewDefaults<JSX.KolNav> {}
 
 const NavPreview: React.FC<NavPreviewProps> = (props) => {
 	const defaultProps = React.useMemo<JSX.KolNav>(
 		() => ({
 			_label: translate({ id: 'preview.component.nav.label' }),
-			_links: defaultLinks,
+			_links: NavLinksDefault,
 		}),
 		[]
 	);
@@ -65,8 +31,8 @@ const NavPreview: React.FC<NavPreviewProps> = (props) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolNav"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 		>
 			{(componentProps) => (

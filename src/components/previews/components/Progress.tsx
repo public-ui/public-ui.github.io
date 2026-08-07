@@ -4,12 +4,9 @@ import { BoundedNumberProperty, ClampedNumberProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolProgress, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface ProgressPreviewComponentProps {
-	initialProps?: JSX.KolProgress;
-	visibleProperties?: (keyof JSX.KolProgress)[];
-	codeCollapsable?: boolean;
-}
+interface ProgressPreviewComponentProps extends PreviewDefaults<JSX.KolProgress> {}
 
 const ProgressPreview = (props: ProgressPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolProgress>(
@@ -21,7 +18,7 @@ const ProgressPreview = (props: ProgressPreviewComponentProps) => {
 			_value: 20,
 			_max: 100,
 		}),
-		[],
+		[]
 	);
 
 	const [maxValue, setMaxValue] = React.useState<number>(props.initialProps?._max ?? defaultProps._max);
@@ -59,7 +56,8 @@ const ProgressPreview = (props: ProgressPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolProgress"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolProgress {...componentProps} />}

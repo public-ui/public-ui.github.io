@@ -5,15 +5,13 @@ import type { JSX } from '@public-ui/components';
 import { KolButton, KolDrawer, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
+import { PreviewDefaults } from '../utils';
 
-type DrawerPreviewProps = JSX.KolDrawer & { _slot?: string };
-
-interface DrawerPreviewComponentProps {
-	initialProps?: DrawerPreviewProps;
-	visibleProperties?: (keyof JSX.KolDrawer | '_slot')[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
+interface DrawerPreviewProps extends JSX.KolDrawer {
+	_slot?: string;
 }
+
+interface DrawerPreviewComponentProps extends PreviewDefaults<DrawerPreviewProps> {}
 
 const DrawerPreview = (props: DrawerPreviewComponentProps) => {
 	const drawerRef = useRef<HTMLKolDrawerElement>(null);
@@ -39,8 +37,8 @@ const DrawerPreview = (props: DrawerPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolDrawer"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 			slotKey="_slot"
 		>

@@ -4,13 +4,9 @@ import { MultiLineTextProperty, QuoteVariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolQuote } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface QuotePreviewProps {
-	initialProps?: JSX.KolQuote;
-	visibleProperties?: (keyof JSX.KolQuote)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface QuotePreviewProps extends PreviewDefaults<JSX.KolQuote> {}
 
 const QuotePreview: React.FC<QuotePreviewProps> = (props) => {
 	const defaultProps = React.useMemo<JSX.KolQuote>(
@@ -20,7 +16,7 @@ const QuotePreview: React.FC<QuotePreviewProps> = (props) => {
 			_quote: translate({ id: 'preview.component.quote.quote' }),
 			_variant: 'block',
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -34,8 +30,8 @@ const QuotePreview: React.FC<QuotePreviewProps> = (props) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolQuote"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolQuote {...componentProps} />}

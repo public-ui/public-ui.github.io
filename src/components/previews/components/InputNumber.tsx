@@ -4,20 +4,16 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface InputNumberPreviewComponentProps {
-	initialProps?: JSX.KolInputNumber;
-	visibleProperties?: (keyof JSX.KolInputNumber)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface InputNumberPreviewComponentProps extends PreviewDefaults<JSX.KolInputNumber> {}
 
 const InputNumberPreview = (props: InputNumberPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolInputNumber>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-number.label' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -44,8 +40,8 @@ const InputNumberPreview = (props: InputNumberPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputNumber"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputNumber _touched {...componentProps} />}

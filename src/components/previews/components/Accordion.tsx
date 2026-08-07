@@ -5,14 +5,13 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAccordion } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
+import { PreviewDefaults } from '../utils';
 
-type AccordionPreviewProps = JSX.KolAccordion & { _slot?: string };
-
-interface AccordionPreviewComponentProps {
-	initialProps?: AccordionPreviewProps;
-	visibleProperties?: (keyof JSX.KolAccordion | '_slot')[];
-	codeCollapsable?: boolean;
+interface AccordionPreviewProps extends JSX.KolAccordion {
+	_slot?: string;
 }
+
+interface AccordionPreviewComponentProps extends PreviewDefaults<AccordionPreviewProps> {}
 
 const AccordionPreview = (props: AccordionPreviewComponentProps) => {
 	const defaultProps = React.useMemo<AccordionPreviewProps>(
@@ -20,7 +19,7 @@ const AccordionPreview = (props: AccordionPreviewComponentProps) => {
 			_label: translate({ id: 'preview.component.accordion.label' }),
 			_slot: translate({ id: 'preview.component.accordion.content' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -35,7 +34,8 @@ const AccordionPreview = (props: AccordionPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolAccordion"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.FULL_SIZE}
 			slotKey="_slot"
 		>

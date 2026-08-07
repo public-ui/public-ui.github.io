@@ -4,13 +4,9 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputColor, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface InputColorPreviewComponentProps {
-	initialProps?: JSX.KolInputColor;
-	visibleProperties?: (keyof JSX.KolInputColor)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface InputColorPreviewComponentProps extends PreviewDefaults<JSX.KolInputColor> {}
 
 const InputColorPreview = (props: InputColorPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolInputColor>(
@@ -18,7 +14,7 @@ const InputColorPreview = (props: InputColorPreviewComponentProps) => {
 			_label: translate({ id: 'preview.component.input-color.label' }),
 			_value: '#d4fcf4',
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -40,8 +36,8 @@ const InputColorPreview = (props: InputColorPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputColor"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputColor _touched {...componentProps} />}

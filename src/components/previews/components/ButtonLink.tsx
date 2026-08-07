@@ -4,20 +4,16 @@ import { BooleanProperty, AlignProperty, IconsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButtonLink } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface ButtonLinkPreviewComponentProps {
-	initialProps?: JSX.KolButtonLink;
-	visibleProperties?: (keyof JSX.KolButtonLink)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface ButtonLinkPreviewComponentProps extends PreviewDefaults<JSX.KolButtonLink> {}
 
 const ButtonLinkPreview = (props: ButtonLinkPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolButtonLink>(
 		() => ({
 			_label: translate({ id: 'preview.component.button-link.label' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -41,8 +37,8 @@ const ButtonLinkPreview = (props: ButtonLinkPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolButtonLink"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolButtonLink {...props} />}

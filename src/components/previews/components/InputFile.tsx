@@ -4,20 +4,16 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputFile, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface InputFilePreviewComponentProps {
-	initialProps?: JSX.KolInputFile;
-	visibleProperties?: (keyof JSX.KolInputFile)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface InputFilePreviewComponentProps extends PreviewDefaults<JSX.KolInputFile> {}
 
 const InputFilePreview = (props: InputFilePreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolInputFile>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-file.label' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -54,8 +50,8 @@ const InputFilePreview = (props: InputFilePreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputFile"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputFile _touched {...componentProps} />}

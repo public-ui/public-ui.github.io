@@ -4,12 +4,9 @@ import { BooleanProperty, MsgProperty, ResizeProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolInputNumber, KolTextarea, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface TextAreaPreviewComponentProps {
-	initialProps?: JSX.KolTextarea;
-	visibleProperties?: (keyof JSX.KolTextarea)[];
-	codeCollapsable?: boolean;
-}
+interface TextAreaPreviewComponentProps extends PreviewDefaults<JSX.KolTextarea> {}
 
 const TextAreaPreview = (props: TextAreaPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolTextarea>(
@@ -17,7 +14,7 @@ const TextAreaPreview = (props: TextAreaPreviewComponentProps) => {
 			_label: translate({ id: 'preview.component.textarea.label' }),
 			_value: '',
 		}),
-		[],
+		[]
 	);
 
 	const [value, setValue] = React.useState<string>(defaultProps._value || '');
@@ -52,7 +49,8 @@ const TextAreaPreview = (props: TextAreaPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTextarea"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 		>
 			{(props) => (
 				<KolTextarea

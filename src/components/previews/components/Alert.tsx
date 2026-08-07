@@ -5,14 +5,13 @@ import type { JSX } from '@public-ui/components';
 import { KolAlert, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
+import { PreviewDefaults } from '../utils';
 
-type AlertPreviewProps = JSX.KolAlert & { _slot?: string };
-
-interface AlertPreviewComponentProps {
-	initialProps?: AlertPreviewProps;
-	visibleProperties?: (keyof JSX.KolAlert | '_slot')[];
-	codeCollapsable?: boolean;
+interface AlertPreviewProps extends JSX.KolAlert {
+	_slot?: string;
 }
+
+interface AlertPreviewComponentProps extends PreviewDefaults<AlertPreviewProps> {}
 
 const AlertPreview = (props: AlertPreviewComponentProps) => {
 	const defaultProps = React.useMemo<AlertPreviewProps>(
@@ -25,7 +24,7 @@ const AlertPreview = (props: AlertPreviewComponentProps) => {
 			_hasCloser: false,
 			_slot: translate({ id: 'preview.component.alert.content' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -55,7 +54,8 @@ const AlertPreview = (props: AlertPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolAlert"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 			slotKey="_slot"
 		>

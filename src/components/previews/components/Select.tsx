@@ -1,16 +1,13 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, MsgProperty, SelectOptionsDefault, SelectOptionsProperty } from '../properties';
+import { BooleanProperty, MsgProperty, SelectOptionsProperty } from '../properties';
+import { SelectOptionsDefault } from '../utils';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface SelectPreviewComponentProps {
-	initialProps?: JSX.KolSelect;
-	visibleProperties?: (keyof JSX.KolSelect)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface SelectPreviewComponentProps extends PreviewDefaults<JSX.KolSelect> {}
 
 const SelectPreview = (props: SelectPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolSelect>(
@@ -41,8 +38,8 @@ const SelectPreview = (props: SelectPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolSelect"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolSelect _touched {...componentProps} />}

@@ -5,15 +5,13 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolCard } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
+import { PreviewDefaults } from '../utils';
 
-type CardPreviewProps = JSX.KolCard & { _slot?: string };
-
-interface CardPreviewComponentProps {
-	initialProps?: CardPreviewProps;
-	visibleProperties?: (keyof JSX.KolCard | '_slot')[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
+interface CardPreviewProps extends JSX.KolCard {
+	_slot?: string;
 }
+
+interface CardPreviewComponentProps extends PreviewDefaults<CardPreviewProps> {}
 
 const CardPreview = (props: CardPreviewComponentProps) => {
 	const defaultProps = React.useMemo<CardPreviewProps>(
@@ -21,7 +19,7 @@ const CardPreview = (props: CardPreviewComponentProps) => {
 			_label: translate({ id: 'preview.component.card.label' }),
 			_slot: translate({ id: 'preview.component.card.content' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -35,8 +33,8 @@ const CardPreview = (props: CardPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolCard"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 			slotKey="_slot"
 		>

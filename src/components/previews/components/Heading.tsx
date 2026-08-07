@@ -3,13 +3,9 @@ import Preview, { PreviewLayout } from '../Preview';
 import { LevelProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolHeading } from '@public-ui/react-v19';
+import { PreviewDefaults } from '../utils';
 
-interface HeadingPreviewProps {
-	initialProps?: JSX.KolHeading;
-	visibleProperties?: (keyof JSX.KolHeading)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface HeadingPreviewProps extends PreviewDefaults<JSX.KolHeading> {}
 
 const HeadingPreview = (props: HeadingPreviewProps) => {
 	const defaultProps = React.useMemo<JSX.KolHeading>(
@@ -17,7 +13,7 @@ const HeadingPreview = (props: HeadingPreviewProps) => {
 			_label: 'Heading',
 			_level: 1,
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -30,8 +26,8 @@ const HeadingPreview = (props: HeadingPreviewProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolHeading"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolHeading {...componentProps} />}

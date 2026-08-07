@@ -4,13 +4,9 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSkipNav } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import SkipNavLinksProperty from '../properties/SkipNavLinksProperty';
+import { PreviewDefaults } from '../utils';
 
-interface SkipNavPreviewProps {
-	initialProps?: JSX.KolSkipNav;
-	visibleProperties?: (keyof JSX.KolSkipNav)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface SkipNavPreviewProps extends PreviewDefaults<JSX.KolSkipNav> {}
 
 const DEFAULT_LINKS = [
 	{ _label: 'Navigation', _href: '#nav' },
@@ -24,7 +20,7 @@ const SkipNavPreview = (props: SkipNavPreviewProps) => {
 			_label: translate({ id: 'preview.component.skip-nav.label' }),
 			_links: DEFAULT_LINKS,
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -32,22 +28,19 @@ const SkipNavPreview = (props: SkipNavPreviewProps) => {
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_links: (
-					<SkipNavLinksProperty
-						label={translate({ id: 'preview.component.skip-nav.links' })}
-						_value={DEFAULT_LINKS}
-					/>
+					<SkipNavLinksProperty label={translate({ id: 'preview.component.skip-nav.links' })} _value={DEFAULT_LINKS} />
 				),
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolSkipNav"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => (
 				<>
-					<div className='flex flex-col'>
+					<div className="flex flex-col">
 						<div
 							// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
 							tabIndex={0}

@@ -4,16 +4,13 @@ import { BooleanProperty, CustomCssProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSelect, KolSpin } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-type SpinPreviewProps = JSX.KolSpin & {
+interface SpinPreviewProps extends JSX.KolSpin {
 	_customCss?: string;
-};
-
-interface SpinPreviewComponentProps {
-	initialProps?: SpinPreviewProps;
-	visibleProperties?: (keyof SpinPreviewProps)[];
-	codeCollapsable?: boolean;
 }
+
+interface SpinPreviewComponentProps extends PreviewDefaults<SpinPreviewProps> {}
 
 const SpinPreview = (props: SpinPreviewComponentProps) => {
 	const defaultProps = React.useMemo<SpinPreviewProps>(
@@ -26,7 +23,7 @@ const SpinPreview = (props: SpinPreviewComponentProps) => {
 			_variant: 'dot',
 			_customCss: '',
 		}),
-		[],
+		[]
 	);
 
 	const formatValue = (value: unknown): string => {
@@ -65,7 +62,8 @@ const SpinPreview = (props: SpinPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolSpin"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 			sourceFormatter={(currentProps) => {
 				const customCss = currentProps._customCss?.toString().trim();

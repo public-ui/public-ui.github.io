@@ -4,13 +4,9 @@ import { IconsProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolBadge, KolInputColor } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface BadgePreviewComponentProps {
-	initialProps?: JSX.KolBadge;
-	visibleProperties?: (keyof JSX.KolBadge)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface BadgePreviewComponentProps extends PreviewDefaults<JSX.KolBadge> {}
 
 const BadgePreview = (props: BadgePreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolBadge>(
@@ -18,7 +14,7 @@ const BadgePreview = (props: BadgePreviewComponentProps) => {
 			_label: translate({ id: 'preview.component.badge.label' }),
 			_color: '#0c8703',
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -32,8 +28,8 @@ const BadgePreview = (props: BadgePreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolBadge"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolBadge {...props} />}

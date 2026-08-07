@@ -3,13 +3,9 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAvatar, KolInputColor } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface AvatarPreviewComponentProps {
-	initialProps?: JSX.KolAvatar;
-	visibleProperties?: (keyof JSX.KolAvatar)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface AvatarPreviewComponentProps extends PreviewDefaults<JSX.KolAvatar> {}
 
 const AvatarPreview = (props: AvatarPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolAvatar>(
@@ -17,7 +13,7 @@ const AvatarPreview = (props: AvatarPreviewComponentProps) => {
 			_label: translate({ id: 'preview.component.avatar.label' }),
 			_color: '#5A5FEE',
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -30,8 +26,8 @@ const AvatarPreview = (props: AvatarPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolAvatar"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolAvatar {...props} />}

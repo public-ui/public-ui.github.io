@@ -3,51 +3,17 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSelect, KolTextarea, KolToolbar } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults, ToolbarItemsDefault } from '../utils';
 
-interface ToolbarPreviewComponentProps {
-	initialProps?: JSX.KolToolbar;
-	visibleProperties?: (keyof JSX.KolToolbar)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface ToolbarPreviewComponentProps extends PreviewDefaults<JSX.KolToolbar> {}
 
 const ToolbarPreview = (props: ToolbarPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolToolbar>(
 		() => ({
 			_label: translate({ id: 'preview.component.toolbar.label' }),
-			_items: [
-				{
-					type: 'button',
-					_label: 'Back',
-					_hideLabel: true,
-					_icons: {
-						left: {
-							icon: 'kolicon-chevron-left',
-						},
-					},
-				},
-				{
-					type: 'button',
-					_label: 'Next',
-					_hideLabel: true,
-					_icons: {
-						right: {
-							icon: 'kolicon-chevron-right',
-						},
-					},
-				},
-				{
-					type: 'link',
-					_href: '#',
-					_label: 'Link',
-				},
-				{
-					type: 'button',
-					_label: 'Button',
-				},
-			],
+			_items: ToolbarItemsDefault,
 		}),
-		[],
+		[]
 	);
 
 	const [itemsJson, setItemsJson] = React.useState<string>(JSON.stringify(defaultProps._items, null, 2));
@@ -95,8 +61,8 @@ const ToolbarPreview = (props: ToolbarPreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolToolbar"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolToolbar {...props} _items={parseItems(itemsJson)} />}

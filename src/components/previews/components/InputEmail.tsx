@@ -4,20 +4,16 @@ import { AlignProperty, BooleanProperty, IconsProperty, MsgProperty, SmartButton
 import type { JSX } from '@public-ui/components';
 import { KolInputEmail, KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface InputEmailPreviewComponentProps {
-	initialProps?: JSX.KolInputEmail;
-	visibleProperties?: (keyof JSX.KolInputEmail)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface InputEmailPreviewComponentProps extends PreviewDefaults<JSX.KolInputEmail> {}
 
 const InputEmailPreview = (props: InputEmailPreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolInputEmail>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-email.label' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -54,13 +50,15 @@ const InputEmailPreview = (props: InputEmailPreviewComponentProps) => {
 				_shortKey: <KolInputText _label="Short Key" _maxLength={1} />,
 				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
 				_touched: <BooleanProperty label="Touched" />,
-				_smartButton: <SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />,
+				_smartButton: (
+					<SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />
+				),
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputEmail"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputEmail _touched {...componentProps} />}

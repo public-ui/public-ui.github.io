@@ -4,15 +4,13 @@ import { BooleanProperty, LevelProperty, MultiLineTextProperty } from '../proper
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolDetails } from '@public-ui/react-v19';
 import { sanitizeHtml } from '../../../shares/sanitize';
+import { PreviewDefaults } from '../utils';
 
-type DetailsPreviewProps = JSX.KolDetails & { _slot?: string };
-
-interface DetailsPreviewComponentProps {
-	initialProps?: DetailsPreviewProps;
-	visibleProperties?: (keyof JSX.KolDetails | '_slot')[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
+interface DetailsPreviewProps extends JSX.KolDetails {
+	_slot?: string;
 }
+
+interface DetailsPreviewComponentProps extends PreviewDefaults<DetailsPreviewProps> {}
 
 const DetailsPreview: React.FC<DetailsPreviewComponentProps> = (props) => {
 	const defaultProps = React.useMemo<DetailsPreviewProps>(
@@ -21,7 +19,7 @@ const DetailsPreview: React.FC<DetailsPreviewComponentProps> = (props) => {
 			_slot:
 				'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -36,8 +34,8 @@ const DetailsPreview: React.FC<DetailsPreviewComponentProps> = (props) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolDetails"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 			slotKey="_slot"
 		>

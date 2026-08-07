@@ -4,13 +4,9 @@ import { BooleanProperty, IconsProperty, MsgProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputRange, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface InputRangePreviewComponentProps {
-	initialProps?: JSX.KolInputRange;
-	visibleProperties?: (keyof JSX.KolInputRange)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface InputRangePreviewComponentProps extends PreviewDefaults<JSX.KolInputRange> {}
 
 const InputRangePreview = (props: InputRangePreviewComponentProps) => {
 	const defaultProps = React.useMemo<JSX.KolInputRange>(
@@ -21,7 +17,7 @@ const InputRangePreview = (props: InputRangePreviewComponentProps) => {
 			_step: 1,
 			_value: 50,
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -43,8 +39,8 @@ const InputRangePreview = (props: InputRangePreviewComponentProps) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputRange"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 		>
 			{(componentProps) => <KolInputRange _touched {...componentProps} />}

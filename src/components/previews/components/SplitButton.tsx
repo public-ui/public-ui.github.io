@@ -4,19 +4,31 @@ import { BooleanProperty, AlignProperty, IconsProperty, ButtonVariantProperty } 
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSplitButton, KolToolbar } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { PreviewDefaults } from '../utils';
 
-interface SplitButtonPreviewComponentProps {
-	initialProps?: JSX.KolSplitButton;
-	visibleProperties?: (keyof JSX.KolSplitButton)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+interface SplitButtonPreviewComponentProps extends PreviewDefaults<JSX.KolSplitButton> {}
 
 const toolbarItems: JSX.KolToolbar['_items'] = [
-	{ type: 'button', _label: translate({ id: 'preview.component.split-button.menu.edit' }), _icons: { left: { icon: 'codicon-edit' } } },
-	{ type: 'button', _label: translate({ id: 'preview.component.split-button.menu.copy' }), _icons: { left: { icon: 'codicon-copy' } } },
-	{ type: 'button', _label: translate({ id: 'preview.component.split-button.menu.archive' }), _icons: { left: { icon: 'codicon-archive' } } },
-	{ type: 'button', _label: translate({ id: 'preview.component.split-button.menu.delete' }), _icons: { left: { icon: 'codicon-trash' } } },
+	{
+		type: 'button',
+		_label: translate({ id: 'preview.component.split-button.menu.edit' }),
+		_icons: { left: { icon: 'codicon-edit' } },
+	},
+	{
+		type: 'button',
+		_label: translate({ id: 'preview.component.split-button.menu.copy' }),
+		_icons: { left: { icon: 'codicon-copy' } },
+	},
+	{
+		type: 'button',
+		_label: translate({ id: 'preview.component.split-button.menu.archive' }),
+		_icons: { left: { icon: 'codicon-archive' } },
+	},
+	{
+		type: 'button',
+		_label: translate({ id: 'preview.component.split-button.menu.delete' }),
+		_icons: { left: { icon: 'codicon-trash' } },
+	},
 ];
 
 const SplitButtonPreview: React.FC<SplitButtonPreviewComponentProps> = (props) => {
@@ -24,7 +36,7 @@ const SplitButtonPreview: React.FC<SplitButtonPreviewComponentProps> = (props) =
 		() => ({
 			_label: translate({ id: 'preview.component.split-button.label' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -40,8 +52,8 @@ const SplitButtonPreview: React.FC<SplitButtonPreviewComponentProps> = (props) =
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolSplitButton"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => (

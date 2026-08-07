@@ -5,15 +5,13 @@ import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 import type { JSX } from '@public-ui/components';
 import { DialogVariantProperty, MultiLineTextProperty } from '../properties';
+import { PreviewDefaults } from '../utils';
 
-type DialogPreviewProps = JSX.KolDialog & { _slot?: string };
-
-interface DialogPreviewComponentProps {
-	initialProps?: DialogPreviewProps;
-	visibleProperties?: (keyof JSX.KolDialog | '_slot')[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
+interface DialogPreviewProps extends JSX.KolDialog {
+	_slot?: string;
 }
+
+interface DialogPreviewComponentProps extends PreviewDefaults<DialogPreviewProps> {}
 
 const DialogPreview: React.FC<DialogPreviewComponentProps> = (props) => {
 	const dialogRef = useRef<HTMLKolDialogElement>(null);
@@ -39,8 +37,8 @@ const DialogPreview: React.FC<DialogPreviewComponentProps> = (props) => {
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolDialog"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.DEFAULT}
 			slotKey="_slot"
 		>

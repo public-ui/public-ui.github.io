@@ -27,8 +27,8 @@ type PreviewProps<TProps> = {
 	propertyComponents?: Partial<Record<keyof TProps, PropertyComponent>>;
 	componentName?: string;
 	visibleProperties?: (keyof TProps)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
+	hideSourceCodeDetails?: boolean;
+	sourceCodeDetailsCollapsed?: boolean;
 	layout?: PreviewLayout;
 	slotKey?: keyof TProps;
 	sourceFormatter?: (props: TProps) => string | undefined;
@@ -41,15 +41,15 @@ const Preview = <TProps,>({
 	propertyComponents,
 	componentName,
 	visibleProperties,
-	codeCollapsable,
-	codeCollapsed: codeInitialCollapsed,
+	hideSourceCodeDetails,
+	sourceCodeDetailsCollapsed: sourceCodeDetailsInitialCollapsed,
 	layout = PreviewLayout.DEFAULT,
 	slotKey,
 	sourceFormatter,
 	hiddenPropsInCode,
 }: PreviewProps<TProps>) => {
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
-	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(codeInitialCollapsed ?? false);
+	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(sourceCodeDetailsInitialCollapsed ?? false);
 	const [copySuccess, setCopySuccess] = useState<boolean>(false);
 
 	const updateProperty = (key: keyof TProps, value: unknown) => {
@@ -253,7 +253,7 @@ const Preview = <TProps,>({
 				</span>
 			</div>
 			{hasProp && renderPropertyComponents()}
-			{codeCollapsable ? (
+			{!hideSourceCodeDetails ? (
 				<KolDetails
 					className={`${hasProp ? 'col-span-2' : ''}`}
 					_label={translate({ id: 'preview.sourceCode.heading' })}

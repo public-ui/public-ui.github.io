@@ -11,15 +11,13 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolPopoverButton } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
+import { PreviewDefaults } from '../utils';
 
-type PopoverButtonPreviewProps = JSX.KolPopoverButton & { _slot?: string };
-
-interface PopoverButtonPreviewComponentProps {
-	initialProps?: PopoverButtonPreviewProps;
-	visibleProperties?: (keyof JSX.KolPopoverButton | '_slot')[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
+interface PopoverButtonPreviewProps extends JSX.KolPopoverButton {
+	_slot?: string;
 }
+
+interface PopoverButtonPreviewComponentProps extends PreviewDefaults<PopoverButtonPreviewProps> {}
 
 const PopoverButtonPreview: React.FC<PopoverButtonPreviewComponentProps> = (props) => {
 	const defaultProps = React.useMemo<PopoverButtonPreviewProps>(
@@ -47,8 +45,8 @@ const PopoverButtonPreview: React.FC<PopoverButtonPreviewComponentProps> = (prop
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolPopoverButton"
 			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
+			hideSourceCodeDetails={props.hideSourceCodeDetails}
+			sourceCodeDetailsCollapsed={props.sourceCodeDetailsCollapsed}
 			layout={PreviewLayout.CENTERED}
 			slotKey="_slot"
 		>
