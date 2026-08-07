@@ -6,7 +6,7 @@ import { KolInputText, KolAccordion } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 
-type AccordionPreviewProps = JSX.KolAccordion & { _slot?: string };
+export type AccordionPreviewProps = JSX.KolAccordion & { _slot?: string };
 
 interface AccordionPreviewComponentProps {
 	initialProps?: AccordionPreviewProps;
@@ -20,7 +20,7 @@ const AccordionPreview = (props: AccordionPreviewComponentProps) => {
 			_label: translate({ id: 'preview.component.accordion.label' }),
 			_slot: translate({ id: 'preview.component.accordion.content' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
