@@ -263,7 +263,7 @@ const Preview = <TProps,>({
 					{renderSourceCode()}
 				</KolDetails>
 			) : (
-				<div className={`${hasProp ? 'col-span-2' : ''}`}>{renderSourceCode()}</div>
+				<></>
 			)}
 		</div>
 	);

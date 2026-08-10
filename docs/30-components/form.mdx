@@ -24,8 +24,7 @@ Standard-Formular mit Eingabefeldern und Buttons:
 <FormPreview
 	visibleProperties={[]}
 	initialProps={{ _requiredText: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -69,7 +68,7 @@ Die **Form**-Komponente unterstützt barrierefreie Formularstrukturen nach moder
 
 Testen Sie die Form mit verschiedenen Konfigurationen:
 
-<FormPreview codeCollapsable />
+<FormPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -80,7 +79,6 @@ Der Text für Pflichtfeld-Hinweise wird über `_requiredText` gesteuert:
 <FormPreview
 	visibleProperties={['_requiredText']}
 	initialProps={{ _requiredText: true }}
-	codeCollapsable
 />
 
 Mit `_requiredText="false"` wird der Hinweis ausgeblendet. Mit einem benutzerdefinierten String kann der Standard-Text überschrieben werden:
@@ -88,7 +86,6 @@ Mit `_requiredText="false"` wird der Hinweis ausgeblendet. Mit einem benutzerdef
 <FormPreview
 	visibleProperties={['_requiredText']}
 	initialProps={{ _requiredText: 'Felder mit * sind erforderlich' }}
-	codeCollapsable
 />
 
 #### Event-Anbindung

@@ -20,8 +20,7 @@ Das Beispiel zeigt eine Meter-Anzeige mit definiertem Wertebereich, Schwellenwer
 <MeterPreview
 	visibleProperties={['_label', '_value', '_min', '_max', '_low', '_high', '_optimum', '_unit', '_orientation']}
 	initialProps={{ _label: 'Auslastung', _min: 0, _max: 100, _value: 65, _low: 30, _optimum: 70, _high: 80, _unit: '%' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -58,7 +57,7 @@ Das Beispiel zeigt eine Meter-Anzeige mit definiertem Wertebereich, Schwellenwer
 
 ### Playground
 
-<MeterPreview codeCollapsable />
+<MeterPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -69,7 +68,6 @@ Einfache Meter-Anzeige mit Minimum, Maximum, aktuellem Wert und Einheit.
 <MeterPreview
 	visibleProperties={['_label', '_value', '_min', '_max', '_unit']}
 	initialProps={{ _label: 'Speicherauslastung', _min: 0, _max: 1024, _value: 512, _unit: 'MB' }}
-	codeCollapsable
 />
 
 #### Meter mit Zustandsbereichen
@@ -84,7 +82,6 @@ Mit `_low`, `_high` und `_optimum` lassen sich Messbereiche semantisch einordnen
 <MeterPreview
 	visibleProperties={['_value', '_min', '_max', '_low', '_high', '_optimum']}
 	initialProps={{ _label: 'CPU-Auslastung', _min: 0, _max: 100, _value: 15, _low: 20, _optimum: 10, _high: 70 }}
-	codeCollapsable
 />
 
 #### Vertikaler Meter
@@ -94,7 +91,6 @@ Die Ausrichtung kann über `_orientation` zwischen horizontal und vertikal umges
 <MeterPreview
 	visibleProperties={['_label', '_value', '_min', '_max', '_orientation']}
 	initialProps={{ _label: 'Flüssigkeitsstand', _min: 0, _max: 1000, _value: 650, _orientation: 'vertical', _unit: 'l' }}
-	codeCollapsable
 />
 
 ## API

@@ -23,8 +23,7 @@ Darstellung der Komponente ohne optional gesetzte Felder.
 
 <InputEmailPreview
 	visibleProperties={[]}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -91,7 +90,7 @@ Nutzen Sie die Kombination aus `_touched="true"` (um anzuzeigen, dass das Feld b
 
 Testen Sie die verschiedenen Eigenschaften des InputEmail-Felds:
 
-<InputEmailPreview codeCollapsable />
+<InputEmailPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -102,8 +101,7 @@ Standard-E-Mail-Eingabe mit Label:
 <InputEmailPreview
 	visibleProperties={['_label']}
 	initialProps={{ _label: 'E-Mail-Adresse' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Mehrfach-Eingabe
@@ -113,8 +111,7 @@ Mit `_multiple` werden mehrere E-Mail-Adressen akzeptiert, kommagetrennt:
 <InputEmailPreview
 	visibleProperties={['_multiple']}
 	initialProps={{ _label: 'E-Mail-Adressen', _multiple: true, _hint: 'Adressen durch Kommas trennen' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Placeholder und Hinweis
@@ -124,8 +121,7 @@ Hilfstexte für bessere Usability:
 <InputEmailPreview
 	visibleProperties={['_placeholder', '_hint']}
 	initialProps={{ _label: 'E-Mail-Adresse', _placeholder: 'beispiel@domain.de', _hint: 'Wir verwenden Ihre E-Mail für Benachrichtigungen.' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Formularattribute
@@ -135,8 +131,7 @@ Standard-Attribute für Formulare:
 <InputEmailPreview
 	visibleProperties={['_label', '_disabled', '_readOnly', '_required', '_hideLabel', '_hideMsg', '_shortKey', '_tooltipAlign']}
 	initialProps={{ _label: 'E-Mail-Adresse' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -158,8 +153,7 @@ Icons können links und/oder rechts vom Eingabefeld angezeigt werden:
 		_label: 'E-Mail-Adresse',
 		_icons: { left: 'kolibri', right: 'fa-solid fa-envelope' },
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Name und ID
@@ -169,8 +163,7 @@ Technische Kennzeichnung für Formulare:
 <InputEmailPreview
 	visibleProperties={['_name']}
 	initialProps={{ _label: 'E-Mail-Adresse', _name: 'email' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Hinweis**: `_name` wird als HTML-Attribut `name` verwendet und ist wichtig für das Absenden des Formulars.
@@ -184,8 +177,7 @@ Mit `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen, di
 <InputEmailPreview
 	visibleProperties={['_autoComplete']}
 	initialProps={{ _label: 'E-Mail-Adresse', _autoComplete: 'email' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Zeichenbegrenzung und Zeichenzähler
@@ -199,8 +191,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 		_maxLength: 100,
 	}}
 	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ##### Attribute
@@ -238,8 +229,7 @@ Fehlerhafte Eingaben können über `_msg` mit aussagekräftigen Meldungen verseh
 		_msg: { _description: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' },
 		_touched: true,
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ### Events

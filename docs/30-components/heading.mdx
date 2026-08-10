@@ -22,7 +22,6 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 Darstellung einer Überschrift der Ebene 1 ohne optional gesetzte Felder. Code kann eingeblendet werden.
 
 <HeadingPreview
-	codeCollapsable
 	initialProps={{ _label: 'Heading Level 1' }}
 	visibleProperties={[]}
 />
@@ -63,9 +62,7 @@ Darstellung einer Überschrift der Ebene 1 ohne optional gesetzte Felder. Code k
 
 ### Playground
 
-<HeadingPreview
-	codeCollapsable
-/>
+<HeadingPreview />
 
 ### Funktionalitäten
 
@@ -76,8 +73,7 @@ Darstellung einer Überschrift der Ebene 1 ohne optional gesetzte Felder. Code k
 <HeadingPreview
 	initialProps={{ _label: 'Level 1 Überschrift', _level: 1 }}
 	visibleProperties={['_level']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Mit sekundärer Überschrift
@@ -87,8 +83,7 @@ Eine Hauptüberschrift kann mit einer sekundären Überschrift kombiniert werden
 <HeadingPreview
 	initialProps={{ _label: 'Hauptüberschrift', _secondaryHeadline: 'Subheading oder Untertitel', _level: 1 }}
 	visibleProperties={['_label', '_secondaryHeadline', '_level']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Heading ohne semantisches Level
@@ -98,8 +93,7 @@ Mit `_level="0"` wird die Komponente ohne semantisches Heading-Element dargestel
 <HeadingPreview
 	initialProps={{ _label: 'Text ohne Heading-Semantik', _level: 0 }}
 	visibleProperties={['_level']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## API

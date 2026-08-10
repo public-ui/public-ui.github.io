@@ -28,8 +28,7 @@ Standard-Datumsfeld mit dem Typ `date`. Die Eingabe erfolgt über direkte Zahlen
 <InputDatePreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Geburtsdatum' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -100,7 +99,7 @@ Die Komponente nutzt die nativen HTML5-Eingabetypen des Browsers. Darstellung un
 
 ### Playground
 
-<InputDatePreview codeCollapsable />
+<InputDatePreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -111,7 +110,6 @@ Das Eingabefeld wird mit einer Beschriftung über `_label` versehen. Zusätzlich
 <InputDatePreview
 	visibleProperties={['_label', '_hint']}
 	initialProps={{ _label: 'Geburtsdatum', _hint: 'Bitte geben Sie Ihr Geburtsdatum ein.' }}
-	codeCollapsable
 />
 
 #### Eingabetypen
@@ -121,7 +119,6 @@ Das Attribut `_type` bestimmt das Format und den Auswahldialog:
 <InputDatePreview
 	visibleProperties={['_type']}
 	initialProps={{ _label: 'Datum', _type: 'date' }}
-	codeCollapsable
 />
 
 **Verfügbare Typen:**
@@ -142,7 +139,6 @@ Die Attribute `_min` und `_max` definieren den gültigen Datumsbereich. Sie grei
 		_min: '2025-01-01',
 		_max: '2025-12-31',
 	}}
-	codeCollapsable
 />
 
 #### Schrittgröße bei Zeiteingabe
@@ -156,7 +152,6 @@ Für Typ `time` kann die Schrittgröße über `_step` festgelegt werden:
 		_type: 'time',
 		_step: '15',
 	}}
-	codeCollapsable
 />
 
 #### Formularattribute
@@ -166,7 +161,6 @@ Standard-Formularattribute für Validierung und Interaktion:
 <InputDatePreview
 	visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
 	initialProps={{ _label: 'Datum', _required: true }}
-	codeCollapsable
 />
 
 **Verfügbare Attribute:**
@@ -185,7 +179,6 @@ Validierungsfehler oder Hinweismeldungen werden über das Attribut `_msg` ausgeg
 		_label: 'Datum',
 		_msg: 'Das eingegebene Datum liegt außerhalb des zulässigen Bereichs.',
 	}}
-	codeCollapsable
 />
 
 #### Events

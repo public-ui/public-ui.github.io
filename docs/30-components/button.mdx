@@ -25,8 +25,7 @@ Darstellung der Komponente mit Standard-Label und ohne optional gesetzte Felder.
 <ButtonPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Click me' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -141,7 +140,7 @@ Darstellung der Komponente mit Standard-Label und ohne optional gesetzte Felder.
 
 ### Playground
 
-<ButtonPreview codeCollapsable />
+<ButtonPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -152,8 +151,7 @@ Die sichtbare Beschriftung wird über `_label` gesetzt:
 <ButtonPreview
 	visibleProperties={['_label']}
 	initialProps={{ _label: 'Schaltflächenbeschriftung' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Varianten
@@ -163,8 +161,7 @@ Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varia
 <ButtonPreview
 	visibleProperties={['_variant']}
 	initialProps={{ _label: 'Button', _variant: 'primary' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Varianten im Default Theme:**
@@ -182,8 +179,7 @@ Icons können über `_icons` hinzugefügt werden. Als String übergeben Sie die 
 <ButtonPreview
 	visibleProperties={['_icons']}
 	initialProps={{ _label: 'Home', _icons: 'kolicon-house' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `left` angegeben werden, jeweils mit Icon-Klasse oder Styleobjekt.
@@ -195,8 +191,7 @@ Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip 
 <ButtonPreview
 	visibleProperties={['_hideLabel', '_icons']}
 	initialProps={{ _label: 'Home', _icons: 'kolicon-house', _hideLabel: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Hinweis:** Das Attribut `_label` muss auch gesetzt werden, wenn nur ein Icon angezeigt wird – es wird für Screenreader und den Tooltip verwendet.
@@ -208,8 +203,7 @@ Der HTML-Button-Type wird über `_type` gesteuert:
 <ButtonPreview
 	visibleProperties={['_type']}
 	initialProps={{ _label: 'Button', _type: 'submit' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Typen:**
@@ -224,8 +218,7 @@ Mit `_disabled` wird der Button deaktiviert:
 <ButtonPreview
 	visibleProperties={['_disabled']}
 	initialProps={{ _label: 'Deaktiviert', _disabled: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Weitere Eigenschaften

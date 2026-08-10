@@ -23,8 +23,7 @@ Darstellung eines einfachen Badges mit Hintergrundfarbe und Icon:
 <BadgePreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Badge', _color: '#0c8703', _icons: 'kolicon-check' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -65,7 +64,6 @@ Darstellung eines einfachen Badges mit Hintergrundfarbe und Icon:
 
 <BadgePreview
 	visibleProperties={['_label', '_color', '_icons', '_smartButton']}
-	codeCollapsable
 />
 
 ### Funktionalitäten (mit Code)
@@ -77,7 +75,6 @@ Das Label ist erforderlich und definiert den Text, der im Badge angezeigt wird. 
 <BadgePreview
 	visibleProperties={['_label']}
 	initialProps={{ _label: 'Beispieltext', _color: '#0c8703' }}
-	codeCollapsable
 />
 
 | Property | Beschreibung |
@@ -91,7 +88,6 @@ Die Hintergrundfarbe wird über das Attribut `_color` definiert. Die Textfarbe w
 <BadgePreview
 	visibleProperties={['_color']}
 	initialProps={{ _label: 'Helles Badge', _color: '#b7e4b4' }}
-	codeCollapsable
 />
 
 | Property | Beschreibung | Default |
@@ -105,7 +101,6 @@ Icons können als String (Klassenname) oder als komplexes Icon-Objekt mit horizo
 <BadgePreview
 	visibleProperties={['_icons']}
 	initialProps={{ _label: 'Mit Icon', _color: '#0c8703', _icons: 'kolicon-house' }}
-	codeCollapsable
 />
 
 | Property | Beschreibung |
@@ -119,7 +114,6 @@ Das Badge kann mit einem Smart-Button verknüpft werden, der eine Aktion auslös
 <BadgePreview
 	visibleProperties={['_smartButton']}
 	initialProps={{ _label: 'Mit Button', _color: '#0c8703' }}
-	codeCollapsable
 />
 
 | Property | Beschreibung |

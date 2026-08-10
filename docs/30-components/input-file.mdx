@@ -23,8 +23,7 @@ Einfaches Datei-Eingabefeld mit Beschriftung und Konfigurationsmöglichkeiten:
 
 <InputFilePreview
 	visibleProperties={['_label', '_accept', '_multiple', '_disabled']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -76,7 +75,7 @@ Die **InputFile**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 
 Testen Sie die verschiedenen Eigenschaften der InputFile-Komponente:
 
-<InputFilePreview codeCollapsable />
+<InputFilePreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -87,8 +86,7 @@ Standard-Datei-Eingabefeld ohne Konfiguration:
 <InputFilePreview
 	initialProps={{ _label: 'Datei auswählen' }}
 	visibleProperties={[]}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Dateitypbeschränkung
@@ -98,8 +96,7 @@ Beschränkung der erlaubten Dateitypen über das Attribut `_accept`:
 <InputFilePreview
 	visibleProperties={['_accept']}
 	initialProps={{ _label: 'Datei auswählen', _accept: 'image/*' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Beispiele für `_accept`-Werte:**
@@ -116,8 +113,7 @@ Ermöglichen Sie die Auswahl mehrerer Dateien gleichzeitig:
 <InputFilePreview
 	visibleProperties={['_multiple']}
 	initialProps={{ _label: 'Mehrere Dateien auswählen', _multiple: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Deaktivierter Zustand
@@ -127,8 +123,7 @@ Das Eingabefeld ist nicht interaktiv:
 <InputFilePreview
 	visibleProperties={['_disabled']}
 	initialProps={{ _label: 'Datei auswählen', _disabled: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Fehlermeldung
@@ -141,8 +136,7 @@ Fehler oder Validierungshinweise:
 		_label: 'Datei auswählen',
 		_msg: { _description: 'Nur PDF-Dateien bis 5 MB erlaubt' },
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Hilfetexte und Beschriftung
@@ -155,8 +149,7 @@ Additionale Informationen für Nutzer:
 		_label: 'Dokument hochladen',
 		_hint: 'Akzeptierte Formate: PDF, DOC, DOCX. Max. Größe: 10 MB.',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ### Events

@@ -23,8 +23,7 @@ Ein Button, der wie ein Link aussieht und sich wie ein Link verhält:
 <ButtonLinkPreview
 	initialProps={{ _label: 'Schalter sieht wie ein Link aus' }}
 	visibleProperties={[]}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -66,7 +65,7 @@ Die ButtonLink-Komponente eignet sich für Fälle, in denen der semantische Aufb
 
 ### Playground
 
-<ButtonLinkPreview codeCollapsable />
+<ButtonLinkPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -77,8 +76,7 @@ Ein einfacher ButtonLink mit grundlegenden Eigenschaften:
 <ButtonLinkPreview
 	initialProps={{ _label: 'Funktioniert wie ein Button' }}
 	visibleProperties={['_label']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Mit Icons
@@ -88,8 +86,7 @@ ButtonLink mit Icons vor und/oder nach dem Label:
 <ButtonLinkPreview
 	initialProps={{ _label: 'Mit Icon', _icons: 'fa-solid fa-heart' }}
 	visibleProperties={['_label', '_icons']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Mit verstecktem Label
@@ -99,8 +96,7 @@ Das Label wird versteckt und nur als Tooltip angezeigt:
 <ButtonLinkPreview
 	initialProps={{ _label: 'Tooltip', _hideLabel: true }}
 	visibleProperties={['_hideLabel']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Deaktiviert
@@ -110,8 +106,7 @@ Ein deaktivierter ButtonLink reagiert nicht auf Interaktionen:
 <ButtonLinkPreview
 	initialProps={{ _label: 'Deaktiviert', _disabled: true }}
 	visibleProperties={['_disabled']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Mit Tastaturkürzel
@@ -121,8 +116,7 @@ Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
 <ButtonLinkPreview
 	initialProps={{ _label: 'Mit Shortkey', _shortKey: 's' }}
 	visibleProperties={['_shortKey']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### ARIA-Attribute
@@ -136,8 +130,7 @@ ButtonLink mit ARIA-Attributen für erweiterte Semantik:
 		_ariaControls: 'menu-content',
 	}}
 	visibleProperties={['_ariaControls', '_ariaExpanded', '_ariaSelected']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ### Events

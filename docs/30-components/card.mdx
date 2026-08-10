@@ -24,8 +24,7 @@ Darstellung einer einfachen Card mit Titel und Inhaltsbereich. Code kann eingebl
 <CardPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich mit beliebigem HTML' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -64,7 +63,7 @@ Darstellung einer einfachen Card mit Titel und Inhaltsbereich. Code kann eingebl
 
 ### Playground
 
-<CardPreview codeCollapsable />
+<CardPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -75,7 +74,6 @@ Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird 
 <CardPreview
 	visibleProperties={['_label', '_slot']}
 	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich' }}
-	codeCollapsable
 />
 
 #### Überschriftenstruktur
@@ -85,7 +83,6 @@ Die Überschriftenebene wird über `_level` gesteuert. Möglich sind die Level 0
 <CardPreview
 	visibleProperties={['_level']}
 	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich', _level: 2 }}
-	codeCollapsable
 />
 
 #### Schließ-Funktion
@@ -95,7 +92,6 @@ Das Attribut `_has-closer` ermöglicht dem Nutzer, die Card zu schließen und da
 <CardPreview
 	visibleProperties={['_hasCloser']}
 	initialProps={{ _label: 'Schließbare Card', _slot: 'Inhaltsbereich', _hasCloser: true }}
-	codeCollapsable
 />
 
 #### Events

@@ -21,8 +21,7 @@ Grunddarstellung eines Bildes mit erforderlichem Alternativtext:
 
 <ImagePreview
 	visibleProperties={['_src', '_alt']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -72,7 +71,7 @@ Ja, alle gängigen Formate werden unterstützt (PNG, JPEG, WebP, SVG, GIF usw.).
 
 ### Playground
 
-<ImagePreview codeCollapsable />
+<ImagePreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -83,7 +82,6 @@ Die Bildquelle wird über das erforderliche Attribut `_src` gesetzt. Dies ist di
 <ImagePreview
 	visibleProperties={['_src']}
 	initialProps={{ _src: '/assets/sample-image.png' }}
-	codeCollapsable
 />
 
 #### Alternativtext
@@ -93,7 +91,6 @@ Das erforderliche Attribut `_alt` bietet eine Textbeschreibung oder Alternative 
 <ImagePreview
 	visibleProperties={['_alt']}
 	initialProps={{ _alt: 'Beispielbildbeschreibung' }}
-	codeCollapsable
 />
 
 #### Responsive Bilder mit Srcset und Sizes
@@ -107,7 +104,6 @@ Achtung: der Browser wechselt das Bild nur von kleiner zu größer und nicht wie
 		_srcset: '/assets/image-small.png 600w, /assets/image-large.png 1200w',
 		_sizes: '(min-width: 600px) 600px, (min-width: 1200px) 1200px',
 	}}
-	codeCollapsable
 />
 
 #### Ladeverhalten
@@ -117,7 +113,6 @@ Das Attribut `_loading` steuert, wann das Bild vom Browser geladen wird. `lazy` 
 <ImagePreview
 	visibleProperties={['_loading']}
 	initialProps={{ _loading: 'lazy' }}
-	codeCollapsable
 />
 
 **Verfügbare Werte:**

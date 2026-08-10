@@ -22,8 +22,7 @@ Einfaches Farbwahlfeld mit Beschriftung und Standard-Farbe:
 <InputColorPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Favoriten-Farbe' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -86,7 +85,7 @@ Nein, Sie können sie über `_required` optional oder erforderlich machen. Die E
 
 Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
 
-<InputColorPreview codeCollapsable />
+<InputColorPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -97,8 +96,7 @@ Die Komponente mit Beschriftung, wahlweise mit Tooltip-Stil:
 <InputColorPreview
 	visibleProperties={['_label', '_hideLabel']}
 	initialProps={{ _label: 'Wählen Sie eine Farbe' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Mit voreingestelltem Wert
@@ -108,8 +106,7 @@ Farbfeld mit einer Standard-Farbe:
 <InputColorPreview
 	visibleProperties={['_label', '_value']}
 	initialProps={{ _label: 'Ihre Farbe', _value: '#ff6b6b' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Mit Hinweis und Icons
@@ -123,8 +120,7 @@ Farbfeld mit zusätzlichem Hinweistext und grafischen Symbolen:
 		_hint: 'Wählen Sie eine Farbe für Ihr Design',
 		_icons: { left: 'fa-solid fa-palette' },
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Deaktiviert und Nur-Lesen
@@ -134,8 +130,7 @@ Deaktiviertes Eingabefeld (nicht fokussierbar und nicht veränderbar):
 <InputColorPreview
 	visibleProperties={['_label', '_disabled']}
 	initialProps={{ _label: 'Gespeicherte Farbe', _value: '#3498db', _disabled: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Mit Fehlermeldung
@@ -148,8 +143,7 @@ Farbfeld mit Validierungsmeldung:
 		_label: 'Farbe auswählen',
 		_msg: 'Bitte wählen Sie eine gültige Farbe aus.',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Events

@@ -23,8 +23,7 @@ Standard-Drawer mit Label und Inhalt:
 <DrawerPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -73,7 +72,7 @@ Standard-Drawer mit Label und Inhalt:
 
 ### Playground
 
-<DrawerPreview codeCollapsable />
+<DrawerPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -84,7 +83,6 @@ Der Drawer zeigt einen definierten Inhaltsbereich über den Slot an:
 <DrawerPreview
 	visibleProperties={['_label', '_slot']}
 	initialProps={{ _label: 'Drawer Titel', _align: 'left', _hasCloser: true }}
-	codeCollapsable
 />
 
 #### Ausrichtung
@@ -94,7 +92,6 @@ Die Position des Drawers wird über das **`_align`**-Attribut gesteuert:
 <DrawerPreview
 	visibleProperties={['_align']}
 	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
-	codeCollapsable
 />
 
 #### Schließ-Button
@@ -104,7 +101,6 @@ Aktivieren Sie **`_hasCloser`**, um einen visuellen Schließ-Button anzuzeigen:
 <DrawerPreview
 	visibleProperties={['_hasCloser']}
 	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
-	codeCollapsable
 />
 
 #### Programmgesteuerte Kontrolle

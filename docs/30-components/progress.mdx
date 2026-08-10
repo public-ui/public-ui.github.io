@@ -24,8 +24,7 @@ Darstellung der Komponente mit horizontalem Fortschrittsbalken und Beschriftung.
 <ProgressPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Fortschritt', _value: 65, _max: 100, _variant: 'bar' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -77,7 +76,7 @@ Ja, die Progress-Komponente verarbeitet auch Dezimalzahlen, beispielsweise `_val
 
 ### Playground
 
-<ProgressPreview codeCollapsable />
+<ProgressPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -88,8 +87,7 @@ Der horizontale Balken ist die Standard-Variante und eignet sich für die Darste
 <ProgressPreview
 	visibleProperties={['_label', '_value', '_max', '_variant']}
 	initialProps={{ _label: 'Progress', _value: 45, _max: 100, _variant: 'bar' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Zirkulärer Fortschrittsbalken
@@ -99,8 +97,7 @@ Die zirkuläre Variante ist kompakt und eignet sich für kleine Bereiche oder al
 <ProgressPreview
 	visibleProperties={['_label', '_value', '_max', '_variant']}
 	initialProps={{ _label: 'Cycle', _value: 65, _max: 100, _variant: 'cycle' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Beschriftung und Unit
@@ -110,8 +107,7 @@ Mit `_label` können Sie den Fortschritt beschreiben, `_unit` kann intern zur Be
 <ProgressPreview
 	visibleProperties={['_label', '_value', '_max', '_unit']}
 	initialProps={{ _label: 'Download-Speed', _value: 250, _max: 500, _unit: 'MB' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Aufgabenverfolgung
@@ -121,8 +117,7 @@ Anwendungsbeispiel: Verfolgung von abgeschlossenen Aufgaben aus einer Liste.
 <ProgressPreview
 	visibleProperties={['_label', '_value', '_max']}
 	initialProps={{ _label: 'Aufgaben erledigt', _value: 8, _max: 12 }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## API

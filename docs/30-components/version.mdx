@@ -22,8 +22,7 @@ Darstellung der Komponente mit einer einfachen Versionsnummer:
 <VersionPreview
 	visibleProperties={[]}
 	initialProps={{ _label: '1.2.3' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -58,7 +57,7 @@ Die **Version**-Komponente ist ein semantisches Inline-Element und wird von assi
 
 ### Playground
 
-<VersionPreview codeCollapsable />
+<VersionPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -69,8 +68,7 @@ Die sichtbare Versionsnummer wird über `_label` definiert. Das Präfix `v` wird
 <VersionPreview
 	visibleProperties={['_label']}
 	initialProps={{ _label: '2.0.0' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## API

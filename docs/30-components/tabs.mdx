@@ -31,8 +31,7 @@ Standard-Tabs mit mehreren Registerkarten und wählbarem Inhalt:
 			{ _label: 'Tab 3' }
 		]
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -95,7 +94,7 @@ Ja, indem Sie in der Tab-Definition das Attribut `_disabled` auf `true` setzen.
 
 Testen Sie die verschiedenen Eigenschaften der Tabs-Komponente:
 
-<TabsPreview codeCollapsable />
+<TabsPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -113,8 +112,7 @@ Die einfachste Verwendung mit mehreren Registerkarten:
 			{ _label: 'Einstellungen' }
 		]
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Ausrichtung
@@ -132,8 +130,7 @@ Die Tabs können an verschiedenen Positionen ausgerichtet werden:
 		],
 		_align: 'top'
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Werte für `_align`:**
@@ -156,8 +153,7 @@ Der `_behavior`-Parameter steuert, wie Nutzer:innen zwischen Tabs wechseln:
 		],
 		_behavior: 'select-automatic'
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verhaltensoptionen:**
@@ -178,8 +174,7 @@ Ein zusätzlicher Button am Ende der Tab-Leiste zum dynamischen Hinzufügen neue
 		],
 		_hasCreateButton: true
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 Der `_hasCreateButton`-Button erzeugt das `create`-Event, wenn angeklickt.
@@ -199,8 +194,7 @@ Steuern Sie den aktiven Tab programmgesteuert mit `_selected`:
 		],
 		_selected: 1
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 Der Wert ist der Index des Tabs (0-basiert).

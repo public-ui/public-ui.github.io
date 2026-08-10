@@ -19,7 +19,7 @@ import LinkButtonPreview from '@site/src/components/previews/components/LinkButt
 
 Darstellung der Komponente ohne optional gesetzte Felder:
 
-<LinkButtonPreview visibleProperties={[]} initialProps={{ _label: 'LinkButton' }} codeCollapsable />
+<LinkButtonPreview visibleProperties={[]} initialProps={{ _label: 'LinkButton' }} />
 
 ## Barrierefreiheit
 
@@ -99,7 +99,6 @@ LinkButton ist semantisch ein Link mit Button-Styling. <kol-link _href="../compo
 		'_shortKey',
 	]}
 	initialProps={{ _label: 'LinkButton' }}
-	codeCollapsable
 />
 
 Erkunden Sie die verschiedenen Konfigurationen der LinkButton-Komponente:
@@ -113,8 +112,7 @@ Die sichtbare Beschriftung wird über `_label` gesetzt:
 <LinkButtonPreview
 	visibleProperties={['_label']}
 	initialProps={{ _label: 'Normal', _href: '#' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Varianten
@@ -124,8 +122,7 @@ Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varia
 <LinkButtonPreview
 	visibleProperties={['_variant']}
 	initialProps={{ _label: 'LinkButton', _href: '#', _variant: 'primary' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Icons
@@ -135,8 +132,7 @@ Icons können über das Attribut `_icons` hinzugefügt werden:
 <LinkButtonPreview
 	visibleProperties={['_icons', '_tooltipAlign']}
 	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'kolicon-house' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `left` angegeben werden, jeweils mit Icon-Klasse oder Styleobjekt.
@@ -148,8 +144,7 @@ Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip 
 <LinkButtonPreview
 	visibleProperties={['_hideLabel', '_icons']}
 	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'kolicon-house', _hideLabel: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Zielverhalten
@@ -159,8 +154,7 @@ Kontrolle darüber, wie der Link im Browser geöffnet wird:
 <LinkButtonPreview
 	visibleProperties={['_target']}
 	initialProps={{ _label: 'LinkButton', _href: '#', _target: '_self' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Targets:**
@@ -175,8 +169,7 @@ Signalisieren Sie dem Browser, dass eine Datei heruntergeladen werden soll:
 <LinkButtonPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'PDF herunterladen', _href: '/files/dokument.pdf', _download: 'dokument.pdf' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Disabled-Status
@@ -186,8 +179,7 @@ Mit `_disabled` wird der Button deaktiviert:
 <LinkButtonPreview
 	visibleProperties={['_disabled']}
 	initialProps={{ _label: 'Deaktiviert', _href: '#', _disabled: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Tastaturkürzel
@@ -197,8 +189,7 @@ Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
 <LinkButtonPreview
 	visibleProperties={['_shortKey']}
 	initialProps={{ _label: 'Startseite', _href: '#', _shortKey: 'H' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### ARIA-Attribute
@@ -212,8 +203,7 @@ LinkButton mit ARIA-Attributen für erweiterte Semantik:
 		_ariaDescription: 'Navigiert zur Dokumentation',
 	}}
 	visibleProperties={['_ariaCurrentValue', '_ariaDescription']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Events

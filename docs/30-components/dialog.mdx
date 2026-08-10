@@ -23,8 +23,7 @@ Standard-Dialog mit Beschriftung und Inhalt:
 <DialogPreview
 	visibleProperties={[]}
 	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -90,7 +89,6 @@ Testen Sie die verschiedenen Eigenschaften des Dialogs:
 <DialogPreview
 	visibleProperties={['_label', '_variant', '_width', '_slot']}
 	initialProps={{}}
-	codeCollapsable
 />
 
 ### Funktionalitäten (mit Code)
@@ -105,8 +103,7 @@ Die Beschriftung wird über `_label` gesetzt. Der Inhalt wird über den Slot ber
 		_label: 'Dialog Titel',
 		_slot: '<p>Dies ist der Dialoginhalt.</p>',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Varianten
@@ -119,8 +116,7 @@ Der Dialog unterstützt zwei Varianten:
 		_label: 'Dialog mit Card-Variante',
 		_variant: 'card',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Varianten:**
@@ -137,8 +133,7 @@ Die Breite des Dialogs wird über `_width` gesteuert:
 		_label: 'Dialog mit Custom-Breite',
 		_width: '500px',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Hinweis:** Die maximale Breite ist auf 100% begrenzt.

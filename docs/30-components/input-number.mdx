@@ -27,8 +27,7 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 <InputNumberPreview
 	visibleProperties={[]}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -107,7 +106,7 @@ Ja. Die Erhöhen-/Verringern-Schaltflächen können über ein Theme-seitiges Fea
 
 Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
 
-<InputNumberPreview codeCollapsable />
+<InputNumberPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -117,8 +116,7 @@ Minimum-Konfiguration mit Label:
 
 <InputNumberPreview
 	visibleProperties={['_label']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Formularattribute
@@ -128,8 +126,7 @@ Standard-Attribute für Formulare wie Deaktivierung, Read-Only-Modus und Pflicht
 <InputNumberPreview
 	visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
 	initialProps={{ _label: 'Anzahl' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -147,8 +144,7 @@ Unterstützung für Hinweistexte und Validierungsmeldungen:
 		_label: 'Preis',
 		_hint: 'Bitte geben Sie einen Wert in EUR an',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -167,8 +163,7 @@ Konfigurieren Sie Minimal-, Maximalwerte und Schrittweite. `_min` und `_max` gre
 		_max: 100,
 		_step: 5,
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -187,8 +182,7 @@ Nutzen Sie Placeholder zur Eingabeformatierung und `_hideLabel`, um das Label vi
 		_placeholder: 'z.B. 25',
 		_hideLabel: false,
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -207,8 +201,7 @@ Definieren Sie linke und/oder rechte Icons für zusätzlichen Kontext:
 			left: 'kolicon-euro',
 		},
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Positionen:**
@@ -222,8 +215,7 @@ Ein Button mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLa
 <InputNumberPreview
 	initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
 	visibleProperties={['_smartButton']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Vorschlagswerte (Suggestions)
@@ -236,8 +228,7 @@ Ein Button mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLa
 		_label: 'Anzahl',
 		_suggestions: [1, 5, 10, 25, 50, 100],
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
