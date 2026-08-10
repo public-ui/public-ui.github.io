@@ -1,5 +1,6 @@
 import { JSX, Option, TabButtonProps, ToolbarItemsPropType, W3CInputValue } from '@public-ui/components';
 import { TreeItemData } from '../properties';
+import { AccordionMultiplePreviewProps } from '../components/AccordionMultiple';
 
 export const ComboboxSuggestionsDefault: W3CInputValue[] = [
 	'JavaScript',
@@ -123,3 +124,32 @@ export const TabDefault: TabButtonProps[] = [
 	{ _label: 'Tab 4' },
 	{ _label: 'Tab 5' },
 ];
+
+export const AccordionMultipleDefault: AccordionMultiplePreviewProps = {
+	_accordions: [
+		{
+			_label: 'Der Frühling',
+			_open: true,
+			_slot:
+				'Das Frühjahr bringt den Übergang vom Winter zum Sommer. Die Temperaturen steigen langsam, die Tage werden länger, und die Natur erwacht aus dem Winterschlaf: Pflanzen beginnen zu blühen, Bäume treiben neue Knospen, und viele Tierarten aktivieren ihre Fortpflanzungszyklen. Typisch sind wechselhaftes Wetter mit warmen sonnigen Phasen und kühleren Regentagen.',
+		},
+		{
+			_label: 'Der Sommer',
+			_open: false,
+			_slot:
+				'Der Sommer ist die wärmste Jahreszeit mit längsten Tagen und kürzesten Nächten. Die Sonne steht höher am Himmel, was zu intensiverer Einstrahlung führt. Temperaturen erreichen ihre Höchstwerte, Niederschläge treten oft als kurze Gewitter statt als langanhaltender Regen auf. Es ist die Hauptsaison für Vegetation und landwirtschaftliches Wachstum.',
+		},
+		{
+			_label: 'Der Herbst',
+			_open: false,
+			_slot:
+				'Im Herbst nimmt die Tageslänge deutlich ab, die Temperaturen fallen allmählich. Laubbäume verlieren ihr grünes Blattwerk durch die verkürzte Photosyntheseperiode, was zu charakteristischen Braun- und Gelbtönen führt. Die Erntezeit für viele Kulturpflanzen liegt in dieser Jahreszeit. Nebel und spätere Sonnenaufgänge werden häufiger.',
+		},
+		{
+			_label: 'Der Winter',
+			_open: false,
+			_slot:
+				'Die kalte Jahreszeit mit den kürzesten Tagen und längsten Nächten. Die niedrige Sonnenposition sorgt für geringe Einstrahlungsintensität. Temperaturen fallen unter den Gefrierpunkt, was in vielen Regionen Schnee und Eis ermöglicht. Pflanzen ruhen, viele Tiere halten Winterruhe oder migrieren. Die natürliche Lichtverfügbarkeit ist am geringsten.',
+		},
+	],
+};

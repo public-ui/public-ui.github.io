@@ -7,7 +7,7 @@ import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 import { getPreviewDefaults, PreviewDefaults } from '../utils';
 
-interface AccordionPreviewProps extends JSX.KolAccordion {
+export interface AccordionPreviewProps extends JSX.KolAccordion {
 	_slot?: string;
 }
 

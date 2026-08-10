@@ -6,7 +6,7 @@ import {IndentedText} from '@site/src/components/IndentedText';
 # Theming
 
 <KolAlert _type="info" _variant="card">
-	<p>Über den Schalter in der Toolbar oben können Sie das Theme von unserer Seite (KoliBri) umschalten.</p>
+	<p>Ein Theme ist eine konkrete Umsetzung einer zentralen Design-Vorlage innerhalb von KoliBri. Es steuert das visuelle Erscheinungsbild aller Oberflächenelemente. So können verschiedene Designvorgaben auf einer einheitlichen technischen Basis umgesetzt werden.</p>
 </KolAlert>
 
 <p>
@@ -65,7 +65,7 @@ import {IndentedText} from '@site/src/components/IndentedText';
 <p>
 	<IndentedText>
 		<strong>
-			2. Wir haben das ganze CSS vollständig von den Components entkoppelt (wie <KolLink
+			2. Wir haben das ganze CSS vollständig von den Komponenten entkoppelt (wie <KolLink
 			_label="Styled-Components"
 			_href="https://styled-components.com"
 			_target="_blank"
@@ -74,8 +74,8 @@ import {IndentedText} from '@site/src/components/IndentedText';
 	</IndentedText>
 </p>
 <p>
-	Mithilfe des Designers kann ein „Mandant“ die Komponenten einzeln und vollständig unabhängig voneinander mit der
-	gesamten CSS-Freiheit gestalten. Innerhalb eines „Mandanten“-Themes können eigene CSS-Properties eingeführt werden.
+	Die Komponenten können einzeln und vollständig unabhängig voneinander mit der
+	gesamten CSS-Freiheit gestalten. Innerhalb eines Themes können eigene CSS-Properties eingeführt werden.
 	Die Nutzung von CSS-Properties (Design-Tokens) bleibt somit auf Theme-Ebene erhalten, jedoch mit einem viel kleineren
 	und pflegbaren Scope.
 </p>
@@ -94,46 +94,52 @@ import {IndentedText} from '@site/src/components/IndentedText';
 </p>
 
 <Mermaid
-	code={`
-stateDiagram-v2
-	direction LR
-	s1: <strong>Spezifikation</strong>
-	s1: UI/UX-Team
-	s2: <strong>Design-Tokens</strong>
-	s2: JSON
-	s3: <strong>Style-Files</strong>
-	s3: CSS
-	s4: <strong>Designer</strong>
-	s4: KoliBri
-	s5: <strong>Theme</strong>
-	s5: KoliBri
-	note right of s1
-		<strong>Tools:</strong> Adobe XD, Figma, Sketch u.a.
-		<strong>Technik:</strong> CSS-Properties, Design-Tokens
-	end note
-	note right of s2
-		Export-<strong>Plugin</strong>
-	end note
-	note right of s3
-		Set of CSS-Properties
-	end note
-	note right of s5
-		Sharable <strong>NPM-Paket</strong>
-	end note
-	[*] --> s1
-	s1 --> s2 : Plugin
-	s2 --> s3 : Script
-	s3 --> s5
-	s1 --> s4
-	s4 --> s5
-	s5 --> [*]`}
+	code={`stateDiagram-v2
+    direction LR
+
+    %% Zustände mit Titel + Untertitel
+    s1: Spezifikation
+    s1: UI/UX-Team
+
+    s2: Design-Tokens
+    s2: JSON
+
+    s3: Style-Files
+    s3: CSS
+
+    s4: Theme
+    s4: KoliBri
+
+    %% Notizen zu den Zuständen
+    note right of s1
+        Tools: Adobe XD, Figma, Sketch u.a.
+        Technik: CSS-Properties, Design-Tokens
+    end note
+
+    note right of s2
+        Export-Plugin
+    end note
+
+    note right of s3
+        Set of CSS-Properties
+    end note
+
+    note right of s4
+        Shareble NPM-Paket
+    end note
+
+    %% Übergänge
+    [*] --> s1
+    s1 --> s2 : Plugin
+    s2 --> s3 : Script
+    s3 --> s4
+    s4 --> [*]`}
 ></Mermaid>
 
 <p>
 	Das UI/UX-Team spezifiziert beispielsweise mit Figma die Komponenten ihres Design-Systems. Bei der Überführung der
-	Spezifikation in die Realisierung wird das Design in Form von reinem CSS mittels des{' '}
-	<KolLink _label="KoliBri-Designers" _href="/docs/concepts/styling/designer"/> auf die Basis-Komponenten
-	„übertragen“. Wenn im eigenen Design-System eine Individualisierbarkeit gewünscht ist, können im Designer dafür
+	Spezifikation in die Realisierung wird das Design in Form von reinem CSS auf die Basis-Komponenten
+	„übertragen“. Wenn im eigenen Design-System eine Individualisierbarkeit gewünscht ist, können dafür
 	CSS-Properties oder Design-Tokens definiert werden. Damit das eigene Theme über Projekte hinweg geteilt werden kann,
 	wird das Theme in ein NPM-Paket paketiert und kann über eine beliebige Registry bereitgestellt werden.
 </p>

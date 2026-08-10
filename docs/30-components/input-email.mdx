@@ -13,9 +13,11 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 <BetaDocsBanner />
 
-**Synonyme:** E-Mail-Eingabe, Elektronische Post, Mail
+**Synonyme:** E-Mail-Eingabefeld, E-Mail-Feld, Email Input, Email Field
 
-**Beschreibung:** Die **InputEmail**-Komponente ist ein spezialisiertes Eingabefeld für E-Mail-Adressen. Sie ermöglicht die sichere Erfassung einer oder mehrerer E-Mail-Adressen und unterstützt Validierung, Zeichenbegrenzung sowie barrierefreie Bedienung durch Tastatur und Screenreader.
+**Beschreibung:** Mit **InputEmail** können E-Mail-Adressen eingegeben und bearbeitet werden.
+
+Die Komponente basiert auf dem nativen HTML5-Eingabetyp `email` und unterstützt die Eingabe einer oder mehrerer E-Mail-Adressen.
 
 ## Beispiel
 
@@ -28,61 +30,75 @@ Darstellung der Komponente ohne optional gesetzte Felder.
 
 ## Barrierefreiheit
 
-- **Label-Pflicht**: Jedes InputEmail-Feld muss über das Attribut `_label` eine sichtbare Beschriftung erhalten. Dies gewährleistet, dass Screenreader-Nutzer verstehen, welchen Zweck das Eingabefeld erfüllt.
-- **Hinweistexte**: Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die für alle Nutzer zugänglich sind.
-- **Fehlermeldungen**: Validierungsfehler können über `_msg` mit aussagekräftigen Meldungen gekennzeichnet werden. Browser-seitige Validierungen werden über die Attribute `_touched` und `_msg` kommuniziert.
-- **Zeichenzähler**: Bei aktiviertem Zeichenzähler (`_has-counter`) wird der Status mit einer Verzögerung von 500 ms aktualisiert, um Screenreader nicht bei jeder Eingabe zu unterbrechen. Zusätzlich wird ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet (z.B. „Sie können bis zu 100 Zeichen eingeben").
-- **Fokusmanagement**: Das Eingabefeld ist vollständig über die Tastatur bedienbar und bietet klare Fokusindikatoren.
-- **Mehrfach-Modus**: Wenn das Attribut `_multiple` gesetzt ist, wird die Erwartung kommuniziert, dass mehrere E-Mail-Adressen (kommagetrennt) eingegeben werden können.
+- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
+- Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
+- Ist `_multiple` gesetzt, wird die Eingabe mehrerer, durch Komma getrennter E-Mail-Adressen erwartet und entsprechend an assistive Technologien kommuniziert.
+- Über `_icons` eingebundene Icons sind rein dekorativ und werden vor assistiven Technologien verborgen (`aria-hidden`).
+
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Verwendung des nativen HTML5-Eingabetyps `email` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp `email` und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
+| Aktualisierung des Zeichenzählers | Bei aktiviertem Zeichenzähler (`_has-counter`) wird dieser mit einer Verzögerung von 1000 ms aktualisiert, um Screenreader nicht bei jeder Eingabe zu unterbrechen. Ist kein Zeichenzähler aktiv, aber `_max-length` gesetzt, wird stattdessen ein versteckter, nur für assistive Technologien sichtbarer Hinweis bereitgestellt. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email" _target="_blank" _label="MDN Web Docs - email Input"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email" _target="_blank" _label="MDN Web Docs: Input Email"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#email-state-(type=email)" _target="_blank" _label="HTML Living Standard: Input Email"></kol-link>
 
 ## Verwendung
 
+- Verwenden Sie `_multiple`, um die Eingabe mehrerer, durch Komma getrennter E-Mail-Adressen zu ermöglichen.
+- Nutzen Sie `_max-length`, um die maximal zulässige Anzahl an Zeichen zu begrenzen.
+- Verwenden Sie `_max-length-behavior`, um festzulegen, ob die Zeichenbegrenzung nativ durchgesetzt oder lediglich angezeigt wird.
+- Nutzen Sie `_pattern`, wenn zusätzlich zur nativen E-Mail-Validierung weitere Formatvorgaben erforderlich sind.
+
+**Hinweis:** Die native Formatprüfung des HTML5-Eingabetyps `email` erfolgt unabhängig von `_msg` und `_touched`. Sollen Validierungsfehler in der Komponente angezeigt werden, müssen diese durch die Anwendung ausgewertet und über `_msg` sowie `_touched="true"` bereitgestellt werden.
+
 ### Tastatursteuerung
 
-| Taste      | Funktion                                                  |
-| ---------- | --------------------------------------------------------- |
-| `Tab`      | Fokussiert das Eingabefeld oder wechselt zum nächsten.  |
-| `Shift + Tab` | Wechselt zum vorherigen interaktiven Element.            |
-| `Pfeil-Tasten` | Navigation innerhalb des Textinhalts.                    |
-| `Pos1`     | Springt zum Anfang des Textinhalts.                       |
-| `Ende`     | Springt zum Ende des Textinhalts.                         |
-| `Strg + A` | Markiert den gesamten Text.                               |
+Die Tastaturbedienung wird durch den Browser und das Betriebssystem bestimmt. Daher können sich einzelne Tastaturfunktionen je nach Browser, Betriebssystem und Endgerät unterscheiden.
+
+Typischerweise werden folgende Funktionen unterstützt:
+
+| Taste           | Funktion                                                                 |
+|-----------------|--------------------------------------------------------------------------|
+| `Tab`           | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
+| `Shift+Tab`     | Fokus auf das vorherige fokussierbare Element setzen.                    |
+| `Pfeiltasten`   | Cursor innerhalb des Eingabefelds bewegen.                               |
+| `Pos1` / `Ende` | Cursor an den Anfang bzw. das Ende des Eingabewerts setzen.              |
 
 ### Best Practices / Empfehlungen
 
-- **Klare Labels verwenden**: Geben Sie aussagekräftige Beschriftungen an, z.B. „E-Mail-Adresse", „Empfänger" oder „Registrierungs-E-Mail".
-- **Hilfetexte bei Mehrfach-Eingabe**: Wenn `_multiple` aktiviert ist, klären Sie über `_hint` auf, dass mehrere Adressen kommagetrennt eingegeben werden.
-- **id und name setzen**: Achten Sie darauf, `id` und `_name` korrekt zu setzen, damit die Daten beim Formulare-Absenden mitgesendet werden.
-- **Placeholder sparsam nutzen**: Verwenden Sie `_placeholder` nur als Zusatzhilfe, nicht für zentrale Informationen.
-- **Validierungsfeedback**: Höhe auf Browser-Validierung verlassen (Format-Check) und zusätzliche Hinweise über `_msg` geben, falls erforderlich.
-- **Richtige Komponente wählen**: Für Text-Eingaben verwenden Sie die <kol-link _href="../components/input-text" _label="Input-Text-Komponente"></kol-link>; InputEmail ist spezifisch für E-Mail-Adressen.
+- Verlassen Sie sich nicht ausschließlich auf die native Formatprüfung des Browsers. Werten Sie Validierungsfehler in der Anwendung aus und stellen Sie über `_msg` zusammen mit `_touched="true"` eine aussagekräftige Fehlermeldung bereit.
+- Formulieren Sie Fehlermeldungen konkret und lösungsorientiert, damit Nutzende erkennen können, wie die eingegebene E-Mail-Adresse korrigiert werden muss.
+- Verwenden Sie `_pattern` nur für fachlich notwendige zusätzliche Anforderungen, beispielsweise wenn ausschließlich E-Mail-Adressen einer bestimmten Domain zulässig sind.
+- Weisen Sie bei Verwendung von `_multiple` deutlich darauf hin, dass mehrere E-Mail-Adressen durch Kommas getrennt eingegeben werden müssen.
+- Verwenden Sie `_placeholder` ausschließlich als zusätzliche Orientierung und nicht als Ersatz für eine aussagekräftige Beschriftung (`_label`).
+- Setzen Sie `_auto-complete` passend zum Anwendungsfall ein, beispielsweise mit dem Wert `email`, wenn die Browser-Autovervollständigung unterstützt werden soll.
 
 ### Anwendungsfälle
 
-- Registrierungsformulare und Kontoerstellung
-- Newsletter-Anmeldungen
-- Kontaktformulare und Support-Anfragen
-- Mehrfach-Adressaten in E-Mail-Versand-Formularen
-- Benachrichtigungseinstellungen
-- Benutzerprofil-Bearbeitung
+- Eingabe einer E-Mail-Adresse in Kontakt-, Registrierungs- oder Anmeldeformularen
+- Erfassung einer geschäftlichen oder privaten E-Mail-Adresse in Benutzerprofilen
+- Eingabe einer Empfängeradresse für Benachrichtigungen oder den Versand von Informationen
+- Erfassung mehrerer E-Mail-Adressen, beispielsweise für Einladungen oder Verteiler
+- Eingabe einer E-Mail-Adresse zur Anmeldung für Newsletter oder andere Mitteilungen
 
 ### FAQ
 
-**Kann die Komponente E-Mail-Adressen validieren?**  
-Die Komponente nutzt die native Browser-Validierung für das `type="email"`-Format. Eine darüber hinausgehende Validierung (z.B. Prüfung auf Existenz) muss auf Serverseite erfolgen.
+**Wie kann ich Validierungsfehler barrierefrei anzeigen?**  
+Die native Formatprüfung des HTML5-Eingabetyps `email` ersetzt keine barrierefreie Fehlermeldung. Werten Sie das Ergebnis der Validierung in Ihrer Anwendung aus und stellen Sie Validierungsfehler über `_msg` zusammen mit `_touched="true"` bereit.
 
-**Wie trenne ich mehrere E-Mail-Adressen?**  
-Mit `_multiple="true"` können Nutzer mehrere Adressen durch Kommata getrennt eingeben (z.B. `mail1@example.com, mail2@example.com`).
+**Wie werden mehrere E-Mail-Adressen bei `_multiple` verarbeitet?**  
+Der native Wert des Eingabefelds enthält weiterhin den vollständigen, durch Kommas getrennten String. Eine automatische Aufteilung in einzelne E-Mail-Adressen erfolgt nicht durch die Komponente.
 
-**Wie wird die Validierung dem Nutzer angezeigt?**  
-Nutzen Sie die Kombination aus `_touched="true"` (um anzuzeigen, dass das Feld bearbeitet wurde) und `_msg` (um eine aussagekräftige Fehlermeldung zu zeigen).
+**Werden internationalisierte (Unicode-)E-Mail-Adressen unterstützt?**  
+Die Komponente nutzt die native Browservalidierung des HTML5-Eingabetyps `email`. Ob internationalisierte E-Mail-Adressen unterstützt werden, hängt daher vom jeweiligen Browser ab.
+
+**Kann ich die native E-Mail-Validierung erweitern?**  
+Ja. Nutzen Sie `_pattern`, wenn zusätzlich zur nativen E-Mail-Validierung weitere fachliche Anforderungen geprüft werden sollen, beispielsweise um E-Mail-Adressen auf bestimmte Domains einzuschränken.
 
 ## Konstruktion / Technik
 
