@@ -2,11 +2,10 @@ import { KolButton, KolCard, KolDrawer, KolInputCheckbox, KolInputText } from '@
 import { translate } from '@docusaurus/Translate';
 import React, { useEffect, useState } from 'react';
 import type { Option } from '@public-ui/components';
-import { SelectOptionsDefault } from './ComponentDefaults';
 
 type SelectOptionsPropertyProps = {
 	label: string;
-	_value?: Option<string>;
+	_value?: Option<string>[];
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
@@ -16,8 +15,6 @@ const createDefaultOption = (label: string): Option<string> => ({
 	label: `Label ${label}`,
 	value: `Value ${label}`,
 });
-
-const INITIAL_OPTIONS: Option<string>[] = SelectOptionsDefault;
 
 type UpdateFn = (updater: (option: Option<string>) => Option<string>) => void;
 type RemoveFn = () => void;
@@ -81,7 +78,7 @@ const SelectOptionEditor: React.FC<{
 
 const SelectOptionsProperty = (props: SelectOptionsPropertyProps) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [options, setOptions] = useState<Option<string>[]>(INITIAL_OPTIONS);
+	const [options, setOptions] = useState<Option<string>[]>(props._value ?? []);
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), options);
