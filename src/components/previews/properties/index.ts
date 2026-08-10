@@ -3,7 +3,7 @@ export { default as AlertTypeProperty } from './AlertTypeProperty';
 export { default as AlertVariantProperty } from './AlertVariantProperty';
 export { default as BooleanProperty } from './BooleanProperty';
 export { default as BoundedNumberProperty } from './BoundedNumberProperty';
-export { default as ButtonVariantProperty } from './ButtonVariantProperty';
+export { default as VariantProperty } from './VariantProperty';
 export { default as ClampedNumberProperty } from './ClampedNumberProperty';
 export { default as CustomCssProperty } from './CustomCssProperty';
 export { default as DialogVariantProperty } from './DialogVariantProperty';
