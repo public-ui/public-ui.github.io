@@ -3,11 +3,10 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolButton, KolInputEmail, KolInputText, KolForm } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface FormPreviewComponentProps extends PreviewDefaults<JSX.KolForm> {}
-
-const FormPreview: React.FC<FormPreviewComponentProps> = (props) => {
+const FormPreview: React.FC<PreviewDefaults<JSX.KolForm>> = (props) => {
 	const defaultProps = React.useMemo<JSX.KolForm>(
 		() => ({
 			_requiredText: translate({ id: 'preview.component.form.label' }),

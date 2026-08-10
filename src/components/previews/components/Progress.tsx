@@ -4,11 +4,10 @@ import { BoundedNumberProperty, ClampedNumberProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolProgress, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface ProgressPreviewComponentProps extends PreviewDefaults<JSX.KolProgress> {}
-
-const ProgressPreview = (props: ProgressPreviewComponentProps) => {
+const ProgressPreview = (props: PreviewDefaults<JSX.KolProgress>) => {
 	const defaultProps = React.useMemo<JSX.KolProgress>(
 		() => ({
 			_label: translate({

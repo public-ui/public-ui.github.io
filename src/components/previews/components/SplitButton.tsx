@@ -4,9 +4,8 @@ import { BooleanProperty, AlignProperty, IconsProperty, ButtonVariantProperty } 
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSplitButton, KolToolbar } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
-
-interface SplitButtonPreviewComponentProps extends PreviewDefaults<JSX.KolSplitButton> {}
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 const toolbarItems: JSX.KolToolbar['_items'] = [
 	{
@@ -31,7 +30,7 @@ const toolbarItems: JSX.KolToolbar['_items'] = [
 	},
 ];
 
-const SplitButtonPreview: React.FC<SplitButtonPreviewComponentProps> = (props) => {
+const SplitButtonPreview: React.FC<PreviewDefaults<JSX.KolSplitButton>> = (props) => {
 	const defaultProps = React.useMemo<JSX.KolSplitButton>(
 		() => ({
 			_label: translate({ id: 'preview.component.split-button.label' }),

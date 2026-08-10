@@ -1,4 +1,4 @@
-import { PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
 
 function getPreviewDefaults<TProps>(props: PreviewDefaults<TProps>, defaultProps: TProps) {
 	const initialProps = { ...defaultProps, ...props.initialProps };

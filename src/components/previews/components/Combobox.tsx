@@ -4,11 +4,10 @@ import { BooleanProperty, IconsProperty, MsgProperty, SuggestionsProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolCombobox, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { ComboboxSuggestionsDefault, getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { ComboboxSuggestionsDefault, getPreviewDefaults } from '../utils';
 
-interface ComboboxPreviewComponentProps extends PreviewDefaults<JSX.KolCombobox> {}
-
-const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
+const ComboboxPreview = (props: PreviewDefaults<JSX.KolCombobox>) => {
 	const defaultProps = React.useMemo<JSX.KolCombobox>(
 		() => ({
 			_label: translate({ id: 'preview.component.combobox.label' }),

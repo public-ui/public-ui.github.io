@@ -4,11 +4,10 @@ import { MultiLineTextProperty, QuoteVariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolQuote } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface QuotePreviewProps extends PreviewDefaults<JSX.KolQuote> {}
-
-const QuotePreview: React.FC<QuotePreviewProps> = (props) => {
+const QuotePreview: React.FC<PreviewDefaults<JSX.KolQuote>> = (props) => {
 	const defaultProps = React.useMemo<JSX.KolQuote>(
 		() => ({
 			_label: translate({ id: 'preview.component.quote.label' }),

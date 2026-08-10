@@ -3,11 +3,10 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAvatar, KolInputColor } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface AvatarPreviewComponentProps extends PreviewDefaults<JSX.KolAvatar> {}
-
-const AvatarPreview = (props: AvatarPreviewComponentProps) => {
+const AvatarPreview = (props: PreviewDefaults<JSX.KolAvatar>) => {
 	const defaultProps = React.useMemo<JSX.KolAvatar>(
 		() => ({
 			_label: translate({ id: 'preview.component.avatar.label' }),

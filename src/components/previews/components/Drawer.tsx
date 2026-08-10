@@ -5,15 +5,14 @@ import type { JSX } from '@public-ui/components';
 import { KolButton, KolDrawer, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 interface DrawerPreviewProps extends JSX.KolDrawer {
 	_slot?: string;
 }
 
-interface DrawerPreviewComponentProps extends PreviewDefaults<DrawerPreviewProps> {}
-
-const DrawerPreview = (props: DrawerPreviewComponentProps) => {
+const DrawerPreview = (props: PreviewDefaults<DrawerPreviewProps>) => {
 	const drawerRef = useRef<HTMLKolDrawerElement>(null);
 
 	const defaultProps = React.useMemo<DrawerPreviewProps>(

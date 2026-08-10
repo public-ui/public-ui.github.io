@@ -4,11 +4,10 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputColor, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputColorPreviewComponentProps extends PreviewDefaults<JSX.KolInputColor> {}
-
-const InputColorPreview = (props: InputColorPreviewComponentProps) => {
+const InputColorPreview = (props: PreviewDefaults<JSX.KolInputColor>) => {
 	const defaultProps = React.useMemo<JSX.KolInputColor>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-color.label' }),

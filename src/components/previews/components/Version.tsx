@@ -3,11 +3,10 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolVersion } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface VersionPreviewProps extends PreviewDefaults<JSX.KolVersion> {}
-
-const VersionPreview: React.FC<VersionPreviewProps> = (props) => {
+const VersionPreview: React.FC<PreviewDefaults<JSX.KolVersion>> = (props) => {
 	const defaultProps = React.useMemo<JSX.KolVersion>(
 		() => ({
 			_label: translate({ id: 'preview.component.version.label' }),

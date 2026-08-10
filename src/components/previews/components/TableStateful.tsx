@@ -5,7 +5,8 @@ import { KolInputCheckbox, KolInputText, KolSelect, KolTableStateful, KolTextare
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
 import TableSelectionProperty from '../properties/TableSelectionProperty';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 export type PlantRecord = {
 	id: number;
@@ -15,9 +16,7 @@ export type PlantRecord = {
 	origin: string;
 };
 
-interface TableStatefulPreviewComponentProps extends PreviewDefaults<JSX.KolTableStateful> {}
-
-const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (props) => {
+const TableStatefulPreview: React.FC<PreviewDefaults<JSX.KolTableStateful>> = (props) => {
 	const plantData = React.useMemo<PlantRecord[]>(
 		() => [
 			{

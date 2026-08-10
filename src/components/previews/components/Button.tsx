@@ -4,11 +4,10 @@ import { BooleanProperty, AlignProperty, IconsProperty, ButtonVariantProperty } 
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButton, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface ButtonPreviewComponentProps extends PreviewDefaults<JSX.KolButton> {}
-
-const ButtonPreview = (props: ButtonPreviewComponentProps) => {
+const ButtonPreview = (props: PreviewDefaults<JSX.KolButton>) => {
 	const defaultProps = React.useMemo<JSX.KolButton>(
 		() => ({
 			_label: translate({ id: 'preview.component.button.label' }),

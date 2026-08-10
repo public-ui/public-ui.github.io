@@ -4,15 +4,14 @@ import { BooleanProperty, LevelProperty, MultiLineTextProperty } from '../proper
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolDetails } from '@public-ui/react-v19';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 interface DetailsPreviewProps extends JSX.KolDetails {
 	_slot?: string;
 }
 
-interface DetailsPreviewComponentProps extends PreviewDefaults<DetailsPreviewProps> {}
-
-const DetailsPreview: React.FC<DetailsPreviewComponentProps> = (props) => {
+const DetailsPreview: React.FC<PreviewDefaults<DetailsPreviewProps>> = (props) => {
 	const defaultProps = React.useMemo<DetailsPreviewProps>(
 		() => ({
 			_label: 'Details Element',

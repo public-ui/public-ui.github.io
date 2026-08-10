@@ -11,15 +11,14 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolPopoverButton } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 interface PopoverButtonPreviewProps extends JSX.KolPopoverButton {
 	_slot?: string;
 }
 
-interface PopoverButtonPreviewComponentProps extends PreviewDefaults<PopoverButtonPreviewProps> {}
-
-const PopoverButtonPreview: React.FC<PopoverButtonPreviewComponentProps> = (props) => {
+const PopoverButtonPreview: React.FC<PreviewDefaults<PopoverButtonPreviewProps>> = (props) => {
 	const defaultProps = React.useMemo<PopoverButtonPreviewProps>(
 		() => ({
 			_label: translate({ id: 'preview.component.popover-button.label' }),

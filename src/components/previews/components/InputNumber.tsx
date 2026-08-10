@@ -4,11 +4,10 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputNumberPreviewComponentProps extends PreviewDefaults<JSX.KolInputNumber> {}
-
-const InputNumberPreview = (props: InputNumberPreviewComponentProps) => {
+const InputNumberPreview = (props: PreviewDefaults<JSX.KolInputNumber>) => {
 	const defaultProps = React.useMemo<JSX.KolInputNumber>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-number.label' }),

@@ -5,15 +5,14 @@ import { KolInputText, KolAbbr } from '@public-ui/react-v19';
 import { MultiLineTextProperty } from '../properties';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 interface AbbrPreviewProps extends JSX.KolAbbr {
 	_slot?: string;
 }
 
-interface AbbrPreviewComponentProps extends PreviewDefaults<AbbrPreviewProps> {}
-
-const AbbrPreview = (props: AbbrPreviewComponentProps) => {
+const AbbrPreview = (props: PreviewDefaults<AbbrPreviewProps>) => {
 	const defaultProps = React.useMemo<AbbrPreviewProps>(
 		() => ({
 			_label: translate({ id: 'preview.component.abbr.label' }),
@@ -34,7 +33,7 @@ const AbbrPreview = (props: AbbrPreviewComponentProps) => {
 			slotKey="_slot"
 		>
 			{(props) => {
-				// eslint-disable-next-line react/prop-types
+				 
 				const { _slot, ...abbrProps } = props;
 				const sanitizedHtml = sanitizeHtml(_slot ?? '');
 				return (

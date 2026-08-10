@@ -1,6 +1,6 @@
-import { JSX, Option, TabButtonProps, ToolbarItemsPropType, W3CInputValue } from '@public-ui/components';
-import { TreeItemData } from '../properties';
-import { AccordionMultiplePreviewProps } from '../components/AccordionMultiple';
+import type { JSX, Option, TabButtonProps, ToolbarItemsPropType, W3CInputValue } from '@public-ui/components';
+import type { TreeItemData } from '../properties';
+import type { AccordionMultiplePreviewProps } from '../components/AccordionMultiple';
 
 export const ComboboxSuggestionsDefault: W3CInputValue[] = [
 	'JavaScript',

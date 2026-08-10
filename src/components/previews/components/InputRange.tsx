@@ -4,11 +4,10 @@ import { BooleanProperty, IconsProperty, MsgProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputRange, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputRangePreviewComponentProps extends PreviewDefaults<JSX.KolInputRange> {}
-
-const InputRangePreview = (props: InputRangePreviewComponentProps) => {
+const InputRangePreview = (props: PreviewDefaults<JSX.KolInputRange>) => {
 	const defaultProps = React.useMemo<JSX.KolInputRange>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-range.label' }),

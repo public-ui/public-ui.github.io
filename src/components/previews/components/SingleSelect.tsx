@@ -5,11 +5,9 @@ import { getPreviewDefaults, SelectOptionsDefault } from '../utils';
 import type { JSX } from '@public-ui/components';
 import { KolInputRange, KolInputText, KolSingleSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
 
-interface SingleSelectPreviewComponentProps extends PreviewDefaults<JSX.KolSingleSelect> {}
-
-const SingleSelectPreview = (props: SingleSelectPreviewComponentProps) => {
+const SingleSelectPreview = (props: PreviewDefaults<JSX.KolSingleSelect>) => {
 	const defaultProps = React.useMemo<JSX.KolSingleSelect>(
 		() => ({
 			_label: translate({ id: 'preview.component.single-select.label' }),

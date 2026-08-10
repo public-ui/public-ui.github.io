@@ -4,11 +4,10 @@ import { BooleanProperty, AlignProperty, IconsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolLink } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface LinkPreviewComponentProps extends PreviewDefaults<JSX.KolLink> {}
-
-const LinkPreview = (props: LinkPreviewComponentProps) => {
+const LinkPreview = (props: PreviewDefaults<JSX.KolLink>) => {
 	const defaultProps = React.useMemo<JSX.KolLink>(
 		() => ({
 			_label: translate({ id: 'preview.component.link.label' }),

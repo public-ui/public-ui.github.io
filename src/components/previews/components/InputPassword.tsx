@@ -4,11 +4,10 @@ import { AlignProperty, BooleanProperty, IconsProperty, MsgProperty, SmartButton
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputPassword, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputPasswordPreviewComponentProps extends PreviewDefaults<JSX.KolInputPassword> {}
-
-const InputPasswordPreview = (props: InputPasswordPreviewComponentProps) => {
+const InputPasswordPreview = (props: PreviewDefaults<JSX.KolInputPassword>) => {
 	const defaultProps = React.useMemo<JSX.KolInputPassword>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-password.label' }),

@@ -4,11 +4,10 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputFile, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputFilePreviewComponentProps extends PreviewDefaults<JSX.KolInputFile> {}
-
-const InputFilePreview = (props: InputFilePreviewComponentProps) => {
+const InputFilePreview = (props: PreviewDefaults<JSX.KolInputFile>) => {
 	const defaultProps = React.useMemo<JSX.KolInputFile>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-file.label' }),

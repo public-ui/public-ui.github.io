@@ -5,11 +5,10 @@ import TabsProperty from '../properties/TabsProperty';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolTabs } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults, TabDefault } from '../utils';
+import type { PreviewDefaults} from '../utils';
+import { getPreviewDefaults, TabDefault } from '../utils';
 
-interface TabsPreviewComponentProps extends PreviewDefaults<JSX.KolTabs> {}
-
-const TabsPreview: React.FC<TabsPreviewComponentProps> = (props) => {
+const TabsPreview: React.FC<PreviewDefaults<JSX.KolTabs>> = (props) => {
 	const defaultProps: JSX.KolTabs = React.useMemo(
 		() => ({
 			_label: translate({ id: 'preview.component.tabs.label' }),

@@ -4,11 +4,10 @@ import { BooleanProperty, MsgProperty, ResizeProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolInputNumber, KolTextarea, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface TextAreaPreviewComponentProps extends PreviewDefaults<JSX.KolTextarea> {}
-
-const TextAreaPreview = (props: TextAreaPreviewComponentProps) => {
+const TextAreaPreview = (props: PreviewDefaults<JSX.KolTextarea>) => {
 	const defaultProps = React.useMemo<JSX.KolTextarea>(
 		() => ({
 			_label: translate({ id: 'preview.component.textarea.label' }),

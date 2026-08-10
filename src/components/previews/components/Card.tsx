@@ -5,15 +5,14 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolCard } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 interface CardPreviewProps extends JSX.KolCard {
 	_slot?: string;
 }
 
-interface CardPreviewComponentProps extends PreviewDefaults<CardPreviewProps> {}
-
-const CardPreview = (props: CardPreviewComponentProps) => {
+const CardPreview = (props: PreviewDefaults<CardPreviewProps>) => {
 	const defaultProps = React.useMemo<CardPreviewProps>(
 		() => ({
 			_label: translate({ id: 'preview.component.card.label' }),

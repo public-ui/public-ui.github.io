@@ -4,9 +4,8 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSkipNav } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import SkipNavLinksProperty from '../properties/SkipNavLinksProperty';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
-
-interface SkipNavPreviewProps extends PreviewDefaults<JSX.KolSkipNav> {}
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 const DEFAULT_LINKS = [
 	{ _label: 'Navigation', _href: '#nav' },
@@ -14,7 +13,7 @@ const DEFAULT_LINKS = [
 	{ _label: 'Contact', _href: '#contact' },
 ];
 
-const SkipNavPreview = (props: SkipNavPreviewProps) => {
+const SkipNavPreview = (props: PreviewDefaults<JSX.KolSkipNav>) => {
 	const defaultProps = React.useMemo<JSX.KolSkipNav>(
 		() => ({
 			_label: translate({ id: 'preview.component.skip-nav.label' }),

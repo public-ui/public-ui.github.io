@@ -2,17 +2,12 @@ import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import { AccordionMultipleProperty } from '../properties';
 import type { AccordionPreviewProps } from './Accordion';
+import type { PreviewDefaults } from '../utils';
 import { GenerateAccordionMultiple, getPreviewDefaults, AccordionMultipleDefault } from '../utils';
 
 export type AccordionMultiplePreviewProps = { _accordions: AccordionPreviewProps[] };
 
-interface AccordionMultiplePreviewComponentProps {
-	initialProps?: AccordionMultiplePreviewProps;
-	visibleProperties?: '_accordions'[];
-	codeCollapsable?: boolean;
-}
-
-const AccordionMultiplePreview = (props: AccordionMultiplePreviewComponentProps) => {
+const AccordionMultiplePreview = (props: PreviewDefaults<AccordionMultiplePreviewProps>) => {
 	const defaultProps = React.useMemo<AccordionMultiplePreviewProps>(() => AccordionMultipleDefault, []);
 
 	const formatSource = (currentProps: AccordionMultiplePreviewProps): string => {

@@ -4,11 +4,10 @@ import { AlignProperty, BooleanProperty, IconsProperty, MsgProperty, SmartButton
 import type { JSX } from '@public-ui/components';
 import { KolInputEmail, KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputEmailPreviewComponentProps extends PreviewDefaults<JSX.KolInputEmail> {}
-
-const InputEmailPreview = (props: InputEmailPreviewComponentProps) => {
+const InputEmailPreview = (props: PreviewDefaults<JSX.KolInputEmail>) => {
 	const defaultProps = React.useMemo<JSX.KolInputEmail>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-email.label' }),

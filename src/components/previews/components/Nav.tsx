@@ -5,11 +5,10 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolNav } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import NavItemsProperty from '../properties/NavtemsProperty';
-import { getPreviewDefaults, NavLinksDefault, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults, NavLinksDefault } from '../utils';
 
-interface NavPreviewProps extends PreviewDefaults<JSX.KolNav> {}
-
-const NavPreview: React.FC<NavPreviewProps> = (props) => {
+const NavPreview: React.FC<PreviewDefaults<JSX.KolNav>> = (props) => {
 	const defaultProps = React.useMemo<JSX.KolNav>(
 		() => ({
 			_label: translate({ id: 'preview.component.nav.label' }),

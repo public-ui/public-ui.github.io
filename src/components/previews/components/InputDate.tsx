@@ -4,11 +4,10 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputDate, KolInputRange, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputDatePreviewComponentProps extends PreviewDefaults<JSX.KolInputDate> {}
-
-const InputDatePreview = (props: InputDatePreviewComponentProps) => {
+const InputDatePreview = (props: PreviewDefaults<JSX.KolInputDate>) => {
 	const defaultProps = React.useMemo<JSX.KolInputDate>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-date.label' }),

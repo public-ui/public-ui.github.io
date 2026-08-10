@@ -5,15 +5,14 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAccordion } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 export interface AccordionPreviewProps extends JSX.KolAccordion {
 	_slot?: string;
 }
 
-interface AccordionPreviewComponentProps extends PreviewDefaults<AccordionPreviewProps> {}
-
-const AccordionPreview = (props: AccordionPreviewComponentProps) => {
+const AccordionPreview = (props: PreviewDefaults<AccordionPreviewProps>) => {
 	const defaultProps = React.useMemo<AccordionPreviewProps>(
 		() => ({
 			_label: translate({ id: 'preview.component.accordion.label' }),

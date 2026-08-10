@@ -4,15 +4,14 @@ import { BooleanProperty, CustomCssProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSelect, KolSpin } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 interface SpinPreviewProps extends JSX.KolSpin {
 	_customCss?: string;
 }
 
-interface SpinPreviewComponentProps extends PreviewDefaults<SpinPreviewProps> {}
-
-const SpinPreview = (props: SpinPreviewComponentProps) => {
+const SpinPreview = (props: PreviewDefaults<SpinPreviewProps>) => {
 	const defaultProps = React.useMemo<SpinPreviewProps>(
 		() => ({
 			_label: translate({

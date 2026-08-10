@@ -3,11 +3,10 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolImage, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface ImagePreviewProps extends PreviewDefaults<JSX.KolImage> {}
-
-const ImagePreview = (props: ImagePreviewProps) => {
+const ImagePreview = (props: PreviewDefaults<JSX.KolImage>) => {
 	const defaultProps = React.useMemo<JSX.KolImage>(
 		() => ({
 			_src: '/assets/sample-image.png',

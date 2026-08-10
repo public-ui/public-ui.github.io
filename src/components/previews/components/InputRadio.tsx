@@ -4,11 +4,10 @@ import { BooleanProperty, MsgProperty, RadioOptionsProperty, OrientationProperty
 import type { JSX, SelectOption } from '@public-ui/components';
 import { KolInputRadio, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputRadioPreviewComponentProps extends PreviewDefaults<JSX.KolInputRadio> {}
-
-const InputRadioPreview = (props: InputRadioPreviewComponentProps) => {
+const InputRadioPreview = (props: PreviewDefaults<JSX.KolInputRadio>) => {
 	const defaultProps = React.useMemo<JSX.KolInputRadio>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-radio.label' }),

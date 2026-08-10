@@ -5,15 +5,13 @@ import type { JSX } from '@public-ui/components';
 import { KolAlert, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 interface AlertPreviewProps extends JSX.KolAlert {
 	_slot?: string;
 }
-
-interface AlertPreviewComponentProps extends PreviewDefaults<AlertPreviewProps> {}
-
-const AlertPreview = (props: AlertPreviewComponentProps) => {
+const AlertPreview = (props: PreviewDefaults<AlertPreviewProps>) => {
 	const defaultProps = React.useMemo<AlertPreviewProps>(
 		() => ({
 			_label: translate({ id: 'preview.component.alert.label' }),

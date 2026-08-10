@@ -4,11 +4,10 @@ import { BoundedNumberProperty, ClampedNumberProperty, PaginationHasButtonsPrope
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolPagination } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface PaginationPreviewProps extends PreviewDefaults<JSX.KolPagination> {}
-
-const PaginationPreview = (props: PaginationPreviewProps) => {
+const PaginationPreview = (props: PreviewDefaults<JSX.KolPagination>) => {
 	const defaultProps = React.useMemo<JSX.KolPagination>(
 		() => ({
 			_label: translate({ id: 'preview.component.pagination.label' }),

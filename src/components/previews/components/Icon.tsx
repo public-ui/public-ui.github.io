@@ -4,11 +4,10 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSelect, KolIcon } from '@public-ui/react-v19';
 import { PREDEFINED_ICONS } from '../properties/IconsProperty';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface IconPreviewProps extends PreviewDefaults<JSX.KolIcon> {}
-
-const IconPreview = (props: IconPreviewProps) => {
+const IconPreview = (props: PreviewDefaults<JSX.KolIcon>) => {
 	const defaultProps = React.useMemo<JSX.KolIcon>(
 		() => ({
 			_label: translate({ id: 'preview.component.icon.label' }),

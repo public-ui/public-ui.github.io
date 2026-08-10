@@ -5,15 +5,14 @@ import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 import type { JSX } from '@public-ui/components';
 import { DialogVariantProperty, MultiLineTextProperty } from '../properties';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 interface DialogPreviewProps extends JSX.KolDialog {
 	_slot?: string;
 }
 
-interface DialogPreviewComponentProps extends PreviewDefaults<DialogPreviewProps> {}
-
-const DialogPreview: React.FC<DialogPreviewComponentProps> = (props) => {
+const DialogPreview: React.FC<PreviewDefaults<DialogPreviewProps>> = (props) => {
 	const dialogRef = useRef<HTMLKolDialogElement>(null);
 
 	const defaultProps = React.useMemo<DialogPreviewProps>(

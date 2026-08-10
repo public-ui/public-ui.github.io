@@ -4,11 +4,10 @@ import { IconsProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolBadge, KolInputColor } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface BadgePreviewComponentProps extends PreviewDefaults<JSX.KolBadge> {}
-
-const BadgePreview = (props: BadgePreviewComponentProps) => {
+const BadgePreview = (props: PreviewDefaults<JSX.KolBadge>) => {
 	const defaultProps = React.useMemo<JSX.KolBadge>(
 		() => ({
 			_label: translate({ id: 'preview.component.badge.label' }),

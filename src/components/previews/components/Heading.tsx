@@ -3,11 +3,10 @@ import Preview, { PreviewLayout } from '../Preview';
 import { LevelProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolHeading } from '@public-ui/react-v19';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface HeadingPreviewProps extends PreviewDefaults<JSX.KolHeading> {}
-
-const HeadingPreview = (props: HeadingPreviewProps) => {
+const HeadingPreview = (props: PreviewDefaults<JSX.KolHeading>) => {
 	const defaultProps = React.useMemo<JSX.KolHeading>(
 		() => ({
 			_label: 'Heading',

@@ -5,11 +5,10 @@ import type { JSX } from '@public-ui/components';
 import { KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import IconsCheckboxProperty from '../properties/IconsCheckboxProperty';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputCheckboxPreviewComponentProps extends PreviewDefaults<JSX.KolInputCheckbox> {}
-
-const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
+const InputCheckboxPreview = (props: PreviewDefaults<JSX.KolInputCheckbox>) => {
 	const defaultProps = React.useMemo<JSX.KolInputCheckbox>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-checkbox.label' }),

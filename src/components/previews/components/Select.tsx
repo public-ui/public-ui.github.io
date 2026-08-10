@@ -5,11 +5,9 @@ import { getPreviewDefaults, SelectOptionsDefault } from '../utils';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
 
-interface SelectPreviewComponentProps extends PreviewDefaults<JSX.KolSelect> {}
-
-const SelectPreview = (props: SelectPreviewComponentProps) => {
+const SelectPreview = (props: PreviewDefaults<JSX.KolSelect>) => {
 	const defaultProps = React.useMemo<JSX.KolSelect>(
 		() => ({
 			_label: translate({ id: 'preview.component.select.label' }),

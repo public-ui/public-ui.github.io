@@ -3,11 +3,10 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSelect, KolTextarea, KolToolbar } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import { getPreviewDefaults, PreviewDefaults, ToolbarItemsDefault } from '../utils';
+import type { PreviewDefaults} from '../utils';
+import { getPreviewDefaults, ToolbarItemsDefault } from '../utils';
 
-interface ToolbarPreviewComponentProps extends PreviewDefaults<JSX.KolToolbar> {}
-
-const ToolbarPreview = (props: ToolbarPreviewComponentProps) => {
+const ToolbarPreview = (props: PreviewDefaults<JSX.KolToolbar>) => {
 	const defaultProps = React.useMemo<JSX.KolToolbar>(
 		() => ({
 			_label: translate({ id: 'preview.component.toolbar.label' }),

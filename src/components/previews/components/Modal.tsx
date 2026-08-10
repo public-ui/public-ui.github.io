@@ -5,15 +5,14 @@ import type { JSX } from '@public-ui/components';
 import { KolButton, KolInputText, KolModal } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
-import { getPreviewDefaults, PreviewDefaults } from '../utils';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 interface ModalPreviewProps extends JSX.KolModal {
 	_slot?: string;
 }
 
-interface ModalPreviewComponentProps extends PreviewDefaults<ModalPreviewProps> {}
-
-const ModalPreview = (props: ModalPreviewComponentProps) => {
+const ModalPreview = (props: PreviewDefaults<ModalPreviewProps>) => {
 	const modalRef = useRef<HTMLKolModalElement>(null);
 
 	const defaultProps = React.useMemo<ModalPreviewProps>(
