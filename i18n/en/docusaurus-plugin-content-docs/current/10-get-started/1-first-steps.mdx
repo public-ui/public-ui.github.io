@@ -1,515 +1,178 @@
-import {KolAlert, KolLink,} from '@public-ui/react-v19';
+import { KolAlert, KolLink } from '@public-ui/react-v19';
 
 # First steps
 
-## Create a new project
+<KolAlert _type="warning" _variant="card" _label="ITZBund starter repositories" style={{ marginBottom: '1rem' }}>
+	<p style={{margin:'0'}}>For projects at ITZBund, there is a predefined starter repository that can be requested via internal communication channels.</p>
+</KolAlert>
 
-A new project can be created quickly using the command line wizard.
+**KoliBri** is an open-source library for accessible web components, developed by the German Federal Government.
+The components are framework-independent, compliant with BITV 2.0 and WCAG 2.2, and can be used in almost any
+web-based project. This page provides a compact overview of how to get started.
 
-```
-npm init kolibri@latest my-kolibri-app
-```
+> **⚠️ Prerequisites**
+> - A **modern browser** (Chrome, Firefox, Edge, Safari ≥ 16.4).
+> - For local development: **[Node.js](https://nodejs.org/)** (for `npx -y serve`).
 
-<img
-	src="https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif"
-	alt="Shows how to create a new app with create-kolibri."
-/>
+## Static example (2 steps)
 
-## Integration into existing projects
+The fastest way to try KoliBri is a static HTML file:
 
-### Embedding fonts
-
-Fonts are loaded by nature detached from the CSS and must be included in the frame page (HTML file) depending on the KoliBri theme (style guide).
-
-For this purpose, the fonts supplied in the library can be copied into your own assets.
-
-Please check which files You need and only import those to minimize traffic.
+**Step 1:** Create an `index.html` file:
 
 ```html
 <!DOCTYPE html>
-<html lang="de" dir="ltr">
-	<head>
-		<title>Webapplication | KoliBri</title>
-		<meta charset="UTF-8" />
-		<meta name="description" content="..." />
-		<base href="/" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
-		<link rel="stylesheet" href="assets/bundes/style.css" />
-		<link rel="stylesheet" href="assets/kolicons/style.css" />
-		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
-		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
-		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
-		<link rel="stylesheet" href="assets/kreon/style.css" />
-		<link rel="stylesheet" href="assets/material-icons/iconfont/material-icons.css" />
-		<link rel="stylesheet" href="assets/material-symbols/index.css" />
-		<link rel="stylesheet" href="assets/roboto/roboto.css" />
-		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
-	</head>
-</html>
-```
-
-### Typescript
-
-To get full code completion, add these lines to `tsconfig.json`:
-
-```json
-{
-  "compilerOptions": {
-		...
-    "moduleResolution": "Node",
-		...
-  },
-	...
-}
-```
-
-### I Vite + React
-
-#### 1. Installing the KoliBri libraries
-
-<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
-	<div>npm i @public-ui/components @public-ui/themes @public-ui/react</div>
-	<div>pnpm i @public-ui/components @public-ui/themes @public-ui/react</div>
-	<div>yarn add @public-ui/components @public-ui/themes @public-ui/react</div>
-</kol-tabs>
-
-#### 2. Integration
-
-main.tsx
-
-```diff
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-
-+import { register } from "@public-ui/components";
-+import { defineCustomElements } from "@public-ui/components/loader";
-+import { DEFAULT } from "@public-ui/themes";
-
-+register(DEFAULT, defineCustomElements)
-+  .then(() => {
-    ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    );
-+  })
-+  .catch(console.warn);
-```
-
-#### 3. Include modules
-
-index.html
-
-```diff
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-+   <script type="module" src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"></script>
+    <title>Hello KoliBri!</title>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <h1>Hello KoliBri!</h1>
+    <kol-button _label="Click me" onclick="handleClick()"></kol-button>
+    <script type="module">
+      import { register } from "https://unpkg.com/@public-ui/components/dist/index.js";
+      import { defineCustomElements } from "https://unpkg.com/@public-ui/components/loader/index.mjs";
+      import { DEFAULT } from "https://unpkg.com/@public-ui/theme-default/dist/index.mjs";
+
+      await register(DEFAULT, defineCustomElements);
+
+      function handleClick() {
+        alert("Button clicked!");
+      }
+      window.handleClick = handleClick;
+    </script>
   </body>
 </html>
 ```
 
-#### 4. Example
+**Step 2:** Start a local server:
 
-```tsx
-import React from 'react';
-import { KolSpin } from '@public-ui/react-v19';
-
-export const AppComponent = () => {
-	return (
-		<div>
-			<KolSpin _show />
-		</div>
-	);
-};
+```bash
+npx -y serve
 ```
 
-### II Vite + Vue
+Then open `http://localhost:3000` in your browser.
 
-#### 1. Installing the KoliBri libraries
+> 💡 **Note:** KoliBri uses `_`.prefixed attributes (e.g., `_label`) for component properties to avoid conflicts with standard HTML attributes.
 
-<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
-	<div>npm i @public-ui/components @public-ui/themes @public-ui/vue</div>
-	<div>pnpm i @public-ui/components @public-ui/themes @public-ui/vue</div>
-	<div>yarn add @public-ui/components @public-ui/themes @public-ui/vue</div>
-</kol-tabs>
+---
 
-#### 2. Plugin
+## Create project from templates
 
-kolibri.plugin.ts
+For framework projects, you can use pre-built templates:
 
-```js
-import type { Plugin } from 'vue';
-import { defineCustomElements } from '@public-ui/components/loader';
-import { register } from '@public-ui/components';
-import { ITZBund } from '@public-ui/themes';
-export const ComponentLibrary: Plugin = {
-	install() {
-		register(ITZBund, defineCustomElements)
-			.then(() => console.log('Components registered'))
-			.catch(console.warn);
-	},
-};
+```bash
+npx degit public-ui/templates/csr/react-vite my-kolibri-app
+cd my-kolibri-app
+npm i
+npm start
 ```
 
-main.ts:
+Available templates can be found in the <KolLink _label="template repository" _href="https://github.com/public-ui/templates" _target="_blank" />.
 
-```diff
-import { createApp } from 'vue'
-import App from './App.vue'
-import './assets/main.css'
-+ import { ComponentLibrary } from './vue.plugin'
+## Register theme
 
-const app = createApp(App)
+KoliBri ships components **without fixed styling**. The visual appearance is determined by a **theme**
+passed during registration. The `@public-ui/themes` package contains several pre-built themes:
 
-+ app.use(ComponentLibrary)
+| Theme       | Export       | Description                                        |
+| ----------- | ------------ | --------------------------------------------------- |
+| Default     | `DEFAULT`    | The standard theme of KoliBri                      |
+| BWSt        | `BWSt`       | Federal Waterways and Shipping Administration; <KolLink _label="Styleguide" _href="https://wsv.bund.de" _target="_blank" /> |
+| Desy        | `DesyV11`    | Customs Design System (General Customs Directorate); <KolLink _label="Styleguide" _href="https://desy.zoll-portal.de" _target="_blank" /> |
+| ECL (EC)    | `ECL_EC`     | European Commission Design System; <KolLink _label="Styleguide" _href="https://ec.europa.eu/component-library/ec" _target="_blank" /> |
+| ECL (EU)    | `ECL_EU`     | European Union Design System; <KolLink _label="Styleguide" _href="https://ec.europa.eu/component-library/eu" _target="_blank" /> |
+| KERN        | `KERN_V2`    | KERN-UX Standard Design System; <KolLink _label="Styleguide" _href="https://www.kern-ux.de" _target="_blank" /> |
 
-app.mount('#app')
+### Register theme
+
+The theme is passed as the first parameter when calling `register()`.
+
+```ts
+import { register } from '@public-ui/components@4.2.1';
+import { defineCustomElements } from '@public-ui/components@4.2.1/loader';
+import { DEFAULT } from '@public-ui/theme-default';
+
+// Register theme
+await register(DEFAULT, defineCustomElements);
 ```
 
-#### 3. Integrate modules
+> 💡 **Tip:** You can easily change the theme by importing the corresponding theme package, e.g.:
+> ```ts
+> import { BWSt } from '@public-ui/theme-bwst';
+> register(BWSt, defineCustomElements).catch(console.warn);
+> ```
+> Available themes: `@public-ui/theme-default`, `@public-ui/theme-bwst`, `@public-ui/theme-desy`, `@public-ui/theme-ecl-ec`, `@public-ui/theme-ecl-eu`, `@public-ui/theme-kern`
 
-index.html
+### Create custom theme
 
-```diff
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+   <script type="module" src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"></script>
-    <title>Vite + Vue + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
-</html>
+If none of the provided themes match your corporate design, you can create a **custom theme**.
+The approach follows the existing theme structure and is maintained entirely in code.
+
+<KolLink _label="Theming concept" _href="/en/docs/concepts/styling/theming" />
+
+## Use KoliBri with AI Assistants (MCP)
+
+KoliBri provides a **Model Context Protocol (MCP) Server** that allows you to access the documentation and components directly in your AI environment (e.g., Cursor, Claude Code, or VS Code with MCP extensions).
+
+🔗 **[Try the MCP Server](https://public-ui-kolibri-mcp.vercel.app/)**
+
+**Benefits:**
+- **Direct access** to KoliBri documentation and API.
+- **Context-aware help** for components, properties, and examples.
+- **Integrated into your development environment** (e.g., autocompletion, tooltips).
+
+**Example:**
+Ask your AI:
+> *"How do I use the kol-button with a custom theme?"*
+→ The AI uses the MCP server to provide **current and accurate answers** from the KoliBri documentation.
+
+## Frequently asked questions
+
+<details>
+<summary><strong>Components are not displayed?</strong></summary>
+
+Make sure `register()` is called **before** rendering and the promise is resolved.
+
+```javascript
+// ✅ Correct
+await register(DEFAULT, defineCustomElements);
+// Now render components
+
+// ❌ Wrong
+register(DEFAULT, defineCustomElements); // Promise not awaited
+// App is rendered immediately - components missing
 ```
 
-#### 4. Customise configuration
+</details>
 
-vite.config.ts
+<details>
+<summary><strong>Which theme should I use?</strong></summary>
 
-```diff
-import { fileURLToPath, URL } from 'node:url'
+- **`DEFAULT`** – Neutral default theme (recommended for getting started)
+- **`ECL_EC`** / **`ECL_EU`** – European Commission / European Union Design System
+- **`KERN_V2`** – KERN-UX Standard Design System
+- An overview of all themes can be found above in the [Themes](#themes) section.
+- [Create custom theme](/en/docs/concepts/styling/theming)
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+</details>
 
-// https://vitejs.dev/config/
-export default defineConfig({
--  plugins: [],
-+  plugins: [
-+    vue({
-+      template: {
-+        compilerOptions: {
-+          // treat all tags with a dash as custom elements
-+          isCustomElement: (tag) => tag.includes('-')
-+        }
-+      }
-+    })
-+  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
-})
-```
+<details>
+<summary><strong>TypeScript errors with properties?</strong></summary>
 
-#### 5. Example
+Check:
 
-```html
-<KolInputText :_value="text" :_on="{ onChange: (e: unknown, v: string) => (text = v) }"></KolInputText>
-<KolButton _label="Text löschen" :_on="{ onClick: () => (text = '') }"></KolButton>
-```
+1. `"moduleResolution": "Node"` in `tsconfig.json`
+2. Framework adapter installed (e.g., `@public-ui/react-v19`)
+3. Import components from the adapter (not from `@public-ui/components`)
 
-Note: KoliBri inputs usually pass the original event as the first parameter and the value of the field as the second.
+</details>
 
-### III React
 
-#### 1. Installing the KoliBri libraries
 
-<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
-	<div>npm i @public-ui/components @public-ui/themes @public-ui/react</div>
-	<div>pnpm i @public-ui/components @public-ui/themes @public-ui/react</div>
-	<div>yarn add @public-ui/components @public-ui/themes @public-ui/react</div>
-</kol-tabs>
 
-#### 2. Registering the KoliBri loader
+## Next steps: Components
 
-After the preparations are completed, only the KoliBri loader has to be registered.
-It ensures that the Web Components are reloaded asynchronously (lazy) as soon as they are used in the web page.
-
-| Method               | Description                                     |
-| -------------------- | ----------------------------------------------- |
-| register             | Sets a theme and then registers the loader      |
-| DEFAULT              | Registers the loader for e.g. the DEFAULT theme |
-| defineCustomElements | Registers the Loader for the Web Components     |
-
-#### 3. Integration
-
-```tsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import { AppComponent } from './components/app/component';
-
-import { register } from '@public-ui/core';
-import { defineCustomElements } from '@public-ui/components/loader';
-import { DEFAULT } from '@public-ui/themes';
-
-register(DEFAULT, defineCustomElements)
-	.then(() => {
-		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
-		if (htmlDivElement instanceof HTMLDivElement) {
-			const root = createRoot(htmlDivElement);
-			root.render(<AppComponent />);
-		}
-	})
-	.catch(console.warn);
-```
-
-#### 4. Example
-
-```tsx
-import React from 'react';
-import { KolSpin } from '@public-ui/react-v19';
-
-export const AppComponent = () => {
-	return (
-		<div>
-			<KolSpin _show />
-		</div>
-	);
-};
-```
-
-### IV Without any framework
-
-<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
-	<div>npm i @public-ui/components @public-ui/themes</div>
-	<div>pnpm i @public-ui/components @public-ui/themes</div>
-	<div>yarn add @public-ui/components @public-ui/themes</div>
-</kol-tabs>
-
-```diff
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title</title>
-+   <script type="module" src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"></script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
-</html>
-```
-
-To get code completion it may be necessary to create `.vscode/settings.json` and insert the following:
-
-```json
-{
-	"html.customData": ["./node_modules/@public-ui/components/vscode-custom-data.json"]
-}
-```
-
-Here the web component notation (kebab-case) is to be used. (e.g.: `<kol-heading>`)
-
-### V Static website
-
-To include KoliBri in a static web page you only have to include the following script tag.
-If fonts and/or icons are used, they must be included as described above.
-
-```html
-<script type="module">
-	import { register } from 'https://unpkg.com/@public-ui/components/dist/esm/index.js';
-	import { defineCustomElements } from 'https://unpkg.com/@public-ui/components/loader/index.js';
-	import { ITZBund } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
-	register(ITZBund, defineCustomElements).catch(console.warn);
-</script>
-```
-
-Here the web component notation (kebab-case) is to be used. (e.g.: `<kol-heading>`)
-
-## Additional features
-
-### Developer Tools
-
-By means of the following configuration in the HTML file the developer tools of KoliBri can be activated.
-
-```html
-…
-<html>
-	<head>
-		<meta name="kolibri" content="dev-mode=true" />
-	</head>
-	…
-</html>
-```
-
-### Experimental mode
-
-By means of the following configuration in the HTML file the experimental mode can be activated.
-
-```html
-…
-<html>
-	<head>
-		<meta name="kolibri" content="experimental-mode=true" />
-	</head>
-	…
-</html>
-```
-
-### Color contrast analysis
-
-To detect color contrast errors within the DOM, you can enable color contrast analysis using the following configuration.
-
-```html
-…
-<html>
-	<head>
-		<meta name="kolibri" content="color-constrast-analysis=true" />
-	</head>
-	…
-</html>
-```
-
-### 3. Registering the component loaders
-
-After the preparations are complete, only the component loader needs to be registered.
-It ensures that the Web Components are reloaded asychronously (lazy) as soon as they are used in the web page.
-
-| Method               | Description                                 |
-| -------------------- | ------------------------------------------- |
-| register             | Sets a theme and then registers the loader  |
-| BMF                  | Registers the loader for e.g. the BMF theme |
-| defineCustomElements | Registers the loader for the Web Components |
-
-#### Variant A: Static project
-
-```html
-<head>
-	<script type="module">
-		import { register } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6';
-		import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@1.4.0-rc.6/dist/loader';
-		import { BMF } from 'https://unpkg.com/@public-ui/themes@1.4.0-rc.6';
-		register([BMF], defineCustomElements)
-			.then(() => {})
-			.catch(console.warn);
-	</script>
-</head>
-<body>
-	<kol-spin _show>
-</body>
-```
-
-#### Variant B: React project
-
-##### Integration
-
-```tsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import { AppComponent } from './components/app/component';
-
-import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/loader';
-import { BMF } from '@public-ui/themes';
-
-register(BMF, defineCustomElements)
-	.then(() => {
-		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
-		if (htmlDivElement instanceof HTMLDivElement) {
-			const root = createRoot(htmlDivElement);
-			root.render(<AppComponent />);
-		}
-	})
-	.catch(console.warn);
-```
-
-##### Install adapter
-
-An adapter is available for React that allows seamless and typed usage in TSX.
-
-NPM `npm i @public-ui/react` or
-
-PNPM `pnpm i @public-ui/react` or
-
-YARN `yarn add @public-ui/react`
-
-##### Use component
-
-```tsx
-import React, { FunctionComponent } from 'react';
-import { KolSpin } from '@public-ui/react-v19';
-
-export const App: FunctionComponent = () => <KolSpin _show />;
-```
-
-<hr />
-<hr />
-
-## Special features
-
-### Developer tools
-
-By using the following configuration in the HTML file the developer tools of KoliBri can be activated.
-
-```html
-…
-<html>
-	<head>
-		<meta name="kolibri" content="dev-mode=true" />
-		<!-- <meta name="kolibri" content="dev-mode=true,experimental-mode=true" /> -->
-	</head>
-	…
-</html>
-```
-
-### Experimental mode / lab
-
-By using the following configuration in the HTML file the experimental mode can be activated.
-
-```html
-…
-<html>
-	<head>
-		<meta name="kolibri" content="experimental-mode=true" />
-	</head>
-	…
-</html>
-```
-
-### Color-Contrast-Analysis
-
-The color contrast analysis allows detecting color contrast errors within the DOM. By adding the following configuration to the meta tag, the color contrast analysis is enabled.
-
-```html
-…
-<html>
-	<head>
-		<meta name="kolibri" content="color-constrast-analysis=true" />
-	</head>
-	…
-</html>
-```
+Once your project is set up and a theme is registered, you can use the KoliBri components.
+A complete overview of all available components — with examples, properties and events — can be
+found in the <KolLink _label="component documentation" _href="/en/docs/components" />.

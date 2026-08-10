@@ -1,10 +1,9 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
-import { KolInputCheckbox, KolInputText, KolTableStateful } from '@public-ui/react-v19';
+import { KolInputCheckbox, KolInputText, KolSelect, KolTableStateful, KolTextarea } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
-import { funcToStringReplacer } from '../../../shares/utils';
 import TableSelectionProperty from '../properties/TableSelectionProperty';
 
 export type PlantRecord = {
@@ -204,6 +203,27 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 				_headers: <TableColumnsProperty label={translate({ id: 'preview.component.table-stateful.columns.label' })} />,
 				_allowMultiSort: <KolInputCheckbox _label="Multisort" />,
 				_selection: <TableSelectionProperty label="Selection" />,
+				_dataFoot: <KolTextarea _label="dataFoot"></KolTextarea>,
+				_paginationPosition: (
+					<KolSelect
+						_label="PaginationPosition"
+						_options={[
+							{
+								label: translate({ id: 'preview.component.table-stateful.pagination-position.bottom' }),
+								value: 'bottom',
+							},
+							{
+								label: translate({ id: 'preview.component.table-stateful.pagination-position.top' }),
+								value: 'top',
+							},
+							{
+								label: translate({ id: 'preview.component.table-stateful.pagination-position.both' }),
+								value: 'both',
+							},
+						]}
+					></KolSelect>
+				),
+				_hasSettingsMenu: <KolInputCheckbox _label="HasSettingsMenu"></KolInputCheckbox>,
 			}}
 			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTableStateful"
@@ -211,23 +231,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 			codeCollapsable={props.codeCollapsable}
 			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.FULL_SIZE}
-			sourceFormatter={(currentProps) => {
-				const label = JSON.stringify(currentProps._label ?? '');
-				const headers = JSON.stringify(currentProps._headers ?? null, funcToStringReplacer, 2)
-					.split('\n')
-					.join('\n  ');
-				const pagination = JSON.stringify(currentProps._pagination ?? null, null, 6);
-				const selection = JSON.stringify(currentProps._selection ?? null, null, 6);
-				return [
-					`<KolTableStateful`,
-					`  _label=${label}`,
-					`  _headers={${headers}}`,
-					`  _data={PLANT_DATA}`,
-					`  _pagination={${pagination}}`,
-					`  _selection={${selection}}`,
-					`/>`,
-				].join('\n');
-			}}
+			hiddenPropsInCode={['_data']}
 		>
 			{(componentProps) => (
 				<div className="w-full h-full overflow-auto">
