@@ -125,7 +125,7 @@ const Preview = <TProps,>({
 			if (typeof value === 'number') {
 				return `{${value}}`;
 			}
-			if (value === null || value === undefined) {
+			if (value === null || value === undefined || (Array.isArray(value) && value.length === 0)) {
 				return '';
 			}
 			return `{${JSON.stringify(value, null, 3)}}`;

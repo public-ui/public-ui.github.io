@@ -2,7 +2,6 @@ import { KolButton, KolCard, KolDrawer, KolInputText } from '@public-ui/react-v1
 import { translate } from '@docusaurus/Translate';
 import React, { useEffect, useState } from 'react';
 import type { W3CInputValue } from '@public-ui/components';
-import { ComboboxSuggestionsDefault } from './ComponentDefaults';
 
 type SuggestionsPropertyProps = {
 	label: string;
@@ -26,8 +25,6 @@ const toW3CInputValue = (input: string): W3CInputValue => {
 };
 
 const createDefaultSuggestion = (label: string): W3CInputValue => label;
-
-const INITIAL_SUGGESTIONS: W3CInputValue[] = ComboboxSuggestionsDefault;
 
 type UpdateFn = (updater: (suggestion: W3CInputValue) => W3CInputValue) => void;
 type RemoveFn = () => void;
@@ -72,7 +69,7 @@ const ComboboxSuggestionsEditor: React.FC<{
 
 const SuggestionsProperty = (props: SuggestionsPropertyProps) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [suggestions, setSuggestions] = useState<W3CInputValue[]>(INITIAL_SUGGESTIONS);
+	const [suggestions, setSuggestions] = useState<W3CInputValue[]>(props._value ?? []);
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), suggestions);
