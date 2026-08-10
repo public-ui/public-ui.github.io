@@ -13,9 +13,11 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Upload, File Uploader, File Picker, Dateiauswahl
+**Synonyme:** Datei-Eingabefeld, Dateiauswahl, Datei-Upload, File Input, File Upload
 
-**Beschreibung:** Die **InputFile**-Komponente erzeugt ein Eingabefeld für Datei-Uploads. Sie ermöglicht Nutzern, eine oder mehrere Dateien auszuwählen und einzureichen – ideal für Formular-basierte Dateiübergaben, Dokumentationen oder Medien-Uploads.
+**Beschreibung:** Mit **InputFile** können Dateien ausgewählt und zur weiteren Verarbeitung bereitgestellt werden.
+
+Die Komponente basiert auf dem nativen HTML5-Eingabetyp `file` und unterstützt die Auswahl einzelner oder mehrerer Dateien sowie die Einschränkung zulässiger Dateitypen.
 
 ## Beispiel
 
@@ -28,46 +30,76 @@ Einfaches Datei-Eingabefeld mit Beschriftung und Konfigurationsmöglichkeiten:
 
 ## Barrierefreiheit
 
-Die **InputFile**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
+- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
+- Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
+- Die Dateiauswahl ist vollständig über die Tastatur möglich. `Tab` fokussiert das Eingabefeld, `Enter` oder `Leertaste` öffnen anschließend den nativen Dateiauswahldialog des Betriebssystems.
+- Dateien können zusätzlich per Drag & Drop ausgewählt werden. Diese Interaktion ist eine optionale Komfortfunktion und ersetzt nicht die vollständig tastaturbedienbare Dateiauswahl.
+- Die Einschränkung zulässiger Dateitypen über `_accept` wird von Browsern und assistiven Technologien unterstützt.
+- Mit `_multiple` können mehrere Dateien gleichzeitig ausgewählt werden.
 
-- **Label-Pflicht**: Jedes Eingabefeld muss über das Attribut `_label` eine aussagekräftige Beschriftung erhalten, die von Screenreadern erkannt wird.
-- **Dateitypbeschränkung**: Die Attribute `_accept` und `_multiple` werden korrekt an die zugrundeliegende HTML5-API übermittelt und von assistiven Technologien erkannt.
-- **Fehlerbehandlung**: Mit dem Attribut `_msg` können Fehlermeldungen angegeben werden, die von Screenreadern vorgelesen werden.
-- **Tastatursteuerung**: Die Komponente ist vollständig über die Tastatur bedienbar. `Tab` fokussiert das Eingabefeld und öffnet den vordefinierten Dateiauswahldialog des Betriebssystems.
-- **Fokusmanagement**: Klare visuelle Fokusindikatoren für Nutzer mit Sehbehinderungen.
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+|--------------|------------|
+| Verwendung des nativen HTML5-Eingabetyps `file` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp `file` und profitiert dadurch von dessen standardisierter Unterstützung durch Browser, Betriebssystem-Dateidialoge und assistive Technologien. |
+| Fokusmanagement | Die Basis-Komponente setzt den nativen Fokusring des überlagerten Eingabefelds zurück. Der sichtbare Fokusindikator wird stattdessen für das gesamte Eingabefeld durch das jeweils verwendete Theme bereitgestellt. |
+| Drag & Drop als Zusatzinteraktion | Die Auswahl per Drag & Drop ergänzt die Auswahl über den Dateiauswahldialog, ersetzt diese jedoch nicht. Dadurch bleibt die vollständige Bedienbarkeit über Tastatur und Betriebssystem-Dateidialog erhalten. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept" _target="_blank" _label="MDN: HTML Attribute Accept"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1: Labels or Instructions"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/textbox/" _target="_blank" _label="WAI-ARIA APG: Textbox Pattern"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file" _target="_blank" _label="MDN Web Docs: Input Type File"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#file-upload-state-(type=file)" _target="_blank" _label="HTML Living Standard: Input Type File"></kol-link>
 
 ## Verwendung
 
+- Die Einschränkung zulässiger Dateitypen kann über `_accept` konfiguriert werden.
+- Die Auswahl mehrerer Dateien kann über `_multiple` aktiviert werden.
+- Pflichtfelder werden über `_required` gekennzeichnet.
+
+**Hinweis:** Neben der Auswahl über Tastatur und Dateiauswahldialog unterstützt das Eingabefeld auch das Ablegen von Dateien per Drag & Drop. Diese Interaktion ist eine zusätzliche Komfortfunktion und ersetzt nicht die vollständig tastaturbedienbare Dateiauswahl.
+
 ### Tastatursteuerung
 
-| Taste | Funktion                                                      |
-|-------|---------------------------------------------------------------|
-| `Tab` | Fokussiert das Eingabefeld und öffnet den Dateiauswahldialog. |
+Die Tastaturbedienung wird durch den Browser, das Betriebssystem und den nativen Dateiauswahldialog bestimmt. Daher können sich einzelne Tastaturfunktionen je nach Browser, Betriebssystem und Endgerät unterscheiden.
+
+Typischerweise werden folgende Funktionen unterstützt:
+
+| Taste | Funktion |
+|---|---|
+| `Tab` | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
+| `Shift+Tab` | Fokus auf das vorherige fokussierbare Element setzen. |
+| `Enter` / `Leertaste` | Öffnen des nativen Dateiauswahldialogs. |
 
 ### Best Practices / Empfehlungen
 
-- **Dateitypbeschränkung**: Verwenden Sie das Attribut `_accept`, um nur die erforderlichen Dateitypen zuzulassen. Dies verhindert unnötige Upload-Versuche und verbessert die User Experience. Beachten Sie die MIME-Type-Syntax: z.B. `image/*` für alle Bilder, `.pdf` für PDF-Dateien oder `.doc,.docx` für Microsoft Word.
-- **Sicherheit**: Das Attribut `_accept` ist lediglich eine Benutzerfreundlichkeits-Funktion. Validieren Sie Dateitypen **zwingend auf dem Server**, da die Client-seitige Filterung umgangen werden kann.
-- **Größenbegrenzung**: Begrenzen Sie die maximale Dateigröße auf dem Server, um Speicher- und Upload-Kapazität zu schützen. Dies muss auf dem Server erfolgt, nicht im Client.
-- **Mehrfachauswahl**: Nutzen Sie `_multiple`, wenn Nutzer mehrere Dateien gleichzeitig hochladen sollen.
-- **ID und Name**: Setzen Sie `_name` korrekt, damit die Dateien beim Formular-Submit mitgesendet werden.
-- **Aussagekräftige Label**: Verwenden Sie beschreibende Labels, die den Zweck des Uploads deutlich machen, z.B. „Beilagedokumente" statt nur „Datei".
-- **Fehlerbehandlung**: Geben Sie bei ungültigen Dateien konkrete Fehlermeldungen über `_msg` aus – nicht nur „Fehler", sondern z.B. „Nur PDF-Dateien erlaubt" oder „Maximale Größe: 5 MB".
+- Nutzen Sie `_accept`, um die Dateiauswahl auf die für den Anwendungsfall zulässigen Dateitypen einzuschränken und die Benutzerführung zu verbessern.
+- Verlassen Sie sich nicht ausschließlich auf `_accept`. Prüfen Sie Dateitypen und Dateigrößen zusätzlich serverseitig, da die clientseitige Einschränkung umgangen werden kann.
+- Verwenden Sie `_multiple` nur, wenn die Auswahl mehrerer Dateien für den Anwendungsfall erforderlich ist.
+- Formulieren Sie aussagekräftige Beschriftungen (`_label`), die den Zweck des Datei-Uploads eindeutig beschreiben.
+- Nutzen Sie `_hint`, um zulässige Dateiformate oder maximale Dateigrößen verständlich zu kommunizieren.
+- Geben Sie Validierungsfehler über `_msg` aus und beschreiben Sie verständlich, wie Nutzende den Fehler beheben können.
 
 ### Anwendungsfälle
 
 - Hochladen von Profilbildern oder Avataren
-- Einreichung von Bewerbungsdokumenten oder Lebensläufen
-- Upload von Anhängen in Kontaktformularen
-- Batch-Import von Daten (z.B. CSV, Excel)
-- Einreichen von Szenarien-Dateien oder Konfigurationen
-- Bildergalerie oder Dateimanagement-Interfaces
+- Bereitstellen von Anhängen in Formularen, beispielsweise Bewerbungsunterlagen oder Nachweisen
+- Upload von Dokumenten zur Identifikation oder Verifizierung
+- Hochladen mehrerer Dateien, beispielsweise Bilder oder Dokumentensammlungen
+- Bereitstellen von Dateien für Import- oder Verarbeitungsprozesse
+
+## FAQ
+
+**Kann ich die Auswahl auf bestimmte Dateitypen beschränken?**  
+Ja. Über `_accept` können Sie festlegen, welche Dateitypen im Dateiauswahldialog angeboten werden. Diese Einschränkung dient der Benutzerführung und ersetzt keine serverseitige Validierung.
+
+**Wie kann ich mehrere Dateien auswählen?**  
+Aktivieren Sie `_multiple`, damit mehrere Dateien in einem Arbeitsgang ausgewählt werden können.
+
+**Kann ich die maximale Dateigröße begrenzen?**  
+Nein. Die maximale Dateigröße kann nicht über die Komponente begrenzt werden und muss durch die Anwendung bzw. serverseitig geprüft werden.
+
+**Unterstützt die Komponente Drag & Drop?**  
+Ja. Dateien können zusätzlich zum nativen Dateiauswahldialog per Drag & Drop ausgewählt werden. Diese Funktion ergänzt die Dateiauswahl, ersetzt sie jedoch nicht.
 
 ## Konstruktion / Technik
 
