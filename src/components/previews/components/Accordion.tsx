@@ -5,16 +5,14 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolAccordion } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-export type AccordionPreviewProps = JSX.KolAccordion & { _slot?: string };
-
-interface AccordionPreviewComponentProps {
-	initialProps?: AccordionPreviewProps;
-	visibleProperties?: (keyof JSX.KolAccordion | '_slot')[];
-	codeCollapsable?: boolean;
+export interface AccordionPreviewProps extends JSX.KolAccordion {
+	_slot?: string;
 }
 
-const AccordionPreview = (props: AccordionPreviewComponentProps) => {
+const AccordionPreview = (props: PreviewDefaults<AccordionPreviewProps>) => {
 	const defaultProps = React.useMemo<AccordionPreviewProps>(
 		() => ({
 			_label: translate({ id: 'preview.component.accordion.label' }),
@@ -25,6 +23,7 @@ const AccordionPreview = (props: AccordionPreviewComponentProps) => {
 
 	return (
 		<Preview<AccordionPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_level: <LevelProperty label="Heading Level" defaultValue={1} />,
@@ -32,10 +31,7 @@ const AccordionPreview = (props: AccordionPreviewComponentProps) => {
 				_open: <BooleanProperty label="Open" />,
 				_slot: <MultiLineTextProperty label="Content" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolAccordion"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
 			layout={PreviewLayout.FULL_SIZE}
 			slotKey="_slot"
 		>

@@ -4,15 +4,10 @@ import { BoundedNumberProperty, ClampedNumberProperty, PaginationHasButtonsPrope
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolPagination } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface PaginationPreviewProps {
-	initialProps?: JSX.KolPagination;
-	visibleProperties?: (keyof JSX.KolPagination)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
-
-const PaginationPreview = (props: PaginationPreviewProps) => {
+const PaginationPreview = (props: PreviewDefaults<JSX.KolPagination>) => {
 	const defaultProps = React.useMemo<JSX.KolPagination>(
 		() => ({
 			_label: translate({ id: 'preview.component.pagination.label' }),
@@ -21,9 +16,9 @@ const PaginationPreview = (props: PaginationPreviewProps) => {
 			_siblingCount: 1,
 			_boundaryCount: 1,
 			_page: 6,
-			_on: {}
+			_on: {},
 		}),
-		[],
+		[]
 	);
 
 	const [maxValue, setMaxValue] = React.useState<number>(props.initialProps?._max ?? defaultProps._max);
@@ -34,6 +29,7 @@ const PaginationPreview = (props: PaginationPreviewProps) => {
 
 	return (
 		<Preview<JSX.KolPagination>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_max: (
@@ -52,11 +48,7 @@ const PaginationPreview = (props: PaginationPreviewProps) => {
 				_boundaryCount: <BoundedNumberProperty label="Boundary Count" min={0} max={10} />,
 				_hasButtons: <PaginationHasButtonsProperty label="Has Buttons" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolPagination"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.DEFAULT}
 		>
 			{(componentProps) => <KolPagination {...componentProps} />}

@@ -23,8 +23,7 @@ Standard-Tree mit mehreren Ebenen und expandierbaren Elementen:
 
 <TreePreview
 	visibleProperties={[]}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -95,7 +94,7 @@ Ja, Sie können Items dynamisch filtern und nur die gefilterten Items anzeigen �
 
 Testen Sie die verschiedenen Eigenschaften der Tree-Komponente:
 
-<TreePreview codeCollapsable />
+<TreePreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -105,8 +104,7 @@ Jeder Baumknoten wird durch eine `KolTreeItem`-Komponente dargestellt. Der Conta
 
 <TreePreview 
 	visibleProperties={['_label']} 
-	codeCollapsable 
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Verschachtelte Hierarchien
@@ -114,7 +112,7 @@ Jeder Baumknoten wird durch eine `KolTreeItem`-Komponente dargestellt. Der Conta
 Die Tree-Komponente unterstützt beliebig viele Verschachtelungsebenen durch verschachtelte `KolTreeItem`-Elemente.
 Am `KolTreeItem` wird mit dem Attribut `_open` gesteuert, ob ein Element beim initialen Laden geöffnet ist und mit dem Attribut `_active`, ob ein Element markiert ist (z.B. die aktuelle Seite in einer Navigation).
 
-<TreePreview codeCollapsable visibleProperties={['_items']} />
+<TreePreview visibleProperties={['_items']} />
 
 ## API
 

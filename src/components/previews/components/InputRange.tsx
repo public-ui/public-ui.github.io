@@ -4,15 +4,10 @@ import { BooleanProperty, IconsProperty, MsgProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputRange, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputRangePreviewComponentProps {
-	initialProps?: JSX.KolInputRange;
-	visibleProperties?: (keyof JSX.KolInputRange)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
-
-const InputRangePreview = (props: InputRangePreviewComponentProps) => {
+const InputRangePreview = (props: PreviewDefaults<JSX.KolInputRange>) => {
 	const defaultProps = React.useMemo<JSX.KolInputRange>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-range.label' }),
@@ -21,11 +16,12 @@ const InputRangePreview = (props: InputRangePreviewComponentProps) => {
 			_step: 1,
 			_value: 50,
 		}),
-		[],
+		[]
 	);
 
 	return (
 		<Preview<JSX.KolInputRange>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_min: <KolInputNumber _label="Min" />,
@@ -40,11 +36,7 @@ const InputRangePreview = (props: InputRangePreviewComponentProps) => {
 				_disabled: <BooleanProperty label="Disabled" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputRange"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.DEFAULT}
 		>
 			{(componentProps) => <KolInputRange _touched {...componentProps} />}

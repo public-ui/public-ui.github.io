@@ -1,7 +1,7 @@
 import { KolButton, KolCard, KolDrawer, KolInputCheckbox, KolInputText } from '@public-ui/react-v19';
 import React, { useEffect, useState } from 'react';
 import type { AccordionPreviewProps } from '../components/Accordion';
-import { AccordionMultipleDefault } from './ComponentDefaults';
+import { AccordionMultipleDefault } from '../utils';
 import { translate } from '@docusaurus/Translate';
 
 type AccordionMultiplePropertyProps = {

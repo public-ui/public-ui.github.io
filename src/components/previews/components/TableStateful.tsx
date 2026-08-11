@@ -5,6 +5,8 @@ import { KolInputCheckbox, KolInputText, KolSelect, KolTableStateful, KolTextare
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
 import TableSelectionProperty from '../properties/TableSelectionProperty';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 export type PlantRecord = {
 	id: number;
@@ -14,14 +16,7 @@ export type PlantRecord = {
 	origin: string;
 };
 
-interface TableStatefulPreviewComponentProps {
-	initialProps?: JSX.KolTableStateful;
-	visibleProperties?: (keyof JSX.KolTableStateful)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
-
-const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (props) => {
+const TableStatefulPreview: React.FC<PreviewDefaults<JSX.KolTableStateful>> = (props) => {
 	const plantData = React.useMemo<PlantRecord[]>(
 		() => [
 			{
@@ -198,6 +193,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 
 	return (
 		<Preview<JSX.KolTableStateful>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_headers: <TableColumnsProperty label={translate({ id: 'preview.component.table-stateful.columns.label' })} />,
@@ -225,11 +221,7 @@ const TableStatefulPreview: React.FC<TableStatefulPreviewComponentProps> = (prop
 				),
 				_hasSettingsMenu: <KolInputCheckbox _label="HasSettingsMenu"></KolInputCheckbox>,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTableStateful"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.FULL_SIZE}
 			hiddenPropsInCode={['_data']}
 		>

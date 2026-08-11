@@ -22,8 +22,7 @@ Standard-Ladeindikator mit der Standardvariante:
 <SpinPreview
 	visibleProperties={[]}
 	initialProps={{ _show: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -75,7 +74,7 @@ Ja, kombinieren Sie den visuellen Indikator mit erklärendem Text oder einem Lab
 
 ### Playground
 
-<SpinPreview codeCollapsable />
+<SpinPreview  />
 
 ### Funktionalitäten (mit Code)
 
@@ -85,7 +84,6 @@ Das Attribut `_show` bestimmt, ob der Ladeindikator angezeigt wird.
 
 <SpinPreview
 	visibleProperties={['_show']}
-	codeCollapsable
 />
 
 #### Animationsvarianten
@@ -94,7 +92,6 @@ Die verfügbaren Varianten können über `_variant` ausgewählt werden: `dot`, `
 
 <SpinPreview
 	visibleProperties={['_variant']}
-	codeCollapsable
 />
 
 #### Label und Semantik
@@ -103,7 +100,6 @@ Das Attribut `_label` definiert ein semantisches Label, das von Screenreadern vo
 
 <SpinPreview
 	visibleProperties={['_label']}
-	codeCollapsable
 />
 
 #### Benutzerdefinierte Animationen

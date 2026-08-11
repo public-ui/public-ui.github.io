@@ -4,15 +4,11 @@ import { BooleanProperty, AlignProperty, IconsProperty, VariantProperty } from '
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButton, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 import { variantButtonOptions } from '../properties/VariantProperty';
 
-interface ButtonPreviewComponentProps {
-	initialProps?: JSX.KolButton;
-	visibleProperties?: (keyof JSX.KolButton)[];
-	codeCollapsable?: boolean;
-}
-
-const ButtonPreview = (props: ButtonPreviewComponentProps) => {
+const ButtonPreview = (props: PreviewDefaults<JSX.KolButton>) => {
 	const defaultProps = React.useMemo<JSX.KolButton>(
 		() => ({
 			_label: translate({ id: 'preview.component.button.label' }),
@@ -22,6 +18,7 @@ const ButtonPreview = (props: ButtonPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolButton>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_variant: <VariantProperty label="Variant" defaultValue="normal" variantOptions={variantButtonOptions} />,
@@ -50,10 +47,7 @@ const ButtonPreview = (props: ButtonPreviewComponentProps) => {
 				_ariaExpanded: <BooleanProperty label="ARIA Expanded" />,
 				_ariaSelected: <BooleanProperty label="ARIA Selected" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolButton"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolButton {...props} />}

@@ -22,10 +22,9 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 Darstellung eines PopoverButtons mit Beispielinhalt im Popover:
 
 <PopoverButtonPreview
-	codeCollapsable
-	codeCollapsed
 	initialProps={{}}
 	visibleProperties={[]}
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -76,7 +75,6 @@ Darstellung eines PopoverButtons mit Beispielinhalt im Popover:
 Testen Sie die verschiedenen Eigenschaften des PopoverButtons:
 
 <PopoverButtonPreview
-	codeCollapsable
 	visibleProperties={['_label', '_popoverAlign', '_variant', '_icons', '_slot', '_disabled', '_hideLabel']}
 />
 
@@ -89,8 +87,7 @@ Der PopoverButton unterstützt die Standard-Button-Attribute:
 <PopoverButtonPreview
 	initialProps={{ _label: "Button" }}
 	visibleProperties={['_label', '_hideLabel', '_disabled', '_type']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -106,8 +103,7 @@ Der PopoverButton unterstützt verschiedene visuelle Varianten:
 <PopoverButtonPreview
 	initialProps={{ _label: "Styled Button" }}
 	visibleProperties={['_variant', '_icons', '_inline', '_tooltipAlign']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -123,8 +119,7 @@ Die Position des Popovers relativ zum Button kann gesteuert werden:
 <PopoverButtonPreview
 	initialProps={{ _label: "Position", _popoverAlign: "bottom" }}
 	visibleProperties={['_popoverAlign']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Positionen:**
@@ -143,8 +138,7 @@ Das Popover-Inhalt wird über den Standard-Slot bereitgestellt:
 		_slot: "<ul style='margin:0; padding:0; list-style:none;'><li style='padding:8px;'><strong>Option 1</strong></li><li style='padding:8px;'><strong>Option 2</strong></li><li style='padding:8px;'><strong>Option 3</strong></li></ul>"
 	}}
 	visibleProperties={['_slot']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Hinweis**: Der Slot-Inhalt wird mit HTML-Sanitierung verarbeitet für Sicherheit. Der Inhalt sollte prägnant und fokussiert bleiben.
@@ -156,8 +150,7 @@ Der PopoverButton unterstützt Accessibility-Features für erweiterte Tastaturin
 <PopoverButtonPreview
 	initialProps={{ _label: "Drucken", _accessKey: "p" }}
 	visibleProperties={['_accessKey', '_shortKey']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**

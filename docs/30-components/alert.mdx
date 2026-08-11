@@ -25,8 +25,7 @@ Standard-Alert mit Typ, Variante und Inhalt:
 <AlertPreview
 	visibleProperties={['_label', '_type', '_variant', '_hasCloser', '_slot']}
 	initialProps={{ _label: 'Hinweis', _type: 'info', _variant: 'msg' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -63,7 +62,7 @@ Standard-Alert mit Typ, Variante und Inhalt:
 
 ### Playground
 
-<AlertPreview codeCollapsable />
+<AlertPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -74,8 +73,7 @@ Der Typ des Alert wird über das Attribut `_type` festgelegt und bestimmt die se
 <AlertPreview
 	visibleProperties={['_type']}
 	initialProps={{ _label: 'Hinweis', _type: 'info' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 | Typ       | Bedeutung                                          |
@@ -93,8 +91,7 @@ Der Typ des Alert wird über das Attribut `_type` festgelegt und bestimmt die se
 <AlertPreview
 	visibleProperties={['_variant']}
 	initialProps={{ _label: 'Hinweis', _type: 'info', _variant: 'msg' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 | Variante | Beschreibung                                                                        |
@@ -109,8 +106,7 @@ Die Überschrift wird über `_label` festgelegt, die semantische Ebene über `_l
 <AlertPreview
 	visibleProperties={['_label', '_level']}
 	initialProps={{ _label: 'Überschrift', _type: 'info', _level: 3 }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Inhalt des Alert
@@ -120,8 +116,7 @@ Der Inhalt des Alert wird als Slot-Inhalt übergeben und kann beliebigen HTML-Co
 <AlertPreview
 	visibleProperties={['_slot']}
 	initialProps={{ _label: 'Hinweis', _type: 'info' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Schließen-Funktion
@@ -131,8 +126,7 @@ Mit dem Attribut `_has-closer` wird ein Schließen-Button eingeblendet.
 <AlertPreview
 	visibleProperties={['_hasCloser']}
 	initialProps={{ _label: 'Schließbarer Alert', _type: 'info', _hasCloser: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Screenreader-Benachrichtigungen (`_alert`)
@@ -142,8 +136,7 @@ Das Attribut `_alert` aktiviert `role="alert"` bzw. `aria-live="assertive"`, sod
 <AlertPreview
 	visibleProperties={['_alert']}
 	initialProps={{ _label: 'Statusmeldung', _type: 'info', _alert: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Events

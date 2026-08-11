@@ -1,24 +1,13 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import {
-	BooleanProperty,
-	IconsProperty,
-	MsgProperty,
-	SelectOptionsProperty,
-	SelectOptionsDefault,
-} from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty, SelectOptionsProperty } from '../properties';
+import { getPreviewDefaults, SelectOptionsDefault } from '../utils';
 import type { JSX } from '@public-ui/components';
 import { KolInputRange, KolInputText, KolSingleSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults } from '../utils';
 
-interface SingleSelectPreviewComponentProps {
-	initialProps?: JSX.KolSingleSelect;
-	visibleProperties?: (keyof JSX.KolSingleSelect)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
-
-const SingleSelectPreview = (props: SingleSelectPreviewComponentProps) => {
+const SingleSelectPreview = (props: PreviewDefaults<JSX.KolSingleSelect>) => {
 	const defaultProps = React.useMemo<JSX.KolSingleSelect>(
 		() => ({
 			_label: translate({ id: 'preview.component.single-select.label' }),
@@ -31,6 +20,7 @@ const SingleSelectPreview = (props: SingleSelectPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolSingleSelect>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_options: <SelectOptionsProperty label="Options" />,
@@ -48,11 +38,7 @@ const SingleSelectPreview = (props: SingleSelectPreviewComponentProps) => {
 				_touched: <BooleanProperty label="Touched" />,
 				_rows: <KolInputRange _label="Rows" _max="3"></KolInputRange>,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolSingleSelect"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => (

@@ -24,8 +24,7 @@ Standard-Abkürzung mit optionalem Label:
 <AbbrPreview
 	visibleProperties={['_label', '_slot']}
 	initialProps={{ _label: "zum Beispiel", _slot: "z. B." }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -70,7 +69,7 @@ Die Komponente eignet sich zur Kennzeichnung von Abkürzungen innerhalb von Flie
 
 ### Playground
 
-<AbbrPreview codeCollapsable />
+<AbbrPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -81,8 +80,7 @@ Abkürzung als reines Text-Element ohne zusätzliche Erklärung:
 <AbbrPreview
 	visibleProperties={['_slot']}
 	initialProps={{ _slot: "z. B." }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Abkürzung mit Label
@@ -92,8 +90,7 @@ Abkürzung mit ausgeschriebener Erklärung über das `_label`-Attribut:
 <AbbrPreview
 	visibleProperties={['_label', '_slot']}
 	initialProps={{ _label: "zum Beispiel", _slot: "z. B." }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## API

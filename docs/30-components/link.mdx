@@ -22,8 +22,7 @@ Standard-Link mit Text und optionalem Icon-Symbol:
 <LinkPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Beispiel-Link', _href: 'https://example.com' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -89,7 +88,7 @@ Ja, Sie können mehrere Icon-Klassen über das `_icons`-Attribut kombinieren.
 
 Testen Sie die verschiedenen Eigenschaften der Link-Komponente:
 
-<LinkPreview codeCollapsable />
+<LinkPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -100,8 +99,7 @@ Ein einfacher Link mit Label und href:
 <LinkPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Beispiel-Link', _href: 'https://example.com' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Link mit Icon
@@ -111,7 +109,6 @@ Link mit einem Icon, das den Linkzweck visualisiert:
 <LinkPreview
 	visibleProperties={['_icons','_hideLabel' ]}
 	initialProps={{ _label: 'Mit Icon', _href: 'https://example.com', _icons: 'kolicon-external' }}
-	codeCollapsable
 />
 
 #### Varianten
@@ -121,7 +118,6 @@ Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varia
 <LinkPreview
 	visibleProperties={['_variant']}
 	initialProps={{ _label: 'Link-Varianten', _variant: 'small' }}
-	codeCollapsable
 />
 
 #### Link-Zustände
@@ -131,7 +127,6 @@ Verschiedene Zustände:
 <LinkPreview
 	visibleProperties={['_disabled', '_inline', '_target']}
 	initialProps={{ _label: 'Link-Zustände', _href: 'https://example.com' }}
-	codeCollapsable
 />
 
 #### Download-Link
@@ -141,7 +136,6 @@ Link mit Download-Funktionalität:
 <LinkPreview
 	visibleProperties={['_download']}
 	initialProps={{ _label: 'Datei herunterladen', _href: 'https://example.com/datei.pdf', _download: 'datei.pdf' }}
-	codeCollapsable
 />
 
 #### Tooltip-Alignment
@@ -151,7 +145,6 @@ Konfiguration der Tooltip-Positionierung (bei `_hideLabel: true`):
 <LinkPreview
 	visibleProperties={['_hideLabel', '_tooltipAlign']}
 	initialProps={{ _label: 'Nur Icon', _href: 'https://example.com', _hideLabel: true, _icons: 'kolicon-external', _tooltipAlign: 'top' }}
-	codeCollapsable
 />
 
 #### ARIA-Attribute und Accessibility
@@ -161,7 +154,6 @@ Erweiterte Accessibility-Konfigurationen:
 <LinkPreview
 	visibleProperties={['_ariaCurrentValue', '_ariaDescription']}
 	initialProps={{ _label: 'Aktive Seite', _href: '/current-page', _ariaCurrentValue: 'page', _ariaDescription: 'Dies ist die aktuelle Seite' }}
-	codeCollapsable
 />
 
 #### aria-current Service

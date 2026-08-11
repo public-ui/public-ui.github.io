@@ -26,7 +26,6 @@ Standard-Eingabefeld mit Beschriftung:
 <InputTextPreview
   initialProps={{ _label: 'Texteingabe' }}
   visibleProperties={[]}
-  codeCollapsable
 />
 
 ## Barrierefreiheit
@@ -111,7 +110,6 @@ Testen Sie die verschiedenen Eigenschaften des Eingabefelds
 
 <InputTextPreview
   visibleProperties={['_label', '_placeholder', '_type', '_icons', '_disabled', '_readOnly', '_required', '_touched', '_hideLabel', '_suggestions', '_hasCounter', '_maxLength', '_maxLengthBehavior']}
-  codeCollapsable
 />
 
 ### Funktionalitäten (mit Code)
@@ -123,8 +121,7 @@ Ein einfaches Eingabefeld mit Label:
 <InputTextPreview
   initialProps={{ _label: 'Texteingabe' }}
   visibleProperties={['_label', '_placeholder']}
-  codeCollapsable
-  codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Eingabefeld-Typen
@@ -134,8 +131,7 @@ InputText unterstützt verschiedene Eingabe-Typen über das Attribut `_type`:
 <InputTextPreview
   initialProps={{ _label: 'Eingabetyp', _type: 'text' }}
   visibleProperties={['_type']}
-  codeCollapsable
-  codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Typen:**
@@ -151,8 +147,7 @@ Links und rechts vom Eingabefeld können Icons platziert werden:
 <InputTextPreview
   initialProps={{ _label: 'Mit Icons', _icons: { left: 'kolibri-icon-24', right: 'kolibri-icon-24' } }}
   visibleProperties={['_icons']}
-  codeCollapsable
-  codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Validierungszustände
@@ -162,8 +157,7 @@ Status-Eigenschaften zur Steuerung von Validierung und Interaktion:
 <InputTextPreview
   initialProps={{ _label: 'Eingabefeld' }}
   visibleProperties={['_disabled', '_readOnly', '_required', '_touched']}
-  codeCollapsable
-  codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Zustände:**
@@ -179,8 +173,7 @@ Label können visuell verborgen sein, bleiben aber für assistive Technologien s
 <InputTextPreview
   initialProps={{ _label: 'Verborgenes Label', _hideLabel: true, _placeholder: 'Platzhalter' }}
   visibleProperties={['_hideLabel']}
-  codeCollapsable
-  codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Vorschlagswerte (Suggestions)
@@ -193,8 +186,7 @@ Label können visuell verborgen sein, bleiben aber für assistive Technologien s
     _label: 'Anrede',
     _suggestions: ['Herr', 'Frau', 'Firma'],
   }}
-  codeCollapsable
-  codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbares Attribut:**
@@ -208,8 +200,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 <InputTextPreview
   initialProps={{ _label: 'Mit Zeichenzähler', _hasCounter: true, _maxLength: 50 }}
   visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
-  codeCollapsable
-  codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ##### Attribute
@@ -250,8 +241,7 @@ Ein Schaltfläche mit beliebiger Aktion kann im Feld platziert werden (nur mit `
 <InputTextPreview
   initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
   visibleProperties={['_smartButton']}
-  codeCollapsable
-  codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Hinweistexte und Fehlermeldungen
@@ -261,8 +251,7 @@ Zusätzliche Informationen und Fehler-Feedback:
 <InputTextPreview
   initialProps={{ _label: 'Mit Hinweis', _hint: 'Das ist ein Hinweis', _msg: 'Das ist eine Fehlermeldung' }}
   visibleProperties={['_hint', '_msg']}
-  codeCollapsable
-  codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Events

@@ -5,42 +5,20 @@ import { KolInputText, KolTree, KolTreeItem } from '@public-ui/react-v19';
 import TreeItemsProperty from '../properties/TreeItemsProperty';
 import type { TreeItemData } from '../properties/TreeItemsProperty';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults} from '../utils';
+import { getPreviewDefaults, TreeItemsDefault } from '../utils';
 
-type TreePreviewProps = JSX.KolTree & { _items?: TreeItemData[] };
-
-interface TreePreviewComponentProps {
-	initialProps?: TreePreviewProps;
-	visibleProperties?: (keyof JSX.KolTree | '_items')[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
+interface TreePreviewProps extends JSX.KolTree {
+	_items?: TreeItemData[];
 }
 
-const TreePreview: React.FC<TreePreviewComponentProps> = (props) => {
+const TreePreview: React.FC<PreviewDefaults<TreePreviewProps>> = (props) => {
 	const defaultProps = React.useMemo<TreePreviewProps>(
 		() => ({
 			_label: translate({ id: 'preview.component.tree.label' }),
-			_items: [
-				{
-					_label: 'Home',
-					_href: '#/',
-					_active: true,
-				},
-				{
-					_label: 'Page 1',
-					_href: '#/page-1',
-					_open: true,
-					_children: [
-						{ _label: 'Page 1.1', _href: '#/page-1/1' },
-						{ _label: 'Page 1.2', _href: '#/page-1/2' },
-					],
-				},
-				{
-					_label: 'Page 2',
-					_href: '#/page-2',
-				},
-			],
+			_items: TreeItemsDefault,
 		}),
-		[],
+		[]
 	);
 
 	const formatSource = (currentProps: TreePreviewProps): string => {
@@ -85,15 +63,12 @@ const TreePreview: React.FC<TreePreviewComponentProps> = (props) => {
 
 	return (
 		<Preview<TreePreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_items: <TreeItemsProperty label="Items" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolTree"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.DEFAULT}
 			sourceFormatter={formatSource}
 		>
@@ -115,9 +90,7 @@ const TreePreview: React.FC<TreePreviewComponentProps> = (props) => {
 
 				return (
 					<div className="min-h-44">
-						<KolTree {...treeProps}>
-							{items.map((item, index) => renderItem(item, index))}
-						</KolTree>
+						<KolTree {...treeProps}>{items.map((item, index) => renderItem(item, index))}</KolTree>
 					</div>
 				);
 			}}

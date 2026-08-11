@@ -24,7 +24,6 @@ Darstellung der Komponente in der Standard-Ansicht. Code kann eingeblendet werde
 <AvatarPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Max Mustermann' }}
-	codeCollapsable
 />
 
 ## Barrierefreiheit
@@ -65,7 +64,6 @@ Testen Sie die verschiedenen Eigenschaften der Avatar-Komponente:
 <AvatarPreview
 	visibleProperties={['_label', '_src', '_color']}
 	initialProps={{ _label: 'Max Mustermann', _color: '#5A5FEE' }}
-	codeCollapsable
 />
 
 ### Funktionalitäten
@@ -77,8 +75,7 @@ Darstellung der Komponente ohne Bild – es werden automatisch die Initialen aus
 <AvatarPreview
 	visibleProperties={['_label']}
 	initialProps={{ _label: 'Anna Schmidt' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Avatar mit Bild
@@ -91,8 +88,7 @@ Darstellung eines Avatar-Bildes über das Attribut `_src`:
 		_label: 'Bei dem gleich gezeigten Bild handelt es sich um einen Standard-Avatar aus Font Awesome', 
 		_src: 'https://gravatar.com/avatar/12345?d=mp&s=256' 
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Farbige Initialen
@@ -102,8 +98,7 @@ Verwendung des Attributs `_color` zur farblichen Unterscheidung von Benutzern. D
 <AvatarPreview
 	visibleProperties={['_color']}
 	initialProps={{ _label: 'Peter Meyer', _color: '#FF6B6B' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Avatar mit separaten Farben
@@ -116,8 +111,7 @@ Präzise Kontrolle über Hintergrund- und Vordergrundfarbe:
 		_label: 'Julia Wolf',
 		_color: { backgroundColor: '#4ECDC4', foregroundColor: '#FFFFFF' }
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## API

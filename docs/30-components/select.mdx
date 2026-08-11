@@ -25,8 +25,7 @@ Standard-Auswahlliste mit Pflichtfeld-Markierung:
 
 <SelectPreview
 visibleProperties={['_label', '_options', '_multiple', '_rows', '_disabled', '_required']}
-codeCollapsable
-codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -138,7 +137,7 @@ Das native HTML-Element `<select>` stellt die erforderliche Semantik sowie die U
 
 ### Playground
 
-<SelectPreview codeCollapsable />
+<SelectPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -148,7 +147,6 @@ Mindestangaben für eine funktionsfähige Select-Komponente: `_label` und `_opti
 
 <SelectPreview
 visibleProperties={['_label', '_options']}
-codeCollapsable
 />
 
 #### Mehrfachauswahl
@@ -157,21 +155,18 @@ codeCollapsable
 
 <SelectPreview
 visibleProperties={['_multiple', '_rows']}
-codeCollapsable
 />
 
 #### Formularattribute
 
 <SelectPreview
 visibleProperties={['_disabled', '_required', '_name']}
-codeCollapsable
 />
 
 #### Hinweise und Fehlermeldungen
 
 <SelectPreview
 visibleProperties={['_hint', '_msg']}
-codeCollapsable
 />
 
 #### Events

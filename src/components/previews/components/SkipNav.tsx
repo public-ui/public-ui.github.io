@@ -4,13 +4,8 @@ import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSkipNav } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import SkipNavLinksProperty from '../properties/SkipNavLinksProperty';
-
-interface SkipNavPreviewProps {
-	initialProps?: JSX.KolSkipNav;
-	visibleProperties?: (keyof JSX.KolSkipNav)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
 const DEFAULT_LINKS = [
 	{ _label: 'Navigation', _href: '#nav' },
@@ -18,36 +13,30 @@ const DEFAULT_LINKS = [
 	{ _label: 'Contact', _href: '#contact' },
 ];
 
-const SkipNavPreview = (props: SkipNavPreviewProps) => {
+const SkipNavPreview = (props: PreviewDefaults<JSX.KolSkipNav>) => {
 	const defaultProps = React.useMemo<JSX.KolSkipNav>(
 		() => ({
 			_label: translate({ id: 'preview.component.skip-nav.label' }),
 			_links: DEFAULT_LINKS,
 		}),
-		[],
+		[]
 	);
 
 	return (
 		<Preview<JSX.KolSkipNav>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_links: (
-					<SkipNavLinksProperty
-						label={translate({ id: 'preview.component.skip-nav.links' })}
-						_value={DEFAULT_LINKS}
-					/>
+					<SkipNavLinksProperty label={translate({ id: 'preview.component.skip-nav.links' })} _value={DEFAULT_LINKS} />
 				),
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolSkipNav"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => (
 				<>
-					<div className='flex flex-col'>
+					<div className="flex flex-col">
 						<div
 							// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
 							tabIndex={0}

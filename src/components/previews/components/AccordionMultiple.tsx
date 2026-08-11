@@ -1,18 +1,13 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { AccordionMultipleProperty, GenerateAccordionMultiple } from '../properties';
+import { AccordionMultipleProperty } from '../properties';
 import type { AccordionPreviewProps } from './Accordion';
-import { AccordionMultipleDefault } from '../properties/ComponentDefaults';
+import type { PreviewDefaults } from '../utils';
+import { GenerateAccordionMultiple, getPreviewDefaults, AccordionMultipleDefault } from '../utils';
 
 export type AccordionMultiplePreviewProps = { _accordions: AccordionPreviewProps[] };
 
-interface AccordionMultiplePreviewComponentProps {
-	initialProps?: AccordionMultiplePreviewProps;
-	visibleProperties?: '_accordions'[];
-	codeCollapsable?: boolean;
-}
-
-const AccordionMultiplePreview = (props: AccordionMultiplePreviewComponentProps) => {
+const AccordionMultiplePreview = (props: PreviewDefaults<AccordionMultiplePreviewProps>) => {
 	const defaultProps = React.useMemo<AccordionMultiplePreviewProps>(() => AccordionMultipleDefault, []);
 
 	const formatSource = (currentProps: AccordionMultiplePreviewProps): string => {
@@ -45,13 +40,11 @@ const AccordionMultiplePreview = (props: AccordionMultiplePreviewComponentProps)
 
 	return (
 		<Preview<AccordionMultiplePreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_accordions: <AccordionMultipleProperty label="Accordions" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
-			visibleProperties={props.visibleProperties}
 			componentName="KolAccordion"
-			codeCollapsable={props.codeCollapsable}
 			layout={PreviewLayout.FULL_SIZE}
 			sourceFormatter={formatSource}
 		>

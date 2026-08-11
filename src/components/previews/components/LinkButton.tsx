@@ -4,16 +4,11 @@ import { BooleanProperty, AlignProperty, IconsProperty, VariantProperty } from '
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolLinkButton, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 import { variantButtonOptions } from '../properties/VariantProperty';
-
-interface LinkButtonPreviewProps {
-	initialProps?: JSX.KolLinkButton;
-	visibleProperties?: (keyof JSX.KolLinkButton)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
-
-const LinkButtonPreview = (props: LinkButtonPreviewProps) => {
+        
+const LinkButtonPreview = (props: PreviewDefaults<JSX.KolLinkButton>) => {
 	const defaultProps = React.useMemo<JSX.KolLinkButton>(
 		() => ({
 			_label: translate({ id: 'preview.component.link-button.label' }),
@@ -25,6 +20,7 @@ const LinkButtonPreview = (props: LinkButtonPreviewProps) => {
 
 	return (
 		<Preview<JSX.KolLinkButton>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_href: <KolInputText _label="Href" />,
@@ -50,11 +46,7 @@ const LinkButtonPreview = (props: LinkButtonPreviewProps) => {
 				_customClass: <KolInputText _label="Custom Class" />,
 				_shortKey: <KolInputText _label="Short Key" _maxLength={1} />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolLinkButton"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolLinkButton {...componentProps} />}

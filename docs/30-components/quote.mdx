@@ -24,8 +24,7 @@ Darstellung der Standard-Block-Variante mit Zitat und Quellenangabe:
 <QuotePreview
 	visibleProperties={[]}
 	initialProps={{ _variant: 'block' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -77,7 +76,7 @@ Das `_quote`-Attribut erwartet reinen Text. Formatierungen sollten über CSS ode
 
 Testen Sie die verschiedenen Eigenschaften der Quote-Komponente:
 
-<QuotePreview codeCollapsable />
+<QuotePreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -88,8 +87,7 @@ Die Quote-Komponente bietet zwei Darstellungsvarianten:
 <QuotePreview
 	visibleProperties={['_variant']}
 	initialProps={{ _variant: 'inline' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Varianten:**
@@ -103,8 +101,7 @@ Der optionale Label kann als Autor- oder Werkangabe dienen, während `_href` die
 <QuotePreview
 	visibleProperties={['_label', '_href']}
 	initialProps={{ _variant: 'block', _label: 'Albert Einstein' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## API

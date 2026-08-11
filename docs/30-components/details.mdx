@@ -24,8 +24,7 @@ Darstellung der Komponente mit Beispieltext:
 <DetailsPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Weitere Informationen' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -70,9 +69,7 @@ Darstellung der Komponente mit Beispieltext:
 
 ### Playground
 
-<DetailsPreview
-	codeCollapsable
-/>
+<DetailsPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -83,7 +80,6 @@ Das Label wird über `_label` definiert, der Inhaltsbereich wird über den Slot 
 <DetailsPreview
 	visibleProperties={['_label']}
 	initialProps={{ _label: 'Details anzeigen' }}
-	codeCollapsable
 />
 
 #### Offener Zustand
@@ -93,7 +89,6 @@ Mit `_open` wird die Komponente initial geöffnet angezeigt. Im deaktivierten Zu
 <DetailsPreview
 	visibleProperties={['_open', '_disabled']}
 	initialProps={{ _label: 'Details anzeigen', _open: true }}
-	codeCollapsable
 />
 
 #### Überschriftenstruktur
@@ -103,7 +98,6 @@ Die Überschriftenebene wird über `_level` (0–6) gesteuert. Wert `0` zeigt de
 <DetailsPreview
 	visibleProperties={['_level']}
 	initialProps={{ _label: 'Details anzeigen', _level: 2 }}
-	codeCollapsable
 />
 
 #### Event-Anbindung

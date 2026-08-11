@@ -26,8 +26,7 @@ Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet
 <InputCheckboxPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Akzeptiere die Bedingungen' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -102,7 +101,6 @@ Testen Sie die verschiedenen Eigenschaften der InputCheckbox-Komponente:
 <InputCheckboxPreview
 	initialProps={{ _label: 'Beispiel-Checkbox' }}
 	visibleProperties={['_label', '_variant', '_checked', '_indeterminate', '_disabled', '_required', '_hideLabel', '_hint', '_msg', '_hideMsg']}
-	codeCollapsable
 />
 
 ### Funktionalitäten (mit Code)
@@ -114,8 +112,7 @@ Eine einfache Checkbox ohne spezielle Konfiguration:
 <InputCheckboxPreview
 	initialProps={{ _label: 'Zustimmen' }}
 	visibleProperties={[]}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Varianten
@@ -125,8 +122,7 @@ Die Checkbox unterstützt drei verschiedene visuelle Varianten über das Attribu
 <InputCheckboxPreview
 	initialProps={{ _label: 'Checkbox-Typ' }}
 	visibleProperties={['_variant']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Varianten:**
@@ -141,8 +137,7 @@ Verschiedene Zustände und Statusanzeigen:
 <InputCheckboxPreview
 	initialProps={{ _label: 'Checkbox-Zustand' }}
 	visibleProperties={['_checked', '_indeterminate', '_disabled', '_required']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Zustände:**
@@ -158,8 +153,7 @@ Kontrolle über Sichtbarkeit und Ausrichtung der Beschriftung:
 <InputCheckboxPreview
 	initialProps={{ _label: 'Beschriftung' }}
 	visibleProperties={['_hideLabel', '_labelAlign']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Optionen:**
@@ -173,8 +167,7 @@ Standard-Attribute für die Integration in Formulare:
 <InputCheckboxPreview
 	initialProps={{ _label: 'Formular-Beispiel' }}
 	visibleProperties={['_hint', '_msg', '_name', '_accessKey', '_shortKey']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -191,8 +184,7 @@ Anpassung der Icon-Darstellung für verschiedene Zustände:
 <InputCheckboxPreview
 	initialProps={{ _label: 'Mit benutzerdefinierten Icons'}}
 	visibleProperties={['_icons', '_checked', '_indeterminate']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 Die `_icons`-Eigenschaft ermöglicht die Anpassung der Icons für die Zustände `checked`, `unchecked` und `indeterminate`.

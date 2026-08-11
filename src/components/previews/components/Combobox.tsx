@@ -1,24 +1,13 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import {
-	BooleanProperty,
-	ComboboxSuggestionsDefault,
-	IconsProperty,
-	MsgProperty,
-	SuggestionsProperty,
-} from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty, SuggestionsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolCombobox, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults } from '../utils';
+import { ComboboxSuggestionsDefault, getPreviewDefaults } from '../utils';
 
-interface ComboboxPreviewComponentProps {
-	initialProps?: JSX.KolCombobox;
-	visibleProperties?: (keyof JSX.KolCombobox)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
-
-const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
+const ComboboxPreview = (props: PreviewDefaults<JSX.KolCombobox>) => {
 	const defaultProps = React.useMemo<JSX.KolCombobox>(
 		() => ({
 			_label: translate({ id: 'preview.component.combobox.label' }),
@@ -31,6 +20,7 @@ const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolCombobox>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_placeholder: <KolInputText _label="Placeholder" />,
@@ -48,11 +38,7 @@ const ComboboxPreview = (props: ComboboxPreviewComponentProps) => {
 				_touched: <BooleanProperty label="Touched" />,
 				_shortKey: <KolInputText _label="Short Key" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolCombobox"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => (

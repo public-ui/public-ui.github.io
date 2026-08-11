@@ -20,10 +20,9 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 Darstellung einer einfachen Datentabelle mit automatischen Funktionalitäten:
 
 <TableStatefulPreview
-	codeCollapsable
-	codeCollapsed
 	visibleProperties={[]}
 	initialProps={{}}
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -81,7 +80,7 @@ Das Attribut `_selection` ermöglicht die Auswahl von Zeilen (einfach oder mehrf
 
 Testen Sie alle Funktionalitäten der TableStateful-Komponente interaktiv:
 
-<TableStatefulPreview codeCollapsable />
+<TableStatefulPreview  />
 
 ### Funktionalitäten (mit Code)
 
@@ -92,8 +91,7 @@ Das Attribut `_label` definiert die semantische Beschriftung der Tabelle und wir
 <TableStatefulPreview
 	visibleProperties={['_label']}
 	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Spaltenüberschriften und Layout
@@ -103,8 +101,7 @@ Titel werden über das Attribut `_headers` definiert. Es werden horizontale und 
 <TableStatefulPreview
 	visibleProperties={['_headers']}
 	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Header-Struktur:**
@@ -119,8 +116,7 @@ Die Komponente unterstützt automatische Sortierung pro Spalte über die `compar
 <TableStatefulPreview
 	visibleProperties={['_headers', '_allowMultiSort']}
 	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Erklärung zur compareFn:**
@@ -143,8 +139,7 @@ Die `_pagination` Eigenschaft aktiviert automatische Seitennummerierung und biet
 <TableStatefulPreview
 	visibleProperties={['_paginationPosition']}
 	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Konfigurierbare Optionen:**
@@ -209,8 +204,7 @@ Das Attribut `_dataFoot` ermöglicht Zusammenfassungszeilen oder zusätzliche In
 			family: 'all beautiful',
 		}]
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Zeilenauswahl
@@ -220,8 +214,7 @@ Das Attribut `_selection` aktiviert die Zeilenauswahl (einfach oder mehrfach). D
 <TableStatefulPreview
 	visibleProperties={['_selection']}
 	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Konfigurierbare Optionen:**
@@ -238,8 +231,7 @@ Mit `_hasSettingsMenu` wird ein Menü aktiviert, über das Benutzer Tabelleneins
 <TableStatefulPreview
 	visibleProperties={['_hasSettingsMenu']}
 	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Fixierte Spalten
@@ -249,8 +241,7 @@ Das Attribut `_fixedCols` definiert Spalten, die beim horizontalen Scrollen sich
 <TableStatefulPreview
 	visibleProperties={[]}
 	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Events

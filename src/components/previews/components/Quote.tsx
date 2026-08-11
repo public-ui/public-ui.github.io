@@ -4,15 +4,10 @@ import { MultiLineTextProperty, QuoteVariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolQuote } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface QuotePreviewProps {
-	initialProps?: JSX.KolQuote;
-	visibleProperties?: (keyof JSX.KolQuote)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
-
-const QuotePreview: React.FC<QuotePreviewProps> = (props) => {
+const QuotePreview: React.FC<PreviewDefaults<JSX.KolQuote>> = (props) => {
 	const defaultProps = React.useMemo<JSX.KolQuote>(
 		() => ({
 			_label: translate({ id: 'preview.component.quote.label' }),
@@ -20,22 +15,19 @@ const QuotePreview: React.FC<QuotePreviewProps> = (props) => {
 			_quote: translate({ id: 'preview.component.quote.quote' }),
 			_variant: 'block',
 		}),
-		[],
+		[]
 	);
 
 	return (
 		<Preview<JSX.KolQuote>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_href: <KolInputText _label="Source URL" />,
 				_quote: <MultiLineTextProperty label="Quote" />,
 				_variant: <QuoteVariantProperty label="Variant" defaultValue="block" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolQuote"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolQuote {...componentProps} />}

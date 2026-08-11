@@ -5,15 +5,10 @@ import type { JSX } from '@public-ui/components';
 import { KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import IconsCheckboxProperty from '../properties/IconsCheckboxProperty';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputCheckboxPreviewComponentProps {
-	initialProps?: JSX.KolInputCheckbox;
-	visibleProperties?: (keyof JSX.KolInputCheckbox)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
-
-const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
+const InputCheckboxPreview = (props: PreviewDefaults<JSX.KolInputCheckbox>) => {
 	const defaultProps = React.useMemo<JSX.KolInputCheckbox>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-checkbox.label' }),
@@ -23,6 +18,7 @@ const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
 
 	return (
 		<Preview<JSX.KolInputCheckbox>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_variant: (
@@ -57,11 +53,7 @@ const InputCheckboxPreview = (props: InputCheckboxPreviewComponentProps) => {
 				),
 				_icons: <IconsCheckboxProperty label="Icons"></IconsCheckboxProperty>,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputCheckbox"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputCheckbox _touched {...componentProps} />}

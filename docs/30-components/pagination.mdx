@@ -22,8 +22,7 @@ Darstellung einer Pagination mit Standardkonfiguration:
 <PaginationPreview
 	visibleProperties={[]}
 	initialProps={{ _max: 100, _page: 1, _pageSize: 5, _siblingCount: 1, _boundaryCount: 1 }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -82,7 +81,7 @@ Ja, nutzen Sie `_pageSizeOptions`, um Nutzern ein Dropdown-Menü zur Wahl der Se
 
 ### Playground
 
-<PaginationPreview codeCollapsable />
+<PaginationPreview  />
 
 ### Funktionalitäten (mit Code)
 
@@ -93,7 +92,6 @@ Einfache Pagination mit Standardwerten:
 <PaginationPreview
 	visibleProperties={['_max', '_page', '_pageSize']}
 	initialProps={{ _max: 100, _page: 5, _pageSize: 10 }}
-	codeCollapsable
 />
 
 #### Sichtbare Seiten konfigurieren
@@ -103,7 +101,6 @@ Die Anzahl der sichtbaren Seitennummern wird durch `_siblingCount` (neben der ak
 <PaginationPreview
 	visibleProperties={['_siblingCount', '_boundaryCount']}
 	initialProps={{ _max: 100, _page: 5, _pageSize: 10, _siblingCount: 2, _boundaryCount: 1 }}
-	codeCollapsable
 />
 
 #### Navigation-Buttons
@@ -113,7 +110,6 @@ Das Attribut `_hasButtons` steuert, welche Navigations-Buttons (erste, letzte, v
 <PaginationPreview
 	visibleProperties={['_hasButtons']}
 	initialProps={{ _max: 100, _page: 5, _pageSize: 10, _hasButtons: true }}
-	codeCollapsable
 />
 
 **Optionen für `_hasButtons`:**
@@ -128,7 +124,6 @@ Mit `_pageSizeOptions` ermöglichen Sie Nutzern, die Anzahl der Elemente pro Sei
 <PaginationPreview
 	visibleProperties={['_pageSize', '_pageSizeOptions']}
 	initialProps={{ _max: 200, _page: 1, _pageSize: 10, _pageSizeOptions: [10, 25, 50, 100] }}
-	codeCollapsable
 />
 
 #### Label und Tooltip-Ausrichtung
@@ -138,7 +133,6 @@ Das Attribut `_label` bietet eine optionale Beschriftung, und `_tooltipAlign` po
 <PaginationPreview
 	visibleProperties={['_label', '_tooltipAlign']}
 	initialProps={{ _max: 50, _page: 3, _pageSize: 5, _label: 'Seiten-Navigation', _tooltipAlign: 'top' }}
-	codeCollapsable
 />
 
 #### Events

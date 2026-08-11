@@ -5,17 +5,14 @@ import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 import type { JSX } from '@public-ui/components';
 import { DialogVariantProperty, MultiLineTextProperty } from '../properties';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-type DialogPreviewProps = JSX.KolDialog & { _slot?: string };
-
-interface DialogPreviewComponentProps {
-	initialProps?: DialogPreviewProps;
-	visibleProperties?: (keyof JSX.KolDialog | '_slot')[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
+interface DialogPreviewProps extends JSX.KolDialog {
+	_slot?: string;
 }
 
-const DialogPreview: React.FC<DialogPreviewComponentProps> = (props) => {
+const DialogPreview: React.FC<PreviewDefaults<DialogPreviewProps>> = (props) => {
 	const dialogRef = useRef<HTMLKolDialogElement>(null);
 
 	const defaultProps = React.useMemo<DialogPreviewProps>(
@@ -30,17 +27,14 @@ const DialogPreview: React.FC<DialogPreviewComponentProps> = (props) => {
 
 	return (
 		<Preview<DialogPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_width: <KolInputText _label="Width" />,
 				_variant: <DialogVariantProperty label="Variant" defaultValue="card" />,
 				_slot: <MultiLineTextProperty label="Content" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolDialog"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.DEFAULT}
 			slotKey="_slot"
 		>

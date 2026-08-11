@@ -22,8 +22,7 @@ Darstellung eines Icons mit beschreibendem Label:
 <IconPreview
 	visibleProperties={[]}
 	initialProps={{ _label: 'Haus', _icons: 'kolicon-house' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -65,7 +64,7 @@ Icons erfordern eine barrierefreie Beschreibung für Nutzer:innen mit Seheinschr
 
 Testen Sie die verschiedenen Icon-Eigenschaften:
 
-<IconPreview codeCollapsable />
+<IconPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -76,7 +75,6 @@ Das Icon wird über die Property `_icons` mit Klassenamen definiert. Das Label w
 <IconPreview
 	visibleProperties={['_icons', '_label']}
 	initialProps={{ _label: 'Haus', _icons: 'kolicon-house' }}
-	codeCollapsable
 />
 
 #### Verfügbare Icon-Fonts

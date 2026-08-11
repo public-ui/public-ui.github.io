@@ -4,24 +4,20 @@ import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface InputNumberPreviewComponentProps {
-	initialProps?: JSX.KolInputNumber;
-	visibleProperties?: (keyof JSX.KolInputNumber)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
-
-const InputNumberPreview = (props: InputNumberPreviewComponentProps) => {
+const InputNumberPreview = (props: PreviewDefaults<JSX.KolInputNumber>) => {
 	const defaultProps = React.useMemo<JSX.KolInputNumber>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-number.label' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
 		<Preview<JSX.KolInputNumber>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_placeholder: <KolInputText _label="Placeholder" />,
@@ -41,11 +37,7 @@ const InputNumberPreview = (props: InputNumberPreviewComponentProps) => {
 					<SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />
 				),
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolInputNumber"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => <KolInputNumber _touched {...componentProps} />}

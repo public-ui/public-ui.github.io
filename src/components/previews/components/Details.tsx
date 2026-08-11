@@ -4,28 +4,26 @@ import { BooleanProperty, LevelProperty, MultiLineTextProperty } from '../proper
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolDetails } from '@public-ui/react-v19';
 import { sanitizeHtml } from '../../../shares/sanitize';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-type DetailsPreviewProps = JSX.KolDetails & { _slot?: string };
-
-interface DetailsPreviewComponentProps {
-	initialProps?: DetailsPreviewProps;
-	visibleProperties?: (keyof JSX.KolDetails | '_slot')[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
+interface DetailsPreviewProps extends JSX.KolDetails {
+	_slot?: string;
 }
 
-const DetailsPreview: React.FC<DetailsPreviewComponentProps> = (props) => {
+const DetailsPreview: React.FC<PreviewDefaults<DetailsPreviewProps>> = (props) => {
 	const defaultProps = React.useMemo<DetailsPreviewProps>(
 		() => ({
 			_label: 'Details Element',
 			_slot:
 				'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
 		}),
-		[],
+		[]
 	);
 
 	return (
 		<Preview<DetailsPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_level: <LevelProperty label="Heading Level" defaultValue={0} />,
@@ -33,11 +31,7 @@ const DetailsPreview: React.FC<DetailsPreviewComponentProps> = (props) => {
 				_open: <BooleanProperty label="Open" />,
 				_slot: <MultiLineTextProperty label="Content" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolDetails"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.DEFAULT}
 			slotKey="_slot"
 		>

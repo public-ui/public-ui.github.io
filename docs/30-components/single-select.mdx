@@ -24,8 +24,7 @@ Darstellung der Komponente mit den wesentlichen Eigenschaften. Code kann eingebl
 	initialProps={{
 		_placeholder: 'Bitte wählen Sie eine Option',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -87,7 +86,7 @@ Die **SingleSelect**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 
 Testen Sie die verschiedenen Eigenschaften der SingleSelect-Komponente:
 
-<SingleSelectPreview codeCollapsable />
+<SingleSelectPreview />
 
 ### Funktionalitäten (mit Code)
 
@@ -95,7 +94,10 @@ Testen Sie die verschiedenen Eigenschaften der SingleSelect-Komponente:
 
 Standard-auswahl mit Beschriftung und Optionsliste:
 
-<SingleSelectPreview visibleProperties={['_label', '_options']} codeCollapsable codeCollapsed />
+<SingleSelectPreview 
+	visibleProperties={['_label', '_options']} 
+	sourceCodeDetailsCollapsed
+/>
 
 #### Placeholder
 
@@ -106,8 +108,7 @@ Ein Placeholder-Text wird angezeigt, wenn noch keine Option ausgewählt wurde:
 	initialProps={{
 		_placeholder: 'Bitte wählen Sie eine Option',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Formularattribute
@@ -116,8 +117,7 @@ Standard-Attribute für Formulare:
 
 <SingleSelectPreview
 	visibleProperties={['_label', '_required', '_disabled', '_hideLabel', '_msg', '_hideMsg']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -137,8 +137,7 @@ Der Clear-Button ermöglicht es, die aktuelle Auswahl zu löschen:
 	initialProps={{
 		_hasClearButton: true,
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Icons
@@ -150,8 +149,7 @@ Links und rechts vom Eingabefeld können Icons angezeigt werden:
 	initialProps={{
 		_icons: 'kolicon-cogwheel',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Hinweistext und Fehlermeldung
@@ -163,8 +161,7 @@ Hinweistexte können vor der Eingabe bereitgestellt werden, Fehlermeldungen nach
 	initialProps={{
 		_hint: 'Ergänzende Hinweise zur Auswahl',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Dropdown-Höhe
@@ -176,8 +173,7 @@ Die maximale Anzahl sichtbarer Optionen wird über `_rows` gesteuert:
 	initialProps={{
 		_rows: 3,
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ### Events

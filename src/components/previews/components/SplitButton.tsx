@@ -4,14 +4,9 @@ import { BooleanProperty, AlignProperty, IconsProperty, VariantProperty } from '
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSplitButton, KolToolbar } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 import { variantButtonOptions } from '../properties/VariantProperty';
-
-interface SplitButtonPreviewComponentProps {
-	initialProps?: JSX.KolSplitButton;
-	visibleProperties?: (keyof JSX.KolSplitButton)[];
-	codeCollapsable?: boolean;
-	codeCollapsed?: boolean;
-}
 
 const toolbarItems: JSX.KolToolbar['_items'] = [
 	{
@@ -36,7 +31,7 @@ const toolbarItems: JSX.KolToolbar['_items'] = [
 	},
 ];
 
-const SplitButtonPreview: React.FC<SplitButtonPreviewComponentProps> = (props) => {
+const SplitButtonPreview: React.FC<PreviewDefaults<JSX.KolSplitButton>> = (props) => {
 	const defaultProps = React.useMemo<JSX.KolSplitButton>(
 		() => ({
 			_label: translate({ id: 'preview.component.split-button.label' }),
@@ -46,6 +41,7 @@ const SplitButtonPreview: React.FC<SplitButtonPreviewComponentProps> = (props) =
 
 	return (
 		<Preview<JSX.KolSplitButton>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_variant: <VariantProperty label="Variant" defaultValue="normal" variantOptions={variantButtonOptions} />,
@@ -54,11 +50,7 @@ const SplitButtonPreview: React.FC<SplitButtonPreviewComponentProps> = (props) =
 				_disabled: <BooleanProperty label="Disabled" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolSplitButton"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
-			codeCollapsed={props.codeCollapsed}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(componentProps) => (

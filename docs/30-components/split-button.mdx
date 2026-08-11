@@ -21,8 +21,7 @@ Standard Split-Button mit Kontextmenü:
 
 <SplitButtonPreview
 	visibleProperties={['_label', '_variant', '_tooltipAlign', '_icons', '_disabled', '_hideLabel']}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -74,7 +73,7 @@ Standard Split-Button mit Kontextmenü:
 
 ### Playground
 
-<SplitButtonPreview codeCollapsable />
+<SplitButtonPreview  />
 
 ### Funktionalitäten (mit Code)
 
@@ -84,7 +83,6 @@ Mindestangaben für einen funktionsfähigen Split-Button: `_label`.
 
 <SplitButtonPreview
 	visibleProperties={['_label']}
-	codeCollapsable
 />
 
 #### Varianten
@@ -94,7 +92,6 @@ Der Split-Button unterstützt verschiedene visuelle Varianten für unterschiedli
 <SplitButtonPreview
 	visibleProperties={['_variant']}
 	initialProps={{ _variant: 'primary' }}
-	codeCollapsable
 />
 
 **Verfügbare Varianten:**
@@ -112,7 +109,6 @@ Icons können über `_icons` hinzugefügt und das Label über `_hideLabel` verbo
 
 <SplitButtonPreview
 	visibleProperties={['_icons', '_hideLabel']}
-	codeCollapsable
 />
 
 #### Tooltip und Tastaturkürzel
@@ -121,7 +117,6 @@ Tooltip-Position und Tastaturkürzel konfigurieren:
 
 <SplitButtonPreview
 	visibleProperties={['_tooltipAlign', '_shortKey']}
-	codeCollapsable
 />
 
 #### Deaktivierter Zustand
@@ -131,7 +126,6 @@ Der Split-Button kann über `_disabled` deaktiviert werden:
 <SplitButtonPreview
 	visibleProperties={['_disabled']}
 	initialProps={{ _disabled: true }}
-	codeCollapsable
 />
 
 #### Events

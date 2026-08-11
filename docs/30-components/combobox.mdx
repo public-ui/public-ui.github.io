@@ -26,8 +26,7 @@ Standard-Combobox mit Vorschlagsliste:
 <ComboboxPreview
 	initialProps={{ _label: 'Freie Eingabe mit Vorschlägen' }}
 	visibleProperties={[]}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -175,7 +174,6 @@ Testen Sie die verschiedenen Eigenschaften der Combobox-Komponente:
 		'_hideLabel',
 		'_hideMsg',
 	]}
-	codeCollapsable
 />
 
 ### Funktionalitäten (mit Code)
@@ -184,7 +182,7 @@ Testen Sie die verschiedenen Eigenschaften der Combobox-Komponente:
 
 Die sichtbare Beschriftung wird über `_label` gesetzt.
 
-<ComboboxPreview visibleProperties={['_label']} codeCollapsable codeCollapsed />
+<ComboboxPreview visibleProperties={['_label']} sourceCodeDetailsCollapsed />
 
 #### Platzhalter und Hint-Text
 
@@ -196,15 +194,14 @@ Der Platzhalter wird angezeigt, wenn das Feld leer ist. Der Hint-Text gibt zusä
 		_placeholder: 'Bitte wählen oder eingeben...',
 		_hint: 'Wählen Sie aus der Liste oder geben Sie eine Alternative ein.',
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Formularattribute
 
 Standard-Attribute für Formulare wie `_disabled`, `_required` und `_touched`:
 
-<ComboboxPreview visibleProperties={['_disabled', '_required', '_touched']} codeCollapsable codeCollapsed />
+<ComboboxPreview visibleProperties={['_disabled', '_required', '_touched']} sourceCodeDetailsCollapsed />
 
 #### Fehlermeldungen
 
@@ -213,8 +210,7 @@ Validierungsfehler werden über `_msg` dargestellt:
 <ComboboxPreview
 	visibleProperties={['_msg']}
 	initialProps={{ _msg: 'Die Programmiersprache ist erforderlich.' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Icons
@@ -224,8 +220,7 @@ Icons können links oder rechts über `_icons` hinzugefügt werden:
 <ComboboxPreview
 	visibleProperties={['_icons']}
 	initialProps={{ _icons: 'kolicon-cogwheel' }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Clear-Button
@@ -235,15 +230,14 @@ Der Clear-Button kann über `_hasClearButton` gesteuert werden (standardmäßig 
 <ComboboxPreview
 	visibleProperties={['_hasClearButton']}
 	initialProps={{ _hasClearButton: true }}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Versteckte Beschriftung
 
 Die Beschriftung kann über `_hideLabel` visuell verborgen werden (bleibt für Screenreader sichtbar):
 
-<ComboboxPreview visibleProperties={['_hideLabel']} initialProps={{ _hideLabel: true }} codeCollapsable codeCollapsed />
+<ComboboxPreview visibleProperties={['_hideLabel']} initialProps={{ _hideLabel: true }} sourceCodeDetailsCollapsed />
 
 ### Events
 

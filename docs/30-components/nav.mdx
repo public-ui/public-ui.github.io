@@ -23,9 +23,8 @@ Darstellung der Navigationsleiste mit Hierarchie und Icons.
 
 <NavPreview
 	visibleProperties={[]}
-	codeCollapsable
 	initialProps={{}}
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -86,7 +85,7 @@ Nutzen Sie `_hasCompactButton`, um einen Button unterhalb der Navigation anzuzei
 
 ### Playground
 
-<NavPreview codeCollapsable />
+<NavPreview  />
 
 ### Funktionalitäten (mit Code)
 
@@ -103,8 +102,7 @@ Einfache flache Navigation ohne Untermenüs.
 			{ _href: '#about', _label: 'Über uns' },
 		],
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Hierarchische Navigation mit Untermenüs
@@ -128,8 +126,7 @@ Navigation mit mehreren Ebenen durch Nutzung von `_children`:
 			{ _href: '#about', _icons: 'kolicon-info', _label: 'Über uns' },
 		],
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Kompakter Modus mit Button
@@ -142,8 +139,7 @@ Compact-Button zum Umschalten zwischen voller und Icon-nur Anzeige:
 		_label: 'Navigation',
 		_hasCompactButton: true,
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Icons auch im erweiterten Modus
@@ -156,8 +152,7 @@ Icons werden neben Labels auch in der normalen (nicht kompakten) Darstellung ang
 		_label: 'Navigation',
 		_hasIconsWhenExpanded: true,
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Kompakte Labels mit Tooltips
@@ -170,8 +165,7 @@ Hide-Label-Modus versteckt die Beschriftung und zeigt sie nur als Tooltip bei Ho
 		_label: 'Navigation',
 		_hideLabel: true,
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Nicht-kollabierbare Navigation
@@ -184,8 +178,7 @@ Wenn `_collapsible` deaktiviert ist, können Untermenüs nicht geöffnet/geschlo
 		_label: 'Navigation',
 		_collapsible: false,
 	}}
-	codeCollapsable
-	codeCollapsed
+	sourceCodeDetailsCollapsed
 />
 
 #### Events

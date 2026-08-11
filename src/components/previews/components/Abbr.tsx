@@ -5,39 +5,35 @@ import { KolInputText, KolAbbr } from '@public-ui/react-v19';
 import { MultiLineTextProperty } from '../properties';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-type AbbrPreviewProps = JSX.KolAbbr & { _slot?: string };
-
-interface AbbrPreviewComponentProps {
-	initialProps?: AbbrPreviewProps;
-	visibleProperties?: (keyof JSX.KolAbbr | '_slot')[];
-	codeCollapsable?: boolean;
+interface AbbrPreviewProps extends JSX.KolAbbr {
+	_slot?: string;
 }
 
-const AbbrPreview = (props: AbbrPreviewComponentProps) => {
+const AbbrPreview = (props: PreviewDefaults<AbbrPreviewProps>) => {
 	const defaultProps = React.useMemo<AbbrPreviewProps>(
 		() => ({
 			_label: translate({ id: 'preview.component.abbr.label' }),
 			_slot: translate({ id: 'preview.component.abbr.slot' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
 		<Preview<AbbrPreviewProps>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_slot: <MultiLineTextProperty label="Abbreviation" />,
 			}}
-			initialProps={{ ...props.initialProps, ...defaultProps }}
 			componentName="KolAbbr"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
 			layout={PreviewLayout.CENTERED}
 			slotKey="_slot"
 		>
 			{(props) => {
-				// eslint-disable-next-line react/prop-types
+				 
 				const { _slot, ...abbrProps } = props;
 				const sanitizedHtml = sanitizeHtml(_slot ?? '');
 				return (

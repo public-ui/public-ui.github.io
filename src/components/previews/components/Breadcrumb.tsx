@@ -4,14 +4,10 @@ import type { JSX } from '@public-ui/components';
 import { KolBreadcrumb } from '@public-ui/react-v19';
 import LinksProperty from '../properties/LinksProperty';
 import { translate } from '@docusaurus/Translate';
+import type { PreviewDefaults } from '../utils';
+import { getPreviewDefaults } from '../utils';
 
-interface BreadcrumbPreviewComponentProps {
-	initialProps?: JSX.KolBreadcrumb;
-	visibleProperties?: (keyof JSX.KolBreadcrumb)[];
-	codeCollapsable?: boolean;
-}
-
-const BreadcrumbPreview = (props: BreadcrumbPreviewComponentProps) => {
+const BreadcrumbPreview = (props: PreviewDefaults<JSX.KolBreadcrumb>) => {
 	const defaultProps = React.useMemo<JSX.KolBreadcrumb>(
 		() => ({
 			_label: translate({ id: 'preview.component.breadcrumb.label' }),
@@ -23,18 +19,16 @@ const BreadcrumbPreview = (props: BreadcrumbPreviewComponentProps) => {
 				{ _label: 'Aktuelle Seite', _href: '#/current' },
 			],
 		}),
-		[],
+		[]
 	);
 
 	return (
 		<Preview<JSX.KolBreadcrumb>
+			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_links: <LinksProperty label="Links" />,
 			}}
-			initialProps={{ ...defaultProps, ...props.initialProps }}
 			componentName="KolBreadcrumb"
-			visibleProperties={props.visibleProperties}
-			codeCollapsable={props.codeCollapsable}
 			layout={PreviewLayout.CENTERED}
 		>
 			{(props) => <KolBreadcrumb {...props} />}
