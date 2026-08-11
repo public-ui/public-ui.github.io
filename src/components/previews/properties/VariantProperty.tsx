@@ -1,21 +1,23 @@
 import { KolInputCheckbox } from '@public-ui/react-v19';
 import React from 'react';
 
-const ButtonVariantProperty = (props: {
+export const variantButtonOptions = ['normal', 'primary', 'secondary', 'tertiary', 'danger', 'ghost'];
+export const variantLinkOptions = ['normal', 'small'];
+
+const VariantProperty = (props: {
 	label: string;
 	defaultValue: string;
 	_value?: string;
+	variantOptions: string[];
 	_on?: {
 		onInput?: (event: Event, value: unknown) => void;
 	};
 }) => {
-	const variantOptions = ['normal', 'primary', 'secondary', 'tertiary', 'danger', 'ghost'] as const;
-
 	return (
 		<fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
 			<legend>{props.label}</legend>
 			<div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
-				{variantOptions.map((variant) => (
+				{props.variantOptions.map((variant) => (
 					<KolInputCheckbox
 						key={variant}
 						_label={variant.charAt(0).toUpperCase() + variant.slice(1)}
@@ -35,4 +37,4 @@ const ButtonVariantProperty = (props: {
 	);
 };
 
-export default ButtonVariantProperty;
+export default VariantProperty;

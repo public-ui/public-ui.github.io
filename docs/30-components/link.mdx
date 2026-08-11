@@ -109,18 +109,28 @@ Ein einfacher Link mit Label und href:
 Link mit einem Icon, das den Linkzweck visualisiert:
 
 <LinkPreview
-	visibleProperties={['_icons']}
+	visibleProperties={['_icons','_hideLabel' ]}
 	initialProps={{ _label: 'Mit Icon', _href: 'https://example.com', _icons: 'kolicon-external' }}
 	codeCollapsable
 />
 
-#### Link-Variationen
+#### Varianten
 
-Verschiedene Anzeigevarianten und Zustände:
+Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varianten zur Verfügung stehen und welche der Standardwert ist. Hier sind <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/link/link-variant?theme=desy-v11" _target="_blank" _label="die anderen Themes und ihre jeweiligen Varianten"></kol-link> zu sehen. Im Folgenden zeigen wir nur das Default Theme.
 
 <LinkPreview
-	visibleProperties={['_disabled', '_hideLabel', '_inline', '_target']}
-	initialProps={{ _label: 'Link-Variation', _href: 'https://example.com' }}
+	visibleProperties={['_variant']}
+	initialProps={{ _label: 'Link-Varianten', _variant: 'small' }}
+	codeCollapsable
+/>
+
+#### Link-Zustände
+
+Verschiedene Zustände:
+
+<LinkPreview
+	visibleProperties={['_disabled', '_inline', '_target']}
+	initialProps={{ _label: 'Link-Zustände', _href: 'https://example.com' }}
 	codeCollapsable
 />
 

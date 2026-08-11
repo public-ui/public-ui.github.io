@@ -1,9 +1,10 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, AlignProperty, IconsProperty, ButtonVariantProperty } from '../properties';
+import { BooleanProperty, AlignProperty, IconsProperty, VariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolButton, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { variantButtonOptions } from '../properties/VariantProperty';
 
 interface ButtonPreviewComponentProps {
 	initialProps?: JSX.KolButton;
@@ -16,14 +17,14 @@ const ButtonPreview = (props: ButtonPreviewComponentProps) => {
 		() => ({
 			_label: translate({ id: 'preview.component.button.label' }),
 		}),
-		[],
+		[]
 	);
 
 	return (
 		<Preview<JSX.KolButton>
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_variant: <ButtonVariantProperty label="Variant" defaultValue="normal" />,
+				_variant: <VariantProperty label="Variant" defaultValue="normal" variantOptions={variantButtonOptions} />,
 				_type: (
 					<KolSelect
 						_label="Type"

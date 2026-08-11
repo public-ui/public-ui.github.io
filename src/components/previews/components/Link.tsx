@@ -1,9 +1,10 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, AlignProperty, IconsProperty } from '../properties';
+import { BooleanProperty, AlignProperty, IconsProperty, VariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolLink } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
+import { variantLinkOptions } from '../properties/VariantProperty';
 
 type LinkPreviewProps = JSX.KolLink;
 
@@ -21,7 +22,7 @@ const LinkPreview = (props: LinkPreviewComponentProps) => {
 			_href: translate({ id: 'preview.component.link.href' }),
 			_target: '_blank',
 		}),
-		[],
+		[]
 	);
 
 	return (
@@ -30,6 +31,7 @@ const LinkPreview = (props: LinkPreviewComponentProps) => {
 				_label: <KolInputText _label="Label" />,
 				_href: <KolInputText _label="Href" />,
 				_target: <KolInputText _label="Target" />,
+				_variant: <VariantProperty label="Variant" defaultValue="normal" variantOptions={variantLinkOptions} />,
 				_icons: <IconsProperty label="Icons" />,
 				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
 				_disabled: <BooleanProperty label="Disabled" />,
