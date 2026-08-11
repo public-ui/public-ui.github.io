@@ -167,3 +167,11 @@ Dies ist eine Einschränkung in der ARIA-Implementierung von Firefox. Bis das Pr
 Toasts werden in einem Container gerendert, der als erstes Element in `<body>` eingefügt und mit einem hohen `z-index` versehen wird.
 
 Bei der Verwendung von [modalen Dialogen](https://developer.mozilla.org/de/docs/Web/HTML/Element/dialog) werden diese über Toasts auf der [Top Layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer) gerendert. Daher werden Toast-Nachrichten immer von Modalen blockiert. Wir empfehlen, Toasts in Modalen komplett zu vermeiden und Rückmeldungen direkt im Modal zu geben.
+
+### kol-dialog
+
+KoliBri verwendet das native <dialog>-Element. Deswegen muss folgendes beachtet werden:
+- cancel Event wird bei einem Abbruch durch den Nutzer (z. B. ESC-Taste) gefeuert.
+- close Event feuert immer beim endgültigen Schließen (egal ob durch API, Formular oder nach einem Abbruch).
+- Wenn man im cancel-Event event.preventDefault() aufruft, bleibt der Dialog beim ersten Druck auf die ESC-Taste offen. Drückt der Nutzer jedoch ein zweites Mal ESC, ohne in der Zwischenzeit mit dem Dokument zu interagieren (z. B. durch einen Klick), wird der Dialog trotzdem zwangsgeschlossen -> User soll  nicht eingesperrt werden können.
+
