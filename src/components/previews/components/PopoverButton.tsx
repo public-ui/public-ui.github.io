@@ -1,18 +1,13 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import {
-	AlignProperty,
-	BooleanProperty,
-	ButtonVariantProperty,
-	IconsProperty,
-	MultiLineTextProperty,
-} from '../properties';
+import { AlignProperty, BooleanProperty, VariantProperty, IconsProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolPopoverButton } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults } from '../utils';
+import { variantButtonOptions } from '../properties/VariantProperty';
 
 interface PopoverButtonPreviewProps extends JSX.KolPopoverButton {
 	_slot?: string;
@@ -34,7 +29,7 @@ const PopoverButtonPreview: React.FC<PreviewDefaults<PopoverButtonPreviewProps>>
 				_label: <KolInputText _label="Label" />,
 				_popoverAlign: <AlignProperty label="Popover Align" defaultValue="bottom" />,
 				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
-				_variant: <ButtonVariantProperty label="Variant" defaultValue="normal" />,
+				_variant: <VariantProperty label="Variant" defaultValue="normal" variantOptions={variantButtonOptions} />,
 				_icons: <IconsProperty label="Icons" />,
 				_slot: <MultiLineTextProperty label="Content" />,
 				_disabled: <BooleanProperty label="Disabled" />,

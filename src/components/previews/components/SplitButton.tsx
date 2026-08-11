@@ -1,11 +1,12 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, AlignProperty, IconsProperty, ButtonVariantProperty } from '../properties';
+import { BooleanProperty, AlignProperty, IconsProperty, VariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSplitButton, KolToolbar } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults } from '../utils';
+import { variantButtonOptions } from '../properties/VariantProperty';
 
 const toolbarItems: JSX.KolToolbar['_items'] = [
 	{
@@ -43,7 +44,7 @@ const SplitButtonPreview: React.FC<PreviewDefaults<JSX.KolSplitButton>> = (props
 			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_variant: <ButtonVariantProperty label="Variant" defaultValue="normal" />,
+				_variant: <VariantProperty label="Variant" defaultValue="normal" variantOptions={variantButtonOptions} />,
 				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
 				_icons: <IconsProperty label="Icons" />,
 				_disabled: <BooleanProperty label="Disabled" />,

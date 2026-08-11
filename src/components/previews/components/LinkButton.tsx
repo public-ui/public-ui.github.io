@@ -1,12 +1,13 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, AlignProperty, IconsProperty, ButtonVariantProperty } from '../properties';
+import { BooleanProperty, AlignProperty, IconsProperty, VariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolLinkButton, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults } from '../utils';
-
+import { variantButtonOptions } from '../properties/VariantProperty';
+        
 const LinkButtonPreview = (props: PreviewDefaults<JSX.KolLinkButton>) => {
 	const defaultProps = React.useMemo<JSX.KolLinkButton>(
 		() => ({
@@ -23,7 +24,7 @@ const LinkButtonPreview = (props: PreviewDefaults<JSX.KolLinkButton>) => {
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_href: <KolInputText _label="Href" />,
-				_variant: <ButtonVariantProperty label="Variant" defaultValue="primary" />,
+				_variant: <VariantProperty label="Variant" defaultValue="normal" variantOptions={variantButtonOptions} />,
 				_target: (
 					<KolSelect
 						_label="Target"

@@ -1,11 +1,12 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, AlignProperty, IconsProperty } from '../properties';
+import { BooleanProperty, AlignProperty, IconsProperty, VariantProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolLink } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults } from '../utils';
+import { variantLinkOptions } from '../properties/VariantProperty';
 
 const LinkPreview = (props: PreviewDefaults<JSX.KolLink>) => {
 	const defaultProps = React.useMemo<JSX.KolLink>(
@@ -24,6 +25,7 @@ const LinkPreview = (props: PreviewDefaults<JSX.KolLink>) => {
 				_label: <KolInputText _label="Label" />,
 				_href: <KolInputText _label="Href" />,
 				_target: <KolInputText _label="Target" />,
+				_variant: <VariantProperty label="Variant" defaultValue="normal" variantOptions={variantLinkOptions} />,
 				_icons: <IconsProperty label="Icons" />,
 				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
 				_disabled: <BooleanProperty label="Disabled" />,
