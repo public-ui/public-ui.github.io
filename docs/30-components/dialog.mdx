@@ -106,23 +106,6 @@ Die Beschriftung wird über `_label` gesetzt. Der Inhalt wird über den Slot ber
 	sourceCodeDetailsCollapsed
 />
 
-#### Varianten
-
-Der Dialog unterstützt zwei Varianten:
-
-<DialogPreview
-	visibleProperties={['_variant']}
-	initialProps={{
-		_label: 'Dialog mit Card-Variante',
-		_variant: 'card',
-	}}
-	sourceCodeDetailsCollapsed
-/>
-
-**Verfügbare Varianten:**
-- `blank`: Volle Breite, minimales Styling (Standard)
-- `card`: Mit Abstand und Kartendesign
-
 #### Breite
 
 Die Breite des Dialogs wird über `_width` gesteuert:
@@ -137,6 +120,25 @@ Die Breite des Dialogs wird über `_width` gesteuert:
 />
 
 **Hinweis:** Die maximale Breite ist auf 100% begrenzt.
+
+#### Varianten
+
+Der Dialog unterstützt zwei Varianten:
+
+<DialogPreview
+	visibleProperties={['_variant']}
+	initialProps={{
+		_label: 'Dialog mit Card-Variante',
+		_variant: 'card',
+	}}
+	sourceCodeDetailsCollapsed
+/>
+
+**Verfügbare Varianten:**
+- `blank`: Minimales Design - Themeabhängig Hintergrund und Abrundung
+- `card`: Nutzt das Design der Karte
+
+
 
 #### Callback-Handling
 

@@ -3,6 +3,7 @@ import React from 'react';
 
 export const variantButtonOptions = ['normal', 'primary', 'secondary', 'tertiary', 'danger', 'ghost'];
 export const variantLinkOptions = ['normal', 'small'];
+export const variantDialogOptions = ['card', 'blank'];
 
 const VariantProperty = (props: {
 	label: string;

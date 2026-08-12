@@ -1,12 +1,13 @@
 import React, { useRef } from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { DialogVariantProperty, MultiLineTextProperty } from '../properties';
+import { VariantProperty, MultiLineTextProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolButton, KolInputText, KolModal } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults } from '../utils';
+import { variantDialogOptions } from '../properties/VariantProperty';
 
 interface ModalPreviewProps extends JSX.KolModal {
 	_slot?: string;
@@ -30,7 +31,7 @@ const ModalPreview = (props: PreviewDefaults<ModalPreviewProps>) => {
 				_label: <KolInputText _label="Label" />,
 				_width: <KolInputText _label="Width" />,
 				_slot: <MultiLineTextProperty label="Content" />,
-				_variant: <DialogVariantProperty label="Variant" defaultValue="card" />,
+				_variant: <VariantProperty label="Variant" defaultValue="card" variantOptions={variantDialogOptions} />,
 			}}
 			componentName="KolModal"
 			layout={PreviewLayout.CENTERED}
