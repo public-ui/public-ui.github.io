@@ -1,0 +1,51 @@
+---
+title: Servicestandard
+description: Wie KoliBri die Qualitätsanforderungen der DIN SPEC 66336 (Servicestandard) für digitale Verwaltungsleistungen durch standardisierte und barrierefreie Komponenten operationalisiert.
+tags:
+  - Barrierefreiheit
+  - Standards
+---
+
+# DIN SPEC 66336
+
+Die [DIN SPEC 66336] _„Quality Requirements for Online Services and Portals of Public Administration"_ (Servicestandard) legt überprüfbare Qualitätsanforderungen für digitale Verwaltungsleistungen fest. Sie wurde im März 2025 veröffentlicht, vom Bundesministerium des Innern und für Heimat (BMI) initiiert und baut auf dem OZG-Servicestandard aus dem Jahr 2020 auf. Über die geplante Onlinezugangsstandard-Verordnung ([OZG-SV]) soll sie für neue Onlineservices rechtsverbindlich werden. Der Standard umfasst 13 Qualitätsprinzipien über die Phasen Analyse, Umsetzung, Betrieb und Weiterentwicklung.
+
+KoliBri wurde mit dem Ziel entwickelt, die in der [DIN SPEC 66336] formulierten Anforderungen an barrierefreie, nutzendenzentrierte und wiederverwendbare Benutzeroberflächen technisch in standardisierte Komponenten umzusetzen. Anstatt jedes Vorhaben die Barrierefreiheit neu begründen zu müssen, operationalisiert KoliBri die relevanten Prinzipien bereits durch Konstruktion.
+
+## Bezug zu den Qualitätsprinzipien
+
+Die DIN SPEC 66336 definiert 13 Prinzipien. Die folgenden vier sind für KoliBri maßgeblich:
+
+**Prinzip 5 – Bestehendes wiederverwenden und Neues gemeinsam gestalten**
+KoliBri stellt eine Bibliothek wiederverwendbarer, standardisierter Komponenten bereit. Anstatt barrierefreie Lösungen in jedem Projekt neu zu erfinden, können Vorhaben auf geprüfte Bausteine zurückgreifen.
+
+**Prinzip 6 – Barrierefreie Nutzung sicherstellen und Teilhabe stärken**
+Der Standard fordert ein einheitliches Barrierefreiheitsniveau nach [BITV 2.0] – über die Länderregelungen hinaus – sowie eine Erklärung zur Barrierefreiheit (EzB) nebst Feedback-Mechanismus. Leichte Sprache ist nach DIN SPEC 33429, Einfache Sprache nach DIN 85811 anzubieten. KoliBri-Komponenten sind darauf ausgelegt, dieses Niveau verlässlich zu erreichen (siehe [Technische Umsetzung](#technische-umsetzung-der-barrierefreiheit)).
+
+**Prinzip 7 – Offene Standards beachten und Schnittstellen bereitstellen**
+KoliBri basiert auf offenen Webstandards: Die Komponenten werden als Web Components (Custom Elements) umgesetzt und sind damit technologie- und fachagnostisch sowie frameworkübergreifend einsetzbar.
+
+**Prinzip 10 – Open Source nutzen und Code teilen**
+KoliBri ist eine Open-Source-Komponentenbibliothek. Code und Erkenntnisse können geteilt, nachgenutzt und gemeinsam weiterentwickelt werden.
+
+## Technische Umsetzung der Barrierefreiheit
+
+Für Prinzip 6 verlangt die [DIN SPEC 66336] die Einhaltung der [BITV 2.0]. Diese setzt die europäische Norm [EN 301 549] um, die wiederum die [WCAG 2.1] (Stufe AA) einschließt. KoliBri erfüllt diese Anforderungen durch die Konstruktion der Komponenten:
+
+- **Semantisch korrektes HTML:** Die Komponenten verwenden die nativen HTML-Elemente und deren Semantik.
+- **Tastaturbedienbarkeit:** Alle interaktiven Komponenten sind vollständig per Tastatur bedienbar und verfügen über ein nachvollziehbares Fokus-Verhalten.
+- **ARIA-Rollen und -Zustände:** Standardisierte ARIA-Rollen, -Zustände und -Eigenschaften sorgen für eine korrekte Ausgabe an assistierende Technologien wie Screenreader.
+- **Kontrastgeprüfte Themes:** Die durch das ITZBund gepflegten Themes werden auf ausreichende Farbkontraste geprüft.
+- **Usability nach DIN EN ISO 9241-110:** Die Dialoggestaltung folgt den anerkannten ergonomischen Grundsätzen.
+
+Die Einhaltung wird regelmäßig durch den BITV-Test geprüft. Die aktuellen Ergebnisse sind unter [Testergebnisse](/docs/test-results) veröffentlicht.
+
+## Fazit
+
+KoliBri macht die Anforderungen der [DIN SPEC 66336] für Entwickelnde unmittelbar anwendbar: Wer KoliBri-Komponenten einsetzt, greift auf geprüfte, wiederverwendbare und barrierefreie Bausteine zurück und erfüllt damit zentrale Qualitätsprinzipien des Servicestandards. Die zugrundeliegenden Leitlinien finden sich im [Manifest](/docs/manifest).
+
+[DIN SPEC 66336]: https://servicestandard.gov.de/din-spec-66336/
+[OZG-SV]: https://www.gesetze-im-internet.de/ozg-sv/
+[BITV 2.0]: https://www.gesetze-im-internet.de/bitv_2_0/
+[EN 301 549]: https://www.etsi.org/standards-search#search=EN%20301%20549
+[WCAG 2.1]: https://www.w3.org/TR/WCAG21/
