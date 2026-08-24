@@ -7,6 +7,13 @@ import Readme from '@site/readmes/textarea/readme.md';
 import TextAreaPreview from '@site/src/components/previews/components/Textarea';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import HideLabelNote from '@site/shared/a11y-properties/hide-label.md';
+import TouchedMsgNote from '@site/shared/a11y-properties/touched-msg.md';
+import HideMsgNote from '@site/shared/a11y-properties/hide-msg.md';
+import RequiredNote from '@site/shared/a11y-properties/required.md';
+import IconsDecorativeNote from '@site/shared/a11y-properties/icons-decorative.md';
+import AccessKeyNote from '@site/shared/a11y-properties/access-key.md';
+import ShortKeyNote from '@site/shared/a11y-properties/short-key.md';
 
 
 # Textarea
@@ -38,7 +45,13 @@ Die **Textarea**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt und 
 - **Fehlermeldungen**: Fehlerhafte Eingaben können über das Attribut `_msg` mit aussagekräftigen Fehlermeldungen versehen werden, die von assistiven Technologien erkannt und vorgelesen werden.
 - **Zeichenzähler**: Bei aktiviertem Zeichenzähler (`_has-counter`) wird der Status mit einer Verzögerung von 500 ms aktualisiert, um Screenreader nicht bei jeder Eingabe zu unterbrechen. Zusätzlich wird ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet (z.B. "Sie können bis zu 100 Zeichen eingeben").
 - **Fokusmanagement**: Die Textarea ist vollständig über die Tastatur bedienbar und bietet klare Fokusindikatoren.
-- **Pflichtfelder**: Mit `_required` gekennzeichnete Felder werden korrekt an assistive Technologien kommuniziert.
+- <TouchedMsgNote />
+- <HideMsgNote />
+- <RequiredNote />
+- <IconsDecorativeNote />
+- <HideLabelNote />
+- <AccessKeyNote />
+- <ShortKeyNote />
 
 ### Links und Referenzen
 

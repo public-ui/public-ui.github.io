@@ -1,0 +1,1 @@
+`_msg` wird erst sichtbar und für Screenreader angekündigt, wenn das Feld als `_touched` gilt. `_touched` wird automatisch beim Verlassen des Feldes (`blur`) gesetzt. Eine bereits vor der ersten Interaktion gesetzte `_msg` bleibt bis dahin unsichtbar — soll eine Meldung sofort angezeigt werden, muss zusätzlich `_touched="true"` gesetzt werden.

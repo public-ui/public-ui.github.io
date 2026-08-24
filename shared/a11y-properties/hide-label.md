@@ -1,0 +1,1 @@
+Auch bei ausgeblendeter sichtbarer Beschriftung (`_hideLabel`) bleibt der zugängliche Name des Eingabefelds erhalten. Die Beschriftung wird als **Tooltip** angezeigt und von Screenreadern weiterhin vorgelesen.

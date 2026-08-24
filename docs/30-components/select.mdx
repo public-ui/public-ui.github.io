@@ -6,6 +6,13 @@ description: Beschreibung, Spezifikation und Beispiele für die Select-Komponent
 import Readme from '@site/readmes/select/readme.md';
 import SelectPreview from '@site/src/components/previews/components/Select';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import HideLabelNote from '@site/shared/a11y-properties/hide-label.md';
+import TouchedMsgNote from '@site/shared/a11y-properties/touched-msg.md';
+import HideMsgNote from '@site/shared/a11y-properties/hide-msg.md';
+import RequiredNote from '@site/shared/a11y-properties/required.md';
+import IconsDecorativeNote from '@site/shared/a11y-properties/icons-decorative.md';
+import AccessKeyNote from '@site/shared/a11y-properties/access-key.md';
+import ShortKeyNote from '@site/shared/a11y-properties/short-key.md';
 
 # Select
 
@@ -37,6 +44,13 @@ visibleProperties={['_label', '_options', '_multiple', '_rows', '_disabled', '_r
 - Die Mehrfachauswahl basiert auf dem nativen HTML-Attribut `multiple`.
 - Deaktivierte Optionen (`disabled`) werden von Screenreadern weiterhin berücksichtigt und angekündigt. Dadurch kann die Anzahl der angekündigten Optionen von der tatsächlich auswählbaren Anzahl abweichen.
 - Vermeiden Sie deaktivierte Optionen (disabled), sofern dies fachlich möglich ist. Sie können die Orientierung für Nutzende assistiver Technologien erschweren.
+- <TouchedMsgNote />
+- <HideMsgNote />
+- <RequiredNote />
+- <IconsDecorativeNote />
+- <HideLabelNote />
+- <AccessKeyNote />
+- <ShortKeyNote />
 
 ### Konkrete Designentscheidungen
 
