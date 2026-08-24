@@ -125,7 +125,6 @@ Stencil gibt die zu vergleichenden Objekte nicht mit ihrem Ursprünglichen Type 
 compareFn: (a, b) => (a as unknown as PlantRecord).name.localeCompare((b as unknown as PlantRecord).name)
 ```
 
-
 **Sortierungs-Verhalten:**
 - Einzelsortierung (Standard): Es wird nur eine Spalte auf einmal sortiert. Beim Sortieren einer neuen Spalte wird die Sortierung der vorherigen aufgehoben.
 - Multi-Sort mit `_allowMultiSort`: Der Benutzer kann mehrere Spalten gleichzeitig sortieren. Die Sortierrichtung wechselt zwischen aufsteigend, absteigend und keine Sortierung.
