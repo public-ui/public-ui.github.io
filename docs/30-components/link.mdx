@@ -19,11 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard-Link mit Text und optionalem Icon-Symbol:
 
-<LinkPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Beispiel-Link', _href: 'https://example.com' }}
-	sourceCodeDetailsCollapsed
-/>
+<LinkPreview context="example" initialProps={{ _label: 'Beispiel-Link', _href: 'https://example.com' }} />
 
 ## Barrierefreiheit
 
@@ -88,7 +84,7 @@ Ja, Sie können mehrere Icon-Klassen über das `_icons`-Attribut kombinieren.
 
 Testen Sie die verschiedenen Eigenschaften der Link-Komponente:
 
-<LinkPreview />
+<LinkPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -97,9 +93,9 @@ Testen Sie die verschiedenen Eigenschaften der Link-Komponente:
 Ein einfacher Link mit Label und href:
 
 <LinkPreview
+	context="feature"
 	visibleProperties={[]}
 	initialProps={{ _label: 'Beispiel-Link', _href: 'https://example.com' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Link mit Icon
@@ -107,6 +103,7 @@ Ein einfacher Link mit Label und href:
 Link mit einem Icon, das den Linkzweck visualisiert:
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_icons','_hideLabel' ]}
 	initialProps={{ _label: 'Mit Icon', _href: 'https://example.com', _icons: 'kolicon-external' }}
 />
@@ -116,6 +113,7 @@ Link mit einem Icon, das den Linkzweck visualisiert:
 Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varianten zur Verfügung stehen und welche der Standardwert ist. Hier sind <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/link/link-variant?theme=desy-v11" _target="_blank" _label="die anderen Themes und ihre jeweiligen Varianten"></kol-link> zu sehen. Im Folgenden zeigen wir nur das Default Theme.
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_variant']}
 	initialProps={{ _label: 'Link-Varianten', _variant: 'small' }}
 />
@@ -125,6 +123,7 @@ Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varia
 Verschiedene Zustände:
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_disabled', '_inline', '_target']}
 	initialProps={{ _label: 'Link-Zustände', _href: 'https://example.com' }}
 />
@@ -134,6 +133,7 @@ Verschiedene Zustände:
 Link mit Download-Funktionalität:
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_download']}
 	initialProps={{ _label: 'Datei herunterladen', _href: 'https://example.com/datei.pdf', _download: 'datei.pdf' }}
 />
@@ -143,6 +143,7 @@ Link mit Download-Funktionalität:
 Konfiguration der Tooltip-Positionierung (bei `_hideLabel: true`):
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_hideLabel', '_tooltipAlign']}
 	initialProps={{ _label: 'Nur Icon', _href: 'https://example.com', _hideLabel: true, _icons: 'kolicon-external', _tooltipAlign: 'top' }}
 />
@@ -152,6 +153,7 @@ Konfiguration der Tooltip-Positionierung (bei `_hideLabel: true`):
 Erweiterte Accessibility-Konfigurationen:
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_ariaCurrentValue', '_ariaDescription']}
 	initialProps={{ _label: 'Aktive Seite', _href: '/current-page', _ariaCurrentValue: 'page', _ariaDescription: 'Dies ist die aktuelle Seite' }}
 />

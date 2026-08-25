@@ -21,11 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Komponente mit horizontalem Fortschrittsbalken und Beschriftung.
 
-<ProgressPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Fortschritt', _value: 65, _max: 100, _variant: 'bar' }}
-	sourceCodeDetailsCollapsed
-/>
+<ProgressPreview context="example" initialProps={{ _label: 'Fortschritt', _value: 65, _max: 100, _variant: 'bar' }} />
 
 ## Barrierefreiheit
 
@@ -76,7 +72,7 @@ Ja, die Progress-Komponente verarbeitet auch Dezimalzahlen, beispielsweise `_val
 
 ### Playground
 
-<ProgressPreview />
+<ProgressPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -85,9 +81,9 @@ Ja, die Progress-Komponente verarbeitet auch Dezimalzahlen, beispielsweise `_val
 Der horizontale Balken ist die Standard-Variante und eignet sich für die Darstellung in größeren Kontexten.
 
 <ProgressPreview
+	context="feature"
 	visibleProperties={['_label', '_value', '_max', '_variant']}
 	initialProps={{ _label: 'Progress', _value: 45, _max: 100, _variant: 'bar' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Zirkulärer Fortschrittsbalken
@@ -95,9 +91,9 @@ Der horizontale Balken ist die Standard-Variante und eignet sich für die Darste
 Die zirkuläre Variante ist kompakt und eignet sich für kleine Bereiche oder als Indikator für schnelle Prozesse.
 
 <ProgressPreview
+	context="feature"
 	visibleProperties={['_label', '_value', '_max', '_variant']}
 	initialProps={{ _label: 'Cycle', _value: 65, _max: 100, _variant: 'cycle' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Beschriftung und Unit
@@ -105,9 +101,9 @@ Die zirkuläre Variante ist kompakt und eignet sich für kleine Bereiche oder al
 Mit `_label` können Sie den Fortschritt beschreiben, `_unit` kann intern zur Berechnung verwendet werden.
 
 <ProgressPreview
+	context="feature"
 	visibleProperties={['_label', '_value', '_max', '_unit']}
 	initialProps={{ _label: 'Download-Speed', _value: 250, _max: 500, _unit: 'MB' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Aufgabenverfolgung
@@ -115,9 +111,9 @@ Mit `_label` können Sie den Fortschritt beschreiben, `_unit` kann intern zur Be
 Anwendungsbeispiel: Verfolgung von abgeschlossenen Aufgaben aus einer Liste.
 
 <ProgressPreview
+	context="feature"
 	visibleProperties={['_label', '_value', '_max']}
 	initialProps={{ _label: 'Aufgaben erledigt', _value: 8, _max: 12 }}
-	sourceCodeDetailsCollapsed
 />
 
 ## API

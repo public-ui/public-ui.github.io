@@ -23,10 +23,7 @@ Die Komponente basiert auf dem nativen HTML5-Eingabetyp `email` und unterstützt
 
 Darstellung der Komponente ohne optional gesetzte Felder.
 
-<InputEmailPreview
-	visibleProperties={[]}
-	sourceCodeDetailsCollapsed
-/>
+<InputEmailPreview context="example" />
 
 ## Barrierefreiheit
 
@@ -106,7 +103,7 @@ Ja. Nutzen Sie `_pattern`, wenn zusätzlich zur nativen E-Mail-Validierung weite
 
 Testen Sie die verschiedenen Eigenschaften des InputEmail-Felds:
 
-<InputEmailPreview />
+<InputEmailPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -114,20 +111,16 @@ Testen Sie die verschiedenen Eigenschaften des InputEmail-Felds:
 
 Standard-E-Mail-Eingabe mit Label:
 
-<InputEmailPreview
-	visibleProperties={['_label']}
-	initialProps={{ _label: 'E-Mail-Adresse' }}
-	sourceCodeDetailsCollapsed
-/>
+<InputEmailPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'E-Mail-Adresse' }} />
 
 #### Mehrfach-Eingabe
 
 Mit `_multiple` werden mehrere E-Mail-Adressen akzeptiert, kommagetrennt:
 
 <InputEmailPreview
+	context="feature"
 	visibleProperties={['_multiple']}
 	initialProps={{ _label: 'E-Mail-Adressen', _multiple: true, _hint: 'Adressen durch Kommas trennen' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Placeholder und Hinweis
@@ -135,9 +128,9 @@ Mit `_multiple` werden mehrere E-Mail-Adressen akzeptiert, kommagetrennt:
 Hilfstexte für bessere Usability:
 
 <InputEmailPreview
+	context="feature"
 	visibleProperties={['_placeholder', '_hint']}
 	initialProps={{ _label: 'E-Mail-Adresse', _placeholder: 'beispiel@domain.de', _hint: 'Wir verwenden Ihre E-Mail für Benachrichtigungen.' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Formularattribute
@@ -145,9 +138,9 @@ Hilfstexte für bessere Usability:
 Standard-Attribute für Formulare:
 
 <InputEmailPreview
+	context="feature"
 	visibleProperties={['_label', '_disabled', '_readOnly', '_required', '_hideLabel', '_hideMsg', '_shortKey', '_tooltipAlign']}
 	initialProps={{ _label: 'E-Mail-Adresse' }}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -164,12 +157,12 @@ Standard-Attribute für Formulare:
 Icons können links und/oder rechts vom Eingabefeld angezeigt werden:
 
 <InputEmailPreview
+	context="feature"
 	visibleProperties={['_icons']}
 	initialProps={{
 		_label: 'E-Mail-Adresse',
 		_icons: { left: 'kolibri', right: 'fa-solid fa-envelope' },
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Name und ID
@@ -177,9 +170,9 @@ Icons können links und/oder rechts vom Eingabefeld angezeigt werden:
 Technische Kennzeichnung für Formulare:
 
 <InputEmailPreview
+	context="feature"
 	visibleProperties={['_name']}
 	initialProps={{ _label: 'E-Mail-Adresse', _name: 'email' }}
-	sourceCodeDetailsCollapsed
 />
 
 **Hinweis**: `_name` wird als HTML-Attribut `name` verwendet und ist wichtig für das Absenden des Formulars.
@@ -191,9 +184,9 @@ Mit `_autoComplete` steuern Sie, ob der Browser Eingabevorschläge anzeigen soll
 Mit `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen, die dem Nutzer während der Eingabe als auswählbare Datenliste angezeigt werden:
 
 <InputEmailPreview
+	context="feature"
 	visibleProperties={['_autoComplete']}
 	initialProps={{ _label: 'E-Mail-Adresse', _autoComplete: 'email' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Zeichenbegrenzung und Zeichenzähler
@@ -201,13 +194,13 @@ Mit `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen, di
 Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen:
 
 <InputEmailPreview
+	context="feature"
 	initialProps={{
 		_label: 'E-Mail-Adresse',
 		_hasCounter: true,
 		_maxLength: 100,
 	}}
 	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
-	sourceCodeDetailsCollapsed
 />
 
 ##### Attribute
@@ -239,13 +232,13 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 Fehlerhafte Eingaben können über `_msg` mit aussagekräftigen Meldungen versehen werden. Mit `_pattern` lässt sich zusätzlich ein reguläres Ausdrucks-Muster zur Eingabevalidierung hinterlegen:
 
 <InputEmailPreview
+	context="feature"
 	visibleProperties={['_msg', '_touched', '_pattern']}
 	initialProps={{
 		_label: 'E-Mail-Adresse',
 		_msg: { _description: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' },
 		_touched: true,
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Events

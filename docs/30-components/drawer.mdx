@@ -20,11 +20,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard-Drawer mit Label und Inhalt:
 
-<DrawerPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
-	sourceCodeDetailsCollapsed
-/>
+<DrawerPreview context="example" initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }} />
 
 ## Barrierefreiheit
 
@@ -72,7 +68,7 @@ Standard-Drawer mit Label und Inhalt:
 
 ### Playground
 
-<DrawerPreview />
+<DrawerPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -81,6 +77,7 @@ Standard-Drawer mit Label und Inhalt:
 Der Drawer zeigt einen definierten Inhaltsbereich über den Slot an:
 
 <DrawerPreview
+	context="feature"
 	visibleProperties={['_label', '_slot']}
 	initialProps={{ _label: 'Drawer Titel', _align: 'left', _hasCloser: true }}
 />
@@ -90,6 +87,7 @@ Der Drawer zeigt einen definierten Inhaltsbereich über den Slot an:
 Die Position des Drawers wird über das **`_align`**-Attribut gesteuert:
 
 <DrawerPreview
+	context="feature"
 	visibleProperties={['_align']}
 	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
 />
@@ -99,6 +97,7 @@ Die Position des Drawers wird über das **`_align`**-Attribut gesteuert:
 Aktivieren Sie **`_hasCloser`**, um einen visuellen Schließ-Button anzuzeigen:
 
 <DrawerPreview
+	context="feature"
 	visibleProperties={['_hasCloser']}
 	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
 />

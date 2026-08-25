@@ -25,11 +25,7 @@ Die Eingabe erfolgt direkt im Eingabefeld oder über einen Auswahldialog. Die ko
 
 Standard-Datumsfeld mit dem Typ `date`. Die Eingabe erfolgt über direkte Zahleneingabe mit Automatisierung oder über die gerätespezifische Auswahlhilfe.
 
-<InputDatePreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Geburtsdatum' }}
-	sourceCodeDetailsCollapsed
-/>
+<InputDatePreview context="example" initialProps={{ _label: 'Geburtsdatum' }} />
 
 ## Barrierefreiheit
 
@@ -99,7 +95,7 @@ Die Komponente nutzt die nativen HTML5-Eingabetypen des Browsers. Darstellung un
 
 ### Playground
 
-<InputDatePreview />
+<InputDatePreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -108,6 +104,7 @@ Die Komponente nutzt die nativen HTML5-Eingabetypen des Browsers. Darstellung un
 Das Eingabefeld wird mit einer Beschriftung über `_label` versehen. Zusätzliche Informationen können über `_hint` bereitgestellt werden.
 
 <InputDatePreview
+	context="feature"
 	visibleProperties={['_label', '_hint']}
 	initialProps={{ _label: 'Geburtsdatum', _hint: 'Bitte geben Sie Ihr Geburtsdatum ein.' }}
 />
@@ -116,10 +113,7 @@ Das Eingabefeld wird mit einer Beschriftung über `_label` versehen. Zusätzlich
 
 Das Attribut `_type` bestimmt das Format und den Auswahldialog:
 
-<InputDatePreview
-	visibleProperties={['_type']}
-	initialProps={{ _label: 'Datum', _type: 'date' }}
-/>
+<InputDatePreview context="feature" visibleProperties={['_type']} initialProps={{ _label: 'Datum', _type: 'date' }} />
 
 **Verfügbare Typen:**
 - `date`: Vollständiges Datum (Standard)
@@ -133,6 +127,7 @@ Das Attribut `_type` bestimmt das Format und den Auswahldialog:
 Die Attribute `_min` und `_max` definieren den gültigen Datumsbereich. Sie greifen zuverlässig nur bei der Auswahl über den Kalenderdialog (Datepicker). Bei manueller Texteingabe kann ein Wert außerhalb des definierten Bereichs eingegeben werden, ohne dass automatisch eine Korrektur oder Fehlermeldung erfolgt. Die Validierung manueller Eingaben liegt in der Verantwortung der einbindenden Anwendung.
 
 <InputDatePreview
+	context="feature"
 	visibleProperties={['_min', '_max']}
 	initialProps={{
 		_label: 'Reservierungsdatum',
@@ -146,6 +141,7 @@ Die Attribute `_min` und `_max` definieren den gültigen Datumsbereich. Sie grei
 Für Typ `time` kann die Schrittgröße über `_step` festgelegt werden:
 
 <InputDatePreview
+	context="feature"
 	visibleProperties={['_step']}
 	initialProps={{
 		_label: 'Uhrzeit',
@@ -159,6 +155,7 @@ Für Typ `time` kann die Schrittgröße über `_step` festgelegt werden:
 Standard-Formularattribute für Validierung und Interaktion:
 
 <InputDatePreview
+	context="feature"
 	visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
 	initialProps={{ _label: 'Datum', _required: true }}
 />
@@ -174,6 +171,7 @@ Standard-Formularattribute für Validierung und Interaktion:
 Validierungsfehler oder Hinweismeldungen werden über das Attribut `_msg` ausgegeben:
 
 <InputDatePreview
+	context="feature"
 	visibleProperties={['_msg']}
 	initialProps={{
 		_label: 'Datum',

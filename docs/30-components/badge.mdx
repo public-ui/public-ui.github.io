@@ -20,11 +20,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung eines einfachen Badges mit Hintergrundfarbe und Icon:
 
-<BadgePreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Badge', _color: '#0c8703', _icons: 'kolicon-check' }}
-	sourceCodeDetailsCollapsed
-/>
+<BadgePreview context="example" initialProps={{ _label: 'Badge', _color: '#0c8703', _icons: 'kolicon-check' }} />
 
 ## Barrierefreiheit
 
@@ -62,9 +58,7 @@ Darstellung eines einfachen Badges mit Hintergrundfarbe und Icon:
 
 ### Playground
 
-<BadgePreview
-	visibleProperties={['_label', '_color', '_icons', '_smartButton']}
-/>
+<BadgePreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -73,6 +67,7 @@ Darstellung eines einfachen Badges mit Hintergrundfarbe und Icon:
 Das Label ist erforderlich und definiert den Text, der im Badge angezeigt wird. Der Text kann Sonderzeichen, Umlaute und Leerzeichen enthalten.
 
 <BadgePreview
+	context="feature"
 	visibleProperties={['_label']}
 	initialProps={{ _label: 'Beispieltext', _color: '#0c8703' }}
 />
@@ -86,6 +81,7 @@ Das Label ist erforderlich und definiert den Text, der im Badge angezeigt wird. 
 Die Hintergrundfarbe wird über das Attribut `_color` definiert. Die Textfarbe wird automatisch berechnet und ist entweder Weiß oder Schwarz, um optimalen Kontrast zu gewährleisten. Eine explizite Angabe der Textfarbe ist nicht möglich.
 
 <BadgePreview
+	context="feature"
 	visibleProperties={['_color']}
 	initialProps={{ _label: 'Helles Badge', _color: '#b7e4b4' }}
 />
@@ -99,6 +95,7 @@ Die Hintergrundfarbe wird über das Attribut `_color` definiert. Die Textfarbe w
 Icons können als String (Klassenname) oder als komplexes Icon-Objekt mit horizontalen und vertikalen Positionen übergeben werden.
 
 <BadgePreview
+	context="feature"
 	visibleProperties={['_icons']}
 	initialProps={{ _label: 'Mit Icon', _color: '#0c8703', _icons: 'kolicon-house' }}
 />
@@ -112,6 +109,7 @@ Icons können als String (Klassenname) oder als komplexes Icon-Objekt mit horizo
 Das Badge kann mit einem Smart-Button verknüpft werden, der eine Aktion auslöst. Dies wird nur mit `_hide-label` angezeigt.
 
 <BadgePreview
+	context="feature"
 	visibleProperties={['_smartButton']}
 	initialProps={{ _label: 'Mit Button', _color: '#0c8703' }}
 />

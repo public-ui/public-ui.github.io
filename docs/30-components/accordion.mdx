@@ -21,7 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet werden.
 
-<AccordionMultiplePreview visibleProperties={[]} />
+<AccordionMultiplePreview context="example" />
 
 ## Barrierefreiheit
 
@@ -122,6 +122,7 @@ Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvol
 ### Playground
 
 <AccordionPreview
+	context="playground"
 	initialProps={{
 		_open: true,
 		_slot:
@@ -137,6 +138,7 @@ Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvol
 Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird über den Slot befüllt.
 
 <AccordionPreview
+	context="feature"
 	visibleProperties={['_label', '_slot']}
 	initialProps={{
 		_open: true,
@@ -151,6 +153,7 @@ Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird 
 Die Überschriftenebene wird über `_level` gesteuert.
 
 <AccordionPreview
+	context="feature"
 	visibleProperties={['_level']}
 	initialProps={{
 		_label: 'Der Herbst',
@@ -165,6 +168,7 @@ Die Überschriftenebene wird über `_level` gesteuert.
 Das initiale Öffnen erfolgt über `_open`. Für den nicht interaktiven Zustand steht `_disabled` zur Verfügung.
 
 <AccordionPreview
+	context="feature"
 	visibleProperties={['_open', '_disabled']}
 	initialProps={{
 		_label: 'Der Winter',

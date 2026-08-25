@@ -19,9 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Toolbar mit verschiedenen Steuerelementen (Buttons und Links):
 
-<ToolbarPreview
-	visibleProperties={[]}
-/>
+<ToolbarPreview context="example" />
 
 ## Barrierefreiheit
 
@@ -84,7 +82,7 @@ Setzen Sie die `_disabled`-Eigenschaft auf `true` für das betreffende Element i
 
 Testen Sie die verschiedenen Eigenschaften der Toolbar-Komponente:
 
-<ToolbarPreview />
+<ToolbarPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -93,6 +91,7 @@ Testen Sie die verschiedenen Eigenschaften der Toolbar-Komponente:
 Eine Toolbar mit einer Sammlung von Button- und Link-Elementen:
 
 <ToolbarPreview
+	context="feature"
 	visibleProperties={['_label', '_items']}
 	initialProps={{
 		_label: 'Bearbeitungswerkzeuge',
@@ -133,6 +132,7 @@ Eine Toolbar mit einer Sammlung von Button- und Link-Elementen:
 Die Toolbar kann horizontal (Standard) oder vertikal ausgerichtet werden:
 
 <ToolbarPreview
+	context="feature"
 	visibleProperties={['_label', '_orientation']}
 	initialProps={{
 		_label: 'Navigationssteuerung',
@@ -167,6 +167,7 @@ Die Toolbar kann horizontal (Standard) oder vertikal ausgerichtet werden:
 Einzelne Elemente können deaktiviert werden:
 
 <ToolbarPreview
+	context="feature"
 	visibleProperties={['_label', '_items']}
 	initialProps={{
 		_label: 'Formatierungswerkzeuge',

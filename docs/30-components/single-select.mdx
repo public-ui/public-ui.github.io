@@ -20,11 +20,10 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 Darstellung der Komponente mit den wesentlichen Eigenschaften. Code kann eingeblendet werden.
 
 <SingleSelectPreview
-	visibleProperties={['_label', '_options', '_placeholder']}
+	context="example"
 	initialProps={{
 		_placeholder: 'Bitte wählen Sie eine Option',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -86,7 +85,7 @@ Die **SingleSelect**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 
 Testen Sie die verschiedenen Eigenschaften der SingleSelect-Komponente:
 
-<SingleSelectPreview />
+<SingleSelectPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -94,21 +93,18 @@ Testen Sie die verschiedenen Eigenschaften der SingleSelect-Komponente:
 
 Standard-auswahl mit Beschriftung und Optionsliste:
 
-<SingleSelectPreview 
-	visibleProperties={['_label', '_options']} 
-	sourceCodeDetailsCollapsed
-/>
+<SingleSelectPreview context="feature" visibleProperties={['_label', '_options']} />
 
 #### Placeholder
 
 Ein Placeholder-Text wird angezeigt, wenn noch keine Option ausgewählt wurde:
 
 <SingleSelectPreview
+	context="feature"
 	visibleProperties={['_placeholder']}
 	initialProps={{
 		_placeholder: 'Bitte wählen Sie eine Option',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Formularattribute
@@ -116,8 +112,8 @@ Ein Placeholder-Text wird angezeigt, wenn noch keine Option ausgewählt wurde:
 Standard-Attribute für Formulare:
 
 <SingleSelectPreview
+	context="feature"
 	visibleProperties={['_label', '_required', '_disabled', '_hideLabel', '_msg', '_hideMsg']}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -133,11 +129,11 @@ Standard-Attribute für Formulare:
 Der Clear-Button ermöglicht es, die aktuelle Auswahl zu löschen:
 
 <SingleSelectPreview
+	context="feature"
 	visibleProperties={['_hasClearButton']}
 	initialProps={{
 		_hasClearButton: true,
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Icons
@@ -145,11 +141,11 @@ Der Clear-Button ermöglicht es, die aktuelle Auswahl zu löschen:
 Links und rechts vom Eingabefeld können Icons angezeigt werden:
 
 <SingleSelectPreview
+	context="feature"
 	visibleProperties={['_icons']}
 	initialProps={{
 		_icons: 'kolicon-cogwheel',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Hinweistext und Fehlermeldung
@@ -157,11 +153,11 @@ Links und rechts vom Eingabefeld können Icons angezeigt werden:
 Hinweistexte können vor der Eingabe bereitgestellt werden, Fehlermeldungen nach ungültiger Auswahl:
 
 <SingleSelectPreview
+	context="feature"
 	visibleProperties={['_hint', '_msg']}
 	initialProps={{
 		_hint: 'Ergänzende Hinweise zur Auswahl',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Dropdown-Höhe
@@ -169,11 +165,11 @@ Hinweistexte können vor der Eingabe bereitgestellt werden, Fehlermeldungen nach
 Die maximale Anzahl sichtbarer Optionen wird über `_rows` gesteuert:
 
 <SingleSelectPreview
+	context="feature"
 	visibleProperties={['_rows']}
 	initialProps={{
 		_rows: 3,
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Events

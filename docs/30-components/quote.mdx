@@ -21,11 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Standard-Block-Variante mit Zitat und Quellenangabe:
 
-<QuotePreview
-	visibleProperties={[]}
-	initialProps={{ _variant: 'block' }}
-	sourceCodeDetailsCollapsed
-/>
+<QuotePreview context="example" initialProps={{ _variant: 'block' }} />
 
 ## Barrierefreiheit
 
@@ -76,7 +72,7 @@ Das `_quote`-Attribut erwartet reinen Text. Formatierungen sollten über CSS ode
 
 Testen Sie die verschiedenen Eigenschaften der Quote-Komponente:
 
-<QuotePreview />
+<QuotePreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -84,11 +80,7 @@ Testen Sie die verschiedenen Eigenschaften der Quote-Komponente:
 
 Die Quote-Komponente bietet zwei Darstellungsvarianten:
 
-<QuotePreview
-	visibleProperties={['_variant']}
-	initialProps={{ _variant: 'inline' }}
-	sourceCodeDetailsCollapsed
-/>
+<QuotePreview context="feature" visibleProperties={['_variant']} initialProps={{ _variant: 'inline' }} />
 
 **Verfügbare Varianten:**
 - `inline`: Kurzes Zitat im Fließtext (Standard)
@@ -99,9 +91,9 @@ Die Quote-Komponente bietet zwei Darstellungsvarianten:
 Der optionale Label kann als Autor- oder Werkangabe dienen, während `_href` die Quellenverifizierung ermöglicht:
 
 <QuotePreview
+	context="feature"
 	visibleProperties={['_label', '_href']}
 	initialProps={{ _variant: 'block', _label: 'Albert Einstein' }}
-	sourceCodeDetailsCollapsed
 />
 
 ## API
