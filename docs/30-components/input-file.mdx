@@ -23,10 +23,7 @@ Die Komponente basiert auf dem nativen HTML5-Eingabetyp `file` und unterstützt 
 
 Einfaches Datei-Eingabefeld mit Beschriftung und Konfigurationsmöglichkeiten:
 
-<InputFilePreview
-	visibleProperties={['_label', '_accept', '_multiple', '_disabled']}
-	sourceCodeDetailsCollapsed
-/>
+<InputFilePreview context="example" />
 
 ## Barrierefreiheit
 
@@ -107,7 +104,7 @@ Ja. Dateien können zusätzlich zum nativen Dateiauswahldialog per Drag & Drop a
 
 Testen Sie die verschiedenen Eigenschaften der InputFile-Komponente:
 
-<InputFilePreview />
+<InputFilePreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -115,20 +112,16 @@ Testen Sie die verschiedenen Eigenschaften der InputFile-Komponente:
 
 Standard-Datei-Eingabefeld ohne Konfiguration:
 
-<InputFilePreview
-	initialProps={{ _label: 'Datei auswählen' }}
-	visibleProperties={[]}
-	sourceCodeDetailsCollapsed
-/>
+<InputFilePreview context="feature" initialProps={{ _label: 'Datei auswählen' }} visibleProperties={[]} />
 
 #### Dateitypbeschränkung
 
 Beschränkung der erlaubten Dateitypen über das Attribut `_accept`:
 
 <InputFilePreview
+	context="feature"
 	visibleProperties={['_accept']}
 	initialProps={{ _label: 'Datei auswählen', _accept: 'image/*' }}
-	sourceCodeDetailsCollapsed
 />
 
 **Beispiele für `_accept`-Werte:**
@@ -143,9 +136,9 @@ Beschränkung der erlaubten Dateitypen über das Attribut `_accept`:
 Ermöglichen Sie die Auswahl mehrerer Dateien gleichzeitig:
 
 <InputFilePreview
+	context="feature"
 	visibleProperties={['_multiple']}
 	initialProps={{ _label: 'Mehrere Dateien auswählen', _multiple: true }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Deaktivierter Zustand
@@ -153,9 +146,9 @@ Ermöglichen Sie die Auswahl mehrerer Dateien gleichzeitig:
 Das Eingabefeld ist nicht interaktiv:
 
 <InputFilePreview
+	context="feature"
 	visibleProperties={['_disabled']}
 	initialProps={{ _label: 'Datei auswählen', _disabled: true }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Fehlermeldung
@@ -163,12 +156,12 @@ Das Eingabefeld ist nicht interaktiv:
 Fehler oder Validierungshinweise:
 
 <InputFilePreview
+	context="feature"
 	visibleProperties={['_msg']}
 	initialProps={{
 		_label: 'Datei auswählen',
 		_msg: { _description: 'Nur PDF-Dateien bis 5 MB erlaubt' },
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Hilfetexte und Beschriftung
@@ -176,12 +169,12 @@ Fehler oder Validierungshinweise:
 Additionale Informationen für Nutzer:
 
 <InputFilePreview
+	context="feature"
 	visibleProperties={['_label', '_hint', '_hideLabel']}
 	initialProps={{
 		_label: 'Dokument hochladen',
 		_hint: 'Akzeptierte Formate: PDF, DOC, DOCX. Max. Größe: 10 MB.',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Events

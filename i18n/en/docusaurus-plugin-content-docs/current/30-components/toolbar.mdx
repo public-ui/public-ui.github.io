@@ -19,10 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Toolbar with various controls (buttons and links):
 
-<ToolbarPreview
-	visibleProperties={[]}
-	codeCollapsable
-/>
+<ToolbarPreview context="example" />
 
 ## Accessibility
 
@@ -85,7 +82,7 @@ Set the `_disabled` property to `true` for the relevant element in the `_items` 
 
 Test the various properties of the Toolbar component:
 
-<ToolbarPreview codeCollapsable />
+<ToolbarPreview context="playground" />
 
 ### Functionality (with code)
 
@@ -94,6 +91,7 @@ Test the various properties of the Toolbar component:
 A toolbar with a collection of button and link elements:
 
 <ToolbarPreview
+	context="feature"
 	visibleProperties={['_label', '_items']}
 	initialProps={{
 		_label: 'Editing tools',
@@ -127,7 +125,6 @@ A toolbar with a collection of button and link elements:
 			},
 		],
 	}}
-	codeCollapsable
 />
 
 #### Orientation
@@ -135,6 +132,7 @@ A toolbar with a collection of button and link elements:
 The toolbar can be aligned horizontally (default) or vertically:
 
 <ToolbarPreview
+	context="feature"
 	visibleProperties={['_label', '_orientation']}
 	initialProps={{
 		_label: 'Navigation controls',
@@ -162,7 +160,6 @@ The toolbar can be aligned horizontally (default) or vertically:
 			},
 		],
 	}}
-	codeCollapsable
 />
 
 #### Disabled elements
@@ -170,6 +167,7 @@ The toolbar can be aligned horizontally (default) or vertically:
 Individual elements can be disabled:
 
 <ToolbarPreview
+	context="feature"
 	visibleProperties={['_label', '_items']}
 	initialProps={{
 		_label: 'Formatting tools',
@@ -204,7 +202,6 @@ Individual elements can be disabled:
 			},
 		],
 	}}
-	codeCollapsable
 />
 
 ## API

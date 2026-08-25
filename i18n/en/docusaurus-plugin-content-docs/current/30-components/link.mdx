@@ -19,12 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard link with text and optional icon:
 
-<LinkPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Example Link', _href: 'https://example.com' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<LinkPreview context="example" initialProps={{ _label: 'Example Link', _href: 'https://example.com' }} />
 
 ## Accessibility
 
@@ -89,7 +84,7 @@ Yes, you can combine multiple icon classes via the `_icons` attribute.
 
 Test the various properties of the Link component:
 
-<LinkPreview codeCollapsable />
+<LinkPreview context="playground" />
 
 ### Functionality (with Code)
 
@@ -98,10 +93,9 @@ Test the various properties of the Link component:
 A simple link with label and href:
 
 <LinkPreview
+	context="feature"
 	visibleProperties={[]}
 	initialProps={{ _label: 'Example Link', _href: 'https://example.com' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Link with Icon
@@ -109,9 +103,9 @@ A simple link with label and href:
 Link with an icon that visually clarifies the link purpose:
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_icons']}
 	initialProps={{ _label: 'With Icon', _href: 'https://example.com', _icons: 'kolicon-external' }}
-	codeCollapsable
 />
 
 #### Link Variations
@@ -119,9 +113,9 @@ Link with an icon that visually clarifies the link purpose:
 Various display variants and states:
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_disabled', '_hideLabel', '_inline', '_target']}
 	initialProps={{ _label: 'Link Variation', _href: 'https://example.com' }}
-	codeCollapsable
 />
 
 #### Download Link
@@ -129,9 +123,9 @@ Various display variants and states:
 Link with download functionality:
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_download']}
 	initialProps={{ _label: 'Download file', _href: 'https://example.com/file.pdf', _download: 'file.pdf' }}
-	codeCollapsable
 />
 
 #### Tooltip Alignment
@@ -139,9 +133,9 @@ Link with download functionality:
 Configure tooltip positioning (when `_hideLabel: true`):
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_hideLabel', '_tooltipAlign']}
 	initialProps={{ _label: 'Icon only', _href: 'https://example.com', _hideLabel: true, _icons: 'kolicon-external', _tooltipAlign: 'top' }}
-	codeCollapsable
 />
 
 #### ARIA Attributes and Accessibility
@@ -149,9 +143,9 @@ Configure tooltip positioning (when `_hideLabel: true`):
 Extended accessibility configurations:
 
 <LinkPreview
+	context="feature"
 	visibleProperties={['_ariaCurrentValue', '_ariaDescription']}
 	initialProps={{ _label: 'Active page', _href: '/current-page', _ariaCurrentValue: 'page', _ariaDescription: 'This is the current page' }}
-	codeCollapsable
 />
 
 #### aria-current Service

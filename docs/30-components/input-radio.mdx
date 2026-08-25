@@ -20,7 +20,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 Darstellung einer einfachen Radio-Auswahlgruppe mit drei Optionen:
 
 <InputRadioPreview
-	visibleProperties={[]}
+	context="example"
 	initialProps={{
 		_label: 'Anrede',
 		_options: [
@@ -85,7 +85,7 @@ Darstellung einer einfachen Radio-Auswahlgruppe mit drei Optionen:
 Testen Sie die verschiedenen Eigenschaften der InputRadio-Komponente:
 
 <InputRadioPreview
-	visibleProperties={['_label', '_options', '_orientation', '_hint', '_hideMsg', '_disabled', '_required', '_hideLabel']}
+	context="playground"
 	initialProps={{
 		_label: 'Anrede',
 		_options: [
@@ -103,6 +103,7 @@ Testen Sie die verschiedenen Eigenschaften der InputRadio-Komponente:
 Die Auswahloptionen werden über `_options` als Array von Objekten mit `label` und `value` definiert:
 
 <InputRadioPreview
+	context="feature"
 	visibleProperties={['_label', '_options']}
 	initialProps={{
 		_label: 'Geschlecht',
@@ -112,7 +113,6 @@ Die Auswahloptionen werden über `_options` als Array von Objekten mit `label` u
 			{ label: 'Divers', value: 'diverse' },
 		],
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Orientierung
@@ -120,6 +120,7 @@ Die Auswahloptionen werden über `_options` als Array von Objekten mit `label` u
 Die Ausrichtung der Radio-Elemente kann horizontal oder vertikal erfolgen:
 
 <InputRadioPreview
+	context="feature"
 	visibleProperties={['_orientation']}
 	initialProps={{
 		_label: 'Zahlungsmethode',
@@ -130,7 +131,6 @@ Die Ausrichtung der Radio-Elemente kann horizontal oder vertikal erfolgen:
 		],
 		_orientation: 'horizontal',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Hinweistexte und Formularattribute
@@ -138,6 +138,7 @@ Die Ausrichtung der Radio-Elemente kann horizontal oder vertikal erfolgen:
 Hinweistexte und Validierungsfeedback können über `_hint` und `_msg` bereitgestellt werden:
 
 <InputRadioPreview
+	context="feature"
 	visibleProperties={['_label', '_hint', '_msg', '_hideMsg', '_disabled', '_required', '_hideLabel']}
 	initialProps={{
 		_label: 'Versandart',
@@ -148,7 +149,6 @@ Hinweistexte und Validierungsfeedback können über `_hint` und `_msg` bereitges
 			{ label: 'Economy (5–10 Tage)', value: 'economy' },
 		],
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Events

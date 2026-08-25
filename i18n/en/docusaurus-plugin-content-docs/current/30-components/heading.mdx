@@ -21,11 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Renders a heading at level 1 without any optional properties set. Code can be expanded.
 
-<HeadingPreview
-	codeCollapsable
-	initialProps={{ _label: 'Heading Level 1' }}
-	visibleProperties={[]}
-/>
+<HeadingPreview context="example" initialProps={{ _label: 'Heading Level 1' }} />
 
 ## Accessibility
 
@@ -63,9 +59,7 @@ Renders a heading at level 1 without any optional properties set. Code can be ex
 
 ### Playground
 
-<HeadingPreview
-	codeCollapsable
-/>
+<HeadingPreview context="playground" />
 
 ### Features
 
@@ -74,10 +68,9 @@ Renders a heading at level 1 without any optional properties set. Code can be ex
 Headings at different levels from level 1 to 6:
 
 <HeadingPreview
+	context="feature"
 	initialProps={{ _label: 'Level 1 Heading', _level: 1 }}
 	visibleProperties={['_level']}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### With secondary headline
@@ -85,10 +78,9 @@ Headings at different levels from level 1 to 6:
 A main heading can be combined with a secondary headline:
 
 <HeadingPreview
+	context="feature"
 	initialProps={{ _label: 'Main Heading', _secondaryHeadline: 'Subheading or Subtitle', _level: 1 }}
 	visibleProperties={['_label', '_secondaryHeadline', '_level']}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Heading without semantic level
@@ -96,10 +88,9 @@ A main heading can be combined with a secondary headline:
 Using `_level="0"` renders the component without a semantic heading element and appears visually as bold text:
 
 <HeadingPreview
+	context="feature"
 	initialProps={{ _label: 'Text without heading semantics', _level: 0 }}
 	visibleProperties={['_level']}
-	codeCollapsable
-	codeCollapsed
 />
 
 ## API

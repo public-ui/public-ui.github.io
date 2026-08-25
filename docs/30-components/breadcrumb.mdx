@@ -21,10 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Komponente mit den grundlegenden Eigenschaften und navigierbaren Links:
 
-<BreadcrumbPreview
-	visibleProperties={[]}
-	initialProps={{}}
-/>
+<BreadcrumbPreview context="example" initialProps={{}} />
 
 ## Barrierefreiheit
 
@@ -71,7 +68,7 @@ Darstellung der Komponente mit den grundlegenden Eigenschaften und navigierbaren
 
 ### Playground
 
-<BreadcrumbPreview />
+<BreadcrumbPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -79,9 +76,7 @@ Darstellung der Komponente mit den grundlegenden Eigenschaften und navigierbaren
 
 Die Breadcrumb-Navigation wird über das Attribut `_links` als Array von Link-Objekten konfiguriert. Das letzte Element wird automatisch als aktuelle Seite (ohne Link) behandelt.
 
-<BreadcrumbPreview
-	sourceCodeDetailsCollapsed
-/>
+<BreadcrumbPreview context="feature" visibleProperties={['_links']} />
 
 **Link-Eigenschaften:**
 
@@ -96,10 +91,7 @@ Die Breadcrumb-Navigation wird über das Attribut `_links` als Array von Link-Ob
 
 Icons können optional zu jedem Element hinzugefügt werden. Eine häufige Verwendung ist ein Haus-Icon für die Startseite:
 
-<BreadcrumbPreview
-	visibleProperties={['_label', '_links']}
-	initialProps={{}}
-/>
+<BreadcrumbPreview context="feature" visibleProperties={['_label', '_links']} initialProps={{}} />
 
 #### Events
 

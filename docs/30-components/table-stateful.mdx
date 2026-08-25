@@ -19,11 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung einer einfachen Datentabelle mit automatischen Funktionalitäten:
 
-<TableStatefulPreview
-	visibleProperties={[]}
-	initialProps={{}}
-	sourceCodeDetailsCollapsed
-/>
+<TableStatefulPreview context="example" initialProps={{}} />
 
 ## Barrierefreiheit
 
@@ -80,7 +76,7 @@ Das Attribut `_selection` ermöglicht die Auswahl von Zeilen (einfach oder mehrf
 
 Testen Sie alle Funktionalitäten der TableStateful-Komponente interaktiv:
 
-<TableStatefulPreview  />
+<TableStatefulPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -88,21 +84,13 @@ Testen Sie alle Funktionalitäten der TableStateful-Komponente interaktiv:
 
 Das Attribut `_label` definiert die semantische Beschriftung der Tabelle und wird für Accessibility verwendet:
 
-<TableStatefulPreview
-	visibleProperties={['_label']}
-	initialProps={{}}
-	sourceCodeDetailsCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_label']} initialProps={{}} />
 
 #### Spaltenüberschriften und Layout
 
 Titel werden über das Attribut `_headers` definiert. Es werden horizontale und vertikale Header mit beliebiger Verschachtelung unterstützt:
 
-<TableStatefulPreview
-	visibleProperties={['_headers']}
-	initialProps={{}}
-	sourceCodeDetailsCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_headers']} initialProps={{}} />
 
 **Header-Struktur:**
 - `horizontal`: Array von Spaltenüberschriften
@@ -113,11 +101,7 @@ Titel werden über das Attribut `_headers` definiert. Es werden horizontale und 
 
 Die Komponente unterstützt automatische Sortierung pro Spalte über die `compareFn` Funktion in den Header-Definitionen:
 
-<TableStatefulPreview
-	visibleProperties={['_headers', '_allowMultiSort']}
-	initialProps={{}}
-	sourceCodeDetailsCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_headers', '_allowMultiSort']} initialProps={{}} />
 
 **Erklärung zur compareFn:**
 Stencil gibt die zu vergleichenden Objekte nicht mit ihrem Ursprünglichen Type (hier PlantRecord) zurück. Deswegen muss für eine saubere Typisierung der Umweg über unknown gegangen werden:
@@ -135,11 +119,7 @@ compareFn: (a, b) => (a as unknown as PlantRecord).name.localeCompare((b as unkn
 
 Die `_pagination` Eigenschaft aktiviert automatische Seitennummerierung und bietet verschiedene Konfigurationsoptionen:
 
-<TableStatefulPreview
-	visibleProperties={['_paginationPosition']}
-	initialProps={{}}
-	sourceCodeDetailsCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_paginationPosition']} initialProps={{}} />
 
 **Konfigurierbare Optionen:**
 Siehe <kol-link _href="../pagination" _label="Pagination-Komponente"></kol-link>
@@ -197,24 +177,20 @@ import { createReactRenderElement } from '@public-ui/react-v19';
 Das Attribut `_dataFoot` ermöglicht Zusammenfassungszeilen oder zusätzliche Informationen am Ende der Tabelle:
 
 <TableStatefulPreview
+	context="feature"
 	visibleProperties={[]}
 	initialProps={{
 		_dataFoot: [{
 			family: 'all beautiful',
 		}]
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Zeilenauswahl
 
 Das Attribut `_selection` aktiviert die Zeilenauswahl (einfach oder mehrfach). Die Auswahländerungen werden über das `selectionChange` Event übermittelt:
 
-<TableStatefulPreview
-	visibleProperties={['_selection']}
-	initialProps={{}}
-	sourceCodeDetailsCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_selection']} initialProps={{}} />
 
 **Konfigurierbare Optionen:**
 - `multiple`: Einfachauswahl (default) oder mehrfache Auswahl
@@ -227,21 +203,13 @@ Das Attribut `_selection` aktiviert die Zeilenauswahl (einfach oder mehrfach). D
 
 Mit `_hasSettingsMenu` wird ein Menü aktiviert, über das Benutzer Tabelleneinstellungen anpassen können (z.B. sichtbare Spalten):
 
-<TableStatefulPreview
-	visibleProperties={['_hasSettingsMenu']}
-	initialProps={{}}
-	sourceCodeDetailsCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_hasSettingsMenu']} initialProps={{}} />
 
 #### Fixierte Spalten
 
 Das Attribut `_fixedCols` definiert Spalten, die beim horizontalen Scrollen sichtbar bleiben – Angabe als `[start, end]`:
 
-<TableStatefulPreview
-	visibleProperties={[]}
-	initialProps={{}}
-	sourceCodeDetailsCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={[]} initialProps={{}} />
 
 #### Events
 

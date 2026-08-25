@@ -22,11 +22,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Komponente mit Standard-Label und ohne optional gesetzte Felder.
 
-<ButtonPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Click me' }}
-	sourceCodeDetailsCollapsed
-/>
+<ButtonPreview context="example" initialProps={{ _label: 'Click me' }} />
 
 ## Barrierefreiheit
 
@@ -140,7 +136,7 @@ Darstellung der Komponente mit Standard-Label und ohne optional gesetzte Felder.
 
 ### Playground
 
-<ButtonPreview />
+<ButtonPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -149,9 +145,9 @@ Darstellung der Komponente mit Standard-Label und ohne optional gesetzte Felder.
 Die sichtbare Beschriftung wird über `_label` gesetzt:
 
 <ButtonPreview
+	context="feature"
 	visibleProperties={['_label']}
 	initialProps={{ _label: 'Schaltflächenbeschriftung' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Varianten
@@ -159,9 +155,9 @@ Die sichtbare Beschriftung wird über `_label` gesetzt:
 Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varianten zur Verfügung stehen und welche der Standardwert ist. Hier sind <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/button/variants?theme=default" _target="_blank" _label="die anderen Themes und ihre jeweiligen Varianten"></kol-link> zu sehen. Im Folgenden zeigen wir nur das Default Theme.
 
 <ButtonPreview
+	context="feature"
 	visibleProperties={['_variant']}
 	initialProps={{ _label: 'Button', _variant: 'primary' }}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Varianten im Default Theme:**
@@ -177,9 +173,9 @@ Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varia
 Icons können über `_icons` hinzugefügt werden. Als String übergeben Sie die Icon-Klasse (z.B. `kolicon-house`), das Icon wird links vom Text angezeigt:
 
 <ButtonPreview
+	context="feature"
 	visibleProperties={['_icons']}
 	initialProps={{ _label: 'Home', _icons: 'kolicon-house' }}
-	sourceCodeDetailsCollapsed
 />
 
 Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `left` angegeben werden, jeweils mit Icon-Klasse oder Styleobjekt.
@@ -189,9 +185,9 @@ Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `l
 Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip angezeigt:
 
 <ButtonPreview
+	context="feature"
 	visibleProperties={['_hideLabel', '_icons']}
 	initialProps={{ _label: 'Home', _icons: 'kolicon-house', _hideLabel: true }}
-	sourceCodeDetailsCollapsed
 />
 
 **Hinweis:** Das Attribut `_label` muss auch gesetzt werden, wenn nur ein Icon angezeigt wird – es wird für Screenreader und den Tooltip verwendet.
@@ -200,11 +196,7 @@ Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip 
 
 Der HTML-Button-Type wird über `_type` gesteuert:
 
-<ButtonPreview
-	visibleProperties={['_type']}
-	initialProps={{ _label: 'Button', _type: 'submit' }}
-	sourceCodeDetailsCollapsed
-/>
+<ButtonPreview context="feature" visibleProperties={['_type']} initialProps={{ _label: 'Button', _type: 'submit' }} />
 
 **Verfügbare Typen:**
 - `button` – Standard-Button (Standard)
@@ -216,9 +208,9 @@ Der HTML-Button-Type wird über `_type` gesteuert:
 Mit `_disabled` wird der Button deaktiviert:
 
 <ButtonPreview
+	context="feature"
 	visibleProperties={['_disabled']}
 	initialProps={{ _label: 'Deaktiviert', _disabled: true }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Weitere Eigenschaften

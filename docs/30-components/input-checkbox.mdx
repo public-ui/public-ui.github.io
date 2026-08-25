@@ -23,11 +23,7 @@ Die Varianten `_variant="default"`, `_variant="switch"` und `_variant="button"` 
 
 Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet werden.
 
-<InputCheckboxPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Akzeptiere die Bedingungen' }}
-	sourceCodeDetailsCollapsed
-/>
+<InputCheckboxPreview context="example" initialProps={{ _label: 'Akzeptiere die Bedingungen' }} />
 
 ## Barrierefreiheit
 
@@ -98,10 +94,7 @@ Nein. Der Indeterminate-Zustand kann ausschließlich programmatisch über die AP
 
 Testen Sie die verschiedenen Eigenschaften der InputCheckbox-Komponente:
 
-<InputCheckboxPreview
-	initialProps={{ _label: 'Beispiel-Checkbox' }}
-	visibleProperties={['_label', '_variant', '_checked', '_indeterminate', '_disabled', '_required', '_hideLabel', '_hint', '_msg', '_hideMsg']}
-/>
+<InputCheckboxPreview context="playground" initialProps={{ _label: 'Beispiel-Checkbox' }} />
 
 ### Funktionalitäten (mit Code)
 
@@ -109,21 +102,13 @@ Testen Sie die verschiedenen Eigenschaften der InputCheckbox-Komponente:
 
 Eine einfache Checkbox ohne spezielle Konfiguration:
 
-<InputCheckboxPreview
-	initialProps={{ _label: 'Zustimmen' }}
-	visibleProperties={[]}
-	sourceCodeDetailsCollapsed
-/>
+<InputCheckboxPreview context="feature" initialProps={{ _label: 'Zustimmen' }} visibleProperties={[]} />
 
 #### Varianten
 
 Die Checkbox unterstützt drei verschiedene visuelle Varianten über das Attribut `_variant`:
 
-<InputCheckboxPreview
-	initialProps={{ _label: 'Checkbox-Typ' }}
-	visibleProperties={['_variant']}
-	sourceCodeDetailsCollapsed
-/>
+<InputCheckboxPreview context="feature" initialProps={{ _label: 'Checkbox-Typ' }} visibleProperties={['_variant']} />
 
 **Verfügbare Varianten:**
 - `default`: Klassische rechteckige Checkbox mit Häkchen (Standard)
@@ -135,9 +120,9 @@ Die Checkbox unterstützt drei verschiedene visuelle Varianten über das Attribu
 Verschiedene Zustände und Statusanzeigen:
 
 <InputCheckboxPreview
+	context="feature"
 	initialProps={{ _label: 'Checkbox-Zustand' }}
 	visibleProperties={['_checked', '_indeterminate', '_disabled', '_required']}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Zustände:**
@@ -151,9 +136,9 @@ Verschiedene Zustände und Statusanzeigen:
 Kontrolle über Sichtbarkeit und Ausrichtung der Beschriftung:
 
 <InputCheckboxPreview
+	context="feature"
 	initialProps={{ _label: 'Beschriftung' }}
 	visibleProperties={['_hideLabel', '_labelAlign']}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Optionen:**
@@ -165,9 +150,9 @@ Kontrolle über Sichtbarkeit und Ausrichtung der Beschriftung:
 Standard-Attribute für die Integration in Formulare:
 
 <InputCheckboxPreview
+	context="feature"
 	initialProps={{ _label: 'Formular-Beispiel' }}
 	visibleProperties={['_hint', '_msg', '_name', '_accessKey', '_shortKey']}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -182,9 +167,9 @@ Standard-Attribute für die Integration in Formulare:
 Anpassung der Icon-Darstellung für verschiedene Zustände:
 
 <InputCheckboxPreview
+	context="feature"
 	initialProps={{ _label: 'Mit benutzerdefinierten Icons'}}
 	visibleProperties={['_icons', '_checked', '_indeterminate']}
-	sourceCodeDetailsCollapsed
 />
 
 Die `_icons`-Eigenschaft ermöglicht die Anpassung der Icons für die Zustände `checked`, `unchecked` und `indeterminate`.

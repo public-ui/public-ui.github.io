@@ -22,11 +22,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard-Alert mit Typ, Variante und Inhalt:
 
-<AlertPreview
-	visibleProperties={['_label', '_type', '_variant', '_hasCloser', '_slot']}
-	initialProps={{ _label: 'Hinweis', _type: 'info', _variant: 'msg' }}
-	sourceCodeDetailsCollapsed
-/>
+<AlertPreview context="example" initialProps={{ _label: 'Hinweis', _type: 'info', _variant: 'msg' }} />
 
 ## Barrierefreiheit
 
@@ -62,7 +58,7 @@ Standard-Alert mit Typ, Variante und Inhalt:
 
 ### Playground
 
-<AlertPreview />
+<AlertPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -70,11 +66,7 @@ Standard-Alert mit Typ, Variante und Inhalt:
 
 Der Typ des Alert wird über das Attribut `_type` festgelegt und bestimmt die semantische Bedeutung sowie das verwendete Icon.
 
-<AlertPreview
-	visibleProperties={['_type']}
-	initialProps={{ _label: 'Hinweis', _type: 'info' }}
-	sourceCodeDetailsCollapsed
-/>
+<AlertPreview context="feature" visibleProperties={['_type']} initialProps={{ _label: 'Hinweis', _type: 'info' }} />
 
 | Typ       | Bedeutung                                          |
 | --------- | -------------------------------------------------- |
@@ -89,9 +81,9 @@ Der Typ des Alert wird über das Attribut `_type` festgelegt und bestimmt die se
 Über das Attribut `_variant` wird die Darstellungsvariante gesteuert.
 
 <AlertPreview
+	context="feature"
 	visibleProperties={['_variant']}
 	initialProps={{ _label: 'Hinweis', _type: 'info', _variant: 'msg' }}
-	sourceCodeDetailsCollapsed
 />
 
 | Variante | Beschreibung                                                                        |
@@ -104,29 +96,25 @@ Der Typ des Alert wird über das Attribut `_type` festgelegt und bestimmt die se
 Die Überschrift wird über `_label` festgelegt, die semantische Ebene über `_level` (1–6, oder 0 für Fettschrift ohne semantisches Heading).
 
 <AlertPreview
+	context="feature"
 	visibleProperties={['_label', '_level']}
 	initialProps={{ _label: 'Überschrift', _type: 'info', _level: 3 }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Inhalt des Alert
 
 Der Inhalt des Alert wird als Slot-Inhalt übergeben und kann beliebigen HTML-Code oder KoliBri-Komponenten enthalten.
 
-<AlertPreview
-	visibleProperties={['_slot']}
-	initialProps={{ _label: 'Hinweis', _type: 'info' }}
-	sourceCodeDetailsCollapsed
-/>
+<AlertPreview context="feature" visibleProperties={['_slot']} initialProps={{ _label: 'Hinweis', _type: 'info' }} />
 
 #### Schließen-Funktion
 
 Mit dem Attribut `_has-closer` wird ein Schließen-Button eingeblendet.
 
 <AlertPreview
+	context="feature"
 	visibleProperties={['_hasCloser']}
 	initialProps={{ _label: 'Schließbarer Alert', _type: 'info', _hasCloser: true }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Screenreader-Benachrichtigungen (`_alert`)
@@ -134,9 +122,9 @@ Mit dem Attribut `_has-closer` wird ein Schließen-Button eingeblendet.
 Das Attribut `_alert` aktiviert `role="alert"` bzw. `aria-live="assertive"`, sodass Screenreader die Benachrichtigung automatisch vorlesen. Es wirkt nur beim initialen Rendern der Komponente oder bei einer Inhaltsänderung.
 
 <AlertPreview
+	context="feature"
 	visibleProperties={['_alert']}
 	initialProps={{ _label: 'Statusmeldung', _type: 'info', _alert: true }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Events

@@ -21,11 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard-Abkürzung mit optionalem Label:
 
-<AbbrPreview
-	visibleProperties={['_label', '_slot']}
-	initialProps={{ _label: "zum Beispiel", _slot: "z. B." }}
-	sourceCodeDetailsCollapsed
-/>
+<AbbrPreview context="example" initialProps={{ _label: "zum Beispiel", _slot: "z. B." }} />
 
 ## Barrierefreiheit
 
@@ -69,7 +65,7 @@ Die Komponente eignet sich zur Kennzeichnung von Abkürzungen innerhalb von Flie
 
 ### Playground
 
-<AbbrPreview />
+<AbbrPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -77,20 +73,16 @@ Die Komponente eignet sich zur Kennzeichnung von Abkürzungen innerhalb von Flie
 
 Abkürzung als reines Text-Element ohne zusätzliche Erklärung:
 
-<AbbrPreview
-	visibleProperties={['_slot']}
-	initialProps={{ _slot: "z. B." }}
-	sourceCodeDetailsCollapsed
-/>
+<AbbrPreview context="feature" visibleProperties={['_slot']} initialProps={{ _slot: "z. B." }} />
 
 #### Abkürzung mit Label
 
 Abkürzung mit ausgeschriebener Erklärung über das `_label`-Attribut:
 
 <AbbrPreview
+	context="feature"
 	visibleProperties={['_label', '_slot']}
 	initialProps={{ _label: "zum Beispiel", _slot: "z. B." }}
-	sourceCodeDetailsCollapsed
 />
 
 ## API

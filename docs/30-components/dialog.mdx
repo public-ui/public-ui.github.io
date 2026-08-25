@@ -20,11 +20,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard-Dialog mit Beschriftung und Inhalt:
 
-<DialogPreview
-	visibleProperties={[]}
-	initialProps={{}}
-	sourceCodeDetailsCollapsed
-/>
+<DialogPreview context="example" initialProps={{}} />
 
 ## Barrierefreiheit
 
@@ -86,10 +82,7 @@ Nutzen Sie die Methode `openModal()` auf der Dialog-Elementreferenz.
 
 Testen Sie die verschiedenen Eigenschaften des Dialogs:
 
-<DialogPreview
-	visibleProperties={['_label', '_variant', '_width', '_slot']}
-	initialProps={{}}
-/>
+<DialogPreview context="playground" initialProps={{}} />
 
 ### Funktionalitäten (mit Code)
 
@@ -98,12 +91,12 @@ Testen Sie die verschiedenen Eigenschaften des Dialogs:
 Die Beschriftung wird über `_label` gesetzt. Der Inhalt wird über den Slot bereitgestellt:
 
 <DialogPreview
+	context="feature"
 	visibleProperties={['_label', '_slot']}
 	initialProps={{
 		_label: 'Dialog Titel',
 		_slot: '<p>Dies ist der Dialoginhalt.</p>',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Breite
@@ -111,12 +104,12 @@ Die Beschriftung wird über `_label` gesetzt. Der Inhalt wird über den Slot ber
 Die Breite des Dialogs wird über `_width` gesteuert:
 
 <DialogPreview
+	context="feature"
 	visibleProperties={['_width']}
 	initialProps={{
 		_label: 'Dialog mit Custom-Breite',
 		_width: '500px',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 **Hinweis:** Die maximale Breite ist auf 100% begrenzt.
@@ -126,12 +119,12 @@ Die Breite des Dialogs wird über `_width` gesteuert:
 Der Dialog unterstützt zwei Varianten:
 
 <DialogPreview
+	context="feature"
 	visibleProperties={['_variant']}
 	initialProps={{
 		_label: 'Dialog mit Card-Variante',
 		_variant: 'card',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Varianten:**

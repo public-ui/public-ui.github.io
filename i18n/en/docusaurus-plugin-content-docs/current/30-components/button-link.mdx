@@ -20,12 +20,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 A button that looks and behaves like a link:
 
-<ButtonLinkPreview
-	initialProps={{ _label: 'Button looks like a link' }}
-	visibleProperties={[]}
-	codeCollapsable
-	codeCollapsed
-/>
+<ButtonLinkPreview context="example" initialProps={{ _label: 'Button looks like a link' }} />
 
 ## Accessibility
 
@@ -66,7 +61,7 @@ The ButtonLink component is suitable for cases where the semantic structure of a
 
 ### Playground
 
-<ButtonLinkPreview codeCollapsable />
+<ButtonLinkPreview context="playground" />
 
 ### Functionality (with Code)
 
@@ -74,22 +69,16 @@ The ButtonLink component is suitable for cases where the semantic structure of a
 
 A simple ButtonLink with basic properties:
 
-<ButtonLinkPreview
-	initialProps={{ _label: 'Works like a button' }}
-	visibleProperties={['_label']}
-	codeCollapsable
-	codeCollapsed
-/>
+<ButtonLinkPreview context="feature" initialProps={{ _label: 'Works like a button' }} visibleProperties={['_label']} />
 
 #### With Icons
 
 ButtonLink with icons before and/or after the label:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{ _label: 'With icon', _icons: 'fa-solid fa-heart' }}
 	visibleProperties={['_label', '_icons']}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### With Hidden Label
@@ -97,10 +86,9 @@ ButtonLink with icons before and/or after the label:
 The label is hidden and only displayed as a tooltip:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{ _label: 'Tooltip', _hideLabel: true }}
 	visibleProperties={['_hideLabel']}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Disabled
@@ -108,10 +96,9 @@ The label is hidden and only displayed as a tooltip:
 A disabled ButtonLink does not respond to interactions:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{ _label: 'Disabled', _disabled: true }}
 	visibleProperties={['_disabled']}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### With Keyboard Shortcut
@@ -119,10 +106,9 @@ A disabled ButtonLink does not respond to interactions:
 A visual hint for an available keyboard shortcut:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{ _label: 'With Shortkey', _shortKey: 's' }}
 	visibleProperties={['_shortKey']}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### ARIA Attributes
@@ -130,14 +116,13 @@ A visual hint for an available keyboard shortcut:
 ButtonLink with ARIA attributes for extended semantics:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{
 		_label: 'Menu',
 		_ariaExpanded: false,
 		_ariaControls: 'menu-content',
 	}}
 	visibleProperties={['_ariaControls', '_ariaExpanded', '_ariaSelected']}
-	codeCollapsable
-	codeCollapsed
 />
 
 ### Events

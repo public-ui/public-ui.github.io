@@ -21,11 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung einer einfachen Card mit Titel und Inhaltsbereich. Code kann eingeblendet werden.
 
-<CardPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich mit beliebigem HTML' }}
-	sourceCodeDetailsCollapsed
-/>
+<CardPreview context="example" initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich mit beliebigem HTML' }} />
 
 ## Barrierefreiheit
 
@@ -63,7 +59,7 @@ Darstellung einer einfachen Card mit Titel und Inhaltsbereich. Code kann eingebl
 
 ### Playground
 
-<CardPreview />
+<CardPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -72,6 +68,7 @@ Darstellung einer einfachen Card mit Titel und Inhaltsbereich. Code kann eingebl
 Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird über den Slot befüllt.
 
 <CardPreview
+	context="feature"
 	visibleProperties={['_label', '_slot']}
 	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich' }}
 />
@@ -81,6 +78,7 @@ Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird 
 Die Überschriftenebene wird über `_level` gesteuert. Möglich sind die Level 0–6, wobei 0 den Titel als Bold-Text ohne Überschriftenelement darstellt.
 
 <CardPreview
+	context="feature"
 	visibleProperties={['_level']}
 	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich', _level: 2 }}
 />
@@ -90,6 +88,7 @@ Die Überschriftenebene wird über `_level` gesteuert. Möglich sind die Level 0
 Das Attribut `_has-closer` ermöglicht dem Nutzer, die Card zu schließen und damit Platz zu sparen.
 
 <CardPreview
+	context="feature"
 	visibleProperties={['_hasCloser']}
 	initialProps={{ _label: 'Schließbare Card', _slot: 'Inhaltsbereich', _hasCloser: true }}
 />

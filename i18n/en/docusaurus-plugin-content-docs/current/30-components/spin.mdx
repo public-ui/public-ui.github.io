@@ -19,12 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Default loading indicator with the standard variant:
 
-<SpinPreview
-	visibleProperties={[]}
-	initialProps={{ _show: true }}
-	codeCollapsable
-	codeCollapsed
-/>
+<SpinPreview context="example" initialProps={{ _show: true }} />
 
 ## Accessibility
 
@@ -75,7 +70,7 @@ Yes, combine the visual indicator with explanatory text or a label to provide cl
 
 ### Playground
 
-<SpinPreview codeCollapsable />
+<SpinPreview context="playground" />
 
 ### Features (with Code)
 
@@ -83,28 +78,19 @@ Yes, combine the visual indicator with explanatory text or a label to provide cl
 
 The `_show` attribute determines whether the loading indicator is displayed.
 
-<SpinPreview
-	visibleProperties={['_show']}
-	codeCollapsable
-/>
+<SpinPreview context="feature" visibleProperties={['_show']} />
 
 #### Animation Variants
 
 The available variants can be selected via `_variant`: `dot`, `cycle` or `none` (for custom animations).
 
-<SpinPreview
-	visibleProperties={['_variant']}
-	codeCollapsable
-/>
+<SpinPreview context="feature" visibleProperties={['_variant']} />
 
 #### Label and Semantics
 
 The `_label` attribute defines a semantic label that is read by screen readers.
 
-<SpinPreview
-	visibleProperties={['_label']}
-	codeCollapsable
-/>
+<SpinPreview context="feature" visibleProperties={['_label']} />
 
 #### Custom Animations
 

@@ -20,7 +20,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 Simple radio selection group with three options:
 
 <InputRadioPreview
-	visibleProperties={[]}
+	context="example"
 	initialProps={{
 		_label: 'Salutation',
 		_options: [
@@ -29,7 +29,6 @@ Simple radio selection group with three options:
 			{ label: 'Company', value: 'company' },
 		],
 	}}
-	codeCollapsable
 />
 
 ## Accessibility
@@ -86,7 +85,7 @@ Simple radio selection group with three options:
 Test the various properties of the InputRadio component:
 
 <InputRadioPreview
-	visibleProperties={['_label', '_options', '_orientation', '_hint', '_hideMsg', '_disabled', '_required', '_hideLabel']}
+	context="playground"
 	initialProps={{
 		_label: 'Salutation',
 		_options: [
@@ -95,7 +94,6 @@ Test the various properties of the InputRadio component:
 			{ label: 'Company', value: 'company' },
 		],
 	}}
-	codeCollapsable
 />
 
 ### Features (with Code)
@@ -105,6 +103,7 @@ Test the various properties of the InputRadio component:
 The selection options are defined via `_options` as an array of objects with `label` and `value`:
 
 <InputRadioPreview
+	context="feature"
 	visibleProperties={['_label', '_options']}
 	initialProps={{
 		_label: 'Gender',
@@ -114,8 +113,6 @@ The selection options are defined via `_options` as an array of objects with `la
 			{ label: 'Diverse', value: 'diverse' },
 		],
 	}}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Orientation
@@ -123,6 +120,7 @@ The selection options are defined via `_options` as an array of objects with `la
 The alignment of the radio elements can be horizontal or vertical:
 
 <InputRadioPreview
+	context="feature"
 	visibleProperties={['_orientation']}
 	initialProps={{
 		_label: 'Payment method',
@@ -133,8 +131,6 @@ The alignment of the radio elements can be horizontal or vertical:
 		],
 		_orientation: 'horizontal',
 	}}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Hint Texts and Form Attributes
@@ -142,6 +138,7 @@ The alignment of the radio elements can be horizontal or vertical:
 Hint texts and validation feedback can be provided via `_hint` and `_msg`:
 
 <InputRadioPreview
+	context="feature"
 	visibleProperties={['_label', '_hint', '_msg', '_hideMsg', '_disabled', '_required', '_hideLabel']}
 	initialProps={{
 		_label: 'Shipping method',
@@ -152,8 +149,6 @@ Hint texts and validation feedback can be provided via `_hint` and `_msg`:
 			{ label: 'Economy (5–10 days)', value: 'economy' },
 		],
 	}}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Events

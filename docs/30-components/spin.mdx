@@ -19,11 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard-Ladeindikator mit der Standardvariante:
 
-<SpinPreview
-	visibleProperties={[]}
-	initialProps={{ _show: true }}
-	sourceCodeDetailsCollapsed
-/>
+<SpinPreview context="example" initialProps={{ _show: true }} />
 
 ## Barrierefreiheit
 
@@ -74,7 +70,7 @@ Ja, kombinieren Sie den visuellen Indikator mit erklärendem Text oder einem Lab
 
 ### Playground
 
-<SpinPreview  />
+<SpinPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -82,25 +78,19 @@ Ja, kombinieren Sie den visuellen Indikator mit erklärendem Text oder einem Lab
 
 Das Attribut `_show` bestimmt, ob der Ladeindikator angezeigt wird.
 
-<SpinPreview
-	visibleProperties={['_show']}
-/>
+<SpinPreview context="feature" visibleProperties={['_show']} />
 
 #### Animationsvarianten
 
 Die verfügbaren Varianten können über `_variant` ausgewählt werden: `dot`, `cycle` oder `none` (für benutzerdefinierte Animationen).
 
-<SpinPreview
-	visibleProperties={['_variant']}
-/>
+<SpinPreview context="feature" visibleProperties={['_variant']} />
 
 #### Label und Semantik
 
 Das Attribut `_label` definiert ein semantisches Label, das von Screenreadern vorgelesen wird.
 
-<SpinPreview
-	visibleProperties={['_label']}
-/>
+<SpinPreview context="feature" visibleProperties={['_label']} />
 
 #### Benutzerdefinierte Animationen
 
