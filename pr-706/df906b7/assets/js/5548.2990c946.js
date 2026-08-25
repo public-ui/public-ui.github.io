@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_public_ui_docs_v3=globalThis.webpackChunk_public_ui_docs_v3||[]).push([[5548],{5548(c,o,i){i.r(o),i.d(o,{default:()=>a});i(71763);var _=i(19260),l=i(91987);const a=()=>(0,l.jsx)(_.Q7,{_min:0,_max:50,_hideLabel:!0,_label:"Label",_icons:{left:{icon:"codicon codicon-arrow-left"},right:{icon:"codicon codicon-arrow-right"}},_touched:!0})}}]);
