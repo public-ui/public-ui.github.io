@@ -31,21 +31,36 @@ const SOURCES = [
 	},
 ];
 
+/**
+ * Die Abschnitte der deutschen Leitfassung. Die Überschriften werden exakt abgeglichen,
+ * damit ein neuer oder umbenannter Abschnitt als Fehler auffällt, statt still einem
+ * Kontext zugeordnet zu werden.
+ */
+const SECTION_CONTEXTS = [
+	{ level: 2, heading: /^Beispiel$/, context: 'example' },
+	{ level: 3, heading: /^Playground$/, context: 'playground' },
+	{ level: 3, heading: /^Funktionalitäten \(mit Code\)$/, context: 'feature' },
+];
+
 /** Ermittelt den erwarteten Kontext aus den Überschriften oberhalb der Fundstelle. */
 function expectedContext(source, index) {
 	let heading2 = '';
 	let heading3 = '';
 	for (const match of source.slice(0, index).matchAll(/^(#{2,3}) (.+)$/gm)) {
 		if (match[1] === '##') {
-			heading2 = match[2];
+			heading2 = match[2].trim();
 			heading3 = '';
 		} else {
-			heading3 = match[2];
+			heading3 = match[2].trim();
 		}
 	}
-	if (heading2.startsWith('Beispiel')) return 'example';
-	if (heading3.includes('Playground')) return 'playground';
-	if (heading3.includes('Funktionalität')) return 'feature';
+	// Die spezifischere Überschrift gewinnt, daher zuerst Ebene 3 prüfen.
+	for (const level of [3, 2]) {
+		const heading = level === 3 ? heading3 : heading2;
+		if (!heading) continue;
+		const section = SECTION_CONTEXTS.find((entry) => entry.level === level && entry.heading.test(heading));
+		if (section) return section.context;
+	}
 	return null;
 }
 
@@ -109,11 +124,21 @@ for (const { dir, strict } of SOURCES) {
 			if (!strict) continue;
 
 			if (expected === null) {
-				errors.push(`${location}: <${match[1]}> steht in keinem bekannten Abschnitt.`);
+				errors.push(
+					`${location}: <${match[1]}> steht in keinem bekannten Abschnitt. Erwartet wird "## Beispiel", ` +
+						`"### Playground" oder "### Funktionalitäten (mit Code)".`
+				);
 				continue;
 			}
 			if (actual[1] !== expected) {
 				errors.push(`${location}: context="${actual[1]}", erwartet wird laut Abschnitt context="${expected}".`);
+				continue;
+			}
+			if (actual[1] === 'feature' && !/\bvisibleProperties=/.test(tag)) {
+				errors.push(
+					`${location}: context="feature" benötigt "visibleProperties". Jeder Unterabschnitt zeigt gezielt ` +
+						`einzelne Eigenschaften; "visibleProperties={[]}" blendet sie bewusst aus.`
+				);
 			}
 		}
 	}

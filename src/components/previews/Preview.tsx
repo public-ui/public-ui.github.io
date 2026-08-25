@@ -52,10 +52,9 @@ export const PREVIEW_CONTEXT_CONFIG: Record<PreviewContext, PreviewContextConfig
  * technische Attribute ohne unmittelbaren Effekt auf die Darstellung. Im Kontext `feature`
  * koennen sie weiterhin gezielt ueber `visibleProperties` gezeigt werden.
  */
-const TECHNICAL_PROPERTY_NAMES = ['_accessKey', '_shortKey', '_name', '_customClass', '_customCss'];
+const TECHNICAL_PROPERTY_NAMES = new Set(['_accessKey', '_shortKey', '_name', '_customClass', '_customCss']);
 
-const isSensibleProperty = (key: string): boolean =>
-	!key.startsWith('_aria') && !TECHNICAL_PROPERTY_NAMES.includes(key);
+const isSensibleProperty = (key: string): boolean => !key.startsWith('_aria') && !TECHNICAL_PROPERTY_NAMES.has(key);
 
 type PreviewProps<TProps> = {
 	children: (props: TProps) => ReactNode;
@@ -83,6 +82,16 @@ const Preview = <TProps,>({
 	hiddenPropsInCode,
 }: PreviewProps<TProps>) => {
 	const contextConfig = PREVIEW_CONTEXT_CONFIG[context];
+	if (!contextConfig) {
+		// Bewusst ein Fehler statt eines stillen Fallbacks: Docusaurus rendert die Seiten beim
+		// Build vor, ein ungültiger Kontext fällt dadurch im Build auf statt erst später in der
+		// Oberfläche.
+		throw new Error(
+			`Preview: Unbekannter context "${String(context)}". Erlaubt sind ${Object.keys(PREVIEW_CONTEXT_CONFIG)
+				.map((key) => `"${key}"`)
+				.join(', ')}.`
+		);
+	}
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
 	const [codeOpen, setCodeOpen] = useState<boolean>(contextConfig.code === 'expanded');
 	const [copySuccess, setCopySuccess] = useState<boolean>(false);
@@ -247,6 +256,10 @@ const Preview = <TProps,>({
 		if (contextConfig.properties === 'selected' && visibleProperties) {
 			return entries.filter(([key]) => visibleProperties.includes(key));
 		}
+
+		// Fallback im Kontext `feature`: Ohne Auswahl werden alle sinnvollen Eigenschaften
+		// angeboten. In der deutschen Leitfassung erzwingt `scripts/check.preview.context.js`
+		// eine explizite Auswahl, damit dieser Fall dort nicht eintritt.
 
 		return entries.filter(([key]) => isSensibleProperty(key as string));
 	};

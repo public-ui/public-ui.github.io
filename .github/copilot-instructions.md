@@ -113,6 +113,32 @@ After making any changes, ALWAYS perform these validation steps:
 - All code samples and technical terms in English
 - Remove tag sections: replace `/tags:(\n.+)+/` with `---`
 
+### Component Documentation (`/docs/30-components/`)
+Each component page uses the same three sections, and every `<XyzPreview>` must declare the
+section it belongs to via the required `context` property. The presentation is derived centrally
+from it (see `PREVIEW_CONTEXT_CONFIG` in `src/components/previews/Preview.tsx`) -- do not
+configure it per call site.
+
+| Section                        | `context`      | Properties offered            | Source code |
+| ------------------------------ | -------------- | ----------------------------- | ----------- |
+| `## Beispiel`                  | `"example"`    | none                          | collapsed   |
+| `### Playground`               | `"playground"` | all sensible ones             | collapsed   |
+| `### Funktionalitäten (mit Code)` | `"feature"` | those in `visibleProperties`  | expanded    |
+
+```mdx
+<ButtonPreview context="example" initialProps={{ _label: 'Click me' }} />
+<ButtonPreview context="playground" />
+<ButtonPreview context="feature" visibleProperties={['_variant']} initialProps={{ _label: 'Button' }} />
+```
+
+- `visibleProperties` is only evaluated for `context="feature"` and is required there, since each
+  subsection demonstrates specific properties. Use `visibleProperties={[]}` for a minimal demo
+  that deliberately offers no controls.
+- ARIA attributes and technical attributes (`_accessKey`, `_shortKey`, `_name`, `_customClass`,
+  `_customCss`) are hidden in the playground. Show them deliberately via `visibleProperties`.
+- `pnpm run lint` runs `scripts/check.preview.context.js`, which verifies that every preview
+  declares a `context` matching its section. MDX is covered by neither `tsc` nor ESLint.
+
 ### Code Style
 - Tabs for indentation (except Markdown files use spaces)
 - Prettier: 120 character line width, single quotes
