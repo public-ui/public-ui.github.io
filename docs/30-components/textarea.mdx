@@ -22,10 +22,9 @@ Eine **Textarea** ist ein mehrzeiliges Eingabefeld, das es Nutzern ermöglicht, 
 
 Standard-Textarea mit Beschriftung und Platzhaltertext:
 
-<TextAreaPreview 
-  _value="" 
-  visibleProperties={["_value", "_placeholder", "_label", "_hint", "_msg"]} 
-  initialProps={{ _label: "Beschreibung", _placeholder: "Bitte geben Sie Ihre Beschreibung ein...", _hint: "Ergänzende Hinweise zum Eingabefeld", _rows: 4 }}
+<TextAreaPreview
+	visibleProperties={['_placeholder', '_label', '_hint', '_msg']}
+	initialProps={{ _label: 'Beschreibung', _placeholder: 'Bitte geben Sie Ihre Beschreibung ein...', _hint: 'Ergänzende Hinweise zum Eingabefeld', _rows: 4 }}
 	sourceCodeDetailsCollapsed
 />
 
@@ -48,7 +47,7 @@ Die **Textarea**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt und 
 - <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1 - Error Identification"></kol-link>
 - <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
 
-## Nutzung
+## Verwendung
 
 ### Tastatursteuerung
 
@@ -90,43 +89,43 @@ Die Textarea unterstützt folgende Tastenkombinationen:
 
 Testen Sie die verschiedenen Eigenschaften der Textarea-Komponente:
 
-<TextAreaPreview 
-  _value="" 
-  visibleProperties={["_value", "_placeholder", "_disabled", "_label", "_hint", "_rows", "_resize", "_required", "_readOnly", "_hideLabel"]} 
-  initialProps={{ _label: "Beschreibung", _placeholder: "Bitte geben Sie eine Beschreibung ein...", _hint: "Hinweistext", _rows: 4 }}
+<TextAreaPreview
+	visibleProperties={['_placeholder', '_disabled', '_label', '_hint', '_rows', '_resize', '_required', '_readOnly', '_hideLabel']}
+	initialProps={{ _label: 'Beschreibung', _placeholder: 'Bitte geben Sie eine Beschreibung ein...', _hint: 'Hinweistext', _rows: 4 }}
 />
 
-### Funktionalitäten
+### Funktionalitäten (mit Code)
 
 #### Einfache Textarea
 
 Standard-Textarea ohne spezielle Konfiguration:
 
-<TextAreaPreview initialProps={{ _label:"Beschreibung" }} visibleProperties={[]} sourceCodeDetailsCollapsed />
+<TextAreaPreview initialProps={{ _label: 'Beschreibung' }} visibleProperties={[]} sourceCodeDetailsCollapsed />
 
 #### Automatische Höhenanpassung
 
 Die Textarea passt ihre Höhe automatisch an den Inhalt an:
 
-<TextAreaPreview 
-  initialProps={{ 
-    _label:"Beschreibung", 
-    _value: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+<TextAreaPreview
+	initialProps={{
+		_label: 'Beschreibung',
+		_value: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
 
 Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
 
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.`, 
-    _adjustHeight: true }} 
-  visibleProperties={["_adjustHeight"]} />
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.`,
+		_adjustHeight: true,
+	}}
+	visibleProperties={['_adjustHeight']}
+/>
 
 #### Formularattribute
 
 Standard-Attribute für Formulare:
 
-<TextAreaPreview 
-  _value="" 
-  visibleProperties={["_label", "_value", "_msg", "_hint", "_disabled", "_readOnly", "_required", "_hideLabel"]} 
-  initialProps={{ _label: "Beschreibung" }}
+<TextAreaPreview
+	visibleProperties={['_label', '_msg', '_hint', '_disabled', '_readOnly', '_required', '_hideLabel']}
+	initialProps={{ _label: 'Beschreibung' }}
 	sourceCodeDetailsCollapsed
 />
 
@@ -143,9 +142,8 @@ Standard-Attribute für Formulare:
 Der Placeholder-Text wird angezeigt, wenn das Eingabefeld leer ist:
 
 <TextAreaPreview
-  _value=""
-  visibleProperties={["_placeholder"]}
-  initialProps={{ _label: "Beschreibung", _placeholder: "Bitte geben Sie eine Beschreibung ein..." }}
+	visibleProperties={['_placeholder']}
+	initialProps={{ _label: 'Beschreibung', _placeholder: 'Bitte geben Sie eine Beschreibung ein...' }}
 	sourceCodeDetailsCollapsed
 />
 
@@ -156,9 +154,8 @@ Der Placeholder-Text wird angezeigt, wenn das Eingabefeld leer ist:
 Die Textarea ist nur lesbar, aber nicht editierbar:
 
 <TextAreaPreview
-  _value="Dies ist ein nur lesbarer Textbereich."
-  visibleProperties={["_readOnly"]}
-  initialProps={{ _label: "Beschreibung", _readOnly: true }}
+	visibleProperties={['_readOnly']}
+	initialProps={{ _label: 'Beschreibung', _readOnly: true, _value: 'Dies ist ein nur lesbarer Textbereich.' }}
 	sourceCodeDetailsCollapsed
 />
 
@@ -167,9 +164,8 @@ Die Textarea ist nur lesbar, aber nicht editierbar:
 Die Textarea kann über das Attribut `_resize` in ihrer Größe angepasst werden:
 
 <TextAreaPreview
-  _value=""
-  visibleProperties={["_resize"]}
-  initialProps={{ _label: "Beschreibung", _resize: "vertical" }}
+	visibleProperties={['_resize']}
+	initialProps={{ _label: 'Beschreibung', _resize: 'vertical' }}
 	sourceCodeDetailsCollapsed
 />
 
@@ -182,9 +178,8 @@ Die Textarea kann über das Attribut `_resize` in ihrer Größe angepasst werden
 Die anfängliche Höhe der Textarea kann über das Attribut `_rows` in Zeilen angegeben werden:
 
 <TextAreaPreview
-  _value="" 
-  visibleProperties={["_rows"]}
-  initialProps={{ _label: "Beschreibung", _rows: 6 }}
+	visibleProperties={['_rows']}
+	initialProps={{ _label: 'Beschreibung', _rows: 6 }}
 	sourceCodeDetailsCollapsed
 />
 
@@ -192,9 +187,9 @@ Die anfängliche Höhe der Textarea kann über das Attribut `_rows` in Zeilen an
 
 Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen und gleichzeitig visuelles Feedback geben:
 
-<TextAreaPreview 
-  initialProps={{ _label:"Beschreibung", _hasCounter: true, _maxLength: 100, _value: "Initialer Text", _rows: 3 }} 
-  visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
+<TextAreaPreview
+	initialProps={{ _label: 'Beschreibung', _hasCounter: true, _maxLength: 100, _value: 'Initialer Text', _rows: 3 }}
+	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
 	sourceCodeDetailsCollapsed
 />
 
@@ -228,11 +223,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 - Mit `_has-counter` **und ohne** `_max-length` wird nur die aktuell eingegebene Zeichenzahl angezeigt.
 - Mit `_has-counter` **und** `_max-length` bestimmt `_max-length-behavior`, ob die Grenze hart (`hard`) oder weich (`soft`) umgesetzt wird.
 
-## API
-
-<Readme />
-
-### Events
+#### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
@@ -243,3 +234,7 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | `blur`   | Eingabefeld verliert Fokus       | -                               |
 | `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
 | `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
+
+## API
+
+<Readme />
