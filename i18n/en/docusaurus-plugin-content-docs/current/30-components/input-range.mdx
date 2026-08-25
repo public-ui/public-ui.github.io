@@ -19,12 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Rendering of an InputRange component with default settings:
 
-<InputRangePreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Volume' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<InputRangePreview context="example" initialProps={{ _label: 'Volume' }} />
 
 ## Accessibility
 
@@ -79,7 +74,7 @@ Rendering of an InputRange component with default settings:
 
 Test the various properties of the InputRange component:
 
-<InputRangePreview codeCollapsable />
+<InputRangePreview context="playground" />
 
 ### Functionality (with Code)
 
@@ -88,10 +83,9 @@ Test the various properties of the InputRange component:
 Standard InputRange with label, minimum, and maximum:
 
 <InputRangePreview
+	context="feature"
 	visibleProperties={['_label', '_min', '_max', '_step']}
 	initialProps={{ _label: 'Select value', _min: 0, _max: 100, _step: 1 }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Value Range and Step Size
@@ -99,10 +93,9 @@ Standard InputRange with label, minimum, and maximum:
 The properties `_min`, `_max`, and `_step` determine the value range and step size:
 
 <InputRangePreview
+	context="feature"
 	visibleProperties={['_min', '_max', '_step', '_value']}
 	initialProps={{ _label: 'Price range (€)', _min: 0, _max: 1000, _step: 50, _value: 250 }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Hint Texts
@@ -110,10 +103,9 @@ The properties `_min`, `_max`, and `_step` determine the value range and step si
 Additional information can be provided via `_hint`:
 
 <InputRangePreview
+	context="feature"
 	visibleProperties={['_label', '_hint']}
 	initialProps={{ _label: 'Volume', _hint: 'Slider to control the volume (0-100%)' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Disabled State
@@ -121,10 +113,9 @@ Additional information can be provided via `_hint`:
 A disabled input field can be achieved via the `_disabled` attribute:
 
 <InputRangePreview
+	context="feature"
 	visibleProperties={['_disabled']}
 	initialProps={{ _label: 'Disabled field', _disabled: true, _value: 50 }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Error Messages
@@ -132,14 +123,13 @@ A disabled input field can be achieved via the `_disabled` attribute:
 The `_msg` attribute allows displaying validation hints:
 
 <InputRangePreview
+	context="feature"
 	visibleProperties={['_label', '_msg']}
 	initialProps={{
 		_label: 'Value range',
 		_msg: { _description: 'The value must be between 10 and 90', _level: 'error' },
 		_value: 5,
 	}}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Events

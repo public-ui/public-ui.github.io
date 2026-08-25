@@ -19,11 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Basic display of an image with the required alternative text:
 
-<ImagePreview
-	visibleProperties={['_src', '_alt']}
-	codeCollapsable
-	codeCollapsed
-/>
+<ImagePreview context="example" />
 
 ## Accessibility
 
@@ -72,7 +68,7 @@ Yes, all common formats are supported (PNG, JPEG, WebP, SVG, GIF etc.). Use `_sr
 
 ### Playground
 
-<ImagePreview codeCollapsable />
+<ImagePreview context="playground" />
 
 ### Features (with Code)
 
@@ -80,44 +76,32 @@ Yes, all common formats are supported (PNG, JPEG, WebP, SVG, GIF etc.). Use `_sr
 
 The image source is set via the required `_src` attribute. This is the fallback URL used when `_srcset` is not supported or no suitable variant is available.
 
-<ImagePreview
-	visibleProperties={['_src']}
-	initialProps={{ _src: '/assets/sample-image.png' }}
-	codeCollapsable
-/>
+<ImagePreview context="feature" visibleProperties={['_src']} initialProps={{ _src: '/assets/sample-image.png' }} />
 
 #### Alternative text
 
 The required `_alt` attribute provides a text description or alternative for the image. For decorative images it can be empty.
 
-<ImagePreview
-	visibleProperties={['_alt']}
-	initialProps={{ _alt: 'Example image description' }}
-	codeCollapsable
-/>
+<ImagePreview context="feature" visibleProperties={['_alt']} initialProps={{ _alt: 'Example image description' }} />
 
 #### Responsive images with Srcset and Sizes
 
 With `_srcset` different image versions can be specified for different resolutions, pixel densities and file formats. The `_sizes` attribute helps the browser understand what widths the image will have at different viewport sizes.
 
 <ImagePreview
+	context="feature"
 	visibleProperties={['_srcset', '_sizes']}
 	initialProps={{
 		_srcset: '/assets/image-small.png 600w, /assets/image-large.png 1200w',
 		_sizes: '(max-width: 600px) 100vw, 50vw',
 	}}
-	codeCollapsable
 />
 
 #### Loading behavior
 
 The `_loading` attribute controls when the browser loads the image. `lazy` is the default and improves performance, `eager` should only be used for images in the visible area.
 
-<ImagePreview
-	visibleProperties={['_loading']}
-	initialProps={{ _loading: 'lazy' }}
-	codeCollapsable
-/>
+<ImagePreview context="feature" visibleProperties={['_loading']} initialProps={{ _loading: 'lazy' }} />
 
 **Available values:**
 - `lazy`: Defers loading until the viewport is reached (default)

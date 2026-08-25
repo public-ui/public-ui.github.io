@@ -20,11 +20,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard tree with multiple levels and expandable items:
 
-<TreePreview
-	visibleProperties={[]}
-	codeCollapsable
-	codeCollapsed
-/>
+<TreePreview context="example" />
 
 ## Accessibility
 
@@ -94,7 +90,7 @@ Yes. Filtering is handled at application level by adjusting the data or rendered
 
 Test the different properties of the tree component:
 
-<TreePreview codeCollapsable />
+<TreePreview context="playground" />
 
 ### Features with code
 
@@ -102,37 +98,25 @@ Test the different properties of the tree component:
 
 Each node is represented by a `KolTreeItem` component. The container is defined by `KolTree` with the required `_label` attribute.
 
-<TreePreview
-	visibleProperties={['_label']}
-	codeCollapsable
-	codeCollapsed
-/>
+<TreePreview context="feature" visibleProperties={['_label']} />
 
 #### Expanded and collapsed states
 
 The `_open` attribute on `KolTreeItem` controls whether an item is expanded on initial load.
 
-<TreePreview
-	visibleProperties={['_open']}
-	codeCollapsable
-	codeCollapsed
-/>
+<TreePreview context="feature" visibleProperties={['_open']} />
 
 #### Active state
 
 The `_active` attribute marks a tree item as currently active, for example the current page in a navigation.
 
-<TreePreview
-	visibleProperties={['_active']}
-	codeCollapsable
-	codeCollapsed
-/>
+<TreePreview context="feature" visibleProperties={['_active']} />
 
 #### Nested hierarchies
 
 The tree supports arbitrary nesting depths through nested `KolTreeItem` elements.
 
-<TreePreview codeCollapsable />
+<TreePreview context="feature" />
 
 ## API
 

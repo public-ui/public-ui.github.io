@@ -22,12 +22,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Display of the standard block variant with quote and source reference:
 
-<QuotePreview
-	visibleProperties={[]}
-	initialProps={{ _variant: 'block' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<QuotePreview context="example" initialProps={{ _variant: 'block' }} />
 
 ## Accessibility
 
@@ -78,7 +73,7 @@ The `_quote` attribute expects plain text. Formatting should be done via CSS or 
 
 Test the various properties of the Quote component:
 
-<QuotePreview codeCollapsable />
+<QuotePreview context="playground" />
 
 ### Functionality (with Code)
 
@@ -86,12 +81,7 @@ Test the various properties of the Quote component:
 
 The Quote component offers two display variants:
 
-<QuotePreview
-	visibleProperties={['_variant']}
-	initialProps={{ _variant: 'inline' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<QuotePreview context="feature" visibleProperties={['_variant']} initialProps={{ _variant: 'inline' }} />
 
 **Available variants:**
 - `inline`: Short quotation within body text (default)
@@ -102,10 +92,9 @@ The Quote component offers two display variants:
 The optional label can serve as an author or work reference, while `_href` enables source verification:
 
 <QuotePreview
+	context="feature"
 	visibleProperties={['_label', '_href']}
 	initialProps={{ _variant: 'block', _label: 'Albert Einstein' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 ## API

@@ -19,11 +19,7 @@ The input type **Number** creates an input field for numbers.
 
 ## Construction
 
-<InputNumberPreview
-  visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
-  codeCollapsable
-  codeCollapsed
-/>
+<InputNumberPreview context="feature" visibleProperties={['_label', '_disabled', '_readOnly', '_required']} />
 
 ### Events
 
@@ -55,10 +51,9 @@ For the handling of events or callbacks, see <kol-link _label="Events" _href="..
 A button with an arbitrary action can be placed within the field (`_hide-label` only):
 
 <InputNumberPreview
-  initialProps={{ _label: 'With SmartButton', _hideLabel: true, _placeholder: 'Placeholder', _smartButton: { _label: 'Action' } }}
-  visibleProperties={['_smartButton']}
-  codeCollapsable
-  codeCollapsed
+	context="feature"
+	initialProps={{ _label: 'With SmartButton', _hideLabel: true, _placeholder: 'Placeholder', _smartButton: { _label: 'Action' } }}
+	visibleProperties={['_smartButton']}
 />
 
 ### Suggestions
@@ -66,13 +61,12 @@ A button with an arbitrary action can be placed within the field (`_hide-label` 
 Use `_suggestions` to provide a list of suggested values for autocomplete:
 
 <InputNumberPreview
-  visibleProperties={['_label', '_suggestions']}
-  initialProps={{
+	context="feature"
+	visibleProperties={['_label', '_suggestions']}
+	initialProps={{
     _label: 'Quantity',
     _suggestions: [1, 5, 10, 25, 50, 100],
   }}
-  codeCollapsable
-  codeCollapsed
 />
 
 ## Links and references

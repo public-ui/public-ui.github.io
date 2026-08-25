@@ -21,12 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard form with input fields and buttons:
 
-<FormPreview
-	visibleProperties={[]}
-	initialProps={{ _requiredText: true }}
-	codeCollapsable
-	codeCollapsed
-/>
+<FormPreview context="example" initialProps={{ _requiredText: true }} />
 
 ## Accessibility
 
@@ -69,7 +64,7 @@ The **Form** component supports accessible form structures according to modern s
 
 Test the Form with various configurations:
 
-<FormPreview codeCollapsable />
+<FormPreview context="playground" />
 
 ### Functionalities (with Code)
 
@@ -77,18 +72,14 @@ Test the Form with various configurations:
 
 The text for mandatory field hints is controlled via `_requiredText`:
 
-<FormPreview
-	visibleProperties={['_requiredText']}
-	initialProps={{ _requiredText: true }}
-	codeCollapsable
-/>
+<FormPreview context="feature" visibleProperties={['_requiredText']} initialProps={{ _requiredText: true }} />
 
 With `_requiredText="false"` the hint is hidden. With a custom string the default text can be overridden:
 
 <FormPreview
+	context="feature"
 	visibleProperties={['_requiredText']}
 	initialProps={{ _requiredText: 'Fields marked with * are required' }}
-	codeCollapsable
 />
 
 #### Event Handling

@@ -19,11 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard Split-Button with context menu:
 
-<SplitButtonPreview
-	visibleProperties={['_label', '_variant', '_tooltipAlign', '_icons', '_disabled', '_hideLabel']}
-	codeCollapsable
-	codeCollapsed
-/>
+<SplitButtonPreview context="example" />
 
 ## Accessibility
 
@@ -74,7 +70,7 @@ Standard Split-Button with context menu:
 
 ### Playground
 
-<SplitButtonPreview codeCollapsable />
+<SplitButtonPreview context="playground" />
 
 ### Features (with Code)
 
@@ -82,20 +78,13 @@ Standard Split-Button with context menu:
 
 Minimum configuration for a functional Split-Button: `_label`.
 
-<SplitButtonPreview
-	visibleProperties={['_label']}
-	codeCollapsable
-/>
+<SplitButtonPreview context="feature" visibleProperties={['_label']} />
 
 #### Variants
 
 The Split-Button supports various visual variants for different contexts:
 
-<SplitButtonPreview
-	visibleProperties={['_variant']}
-	initialProps={{ _variant: 'primary' }}
-	codeCollapsable
-/>
+<SplitButtonPreview context="feature" visibleProperties={['_variant']} initialProps={{ _variant: 'primary' }} />
 
 **Available variants:**
 - `normal`: Default design
@@ -110,29 +99,19 @@ The Split-Button supports various visual variants for different contexts:
 
 Icons can be added via `_icons` and the label can be hidden via `_hideLabel`:
 
-<SplitButtonPreview
-	visibleProperties={['_icons', '_hideLabel']}
-	codeCollapsable
-/>
+<SplitButtonPreview context="feature" visibleProperties={['_icons', '_hideLabel']} />
 
 #### Tooltip and Keyboard Shortcuts
 
 Configure tooltip position and keyboard shortcuts:
 
-<SplitButtonPreview
-	visibleProperties={['_tooltipAlign', '_shortKey']}
-	codeCollapsable
-/>
+<SplitButtonPreview context="feature" visibleProperties={['_tooltipAlign', '_shortKey']} />
 
 #### Disabled State
 
 The Split-Button can be disabled via `_disabled`:
 
-<SplitButtonPreview
-	visibleProperties={['_disabled']}
-	initialProps={{ _disabled: true }}
-	codeCollapsable
-/>
+<SplitButtonPreview context="feature" visibleProperties={['_disabled']} initialProps={{ _disabled: true }} />
 
 #### Events
 

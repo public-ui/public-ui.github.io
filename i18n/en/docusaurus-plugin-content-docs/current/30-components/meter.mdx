@@ -19,10 +19,8 @@ classification of that value using optional thresholds and an optimum value.
 The example shows a meter with a defined value range, thresholds and a unit.
 
 <MeterPreview
-  visibleProperties={['_label', '_value', '_min', '_max', '_low', '_high', '_optimum', '_unit', '_orientation']}
-  initialProps={{ _label: 'Load', _min: 0, _max: 100, _value: 65, _low: 30, _optimum: 70, _high: 80, _unit: '%' }}
-  codeCollapsable
-  codeCollapsed
+	context="example"
+	initialProps={{ _label: 'Load', _min: 0, _max: 100, _value: 65, _low: 30, _optimum: 70, _high: 80, _unit: '%' }}
 />
 
 ## Accessibility
@@ -59,7 +57,7 @@ The example shows a meter with a defined value range, thresholds and a unit.
 
 ### Playground
 
-<MeterPreview codeCollapsable />
+<MeterPreview context="playground" />
 
 ### Functionalities (with code)
 
@@ -68,9 +66,9 @@ The example shows a meter with a defined value range, thresholds and a unit.
 Simple meter display with minimum, maximum, current value and unit.
 
 <MeterPreview
-  visibleProperties={['_label', '_value', '_min', '_max', '_unit']}
-  initialProps={{ _label: 'Storage load', _min: 0, _max: 1024, _value: 512, _unit: 'MB' }}
-  codeCollapsable
+	context="feature"
+	visibleProperties={['_label', '_value', '_min', '_max', '_unit']}
+	initialProps={{ _label: 'Storage load', _min: 0, _max: 1024, _value: 512, _unit: 'MB' }}
 />
 
 #### Meter with threshold ranges
@@ -83,9 +81,9 @@ Simple meter display with minimum, maximum, current value and unit.
 - `_optimum` defines the preferred target range
 
 <MeterPreview
-  visibleProperties={['_value', '_min', '_max', '_low', '_high', '_optimum']}
-  initialProps={{ _label: 'CPU load', _min: 0, _max: 100, _value: 15, _low: 20, _optimum: 10, _high: 70 }}
-  codeCollapsable
+	context="feature"
+	visibleProperties={['_value', '_min', '_max', '_low', '_high', '_optimum']}
+	initialProps={{ _label: 'CPU load', _min: 0, _max: 100, _value: 15, _low: 20, _optimum: 10, _high: 70 }}
 />
 
 #### Vertical meter
@@ -93,9 +91,9 @@ Simple meter display with minimum, maximum, current value and unit.
 The orientation can be switched between horizontal and vertical using `_orientation`.
 
 <MeterPreview
-  visibleProperties={['_label', '_value', '_min', '_max', '_orientation']}
-  initialProps={{ _label: 'Liquid level', _min: 0, _max: 1000, _value: 650, _orientation: 'vertical', _unit: 'l' }}
-  codeCollapsable
+	context="feature"
+	visibleProperties={['_label', '_value', '_min', '_max', '_orientation']}
+	initialProps={{ _label: 'Liquid level', _min: 0, _max: 1000, _value: 650, _orientation: 'vertical', _unit: 'l' }}
 />
 
 ## API

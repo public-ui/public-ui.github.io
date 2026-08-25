@@ -19,12 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Display of a simple data table with automatic functionalities:
 
-<TableStatefulPreview
-	codeCollapsable
-	codeCollapsed
-	visibleProperties={[]}
-	initialProps={{}}
-/>
+<TableStatefulPreview context="example" initialProps={{}} />
 
 ## Accessibility
 
@@ -81,7 +76,7 @@ The `_selection` attribute enables row selection (single or multiple). Selection
 
 Test all functionalities of the TableStateful component interactively:
 
-<TableStatefulPreview codeCollapsable />
+<TableStatefulPreview context="playground" />
 
 ### Functionalities (with code)
 
@@ -89,23 +84,13 @@ Test all functionalities of the TableStateful component interactively:
 
 The `_label` attribute defines the semantic label of the table and is used for accessibility:
 
-<TableStatefulPreview
-	visibleProperties={['_label']}
-	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_label']} initialProps={{}} />
 
 #### Column headings and layout
 
 Headers are defined via the `_headers` attribute. Horizontal and vertical headers with arbitrary nesting are supported:
 
-<TableStatefulPreview
-	visibleProperties={['_headers']}
-	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_headers']} initialProps={{}} />
 
 **Header structure:**
 - `horizontal`: Array of column headings
@@ -116,12 +101,7 @@ Headers are defined via the `_headers` attribute. Horizontal and vertical header
 
 The component supports automatic sorting per column via the `compareFn` function in the header definitions:
 
-<TableStatefulPreview
-	visibleProperties={['_headers', '_allowMultiSort']}
-	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_headers', '_allowMultiSort']} initialProps={{}} />
 
 **Explanation of compareFn:**
 Stencil does not return the objects to be compared with their original Type (here PlantRecord). Therefore, for a clean typing, the detour via unknown must be taken:
@@ -139,12 +119,7 @@ compareFn: (a, b) => (a as unknown as PlantRecord).name.localeCompare((b as unkn
 
 The `_pagination` property activates automatic pagination and provides various configuration options:
 
-<TableStatefulPreview
-	visibleProperties={['_pagination']}
-	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_pagination']} initialProps={{}} />
 
 **Configurable options:**
 - `_page`: Current page number (default: 1)
@@ -159,12 +134,7 @@ The `_pagination` property activates automatic pagination and provides various c
 
 The `_data` property contains the table rows. Cell content can be individually formatted via render functions:
 
-<TableStatefulPreview
-	visibleProperties={[]}
-	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={[]} initialProps={{}} />
 
 **Render functions – implementation variants:**
 
@@ -216,23 +186,13 @@ import { createReactRenderElement } from '@public-ui/react-v19';
 
 The `_dataFoot` attribute enables summary rows or additional information at the end of the table:
 
-<TableStatefulPreview
-	visibleProperties={[]}
-	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={[]} initialProps={{}} />
 
 #### Row selection
 
 The `_selection` attribute activates row selection (single or multiple). Selection changes are transmitted via the `selectionChange` event:
 
-<TableStatefulPreview
-	visibleProperties={['_selection']}
-	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_selection']} initialProps={{}} />
 
 **Configurable options:**
 - `multiple`: Single selection (default) or multiple selection
@@ -245,23 +205,13 @@ The `_selection` attribute activates row selection (single or multiple). Selecti
 
 With `_hasSettingsMenu`, a menu is activated through which users can adjust table settings (e.g., visible columns):
 
-<TableStatefulPreview
-	visibleProperties={['_hasSettingsMenu']}
-	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={['_hasSettingsMenu']} initialProps={{}} />
 
 #### Fixed columns
 
 The `_fixedCols` attribute defines columns that remain visible during horizontal scrolling – specified as `[start, end]`:
 
-<TableStatefulPreview
-	visibleProperties={[]}
-	initialProps={{}}
-	codeCollapsable
-	codeCollapsed
-/>
+<TableStatefulPreview context="feature" visibleProperties={[]} initialProps={{}} />
 
 #### Events
 
