@@ -51,8 +51,12 @@ export const PREVIEW_CONTEXT_CONFIG: Record<PreviewContext, PreviewContextConfig
  * Eigenschaften, die beim freien Ausprobieren nicht weiterhelfen: ARIA-Attribute sowie
  * technische Attribute ohne unmittelbaren Effekt auf die Darstellung. Im Kontext `feature`
  * koennen sie weiterhin gezielt ueber `visibleProperties` gezeigt werden.
+ *
+ * Nicht enthalten sind `_accessKey` und `_shortKey`: Beide wirken sich sichtbar aus
+ * (`_shortKey` ergaenzt einen Hinweis hinter der Beschriftung) und gehoeren damit in den
+ * Playground.
  */
-const TECHNICAL_PROPERTY_NAMES = new Set(['_accessKey', '_shortKey', '_name', '_customClass', '_customCss']);
+const TECHNICAL_PROPERTY_NAMES = new Set(['_name', '_customClass', '_customCss']);
 
 const isSensibleProperty = (key: string): boolean => !key.startsWith('_aria') && !TECHNICAL_PROPERTY_NAMES.has(key);
 

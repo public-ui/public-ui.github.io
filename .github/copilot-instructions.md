@@ -134,8 +134,8 @@ configure it per call site.
 - `visibleProperties` is only evaluated for `context="feature"` and is required there, since each
   subsection demonstrates specific properties. Use `visibleProperties={[]}` for a minimal demo
   that deliberately offers no controls.
-- ARIA attributes and technical attributes (`_accessKey`, `_shortKey`, `_name`, `_customClass`,
-  `_customCss`) are hidden in the playground. Show them deliberately via `visibleProperties`.
+- ARIA attributes and technical attributes (`_name`, `_customClass`, `_customCss`) are hidden in
+  the playground. Show them deliberately via `visibleProperties`.
 - `pnpm run lint` runs `scripts/check.preview.context.js`, which verifies that every preview
   declares a `context` matching its section. MDX is covered by neither `tsc` nor ESLint.
 
