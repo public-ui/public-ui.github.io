@@ -21,11 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard view of the component. Code can be shown.
 
-<AvatarPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Max Mustermann' }}
-	codeCollapsable
-/>
+<AvatarPreview context="example" initialProps={{ _label: 'Max Mustermann' }} />
 
 ## Accessibility
 
@@ -62,11 +58,7 @@ Standard view of the component. Code can be shown.
 
 Test the various properties of the Avatar component:
 
-<AvatarPreview
-	visibleProperties={['_label', '_src', '_color']}
-	initialProps={{ _label: 'Max Mustermann', _color: '#5A5FEE' }}
-	codeCollapsable
-/>
+<AvatarPreview context="playground" initialProps={{ _label: 'Max Mustermann', _color: '#5A5FEE' }} />
 
 ### Functionalities
 
@@ -74,25 +66,19 @@ Test the various properties of the Avatar component:
 
 Display of the component without an image – initials are automatically generated from the name:
 
-<AvatarPreview
-	visibleProperties={['_label']}
-	initialProps={{ _label: 'Anna Schmidt' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<AvatarPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Anna Schmidt' }} />
 
 #### Avatar with Image
 
 Display of an avatar image via the `_src` attribute:
 
 <AvatarPreview
+	context="feature"
 	visibleProperties={['_src']}
 	initialProps={{
 		_label: 'The image shown is a standard avatar from Font Awesome',
 		_src: 'https://gravatar.com/avatar/12345?d=mp&s=256',
 	}}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Colored Initials
@@ -100,10 +86,9 @@ Display of an avatar image via the `_src` attribute:
 Using the `_color` attribute to distinguish users by color. The attribute accepts either a simple color value or an object with separate background and foreground colors:
 
 <AvatarPreview
+	context="feature"
 	visibleProperties={['_color']}
 	initialProps={{ _label: 'Peter Meyer', _color: '#FF6B6B' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Avatar with Separate Colors
@@ -111,13 +96,12 @@ Using the `_color` attribute to distinguish users by color. The attribute accept
 Precise control over background and foreground color:
 
 <AvatarPreview
+	context="feature"
 	visibleProperties={['_color']}
 	initialProps={{
 		_label: 'Julia Wolf',
 		_color: { backgroundColor: '#4ECDC4', foregroundColor: '#FFFFFF' },
 	}}
-	codeCollapsable
-	codeCollapsed
 />
 
 ## API

@@ -20,9 +20,8 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 Darstellung einer Pagination mit Standardkonfiguration:
 
 <PaginationPreview
-	visibleProperties={[]}
+	context="example"
 	initialProps={{ _max: 100, _page: 1, _pageSize: 5, _siblingCount: 1, _boundaryCount: 1 }}
-	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -81,7 +80,7 @@ Ja, nutzen Sie `_pageSizeOptions`, um Nutzern ein Dropdown-Menü zur Wahl der Se
 
 ### Playground
 
-<PaginationPreview  />
+<PaginationPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -90,6 +89,7 @@ Ja, nutzen Sie `_pageSizeOptions`, um Nutzern ein Dropdown-Menü zur Wahl der Se
 Einfache Pagination mit Standardwerten:
 
 <PaginationPreview
+	context="feature"
 	visibleProperties={['_max', '_page', '_pageSize']}
 	initialProps={{ _max: 100, _page: 5, _pageSize: 10 }}
 />
@@ -99,6 +99,7 @@ Einfache Pagination mit Standardwerten:
 Die Anzahl der sichtbaren Seitennummern wird durch `_siblingCount` (neben der aktuellen Seite) und `_boundaryCount` (an den Rändern) gesteuert:
 
 <PaginationPreview
+	context="feature"
 	visibleProperties={['_siblingCount', '_boundaryCount']}
 	initialProps={{ _max: 100, _page: 5, _pageSize: 10, _siblingCount: 2, _boundaryCount: 1 }}
 />
@@ -108,6 +109,7 @@ Die Anzahl der sichtbaren Seitennummern wird durch `_siblingCount` (neben der ak
 Das Attribut `_hasButtons` steuert, welche Navigations-Buttons (erste, letzte, vorherige, nächste Seite) angezeigt werden:
 
 <PaginationPreview
+	context="feature"
 	visibleProperties={['_hasButtons']}
 	initialProps={{ _max: 100, _page: 5, _pageSize: 10, _hasButtons: true }}
 />
@@ -122,6 +124,7 @@ Das Attribut `_hasButtons` steuert, welche Navigations-Buttons (erste, letzte, v
 Mit `_pageSizeOptions` ermöglichen Sie Nutzern, die Anzahl der Elemente pro Seite zu wählen:
 
 <PaginationPreview
+	context="feature"
 	visibleProperties={['_pageSize', '_pageSizeOptions']}
 	initialProps={{ _max: 200, _page: 1, _pageSize: 10, _pageSizeOptions: [10, 25, 50, 100] }}
 />
@@ -131,6 +134,7 @@ Mit `_pageSizeOptions` ermöglichen Sie Nutzern, die Anzahl der Elemente pro Sei
 Das Attribut `_label` bietet eine optionale Beschriftung, und `_tooltipAlign` positioniert Tooltips:
 
 <PaginationPreview
+	context="feature"
 	visibleProperties={['_label', '_tooltipAlign']}
 	initialProps={{ _max: 50, _page: 3, _pageSize: 5, _label: 'Seiten-Navigation', _tooltipAlign: 'top' }}
 />

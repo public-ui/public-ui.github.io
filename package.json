@@ -15,7 +15,7 @@
 		"write-translations": "npm run gen:doc && docusaurus write-translations",
 		"write-heading-ids": "npm run gen:doc && docusaurus write-heading-ids",
 		"format": "prettier blog docs src -c",
-		"lint": "tsc --noemit && eslint src",
+		"lint": "tsc --noemit && eslint src && node scripts/check.preview.context.js",
 		"ncu:major": "ncu",
 		"ncu:minor": "ncu -t minor -u",
 		"ncu:patch": "ncu -t patch -u",
@@ -25,7 +25,8 @@
 		"postinstall": "npm-run-all2 postinstall:*",
 		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" static/assets --dot",
 		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" static/assets --dot",
-		"update": "pnpm ncu:minor && pnpm ncu:major"
+		"update": "pnpm ncu:minor && pnpm ncu:major",
+		"check:preview-context": "node scripts/check.preview.context.js"
 	},
 	"files": [
 		"build"

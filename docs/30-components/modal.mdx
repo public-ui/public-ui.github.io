@@ -23,10 +23,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Komponente mit Beschriftung und Inhaltsbereich. Der Button öffnet das Modal, das Modal-Content kann beliebige HTML-Elemente enthalten.
 
-<ModalPreview
-	visibleProperties={[]}
-	sourceCodeDetailsCollapsed
-/>
+<ModalPreview context="example" />
 
 ## Barrierefreiheit
 
@@ -75,7 +72,7 @@ Das **Modal** implementiert umfangreiche Barrierefreiheits-Features:
 
 ### Playground
 
-<ModalPreview  />
+<ModalPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -83,27 +80,19 @@ Das **Modal** implementiert umfangreiche Barrierefreiheits-Features:
 
 Die Beschriftung wird über `_label` gesetzt und stellt den Titel/die Identifikation des Modals dar. Der Inhaltsbereich wird über den Standard-Slot befüllt.
 
-<ModalPreview
-	visibleProperties={['_label', '_slot']}
-/>
+<ModalPreview context="feature" visibleProperties={['_label', '_slot']} />
 
 #### Breite des Modals
 
 Die Breite wird über das Attribut `_width` gesteuert (Standard: `100%`). Das Modal wird immer zentriert auf dem Bildschirm angezeigt.
 
-<ModalPreview
-	visibleProperties={['_width']}
-	initialProps={{ _width: '500px' }}
-/>
+<ModalPreview context="feature" visibleProperties={['_width']} initialProps={{ _width: '500px' }} />
 
 #### Varianten
 
 Das Attribut `_variant` definiert die Variante des Modals (`blank` oder `card`).
 
-<ModalPreview
-	visibleProperties={['_variant']}
-	initialProps={{ _variant: 'card' }}
-/>
+<ModalPreview context="feature" visibleProperties={['_variant']} initialProps={{ _variant: 'card' }} />
 
 #### Events
 

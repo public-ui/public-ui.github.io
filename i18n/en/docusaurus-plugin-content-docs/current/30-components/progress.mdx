@@ -21,12 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Display of the component with a horizontal progress bar and label.
 
-<ProgressPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Progress', _value: 65, _max: 100, _variant: 'bar' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<ProgressPreview context="example" initialProps={{ _label: 'Progress', _value: 65, _max: 100, _variant: 'bar' }} />
 
 ## Accessibility
 
@@ -77,7 +72,7 @@ Yes, the Progress component also processes decimal numbers, for example `_value=
 
 ### Playground
 
-<ProgressPreview codeCollapsable />
+<ProgressPreview context="playground" />
 
 ### Functionality (with Code)
 
@@ -86,10 +81,9 @@ Yes, the Progress component also processes decimal numbers, for example `_value=
 The horizontal bar is the default variant and is suitable for display in larger contexts.
 
 <ProgressPreview
+	context="feature"
 	visibleProperties={['_label', '_value', '_max', '_variant']}
 	initialProps={{ _label: 'Progress', _value: 45, _max: 100, _variant: 'bar' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Circular Progress Bar
@@ -97,10 +91,9 @@ The horizontal bar is the default variant and is suitable for display in larger 
 The circular variant is compact and suitable for small areas or as an indicator for fast processes.
 
 <ProgressPreview
+	context="feature"
 	visibleProperties={['_label', '_value', '_max', '_variant']}
 	initialProps={{ _label: 'Cycle', _value: 65, _max: 100, _variant: 'cycle' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Label and Unit
@@ -108,10 +101,9 @@ The circular variant is compact and suitable for small areas or as an indicator 
 Use `_label` to describe the progress; `_unit` can be used internally for calculations.
 
 <ProgressPreview
+	context="feature"
 	visibleProperties={['_label', '_value', '_max', '_unit']}
 	initialProps={{ _label: 'Download speed', _value: 250, _max: 500, _unit: 'MB' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Task Tracking
@@ -119,10 +111,9 @@ Use `_label` to describe the progress; `_unit` can be used internally for calcul
 Example use case: tracking completed tasks from a list.
 
 <ProgressPreview
+	context="feature"
 	visibleProperties={['_label', '_value', '_max']}
 	initialProps={{ _label: 'Tasks completed', _value: 8, _max: 12 }}
-	codeCollapsable
-	codeCollapsed
 />
 
 ## API

@@ -21,11 +21,7 @@ Die Komponente besteht aus einem Eingabefeld für HEX-Farbwerte sowie einer Scha
 
 Einfaches Farbwahlfeld mit Beschriftung und Standard-Farbe:
 
-<InputColorPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Favoriten-Farbe' }}
-	sourceCodeDetailsCollapsed
-/>
+<InputColorPreview context="example" initialProps={{ _label: 'Favoriten-Farbe' }} />
 
 ## Barrierefreiheit
 
@@ -103,7 +99,7 @@ Die Komponente verwendet den nativen Farbwahldialog des Browsers. Dessen Darstel
 
 Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
 
-<InputColorPreview />
+<InputColorPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -112,9 +108,9 @@ Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
 Die Komponente mit Beschriftung, wahlweise mit Tooltip-Stil:
 
 <InputColorPreview
+	context="feature"
 	visibleProperties={['_label', '_hideLabel']}
 	initialProps={{ _label: 'Wählen Sie eine Farbe' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Mit voreingestelltem Wert
@@ -122,9 +118,9 @@ Die Komponente mit Beschriftung, wahlweise mit Tooltip-Stil:
 Farbfeld mit einer Standard-Farbe:
 
 <InputColorPreview
+	context="feature"
 	visibleProperties={['_label', '_value']}
 	initialProps={{ _label: 'Ihre Farbe', _value: '#ff6b6b' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Mit Hinweis und Icons
@@ -132,13 +128,13 @@ Farbfeld mit einer Standard-Farbe:
 Farbfeld mit zusätzlichem Hinweistext und grafischen Symbolen:
 
 <InputColorPreview
+	context="feature"
 	visibleProperties={['_label', '_hint', '_icons']}
 	initialProps={{
 		_label: 'Primärfarbe',
 		_hint: 'Wählen Sie eine Farbe für Ihr Design',
 		_icons: { left: 'fa-solid fa-palette' },
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Deaktiviert und Nur-Lesen
@@ -146,9 +142,9 @@ Farbfeld mit zusätzlichem Hinweistext und grafischen Symbolen:
 Deaktiviertes Eingabefeld (nicht fokussierbar und nicht veränderbar):
 
 <InputColorPreview
+	context="feature"
 	visibleProperties={['_label', '_disabled']}
 	initialProps={{ _label: 'Gespeicherte Farbe', _value: '#3498db', _disabled: true }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Mit Fehlermeldung
@@ -156,12 +152,12 @@ Deaktiviertes Eingabefeld (nicht fokussierbar und nicht veränderbar):
 Farbfeld mit Validierungsmeldung:
 
 <InputColorPreview
+	context="feature"
 	visibleProperties={['_label', '_msg']}
 	initialProps={{
 		_label: 'Farbe auswählen',
 		_msg: 'Bitte wählen Sie eine gültige Farbe aus.',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Events

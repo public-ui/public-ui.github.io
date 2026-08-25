@@ -19,10 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard Split-Button mit Kontextmenü:
 
-<SplitButtonPreview
-	visibleProperties={['_label', '_variant', '_tooltipAlign', '_icons', '_disabled', '_hideLabel']}
-	sourceCodeDetailsCollapsed
-/>
+<SplitButtonPreview context="example" />
 
 ## Barrierefreiheit
 
@@ -73,7 +70,7 @@ Standard Split-Button mit Kontextmenü:
 
 ### Playground
 
-<SplitButtonPreview  />
+<SplitButtonPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -81,18 +78,13 @@ Standard Split-Button mit Kontextmenü:
 
 Mindestangaben für einen funktionsfähigen Split-Button: `_label`.
 
-<SplitButtonPreview
-	visibleProperties={['_label']}
-/>
+<SplitButtonPreview context="feature" visibleProperties={['_label']} />
 
 #### Varianten
 
 Der Split-Button unterstützt verschiedene visuelle Varianten für unterschiedliche Kontexte:
 
-<SplitButtonPreview
-	visibleProperties={['_variant']}
-	initialProps={{ _variant: 'primary' }}
-/>
+<SplitButtonPreview context="feature" visibleProperties={['_variant']} initialProps={{ _variant: 'primary' }} />
 
 **Verfügbare Varianten:**
 - `normal`: Standard-Design
@@ -107,26 +99,19 @@ Der Split-Button unterstützt verschiedene visuelle Varianten für unterschiedli
 
 Icons können über `_icons` hinzugefügt und das Label über `_hideLabel` verborgen werden:
 
-<SplitButtonPreview
-	visibleProperties={['_icons', '_hideLabel']}
-/>
+<SplitButtonPreview context="feature" visibleProperties={['_icons', '_hideLabel']} />
 
 #### Tooltip und Tastaturkürzel
 
 Tooltip-Position und Tastaturkürzel konfigurieren:
 
-<SplitButtonPreview
-	visibleProperties={['_tooltipAlign', '_shortKey']}
-/>
+<SplitButtonPreview context="feature" visibleProperties={['_tooltipAlign', '_shortKey']} />
 
 #### Deaktivierter Zustand
 
 Der Split-Button kann über `_disabled` deaktiviert werden:
 
-<SplitButtonPreview
-	visibleProperties={['_disabled']}
-	initialProps={{ _disabled: true }}
-/>
+<SplitButtonPreview context="feature" visibleProperties={['_disabled']} initialProps={{ _disabled: true }} />
 
 #### Events
 

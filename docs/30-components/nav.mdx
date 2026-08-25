@@ -21,11 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Navigationsleiste mit Hierarchie und Icons.
 
-<NavPreview
-	visibleProperties={[]}
-	initialProps={{}}
-	sourceCodeDetailsCollapsed
-/>
+<NavPreview context="example" initialProps={{}} />
 
 ## Barrierefreiheit
 
@@ -85,7 +81,7 @@ Nutzen Sie `_hasCompactButton`, um einen Button unterhalb der Navigation anzuzei
 
 ### Playground
 
-<NavPreview  />
+<NavPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -94,6 +90,7 @@ Nutzen Sie `_hasCompactButton`, um einen Button unterhalb der Navigation anzuzei
 Einfache flache Navigation ohne Untermenüs.
 
 <NavPreview
+	context="feature"
 	visibleProperties={['_links']}
 	initialProps={{
 		_label: 'Navigation',
@@ -102,7 +99,6 @@ Einfache flache Navigation ohne Untermenüs.
 			{ _href: '#about', _label: 'Über uns' },
 		],
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Hierarchische Navigation mit Untermenüs
@@ -110,6 +106,7 @@ Einfache flache Navigation ohne Untermenüs.
 Navigation mit mehreren Ebenen durch Nutzung von `_children`:
 
 <NavPreview
+	context="feature"
 	visibleProperties={['_links']}
 	initialProps={{
 		_label: 'Navigation',
@@ -126,7 +123,6 @@ Navigation mit mehreren Ebenen durch Nutzung von `_children`:
 			{ _href: '#about', _icons: 'kolicon-info', _label: 'Über uns' },
 		],
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Kompakter Modus mit Button
@@ -134,12 +130,12 @@ Navigation mit mehreren Ebenen durch Nutzung von `_children`:
 Compact-Button zum Umschalten zwischen voller und Icon-nur Anzeige:
 
 <NavPreview
+	context="feature"
 	visibleProperties={['_hasCompactButton']}
 	initialProps={{
 		_label: 'Navigation',
 		_hasCompactButton: true,
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Icons auch im erweiterten Modus
@@ -147,12 +143,12 @@ Compact-Button zum Umschalten zwischen voller und Icon-nur Anzeige:
 Icons werden neben Labels auch in der normalen (nicht kompakten) Darstellung angezeigt:
 
 <NavPreview
+	context="feature"
 	visibleProperties={['_hasIconsWhenExpanded']}
 	initialProps={{
 		_label: 'Navigation',
 		_hasIconsWhenExpanded: true,
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Kompakte Labels mit Tooltips
@@ -160,12 +156,12 @@ Icons werden neben Labels auch in der normalen (nicht kompakten) Darstellung ang
 Hide-Label-Modus versteckt die Beschriftung und zeigt sie nur als Tooltip bei Hover/Focus:
 
 <NavPreview
+	context="feature"
 	visibleProperties={['_hideLabel']}
 	initialProps={{
 		_label: 'Navigation',
 		_hideLabel: true,
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Nicht-kollabierbare Navigation
@@ -173,12 +169,12 @@ Hide-Label-Modus versteckt die Beschriftung und zeigt sie nur als Tooltip bei Ho
 Wenn `_collapsible` deaktiviert ist, können Untermenüs nicht geöffnet/geschlossen werden:
 
 <NavPreview
+	context="feature"
 	visibleProperties={['_collapsible']}
 	initialProps={{
 		_label: 'Navigation',
 		_collapsible: false,
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Events

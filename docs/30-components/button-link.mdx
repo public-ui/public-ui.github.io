@@ -20,11 +20,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Ein Button, der wie ein Link aussieht und sich wie ein Link verhält:
 
-<ButtonLinkPreview
-	initialProps={{ _label: 'Schalter sieht wie ein Link aus' }}
-	visibleProperties={[]}
-	sourceCodeDetailsCollapsed
-/>
+<ButtonLinkPreview context="example" initialProps={{ _label: 'Schalter sieht wie ein Link aus' }} />
 
 ## Barrierefreiheit
 
@@ -65,7 +61,7 @@ Die ButtonLink-Komponente eignet sich für Fälle, in denen der semantische Aufb
 
 ### Playground
 
-<ButtonLinkPreview />
+<ButtonLinkPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -74,9 +70,9 @@ Die ButtonLink-Komponente eignet sich für Fälle, in denen der semantische Aufb
 Ein einfacher ButtonLink mit grundlegenden Eigenschaften:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{ _label: 'Funktioniert wie ein Button' }}
 	visibleProperties={['_label']}
-	sourceCodeDetailsCollapsed
 />
 
 #### Mit Icons
@@ -84,9 +80,9 @@ Ein einfacher ButtonLink mit grundlegenden Eigenschaften:
 ButtonLink mit Icons vor und/oder nach dem Label:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{ _label: 'Mit Icon', _icons: 'fa-solid fa-heart' }}
 	visibleProperties={['_label', '_icons']}
-	sourceCodeDetailsCollapsed
 />
 
 #### Mit verstecktem Label
@@ -94,9 +90,9 @@ ButtonLink mit Icons vor und/oder nach dem Label:
 Das Label wird versteckt und nur als Tooltip angezeigt:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{ _label: 'Tooltip', _hideLabel: true }}
 	visibleProperties={['_hideLabel']}
-	sourceCodeDetailsCollapsed
 />
 
 #### Deaktiviert
@@ -104,9 +100,9 @@ Das Label wird versteckt und nur als Tooltip angezeigt:
 Ein deaktivierter ButtonLink reagiert nicht auf Interaktionen:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{ _label: 'Deaktiviert', _disabled: true }}
 	visibleProperties={['_disabled']}
-	sourceCodeDetailsCollapsed
 />
 
 #### Mit Tastaturkürzel
@@ -114,9 +110,9 @@ Ein deaktivierter ButtonLink reagiert nicht auf Interaktionen:
 Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{ _label: 'Mit Shortkey', _shortKey: 's' }}
 	visibleProperties={['_shortKey']}
-	sourceCodeDetailsCollapsed
 />
 
 #### ARIA-Attribute
@@ -124,16 +120,16 @@ Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
 ButtonLink mit ARIA-Attributen für erweiterte Semantik:
 
 <ButtonLinkPreview
+	context="feature"
 	initialProps={{
 		_label: 'Menü',
 		_ariaExpanded: false,
 		_ariaControls: 'menu-content',
 	}}
 	visibleProperties={['_ariaControls', '_ariaExpanded', '_ariaSelected']}
-	sourceCodeDetailsCollapsed
 />
 
-### Events
+#### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

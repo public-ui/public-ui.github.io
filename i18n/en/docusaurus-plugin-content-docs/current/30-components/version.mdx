@@ -19,12 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Rendering the component with a simple version number:
 
-<VersionPreview
-	visibleProperties={[]}
-	initialProps={{ _label: '1.2.3' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<VersionPreview context="example" initialProps={{ _label: '1.2.3' }} />
 
 ## Accessibility
 
@@ -58,7 +53,7 @@ The **Version** component is a semantic inline element and is exposed as such to
 
 ### Playground
 
-<VersionPreview codeCollapsable />
+<VersionPreview context="playground" />
 
 ### Features with code
 
@@ -66,12 +61,7 @@ The **Version** component is a semantic inline element and is exposed as such to
 
 The visible version number is defined via `_label`. The `v` prefix is added automatically.
 
-<VersionPreview
-	visibleProperties={['_label']}
-	initialProps={{ _label: '2.0.0' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<VersionPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: '2.0.0' }} />
 
 ## API
 

@@ -21,10 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Komponente in der Standard-Ansicht. Code kann eingeblendet werden.
 
-<AvatarPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Max Mustermann' }}
-/>
+<AvatarPreview context="example" initialProps={{ _label: 'Max Mustermann' }} />
 
 ## Barrierefreiheit
 
@@ -61,34 +58,27 @@ Darstellung der Komponente in der Standard-Ansicht. Code kann eingeblendet werde
 
 Testen Sie die verschiedenen Eigenschaften der Avatar-Komponente:
 
-<AvatarPreview
-	visibleProperties={['_label', '_src', '_color']}
-	initialProps={{ _label: 'Max Mustermann', _color: '#5A5FEE' }}
-/>
+<AvatarPreview context="playground" initialProps={{ _label: 'Max Mustermann', _color: '#5A5FEE' }} />
 
-### Funktionalitäten
+### Funktionalitäten (mit Code)
 
 #### Eigenständiger Avatar mit Initialen
 
 Darstellung der Komponente ohne Bild – es werden automatisch die Initialen aus dem Namen generiert:
 
-<AvatarPreview
-	visibleProperties={['_label']}
-	initialProps={{ _label: 'Anna Schmidt' }}
-	sourceCodeDetailsCollapsed
-/>
+<AvatarPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Anna Schmidt' }} />
 
 #### Avatar mit Bild
 
 Darstellung eines Avatar-Bildes über das Attribut `_src`:
 
 <AvatarPreview
+	context="feature"
 	visibleProperties={['_src']}
 	initialProps={{ 
 		_label: 'Bei dem gleich gezeigten Bild handelt es sich um einen Standard-Avatar aus Font Awesome', 
 		_src: 'https://gravatar.com/avatar/12345?d=mp&s=256' 
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Farbige Initialen
@@ -96,9 +86,9 @@ Darstellung eines Avatar-Bildes über das Attribut `_src`:
 Verwendung des Attributs `_color` zur farblichen Unterscheidung von Benutzern. Das Attribut akzeptiert sowohl einen einfachen Farbwert als auch ein Objekt mit separaten Hintergrund- und Vordergrundfarben:
 
 <AvatarPreview
+	context="feature"
 	visibleProperties={['_color']}
 	initialProps={{ _label: 'Peter Meyer', _color: '#FF6B6B' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Avatar mit separaten Farben
@@ -106,12 +96,12 @@ Verwendung des Attributs `_color` zur farblichen Unterscheidung von Benutzern. D
 Präzise Kontrolle über Hintergrund- und Vordergrundfarbe:
 
 <AvatarPreview
+	context="feature"
 	visibleProperties={['_color']}
 	initialProps={{ 
 		_label: 'Julia Wolf',
 		_color: { backgroundColor: '#4ECDC4', foregroundColor: '#FFFFFF' }
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 ## API

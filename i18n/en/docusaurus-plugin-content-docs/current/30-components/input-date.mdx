@@ -21,12 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard date field with type `date`. Input is done via direct digit entry with automation or via the device-specific selection helper.
 
-<InputDatePreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Date of birth' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<InputDatePreview context="example" initialProps={{ _label: 'Date of birth' }} />
 
 ## Accessibility
 
@@ -87,7 +82,7 @@ Set `_value` to `null` or `undefined` to clear the field.
 
 ### Playground
 
-<InputDatePreview codeCollapsable />
+<InputDatePreview context="playground" />
 
 ### Functionality (with code)
 
@@ -96,20 +91,16 @@ Set `_value` to `null` or `undefined` to clear the field.
 The input field is given a label via `_label`. Additional information can be provided via `_hint`.
 
 <InputDatePreview
+	context="feature"
 	visibleProperties={['_label', '_hint']}
 	initialProps={{ _label: 'Date of birth', _hint: 'Please enter your date of birth.' }}
-	codeCollapsable
 />
 
 #### Input types
 
 The `_type` attribute determines the format and selection dialog:
 
-<InputDatePreview
-	visibleProperties={['_type']}
-	initialProps={{ _label: 'Date', _type: 'date' }}
-	codeCollapsable
-/>
+<InputDatePreview context="feature" visibleProperties={['_type']} initialProps={{ _label: 'Date', _type: 'date' }} />
 
 **Available types:**
 - `date`: Full date (default)
@@ -123,13 +114,13 @@ The `_type` attribute determines the format and selection dialog:
 The `_min` and `_max` attributes define the valid date range. They only reliably take effect when a date is selected via the calendar dialog (datepicker). With manual text input, a value outside the defined range can be entered without automatic correction or an error message. Validation of manual input is the responsibility of the consuming application.
 
 <InputDatePreview
+	context="feature"
 	visibleProperties={['_min', '_max']}
 	initialProps={{
 		_label: 'Reservation date',
 		_min: '2025-01-01',
 		_max: '2025-12-31',
 	}}
-	codeCollapsable
 />
 
 #### Step size for time input
@@ -137,13 +128,13 @@ The `_min` and `_max` attributes define the valid date range. They only reliably
 For type `time`, the step size can be set via `_step`:
 
 <InputDatePreview
+	context="feature"
 	visibleProperties={['_step']}
 	initialProps={{
 		_label: 'Time',
 		_type: 'time',
 		_step: '15',
 	}}
-	codeCollapsable
 />
 
 #### Form attributes
@@ -151,9 +142,9 @@ For type `time`, the step size can be set via `_step`:
 Standard form attributes for validation and interaction:
 
 <InputDatePreview
+	context="feature"
 	visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
 	initialProps={{ _label: 'Date', _required: true }}
-	codeCollapsable
 />
 
 **Available attributes:**
@@ -167,12 +158,12 @@ Standard form attributes for validation and interaction:
 Validation errors or hint messages are displayed via the `_msg` attribute:
 
 <InputDatePreview
+	context="feature"
 	visibleProperties={['_msg']}
 	initialProps={{
 		_label: 'Date',
 		_msg: 'The entered date is outside the permitted range.',
 	}}
-	codeCollapsable
 />
 
 #### Events

@@ -21,11 +21,7 @@ unten ausrichtet) und einem aufklappbaren Inhaltsbereich, der platzsparendes Arb
 
 Darstellung der Komponente mit Beispieltext:
 
-<DetailsPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Weitere Informationen' }}
-	sourceCodeDetailsCollapsed
-/>
+<DetailsPreview context="example" initialProps={{ _label: 'Weitere Informationen' }} />
 
 ## Barrierefreiheit
 
@@ -69,7 +65,7 @@ Darstellung der Komponente mit Beispieltext:
 
 ### Playground
 
-<DetailsPreview />
+<DetailsPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -77,16 +73,14 @@ Darstellung der Komponente mit Beispieltext:
 
 Das Label wird über `_label` definiert, der Inhaltsbereich wird über den Slot befüllt.
 
-<DetailsPreview
-	visibleProperties={['_label']}
-	initialProps={{ _label: 'Details anzeigen' }}
-/>
+<DetailsPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Details anzeigen' }} />
 
 #### Offener Zustand
 
 Mit `_open` wird die Komponente initial geöffnet angezeigt. Im deaktivierten Zustand (`_disabled`) wird die Komponente nicht interaktiv.
 
 <DetailsPreview
+	context="feature"
 	visibleProperties={['_open', '_disabled']}
 	initialProps={{ _label: 'Details anzeigen', _open: true }}
 />
@@ -96,13 +90,14 @@ Mit `_open` wird die Komponente initial geöffnet angezeigt. Im deaktivierten Zu
 Die Überschriftenebene wird über `_level` (0–6) gesteuert. Wert `0` zeigt den Text als fetten Text ohne semantische Heading-Struktur.
 
 <DetailsPreview
+	context="feature"
 	visibleProperties={['_level']}
 	initialProps={{ _label: 'Details anzeigen', _level: 2 }}
 />
 
-#### Event-Anbindung
+#### Events
 
-Für Event-Handling und Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
 | Event      | Auslöser                          | Value   |
 | ---------- | --------------------------------- | ------- |

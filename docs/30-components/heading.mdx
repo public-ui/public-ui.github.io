@@ -21,10 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung einer Überschrift der Ebene 1 ohne optional gesetzte Felder. Code kann eingeblendet werden.
 
-<HeadingPreview
-	initialProps={{ _label: 'Heading Level 1' }}
-	visibleProperties={[]}
-/>
+<HeadingPreview context="example" initialProps={{ _label: 'Heading Level 1' }} />
 
 ## Barrierefreiheit
 
@@ -62,18 +59,18 @@ Darstellung einer Überschrift der Ebene 1 ohne optional gesetzte Felder. Code k
 
 ### Playground
 
-<HeadingPreview />
+<HeadingPreview context="playground" />
 
-### Funktionalitäten
+### Funktionalitäten (mit Code)
 
 #### Standardüberschriften
 
 Überschriften mit verschiedenen Ebenen von Level 1 bis 6:
 
 <HeadingPreview
+	context="feature"
 	initialProps={{ _label: 'Level 1 Überschrift', _level: 1 }}
 	visibleProperties={['_level']}
-	sourceCodeDetailsCollapsed
 />
 
 #### Mit sekundärer Überschrift
@@ -81,9 +78,9 @@ Darstellung einer Überschrift der Ebene 1 ohne optional gesetzte Felder. Code k
 Eine Hauptüberschrift kann mit einer sekundären Überschrift kombiniert werden:
 
 <HeadingPreview
+	context="feature"
 	initialProps={{ _label: 'Hauptüberschrift', _secondaryHeadline: 'Subheading oder Untertitel', _level: 1 }}
 	visibleProperties={['_label', '_secondaryHeadline', '_level']}
-	sourceCodeDetailsCollapsed
 />
 
 #### Heading ohne semantisches Level
@@ -91,9 +88,9 @@ Eine Hauptüberschrift kann mit einer sekundären Überschrift kombiniert werden
 Mit `_level="0"` wird die Komponente ohne semantisches Heading-Element dargestellt und erscheint visuell als Bold-Text:
 
 <HeadingPreview
+	context="feature"
 	initialProps={{ _label: 'Text ohne Heading-Semantik', _level: 0 }}
 	visibleProperties={['_level']}
-	sourceCodeDetailsCollapsed
 />
 
 ## API

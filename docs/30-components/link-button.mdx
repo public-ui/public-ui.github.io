@@ -19,7 +19,7 @@ import LinkButtonPreview from '@site/src/components/previews/components/LinkButt
 
 Darstellung der Komponente ohne optional gesetzte Felder:
 
-<LinkButtonPreview visibleProperties={[]} initialProps={{ _label: 'LinkButton' }} />
+<LinkButtonPreview context="example" initialProps={{ _label: 'LinkButton' }} />
 
 ## Barrierefreiheit
 
@@ -80,26 +80,7 @@ LinkButton ist semantisch ein Link mit Button-Styling. <kol-link _href="../compo
 
 ### Playground
 
-<LinkButtonPreview
-	visibleProperties={[
-		'_label',
-		'_href',
-		'_variant',
-		'_target',
-		'_icons',
-		'_tooltipAlign',
-		'_disabled',
-		'_hideLabel',
-		'_download',
-		'_accessKey',
-		'_ariaControls',
-		'_ariaCurrentValue',
-		'_ariaDescription',
-		'_customClass',
-		'_shortKey',
-	]}
-	initialProps={{ _label: 'LinkButton' }}
-/>
+<LinkButtonPreview context="playground" initialProps={{ _label: 'LinkButton' }} />
 
 Erkunden Sie die verschiedenen Konfigurationen der LinkButton-Komponente:
 
@@ -109,20 +90,16 @@ Erkunden Sie die verschiedenen Konfigurationen der LinkButton-Komponente:
 
 Die sichtbare Beschriftung wird über `_label` gesetzt:
 
-<LinkButtonPreview
-	visibleProperties={['_label']}
-	initialProps={{ _label: 'Normal', _href: '#' }}
-	sourceCodeDetailsCollapsed
-/>
+<LinkButtonPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Normal', _href: '#' }} />
 
 #### Varianten
 
 Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varianten zur Verfügung stehen und welche der Standardwert ist. Hier sind <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/button/variants?theme=default" _target="_blank" _label="die anderen Themes und ihre jeweiligen Varianten"></kol-link> zu sehen. Im Folgenden zeigen wir nur das Default Theme.
 
 <LinkButtonPreview
+	context="feature"
 	visibleProperties={['_variant']}
 	initialProps={{ _label: 'LinkButton', _href: '#', _variant: 'primary' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Icons
@@ -130,9 +107,9 @@ Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varia
 Icons können über das Attribut `_icons` hinzugefügt werden:
 
 <LinkButtonPreview
+	context="feature"
 	visibleProperties={['_icons', '_tooltipAlign']}
 	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'kolicon-house' }}
-	sourceCodeDetailsCollapsed
 />
 
 Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `left` angegeben werden, jeweils mit Icon-Klasse oder Styleobjekt.
@@ -142,9 +119,9 @@ Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `l
 Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip angezeigt:
 
 <LinkButtonPreview
+	context="feature"
 	visibleProperties={['_hideLabel', '_icons']}
 	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'kolicon-house', _hideLabel: true }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Zielverhalten
@@ -152,9 +129,9 @@ Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip 
 Kontrolle darüber, wie der Link im Browser geöffnet wird:
 
 <LinkButtonPreview
+	context="feature"
 	visibleProperties={['_target']}
 	initialProps={{ _label: 'LinkButton', _href: '#', _target: '_self' }}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Targets:**
@@ -167,9 +144,9 @@ Kontrolle darüber, wie der Link im Browser geöffnet wird:
 Signalisieren Sie dem Browser, dass eine Datei heruntergeladen werden soll:
 
 <LinkButtonPreview
+	context="feature"
 	visibleProperties={[]}
 	initialProps={{ _label: 'PDF herunterladen', _href: '/files/dokument.pdf', _download: 'dokument.pdf' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Disabled-Status
@@ -177,9 +154,9 @@ Signalisieren Sie dem Browser, dass eine Datei heruntergeladen werden soll:
 Mit `_disabled` wird der Button deaktiviert:
 
 <LinkButtonPreview
+	context="feature"
 	visibleProperties={['_disabled']}
 	initialProps={{ _label: 'Deaktiviert', _href: '#', _disabled: true }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Tastaturkürzel
@@ -187,9 +164,9 @@ Mit `_disabled` wird der Button deaktiviert:
 Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
 
 <LinkButtonPreview
+	context="feature"
 	visibleProperties={['_shortKey']}
 	initialProps={{ _label: 'Startseite', _href: '#', _shortKey: 'H' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### ARIA-Attribute
@@ -197,13 +174,13 @@ Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
 LinkButton mit ARIA-Attributen für erweiterte Semantik:
 
 <LinkButtonPreview
+	context="feature"
 	initialProps={{
 		_label: 'Aktuelle Seite',
 		_ariaCurrentValue: 'page',
 		_ariaDescription: 'Navigiert zur Dokumentation',
 	}}
 	visibleProperties={['_ariaCurrentValue', '_ariaDescription']}
-	sourceCodeDetailsCollapsed
 />
 
 #### Events

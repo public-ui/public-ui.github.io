@@ -21,11 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard-Formular mit Eingabefeldern und Buttons:
 
-<FormPreview
-	visibleProperties={[]}
-	initialProps={{ _requiredText: true }}
-	sourceCodeDetailsCollapsed
-/>
+<FormPreview context="example" initialProps={{ _requiredText: true }} />
 
 ## Barrierefreiheit
 
@@ -68,7 +64,7 @@ Die **Form**-Komponente unterstützt barrierefreie Formularstrukturen nach moder
 
 Testen Sie die Form mit verschiedenen Konfigurationen:
 
-<FormPreview />
+<FormPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -76,19 +72,17 @@ Testen Sie die Form mit verschiedenen Konfigurationen:
 
 Der Text für Pflichtfeld-Hinweise wird über `_requiredText` gesteuert:
 
-<FormPreview
-	visibleProperties={['_requiredText']}
-	initialProps={{ _requiredText: true }}
-/>
+<FormPreview context="feature" visibleProperties={['_requiredText']} initialProps={{ _requiredText: true }} />
 
 Mit `_requiredText="false"` wird der Hinweis ausgeblendet. Mit einem benutzerdefinierten String kann der Standard-Text überschrieben werden:
 
 <FormPreview
+	context="feature"
 	visibleProperties={['_requiredText']}
 	initialProps={{ _requiredText: 'Felder mit * sind erforderlich' }}
 />
 
-#### Event-Anbindung
+#### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

@@ -23,11 +23,9 @@ A **Textarea** is a multi-line input field that allows users to enter longer tex
 Standard textarea with label and placeholder text:
 
 <TextAreaPreview
+	context="example"
 	_value=""
-	visibleProperties={['_value', '_placeholder', '_label', '_hint', '_msg']}
 	initialProps={{ _label: 'Description', _placeholder: 'Please enter your description...', _hint: 'Additional hints for the input field', _rows: 4 }}
-	codeCollapsable
-	codeCollapsed
 />
 
 ## Accessibility
@@ -92,8 +90,8 @@ The textarea supports the following keyboard shortcuts:
 Test the various properties of the Textarea component:
 
 <TextAreaPreview
+	context="playground"
 	_value=""
-	visibleProperties={['_value', '_placeholder', '_disabled', '_label', '_hint', '_rows', '_resize', '_required', '_readOnly', '_hideLabel']}
 	initialProps={{ _label: 'Description', _placeholder: 'Please enter a description...', _hint: 'Hint text', _rows: 4 }}
 />
 
@@ -103,13 +101,14 @@ Test the various properties of the Textarea component:
 
 Standard textarea without special configuration:
 
-<TextAreaPreview initialProps={{ _label: 'Description' }} visibleProperties={[]} codeCollapsable codeCollapsed />
+<TextAreaPreview context="feature" initialProps={{ _label: 'Description' }} visibleProperties={[]} />
 
 #### Automatic height adjustment
 
 The textarea automatically adjusts its height to the content:
 
 <TextAreaPreview
+	context="feature"
 	initialProps={{
 		_label: 'Description',
 		_value: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
@@ -120,7 +119,6 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 		_adjustHeight: true,
 	}}
 	visibleProperties={['_adjustHeight']}
-	codeCollapsable
 />
 
 #### Form attributes
@@ -128,11 +126,10 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 Standard attributes for forms:
 
 <TextAreaPreview
+	context="feature"
 	_value=""
 	visibleProperties={['_label', '_value', '_msg', '_hint', '_disabled', '_readOnly', '_required', '_hideLabel']}
 	initialProps={{ _label: 'Description' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 **Available attributes:**
@@ -148,11 +145,10 @@ Standard attributes for forms:
 The placeholder text is displayed when the input field is empty:
 
 <TextAreaPreview
+	context="feature"
 	_value=""
 	visibleProperties={['_placeholder']}
 	initialProps={{ _label: 'Description', _placeholder: 'Please enter a description...' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 **Note**: The placeholder should only serve as supplementary help and should not contain mandatory information, as the text disappears when typing.
@@ -162,11 +158,10 @@ The placeholder text is displayed when the input field is empty:
 The textarea is read-only but not editable:
 
 <TextAreaPreview
+	context="feature"
 	_value="This is a read-only text area."
 	visibleProperties={['_readOnly']}
 	initialProps={{ _label: 'Description', _readOnly: true }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Resize
@@ -174,11 +169,10 @@ The textarea is read-only but not editable:
 The textarea can be resized using the `_resize` attribute:
 
 <TextAreaPreview
+	context="feature"
 	_value=""
 	visibleProperties={['_resize']}
 	initialProps={{ _label: 'Description', _resize: 'vertical' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 **Available values:**
@@ -190,11 +184,10 @@ The textarea can be resized using the `_resize` attribute:
 The initial height of the textarea can be specified in rows using the `_rows` attribute:
 
 <TextAreaPreview
+	context="feature"
 	_value=""
 	visibleProperties={['_rows']}
 	initialProps={{ _label: 'Description', _rows: 6 }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Character limit and character counter
@@ -202,10 +195,9 @@ The initial height of the textarea can be specified in rows using the `_rows` at
 With the attributes `_max-length`, `_max-length-behavior` and `_has-counter`, the input length can be flexibly limited and at the same time provide visual feedback:
 
 <TextAreaPreview
+	context="feature"
 	initialProps={{ _label: 'Description', _hasCounter: true, _maxLength: 100, _value: 'Initial text', _rows: 3 }}
 	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
-	codeCollapsable
-	codeCollapsed
 />
 
 ##### Attributes

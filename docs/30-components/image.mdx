@@ -19,10 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Grunddarstellung eines Bildes mit erforderlichem Alternativtext:
 
-<ImagePreview
-	visibleProperties={['_src', '_alt']}
-	sourceCodeDetailsCollapsed
-/>
+<ImagePreview context="example" />
 
 ## Barrierefreiheit
 
@@ -71,7 +68,7 @@ Ja, alle gängigen Formate werden unterstützt (PNG, JPEG, WebP, SVG, GIF usw.).
 
 ### Playground
 
-<ImagePreview />
+<ImagePreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -79,19 +76,13 @@ Ja, alle gängigen Formate werden unterstützt (PNG, JPEG, WebP, SVG, GIF usw.).
 
 Die Bildquelle wird über das erforderliche Attribut `_src` gesetzt. Dies ist die Fallback-URL, die verwendet wird, wenn `_srcset` nicht unterstützt wird oder keine passende Variante vorhanden ist.
 
-<ImagePreview
-	visibleProperties={['_src']}
-	initialProps={{ _src: '/assets/sample-image.png' }}
-/>
+<ImagePreview context="feature" visibleProperties={['_src']} initialProps={{ _src: '/assets/sample-image.png' }} />
 
 #### Alternativtext
 
 Das erforderliche Attribut `_alt` bietet eine Textbeschreibung oder Alternative für das Bild. Bei dekorativen Bildern kann es leer sein.
 
-<ImagePreview
-	visibleProperties={['_alt']}
-	initialProps={{ _alt: 'Beispielbildbeschreibung' }}
-/>
+<ImagePreview context="feature" visibleProperties={['_alt']} initialProps={{ _alt: 'Beispielbildbeschreibung' }} />
 
 #### Responsive Bilder mit Srcset und Sizes
 
@@ -99,6 +90,7 @@ Mit `_srcset` können verschiedene Bildversionen für unterschiedliche Auflösun
 Achtung: der Browser wechselt das Bild nur von kleiner zu größer und nicht wieder zurück!
 
 <ImagePreview
+	context="feature"
 	visibleProperties={['_srcset', '_sizes']}
 	initialProps={{
 		_srcset: '/assets/image-small.png 600w, /assets/image-large.png 1200w',
@@ -110,10 +102,7 @@ Achtung: der Browser wechselt das Bild nur von kleiner zu größer und nicht wie
 
 Das Attribut `_loading` steuert, wann das Bild vom Browser geladen wird. `lazy` ist der Standard und verbessert die Performance, `eager` sollte nur für Bilder im sichtbaren Bereich verwendet werden.
 
-<ImagePreview
-	visibleProperties={['_loading']}
-	initialProps={{ _loading: 'lazy' }}
-/>
+<ImagePreview context="feature" visibleProperties={['_loading']} initialProps={{ _loading: 'lazy' }} />
 
 **Verfügbare Werte:**
 - `lazy`: Ladeverschiebung bis zum Erreichen des Sichtbereichs (Standard)

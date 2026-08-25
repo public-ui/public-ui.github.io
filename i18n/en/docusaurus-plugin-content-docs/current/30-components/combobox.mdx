@@ -20,10 +20,8 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 Standard Combobox with suggestion list:
 
 <ComboboxPreview
+	context="example"
 	initialProps={{ _label: 'Free input with suggestions', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
-	visibleProperties={[]}
-	codeCollapsable
-	codeCollapsed
 />
 
 ## Accessibility
@@ -90,9 +88,8 @@ Example of a JSON array:
 Test the various properties of the Combobox component:
 
 <ComboboxPreview
-	visibleProperties={['_label', '_placeholder', '_disabled', '_required', '_hint', '_msg', '_icons', '_hasClearButton', '_hideLabel', '_hideMsg']}
+	context="playground"
 	initialProps={{ _label: 'Selection', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
-	codeCollapsable
 />
 
 ### Functionality (with Code)
@@ -102,10 +99,9 @@ Test the various properties of the Combobox component:
 The visible label is set via `_label`.
 
 <ComboboxPreview
+	context="feature"
 	visibleProperties={['_label']}
 	initialProps={{ _label: 'Salutation', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Placeholder and Hint Text
@@ -113,10 +109,9 @@ The visible label is set via `_label`.
 The placeholder is displayed when the field is empty. The hint text provides additional guidance:
 
 <ComboboxPreview
+	context="feature"
 	visibleProperties={['_placeholder', '_hint']}
 	initialProps={{ _label: 'Salutation', _placeholder: 'Please select or type...', _hint: 'Choose from the list or enter an alternative.', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Form Attributes
@@ -124,10 +119,9 @@ The placeholder is displayed when the field is empty. The hint text provides add
 Standard attributes for forms such as `_disabled`, `_required` and `_touched`:
 
 <ComboboxPreview
+	context="feature"
 	visibleProperties={['_disabled', '_required', '_touched']}
 	initialProps={{ _label: 'Salutation', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Error Messages
@@ -135,10 +129,9 @@ Standard attributes for forms such as `_disabled`, `_required` and `_touched`:
 Validation errors are displayed via `_msg`:
 
 <ComboboxPreview
+	context="feature"
 	visibleProperties={['_msg']}
 	initialProps={{ _label: 'Salutation', _msg: 'The salutation is required.', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Icons
@@ -146,10 +139,9 @@ Validation errors are displayed via `_msg`:
 Icons can be added on the left or right via `_icons`:
 
 <ComboboxPreview
+	context="feature"
 	visibleProperties={['_icons']}
 	initialProps={{ _label: 'Salutation', _icons: 'fa-solid fa-user', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Clear Button
@@ -157,10 +149,9 @@ Icons can be added on the left or right via `_icons`:
 The clear button can be controlled via `_hasClearButton` (enabled by default):
 
 <ComboboxPreview
+	context="feature"
 	visibleProperties={['_hasClearButton']}
 	initialProps={{ _label: 'Salutation', _suggestions: ['Mr.', 'Mrs.', 'Company'], _hasClearButton: true }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Hidden Caption
@@ -168,10 +159,9 @@ The clear button can be controlled via `_hasClearButton` (enabled by default):
 The caption can be visually hidden via `_hideLabel` (remains visible for screen readers):
 
 <ComboboxPreview
+	context="feature"
 	visibleProperties={['_hideLabel']}
 	initialProps={{ _label: 'Salutation', _hideLabel: true, _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
-	codeCollapsable
-	codeCollapsed
 />
 
 ### Events

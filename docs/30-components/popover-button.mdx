@@ -21,11 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung eines PopoverButtons mit Beispielinhalt im Popover:
 
-<PopoverButtonPreview
-	initialProps={{}}
-	visibleProperties={[]}
-	sourceCodeDetailsCollapsed
-/>
+<PopoverButtonPreview context="example" initialProps={{}} />
 
 ## Barrierefreiheit
 
@@ -74,20 +70,18 @@ Darstellung eines PopoverButtons mit Beispielinhalt im Popover:
 
 Testen Sie die verschiedenen Eigenschaften des PopoverButtons:
 
-<PopoverButtonPreview
-	visibleProperties={['_label', '_popoverAlign', '_variant', '_icons', '_slot', '_disabled', '_hideLabel']}
-/>
+<PopoverButtonPreview context="playground" />
 
-### Funktionalitäten
+### Funktionalitäten (mit Code)
 
 #### Grundlegende Button-Eigenschaften
 
 Der PopoverButton unterstützt die Standard-Button-Attribute:
 
 <PopoverButtonPreview
+	context="feature"
 	initialProps={{ _label: "Button" }}
 	visibleProperties={['_label', '_hideLabel', '_disabled', '_type']}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -101,9 +95,9 @@ Der PopoverButton unterstützt die Standard-Button-Attribute:
 Der PopoverButton unterstützt verschiedene visuelle Varianten:
 
 <PopoverButtonPreview
+	context="feature"
 	initialProps={{ _label: "Styled Button" }}
 	visibleProperties={['_variant', '_icons', '_inline', '_tooltipAlign']}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -117,9 +111,9 @@ Der PopoverButton unterstützt verschiedene visuelle Varianten:
 Die Position des Popovers relativ zum Button kann gesteuert werden:
 
 <PopoverButtonPreview
+	context="feature"
 	initialProps={{ _label: "Position", _popoverAlign: "bottom" }}
 	visibleProperties={['_popoverAlign']}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Positionen:**
@@ -133,12 +127,12 @@ Die Position des Popovers relativ zum Button kann gesteuert werden:
 Das Popover-Inhalt wird über den Standard-Slot bereitgestellt:
 
 <PopoverButtonPreview
+	context="feature"
 	initialProps={{
 		_label: "Menü",
 		_slot: "<ul style='margin:0; padding:0; list-style:none;'><li style='padding:8px;'><strong>Option 1</strong></li><li style='padding:8px;'><strong>Option 2</strong></li><li style='padding:8px;'><strong>Option 3</strong></li></ul>"
 	}}
 	visibleProperties={['_slot']}
-	sourceCodeDetailsCollapsed
 />
 
 **Hinweis**: Der Slot-Inhalt wird mit HTML-Sanitierung verarbeitet für Sicherheit. Der Inhalt sollte prägnant und fokussiert bleiben.
@@ -148,9 +142,9 @@ Das Popover-Inhalt wird über den Standard-Slot bereitgestellt:
 Der PopoverButton unterstützt Accessibility-Features für erweiterte Tastaturinteraktion:
 
 <PopoverButtonPreview
+	context="feature"
 	initialProps={{ _label: "Drucken", _accessKey: "p" }}
 	visibleProperties={['_accessKey', '_shortKey']}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**

@@ -19,11 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung eines Icons mit beschreibendem Label:
 
-<IconPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Haus', _icons: 'kolicon-house' }}
-	sourceCodeDetailsCollapsed
-/>
+<IconPreview context="example" initialProps={{ _label: 'Haus', _icons: 'kolicon-house' }} />
 
 ## Barrierefreiheit
 
@@ -64,7 +60,7 @@ Icons erfordern eine barrierefreie Beschreibung für Nutzer:innen mit Seheinschr
 
 Testen Sie die verschiedenen Icon-Eigenschaften:
 
-<IconPreview />
+<IconPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -73,6 +69,7 @@ Testen Sie die verschiedenen Icon-Eigenschaften:
 Das Icon wird über die Property `_icons` mit Klassenamen definiert. Das Label wird über `_label` gesetzt und ist erforderlich für die Barrierefreiheit.
 
 <IconPreview
+	context="feature"
 	visibleProperties={['_icons', '_label']}
 	initialProps={{ _label: 'Haus', _icons: 'kolicon-house' }}
 />

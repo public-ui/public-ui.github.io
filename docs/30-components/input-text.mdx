@@ -23,10 +23,7 @@ Die Komponente basiert auf dem nativen HTML5-Element `<input>` und unterstützt 
 
 Standard-Eingabefeld mit Beschriftung:
 
-<InputTextPreview
-  initialProps={{ _label: 'Texteingabe' }}
-  visibleProperties={[]}
-/>
+<InputTextPreview context="example" initialProps={{ _label: 'Texteingabe' }} />
 
 ## Barrierefreiheit
 
@@ -108,9 +105,7 @@ Mit `_max-length` wird die maximale Anzahl an Zeichen festgelegt. Über `_max-le
 
 Testen Sie die verschiedenen Eigenschaften des Eingabefelds
 
-<InputTextPreview
-  visibleProperties={['_label', '_placeholder', '_type', '_icons', '_disabled', '_readOnly', '_required', '_touched', '_hideLabel', '_suggestions', '_hasCounter', '_maxLength', '_maxLengthBehavior']}
-/>
+<InputTextPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -119,9 +114,9 @@ Testen Sie die verschiedenen Eigenschaften des Eingabefelds
 Ein einfaches Eingabefeld mit Label:
 
 <InputTextPreview
-  initialProps={{ _label: 'Texteingabe' }}
-  visibleProperties={['_label', '_placeholder']}
-	sourceCodeDetailsCollapsed
+	context="feature"
+	initialProps={{ _label: 'Texteingabe' }}
+	visibleProperties={['_label', '_placeholder']}
 />
 
 #### Eingabefeld-Typen
@@ -129,9 +124,9 @@ Ein einfaches Eingabefeld mit Label:
 InputText unterstützt verschiedene Eingabe-Typen über das Attribut `_type`:
 
 <InputTextPreview
-  initialProps={{ _label: 'Eingabetyp', _type: 'text' }}
-  visibleProperties={['_type']}
-	sourceCodeDetailsCollapsed
+	context="feature"
+	initialProps={{ _label: 'Eingabetyp', _type: 'text' }}
+	visibleProperties={['_type']}
 />
 
 **Verfügbare Typen:**
@@ -145,9 +140,9 @@ InputText unterstützt verschiedene Eingabe-Typen über das Attribut `_type`:
 Links und rechts vom Eingabefeld können Icons platziert werden:
 
 <InputTextPreview
-  initialProps={{ _label: 'Mit Icons', _icons: { left: 'kolibri-icon-24', right: 'kolibri-icon-24' } }}
-  visibleProperties={['_icons']}
-	sourceCodeDetailsCollapsed
+	context="feature"
+	initialProps={{ _label: 'Mit Icons', _icons: { left: 'kolibri-icon-24', right: 'kolibri-icon-24' } }}
+	visibleProperties={['_icons']}
 />
 
 #### Validierungszustände
@@ -155,9 +150,9 @@ Links und rechts vom Eingabefeld können Icons platziert werden:
 Status-Eigenschaften zur Steuerung von Validierung und Interaktion:
 
 <InputTextPreview
-  initialProps={{ _label: 'Eingabefeld' }}
-  visibleProperties={['_disabled', '_readOnly', '_required', '_touched']}
-	sourceCodeDetailsCollapsed
+	context="feature"
+	initialProps={{ _label: 'Eingabefeld' }}
+	visibleProperties={['_disabled', '_readOnly', '_required', '_touched']}
 />
 
 **Verfügbare Zustände:**
@@ -171,9 +166,9 @@ Status-Eigenschaften zur Steuerung von Validierung und Interaktion:
 Label können visuell verborgen sein, bleiben aber für assistive Technologien sichtbar:
 
 <InputTextPreview
-  initialProps={{ _label: 'Verborgenes Label', _hideLabel: true, _placeholder: 'Platzhalter' }}
-  visibleProperties={['_hideLabel']}
-	sourceCodeDetailsCollapsed
+	context="feature"
+	initialProps={{ _label: 'Verborgenes Label', _hideLabel: true, _placeholder: 'Platzhalter' }}
+	visibleProperties={['_hideLabel']}
 />
 
 #### Vorschlagswerte (Suggestions)
@@ -181,26 +176,25 @@ Label können visuell verborgen sein, bleiben aber für assistive Technologien s
 Über `_suggestions` können Vorschlagswerte bereitgestellt werden, die während der Eingabe als auswählbare Datenliste angezeigt werden:
 
 <InputTextPreview
-  visibleProperties={['_label', '_suggestions']}
-  initialProps={{
-    _label: 'Anrede',
-    _suggestions: ['Herr', 'Frau', 'Firma'],
-  }}
-	sourceCodeDetailsCollapsed
+	context="feature"
+	visibleProperties={['_label', '_suggestions']}
+	initialProps={{
+		_label: 'Anrede',
+		_suggestions: ['Herr', 'Frau', 'Firma'],
+	}}
 />
 
 **Verfügbares Attribut:**
 - `_suggestions`: Liste von Vorschlagswerten für die Datalist-Autovervollständigung
-
 
 #### Zeichenbegrenzung und Zeichenzähler
 
 Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen und gleichzeitig visuelles Feedback geben:
 
 <InputTextPreview
-  initialProps={{ _label: 'Mit Zeichenzähler', _hasCounter: true, _maxLength: 50 }}
-  visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
-	sourceCodeDetailsCollapsed
+	context="feature"
+	initialProps={{ _label: 'Mit Zeichenzähler', _hasCounter: true, _maxLength: 50 }}
+	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
 />
 
 ##### Attribute
@@ -239,9 +233,9 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 Ein Schaltfläche mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLabel`):
 
 <InputTextPreview
-  initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
-  visibleProperties={['_smartButton']}
-	sourceCodeDetailsCollapsed
+	context="feature"
+	initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
+	visibleProperties={['_smartButton']}
 />
 
 #### Hinweistexte und Fehlermeldungen
@@ -249,9 +243,9 @@ Ein Schaltfläche mit beliebiger Aktion kann im Feld platziert werden (nur mit `
 Zusätzliche Informationen und Fehler-Feedback:
 
 <InputTextPreview
-  initialProps={{ _label: 'Mit Hinweis', _hint: 'Das ist ein Hinweis', _msg: 'Das ist eine Fehlermeldung' }}
-  visibleProperties={['_hint', '_msg']}
-	sourceCodeDetailsCollapsed
+	context="feature"
+	initialProps={{ _label: 'Mit Hinweis', _hint: 'Das ist ein Hinweis', _msg: 'Das ist eine Fehlermeldung' }}
+	visibleProperties={['_hint', '_msg']}
 />
 
 #### Events

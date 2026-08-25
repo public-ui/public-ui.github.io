@@ -22,10 +22,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Display of the component without optional fields set. Code can be shown.
 
-<AccordionPreview codeCollapsable
-	visibleProperties={[]}
-	initialProps={{ _open: true }}
-/>
+<AccordionPreview context="example" initialProps={{ _open: true }} />
 
 ## Accessibility
 
@@ -80,7 +77,7 @@ Levels `1` to `6` are available via `_level`. According to the API, `0` is also 
 
 ### Playground
 
-<AccordionPreview codeCollapsable />
+<AccordionPreview context="playground" />
 
 ### Functionality (with Code)
 
@@ -88,16 +85,16 @@ Levels `1` to `6` are available via `_level`. According to the API, `0` is also 
 
 The visible heading is set via `_label`. The content area is filled via the slot.
 
-<AccordionPreview visibleProperties={['_label', '_slot']} codeCollapsable />
+<AccordionPreview context="feature" visibleProperties={['_label', '_slot']} />
 
 #### Heading Structure
 
 The heading level is controlled via `_level`.
 
 <AccordionPreview
+	context="feature"
 	visibleProperties={['_level']}
 	initialProps={{ _label: 'Accordion Element', _level: 2 }}
-	codeCollapsable
 />
 
 #### State Control
@@ -105,9 +102,9 @@ The heading level is controlled via `_level`.
 Initial opening is done via `_open`. For the non-interactive state, `_disabled` is available.
 
 <AccordionPreview
+	context="feature"
 	visibleProperties={['_open', '_disabled']}
 	initialProps={{ _label: 'Accordion Element', _open: true }}
-	codeCollapsable
 />
 
 #### Event Binding
