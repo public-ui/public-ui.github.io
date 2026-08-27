@@ -23,7 +23,7 @@ export const mermaidLoadContent = (config: MermaidConfig) => {
 export const Mermaid: FunctionComponent<MermaidProps> = ({ code, config }) => {
 	useEffect(() => {
 		mermaidLoadContent(config);
-	}, []);
+	}, [config]);
 	return (
 		<div>
 			<div className="mermaid">{code}</div>

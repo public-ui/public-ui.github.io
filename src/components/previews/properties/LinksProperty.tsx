@@ -33,7 +33,7 @@ const LinksProperty = (props: {
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), currentLinks);
-	}, [links, linkCount]);
+	}, [links, linkCount, props._on]);
 
 	const handleCountChange = (_event: Event, value: unknown) => {
 		const count = Math.min(Math.max(Number(value) || 1, 1), links.length);

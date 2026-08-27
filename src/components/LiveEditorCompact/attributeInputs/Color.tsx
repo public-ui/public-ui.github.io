@@ -13,7 +13,7 @@ export function Color(props: Props) {
 
 	useEffect(() => {
 		if (!value) update(name, '#000000');
-	}, []);
+	}, [value, update, name]);
 
 	return (
 		<KolInputColor
