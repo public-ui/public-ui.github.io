@@ -82,7 +82,7 @@ const SelectOptionsProperty = (props: SelectOptionsPropertyProps) => {
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), options);
-	});
+	}, [options]);
 
 	const addOption = () => {
 		setOptions((prev) => [...prev, createDefaultOption(`Option ${options.length + 1}`)]);
