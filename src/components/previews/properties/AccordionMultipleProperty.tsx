@@ -95,7 +95,7 @@ const AccordionMultipleProperty = (props: AccordionMultiplePropertyProps) => {
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), accordions);
-	}, [accordions]);
+	}, [accordions, props._on]);
 
 	const addAccordion = () => {
 		setAccordions((prev) => [...prev, createDefaultAccordion(`Accordion ${accordions.length + 1}`)]);

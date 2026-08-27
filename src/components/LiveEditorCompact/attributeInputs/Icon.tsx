@@ -51,7 +51,7 @@ export function Icon(props: Props) {
 
 			if (Object.keys(result).length) update(attribute.name, JSON.stringify(result));
 		}
-	}, [left, right, top, bottom]);
+	}, [left, right, top, bottom, update, attribute.name]);
 
 	const iconList = [
 		'kolicon-house',
