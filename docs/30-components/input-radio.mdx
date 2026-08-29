@@ -6,6 +6,10 @@ description: Beschreibung, Spezifikation und Beispiele für die InputRadio-Kompo
 import Readme from '@site/readmes/input-radio/readme.md';
 import InputRadioPreview from '@site/src/components/previews/components/InputRadio';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import HideLabelNote from '@site/shared/a11y-properties/hide-label.md';
+import TouchedMsgNote from '@site/shared/a11y-properties/touched-msg.md';
+import HideMsgNote from '@site/shared/a11y-properties/hide-msg.md';
+import RequiredNote from '@site/shared/a11y-properties/required.md';
 
 # InputRadio
 
@@ -38,7 +42,11 @@ Darstellung einer einfachen Radio-Auswahlgruppe mit drei Optionen:
 - **Tastatursteuerung:** Alle Radio-Elemente sind vollständig über die Tastatur bedienbar. Nach dem Fokussieren der Gruppe kann zwischen den Optionen navigiert werden.
 - **Fokusmanagement:** Die Komponente markiert das aktuell fokussierte Element deutlich und unterstützt eine intuitive Navigation mit Pfeiltasten.
 - **Hinweistexte:** Mit `_hint` können zusätzliche Informationen bereitgestellt werden, die von Screenreadern vorgelesen werden.
-- **Fehlermeldungen:** Validierungsfehler können über `_msg` aussagekräftig kommuniziert werden. Mit `_hideMsg` wird die Fehlermeldung visuell ausgeblendet, bleibt aber im DOM für Screenreader erhalten.
+- **Fehlermeldungen:** Validierungsfehler können über `_msg` aussagekräftig kommuniziert werden.
+- <TouchedMsgNote />
+- <HideMsgNote />
+- <RequiredNote />
+- <HideLabelNote />
 
 ### Links und Referenzen
 

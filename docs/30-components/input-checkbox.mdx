@@ -6,6 +6,13 @@ description: Beschreibung, Spezifikation und Beispiele für die InputCheckbox-Ko
 import Readme from '@site/readmes/input-checkbox/readme.md';
 import InputCheckboxPreview from '@site/src/components/previews/components/InputCheckbox';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import HideLabelNote from '@site/shared/a11y-properties/hide-label.md';
+import TouchedMsgNote from '@site/shared/a11y-properties/touched-msg.md';
+import HideMsgNote from '@site/shared/a11y-properties/hide-msg.md';
+import RequiredNote from '@site/shared/a11y-properties/required.md';
+import IconsDecorativeNote from '@site/shared/a11y-properties/icons-decorative.md';
+import AccessKeyNote from '@site/shared/a11y-properties/access-key.md';
+import ShortKeyNote from '@site/shared/a11y-properties/short-key.md';
 
 
 # InputCheckbox
@@ -28,10 +35,16 @@ Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet
 ## Barrierefreiheit
 
 - Verwenden Sie eine aussagekräftige Beschriftung (`_label`), damit Nutzende den Zweck der Checkbox eindeutig erkennen können.
-- Wird `_hideLabel` verwendet, bleibt die Beschriftung für assistive Technologien verfügbar. Stellen Sie sicher, dass die ausgeblendete Beschriftung dennoch aussagekräftig ist.
 - Nutzen Sie `_hint`, um zusätzliche Informationen bereitzustellen, wenn diese für das Verständnis der Checkbox erforderlich sind.
 - Stellen Sie Validierungsfehler über `_msg` verständlich und eindeutig dar.
 - Die visuellen Varianten (`default`, `switch`, `button`) beeinflussen ausschließlich das Erscheinungsbild. Für assistive Technologien bleibt die Komponente unabhängig von der Darstellung eine native Checkbox.
+- <TouchedMsgNote />
+- <HideMsgNote />
+- <RequiredNote />
+- <IconsDecorativeNote />
+- <HideLabelNote />
+- <AccessKeyNote />
+- <ShortKeyNote />
 
 ### Konkrete Designentscheidungen
 

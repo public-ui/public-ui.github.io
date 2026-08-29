@@ -6,6 +6,13 @@ description: Beschreibung, Spezifikation und Beispiele für die Combobox-Kompone
 import Readme from '@site/readmes/combobox/readme.md';
 import ComboboxPreview from '@site/src/components/previews/components/Combobox';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import HideLabelNote from '@site/shared/a11y-properties/hide-label.md';
+import TouchedMsgNote from '@site/shared/a11y-properties/touched-msg.md';
+import HideMsgNote from '@site/shared/a11y-properties/hide-msg.md';
+import RequiredNote from '@site/shared/a11y-properties/required.md';
+import IconsDecorativeNote from '@site/shared/a11y-properties/icons-decorative.md';
+import AccessKeyNote from '@site/shared/a11y-properties/access-key.md';
+import ShortKeyNote from '@site/shared/a11y-properties/short-key.md';
 
 # Combobox
 
@@ -30,8 +37,15 @@ Standard-Combobox mit Vorschlagsliste:
 - Die Combobox orientiert sich am WAI-ARIA Authoring Practices Pattern **„Editable Combobox with List Autocomplete“**.
 - Das Eingabefeld verwendet die ARIA-Rolle `combobox` mit den Attributen `aria-expanded`, `aria-controls` und `aria-activedescendant`.
 - Die Vorschlagsliste wird als eigenständige Listbox (`role="listbox"`) mit Einträgen (`role="option"`) umgesetzt.
-- Die Combobox benötigt einen zugänglichen Namen. Dieser wird in der Regel über `_label` bereitgestellt. Wird `_hideLabel` verwendet, bleibt die Beschriftung für assistive Technologien weiterhin verfügbar.
+- Die Combobox benötigt einen zugänglichen Namen. Dieser wird in der Regel über `_label` bereitgestellt.
 - Mit `_hint` können zusätzliche Hinweise bereitgestellt werden, die mit der Combobox verknüpft und von assistiven Technologien ausgegeben werden.
+- <TouchedMsgNote />
+- <HideMsgNote />
+- <RequiredNote />
+- <IconsDecorativeNote />
+- <HideLabelNote />
+- <AccessKeyNote />
+- <ShortKeyNote />
 
 ### Konkrete Designentscheidungen
 

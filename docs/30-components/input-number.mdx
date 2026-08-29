@@ -6,6 +6,13 @@ description: Beschreibung, Spezifikation und Beispiele für die InputNumber-Komp
 import Readme from '@site/readmes/input-number/readme.md';
 import InputNumberPreview from '@site/src/components/previews/components/InputNumber';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import HideLabelNote from '@site/shared/a11y-properties/hide-label.md';
+import TouchedMsgNote from '@site/shared/a11y-properties/touched-msg.md';
+import HideMsgNote from '@site/shared/a11y-properties/hide-msg.md';
+import RequiredNote from '@site/shared/a11y-properties/required.md';
+import IconsDecorativeNote from '@site/shared/a11y-properties/icons-decorative.md';
+import AccessKeyNote from '@site/shared/a11y-properties/access-key.md';
+import ShortKeyNote from '@site/shared/a11y-properties/short-key.md';
 
 
 # InputNumber
@@ -32,7 +39,13 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 - Die nativen HTML5-Eingabetypen werden von Browsern und assistiven Technologien standardisiert unterstützt.
 - Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
 - Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
-- Mit `_required` gekennzeichnete Felder werden über das native `required`-Attribut an assistive Technologien kommuniziert.
+- <TouchedMsgNote />
+- <HideMsgNote />
+- <RequiredNote />
+- <IconsDecorativeNote />
+- <HideLabelNote />
+- <AccessKeyNote />
+- <ShortKeyNote />
 
 ### Konkrete Designentscheidungen
 
