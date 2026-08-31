@@ -19,11 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung einer InputRange-Komponente mit Standardausstattung:
 
-<InputRangePreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Lautstärke' }}
-	sourceCodeDetailsCollapsed
-/>
+<InputRangePreview context="example" initialProps={{ _label: 'Lautstärke' }} />
 
 ## Barrierefreiheit
 
@@ -78,7 +74,7 @@ Darstellung einer InputRange-Komponente mit Standardausstattung:
 
 Testen Sie die verschiedenen Eigenschaften der InputRange-Komponente:
 
-<InputRangePreview />
+<InputRangePreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -87,9 +83,9 @@ Testen Sie die verschiedenen Eigenschaften der InputRange-Komponente:
 Standard-InputRange mit Beschriftung, Minimum und Maximum:
 
 <InputRangePreview
+	context="feature"
 	visibleProperties={['_label', '_min', '_max', '_step']}
 	initialProps={{ _label: 'Wert auswählen', _min: 0, _max: 100, _step: 1 }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Wertbereich und Schrittweite
@@ -97,9 +93,9 @@ Standard-InputRange mit Beschriftung, Minimum und Maximum:
 Die Eigenschaften `_min`, `_max` und `_step` bestimmen den Wertebereich und die Schrittweite:
 
 <InputRangePreview
+	context="feature"
 	visibleProperties={['_min', '_max', '_step', '_value']}
 	initialProps={{ _label: 'Preisspanne (€)', _min: 0, _max: 1000, _step: 50, _value: 250 }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Hinweistexte
@@ -107,9 +103,9 @@ Die Eigenschaften `_min`, `_max` und `_step` bestimmen den Wertebereich und die 
 Zusätzliche Informationen können über `_hint` bereitgestellt werden:
 
 <InputRangePreview
+	context="feature"
 	visibleProperties={['_label', '_hint']}
 	initialProps={{ _label: 'Lautstärke', _hint: 'Schieberegler um die Lautstärke zu regulieren (0-100%)' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Deaktivierter Zustand
@@ -117,9 +113,9 @@ Zusätzliche Informationen können über `_hint` bereitgestellt werden:
 Ein deaktiviertes Eingabefeld kann über das Attribut `_disabled` erreicht werden:
 
 <InputRangePreview
+	context="feature"
 	visibleProperties={['_disabled']}
 	initialProps={{ _label: 'Deaktiviertes Feld', _disabled: true, _value: 50 }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Fehlermeldungen
@@ -127,13 +123,13 @@ Ein deaktiviertes Eingabefeld kann über das Attribut `_disabled` erreicht werde
 Das Attribut `_msg` erlaubt die Anzeige von Validierungshinweisen:
 
 <InputRangePreview
+	context="feature"
 	visibleProperties={['_label', '_msg']}
 	initialProps={{
 		_label: 'Wertbereich',
 		_msg: { _description: 'Der Wert muss zwischen 10 und 90 liegen', _level: 'error' },
 		_value: 5,
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Events

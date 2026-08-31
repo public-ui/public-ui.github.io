@@ -19,10 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Versteckte Navigation mit Link-Labels und Zielankern:
 
-<SkipNavPreview
-	visibleProperties={['_label', '_links']}
-	sourceCodeDetailsCollapsed
-/>
+<SkipNavPreview context="example" />
 
 ## Barrierefreiheit
 
@@ -68,7 +65,7 @@ Versteckte Navigation mit Link-Labels und Zielankern:
 
 ### Playground
 
-<SkipNavPreview />
+<SkipNavPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -76,9 +73,7 @@ Versteckte Navigation mit Link-Labels und Zielankern:
 
 Minimale Konfiguration mit `_label` und `_links`:
 
-<SkipNavPreview
-	visibleProperties={['_label', '_links']}
-/>
+<SkipNavPreview context="feature" visibleProperties={['_label', '_links']} />
 
 #### Link-Struktur
 

@@ -137,7 +137,7 @@ const TreeItemsProperty = (props: {
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), items);
-	}, [items]);
+	}, [items, props._on]);
 
 	const addRootItem = () => {
 		setItems((prev) => [...prev, createDefaultItem(`Page ${prev.length + 1}`)]);

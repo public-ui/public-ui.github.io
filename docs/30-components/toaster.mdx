@@ -55,7 +55,9 @@ Die Komponente erfüllt nicht die Standards für barrierefreie Benachrichtigunge
 
 ## Konstruktion / Technik
 
-### Service-Initialisierung
+### Funktionalitäten (mit Code)
+
+#### Service-Initialisierung
 
 Der Toaster ist kein HTML-Element und wird nicht direkt verwendet. Stattdessen wird der `ToasterService` verwendet, um eine Toaster-Instanz zu erstellen und zu verwalten:
 
@@ -66,7 +68,7 @@ import { ToasterService } from '@public-ui/components';
 const toaster = ToasterService.getInstance(document);
 ```
 
-### Toast hinzufügen
+#### Toast hinzufügen
 
 Toasts werden über die Methode `enqueue()` zur Warteschlange hinzugefügt:
 
@@ -84,7 +86,7 @@ const closeToastFn = await toaster.enqueue({
 closeToastFn();
 ```
 
-#### Parameter der `enqueue()`-Methode
+##### Parameter der `enqueue()`-Methode
 
 | Parameter | Typ | Erforderlich | Beschreibung |
 | --- | --- | --- | --- |
@@ -95,7 +97,7 @@ closeToastFn();
 | `render` | `(element: HTMLElement, { close: Function }) => void` | Nein | Alternative zu `description`: Benutzerdefinierte Render-Funktion |
 | `onClose` | `() => void` | Nein | Callback-Funktion, die aufgerufen wird, wenn die Toast geschlossen wird |
 
-### Benutzerdefinierte Darstellung
+#### Benutzerdefinierte Darstellung
 
 Statt einen statischen `description`-Text zu verwenden, können Sie eine benutzerdefinierte Render-Funktion bereitstellen:
 
@@ -115,11 +117,11 @@ const closeToastFn = await toaster.enqueue({
 });
 ```
 
-### Service-Verwaltung
+#### Service-Verwaltung
 
 Der ToasterService bietet zusätzliche Methoden zur Verwaltung von Toasts:
 
-#### `closeAll(immediate?: boolean): void`
+##### `closeAll(immediate?: boolean): void`
 
 Schließt alle aktuell angezeigten Toasts.
 
@@ -131,7 +133,7 @@ toaster.closeAll();
 toaster.closeAll(true);
 ```
 
-#### `dispose(): void`
+##### `dispose(): void`
 
 Entfernt den Toast-Container aus dem DOM. Die Toaster-Instanz kann danach nicht mehr verwendet werden. Alle angezeigten Toasts werden geschlossen.
 
@@ -140,7 +142,7 @@ toaster.dispose();
 // Weitere toaster-Aufrufe sind jetzt nicht mehr möglich
 ```
 
-### Toast-Typen und deren Bedeutung
+#### Toast-Typen und deren Bedeutung
 
 In KoliBri unterscheiden wir drei Ebenen für Toast-Konfiguration:
 
@@ -149,7 +151,7 @@ In KoliBri unterscheiden wir drei Ebenen für Toast-Konfiguration:
 
 - **`variant`** → steuert das **visuelle Erscheinungsbild**. **Veraltet** – die einzig gültige und immer verwendete Variante ist `"card"`.
 
-#### Verwendungsempfehlungen nach Typ
+##### Verwendungsempfehlungen nach Typ
 
 | Typ | Empfehlung | Beispiel |
 | --- | --- | --- |

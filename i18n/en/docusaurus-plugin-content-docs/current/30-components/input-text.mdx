@@ -23,9 +23,10 @@ The component has known issues regarding browser dependency and accessibility. F
 
 ## Construction
 
-<InputTextPreview 
-  initialProps={{ _label: 'Texteingabe'  }}
-  visibleProperties={[
+<InputTextPreview
+	context="feature"
+	initialProps={{ _label: 'Texteingabe'  }}
+	visibleProperties={[
     '_label',
     '_type',
     '_msg',
@@ -34,8 +35,6 @@ The component has known issues regarding browser dependency and accessibility. F
     '_readOnly',
     '_smartButton'
   ]}
-  codeCollapsable
-  codeCollapsed
 />
 
 ### Events

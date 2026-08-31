@@ -21,14 +21,52 @@ export enum PreviewLayout {
 	FULL_SIZE,
 }
 
+/**
+ * Der Dokumentationsabschnitt, in dem eine Preview steht.
+ *
+ * - `example`     – Abschnitt "Beispiel": reine Darstellung der Komponente.
+ * - `playground`  – Abschnitt "Playground": freies Ausprobieren aller sinnvollen Eigenschaften.
+ * - `feature`     – Abschnitt "Funktionalitaeten (mit Code)": gezielte Demonstration einzelner Eigenschaften.
+ */
+export type PreviewContext = 'example' | 'playground' | 'feature';
+
+type PreviewContextConfig = {
+	/** Welche Eigenschaften angeboten werden. */
+	properties: 'none' | 'sensible' | 'selected';
+	/** Zustand des Quellcode-Bereichs beim Laden der Seite. */
+	code: 'collapsed' | 'expanded';
+};
+
+/**
+ * Zentrale Darstellungsregel. Sie ersetzt die fruehere Konfiguration je Aufrufstelle und
+ * haelt die Komponentendokumentationen untereinander konsistent.
+ */
+export const PREVIEW_CONTEXT_CONFIG: Record<PreviewContext, PreviewContextConfig> = {
+	example: { properties: 'none', code: 'collapsed' },
+	playground: { properties: 'sensible', code: 'collapsed' },
+	feature: { properties: 'selected', code: 'expanded' },
+};
+
+/**
+ * Eigenschaften, die beim freien Ausprobieren nicht weiterhelfen: ARIA-Attribute sowie
+ * technische Attribute ohne unmittelbaren Effekt auf die Darstellung. Im Kontext `feature`
+ * koennen sie weiterhin gezielt ueber `visibleProperties` gezeigt werden.
+ *
+ * Nicht enthalten sind `_accessKey` und `_shortKey`: Beide wirken sich sichtbar aus
+ * (`_shortKey` ergaenzt einen Hinweis hinter der Beschriftung) und gehoeren damit in den
+ * Playground.
+ */
+const TECHNICAL_PROPERTY_NAMES = new Set(['_name', '_customClass', '_customCss']);
+
+const isSensibleProperty = (key: string): boolean => !key.startsWith('_aria') && !TECHNICAL_PROPERTY_NAMES.has(key);
+
 type PreviewProps<TProps> = {
 	children: (props: TProps) => ReactNode;
+	context: PreviewContext;
 	initialProps: TProps;
 	propertyComponents?: Partial<Record<keyof TProps, PropertyComponent>>;
 	componentName?: string;
 	visibleProperties?: (keyof TProps)[];
-	hideSourceCodeDetails?: boolean;
-	sourceCodeDetailsCollapsed?: boolean;
 	layout?: PreviewLayout;
 	slotKey?: keyof TProps;
 	sourceFormatter?: (props: TProps) => string | undefined;
@@ -37,19 +75,29 @@ type PreviewProps<TProps> = {
 
 const Preview = <TProps,>({
 	children,
+	context,
 	initialProps,
 	propertyComponents,
 	componentName,
 	visibleProperties,
-	hideSourceCodeDetails,
-	sourceCodeDetailsCollapsed: sourceCodeDetailsInitialCollapsed,
 	layout = PreviewLayout.DEFAULT,
 	slotKey,
 	sourceFormatter,
 	hiddenPropsInCode,
 }: PreviewProps<TProps>) => {
+	const contextConfig = PREVIEW_CONTEXT_CONFIG[context];
+	if (!contextConfig) {
+		// Bewusst ein Fehler statt eines stillen Fallbacks: Docusaurus rendert die Seiten beim
+		// Build vor, ein ungültiger Kontext fällt dadurch im Build auf statt erst später in der
+		// Oberfläche.
+		throw new Error(
+			`Preview: Unbekannter context "${String(context)}". Erlaubt sind ${Object.keys(PREVIEW_CONTEXT_CONFIG)
+				.map((key) => `"${key}"`)
+				.join(', ')}.`
+		);
+	}
 	const [currentProps, setCurrentProps] = useState<TProps>(initialProps);
-	const [codeCollapsed, setCodeCollapsed] = useState<boolean>(sourceCodeDetailsInitialCollapsed ?? false);
+	const [codeOpen, setCodeOpen] = useState<boolean>(contextConfig.code === 'expanded');
 	const [copySuccess, setCopySuccess] = useState<boolean>(false);
 
 	const updateProperty = (key: keyof TProps, value: unknown) => {
@@ -198,14 +246,29 @@ const Preview = <TProps,>({
 		);
 	};
 
-	const renderPropertyComponents = () => {
-		if (!propertyComponents) return null;
+	/**
+	 * Leitet aus dem Kontext ab, welche Eigenschaften angeboten werden.
+	 * `visibleProperties` wird nur im Kontext `feature` ausgewertet.
+	 */
+	const getPropertyEntries = () => {
+		if (!propertyComponents || contextConfig.properties === 'none') return [];
 
-		// Filter entries based on visibleProperties if provided
-		const filteredEntries = Object.entries(propertyComponents)
-			.map(([key, cmp]) => [key as keyof TProps, cmp as PropertyComponent] as const)
-			.filter(([key]) => !visibleProperties || visibleProperties.includes(key));
+		const entries = Object.entries(propertyComponents).map(
+			([key, cmp]) => [key as keyof TProps, cmp as PropertyComponent] as const
+		);
 
+		if (contextConfig.properties === 'selected' && visibleProperties) {
+			return entries.filter(([key]) => visibleProperties.includes(key));
+		}
+
+		// Fallback im Kontext `feature`: Ohne Auswahl werden alle sinnvollen Eigenschaften
+		// angeboten. In der deutschen Leitfassung erzwingt `scripts/check.preview.context.js`
+		// eine explizite Auswahl, damit dieser Fall dort nicht eintritt.
+
+		return entries.filter(([key]) => isSensibleProperty(key as string));
+	};
+
+	const renderPropertyComponents = (filteredEntries: ReturnType<typeof getPropertyEntries>) => {
 		return (
 			<KolCard _label={translate({ id: 'preview.props.heading' })} className="p-4">
 				<div className="flex flex-col flex-wrap gap-x-4 gap-y-2">
@@ -234,7 +297,8 @@ const Preview = <TProps,>({
 		);
 	};
 
-	const hasProp = visibleProperties?.length !== 0;
+	const propertyEntries = getPropertyEntries();
+	const hasProp = propertyEntries.length > 0;
 	return (
 		<div className={`preview ${hasProp ? 'props' : ''} gap-4 border-2 border-solid border-gray-200 rounded-md p-2`}>
 			<div
@@ -252,19 +316,15 @@ const Preview = <TProps,>({
 					{children(enhancePropsWithEventHandlers(currentProps))}
 				</span>
 			</div>
-			{hasProp && renderPropertyComponents()}
-			{!hideSourceCodeDetails ? (
-				<KolDetails
-					className={`${hasProp ? 'col-span-2' : ''}`}
-					_label={translate({ id: 'preview.sourceCode.heading' })}
-					_open={!codeCollapsed}
-					_on={{ onToggle: (_, open) => setCodeCollapsed(open) }}
-				>
-					{renderSourceCode()}
-				</KolDetails>
-			) : (
-				<></>
-			)}
+			{hasProp && renderPropertyComponents(propertyEntries)}
+			<KolDetails
+				className={`${hasProp ? 'col-span-2' : ''}`}
+				_label={translate({ id: 'preview.sourceCode.heading' })}
+				_open={codeOpen}
+				_on={{ onToggle: (_, open) => setCodeOpen(open) }}
+			>
+				{renderSourceCode()}
+			</KolDetails>
 		</div>
 	);
 };

@@ -20,11 +20,7 @@ The **Tabs** component is used to organize and navigate between related content 
 
 ## Construction
 
-<TabsPreview
-	visibleProperties={['_label', '_tabs', '_align', '_hasCreateButton']}
-	codeCollapsable
-	codeCollapsed
-/>
+<TabsPreview context="feature" visibleProperties={['_label', '_tabs', '_align', '_hasCreateButton']} />
 
 After loading the component, the first tab on the left will automatically be visually highlighted as **_active_**. Each tab takes on the status **_active_** after being clicked. The status **_active_** can also be set manually to the index of the registry card using the **`_selected`** attribute.
 The individual contents of the tab are noted in a separate `HTMLDivElement` as `<div>Contents of the tab</div>` within `<kol-tabs></kol-tabs>`.

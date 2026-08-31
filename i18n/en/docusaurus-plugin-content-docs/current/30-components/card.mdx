@@ -21,12 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Display of a simple card with title and content area. Code can be shown.
 
-<CardPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Card Title', _slot: 'Content area with arbitrary HTML' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<CardPreview context="example" initialProps={{ _label: 'Card Title', _slot: 'Content area with arbitrary HTML' }} />
 
 ## Accessibility
 
@@ -64,7 +59,7 @@ Display of a simple card with title and content area. Code can be shown.
 
 ### Playground
 
-<CardPreview codeCollapsable />
+<CardPreview context="playground" />
 
 ### Functionalities (with Code)
 
@@ -73,9 +68,9 @@ Display of a simple card with title and content area. Code can be shown.
 The visible heading is set via `_label`. The content area is populated via the slot.
 
 <CardPreview
+	context="feature"
 	visibleProperties={['_label', '_slot']}
 	initialProps={{ _label: 'Card Title', _slot: 'Content area' }}
-	codeCollapsable
 />
 
 #### Heading Structure
@@ -83,9 +78,9 @@ The visible heading is set via `_label`. The content area is populated via the s
 The heading level is controlled via `_level`. Levels 0–6 are possible, where 0 renders the title as bold text without a heading element.
 
 <CardPreview
+	context="feature"
 	visibleProperties={['_level']}
 	initialProps={{ _label: 'Card Title', _slot: 'Content area', _level: 2 }}
-	codeCollapsable
 />
 
 #### Close Function
@@ -93,9 +88,9 @@ The heading level is controlled via `_level`. Levels 0–6 are possible, where 0
 The `_has-closer` attribute allows the user to close the card to save space.
 
 <CardPreview
+	context="feature"
 	visibleProperties={['_hasCloser']}
 	initialProps={{ _label: 'Closable Card', _slot: 'Content area', _hasCloser: true }}
-	codeCollapsable
 />
 
 #### Events

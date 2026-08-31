@@ -21,10 +21,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard-Tree mit mehreren Ebenen und expandierbaren Elementen:
 
-<TreePreview
-	visibleProperties={[]}
-	sourceCodeDetailsCollapsed
-/>
+<TreePreview context="example" />
 
 ## Barrierefreiheit
 
@@ -94,7 +91,7 @@ Ja, Sie können Items dynamisch filtern und nur die gefilterten Items anzeigen �
 
 Testen Sie die verschiedenen Eigenschaften der Tree-Komponente:
 
-<TreePreview />
+<TreePreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -102,17 +99,14 @@ Testen Sie die verschiedenen Eigenschaften der Tree-Komponente:
 
 Jeder Baumknoten wird durch eine `KolTreeItem`-Komponente dargestellt. Der Container wird durch `KolTree` mit dem erforderlichen `_label`-Attribut definiert.
 
-<TreePreview 
-	visibleProperties={['_label']} 
-	sourceCodeDetailsCollapsed
-/>
+<TreePreview context="feature" visibleProperties={['_label']} />
 
 #### Verschachtelte Hierarchien
 
 Die Tree-Komponente unterstützt beliebig viele Verschachtelungsebenen durch verschachtelte `KolTreeItem`-Elemente.
 Am `KolTreeItem` wird mit dem Attribut `_open` gesteuert, ob ein Element beim initialen Laden geöffnet ist und mit dem Attribut `_active`, ob ein Element markiert ist (z.B. die aktuelle Seite in einer Navigation).
 
-<TreePreview visibleProperties={['_items']} />
+<TreePreview context="feature" visibleProperties={['_items']} />
 
 ## API
 

@@ -38,9 +38,9 @@ const TabsProperty = (props: {
 
     const currentTabs = tabs.slice(0, tabCount);
 
-    useEffect(() => {
-        props._on?.onInput?.(new Event('input'), currentTabs);
-    }, [tabs, tabCount]);
+	useEffect(() => {
+		props._on?.onInput?.(new Event('input'), currentTabs);
+	}, [tabs, tabCount, props._on]);
 
     const handleCountChange = (_event: Event, value: unknown) => {
         const count = Math.min(Math.max(Number(value) || 1, 1), MAX_TAB_COUNT);

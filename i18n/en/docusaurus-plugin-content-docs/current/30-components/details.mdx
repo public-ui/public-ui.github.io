@@ -21,12 +21,7 @@ expandable content area, enabling space-saving presentation of supplementary inf
 
 Component with sample content:
 
-<DetailsPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'More Information' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<DetailsPreview context="example" initialProps={{ _label: 'More Information' }} />
 
 ## Accessibility
 
@@ -70,9 +65,7 @@ Component with sample content:
 
 ### Playground
 
-<DetailsPreview
-	codeCollapsable
-/>
+<DetailsPreview context="playground" />
 
 ### Functionality (with code)
 
@@ -80,31 +73,23 @@ Component with sample content:
 
 The label is defined via `_label`; the content area is populated via the slot.
 
-<DetailsPreview
-	visibleProperties={['_label']}
-	initialProps={{ _label: 'Show details' }}
-	codeCollapsable
-/>
+<DetailsPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Show details' }} />
 
 #### Open state
 
 `_open` renders the component initially expanded. In the disabled state (`_disabled`) the component is non-interactive.
 
 <DetailsPreview
+	context="feature"
 	visibleProperties={['_open', '_disabled']}
 	initialProps={{ _label: 'Show details', _open: true }}
-	codeCollapsable
 />
 
 #### Heading structure
 
 The heading level is controlled via `_level` (0–6). A value of `0` renders the text as bold text without a semantic heading structure.
 
-<DetailsPreview
-	visibleProperties={['_level']}
-	initialProps={{ _label: 'Show details', _level: 2 }}
-	codeCollapsable
-/>
+<DetailsPreview context="feature" visibleProperties={['_level']} initialProps={{ _label: 'Show details', _level: 2 }} />
 
 #### Event handling
 

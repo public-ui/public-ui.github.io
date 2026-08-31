@@ -4,9 +4,10 @@ import { KolButton, KolInputText, KolDialog } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import { sanitizeHtml } from '../../../shares/sanitize';
 import type { JSX } from '@public-ui/components';
-import { DialogVariantProperty, MultiLineTextProperty } from '../properties';
+import { MultiLineTextProperty, VariantProperty } from '../properties';
 import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults } from '../utils';
+import { variantDialogOptions } from '../properties/VariantProperty';
 
 interface DialogPreviewProps extends JSX.KolDialog {
 	_slot?: string;
@@ -31,7 +32,7 @@ const DialogPreview: React.FC<PreviewDefaults<DialogPreviewProps>> = (props) => 
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
 				_width: <KolInputText _label="Width" />,
-				_variant: <DialogVariantProperty label="Variant" defaultValue="card" />,
+				_variant: <VariantProperty label="Variant" defaultValue="card" variantOptions={variantDialogOptions} />,
 				_slot: <MultiLineTextProperty label="Content" />,
 			}}
 			componentName="KolDialog"

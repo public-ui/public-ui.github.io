@@ -23,10 +23,7 @@ Die auswählbaren Optionen werden über die Property `_options` bereitgestellt u
 
 Standard-Auswahlliste mit Pflichtfeld-Markierung:
 
-<SelectPreview
-visibleProperties={['_label', '_options', '_multiple', '_rows', '_disabled', '_required']}
-	sourceCodeDetailsCollapsed
-/>
+<SelectPreview context="example" />
 
 ## Barrierefreiheit
 
@@ -137,7 +134,7 @@ Das native HTML-Element `<select>` stellt die erforderliche Semantik sowie die U
 
 ### Playground
 
-<SelectPreview />
+<SelectPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -145,29 +142,25 @@ Das native HTML-Element `<select>` stellt die erforderliche Semantik sowie die U
 
 Mindestangaben für eine funktionsfähige Select-Komponente: `_label` und `_options`.
 
-<SelectPreview
-visibleProperties={['_label', '_options']}
-/>
+<SelectPreview context="feature" visibleProperties={['_label', '_options']} />
 
 #### Mehrfachauswahl
 
 Über `_multiple` können mehrere Optionen gleichzeitig ausgewählt werden. Mit `_rows` wird die sichtbare Höhe der Liste gesteuert.
 
-<SelectPreview
-visibleProperties={['_multiple', '_rows']}
-/>
+<SelectPreview context="feature" visibleProperties={['_multiple', '_rows']} />
 
 #### Formularattribute
 
-<SelectPreview
-visibleProperties={['_disabled', '_required', '_name']}
-/>
+Über `_disabled`, `_required` und `_name` wird die Select-Komponente in ein Formular eingebunden und ihr Eingabeverhalten gesteuert.
+
+<SelectPreview context="feature" visibleProperties={['_disabled', '_required', '_name']} />
 
 #### Hinweise und Fehlermeldungen
 
-<SelectPreview
-visibleProperties={['_hint', '_msg']}
-/>
+Mit `_hint` wird ein ergänzender Hinweis zur Eingabe ausgegeben, mit `_msg` eine Validierungs- oder Fehlermeldung.
+
+<SelectPreview context="feature" visibleProperties={['_hint', '_msg']} />
 
 #### Events
 

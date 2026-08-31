@@ -19,11 +19,7 @@ The input type **Email** creates an input field for emails.
 
 ## Construction
 
-<InputEmailPreview
-  visibleProperties={['_label', '_multiple', '_disabled']}
-  codeCollapsable
-  codeCollapsed
-/>
+<InputEmailPreview context="feature" visibleProperties={['_label', '_multiple', '_disabled']} />
 
 ### Events
 
@@ -52,10 +48,9 @@ By default, the component is designed to capture a single email address. Set the
 ### Form attributes
 
 <InputEmailPreview
+	context="feature"
 	visibleProperties={['_label', '_disabled', '_readOnly', '_required', '_hideLabel', '_hideMsg', '_shortKey', '_tooltipAlign']}
 	initialProps={{ _label: 'Email address' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 **Available attributes:**
@@ -74,10 +69,9 @@ Use `_autoComplete` to control whether the browser may display completion sugges
 Use `_suggestions` to provide a list of suggested values that are displayed to the user as a selectable datalist during input:
 
 <InputEmailPreview
+	context="feature"
 	visibleProperties={['_autoComplete']}
 	initialProps={{ _label: 'Email address', _autoComplete: 'email' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 ## Accessibility
@@ -88,14 +82,13 @@ To indicate failed validation, use the `_msg` and `_touched` attributes. Additio
 Use `_msg` with `_touched` to show validation errors:
 
 <InputEmailPreview
+	context="feature"
 	visibleProperties={['_msg', '_touched', '_pattern']}
 	initialProps={{
 		_label: 'Email address',
 		_msg: { _description: 'Please enter a valid email address.' },
 		_touched: true,
 	}}
-	codeCollapsable
-	codeCollapsed
 />
 
 ### Keyboard controls

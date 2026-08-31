@@ -87,7 +87,7 @@ export function LiveEditorCompact(props: Props) {
 			.find((t) => t.name === `kol-${tag}`)
 			?.attributes.find((a) => a.name === '_heading');
 		if (hasHeading && !allConfig[tag]?._heading) updateConfig('_heading', 'Heading-Text');
-	}, [tag]);
+	}, [tag, allElements.tags, allConfig, updateConfig]);
 
 	const config = useMemo(() => {
 		return allConfig[tag] || {};

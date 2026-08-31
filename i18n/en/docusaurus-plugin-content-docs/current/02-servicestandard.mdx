@@ -1,0 +1,52 @@
+---
+title: Servicestandard
+description: How KoliBri operationalises the quality requirements of the Servicestandard (DIN SPEC 66336) for digital public services through standardised and accessible components.
+tags:
+  - accessibility
+  - standards
+  - DIN SPEC 66336
+---
+
+# Servicestandard (DIN SPEC 66336)
+
+The **Servicestandard** (DIN SPEC 66336 _"Quality Requirements for Online Services and Portals of Public Administration"_) defines verifiable quality requirements for digital public services. It was published in March 2025, initiated by the Federal Ministry of the Interior and Community (BMI), and builds on the OZG Service Standard from 2020. Through the planned Online Access Standard Ordinance ([OZG-SV]) it is intended to become legally binding for new online services. The standard comprises 13 quality principles across the phases analysis, implementation, operation, and further development.
+
+KoliBri was developed with the goal of technically translating the requirements for accessible, user-centred, and reusable user interfaces set out in the **Servicestandard** (DIN SPEC 66336) into standardised components. Instead of having every project re-justify accessibility, KoliBri already operationalises the relevant principles by construction.
+
+## Relationship to the quality principles
+
+The Servicestandard defines 13 principles. The following four are key for KoliBri:
+
+**Principle 5 – Reuse what exists and shape the new together**
+KoliBri provides a library of reusable, standardised components. Instead of reinventing accessible solutions in every project, projects can fall back on tested building blocks.
+
+**Principle 6 – Ensure accessible use and strengthen participation**
+The standard requires a uniform level of accessibility according to [BITV 2.0] – beyond the state (Länder) regulations – as well as an accessibility statement (EzB) and a feedback mechanism. Easy Language must be offered according to DIN SPEC 33429, Plain Language according to DIN 85811. KoliBri components are designed to reliably achieve this level (see [Technical implementation](#technical-implementation-of-accessibility)).
+
+**Principle 7 – Observe open standards and provide interfaces**
+KoliBri is based on open web standards: the components are implemented as Web Components (Custom Elements) and can therefore be used in a technology- and domain-agnostic way across frameworks.
+
+**Principle 10 – Use open source and share code**
+KoliBri is an open-source component library. Code and insights can be shared, reused, and developed further together.
+
+## Technical implementation of accessibility
+
+For principle 6, the Servicestandard (DIN SPEC 66336) requires compliance with [BITV 2.0]. This implements the European standard [EN 301 549], which in turn includes [WCAG 2.1] (level AA). KoliBri meets these requirements through the construction of the components:
+
+- **Semantically correct HTML:** The components use native HTML elements and their semantics.
+- **Keyboard operability:** All interactive components are fully operable via keyboard and have comprehensible focus behaviour.
+- **ARIA roles and states:** Standardised ARIA roles, states, and properties ensure correct output for assistive technologies such as screen readers.
+- **Contrast-checked themes:** The themes maintained by the ITZBund are checked for sufficient colour contrast.
+- **Usability according to DIN EN ISO 9241-110:** The dialogue design follows the recognised ergonomic principles.
+
+Compliance is regularly verified through the BITV-Test. The current results are published under [Test results](/docs/test-results).
+
+## Conclusion
+
+KoliBri makes the requirements of the **Servicestandard** (DIN SPEC 66336) directly applicable for developers: those who use KoliBri components fall back on tested, reusable, and accessible building blocks and thereby fulfil central quality principles of the Servicestandard. The underlying guidelines can be found in the [Manifesto](/docs/manifest).
+
+[DIN SPEC 66336]: https://servicestandard.gov.de/din-spec-66336/
+[OZG-SV]: https://www.gesetze-im-internet.de/ozg-sv/
+[BITV 2.0]: https://www.gesetze-im-internet.de/bitv_2_0/
+[EN 301 549]: https://www.etsi.org/standards-search#search=EN%20301%20549
+[WCAG 2.1]: https://www.w3.org/TR/WCAG21/

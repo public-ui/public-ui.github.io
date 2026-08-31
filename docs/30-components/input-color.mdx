@@ -11,73 +11,87 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Farbwähler, Farbpicker, Color Picker
+**Synonyme:** Farbeingabefeld, Farbauswahl, Color Input, Color Picker
 
-**Beschreibung:** Die **InputColor**-Komponente erzeugt ein Eingabefeld zur Definition und Auswahl von Farben. Die Farbe kann in hexadezimaler Schreibweise (#xxxxxx), RGB- oder HSL-Schreibweise eingegeben werden. Die Auswahl kann über einen interaktiven Farbpicker oder durch direkte Eingabe von Farbwerten erfolgen.
+**Beschreibung:** Mit **InputColor** kann eine Farbe als hexadezimaler Farbwert eingegeben oder über den nativen Farbwahldialog des Browsers ausgewählt werden.
+
+Die Komponente besteht aus einem Eingabefeld für HEX-Farbwerte sowie einer Schaltfläche, welche die aktuell ausgewählte Farbe anzeigt und über die der native Farbwahldialog des Browsers geöffnet werden kann.
 
 ## Beispiel
 
 Einfaches Farbwahlfeld mit Beschriftung und Standard-Farbe:
 
-<InputColorPreview
-	visibleProperties={[]}
-	initialProps={{ _label: 'Favoriten-Farbe' }}
-	sourceCodeDetailsCollapsed
-/>
+<InputColorPreview context="example" initialProps={{ _label: 'Favoriten-Farbe' }} />
 
 ## Barrierefreiheit
 
-Die **InputColor**-Komponente hat **bekannte Barrierefreiheits-Einschränkungen**:
+- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
+- Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
+- Darstellung, Bedienung und Unterstützung des nativen Farbwahldialogs durch assistive Technologien können je nach Browser und Betriebssystem variieren.
 
-- **Eingeschränkte Screenreader-Unterstützung**: Die Ausgabe der gewählten Farbe über Screenreader ist technisch begrenzt. Der Farbwert wird möglicherweise nicht aussagekräftig vorgelesen.
-- **Farbpicker-Dialog**: Der interaktive Farbpicker-Dialog ist über Tastatursteuerung erreichbar, aber die Farbauswahl über Screenreader ist schwierig.
-- **Tipp für bessere Barrierefreiheit**: Für Formulare mit verstärktem Fokus auf Barrierefreiheit erwägen Sie alternative Lösungen, wie vordefinierte Farbauswahllisten über Checkboxen oder Select-Felder.
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+|--------------|------------|
+| Verwendung des nativen HTML5-Eingabetyps `color` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp `color` und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
+| Kombination aus Texteingabe und Farbfeld | Die Komponente ergänzt den nativen HTML5-Eingabetyp um ein Eingabefeld für HEX-Farbwerte. Dadurch können Farben sowohl direkt per Tastatur eingegeben als auch über den nativen Farbwahldialog ausgewählt werden. |
+| Fokusmanagement | Die Basis-Komponente setzt den nativen Fokusring zurück. Der sichtbare Fokusindikator wird durch das jeweils verwendete Theme bereitgestellt. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md#input-color" _target="_blank" _label="Known Issues - InputColor"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/color-contrast.html" _target="_blank" _label="WCAG 2.1 - Color Contrast"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/color" _target="_blank" _label="MDN Web Docs: Input Type Color"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#color-state-(type=color)" _target="_blank" _label="HTML Living Standard: Input Type Color"></kol-link>
+- <kol-link _href="https://public-ui.github.io/docs/known-issues#kol-input-color" _target="_blank" _label="HTML Bekannte Probleme: kol-input-color"></kol-link>
 
 ## Verwendung
 
+- Die aktuell ausgewählte Farbe kann über `_value` als hexadezimaler Farbwert festgelegt werden.
+- Das Eingabefeld und das Farbfeld werden automatisch synchronisiert, sodass Änderungen an einem Element unmittelbar im anderen übernommen werden.
+- Bei der Eingabe eines HEX-Farbwerts wird das führende `#` automatisch ergänzt.
+
+**Hinweis:** Die Darstellung und der Funktionsumfang des nativen Farbwahldialogs werden durch den Browser und das Betriebssystem bestimmt und können je nach Plattform variieren.
+
 ### Tastatursteuerung
 
+Die Tastaturbedienung des nativen Farbwahldialogs wird durch den Browser und das Betriebssystem bestimmt. Darstellung, Bedienung und verfügbare Funktionen können sich daher je nach Browser, Betriebssystem und Endgerät unterscheiden.
+
+Für die KoliBri-Komponente werden typischerweise folgende Tastaturfunktionen unterstützt:
+
 | Taste | Funktion |
-| ----- | -------- |
-| `Tab` | Fokussiert das Eingabefeld. Bei geöffnetem Dialogfeld wechselt Tab zwischen den Steuerfeldern des Dialogfeldes. |
-| `Enter` | Öffnet oder schließt das Dialogfeld des Farbpickers. Wenn die Pipette fokussiert ist, startet Enter die Pipettenfunktion. |
-| `ESC` | Beendet die Pipettenfunktion. Schließt das Dialogfeld, falls die Pipettenfunktion nicht aktiv ist. |
-| `Pfeiltasten (→ ←)` | Verschieben den Auswahlpunkt im Farbspektrum nach links oder rechts. |
-| `Pfeiltasten (↑ ↓)` | Ändern die Farbauswahl nach oben oder unten. |
+|-------|----------|
+| `Tab` | Fokus auf das Eingabefeld, das Farbfeld bzw. das nächste fokussierbare Element setzen. |
+| `Shift+Tab` | Fokus auf das vorherige fokussierbare Element setzen. |
+| `Enter` / `Leertaste` | Öffnen des nativen Farbwahldialogs, wenn das Farbfeld fokussiert ist. |
 
 ### Best Practices / Empfehlungen
 
-- **Default-Farbe setzen**: Nutzen Sie das Attribut `_value` mit einem hexadezimalen Farbwert (z.B. `_value="#d4fcf4"`), um eine Vorauswahl zu treffen.
-- **Aussagekräftige Beschriftung**: Setzen Sie `_label` mit einem klaren Beschreibungstext, damit Nutzer wissen, welche Farbe gefordert ist (z.B. "Primärfarbe", "Hintergrundfarbe").
-- **Formular-Integration**: Vergessen Sie nicht, das Attribut `_name` korrekt zu setzen, damit der Farbwert beim Formularversand mitgesendet wird.
-- **Kontext-Hilfe**: Nutzen Sie `_hint`, um zusätzliche Hinweise zu geben, beispielsweise zulässige Farbformate oder Anforderungen.
-- **Alternative für komplexe Szenarien**: Bei vielen Voreinstellungen oder beschränkter Farbauswahl verwenden Sie eine Select-Liste oder Radiobutton-Gruppe mit festen Farben.
+- Nutzen Sie `_value` mit einem hexadezimalen Farbwert (z. B. `#d4fcf4`), um eine Vorauswahl festzulegen.
+- Verwenden Sie eine aussagekräftige Beschriftung (`_label`), damit Nutzende erkennen, welche Farbe ausgewählt werden soll (z. B. „Primärfarbe“ oder „Hintergrundfarbe“).
+- Nutzen Sie `_hint`, um ergänzende Hinweise bereitzustellen, beispielsweise zur Verwendung der Farbe oder zu zulässigen Farbwerten.
+- Verwenden Sie bei einer festen oder stark eingeschränkten Farbauswahl stattdessen eine Select- oder Radio-Button-Gruppe mit vordefinierten Farben.
+- Geben Sie Validierungsfehler über `_msg` aus und beschreiben Sie verständlich, wie Nutzende den Fehler beheben können.
 
 ### Anwendungsfälle
 
-- Theme- oder Design-Kustomisierung in Anwendungen
-- Brand-Color-Auswahl in CMS-Systemen
-- Personalisierung von Benutzerprofilen (z.B. Akzentfarbe)
-- Grafisches Design und Bild-Bearbeitung
-- Farbschema-Generator für Webseiten
-- Visuelle Markierungen und Tagging-Funktionen
+- Auswahl einer Primär- oder Sekundärfarbe in Konfigurationsoberflächen
+- Festlegen von Hintergrund-, Text- oder Akzentfarben
+- Anpassung von Design- oder Theme-Einstellungen
+- Konfiguration individueller Farbprofile oder Farbschemata
+- Farbwahl in Formularen oder Administrationsoberflächen
 
 ### FAQ
 
-**Kann ich die Farbe in RGB- oder HSL-Format eingeben?**  
-Ja, der Farbpicker unterstützt hexadezimale, RGB- und HSL-Schreibweise. Der Wert wird intern in hexadezimales Format konvertiert.
+**Welche Farbwerte unterstützt die Komponente?**  
+Das Eingabefeld der Komponente unterstützt die Eingabe von HEX-Farbwerten. Der native Farbwahldialog des Browsers kann – abhängig von Browser und Betriebssystem – zusätzliche Eingabemöglichkeiten wie RGB oder HSL bereitstellen.
 
-**Wie stelle ich eine vorausgewählte Farbe ein?**  
-Nutzen Sie das Attribut `_value` mit einem hexadezimalen Farbwert: `_value="#ff0000"`.
+**Wie kann ich eine Farbe vorbelegen?**  
+Ja. Über `_value` können Sie einen hexadezimalen Farbwert als Ausgangswert festlegen.
 
-**Ist die Komponente in Formularen obligatorisch?**  
-Nein, Sie können sie über `_required` optional oder erforderlich machen. Die Eingabe ist nicht auswahlzwingend.
+**Kann ich die Farbauswahl als Pflichtfeld kennzeichnen?**  
+Aktuell unterstützt die Komponente kein `_required`. Ob eine Farbauswahl verpflichtend ist, muss durch die Anwendung validiert und über `_msg` kommuniziert werden.
+
+**Warum sieht der Farbwahldialog je nach Browser unterschiedlich aus?**  
+Die Komponente verwendet den nativen Farbwahldialog des Browsers. Dessen Darstellung, Bedienung und Funktionsumfang werden durch Browser und Betriebssystem bestimmt und können daher je nach Plattform variieren.
 
 ## Konstruktion / Technik
 
@@ -85,7 +99,7 @@ Nein, Sie können sie über `_required` optional oder erforderlich machen. Die E
 
 Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
 
-<InputColorPreview />
+<InputColorPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -94,9 +108,9 @@ Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
 Die Komponente mit Beschriftung, wahlweise mit Tooltip-Stil:
 
 <InputColorPreview
+	context="feature"
 	visibleProperties={['_label', '_hideLabel']}
 	initialProps={{ _label: 'Wählen Sie eine Farbe' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Mit voreingestelltem Wert
@@ -104,9 +118,9 @@ Die Komponente mit Beschriftung, wahlweise mit Tooltip-Stil:
 Farbfeld mit einer Standard-Farbe:
 
 <InputColorPreview
+	context="feature"
 	visibleProperties={['_label', '_value']}
 	initialProps={{ _label: 'Ihre Farbe', _value: '#ff6b6b' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Mit Hinweis und Icons
@@ -114,13 +128,13 @@ Farbfeld mit einer Standard-Farbe:
 Farbfeld mit zusätzlichem Hinweistext und grafischen Symbolen:
 
 <InputColorPreview
+	context="feature"
 	visibleProperties={['_label', '_hint', '_icons']}
 	initialProps={{
 		_label: 'Primärfarbe',
 		_hint: 'Wählen Sie eine Farbe für Ihr Design',
 		_icons: { left: 'fa-solid fa-palette' },
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Deaktiviert und Nur-Lesen
@@ -128,9 +142,9 @@ Farbfeld mit zusätzlichem Hinweistext und grafischen Symbolen:
 Deaktiviertes Eingabefeld (nicht fokussierbar und nicht veränderbar):
 
 <InputColorPreview
+	context="feature"
 	visibleProperties={['_label', '_disabled']}
 	initialProps={{ _label: 'Gespeicherte Farbe', _value: '#3498db', _disabled: true }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Mit Fehlermeldung
@@ -138,12 +152,12 @@ Deaktiviertes Eingabefeld (nicht fokussierbar und nicht veränderbar):
 Farbfeld mit Validierungsmeldung:
 
 <InputColorPreview
+	context="feature"
 	visibleProperties={['_label', '_msg']}
 	initialProps={{
 		_label: 'Farbe auswählen',
 		_msg: 'Bitte wählen Sie eine gültige Farbe aus.',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Events

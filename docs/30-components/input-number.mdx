@@ -25,10 +25,7 @@ Neben der direkten Eingabe kann der Wert über die **Erhöhen-/Verringern-Schalt
 
 Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
-<InputNumberPreview
-	visibleProperties={[]}
-	sourceCodeDetailsCollapsed
-/>
+<InputNumberPreview context="example" />
 
 ## Barrierefreiheit
 
@@ -106,7 +103,7 @@ Ja. Die Erhöhen-/Verringern-Schaltflächen können über ein Theme-seitiges Fea
 
 Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
 
-<InputNumberPreview />
+<InputNumberPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -114,19 +111,16 @@ Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
 
 Minimum-Konfiguration mit Label:
 
-<InputNumberPreview
-	visibleProperties={['_label']}
-	sourceCodeDetailsCollapsed
-/>
+<InputNumberPreview context="feature" visibleProperties={['_label']} />
 
 #### Formularattribute
 
 Standard-Attribute für Formulare wie Deaktivierung, Read-Only-Modus und Pflichtfelder:
 
 <InputNumberPreview
+	context="feature"
 	visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
 	initialProps={{ _label: 'Anzahl' }}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -139,12 +133,12 @@ Standard-Attribute für Formulare wie Deaktivierung, Read-Only-Modus und Pflicht
 Unterstützung für Hinweistexte und Validierungsmeldungen:
 
 <InputNumberPreview
+	context="feature"
 	visibleProperties={['_label', '_hint', '_msg']}
 	initialProps={{
 		_label: 'Preis',
 		_hint: 'Bitte geben Sie einen Wert in EUR an',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -156,6 +150,7 @@ Unterstützung für Hinweistexte und Validierungsmeldungen:
 Konfigurieren Sie Minimal-, Maximalwerte und Schrittweite. `_min` und `_max` greifen zuverlässig nur bei der Auswahl über den Steuerelemente. Bei manueller Texteingabe kann ein Wert außerhalb des definierten Bereichs eingegeben werden, ohne dass automatisch eine Korrektur oder Fehlermeldung erfolgt. Die Validierung manueller Eingaben liegt in der Verantwortung der einbindenden Anwendung.
 
 <InputNumberPreview
+	context="feature"
 	visibleProperties={['_label', '_min', '_max', '_step']}
 	initialProps={{
 		_label: 'Menge',
@@ -163,7 +158,6 @@ Konfigurieren Sie Minimal-, Maximalwerte und Schrittweite. `_min` und `_max` gre
 		_max: 100,
 		_step: 5,
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -176,13 +170,13 @@ Konfigurieren Sie Minimal-, Maximalwerte und Schrittweite. `_min` und `_max` gre
 Nutzen Sie Placeholder zur Eingabeformatierung und `_hideLabel`, um das Label visuell auszublenden:
 
 <InputNumberPreview
+	context="feature"
 	visibleProperties={['_label', '_placeholder', '_hideLabel']}
 	initialProps={{
 		_label: 'Alter',
 		_placeholder: 'z.B. 25',
 		_hideLabel: false,
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**
@@ -194,6 +188,7 @@ Nutzen Sie Placeholder zur Eingabeformatierung und `_hideLabel`, um das Label vi
 Definieren Sie linke und/oder rechte Icons für zusätzlichen Kontext:
 
 <InputNumberPreview
+	context="feature"
 	visibleProperties={['_label', '_icons']}
 	initialProps={{
 		_label: 'Preis',
@@ -201,7 +196,6 @@ Definieren Sie linke und/oder rechte Icons für zusätzlichen Kontext:
 			left: 'kolicon-euro',
 		},
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Positionen:**
@@ -213,9 +207,9 @@ Definieren Sie linke und/oder rechte Icons für zusätzlichen Kontext:
 Ein Button mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLabel`):
 
 <InputNumberPreview
+	context="feature"
 	initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
 	visibleProperties={['_smartButton']}
-	sourceCodeDetailsCollapsed
 />
 
 #### Vorschlagswerte (Suggestions)
@@ -223,12 +217,12 @@ Ein Button mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLa
 Über `_suggestions` können Vorschlagswerte für die Autovervollständigung bereitgestellt werden:
 
 <InputNumberPreview
+	context="feature"
 	visibleProperties={['_label', '_suggestions']}
 	initialProps={{
 		_label: 'Anzahl',
 		_suggestions: [1, 5, 10, 25, 50, 100],
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Attribute:**

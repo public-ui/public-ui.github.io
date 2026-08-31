@@ -73,7 +73,7 @@ const SuggestionsProperty = (props: SuggestionsPropertyProps) => {
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), suggestions);
-	});
+	}, [suggestions]);
 
 	const addSuggestion = () => {
 		setSuggestions((prev) => [...prev, createDefaultSuggestion(`Suggestion ${suggestions.length + 1}`)]);

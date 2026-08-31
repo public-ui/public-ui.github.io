@@ -22,7 +22,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 Standard-Tabs mit mehreren Registerkarten und wählbarem Inhalt:
 
 <TabsPreview
-	visibleProperties={[]}
+	context="example"
 	initialProps={{
 		_label: 'Meine Tabs',
 		_tabs: [
@@ -31,7 +31,6 @@ Standard-Tabs mit mehreren Registerkarten und wählbarem Inhalt:
 			{ _label: 'Tab 3' }
 		]
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 ## Barrierefreiheit
@@ -94,7 +93,7 @@ Ja, indem Sie in der Tab-Definition das Attribut `_disabled` auf `true` setzen.
 
 Testen Sie die verschiedenen Eigenschaften der Tabs-Komponente:
 
-<TabsPreview />
+<TabsPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -103,6 +102,7 @@ Testen Sie die verschiedenen Eigenschaften der Tabs-Komponente:
 Die einfachste Verwendung mit mehreren Registerkarten:
 
 <TabsPreview
+	context="feature"
 	visibleProperties={['_label', '_tabs']}
 	initialProps={{
 		_label: 'Navigation',
@@ -112,7 +112,6 @@ Die einfachste Verwendung mit mehreren Registerkarten:
 			{ _label: 'Einstellungen' }
 		]
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Ausrichtung
@@ -120,6 +119,7 @@ Die einfachste Verwendung mit mehreren Registerkarten:
 Die Tabs können an verschiedenen Positionen ausgerichtet werden:
 
 <TabsPreview
+	context="feature"
 	visibleProperties={['_align']}
 	initialProps={{
 		_label: 'Ausgerichtete Tabs',
@@ -130,7 +130,6 @@ Die Tabs können an verschiedenen Positionen ausgerichtet werden:
 		],
 		_align: 'top'
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 **Verfügbare Werte für `_align`:**
@@ -144,6 +143,7 @@ Die Tabs können an verschiedenen Positionen ausgerichtet werden:
 Der `_behavior`-Parameter steuert, wie Nutzer:innen zwischen Tabs wechseln:
 
 <TabsPreview
+	context="feature"
 	visibleProperties={['_behavior']}
 	initialProps={{
 		_label: 'Verhalten',
@@ -153,7 +153,6 @@ Der `_behavior`-Parameter steuert, wie Nutzer:innen zwischen Tabs wechseln:
 		],
 		_behavior: 'select-automatic'
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 **Verhaltensoptionen:**
@@ -165,6 +164,7 @@ Der `_behavior`-Parameter steuert, wie Nutzer:innen zwischen Tabs wechseln:
 Ein zusätzlicher Button am Ende der Tab-Leiste zum dynamischen Hinzufügen neuer Tabs:
 
 <TabsPreview
+	context="feature"
 	visibleProperties={['_hasCreateButton']}
 	initialProps={{
 		_label: 'Mit Create-Button',
@@ -174,7 +174,6 @@ Ein zusätzlicher Button am Ende der Tab-Leiste zum dynamischen Hinzufügen neue
 		],
 		_hasCreateButton: true
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 Der `_hasCreateButton`-Button erzeugt das `create`-Event, wenn angeklickt.
@@ -184,6 +183,7 @@ Der `_hasCreateButton`-Button erzeugt das `create`-Event, wenn angeklickt.
 Steuern Sie den aktiven Tab programmgesteuert mit `_selected`:
 
 <TabsPreview
+	context="feature"
 	visibleProperties={['_selected']}
 	initialProps={{
 		_label: 'Aktiver Tab',
@@ -194,7 +194,6 @@ Steuern Sie den aktiven Tab programmgesteuert mit `_selected`:
 		],
 		_selected: 1
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 Der Wert ist der Index des Tabs (0-basiert).

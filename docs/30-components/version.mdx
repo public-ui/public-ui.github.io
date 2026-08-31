@@ -19,11 +19,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Darstellung der Komponente mit einer einfachen Versionsnummer:
 
-<VersionPreview
-	visibleProperties={[]}
-	initialProps={{ _label: '1.2.3' }}
-	sourceCodeDetailsCollapsed
-/>
+<VersionPreview context="example" initialProps={{ _label: '1.2.3' }} />
 
 ## Barrierefreiheit
 
@@ -57,7 +53,7 @@ Die **Version**-Komponente ist ein semantisches Inline-Element und wird von assi
 
 ### Playground
 
-<VersionPreview />
+<VersionPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -65,11 +61,7 @@ Die **Version**-Komponente ist ein semantisches Inline-Element und wird von assi
 
 Die sichtbare Versionsnummer wird über `_label` definiert. Das Präfix `v` wird automatisch hinzugefügt.
 
-<VersionPreview
-	visibleProperties={['_label']}
-	initialProps={{ _label: '2.0.0' }}
-	sourceCodeDetailsCollapsed
-/>
+<VersionPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: '2.0.0' }} />
 
 ## API
 

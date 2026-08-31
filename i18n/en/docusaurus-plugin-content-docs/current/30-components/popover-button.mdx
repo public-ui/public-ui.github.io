@@ -22,12 +22,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Example of a PopoverButton with sample content inside the popover:
 
-<PopoverButtonPreview
-	codeCollapsable
-	codeCollapsed
-	initialProps={{}}
-	visibleProperties={[]}
-/>
+<PopoverButtonPreview context="example" initialProps={{}} />
 
 ## Accessibility
 
@@ -76,10 +71,7 @@ Example of a PopoverButton with sample content inside the popover:
 
 Test the various properties of the PopoverButton:
 
-<PopoverButtonPreview
-	codeCollapsable
-	visibleProperties={['_label', '_popoverAlign', '_variant', '_icons', '_slot', '_disabled', '_hideLabel']}
-/>
+<PopoverButtonPreview context="playground" />
 
 ### Functionality
 
@@ -88,10 +80,9 @@ Test the various properties of the PopoverButton:
 The PopoverButton supports the standard button attributes:
 
 <PopoverButtonPreview
+	context="feature"
 	initialProps={{ _label: 'Button' }}
 	visibleProperties={['_label', '_hideLabel', '_disabled', '_type']}
-	codeCollapsable
-	codeCollapsed
 />
 
 **Available attributes:**
@@ -105,10 +96,9 @@ The PopoverButton supports the standard button attributes:
 The PopoverButton supports various visual variants:
 
 <PopoverButtonPreview
+	context="feature"
 	initialProps={{ _label: 'Styled Button' }}
 	visibleProperties={['_variant', '_icons', '_inline', '_tooltipAlign']}
-	codeCollapsable
-	codeCollapsed
 />
 
 **Available attributes:**
@@ -123,10 +113,9 @@ The PopoverButton supports various visual variants:
 The position of the popover relative to the button can be controlled:
 
 <PopoverButtonPreview
+	context="feature"
 	initialProps={{ _label: 'Position', _popoverAlign: 'bottom' }}
 	visibleProperties={['_popoverAlign']}
-	codeCollapsable
-	codeCollapsed
 />
 
 **Available positions:**
@@ -140,13 +129,12 @@ The position of the popover relative to the button can be controlled:
 The popover content is provided via the default slot:
 
 <PopoverButtonPreview
+	context="feature"
 	initialProps={{
 		_label: 'Menu',
 		_slot: "<ul style='margin:0; padding:0; list-style:none;'><li style='padding:8px;'><strong>Option 1</strong></li><li style='padding:8px;'><strong>Option 2</strong></li><li style='padding:8px;'><strong>Option 3</strong></li></ul>",
 	}}
 	visibleProperties={['_slot']}
-	codeCollapsable
-	codeCollapsed
 />
 
 **Note**: The slot content is processed with HTML sanitization for security. The content should remain concise and focused.
@@ -156,10 +144,9 @@ The popover content is provided via the default slot:
 The PopoverButton supports accessibility features for extended keyboard interaction:
 
 <PopoverButtonPreview
+	context="feature"
 	initialProps={{ _label: 'Alt+O' }}
 	visibleProperties={['_accessKey', '_tabIndex']}
-	codeCollapsable
-	codeCollapsed
 />
 
 **Available attributes:**

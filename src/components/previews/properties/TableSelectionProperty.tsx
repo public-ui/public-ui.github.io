@@ -34,7 +34,7 @@ const TableSelectionProperty = (props: {
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), selection);
-	}, [rowLabel, isMultiple, keyPropertyName, selectedKeys, disabledKeys]);
+	}, [rowLabel, isMultiple, keyPropertyName, selectedKeys, disabledKeys, props._on, selection]);
 
 	const handleMultipleChange = () => {
 		const newSelection = selection;

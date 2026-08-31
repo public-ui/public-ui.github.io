@@ -22,12 +22,7 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 Standard alert with type, variant and content:
 
-<AlertPreview
-	visibleProperties={['_label', '_type', '_variant', '_hasCloser', '_slot']}
-	initialProps={{ _label: 'Notice', _type: 'info', _variant: 'msg' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<AlertPreview context="example" initialProps={{ _label: 'Notice', _type: 'info', _variant: 'msg' }} />
 
 ## Accessibility
 
@@ -63,7 +58,7 @@ Standard alert with type, variant and content:
 
 ### Playground
 
-<AlertPreview codeCollapsable />
+<AlertPreview context="playground" />
 
 ### Functionalities (with Code)
 
@@ -71,12 +66,7 @@ Standard alert with type, variant and content:
 
 The type of the alert is set via the `_type` attribute and determines the semantic meaning and the icon used.
 
-<AlertPreview
-	visibleProperties={['_type']}
-	initialProps={{ _label: 'Notice', _type: 'info' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<AlertPreview context="feature" visibleProperties={['_type']} initialProps={{ _label: 'Notice', _type: 'info' }} />
 
 | Type      | Meaning                                       |
 | --------- | --------------------------------------------- |
@@ -91,10 +81,9 @@ The type of the alert is set via the `_type` attribute and determines the semant
 The `_variant` attribute controls the display variant.
 
 <AlertPreview
+	context="feature"
 	visibleProperties={['_variant']}
 	initialProps={{ _label: 'Notice', _type: 'info', _variant: 'msg' }}
-	codeCollapsable
-	codeCollapsed
 />
 
 | Variant  | Description                                                                      |
@@ -107,32 +96,25 @@ The `_variant` attribute controls the display variant.
 The heading is set via `_label`, the semantic level via `_level` (1–6, or 0 for bold text without a semantic heading element).
 
 <AlertPreview
+	context="feature"
 	visibleProperties={['_label', '_level']}
 	initialProps={{ _label: 'Heading', _type: 'info', _level: 3 }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Content of the Alert
 
 The content of the alert is passed as slot content and can contain any HTML code or KoliBri components.
 
-<AlertPreview
-	visibleProperties={['_slot']}
-	initialProps={{ _label: 'Notice', _type: 'info' }}
-	codeCollapsable
-	codeCollapsed
-/>
+<AlertPreview context="feature" visibleProperties={['_slot']} initialProps={{ _label: 'Notice', _type: 'info' }} />
 
 #### Close Function
 
 The `_has-closer` attribute shows a close button.
 
 <AlertPreview
+	context="feature"
 	visibleProperties={['_hasCloser']}
 	initialProps={{ _label: 'Closable Alert', _type: 'info', _hasCloser: true }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Screen Reader Notifications (`_alert`)
@@ -140,10 +122,9 @@ The `_has-closer` attribute shows a close button.
 The `_alert` attribute activates `role="alert"` or `aria-live="assertive"`, so that screen readers automatically read the notification. It only works on initial render or when content changes.
 
 <AlertPreview
+	context="feature"
 	visibleProperties={['_alert']}
 	initialProps={{ _label: 'Status Message', _type: 'info', _alert: true }}
-	codeCollapsable
-	codeCollapsed
 />
 
 #### Events

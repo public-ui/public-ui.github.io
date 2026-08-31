@@ -50,7 +50,7 @@ const TableColumnsProperty = (props: {
 
 	useEffect(() => {
 		props._on?.onInput?.(new Event('input'), { horizontal: [currentColumns] });
-	}, [columns, columnCount]);
+	}, [columns, columnCount, props._on]);
 
 	const handleCountChange = (_event: Event, value: unknown) => {
 		const count = Math.min(Math.max(Number(value) || 1, 1), columns.length);

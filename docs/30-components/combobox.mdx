@@ -23,11 +23,7 @@ Die Komponente eignet sich insbesondere für umfangreiche Auswahllisten oder Sit
 
 Standard-Combobox mit Vorschlagsliste:
 
-<ComboboxPreview
-	initialProps={{ _label: 'Freie Eingabe mit Vorschlägen' }}
-	visibleProperties={[]}
-	sourceCodeDetailsCollapsed
-/>
+<ComboboxPreview context="example" initialProps={{ _label: 'Freie Eingabe mit Vorschlägen' }} />
 
 ## Barrierefreiheit
 
@@ -160,21 +156,7 @@ Die Vorschlagsliste schließt sich automatisch, sobald die Eingabe eindeutig ein
 
 Testen Sie die verschiedenen Eigenschaften der Combobox-Komponente:
 
-<ComboboxPreview
-	visibleProperties={[
-		'_label',
-		'_placeholder',
-		'_suggestions',
-		'_disabled',
-		'_required',
-		'_hint',
-		'_msg',
-		'_icons',
-		'_hasClearButton',
-		'_hideLabel',
-		'_hideMsg',
-	]}
-/>
+<ComboboxPreview context="playground" />
 
 ### Funktionalitäten (mit Code)
 
@@ -182,64 +164,56 @@ Testen Sie die verschiedenen Eigenschaften der Combobox-Komponente:
 
 Die sichtbare Beschriftung wird über `_label` gesetzt.
 
-<ComboboxPreview visibleProperties={['_label']} sourceCodeDetailsCollapsed />
+<ComboboxPreview context="feature" visibleProperties={['_label']} />
 
 #### Platzhalter und Hint-Text
 
 Der Platzhalter wird angezeigt, wenn das Feld leer ist. Der Hint-Text gibt zusätzliche Hinweise:
 
 <ComboboxPreview
+	context="feature"
 	visibleProperties={['_placeholder', '_hint']}
 	initialProps={{
 		_placeholder: 'Bitte wählen oder eingeben...',
 		_hint: 'Wählen Sie aus der Liste oder geben Sie eine Alternative ein.',
 	}}
-	sourceCodeDetailsCollapsed
 />
 
 #### Formularattribute
 
 Standard-Attribute für Formulare wie `_disabled`, `_required` und `_touched`:
 
-<ComboboxPreview visibleProperties={['_disabled', '_required', '_touched']} sourceCodeDetailsCollapsed />
+<ComboboxPreview context="feature" visibleProperties={['_disabled', '_required', '_touched']} />
 
 #### Fehlermeldungen
 
 Validierungsfehler werden über `_msg` dargestellt:
 
 <ComboboxPreview
+	context="feature"
 	visibleProperties={['_msg']}
 	initialProps={{ _msg: 'Die Programmiersprache ist erforderlich.' }}
-	sourceCodeDetailsCollapsed
 />
 
 #### Icons
 
 Icons können links oder rechts über `_icons` hinzugefügt werden:
 
-<ComboboxPreview
-	visibleProperties={['_icons']}
-	initialProps={{ _icons: 'kolicon-cogwheel' }}
-	sourceCodeDetailsCollapsed
-/>
+<ComboboxPreview context="feature" visibleProperties={['_icons']} initialProps={{ _icons: 'kolicon-cogwheel' }} />
 
 #### Clear-Button
 
 Der Clear-Button kann über `_hasClearButton` gesteuert werden (standardmäßig aktiviert):
 
-<ComboboxPreview
-	visibleProperties={['_hasClearButton']}
-	initialProps={{ _hasClearButton: true }}
-	sourceCodeDetailsCollapsed
-/>
+<ComboboxPreview context="feature" visibleProperties={['_hasClearButton']} initialProps={{ _hasClearButton: true }} />
 
 #### Versteckte Beschriftung
 
 Die Beschriftung kann über `_hideLabel` visuell verborgen werden (bleibt für Screenreader sichtbar):
 
-<ComboboxPreview visibleProperties={['_hideLabel']} initialProps={{ _hideLabel: true }} sourceCodeDetailsCollapsed />
+<ComboboxPreview context="feature" visibleProperties={['_hideLabel']} initialProps={{ _hideLabel: true }} />
 
-### Events
+#### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 
