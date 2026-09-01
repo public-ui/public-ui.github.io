@@ -1,0 +1,1 @@
+/*! For license information please see 2389.fbb2f8fe.js.LICENSE.txt */ "use strict";(globalThis.webpackChunk_public_ui_docs_v3=globalThis.webpackChunk_public_ui_docs_v3||[]).push([[2389,4770],{24770(s,c,o){o.r(c),o.d(c,{test_component:()=>u});var t=o(46875);o(23272);const u=class{constructor(s){(0,t.r)(this,s)}}}}]);

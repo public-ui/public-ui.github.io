@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_public_ui_docs_v3=globalThis.webpackChunk_public_ui_docs_v3||[]).push([[3232],{93232(s,_,l){l.r(_),l.d(_,{default:()=>c});l(71763);var u=l(19260),a=l(91987);const c=()=>(0,a.jsx)(u.I0,{_src:"/assets/samples/split-button.png",_alt:"",_sizes:"20vw"})}}]);
