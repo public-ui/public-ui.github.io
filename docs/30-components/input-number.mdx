@@ -29,8 +29,11 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 ## Barrierefreiheit
 
-- Die nativen HTML5-Eingabetypen werden von Browsern und assistiven Technologien standardisiert unterstützt.
-- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung versehen werden. Es kann visuell ausgeblendet werden, bleibt aber für assistive Technologien verfügbar.
+<!-- Was haben wir zusätzlich zum Nativen gemacht, damit es Barrierefrei wird. Welche entscheidung haben wir getroffen und welche Empfehlug geben wir. -->
+- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung versehen werden. Es darf visuell ausgeblendet werden, wenn der Zweck des Eingabefeldes durch den direkten visuellen Kontext absolut unmissverständlich ist.
+- Das native Input wurde mit zwei Button für Wert erhöhen und verringern mit der Barriefreiheit enspürechenden Größe ergänzt, um die zugänglichkeit zu verbessern.
+
+<!-- TECHNISCH - falscher Ort -->
 - Zusätzliche Hinweise und Fehlermeldungen werden über `aria-describedby` mit dem Eingabefeld verknüpft und so assistiven Technologien zugänglich gemacht.
 - Pflichtfelder werden über das native `required`-Attribut an assistive Technologien kommuniziert.
 
