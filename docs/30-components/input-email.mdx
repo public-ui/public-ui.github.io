@@ -7,6 +7,13 @@ import Readme from '@site/readmes/input-email/readme.md';
 import InputEmailPreview from '@site/src/components/previews/components/InputEmail';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
+import HideLabelNote from '@site/shared/a11y-properties/hide-label.md';
+import TouchedMsgNote from '@site/shared/a11y-properties/touched-msg.md';
+import HideMsgNote from '@site/shared/a11y-properties/hide-msg.md';
+import RequiredNote from '@site/shared/a11y-properties/required.md';
+import IconsDecorativeNote from '@site/shared/a11y-properties/icons-decorative.md';
+import AccessKeyNote from '@site/shared/a11y-properties/access-key.md';
+import ShortKeyNote from '@site/shared/a11y-properties/short-key.md';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # InputEmail
@@ -30,14 +37,20 @@ Darstellung der Komponente ohne optional gesetzte Felder.
 - Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
 - Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
 - Ist `_multiple` gesetzt, wird die Eingabe mehrerer, durch Komma getrennter E-Mail-Adressen erwartet und entsprechend an assistive Technologien kommuniziert.
-- Über `_icons` eingebundene Icons sind rein dekorativ und werden vor assistiven Technologien verborgen (`aria-hidden`).
+- <TouchedMsgNote />
+- <HideMsgNote />
+- <RequiredNote />
+- <IconsDecorativeNote />
+- <HideLabelNote />
+- <AccessKeyNote />
+- <ShortKeyNote />
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
 | Verwendung des nativen HTML5-Eingabetyps `email` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp `email` und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
-| Aktualisierung des Zeichenzählers | Bei aktiviertem Zeichenzähler (`_has-counter`) wird dieser mit einer Verzögerung von 1000 ms aktualisiert, um Screenreader nicht bei jeder Eingabe zu unterbrechen. Ist kein Zeichenzähler aktiv, aber `_max-length` gesetzt, wird stattdessen ein versteckter, nur für assistive Technologien sichtbarer Hinweis bereitgestellt. |
+| Aktualisierung des Zeichenzählers | Bei aktiviertem Zeichenzähler (`_has-counter`) wird dieser mit einer Verzögerung von 500 ms aktualisiert, um Screenreader nicht bei jeder Eingabe zu unterbrechen. Ist kein Zeichenzähler aktiv, aber `_max-length` gesetzt, wird stattdessen ein versteckter, nur für assistive Technologien sichtbarer Hinweis bereitgestellt. |
 
 ### Links und Referenzen
 

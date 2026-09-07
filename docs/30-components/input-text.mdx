@@ -6,6 +6,13 @@ description: Beschreibung, Spezifikation und Beispiele für die InputText-Kompon
 import Readme from '@site/readmes/input-text/readme.md';
 import InputTextPreview from '@site/src/components/previews/components/InputText';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import HideLabelNote from '@site/shared/a11y-properties/hide-label.md';
+import TouchedMsgNote from '@site/shared/a11y-properties/touched-msg.md';
+import HideMsgNote from '@site/shared/a11y-properties/hide-msg.md';
+import RequiredNote from '@site/shared/a11y-properties/required.md';
+import IconsDecorativeNote from '@site/shared/a11y-properties/icons-decorative.md';
+import AccessKeyNote from '@site/shared/a11y-properties/access-key.md';
+import ShortKeyNote from '@site/shared/a11y-properties/short-key.md';
 
 
 # InputText
@@ -31,13 +38,20 @@ Standard-Eingabefeld mit Beschriftung:
 - Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
 - Je nach verwendetem Eingabetyp stellen Browser und assistive Technologien unterschiedliche Funktionen und Eingabehilfen bereit.
 - Vorschlagswerte (`_suggestions`) werden über das native HTML-Element umgesetzt. Die Unterstützung durch Browser und assistive Technologien ist uneinheitlich. Verlassen Sie sich bei unverzichtbaren Eingabehilfen daher nicht ausschließlich auf diese native Autovervollständigung.
+- <TouchedMsgNote />
+- <HideMsgNote />
+- <RequiredNote />
+- <IconsDecorativeNote />
+- <HideLabelNote />
+- <AccessKeyNote />
+- <ShortKeyNote />
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
 | Verwendung des nativen HTML5-Elements `<input>` | Die Komponente nutzt bewusst das native HTML5-Element und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
-| Aktualisierung des Zeichenzählers | Bei aktiviertem Zeichenzähler (`_has-counter`) wird dieser mit einer Verzögerung von 1000 ms aktualisiert, um Screenreader nicht zu unterbrechen. Zusätzlich wird ein versteckter, nur für assistive Technologien sichtbarer Hinweis bereitgestellt. |
+| Aktualisierung des Zeichenzählers | Bei aktiviertem Zeichenzähler (`_has-counter`) wird dieser mit einer Verzögerung von 500 ms aktualisiert, um Screenreader nicht zu unterbrechen. Zusätzlich wird ein versteckter, nur für assistive Technologien sichtbarer Hinweis bereitgestellt. |
 | Fokusmanagement | Die Basis-Komponente setzt den nativen Fokusring zurück. Der sichtbare Fokusindikator wird durch das jeweils verwendete Theme bereitgestellt. |
 
 ### Links und Referenzen
