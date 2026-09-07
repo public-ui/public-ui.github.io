@@ -6,6 +6,8 @@ description: Beschreibung, Spezifikation und Beispiele für die InputNumber-Komp
 import Readme from '@site/readmes/input-number/readme.md';
 import InputNumberPreview from '@site/src/components/previews/components/InputNumber';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import LabelNote from './shared/a11y-properties/label.md';
+import ErrorMessageNote from './shared/a11y-properties/error-message.md';
 
 
 # InputNumber
@@ -29,9 +31,9 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 ## Barrierefreiheit
 
-- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung versehen werden. Es darf visuell ausgeblendet werden, wenn der Zweck des Eingabefeldes durch den direkten visuellen Kontext absolut unmissverständlich ist.
-- Das native Input wurde mit zwei Button für Wert erhöhen und verringern mit der Barriefreiheit enspürechenden Größe ergänzt, um die zugänglichkeit zu verbessern.
-- Im Fehlerfall wird die Fehlermeldung direkt an der Komponente dargestellt und automatisch mit ihre verknüpft, sodass sie auch assistiven Technologien zur Verfügung steht.
+* <LabelNote />
+* <ErrorMessageNote />
+* Das native Input wurde mit zwei Button für Wert erhöhen und verringern mit der Barriefreiheit enspürechenden Größe ergänzt, um die zugänglichkeit zu verbessern.
 
 ### Konkrete Designentscheidungen
 
@@ -129,7 +131,7 @@ Mit `_disabled`, `_readOnly` und `_required` passen Sie das Eingabefeld an gäng
 - `_readOnly`: Verhindert die Bearbeitung des Feldes
 - `_required`: Kennzeichnet Pflichtfelder
 
-Es werden die entsprechenden Attribute an das native `input`-Element gesetzt.
+Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `input`-Elements übertragen.
 
 <InputNumberPreview
 	context="feature"
