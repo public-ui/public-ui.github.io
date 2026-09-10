@@ -33,7 +33,7 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 * <LabelNote />
 * <ErrorMessageNote />
-* Das native Input wurde mit zwei Buttons für Wert erhöhen und verringern mit der Barrierefreiheit entsprechenden Größe ergänzt, um die Zugänglichkeit zu verbessern.
+* Das native Eingabefeld wurde um zwei Buttons zum Erhöhen und Verringern des Werts ergänzt, deren Größe den Anforderungen an barrierefreie Bedienelemente entspricht, um die Zugänglichkeit zu verbessern.
 
 ### Konkrete Designentscheidungen
 
@@ -41,7 +41,7 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 | ------------ | ---------- |
 | Verwendung des nativen HTML5-Eingabetyps `number` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
 | Erhöhen-/Verringern-Schaltflächen | Neben der direkten Eingabe stellt die Komponente standardmäßig Erhöhen-/Verringern-Schaltflächen für die Bedienung mit Maus und Touch bereit. |
-| Tastaturbedienung | Die Erhöhen-/Verringern-Schaltflächen sind nicht per Tastatur fokussierbar. Tastaturnutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld entsprechend der in `_step` definierten Schrittweite anpassen. |
+| Tastaturbedienung | Die Erhöhen-/Verringern-Schaltflächen sind nicht per Tastatur fokussierbar und mittels `aria-hidden` vollständig aus dem Accessibility-Tree entfernt. Tastaturnutzende und Screenreader-Nutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld entsprechend der in `_step` definierten Schrittweite anpassen. |
 
 ### Links und Referenzen
 
@@ -96,7 +96,7 @@ Verwenden Sie `_min` und `_max`, um den zulässigen Wertebereich einzuschränken
 Nein. Die Erhöhen-/Verringern-Schaltflächen sind nicht Teil der Tab-Reihenfolge. Tastaturnutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld anpassen.
 
 **Können die Erhöhen-/Verringern-Schaltflächen ausgeblendet werden?**  
-Ja. Die Erhöhen-/Verringern-Schaltflächen können über ein Theme-seitiges Feature-Flag ausgeblendet werden.
+Ja. Die Erhöhen-/Verringern-Schaltflächen können über das Theme-seitige Feature-Flag `inputNumberButtons` (Wert `'hide'`) ausgeblendet werden.
 
 ## Playground
 
@@ -147,14 +147,23 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `inpu
 Mit `_hint` und `_msg` geben Sie Nutzenden zusätzliche Orientierung zur Eingabe und machen Validierungsfehler unmittelbar am Feld sichtbar:
 
 - `_hint`: Ergänzende Hinweise zur Eingabe (wird immer angezeigt)
-- `_msg`: Fehlermeldungen oder Validierungshinweise **NUR IN VERBINDUNG MIT TOUCHED**
+- `_msg`: Fehlermeldungen oder Validierungshinweise (wird **nur in Verbindung mit `_touched="true"`** angezeigt)
+- `_touched`: Zeigt an, ob das Feld von Nutzenden bereits angefasst wurde, und steuert damit, ob `_msg` sichtbar wird
+- `_hideMsg`: Blendet die Fehlermeldung visuell aus, hält sie aber weiterhin im DOM vor, damit sie über `aria-describedby` für assistive Technologien verfügbar bleibt
+
+**Hinweis:** `_msg` wird erst dann eingeblendet, wenn `_touched` auf `true` gesetzt ist. So werden Validierungsfehler nicht bereits beim ersten Rendern, sondern erst nach einer Interaktion mit dem Feld angezeigt.
+
+**Anwendungsfall für `_hideMsg`:** Besteht eine fachliche Einheit aus mehreren InputNumber-Feldern innerhalb eines Field-Sets, beispielsweise ein sechsstelliger Bestätigungscode mit einem einzelnen Ziffernfeld je Stelle, kann eine gemeinsame Fehlermeldung für die gesamte Gruppe sinnvoller sein als eine Meldung je Einzelfeld. In diesem Fall blenden Sie die Fehlermeldung an den einzelnen Feldern über `_hideMsg` visuell aus und stellen sie stattdessen einmalig am Field-Set dar. Da `_hideMsg` die Meldung nur visuell verbirgt und weiterhin über `aria-describedby` mit dem jeweiligen Feld verknüpft bleibt, bleibt sie für assistive Technologien dennoch zugänglich.
 
 <InputNumberPreview
 	context="feature"
-	visibleProperties={['_hint', '_msg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
 	initialProps={{
 		_label: 'Preis',
 		_hint: 'Bitte geben Sie einen Wert in EUR an',
+		_msg: { _description: 'Bitte geben Sie einen gültigen Preis an.' },
+		_touched: true,
+		_hideMsg: false,
 		_value: 0,
 	}}
 />
@@ -219,7 +228,7 @@ Verfügbare Positionen sind:
 
 <InputNumberPreview
 	context="feature"
-	visibleProperties={['_label', '_icons']}
+	visibleProperties={['_icons']}
 	initialProps={{
 		_label: 'Preis',
 		_icons: {
@@ -246,7 +255,7 @@ Mit `_suggestions` schlagen Sie Nutzenden häufig verwendete Werte vor, um die E
 
 <InputNumberPreview
 	context="feature"
-	visibleProperties={['_label', '_suggestions']}
+	visibleProperties={['_suggestions']}
 	initialProps={{
 		_label: 'Anzahl',
 		_suggestions: [1, 5, 10, 25, 50, 100],
@@ -261,10 +270,11 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 
 | Event    | Auslöser                         | Value                           |
 | -------- | -------------------------------- | ------------------------------- |
-| `click`  | Eingabefeld wird angeklickt      | -                               |
-| `focus`  | Eingabefeld wird fokussiert      | -                               |
-| `blur`   | Eingabefeld verliert Fokus       | -                               |
-| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
-| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
+| `click`   | Eingabefeld wird angeklickt      | -                               |
+| `focus`   | Eingabefeld wird fokussiert      | -                               |
+| `blur`    | Eingabefeld verliert Fokus       | -                               |
+| `keydown` | Taste wird im Eingabefeld gedrückt | Gedrückte Taste                |
+| `input`   | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
+| `change`  | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
 
 <Readme />
