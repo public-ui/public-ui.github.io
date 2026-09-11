@@ -79,23 +79,21 @@ Die **SingleSelect**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
 - Auswahl eines Datums oder einer Uhrzeit aus vordefinierten Werten
 - Einzelauswahl in Einstellungen oder Konfigurationen
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der SingleSelect-Komponente:
 
 <SingleSelectPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Einfache Auswahl
+### Einfache Auswahl
 
 Standard-auswahl mit Beschriftung und Optionsliste:
 
 <SingleSelectPreview context="feature" visibleProperties={['_label', '_options']} />
 
-#### Placeholder
+### Placeholder
 
 Ein Placeholder-Text wird angezeigt, wenn noch keine Option ausgewählt wurde:
 
@@ -107,7 +105,7 @@ Ein Placeholder-Text wird angezeigt, wenn noch keine Option ausgewählt wurde:
 	}}
 />
 
-#### Formularattribute
+### Formularattribute
 
 Standard-Attribute für Formulare:
 
@@ -124,7 +122,7 @@ Standard-Attribute für Formulare:
 - `_msg`: Fehlermeldungen oder Validierungshinweise
 - `_hideMsg`: Blendet die Fehlermeldung visuell aus, erhält sie aber im DOM für `aria-describedby`
 
-#### Clear-Button
+### Clear-Button
 
 Der Clear-Button ermöglicht es, die aktuelle Auswahl zu löschen:
 
@@ -136,7 +134,7 @@ Der Clear-Button ermöglicht es, die aktuelle Auswahl zu löschen:
 	}}
 />
 
-#### Icons
+### Icons
 
 Links und rechts vom Eingabefeld können Icons angezeigt werden:
 
@@ -148,7 +146,7 @@ Links und rechts vom Eingabefeld können Icons angezeigt werden:
 	}}
 />
 
-#### Hinweistext und Fehlermeldung
+### Hinweistext und Fehlermeldung
 
 Hinweistexte können vor der Eingabe bereitgestellt werden, Fehlermeldungen nach ungültiger Auswahl:
 
@@ -160,7 +158,7 @@ Hinweistexte können vor der Eingabe bereitgestellt werden, Fehlermeldungen nach
 	}}
 />
 
-#### Dropdown-Höhe
+### Dropdown-Höhe
 
 Die maximale Anzahl sichtbarer Optionen wird über `_rows` gesteuert:
 
@@ -172,7 +170,7 @@ Die maximale Anzahl sichtbarer Optionen wird über `_rows` gesteuert:
 	}}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

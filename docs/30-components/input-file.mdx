@@ -98,23 +98,21 @@ Nein. Die maximale Dateigröße kann nicht über die Komponente begrenzt werden 
 **Unterstützt die Komponente Drag & Drop?**  
 Ja. Dateien können zusätzlich zum nativen Dateiauswahldialog per Drag & Drop ausgewählt werden. Diese Funktion ergänzt die Dateiauswahl, ersetzt sie jedoch nicht.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der InputFile-Komponente:
 
 <InputFilePreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basisfeld mit Beschriftung
+### Basisfeld mit Beschriftung
 
 Standard-Datei-Eingabefeld ohne Konfiguration:
 
 <InputFilePreview context="feature" initialProps={{ _label: 'Datei auswählen' }} visibleProperties={[]} />
 
-#### Dateitypbeschränkung
+### Dateitypbeschränkung
 
 Beschränkung der erlaubten Dateitypen über das Attribut `_accept`:
 
@@ -131,7 +129,7 @@ Beschränkung der erlaubten Dateitypen über das Attribut `_accept`:
 - `.csv,.xlsx` – Tabellendaten
 - `*` oder leer – Alle Dateitypen (Standard)
 
-#### Mehrfachauswahl
+### Mehrfachauswahl
 
 Ermöglichen Sie die Auswahl mehrerer Dateien gleichzeitig:
 
@@ -141,7 +139,7 @@ Ermöglichen Sie die Auswahl mehrerer Dateien gleichzeitig:
 	initialProps={{ _label: 'Mehrere Dateien auswählen', _multiple: true }}
 />
 
-#### Deaktivierter Zustand
+### Deaktivierter Zustand
 
 Das Eingabefeld ist nicht interaktiv:
 
@@ -151,7 +149,7 @@ Das Eingabefeld ist nicht interaktiv:
 	initialProps={{ _label: 'Datei auswählen', _disabled: true }}
 />
 
-#### Fehlermeldung
+### Fehlermeldung
 
 Fehler oder Validierungshinweise:
 
@@ -164,7 +162,7 @@ Fehler oder Validierungshinweise:
 	}}
 />
 
-#### Hilfetexte und Beschriftung
+### Hilfetexte und Beschriftung
 
 Additionale Informationen für Nutzer:
 
@@ -177,7 +175,7 @@ Additionale Informationen für Nutzer:
 	}}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

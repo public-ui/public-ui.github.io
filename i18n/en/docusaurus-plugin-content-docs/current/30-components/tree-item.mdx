@@ -85,9 +85,7 @@ Tree items are controlled through the parent <kol-link _href="../components/tree
 - Multi-level tables of contents in documentation
 - Settings or admin navigation with nested options
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 Interactive example of a tree structure with different tree items:
 
@@ -109,9 +107,9 @@ Interactive example of a tree structure with different tree items:
 </kol-tree>
 ```
 
-### Features with code
+## Features
 
-#### Basic tree item
+### Basic tree item
 
 A single tree item with label and link:
 
@@ -121,7 +119,7 @@ A single tree item with label and link:
 </kol-tree>
 ```
 
-#### Active state
+### Active state
 
 Mark the current tree item with `_active`:
 
@@ -132,7 +130,7 @@ Mark the current tree item with `_active`:
 </kol-tree>
 ```
 
-#### Nested tree items
+### Nested tree items
 
 Tree items can contain other tree items to form hierarchies:
 
@@ -145,7 +143,7 @@ Tree items can contain other tree items to form hierarchies:
 </kol-tree>
 ```
 
-#### Initially expanded
+### Initially expanded
 
 Use `_open` to show child items immediately when the tree loads:
 
@@ -157,7 +155,7 @@ Use `_open` to show child items immediately when the tree loads:
 </kol-tree>
 ```
 
-#### Methods
+### Methods
 
 The following methods are available for programmatic control:
 
@@ -168,7 +166,7 @@ The following methods are available for programmatic control:
 | `focus()` | Focuses the link element of the tree item. | `Promise<any>` |
 | `isOpen()` | Returns whether the tree item is expanded. | `Promise<boolean>` |
 
-#### Events
+### Events
 
 Tree items behave like links and can be activated by users. For handling callbacks and DOM events, see <kol-link _label="Events" _href="../concepts/events" />.
 

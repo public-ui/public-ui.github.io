@@ -55,15 +55,13 @@ Darstellung einer einfachen Card mit Titel und Inhaltsbereich. Code kann eingebl
 - Erstellung von Kachel-Layouts für Inhaltsübersichten
 - Kollapsible Bereiche für schlanke Layouts auf mobilen Geräten
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <CardPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basisinhalt und Beschriftung
+### Basisinhalt und Beschriftung
 
 Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird über den Slot befüllt.
 
@@ -73,7 +71,7 @@ Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird 
 	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich' }}
 />
 
-#### Überschriftenstruktur
+### Überschriftenstruktur
 
 Die Überschriftenebene wird über `_level` gesteuert. Möglich sind die Level 0–6, wobei 0 den Titel als Bold-Text ohne Überschriftenelement darstellt.
 
@@ -83,7 +81,7 @@ Die Überschriftenebene wird über `_level` gesteuert. Möglich sind die Level 0
 	initialProps={{ _label: 'Card Titel', _slot: 'Inhaltsbereich', _level: 2 }}
 />
 
-#### Schließ-Funktion
+### Schließ-Funktion
 
 Das Attribut `_has-closer` ermöglicht dem Nutzer, die Card zu schließen und damit Platz zu sparen.
 
@@ -93,7 +91,7 @@ Das Attribut `_has-closer` ermöglicht dem Nutzer, die Card zu schließen und da
 	initialProps={{ _label: 'Schließbare Card', _slot: 'Inhaltsbereich', _hasCloser: true }}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

@@ -91,15 +91,13 @@ Setzen Sie `_value` auf `null` oder `undefined`, um den aktuellen Wert zu entfer
 **Warum sieht InputDate je nach Browser unterschiedlich aus?**  
 Die Komponente nutzt die nativen HTML5-Eingabetypen des Browsers. Darstellung und Bedienung der Auswahldialoge werden daher vom jeweiligen Browser und Betriebssystem bestimmt und können variieren.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <InputDatePreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Beschriftung und Hinweistexte
+### Beschriftung und Hinweistexte
 
 Das Eingabefeld wird mit einer Beschriftung über `_label` versehen. Zusätzliche Informationen können über `_hint` bereitgestellt werden.
 
@@ -109,7 +107,7 @@ Das Eingabefeld wird mit einer Beschriftung über `_label` versehen. Zusätzlich
 	initialProps={{ _label: 'Geburtsdatum', _hint: 'Bitte geben Sie Ihr Geburtsdatum ein.' }}
 />
 
-#### Eingabetypen
+### Eingabetypen
 
 Das Attribut `_type` bestimmt das Format und den Auswahldialog:
 
@@ -122,7 +120,7 @@ Das Attribut `_type` bestimmt das Format und den Auswahldialog:
 - `time`: Nur Uhrzeit (HH:MM)
 - `week`: Kalenderwoche und Jahr
 
-#### Bereichsbeschränkung
+### Bereichsbeschränkung
 
 Die Attribute `_min` und `_max` definieren den gültigen Datumsbereich. Sie greifen zuverlässig nur bei der Auswahl über den Kalenderdialog (Datepicker). Bei manueller Texteingabe kann ein Wert außerhalb des definierten Bereichs eingegeben werden, ohne dass automatisch eine Korrektur oder Fehlermeldung erfolgt. Die Validierung manueller Eingaben liegt in der Verantwortung der einbindenden Anwendung.
 
@@ -136,7 +134,7 @@ Die Attribute `_min` und `_max` definieren den gültigen Datumsbereich. Sie grei
 	}}
 />
 
-#### Schrittgröße bei Zeiteingabe
+### Schrittgröße bei Zeiteingabe
 
 Für Typ `time` kann die Schrittgröße über `_step` festgelegt werden:
 
@@ -150,7 +148,7 @@ Für Typ `time` kann die Schrittgröße über `_step` festgelegt werden:
 	}}
 />
 
-#### Formularattribute
+### Formularattribute
 
 Standard-Formularattribute für Validierung und Interaktion:
 
@@ -166,7 +164,7 @@ Standard-Formularattribute für Validierung und Interaktion:
 - `_required`: Kennzeichnet Pflichtfelder
 - `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
 
-#### Fehlermeldungen
+### Fehlermeldungen
 
 Validierungsfehler oder Hinweismeldungen werden über das Attribut `_msg` ausgegeben:
 
@@ -179,7 +177,7 @@ Validierungsfehler oder Hinweismeldungen werden über das Attribut `_msg` ausgeg
 	}}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

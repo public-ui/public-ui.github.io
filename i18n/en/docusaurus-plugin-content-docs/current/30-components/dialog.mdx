@@ -75,17 +75,15 @@ Use the `closeModal()` method on the dialog element reference or trigger the `_o
 **How do I open the dialog programmatically?**
 Use the `openModal()` method on the dialog element reference.
 
-## Construction / Technique
-
-### Playground
+## Playground
 
 Test the various properties of the dialog:
 
 <DialogPreview context="playground" initialProps={{}} />
 
-### Features (with Code)
+## Features
 
-#### Label and Content
+### Label and Content
 
 The label is set via `_label`. The content is provided via the slot:
 
@@ -98,7 +96,7 @@ The label is set via `_label`. The content is provided via the slot:
 	}}
 />
 
-#### Variants
+### Variants
 
 The dialog supports two variants:
 
@@ -115,7 +113,7 @@ The dialog supports two variants:
 - `blank`: Full width, minimal styling (default)
 - `card`: With padding and card design
 
-#### Width
+### Width
 
 The width of the dialog is controlled via `_width`:
 
@@ -130,7 +128,7 @@ The width of the dialog is controlled via `_width`:
 
 **Note:** The maximum width is limited to 100%.
 
-#### Callback Handling
+### Callback Handling
 
 The dialog can respond to events using the `_on` property:
 

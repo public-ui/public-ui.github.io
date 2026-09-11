@@ -83,9 +83,7 @@ Tree-Items werden über die Parent-<kol-link _href="../components/tree" _label="
 - **Dokumentenliste**: Inhaltsverzeichnis mit mehreren Ebenen in Dokumentationen
 - **Systemnavigation**: Einstellungs- oder Admin-Dashboards mit verschachtelten Optionen
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Ein interaktives Beispiel einer Tree-Struktur mit verschiedenen Tree-Items:
 
@@ -108,9 +106,9 @@ Ein interaktives Beispiel einer Tree-Struktur mit verschiedenen Tree-Items:
 </kol-tree>
 ```
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basisches Tree-Item
+### Basisches Tree-Item
 
 Ein einzelnes Tree-Item mit Label und Link:
 
@@ -120,7 +118,7 @@ Ein einzelnes Tree-Item mit Label und Link:
 </kol-tree>
 ```
 
-#### Aktiver Zustand
+### Aktiver Zustand
 
 Markierung des aktuellen/aktiven Tree-Items mit `_active`:
 
@@ -131,7 +129,7 @@ Markierung des aktuellen/aktiven Tree-Items mit `_active`:
 </kol-tree>
 ```
 
-#### Verschachtelte Tree-Items
+### Verschachtelte Tree-Items
 
 Tree-Items können andere Tree-Items enthalten, um Hierarchien zu bilden:
 
@@ -144,7 +142,7 @@ Tree-Items können andere Tree-Items enthalten, um Hierarchien zu bilden:
 </kol-tree>
 ```
 
-#### Initial geöffnet
+### Initial geöffnet
 
 Mit `_open` werden Tree-Items beim Laden vorgeklappt angezeigt:
 
@@ -156,7 +154,7 @@ Mit `_open` werden Tree-Items beim Laden vorgeklappt angezeigt:
 </kol-tree>
 ```
 
-#### Methoden
+### Methoden
 
 Zur programmatischen Kontrolle stehen folgende Methoden zur Verfügung:
 
@@ -167,7 +165,7 @@ Zur programmatischen Kontrolle stehen folgende Methoden zur Verfügung:
 | `focus()` | Fokussiert das Link-Element des Tree-Items | `Promise<any>` |
 | `isOpen()` | Gibt zurück, ob das Tree-Item expandiert ist | `Promise<boolean>` |
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

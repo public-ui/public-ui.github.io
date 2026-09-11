@@ -82,9 +82,7 @@ Ja, das Tooltip wird positioniert relativ zum Referenzelement im DOM.
 **Kann ich HTML-Inhalte im Tooltip verwenden?**  
 Das ist möglich über den Slot, sollte aber sparsam eingesetzt werden – Tooltips sind für einfache, kurze Texte vorgesehen.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Beispiel eines Tooltip-Elements in einer Button-Komponente:
 
@@ -101,9 +99,9 @@ Beispiel eines Tooltip-Elements in einer Button-Komponente:
 </div>
 ```
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Breite konfigurieren
+### Breite konfigurieren
 
 Die Breite des Tooltips richtet sich normalerweise nach dem Inhalt. Um die Breite eines Tooltips zu konfigurieren, setzen Sie auf dem umgebenden Container eine CSS-Custom-Property:
 
@@ -116,7 +114,7 @@ Die Breite des Tooltips richtet sich normalerweise nach dem Inhalt. Um die Breit
 </div>
 ```
 
-#### Verschiedene Referenzelemente
+### Verschiedene Referenzelemente
 
 Das Tooltip funktioniert mit verschiedenen Referenzelementen:
 
@@ -142,7 +140,7 @@ Das Tooltip funktioniert mit verschiedenen Referenzelementen:
 
 ### Bekannte Probleme und Workarounds
 
-#### CSS `contain: layout` mit Positionierungsfehlern
+### CSS `contain: layout` mit Positionierungsfehlern
 
 Bei Nutzung von CSS `contain: layout` innerhalb oder auf dem Tooltip-Element kann die Positionierung fehlerhaft sein. Dies ist ein <kol-link _href="https://github.com/floating-ui/floating-ui/issues/3067" _target="_blank" _label="bekannter Bug in floating-ui"></kol-link>, der im <kol-link _href="https://github.com/public-ui/kolibri/pull/8062" _target="_blank" _label="PR #8062"></kol-link> dokumentiert wurde.
 
@@ -150,6 +148,6 @@ Bei Nutzung von CSS `contain: layout` innerhalb oder auf dem Tooltip-Element kan
 
 **Ausblick:** Langfristig könnte die native <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor" _target="_blank" _label="`anchor()`-Funktion"></kol-link> anstelle von `floating-ui` eingesetzt werden. Diese ist derzeit nur in Chrome verfügbar; für Firefox und Safari wird weiterhin `floating-ui` benötigt.
 
-#### Inline-Display auf Referenzelement
+### Inline-Display auf Referenzelement
 
 Das Referenzelement darf nicht `display: inline` haben, sondern sollte mindestens `display: inline-block` oder ein Block-Kontext-Element sein. Andernfalls wird das Tooltip nicht korrekt positioniert.
