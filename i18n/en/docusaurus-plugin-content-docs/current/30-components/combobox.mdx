@@ -81,9 +81,7 @@ Example of a JSON array:
 - **Product search:** Common products as suggestions, but free search possible.
 - **Tags / Labels:** Predefined tags with the ability to add new ones.
 
-## Construction / Technics
-
-### Playground
+## Playground
 
 Test the various properties of the Combobox component:
 
@@ -92,9 +90,9 @@ Test the various properties of the Combobox component:
 	initialProps={{ _label: 'Selection', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
 />
 
-### Functionality (with Code)
+## Functionality
 
-#### Label and Caption
+### Label and Caption
 
 The visible label is set via `_label`.
 
@@ -104,7 +102,7 @@ The visible label is set via `_label`.
 	initialProps={{ _label: 'Salutation', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
 />
 
-#### Placeholder and Hint Text
+### Placeholder and Hint Text
 
 The placeholder is displayed when the field is empty. The hint text provides additional guidance:
 
@@ -114,7 +112,7 @@ The placeholder is displayed when the field is empty. The hint text provides add
 	initialProps={{ _label: 'Salutation', _placeholder: 'Please select or type...', _hint: 'Choose from the list or enter an alternative.', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
 />
 
-#### Form Attributes
+### Form Attributes
 
 Standard attributes for forms such as `_disabled`, `_required` and `_touched`:
 
@@ -124,7 +122,7 @@ Standard attributes for forms such as `_disabled`, `_required` and `_touched`:
 	initialProps={{ _label: 'Salutation', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
 />
 
-#### Error Messages
+### Error Messages
 
 Validation errors are displayed via `_msg`:
 
@@ -134,7 +132,7 @@ Validation errors are displayed via `_msg`:
 	initialProps={{ _label: 'Salutation', _msg: 'The salutation is required.', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
 />
 
-#### Icons
+### Icons
 
 Icons can be added on the left or right via `_icons`:
 
@@ -144,7 +142,7 @@ Icons can be added on the left or right via `_icons`:
 	initialProps={{ _label: 'Salutation', _icons: 'fa-solid fa-user', _suggestions: ['Mr.', 'Mrs.', 'Company'] }}
 />
 
-#### Clear Button
+### Clear Button
 
 The clear button can be controlled via `_hasClearButton` (enabled by default):
 
@@ -154,7 +152,7 @@ The clear button can be controlled via `_hasClearButton` (enabled by default):
 	initialProps={{ _label: 'Salutation', _suggestions: ['Mr.', 'Mrs.', 'Company'], _hasClearButton: true }}
 />
 
-#### Hidden Caption
+### Hidden Caption
 
 The caption can be visually hidden via `_hideLabel` (remains visible for screen readers):
 

@@ -78,17 +78,15 @@ Use this when a meaningful icon is available and the label text should be hidden
 **Can I display multiple icons?**
 Yes, you can combine multiple icon classes via the `_icons` attribute.
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 Test the various properties of the Link component:
 
 <LinkPreview context="playground" />
 
-### Functionality (with Code)
+## Functionality
 
-#### Basic Link
+### Basic Link
 
 A simple link with label and href:
 
@@ -98,7 +96,7 @@ A simple link with label and href:
 	initialProps={{ _label: 'Example Link', _href: 'https://example.com' }}
 />
 
-#### Link with Icon
+### Link with Icon
 
 Link with an icon that visually clarifies the link purpose:
 
@@ -108,7 +106,7 @@ Link with an icon that visually clarifies the link purpose:
 	initialProps={{ _label: 'With Icon', _href: 'https://example.com', _icons: 'kolicon-external' }}
 />
 
-#### Link Variations
+### Link Variations
 
 Various display variants and states:
 
@@ -118,7 +116,7 @@ Various display variants and states:
 	initialProps={{ _label: 'Link Variation', _href: 'https://example.com' }}
 />
 
-#### Download Link
+### Download Link
 
 Link with download functionality:
 
@@ -128,7 +126,7 @@ Link with download functionality:
 	initialProps={{ _label: 'Download file', _href: 'https://example.com/file.pdf', _download: 'file.pdf' }}
 />
 
-#### Tooltip Alignment
+### Tooltip Alignment
 
 Configure tooltip positioning (when `_hideLabel: true`):
 
@@ -138,7 +136,7 @@ Configure tooltip positioning (when `_hideLabel: true`):
 	initialProps={{ _label: 'Icon only', _href: 'https://example.com', _hideLabel: true, _icons: 'kolicon-external', _tooltipAlign: 'top' }}
 />
 
-#### ARIA Attributes and Accessibility
+### ARIA Attributes and Accessibility
 
 Extended accessibility configurations:
 
@@ -148,7 +146,7 @@ Extended accessibility configurations:
 	initialProps={{ _label: 'Active page', _href: '/current-page', _ariaCurrentValue: 'page', _ariaDescription: 'This is the current page' }}
 />
 
-#### aria-current Service
+### aria-current Service
 
 For the Link component to automatically set an `aria-current` attribute, it must be notified via the `setCurrentLocation()` service which page is currently active:
 
@@ -161,7 +159,7 @@ setCurrentLocation('/path/to/page');
 
 The location string passed must correspond exactly to the `_href` attribute of the link.
 
-#### Events
+### Events
 
 For handling events and callbacks see <kol-link _label="Events" _href="../concepts/events" />.
 

@@ -52,23 +52,21 @@ Darstellung der Komponente in der Standard-Ansicht. Code kann eingeblendet werde
 - Freigabeberechtigungen und Zusammenarbeitsfunktionen
 - Aktivitätsfeeds mit Benutzerangaben
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der Avatar-Komponente:
 
 <AvatarPreview context="playground" initialProps={{ _label: 'Max Mustermann', _color: '#5A5FEE' }} />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Eigenständiger Avatar mit Initialen
+### Eigenständiger Avatar mit Initialen
 
 Darstellung der Komponente ohne Bild – es werden automatisch die Initialen aus dem Namen generiert:
 
 <AvatarPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Anna Schmidt' }} />
 
-#### Avatar mit Bild
+### Avatar mit Bild
 
 Darstellung eines Avatar-Bildes über das Attribut `_src`:
 
@@ -81,7 +79,7 @@ Darstellung eines Avatar-Bildes über das Attribut `_src`:
 	}}
 />
 
-#### Farbige Initialen
+### Farbige Initialen
 
 Verwendung des Attributs `_color` zur farblichen Unterscheidung von Benutzern. Das Attribut akzeptiert sowohl einen einfachen Farbwert als auch ein Objekt mit separaten Hintergrund- und Vordergrundfarben:
 
@@ -91,7 +89,7 @@ Verwendung des Attributs `_color` zur farblichen Unterscheidung von Benutzern. D
 	initialProps={{ _label: 'Peter Meyer', _color: '#FF6B6B' }}
 />
 
-#### Avatar mit separaten Farben
+### Avatar mit separaten Farben
 
 Präzise Kontrolle über Hintergrund- und Vordergrundfarbe:
 

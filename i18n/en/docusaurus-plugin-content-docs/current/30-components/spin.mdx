@@ -66,33 +66,31 @@ Use CSS media queries to increase the animation duration or disable animations w
 **Should the loading indicator always be combined with text?**
 Yes, combine the visual indicator with explanatory text or a label to provide clarity.
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 <SpinPreview context="playground" />
 
-### Features (with Code)
+## Features
 
-#### Visibility Control
+### Visibility Control
 
 The `_show` attribute determines whether the loading indicator is displayed.
 
 <SpinPreview context="feature" visibleProperties={['_show']} />
 
-#### Animation Variants
+### Animation Variants
 
 The available variants can be selected via `_variant`: `dot`, `cycle` or `none` (for custom animations).
 
 <SpinPreview context="feature" visibleProperties={['_variant']} />
 
-#### Label and Semantics
+### Label and Semantics
 
 The `_label` attribute defines a semantic label that is read by screen readers.
 
 <SpinPreview context="feature" visibleProperties={['_label']} />
 
-#### Custom Animations
+### Custom Animations
 
 With `_variant="none"` you can include your own animation via CSS and display it through the `expert` slot:
 

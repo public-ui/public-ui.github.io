@@ -1,2 +1,0 @@
-- [Project Status](project_status.md) — ongoing documentation rewrite to new standard on feature/473-rewrite-docs branch
-- [Rewrite Template](rewrite_template.md) — official template and rules for rewriting component documentation

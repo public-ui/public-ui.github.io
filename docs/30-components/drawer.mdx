@@ -64,15 +64,13 @@ Standard-Drawer mit Label und Inhalt:
 - Kontextabhängige Informationen und Details
 - Seitliche Navigationshilfen (z.B. Inhaltsverzeichnis, Kategorien)
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <DrawerPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-Drawer mit Label und Inhalt
+### Basis-Drawer mit Label und Inhalt
 
 Der Drawer zeigt einen definierten Inhaltsbereich über den Slot an:
 
@@ -82,7 +80,7 @@ Der Drawer zeigt einen definierten Inhaltsbereich über den Slot an:
 	initialProps={{ _label: 'Drawer Titel', _align: 'left', _hasCloser: true }}
 />
 
-#### Ausrichtung
+### Ausrichtung
 
 Die Position des Drawers wird über das **`_align`**-Attribut gesteuert:
 
@@ -92,7 +90,7 @@ Die Position des Drawers wird über das **`_align`**-Attribut gesteuert:
 	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
 />
 
-#### Schließ-Button
+### Schließ-Button
 
 Aktivieren Sie **`_hasCloser`**, um einen visuellen Schließ-Button anzuzeigen:
 
@@ -102,11 +100,11 @@ Aktivieren Sie **`_hasCloser`**, um einen visuellen Schließ-Button anzuzeigen:
 	initialProps={{ _label: 'Drawer', _align: 'left', _hasCloser: true }}
 />
 
-#### Programmgesteuerte Kontrolle
+### Programmgesteuerte Kontrolle
 
 Verwenden Sie das **`_open`**-Attribut zur React-State-basierten Steuerung oder die Methoden `open()` und `close()`:
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

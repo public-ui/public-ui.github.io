@@ -64,15 +64,13 @@ Darstellung der Komponente mit den grundlegenden Eigenschaften und navigierbaren
 - **Informationsportale**: Orientierung innerhalb umfangreicher Inhaltsstrukturen
 - **mehrstufige Formulare oder Workflows**: Anzeige des Fortschritts durch verschiedene Schritte einer Anwendung
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <BreadcrumbPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-Breadcrumb mit Links
+### Basis-Breadcrumb mit Links
 
 Die Breadcrumb-Navigation wird über das Attribut `_links` als Array von Link-Objekten konfiguriert. Das letzte Element wird automatisch als aktuelle Seite (ohne Link) behandelt.
 
@@ -87,13 +85,13 @@ Die Breadcrumb-Navigation wird über das Attribut `_links` als Array von Link-Ob
 | `_icons`      | `string`  | (Optional) Der Name eines verfügbaren Icons (z.B. `kolicon-house` oder Font Awesome Symbole).                 |
 | `_hide-label` | `boolean` | (Optional) Wenn `true`, wird nur das Icon angezeigt und der Text verborgen. Erfordert das Setzen von `_icon`. |
 
-#### Icons in der Breadcrumb
+### Icons in der Breadcrumb
 
 Icons können optional zu jedem Element hinzugefügt werden. Eine häufige Verwendung ist ein Haus-Icon für die Startseite:
 
 <BreadcrumbPreview context="feature" visibleProperties={['_label', '_links']} initialProps={{}} />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

@@ -52,15 +52,13 @@ Das Beispiel zeigt eine Meter-Anzeige mit definiertem Wertebereich, Schwellenwer
 - Messwerte mit Grenzbereichen (z. B. Temperatur, Luftfeuchte)
 - Qualitäts- oder Gesundheitsindikatoren mit Optimalbereich
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <MeterPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Grundlegende Meter mit Wertbereich
+### Grundlegende Meter mit Wertbereich
 
 Einfache Meter-Anzeige mit Minimum, Maximum, aktuellem Wert und Einheit.
 
@@ -70,7 +68,7 @@ Einfache Meter-Anzeige mit Minimum, Maximum, aktuellem Wert und Einheit.
 	initialProps={{ _label: 'Speicherauslastung', _min: 0, _max: 1024, _value: 512, _unit: 'MB' }}
 />
 
-#### Meter mit Zustandsbereichen
+### Meter mit Zustandsbereichen
 
 Mit `_low`, `_high` und `_optimum` lassen sich Messbereiche semantisch einordnen.
 
@@ -85,7 +83,7 @@ Mit `_low`, `_high` und `_optimum` lassen sich Messbereiche semantisch einordnen
 	initialProps={{ _label: 'CPU-Auslastung', _min: 0, _max: 100, _value: 15, _low: 20, _optimum: 10, _high: 70 }}
 />
 
-#### Vertikaler Meter
+### Vertikaler Meter
 
 Die Ausrichtung kann über `_orientation` zwischen horizontal und vertikal umgeschaltet werden.
 

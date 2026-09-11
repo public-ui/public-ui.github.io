@@ -68,15 +68,13 @@ No, `_unit` is not displayed visually, but can be communicated via `_label`.
 **Can I use decimal numbers for `_value` or `_max`?**  
 Yes, the Progress component also processes decimal numbers, for example `_value="5.5"` with `_max="10"`.
 
-## Construction / Technical Details
-
-### Playground
+## Playground
 
 <ProgressPreview context="playground" />
 
-### Functionality (with Code)
+## Functionality
 
-#### Horizontal Progress Bar
+### Horizontal Progress Bar
 
 The horizontal bar is the default variant and is suitable for display in larger contexts.
 
@@ -86,7 +84,7 @@ The horizontal bar is the default variant and is suitable for display in larger 
 	initialProps={{ _label: 'Progress', _value: 45, _max: 100, _variant: 'bar' }}
 />
 
-#### Circular Progress Bar
+### Circular Progress Bar
 
 The circular variant is compact and suitable for small areas or as an indicator for fast processes.
 
@@ -96,7 +94,7 @@ The circular variant is compact and suitable for small areas or as an indicator 
 	initialProps={{ _label: 'Cycle', _value: 65, _max: 100, _variant: 'cycle' }}
 />
 
-#### Label and Unit
+### Label and Unit
 
 Use `_label` to describe the progress; `_unit` can be used internally for calculations.
 
@@ -106,7 +104,7 @@ Use `_label` to describe the progress; `_unit` can be used internally for calcul
 	initialProps={{ _label: 'Download speed', _value: 250, _max: 500, _unit: 'MB' }}
 />
 
-#### Task Tracking
+### Task Tracking
 
 Example use case: tracking completed tasks from a list.
 

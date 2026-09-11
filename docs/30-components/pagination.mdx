@@ -76,15 +76,13 @@ Passen Sie `_pageSize` an Ihre Inhaltsart und Kontext an. Für Suchergebnisse si
 **Kann ich die Seitengröße dynamisch ändern?**  
 Ja, nutzen Sie `_pageSizeOptions`, um Nutzern ein Dropdown-Menü zur Wahl der Seitengröße anzubieten, und reagieren Sie auf das Event `changePageSize`.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <PaginationPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-Pagination
+### Basis-Pagination
 
 Einfache Pagination mit Standardwerten:
 
@@ -94,7 +92,7 @@ Einfache Pagination mit Standardwerten:
 	initialProps={{ _max: 100, _page: 5, _pageSize: 10 }}
 />
 
-#### Sichtbare Seiten konfigurieren
+### Sichtbare Seiten konfigurieren
 
 Die Anzahl der sichtbaren Seitennummern wird durch `_siblingCount` (neben der aktuellen Seite) und `_boundaryCount` (an den Rändern) gesteuert:
 
@@ -104,7 +102,7 @@ Die Anzahl der sichtbaren Seitennummern wird durch `_siblingCount` (neben der ak
 	initialProps={{ _max: 100, _page: 5, _pageSize: 10, _siblingCount: 2, _boundaryCount: 1 }}
 />
 
-#### Navigation-Buttons
+### Navigation-Buttons
 
 Das Attribut `_hasButtons` steuert, welche Navigations-Buttons (erste, letzte, vorherige, nächste Seite) angezeigt werden:
 
@@ -119,7 +117,7 @@ Das Attribut `_hasButtons` steuert, welche Navigations-Buttons (erste, letzte, v
 - `false`: Keine Navigation-Buttons anzeigen
 - Objekt mit `{ first: boolean; last: boolean; next: boolean; previous: boolean; }`: Individuelle Kontrolle über jeden Button
 
-#### Seitengröße wählbar machen
+### Seitengröße wählbar machen
 
 Mit `_pageSizeOptions` ermöglichen Sie Nutzern, die Anzahl der Elemente pro Seite zu wählen:
 
@@ -129,7 +127,7 @@ Mit `_pageSizeOptions` ermöglichen Sie Nutzern, die Anzahl der Elemente pro Sei
 	initialProps={{ _max: 200, _page: 1, _pageSize: 10, _pageSizeOptions: [10, 25, 50, 100] }}
 />
 
-#### Label und Tooltip-Ausrichtung
+### Label und Tooltip-Ausrichtung
 
 Das Attribut `_label` bietet eine optionale Beschriftung, und `_tooltipAlign` positioniert Tooltips:
 
@@ -139,7 +137,7 @@ Das Attribut `_label` bietet eine optionale Beschriftung, und `_tooltipAlign` po
 	initialProps={{ _max: 50, _page: 3, _pageSize: 5, _label: 'Seiten-Navigation', _tooltipAlign: 'top' }}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

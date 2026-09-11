@@ -61,21 +61,19 @@ Darstellung der Komponente mit Beispieltext:
 - Kontextabhängige Hilfe und Zusatzinformationen in Formularen
 - Detailansichten zu Produkteigenschaften oder Varianten
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <DetailsPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Beschriftung und Inhalt
+### Beschriftung und Inhalt
 
 Das Label wird über `_label` definiert, der Inhaltsbereich wird über den Slot befüllt.
 
 <DetailsPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Details anzeigen' }} />
 
-#### Offener Zustand
+### Offener Zustand
 
 Mit `_open` wird die Komponente initial geöffnet angezeigt. Im deaktivierten Zustand (`_disabled`) wird die Komponente nicht interaktiv.
 
@@ -85,7 +83,7 @@ Mit `_open` wird die Komponente initial geöffnet angezeigt. Im deaktivierten Zu
 	initialProps={{ _label: 'Details anzeigen', _open: true }}
 />
 
-#### Überschriftenstruktur
+### Überschriftenstruktur
 
 Die Überschriftenebene wird über `_level` (0–6) gesteuert. Wert `0` zeigt den Text als fetten Text ohne semantische Heading-Struktur.
 
@@ -95,7 +93,7 @@ Die Überschriftenebene wird über `_level` (0–6) gesteuert. Wert `0` zeigt de
 	initialProps={{ _label: 'Details anzeigen', _level: 2 }}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

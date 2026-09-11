@@ -55,15 +55,13 @@ Display of a simple card with title and content area. Code can be shown.
 - Creating tile layouts for content overviews
 - Collapsible sections for lean layouts on mobile devices
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 <CardPreview context="playground" />
 
-### Functionalities (with Code)
+## Functionalities
 
-#### Basic Content and Label
+### Basic Content and Label
 
 The visible heading is set via `_label`. The content area is populated via the slot.
 
@@ -73,7 +71,7 @@ The visible heading is set via `_label`. The content area is populated via the s
 	initialProps={{ _label: 'Card Title', _slot: 'Content area' }}
 />
 
-#### Heading Structure
+### Heading Structure
 
 The heading level is controlled via `_level`. Levels 0–6 are possible, where 0 renders the title as bold text without a heading element.
 
@@ -83,7 +81,7 @@ The heading level is controlled via `_level`. Levels 0–6 are possible, where 0
 	initialProps={{ _label: 'Card Title', _slot: 'Content area', _level: 2 }}
 />
 
-#### Close Function
+### Close Function
 
 The `_has-closer` attribute allows the user to close the card to save space.
 
@@ -93,7 +91,7 @@ The `_has-closer` attribute allows the user to close the card to save space.
 	initialProps={{ _label: 'Closable Card', _slot: 'Content area', _hasCloser: true }}
 />
 
-#### Events
+### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 

@@ -68,15 +68,13 @@ Nein, `_unit` wird nicht visuell dargestellt, aber kann über `_label` vermittel
 **Kann ich Dezimalzahlen als `-_value` oder `_max` verwenden?**  
 Ja, die Progress-Komponente verarbeitet auch Dezimalzahlen, beispielsweise `_value="5.5"` bei `_max="10"`.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <ProgressPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Horizontaler Fortschrittsbalken
+### Horizontaler Fortschrittsbalken
 
 Der horizontale Balken ist die Standard-Variante und eignet sich für die Darstellung in größeren Kontexten.
 
@@ -86,7 +84,7 @@ Der horizontale Balken ist die Standard-Variante und eignet sich für die Darste
 	initialProps={{ _label: 'Progress', _value: 45, _max: 100, _variant: 'bar' }}
 />
 
-#### Zirkulärer Fortschrittsbalken
+### Zirkulärer Fortschrittsbalken
 
 Die zirkuläre Variante ist kompakt und eignet sich für kleine Bereiche oder als Indikator für schnelle Prozesse.
 
@@ -96,7 +94,7 @@ Die zirkuläre Variante ist kompakt und eignet sich für kleine Bereiche oder al
 	initialProps={{ _label: 'Cycle', _value: 65, _max: 100, _variant: 'cycle' }}
 />
 
-#### Beschriftung und Unit
+### Beschriftung und Unit
 
 Mit `_label` können Sie den Fortschritt beschreiben, `_unit` kann intern zur Berechnung verwendet werden.
 
@@ -106,7 +104,7 @@ Mit `_label` können Sie den Fortschritt beschreiben, `_unit` kann intern zur Be
 	initialProps={{ _label: 'Download-Speed', _value: 250, _max: 500, _unit: 'MB' }}
 />
 
-#### Aufgabenverfolgung
+### Aufgabenverfolgung
 
 Anwendungsbeispiel: Verfolgung von abgeschlossenen Aufgaben aus einer Liste.
 

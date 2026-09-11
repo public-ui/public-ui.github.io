@@ -86,9 +86,7 @@ Yes. The tooltip is positioned relative to its reference element in the DOM.
 **Can I place HTML content inside the tooltip?**  
 Yes, via the slot, but keep the content minimal. Tooltips are meant for short, simple text.
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 Example of tooltip usage inside button elements:
 
@@ -105,9 +103,9 @@ Example of tooltip usage inside button elements:
 </div>
 ```
 
-### Features with code
+## Features
 
-#### Configure width
+### Configure width
 
 Tooltip width normally follows its content. To configure the width, define a CSS custom property on the surrounding container:
 
@@ -120,7 +118,7 @@ Tooltip width normally follows its content. To configure the width, define a CSS
 </div>
 ```
 
-#### Different reference elements
+### Different reference elements
 
 The tooltip works with different kinds of reference elements:
 
@@ -146,7 +144,7 @@ The tooltip works with different kinds of reference elements:
 
 ### Known issues and workarounds
 
-#### CSS `contain: layout` can break positioning
+### CSS `contain: layout` can break positioning
 
 When CSS `contain: layout` is used within or on the tooltip element, positioning may become incorrect. This is a <kol-link _href="https://github.com/floating-ui/floating-ui/issues/3067" _target="_blank" _label="known floating-ui bug"></kol-link> documented in <kol-link _href="https://github.com/public-ui/kolibri/pull/8062" _target="_blank" _label="PR #8062"></kol-link>.
 
@@ -154,6 +152,6 @@ When CSS `contain: layout` is used within or on the tooltip element, positioning
 
 **Outlook:** In the long term, the native <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor" _target="_blank" _label="anchor() function"></kol-link> could replace `floating-ui`. At the moment it is only available in Chrome, so `floating-ui` is still required for Firefox and Safari.
 
-#### Inline display on the reference element
+### Inline display on the reference element
 
 The reference element must not use `display: inline`. Use at least `display: inline-block` or another block-like layout context, otherwise the tooltip cannot be positioned correctly.

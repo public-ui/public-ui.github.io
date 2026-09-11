@@ -54,15 +54,13 @@ Standard alert with type, variant and content:
 - General informational notice about a topic or feature
 - Warning messages for critical actions
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 <AlertPreview context="playground" />
 
-### Functionalities (with Code)
+## Functionalities
 
-#### Type of Alert
+### Type of Alert
 
 The type of the alert is set via the `_type` attribute and determines the semantic meaning and the icon used.
 
@@ -76,7 +74,7 @@ The type of the alert is set via the `_type` attribute and determines the semant
 | `info`    | General notice                                |
 | `warning` | Warning, caution required                     |
 
-#### Variant of the Alert
+### Variant of the Alert
 
 The `_variant` attribute controls the display variant.
 
@@ -91,7 +89,7 @@ The `_variant` attribute controls the display variant.
 | `msg`    | The left column with icon extends over the entire height of the alert.          |
 | `card`   | The left column with icon is only placed next to the heading.                   |
 
-#### Heading and Heading Level
+### Heading and Heading Level
 
 The heading is set via `_label`, the semantic level via `_level` (1–6, or 0 for bold text without a semantic heading element).
 
@@ -101,13 +99,13 @@ The heading is set via `_label`, the semantic level via `_level` (1–6, or 0 fo
 	initialProps={{ _label: 'Heading', _type: 'info', _level: 3 }}
 />
 
-#### Content of the Alert
+### Content of the Alert
 
 The content of the alert is passed as slot content and can contain any HTML code or KoliBri components.
 
 <AlertPreview context="feature" visibleProperties={['_slot']} initialProps={{ _label: 'Notice', _type: 'info' }} />
 
-#### Close Function
+### Close Function
 
 The `_has-closer` attribute shows a close button.
 
@@ -117,7 +115,7 @@ The `_has-closer` attribute shows a close button.
 	initialProps={{ _label: 'Closable Alert', _type: 'info', _hasCloser: true }}
 />
 
-#### Screen Reader Notifications (`_alert`)
+### Screen Reader Notifications (`_alert`)
 
 The `_alert` attribute activates `role="alert"` or `aria-live="assertive"`, so that screen readers automatically read the notification. It only works on initial render or when content changes.
 
@@ -127,7 +125,7 @@ The `_alert` attribute activates `role="alert"` or `aria-live="assertive"`, so t
 	initialProps={{ _label: 'Status Message', _type: 'info', _alert: true }}
 />
 
-#### Events
+### Events
 
 For handling events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 

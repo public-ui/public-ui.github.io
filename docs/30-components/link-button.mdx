@@ -76,23 +76,21 @@ Ja, das Attribut `_icons` unterstützt Icon-Klassennamen (z. B. `_icons="kolicon
 **Was ist der Unterschied zu button-link?**
 LinkButton ist semantisch ein Link mit Button-Styling. <kol-link _href="../components/button-link" _label="ButtonLink"></kol-link> ist dagegen semantisch ein Button mit Link-Styling.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <LinkButtonPreview context="playground" initialProps={{ _label: 'LinkButton' }} />
 
 Erkunden Sie die verschiedenen Konfigurationen der LinkButton-Komponente:
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Beschriftung
+### Beschriftung
 
 Die sichtbare Beschriftung wird über `_label` gesetzt:
 
 <LinkButtonPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Normal', _href: '#' }} />
 
-#### Varianten
+### Varianten
 
 Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varianten zur Verfügung stehen und welche der Standardwert ist. Hier sind <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/button/variants?theme=default" _target="_blank" _label="die anderen Themes und ihre jeweiligen Varianten"></kol-link> zu sehen. Im Folgenden zeigen wir nur das Default Theme.
 
@@ -102,7 +100,7 @@ Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varia
 	initialProps={{ _label: 'LinkButton', _href: '#', _variant: 'primary' }}
 />
 
-#### Icons
+### Icons
 
 Icons können über das Attribut `_icons` hinzugefügt werden:
 
@@ -114,7 +112,7 @@ Icons können über das Attribut `_icons` hinzugefügt werden:
 
 Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `left` angegeben werden, jeweils mit Icon-Klasse oder Styleobjekt.
 
-#### Icon-Only-Button
+### Icon-Only-Button
 
 Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip angezeigt:
 
@@ -124,7 +122,7 @@ Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip 
 	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'kolicon-house', _hideLabel: true }}
 />
 
-#### Zielverhalten
+### Zielverhalten
 
 Kontrolle darüber, wie der Link im Browser geöffnet wird:
 
@@ -139,7 +137,7 @@ Kontrolle darüber, wie der Link im Browser geöffnet wird:
 - `_self` – Der Link wird im aktuellen Tab geöffnet (Standard)
 - `_blank` – Der Link wird in einem neuen Tab geöffnet
 
-#### Download-Links
+### Download-Links
 
 Signalisieren Sie dem Browser, dass eine Datei heruntergeladen werden soll:
 
@@ -149,7 +147,7 @@ Signalisieren Sie dem Browser, dass eine Datei heruntergeladen werden soll:
 	initialProps={{ _label: 'PDF herunterladen', _href: '/files/dokument.pdf', _download: 'dokument.pdf' }}
 />
 
-#### Disabled-Status
+### Disabled-Status
 
 Mit `_disabled` wird der Button deaktiviert:
 
@@ -159,7 +157,7 @@ Mit `_disabled` wird der Button deaktiviert:
 	initialProps={{ _label: 'Deaktiviert', _href: '#', _disabled: true }}
 />
 
-#### Tastaturkürzel
+### Tastaturkürzel
 
 Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
 
@@ -169,7 +167,7 @@ Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
 	initialProps={{ _label: 'Startseite', _href: '#', _shortKey: 'H' }}
 />
 
-#### ARIA-Attribute
+### ARIA-Attribute
 
 LinkButton mit ARIA-Attributen für erweiterte Semantik:
 
@@ -183,7 +181,7 @@ LinkButton mit ARIA-Attributen für erweiterte Semantik:
 	visibleProperties={['_ariaCurrentValue', '_ariaDescription']}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

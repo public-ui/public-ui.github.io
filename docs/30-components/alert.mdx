@@ -54,15 +54,13 @@ Standard-Alert mit Typ, Variante und Inhalt:
 - Allgemeiner Informationshinweis zu einem Thema oder einer Funktion
 - Warnmeldungen bei kritischen Aktionen
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <AlertPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Typ des Alert
+### Typ des Alert
 
 Der Typ des Alert wird über das Attribut `_type` festgelegt und bestimmt die semantische Bedeutung sowie das verwendete Icon.
 
@@ -76,7 +74,7 @@ Der Typ des Alert wird über das Attribut `_type` festgelegt und bestimmt die se
 | `info`    | Allgemeiner Hinweis                                |
 | `warning` | Warnung, Vorsicht geboten                          |
 
-#### Variante des Alert
+### Variante des Alert
 
 Über das Attribut `_variant` wird die Darstellungsvariante gesteuert.
 
@@ -91,7 +89,7 @@ Der Typ des Alert wird über das Attribut `_type` festgelegt und bestimmt die se
 | `msg`    | Die linke Spalte mit Icon erstreckt sich über die gesamte Höhe des Alerts.         |
 | `card`   | Die linke Spalte mit Icon befindet sich nur neben der Überschrift.                 |
 
-#### Überschrift und Überschriftenebene
+### Überschrift und Überschriftenebene
 
 Die Überschrift wird über `_label` festgelegt, die semantische Ebene über `_level` (1–6, oder 0 für Fettschrift ohne semantisches Heading).
 
@@ -101,13 +99,13 @@ Die Überschrift wird über `_label` festgelegt, die semantische Ebene über `_l
 	initialProps={{ _label: 'Überschrift', _type: 'info', _level: 3 }}
 />
 
-#### Inhalt des Alert
+### Inhalt des Alert
 
 Der Inhalt des Alert wird als Slot-Inhalt übergeben und kann beliebigen HTML-Code oder KoliBri-Komponenten enthalten.
 
 <AlertPreview context="feature" visibleProperties={['_slot']} initialProps={{ _label: 'Hinweis', _type: 'info' }} />
 
-#### Schließen-Funktion
+### Schließen-Funktion
 
 Mit dem Attribut `_has-closer` wird ein Schließen-Button eingeblendet.
 
@@ -117,7 +115,7 @@ Mit dem Attribut `_has-closer` wird ein Schließen-Button eingeblendet.
 	initialProps={{ _label: 'Schließbarer Alert', _type: 'info', _hasCloser: true }}
 />
 
-#### Screenreader-Benachrichtigungen (`_alert`)
+### Screenreader-Benachrichtigungen (`_alert`)
 
 Das Attribut `_alert` aktiviert `role="alert"` bzw. `aria-live="assertive"`, sodass Screenreader die Benachrichtigung automatisch vorlesen. Es wirkt nur beim initialen Rendern der Komponente oder bei einer Inhaltsänderung.
 
@@ -127,7 +125,7 @@ Das Attribut `_alert` aktiviert `role="alert"` bzw. `aria-live="assertive"`, sod
 	initialProps={{ _label: 'Statusmeldung', _type: 'info', _alert: true }}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

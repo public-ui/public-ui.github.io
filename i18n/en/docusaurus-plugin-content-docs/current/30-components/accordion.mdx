@@ -73,21 +73,19 @@ Yes, the content area is provided via the slot.
 **What heading levels are available?**  
 Levels `1` to `6` are available via `_level`. According to the API, `0` is also possible.
 
-## Construction / Technical Details
-
-### Playground
+## Playground
 
 <AccordionPreview context="playground" />
 
-### Functionality (with Code)
+## Functionality
 
-#### Basic Content and Label
+### Basic Content and Label
 
 The visible heading is set via `_label`. The content area is filled via the slot.
 
 <AccordionPreview context="feature" visibleProperties={['_label', '_slot']} />
 
-#### Heading Structure
+### Heading Structure
 
 The heading level is controlled via `_level`.
 
@@ -97,7 +95,7 @@ The heading level is controlled via `_level`.
 	initialProps={{ _label: 'Accordion Element', _level: 2 }}
 />
 
-#### State Control
+### State Control
 
 Initial opening is done via `_open`. For the non-interactive state, `_disabled` is available.
 
@@ -107,7 +105,7 @@ Initial opening is done via `_open`. For the non-interactive state, `_disabled` 
 	initialProps={{ _label: 'Accordion Element', _open: true }}
 />
 
-#### Event Binding
+### Event Binding
 
 For event handling and callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
