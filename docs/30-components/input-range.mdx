@@ -6,142 +6,255 @@ description: Beschreibung, Spezifikation und Beispiele für die InputRange-Kompo
 import Readme from '@site/readmes/input-range/readme.md';
 import InputRangePreview from '@site/src/components/previews/components/InputRange';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import LabelNote from './_shared/a11y-properties/label.md';
+import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import SuggestionsNote from './_shared/a11y-properties/suggestions.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
+import DisabledProp from './_shared/feature-properties/disabled.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
+import HideLabelFeature from './_shared/features/hide-label.md';
+import IconsFeature from './_shared/features/icons.md';
+import SuggestionsFeature from './_shared/features/suggestions.md';
+import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
+import EventsIntro from './_shared/api/events-intro.md';
+
 
 # InputRange
 
+
 <BetaDocsBanner />
 
-**Synonyme:** Slider
+**Synonyme:** Slider, Schieberegler, Bereichsregler, Range Input, Range Slider
 
-**Beschreibung:** Die **InputRange**-Komponente erzeugt ein interaktives Steuerelement zum Wählen eines numerischen Wertes innerhalb eines definierten Bereichs. Der Wert wird durch Verschieben eines Reglers oder Pfeiltasten angepasst.
+**Beschreibung:** Mit **InputRange** kann ein numerischer Wert innerhalb eines definierten Bereichs ausgewählt werden.
+
+Die Komponente basiert auf dem nativen HTML5-Eingabetyp `range` für den Schieberegler und ergänzt ihn um ein natives Zahlenfeld (Eingabetyp `number`). Beide Elemente zeigen denselben Wert an und profitieren von der standardisierten Unterstützung durch Browser und assistive Technologien.
+
+Der Wert kann mit Maus oder Touch über den Schieberegler oder im Zahlenfeld per direkter Eingabe bzw. mit den Pfeiltasten angepasst werden.
 
 ## Beispiel
 
-Darstellung einer InputRange-Komponente mit Standardausstattung:
+Standard-Schieberegler mit Beschriftung und Zahlenfeld:
 
 <InputRangePreview context="example" initialProps={{ _label: 'Lautstärke' }} />
 
 ## Barrierefreiheit
 
-- Das Label ist über das Attribut `_label` erforderlich und wird von assistiven Technologien korrekt gelesen.
-- Der aktuelle Wert wird der Komponente als `aria-valuenow` mitgeteilt.
-- Minimum und Maximum werden über `aria-valuemin` und `aria-valuemax` kommuniziert.
-- Der Schieberegler ist vollständig über die Tastatur bedienbar.
-- Hinweistexte über `_hint` werden von Screenreadern erkannt.
-- Fehlermeldungen über `_msg` werden von assistiven Technologien vorgelesen.
+* <LabelNote />
+* <ErrorMessageNote />
+* <SuggestionsNote />
+* KoliBri ergänzt den nativen Schieberegler um ein Zahlenfeld, das mit der Beschriftung verknüpft ist. Tastatur- und Screenreader-Bedienung erfolgen ausschließlich über dieses Zahlenfeld. Der Schieberegler ist nicht per Tastatur fokussierbar und mittels `aria-hidden` aus dem Accessibility-Tree entfernt, sodass der Wert nicht doppelt angesagt wird.
+* Über das Zahlenfeld lässt sich ein Wert exakt und ohne Ziehbewegung einstellen. Nutzende, denen präzise Zeigerbewegungen schwerfallen, erhalten damit eine gleichwertige Alternative zum Schieberegler.
+
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Kombination aus Schieberegler und Zahlenfeld | Der Schieberegler ermöglicht eine schnelle, visuelle Auswahl mit Maus und Touch. Das Zahlenfeld zeigt den genauen Wert an und erlaubt eine exakte Eingabe ohne Ziehbewegung (vgl. WCAG 2.2, Erfolgskriterium 2.5.7 „Ziehbewegungen“). |
+| Tastaturbedienung über das Zahlenfeld | Der Schieberegler ist nicht Teil der Tab-Reihenfolge und mittels `aria-hidden` vollständig aus dem Accessibility-Tree entfernt. Tastatur- und Screenreader-Nutzende bedienen die Komponente über das beschriftete Zahlenfeld und erhalten so nur ein Bedienelement mit einer Beschriftung. |
+| Gemeinsame Vorschlagsliste | Vorschlagswerte (`_suggestions`) werden in einem gemeinsamen `datalist`-Element bereitgestellt, das mit beiden Elementen verknüpft ist. Je nach Browser erscheinen sie am Schieberegler als Markierungen und am Zahlenfeld als Auswahlliste. |
+| Breite des Zahlenfelds | Die Breite des Zahlenfelds richtet sich nach der Stellenanzahl von `_min` und `_max` (mindestens vier Stellen), damit der Wert vollständig sichtbar bleibt. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/slider/" _target="_blank" _label="WAI-ARIA Slider Pattern"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG22/quickref/" _target="_blank" _label="WCAG 2.2 Guidelines"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range" _target="_blank" _label="MDN Web Docs: Input Type Range"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#range-state-(type=range)" _target="_blank" _label="HTML Living Standard: The input element - type range"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number" _target="_blank" _label="MDN Web Docs: Input Type Number"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html" _target="_blank" _label="WCAG 2.2 Understanding: Dragging Movements (2.5.7)"></kol-link>
 
 ## Verwendung
 
+- Nutzen Sie `_min` und `_max`, um den Wertebereich festzulegen. Ohne Angabe gilt der Bereich von `0` bis `100`.
+- Verwenden Sie `_step`, um die Schrittweite festzulegen. Ohne Angabe gilt die native Schrittweite von `1`.
+- Der über die Events `input` und `change` sowie über `getValue()` gemeldete Wert wird auf `_min` bzw. `_max` begrenzt. Ist die jeweilige Grenze `0`, findet diese Begrenzung derzeit nicht statt.
+- Wurde `_value` als Zeichenkette übergeben (z. B. `'50'`), liefern Events und `getValue()` den Wert ebenfalls als Zeichenkette, andernfalls als Zahl.
+
+**Hinweis:** Im Zahlenfeld können manuell auch Werte außerhalb des Bereichs bzw. Schrittmaßes eingegeben werden. Die Validierung der eingegebenen Werte muss auf Anwendungsebene erfolgen.
+
 ### Tastatursteuerung
 
-| Taste          | Funktion                                  |
-| -------------- | ----------------------------------------- |
-| `Tab`          | Fokussiert das Eingabefeld.               |
-| `Pfeil rechts` | Erhöht den Wert.                          |
-| `Pfeil links`  | Erniedrigt den Wert.                      |
-| `Pfeil oben`   | Erhöht den Wert.                          |
-| `Pfeil unten`  | Erniedrigt den Wert.                      |
-| `Pos1`         | Springt zum Minimumwert.                  |
-| `Ende`         | Springt zum Maximumwert.                  |
+<NativeKeyboardIntro />
+
+| Taste                       | Funktion                                                                                                   |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `Tab`                       | Fokus auf das Zahlenfeld bzw. das nächste fokussierbare Element setzen. Der Schieberegler wird übersprungen. |
+| `Shift+Tab`                 | Fokus auf das vorherige fokussierbare Element setzen.                                                      |
+| `Pfeil-Tasten (oben/unten)` | Erhöht oder verringert den Wert innerhalb von `_min` und `_max` entsprechend der in `_step` angegebenen Schrittweite. |
+| `Enter`                     | Umgebendes Formular absenden.                                                                              |
+
+<SubmitOnEnterNote />
+
+Die vom nativen Schieberegler bekannten Tasten (`Pfeil-Tasten (links/rechts)`, `Pos1`, `Ende`, `Bild auf/ab`) stehen nicht zur Verfügung, da der Schieberegler nicht fokussierbar ist. Die Pfeiltasten links/rechts bewegen im Zahlenfeld den Textcursor.
 
 ### Best Practices / Empfehlungen
 
-- Verwenden Sie aussagekräftige Beschriftungen über `_label`, um die Funktion des Schiebereglers deutlich zu machen.
-- Setzen Sie `_min` und `_max` konzeptionell sinnvoll. Die Standardwerte sind `_min="0"` und `_max="100"`.
-- Nutzen Sie `_step`, um größere oder kleinere Schrittweiten zu definieren (z.B. `_step="5"` für 5er-Schritte).
-- Geben Sie Hinweise über die Bedeutung von Minimal- und Maximalwert via `_hint`.
-- Kombinieren Sie die InputRange mit einer Textanzeige des aktuellen Wertes, um die Bedienbarkeit zu verbessern.
-- Achten Sie darauf, dass `_name` gesetzt ist, damit die Daten beim Formularversand mitgesendet werden.
+- Verwenden Sie eine aussagekräftige Beschriftung (`_label`), um den Zweck des Schiebereglers deutlich zu machen.
+- Wählen Sie `_min`, `_max` und `_step` so, dass sie den fachlichen Anforderungen entsprechen, beispielsweise `_step` = `5` für Fünferschritte.
+- Nennen Sie Einheiten (z. B. %, €) und die Bedeutung von Minimal- und Maximalwert in `_label` oder `_hint`, da das Zahlenfeld nur den reinen Zahlenwert anzeigt.
+- Verwenden Sie InputRange für Werte, bei denen eine ungefähre, visuelle Auswahl sinnvoll ist. Für die reine Eingabe exakter Zahlen eignet sich <kol-link _href="./input-number" _label="InputNumber"></kol-link> besser.
+- Setzen Sie `_name`, damit der Wert beim Absenden des Formulars übermittelt wird.
 
 ### Anwendungsfälle
 
 - Lautstärkeregelung in Multimedia-Anwendungen
 - Helligkeits- oder Kontrastanpassung
-- Altersfiltration, Preisbereichswahl in Suchformularen
+- Festlegen einer Obergrenze in Suchfiltern, beispielsweise eines Höchstpreises oder einer maximalen Entfernung
 - Schwellenwerteinstellung in Verwaltungsoberflächen
-- Skalierung oder Zoom-Kontrolle
+- Skalierung oder Zoom-Steuerung
 - Gewichtung oder Wertfestlegung in Bewertungssystemen
+
+### FAQ
+
+**Warum kann ich den Schieberegler nicht per Tab-Taste fokussieren?**  
+Der Schieberegler dient der Bedienung mit Maus und Touch. Tastatur- und Screenreader-Nutzende bedienen die Komponente über das Zahlenfeld, das den gleichen Wert anzeigt und über die Pfeiltasten verändert werden kann.
+
+**Kann ich einen Bereich mit zwei Griffen (von–bis) abbilden?**  
+Nein. InputRange verwaltet genau einen Wert. Für einen Wertebereich verwenden Sie zwei separate Felder, beispielsweise zwei InputRange- oder InputNumber-Komponenten für Minimal- und Maximalwert.
+
+**Welche Standardwerte gelten für `_min` und `_max`?**  
+Ohne Angabe gilt `_min` = `0` und `_max` = `100`.
 
 ## Playground
 
 Testen Sie die verschiedenen Eigenschaften der InputRange-Komponente:
 
-<InputRangePreview context="playground" />
+<InputRangePreview 
+	context="playground"
+	initialProps={{ 
+		_value: 50,
+	}} 
+/>
 
 ## Funktionalitäten
 
-### Basis-Konfiguration
+### Einfaches Eingabefeld
 
-Standard-InputRange mit Beschriftung, Minimum und Maximum:
+<BasicFeature />
 
-<InputRangePreview
+<InputRangePreview 
 	context="feature"
-	visibleProperties={['_label', '_min', '_max', '_step']}
-	initialProps={{ _label: 'Wert auswählen', _min: 0, _max: 100, _step: 1 }}
+	visibleProperties={['_label']}
+	initialProps={{ 
+		_label: 'Lautstärke',
+		_value: 50,
+	}} 
 />
 
-### Wertbereich und Schrittweite
+### Formularattribute
 
-Die Eigenschaften `_min`, `_max` und `_step` bestimmen den Wertebereich und die Schrittweite:
+<FormAttributesFeature />
 
-<InputRangePreview
-	context="feature"
-	visibleProperties={['_min', '_max', '_step', '_value']}
-	initialProps={{ _label: 'Preisspanne (€)', _min: 0, _max: 1000, _step: 50, _value: 250 }}
-/>
+- <DisabledProp />
 
-### Hinweistexte
-
-Zusätzliche Informationen können über `_hint` bereitgestellt werden:
-
-<InputRangePreview
-	context="feature"
-	visibleProperties={['_label', '_hint']}
-	initialProps={{ _label: 'Lautstärke', _hint: 'Schieberegler um die Lautstärke zu regulieren (0-100%)' }}
-/>
-
-### Deaktivierter Zustand
-
-Ein deaktiviertes Eingabefeld kann über das Attribut `_disabled` erreicht werden:
+Die Property wird auf beide nativen Elemente (Schieberegler und Zahlenfeld) übertragen.
 
 <InputRangePreview
 	context="feature"
 	visibleProperties={['_disabled']}
-	initialProps={{ _label: 'Deaktiviertes Feld', _disabled: true, _value: 50 }}
+	initialProps={{
+		_label: 'Helligkeit',
+		_value: 50,
+	}}
 />
 
-### Fehlermeldungen
+### Hinweistexte und Fehlermeldungen
 
-Das Attribut `_msg` erlaubt die Anzeige von Validierungshinweisen:
+<HintAndMsgFeature />
 
 <InputRangePreview
 	context="feature"
-	visibleProperties={['_label', '_msg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
 	initialProps={{
-		_label: 'Wertbereich',
-		_msg: { _description: 'Der Wert muss zwischen 10 und 90 liegen', _level: 'error' },
+		_label: 'Lautstärke (%)',
+		_hint: 'Wählen Sie einen Wert zwischen 10 und 90 %.',
+		_msg: { _description: 'Der Wert muss zwischen 10 und 90 liegen.' },
+		_touched: true,
+		_hideMsg: false,
 		_value: 5,
 	}}
 />
 
-### Events
+### Wertebereich und Schrittweite
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+Mit `_min`, `_max` und `_step` legen Sie den Wertebereich und die Schrittweite fest. Die Grenzen gelten für den Schieberegler und die Bedienung mit den Pfeiltasten im Zahlenfeld. Bei manueller Eingabe im Zahlenfeld können dennoch Werte außerhalb des Bereichs eingegeben werden; die an Events übergebenen Werte werden auf `_min` bzw. `_max` begrenzt (siehe [Verwendung](#verwendung)).
 
-| Event    | Auslöser                         | Value                           |
-| -------- | -------------------------------- | ------------------------------- |
-| `click`  | Eingabefeld wird angeklickt      | -                               |
-| `focus`  | Eingabefeld wird fokussiert      | -                               |
-| `blur`   | Eingabefeld verliert Fokus       | -                               |
-| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
-| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
+- `_min`: Minimaler Wert (Standard `0`)
+- `_max`: Maximaler Wert (Standard `100`)
+- `_step`: Schrittweite für Schieberegler und Pfeiltasten
+
+<InputRangePreview
+	context="feature"
+	visibleProperties={['_min', '_max', '_step', '_value']}
+	initialProps={{
+		_label: 'Höchstpreis (€)',
+		_min: 0,
+		_max: 1000,
+		_step: 50,
+		_value: 250,
+	}}
+/>
+
+### Label ausblenden
+
+<HideLabelFeature />
+
+<InputRangePreview
+	context="feature"
+	visibleProperties={['_label', '_hideLabel']}
+	initialProps={{
+		_label: 'Lautstärke',
+		_hideLabel: false,
+		_value: 50,
+	}}
+/>
+
+### Icons
+
+<IconsFeature />
+
+<InputRangePreview
+	context="feature"
+	visibleProperties={['_icons']}
+	initialProps={{
+		_label: 'Zoom',
+		_icons: {
+			left: 'kolicon-kolibri',
+		},
+		_value: 50,
+	}}
+/>
+
+### Vorschlagswerte (Suggestions)
+
+<SuggestionsFeature />
+
+Bei InputRange ist die Vorschlagsliste mit dem Schieberegler und dem Zahlenfeld verknüpft. Je nach Browser werden die Werte am Schieberegler als Markierungen und am Zahlenfeld als Auswahlliste angezeigt.
+
+<InputRangePreview
+	context="feature"
+	visibleProperties={['_suggestions']}
+	initialProps={{
+		_label: 'Deckkraft (%)',
+		_suggestions: [0, 25, 50, 75, 100],
+		_value: 50,
+	}}
+/>
 
 ## API
+
+### Events
+
+<EventsIntro />
+
+| Event     | Auslöser                                   | Value                                                         |
+| --------- | ------------------------------------------ | ------------------------------------------------------------- |
+| `click`   | Komponente wird angeklickt                 | -                                                             |
+| `focus`   | Zahlenfeld wird fokussiert                 | -                                                             |
+| `blur`    | Zahlenfeld verliert Fokus                  | -                                                             |
+| `keydown` | Taste wird im Zahlenfeld gedrückt          | -                                               |
+| `input`   | Wert wird durch Eingabe oder Schieben geändert | Aktueller Wert, begrenzt auf `_min`/`_max` (Zahl oder Zeichenkette) |
+| `change`  | Eingabe wurde abgeschlossen                | Aktueller Wert, begrenzt auf `_min`/`_max` (Zahl oder Zeichenkette) |
 
 <Readme />

@@ -6,6 +6,25 @@ description: Beschreibung, Spezifikation und Beispiele für die InputText-Kompon
 import Readme from '@site/readmes/input-text/readme.md';
 import InputTextPreview from '@site/src/components/previews/components/InputText';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import LabelNote from './_shared/a11y-properties/label.md';
+import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import SuggestionsNote from './_shared/a11y-properties/suggestions.md';
+import CharacterCounterNote from './_shared/a11y-properties/character-counter.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
+import DisabledProp from './_shared/feature-properties/disabled.md';
+import ReadOnlyProp from './_shared/feature-properties/read-only.md';
+import RequiredProp from './_shared/feature-properties/required.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
+import CharacterCounterFeature from './_shared/features/character-counter.md';
+import PlaceholderFeature from './_shared/features/placeholder.md';
+import HideLabelFeature from './_shared/features/hide-label.md';
+import IconsFeature from './_shared/features/icons.md';
+import SmartButtonFeature from './_shared/features/smart-button.md';
+import SuggestionsFeature from './_shared/features/suggestions.md';
+import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
+import EventsIntro from './_shared/api/events-intro.md';
 
 
 # InputText
@@ -13,251 +32,296 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Texteingabefeld, Textfeld, Eingabefeld, Text Input, Text Field
+**Synonyme:** Texteingabefeld, Textfeld, Eingabefeld, Suchfeld, Text Input, Text Field
 
-**Beschreibung:** Mit **InputText** können Texte und textbasierte Werte eingegeben und bearbeitet werden.
+**Beschreibung:** Mit **InputText** können kurze Texte und textbasierte Werte eingegeben und bearbeitet werden.
 
-Die Komponente basiert auf dem nativen HTML5-Element `<input>` und unterstützt verschiedene Eingabetypen wie `text`, `email`, `password`, `search`, `tel` und `url`.
+Die Komponente basiert auf dem nativen HTML5-Element `input` und unterstützt über `_type` die Eingabetypen `text` (Standard), `search`, `url` und `tel`. Sie profitiert dadurch von deren Semantik sowie der standardisierten Unterstützung durch Browser und assistive Technologien.
+
+Für E-Mail-Adressen, Passwörter und Zahlen stehen mit <kol-link _href="../components/input-email" _label="InputEmail"></kol-link>, <kol-link _href="../components/input-password" _label="InputPassword"></kol-link> und <kol-link _href="../components/input-number" _label="InputNumber"></kol-link> eigene Komponenten zur Verfügung.
 
 ## Beispiel
 
-Standard-Eingabefeld mit Beschriftung:
+Standard-Eingabefeld für Texte ohne optional gesetzte Felder:
 
-<InputTextPreview context="example" initialProps={{ _label: 'Texteingabe' }} />
+<InputTextPreview context="example" />
 
 ## Barrierefreiheit
 
-- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
-- Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
-- Je nach verwendetem Eingabetyp stellen Browser und assistive Technologien unterschiedliche Funktionen und Eingabehilfen bereit.
-- Vorschlagswerte (`_suggestions`) werden über das native HTML-Element umgesetzt. Die Unterstützung durch Browser und assistive Technologien ist uneinheitlich. Verlassen Sie sich bei unverzichtbaren Eingabehilfen daher nicht ausschließlich auf diese native Autovervollständigung.
+* <LabelNote />
+* <ErrorMessageNote />
+* <SuggestionsNote />
+* <CharacterCounterNote />
+* Beim Eingabetyp `search` ersetzt KoliBri die browsereigene Löschen-Schaltfläche durch eine eigene Schaltfläche „Suche löschen“. Sie ist als Icon-Button mit übersetztem zugänglichem Namen umgesetzt, per Tastatur erreichbar und nur sichtbar, solange das Feld einen Wert enthält. Nach dem Leeren wird der Fokus zurück in das Eingabefeld gesetzt.
+* Die native Formatprüfung des Browsers (z. B. über `_pattern`, `_required` oder den Eingabetyp `url`) wirkt sich nicht auf die Fehlerdarstellung der Komponente aus. Fehlermeldung und `aria-invalid` werden ausschließlich über `_msg` in Verbindung mit `_touched` gesteuert. Werten Sie die Validierung daher in der Anwendung aus und stellen Sie eine verständliche Fehlermeldung über `_msg` bereit.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
-| Verwendung des nativen HTML5-Elements `<input>` | Die Komponente nutzt bewusst das native HTML5-Element und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
-| Aktualisierung des Zeichenzählers | Bei aktiviertem Zeichenzähler (`_has-counter`) wird dieser mit einer Verzögerung von 1000 ms aktualisiert, um Screenreader nicht zu unterbrechen. Zusätzlich wird ein versteckter, nur für assistive Technologien sichtbarer Hinweis bereitgestellt. |
-| Fokusmanagement | Die Basis-Komponente setzt den nativen Fokusring zurück. Der sichtbare Fokusindikator wird durch das jeweils verwendete Theme bereitgestellt. |
+| Verwendung des nativen HTML5-Elements `input` | Die Komponente nutzt bewusst das native HTML5-Element und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
+| Beschränkung von `_type` auf `text`, `search`, `url` und `tel` | Für E-Mail-Adressen, Passwörter und Zahlen gelten eigene Anforderungen an Verhalten und Barrierefreiheit. Dafür stehen die spezialisierten Komponenten InputEmail, InputPassword und InputNumber bereit. |
+| Eigene Schaltfläche „Suche löschen“ beim Eingabetyp `search` | Die browsereigene Löschen-Schaltfläche ist nicht in allen Browsern vorhanden, nicht per Tastatur erreichbar und nicht einheitlich beschriftet. KoliBri blendet sie daher aus und stellt stattdessen eine eigene, per Tastatur erreichbare Schaltfläche mit zugänglichem Namen bereit. |
+| Keine automatische Übernahme der nativen Formatprüfung | Der Fehlerzustand wird ausschließlich über `_msg` und `_touched` gesteuert. So bestimmt die Anwendung Zeitpunkt und Wortlaut der Fehlermeldung, und Fehler werden in allen Formular-Komponenten einheitlich dargestellt und mit dem Feld verknüpft. |
+| Verzögerte Ansage des Zeichenzählers | Die Live-Region des Zeichenzählers wird erst 1000 ms nach der letzten Eingabe aktualisiert, damit Screenreader die Eingabe nicht durch fortlaufende Ansagen unterbrechen. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" _target="_blank" _label="MDN Web Docs: Input Element"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text" _target="_blank" _label="MDN Web Docs: Input Type Text"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/search" _target="_blank" _label="MDN Web Docs: Input Type Search"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url" _target="_blank" _label="MDN Web Docs: Input Type URL"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel" _target="_blank" _label="MDN Web Docs: Input Type Tel"></kol-link>
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/datalist" _target="_blank" _label="MDN Web Docs: Datalist"></kol-link>
-- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#the-input-element" _target="_blank" _label="HTML Living Standard: The Input Element"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#the-input-element" _target="_blank" _label="HTML Living Standard: The input element"></kol-link>
 
 ## Verwendung
 
-- Wählen Sie den zum Anwendungsfall passenden Eingabetyp (`text`, `email`, `password`, `search`, `tel` oder `url`).
-- Nutzen Sie `_max-length`, um die maximal zulässige Anzahl an Zeichen zu begrenzen.
-- Verwenden Sie `_max-length-behavior`, um festzulegen, ob die Zeichenbegrenzung nativ durchgesetzt oder lediglich angezeigt wird.
+- Wählen Sie mit `_type` den zum Anwendungsfall passenden Eingabetyp (`text`, `search`, `url` oder `tel`).
+- Nutzen Sie `_maxLength`, um die maximal zulässige Anzahl an Zeichen zu begrenzen, und legen Sie mit `_maxLengthBehavior` fest, ob die Grenze nativ durchgesetzt (`'hard'`, Standard) oder lediglich angezeigt wird (`'soft'`).
+- Verwenden Sie `_pattern`, wenn die Eingabe einem bestimmten Format entsprechen muss.
+- Steuern Sie mit `_autoComplete` die Autovervollständigung des Browsers und mit `_spellCheck` die Rechtschreibprüfung.
+
+**Hinweis:** `_autoComplete` ist standardmäßig auf `'off'` gesetzt. Soll der Browser gespeicherte Werte vorschlagen, muss `_autoComplete` explizit gesetzt werden – idealerweise mit einem passenden Autocomplete-Token.
+
+**Hinweis:** Die native Formatprüfung des Browsers (z. B. über `_pattern`, `_required` oder den Eingabetyp `url`) wirkt sich nicht auf die Fehlerdarstellung der Komponente aus. Fehlermeldung und `aria-invalid` werden ausschließlich über `_msg` in Verbindung mit `_touched` gesteuert. Die Validierung muss daher auf Anwendungsebene ausgewertet und über `_msg` bereitgestellt werden.
 
 ### Tastatursteuerung
 
-Die Tastaturbedienung wird durch den Browser und das Betriebssystem bestimmt. Daher können sich einzelne Tastaturfunktionen je nach Browser, Betriebssystem und verwendetem Eingabetyp unterscheiden.
+<NativeKeyboardIntro />
 
-Typischerweise werden folgende Funktionen unterstützt:
+| Taste                       | Funktion                                                                                              |
+| --------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `Tab`                       | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen.                              |
+| `Shift+Tab`                 | Fokus auf das vorherige fokussierbare Element setzen.                                                 |
+| `Pfeil-Tasten (links/rechts)` | Cursor innerhalb des Eingabewerts bewegen.                                                          |
+| `Pfeil-Tasten (oben/unten)` | Bei gesetzten Vorschlagswerten (`_suggestions`): Vorschlagsliste öffnen und durchlaufen.              |
+| `Pos1` / `Ende`             | Cursor an den Anfang bzw. das Ende des Eingabewerts setzen.                                           |
+| `Enter`                     | Umgebendes Formular absenden.                                                                         |
 
-| Taste           | Funktion                                                                 |
-| --------------- | ------------------------------------------------------------------------ |
-| `Tab`           | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
-| `Shift+Tab`     | Fokus auf das vorherige fokussierbare Element setzen.                    |
-| `Pfeiltasten`   | Cursor innerhalb des Eingabefelds bewegen.                               |
-| `Pos1` / `Ende` | Cursor an den Anfang/Ende des Eingabewerts setzen.                       |
+<SubmitOnEnterNote />
 
-**Hinweis:** Beim Eingabetyp `search` kann die `Esc`-Taste das Eingabefeld je nach Browser leeren. Dieses Verhalten ist browserabhängig und kann daher nicht für alle Browser konsistent gewährleistet werden. Weitere Informationen finden Sie unter <kol-link _href="https://public-ui.github.io/docs/known-issues" _target="_blank" _label="Bekannte Probleme"></kol-link>.
+**Hinweis:** Beim Eingabetyp `search` ist die Schaltfläche „Suche löschen“ per `Tab` erreichbar und wird mit `Enter` oder `Leertaste` ausgelöst. Ob zusätzlich die `Esc`-Taste das Feld leert, hängt vom Browser ab.
 
 ### Best Practices / Empfehlungen
 
-- Wählen Sie den Eingabetyp passend zum erwarteten Eingabewert, beispielsweise `email` für E-Mail-Adressen oder `url` für Internetadressen.
-- Begrenzen Sie die Eingabelänge bei Bedarf über `_max-length` und wählen Sie mit `_max-length-behavior` das zum Anwendungsfall passende Verhalten.
+- Wählen Sie den Eingabetyp passend zum erwarteten Eingabewert, beispielsweise `url` für Internetadressen oder `tel` für Telefonnummern. Mobile Browser können dadurch eine passende Bildschirmtastatur anbieten.
+- Verwenden Sie für E-Mail-Adressen, Passwörter und Zahlen die spezialisierten Komponenten InputEmail, InputPassword und InputNumber.
+- Begrenzen Sie die Eingabelänge bei Bedarf über `_maxLength` und wählen Sie mit `_maxLengthBehavior` das zum Anwendungsfall passende Verhalten.
+- Setzen Sie `_autoComplete` bewusst ein. Verwenden Sie für Angaben zur Person passende Autocomplete-Tokens (z. B. `name`, `street-address`, `tel`), damit Browser und assistive Technologien die Eingabe unterstützen können.
+- Aktivieren oder deaktivieren Sie `_spellCheck` abhängig vom Anwendungsfall, beispielsweise für Freitextfelder oder technische Eingaben.
 - Nutzen Sie Vorschlagswerte (`_suggestions`) als unterstützende Eingabehilfe. Stellen Sie unverzichtbare Informationen jedoch immer zusätzlich auf anderem Wege bereit.
 - Verwenden Sie `_placeholder` ausschließlich als zusätzliche Orientierung und nicht als Ersatz für eine aussagekräftige Beschriftung (`_label`).
 - Verwenden Sie bei längeren Freitexten die <kol-link _href="../components/textarea" _label="Textarea-Komponente"></kol-link> anstelle von InputText.
-Setzen Sie `_auto-complete` bewusst ein. Verwenden Sie `'on'` oder einen passenden Autocomplete-Token, wenn Browser-Autovervollständigung erwünscht ist.
-- Aktivieren oder deaktivieren Sie `_spell-check` abhängig vom Anwendungsfall, beispielsweise für Freitextfelder oder technische Eingaben.
 
 ### Anwendungsfälle
 
 - Erfassung kurzer Texteingaben, beispielsweise Namen oder Adressen
 - Suchfelder
-- Eingabe von Kontaktdaten, beispielsweise E-Mail-Adressen oder Telefonnummern
+- Eingabe von Telefonnummern
 - Eingabe von Internetadressen (URLs)
-- Passworteingaben
+- Eingabe von Postleitzahlen, Kunden- oder Aktenzeichen und anderen Kennungen, die nicht mathematisch verarbeitet werden
 
 ### FAQ
 
 **Wann sollte ich `_hideLabel` verwenden?**  
-Verwenden Sie `_hideLabel` nur, wenn die Beschriftung visuell ausgeblendet werden soll. Das Label bleibt für assistive Technologien verfügbar und dient weiterhin als zugängliche Beschriftung des Eingabefelds.
+Verwenden Sie `_hideLabel` nur, wenn der Zweck des Eingabefelds durch den direkten visuellen Kontext eindeutig ist. Die Beschriftung bleibt für assistive Technologien als zugänglicher Name erhalten und wird sehenden Nutzenden als Tooltip angezeigt.
 
 **Wie kann ich Eingaben validieren?**  
-Nutzen Sie die nativen Validierungsmöglichkeiten des HTML-Elements, beispielsweise `_required`, `_pattern`, `_min-length` oder `_max-length`. Fehlermeldungen können über `_msg` ausgegeben werden.
+Nutzen Sie die nativen Attribute `_required`, `_pattern` und `_maxLength`, um Anforderungen an die Eingabe festzulegen. Die Komponente zeigt native Validierungsergebnisse jedoch nicht selbst an: Werten Sie die Validierung in Ihrer Anwendung aus und stellen Sie Fehlermeldungen über `_msg` zusammen mit `_touched` bereit.
 
 **Kann ich Vorschläge anzeigen?**  
-Ja, über `_suggestions` können Vorschlagswerte bereitgestellt werden. Da die Unterstützung von `datalist` je nach Browser und assistiven Technologien unterschiedlich ausfällt, sollten Vorschläge nur als ergänzende Eingabehilfe verwendet werden.
+Ja, über `_suggestions` können Vorschlagswerte bereitgestellt werden. Da die Unterstützung von `datalist` je nach Browser und assistiver Technologie unterschiedlich ausfällt, sollten Vorschläge nur als ergänzende Eingabehilfe verwendet werden.
 
-**Wie unterscheiden sich `_max-length` und `_max-length-behavior`?**  
-Mit `_max-length` wird die maximale Anzahl an Zeichen festgelegt. Über `_max-length-behavior` kann gesteuert werden, ob die Eingabe nativ begrenzt oder lediglich die Zeichenanzahl angezeigt wird.
+**Wie unterscheiden sich `_maxLength` und `_maxLengthBehavior`?**  
+Mit `_maxLength` wird die maximale Anzahl an Zeichen festgelegt. `_maxLengthBehavior` steuert, ob die Eingabe nativ begrenzt wird (`'hard'`, Standard – auch ohne Zeichenzähler) oder weitere Eingaben zugelassen werden und der Zähler die Überschreitung anzeigt (`'soft'`).
+
+**Kann ich ein Suchfeld per Tastatur leeren?**  
+Ja. Beim Eingabetyp `search` stellt KoliBri eine eigene Schaltfläche „Suche löschen“ bereit, sobald das Feld einen Wert enthält. Sie ist per Tastatur erreichbar und setzt den Fokus nach dem Leeren zurück in das Eingabefeld. Ob zusätzlich `Esc` das Feld leert, hängt vom Browser ab.
 
 ## Playground
 
-Testen Sie die verschiedenen Eigenschaften des Eingabefelds
+Testen Sie die verschiedenen Eigenschaften des InputText-Feldes:
 
 <InputTextPreview context="playground" />
 
 ## Funktionalitäten
 
-### Basis-Eingabefeld
+### Einfaches Eingabefeld
 
-Ein einfaches Eingabefeld mit Label:
+<BasicFeature />
 
 <InputTextPreview
 	context="feature"
-	initialProps={{ _label: 'Texteingabe' }}
-	visibleProperties={['_label', '_placeholder']}
+	visibleProperties={['_label']}
+	initialProps={{
+		_label: 'Vorname',
+	}}
 />
 
-### Eingabefeld-Typen
+### Formularattribute
 
-InputText unterstützt verschiedene Eingabe-Typen über das Attribut `_type`:
+<FormAttributesFeature />
+
+- <DisabledProp />
+- <ReadOnlyProp />
+- <RequiredProp />
+
+Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `input`-Elements übertragen.
 
 <InputTextPreview
 	context="feature"
-	initialProps={{ _label: 'Eingabetyp', _type: 'text' }}
+	visibleProperties={['_disabled', '_readOnly', '_required']}
+	initialProps={{
+		_label: 'Nachname',
+	}}
+/>
+
+### Hinweistexte und Fehlermeldungen
+
+<HintAndMsgFeature />
+
+<InputTextPreview
+	context="feature"
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	initialProps={{
+		_label: 'Benutzername',
+		_hint: 'Mindestens 3 Zeichen',
+		_msg: { _description: 'Bitte geben Sie einen Benutzernamen an.' },
+		_touched: true,
+		_hideMsg: false,
+	}}
+/>
+
+### Eingabetypen
+
+Mit `_type` legen Sie fest, welcher native Eingabetyp verwendet wird. Browser können abhängig vom Typ eine passende Bildschirmtastatur oder eine eigene Formatprüfung anbieten.
+
+Verfügbare Typen sind:
+
+- `text` (Standard): Eingabe von beliebigem Text
+- `search`: Suchfeld mit Schaltfläche „Suche löschen“
+- `url`: Eingabe von Internetadressen
+- `tel`: Eingabe von Telefonnummern
+
+Beim Eingabetyp `search` ergänzt KoliBri eine Schaltfläche „Suche löschen“, über die der Wert mit einer einzigen Aktion entfernt wird. Sie wird nur angezeigt, solange das Feld einen Wert enthält, und bei deaktiviertem Feld (`_disabled`) ausgeblendet. Die browsereigene Löschen-Schaltfläche wird dafür ausgeblendet.
+
+<InputTextPreview
+	context="feature"
 	visibleProperties={['_type']}
+	initialProps={{
+		_label: 'Suche',
+		_type: 'search',
+		_value: 'KoliBri',
+	}}
 />
 
-**Verfügbare Typen:**
-- `text` (Standard): Normales Textfeld
-- `search`: Suchfeld mit ESC-Funktion zum Löschen
-- `tel`: Für Telefonnummern
-- `url`: Für URLs mit entsprechender Validierung
+### Zeichenbegrenzung und Zeichenzähler
+
+<CharacterCounterFeature />
+
+<InputTextPreview
+	context="feature"
+	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
+	initialProps={{
+		_label: 'Kurzbeschreibung',
+		_hasCounter: true,
+		_maxLength: 50,
+	}}
+/>
+
+### Autovervollständigung und Rechtschreibprüfung
+
+Mit `_autoComplete` steuern Sie, ob der Browser gespeicherte Werte vorschlagen darf. Der Standardwert ist `'off'`. Neben `'on'` können Sie einen Autocomplete-Token wie `name`, `street-address` oder `tel` angeben, damit der Browser passende Werte zuordnen kann. Mit `_spellCheck` aktivieren oder deaktivieren Sie die Rechtschreibprüfung des Browsers (natives Attribut `spellcheck`).
+
+<InputTextPreview
+	context="feature"
+	visibleProperties={['_autoComplete', '_spellCheck']}
+	initialProps={{
+		_label: 'Vollständiger Name',
+		_autoComplete: 'name',
+		_spellCheck: false,
+	}}
+/>
+
+### Placeholder
+
+<PlaceholderFeature />
+
+<InputTextPreview
+	context="feature"
+	visibleProperties={['_placeholder']}
+	initialProps={{
+		_label: 'Ort',
+		_placeholder: 'z. B. Berlin',
+	}}
+/>
+
+### Label ausblenden
+
+<HideLabelFeature />
+
+<InputTextPreview
+	context="feature"
+	visibleProperties={['_label', '_hideLabel']}
+	initialProps={{
+		_label: 'Suchbegriff',
+		_hideLabel: false,
+	}}
+/>
 
 ### Icons
 
-Links und rechts vom Eingabefeld können Icons platziert werden:
+<IconsFeature />
 
 <InputTextPreview
 	context="feature"
-	initialProps={{ _label: 'Mit Icons', _icons: { left: 'kolibri-icon-24', right: 'kolibri-icon-24' } }}
 	visibleProperties={['_icons']}
+	initialProps={{
+		_label: 'Webseite',
+		_icons: {
+			left: 'kolicon-kolibri',
+		},
+	}}
 />
 
-### Validierungszustände
+### SmartButton
 
-Status-Eigenschaften zur Steuerung von Validierung und Interaktion:
+<SmartButtonFeature />
 
 <InputTextPreview
 	context="feature"
-	initialProps={{ _label: 'Eingabefeld' }}
-	visibleProperties={['_disabled', '_readOnly', '_required', '_touched']}
-/>
-
-**Verfügbare Zustände:**
-- `_disabled`: Deaktiviert das Feld (mit Begründung nutzen)
-- `_readOnly`: Feld ist lesbar, aber nicht editierbar
-- `_required`: Kennzeichnet Pflichtfelder
-- `_touched`: Zeigt an, ob das Feld vom Nutzer angefasst wurde
-
-### Label-Verwaltung
-
-Label können visuell verborgen sein, bleiben aber für assistive Technologien sichtbar:
-
-<InputTextPreview
-	context="feature"
-	initialProps={{ _label: 'Verborgenes Label', _hideLabel: true, _placeholder: 'Platzhalter' }}
-	visibleProperties={['_hideLabel']}
+	visibleProperties={['_smartButton']}
+	initialProps={{ _label: 'Mit SmartButton', _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
 />
 
 ### Vorschlagswerte (Suggestions)
 
-Über `_suggestions` können Vorschlagswerte bereitgestellt werden, die während der Eingabe als auswählbare Datenliste angezeigt werden:
+<SuggestionsFeature />
 
 <InputTextPreview
 	context="feature"
-	visibleProperties={['_label', '_suggestions']}
+	visibleProperties={['_suggestions']}
 	initialProps={{
 		_label: 'Anrede',
 		_suggestions: ['Herr', 'Frau', 'Firma'],
 	}}
 />
 
-**Verfügbares Attribut:**
-- `_suggestions`: Liste von Vorschlagswerten für die Datalist-Autovervollständigung
-
-### Zeichenbegrenzung und Zeichenzähler
-
-Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen und gleichzeitig visuelles Feedback geben:
-
-<InputTextPreview
-	context="feature"
-	initialProps={{ _label: 'Mit Zeichenzähler', _hasCounter: true, _maxLength: 50 }}
-	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
-/>
-
-#### Attribute
-
-| Attribut | Typ | Standard | Beschreibung |
-| ------------------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_has-counter`         | `boolean`          | `false`  | Globaler Schalter für den Zeichenzähler. Nur wenn dieses Attribut **gesetzt (= true)** ist, wird überhaupt ein Zähler ausgegeben.                                                                                                                                                           |
-| `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
-| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`-Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
-
-#### Ausgabevarianten
-
-| Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
-| ---: | --------------------- | ------------- | ---------------------- | ---------------------------------------------------------- |
-| 1    | *(leer)* oder `false` | —             | —                      | — (kein Zähler)                                            |
-| 2    | `true`                | *(leer)*      | —                      | `n Zeichen`                                                |
-| 3    | `true`                | 50            | *(leer)* oder `hard`   | `n/50 Zeichen`                                             |
-| 4    | `true`                | 50            | `soft`                 | `noch 30 Zeichen verfügbar`<br />*(bzw. `5 Zeichen zu viel`)* |
-
->  Wird `_max-length-behavior="soft"` verwendet, wird das native `maxlength`-Attribut **nicht** gesetzt – das Eingabefeld wird also nicht hart begrenzt.
-
-#### Barrierefreiheit
-
-* Der Zähler aktualisiert sich mit einer Verzögerung von **500 ms**, damit Screenreader-Ereignisse gebündelt werden und das Tippen nicht unterbrechen.
-* Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa:
-  *„Sie können bis zu 10 Zeichen eingeben.“*
-
-#### Zusammenfassung
-
-- Ohne `_has-counter` gibt es **nie** einen Zähler.
-- Mit `_has-counter` **und ohne** `_max-length` wird nur die aktuell eingegebene Zeichenzahl angezeigt.
-- Mit `_has-counter` **und** `_max-length` bestimmt `_max-length-behavior`, ob die Grenze hart (`hard`) oder weich (`soft`) umgesetzt wird.
-
-### SmartButton
-
-Ein Schaltfläche mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLabel`):
-
-<InputTextPreview
-	context="feature"
-	initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
-	visibleProperties={['_smartButton']}
-/>
-
-### Hinweistexte und Fehlermeldungen
-
-Zusätzliche Informationen und Fehler-Feedback:
-
-<InputTextPreview
-	context="feature"
-	initialProps={{ _label: 'Mit Hinweis', _hint: 'Das ist ein Hinweis', _msg: 'Das ist eine Fehlermeldung' }}
-	visibleProperties={['_hint', '_msg']}
-/>
+## API
 
 ### Events
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+<EventsIntro />
 
-| Event    | Auslöser                         | Value                           |
-|----------|----------------------------------|---------------------------------|
-| `click`  | Eingabefeld wird angeklickt      | -                               |
-| `focus`  | Eingabefeld wird fokussiert      | -                               |
-| `blur`   | Eingabefeld verliert Fokus       | -                               |
-| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
-| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
+| Event     | Auslöser                           | Value                           |
+| --------- | ---------------------------------- | ------------------------------- |
+| `click`   | Eingabefeld wird angeklickt        | -                               |
+| `focus`   | Eingabefeld wird fokussiert        | -                               |
+| `blur`    | Eingabefeld verliert Fokus         | -                               |
+| `keydown` | Taste wird im Eingabefeld gedrückt | -                 |
+| `input`   | Wert wird durch Eingabe geändert   | Aktueller Wert des Eingabefelds |
+| `change`  | Eingabe wurde abgeschlossen        | Aktueller Wert des Eingabefelds |
 
-## API
+**Hinweis:** Das Leeren über die Schaltfläche „Suche löschen“ (Eingabetyp `search`) löst derzeit weder `input` noch `change` aus. Soll die Anwendung darauf reagieren, beispielsweise um Suchergebnisse zurückzusetzen, muss sie den Wert anderweitig abfragen (z. B. über `getValue()`).
 
 <Readme />

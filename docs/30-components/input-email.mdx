@@ -6,74 +6,100 @@ description: Beschreibung, Spezifikation und Beispiele für die InputEmail-Kompo
 import Readme from '@site/readmes/input-email/readme.md';
 import InputEmailPreview from '@site/src/components/previews/components/InputEmail';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
-import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import LabelNote from './_shared/a11y-properties/label.md';
+import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import SuggestionsNote from './_shared/a11y-properties/suggestions.md';
+import CharacterCounterNote from './_shared/a11y-properties/character-counter.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
+import DisabledProp from './_shared/feature-properties/disabled.md';
+import ReadOnlyProp from './_shared/feature-properties/read-only.md';
+import RequiredProp from './_shared/feature-properties/required.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
+import CharacterCounterFeature from './_shared/features/character-counter.md';
+import PlaceholderFeature from './_shared/features/placeholder.md';
+import HideLabelFeature from './_shared/features/hide-label.md';
+import IconsFeature from './_shared/features/icons.md';
+import SmartButtonFeature from './_shared/features/smart-button.md';
+import SuggestionsFeature from './_shared/features/suggestions.md';
+import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
+import EventsIntro from './_shared/api/events-intro.md';
+
 
 # InputEmail
+
 
 <BetaDocsBanner />
 
 **Synonyme:** E-Mail-Eingabefeld, E-Mail-Feld, Email Input, Email Field
 
-**Beschreibung:** Mit **InputEmail** können E-Mail-Adressen eingegeben und bearbeitet werden.
+**Beschreibung:** Mit **InputEmail** können eine oder mehrere E-Mail-Adressen eingegeben und bearbeitet werden.
 
-Die Komponente basiert auf dem nativen HTML5-Eingabetyp `email` und unterstützt die Eingabe einer oder mehrerer E-Mail-Adressen.
+Die Komponente basiert auf dem nativen HTML5-Eingabetyp `email` und profitiert dadurch von dessen Semantik, der browserseitigen Formatprüfung sowie der standardisierten Unterstützung durch Browser und assistive Technologien. Mobile Browser bieten für diesen Eingabetyp in der Regel eine angepasste Bildschirmtastatur an.
 
 ## Beispiel
 
-Darstellung der Komponente ohne optional gesetzte Felder.
+Standard-Eingabefeld für E-Mail-Adressen ohne optional gesetzte Felder:
 
 <InputEmailPreview context="example" />
 
 ## Barrierefreiheit
 
-- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
-- Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
-- Ist `_multiple` gesetzt, wird die Eingabe mehrerer, durch Komma getrennter E-Mail-Adressen erwartet und entsprechend an assistive Technologien kommuniziert.
-- Über `_icons` eingebundene Icons sind rein dekorativ und werden vor assistiven Technologien verborgen (`aria-hidden`).
+* <LabelNote />
+* <ErrorMessageNote />
+* <SuggestionsNote />
+* <CharacterCounterNote />
+* Die native Formatprüfung des Eingabetyps `email` wirkt sich nicht auf die Fehlerdarstellung der Komponente aus. Fehlermeldung und `aria-invalid` werden ausschließlich über `_msg` in Verbindung mit `_touched` gesteuert. Werten Sie die Validierung daher in der Anwendung aus und stellen Sie eine verständliche Fehlermeldung über `_msg` bereit.
+* `_multiple` wird unverändert als natives Attribut `multiple` übergeben. KoliBri ergänzt keine eigene Ansage, dass mehrere Adressen erwartet werden. Weisen Sie über die Beschriftung oder `_hint` darauf hin, dass mehrere Adressen durch Kommas getrennt eingegeben werden können.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
-| Verwendung des nativen HTML5-Eingabetyps `email` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp `email` und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
-| Aktualisierung des Zeichenzählers | Bei aktiviertem Zeichenzähler (`_has-counter`) wird dieser mit einer Verzögerung von 1000 ms aktualisiert, um Screenreader nicht bei jeder Eingabe zu unterbrechen. Ist kein Zeichenzähler aktiv, aber `_max-length` gesetzt, wird stattdessen ein versteckter, nur für assistive Technologien sichtbarer Hinweis bereitgestellt. |
+| Verwendung des nativen HTML5-Eingabetyps `email` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
+| Keine automatische Übernahme der nativen Formatprüfung | Der Fehlerzustand wird ausschließlich über `_msg` und `_touched` gesteuert. So bestimmt die Anwendung Zeitpunkt und Wortlaut der Fehlermeldung, und Fehler werden in allen Formular-Komponenten einheitlich dargestellt und mit dem Feld verknüpft. |
+| `_multiple` und `_pattern` als native Attribute | Die Prüfung mehrerer, durch Kommas getrennter Adressen sowie zusätzlicher Formatvorgaben übernimmt der Browser. Die Komponente teilt den Wert nicht selbst auf. |
+| Verzögerte Ansage des Zeichenzählers | Die Live-Region des Zeichenzählers wird erst 1000 ms nach der letzten Eingabe aktualisiert, damit Screenreader die Eingabe nicht durch fortlaufende Ansagen unterbrechen. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email" _target="_blank" _label="MDN Web Docs: Input Email"></kol-link>
-- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#email-state-(type=email)" _target="_blank" _label="HTML Living Standard: Input Email"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email" _target="_blank" _label="MDN Web Docs: Input Type Email"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#email-state-(type=email)" _target="_blank" _label="HTML Living Standard: The input element - type email"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/datalist" _target="_blank" _label="MDN Web Docs: Datalist"></kol-link>
 
 ## Verwendung
 
-- Verwenden Sie `_multiple`, um die Eingabe mehrerer, durch Komma getrennter E-Mail-Adressen zu ermöglichen.
-- Nutzen Sie `_max-length`, um die maximal zulässige Anzahl an Zeichen zu begrenzen.
-- Verwenden Sie `_max-length-behavior`, um festzulegen, ob die Zeichenbegrenzung nativ durchgesetzt oder lediglich angezeigt wird.
+- Verwenden Sie `_multiple`, um die Eingabe mehrerer, durch Kommas getrennter E-Mail-Adressen zu ermöglichen.
 - Nutzen Sie `_pattern`, wenn zusätzlich zur nativen E-Mail-Validierung weitere Formatvorgaben erforderlich sind.
+- Nutzen Sie `_maxLength`, um die maximal zulässige Anzahl an Zeichen zu begrenzen, und legen Sie mit `_maxLengthBehavior` fest, ob die Grenze nativ durchgesetzt (`'hard'`, Standard) oder lediglich angezeigt wird (`'soft'`).
+- Setzen Sie `_autoComplete` auf `'email'`, wenn der Browser gespeicherte E-Mail-Adressen vorschlagen soll. Der Standardwert ist `'off'`.
 
-**Hinweis:** Die native Formatprüfung des HTML5-Eingabetyps `email` erfolgt unabhängig von `_msg` und `_touched`. Sollen Validierungsfehler in der Komponente angezeigt werden, müssen diese durch die Anwendung ausgewertet und über `_msg` sowie `_touched="true"` bereitgestellt werden.
+**Hinweis:** Die native Formatprüfung des HTML5-Eingabetyps `email` erfolgt unabhängig von `_msg` und `_touched`. Sollen Validierungsfehler in der Komponente angezeigt werden, müssen diese durch die Anwendung ausgewertet und über `_msg` bereitgestellt werden.
 
 ### Tastatursteuerung
 
-Die Tastaturbedienung wird durch den Browser und das Betriebssystem bestimmt. Daher können sich einzelne Tastaturfunktionen je nach Browser, Betriebssystem und Endgerät unterscheiden.
+<NativeKeyboardIntro />
 
-Typischerweise werden folgende Funktionen unterstützt:
+| Taste                         | Funktion                                                                                 |
+| ----------------------------- | ---------------------------------------------------------------------------------------- |
+| `Tab`                         | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen.                 |
+| `Shift+Tab`                   | Fokus auf das vorherige fokussierbare Element setzen.                                    |
+| `Pfeil-Tasten (links/rechts)` | Cursor innerhalb des Eingabewerts bewegen.                                               |
+| `Pfeil-Tasten (oben/unten)`   | Bei gesetzten Vorschlagswerten (`_suggestions`): Vorschlagsliste öffnen und durchlaufen. |
+| `Pos1` / `Ende`               | Cursor an den Anfang bzw. das Ende des Eingabewerts setzen.                              |
+| `Enter`                       | Umgebendes Formular absenden.                                                            |
 
-| Taste           | Funktion                                                                 |
-|-----------------|--------------------------------------------------------------------------|
-| `Tab`           | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
-| `Shift+Tab`     | Fokus auf das vorherige fokussierbare Element setzen.                    |
-| `Pfeiltasten`   | Cursor innerhalb des Eingabefelds bewegen.                               |
-| `Pos1` / `Ende` | Cursor an den Anfang bzw. das Ende des Eingabewerts setzen.              |
+<SubmitOnEnterNote />
 
 ### Best Practices / Empfehlungen
 
-- Verlassen Sie sich nicht ausschließlich auf die native Formatprüfung des Browsers. Werten Sie Validierungsfehler in der Anwendung aus und stellen Sie über `_msg` zusammen mit `_touched="true"` eine aussagekräftige Fehlermeldung bereit.
+- Verlassen Sie sich nicht ausschließlich auf die native Formatprüfung des Browsers. Werten Sie Validierungsfehler in der Anwendung aus und stellen Sie über `_msg` zusammen mit `_touched` eine aussagekräftige Fehlermeldung bereit.
 - Formulieren Sie Fehlermeldungen konkret und lösungsorientiert, damit Nutzende erkennen können, wie die eingegebene E-Mail-Adresse korrigiert werden muss.
-- Verwenden Sie `_pattern` nur für fachlich notwendige zusätzliche Anforderungen, beispielsweise wenn ausschließlich E-Mail-Adressen einer bestimmten Domain zulässig sind.
+- Verwenden Sie `_pattern` nur für fachlich notwendige zusätzliche Anforderungen, beispielsweise wenn ausschließlich E-Mail-Adressen einer bestimmten Domain zulässig sind. Beschreiben Sie diese Anforderung zusätzlich über `_hint`.
 - Weisen Sie bei Verwendung von `_multiple` deutlich darauf hin, dass mehrere E-Mail-Adressen durch Kommas getrennt eingegeben werden müssen.
+- Setzen Sie `_autoComplete` passend zum Anwendungsfall ein, beispielsweise mit dem Wert `'email'`, damit Browser die Eingabe unterstützen können.
 - Verwenden Sie `_placeholder` ausschließlich als zusätzliche Orientierung und nicht als Ersatz für eine aussagekräftige Beschriftung (`_label`).
-- Setzen Sie `_auto-complete` passend zum Anwendungsfall ein, beispielsweise mit dem Wert `email`, wenn die Browser-Autovervollständigung unterstützt werden soll.
 
 ### Anwendungsfälle
 
@@ -86,186 +112,203 @@ Typischerweise werden folgende Funktionen unterstützt:
 ### FAQ
 
 **Wie kann ich Validierungsfehler barrierefrei anzeigen?**  
-Die native Formatprüfung des HTML5-Eingabetyps `email` ersetzt keine barrierefreie Fehlermeldung. Werten Sie das Ergebnis der Validierung in Ihrer Anwendung aus und stellen Sie Validierungsfehler über `_msg` zusammen mit `_touched="true"` bereit.
+Die native Formatprüfung des HTML5-Eingabetyps `email` ersetzt keine barrierefreie Fehlermeldung. Werten Sie das Ergebnis der Validierung in Ihrer Anwendung aus und stellen Sie Validierungsfehler über `_msg` zusammen mit `_touched` bereit. Die Meldung wird dann automatisch mit dem Feld verknüpft und das Feld als ungültig gekennzeichnet.
 
 **Wie werden mehrere E-Mail-Adressen bei `_multiple` verarbeitet?**  
-Der native Wert des Eingabefelds enthält weiterhin den vollständigen, durch Kommas getrennten String. Eine automatische Aufteilung in einzelne E-Mail-Adressen erfolgt nicht durch die Komponente.
+Der Wert des Eingabefelds enthält weiterhin den vollständigen, durch Kommas getrennten String. Eine automatische Aufteilung in einzelne E-Mail-Adressen erfolgt nicht durch die Komponente.
 
 **Werden internationalisierte (Unicode-)E-Mail-Adressen unterstützt?**  
 Die Komponente nutzt die native Browservalidierung des HTML5-Eingabetyps `email`. Ob internationalisierte E-Mail-Adressen unterstützt werden, hängt daher vom jeweiligen Browser ab.
 
 **Kann ich die native E-Mail-Validierung erweitern?**  
-Ja. Nutzen Sie `_pattern`, wenn zusätzlich zur nativen E-Mail-Validierung weitere fachliche Anforderungen geprüft werden sollen, beispielsweise um E-Mail-Adressen auf bestimmte Domains einzuschränken.
+Ja. Nutzen Sie `_pattern`, wenn zusätzlich zur nativen E-Mail-Validierung weitere fachliche Anforderungen geprüft werden sollen, beispielsweise um E-Mail-Adressen auf bestimmte Domains einzuschränken. Bei gesetztem `_multiple` prüft der Browser das Muster für jede einzelne Adresse.
 
 ## Playground
 
-Testen Sie die verschiedenen Eigenschaften des InputEmail-Felds:
+Testen Sie die verschiedenen Eigenschaften des InputEmail-Feldes:
 
 <InputEmailPreview context="playground" />
 
 ## Funktionalitäten
 
-### Basis-Eingabefeld
+### Einfaches Eingabefeld
 
-Standard-E-Mail-Eingabe mit Label:
-
-<InputEmailPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'E-Mail-Adresse' }} />
-
-### Mehrfach-Eingabe
-
-Mit `_multiple` werden mehrere E-Mail-Adressen akzeptiert, kommagetrennt:
+<BasicFeature />
 
 <InputEmailPreview
 	context="feature"
-	visibleProperties={['_multiple']}
-	initialProps={{ _label: 'E-Mail-Adressen', _multiple: true, _hint: 'Adressen durch Kommas trennen' }}
-/>
-
-### Placeholder und Hinweis
-
-Hilfstexte für bessere Usability:
-
-<InputEmailPreview
-	context="feature"
-	visibleProperties={['_placeholder', '_hint']}
-	initialProps={{ _label: 'E-Mail-Adresse', _placeholder: 'beispiel@domain.de', _hint: 'Wir verwenden Ihre E-Mail für Benachrichtigungen.' }}
+	visibleProperties={['_label']}
+	initialProps={{
+		_label: 'E-Mail-Adresse',
+	}}
 />
 
 ### Formularattribute
 
-Standard-Attribute für Formulare:
+<FormAttributesFeature />
+
+- <DisabledProp />
+- <ReadOnlyProp />
+- <RequiredProp />
+
+Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `input`-Elements übertragen.
 
 <InputEmailPreview
 	context="feature"
-	visibleProperties={['_label', '_disabled', '_readOnly', '_required', '_hideLabel', '_hideMsg', '_shortKey', '_tooltipAlign']}
-	initialProps={{ _label: 'E-Mail-Adresse' }}
+	visibleProperties={['_disabled', '_readOnly', '_required']}
+	initialProps={{
+		_label: 'E-Mail-Adresse',
+	}}
 />
 
-**Verfügbare Attribute:**
-- `_disabled`: Deaktiviert das Eingabefeld (mit Begründung verwenden!)
-- `_readOnly`: Verhindert die Bearbeitung des Feldes
-- `_required`: Kennzeichnet Pflichtfelder
-- `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
-- `_hideMsg`: Blendet die Fehlermeldung visuell aus, hält sie aber im DOM für `aria-describedby`
-- `_shortKey`: Fügt einen visuellen Shortcut-Hinweis nach dem Label hinzu und liest ihn für Screenreader vor
-- `_tooltipAlign`: Legt fest, wo der Tooltip bevorzugt angezeigt wird (`'top'` | `'right'` | `'bottom'` | `'left'`)
+### Hinweistexte und Fehlermeldungen
+
+<HintAndMsgFeature />
+
+<InputEmailPreview
+	context="feature"
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	initialProps={{
+		_label: 'E-Mail-Adresse',
+		_hint: 'Wir verwenden Ihre E-Mail-Adresse nur für Benachrichtigungen.',
+		_msg: { _description: 'Bitte geben Sie eine gültige E-Mail-Adresse ein, z. B. name@beispiel.de.' },
+		_touched: true,
+		_hideMsg: false,
+	}}
+/>
+
+### Mehrere E-Mail-Adressen
+
+Mit `_multiple` akzeptiert das Feld mehrere, durch Kommas getrennte E-Mail-Adressen. Die Eigenschaft wird als natives Attribut `multiple` übergeben; der Browser prüft dann jede einzelne Adresse. Der Wert des Feldes bleibt ein einzelner, kommagetrennter String. Weisen Sie Nutzende über `_hint` auf die erwartete Schreibweise hin.
+
+<InputEmailPreview
+	context="feature"
+	visibleProperties={['_multiple']}
+	initialProps={{
+		_label: 'E-Mail-Adressen',
+		_multiple: true,
+		_hint: 'Mehrere Adressen durch Kommas trennen',
+	}}
+/>
+
+### Zusätzliche Formatvorgaben
+
+Mit `_pattern` hinterlegen Sie einen regulären Ausdruck, dem die Eingabe zusätzlich zur nativen E-Mail-Prüfung entsprechen muss – beispielsweise, um nur Adressen einer bestimmten Domain zuzulassen. Die Eigenschaft wird als natives Attribut `pattern` übergeben. Die Komponente zeigt das Prüfergebnis nicht selbst an; Fehlermeldungen stellen Sie über `_msg` bereit.
+
+<InputEmailPreview
+	context="feature"
+	visibleProperties={['_pattern']}
+	initialProps={{
+		_label: 'Dienstliche E-Mail-Adresse',
+		_pattern: '.+@beispiel\\.de',
+		_hint: 'Nur Adressen der Domain beispiel.de',
+	}}
+/>
+
+### Zeichenbegrenzung und Zeichenzähler
+
+<CharacterCounterFeature />
+
+<InputEmailPreview
+	context="feature"
+	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
+	initialProps={{
+		_label: 'E-Mail-Adresse',
+		_hasCounter: true,
+		_maxLength: 100,
+	}}
+/>
+
+### Autovervollständigung
+
+Mit `_autoComplete` steuern Sie, ob der Browser gespeicherte E-Mail-Adressen vorschlagen darf. Der Standardwert ist `'off'`. Für Felder, bei denen die Browser-Autovervollständigung erwünscht ist, setzen Sie den Autocomplete-Token `'email'`.
+
+<InputEmailPreview
+	context="feature"
+	visibleProperties={['_autoComplete']}
+	initialProps={{
+		_label: 'E-Mail-Adresse',
+		_autoComplete: 'email',
+	}}
+/>
+
+### Placeholder
+
+<PlaceholderFeature />
+
+<InputEmailPreview
+	context="feature"
+	visibleProperties={['_placeholder']}
+	initialProps={{
+		_label: 'E-Mail-Adresse',
+		_placeholder: 'z. B. name@beispiel.de',
+	}}
+/>
+
+### Label ausblenden
+
+<HideLabelFeature />
+
+<InputEmailPreview
+	context="feature"
+	visibleProperties={['_label', '_hideLabel']}
+	initialProps={{
+		_label: 'E-Mail-Adresse',
+		_hideLabel: false,
+	}}
+/>
 
 ### Icons
 
-Icons können links und/oder rechts vom Eingabefeld angezeigt werden:
+<IconsFeature />
 
 <InputEmailPreview
 	context="feature"
 	visibleProperties={['_icons']}
 	initialProps={{
 		_label: 'E-Mail-Adresse',
-		_icons: { left: 'kolibri', right: 'fa-solid fa-envelope' },
+		_icons: {
+			left: 'kolicon-kolibri',
+		},
 	}}
 />
 
-### Name und ID
+### SmartButton
 
-Technische Kennzeichnung für Formulare:
+<SmartButtonFeature />
 
 <InputEmailPreview
 	context="feature"
-	visibleProperties={['_name']}
-	initialProps={{ _label: 'E-Mail-Adresse', _name: 'email' }}
+	visibleProperties={['_smartButton']}
+	initialProps={{ _label: 'Mit SmartButton', _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
 />
 
-**Hinweis**: `_name` wird als HTML-Attribut `name` verwendet und ist wichtig für das Absenden des Formulars.
+### Vorschlagswerte (Suggestions)
 
-### Auto-Vervollständigung und Vorschläge
-
-Mit `_autoComplete` steuern Sie, ob der Browser Eingabevorschläge anzeigen soll. Der Standardwert ist `'off'`. Für Felder, bei denen Browser-Autofill erwünscht ist, setzen Sie `_autoComplete="email"`.
-
-Mit `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen, die dem Nutzer während der Eingabe als auswählbare Datenliste angezeigt werden:
+<SuggestionsFeature />
 
 <InputEmailPreview
 	context="feature"
-	visibleProperties={['_autoComplete']}
-	initialProps={{ _label: 'E-Mail-Adresse', _autoComplete: 'email' }}
-/>
-
-### Zeichenbegrenzung und Zeichenzähler
-
-Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen:
-
-<InputEmailPreview
-	context="feature"
+	visibleProperties={['_suggestions']}
 	initialProps={{
 		_label: 'E-Mail-Adresse',
-		_hasCounter: true,
-		_maxLength: 100,
-	}}
-	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
-/>
-
-#### Attribute
-
-| Attribut               | Typ                | Standard | Beschreibung                                                                                                                                                                                                                                                                                |
-| ---------------------- | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_has-counter`         | `boolean`          | `false`  | Globaler Schalter für den Zeichenzähler. Nur wenn dieses Attribut **gesetzt (= true)** ist, wird überhaupt ein Zähler ausgegeben.                                                                                                                                                           |
-| `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
-| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`‑Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
-
-#### Ausgabevarianten
-
-| Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
-| ---: | --------------------- | ------------- | ---------------------- | ---------------------------------------------------------- |
-| 1    | *(leer)* oder `false` | —             | —                      | — (kein Zähler)                                            |
-| 2    | `true`                | *(leer)*      | —                      | `n Zeichen`                                                |
-| 3    | `true`                | 100           | *(leer)* oder `hard`   | `n/100 Zeichen`                                            |
-| 4    | `true`                | 100           | `soft`                 | `noch 50 Zeichen verfügbar`<br />*(bzw. `5 Zeichen zu viel`)* |
-
-**Hinweis**: Wird `_max-length-behavior="soft"` verwendet, wird das native `maxlength`-Attribut **nicht** gesetzt – das Eingabefeld wird also nicht hart begrenzt.
-
-#### Barrierefreiheit des Zeichenzählers
-
-- Der Zähler aktualisiert sich mit einer Verzögerung von **500 ms**, damit Screenreader-Ereignisse gebündelt werden und das Tippen nicht unterbrechen.
-- Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa: *„Sie können bis zu 100 Zeichen eingeben."*
-
-### Fehlermeldung und Validierung
-
-Fehlerhafte Eingaben können über `_msg` mit aussagekräftigen Meldungen versehen werden. Mit `_pattern` lässt sich zusätzlich ein reguläres Ausdrucks-Muster zur Eingabevalidierung hinterlegen:
-
-<InputEmailPreview
-	context="feature"
-	visibleProperties={['_msg', '_touched', '_pattern']}
-	initialProps={{
-		_label: 'E-Mail-Adresse',
-		_msg: { _description: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' },
-		_touched: true,
+		_suggestions: ['info@beispiel.de', 'kontakt@beispiel.de', 'service@beispiel.de'],
 	}}
 />
-
-### Events
-
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event    | Auslöser                         | Value                           |
-| -------- | -------------------------------- | ------------------------------- |
-| `click`  | Eingabefeld wird angeklickt      | —                               |
-| `focus`  | Eingabefeld wird fokussiert      | —                               |
-| `blur`   | Eingabefeld verliert Fokus       | —                               |
-| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
-| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
 
 ## API
 
+### Events
+
+<EventsIntro />
+
+| Event     | Auslöser                           | Value                           |
+| --------- | ---------------------------------- | ------------------------------- |
+| `click`   | Eingabefeld wird angeklickt        | -                               |
+| `focus`   | Eingabefeld wird fokussiert        | -                               |
+| `blur`    | Eingabefeld verliert Fokus         | -                               |
+| `keydown` | Taste wird im Eingabefeld gedrückt | -                 |
+| `input`   | Wert wird durch Eingabe geändert   | Aktueller Wert des Eingabefelds |
+| `change`  | Eingabe wurde abgeschlossen        | Aktueller Wert des Eingabefelds |
+
 <Readme />
-
-| Attribut               | Typ                | Standard | Beschreibung                                                                                                                                                                                                                                                                                |
-| ---------------------- | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_has-counter`         | `boolean`          | `false`  | Globaler Schalter für den Zeichenzähler. Nur wenn dieses Attribut **gesetzt (= true)** ist, wird überhaupt ein Zähler ausgegeben.                                                                                                                                                           |
-| `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
-| `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`‑Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
-
-
-## Verwendung _msg
-
-<PropertyMsgUsage />
-
-## Beispiele
-
-<ExampleLink component="input-email" />

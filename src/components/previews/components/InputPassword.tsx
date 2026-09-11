@@ -51,6 +51,8 @@ const InputPasswordPreview = (props: PreviewDefaults<JSX.KolInputPassword>) => {
 				),
 				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
 				_visibilityToggle: <BooleanProperty label="Visibility Toggle" />,
+				_touched: <BooleanProperty label="Touched" />,
+				_autoComplete: <KolInputText _label="Auto Complete" />,
 			}}
 			componentName="KolInputPassword"
 			layout={PreviewLayout.CENTERED}

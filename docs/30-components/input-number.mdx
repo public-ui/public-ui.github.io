@@ -6,6 +6,23 @@ description: Beschreibung, Spezifikation und Beispiele für die InputNumber-Komp
 import Readme from '@site/readmes/input-number/readme.md';
 import InputNumberPreview from '@site/src/components/previews/components/InputNumber';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import LabelNote from './_shared/a11y-properties/label.md';
+import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import SuggestionsNote from './_shared/a11y-properties/suggestions.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
+import DisabledProp from './_shared/feature-properties/disabled.md';
+import ReadOnlyProp from './_shared/feature-properties/read-only.md';
+import RequiredProp from './_shared/feature-properties/required.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
+import PlaceholderFeature from './_shared/features/placeholder.md';
+import HideLabelFeature from './_shared/features/hide-label.md';
+import IconsFeature from './_shared/features/icons.md';
+import SmartButtonFeature from './_shared/features/smart-button.md';
+import SuggestionsFeature from './_shared/features/suggestions.md';
+import EventsIntro from './_shared/api/events-intro.md';
 
 
 # InputNumber
@@ -29,10 +46,10 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 ## Barrierefreiheit
 
-- Die nativen HTML5-Eingabetypen werden von Browsern und assistiven Technologien standardisiert unterstützt.
-- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
-- Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
-- Mit `_required` gekennzeichnete Felder werden über das native `required`-Attribut an assistive Technologien kommuniziert.
+* <LabelNote />
+* <ErrorMessageNote />
+* <SuggestionsNote />
+* Das native Eingabefeld wurde um zwei Buttons zum Erhöhen und Verringern des Werts ergänzt, deren Größe den Anforderungen an barrierefreie Bedienelemente entspricht, um die Zugänglichkeit zu verbessern.
 
 ### Konkrete Designentscheidungen
 
@@ -40,7 +57,7 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 | ------------ | ---------- |
 | Verwendung des nativen HTML5-Eingabetyps `number` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
 | Erhöhen-/Verringern-Schaltflächen | Neben der direkten Eingabe stellt die Komponente standardmäßig Erhöhen-/Verringern-Schaltflächen für die Bedienung mit Maus und Touch bereit. |
-| Tastaturbedienung | Die Erhöhen-/Verringern-Schaltflächen sind nicht per Tastatur fokussierbar. Tastaturnutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld entsprechend der in `_step` definierten Schrittweite anpassen. |
+| Tastaturbedienung | Die Erhöhen-/Verringern-Schaltflächen sind nicht per Tastatur fokussierbar und mittels `aria-hidden` vollständig aus dem Accessibility-Tree entfernt. Tastaturnutzende und Screenreader-Nutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld entsprechend der in `_step` definierten Schrittweite anpassen. |
 
 ### Links und Referenzen
 
@@ -57,15 +74,16 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 ### Tastatursteuerung
 
-Die Tastaturbedienung wird durch den Browser und das Betriebssystem bestimmt. Daher können sich einzelne Tastaturfunktionen je nach Browser und Endgerät unterscheiden.
-
-Typischerweise werden folgende Funktionen unterstützt:
+<NativeKeyboardIntro />
 
 | Taste                       | Funktion                                                                       |
 | --------------------------- | ------------------------------------------------------------------------------ |
 | `Tab`                       | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen.       |
 | `Shift+Tab`                 | Fokus auf das vorherige fokussierbare Element setzen.                          |
-| `Pfeil-Tasten (oben/unten)` | Erhöht oder veringert den Wert innerhalb der Attribute **'_min'** oder **'_max'** entsprechen der im Attribut **'_step'** angegebenen Schrittgröße. |
+| `Pfeil-Tasten (oben/unten)` | Erhöht oder verringert den Wert innerhalb der Attribute `_min` oder `_max` entsprechend der im Attribut `_step` angegebenen Schrittgröße. |
+| `Enter`                     | Umgebendes Formular absenden.                                                  |
+
+<SubmitOnEnterNote />
 
 Die **Erhöhen-/Verringern-Schaltflächen** sind nicht Teil der Tab-Reihenfolge. Ihre Funktion steht Tastaturnutzenden über die Pfeiltasten im fokussierten Eingabefeld zur Verfügung.
 
@@ -95,149 +113,171 @@ Verwenden Sie `_min` und `_max`, um den zulässigen Wertebereich einzuschränken
 Nein. Die Erhöhen-/Verringern-Schaltflächen sind nicht Teil der Tab-Reihenfolge. Tastaturnutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld anpassen.
 
 **Können die Erhöhen-/Verringern-Schaltflächen ausgeblendet werden?**  
-Ja. Die Erhöhen-/Verringern-Schaltflächen können über ein Theme-seitiges Feature-Flag ausgeblendet werden.
+Ja. Die Erhöhen-/Verringern-Schaltflächen können über das Theme-seitige Feature-Flag `inputNumberButtons` (Wert `'hide'`) ausgeblendet werden.
 
 ## Playground
 
 Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
 
-<InputNumberPreview context="playground" />
+<InputNumberPreview 
+	context="playground"
+	initialProps={{ 
+		_value: 0,
+	}} 
+/>
 
 ## Funktionalitäten
 
 ### Einfaches Eingabefeld
 
-Minimum-Konfiguration mit Label:
+<BasicFeature />
 
-<InputNumberPreview context="feature" visibleProperties={['_label']} />
+<InputNumberPreview 
+	context="feature"
+	visibleProperties={['_label']}
+	initialProps={{ 
+		_value: 0,
+	}} 
+/>
 
 ### Formularattribute
 
-Standard-Attribute für Formulare wie Deaktivierung, Read-Only-Modus und Pflichtfelder:
+<FormAttributesFeature />
+
+- <DisabledProp />
+- <ReadOnlyProp />
+- <RequiredProp />
+
+Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `input`-Elements übertragen.
 
 <InputNumberPreview
 	context="feature"
-	visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
-	initialProps={{ _label: 'Anzahl' }}
+	visibleProperties={['_disabled', '_readOnly', '_required']}
+	initialProps={{ 
+		_label: 'Anzahl', 
+		_value: 0,
+	}}
 />
-
-**Verfügbare Attribute:**
-- `_disabled`: Deaktiviert das Eingabefeld (mit Begründung verwenden!)
-- `_readOnly`: Verhindert die Bearbeitung des Feldes
-- `_required`: Kennzeichnet Pflichtfelder
 
 ### Hinweistexte und Fehlermeldungen
 
-Unterstützung für Hinweistexte und Validierungsmeldungen:
+<HintAndMsgFeature />
 
 <InputNumberPreview
 	context="feature"
-	visibleProperties={['_label', '_hint', '_msg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
 	initialProps={{
 		_label: 'Preis',
 		_hint: 'Bitte geben Sie einen Wert in EUR an',
+		_msg: { _description: 'Bitte geben Sie einen gültigen Preis an.' },
+		_touched: true,
+		_hideMsg: false,
+		_value: 0,
 	}}
 />
-
-**Verfügbare Attribute:**
-- `_hint`: Ergänzende Hinweise zur Eingabe (wird immer angezeigt)
-- `_msg`: Fehlermeldungen oder Validierungshinweise
 
 ### Numerische Beschränkungen
 
-Konfigurieren Sie Minimal-, Maximalwerte und Schrittweite. `_min` und `_max` greifen zuverlässig nur bei der Auswahl über den Steuerelemente. Bei manueller Texteingabe kann ein Wert außerhalb des definierten Bereichs eingegeben werden, ohne dass automatisch eine Korrektur oder Fehlermeldung erfolgt. Die Validierung manueller Eingaben liegt in der Verantwortung der einbindenden Anwendung.
+Mit `_min`, `_max` und `_step` grenzen Sie den zulässigen Wertebereich und die Schrittweite der Eingabe ein, um von vornherein unplausible oder ungültige Werte zu vermeiden. Diese Einschränkung wirkt zuverlässig jedoch nur bei der Bedienung über die Steuerelemente (Erhöhen-/Verringern-Schaltflächen und Pfeiltasten): Bei manueller Texteingabe kann dennoch ein Wert außerhalb des definierten Bereichs eingegeben werden, ohne dass automatisch eine Korrektur oder Fehlermeldung erfolgt. Die Validierung manuell eingegebener Werte liegt daher in der Verantwortung der einbindenden Anwendung.
 
-<InputNumberPreview
-	context="feature"
-	visibleProperties={['_label', '_min', '_max', '_step']}
-	initialProps={{
-		_label: 'Menge',
-		_min: 1,
-		_max: 100,
-		_step: 5,
-	}}
-/>
+Verfügbare Attribute sind:
 
-**Verfügbare Attribute:**
 - `_min`: Minimaler erlaubter Wert
 - `_max`: Maximaler erlaubter Wert
 - `_step`: Schrittweite für Pfeiltasten und Spinner
 
-### Placeholder und Label-Steuerung
+<InputNumberPreview
+	context="feature"
+	visibleProperties={['_min', '_max', '_step']}
+	initialProps={{
+		_label: 'Menge',
+		_min: 5,
+		_max: 100,
+		_step: 5,
+		_value: 5,
+	}}
+/>
 
-Nutzen Sie Placeholder zur Eingabeformatierung und `_hideLabel`, um das Label visuell auszublenden:
+
+### Placeholder
+
+<PlaceholderFeature />
 
 <InputNumberPreview
 	context="feature"
-	visibleProperties={['_label', '_placeholder', '_hideLabel']}
+	visibleProperties={['_placeholder']}
 	initialProps={{
 		_label: 'Alter',
 		_placeholder: 'z.B. 25',
+	}}
+/>
+
+### Label ausblenden
+
+<HideLabelFeature />
+
+<InputNumberPreview
+	context="feature"
+	visibleProperties={['_label', '_hideLabel']}
+	initialProps={{
+		_label: 'Alter',
 		_hideLabel: false,
 	}}
 />
 
-**Verfügbare Attribute:**
-- `_placeholder`: Platzhaltertext (verschwindet beim Tippen)
-- `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
-
 ### Icons
 
-Definieren Sie linke und/oder rechte Icons für zusätzlichen Kontext:
+<IconsFeature />
 
 <InputNumberPreview
 	context="feature"
-	visibleProperties={['_label', '_icons']}
+	visibleProperties={['_icons']}
 	initialProps={{
 		_label: 'Preis',
 		_icons: {
-			left: 'kolicon-euro',
+			left: 'kolicon-kolibri',
 		},
+		_value: 0,
 	}}
 />
 
-**Verfügbare Positionen:**
-- `left`: Icon links vom Eingabefeld
-- `right`: Icon rechts vom Eingabefeld
 
 ### SmartButton
 
-Ein Button mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLabel`):
+<SmartButtonFeature />
 
 <InputNumberPreview
 	context="feature"
-	initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
+	initialProps={{ _label: 'Mit SmartButton', _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
 	visibleProperties={['_smartButton']}
 />
 
 ### Vorschlagswerte (Suggestions)
 
-Über `_suggestions` können Vorschlagswerte für die Autovervollständigung bereitgestellt werden:
+<SuggestionsFeature />
 
 <InputNumberPreview
 	context="feature"
-	visibleProperties={['_label', '_suggestions']}
+	visibleProperties={['_suggestions']}
 	initialProps={{
 		_label: 'Anzahl',
 		_suggestions: [1, 5, 10, 25, 50, 100],
 	}}
 />
 
-**Verfügbare Attribute:**
-- `_suggestions`: Liste von Vorschlagswerten für die Datalist-Autovervollständigung
+## API
 
 ### Events
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+<EventsIntro />
 
 | Event    | Auslöser                         | Value                           |
 | -------- | -------------------------------- | ------------------------------- |
-| `click`  | Eingabefeld wird angeklickt      | -                               |
-| `focus`  | Eingabefeld wird fokussiert      | -                               |
-| `blur`   | Eingabefeld verliert Fokus       | -                               |
-| `input`  | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
-| `change` | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
-
-## API
+| `click`   | Eingabefeld wird angeklickt      | -                               |
+| `focus`   | Eingabefeld wird fokussiert      | -                               |
+| `blur`    | Eingabefeld verliert Fokus       | -                               |
+| `keydown` | Taste wird im Eingabefeld gedrückt | -                              |
+| `input`   | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
+| `change`  | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
 
 <Readme />

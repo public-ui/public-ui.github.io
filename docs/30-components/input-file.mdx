@@ -6,6 +6,18 @@ description: Beschreibung, Spezifikation und Beispiele für die InputFile-Kompon
 import Readme from '@site/readmes/input-file/readme.md';
 import InputFilePreview from '@site/src/components/previews/components/InputFile';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import LabelNote from './_shared/a11y-properties/label.md';
+import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
+import DisabledProp from './_shared/feature-properties/disabled.md';
+import RequiredProp from './_shared/feature-properties/required.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
+import HideLabelFeature from './_shared/features/hide-label.md';
+import IconsFeature from './_shared/features/icons.md';
+import SmartButtonFeature from './_shared/features/smart-button.md';
+import EventsIntro from './_shared/api/events-intro.md';
 
 
 # InputFile
@@ -17,60 +29,63 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 **Beschreibung:** Mit **InputFile** können Dateien ausgewählt und zur weiteren Verarbeitung bereitgestellt werden.
 
-Die Komponente basiert auf dem nativen HTML5-Eingabetyp `file` und unterstützt die Auswahl einzelner oder mehrerer Dateien sowie die Einschränkung zulässiger Dateitypen.
+Die Komponente basiert auf dem nativen HTML5-Eingabetyp `file` und profitiert dadurch von dessen Semantik, dem Dateiauswahldialog des Betriebssystems sowie der standardisierten Unterstützung durch Browser und assistive Technologien. Sie unterstützt die Auswahl einzelner oder mehrerer Dateien sowie die Einschränkung zulässiger Dateitypen.
+
+Anstelle der browserspezifischen Darstellung des nativen Elements zeigt die Komponente eine einheitliche Schaltfläche **„Datei auswählen“** sowie die Namen der ausgewählten Dateien an. Zusätzlich können Dateien per **Drag & Drop** auf dem Feld abgelegt werden.
 
 ## Beispiel
 
-Einfaches Datei-Eingabefeld mit Beschriftung und Konfigurationsmöglichkeiten:
+Standard-Datei-Eingabefeld ohne optional gesetzte Felder:
 
 <InputFilePreview context="example" />
 
 ## Barrierefreiheit
 
-- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden.
-- Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
-- Die Dateiauswahl ist vollständig über die Tastatur möglich. `Tab` fokussiert das Eingabefeld, `Enter` oder `Leertaste` öffnen anschließend den nativen Dateiauswahldialog des Betriebssystems.
-- Dateien können zusätzlich per Drag & Drop ausgewählt werden. Diese Interaktion ist eine optionale Komfortfunktion und ersetzt nicht die vollständig tastaturbedienbare Dateiauswahl.
-- Die Einschränkung zulässiger Dateitypen über `_accept` wird von Browsern und assistiven Technologien unterstützt.
-- Mit `_multiple` können mehrere Dateien gleichzeitig ausgewählt werden.
+* <LabelNote />
+* <ErrorMessageNote />
+* Das native Dateifeld wird unsichtbar über die gesamte Eingabefläche gelegt. Dadurch öffnet ein Klick an beliebiger Stelle des Feldes den Dateiauswahldialog, während Semantik, Fokus und Tastaturbedienung des nativen Elements vollständig erhalten bleiben.
+* Die Namen der ausgewählten Dateien werden unabhängig von der browserspezifischen Darstellung des nativen Elements als Text im Feld angezeigt. Solange keine Datei ausgewählt ist, erscheint dort der Hinweis „Datei auswählen oder hier ablegen...“.
+* Dateien können zusätzlich per Drag & Drop abgelegt werden. Diese Komfortfunktion ergänzt die tastaturbedienbare Auswahl über den Dateiauswahldialog, ersetzt sie jedoch nicht.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
-|--------------|------------|
+| ------------ | ---------- |
 | Verwendung des nativen HTML5-Eingabetyps `file` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp `file` und profitiert dadurch von dessen standardisierter Unterstützung durch Browser, Betriebssystem-Dateidialoge und assistive Technologien. |
-| Fokusmanagement | Die Basis-Komponente setzt den nativen Fokusring des überlagerten Eingabefelds zurück. Der sichtbare Fokusindikator wird stattdessen für das gesamte Eingabefeld durch das jeweils verwendete Theme bereitgestellt. |
+| Unsichtbares natives Eingabefeld über der gesamten Fläche | Die Darstellung des nativen Dateifelds unterscheidet sich je nach Browser und lässt sich kaum gestalten. KoliBri blendet das native Feld daher mit `opacity: 0` aus und legt es über die gesamte Eingabefläche. Sichtbar sind stattdessen eine eigene Schaltfläche „Datei auswählen“ und die Anzeige der gewählten Dateinamen. Fokus, Tastaturbedienung und Screenreader-Ausgabe übernimmt weiterhin das native Element. |
+| Fokusindikator | Da das native Eingabefeld unsichtbar ist, ist auch dessen eigener Fokusring nicht sichtbar. Der sichtbare Fokusindikator wird für das gesamte Eingabefeld durch das jeweils verwendete Theme bereitgestellt. |
 | Drag & Drop als Zusatzinteraktion | Die Auswahl per Drag & Drop ergänzt die Auswahl über den Dateiauswahldialog, ersetzt diese jedoch nicht. Dadurch bleibt die vollständige Bedienbarkeit über Tastatur und Betriebssystem-Dateidialog erhalten. |
 
 ### Links und Referenzen
 
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file" _target="_blank" _label="MDN Web Docs: Input Type File"></kol-link>
-- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#file-upload-state-(type=file)" _target="_blank" _label="HTML Living Standard: Input Type File"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#file-upload-state-(type=file)" _target="_blank" _label="HTML Living Standard: The input element - type file"></kol-link>
 
 ## Verwendung
 
-- Die Einschränkung zulässiger Dateitypen kann über `_accept` konfiguriert werden.
-- Die Auswahl mehrerer Dateien kann über `_multiple` aktiviert werden.
-- Pflichtfelder werden über `_required` gekennzeichnet.
+- Schränken Sie die zulässigen Dateitypen über `_accept` ein.
+- Aktivieren Sie die Auswahl mehrerer Dateien über `_multiple`.
+- Kennzeichnen Sie Pflichtfelder über `_required`.
+- Setzen Sie eine getroffene Auswahl bei Bedarf über die Methode `reset()` zurück. Dabei werden die ausgewählten Dateien entfernt und der Hinweistext im Feld wiederhergestellt.
 
-**Hinweis:** Neben der Auswahl über Tastatur und Dateiauswahldialog unterstützt das Eingabefeld auch das Ablegen von Dateien per Drag & Drop. Diese Interaktion ist eine zusätzliche Komfortfunktion und ersetzt nicht die vollständig tastaturbedienbare Dateiauswahl.
+**Hinweis:** Beim Ablegen per Drag & Drop werden `_accept` und `_multiple` nicht berücksichtigt – es werden alle abgelegten Dateien übernommen. Prüfen Sie Anzahl, Typ und Größe der Dateien daher immer auf Anwendungsebene bzw. serverseitig.
 
 ### Tastatursteuerung
 
-Die Tastaturbedienung wird durch den Browser, das Betriebssystem und den nativen Dateiauswahldialog bestimmt. Daher können sich einzelne Tastaturfunktionen je nach Browser, Betriebssystem und Endgerät unterscheiden.
+<NativeKeyboardIntro />
 
-Typischerweise werden folgende Funktionen unterstützt:
+| Taste                 | Funktion                                                                 |
+| --------------------- | ------------------------------------------------------------------------ |
+| `Tab`                 | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
+| `Shift+Tab`           | Fokus auf das vorherige fokussierbare Element setzen.                    |
+| `Enter` / `Leertaste` | Öffnet den nativen Dateiauswahldialog.                                   |
 
-| Taste | Funktion |
-|---|---|
-| `Tab` | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
-| `Shift+Tab` | Fokus auf das vorherige fokussierbare Element setzen. |
-| `Enter` / `Leertaste` | Öffnen des nativen Dateiauswahldialogs. |
+Die Bedienung innerhalb des Dateiauswahldialogs wird durch das Betriebssystem bestimmt.
 
 ### Best Practices / Empfehlungen
 
 - Nutzen Sie `_accept`, um die Dateiauswahl auf die für den Anwendungsfall zulässigen Dateitypen einzuschränken und die Benutzerführung zu verbessern.
-- Verlassen Sie sich nicht ausschließlich auf `_accept`. Prüfen Sie Dateitypen und Dateigrößen zusätzlich serverseitig, da die clientseitige Einschränkung umgangen werden kann.
+- Verlassen Sie sich nicht ausschließlich auf `_accept`. Prüfen Sie Dateitypen und Dateigrößen zusätzlich serverseitig, da die clientseitige Einschränkung umgangen werden kann und beim Ablegen per Drag & Drop nicht greift.
 - Verwenden Sie `_multiple` nur, wenn die Auswahl mehrerer Dateien für den Anwendungsfall erforderlich ist.
 - Formulieren Sie aussagekräftige Beschriftungen (`_label`), die den Zweck des Datei-Uploads eindeutig beschreiben.
 - Nutzen Sie `_hint`, um zulässige Dateiformate oder maximale Dateigrößen verständlich zu kommunizieren.
@@ -84,10 +99,10 @@ Typischerweise werden folgende Funktionen unterstützt:
 - Hochladen mehrerer Dateien, beispielsweise Bilder oder Dokumentensammlungen
 - Bereitstellen von Dateien für Import- oder Verarbeitungsprozesse
 
-## FAQ
+### FAQ
 
 **Kann ich die Auswahl auf bestimmte Dateitypen beschränken?**  
-Ja. Über `_accept` können Sie festlegen, welche Dateitypen im Dateiauswahldialog angeboten werden. Diese Einschränkung dient der Benutzerführung und ersetzt keine serverseitige Validierung.
+Ja. Über `_accept` legen Sie fest, welche Dateitypen im Dateiauswahldialog angeboten werden. Diese Einschränkung dient der Benutzerführung und ersetzt keine serverseitige Validierung.
 
 **Wie kann ich mehrere Dateien auswählen?**  
 Aktivieren Sie `_multiple`, damit mehrere Dateien in einem Arbeitsgang ausgewählt werden können.
@@ -96,7 +111,10 @@ Aktivieren Sie `_multiple`, damit mehrere Dateien in einem Arbeitsgang ausgewäh
 Nein. Die maximale Dateigröße kann nicht über die Komponente begrenzt werden und muss durch die Anwendung bzw. serverseitig geprüft werden.
 
 **Unterstützt die Komponente Drag & Drop?**  
-Ja. Dateien können zusätzlich zum nativen Dateiauswahldialog per Drag & Drop ausgewählt werden. Diese Funktion ergänzt die Dateiauswahl, ersetzt sie jedoch nicht.
+Ja. Dateien können zusätzlich zum nativen Dateiauswahldialog per Drag & Drop auf dem Feld abgelegt werden. Diese Funktion ergänzt die Dateiauswahl, ersetzt sie jedoch nicht. Abgelegte Dateien werden nicht gegen `_accept` und `_multiple` geprüft.
+
+**Wie setze ich die Auswahl zurück?**  
+Rufen Sie die Methode `reset()` der Komponente auf. Sie entfernt die ausgewählten Dateien und stellt den Hinweistext im Feld wieder her.
 
 ## Playground
 
@@ -106,89 +124,141 @@ Testen Sie die verschiedenen Eigenschaften der InputFile-Komponente:
 
 ## Funktionalitäten
 
-### Basisfeld mit Beschriftung
+### Einfaches Eingabefeld
 
-Standard-Datei-Eingabefeld ohne Konfiguration:
+<BasicFeature />
 
-<InputFilePreview context="feature" initialProps={{ _label: 'Datei auswählen' }} visibleProperties={[]} />
+<InputFilePreview
+	context="feature"
+	visibleProperties={['_label']}
+	initialProps={{
+		_label: 'Dokument hochladen',
+	}}
+/>
+
+### Formularattribute
+
+<FormAttributesFeature />
+
+- <DisabledProp />
+- <RequiredProp />
+
+Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `input`-Elements übertragen. Mit `_disabled` wird zusätzlich die Schaltfläche „Datei auswählen“ deaktiviert.
+
+<InputFilePreview
+	context="feature"
+	visibleProperties={['_disabled', '_required']}
+	initialProps={{
+		_label: 'Dokument hochladen',
+	}}
+/>
 
 ### Dateitypbeschränkung
 
-Beschränkung der erlaubten Dateitypen über das Attribut `_accept`:
+Mit `_accept` legen Sie fest, welche Dateitypen im Dateiauswahldialog angeboten werden. Der Wert wird auf das native `accept`-Attribut übertragen und kann Dateiendungen und MIME-Typen enthalten.
+
+Beispiele für `_accept`-Werte:
+
+- `image/*`: Alle Bildformate
+- `.pdf`: Nur PDF-Dateien
+- `.doc,.docx`: Microsoft-Word-Dokumente
+- `.csv,.xlsx`: Tabellendaten
+- leer: Alle Dateitypen (Standard)
+
+**Hinweis:** Die Einschränkung wirkt nur im Dateiauswahldialog. Per Drag & Drop abgelegte Dateien werden nicht gegen `_accept` geprüft.
 
 <InputFilePreview
 	context="feature"
 	visibleProperties={['_accept']}
-	initialProps={{ _label: 'Datei auswählen', _accept: 'image/*' }}
+	initialProps={{
+		_label: 'Bild hochladen',
+		_accept: 'image/*',
+	}}
 />
-
-**Beispiele für `_accept`-Werte:**
-- `image/*` – Alle Bildformate
-- `.pdf` – Nur PDF-Dateien
-- `.doc,.docx` – Microsoft Word-Dokumente
-- `.csv,.xlsx` – Tabellendaten
-- `*` oder leer – Alle Dateitypen (Standard)
 
 ### Mehrfachauswahl
 
-Ermöglichen Sie die Auswahl mehrerer Dateien gleichzeitig:
+Mit `_multiple` ermöglichen Sie die Auswahl mehrerer Dateien in einem Arbeitsgang. Die Namen aller ausgewählten Dateien werden kommagetrennt im Feld angezeigt.
 
 <InputFilePreview
 	context="feature"
 	visibleProperties={['_multiple']}
-	initialProps={{ _label: 'Mehrere Dateien auswählen', _multiple: true }}
-/>
-
-### Deaktivierter Zustand
-
-Das Eingabefeld ist nicht interaktiv:
-
-<InputFilePreview
-	context="feature"
-	visibleProperties={['_disabled']}
-	initialProps={{ _label: 'Datei auswählen', _disabled: true }}
-/>
-
-### Fehlermeldung
-
-Fehler oder Validierungshinweise:
-
-<InputFilePreview
-	context="feature"
-	visibleProperties={['_msg']}
 	initialProps={{
-		_label: 'Datei auswählen',
-		_msg: { _description: 'Nur PDF-Dateien bis 5 MB erlaubt' },
+		_label: 'Anhänge hochladen',
+		_multiple: true,
 	}}
 />
 
-### Hilfetexte und Beschriftung
+### Hinweistexte und Fehlermeldungen
 
-Additionale Informationen für Nutzer:
+<HintAndMsgFeature />
 
 <InputFilePreview
 	context="feature"
-	visibleProperties={['_label', '_hint', '_hideLabel']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
 	initialProps={{
 		_label: 'Dokument hochladen',
-		_hint: 'Akzeptierte Formate: PDF, DOC, DOCX. Max. Größe: 10 MB.',
+		_hint: 'Akzeptierte Formate: PDF, DOC, DOCX. Maximale Größe: 10 MB.',
+		_msg: { _description: 'Bitte laden Sie eine PDF-Datei mit maximal 10 MB hoch.' },
+		_touched: true,
+		_hideMsg: false,
 	}}
 />
 
-### Events
+### Label ausblenden
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+<HideLabelFeature />
 
-| Event      | Auslöser                                                                  | Value                            |
-|------------|---------------------------------------------------------------------------|----------------------------------|
-| `focus`    | Eingabefeld wird fokussiert                                               | -                                |
-| `click`    | Eingabefeld wird angeklickt                                               | -                                |
-| `keydown`  | Eine Taste wird gedrückt, während das Eingabefeld fokussiert ist          | -                                |
-| `input`    | Eine oder mehrere Dateien werden ausgewählt (natives `input`-Event)      | Ausgewählte Dateien als FileList |
-| `change`   | Eine oder mehrere Dateien werden ausgewählt (natives `change`-Event)     | Ausgewählte Dateien als FileList |
-| `blur`     | Eingabefeld verliert Fokus                                                | -                                |
+<InputFilePreview
+	context="feature"
+	visibleProperties={['_label', '_hideLabel']}
+	initialProps={{
+		_label: 'Dokument hochladen',
+		_hideLabel: false,
+	}}
+/>
+
+### Icons
+
+<IconsFeature />
+
+<InputFilePreview
+	context="feature"
+	visibleProperties={['_icons']}
+	initialProps={{
+		_label: 'Dokument hochladen',
+		_icons: {
+			left: 'kolicon-kolibri',
+		},
+	}}
+/>
+
+### SmartButton
+
+<SmartButtonFeature />
+
+<InputFilePreview
+	context="feature"
+	visibleProperties={['_smartButton']}
+	initialProps={{
+		_label: 'Mit SmartButton',
+		_smartButton: { _label: 'Action' },
+	}}
+/>
 
 ## API
 
-<Readme />
+### Events
 
+<EventsIntro />
+
+| Event     | Auslöser                                                           | Value                            |
+| --------- | ------------------------------------------------------------------ | -------------------------------- |
+| `click`   | Eingabefeld wird angeklickt                                        | -                                |
+| `focus`   | Eingabefeld wird fokussiert                                        | -                                |
+| `blur`    | Eingabefeld verliert Fokus                                         | -                                |
+| `keydown` | Taste wird im Eingabefeld gedrückt                                 | -                                |
+| `input`   | Dateien werden über den Dialog ausgewählt oder per Drag & Drop abgelegt | Ausgewählte Dateien als `FileList` |
+| `change`  | Dateien werden über den Dialog ausgewählt oder per Drag & Drop abgelegt | Ausgewählte Dateien als `FileList` |
+
+<Readme />

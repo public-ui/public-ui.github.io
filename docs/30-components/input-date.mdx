@@ -6,6 +6,22 @@ description: Beschreibung, Spezifikation und Beispiele für die InputDate-Kompon
 import Readme from '@site/readmes/input-date/readme.md';
 import InputDatePreview from '@site/src/components/previews/components/InputDate';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import LabelNote from './_shared/a11y-properties/label.md';
+import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import SuggestionsNote from './_shared/a11y-properties/suggestions.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
+import DisabledProp from './_shared/feature-properties/disabled.md';
+import ReadOnlyProp from './_shared/feature-properties/read-only.md';
+import RequiredProp from './_shared/feature-properties/required.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
+import HideLabelFeature from './_shared/features/hide-label.md';
+import IconsFeature from './_shared/features/icons.md';
+import SmartButtonFeature from './_shared/features/smart-button.md';
+import SuggestionsFeature from './_shared/features/suggestions.md';
+import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
+import EventsIntro from './_shared/api/events-intro.md';
 
 
 # InputDate
@@ -13,64 +29,91 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Date Picker, Datumsfeld, Datumseingabe, Datumsauswahl, Date Input
+**Synonyme:** Date Picker, Datumsfeld, Datumseingabe, Datumsauswahl, Zeitfeld, Date Input
 
-**Beschreibung:** Mit der **InputDate**-Komponente können Nutzende Datums- und Zeitwerte erfassen.
+**Beschreibung:** Mit **InputDate** können Datums- und Zeitwerte eingegeben und bearbeitet werden.
 
-Die Komponente basiert auf den nativen HTML5-Eingabetypen `date`, `datetime-local`, `month`, `time` und `week` und übernimmt deren Semantik, Tastatursteuerung sowie Unterstützung durch Browser und assistive Technologien.
+Die Komponente basiert auf den nativen HTML5-Eingabetypen `date`, `datetime-local`, `month`, `time` und `week` und profitiert dadurch von deren Semantik sowie der standardisierten Unterstützung durch Browser und assistive Technologien.
 
-Die Eingabe erfolgt direkt im Eingabefeld oder über einen Auswahldialog. Die konkrete Darstellung und Tastaturbedienung ist dabei abhängig vom verwendeten Browser und Betriebssystem.
+Die Eingabe erfolgt direkt im Eingabefeld oder über den Auswahldialog des Browsers. Darstellung und Bedienung hängen dabei vom verwendeten Browser und Betriebssystem ab.
 
 ## Beispiel
 
-Standard-Datumsfeld mit dem Typ `date`. Die Eingabe erfolgt über direkte Zahleneingabe mit Automatisierung oder über die gerätespezifische Auswahlhilfe.
+Standard-Datumsfeld mit dem Typ `date`:
 
 <InputDatePreview context="example" initialProps={{ _label: 'Geburtsdatum' }} />
 
 ## Barrierefreiheit
 
-- Die nativen HTML5-Eingabetypen werden von Browsern und assistiven Technologien standardisiert unterstützt.
-- Das Eingabefeld muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden. Zusätzliche Hinweise können über `_hint`, Fehlermeldungen über `_msg` bereitgestellt werden.
-- Darstellung, Bedienung und Funktionsumfang der nativen Auswahldialoge können sich je nach Browser, Betriebssystem und Endgerät unterscheiden.
+* <LabelNote />
+* <ErrorMessageNote />
+* <SuggestionsNote />
+* Da das native Eingabefeld im Shadow DOM der Komponente liegt, leitet KoliBri die Eingabetaste (`Enter`) als Absenden an das umgebende Formular weiter. Ist das Kalender-Symbol des Browsers fokussiert, wird das Formular nicht abgesendet, damit die Eingabetaste dort weiterhin den Auswahldialog bedienen kann.
+* Im schreibgeschützten Zustand (`_readOnly`) fängt KoliBri die Leertaste ab, sodass sich der Auswahldialog nicht öffnen lässt. Zusätzlich erscheint hinter der Beschriftung der sichtbare Hinweis „(schreibgeschützt)“. Dieser Hinweis ist vor assistiven Technologien verborgen; der Zustand wird über das native `readonly`-Attribut vermittelt.
+* Einige Screenreader geben leere Datumsfelder oder den schreibgeschützten Zustand nicht wie erwartet aus. Da diese Ausgaben vom Browser erzeugt werden, kann KoliBri sie nicht beeinflussen. Details finden Sie unter <kol-link _href="https://public-ui.github.io/docs/known-issues#kol-input-date" _target="_blank" _label="Bekannte Probleme: kol-input-date"></kol-link>.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
-| ----------- | ---------- |
-| Verwendung nativer HTML5-Eingabetypen | Die Komponente nutzt bewusst native HTML5-Eingabetypen und profitiert dadurch von deren standardisierter Unterstützung durch Browser und assistive Technologien. |
-| Kein eigener Datepicker bzw. Zeitwähler | Die Komponente verzichtet bewusst auf eine eigene Implementierung und nutzt stattdessen die nativen Auswahldialoge des Browsers bzw. Betriebssystems. Dadurch profitieren Nutzende von einer vertrauten Bedienung und einer guten Unterstützung durch assistive Technologien. |
+| ------------ | ---------- |
+| Verwendung nativer HTML5-Eingabetypen | Die Komponente nutzt bewusst die nativen HTML5-Eingabetypen und profitiert dadurch von deren standardisierter Unterstützung durch Browser und assistive Technologien. |
+| Kein eigener Datepicker bzw. Zeitwähler | Die Komponente verzichtet bewusst auf eine eigene Implementierung und nutzt stattdessen die nativen Auswahldialoge des Browsers bzw. Betriebssystems. Dadurch profitieren Nutzende von einer vertrauten Bedienung. |
+| Absenden per `Enter` | KoliBri leitet die Eingabetaste im Eingabefeld als Absenden an das umgebende Formular weiter. Ist das Kalender-Symbol des Browsers fokussiert, unterbleibt dies, damit die Taste dort weiterhin den Auswahldialog bedient. |
+| Schreibgeschützter Zustand | Bei `_readOnly` wird die Leertaste abgefangen, damit sich der Auswahldialog nicht öffnen lässt. Der sichtbare Hinweis „(schreibgeschützt)“ hinter der Beschriftung macht den Zustand auch für sehende Nutzende erkennbar. |
+| Format-Prüfung der Werte | `_value`, `_min` und `_max` werden gegen das zum `_type` passende ISO-8601-Format geprüft. Werte in einem abweichenden Format werden nicht übernommen, damit das native Feld keinen ungültigen Wert erhält. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html" _target="_blank" _label="W3C Working Draft: Input Type Date"></kol-link>
-- <kol-link _href="https://a11ysupport.io/tech/html/input(type-date)_element" _target="_blank" _label="Accessibility Support: Input Type Date Element"></kol-link>
 - <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/input/date" _target="_blank" _label="MDN Web Docs: Input Type Date"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date)" _target="_blank" _label="HTML Living Standard: The input element - type date"></kol-link>
+- <kol-link _href="https://a11ysupport.io/tech/html/input(type-date)_element" _target="_blank" _label="Accessibility Support: Input Type Date Element"></kol-link>
+- <kol-link _href="https://public-ui.github.io/docs/known-issues#kol-input-date" _target="_blank" _label="Bekannte Probleme: kol-input-date"></kol-link>
 
 ## Verwendung
 
-- Verwenden Sie **InputDate** zur Eingabe von Datums- und Zeitwerten in strukturierter Form. Wählen Sie hierfür den zum Anwendungsfall passenden Eingabetyp (`date`, `datetime-local`, `month`, `time` oder `week`).
-- Nutzen Sie `_min` und `_max`, um zulässige Werte fachlich einzuschränken. Verwenden Sie `_step` für den Eingabetyp `time`, um zulässige Zeitintervalle festzulegen.
-- Ergänzen Sie keine zusätzlichen ARIA-Rollen oder ARIA-Attribute, um das Verhalten nativer HTML5-Eingabetypen zu verändern.
+- Wählen Sie über `_type` den zum Anwendungsfall passenden Eingabetyp (`date`, `datetime-local`, `month`, `time` oder `week`). Standard ist `date`.
+- Übergeben Sie `_value`, `_min` und `_max` als ISO-8601-Zeichenkette im Format des gewählten Typs:
+
+| `_type`          | Format                                        | Beispiel           |
+| ---------------- | --------------------------------------------- | ------------------ |
+| `date`           | `JJJJ-MM-TT`                                  | `2025-06-30`       |
+| `datetime-local` | `JJJJ-MM-TTThh:mm` bzw. `JJJJ-MM-TTThh:mm:ss` | `2025-06-30T14:30` |
+| `month`          | `JJJJ-MM`                                     | `2025-06`          |
+| `time`           | `hh:mm` bzw. `hh:mm:ss`                       | `14:30`            |
+| `week`           | `JJJJ-Www`                                    | `2025-W27`         |
+
+- Werte, die nicht dem Format des gewählten Typs entsprechen, werden nicht übernommen.
+- `Date`-Objekte werden für `_value`, `_min` und `_max` weiterhin akzeptiert und passend zum `_type` in eine ISO-8601-Zeichenkette umgewandelt. Diese Variante ist jedoch veraltet (deprecated) und sollte nicht mehr verwendet werden. Wurde `_value` als `Date` übergeben, liefern Events und `getValue()` ebenfalls ein `Date`, andernfalls eine Zeichenkette. Ein leeres Feld liefert `null`.
+- Legen Sie mit `_step` die Schrittweite fest. Die Einheit hängt vom Typ ab: Tage bei `date`, Wochen bei `week`, Monate bei `month` und Sekunden bei `time` und `datetime-local`. Für 15-Minuten-Schritte setzen Sie beispielsweise `_step` auf `900`.
+- Um den Wert zu entfernen, setzen Sie `_value` auf `null` oder rufen die Methode `reset()` auf.
+
+**Hinweis:** `_min`, `_max` und `_step` verhindern keine manuelle Eingabe außerhalb des zulässigen Bereichs bzw. Schrittmaßes. Die Validierung der eingegebenen Werte muss auf Anwendungsebene erfolgen.
 
 ### Tastatursteuerung
 
-Die Tastaturbedienung wird vollständig durch den Browser und das Betriebssystem bestimmt. Daher können sich die unterstützten Tastaturfunktionen und Tastenkombinationen je nach Browser, Betriebssystem und Eingabetyp unterscheiden.
+<NativeKeyboardIntro />
 
-Typischerweise werden folgende Funktionen unterstützt:
+| Taste                          | Funktion                                                                                  |
+| ------------------------------ | ----------------------------------------------------------------------------------------- |
+| `Tab`                          | Fokus auf das Eingabefeld, das nächste Segment bzw. das nächste fokussierbare Element setzen. |
+| `Shift+Tab`                    | Fokus auf das vorherige Segment bzw. das vorherige fokussierbare Element setzen.          |
+| `Pfeil-Tasten (links/rechts)`  | Zwischen den Segmenten des Werts (z. B. Tag, Monat, Jahr) wechseln.                       |
+| `Pfeil-Tasten (oben/unten)`    | Wert des fokussierten Segments erhöhen bzw. verringern.                                   |
+| `Enter` / `Leertaste`          | Im geöffneten Auswahldialog die Auswahl bestätigen.                                       |
+| `Esc`                          | Geöffneten Auswahldialog schließen.                                                       |
+| `Enter` (im Eingabefeld)       | Umgebendes Formular absenden, sofern nicht das Kalender-Symbol fokussiert ist.            |
 
-| Taste                 | Funktion                 |
-| --------------------- | ------------------------ |
-| `Tab`                 | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen. |
-| `Shift+Tab`           | Fokus auf das vorherige fokussierbare Element setzen. |
-| `Pfeiltasten`         | Innerhalb des Eingabefeldes oder eines geöffneten Auswahldialogs zwischen den verfügbaren Werten navigieren bzw. den Wert ändern. |
-| `Enter` / `Leertaste` | Eingabe oder Auswahl bestätigen. |
-| `Esc`                 | Geöffneten Auswahldialog schließen.  |
+<SubmitOnEnterNote />
+
+Ist das Kalender-Symbol des Browsers fokussiert, wird das Formular nicht abgesendet, damit die Eingabetaste dort weiterhin den Auswahldialog bedient. Bei `_readOnly` hat die `Leertaste` keine Funktion.
 
 ### Best Practices / Empfehlungen
 
 - Verwenden Sie aussagekräftige Beschriftungen (`_label`), damit der erwartete Datums- oder Zeitwert eindeutig erkennbar ist.
-- Ergänzen Sie bei Bedarf zusätzliche Hinweise über `_hint`, beispielsweise zu zulässigen Eingaben oder fachlichen Einschränkungen.
-- Berücksichtigen Sie, dass sich Darstellung und Bedienung der nativen Auswahldialoge je nach Browser, Betriebssystem und Endgerät unterscheiden können.
+- Ergänzen Sie bei Bedarf Hinweise über `_hint`, beispielsweise zum zulässigen Zeitraum oder zu fachlichen Einschränkungen.
+- Übergeben Sie Werte als ISO-8601-Zeichenkette statt als `Date`-Objekt.
+- Ergänzen Sie keine zusätzlichen ARIA-Rollen oder ARIA-Attribute, um das Verhalten der nativen Eingabetypen zu verändern.
+- Berücksichtigen Sie, dass sich Darstellung und Bedienung der nativen Auswahldialoge je nach Browser, Betriebssystem und Endgerät unterscheiden.
 
 ### Anwendungsfälle
 
@@ -82,47 +125,106 @@ Typischerweise werden folgende Funktionen unterstützt:
 
 ### FAQ
 
-**Kann die InputDate mit einem Wert vorbelegt werden?**  
-Ja. Über `_value` kann die Komponente mit einem zum gewählten Eingabetyp passenden Wert initialisiert werden.
+**Kann InputDate mit einem Wert vorbelegt werden?**  
+Ja. Übergeben Sie über `_value` eine ISO-8601-Zeichenkette im Format des gewählten Typs, beispielsweise `2025-06-30` für den Typ `date`.
 
-**Wie kann InputDate geleernt werden?**  
-Setzen Sie `_value` auf `null` oder `undefined`, um den aktuellen Wert zu entfernen.
+**Warum wird mein Wert nicht angezeigt?**  
+Vermutlich passt das Format nicht zum gewählten `_type`, beispielsweise ein vollständiges Datum bei `_type` `month`. Werte in einem abweichenden Format werden nicht übernommen.
+
+**Wie kann InputDate geleert werden?**  
+Setzen Sie `_value` auf `null` oder rufen Sie die Methode `reset()` auf.
+
+**Wie lege ich Zeitintervalle von 15 Minuten fest?**  
+Die Schrittweite für `time` und `datetime-local` wird in Sekunden angegeben. Setzen Sie `_step` daher auf `900`.
 
 **Warum sieht InputDate je nach Browser unterschiedlich aus?**  
-Die Komponente nutzt die nativen HTML5-Eingabetypen des Browsers. Darstellung und Bedienung der Auswahldialoge werden daher vom jeweiligen Browser und Betriebssystem bestimmt und können variieren.
+Die Komponente nutzt die nativen HTML5-Eingabetypen des Browsers. Darstellung und Bedienung der Auswahldialoge werden daher vom jeweiligen Browser und Betriebssystem bestimmt.
 
 ## Playground
 
-<InputDatePreview context="playground" />
+Testen Sie die verschiedenen Eigenschaften des InputDate-Feldes:
+
+<InputDatePreview 
+	context="playground"
+	initialProps={{ 
+		_type: 'date',
+	}} 
+/>
 
 ## Funktionalitäten
 
-### Beschriftung und Hinweistexte
+### Einfaches Eingabefeld
 
-Das Eingabefeld wird mit einer Beschriftung über `_label` versehen. Zusätzliche Informationen können über `_hint` bereitgestellt werden.
+<BasicFeature />
 
-<InputDatePreview
+<InputDatePreview 
 	context="feature"
-	visibleProperties={['_label', '_hint']}
-	initialProps={{ _label: 'Geburtsdatum', _hint: 'Bitte geben Sie Ihr Geburtsdatum ein.' }}
+	visibleProperties={['_label']}
+	initialProps={{ 
+		_label: 'Geburtsdatum',
+	}} 
 />
 
 ### Eingabetypen
 
-Das Attribut `_type` bestimmt das Format und den Auswahldialog:
+Mit `_type` legen Sie fest, welche Art von Datums- oder Zeitwert erfasst wird. Der Typ bestimmt das Format des Werts sowie den Auswahldialog des Browsers:
 
-<InputDatePreview context="feature" visibleProperties={['_type']} initialProps={{ _label: 'Datum', _type: 'date' }} />
-
-**Verfügbare Typen:**
 - `date`: Vollständiges Datum (Standard)
 - `datetime-local`: Datum und Uhrzeit ohne Zeitzone
-- `month`: Nur Monat und Jahr
-- `time`: Nur Uhrzeit (HH:MM)
+- `month`: Monat und Jahr
+- `time`: Uhrzeit
 - `week`: Kalenderwoche und Jahr
 
-### Bereichsbeschränkung
+<InputDatePreview
+	context="feature"
+	visibleProperties={['_type']}
+	initialProps={{
+		_label: 'Datum',
+		_type: 'date',
+	}}
+/>
 
-Die Attribute `_min` und `_max` definieren den gültigen Datumsbereich. Sie greifen zuverlässig nur bei der Auswahl über den Kalenderdialog (Datepicker). Bei manueller Texteingabe kann ein Wert außerhalb des definierten Bereichs eingegeben werden, ohne dass automatisch eine Korrektur oder Fehlermeldung erfolgt. Die Validierung manueller Eingaben liegt in der Verantwortung der einbindenden Anwendung.
+### Formularattribute
+
+<FormAttributesFeature />
+
+- <DisabledProp />
+- <ReadOnlyProp />
+- <RequiredProp />
+
+Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `input`-Elements übertragen. Bei `_readOnly` erscheint zusätzlich der Hinweis „(schreibgeschützt)“ hinter der Beschriftung, und die Leertaste öffnet keinen Auswahldialog.
+
+<InputDatePreview
+	context="feature"
+	visibleProperties={['_disabled', '_readOnly', '_required']}
+	initialProps={{
+		_label: 'Datum',
+		_value: '2025-06-30',
+	}}
+/>
+
+### Hinweistexte und Fehlermeldungen
+
+<HintAndMsgFeature />
+
+<InputDatePreview
+	context="feature"
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	initialProps={{
+		_label: 'Reservierungsdatum',
+		_hint: 'Reservierungen sind bis zum 31.12.2025 möglich.',
+		_msg: { _description: 'Das eingegebene Datum liegt außerhalb des zulässigen Zeitraums.' },
+		_touched: true,
+		_hideMsg: false,
+	}}
+/>
+
+### Wertebereich
+
+Mit `_min` und `_max` grenzen Sie den zulässigen Zeitraum ein. Die Grenzen wirken sich auf den Auswahldialog und die Bedienung mit den Pfeiltasten aus. Bei manueller Eingabe kann dennoch ein Wert außerhalb des Bereichs eingegeben werden, ohne dass automatisch eine Korrektur oder Fehlermeldung erfolgt. Die Validierung liegt daher in der Verantwortung der einbindenden Anwendung.
+
+- `_min`: Frühester erlaubter Wert
+- `_max`: Spätester erlaubter Wert
 
 <InputDatePreview
 	context="feature"
@@ -134,9 +236,9 @@ Die Attribute `_min` und `_max` definieren den gültigen Datumsbereich. Sie grei
 	}}
 />
 
-### Schrittgröße bei Zeiteingabe
+### Schrittweite
 
-Für Typ `time` kann die Schrittgröße über `_step` festgelegt werden:
+Mit `_step` legen Sie fest, in welchen Schritten der Wert verändert werden kann. Die Einheit hängt vom Typ ab: Tage bei `date`, Wochen bei `week`, Monate bei `month` und Sekunden bei `time` und `datetime-local`. Im Beispiel sind für die Uhrzeit nur Viertelstunden vorgesehen (`_step` = `900`).
 
 <InputDatePreview
 	context="feature"
@@ -144,51 +246,77 @@ Für Typ `time` kann die Schrittgröße über `_step` festgelegt werden:
 	initialProps={{
 		_label: 'Uhrzeit',
 		_type: 'time',
-		_step: '15',
+		_step: 900,
 	}}
 />
 
-### Formularattribute
+### Label ausblenden
 
-Standard-Formularattribute für Validierung und Interaktion:
-
-<InputDatePreview
-	context="feature"
-	visibleProperties={['_label', '_disabled', '_readOnly', '_required']}
-	initialProps={{ _label: 'Datum', _required: true }}
-/>
-
-**Verfügbare Attribute:**
-- `_disabled`: Deaktiviert das Eingabefeld (mit Begründung verwenden!)
-- `_readOnly`: Verhindert Bearbeitung, erlaubt aber den Fokus
-- `_required`: Kennzeichnet Pflichtfelder
-- `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
-
-### Fehlermeldungen
-
-Validierungsfehler oder Hinweismeldungen werden über das Attribut `_msg` ausgegeben:
+<HideLabelFeature />
 
 <InputDatePreview
 	context="feature"
-	visibleProperties={['_msg']}
+	visibleProperties={['_label', '_hideLabel']}
 	initialProps={{
-		_label: 'Datum',
-		_msg: 'Das eingegebene Datum liegt außerhalb des zulässigen Bereichs.',
+		_label: 'Geburtsdatum',
+		_hideLabel: false,
 	}}
 />
+
+### Icons
+
+<IconsFeature />
+
+<InputDatePreview
+	context="feature"
+	visibleProperties={['_icons']}
+	initialProps={{
+		_label: 'Termin',
+		_icons: {
+			left: 'kolicon-kolibri',
+		},
+	}}
+/>
+
+### SmartButton
+
+<SmartButtonFeature />
+
+<InputDatePreview
+	context="feature"
+	visibleProperties={['_smartButton']}
+	initialProps={{
+		_label: 'Mit SmartButton',
+		_smartButton: { _label: 'Action' },
+	}}
+/>
+
+### Vorschlagswerte (Suggestions)
+
+<SuggestionsFeature />
+
+<InputDatePreview
+	context="feature"
+	visibleProperties={['_suggestions']}
+	initialProps={{
+		_label: 'Wunschtermin',
+		_suggestions: ['2025-07-01', '2025-07-15', '2025-08-01'],
+	}}
+/>
+
+## API
 
 ### Events
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+<EventsIntro />
 
-| Event    | Auslöser                                              | Value                                  |
-| -------- | ----------------------------------------------------- | -------------------------------------- |
-| `click`  | Eingabefeld wird angeklickt                           | -                                      |
-| `focus`  | Eingabefeld wird fokussiert                           | -                                      |
-| `blur`   | Eingabefeld verliert Fokus                            | -                                      |
-| `input`  | Wert wird durch Eingabe oder Auswahl geändert         | Aktueller Wert in ISO8601-Format       |
-| `change` | Eingabe wurde durch Fokusabzug oder Enter abgeschlos. | Aktueller Wert in ISO8601-Format       |
-
-## API
+| Event     | Auslöser                                      | Value                                                                   |
+| --------- | --------------------------------------------- | ----------------------------------------------------------------------- |
+| `click`   | Eingabefeld wird angeklickt                   | -                                                                       |
+| `focus`   | Eingabefeld wird fokussiert                   | -                                                                       |
+| `blur`    | Eingabefeld verliert Fokus                    | -                                                                       |
+| `keydown` | Taste wird im Eingabefeld gedrückt            | -                                                         |
+| `input`   | Wert wird durch Eingabe oder Auswahl geändert | Aktueller Wert als ISO-8601-Zeichenkette (bzw. `Date`); `null` bei leerem Feld |
+| `change`  | Eingabe wurde abgeschlossen                   | Aktueller Wert als ISO-8601-Zeichenkette (bzw. `Date`); `null` bei leerem Feld |
 
 <Readme />

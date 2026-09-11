@@ -1,0 +1,1 @@
+Das Eingabefeld muss mit einer aussagekräftigen Beschriftung versehen werden. Es darf visuell ausgeblendet werden, wenn der Zweck des Eingabefeldes durch den direkten visuellen Kontext absolut unmissverständlich ist.
