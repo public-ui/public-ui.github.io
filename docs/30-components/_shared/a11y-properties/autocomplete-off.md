@@ -1,0 +1,1 @@
+Die native Autovervollständigung, Autokorrektur und automatische Großschreibung des Browsers sind deaktiviert (`autocomplete`, `autocorrect` und `autocapitalize` jeweils `off`), damit sie nicht mit der eigenen Liste konkurrieren.

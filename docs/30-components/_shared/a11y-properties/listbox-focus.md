@@ -1,0 +1,1 @@
+Beim Navigieren in der Liste erhält der jeweils aktive Eintrag den tatsächlichen Tastaturfokus (`tabindex="-1"`), sodass Screenreader ihn unmittelbar ausgeben. Zusätzlich verweist `aria-activedescendant` am Eingabefeld auf den aktiven Eintrag.

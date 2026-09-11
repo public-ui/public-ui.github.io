@@ -1,0 +1,1 @@
+Der Öffnen-/Schließen-Pfeil ist nicht Teil der Tab-Reihenfolge und dient ausschließlich der Bedienung mit Maus und Touch. Das Pfeil-Icon ist vor assistiven Technologien verborgen. Tastaturnutzende öffnen die Liste über die Pfeiltasten.

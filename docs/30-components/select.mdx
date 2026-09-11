@@ -6,101 +6,124 @@ description: Beschreibung, Spezifikation und Beispiele für die Select-Komponent
 import Readme from '@site/readmes/select/readme.md';
 import SelectPreview from '@site/src/components/previews/components/Select';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import LabelNote from './_shared/a11y-properties/label.md';
+import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
+import DisabledProp from './_shared/feature-properties/disabled.md';
+import RequiredProp from './_shared/feature-properties/required.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
+import HideLabelFeature from './_shared/features/hide-label.md';
+import IconsFeature from './_shared/features/icons.md';
+import EventsIntro from './_shared/api/events-intro.md';
+
 
 # Select
+
 
 <BetaDocsBanner />
 
 **Synonyme:** Dropdown, Dropdown-Liste, Auswahlliste, Auswahlfeld
 
-**Beschreibung:** Die **Select**-Komponente ermöglicht die Auswahl einer oder mehrerer Optionen aus einer vordefinierten Liste.
+**Beschreibung:** Mit **Select** wählen Nutzende eine oder mehrere Optionen aus einer vordefinierten Liste aus.
 
-Sie eignet sich für strukturierte Eingaben, bei denen ausschließlich bekannte Werte zulässig sind und keine freie Texteingabe erfolgen soll. Je nach Konfiguration unterstützt die Komponente sowohl die **Einfachauswahl** als auch die **Mehrfachauswahl.**
+Die Komponente basiert auf dem nativen HTML-Element `<select>` und profitiert dadurch von dessen Semantik sowie der standardisierten Unterstützung durch Browser und assistive Technologien.
 
-Die auswählbaren Optionen werden über die Property `_options` bereitgestellt und können optional mithilfe von **Optionsgruppen (Optgroups)** logisch strukturiert werden.
+Sie eignet sich für strukturierte Eingaben, bei denen ausschließlich bekannte Werte zulässig sind und keine freie Texteingabe erfolgen soll. Je nach Konfiguration unterstützt die Komponente die **Einfachauswahl** als aufklappbares Auswahlfeld oder die **Mehrfachauswahl** als Liste mit mehreren sichtbaren Zeilen. Die auswählbaren Optionen werden über `_options` bereitgestellt und können mithilfe von **Optionsgruppen** logisch strukturiert werden.
 
 ## Beispiel
 
-Standard-Auswahlliste mit Pflichtfeld-Markierung:
+Standard-Auswahlliste ohne optional gesetzte Felder:
 
 <SelectPreview context="example" />
 
 ## Barrierefreiheit
 
-- Die Select-Komponente basiert auf dem nativen HTML-Element `<select>`.
-- Der Browser weist dem nativen `<select>` automatisch die korrekten ARIA-Rollen zu und übernimmt zugleich die Tastaturbedienung, das Fokus-Handling und das Ansageverhalten für Screenreader.
-- Die KoliBri-Komponente ergänzt keine eigenen ARIA-Rollen. Zusätzliche ARIA-Rollen (z. B. `role="combobox"` oder `role="listbox"`) sind nicht erforderlich und sollten nicht ergänzt werden.
-- Die Komponente unterstützt die Beschriftung über die Property `_label`. Hinweise und Fehlermeldungen können über die Property `_msg` bereitgestellt werden.
-- Die Mehrfachauswahl basiert auf dem nativen HTML-Attribut `multiple`.
-- Deaktivierte Optionen (`disabled`) werden von Screenreadern weiterhin berücksichtigt und angekündigt. Dadurch kann die Anzahl der angekündigten Optionen von der tatsächlich auswählbaren Anzahl abweichen.
-- Vermeiden Sie deaktivierte Optionen (disabled), sofern dies fachlich möglich ist. Sie können die Orientierung für Nutzende assistiver Technologien erschweren.
+* <LabelNote />
+* <ErrorMessageNote />
+* Die Komponente ergänzt bewusst keine eigenen ARIA-Rollen wie `role="combobox"` oder `role="listbox"`. Rolle, Tastaturbedienung, Fokus-Handling und Ansageverhalten stammen vollständig vom nativen `<select>`-Element.
+* Deaktivierte Optionen bleiben für assistive Technologien wahrnehmbar und werden von Screenreadern mitgezählt und angesagt. Dadurch kann die Anzahl der angesagten Optionen von der Anzahl der tatsächlich auswählbaren Optionen abweichen. Vermeiden Sie deaktivierte Optionen daher, sofern dies fachlich möglich ist.
+* Bei der Mehrfachauswahl (`_multiple`) haben die Optionen eine Mindesthöhe, die den Anforderungen an barrierefreie Bedienelemente entspricht, damit sie auch mit Maus und Touch sicher getroffen werden können.
+* Ausgewählte Optionen werden zusätzlich mit einem vorangestellten Häkchen gekennzeichnet, damit die Auswahl nicht allein über Farbe erkennbar ist. Die Darstellung hängt davon ab, ob der Browser die Optionsliste mit den Stilen der Komponente rendert.
 
 ### Konkrete Designentscheidungen
 
-| Entscheidung                                                              | Begründung                                                                                         |
-| ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Verwendung des nativen HTML-Elements `<select>` ohne zusätzliche ARIA-Rolle | Das native Element stellt die erforderliche Semantik sowie die Unterstützung für Tastaturbedienung, Fokusverwaltung und Screenreader bereits bereit. Zusätzliche ARIA-Rollen sind daher nicht erforderlich. |
-| Verwendung einer programmatisch verknüpften Beschriftung `(_label)`       | Ermöglicht Screenreadern die eindeutige Zuordnung zwischen Beschriftung und Auswahlfeld.           |
-| Bereitstellung von Hinweisen und Fehlermeldungen über `_msg`              | Unterstützt die barrierefreie Kommunikation von Validierungsfehlern und ergänzenden Informationen. |
-
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Verwendung des nativen HTML-Elements `<select>` ohne zusätzliche ARIA-Rolle | Das native Element stellt die erforderliche Semantik sowie die Unterstützung für Tastaturbedienung, Fokusverwaltung und Screenreader bereits bereit. Zusätzliche ARIA-Rollen würden diese Semantik überlagern und sind daher nicht vorgesehen. |
+| Deaktivierte Optionen ohne `aria-hidden` | Deaktivierte Optionen werden nicht vor assistiven Technologien verborgen, da Browser `aria-hidden` an Optionen ignorieren bzw. dadurch fehlerhaftes Verhalten entstand. Die Optionen bleiben deshalb im Accessibility-Tree. |
+| `_rows` nur bei Mehrfachauswahl | `_rows` wird ausschließlich in Verbindung mit `_multiple` als natives `size`-Attribut gesetzt. Die Einfachauswahl bleibt dadurch immer ein aufklappbares Auswahlfeld mit einheitlicher Höhe. |
+| Mindestgröße der Optionen bei Mehrfachauswahl | In der dauerhaft sichtbaren Liste der Mehrfachauswahl erhalten die Optionen eine Mindesthöhe, damit sie als Zielfläche für Maus und Touch ausreichend groß sind. |
+| Häkchen vor ausgewählten Optionen | Die Auswahl wird zusätzlich über ein Zeichen und nicht ausschließlich über eine farbliche Hervorhebung vermittelt. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/" _target="_blank" _label="WAI – Accessible Names and Descriptions"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/docs/Web/HTML/Reference/Elements/select" _target="_blank" _label="MDN Web Docs – HTML select Element"></kol-link>
-- <kol-link _href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element" _target="_blank" _label="HTML Living Standard – The select element"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/docs/Web/HTML/Reference/Elements/select" _target="_blank" _label="MDN Web Docs: HTML select Element"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element" _target="_blank" _label="HTML Living Standard: The select element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/" _target="_blank" _label="WAI: Accessible Names and Descriptions"></kol-link>
 
 ## Verwendung
 
 Die Select-Komponente eignet sich insbesondere für:
+
 - die Auswahl einer oder mehrerer Optionen aus einer vordefinierten Menge an Werten,
-- strukturierte Formulareingaben,
-- standardisierte Datenerfassung,
+- strukturierte Formulareingaben und standardisierte Datenerfassung,
 - Einfach- und Mehrfachauswahlen.
 
 Die Select-Komponente sollte **nicht** verwendet werden, wenn:
+
 - freie Eingaben möglich sein sollen oder bei einer Einfachauswahl eine Such- oder Filterfunktion benötigt wird. Verwenden Sie stattdessen eine **Combobox**.
-- genau eine Option aus einer kleinen Auswahl (1–5) ausgewählt werden und/oder alle Optionen gleichzeitig sichtbar sein sollen. Verwenden Sie stattdessen eine **Radio Group**.
+- genau eine Option aus einer kleinen Auswahl (ca. 1–5 Optionen) ausgewählt werden soll und alle Optionen gleichzeitig sichtbar sein sollen. Verwenden Sie stattdessen eine **Radio Group**.
+
+**Hinweis:** Bei der Einfachauswahl erwartet `_value` einen einzelnen Wert, bei der Mehrfachauswahl (`_multiple`) ein Array. Werte, die in `_options` nicht vorkommen, werden verworfen. Ist bei der Einfachauswahl kein gültiger Wert gesetzt, wird – wie beim nativen `<select>` – automatisch die erste Option ausgewählt.
 
 ### Tastatursteuerung
 
-**Hinweis:** Da die Select-Komponente auf dem nativen HTML-Element `<select>` basiert, richtet sich die Tastatursteuerung nach Browser und Betriebssystem. Das konkrete Verhalten einzelner Tasten (insbesondere `Enter` und `Leertaste`) kann daher geringfügig variieren.
+<NativeKeyboardIntro />
 
-| Taste                         | Funktion                                                              |
-| ----------------------------- | --------------------------------------------------------------------- |
-| `Tab`                         | Fokus auf die Komponente setzen                                       |
-| `Shift`+`Tab`                 | Zum vorherigen fokussierbaren Element wechseln                        |
-| `Pfeil-Tasten (oben / unten)` | Zwischen den Optionen navigieren (auch bei geschlossener Auswahlliste möglich) |
-| `Enter`                       | Auswahlliste öffnen, Auswahl einer Option (schließt die Auswahlliste) |
-| `Leertaste`                   | Auswahlliste öffnen                                                   |
-| `Esc`                         | Auswahlliste schließen                                                |
+| Taste                       | Funktion                                                                                                   |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `Tab`                       | Fokus auf die Auswahlliste bzw. das nächste fokussierbare Element setzen.                                  |
+| `Shift+Tab`                 | Fokus auf das vorherige fokussierbare Element setzen.                                                      |
+| `Pfeil-Tasten (oben/unten)` | Zwischen den Optionen wechseln. Je nach Browser wird die Auswahl auch bei geschlossener Auswahlliste direkt geändert. |
+| `Pos1` / `Ende`             | Zur ersten bzw. letzten Option springen.                                                                   |
+| Buchstabentasten            | Zur nächsten Option springen, deren Beschriftung mit dem eingegebenen Zeichen beginnt.                     |
+| `Leertaste` / `Enter`       | Auswahlliste öffnen bzw. die hervorgehobene Option übernehmen und die Auswahlliste schließen.              |
+| `Alt+Pfeil-Taste unten`     | Auswahlliste öffnen (u. a. unter Windows).                                                                 |
+| `Esc`                       | Geöffnete Auswahlliste schließen.                                                                          |
 
 #### Bei Mehrfachauswahl (`_multiple`)
 
-| Taste                         | Funktion                                                 |
-| ----------------------------- | -------------------------------------------------------- |
-| `Pfeil-Tasten (oben / unten)` | Auswahl einer Option                                     |
-| `Shift + Pfeil-Tasten`        | Auswahl aller hintereinanderliegenden Einträge           |
-| `Strg + Pfeil-Tasten`         | Auswahl mehrerer einzelner Optionen                      |
-| `Leertaste`                   | Auswahl einer weiteren Option                            |
+| Taste                        | Funktion                                                                          |
+| ---------------------------- | --------------------------------------------------------------------------------- |
+| `Pfeil-Tasten (oben/unten)`  | Fokus auf die nächste bzw. vorherige Option setzen und nur diese Option auswählen. |
+| `Shift+Pfeil-Tasten`         | Auswahl um die hintereinanderliegenden Optionen erweitern.                        |
+| `Strg+Pfeil-Tasten`          | Fokus verschieben, ohne die bestehende Auswahl zu verändern.                      |
+| `Strg+Leertaste`             | Fokussierte Option zur Auswahl hinzufügen bzw. aus ihr entfernen.                 |
+
+**Hinweis:** Unter macOS wird statt `Strg` in der Regel die `Cmd`-Taste verwendet.
 
 ### Best Practices / Empfehlungen
 
 **Auswahl der geeigneten Komponente**
+
 - Verwenden Sie die Select-Komponente ausschließlich für vordefinierte Auswahlmöglichkeiten.
-- Nutzen Sie `_multiple nur`, wenn eine Mehrfachauswahl fachlich erforderlich ist. Eine Mehrfachauswahl kann für einige Nutzende schwer bedienbar sein. Prüfen Sie, ob stattdessen eine **Checkbox Group** besser geeignet ist.
+- Nutzen Sie `_multiple` nur, wenn eine Mehrfachauswahl fachlich erforderlich ist. Die Mehrfachauswahl erfordert Tastenkombinationen, die vielen Nutzenden nicht bekannt sind. Prüfen Sie, ob stattdessen eine **Checkbox Group** besser geeignet ist.
 - Prüfen Sie bei umfangreichen Auswahllisten, ob eine **Combobox** die geeignetere Komponente ist.
 
 **Gestaltung der Optionen**
-- Stellen Sie die Optionen über die Property `_options` als Array mit `label` und `value` bereit.
-- Strukturieren Sie umfangreiche Auswahllisten mithilfe von **Optionsgruppen (Optgroups)**.
+
+- Stellen Sie die Optionen über `_options` als Array mit `label` und `value` bereit.
+- Strukturieren Sie umfangreiche Auswahllisten mithilfe von **Optionsgruppen**.
 - Verwenden Sie aussagekräftige und eindeutige Beschriftungen (`label`).
 - Setzen Sie `_required`, wenn eine Auswahl zwingend erforderlich ist.
 
-**Vorauswahl und Platzhalter**
-- Treffen Sie keine automatische Vorauswahl personenbezogener Optionen (z. B. Anreden), sofern diese nicht fachlich begründet ist. Verwenden Sie stattdessen eine neutrale Option, damit Nutzende ihre Auswahl bewusst treffen können oder eine **Radio Group**.
-- Sofern aus der Auswahlliste ein sinnvoller Standardwert hervorgeht, sollte dieser vorausgewählt werden. In diesem Fall sollte keine Leer-Option verwendet werden.
-- Falls kein sinnvoller Standardwert existiert oder die Auswahl rechtliche bzw. finanzielle Konsequenzen hat, kann eine explizite, klar beschriftete Leer-Option verwendet werden (z. B. „Bitte auswählen“).
+**Vorauswahl und Leer-Option**
+
+- Treffen Sie keine automatische Vorauswahl personenbezogener Optionen (z. B. Anreden), sofern diese nicht fachlich begründet ist. Verwenden Sie stattdessen eine neutrale Option, damit Nutzende ihre Auswahl bewusst treffen, oder eine **Radio Group**.
+- Sofern aus der Auswahlliste ein sinnvoller Standardwert hervorgeht, sollte dieser über `_value` vorausgewählt werden. In diesem Fall sollte keine Leer-Option verwendet werden.
+- Falls kein sinnvoller Standardwert existiert oder die Auswahl rechtliche bzw. finanzielle Konsequenzen hat, stellen Sie eine explizite, klar beschriftete Leer-Option (z. B. „Bitte auswählen“) als erste Option in `_options` bereit. Die Komponente bietet hierfür keinen eigenen Platzhalter an.
 
 ### Anwendungsfälle
 
@@ -112,9 +135,6 @@ Die Select-Komponente sollte **nicht** verwendet werden, wenn:
 
 ### FAQ
 
-**Wann sollte ich die Select-Komponente verwenden?**  
-Wenn Nutzende eine oder mehrere Optionen aus einer vordefinierten Liste auswählen sollen und keine freie Texteingabe erforderlich ist.
-
 **Wann eignet sich eine Combobox besser?**  
 Wenn eine große Anzahl an Optionen zur Verfügung steht oder Nutzende gezielt nach Einträgen suchen sollen.
 
@@ -122,58 +142,170 @@ Wenn eine große Anzahl an Optionen zur Verfügung steht oder Nutzende gezielt n
 Wenn genau eine Option aus einer kleinen Anzahl (ca. 1–5 Optionen) ausgewählt werden soll und alle Optionen gleichzeitig sichtbar sein können.
 
 **Unterstützt die Komponente Optionsgruppen?**  
-Ja. Property `_options` unterstützt neben einzelnen Optionen auch **Optionsgruppen (Optgroups)**, um umfangreiche Listen logisch zu strukturieren.
+Ja. `_options` unterstützt neben einzelnen Optionen auch Optionsgruppen (`{ label, options }`), die als native `optgroup`-Elemente ausgegeben werden.
 
-**Unterstützt die Select-Komponente Mehrfachauswahl?**  
-Ja. Über die Property `_multiple` kann zwischen Einfach- und Mehrfachauswahl gewechselt werden.
+**Warum wirkt sich `_rows` bei meiner Auswahlliste nicht aus?**  
+`_rows` wird nur in Verbindung mit `_multiple` ausgewertet. Bei der Einfachauswahl bleibt die Komponente ein aufklappbares Auswahlfeld.
 
-**Warum verwendet die Komponente das native HTML-Element `<select>`?**  
-Das native HTML-Element `<select>` stellt die erforderliche Semantik sowie die Unterstützung für Tastaturbedienung, Fokusverwaltung und Screenreader bereits bereit. Die KoliBri-Komponente ergänzt daher keine eigenen ARIA-Rollen und nutzt bewusst das standardisierte Verhalten des Browsers.
+**Gibt es einen Platzhalter für die Select-Komponente?**  
+Nein. Die Komponente unterstützt kein `_placeholder`. Nutzen Sie bei Bedarf eine klar beschriftete Leer-Option als erste Option.
 
-## Konstruktion / Technik
+## Playground
 
-### Playground
+Testen Sie die verschiedenen Eigenschaften der Select-Komponente:
 
 <SelectPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionsbeispiele
 
-#### Optionen und Beschriftung
+### Einfache Auswahlliste
 
-Mindestangaben für eine funktionsfähige Select-Komponente: `_label` und `_options`.
+<BasicFeature />
 
-<SelectPreview context="feature" visibleProperties={['_label', '_options']} />
+Zusätzlich benötigt die Select-Komponente die auswählbaren Optionen (`_options`). Jede Option besteht aus einer Beschriftung (`label`) und einem Wert (`value`).
 
-#### Mehrfachauswahl
+<SelectPreview
+	context="feature"
+	visibleProperties={['_label', '_options']}
+/>
 
-Über `_multiple` können mehrere Optionen gleichzeitig ausgewählt werden. Mit `_rows` wird die sichtbare Höhe der Liste gesteuert.
+### Formularattribute
 
-<SelectPreview context="feature" visibleProperties={['_multiple', '_rows']} />
+<FormAttributesFeature />
 
-#### Formularattribute
+- <DisabledProp />
+- <RequiredProp />
+- `_name`: Legt den technischen Namen fest, unter dem der Wert mit dem Formular übermittelt wird.
 
-Über `_disabled`, `_required` und `_name` wird die Select-Komponente in ein Formular eingebunden und ihr Eingabeverhalten gesteuert.
+Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `select`-Elements übertragen.
 
-<SelectPreview context="feature" visibleProperties={['_disabled', '_required', '_name']} />
+<SelectPreview
+	context="feature"
+	visibleProperties={['_disabled', '_required', '_name']}
+	initialProps={{
+		_label: 'Bundesland',
+	}}
+/>
 
-#### Hinweise und Fehlermeldungen
+### Hinweistexte und Fehlermeldungen
 
-Mit `_hint` wird ein ergänzender Hinweis zur Eingabe ausgegeben, mit `_msg` eine Validierungs- oder Fehlermeldung.
+<HintAndMsgFeature />
 
-<SelectPreview context="feature" visibleProperties={['_hint', '_msg']} />
+<SelectPreview
+	context="feature"
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	initialProps={{
+		_label: 'Bundesland',
+		_hint: 'Wählen Sie das Bundesland Ihres Hauptwohnsitzes.',
+		_msg: { _description: 'Bitte wählen Sie ein Bundesland aus.' },
+		_touched: true,
+		_hideMsg: false,
+	}}
+/>
 
-#### Events
+### Mehrfachauswahl
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+Mit `_multiple` erlauben Sie die Auswahl mehrerer Optionen. Die Komponente wird dann nicht mehr als aufklappbares Auswahlfeld, sondern als Liste mit mehreren sichtbaren Zeilen dargestellt. `_value` erwartet in diesem Fall ein Array der ausgewählten Werte.
 
-| Event    | Auslöser                    | Value                       |
-| -------- | --------------------------- | --------------------------- |
-| `click`  | Eingabefeld wird angeklickt | –                           |
-| `focus`  | Eingabefeld wird fokussiert | –                           |
-| `blur`   | Eingabefeld verliert Fokus  | –                           |
-| `input`  | Option wird ausgewählt      | `value`-Attribut der Option |
-| `change` | Option wird ausgewählt      | `value`-Attribut der Option |
+Mit `_rows` legen Sie fest, wie viele Optionen gleichzeitig sichtbar sind. `_rows` wird ausschließlich in Verbindung mit `_multiple` als natives `size`-Attribut gesetzt.
+
+<SelectPreview
+	context="feature"
+	visibleProperties={['_multiple', '_rows']}
+	initialProps={{
+		_label: 'Bundesländer',
+		_multiple: true,
+		_rows: 5,
+	}}
+/>
+
+### Optionsgruppen
+
+Umfangreiche Auswahllisten strukturieren Sie mit Optionsgruppen. Eine Optionsgruppe wird in `_options` als Objekt mit `label` und einem eigenen Array `options` angegeben und als natives `optgroup`-Element ausgegeben. Die Beschriftung der Gruppe wird von Screenreadern beim Navigieren durch die Optionen mit angesagt; sie ist selbst nicht auswählbar.
+
+<SelectPreview
+	context="feature"
+	visibleProperties={['_label']}
+	initialProps={{
+		_label: 'Bundesland',
+		_options: [
+			{
+				label: 'Norddeutschland',
+				options: [
+					{ label: 'Bremen', value: 'HB' },
+					{ label: 'Hamburg', value: 'HH' },
+					{ label: 'Schleswig-Holstein', value: 'SH' },
+				],
+			},
+			{
+				label: 'Süddeutschland',
+				options: [
+					{ label: 'Baden-Württemberg', value: 'BW' },
+					{ label: 'Bayern', value: 'BY' },
+				],
+			},
+		],
+	}}
+/>
+
+### Deaktivierte Optionen
+
+Einzelne Optionen deaktivieren Sie über die Eigenschaft `disabled` der jeweiligen Option. Deaktivierte Optionen bleiben sichtbar und werden von Screenreadern angesagt, können aber nicht ausgewählt werden. Setzen Sie deaktivierte Optionen sparsam ein (siehe [Barrierefreiheit](#barrierefreiheit)).
+
+<SelectPreview
+	context="feature"
+	visibleProperties={['_options']}
+	initialProps={{
+		_label: 'Zustellart',
+		_options: [
+			{ label: 'Standardversand', value: 'standard' },
+			{ label: 'Expressversand', value: 'express' },
+			{ label: 'Abholung (derzeit nicht verfügbar)', value: 'pickup', disabled: true },
+		],
+	}}
+/>
+
+### Label ausblenden
+
+<HideLabelFeature />
+
+<SelectPreview
+	context="feature"
+	visibleProperties={['_label', '_hideLabel']}
+	initialProps={{
+		_label: 'Bundesland',
+		_hideLabel: false,
+	}}
+/>
+
+### Icons
+
+<IconsFeature />
+
+<SelectPreview
+	context="feature"
+	visibleProperties={['_icons']}
+	initialProps={{
+		_label: 'Bundesland',
+		_icons: {
+			left: 'kolicon-house',
+		},
+	}}
+/>
 
 ## API
+
+### Events
+
+<EventsIntro />
+
+| Event     | Auslöser                              | Value                                                                  |
+| --------- | ------------------------------------- | ---------------------------------------------------------------------- |
+| `click`   | Auswahlliste wird angeklickt          | -                                                                      |
+| `focus`   | Auswahlliste wird fokussiert          | -                                                                      |
+| `blur`    | Auswahlliste verliert Fokus           | -                                                                      |
+| `keydown` | Taste wird in der Auswahlliste gedrückt | -                                                      |
+| `input`   | Auswahl wird geändert                 | Wert der ausgewählten Option (bei `_multiple`: Array der ausgewählten Werte) |
+| `change`  | Auswahl wurde abgeschlossen           | Wert der ausgewählten Option (bei `_multiple`: Array der ausgewählten Werte) |
 
 <Readme />

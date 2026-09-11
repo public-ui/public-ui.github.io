@@ -38,6 +38,10 @@ const SOURCES = [
  */
 const SECTION_CONTEXTS = [
 	{ level: 2, heading: /^Beispiel$/, context: 'example' },
+	// Struktur der Formular-Komponenten (Blaupause: input-number.mdx)
+	{ level: 2, heading: /^Playground$/, context: 'playground' },
+	{ level: 2, heading: /^Funktionsbeispiele$/, context: 'feature' },
+	// Bisherige Struktur unterhalb von "## Konstruktion / Technik"
 	{ level: 3, heading: /^Playground$/, context: 'playground' },
 	{ level: 3, heading: /^Funktionalitäten \(mit Code\)$/, context: 'feature' },
 ];
@@ -126,7 +130,7 @@ for (const { dir, strict } of SOURCES) {
 			if (expected === null) {
 				errors.push(
 					`${location}: <${match[1]}> steht in keinem bekannten Abschnitt. Erwartet wird "## Beispiel", ` +
-						`"### Playground" oder "### Funktionalitäten (mit Code)".`
+						`"## Playground", "## Funktionsbeispiele", "### Playground" oder "### Funktionalitäten (mit Code)".`
 				);
 				continue;
 			}

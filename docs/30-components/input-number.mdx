@@ -6,8 +6,23 @@ description: Beschreibung, Spezifikation und Beispiele für die InputNumber-Komp
 import Readme from '@site/readmes/input-number/readme.md';
 import InputNumberPreview from '@site/src/components/previews/components/InputNumber';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
-import LabelNote from './shared/a11y-properties/label.md';
-import ErrorMessageNote from './shared/a11y-properties/error-message.md';
+import LabelNote from './_shared/a11y-properties/label.md';
+import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import SuggestionsNote from './_shared/a11y-properties/suggestions.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
+import DisabledProp from './_shared/feature-properties/disabled.md';
+import ReadOnlyProp from './_shared/feature-properties/read-only.md';
+import RequiredProp from './_shared/feature-properties/required.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
+import PlaceholderFeature from './_shared/features/placeholder.md';
+import HideLabelFeature from './_shared/features/hide-label.md';
+import IconsFeature from './_shared/features/icons.md';
+import SmartButtonFeature from './_shared/features/smart-button.md';
+import SuggestionsFeature from './_shared/features/suggestions.md';
+import EventsIntro from './_shared/api/events-intro.md';
 
 
 # InputNumber
@@ -33,6 +48,7 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 * <LabelNote />
 * <ErrorMessageNote />
+* <SuggestionsNote />
 * Das native Eingabefeld wurde um zwei Buttons zum Erhöhen und Verringern des Werts ergänzt, deren Größe den Anforderungen an barrierefreie Bedienelemente entspricht, um die Zugänglichkeit zu verbessern.
 
 ### Konkrete Designentscheidungen
@@ -58,15 +74,16 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 ### Tastatursteuerung
 
-Die Tastaturbedienung wird durch den Browser und das Betriebssystem bestimmt. Daher können sich einzelne Tastaturfunktionen je nach Browser und Endgerät unterscheiden.
-
-Typischerweise werden folgende Funktionen unterstützt:
+<NativeKeyboardIntro />
 
 | Taste                       | Funktion                                                                       |
 | --------------------------- | ------------------------------------------------------------------------------ |
 | `Tab`                       | Fokus auf das Eingabefeld bzw. das nächste fokussierbare Element setzen.       |
 | `Shift+Tab`                 | Fokus auf das vorherige fokussierbare Element setzen.                          |
 | `Pfeil-Tasten (oben/unten)` | Erhöht oder verringert den Wert innerhalb der Attribute `_min` oder `_max` entsprechend der im Attribut `_step` angegebenen Schrittgröße. |
+| `Enter`                     | Umgebendes Formular absenden.                                                  |
+
+<SubmitOnEnterNote />
 
 Die **Erhöhen-/Verringern-Schaltflächen** sind nicht Teil der Tab-Reihenfolge. Ihre Funktion steht Tastaturnutzenden über die Pfeiltasten im fokussierten Eingabefeld zur Verfügung.
 
@@ -113,7 +130,7 @@ Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
 
 ### Einfaches Eingabefeld
 
-Jedes Eingabefeld benötigt mindestens ein Label, um für alle Nutzenden verständlich und zugänglich zu sein:
+<BasicFeature />
 
 <InputNumberPreview 
 	context="feature"
@@ -125,11 +142,11 @@ Jedes Eingabefeld benötigt mindestens ein Label, um für alle Nutzenden verstä
 
 ### Formularattribute
 
-Mit `_disabled`, `_readOnly` und `_required` passen Sie das Eingabefeld an gängige Formularanforderungen an – etwa um es zu deaktivieren, vor Bearbeitung zu schützen oder als Pflichtfeld zu kennzeichnen:
+<FormAttributesFeature />
 
-- `_disabled`: Deaktiviert das Eingabefeld (mit Bedacht verwenden!)
-- `_readOnly`: Verhindert die Bearbeitung des Feldes
-- `_required`: Kennzeichnet Pflichtfelder
+- <DisabledProp />
+- <ReadOnlyProp />
+- <RequiredProp />
 
 Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `input`-Elements übertragen.
 
@@ -144,16 +161,7 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `inpu
 
 ### Hinweistexte und Fehlermeldungen
 
-Mit `_hint` und `_msg` geben Sie Nutzenden zusätzliche Orientierung zur Eingabe und machen Validierungsfehler unmittelbar am Feld sichtbar:
-
-- `_hint`: Ergänzende Hinweise zur Eingabe (wird immer angezeigt)
-- `_msg`: Fehlermeldungen oder Validierungshinweise (wird **nur in Verbindung mit `_touched="true"`** angezeigt)
-- `_touched`: Zeigt an, ob das Feld von Nutzenden bereits angefasst wurde, und steuert damit, ob `_msg` sichtbar wird
-- `_hideMsg`: Blendet die Fehlermeldung visuell aus, hält sie aber weiterhin im DOM vor, damit sie über `aria-describedby` für assistive Technologien verfügbar bleibt
-
-**Hinweis:** `_msg` wird erst dann eingeblendet, wenn `_touched` auf `true` gesetzt ist. So werden Validierungsfehler nicht bereits beim ersten Rendern, sondern erst nach einer Interaktion mit dem Feld angezeigt.
-
-**Anwendungsfall für `_hideMsg`:** Besteht eine fachliche Einheit aus mehreren InputNumber-Feldern innerhalb eines Field-Sets, beispielsweise ein sechsstelliger Bestätigungscode mit einem einzelnen Ziffernfeld je Stelle, kann eine gemeinsame Fehlermeldung für die gesamte Gruppe sinnvoller sein als eine Meldung je Einzelfeld. In diesem Fall blenden Sie die Fehlermeldung an den einzelnen Feldern über `_hideMsg` visuell aus und stellen sie stattdessen einmalig am Field-Set dar. Da `_hideMsg` die Meldung nur visuell verbirgt und weiterhin über `aria-describedby` mit dem jeweiligen Feld verknüpft bleibt, bleibt sie für assistive Technologien dennoch zugänglich.
+<HintAndMsgFeature />
 
 <InputNumberPreview
 	context="feature"
@@ -193,7 +201,7 @@ Verfügbare Attribute sind:
 
 ### Placeholder
 
-Mit `_placeholder` geben Sie ein Format- oder Eingabebeispiel vor, das beim Tippen verschwindet:
+<PlaceholderFeature />
 
 <InputNumberPreview
 	context="feature"
@@ -206,7 +214,7 @@ Mit `_placeholder` geben Sie ein Format- oder Eingabebeispiel vor, das beim Tipp
 
 ### Label ausblenden
 
-Mit `_hideLabel` blenden Sie das Label visuell aus, um das Feld kompakter zu gestalten – für assistive Technologien bleibt es weiterhin verfügbar:
+<HideLabelFeature />
 
 <InputNumberPreview
 	context="feature"
@@ -219,12 +227,7 @@ Mit `_hideLabel` blenden Sie das Label visuell aus, um das Feld kompakter zu ges
 
 ### Icons
 
-Mit `_icons` versehen Sie das Eingabefeld links und/oder rechts mit zusätzlichen Icons, um visuellen Kontext zu geben – etwa eine Einheit oder Währung.
-
-Verfügbare Positionen sind:
-
-- `left`: Icon links vom Eingabefeld
-- `right`: Icon rechts vom Eingabefeld
+<IconsFeature />
 
 <InputNumberPreview
 	context="feature"
@@ -241,17 +244,17 @@ Verfügbare Positionen sind:
 
 ### SmartButton
 
-Mit `_smartButton` platzieren Sie einen Button mit beliebiger Aktion direkt im Eingabefeld, etwa um eine zugehörige Funktion griffbereit anzubieten (nur in Kombination mit `_hideLabel`):
+<SmartButtonFeature />
 
 <InputNumberPreview
 	context="feature"
-	initialProps={{ _label: 'Mit SmartButton', _hideLabel: true, _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
+	initialProps={{ _label: 'Mit SmartButton', _placeholder: 'Platzhalter', _smartButton: { _label: 'Action' } }}
 	visibleProperties={['_smartButton']}
 />
 
 ### Vorschlagswerte (Suggestions)
 
-Mit `_suggestions` schlagen Sie Nutzenden häufig verwendete Werte vor, um die Eingabe zu beschleunigen:
+<SuggestionsFeature />
 
 <InputNumberPreview
 	context="feature"
@@ -266,14 +269,14 @@ Mit `_suggestions` schlagen Sie Nutzenden häufig verwendete Werte vor, um die E
 
 ### Events
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+<EventsIntro />
 
 | Event    | Auslöser                         | Value                           |
 | -------- | -------------------------------- | ------------------------------- |
 | `click`   | Eingabefeld wird angeklickt      | -                               |
 | `focus`   | Eingabefeld wird fokussiert      | -                               |
 | `blur`    | Eingabefeld verliert Fokus       | -                               |
-| `keydown` | Taste wird im Eingabefeld gedrückt | Gedrückte Taste                |
+| `keydown` | Taste wird im Eingabefeld gedrückt | -                              |
 | `input`   | Wert wird durch Eingabe geändert | Aktueller Wert des Eingabefelds |
 | `change`  | Eingabe wurde abgeschlossen      | Aktueller Wert des Eingabefelds |
 

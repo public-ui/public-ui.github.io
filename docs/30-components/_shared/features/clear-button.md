@@ -1,0 +1,1 @@
+Mit `_hasClearButton` steuern Sie, ob ein Clear-Button angezeigt wird, über den der aktuelle Wert mit einer einzigen Aktion entfernt werden kann. Der Clear-Button ist standardmäßig aktiv und erscheint, sobald das Eingabefeld Text enthält. Sein zugänglicher Name wird von KoliBri übersetzt bereitgestellt (deutsch: „Auswahl entfernen“).

@@ -1,0 +1,1 @@
+Mit `_placeholder` zeigen Sie einen Platzhaltertext an, solange noch kein Wert eingegeben bzw. ausgewählt ist – etwa ein Format- oder Eingabebeispiel. Der Platzhalter ist kein Ersatz für die Beschriftung (`_label`), da er nach der Eingabe verschwindet und von assistiven Technologien nicht zuverlässig ausgegeben wird.

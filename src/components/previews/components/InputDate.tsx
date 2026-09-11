@@ -1,8 +1,8 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty, SuggestionsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
-import { KolInputDate, KolInputRange, KolInputText, KolSelect } from '@public-ui/react-v19';
+import { KolInputDate, KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults } from '../utils';
@@ -38,16 +38,19 @@ const InputDatePreview = (props: PreviewDefaults<JSX.KolInputDate>) => {
 				_name: <KolInputText _label="Name" />,
 				_icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
 				_msg: <MsgProperty label="Message" />,
+				_hideMsg: <BooleanProperty label="Hide Message" />,
+				_suggestions: <SuggestionsProperty label="Suggestions" />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_readOnly: <BooleanProperty label="Read Only" />,
 				_required: <BooleanProperty label="Required" />,
+				_touched: <BooleanProperty label="Touched" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 				_smartButton: (
 					<SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />
 				),
 				_min: <KolInputDate _label="Min"></KolInputDate>,
 				_max: <KolInputDate _label="Max"></KolInputDate>,
-				_step: <KolInputRange _label="Step" _max={60} _min={0}></KolInputRange>,
+				_step: <KolInputNumber _label="Step" _min={0} />,
 			}}
 			componentName="KolInputDate"
 			layout={PreviewLayout.CENTERED}

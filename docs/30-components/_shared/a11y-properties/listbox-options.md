@@ -1,0 +1,1 @@
+Die Liste wird als eigene Listbox (`role="listbox"`) mit Einträgen (`role="option"`) umgesetzt. Das Eingabefeld ist über `aria-controls` mit der Listbox verknüpft. Der aktuell ausgewählte Eintrag ist mit `aria-selected="true"` gekennzeichnet.

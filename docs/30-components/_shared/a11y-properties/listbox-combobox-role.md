@@ -1,0 +1,1 @@
+Grundlage ist ein natives Texteingabefeld (`input type="text"`), das KoliBri über `role="combobox"` zu einem Combobox-Widget nach dem WAI-ARIA-Pattern erweitert. Zusätzlich setzt KoliBri `aria-autocomplete="both"` sowie `aria-expanded`, das angibt, ob die Liste geöffnet ist.

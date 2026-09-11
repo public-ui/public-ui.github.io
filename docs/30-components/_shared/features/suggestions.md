@@ -1,0 +1,1 @@
+Mit `_suggestions` schlagen Sie Nutzenden häufig verwendete Werte vor, um die Eingabe zu beschleunigen. Die Vorschläge werden über das native HTML-Element `datalist` bereitgestellt. Darstellung und Bedienung der Vorschlagsliste hängen daher vom Browser ab.

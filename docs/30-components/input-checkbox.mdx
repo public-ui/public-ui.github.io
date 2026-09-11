@@ -6,6 +6,17 @@ description: Beschreibung, Spezifikation und Beispiele für die InputCheckbox-Ko
 import Readme from '@site/readmes/input-checkbox/readme.md';
 import InputCheckboxPreview from '@site/src/components/previews/components/InputCheckbox';
 import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
+import LabelNote from './_shared/a11y-properties/label.md';
+import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
+import DisabledProp from './_shared/feature-properties/disabled.md';
+import RequiredProp from './_shared/feature-properties/required.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
+import HideLabelFeature from './_shared/features/hide-label.md';
+import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
+import EventsIntro from './_shared/api/events-intro.md';
 
 
 # InputCheckbox
@@ -13,61 +24,77 @@ import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 
 <BetaDocsBanner />
 
-**Synonyme:** Auswahlfeld, Häkchen-Feld, Ankreuzfeld
+**Synonyme:** Kontrollkästchen, Auswahlfeld, Ankreuzfeld, Häkchen-Feld, Checkbox, Switch, Toggle
 
-**Beschreibung:** Die **InputCheckbox**-Komponente ermöglicht Nutzenden, eine oder mehrere Optionen unabhängig voneinander auszuwählen oder abzuwählen. Sie kann einzeln oder als Teil einer Gruppe verwendet werden.
+**Beschreibung:** Mit **InputCheckbox** können Nutzende eine Option unabhängig von anderen Optionen aktivieren oder deaktivieren. Die Komponente kann einzeln oder als Teil einer Gruppe verwendet werden.
 
-Die Varianten `_variant="default"`, `_variant="switch"` und `_variant="button"` verändern ausschließlich die visuelle Darstellung der Komponente. Technisch bleibt die Komponente unabhängig von der gewählten Variante eine native Checkbox. Verhalten, Semantik und Tastaturbedienung bleiben unverändert.
+Die Komponente basiert auf dem nativen HTML5-Eingabetyp `checkbox` und profitiert dadurch von dessen Semantik sowie der standardisierten Unterstützung durch Browser und assistive Technologien.
+
+Die Varianten `default`, `switch` und `button` (`_variant`) verändern ausschließlich die visuelle Darstellung. Technisch bleibt die Komponente in allen Varianten eine native Checkbox – Verhalten, Semantik und Tastaturbedienung bleiben unverändert.
 
 ## Beispiel
 
-Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet werden.
+Standard-Checkbox ohne optional gesetzte Felder:
 
-<InputCheckboxPreview context="example" initialProps={{ _label: 'Akzeptiere die Bedingungen' }} />
+<InputCheckboxPreview context="example" initialProps={{ _label: 'Ich akzeptiere die Nutzungsbedingungen' }} />
 
 ## Barrierefreiheit
 
-- Verwenden Sie eine aussagekräftige Beschriftung (`_label`), damit Nutzende den Zweck der Checkbox eindeutig erkennen können.
-- Wird `_hideLabel` verwendet, bleibt die Beschriftung für assistive Technologien verfügbar. Stellen Sie sicher, dass die ausgeblendete Beschriftung dennoch aussagekräftig ist.
-- Nutzen Sie `_hint`, um zusätzliche Informationen bereitzustellen, wenn diese für das Verständnis der Checkbox erforderlich sind.
-- Stellen Sie Validierungsfehler über `_msg` verständlich und eindeutig dar.
-- Die visuellen Varianten (`default`, `switch`, `button`) beeinflussen ausschließlich das Erscheinungsbild. Für assistive Technologien bleibt die Komponente unabhängig von der Darstellung eine native Checkbox.
+* <LabelNote />
+* <ErrorMessageNote />
+* In allen Varianten bleibt die native Checkbox das bedienbare Element. In der Variante `button` wird sie visuell versteckt, bleibt aber fokussierbar und wird weiterhin als Checkbox ausgegeben. Eine nachgebildete Rolle wie `role="switch"` wird bewusst nicht gesetzt.
+* Die Zustandssymbole (`_icons`) sind rein dekorativ und vor assistiven Technologien verborgen. Der Zustand wird ausschließlich über die native Checkbox (`checked` bzw. `indeterminate`) vermittelt, sodass keine doppelten Ansagen entstehen.
+* Der Zustand `_indeterminate` wird auf die native Eigenschaft `indeterminate` übertragen, sodass assistive Technologien eine teilweise Auswahl als solche ausgeben.
+* Checkbox, Zustandssymbol und Beschriftung bilden eine gemeinsame Klickfläche, die mindestens der barrierefreien Mindestgröße für Bedienelemente entspricht.
+* Bei `_labelAlign="left"` wird die Beschriftung nicht nur visuell, sondern auch im DOM vor der Checkbox platziert. Lese- und Fokusreihenfolge entsprechen damit der sichtbaren Anordnung.
 
 ### Konkrete Designentscheidungen
 
-| Entscheidung                                           | Begründung |
-| ------------------------------------------------------ | ---------- |
-| Native Checkbox-Semantik unabhängig von `_variant`     | Alle Varianten verwenden technisch eine native Checkbox. Dadurch bleiben Verhalten, Tastatursteuerung und Unterstützung durch assistive Technologien konsistent. |
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Native Checkbox-Semantik unabhängig von `_variant` | Alle Varianten verwenden technisch eine native Checkbox. Dadurch bleiben Verhalten, Tastatursteuerung und Unterstützung durch assistive Technologien konsistent. |
 | Bewusster Verzicht auf ARIA-Rollen wie `role="switch"` | Die native Checkbox-Semantik wird von Screenreadern browser- und plattformübergreifend zuverlässiger unterstützt als nachgebildete Widget-Rollen. Zusätzliche ARIA-Rollen würden keinen Mehrwert bieten und könnten zu inkonsistentem Verhalten führen. |
+| Visuell verstecktes Eingabefeld in der Variante `button` | In der Variante `button` bilden Zustandssymbol und Beschriftung die sichtbare Schaltfläche. Die native Checkbox wird nur visuell versteckt, damit Fokus, Tastaturbedienung und Screenreader-Ausgabe erhalten bleiben. Der sichtbare Fokusindikator wird durch das Theme am gesamten Element dargestellt. |
+| Dekorative Zustandssymbole | Die Icons visualisieren den Zustand zusätzlich zur Form der Checkbox. Da der Zustand bereits über die native Checkbox vermittelt wird, sind die Icons mit `aria-hidden` verborgen. |
+| Indeterminate-Zustand nur programmatisch | Der Zustand `_indeterminate` kann ausschließlich über die API gesetzt werden. Bei einer Interaktion durch Nutzende wird er zurückgesetzt und `_checked` umgeschaltet – entsprechend dem Verhalten nativer Checkboxen. |
+| DOM-Reihenfolge folgt `_labelAlign` | Die Position der Beschriftung wird nicht nur per CSS, sondern über die Reihenfolge im DOM umgesetzt. So stimmen visuelle Reihenfolge und Lesereihenfolge überein. |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/" _target="_blank" _label="WAI-ARIA APG - Checkbox Pattern"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/examples/checkbox-mixed/" _target="_blank" _label="WAI-ARIA APG - Checkbox (Mixed State) Example"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank" _label="Autofocus und Barrierefreiheit"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/checkbox" _target="_blank" _label="MDN Web Docs: Input Type Checkbox"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/" _target="_blank" _label="WAI-ARIA APG: Checkbox Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/examples/checkbox-mixed/" _target="_blank" _label="WAI-ARIA APG: Checkbox (Mixed State) Example"></kol-link>
 
 ## Verwendung
 
 - Verwenden Sie Checkboxen, wenn mehrere Optionen unabhängig voneinander ausgewählt werden können.
-- Verwenden Sie keine Checkbox, wenn sich Nutzende zwischen genau einer Option entscheiden müssen. Nutzen Sie hierfür eine **Radio-Button-Gruppe**.
-- Kennzeichnen Sie vorausgewählte Optionen nur, wenn dies fachlich sinnvoll ist.
+- Verwenden Sie keine Checkbox, wenn sich Nutzende für genau eine von mehreren Optionen entscheiden müssen. Nutzen Sie hierfür die Komponente <kol-link _href="../components/input-radio" _label="InputRadio"></kol-link>.
+- Legen Sie mit `_value` fest, welcher Wert im aktivierten Zustand übermittelt wird (Standard: `true`). Ist die Checkbox nicht aktiviert, ist der Wert `null`.
+- Setzen Sie Vorauswahlen (`_checked`) nur, wenn dies fachlich sinnvoll ist.
 - Deaktivieren Sie Checkboxen nur, wenn eine Auswahl tatsächlich nicht möglich ist, und erläutern Sie den Grund möglichst im sichtbaren Kontext.
-- Verwenden Sie den **Indeterminate-Zustand**, um eine teilweise Auswahl zu kennzeichnen, beispielsweise wenn bei einer „Alle auswählen“-Funktion nur ein Teil der untergeordneten Optionen ausgewählt ist.
-- Ergänzen Sie bei Bedarf Hinweise oder Validierungsnachrichten, um die Nutzung der Checkbox verständlich zu unterstützen.
+- Verwenden Sie den Zustand `_indeterminate`, um eine teilweise Auswahl zu kennzeichnen, beispielsweise wenn bei einer „Alle auswählen“-Funktion nur ein Teil der untergeordneten Optionen ausgewählt ist.
 - Wählen Sie die visuelle Variante ausschließlich nach gestalterischen Anforderungen aus. Das Verhalten der Komponente bleibt in allen Varianten identisch.
 
 ### Tastatursteuerung
+
+<NativeKeyboardIntro />
 
 | Taste       | Funktion                                                              |
 | ----------- | --------------------------------------------------------------------- |
 | `Tab`       | Fokus auf die Checkbox bzw. das nächste fokussierbare Element setzen. |
 | `Shift+Tab` | Fokus auf das vorherige fokussierbare Element setzen.                 |
 | `Leertaste` | Auswahlzustand der fokussierten Checkbox ändern.                      |
+| `Enter`     | Sendet das umgebende Formular ab (KoliBri-Ergänzung, siehe Hinweis).  |
+
+<SubmitOnEnterNote />
+
+Der Auswahlzustand der Checkbox wird dabei nicht verändert.
 
 ### Best Practices / Empfehlungen
 
-- Gruppieren Sie zusammengehörige Checkboxen logisch und versehen Sie Gruppen bei Bedarf mit einer gemeinsamen Beschriftung.
-- Prüfen Sie bei umfangreichen Auswahllisten, ob eine **Combobox** mit Mehrfachauswahl besser geeignet ist.
+- Formulieren Sie die Beschriftung so, dass der aktivierte Zustand eindeutig verständlich ist, beispielsweise „Newsletter abonnieren“ statt „Newsletter“.
+- Gruppieren Sie zusammengehörige Checkboxen logisch und versehen Sie Gruppen mit einer gemeinsamen Beschriftung, beispielsweise mit einem `fieldset` und einer `legend`.
+- Prüfen Sie bei umfangreichen Auswahllisten, ob eine Mehrfachauswahl über die Komponente <kol-link _href="../components/select" _label="Select"></kol-link> besser geeignet ist.
 - Ergänzen Sie keine zusätzlichen ARIA-Rollen oder ARIA-Attribute, um das Verhalten nativer Checkboxen zu verändern.
 
 ### Anwendungsfälle
@@ -75,119 +102,185 @@ Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet
 - Zustimmung zu Datenschutzbestimmungen, Nutzungsbedingungen oder Einwilligungen
 - Auswahl mehrerer unabhängiger Optionen, beispielsweise Interessen, Kategorien oder Filter
 - Aktivieren oder Deaktivieren einzelner Einstellungen, die unabhängig voneinander gewählt werden können
-- „Alle auswählen“-Funktion mit Indeterminate-Zustand, wenn eine Checkbox den Auswahlstatus einer Gruppe von Unter-Checkboxen repräsentiert
-- Formulare, in denen der Auswahlzustand als Formularwert gespeichert und gemeinsam mit den übrigen Eingaben übermittelt werden soll
+- „Alle auswählen“-Funktion mit Indeterminate-Zustand, wenn eine Checkbox den Auswahlstatus einer Gruppe untergeordneter Checkboxen repräsentiert
+- Formulare, in denen der Auswahlzustand als Formularwert gemeinsam mit den übrigen Eingaben übermittelt werden soll
 
-## FAQ
+### FAQ
 
-**Ändert `_variant="switch"` die Ansage für Screenreader?**
-
+**Ändert `_variant="switch"` die Ansage für Screenreader?**  
 Nein. Alle drei Varianten (`default`, `switch` und `button`) bleiben technisch eine Checkbox. Screenreader geben unabhängig von der gewählten Variante eine Checkbox aus und keinen Schalter.
 
-**Kann ich den Indeterminate-Zustand per Tastatur oder Klick setzen?**
+**Kann ich den Indeterminate-Zustand per Tastatur oder Klick setzen?**  
+Nein. Der Indeterminate-Zustand kann ausschließlich programmatisch über `_indeterminate` gesetzt werden. Eine Interaktion durch Nutzende setzt ihn zurück und schaltet den Auswahlzustand um.
 
-Nein. Der Indeterminate-Zustand kann ausschließlich programmatisch über die API gesetzt werden. Nutzende können diesen Zustand weder per Tastatur noch durch einen Mausklick aktivieren.
+**Welchen Wert übermittelt die Checkbox?**  
+Im aktivierten Zustand wird der Wert aus `_value` übermittelt (Standard: `true`), im nicht aktivierten Zustand `null`.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der InputCheckbox-Komponente:
 
 <InputCheckboxPreview context="playground" initialProps={{ _label: 'Beispiel-Checkbox' }} />
 
-### Funktionalitäten (mit Code)
+## Funktionsbeispiele
 
-#### Basis-Checkbox
+### Einfache Checkbox
 
-Eine einfache Checkbox ohne spezielle Konfiguration:
-
-<InputCheckboxPreview context="feature" initialProps={{ _label: 'Zustimmen' }} visibleProperties={[]} />
-
-#### Varianten
-
-Die Checkbox unterstützt drei verschiedene visuelle Varianten über das Attribut `_variant`:
-
-<InputCheckboxPreview context="feature" initialProps={{ _label: 'Checkbox-Typ' }} visibleProperties={['_variant']} />
-
-**Verfügbare Varianten:**
-- `default`: Klassische rechteckige Checkbox mit Häkchen (Standard)
-- `switch`: Horizontaler Schalter/Toggle-Button (rechts = aktiv, links = inaktiv)
-- `button`: Button-Stil mit Icon-Wechsel je nach Zustand
-
-#### Zustände
-
-Verschiedene Zustände und Statusanzeigen:
+<BasicFeature />
 
 <InputCheckboxPreview
 	context="feature"
-	initialProps={{ _label: 'Checkbox-Zustand' }}
-	visibleProperties={['_checked', '_indeterminate', '_disabled', '_required']}
+	visibleProperties={['_label']}
+	initialProps={{
+		_label: 'Newsletter abonnieren',
+	}}
 />
 
-**Verfügbare Zustände:**
-- `_checked`: Markiert die Checkbox als angekreuzt
-- `_indeterminate`: Setzt die Checkbox in einen unbestimmten Zustand (weder vollständig an noch aus) – typisch für Hierarchien
-- `_disabled`: Deaktiviert die Checkbox (mit Begründung verwenden!)
-- `_required`: Kennzeichnet die Checkbox als erforderlich für Formularvalidierung
+### Varianten
 
-#### Label und Beschriftung
+Mit `_variant` wählen Sie die visuelle Darstellung der Checkbox. Semantik und Bedienung bleiben in allen Varianten identisch.
 
-Kontrolle über Sichtbarkeit und Ausrichtung der Beschriftung:
+Verfügbare Varianten sind:
+
+- `default`: Klassische Checkbox mit Häkchen (Standard)
+- `switch`: Horizontaler Schalter (rechts = aktiviert, links = deaktiviert)
+- `button`: Schaltflächenartige Darstellung, bei der das Zustandssymbol je nach Zustand wechselt
 
 <InputCheckboxPreview
 	context="feature"
-	initialProps={{ _label: 'Beschriftung' }}
-	visibleProperties={['_hideLabel', '_labelAlign']}
+	visibleProperties={['_variant']}
+	initialProps={{
+		_label: 'Benachrichtigungen aktivieren',
+		_variant: 'switch',
+	}}
 />
 
-**Verfügbare Optionen:**
-- `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
-- `_labelAlign`: Ausrichtung der Beschriftung (`left` oder `right`, Standard: `right`)
+### Zustände
 
-#### Formularattribute
+Mit `_checked` und `_indeterminate` steuern Sie den Auswahlzustand der Checkbox:
 
-Standard-Attribute für die Integration in Formulare:
+- `_checked`: Aktiviert die Checkbox. Der Wert wird bei einer Interaktion aktualisiert und kann gelesen und geschrieben werden.
+- `_indeterminate`: Kennzeichnet eine teilweise Auswahl, beispielsweise bei einer übergeordneten „Alle auswählen“-Checkbox. Der Wert von `_checked` bleibt dabei unverändert. Bei einer Interaktion durch Nutzende wird `_indeterminate` zurückgesetzt.
 
 <InputCheckboxPreview
 	context="feature"
-	initialProps={{ _label: 'Formular-Beispiel' }}
-	visibleProperties={['_hint', '_msg', '_name', '_accessKey', '_shortKey']}
+	visibleProperties={['_checked', '_indeterminate']}
+	initialProps={{
+		_label: 'Alle auswählen',
+		_indeterminate: true,
+	}}
 />
 
-**Verfügbare Attribute:**
-- `_hint`: Ergänzender Hinweistext unter dem Label
-- `_msg`: Fehlermeldung oder Validierungshinweis
-- `_name`: Technischer Name des Input-Felds
-- `_accessKey`: Tastenkombination zum Fokussieren/Auslösen
-- `_shortKey`: Visuelle Shortcut-Hinweis neben dem Label
+### Formularattribute
 
-#### Benutzerdefinierte Icons
+<FormAttributesFeature />
 
-Anpassung der Icon-Darstellung für verschiedene Zustände:
+- <DisabledProp />
+- <RequiredProp />
+
+Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `input`-Elements übertragen. Mit `_name` legen Sie den technischen Namen fest, unter dem der Wert aus `_value` bei aktivierter Checkbox übermittelt wird.
 
 <InputCheckboxPreview
 	context="feature"
-	initialProps={{ _label: 'Mit benutzerdefinierten Icons'}}
-	visibleProperties={['_icons', '_checked', '_indeterminate']}
+	visibleProperties={['_disabled', '_required', '_name']}
+	initialProps={{
+		_label: 'Ich akzeptiere die Nutzungsbedingungen',
+	}}
 />
 
-Die `_icons`-Eigenschaft ermöglicht die Anpassung der Icons für die Zustände `checked`, `unchecked` und `indeterminate`.
+### Hinweistexte und Fehlermeldungen
 
-#### Events
+<HintAndMsgFeature />
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+<InputCheckboxPreview
+	context="feature"
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	initialProps={{
+		_label: 'Ich akzeptiere die Nutzungsbedingungen',
+		_hint: 'Die Zustimmung ist für die Registrierung erforderlich.',
+		_msg: { _description: 'Bitte stimmen Sie den Nutzungsbedingungen zu.' },
+		_touched: true,
+		_hideMsg: false,
+	}}
+/>
 
-| Event    | Auslöser                                                           | Value                                              |
-|----------|--------------------------------------------------------------------|----------------------------------------------------|
-| `focus`  | Eingabefeld wird fokussiert                                        | -                                                  |
-| `click`  | Eingabefeld wird angeklickt                                        | -                                                  |
-| `input`  | Checkbox wird an- oder abgehakt (entspricht nativem `input`-Event) | Definierter `_value` wenn aktiv, sonst `null`     |
-| `change` | Checkbox wird an- oder abgehakt (entspricht nativem `change`-Event`) | Definierter `_value` wenn aktiv, sonst `null`     |
-| `blur`   | Eingabefeld verliert Fokus                                         | -                                                  |
-| `keydown` | Eine Taste wird gedrückt                                            | -                                                  |
+### Label ausblenden
+
+<HideLabelFeature />
+
+<InputCheckboxPreview
+	context="feature"
+	visibleProperties={['_label', '_hideLabel']}
+	initialProps={{
+		_label: 'Zeile auswählen',
+		_hideLabel: false,
+	}}
+/>
+
+### Ausrichtung der Beschriftung
+
+Mit `_labelAlign` legen Sie fest, ob die Beschriftung rechts (`right`, Standard) oder links (`left`) der Checkbox steht. Die Reihenfolge wird auch im DOM umgesetzt, sodass Lesereihenfolge und visuelle Anordnung übereinstimmen.
+
+<InputCheckboxPreview
+	context="feature"
+	visibleProperties={['_labelAlign']}
+	initialProps={{
+		_label: 'Beschriftung links',
+		_labelAlign: 'left',
+	}}
+/>
+
+### Zustandssymbole (Icons)
+
+Bei der Checkbox platziert `_icons` keine zusätzlichen Icons links oder rechts vom Feld, sondern legt die Symbole für die einzelnen Auswahlzustände fest:
+
+- `checked`: Symbol im aktivierten Zustand (Standard: `kolicon-check`)
+- `indeterminate`: Symbol im Indeterminate-Zustand (Standard: `kolicon-minus`)
+- `unchecked`: Symbol im nicht aktivierten Zustand (Standard: `kolicon-cross`)
+
+Nicht angegebene Zustände behalten ihr Standard-Symbol. Die Symbole sind rein dekorativ und vor assistiven Technologien verborgen; der Zustand wird über die native Checkbox vermittelt. Wo und ob ein Symbol sichtbar ist, hängt von der Variante ab: In der Variante `default` erscheint es nur im aktivierten bzw. Indeterminate-Zustand.
+
+<InputCheckboxPreview
+	context="feature"
+	visibleProperties={['_icons', '_checked', '_indeterminate', '_variant']}
+	initialProps={{
+		_label: 'Mit benutzerdefinierten Symbolen',
+		_variant: 'button',
+		_icons: {
+			checked: 'kolicon-check',
+			unchecked: 'kolicon-kolibri',
+		},
+	}}
+/>
+
+### Tastenkürzel
+
+Mit `_accessKey` und `_shortKey` weisen Sie auf Tastenkürzel hin. Beide werden als Hinweis hinter der Beschriftung angezeigt:
+
+- `_accessKey`: Wird auf das native `accesskey`-Attribut übertragen. Die Tastenkombination zum Auslösen hängt von Browser und Betriebssystem ab.
+- `_shortKey`: Wird über `aria-keyshortcuts` an assistive Technologien übermittelt. Die Tastenkombination selbst muss von der Anwendung umgesetzt werden.
+
+<InputCheckboxPreview
+	context="feature"
+	visibleProperties={['_accessKey', '_shortKey']}
+	initialProps={{
+		_label: 'Automatisch speichern',
+		_accessKey: 'S',
+	}}
+/>
 
 ## API
 
-<Readme />
+### Events
 
+<EventsIntro />
+
+| Event     | Auslöser                                  | Value                                               |
+| --------- | ----------------------------------------- | --------------------------------------------------- |
+| `focus`   | Checkbox wird fokussiert                  | -                                                   |
+| `blur`    | Checkbox verliert Fokus                   | -                                                   |
+| `keydown` | Taste wird bei fokussierter Checkbox gedrückt | -                                               |
+| `input`   | Checkbox wird aktiviert oder deaktiviert  | Wert aus `_value`, wenn aktiviert, sonst `null`     |
+| `change`  | Checkbox wird aktiviert oder deaktiviert  | Wert aus `_value`, wenn aktiviert, sonst `null`     |
+
+<Readme />

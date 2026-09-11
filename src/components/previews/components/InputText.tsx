@@ -38,6 +38,9 @@ const InputTextPreview = (props: PreviewDefaults<JSX.KolInputText>) => {
 				_name: <KolInputText _label="Name" />,
 				_hint: <KolInputText _label="Hint" />,
 				_msg: <MsgProperty label="Message" />,
+				_hideMsg: <BooleanProperty label="Hide Message" />,
+				_autoComplete: <KolInputText _label="Auto Complete" />,
+				_spellCheck: <BooleanProperty label="Spell Check" />,
 				_maxLength: <KolInputNumber _label="Max Length" _min={0} />,
 				_maxLengthBehavior: (
 					<KolSelect
