@@ -57,15 +57,13 @@ Die ButtonLink-Komponente eignet sich für Fälle, in denen der semantische Aufb
 - Navigationen in Tabellen oder Listen, die Button-Semantik für Accessibility benötigen
 - Geschäftslogik-Triggern, die optisch unauffällig wie Links wirken sollen
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <ButtonLinkPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-ButtonLink
+### Basis-ButtonLink
 
 Ein einfacher ButtonLink mit grundlegenden Eigenschaften:
 
@@ -75,7 +73,7 @@ Ein einfacher ButtonLink mit grundlegenden Eigenschaften:
 	visibleProperties={['_label']}
 />
 
-#### Mit Icons
+### Mit Icons
 
 ButtonLink mit Icons vor und/oder nach dem Label:
 
@@ -85,7 +83,7 @@ ButtonLink mit Icons vor und/oder nach dem Label:
 	visibleProperties={['_label', '_icons']}
 />
 
-#### Mit verstecktem Label
+### Mit verstecktem Label
 
 Das Label wird versteckt und nur als Tooltip angezeigt:
 
@@ -95,7 +93,7 @@ Das Label wird versteckt und nur als Tooltip angezeigt:
 	visibleProperties={['_hideLabel']}
 />
 
-#### Deaktiviert
+### Deaktiviert
 
 Ein deaktivierter ButtonLink reagiert nicht auf Interaktionen:
 
@@ -105,7 +103,7 @@ Ein deaktivierter ButtonLink reagiert nicht auf Interaktionen:
 	visibleProperties={['_disabled']}
 />
 
-#### Mit Tastaturkürzel
+### Mit Tastaturkürzel
 
 Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
 
@@ -115,7 +113,7 @@ Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
 	visibleProperties={['_shortKey']}
 />
 
-#### ARIA-Attribute
+### ARIA-Attribute
 
 ButtonLink mit ARIA-Attributen für erweiterte Semantik:
 
@@ -129,7 +127,7 @@ ButtonLink mit ARIA-Attributen für erweiterte Semantik:
 	visibleProperties={['_ariaControls', '_ariaExpanded', '_ariaSelected']}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

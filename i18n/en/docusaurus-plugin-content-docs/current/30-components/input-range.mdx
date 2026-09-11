@@ -68,17 +68,15 @@ Rendering of an InputRange component with default settings:
 - Scaling or zoom control
 - Weighting or value setting in rating systems
 
-## Construction / Technology
-
-### Playground
+## Playground
 
 Test the various properties of the InputRange component:
 
 <InputRangePreview context="playground" />
 
-### Functionality (with Code)
+## Functionality
 
-#### Basic Configuration
+### Basic Configuration
 
 Standard InputRange with label, minimum, and maximum:
 
@@ -88,7 +86,7 @@ Standard InputRange with label, minimum, and maximum:
 	initialProps={{ _label: 'Select value', _min: 0, _max: 100, _step: 1 }}
 />
 
-#### Value Range and Step Size
+### Value Range and Step Size
 
 The properties `_min`, `_max`, and `_step` determine the value range and step size:
 
@@ -98,7 +96,7 @@ The properties `_min`, `_max`, and `_step` determine the value range and step si
 	initialProps={{ _label: 'Price range (€)', _min: 0, _max: 1000, _step: 50, _value: 250 }}
 />
 
-#### Hint Texts
+### Hint Texts
 
 Additional information can be provided via `_hint`:
 
@@ -108,7 +106,7 @@ Additional information can be provided via `_hint`:
 	initialProps={{ _label: 'Volume', _hint: 'Slider to control the volume (0-100%)' }}
 />
 
-#### Disabled State
+### Disabled State
 
 A disabled input field can be achieved via the `_disabled` attribute:
 
@@ -118,7 +116,7 @@ A disabled input field can be achieved via the `_disabled` attribute:
 	initialProps={{ _label: 'Disabled field', _disabled: true, _value: 50 }}
 />
 
-#### Error Messages
+### Error Messages
 
 The `_msg` attribute allows displaying validation hints:
 
@@ -132,7 +130,7 @@ The `_msg` attribute allows displaying validation hints:
 	}}
 />
 
-#### Events
+### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 

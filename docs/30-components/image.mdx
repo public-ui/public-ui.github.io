@@ -64,27 +64,25 @@ Nutzen Sie `_srcset`, wenn Sie dasselbe Bild in verschiedenen Auflösungen oder 
 **Kann ich beliebige Bildformate verwenden?**
 Ja, alle gängigen Formate werden unterstützt (PNG, JPEG, WebP, SVG, GIF usw.). Verwenden Sie `_srcset` mit verschiedenen Formaten für maximale Browser-Kompatibilität und Performance.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <ImagePreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Bildquelle
+### Bildquelle
 
 Die Bildquelle wird über das erforderliche Attribut `_src` gesetzt. Dies ist die Fallback-URL, die verwendet wird, wenn `_srcset` nicht unterstützt wird oder keine passende Variante vorhanden ist.
 
 <ImagePreview context="feature" visibleProperties={['_src']} initialProps={{ _src: '/assets/sample-image.png' }} />
 
-#### Alternativtext
+### Alternativtext
 
 Das erforderliche Attribut `_alt` bietet eine Textbeschreibung oder Alternative für das Bild. Bei dekorativen Bildern kann es leer sein.
 
 <ImagePreview context="feature" visibleProperties={['_alt']} initialProps={{ _alt: 'Beispielbildbeschreibung' }} />
 
-#### Responsive Bilder mit Srcset und Sizes
+### Responsive Bilder mit Srcset und Sizes
 
 Mit `_srcset` können verschiedene Bildversionen für unterschiedliche Auflösungen, Pixeldichten und Dateiformate angegeben werden. Das Attribut `_sizes` hilft dem Browser zu verstehen, welche Breiten das Bild auf verschiedenen Viewport-Größen haben wird. 
 Achtung: der Browser wechselt das Bild nur von kleiner zu größer und nicht wieder zurück!
@@ -98,7 +96,7 @@ Achtung: der Browser wechselt das Bild nur von kleiner zu größer und nicht wie
 	}}
 />
 
-#### Ladeverhalten
+### Ladeverhalten
 
 Das Attribut `_loading` steuert, wann das Bild vom Browser geladen wird. `lazy` ist der Standard und verbessert die Performance, `eager` sollte nur für Bilder im sichtbaren Bereich verwendet werden.
 

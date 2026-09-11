@@ -78,17 +78,15 @@ Nutzen Sie dies, wenn ein aussagekräftiges Icon vorhanden ist und der Label-Tex
 **Kann ich mehrere Icons anzeigen?**
 Ja, Sie können mehrere Icon-Klassen über das `_icons`-Attribut kombinieren.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der Link-Komponente:
 
 <LinkPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-Link
+### Basis-Link
 
 Ein einfacher Link mit Label und href:
 
@@ -98,7 +96,7 @@ Ein einfacher Link mit Label und href:
 	initialProps={{ _label: 'Beispiel-Link', _href: 'https://example.com' }}
 />
 
-#### Link mit Icon
+### Link mit Icon
 
 Link mit einem Icon, das den Linkzweck visualisiert:
 
@@ -108,7 +106,7 @@ Link mit einem Icon, das den Linkzweck visualisiert:
 	initialProps={{ _label: 'Mit Icon', _href: 'https://example.com', _icons: 'kolicon-external' }}
 />
 
-#### Varianten
+### Varianten
 
 Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varianten zur Verfügung stehen und welche der Standardwert ist. Hier sind <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/link/link-variant?theme=desy-v11" _target="_blank" _label="die anderen Themes und ihre jeweiligen Varianten"></kol-link> zu sehen. Im Folgenden zeigen wir nur das Default Theme.
 
@@ -118,7 +116,7 @@ Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varia
 	initialProps={{ _label: 'Link-Varianten', _variant: 'small' }}
 />
 
-#### Link-Zustände
+### Link-Zustände
 
 Verschiedene Zustände:
 
@@ -128,7 +126,7 @@ Verschiedene Zustände:
 	initialProps={{ _label: 'Link-Zustände', _href: 'https://example.com' }}
 />
 
-#### Download-Link
+### Download-Link
 
 Link mit Download-Funktionalität:
 
@@ -138,7 +136,7 @@ Link mit Download-Funktionalität:
 	initialProps={{ _label: 'Datei herunterladen', _href: 'https://example.com/datei.pdf', _download: 'datei.pdf' }}
 />
 
-#### Tooltip-Alignment
+### Tooltip-Alignment
 
 Konfiguration der Tooltip-Positionierung (bei `_hideLabel: true`):
 
@@ -148,7 +146,7 @@ Konfiguration der Tooltip-Positionierung (bei `_hideLabel: true`):
 	initialProps={{ _label: 'Nur Icon', _href: 'https://example.com', _hideLabel: true, _icons: 'kolicon-external', _tooltipAlign: 'top' }}
 />
 
-#### ARIA-Attribute und Accessibility
+### ARIA-Attribute und Accessibility
 
 Erweiterte Accessibility-Konfigurationen:
 
@@ -158,7 +156,7 @@ Erweiterte Accessibility-Konfigurationen:
 	initialProps={{ _label: 'Aktive Seite', _href: '/current-page', _ariaCurrentValue: 'page', _ariaDescription: 'Dies ist die aktuelle Seite' }}
 />
 
-#### aria-current Service
+### aria-current Service
 
 Damit die Link-Komponente automatisch ein `aria-current`-Attribut setzen kann, muss ihr über den `setCurrentLocation()`-Service mitgeteilt werden, welche Seite gerade aktiv ist:
 
@@ -171,7 +169,7 @@ setCurrentLocation('/path/to/page');
 
 Der übergebene Location-String muss dabei exakt dem `_href`-Attribut des Links entsprechen.
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

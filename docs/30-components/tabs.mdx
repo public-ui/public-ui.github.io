@@ -87,17 +87,15 @@ Ja, indem Sie in der Tab-Definition das Attribut `_disabled` auf `true` setzen.
 `"select-automatic"` (Standard): Pfeiltasten wechseln Fokus und Selektion gleichzeitig.  
 `"select-manual"`: Pfeiltasten wechseln nur den Fokus, die Selektion erfolgt per `Enter` / Leertaste.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der Tabs-Komponente:
 
 <TabsPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-Tabs
+### Basis-Tabs
 
 Die einfachste Verwendung mit mehreren Registerkarten:
 
@@ -114,7 +112,7 @@ Die einfachste Verwendung mit mehreren Registerkarten:
 	}}
 />
 
-#### Ausrichtung
+### Ausrichtung
 
 Die Tabs können an verschiedenen Positionen ausgerichtet werden:
 
@@ -138,7 +136,7 @@ Die Tabs können an verschiedenen Positionen ausgerichtet werden:
 - `"left"`: Tabs links
 - `"right"`: Tabs rechts
 
-#### Verhalten: Automatische vs. manuelle Selektion
+### Verhalten: Automatische vs. manuelle Selektion
 
 Der `_behavior`-Parameter steuert, wie Nutzer:innen zwischen Tabs wechseln:
 
@@ -159,7 +157,7 @@ Der `_behavior`-Parameter steuert, wie Nutzer:innen zwischen Tabs wechseln:
 - `"select-automatic"`: Pfeiltasten wechseln direkt zum nächsten Tab (W3C Standard).
 - `"select-manual"`: Pfeiltasten setzen Fokus, `Enter` / Leertaste wählen den Tab aus.
 
-#### Create-Button
+### Create-Button
 
 Ein zusätzlicher Button am Ende der Tab-Leiste zum dynamischen Hinzufügen neuer Tabs:
 
@@ -178,7 +176,7 @@ Ein zusätzlicher Button am Ende der Tab-Leiste zum dynamischen Hinzufügen neue
 
 Der `_hasCreateButton`-Button erzeugt das `create`-Event, wenn angeklickt.
 
-#### Aktiven Tab auswählen
+### Aktiven Tab auswählen
 
 Steuern Sie den aktiven Tab programmgesteuert mit `_selected`:
 
@@ -198,7 +196,7 @@ Steuern Sie den aktiven Tab programmgesteuert mit `_selected`:
 
 Der Wert ist der Index des Tabs (0-basiert).
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

@@ -82,9 +82,7 @@ Die Textarea unterstützt folgende Tastenkombinationen:
 - **Nachrichten**: Verfassen von E-Mails, Nachrichten oder Mitteilungen.
 - **Dokumentation**: Eingabe von längeren Texten für Dokumentations- oder Content-Management-Systeme.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der Textarea-Komponente:
 
@@ -93,15 +91,15 @@ Testen Sie die verschiedenen Eigenschaften der Textarea-Komponente:
 	initialProps={{ _label: 'Beschreibung', _placeholder: 'Bitte geben Sie eine Beschreibung ein...', _hint: 'Hinweistext', _rows: 4 }}
 />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Einfache Textarea
+### Einfache Textarea
 
 Standard-Textarea ohne spezielle Konfiguration:
 
 <TextAreaPreview context="feature" initialProps={{ _label: 'Beschreibung' }} visibleProperties={[]} />
 
-#### Automatische Höhenanpassung
+### Automatische Höhenanpassung
 
 Die Textarea passt ihre Höhe automatisch an den Inhalt an:
 
@@ -119,7 +117,7 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 	visibleProperties={['_adjustHeight']}
 />
 
-#### Formularattribute
+### Formularattribute
 
 Standard-Attribute für Formulare:
 
@@ -137,7 +135,7 @@ Standard-Attribute für Formulare:
 - `_required`: Kennzeichnet Pflichtfelder
 - `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
 
-#### Placeholder
+### Placeholder
 
 Der Placeholder-Text wird angezeigt, wenn das Eingabefeld leer ist:
 
@@ -149,7 +147,7 @@ Der Placeholder-Text wird angezeigt, wenn das Eingabefeld leer ist:
 
 **Hinweis**: Der Placeholder sollte nur als ergänzende Hilfe dienen und keine Pflichtinformationen enthalten, da der Text beim Eintippen verschwindet.
 
-#### Nur-Lesen-Modus
+### Nur-Lesen-Modus
 
 Die Textarea ist nur lesbar, aber nicht editierbar:
 
@@ -159,7 +157,7 @@ Die Textarea ist nur lesbar, aber nicht editierbar:
 	initialProps={{ _label: 'Beschreibung', _readOnly: true, _value: 'Dies ist ein nur lesbarer Textbereich.' }}
 />
 
-#### Größenanpassung (Resize)
+### Größenanpassung (Resize)
 
 Die Textarea kann über das Attribut `_resize` in ihrer Größe angepasst werden:
 
@@ -173,13 +171,13 @@ Die Textarea kann über das Attribut `_resize` in ihrer Größe angepasst werden
 - `vertical`: Nur vertikal vergrößerbar (Standard)
 - `none`: Keine Größenanpassung möglich
 
-#### Zeilenanzahl
+### Zeilenanzahl
 
 Die anfängliche Höhe der Textarea kann über das Attribut `_rows` in Zeilen angegeben werden:
 
 <TextAreaPreview context="feature" visibleProperties={['_rows']} initialProps={{ _label: 'Beschreibung', _rows: 6 }} />
 
-#### Zeichenbegrenzung und Zeichenzähler
+### Zeichenbegrenzung und Zeichenzähler
 
 Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen und gleichzeitig visuelles Feedback geben:
 
@@ -189,7 +187,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
 />
 
-##### Attribute
+#### Attribute
 
 | Attribut               | Typ                | Standard | Beschreibung                                                                                                                                                                                                                                                                                |
 | ---------------------- | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -197,7 +195,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 | `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
 | `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`‑Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
 
-##### Ausgabevarianten
+#### Ausgabevarianten
 
 | Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
 | ---: | --------------------- | ------------- | ---------------------- | ---------------------------------------------------------- |
@@ -208,18 +206,18 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 
 **Hinweis**: Wird `_max-length-behavior="soft"` verwendet, wird das native `maxlength`-Attribut **nicht** gesetzt – das Eingabefeld wird also nicht hart begrenzt.
 
-##### Barrierefreiheit des Zeichenzählers
+#### Barrierefreiheit des Zeichenzählers
 
 - Der Zähler aktualisiert sich mit einer Verzögerung von **500 ms**, damit Screenreader-Ereignisse gebündelt werden und das Tippen nicht unterbrechen.
 - Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa: *„Sie können bis zu 100 Zeichen eingeben."*
 
-##### Zusammenfassung
+#### Zusammenfassung
 
 - Ohne `_has-counter` gibt es **nie** einen Zähler.
 - Mit `_has-counter` **und ohne** `_max-length` wird nur die aktuell eingegebene Zeichenzahl angezeigt.
 - Mit `_has-counter` **und** `_max-length` bestimmt `_max-length-behavior`, ob die Grenze hart (`hard`) oder weich (`soft`) umgesetzt wird.
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

@@ -97,23 +97,21 @@ Die Komponente nutzt die native Browservalidierung des HTML5-Eingabetyps `email`
 **Kann ich die native E-Mail-Validierung erweitern?**  
 Ja. Nutzen Sie `_pattern`, wenn zusätzlich zur nativen E-Mail-Validierung weitere fachliche Anforderungen geprüft werden sollen, beispielsweise um E-Mail-Adressen auf bestimmte Domains einzuschränken.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften des InputEmail-Felds:
 
 <InputEmailPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-Eingabefeld
+### Basis-Eingabefeld
 
 Standard-E-Mail-Eingabe mit Label:
 
 <InputEmailPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'E-Mail-Adresse' }} />
 
-#### Mehrfach-Eingabe
+### Mehrfach-Eingabe
 
 Mit `_multiple` werden mehrere E-Mail-Adressen akzeptiert, kommagetrennt:
 
@@ -123,7 +121,7 @@ Mit `_multiple` werden mehrere E-Mail-Adressen akzeptiert, kommagetrennt:
 	initialProps={{ _label: 'E-Mail-Adressen', _multiple: true, _hint: 'Adressen durch Kommas trennen' }}
 />
 
-#### Placeholder und Hinweis
+### Placeholder und Hinweis
 
 Hilfstexte für bessere Usability:
 
@@ -133,7 +131,7 @@ Hilfstexte für bessere Usability:
 	initialProps={{ _label: 'E-Mail-Adresse', _placeholder: 'beispiel@domain.de', _hint: 'Wir verwenden Ihre E-Mail für Benachrichtigungen.' }}
 />
 
-#### Formularattribute
+### Formularattribute
 
 Standard-Attribute für Formulare:
 
@@ -152,7 +150,7 @@ Standard-Attribute für Formulare:
 - `_shortKey`: Fügt einen visuellen Shortcut-Hinweis nach dem Label hinzu und liest ihn für Screenreader vor
 - `_tooltipAlign`: Legt fest, wo der Tooltip bevorzugt angezeigt wird (`'top'` | `'right'` | `'bottom'` | `'left'`)
 
-#### Icons
+### Icons
 
 Icons können links und/oder rechts vom Eingabefeld angezeigt werden:
 
@@ -165,7 +163,7 @@ Icons können links und/oder rechts vom Eingabefeld angezeigt werden:
 	}}
 />
 
-#### Name und ID
+### Name und ID
 
 Technische Kennzeichnung für Formulare:
 
@@ -177,7 +175,7 @@ Technische Kennzeichnung für Formulare:
 
 **Hinweis**: `_name` wird als HTML-Attribut `name` verwendet und ist wichtig für das Absenden des Formulars.
 
-#### Auto-Vervollständigung und Vorschläge
+### Auto-Vervollständigung und Vorschläge
 
 Mit `_autoComplete` steuern Sie, ob der Browser Eingabevorschläge anzeigen soll. Der Standardwert ist `'off'`. Für Felder, bei denen Browser-Autofill erwünscht ist, setzen Sie `_autoComplete="email"`.
 
@@ -189,7 +187,7 @@ Mit `_suggestions` können Sie eine Liste von Vorschlagswerten bereitstellen, di
 	initialProps={{ _label: 'E-Mail-Adresse', _autoComplete: 'email' }}
 />
 
-#### Zeichenbegrenzung und Zeichenzähler
+### Zeichenbegrenzung und Zeichenzähler
 
 Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen:
 
@@ -203,7 +201,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
 />
 
-##### Attribute
+#### Attribute
 
 | Attribut               | Typ                | Standard | Beschreibung                                                                                                                                                                                                                                                                                |
 | ---------------------- | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -211,7 +209,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 | `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
 | `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`‑Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
 
-##### Ausgabevarianten
+#### Ausgabevarianten
 
 | Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
 | ---: | --------------------- | ------------- | ---------------------- | ---------------------------------------------------------- |
@@ -222,12 +220,12 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 
 **Hinweis**: Wird `_max-length-behavior="soft"` verwendet, wird das native `maxlength`-Attribut **nicht** gesetzt – das Eingabefeld wird also nicht hart begrenzt.
 
-##### Barrierefreiheit des Zeichenzählers
+#### Barrierefreiheit des Zeichenzählers
 
 - Der Zähler aktualisiert sich mit einer Verzögerung von **500 ms**, damit Screenreader-Ereignisse gebündelt werden und das Tippen nicht unterbrechen.
 - Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa: *„Sie können bis zu 100 Zeichen eingeben."*
 
-#### Fehlermeldung und Validierung
+### Fehlermeldung und Validierung
 
 Fehlerhafte Eingaben können über `_msg` mit aussagekräftigen Meldungen versehen werden. Mit `_pattern` lässt sich zusätzlich ein reguläres Ausdrucks-Muster zur Eingabevalidierung hinterlegen:
 
@@ -241,7 +239,7 @@ Fehlerhafte Eingaben können über `_msg` mit aussagekräftigen Meldungen verseh
 	}}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

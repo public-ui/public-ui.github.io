@@ -38,8 +38,8 @@ const SOURCES = [
  */
 const SECTION_CONTEXTS = [
 	{ level: 2, heading: /^Beispiel$/, context: 'example' },
-	{ level: 3, heading: /^Playground$/, context: 'playground' },
-	{ level: 3, heading: /^Funktionalitäten \(mit Code\)$/, context: 'feature' },
+	{ level: 2, heading: /^Playground$/, context: 'playground' },
+	{ level: 2, heading: /^Funktionalitäten$/, context: 'feature' },
 ];
 
 /** Ermittelt den erwarteten Kontext aus den Überschriften oberhalb der Fundstelle. */

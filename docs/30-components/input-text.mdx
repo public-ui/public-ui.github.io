@@ -99,17 +99,15 @@ Ja, über `_suggestions` können Vorschlagswerte bereitgestellt werden. Da die U
 **Wie unterscheiden sich `_max-length` und `_max-length-behavior`?**  
 Mit `_max-length` wird die maximale Anzahl an Zeichen festgelegt. Über `_max-length-behavior` kann gesteuert werden, ob die Eingabe nativ begrenzt oder lediglich die Zeichenanzahl angezeigt wird.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften des Eingabefelds
 
 <InputTextPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-Eingabefeld
+### Basis-Eingabefeld
 
 Ein einfaches Eingabefeld mit Label:
 
@@ -119,7 +117,7 @@ Ein einfaches Eingabefeld mit Label:
 	visibleProperties={['_label', '_placeholder']}
 />
 
-#### Eingabefeld-Typen
+### Eingabefeld-Typen
 
 InputText unterstützt verschiedene Eingabe-Typen über das Attribut `_type`:
 
@@ -135,7 +133,7 @@ InputText unterstützt verschiedene Eingabe-Typen über das Attribut `_type`:
 - `tel`: Für Telefonnummern
 - `url`: Für URLs mit entsprechender Validierung
 
-#### Icons
+### Icons
 
 Links und rechts vom Eingabefeld können Icons platziert werden:
 
@@ -145,7 +143,7 @@ Links und rechts vom Eingabefeld können Icons platziert werden:
 	visibleProperties={['_icons']}
 />
 
-#### Validierungszustände
+### Validierungszustände
 
 Status-Eigenschaften zur Steuerung von Validierung und Interaktion:
 
@@ -161,7 +159,7 @@ Status-Eigenschaften zur Steuerung von Validierung und Interaktion:
 - `_required`: Kennzeichnet Pflichtfelder
 - `_touched`: Zeigt an, ob das Feld vom Nutzer angefasst wurde
 
-#### Label-Verwaltung
+### Label-Verwaltung
 
 Label können visuell verborgen sein, bleiben aber für assistive Technologien sichtbar:
 
@@ -171,7 +169,7 @@ Label können visuell verborgen sein, bleiben aber für assistive Technologien s
 	visibleProperties={['_hideLabel']}
 />
 
-#### Vorschlagswerte (Suggestions)
+### Vorschlagswerte (Suggestions)
 
 Über `_suggestions` können Vorschlagswerte bereitgestellt werden, die während der Eingabe als auswählbare Datenliste angezeigt werden:
 
@@ -187,7 +185,7 @@ Label können visuell verborgen sein, bleiben aber für assistive Technologien s
 **Verfügbares Attribut:**
 - `_suggestions`: Liste von Vorschlagswerten für die Datalist-Autovervollständigung
 
-#### Zeichenbegrenzung und Zeichenzähler
+### Zeichenbegrenzung und Zeichenzähler
 
 Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` lässt sich die Eingabelänge flexibel begrenzen und gleichzeitig visuelles Feedback geben:
 
@@ -197,7 +195,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
 />
 
-##### Attribute
+#### Attribute
 
 | Attribut | Typ | Standard | Beschreibung |
 | ------------------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -205,7 +203,7 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 | `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
 | `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`-Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
 
-##### Ausgabevarianten
+#### Ausgabevarianten
 
 | Fall | `_has-counter`        | `_max-length` | `_max-length-behavior` | Sichtbarer Text                                            |
 | ---: | --------------------- | ------------- | ---------------------- | ---------------------------------------------------------- |
@@ -216,19 +214,19 @@ Mit den Attributen `_max-length`, `_max-length-behavior` und `_has-counter` läs
 
 >  Wird `_max-length-behavior="soft"` verwendet, wird das native `maxlength`-Attribut **nicht** gesetzt – das Eingabefeld wird also nicht hart begrenzt.
 
-##### Barrierefreiheit
+#### Barrierefreiheit
 
 * Der Zähler aktualisiert sich mit einer Verzögerung von **500 ms**, damit Screenreader-Ereignisse gebündelt werden und das Tippen nicht unterbrechen.
 * Für Screenreader wird zusätzlich ein versteckter, nur für assistive Technologien sichtbarer Text eingeblendet, etwa:
   *„Sie können bis zu 10 Zeichen eingeben.“*
 
-##### Zusammenfassung
+#### Zusammenfassung
 
 - Ohne `_has-counter` gibt es **nie** einen Zähler.
 - Mit `_has-counter` **und ohne** `_max-length` wird nur die aktuell eingegebene Zeichenzahl angezeigt.
 - Mit `_has-counter` **und** `_max-length` bestimmt `_max-length-behavior`, ob die Grenze hart (`hard`) oder weich (`soft`) umgesetzt wird.
 
-#### SmartButton
+### SmartButton
 
 Ein Schaltfläche mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLabel`):
 
@@ -238,7 +236,7 @@ Ein Schaltfläche mit beliebiger Aktion kann im Feld platziert werden (nur mit `
 	visibleProperties={['_smartButton']}
 />
 
-#### Hinweistexte und Fehlermeldungen
+### Hinweistexte und Fehlermeldungen
 
 Zusätzliche Informationen und Fehler-Feedback:
 
@@ -248,7 +246,7 @@ Zusätzliche Informationen und Fehler-Feedback:
 	visibleProperties={['_hint', '_msg']}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

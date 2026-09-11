@@ -54,17 +54,15 @@ Icons erfordern eine barrierefreie Beschreibung für Nutzer:innen mit Seheinschr
 - Inhaltsstrukturierung und Gliederung
 - Interaktive Elemente wie Favoriten-Stern oder Benachrichtigungsglocke
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Icon-Eigenschaften:
 
 <IconPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Icon und Label
+### Icon und Label
 
 Das Icon wird über die Property `_icons` mit Klassenamen definiert. Das Label wird über `_label` gesetzt und ist erforderlich für die Barrierefreiheit.
 
@@ -74,7 +72,7 @@ Das Icon wird über die Property `_icons` mit Klassenamen definiert. Das Label w
 	initialProps={{ _label: 'Haus', _icons: 'kolicon-house' }}
 />
 
-#### Verfügbare Icon-Fonts
+### Verfügbare Icon-Fonts
 
 Aktuell werden folgende Icon-Font-Systeme unterstützt:
 
@@ -86,7 +84,7 @@ Beispiele für Icon-Klassennamen:
 - Kolicons: `kolicon-house`, `kolicon-user`, `kolicon-menu`
 - Font Awesome: `fa-solid fa-user`, `fa-regular fa-heart`, `fa-brands fa-github`
 
-#### CSS-Einbindung erforderlich
+### CSS-Einbindung erforderlich
 
 Wichtig: Die CSS-Dateien der verwendeten Icon-Font-Bibliotheken müssen in der `index.html` oder einer globalen Stylesheet eingebunden sein. Ohne diese Einbindung werden die Icons nicht angezeigt.
 

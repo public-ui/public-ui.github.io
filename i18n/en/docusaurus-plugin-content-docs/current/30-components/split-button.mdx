@@ -66,21 +66,19 @@ Standard Split-Button with context menu:
 - Media player controls with playback options
 - Related actions in toolbars or navigation bars
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 <SplitButtonPreview context="playground" />
 
-### Features (with Code)
+## Features
 
-#### Label and Basic Configuration
+### Label and Basic Configuration
 
 Minimum configuration for a functional Split-Button: `_label`.
 
 <SplitButtonPreview context="feature" visibleProperties={['_label']} />
 
-#### Variants
+### Variants
 
 The Split-Button supports various visual variants for different contexts:
 
@@ -95,25 +93,25 @@ The Split-Button supports various visual variants for different contexts:
 - `ghost`: Subtle design without background
 - `custom`: Custom styling via `_custom-class`
 
-#### Icons and Label Styling
+### Icons and Label Styling
 
 Icons can be added via `_icons` and the label can be hidden via `_hideLabel`:
 
 <SplitButtonPreview context="feature" visibleProperties={['_icons', '_hideLabel']} />
 
-#### Tooltip and Keyboard Shortcuts
+### Tooltip and Keyboard Shortcuts
 
 Configure tooltip position and keyboard shortcuts:
 
 <SplitButtonPreview context="feature" visibleProperties={['_tooltipAlign', '_shortKey']} />
 
-#### Disabled State
+### Disabled State
 
 The Split-Button can be disabled via `_disabled`:
 
 <SplitButtonPreview context="feature" visibleProperties={['_disabled']} initialProps={{ _disabled: true }} />
 
-#### Events
+### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 
