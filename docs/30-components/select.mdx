@@ -130,39 +130,37 @@ Ja. Über die Property `_multiple` kann zwischen Einfach- und Mehrfachauswahl ge
 **Warum verwendet die Komponente das native HTML-Element `<select>`?**  
 Das native HTML-Element `<select>` stellt die erforderliche Semantik sowie die Unterstützung für Tastaturbedienung, Fokusverwaltung und Screenreader bereits bereit. Die KoliBri-Komponente ergänzt daher keine eigenen ARIA-Rollen und nutzt bewusst das standardisierte Verhalten des Browsers.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <SelectPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Optionen und Beschriftung
+### Optionen und Beschriftung
 
 Mindestangaben für eine funktionsfähige Select-Komponente: `_label` und `_options`.
 
 <SelectPreview context="feature" visibleProperties={['_label', '_options']} />
 
-#### Mehrfachauswahl
+### Mehrfachauswahl
 
 Über `_multiple` können mehrere Optionen gleichzeitig ausgewählt werden. Mit `_rows` wird die sichtbare Höhe der Liste gesteuert.
 
 <SelectPreview context="feature" visibleProperties={['_multiple', '_rows']} />
 
-#### Formularattribute
+### Formularattribute
 
 Über `_disabled`, `_required` und `_name` wird die Select-Komponente in ein Formular eingebunden und ihr Eingabeverhalten gesteuert.
 
 <SelectPreview context="feature" visibleProperties={['_disabled', '_required', '_name']} />
 
-#### Hinweise und Fehlermeldungen
+### Hinweise und Fehlermeldungen
 
 Mit `_hint` wird ein ergänzender Hinweis zur Eingabe ausgegeben, mit `_msg` eine Validierungs- oder Fehlermeldung.
 
 <SelectPreview context="feature" visibleProperties={['_hint', '_msg']} />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

@@ -76,17 +76,15 @@ Nutzen Sie die Methode `closeModal()` auf der Dialog-Elementreferenz oder trigge
 **Wie öffne ich den Dialog programmatisch?**
 Nutzen Sie die Methode `openModal()` auf der Dialog-Elementreferenz.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften des Dialogs:
 
 <DialogPreview context="playground" initialProps={{}} />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Label und Inhalt
+### Label und Inhalt
 
 Die Beschriftung wird über `_label` gesetzt. Der Inhalt wird über den Slot bereitgestellt:
 
@@ -99,7 +97,7 @@ Die Beschriftung wird über `_label` gesetzt. Der Inhalt wird über den Slot ber
 	}}
 />
 
-#### Breite
+### Breite
 
 Die Breite des Dialogs wird über `_width` gesteuert:
 
@@ -114,7 +112,7 @@ Die Breite des Dialogs wird über `_width` gesteuert:
 
 **Hinweis:** Die maximale Breite ist auf 100% begrenzt.
 
-#### Varianten
+### Varianten
 
 Der Dialog unterstützt zwei Varianten:
 
@@ -131,7 +129,7 @@ Der Dialog unterstützt zwei Varianten:
 - `blank`: Minimales Design - Themeabhängig Hintergrund und Abrundung
 - `card`: Nutzt das Design der Karte
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

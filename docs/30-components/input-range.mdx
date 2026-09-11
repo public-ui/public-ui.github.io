@@ -68,17 +68,15 @@ Darstellung einer InputRange-Komponente mit Standardausstattung:
 - Skalierung oder Zoom-Kontrolle
 - Gewichtung oder Wertfestlegung in Bewertungssystemen
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der InputRange-Komponente:
 
 <InputRangePreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-Konfiguration
+### Basis-Konfiguration
 
 Standard-InputRange mit Beschriftung, Minimum und Maximum:
 
@@ -88,7 +86,7 @@ Standard-InputRange mit Beschriftung, Minimum und Maximum:
 	initialProps={{ _label: 'Wert auswählen', _min: 0, _max: 100, _step: 1 }}
 />
 
-#### Wertbereich und Schrittweite
+### Wertbereich und Schrittweite
 
 Die Eigenschaften `_min`, `_max` und `_step` bestimmen den Wertebereich und die Schrittweite:
 
@@ -98,7 +96,7 @@ Die Eigenschaften `_min`, `_max` und `_step` bestimmen den Wertebereich und die 
 	initialProps={{ _label: 'Preisspanne (€)', _min: 0, _max: 1000, _step: 50, _value: 250 }}
 />
 
-#### Hinweistexte
+### Hinweistexte
 
 Zusätzliche Informationen können über `_hint` bereitgestellt werden:
 
@@ -108,7 +106,7 @@ Zusätzliche Informationen können über `_hint` bereitgestellt werden:
 	initialProps={{ _label: 'Lautstärke', _hint: 'Schieberegler um die Lautstärke zu regulieren (0-100%)' }}
 />
 
-#### Deaktivierter Zustand
+### Deaktivierter Zustand
 
 Ein deaktiviertes Eingabefeld kann über das Attribut `_disabled` erreicht werden:
 
@@ -118,7 +116,7 @@ Ein deaktiviertes Eingabefeld kann über das Attribut `_disabled` erreicht werde
 	initialProps={{ _label: 'Deaktiviertes Feld', _disabled: true, _value: 50 }}
 />
 
-#### Fehlermeldungen
+### Fehlermeldungen
 
 Das Attribut `_msg` erlaubt die Anzeige von Validierungshinweisen:
 
@@ -132,7 +130,7 @@ Das Attribut `_msg` erlaubt die Anzeige von Validierungshinweisen:
 	}}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

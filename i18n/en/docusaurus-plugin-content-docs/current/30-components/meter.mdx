@@ -53,15 +53,13 @@ The example shows a meter with a defined value range, thresholds and a unit.
 - Measured values with threshold ranges (e.g. temperature, humidity)
 - Quality or health indicators with an optimum range
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 <MeterPreview context="playground" />
 
-### Functionalities (with code)
+## Functionalities
 
-#### Basic meter with value range
+### Basic meter with value range
 
 Simple meter display with minimum, maximum, current value and unit.
 
@@ -71,7 +69,7 @@ Simple meter display with minimum, maximum, current value and unit.
 	initialProps={{ _label: 'Storage load', _min: 0, _max: 1024, _value: 512, _unit: 'MB' }}
 />
 
-#### Meter with threshold ranges
+### Meter with threshold ranges
 
 `_low`, `_high` and `_optimum` can be used to classify value ranges semantically.
 
@@ -86,7 +84,7 @@ Simple meter display with minimum, maximum, current value and unit.
 	initialProps={{ _label: 'CPU load', _min: 0, _max: 100, _value: 15, _low: 20, _optimum: 10, _high: 70 }}
 />
 
-#### Vertical meter
+### Vertical meter
 
 The orientation can be switched between horizontal and vertical using `_orientation`.
 

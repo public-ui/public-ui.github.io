@@ -61,21 +61,19 @@ Component with sample content:
 - Context-sensitive help and additional information in forms
 - Detail views for product properties or variants
 
-## Construction / Technology
-
-### Playground
+## Playground
 
 <DetailsPreview context="playground" />
 
-### Functionality (with code)
+## Functionality
 
-#### Label and content
+### Label and content
 
 The label is defined via `_label`; the content area is populated via the slot.
 
 <DetailsPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Show details' }} />
 
-#### Open state
+### Open state
 
 `_open` renders the component initially expanded. In the disabled state (`_disabled`) the component is non-interactive.
 
@@ -85,13 +83,13 @@ The label is defined via `_label`; the content area is populated via the slot.
 	initialProps={{ _label: 'Show details', _open: true }}
 />
 
-#### Heading structure
+### Heading structure
 
 The heading level is controlled via `_level` (0–6). A value of `0` renders the text as bold text without a semantic heading structure.
 
 <DetailsPreview context="feature" visibleProperties={['_level']} initialProps={{ _label: 'Show details', _level: 2 }} />
 
-#### Event handling
+### Event handling
 
 For event handling and callbacks see <kol-link _label="Events" _href="../concepts/events" />.
 

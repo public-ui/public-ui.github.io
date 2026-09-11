@@ -93,17 +93,15 @@ Aktuell unterstützt die Komponente kein `_required`. Ob eine Farbauswahl verpfl
 **Warum sieht der Farbwahldialog je nach Browser unterschiedlich aus?**  
 Die Komponente verwendet den nativen Farbwahldialog des Browsers. Dessen Darstellung, Bedienung und Funktionsumfang werden durch Browser und Betriebssystem bestimmt und können daher je nach Plattform variieren.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
 
 <InputColorPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-Konfiguration
+### Basis-Konfiguration
 
 Die Komponente mit Beschriftung, wahlweise mit Tooltip-Stil:
 
@@ -113,7 +111,7 @@ Die Komponente mit Beschriftung, wahlweise mit Tooltip-Stil:
 	initialProps={{ _label: 'Wählen Sie eine Farbe' }}
 />
 
-#### Mit voreingestelltem Wert
+### Mit voreingestelltem Wert
 
 Farbfeld mit einer Standard-Farbe:
 
@@ -123,7 +121,7 @@ Farbfeld mit einer Standard-Farbe:
 	initialProps={{ _label: 'Ihre Farbe', _value: '#ff6b6b' }}
 />
 
-#### Mit Hinweis und Icons
+### Mit Hinweis und Icons
 
 Farbfeld mit zusätzlichem Hinweistext und grafischen Symbolen:
 
@@ -137,7 +135,7 @@ Farbfeld mit zusätzlichem Hinweistext und grafischen Symbolen:
 	}}
 />
 
-#### Deaktiviert und Nur-Lesen
+### Deaktiviert und Nur-Lesen
 
 Deaktiviertes Eingabefeld (nicht fokussierbar und nicht veränderbar):
 
@@ -147,7 +145,7 @@ Deaktiviertes Eingabefeld (nicht fokussierbar und nicht veränderbar):
 	initialProps={{ _label: 'Gespeicherte Farbe', _value: '#3498db', _disabled: true }}
 />
 
-#### Mit Fehlermeldung
+### Mit Fehlermeldung
 
 Farbfeld mit Validierungsmeldung:
 
@@ -160,7 +158,7 @@ Farbfeld mit Validierungsmeldung:
 	}}
 />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

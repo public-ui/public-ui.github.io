@@ -97,23 +97,21 @@ Nein. Die Erhöhen-/Verringern-Schaltflächen sind nicht Teil der Tab-Reihenfolg
 **Können die Erhöhen-/Verringern-Schaltflächen ausgeblendet werden?**  
 Ja. Die Erhöhen-/Verringern-Schaltflächen können über ein Theme-seitiges Feature-Flag ausgeblendet werden.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
 
 <InputNumberPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Einfaches Eingabefeld
+### Einfaches Eingabefeld
 
 Minimum-Konfiguration mit Label:
 
 <InputNumberPreview context="feature" visibleProperties={['_label']} />
 
-#### Formularattribute
+### Formularattribute
 
 Standard-Attribute für Formulare wie Deaktivierung, Read-Only-Modus und Pflichtfelder:
 
@@ -128,7 +126,7 @@ Standard-Attribute für Formulare wie Deaktivierung, Read-Only-Modus und Pflicht
 - `_readOnly`: Verhindert die Bearbeitung des Feldes
 - `_required`: Kennzeichnet Pflichtfelder
 
-#### Hinweistexte und Fehlermeldungen
+### Hinweistexte und Fehlermeldungen
 
 Unterstützung für Hinweistexte und Validierungsmeldungen:
 
@@ -145,7 +143,7 @@ Unterstützung für Hinweistexte und Validierungsmeldungen:
 - `_hint`: Ergänzende Hinweise zur Eingabe (wird immer angezeigt)
 - `_msg`: Fehlermeldungen oder Validierungshinweise
 
-#### Numerische Beschränkungen
+### Numerische Beschränkungen
 
 Konfigurieren Sie Minimal-, Maximalwerte und Schrittweite. `_min` und `_max` greifen zuverlässig nur bei der Auswahl über den Steuerelemente. Bei manueller Texteingabe kann ein Wert außerhalb des definierten Bereichs eingegeben werden, ohne dass automatisch eine Korrektur oder Fehlermeldung erfolgt. Die Validierung manueller Eingaben liegt in der Verantwortung der einbindenden Anwendung.
 
@@ -165,7 +163,7 @@ Konfigurieren Sie Minimal-, Maximalwerte und Schrittweite. `_min` und `_max` gre
 - `_max`: Maximaler erlaubter Wert
 - `_step`: Schrittweite für Pfeiltasten und Spinner
 
-#### Placeholder und Label-Steuerung
+### Placeholder und Label-Steuerung
 
 Nutzen Sie Placeholder zur Eingabeformatierung und `_hideLabel`, um das Label visuell auszublenden:
 
@@ -183,7 +181,7 @@ Nutzen Sie Placeholder zur Eingabeformatierung und `_hideLabel`, um das Label vi
 - `_placeholder`: Platzhaltertext (verschwindet beim Tippen)
 - `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
 
-#### Icons
+### Icons
 
 Definieren Sie linke und/oder rechte Icons für zusätzlichen Kontext:
 
@@ -202,7 +200,7 @@ Definieren Sie linke und/oder rechte Icons für zusätzlichen Kontext:
 - `left`: Icon links vom Eingabefeld
 - `right`: Icon rechts vom Eingabefeld
 
-#### SmartButton
+### SmartButton
 
 Ein Button mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLabel`):
 
@@ -212,7 +210,7 @@ Ein Button mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLa
 	visibleProperties={['_smartButton']}
 />
 
-#### Vorschlagswerte (Suggestions)
+### Vorschlagswerte (Suggestions)
 
 Über `_suggestions` können Vorschlagswerte für die Autovervollständigung bereitgestellt werden:
 
@@ -228,7 +226,7 @@ Ein Button mit beliebiger Aktion kann im Feld platziert werden (nur mit `_hideLa
 **Verfügbare Attribute:**
 - `_suggestions`: Liste von Vorschlagswerten für die Datalist-Autovervollständigung
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

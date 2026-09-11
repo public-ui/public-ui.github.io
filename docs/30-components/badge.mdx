@@ -54,15 +54,13 @@ Darstellung eines einfachen Badges mit Hintergrundfarbe und Icon:
 - Bestätigung oder Erfolgsbestätigung in Formularen
 - Visuelles Highlighting von wichtigen Informationen nebeneinander mit anderen Elementen
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 <BadgePreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Label
+### Label
 
 Das Label ist erforderlich und definiert den Text, der im Badge angezeigt wird. Der Text kann Sonderzeichen, Umlaute und Leerzeichen enthalten.
 
@@ -76,7 +74,7 @@ Das Label ist erforderlich und definiert den Text, der im Badge angezeigt wird. 
 | -------- | ------------ |
 | `_label` | Der anzuzeigende Text im Badge (erforderlich) |
 
-#### Farben
+### Farben
 
 Die Hintergrundfarbe wird über das Attribut `_color` definiert. Die Textfarbe wird automatisch berechnet und ist entweder Weiß oder Schwarz, um optimalen Kontrast zu gewährleisten. Eine explizite Angabe der Textfarbe ist nicht möglich.
 
@@ -90,7 +88,7 @@ Die Hintergrundfarbe wird über das Attribut `_color` definiert. Die Textfarbe w
 | -------- | ------------ | ------- |
 | `_color` | Hintergrundfarbe als Hex-Wert oder Objekt mit `backgroundColor` und `foregroundColor` | `'#000'` |
 
-#### Icons
+### Icons
 
 Icons können als String (Klassenname) oder als komplexes Icon-Objekt mit horizontalen und vertikalen Positionen übergeben werden.
 
@@ -104,7 +102,7 @@ Icons können als String (Klassenname) oder als komplexes Icon-Objekt mit horizo
 | -------- | ------------ |
 | `_icons` | Icon-Klassenname(n) oder Icon-Konfigurationsobjekt |
 
-#### Smart Button
+### Smart Button
 
 Das Badge kann mit einem Smart-Button verknüpft werden, der eine Aktion auslöst. Dies wird nur mit `_hide-label` angezeigt.
 

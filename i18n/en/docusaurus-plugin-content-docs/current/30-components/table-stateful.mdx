@@ -70,23 +70,21 @@ Yes, via render functions in the header definitions you can display any content 
 **Does the component support row selection?**
 The `_selection` attribute enables row selection (single or multiple). Selection changes are transmitted via the `selectionChange` event.
 
-## Construction / Technique
-
-### Playground
+## Playground
 
 Test all functionalities of the TableStateful component interactively:
 
 <TableStatefulPreview context="playground" />
 
-### Functionalities (with code)
+## Functionalities
 
-#### Label and table description
+### Label and table description
 
 The `_label` attribute defines the semantic label of the table and is used for accessibility:
 
 <TableStatefulPreview context="feature" visibleProperties={['_label']} initialProps={{}} />
 
-#### Column headings and layout
+### Column headings and layout
 
 Headers are defined via the `_headers` attribute. Horizontal and vertical headers with arbitrary nesting are supported:
 
@@ -97,7 +95,7 @@ Headers are defined via the `_headers` attribute. Horizontal and vertical header
 - `vertical`: Array of row headings
 - Per header, properties such as `label`, `key`, `colsSpan`, `rowSpan`, `render` and `compareFn` can be defined
 
-#### Sorting
+### Sorting
 
 The component supports automatic sorting per column via the `compareFn` function in the header definitions:
 
@@ -115,7 +113,7 @@ compareFn: (a, b) => (a as unknown as PlantRecord).name.localeCompare((b as unkn
 
 **Note on multi-dimensional headers:** When both horizontal and vertical headers are used simultaneously, it is recommended to define the render function only in the horizontal headers.
 
-#### Pagination
+### Pagination
 
 The `_pagination` property activates automatic pagination and provides various configuration options:
 
@@ -130,7 +128,7 @@ The `_pagination` property activates automatic pagination and provides various c
 
 **Positioning:** With `_paginationPosition` the position of the pagination can be controlled (top, bottom, or both).
 
-#### Data and cell rendering
+### Data and cell rendering
 
 The `_data` property contains the table rows. Cell content can be individually formatted via render functions:
 
@@ -182,13 +180,13 @@ import { createReactRenderElement } from '@public-ui/react-v19';
 }
 ```
 
-#### Table footer
+### Table footer
 
 The `_dataFoot` attribute enables summary rows or additional information at the end of the table:
 
 <TableStatefulPreview context="feature" visibleProperties={[]} initialProps={{}} />
 
-#### Row selection
+### Row selection
 
 The `_selection` attribute activates row selection (single or multiple). Selection changes are transmitted via the `selectionChange` event:
 
@@ -201,19 +199,19 @@ The `_selection` attribute activates row selection (single or multiple). Selecti
 - `disabledKeys`: Currently disabled row identifiers
 - `keyPropertyName`: Property name for identifying rows (e.g., `id`)
 
-#### Settings menu
+### Settings menu
 
 With `_hasSettingsMenu`, a menu is activated through which users can adjust table settings (e.g., visible columns):
 
 <TableStatefulPreview context="feature" visibleProperties={['_hasSettingsMenu']} initialProps={{}} />
 
-#### Fixed columns
+### Fixed columns
 
 The `_fixedCols` attribute defines columns that remain visible during horizontal scrolling – specified as `[start, end]`:
 
 <TableStatefulPreview context="feature" visibleProperties={[]} initialProps={{}} />
 
-#### Events
+### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 

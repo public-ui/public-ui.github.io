@@ -52,23 +52,21 @@ Standard view of the component. Code can be shown.
 - Sharing permissions and collaboration features
 - Activity feeds with user information
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 Test the various properties of the Avatar component:
 
 <AvatarPreview context="playground" initialProps={{ _label: 'Max Mustermann', _color: '#5A5FEE' }} />
 
-### Functionalities
+## Functionalities
 
-#### Standalone Avatar with Initials
+### Standalone Avatar with Initials
 
 Display of the component without an image – initials are automatically generated from the name:
 
 <AvatarPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Anna Schmidt' }} />
 
-#### Avatar with Image
+### Avatar with Image
 
 Display of an avatar image via the `_src` attribute:
 
@@ -81,7 +79,7 @@ Display of an avatar image via the `_src` attribute:
 	}}
 />
 
-#### Colored Initials
+### Colored Initials
 
 Using the `_color` attribute to distinguish users by color. The attribute accepts either a simple color value or an object with separate background and foreground colors:
 
@@ -91,7 +89,7 @@ Using the `_color` attribute to distinguish users by color. The attribute accept
 	initialProps={{ _label: 'Peter Meyer', _color: '#FF6B6B' }}
 />
 
-#### Avatar with Separate Colors
+### Avatar with Separate Colors
 
 Precise control over background and foreground color:
 

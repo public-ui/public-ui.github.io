@@ -78,15 +78,13 @@ Yes, via the `_value` attribute with the corresponding format (e.g. `"2024-01-15
 **How can I clear the date field?**  
 Set `_value` to `null` or `undefined` to clear the field.
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 <InputDatePreview context="playground" />
 
-### Functionality (with code)
+## Functionality
 
-#### Label and hint texts
+### Label and hint texts
 
 The input field is given a label via `_label`. Additional information can be provided via `_hint`.
 
@@ -96,7 +94,7 @@ The input field is given a label via `_label`. Additional information can be pro
 	initialProps={{ _label: 'Date of birth', _hint: 'Please enter your date of birth.' }}
 />
 
-#### Input types
+### Input types
 
 The `_type` attribute determines the format and selection dialog:
 
@@ -109,7 +107,7 @@ The `_type` attribute determines the format and selection dialog:
 - `time`: Time only (HH:MM)
 - `week`: Calendar week and year
 
-#### Range restriction
+### Range restriction
 
 The `_min` and `_max` attributes define the valid date range. They only reliably take effect when a date is selected via the calendar dialog (datepicker). With manual text input, a value outside the defined range can be entered without automatic correction or an error message. Validation of manual input is the responsibility of the consuming application.
 
@@ -123,7 +121,7 @@ The `_min` and `_max` attributes define the valid date range. They only reliably
 	}}
 />
 
-#### Step size for time input
+### Step size for time input
 
 For type `time`, the step size can be set via `_step`:
 
@@ -137,7 +135,7 @@ For type `time`, the step size can be set via `_step`:
 	}}
 />
 
-#### Form attributes
+### Form attributes
 
 Standard form attributes for validation and interaction:
 
@@ -153,7 +151,7 @@ Standard form attributes for validation and interaction:
 - `_required`: Marks required fields
 - `_hideLabel`: Visually hides the label (remains visible to assistive technologies)
 
-#### Error messages
+### Error messages
 
 Validation errors or hint messages are displayed via the `_msg` attribute:
 
@@ -166,7 +164,7 @@ Validation errors or hint messages are displayed via the `_msg` attribute:
 	}}
 />
 
-#### Events
+### Events
 
 For the handling of events or callbacks, see <kol-link _label="Events" _href="../concepts/events" />.
 

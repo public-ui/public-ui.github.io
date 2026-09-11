@@ -85,23 +85,21 @@ Technisch sind beliebig viele Ebenen möglich. Es wird jedoch empfohlen, die ini
 **Kann ich die Tree-Komponente mit einem Filter verwenden?**  
 Ja, Sie können Items dynamisch filtern und nur die gefilterten Items anzeigen – dies erfolgt jedoch auf Anwendungsebene durch Manipulation der übergebenen Daten.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der Tree-Komponente:
 
 <TreePreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Grundlegende Tree-Struktur
+### Grundlegende Tree-Struktur
 
 Jeder Baumknoten wird durch eine `KolTreeItem`-Komponente dargestellt. Der Container wird durch `KolTree` mit dem erforderlichen `_label`-Attribut definiert.
 
 <TreePreview context="feature" visibleProperties={['_label']} />
 
-#### Verschachtelte Hierarchien
+### Verschachtelte Hierarchien
 
 Die Tree-Komponente unterstützt beliebig viele Verschachtelungsebenen durch verschachtelte `KolTreeItem`-Elemente.
 Am `KolTreeItem` wird mit dem Attribut `_open` gesteuert, ob ein Element beim initialen Laden geöffnet ist und mit dem Attribut `_active`, ob ein Element markiert ist (z.B. die aktuelle Seite in einer Navigation).

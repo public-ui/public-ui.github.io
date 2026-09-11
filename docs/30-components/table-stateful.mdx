@@ -70,23 +70,21 @@ Ja, über Render-Funktionen in den Header-Definitionen können Sie beliebige Inh
 **Unterstützt die Komponente Zeilenauswahl?**
 Das Attribut `_selection` ermöglicht die Auswahl von Zeilen (einfach oder mehrfach). Die Auswahl wird über das `selectionChange` Event übermittelt.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie alle Funktionalitäten der TableStateful-Komponente interaktiv:
 
 <TableStatefulPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Label und Tabellenbeschreibung
+### Label und Tabellenbeschreibung
 
 Das Attribut `_label` definiert die semantische Beschriftung der Tabelle und wird für Accessibility verwendet:
 
 <TableStatefulPreview context="feature" visibleProperties={['_label']} initialProps={{}} />
 
-#### Spaltenüberschriften und Layout
+### Spaltenüberschriften und Layout
 
 Titel werden über das Attribut `_headers` definiert. Es werden horizontale und vertikale Header mit beliebiger Verschachtelung unterstützt:
 
@@ -97,7 +95,7 @@ Titel werden über das Attribut `_headers` definiert. Es werden horizontale und 
 - `vertical`: Array von Zeilenüberschriften
 - Pro Header können Eigenschaften wie `label`, `key`, `colsSpan`, `rowSpan`, `render` und `compareFn` definiert werden
 
-#### Sortierung
+### Sortierung
 
 Die Komponente unterstützt automatische Sortierung pro Spalte über die `compareFn` Funktion in den Header-Definitionen:
 
@@ -115,7 +113,7 @@ compareFn: (a, b) => (a as unknown as PlantRecord).name.localeCompare((b as unkn
 
 **Hinweis zu mehrdimensionalen Headern:** Bei horizontalen und vertikalen Headern gleichzeitig wird empfohlen, die Render-Funktion nur in den horizontalen Headern zu definieren.
 
-#### Pagination
+### Pagination
 
 Die `_pagination` Eigenschaft aktiviert automatische Seitennummerierung und bietet verschiedene Konfigurationsoptionen:
 
@@ -126,7 +124,7 @@ Siehe <kol-link _href="../pagination" _label="Pagination-Komponente"></kol-link>
 
 **Positionierung:** Mit `_paginationPosition` kann die Position der Pagination gesteuert werden (oben, unten, oder beides).
 
-#### Daten und Zellendarstellung
+### Daten und Zellendarstellung
 
 Die `_data` Eigenschaft enthält die Tabellenzeilen. Zellinhalte können über Render-Funktionen individuell formatiert werden:
 
@@ -172,7 +170,7 @@ import { createReactRenderElement } from '@public-ui/react-v19';
 }
 ```
 
-#### Tabellen-Footer
+### Tabellen-Footer
 
 Das Attribut `_dataFoot` ermöglicht Zusammenfassungszeilen oder zusätzliche Informationen am Ende der Tabelle:
 
@@ -186,7 +184,7 @@ Das Attribut `_dataFoot` ermöglicht Zusammenfassungszeilen oder zusätzliche In
 	}}
 />
 
-#### Zeilenauswahl
+### Zeilenauswahl
 
 Das Attribut `_selection` aktiviert die Zeilenauswahl (einfach oder mehrfach). Die Auswahländerungen werden über das `selectionChange` Event übermittelt:
 
@@ -199,27 +197,25 @@ Das Attribut `_selection` aktiviert die Zeilenauswahl (einfach oder mehrfach). D
 - `disabledKeys`: Deaktivierte Zeilenidentifizierer
 - `keyPropertyName`: Property-Name zur Identifikation von Zeilen (z.B. `id`)
 
-#### Einstellungsmenü
+### Einstellungsmenü
 
 Mit `_hasSettingsMenu` wird ein Menü aktiviert, über das Benutzer Tabelleneinstellungen anpassen können (z.B. sichtbare Spalten):
 
 <TableStatefulPreview context="feature" visibleProperties={['_hasSettingsMenu']} initialProps={{}} />
 
-#### Fixierte Spalten
+### Fixierte Spalten
 
 Das Attribut `_fixedCols` definiert Spalten, die beim horizontalen Scrollen sichtbar bleiben – Angabe als `[start, end]`:
 
 <TableStatefulPreview context="feature" visibleProperties={[]} initialProps={{}} />
 
-#### Beschriftung über externe Elemente (aria-labelledby)
+### Beschriftung über externe Elemente (aria-labelledby)
 
 Mittels `_ariaLabelledby` kann die Tabelle barrierefrei über ein externes Element (z. B. einer vorangestellten Überschrift) beschriftet werden. Das Attribut `_label` sollte dennoch gesetzt werden, da es als Fallback dient, falls die externe Referenz nicht aufgelöst werden kann.
 
 <TableStatefulPreview context="feature" visibleProperties={['_ariaLabelledby']} initialProps={{ _ariaLabelledby: 'table-stateful-heading' }} />
 
-
-
-#### Events
+## Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

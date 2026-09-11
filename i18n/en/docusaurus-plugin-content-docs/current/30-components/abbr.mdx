@@ -55,21 +55,19 @@ The **Abbr** component uses the semantic HTML element `abbr` and signals to assi
 - Technical acronyms in documentation when the long form should be included
 - International abbreviations that may be unclear to users (e.g. `WHO`, `API`)
 
-## Construction / Technical Details
-
-### Playground
+## Playground
 
 <AbbrPreview context="playground" />
 
-### Features (with Code)
+## Features
 
-#### Abbreviation without label
+### Abbreviation without label
 
 Abbreviation as a plain text element without additional explanation:
 
 <AbbrPreview context="feature" visibleProperties={['_slot']} initialProps={{ _slot: "e.g." }} />
 
-#### Abbreviation with label
+### Abbreviation with label
 
 Abbreviation with expanded explanation via the `_label` attribute:
 

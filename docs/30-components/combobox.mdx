@@ -150,23 +150,21 @@ Während der Navigation innerhalb der Vorschlagsliste befindet sich der Tastatur
 **Warum schließt sich die Vorschlagsliste bei einem eindeutigen Treffer automatisch?**
 Die Vorschlagsliste schließt sich automatisch, sobald die Eingabe eindeutig einem vorhandenen Eintrag entspricht.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der Combobox-Komponente:
 
 <ComboboxPreview context="playground" />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Label und Beschriftung
+### Label und Beschriftung
 
 Die sichtbare Beschriftung wird über `_label` gesetzt.
 
 <ComboboxPreview context="feature" visibleProperties={['_label']} />
 
-#### Platzhalter und Hint-Text
+### Platzhalter und Hint-Text
 
 Der Platzhalter wird angezeigt, wenn das Feld leer ist. Der Hint-Text gibt zusätzliche Hinweise:
 
@@ -179,13 +177,13 @@ Der Platzhalter wird angezeigt, wenn das Feld leer ist. Der Hint-Text gibt zusä
 	}}
 />
 
-#### Formularattribute
+### Formularattribute
 
 Standard-Attribute für Formulare wie `_disabled`, `_required` und `_touched`:
 
 <ComboboxPreview context="feature" visibleProperties={['_disabled', '_required', '_touched']} />
 
-#### Fehlermeldungen
+### Fehlermeldungen
 
 Validierungsfehler werden über `_msg` dargestellt:
 
@@ -195,25 +193,25 @@ Validierungsfehler werden über `_msg` dargestellt:
 	initialProps={{ _msg: 'Die Programmiersprache ist erforderlich.' }}
 />
 
-#### Icons
+### Icons
 
 Icons können links oder rechts über `_icons` hinzugefügt werden:
 
 <ComboboxPreview context="feature" visibleProperties={['_icons']} initialProps={{ _icons: 'kolicon-cogwheel' }} />
 
-#### Clear-Button
+### Clear-Button
 
 Der Clear-Button kann über `_hasClearButton` gesteuert werden (standardmäßig aktiviert):
 
 <ComboboxPreview context="feature" visibleProperties={['_hasClearButton']} initialProps={{ _hasClearButton: true }} />
 
-#### Versteckte Beschriftung
+### Versteckte Beschriftung
 
 Die Beschriftung kann über `_hideLabel` visuell verborgen werden (bleibt für Screenreader sichtbar):
 
 <ComboboxPreview context="feature" visibleProperties={['_hideLabel']} initialProps={{ _hideLabel: true }} />
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

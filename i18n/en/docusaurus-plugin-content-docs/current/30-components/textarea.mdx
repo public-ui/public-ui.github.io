@@ -83,9 +83,7 @@ The textarea supports the following keyboard shortcuts:
 - **Messages**: Composing emails, messages, or communications.
 - **Documentation**: Entering longer texts for documentation or content management systems.
 
-## Construction / Technology
-
-### Playground
+## Playground
 
 Test the various properties of the Textarea component:
 
@@ -95,15 +93,15 @@ Test the various properties of the Textarea component:
 	initialProps={{ _label: 'Description', _placeholder: 'Please enter a description...', _hint: 'Hint text', _rows: 4 }}
 />
 
-### Functionalities
+## Functionalities
 
-#### Simple Textarea
+### Simple Textarea
 
 Standard textarea without special configuration:
 
 <TextAreaPreview context="feature" initialProps={{ _label: 'Description' }} visibleProperties={[]} />
 
-#### Automatic height adjustment
+### Automatic height adjustment
 
 The textarea automatically adjusts its height to the content:
 
@@ -121,7 +119,7 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 	visibleProperties={['_adjustHeight']}
 />
 
-#### Form attributes
+### Form attributes
 
 Standard attributes for forms:
 
@@ -140,7 +138,7 @@ Standard attributes for forms:
 - `_required`: Marks required fields
 - `_hideLabel`: Visually hides the label (remains visible to assistive technologies)
 
-#### Placeholder
+### Placeholder
 
 The placeholder text is displayed when the input field is empty:
 
@@ -153,7 +151,7 @@ The placeholder text is displayed when the input field is empty:
 
 **Note**: The placeholder should only serve as supplementary help and should not contain mandatory information, as the text disappears when typing.
 
-#### Read-only mode
+### Read-only mode
 
 The textarea is read-only but not editable:
 
@@ -164,7 +162,7 @@ The textarea is read-only but not editable:
 	initialProps={{ _label: 'Description', _readOnly: true }}
 />
 
-#### Resize
+### Resize
 
 The textarea can be resized using the `_resize` attribute:
 
@@ -179,7 +177,7 @@ The textarea can be resized using the `_resize` attribute:
 - `vertical`: Only vertically resizable (default)
 - `none`: No resizing possible
 
-#### Number of rows
+### Number of rows
 
 The initial height of the textarea can be specified in rows using the `_rows` attribute:
 
@@ -190,7 +188,7 @@ The initial height of the textarea can be specified in rows using the `_rows` at
 	initialProps={{ _label: 'Description', _rows: 6 }}
 />
 
-#### Character limit and character counter
+### Character limit and character counter
 
 With the attributes `_max-length`, `_max-length-behavior` and `_has-counter`, the input length can be flexibly limited and at the same time provide visual feedback:
 
@@ -200,7 +198,7 @@ With the attributes `_max-length`, `_max-length-behavior` and `_has-counter`, th
 	visibleProperties={['_hasCounter', '_maxLength', '_maxLengthBehavior']}
 />
 
-##### Attributes
+#### Attributes
 
 | Attribute              | Type               | Default  | Description                                                                                                                                                                                                                                                              |
 | ---------------------- | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -208,7 +206,7 @@ With the attributes `_max-length`, `_max-length-behavior` and `_has-counter`, th
 | `_max-length`          | `number`           | —        | Maximum number of characters allowed. Effective only if `_has-counter` is active.                                                                                                                                                                                       |
 | `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Specifies how the limit is handled **if** `_max-length` is set:<br />- **hard**: Additionally sets the native `maxlength` attribute and prevents further input.<br />- **soft**: Allows further input; the counter shows remaining or exceeded characters. |
 
-##### Output variants
+#### Output variants
 
 | Case | `_has-counter`       | `_max-length` | `_max-length-behavior` | Visible text                                                        |
 | ---: | -------------------- | ------------- | ---------------------- | ------------------------------------------------------------------- |
@@ -221,12 +219,12 @@ With the attributes `_max-length`, `_max-length-behavior` and `_has-counter`, th
 
 **Note**: If `_max-length-behavior="soft"` is used, **the native `maxlength` attribute is *not* set** – so the input field is not hard-limited.
 
-##### Accessibility of the character counter
+#### Accessibility of the character counter
 
 - The counter updates with a delay of **500ms** so that screen reader events are bundled and do not interrupt typing.
 - For screen readers, a hidden text visible only to assistive technologies is additionally displayed, such as: *"You can enter up to 100 characters."*
 
-##### Summary
+#### Summary
 
 - Without `_has-counter` there is **never** a counter.
 - With `_has-counter` **and without** `_max-length` only the currently entered number of characters is displayed.

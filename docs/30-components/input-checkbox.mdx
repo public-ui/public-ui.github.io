@@ -88,23 +88,21 @@ Nein. Alle drei Varianten (`default`, `switch` und `button`) bleiben technisch e
 
 Nein. Der Indeterminate-Zustand kann ausschließlich programmatisch über die API gesetzt werden. Nutzende können diesen Zustand weder per Tastatur noch durch einen Mausklick aktivieren.
 
-## Konstruktion / Technik
-
-### Playground
+## Playground
 
 Testen Sie die verschiedenen Eigenschaften der InputCheckbox-Komponente:
 
 <InputCheckboxPreview context="playground" initialProps={{ _label: 'Beispiel-Checkbox' }} />
 
-### Funktionalitäten (mit Code)
+## Funktionalitäten
 
-#### Basis-Checkbox
+### Basis-Checkbox
 
 Eine einfache Checkbox ohne spezielle Konfiguration:
 
 <InputCheckboxPreview context="feature" initialProps={{ _label: 'Zustimmen' }} visibleProperties={[]} />
 
-#### Varianten
+### Varianten
 
 Die Checkbox unterstützt drei verschiedene visuelle Varianten über das Attribut `_variant`:
 
@@ -115,7 +113,7 @@ Die Checkbox unterstützt drei verschiedene visuelle Varianten über das Attribu
 - `switch`: Horizontaler Schalter/Toggle-Button (rechts = aktiv, links = inaktiv)
 - `button`: Button-Stil mit Icon-Wechsel je nach Zustand
 
-#### Zustände
+### Zustände
 
 Verschiedene Zustände und Statusanzeigen:
 
@@ -131,7 +129,7 @@ Verschiedene Zustände und Statusanzeigen:
 - `_disabled`: Deaktiviert die Checkbox (mit Begründung verwenden!)
 - `_required`: Kennzeichnet die Checkbox als erforderlich für Formularvalidierung
 
-#### Label und Beschriftung
+### Label und Beschriftung
 
 Kontrolle über Sichtbarkeit und Ausrichtung der Beschriftung:
 
@@ -145,7 +143,7 @@ Kontrolle über Sichtbarkeit und Ausrichtung der Beschriftung:
 - `_hideLabel`: Blendet das Label visuell aus (bleibt für assistive Technologien sichtbar)
 - `_labelAlign`: Ausrichtung der Beschriftung (`left` oder `right`, Standard: `right`)
 
-#### Formularattribute
+### Formularattribute
 
 Standard-Attribute für die Integration in Formulare:
 
@@ -162,7 +160,7 @@ Standard-Attribute für die Integration in Formulare:
 - `_accessKey`: Tastenkombination zum Fokussieren/Auslösen
 - `_shortKey`: Visuelle Shortcut-Hinweis neben dem Label
 
-#### Benutzerdefinierte Icons
+### Benutzerdefinierte Icons
 
 Anpassung der Icon-Darstellung für verschiedene Zustände:
 
@@ -174,7 +172,7 @@ Anpassung der Icon-Darstellung für verschiedene Zustände:
 
 Die `_icons`-Eigenschaft ermöglicht die Anpassung der Icons für die Zustände `checked`, `unchecked` und `indeterminate`.
 
-#### Events
+### Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

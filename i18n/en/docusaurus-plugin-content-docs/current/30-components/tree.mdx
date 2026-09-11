@@ -84,35 +84,33 @@ Technically, any number of levels is possible. In practice, the initially visibl
 **Can I combine the tree with filtering?**  
 Yes. Filtering is handled at application level by adjusting the data or rendered items passed into the tree.
 
-## Construction / Technical
-
-### Playground
+## Playground
 
 Test the different properties of the tree component:
 
 <TreePreview context="playground" />
 
-### Features with code
+## Features
 
-#### Basic tree structure
+### Basic tree structure
 
 Each node is represented by a `KolTreeItem` component. The container is defined by `KolTree` with the required `_label` attribute.
 
 <TreePreview context="feature" visibleProperties={['_label']} />
 
-#### Expanded and collapsed states
+### Expanded and collapsed states
 
 The `_open` attribute on `KolTreeItem` controls whether an item is expanded on initial load.
 
 <TreePreview context="feature" visibleProperties={['_open']} />
 
-#### Active state
+### Active state
 
 The `_active` attribute marks a tree item as currently active, for example the current page in a navigation.
 
 <TreePreview context="feature" visibleProperties={['_active']} />
 
-#### Nested hierarchies
+### Nested hierarchies
 
 The tree supports arbitrary nesting depths through nested `KolTreeItem` elements.
 
