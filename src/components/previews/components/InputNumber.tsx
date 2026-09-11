@@ -34,6 +34,7 @@ const InputNumberPreview = (props: PreviewDefaults<JSX.KolInputNumber>) => {
 				_disabled: <BooleanProperty label="Disabled" />,
 				_readOnly: <BooleanProperty label="Read Only" />,
 				_required: <BooleanProperty label="Required" />,
+				_touched: <BooleanProperty label="Touched" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 				_smartButton: (
 					<SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />
