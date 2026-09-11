@@ -209,7 +209,13 @@ Das Attribut `_fixedCols` definiert Spalten, die beim horizontalen Scrollen sich
 
 <TableStatefulPreview context="feature" visibleProperties={[]} initialProps={{}} />
 
-### Events
+### Beschriftung über externe Elemente (aria-labelledby)
+
+Mittels `_ariaLabelledby` kann die Tabelle barrierefrei über ein externes Element (z. B. einer vorangestellten Überschrift) beschriftet werden. Das Attribut `_label` sollte dennoch gesetzt werden, da es als Fallback dient, falls die externe Referenz nicht aufgelöst werden kann.
+
+<TableStatefulPreview context="feature" visibleProperties={['_ariaLabelledby']} initialProps={{ _ariaLabelledby: 'table-stateful-heading' }} />
+
+## Events
 
 Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
 

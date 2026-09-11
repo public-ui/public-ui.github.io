@@ -1,7 +1,7 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
-import { KolInputCheckbox, KolInputText, KolSelect, KolTableStateful, KolTextarea } from '@public-ui/react-v19';
+import { KolHeading, KolInputCheckbox, KolInputText, KolSelect, KolTableStateful, KolTextarea } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
 import TableSelectionProperty from '../properties/TableSelectionProperty';
@@ -220,6 +220,7 @@ const TableStatefulPreview: React.FC<PreviewDefaults<JSX.KolTableStateful>> = (p
 					></KolSelect>
 				),
 				_hasSettingsMenu: <KolInputCheckbox _label="HasSettingsMenu"></KolInputCheckbox>,
+				_ariaLabelledby: <KolInputText _label="AriaLabelledby" />,
 			}}
 			componentName="KolTableStateful"
 			layout={PreviewLayout.FULL_SIZE}
@@ -227,6 +228,9 @@ const TableStatefulPreview: React.FC<PreviewDefaults<JSX.KolTableStateful>> = (p
 		>
 			{(componentProps) => (
 				<div className="w-full h-full overflow-auto">
+					{componentProps._ariaLabelledby && (
+						<KolHeading id={componentProps._ariaLabelledby} _label={componentProps._label ?? ''} _level={2} />
+					)}
 					<KolTableStateful {...componentProps} _data={plantData} />
 				</div>
 			)}
