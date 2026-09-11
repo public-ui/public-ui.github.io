@@ -5,13 +5,10 @@ description: Beschreibung, Spezifikation und Beispiele für die InputEmail-Kompo
 
 import Readme from '@site/readmes/input-email/readme.md';
 import InputEmailPreview from '@site/src/components/previews/components/InputEmail';
-import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
 import { PropertyMsgUsage } from '@site/src/components/PropertyMsgUsage';
 import { ExampleLink } from '@site/src/components/ExampleLink';
 
 # InputEmail
-
-<BetaDocsBanner />
 
 **Synonyme:** E-Mail-Eingabefeld, E-Mail-Feld, Email Input, Email Field
 
@@ -260,7 +257,6 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | `_has-counter`         | `boolean`          | `false`  | Globaler Schalter für den Zeichenzähler. Nur wenn dieses Attribut **gesetzt (= true)** ist, wird überhaupt ein Zähler ausgegeben.                                                                                                                                                           |
 | `_max-length`          | `number`           | —        | Maximale Anzahl erlaubter Zeichen. Wirksam nur, wenn `_has-counter` aktiv ist.                                                                                                                                                                                                              |
 | `_max-length-behavior` | `"hard" \| "soft"` | `"hard"` | Legt fest, wie die Grenze behandelt wird, **falls** `_max-length` gesetzt ist:<br />- **hard**: Setzt zusätzlich das native `maxlength`‑Attribut und verhindert weitere Eingaben.<br />- **soft**: Lässt weitere Eingaben zu; der Zähler zeigt verbleibende oder überschrittene Zeichen an. |
-
 
 ## Verwendung _msg
 

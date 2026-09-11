@@ -6,13 +6,8 @@ description: Description, specification and examples for the Textarea component.
 import Readme from '@site/readmes/textarea/readme.md';
 import TextAreaPreview from '@site/src/components/previews/components/Textarea';
 import { ExampleLink } from '@site/src/components/ExampleLink';
-import BetaDocsBanner from '@site/src/components/BetaDocsBanner';
-
 
 # Textarea
-
-
-<BetaDocsBanner />
 
 **Synonyms:** Multi-line input field, text area, text input field
 
@@ -214,8 +209,6 @@ With the attributes `_max-length`, `_max-length-behavior` and `_has-counter`, th
 | 2    | `true`               | *(empty)*     | —                      | `n characters`                                                      |
 | 3    | `true`               | 100           | *(empty)* or `hard`    | `n/100 characters`                                                  |
 | 4    | `true`               | 100           | `soft`                 | `50 characters still available`<br />*(or `5 characters too many`)* |
-
-
 
 **Note**: If `_max-length-behavior="soft"` is used, **the native `maxlength` attribute is *not* set** – so the input field is not hard-limited.
 
