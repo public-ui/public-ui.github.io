@@ -61,7 +61,7 @@ These come from review feedback on the form components:
 - **No duplication**: if something is already in "Konkrete Designentscheidungen", it doesn't need a bullet as well.
 - **Features belong in "Funktionalitäten"** (clear button, visibility toggle, file selection, variants …), including their accessibility-relevant behaviour, not as an accessibility bullet.
 - **General recommendations belong in "Best Practices / Empfehlungen"** (e.g. validating values in the application).
-- **Rationales must be backed**: every "Begründung", "bewusst", "um … zu" needs evidence in the KoliBri source (code comments, JSDoc) or its git history. Otherwise remove the motive and keep only observable facts – don't invent reasons.
+- **Rationales need evidence, but unbacked ones are not deleted silently**: check every "Begründung", "bewusst", "um … zu" against the KoliBri source (code comments, JSDoc) and its git history. Never invent new reasons. If an existing rationale can't be backed, leave it in place and list it (quote, location, what you searched) for the maintainers to verify – the docs may be the only place a decision was recorded. Only statements the code actually contradicts are corrected, and those corrections are reported as well.
 
 ### Verifying against KoliBri
 

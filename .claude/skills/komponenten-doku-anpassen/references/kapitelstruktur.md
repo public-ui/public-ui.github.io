@@ -42,8 +42,8 @@ Bullets: what KoliBri adds on top of the native element or pattern to make the c
 
 Table *Entscheidung | Begründung* with the decisions relevant for accessibility and operation.
 
-- Every rationale is backed by the KoliBri source (comments, JSDoc) or its git history. Unbacked motives ("bewusst", "um … zu") are removed; observable consequences may stay.
-- No rows that merely restate the implementation.
+- Rationales should be backed by the KoliBri source (comments, JSDoc) or its git history. Existing rationales without evidence stay unchanged and are listed in the report for manual verification – they may document decisions recorded nowhere else. Only rationales the code contradicts are corrected. Never add a rationale you can't back.
+- No rows that merely restate the implementation or describe behaviour without a decision behind it. The "Begründung" cell never just repeats the decision.
 
 ### `### Links und Referenzen`
 
@@ -71,7 +71,7 @@ List of typical use cases.
 
 ### `### FAQ` (optional)
 
-Only real, recurring questions. No unbacked "why" answers.
+Only real, recurring questions that the page doesn't already answer elsewhere (otherwise link to the section). Existing "why" answers without evidence stay and are listed for manual verification; don't write new unbacked ones.
 
 ## `## Playground`
 
@@ -84,6 +84,7 @@ One `###` section per feature or property group with a short description and its
 - The first example is a working basic example (e.g. Combobox with suggestions, Accordion with content).
 - The feature is visible immediately – set start values via `initialProps` instead of "enter something first".
 - Accessibility-relevant behaviour of the feature belongs here, not under "Barrierefreiheit" (e.g. clear button, variants, states).
+- No purely visual details (icon direction, colours, spacing) unless they matter for accessibility.
 - Known KoliBri bugs as a note with a link to the issue, right at the feature.
 - Recurring sections via shared snippets from `_shared/features/`.
 
