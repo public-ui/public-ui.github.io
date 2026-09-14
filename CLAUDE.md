@@ -25,7 +25,7 @@ Docusaurus v3 documentation site for the KoliBri web component library (`@public
 
 `input-number.mdx` is the blueprint for all form components. Keep this order:
 
-`# Name` → `<BetaDocsBanner />` → **Synonyme** → **Beschreibung** (including the native HTML element it is based on) → `## Beispiel` → `## Barrierefreiheit` (bullets) → `### Konkrete Designentscheidungen` (table) → `### Links und Referenzen` → `## Verwendung` → `### Tastatursteuerung` → `### Best Practices / Empfehlungen` → `### Anwendungsfälle` → `### FAQ` → `## Playground` → `## Funktionalitäten` (one `###` per feature with its own preview) → `## API` → `### Events` → `<Readme />`.
+`# Name` → **Synonyme** → **Beschreibung** (including the native HTML element it is based on) → `## Beispiel` → `## Barrierefreiheit` (bullets) → `### Konkrete Designentscheidungen` (table) → `### Links und Referenzen` → `## Verwendung` → `### Tastatursteuerung` → `### Best Practices / Empfehlungen` → `### Anwendungsfälle` → `### FAQ` → `## Playground` → `## Funktionalitäten` (one `###` per feature with its own preview) → `## API` → `### Events` → `<Readme />`.
 
 ### Previews
 
