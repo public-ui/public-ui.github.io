@@ -50,17 +50,14 @@ Standard-Eingabefeld für E-Mail-Adressen ohne optional gesetzte Felder:
 * <ErrorMessageNote />
 * <SuggestionsNote />
 * <CharacterCounterNote />
-* Die native Formatprüfung des Eingabetyps `email` wirkt sich nicht auf die Fehlerdarstellung der Komponente aus. Fehlermeldung und `aria-invalid` werden ausschließlich über `_msg` in Verbindung mit `_touched` gesteuert. Werten Sie die Validierung daher in der Anwendung aus und stellen Sie eine verständliche Fehlermeldung über `_msg` bereit.
-* `_multiple` wird unverändert als natives Attribut `multiple` übergeben. KoliBri ergänzt keine eigene Ansage, dass mehrere Adressen erwartet werden. Weisen Sie über die Beschriftung oder `_hint` darauf hin, dass mehrere Adressen durch Kommas getrennt eingegeben werden können.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
 | Verwendung des nativen HTML5-Eingabetyps `email` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
-| Keine automatische Übernahme der nativen Formatprüfung | Der Fehlerzustand wird ausschließlich über `_msg` und `_touched` gesteuert. So bestimmt die Anwendung Zeitpunkt und Wortlaut der Fehlermeldung, und Fehler werden in allen Formular-Komponenten einheitlich dargestellt und mit dem Feld verknüpft. |
-| `_multiple` und `_pattern` als native Attribute | Die Prüfung mehrerer, durch Kommas getrennter Adressen sowie zusätzlicher Formatvorgaben übernimmt der Browser. Die Komponente teilt den Wert nicht selbst auf. |
-| Verzögerte Ansage des Zeichenzählers | Die Live-Region des Zeichenzählers wird erst 1000 ms nach der letzten Eingabe aktualisiert, damit Screenreader die Eingabe nicht durch fortlaufende Ansagen unterbrechen. |
+| Keine automatische Übernahme der nativen Formatprüfung | Ergebnisse der nativen Formatprüfung des Eingabetyps `email` werden nicht als Fehlermeldung am Feld angezeigt. Der Fehlerzustand wird ausschließlich über `_msg` in Verbindung mit `_touched` gesteuert. |
+| `_multiple` und `_pattern` als native Attribute | Die Prüfung mehrerer, durch Kommas getrennter Adressen sowie zusätzlicher Formatvorgaben übernimmt der Browser. Die Komponente teilt den Wert nicht selbst auf und ergänzt keinen eigenen Hinweis, dass mehrere Adressen erwartet werden. |
 
 ### Links und Referenzen
 
@@ -97,7 +94,7 @@ Standard-Eingabefeld für E-Mail-Adressen ohne optional gesetzte Felder:
 - Verlassen Sie sich nicht ausschließlich auf die native Formatprüfung des Browsers. Werten Sie Validierungsfehler in der Anwendung aus und stellen Sie über `_msg` zusammen mit `_touched` eine aussagekräftige Fehlermeldung bereit.
 - Formulieren Sie Fehlermeldungen konkret und lösungsorientiert, damit Nutzende erkennen können, wie die eingegebene E-Mail-Adresse korrigiert werden muss.
 - Verwenden Sie `_pattern` nur für fachlich notwendige zusätzliche Anforderungen, beispielsweise wenn ausschließlich E-Mail-Adressen einer bestimmten Domain zulässig sind. Beschreiben Sie diese Anforderung zusätzlich über `_hint`.
-- Weisen Sie bei Verwendung von `_multiple` deutlich darauf hin, dass mehrere E-Mail-Adressen durch Kommas getrennt eingegeben werden müssen.
+- Weisen Sie bei Verwendung von `_multiple` über die Beschriftung oder `_hint` deutlich darauf hin, dass mehrere E-Mail-Adressen durch Kommas getrennt eingegeben werden können.
 - Setzen Sie `_autoComplete` passend zum Anwendungsfall ein, beispielsweise mit dem Wert `'email'`, damit Browser die Eingabe unterstützen können.
 - Verwenden Sie `_placeholder` ausschließlich als zusätzliche Orientierung und nicht als Ersatz für eine aussagekräftige Beschriftung (`_label`).
 

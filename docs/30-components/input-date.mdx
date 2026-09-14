@@ -48,8 +48,6 @@ Standard-Datumsfeld mit dem Typ `date`:
 * <LabelNote />
 * <ErrorMessageNote />
 * <SuggestionsNote />
-* Da das native Eingabefeld im Shadow DOM der Komponente liegt, leitet KoliBri die Eingabetaste (`Enter`) als Absenden an das umgebende Formular weiter. Ist das Kalender-Symbol des Browsers fokussiert, wird das Formular nicht abgesendet, damit die Eingabetaste dort weiterhin den Auswahldialog bedienen kann.
-* Im schreibgeschützten Zustand (`_readOnly`) fängt KoliBri die Leertaste ab, sodass sich der Auswahldialog nicht öffnen lässt. Zusätzlich erscheint hinter der Beschriftung der sichtbare Hinweis „(schreibgeschützt)“. Dieser Hinweis ist vor assistiven Technologien verborgen; der Zustand wird über das native `readonly`-Attribut vermittelt.
 * Einige Screenreader geben leere Datumsfelder oder den schreibgeschützten Zustand nicht wie erwartet aus. Da diese Ausgaben vom Browser erzeugt werden, kann KoliBri sie nicht beeinflussen. Details finden Sie unter <kol-link _href="https://public-ui.github.io/docs/known-issues#kol-input-date" _target="_blank" _label="Bekannte Probleme: kol-input-date"></kol-link>.
 
 ### Konkrete Designentscheidungen
@@ -57,10 +55,10 @@ Standard-Datumsfeld mit dem Typ `date`:
 | Entscheidung | Begründung |
 | ------------ | ---------- |
 | Verwendung nativer HTML5-Eingabetypen | Die Komponente nutzt bewusst die nativen HTML5-Eingabetypen und profitiert dadurch von deren standardisierter Unterstützung durch Browser und assistive Technologien. |
-| Kein eigener Datepicker bzw. Zeitwähler | Die Komponente verzichtet bewusst auf eine eigene Implementierung und nutzt stattdessen die nativen Auswahldialoge des Browsers bzw. Betriebssystems. Dadurch profitieren Nutzende von einer vertrauten Bedienung. |
-| Absenden per `Enter` | KoliBri leitet die Eingabetaste im Eingabefeld als Absenden an das umgebende Formular weiter. Ist das Kalender-Symbol des Browsers fokussiert, unterbleibt dies, damit die Taste dort weiterhin den Auswahldialog bedient. |
-| Schreibgeschützter Zustand | Bei `_readOnly` wird die Leertaste abgefangen, damit sich der Auswahldialog nicht öffnen lässt. Der sichtbare Hinweis „(schreibgeschützt)“ hinter der Beschriftung macht den Zustand auch für sehende Nutzende erkennbar. |
-| Format-Prüfung der Werte | `_value`, `_min` und `_max` werden gegen das zum `_type` passende ISO-8601-Format geprüft. Werte in einem abweichenden Format werden nicht übernommen, damit das native Feld keinen ungültigen Wert erhält. |
+| Kein eigener Datepicker bzw. Zeitwähler | Die Komponente nutzt die nativen Auswahldialoge des Browsers bzw. Betriebssystems. Darstellung, Tastatur- und Screenreader-Unterstützung des Dialogs hängen daher von der jeweiligen Plattform ab. |
+| Absenden per `Enter` | Die Eingabetaste im Eingabefeld sendet das umgebende Formular ab. Ist das Kalender-Symbol des Browsers fokussiert, wird das Formular nicht abgesendet; die Taste bedient dort weiterhin den Auswahldialog. |
+| Schreibgeschützter Zustand | Bei `_readOnly` öffnet die Leertaste den Auswahldialog nicht. |
+| Format-Prüfung der Werte | `_value`, `_min` und `_max` werden gegen das zum `_type` passende ISO-8601-Format geprüft. Werte in einem abweichenden Format werden nicht übernommen. |
 
 ### Links und Referenzen
 

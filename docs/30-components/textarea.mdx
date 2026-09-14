@@ -48,17 +48,12 @@ Standard-Textarea ohne optional gesetzte Felder:
 * <LabelNote />
 * <ErrorMessageNote />
 * <CharacterCounterNote />
-* Die Größenanpassung durch Nutzende ist auf die vertikale Richtung beschränkt. So kann das Feld nicht über den Layoutbereich hinauswachsen und horizontales Scrollen verursachen.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
 | Verwendung des nativen HTML-Elements `<textarea>` | Die Komponente nutzt bewusst das native Element und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien, einschließlich der Tastaturbedienung. |
-| Zeichenzähler als verzögerte Live-Region | Der sichtbare Zähler ist vor assistiven Technologien verborgen. Eine eigene Live-Region wird erst 1000 ms nach der letzten Eingabe aktualisiert, damit Screenreader das Tippen nicht durch laufende Ansagen unterbrechen. |
-| Hinweis auf die Zeichengrenze ohne Zähler | Ist `_maxLength` ohne `_hasCounter` gesetzt, wird ein visuell versteckter Hinweis („Es können bis zu … Zeichen eingegeben werden.“) über `aria-describedby` mit dem Feld verknüpft. Mit aktivem Zähler entfällt der Hinweis, da der Zähler die Grenze bereits vermittelt. |
-| Wiederholte Ansage bei erreichter Zeichengrenze | Das native `maxlength` verhindert weitere Eingaben ohne Rückmeldung. Die Komponente kündigt das erreichte Limit daher bei jedem weiteren Eingabeversuch erneut über die Live-Region an. |
-| Nur vertikale Größenanpassung (`_resize`) | Horizontales Vergrößern wird nicht angeboten. `_resize` kennt nur die Werte `vertical` (Standard) und `none`, damit das Feld auch bei Vergrößerung und Zoom im Layout bleibt. |
 | Optionale automatische Höhenanpassung (`_adjustHeight`) | Mit `_adjustHeight` wächst das Feld mit dem Inhalt, sodass der gesamte Text ohne inneren Scrollbalken sichtbar ist. |
 
 ### Links und Referenzen
@@ -117,8 +112,8 @@ Standard-Textarea ohne optional gesetzte Felder:
 **Wird die Zeichengrenze bei `_maxLengthBehavior="soft"` erzwungen?**  
 Nein. Bei `soft` können weiterhin Zeichen eingegeben werden; der Zähler zeigt dann an, um wie viele Zeichen die Grenze überschritten ist. Die Validierung muss auf Anwendungsebene erfolgen.
 
-**Warum kann die Textarea nicht horizontal vergrößert werden?**  
-Horizontales Vergrößern wurde bewusst abgeschafft, damit das Feld nicht über den Layoutbereich hinauswächst. `_resize` unterstützt daher nur `vertical` und `none`.
+**Kann die Textarea horizontal vergrößert werden?**  
+Nein. Horizontales Vergrößern wird seit Version 3 nicht mehr angeboten. `_resize` unterstützt nur `vertical` und `none`.
 
 **Kann ich einen Zeichenzähler ohne Zeichengrenze anzeigen?**  
 Ja. Mit `_hasCounter` ohne `_maxLength` wird die Anzahl der eingegebenen Zeichen angezeigt.

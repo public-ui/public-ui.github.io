@@ -17,13 +17,6 @@ import PlaceholderFeature from './_shared/features/placeholder.md';
 import HideLabelFeature from './_shared/features/hide-label.md';
 import IconsFeature from './_shared/features/icons.md';
 import ClearButtonFeature from './_shared/features/clear-button.md';
-import ListboxComboboxRoleNote from './_shared/a11y-properties/listbox-combobox-role.md';
-import ListboxOptionsNote from './_shared/a11y-properties/listbox-options.md';
-import ListboxFocusNote from './_shared/a11y-properties/listbox-focus.md';
-import CustomKeyboardNote from './_shared/a11y-properties/custom-keyboard.md';
-import ListboxToggleNote from './_shared/a11y-properties/listbox-toggle.md';
-import ClearButtonNote from './_shared/a11y-properties/clear-button.md';
-import AutocompleteOffNote from './_shared/a11y-properties/autocomplete-off.md';
 import CustomKeyboardIntro from './_shared/keyboard/custom-intro.md';
 import ListboxFocusModel from './_shared/keyboard/listbox-focus-model.md';
 import EventsIntro from './_shared/api/events-intro.md';
@@ -34,7 +27,7 @@ import EventsIntro from './_shared/api/events-intro.md';
 
 <BetaDocsBanner />
 
-**Synonyme:** Autocomplete, Autovervollständigung, Typeahead, Eingabefeld mit Vorschlagsliste, Dropdown mit Freitexteingabe
+**Synonyme:** Auswahlliste mit Autovervollständigung, Dropdown mit Freitexteingabe, Autocomplete
 
 **Beschreibung:** Die **Combobox** kombiniert ein Texteingabefeld mit einer Vorschlagsliste. Nutzende können einen Wert frei eingeben oder einen der angebotenen Vorschläge übernehmen. Der Wert ist dabei nicht auf die Vorschläge beschränkt.
 
@@ -52,25 +45,13 @@ Standard-Combobox mit Vorschlagsliste:
 
 * <LabelNote />
 * <ErrorMessageNote />
-* <ListboxComboboxRoleNote />
-* <ListboxOptionsNote />
-* <ListboxFocusNote />
-* <CustomKeyboardNote />
-* <ListboxToggleNote />
-* <ClearButtonNote />
-* Nach dem Löschen über den Clear-Button wird die Vorschlagsliste geschlossen und der Fokus in das Eingabefeld gesetzt.
-* <AutocompleteOffNote />
-* Da die Combobox freie Eingaben zulässt, empfehlen wir, den Wert auf Anwendungsebene zu prüfen und ungültige Eingaben über `_msg` mit einer konkreten Fehlermeldung zurückzumelden.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
-| Die Combobox orientiert sich am WAI-ARIA APG Pattern **„Editable Combobox with List Autocomplete“**, weicht jedoch beim Fokusmodell bewusst davon ab. | Die Implementierung folgt den grundlegenden Interaktions- und ARIA-Konzepten des Patterns, verwendet jedoch ein angepasstes Fokusverhalten (siehe [Tastatursteuerung](#tastatursteuerung)). |
-| Die Vorschlagsliste wird als ARIA-basierte Listbox und nicht als natives `datalist` umgesetzt. | Native `datalist`-Elemente unterscheiden sich je nach Browser hinsichtlich Darstellung, Tastaturbedienung und Unterstützung durch assistive Technologien. Die eigene Umsetzung ermöglicht ein konsistentes Verhalten und Styling über alle unterstützten Plattformen hinweg. |
-| Beim Navigieren in der Liste wird der Tastaturfokus auf den jeweiligen Eintrag verschoben. | Anders als im WAI-ARIA APG Pattern verbleibt der Fokus während der Listennavigation nicht im Eingabefeld, sondern wechselt auf den jeweils aktiven Eintrag. Screenreader geben dadurch den aktiven Eintrag unmittelbar aus. Während der Navigation kann daher kein weiterer Suchtext eingegeben werden. |
+| Die Vorschlagsliste wird als eigene Liste und nicht als natives `datalist` umgesetzt. | Native `datalist`-Elemente unterscheiden sich je nach Browser hinsichtlich Darstellung, Tastaturbedienung und Unterstützung durch assistive Technologien. Die eigene Umsetzung ermöglicht ein konsistentes Verhalten und Styling über alle unterstützten Plattformen hinweg. |
 | Der Öffnen-/Schließen-Pfeil ist nicht Teil der Tab-Reihenfolge. | Er dient ausschließlich als zusätzliche Unterstützung für Maus- und Touch-Nutzende. Die gleiche Funktion steht über die Pfeiltasten im Eingabefeld zur Verfügung, sodass unnötige Tabstopps vermieden werden. |
-| Der Clear-Button ist als eigenständiger Icon-Button umgesetzt und per Tastatur erreichbar. | So kann ein Wert mit einer einzigen Aktion entfernt werden. Der zugängliche Name des Buttons wird von KoliBri übersetzt bereitgestellt und muss nicht gesetzt werden. |
 | Der Suchbegriff wird in den Vorschlägen hervorgehoben (`mark`). | Sehende Nutzende erkennen auf einen Blick, warum ein Vorschlag zur Eingabe passt – auch wenn der Suchbegriff mitten im Vorschlag steht. |
 
 ### Links und Referenzen
@@ -122,7 +103,7 @@ Standard-Combobox mit Vorschlagsliste:
 - Stellen Sie nur relevante, eindeutig bezeichnete und unterscheidbare Vorschläge bereit.
 - Führen Sie häufig verwendete Vorschläge möglichst am Anfang der Vorschlagsliste auf.
 - Nutzen Sie `_hint`, um Formatvorgaben oder Besonderheiten der Eingabe zu erläutern.
-- Stellen Sie Validierungsfehler über `_msg` mit verständlichen und konkreten Fehlermeldungen bereit.
+- Da die Combobox freie Eingaben zulässt, prüfen Sie den Wert auf Anwendungsebene und melden Sie ungültige Eingaben über `_msg` mit einer verständlichen und konkreten Fehlermeldung zurück.
 - Verwenden Sie [SingleSelect](../components/single-select) oder [Select](../components/select), wenn ausschließlich vordefinierte Werte zulässig sind.
 
 ### Anwendungsfälle
@@ -148,8 +129,8 @@ Die Combobox ist die einzige der drei Komponenten, die freie Eingaben zulässt. 
 **Warum wird kein natives `datalist` verwendet?**  
 Die KoliBri-Combobox verwendet eine eigene ARIA-basierte Listbox, um ein konsistentes Verhalten hinsichtlich Tastatursteuerung, Styling und Unterstützung durch assistive Technologien über alle unterstützten Browser hinweg sicherzustellen.
 
-**Warum weicht die Tastatursteuerung vom WAI-ARIA APG Pattern ab?**  
-Die KoliBri-Combobox verwendet ein angepasstes Fokusmodell. Während der Navigation innerhalb der Vorschlagsliste wird der Tastaturfokus auf den aktiven Vorschlag verschoben. Die daraus resultierenden Unterschiede zur Referenzimplementierung sind im Abschnitt [Tastatursteuerung](#tastatursteuerung) beschrieben.
+**Worin weicht die Tastatursteuerung vom WAI-ARIA APG Pattern ab?**  
+Während der Navigation innerhalb der Vorschlagsliste wird der Tastaturfokus auf den aktiven Vorschlag verschoben, statt im Eingabefeld zu verbleiben. Die daraus resultierenden Unterschiede zur Referenzimplementierung sind im Abschnitt [Tastatursteuerung](#tastatursteuerung) beschrieben.
 
 **Warum ist der Öffnen-/Schließen-Pfeil nicht per Tab erreichbar?**  
 Der Öffnen-/Schließen-Pfeil dient ausschließlich als zusätzliche Unterstützung für Maus- und Touch-Nutzende. Die Vorschlagsliste kann vollständig über die Tastatur geöffnet und bedient werden, sodass kein zusätzlicher Tabstopp erforderlich ist.
@@ -172,18 +153,11 @@ Testen Sie die verschiedenen Eigenschaften der Combobox-Komponente:
 
 <BasicFeature />
 
-<ComboboxPreview
-	context="feature"
-	visibleProperties={['_label']}
-/>
-
-### Vorschläge
-
-Mit `_suggestions` legen Sie die Vorschläge fest, aus denen Nutzende während der Eingabe wählen können. Die Vorschläge werden in einer eigenen, von KoliBri umgesetzten Listbox angezeigt und nicht über das native `datalist`-Element. Darstellung und Tastatursteuerung sind daher unabhängig vom Browser.
+Zusätzlich benötigt die Combobox Vorschläge (`_suggestions`), aus denen Nutzende während der Eingabe wählen können – ohne Vorschläge bietet sie keinen Mehrwert gegenüber einem einfachen Texteingabefeld. Die Vorschläge werden in einer eigenen Liste angezeigt und nicht über das native `datalist`-Element. Darstellung und Tastatursteuerung sind daher unabhängig vom Browser.
 
 <ComboboxPreview
 	context="feature"
-	visibleProperties={['_suggestions']}
+	visibleProperties={['_label', '_suggestions']}
 	initialProps={{
 		_label: 'Stadt',
 		_suggestions: ['Berlin', 'Düsseldorf', 'Hamburg', 'Köln', 'München', 'Nürnberg', 'Stuttgart'],
@@ -270,14 +244,13 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `inpu
 
 Nach dem Löschen wird die Vorschlagsliste geschlossen und der Fokus in das Eingabefeld gesetzt. Dabei werden die Events `input` und `change` mit einem leeren Wert ausgelöst.
 
-Geben Sie im Beispiel zunächst einen Wert ein oder wählen Sie einen Vorschlag aus, damit der Clear-Button erscheint.
-
 <ComboboxPreview
 	context="feature"
 	visibleProperties={['_hasClearButton']}
 	initialProps={{
 		_label: 'Programmiersprache',
 		_hasClearButton: true,
+		_value: 'TypeScript',
 	}}
 />
 

@@ -42,20 +42,15 @@ Standard-Auswahlliste ohne optional gesetzte Felder:
 
 * <LabelNote />
 * <ErrorMessageNote />
-* Die Komponente ergänzt bewusst keine eigenen ARIA-Rollen wie `role="combobox"` oder `role="listbox"`. Rolle, Tastaturbedienung, Fokus-Handling und Ansageverhalten stammen vollständig vom nativen `<select>`-Element.
-* Deaktivierte Optionen bleiben für assistive Technologien wahrnehmbar und werden von Screenreadern mitgezählt und angesagt. Dadurch kann die Anzahl der angesagten Optionen von der Anzahl der tatsächlich auswählbaren Optionen abweichen. Vermeiden Sie deaktivierte Optionen daher, sofern dies fachlich möglich ist.
-* Bei der Mehrfachauswahl (`_multiple`) haben die Optionen eine Mindesthöhe, die den Anforderungen an barrierefreie Bedienelemente entspricht, damit sie auch mit Maus und Touch sicher getroffen werden können.
-* Ausgewählte Optionen werden zusätzlich mit einem vorangestellten Häkchen gekennzeichnet, damit die Auswahl nicht allein über Farbe erkennbar ist. Die Darstellung hängt davon ab, ob der Browser die Optionsliste mit den Stilen der Komponente rendert.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
-| Verwendung des nativen HTML-Elements `<select>` ohne zusätzliche ARIA-Rolle | Das native Element stellt die erforderliche Semantik sowie die Unterstützung für Tastaturbedienung, Fokusverwaltung und Screenreader bereits bereit. Zusätzliche ARIA-Rollen würden diese Semantik überlagern und sind daher nicht vorgesehen. |
-| Deaktivierte Optionen ohne `aria-hidden` | Deaktivierte Optionen werden nicht vor assistiven Technologien verborgen, da Browser `aria-hidden` an Optionen ignorieren bzw. dadurch fehlerhaftes Verhalten entstand. Die Optionen bleiben deshalb im Accessibility-Tree. |
-| `_rows` nur bei Mehrfachauswahl | `_rows` wird ausschließlich in Verbindung mit `_multiple` als natives `size`-Attribut gesetzt. Die Einfachauswahl bleibt dadurch immer ein aufklappbares Auswahlfeld mit einheitlicher Höhe. |
-| Mindestgröße der Optionen bei Mehrfachauswahl | In der dauerhaft sichtbaren Liste der Mehrfachauswahl erhalten die Optionen eine Mindesthöhe, damit sie als Zielfläche für Maus und Touch ausreichend groß sind. |
-| Häkchen vor ausgewählten Optionen | Die Auswahl wird zusätzlich über ein Zeichen und nicht ausschließlich über eine farbliche Hervorhebung vermittelt. |
+| Verwendung des nativen HTML-Elements `<select>` | Rolle, Tastaturbedienung, Fokusverwaltung und Ansageverhalten stammen vollständig vom nativen Element und entsprechen damit dem gewohnten Verhalten des jeweiligen Browsers. |
+| Deaktivierte Optionen bleiben für Screenreader wahrnehmbar | Deaktivierte Optionen werden nicht vor assistiven Technologien verborgen, da Browser das Verbergen einzelner Optionen ignorieren bzw. dadurch fehlerhaftes Verhalten entstand. Screenreader zählen und sagen sie daher mit an, sodass die Anzahl der angesagten Optionen von der Anzahl der auswählbaren Optionen abweichen kann. |
+| Mindestgröße der Optionen bei Mehrfachauswahl | In der dauerhaft sichtbaren Liste der Mehrfachauswahl (`_multiple`) haben die Optionen eine Mindesthöhe, die der barrierefreien Mindestgröße für Bedienelemente entspricht. |
+| Häkchen vor ausgewählten Optionen | Ausgewählte Optionen sind zusätzlich zur Hervorhebung durch ein vorangestelltes Häkchen erkennbar. Die Darstellung hängt davon ab, ob der Browser die Optionsliste mit den Stilen der Komponente rendert. |
 
 ### Links und Referenzen
 
@@ -117,6 +112,7 @@ Die Select-Komponente sollte **nicht** verwendet werden, wenn:
 - Stellen Sie die Optionen über `_options` als Array mit `label` und `value` bereit.
 - Strukturieren Sie umfangreiche Auswahllisten mithilfe von **Optionsgruppen**.
 - Verwenden Sie aussagekräftige und eindeutige Beschriftungen (`label`).
+- Vermeiden Sie deaktivierte Optionen, sofern dies fachlich möglich ist. Screenreader sagen sie mit an, sodass die Anzahl der angesagten Optionen von der Anzahl der tatsächlich auswählbaren Optionen abweichen kann.
 - Setzen Sie `_required`, wenn eine Auswahl zwingend erforderlich ist.
 
 **Vorauswahl und Leer-Option**
@@ -209,6 +205,8 @@ Mit `_multiple` erlauben Sie die Auswahl mehrerer Optionen. Die Komponente wird 
 
 Mit `_rows` legen Sie fest, wie viele Optionen gleichzeitig sichtbar sind. `_rows` wird ausschließlich in Verbindung mit `_multiple` als natives `size`-Attribut gesetzt.
 
+Die Optionen der Mehrfachauswahl haben eine Mindesthöhe, die der barrierefreien Mindestgröße für Bedienelemente entspricht, und können so auch mit Maus und Touch sicher getroffen werden.
+
 <SelectPreview
 	context="feature"
 	visibleProperties={['_multiple', '_rows']}
@@ -222,6 +220,8 @@ Mit `_rows` legen Sie fest, wie viele Optionen gleichzeitig sichtbar sind. `_row
 ### Optionsgruppen
 
 Umfangreiche Auswahllisten strukturieren Sie mit Optionsgruppen. Eine Optionsgruppe wird in `_options` als Objekt mit `label` und einem eigenen Array `options` angegeben und als natives `optgroup`-Element ausgegeben. Die Beschriftung der Gruppe wird von Screenreadern beim Navigieren durch die Optionen mit angesagt; sie ist selbst nicht auswählbar.
+
+**Hinweis:** `disabled: true` an einer Optionsgruppe wirkt derzeit nicht; die Optionen der Gruppe bleiben auswählbar (<kol-link _href="https://github.com/public-ui/kolibri/issues/10864" _target="_blank" _label="#10864"></kol-link>). Deaktivieren Sie stattdessen die einzelnen Optionen.
 
 <SelectPreview
 	context="feature"
@@ -250,7 +250,7 @@ Umfangreiche Auswahllisten strukturieren Sie mit Optionsgruppen. Eine Optionsgru
 
 ### Deaktivierte Optionen
 
-Einzelne Optionen deaktivieren Sie über die Eigenschaft `disabled` der jeweiligen Option. Deaktivierte Optionen bleiben sichtbar und werden von Screenreadern angesagt, können aber nicht ausgewählt werden. Setzen Sie deaktivierte Optionen sparsam ein (siehe [Barrierefreiheit](#barrierefreiheit)).
+Einzelne Optionen deaktivieren Sie über die Eigenschaft `disabled` der jeweiligen Option. Deaktivierte Optionen bleiben sichtbar und werden von Screenreadern angesagt, können aber nicht ausgewählt werden. Setzen Sie deaktivierte Optionen sparsam ein (siehe [Best Practices / Empfehlungen](#best-practices--empfehlungen)).
 
 <SelectPreview
 	context="feature"

@@ -17,13 +17,6 @@ import PlaceholderFeature from './_shared/features/placeholder.md';
 import HideLabelFeature from './_shared/features/hide-label.md';
 import IconsFeature from './_shared/features/icons.md';
 import ClearButtonFeature from './_shared/features/clear-button.md';
-import ListboxComboboxRoleNote from './_shared/a11y-properties/listbox-combobox-role.md';
-import ListboxOptionsNote from './_shared/a11y-properties/listbox-options.md';
-import ListboxFocusNote from './_shared/a11y-properties/listbox-focus.md';
-import CustomKeyboardNote from './_shared/a11y-properties/custom-keyboard.md';
-import ListboxToggleNote from './_shared/a11y-properties/listbox-toggle.md';
-import ClearButtonNote from './_shared/a11y-properties/clear-button.md';
-import AutocompleteOffNote from './_shared/a11y-properties/autocomplete-off.md';
 import CustomKeyboardIntro from './_shared/keyboard/custom-intro.md';
 import ListboxFocusModel from './_shared/keyboard/listbox-focus-model.md';
 import EventsIntro from './_shared/api/events-intro.md';
@@ -57,29 +50,15 @@ Standard-SingleSelect mit Optionsliste:
 
 * <LabelNote />
 * <ErrorMessageNote />
-* <ListboxComboboxRoleNote />
-* <ListboxOptionsNote />
-* <ListboxFocusNote />
-* <CustomKeyboardNote />
-* Deaktivierte Optionen (`disabled: true`) bleiben sichtbar, werden mit `aria-disabled="true"` gekennzeichnet und bei der Navigation mit den Pfeil- und Bild-Tasten sowie bei der Zeichensuche übersprungen. Sie lassen sich nicht per Klick auswählen.
-* Liefert die Filterung keinen Treffer, wird in der Liste die Meldung „Keine Ergebnisse gefunden.“ mit `role="alert"` ausgegeben, sodass Screenreader-Nutzende sofort darüber informiert werden.
-* <ListboxToggleNote />
-* <ClearButtonNote />
-* Nach dem Entfernen der Auswahl über den Clear-Button wird die Auswahlliste geöffnet und der Fokus in das Eingabefeld gesetzt, sodass direkt eine neue Option gewählt werden kann.
-* <AutocompleteOffNote />
-* Wir empfehlen, deaktivierte Optionen nur sparsam einzusetzen und – falls für das Verständnis nötig – über `_hint` zu erläutern, warum eine Option nicht verfügbar ist.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
-| SingleSelect ist ein eigenes Widget auf Basis eines Texteingabefelds mit ARIA-Listbox und kein natives `select`. | Das native `select`-Element bietet keine Filterung per Texteingabe, und seine Darstellung lässt sich nur eingeschränkt gestalten. Die eigene Umsetzung ermöglicht eine filterbare Auswahl mit konsistentem Verhalten über alle unterstützten Plattformen hinweg. |
-| Beim Navigieren in der Liste wird der Tastaturfokus auf den jeweiligen Eintrag verschoben. | Anders als im WAI-ARIA APG Pattern verbleibt der Fokus während der Listennavigation nicht im Eingabefeld, sondern wechselt auf den jeweils aktiven Eintrag. Screenreader geben dadurch den aktiven Eintrag unmittelbar aus. Während der Navigation kann daher kein weiterer Suchtext eingegeben werden. |
+| SingleSelect ist ein eigenes Widget mit filterbarer Auswahlliste und kein natives `select`. | Das native `select`-Element bietet keine Filterung per Texteingabe, und seine Darstellung lässt sich nur eingeschränkt gestalten. Die eigene Umsetzung ermöglicht eine filterbare Auswahl mit konsistentem Verhalten über alle unterstützten Plattformen hinweg. |
 | Der Öffnen-/Schließen-Pfeil ist nicht Teil der Tab-Reihenfolge. | Er dient ausschließlich als zusätzliche Unterstützung für Maus- und Touch-Nutzende. Die gleiche Funktion steht über die Pfeiltasten im Eingabefeld zur Verfügung, sodass unnötige Tabstopps vermieden werden. |
-| Der Clear-Button ist als eigenständiger Icon-Button umgesetzt und per Tastatur erreichbar. | So kann ein Wert mit einer einzigen Aktion entfernt werden. Der zugängliche Name des Buttons wird von KoliBri übersetzt bereitgestellt und muss nicht gesetzt werden. |
-| Die Meldung „Keine Ergebnisse gefunden.“ wird mit `role="alert"` ausgegeben. | Eine leere Liste wäre für Screenreader-Nutzende nicht wahrnehmbar. Die Alert-Rolle sorgt dafür, dass das fehlende Suchergebnis unmittelbar angesagt wird. |
-| Deaktivierte Optionen werden bei der Tastaturnavigation übersprungen. | Nutzende gelangen ohne Umwege zu auswählbaren Optionen, während die deaktivierten Optionen als Information sichtbar bleiben. |
-| Beim Verlassen des Feldes wird eine Option automatisch übernommen, wenn der eingegebene Text exakt ihrer Beschriftung entspricht (ohne Beachtung der Groß-/Kleinschreibung). | Nutzende, die den vollständigen Eintrag eintippen, müssen ihn nicht zusätzlich in der Liste bestätigen. |
+| Liefert die Filterung keinen Treffer, wird die Meldung „Keine Ergebnisse gefunden.“ unmittelbar angesagt. | Eine leere Liste wäre für Screenreader-Nutzende sonst nicht wahrnehmbar. |
+| Deaktivierte Optionen bleiben sichtbar, werden bei der Tastaturnavigation aber übersprungen. | Nutzende gelangen ohne Umwege zu auswählbaren Optionen, während die deaktivierten Optionen als Information sichtbar bleiben. |
 
 ### Links und Referenzen
 
@@ -135,6 +114,7 @@ Standard-SingleSelect mit Optionsliste:
 - Nutzen Sie den Placeholder (`_placeholder`) nur als ergänzende Hilfe, nicht als Ersatz für Beschriftung oder Hinweis.
 - Überlegen Sie, ob ein sinnvoller Standardwert gesetzt werden sollte, um Fehlbedienungen zu minimieren.
 - Geben Sie aussagekräftige Validierungsfehlermeldungen über `_msg` vor.
+- Setzen Sie deaktivierte Optionen nur sparsam ein und erläutern Sie – falls für das Verständnis nötig – über `_hint`, warum eine Option nicht verfügbar ist.
 - Bei nur wenigen Optionen können Radio-Buttons ([InputRadio](../components/input-radio)) übersichtlicher sein, da alle Optionen ohne Öffnen einer Liste sichtbar sind.
 
 ### Anwendungsfälle
@@ -155,7 +135,7 @@ Nein. Der eingegebene Text dient nur zum Filtern der Optionen. Als Wert wird aus
 Das [Select](../components/select) basiert auf dem nativen `select`-Element. SingleSelect ist ein eigenes Widget, das zusätzlich eine Filterung per Texteingabe bietet und sich damit besonders für umfangreiche Listen eignet.
 
 **Was passiert, wenn keine Option zur Eingabe passt?**  
-In der Liste erscheint die Meldung „Keine Ergebnisse gefunden.“, die Screenreader über `role="alert"` unmittelbar ansagen.
+In der Liste erscheint die Meldung „Keine Ergebnisse gefunden.“, die Screenreader unmittelbar ansagen.
 
 **Warum ist der Öffnen-/Schließen-Pfeil nicht per Tab erreichbar?**  
 Der Öffnen-/Schließen-Pfeil dient ausschließlich als zusätzliche Unterstützung für Maus- und Touch-Nutzende. Die Auswahlliste kann vollständig über die Tastatur geöffnet und bedient werden, sodass kein zusätzlicher Tabstopp erforderlich ist.
@@ -253,7 +233,7 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `inpu
 
 ### Deaktivierte Optionen
 
-Einzelne Optionen deaktivieren Sie über `disabled: true` im jeweiligen Options-Objekt. Deaktivierte Optionen bleiben in der Liste sichtbar, werden mit `aria-disabled="true"` gekennzeichnet, bei der Tastaturnavigation übersprungen und lassen sich nicht auswählen.
+Einzelne Optionen deaktivieren Sie über `disabled: true` im jeweiligen Options-Objekt. Deaktivierte Optionen bleiben in der Liste sichtbar, werden von Screenreadern als nicht verfügbar ausgegeben, bei der Tastaturnavigation übersprungen und lassen sich nicht auswählen.
 
 <SingleSelectPreview
 	context="feature"
@@ -272,9 +252,7 @@ Einzelne Optionen deaktivieren Sie über `disabled: true` im jeweiligen Options-
 
 <ClearButtonFeature />
 
-Nach dem Entfernen der Auswahl wird die Auswahlliste geöffnet und der Fokus in das Eingabefeld gesetzt. Dabei werden die Events `input` und `change` ausgelöst.
-
-Wählen Sie im Beispiel zunächst eine Option aus, damit der Clear-Button erscheint.
+Nach dem Entfernen der Auswahl wird die Auswahlliste geöffnet und der Fokus in das Eingabefeld gesetzt, sodass direkt eine neue Option gewählt werden kann. Dabei werden die Events `input` und `change` ausgelöst.
 
 <SingleSelectPreview
 	context="feature"
@@ -282,6 +260,7 @@ Wählen Sie im Beispiel zunächst eine Option aus, damit der Clear-Button ersche
 	initialProps={{
 		_label: 'Bundesland',
 		_hasClearButton: true,
+		_value: 'BY',
 	}}
 />
 

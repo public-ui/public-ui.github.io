@@ -43,17 +43,13 @@ Standard-Datei-Eingabefeld ohne optional gesetzte Felder:
 
 * <LabelNote />
 * <ErrorMessageNote />
-* Das native Dateifeld wird unsichtbar über die gesamte Eingabefläche gelegt. Dadurch öffnet ein Klick an beliebiger Stelle des Feldes den Dateiauswahldialog, während Semantik, Fokus und Tastaturbedienung des nativen Elements vollständig erhalten bleiben.
-* Die Namen der ausgewählten Dateien werden unabhängig von der browserspezifischen Darstellung des nativen Elements als Text im Feld angezeigt. Solange keine Datei ausgewählt ist, erscheint dort der Hinweis „Datei auswählen oder hier ablegen...“.
-* Dateien können zusätzlich per Drag & Drop abgelegt werden. Diese Komfortfunktion ergänzt die tastaturbedienbare Auswahl über den Dateiauswahldialog, ersetzt sie jedoch nicht.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
 | Verwendung des nativen HTML5-Eingabetyps `file` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp `file` und profitiert dadurch von dessen standardisierter Unterstützung durch Browser, Betriebssystem-Dateidialoge und assistive Technologien. |
-| Unsichtbares natives Eingabefeld über der gesamten Fläche | Die Darstellung des nativen Dateifelds unterscheidet sich je nach Browser und lässt sich kaum gestalten. KoliBri blendet das native Feld daher mit `opacity: 0` aus und legt es über die gesamte Eingabefläche. Sichtbar sind stattdessen eine eigene Schaltfläche „Datei auswählen“ und die Anzeige der gewählten Dateinamen. Fokus, Tastaturbedienung und Screenreader-Ausgabe übernimmt weiterhin das native Element. |
-| Fokusindikator | Da das native Eingabefeld unsichtbar ist, ist auch dessen eigener Fokusring nicht sichtbar. Der sichtbare Fokusindikator wird für das gesamte Eingabefeld durch das jeweils verwendete Theme bereitgestellt. |
+| Einheitliche Darstellung statt browserspezifischem Dateifeld | Anstelle der browserspezifischen Darstellung zeigt die Komponente eine Schaltfläche „Datei auswählen“ und die Namen der gewählten Dateien an (siehe [Dateiauswahl und Drag & Drop](#dateiauswahl-und-drag--drop)). Fokus, Tastaturbedienung und Screenreader-Ausgabe entsprechen dem nativen Dateifeld. |
 | Drag & Drop als Zusatzinteraktion | Die Auswahl per Drag & Drop ergänzt die Auswahl über den Dateiauswahldialog, ersetzt diese jedoch nicht. Dadurch bleibt die vollständige Bedienbarkeit über Tastatur und Betriebssystem-Dateidialog erhalten. |
 
 ### Links und Referenzen
@@ -67,8 +63,6 @@ Standard-Datei-Eingabefeld ohne optional gesetzte Felder:
 - Aktivieren Sie die Auswahl mehrerer Dateien über `_multiple`.
 - Kennzeichnen Sie Pflichtfelder über `_required`.
 - Setzen Sie eine getroffene Auswahl bei Bedarf über die Methode `reset()` zurück. Dabei werden die ausgewählten Dateien entfernt und der Hinweistext im Feld wiederhergestellt.
-
-**Hinweis:** Beim Ablegen per Drag & Drop werden `_accept` und `_multiple` nicht berücksichtigt – es werden alle abgelegten Dateien übernommen. Prüfen Sie Anzahl, Typ und Größe der Dateien daher immer auf Anwendungsebene bzw. serverseitig.
 
 ### Tastatursteuerung
 
@@ -136,6 +130,24 @@ Testen Sie die verschiedenen Eigenschaften der InputFile-Komponente:
 	}}
 />
 
+### Dateiauswahl und Drag & Drop
+
+Die Komponente zeigt eine Schaltfläche **„Datei auswählen“** an. Ein Klick an beliebiger Stelle des Feldes öffnet den Dateiauswahldialog des Betriebssystems; per Tastatur öffnen `Enter` bzw. `Leertaste` den Dialog, sobald das Feld fokussiert ist.
+
+Die Namen der ausgewählten Dateien werden als Text im Feld angezeigt. Solange keine Datei ausgewählt ist, erscheint dort der Hinweis „Datei auswählen oder hier ablegen...“. Wählen Sie im Beispiel eine Datei aus, um die Anzeige zu sehen.
+
+Zusätzlich können Dateien per **Drag & Drop** auf dem Feld abgelegt werden. Diese Komfortfunktion ergänzt die tastaturbedienbare Auswahl über den Dateiauswahldialog, ersetzt sie jedoch nicht.
+
+**Hinweis:** Beim Ablegen per Drag & Drop werden `_accept` und `_multiple` derzeit nicht berücksichtigt – es werden alle abgelegten Dateien übernommen (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10865" _target="_blank" _label="#10865"></kol-link>). Prüfen Sie Anzahl, Typ und Größe der Dateien daher immer auf Anwendungsebene bzw. serverseitig.
+
+<InputFilePreview
+	context="feature"
+	visibleProperties={[]}
+	initialProps={{
+		_label: 'Dokument hochladen',
+	}}
+/>
+
 ### Formularattribute
 
 <FormAttributesFeature />
@@ -165,7 +177,7 @@ Beispiele für `_accept`-Werte:
 - `.csv,.xlsx`: Tabellendaten
 - leer: Alle Dateitypen (Standard)
 
-**Hinweis:** Die Einschränkung wirkt nur im Dateiauswahldialog. Per Drag & Drop abgelegte Dateien werden nicht gegen `_accept` geprüft.
+**Hinweis:** Die Einschränkung wirkt nur im Dateiauswahldialog. Per Drag & Drop abgelegte Dateien werden derzeit nicht gegen `_accept` geprüft (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10865" _target="_blank" _label="#10865"></kol-link>).
 
 <InputFilePreview
 	context="feature"

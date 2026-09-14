@@ -45,16 +45,14 @@ Standard-Schieberegler mit Beschriftung und Zahlenfeld:
 * <LabelNote />
 * <ErrorMessageNote />
 * <SuggestionsNote />
-* KoliBri ergänzt den nativen Schieberegler um ein Zahlenfeld, das mit der Beschriftung verknüpft ist. Tastatur- und Screenreader-Bedienung erfolgen ausschließlich über dieses Zahlenfeld. Der Schieberegler ist nicht per Tastatur fokussierbar und mittels `aria-hidden` aus dem Accessibility-Tree entfernt, sodass der Wert nicht doppelt angesagt wird.
-* Über das Zahlenfeld lässt sich ein Wert exakt und ohne Ziehbewegung einstellen. Nutzende, denen präzise Zeigerbewegungen schwerfallen, erhalten damit eine gleichwertige Alternative zum Schieberegler.
+* Der native Schieberegler wurde um ein beschriftetes Zahlenfeld ergänzt, über das sich der Wert exakt und ohne Ziehbewegung einstellen lässt. Nutzende, denen präzise Zeigerbewegungen schwerfallen, erhalten damit eine gleichwertige Alternative zum Schieberegler.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
-| Kombination aus Schieberegler und Zahlenfeld | Der Schieberegler ermöglicht eine schnelle, visuelle Auswahl mit Maus und Touch. Das Zahlenfeld zeigt den genauen Wert an und erlaubt eine exakte Eingabe ohne Ziehbewegung (vgl. WCAG 2.2, Erfolgskriterium 2.5.7 „Ziehbewegungen“). |
-| Tastaturbedienung über das Zahlenfeld | Der Schieberegler ist nicht Teil der Tab-Reihenfolge und mittels `aria-hidden` vollständig aus dem Accessibility-Tree entfernt. Tastatur- und Screenreader-Nutzende bedienen die Komponente über das beschriftete Zahlenfeld und erhalten so nur ein Bedienelement mit einer Beschriftung. |
-| Gemeinsame Vorschlagsliste | Vorschlagswerte (`_suggestions`) werden in einem gemeinsamen `datalist`-Element bereitgestellt, das mit beiden Elementen verknüpft ist. Je nach Browser erscheinen sie am Schieberegler als Markierungen und am Zahlenfeld als Auswahlliste. |
+| Kombination aus Schieberegler und Zahlenfeld | Der Schieberegler ermöglicht eine visuelle Auswahl mit Maus und Touch, das Zahlenfeld zeigt den genauen Wert an. Beide Elemente zeigen stets denselben Wert. |
+| Tastaturbedienung über das Zahlenfeld | Der Schieberegler ist nicht per Tastatur erreichbar und wird von Screenreadern nicht ausgegeben. Tastatur- und Screenreader-Nutzende bedienen die Komponente über das beschriftete Zahlenfeld; der Wert wird dadurch nur einmal angesagt. |
 | Breite des Zahlenfelds | Die Breite des Zahlenfelds richtet sich nach der Stellenanzahl von `_min` und `_max` (mindestens vier Stellen), damit der Wert vollständig sichtbar bleibt. |
 
 ### Links und Referenzen
@@ -68,7 +66,7 @@ Standard-Schieberegler mit Beschriftung und Zahlenfeld:
 
 - Nutzen Sie `_min` und `_max`, um den Wertebereich festzulegen. Ohne Angabe gilt der Bereich von `0` bis `100`.
 - Verwenden Sie `_step`, um die Schrittweite festzulegen. Ohne Angabe gilt die native Schrittweite von `1`.
-- Der über die Events `input` und `change` sowie über `getValue()` gemeldete Wert wird auf `_min` bzw. `_max` begrenzt. Ist die jeweilige Grenze `0`, findet diese Begrenzung derzeit nicht statt.
+- Der über die Events `input` und `change` sowie über `getValue()` gemeldete Wert wird auf `_min` bzw. `_max` begrenzt. Ist die jeweilige Grenze `0`, findet diese Begrenzung derzeit nicht statt (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10861" _target="_blank" _label="#10861"></kol-link>).
 - Wurde `_value` als Zeichenkette übergeben (z. B. `'50'`), liefern Events und `getValue()` den Wert ebenfalls als Zeichenkette, andernfalls als Zahl.
 
 **Hinweis:** Im Zahlenfeld können manuell auch Werte außerhalb des Bereichs bzw. Schrittmaßes eingegeben werden. Die Validierung der eingegebenen Werte muss auf Anwendungsebene erfolgen.
@@ -108,7 +106,7 @@ Die vom nativen Schieberegler bekannten Tasten (`Pfeil-Tasten (links/rechts)`, `
 ### FAQ
 
 **Warum kann ich den Schieberegler nicht per Tab-Taste fokussieren?**  
-Der Schieberegler dient der Bedienung mit Maus und Touch. Tastatur- und Screenreader-Nutzende bedienen die Komponente über das Zahlenfeld, das den gleichen Wert anzeigt und über die Pfeiltasten verändert werden kann.
+Der Schieberegler ist nicht Teil der Tab-Reihenfolge und wird mit Maus oder Touch bedient. Tastatur- und Screenreader-Nutzende bedienen die Komponente über das Zahlenfeld, das den gleichen Wert anzeigt und über die Pfeiltasten verändert werden kann.
 
 **Kann ich einen Bereich mit zwei Griffen (von–bis) abbilden?**  
 Nein. InputRange verwaltet genau einen Wert. Für einen Wertebereich verwenden Sie zwei separate Felder, beispielsweise zwei InputRange- oder InputNumber-Komponenten für Minimal- und Maximalwert.

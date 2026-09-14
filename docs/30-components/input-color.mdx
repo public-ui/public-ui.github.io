@@ -43,7 +43,6 @@ Einfaches Farbfeld mit Beschriftung und voreingestellter Farbe:
 * <LabelNote />
 * <ErrorMessageNote />
 * Der native Farbwähler weist in Kombination mit Screenreadern bekannte Barrieren auf. So wird das Feld teilweise nicht als Eingabefeld angesagt, und eine Farbauswahl im Dialog ist mit Screenreadern nicht zuverlässig möglich. Da der Dialog vom Browser bzw. Betriebssystem bereitgestellt wird, kann KoliBri dies nicht beeinflussen. Details finden Sie unter <kol-link _href="https://public-ui.github.io/docs/known-issues#kol-input-color" _target="_blank" _label="Bekannte Probleme: kol-input-color"></kol-link>.
-* **Empfehlung:** Ist nur eine begrenzte Anzahl an Farben zulässig, verwenden Sie stattdessen eine Auswahl vordefinierter Farben, beispielsweise mit <kol-link _href="./select" _label="Select"></kol-link> oder <kol-link _href="./input-radio" _label="InputRadio"></kol-link>. Beschreiben Sie die Farben dabei zusätzlich in Textform (z. B. „Dunkelblau“).
 
 ### Konkrete Designentscheidungen
 
@@ -66,7 +65,7 @@ Einfaches Farbfeld mit Beschriftung und voreingestellter Farbe:
 - Ist kein `_value` gesetzt, wird der Standardwert des Browsers (`#000000`) verwendet.
 - Die Komponente unterstützt weder `_required` noch `_readOnly`. Ob eine Farbauswahl verpflichtend ist, muss durch die Anwendung validiert und über `_msg` kommuniziert werden.
 
-**Hinweis:** `_suggestions` wird in der API zwar aufgeführt, das zugehörige `datalist`-Element wird derzeit jedoch nicht gerendert. Vorschlagswerte stehen daher nicht zur Verfügung.
+**Hinweis:** `_suggestions` wird in der API zwar aufgeführt, das zugehörige `datalist`-Element wird derzeit jedoch nicht gerendert. Vorschlagswerte stehen daher nicht zur Verfügung (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10859" _target="_blank" _label="#10859"></kol-link>).
 
 ### Tastatursteuerung
 
@@ -86,7 +85,7 @@ Die Bedienung innerhalb des geöffneten Farbwählers wird vollständig durch den
 - Verwenden Sie eine aussagekräftige Beschriftung (`_label`), damit Nutzende erkennen, wofür die Farbe verwendet wird (z. B. „Primärfarbe“ oder „Hintergrundfarbe“).
 - Verzichten Sie möglichst auf `_hideLabel`, da einige Screenreader die Beschriftung des nativen Farbfelds nicht zuverlässig ausgeben.
 - Nutzen Sie `_hint`, um ergänzende Hinweise bereitzustellen, beispielsweise zur Verwendung der Farbe oder zu Kontrastanforderungen.
-- Verwenden Sie bei einer festen oder stark eingeschränkten Farbauswahl stattdessen eine Select- oder Radio-Button-Gruppe mit vordefinierten, textlich beschriebenen Farben.
+- Ist nur eine begrenzte Anzahl an Farben zulässig, verwenden Sie stattdessen eine Auswahl vordefinierter Farben, beispielsweise mit <kol-link _href="./select" _label="Select"></kol-link> oder <kol-link _href="./input-radio" _label="InputRadio"></kol-link>. Beschreiben Sie die Farben dabei zusätzlich in Textform (z. B. „Dunkelblau“).
 - Geben Sie Validierungsfehler über `_msg` aus und beschreiben Sie verständlich, wie Nutzende den Fehler beheben können.
 
 ### Anwendungsfälle

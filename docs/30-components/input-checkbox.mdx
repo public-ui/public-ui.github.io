@@ -42,22 +42,14 @@ Standard-Checkbox ohne optional gesetzte Felder:
 
 * <LabelNote />
 * <ErrorMessageNote />
-* In allen Varianten bleibt die native Checkbox das bedienbare Element. In der Variante `button` wird sie visuell versteckt, bleibt aber fokussierbar und wird weiterhin als Checkbox ausgegeben. Eine nachgebildete Rolle wie `role="switch"` wird bewusst nicht gesetzt.
-* Die Zustandssymbole (`_icons`) sind rein dekorativ und vor assistiven Technologien verborgen. Der Zustand wird ausschließlich über die native Checkbox (`checked` bzw. `indeterminate`) vermittelt, sodass keine doppelten Ansagen entstehen.
-* Der Zustand `_indeterminate` wird auf die native Eigenschaft `indeterminate` übertragen, sodass assistive Technologien eine teilweise Auswahl als solche ausgeben.
 * Checkbox, Zustandssymbol und Beschriftung bilden eine gemeinsame Klickfläche, die mindestens der barrierefreien Mindestgröße für Bedienelemente entspricht.
-* Bei `_labelAlign="left"` wird die Beschriftung nicht nur visuell, sondern auch im DOM vor der Checkbox platziert. Lese- und Fokusreihenfolge entsprechen damit der sichtbaren Anordnung.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
-| Native Checkbox-Semantik unabhängig von `_variant` | Alle Varianten verwenden technisch eine native Checkbox. Dadurch bleiben Verhalten, Tastatursteuerung und Unterstützung durch assistive Technologien konsistent. |
-| Bewusster Verzicht auf ARIA-Rollen wie `role="switch"` | Die native Checkbox-Semantik wird von Screenreadern browser- und plattformübergreifend zuverlässiger unterstützt als nachgebildete Widget-Rollen. Zusätzliche ARIA-Rollen würden keinen Mehrwert bieten und könnten zu inkonsistentem Verhalten führen. |
-| Visuell verstecktes Eingabefeld in der Variante `button` | In der Variante `button` bilden Zustandssymbol und Beschriftung die sichtbare Schaltfläche. Die native Checkbox wird nur visuell versteckt, damit Fokus, Tastaturbedienung und Screenreader-Ausgabe erhalten bleiben. Der sichtbare Fokusindikator wird durch das Theme am gesamten Element dargestellt. |
-| Dekorative Zustandssymbole | Die Icons visualisieren den Zustand zusätzlich zur Form der Checkbox. Da der Zustand bereits über die native Checkbox vermittelt wird, sind die Icons mit `aria-hidden` verborgen. |
+| Native Checkbox-Semantik unabhängig von `_variant` | Alle Varianten verwenden technisch eine native Checkbox. Screenreader geben daher in jeder Variante eine Checkbox aus; Verhalten und Tastatursteuerung bleiben identisch. |
 | Indeterminate-Zustand nur programmatisch | Der Zustand `_indeterminate` kann ausschließlich über die API gesetzt werden. Bei einer Interaktion durch Nutzende wird er zurückgesetzt und `_checked` umgeschaltet – entsprechend dem Verhalten nativer Checkboxen. |
-| DOM-Reihenfolge folgt `_labelAlign` | Die Position der Beschriftung wird nicht nur per CSS, sondern über die Reihenfolge im DOM umgesetzt. So stimmen visuelle Reihenfolge und Lesereihenfolge überein. |
 
 ### Links und Referenzen
 
@@ -70,10 +62,7 @@ Standard-Checkbox ohne optional gesetzte Felder:
 - Verwenden Sie Checkboxen, wenn mehrere Optionen unabhängig voneinander ausgewählt werden können.
 - Verwenden Sie keine Checkbox, wenn sich Nutzende für genau eine von mehreren Optionen entscheiden müssen. Nutzen Sie hierfür die Komponente <kol-link _href="../components/input-radio" _label="InputRadio"></kol-link>.
 - Legen Sie mit `_value` fest, welcher Wert im aktivierten Zustand übermittelt wird (Standard: `true`). Ist die Checkbox nicht aktiviert, ist der Wert `null`.
-- Setzen Sie Vorauswahlen (`_checked`) nur, wenn dies fachlich sinnvoll ist.
-- Deaktivieren Sie Checkboxen nur, wenn eine Auswahl tatsächlich nicht möglich ist, und erläutern Sie den Grund möglichst im sichtbaren Kontext.
 - Verwenden Sie den Zustand `_indeterminate`, um eine teilweise Auswahl zu kennzeichnen, beispielsweise wenn bei einer „Alle auswählen“-Funktion nur ein Teil der untergeordneten Optionen ausgewählt ist.
-- Wählen Sie die visuelle Variante ausschließlich nach gestalterischen Anforderungen aus. Das Verhalten der Komponente bleibt in allen Varianten identisch.
 
 ### Tastatursteuerung
 
@@ -93,6 +82,9 @@ Der Auswahlzustand der Checkbox wird dabei nicht verändert.
 ### Best Practices / Empfehlungen
 
 - Formulieren Sie die Beschriftung so, dass der aktivierte Zustand eindeutig verständlich ist, beispielsweise „Newsletter abonnieren“ statt „Newsletter“.
+- Setzen Sie Vorauswahlen (`_checked`) nur, wenn dies fachlich sinnvoll ist.
+- Deaktivieren Sie Checkboxen nur, wenn eine Auswahl tatsächlich nicht möglich ist, und erläutern Sie den Grund möglichst im sichtbaren Kontext.
+- Wählen Sie die visuelle Variante ausschließlich nach gestalterischen Anforderungen aus. Das Verhalten der Komponente bleibt in allen Varianten identisch.
 - Gruppieren Sie zusammengehörige Checkboxen logisch und versehen Sie Gruppen mit einer gemeinsamen Beschriftung, beispielsweise mit einem `fieldset` und einer `legend`.
 - Prüfen Sie bei umfangreichen Auswahllisten, ob eine Mehrfachauswahl über die Komponente <kol-link _href="../components/select" _label="Select"></kol-link> besser geeignet ist.
 - Ergänzen Sie keine zusätzlichen ARIA-Rollen oder ARIA-Attribute, um das Verhalten nativer Checkboxen zu verändern.
@@ -146,6 +138,8 @@ Verfügbare Varianten sind:
 - `switch`: Horizontaler Schalter (rechts = aktiviert, links = deaktiviert)
 - `button`: Schaltflächenartige Darstellung, bei der das Zustandssymbol je nach Zustand wechselt
 
+Auch in den Varianten `switch` und `button` wird die Komponente von Screenreadern als Checkbox ausgegeben, nicht als Schalter oder Button. In der Variante `button` ist die Checkbox selbst nicht sichtbar; die Schaltfläche bleibt per Tastatur fokussierbar und bedienbar.
+
 <InputCheckboxPreview
 	context="feature"
 	visibleProperties={['_variant']}
@@ -160,7 +154,7 @@ Verfügbare Varianten sind:
 Mit `_checked` und `_indeterminate` steuern Sie den Auswahlzustand der Checkbox:
 
 - `_checked`: Aktiviert die Checkbox. Der Wert wird bei einer Interaktion aktualisiert und kann gelesen und geschrieben werden.
-- `_indeterminate`: Kennzeichnet eine teilweise Auswahl, beispielsweise bei einer übergeordneten „Alle auswählen“-Checkbox. Der Wert von `_checked` bleibt dabei unverändert. Bei einer Interaktion durch Nutzende wird `_indeterminate` zurückgesetzt.
+- `_indeterminate`: Kennzeichnet eine teilweise Auswahl, beispielsweise bei einer übergeordneten „Alle auswählen“-Checkbox. Der Wert von `_checked` bleibt dabei unverändert. Assistive Technologien geben den Zustand als teilweise ausgewählt aus. Bei einer Interaktion durch Nutzende wird `_indeterminate` zurückgesetzt.
 
 <InputCheckboxPreview
 	context="feature"
@@ -219,7 +213,7 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `inpu
 
 ### Ausrichtung der Beschriftung
 
-Mit `_labelAlign` legen Sie fest, ob die Beschriftung rechts (`right`, Standard) oder links (`left`) der Checkbox steht. Die Reihenfolge wird auch im DOM umgesetzt, sodass Lesereihenfolge und visuelle Anordnung übereinstimmen.
+Mit `_labelAlign` legen Sie fest, ob die Beschriftung rechts (`right`, Standard) oder links (`left`) der Checkbox steht. Die Lese- und Fokusreihenfolge folgt dabei der sichtbaren Anordnung.
 
 <InputCheckboxPreview
 	context="feature"

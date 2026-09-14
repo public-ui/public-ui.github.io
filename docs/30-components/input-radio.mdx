@@ -44,22 +44,19 @@ Standard-Auswahlgruppe mit drei Optionen ohne optional gesetzte Felder:
 
 ## Barrierefreiheit
 
-* Die Auswahlgruppe muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden. Sie wird als `legend` des `fieldset` ausgegeben, bleibt immer sichtbar und wird von Screenreadern beim Betreten der Gruppe vorgelesen. Auch jede Option benötigt eine eindeutige Beschriftung (`label` in `_options`).
+* Die Auswahlgruppe muss mit einer aussagekräftigen Beschriftung (`_label`) versehen werden. Auch jede Option benötigt eine eindeutige Beschriftung (`label` in `_options`).
 * <ErrorMessageNote />
-* KoliBri fasst die Radio-Buttons in einem nativen `fieldset` mit `legend` zusammen. Die Gruppierung wird damit ohne nachgebildete ARIA-Rollen wie `radiogroup` programmatisch vermittelt.
-* Alle Optionen einer Gruppe erhalten denselben `name` (aus `_name` oder automatisch erzeugt). Dadurch stellt der Browser die native Gruppenbedienung bereit: ein einzelner Tab-Stopp für die Gruppe und die Auswahl mit den Pfeiltasten.
-* Hinweis- und Fehlertexte werden über `aria-describedby` mit der gesamten Gruppe (`fieldset`) verknüpft. Im Fehlerfall wird zusätzlich jeder Radio-Button über `aria-invalid` als ungültig gekennzeichnet.
-* Jede Option ist als natives `label` mit ihrem Radio-Button verknüpft. Radio-Button und Beschriftung bilden eine gemeinsame Klickfläche, die mindestens der barrierefreien Mindestgröße für Bedienelemente entspricht.
+* Radio-Button und Beschriftung einer Option bilden eine gemeinsame Klickfläche, die mindestens der barrierefreien Mindestgröße für Bedienelemente entspricht.
 * Der ausgewählte Zustand bleibt auch im Kontrastmodus des Betriebssystems (Forced Colors) sichtbar.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
-| Gruppierung mit `fieldset` und `legend` | Die Komponente nutzt die nativen HTML-Elemente zur Gruppierung von Formularfeldern. Screenreader geben den Gruppennamen dadurch zuverlässig aus, ohne dass ARIA-Rollen nachgebildet werden müssen. |
-| Native Tastaturbedienung | Da alle Optionen denselben `name` tragen, übernimmt der Browser die Bedienung mit Tab- und Pfeiltasten. KoliBri implementiert keine eigene Tastaturlogik und bleibt damit konsistent zum Verhalten nativer Radio-Buttons. |
-| Gruppenbeschriftung bleibt sichtbar | Die `legend` wird auch bei `_hideLabel` nicht ausgeblendet, da sie den Kontext für alle Optionen liefert. `_hideLabel` wirkt ausschließlich auf die Beschriftungen der einzelnen Optionen. |
-| Hinweis- und Fehlertexte an der Gruppe | Hinweise und Fehlermeldungen beziehen sich auf die Auswahl als Ganzes. Sie werden deshalb mit dem `fieldset` verknüpft; die Kennzeichnung als ungültig (`aria-invalid`) erfolgt an jedem Radio-Button. |
+| Gruppierung mit `fieldset` und `legend` | Die Komponente nutzt die nativen HTML-Elemente zur Gruppierung von Formularfeldern. Screenreader geben den Gruppennamen beim Betreten der Gruppe aus. |
+| Native Tastaturbedienung | Die Bedienung mit Tab- und Pfeiltasten übernimmt der Browser: Die Gruppe bildet einen einzelnen Tab-Stopp, die Pfeiltasten wechseln die Auswahl. KoliBri ergänzt lediglich das Absenden des Formulars per `Enter`. |
+| Gruppenbeschriftung bleibt sichtbar | Die Beschriftung der Gruppe wird auch bei `_hideLabel` nicht ausgeblendet. `_hideLabel` wirkt ausschließlich auf die Beschriftungen der einzelnen Optionen. |
+| Hinweis- und Fehlertexte an der Gruppe | Hinweise und Fehlermeldungen beziehen sich auf die Gruppe als Ganzes und werden beim Betreten der Gruppe ausgegeben. Im Fehlerfall wird jeder Radio-Button als ungültig ausgegeben. |
 | Fokus auf die ausgewählte Option | Die Methode `focus()` setzt den Fokus auf die ausgewählte Option bzw. – falls keine Option ausgewählt ist – auf die erste nicht deaktivierte Option. Das entspricht dem Einstiegspunkt, den auch die Tab-Taste wählt. |
 
 ### Links und Referenzen

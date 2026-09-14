@@ -52,18 +52,14 @@ Standard-Eingabefeld für Texte ohne optional gesetzte Felder:
 * <ErrorMessageNote />
 * <SuggestionsNote />
 * <CharacterCounterNote />
-* Beim Eingabetyp `search` ersetzt KoliBri die browsereigene Löschen-Schaltfläche durch eine eigene Schaltfläche „Suche löschen“. Sie ist als Icon-Button mit übersetztem zugänglichem Namen umgesetzt, per Tastatur erreichbar und nur sichtbar, solange das Feld einen Wert enthält. Nach dem Leeren wird der Fokus zurück in das Eingabefeld gesetzt.
-* Die native Formatprüfung des Browsers (z. B. über `_pattern`, `_required` oder den Eingabetyp `url`) wirkt sich nicht auf die Fehlerdarstellung der Komponente aus. Fehlermeldung und `aria-invalid` werden ausschließlich über `_msg` in Verbindung mit `_touched` gesteuert. Werten Sie die Validierung daher in der Anwendung aus und stellen Sie eine verständliche Fehlermeldung über `_msg` bereit.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
 | Verwendung des nativen HTML5-Elements `input` | Die Komponente nutzt bewusst das native HTML5-Element und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
-| Beschränkung von `_type` auf `text`, `search`, `url` und `tel` | Für E-Mail-Adressen, Passwörter und Zahlen gelten eigene Anforderungen an Verhalten und Barrierefreiheit. Dafür stehen die spezialisierten Komponenten InputEmail, InputPassword und InputNumber bereit. |
-| Eigene Schaltfläche „Suche löschen“ beim Eingabetyp `search` | Die browsereigene Löschen-Schaltfläche ist nicht in allen Browsern vorhanden, nicht per Tastatur erreichbar und nicht einheitlich beschriftet. KoliBri blendet sie daher aus und stellt stattdessen eine eigene, per Tastatur erreichbare Schaltfläche mit zugänglichem Namen bereit. |
-| Keine automatische Übernahme der nativen Formatprüfung | Der Fehlerzustand wird ausschließlich über `_msg` und `_touched` gesteuert. So bestimmt die Anwendung Zeitpunkt und Wortlaut der Fehlermeldung, und Fehler werden in allen Formular-Komponenten einheitlich dargestellt und mit dem Feld verknüpft. |
-| Verzögerte Ansage des Zeichenzählers | Die Live-Region des Zeichenzählers wird erst 1000 ms nach der letzten Eingabe aktualisiert, damit Screenreader die Eingabe nicht durch fortlaufende Ansagen unterbrechen. |
+| Beschränkung von `_type` auf `text`, `search`, `url` und `tel` | Für E-Mail-Adressen, Passwörter und Zahlen stehen die spezialisierten Komponenten InputEmail, InputPassword und InputNumber bereit. |
+| Keine automatische Übernahme der nativen Formatprüfung | Ergebnisse der nativen Formatprüfung (z. B. über `_pattern`, `_required` oder den Eingabetyp `url`) werden nicht als Fehlermeldung am Feld angezeigt. Der Fehlerzustand wird ausschließlich über `_msg` in Verbindung mit `_touched` gesteuert. |
 
 ### Links und Referenzen
 
@@ -104,6 +100,7 @@ Standard-Eingabefeld für Texte ohne optional gesetzte Felder:
 
 ### Best Practices / Empfehlungen
 
+- Verlassen Sie sich nicht auf die native Formatprüfung des Browsers. Werten Sie die Validierung in der Anwendung aus und stellen Sie über `_msg` zusammen mit `_touched` eine verständliche Fehlermeldung bereit.
 - Wählen Sie den Eingabetyp passend zum erwarteten Eingabewert, beispielsweise `url` für Internetadressen oder `tel` für Telefonnummern. Mobile Browser können dadurch eine passende Bildschirmtastatur anbieten.
 - Verwenden Sie für E-Mail-Adressen, Passwörter und Zahlen die spezialisierten Komponenten InputEmail, InputPassword und InputNumber.
 - Begrenzen Sie die Eingabelänge bei Bedarf über `_maxLength` und wählen Sie mit `_maxLengthBehavior` das zum Anwendungsfall passende Verhalten.
@@ -203,7 +200,7 @@ Verfügbare Typen sind:
 - `url`: Eingabe von Internetadressen
 - `tel`: Eingabe von Telefonnummern
 
-Beim Eingabetyp `search` ergänzt KoliBri eine Schaltfläche „Suche löschen“, über die der Wert mit einer einzigen Aktion entfernt wird. Sie wird nur angezeigt, solange das Feld einen Wert enthält, und bei deaktiviertem Feld (`_disabled`) ausgeblendet. Die browsereigene Löschen-Schaltfläche wird dafür ausgeblendet.
+Beim Eingabetyp `search` ergänzt KoliBri eine Schaltfläche „Suche löschen“, über die der Wert mit einer einzigen Aktion entfernt wird. Die browsereigene Löschen-Schaltfläche wird dafür ausgeblendet. Die Schaltfläche wird als Icon-Button ohne sichtbare Beschriftung dargestellt; ihr zugänglicher Name wird von KoliBri übersetzt bereitgestellt (deutsch: „Suche löschen“). Sie ist per Tastatur erreichbar, wird nur angezeigt, solange das Feld einen Wert enthält, und bei deaktiviertem Feld (`_disabled`) ausgeblendet. Nach dem Leeren liegt der Fokus wieder im Eingabefeld.
 
 <InputTextPreview
 	context="feature"

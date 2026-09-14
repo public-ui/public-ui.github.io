@@ -1,8 +1,8 @@
-**Hinweis:** `Pos1` und `Ende` werden von der Komponente abgefangen und bewegen daher auch im Eingabefeld nicht den Textcursor.
+**Hinweis:** `Pos1` und `Ende` bewegen auch im Eingabefeld nicht den Textcursor.
 
 **Fokusmodell**
 
-Die Komponente orientiert sich am WAI-ARIA Authoring Practices Pattern **„Editable Combobox with List Autocomplete“**, verwendet jedoch ein bewusst abweichendes Fokusmodell: Während der Navigation innerhalb der Liste (Pfeiltasten, Pos1/Ende, Bild-Tasten) wird der Tastaturfokus auf den jeweils aktiven Eintrag verschoben. Im WAI-ARIA APG Pattern verbleibt der Fokus dagegen während der gesamten Interaktion im Eingabefeld.
+Die Komponente orientiert sich am WAI-ARIA Authoring Practices Pattern **„Editable Combobox with List Autocomplete“**, weicht jedoch beim Fokusmodell davon ab: Während der Navigation innerhalb der Liste (Pfeiltasten, Pos1/Ende, Bild-Tasten) wird der Tastaturfokus auf den jeweils aktiven Eintrag verschoben. Im WAI-ARIA APG Pattern verbleibt der Fokus dagegen während der gesamten Interaktion im Eingabefeld.
 
 Dieses Fokusmodell hat folgende Auswirkungen:
 
