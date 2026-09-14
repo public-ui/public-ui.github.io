@@ -35,6 +35,7 @@ const InputCheckboxPreview = (props: PreviewDefaults<JSX.KolInputCheckbox>) => {
 				_indeterminate: <BooleanProperty label="Indeterminate" />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_required: <BooleanProperty label="Required" />,
+				_touched: <BooleanProperty label="Touched" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 				_hint: <KolInputText _label="Hint" />,
 				_accessKey: <KolInputText _label="Access Key" />,

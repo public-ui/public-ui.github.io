@@ -126,7 +126,7 @@ for (const { dir, strict } of SOURCES) {
 			if (expected === null) {
 				errors.push(
 					`${location}: <${match[1]}> steht in keinem bekannten Abschnitt. Erwartet wird "## Beispiel", ` +
-						`"### Playground" oder "### Funktionalitäten (mit Code)".`
+						`"## Playground" oder "## Funktionalitäten".`
 				);
 				continue;
 			}

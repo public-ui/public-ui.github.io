@@ -16,7 +16,7 @@ const ComboboxPreview = (props: PreviewDefaults<JSX.KolCombobox>) => {
 		[]
 	);
 
-	const [value, setValue] = React.useState<string>('');
+	const [value, setValue] = React.useState<string>(props.initialProps?._value ?? '');
 
 	return (
 		<Preview<JSX.KolCombobox>

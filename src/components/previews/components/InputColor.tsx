@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty, SuggestionsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputColor, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -21,11 +21,14 @@ const InputColorPreview = (props: PreviewDefaults<JSX.KolInputColor>) => {
 			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
+				_value: <KolInputText _label="Value" />,
 				_hint: <KolInputText _label="Hint" />,
 				_icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
 				_accessKey: <KolInputText _label="Access Key" />,
 				_name: <KolInputText _label="Name" />,
 				_msg: <MsgProperty label="Message" />,
+				_hideMsg: <BooleanProperty label="Hide Message" />,
+				_suggestions: <SuggestionsProperty label="Suggestions" />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 				_touched: <BooleanProperty label="Touched" />,

@@ -1,0 +1,1 @@
+Im Fehlerfall wird die Fehlermeldung direkt an der Komponente dargestellt und automatisch mit ihr verknüpft, sodass sie auch assistiven Technologien zur Verfügung steht.

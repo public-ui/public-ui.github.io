@@ -33,6 +33,7 @@ const InputRadioPreview = (props: PreviewDefaults<JSX.KolInputRadio>) => {
 				_hideMsg: <BooleanProperty label="Hide Message" />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_required: <BooleanProperty label="Required" />,
+				_touched: <BooleanProperty label="Touched" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 			}}
 			componentName="KolInputRadio"

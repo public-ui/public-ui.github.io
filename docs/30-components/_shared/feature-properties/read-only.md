@@ -1,0 +1,1 @@
+`_readOnly`: Verhindert die Bearbeitung des Feldes. Das Feld bleibt fokussierbar und lesbar. Hinter der Beschriftung erscheint zusätzlich der Hinweis „(schreibgeschützt)“; er ist vor assistiven Technologien verborgen, da der Zustand bereits über das native `readonly`-Attribut vermittelt wird.

@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview from '../Preview';
-import { BooleanProperty, MsgProperty, ResizeProperty } from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty, ResizeProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolInputNumber, KolTextarea, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -16,7 +16,7 @@ const TextAreaPreview = (props: PreviewDefaults<JSX.KolTextarea>) => {
 		[]
 	);
 
-	const [value, setValue] = React.useState<string>(defaultProps._value || '');
+	const [value, setValue] = React.useState<string>(props.initialProps?._value ?? defaultProps._value ?? '');
 
 	return (
 		<Preview<JSX.KolTextarea>
@@ -25,7 +25,10 @@ const TextAreaPreview = (props: PreviewDefaults<JSX.KolTextarea>) => {
 				_label: <KolInputText _label="Label" />,
 				_placeholder: <KolInputText _label="Placeholder" />,
 				_hint: <KolInputText _label="Hint" />,
+				_icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
 				_msg: <MsgProperty label="Message" />,
+				_hideMsg: <BooleanProperty label="Hide Message" />,
+				_touched: <BooleanProperty label="Touched" />,
 				_rows: <KolInputNumber _label="Rows" _min={1} _max={20} />,
 				_maxLength: <KolInputNumber _label="Max Length" _min={1} _max={1000} />,
 				_maxLengthBehavior: (

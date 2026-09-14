@@ -1,0 +1,1 @@
+Mit `_hideLabel` blenden Sie das Label visuell aus, um das Feld kompakter zu gestalten. Für assistive Technologien bleibt die Beschriftung als zugänglicher Name (`aria-label`) weiterhin verfügbar; sehende Nutzende erhalten sie bei Maus-Hover und Tastaturfokus als Tooltip.

@@ -39,9 +39,11 @@ const InputFilePreview = (props: PreviewDefaults<JSX.KolInputFile>) => {
 				_name: <KolInputText _label="Name" />,
 				_hint: <KolInputText _label="Hint" />,
 				_msg: <MsgProperty label="Message" />,
+				_hideMsg: <BooleanProperty label="Hide Message" />,
 				_multiple: <BooleanProperty label="Multiple" />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_required: <BooleanProperty label="Required" />,
+				_touched: <BooleanProperty label="Touched" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 				_smartButton: (
 					<SmartButtonProperty label="Smart Button" buttonLabel="Smart button label" buttonIcon="kolicon-kolibri" />

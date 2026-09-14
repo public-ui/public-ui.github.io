@@ -1,0 +1,1 @@
+**Hinweis:** Das Absenden per `Enter` wird von KoliBri ergänzt, da das native Element im Shadow DOM der Komponente liegt: Befindet sich die Komponente innerhalb eines `form`- bzw. `kol-form`-Elements, sucht sie dieses – auch über Shadow-DOM-Grenzen hinweg – und löst dort das Absenden aus.

@@ -1,0 +1,1 @@
+Vorschlagswerte (`_suggestions`) werden über die native Vorschlagsliste des Browsers bereitgestellt. Deren Unterstützung durch Browser und assistive Technologien ist uneinheitlich. Verlassen Sie sich bei unverzichtbaren Eingabehilfen daher nicht ausschließlich auf diese native Autovervollständigung.

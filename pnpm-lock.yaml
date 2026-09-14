@@ -39,14 +39,14 @@ importers:
         specifier: 4.7.0
         version: 4.7.0(monaco-editor@0.52.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@public-ui/components':
-        specifier: 4.3.0
-        version: 4.3.0(adopted-style-sheets@1.1.9-rc.25)
+        specifier: 4.4.0
+        version: 4.4.0(adopted-style-sheets@1.1.9-rc.25)
       '@public-ui/react-v19':
-        specifier: 4.3.0
-        version: 4.3.0(@public-ui/components@4.3.0(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: 4.4.0
+        version: 4.4.0(@public-ui/components@4.4.0(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@public-ui/theme-default':
-        specifier: 4.3.0
-        version: 4.3.0(@public-ui/components@4.3.0(adopted-style-sheets@1.1.9-rc.25))
+        specifier: 4.4.0
+        version: 4.4.0(@public-ui/components@4.4.0(adopted-style-sheets@1.1.9-rc.25))
       classnames:
         specifier: 2.5.1
         version: 2.5.1
@@ -1787,23 +1787,23 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
-  '@public-ui/components@4.3.0':
-    resolution: {integrity: sha512-I/wI1aC/aVlP2pJ/ifX/yeKKcQS4cuul53ISiKZpI0Op56kjjpCfkGU+wLYYohWzfqSmY+DacMrtw72lq9hPqw==}
+  '@public-ui/components@4.4.0':
+    resolution: {integrity: sha512-fYMb9Dz+5ItHjoHAQ+JJAaHoEGa6+qLF1Z4GbjXt/meRsnxVaH7FgffSxieo84PAlSp6JBIldMgN2LfZBbD2lA==}
     hasBin: true
     peerDependencies:
       adopted-style-sheets: 1.1.9-rc.25
 
-  '@public-ui/react-v19@4.3.0':
-    resolution: {integrity: sha512-8xuQJ14XETSF9bge/dwrJZWDYBUEsdy3uh8QvqoUP960zwuI0LVibVPqsROmCPDjbPkcZjUDTSEIAp7uwkEubw==}
+  '@public-ui/react-v19@4.4.0':
+    resolution: {integrity: sha512-xcJHtHv83J7kgPfNZ3HhE0xwaio4QQyNyon5vGTunvICPcGclokZKlYttQ69V44Lyny8zkSCow+C05KZPBBCjQ==}
     peerDependencies:
-      '@public-ui/components': 4.3.0
+      '@public-ui/components': 4.4.0
       react: 19.x
       react-dom: 19.x
 
-  '@public-ui/theme-default@4.3.0':
-    resolution: {integrity: sha512-S+1DDTIZ73ydJc9tyAIRQe6USCH/AGo1N2ijRY6eVlIEk9Q+cDGYIPUWjQlOBcmDRsybpq2LDrqAMECuLHtjug==}
+  '@public-ui/theme-default@4.4.0':
+    resolution: {integrity: sha512-Y/EnhiIrErTob6+QCIQtlOFkID6OCoJ/i3ByJ7bofbE/Y2uF+bFbIhWNr6Us64jrH8/J4+cUoOxNjvucAZ6jRw==}
     peerDependencies:
-      '@public-ui/components': 4.3.0
+      '@public-ui/components': 4.4.0
 
   '@rollup/plugin-babel@5.3.1':
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
@@ -9966,7 +9966,7 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@public-ui/components@4.3.0(adopted-style-sheets@1.1.9-rc.25)':
+  '@public-ui/components@4.4.0(adopted-style-sheets@1.1.9-rc.25)':
     dependencies:
       '@floating-ui/dom': 1.8.0
       adopted-style-sheets: 1.1.9-rc.25
@@ -9978,15 +9978,15 @@ snapshots:
       typed-bem: 1.0.2
       wcag-contrast: 3.0.0
 
-  '@public-ui/react-v19@4.3.0(@public-ui/components@4.3.0(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
+  '@public-ui/react-v19@4.4.0(@public-ui/components@4.4.0(adopted-style-sheets@1.1.9-rc.25))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@public-ui/components': 4.3.0(adopted-style-sheets@1.1.9-rc.25)
+      '@public-ui/components': 4.4.0(adopted-style-sheets@1.1.9-rc.25)
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
 
-  '@public-ui/theme-default@4.3.0(@public-ui/components@4.3.0(adopted-style-sheets@1.1.9-rc.25))':
+  '@public-ui/theme-default@4.4.0(@public-ui/components@4.4.0(adopted-style-sheets@1.1.9-rc.25))':
     dependencies:
-      '@public-ui/components': 4.3.0(adopted-style-sheets@1.1.9-rc.25)
+      '@public-ui/components': 4.4.0(adopted-style-sheets@1.1.9-rc.25)
 
   '@rollup/plugin-babel@5.3.1(@babel/core@7.26.0)(rollup@2.79.2)':
     dependencies:

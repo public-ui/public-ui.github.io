@@ -16,7 +16,7 @@ const SingleSelectPreview = (props: PreviewDefaults<JSX.KolSingleSelect>) => {
 		[]
 	);
 
-	const [value, setValue] = React.useState<string | undefined>(undefined);
+	const [value, setValue] = React.useState<string | undefined>(props.initialProps?._value as string | undefined);
 
 	return (
 		<Preview<JSX.KolSingleSelect>

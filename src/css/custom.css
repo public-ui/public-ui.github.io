@@ -155,6 +155,16 @@ kol-link-button {
 	width: 15rem;
 }
 
+/*
+ * Importierte MDX-Snippets (z.B. geteilte Barrierefreiheits-Hinweise) werden von Docusaurus
+ * in ein <p> gewrappt. Steht ein solches Snippet als einziges Kind in einem <li>, entsteht durch
+ * die Absatz-Margin ungewollter Abstand zwischen den Listenpunkten. Diese Regel entfernt die
+ * Margin nur in diesem Fall, ohne echte mehrabsätzige Listenpunkte zu beeinflussen.
+ */
+.markdown li > p:only-child {
+	margin: 0;
+}
+
 /* Highlighting for the diff code blocks */
 .token.inserted-sign {
 	color: #00cc00;

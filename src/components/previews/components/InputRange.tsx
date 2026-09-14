@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty } from '../properties';
+import { BooleanProperty, IconsProperty, MsgProperty, SuggestionsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputRange, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -33,7 +33,10 @@ const InputRangePreview = (props: PreviewDefaults<JSX.KolInputRange>) => {
 				_accessKey: <KolInputText _label="Access Key" />,
 				_name: <KolInputText _label="Name" />,
 				_msg: <MsgProperty label="Message" />,
+				_hideMsg: <BooleanProperty label="Hide Message" />,
+				_suggestions: <SuggestionsProperty label="Suggestions" />,
 				_disabled: <BooleanProperty label="Disabled" />,
+				_touched: <BooleanProperty label="Touched" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 			}}
 			componentName="KolInputRange"
