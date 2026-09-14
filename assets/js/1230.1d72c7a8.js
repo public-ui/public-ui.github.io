@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[1230],{51230:(e,_,l)=>{l.r(_),l.d(_,{default:()=>a});l(71763);var u=l(81498),s=l(91987);const a=()=>(0,s.jsx)(u.x,{_required:!0,_value:"test@mail.com",_hideLabel:!0,_label:"Email"})}}]);
