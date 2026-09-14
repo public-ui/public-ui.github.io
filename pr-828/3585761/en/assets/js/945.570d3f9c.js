@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[945],{20945:(s,_,c)=>{c.r(_),c.d(_,{default:()=>l});c(71763);var e=c(81498),u=c(91987);const l=()=>(0,u.jsx)(e.I0,{_src:"/assets/samples/tooltip.png",_alt:"",_sizes:"20vw"})}}]);
