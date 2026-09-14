@@ -45,6 +45,7 @@ Standard-SingleSelect mit Optionsliste:
 
 * <LabelNote />
 * <ErrorMessageNote />
+* Der gewählte Zustand wird korrekt an assistive Technologien kommuniziert.
 
 ### Konkrete Designentscheidungen
 
@@ -106,15 +107,18 @@ Standard-SingleSelect mit Optionsliste:
 
 - Verwenden Sie klare, verständliche Beschriftungen (`_label`), die den Zweck der Auswahl deutlich machen.
 - Formulieren Sie die Beschriftungen der Optionen eindeutig und gut unterscheidbar – sie werden sowohl für die Filterung als auch für die Zeichensuche verwendet.
+- Gestalten Sie die Optionsliste nicht zu lang; verwenden Sie bei Bedarf Gruppierung oder Pagination.
 - Nutzen Sie den Placeholder (`_placeholder`) nur als ergänzende Hilfe, nicht als Ersatz für Beschriftung oder Hinweis.
 - Überlegen Sie, ob ein sinnvoller Standardwert gesetzt werden sollte, um Fehlbedienungen zu minimieren.
 - Geben Sie aussagekräftige Validierungsfehlermeldungen über `_msg` vor.
 - Setzen Sie deaktivierte Optionen nur sparsam ein und erläutern Sie – falls für das Verständnis nötig – über `_hint`, warum eine Option nicht verfügbar ist.
+- Bei vielen Optionen (mehr als 15) erwägen Sie eine andere Komponente wie eine Tabelle oder [Combobox](../components/combobox).
+- Setzen Sie bei Bedarf einen expliziten Senden-/Absenden-Button, um Nutzenden Sicherheit zu geben.
 - Bei nur wenigen Optionen können Radio-Buttons ([InputRadio](../components/input-radio)) übersichtlicher sein, da alle Optionen ohne Öffnen einer Liste sichtbar sind.
 
 ### Anwendungsfälle
 
-- Auswahl von Titel oder Anrede in Formularen
+- Auswahl von Titel, Anrede oder Geschlecht in Formularen
 - Wahl eines Landes, Bundeslandes oder einer Region
 - Auswahl einer Kategorie oder eines Status
 - Filterung nach einem einzigen Kriterium

@@ -30,6 +30,8 @@ Die Komponente basiert auf einem nativen Texteingabefeld (`input type="text"`), 
 
 Während der Eingabe werden die Vorschläge gefiltert. Die Filterung erfolgt über eine Substring-Suche, sodass der Suchbegriff an beliebiger Stelle eines Vorschlags vorkommen kann.
 
+Die Komponente eignet sich insbesondere für umfangreiche Auswahllisten oder Situationen, in denen Nutzende den gesuchten Eintrag nicht vollständig kennen.
+
 ## Beispiel
 
 Standard-Combobox mit Vorschlagsliste:
@@ -45,6 +47,8 @@ Standard-Combobox mit Vorschlagsliste:
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
+| Die Combobox orientiert sich am WAI-ARIA APG Pattern **„Editable Combobox with List Autocomplete“**, weicht jedoch beim Fokusmodell bewusst davon ab. | Die Implementierung folgt den grundlegenden Interaktions- und ARIA-Konzepten des Patterns, verwendet jedoch ein angepasstes Fokusverhalten, um die Navigation innerhalb der Vorschlagsliste zu vereinfachen. |
+| Beim Navigieren innerhalb der Vorschlagsliste wird der Tastaturfokus auf den jeweiligen Vorschlag verschoben. | Anders als im WAI-ARIA APG Pattern verbleibt der Fokus während der Listennavigation nicht im Eingabefeld. Stattdessen wechselt er auf den jeweils aktiven Vorschlag. Während der Navigation kann daher kein weiterer Suchtext eingegeben werden. Dieses Verhalten ist eine bewusste Designentscheidung der KoliBri-Combobox. |
 | Die Vorschlagsliste wird als eigene Liste und nicht als natives `datalist` umgesetzt. | Native `datalist`-Elemente unterscheiden sich je nach Browser hinsichtlich Darstellung, Tastaturbedienung und Unterstützung durch assistive Technologien. Die eigene Umsetzung ermöglicht ein konsistentes Verhalten und Styling über alle unterstützten Plattformen hinweg. |
 | Der Öffnen-/Schließen-Pfeil ist nicht Teil der Tab-Reihenfolge. | Er dient ausschließlich als zusätzliche Unterstützung für Maus- und Touch-Nutzende. Die gleiche Funktion steht über die Pfeiltasten im Eingabefeld zur Verfügung, sodass unnötige Tabstopps vermieden werden. |
 | Der Suchbegriff wird in den Vorschlägen hervorgehoben (`mark`). | Sehende Nutzende erkennen auf einen Blick, warum ein Vorschlag zur Eingabe passt – auch wenn der Suchbegriff mitten im Vorschlag steht. |
@@ -97,6 +101,7 @@ Standard-Combobox mit Vorschlagsliste:
 - Verwenden Sie die Combobox bei umfangreichen Vorschlagslisten, in denen Nutzende gezielt nach einem Eintrag suchen, aber auch eigene Werte eingeben dürfen.
 - Stellen Sie nur relevante, eindeutig bezeichnete und unterscheidbare Vorschläge bereit.
 - Führen Sie häufig verwendete Vorschläge möglichst am Anfang der Vorschlagsliste auf.
+- Die Combobox eignet sich bei vielen thematisch ähnlichen Einträgen.
 - Nutzen Sie `_hint`, um Formatvorgaben oder Besonderheiten der Eingabe zu erläutern.
 - Da die Combobox freie Eingaben zulässt, prüfen Sie den Wert auf Anwendungsebene und melden Sie ungültige Eingaben über `_msg` mit einer verständlichen und konkreten Fehlermeldung zurück.
 - Verwenden Sie [SingleSelect](../components/single-select) oder [Select](../components/select), wenn ausschließlich vordefinierte Werte zulässig sind.
@@ -108,6 +113,7 @@ Standard-Combobox mit Vorschlagsliste:
 - Produktauswahl in umfangreichen Sortimenten
 - Orts- oder Postleitzahlensuche
 - Organisations- oder Behördenauswahl
+- Auswahl aus umfangreichen Datensätzen
 - Eingaben, bei denen neben bekannten Werten auch eigene Werte zulässig sind (z. B. Berufs- oder Funktionsbezeichnungen)
 
 ### FAQ
