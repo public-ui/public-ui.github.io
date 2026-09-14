@@ -16,6 +16,7 @@ import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
 import HideLabelFeature from './_shared/features/hide-label.md';
 import IconsFeature from './_shared/features/icons.md';
 import SmartButtonFeature from './_shared/features/smart-button.md';
+import SuggestionsFeature from './_shared/features/suggestions.md';
 import EventsIntro from './_shared/api/events-intro.md';
 
 
@@ -64,8 +65,6 @@ Einfaches Farbfeld mit Beschriftung und voreingestellter Farbe:
 - KoliBri übergibt `_value` unverändert an das native Farbfeld. Andere Schreibweisen wie `#fff` oder Farbnamen werden vom Browser in der Regel nicht übernommen und durch `#000000` ersetzt.
 - Ist kein `_value` gesetzt, wird der Standardwert des Browsers (`#000000`) verwendet.
 - Die Komponente unterstützt weder `_required` noch `_readOnly`. Ob eine Farbauswahl verpflichtend ist, muss durch die Anwendung validiert und über `_msg` kommuniziert werden.
-
-**Hinweis:** `_suggestions` wird in der API zwar aufgeführt, das zugehörige `datalist`-Element wird derzeit jedoch nicht gerendert. Vorschlagswerte stehen daher nicht zur Verfügung (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10859" _target="_blank" _label="#10859"></kol-link>).
 
 ### Tastatursteuerung
 
@@ -223,6 +222,21 @@ Mit `_value` legen Sie die vorausgewählte Farbe im Format `#rrggbb` fest.
 	initialProps={{
 		_label: 'Mit SmartButton',
 		_smartButton: { _label: 'Action' },
+	}}
+/>
+
+### Vorschlagswerte (Suggestions)
+
+<SuggestionsFeature />
+
+**Hinweis:** In der aktuellen Version werden die Vorschlagswerte bei InputColor nicht angezeigt, da die zugehörige Vorschlagsliste nicht erzeugt wird (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10859" _target="_blank" _label="#10859"></kol-link>). Das Beispiel zeigt die Konfiguration; die Vorschläge erscheinen erst nach Behebung des Fehlers.
+
+<InputColorPreview
+	context="feature"
+	visibleProperties={['_suggestions']}
+	initialProps={{
+		_label: 'Markenfarbe',
+		_suggestions: ['#005ea8', '#e30613', '#ffcc00'],
 	}}
 />
 
