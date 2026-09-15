@@ -26,7 +26,7 @@ const AccordionPreview = (props: PreviewDefaults<AccordionPreviewProps>) => {
 			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
 				_label: <KolInputText _label="Label" />,
-				_level: <LevelProperty label="Heading Level" defaultValue={1} />,
+				_level: <LevelProperty label="Heading Level" defaultValue={0} />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_open: <BooleanProperty label="Open" />,
 				_slot: <MultiLineTextProperty label="Content" />,

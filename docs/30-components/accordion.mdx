@@ -6,7 +6,8 @@ description: Beschreibung, Spezifikation und Beispiele für die Accordion-Kompon
 import Readme from '@site/readmes/accordion/readme.md';
 import AccordionPreview from '@site/src/components/previews/components/Accordion';
 import AccordionMultiplePreview from '@site/src/components/previews/components/AccordionMultiple';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import EventsIntro from './_shared/api/events-intro.md';
 
 # Accordion
 
@@ -14,18 +15,20 @@ import { ExampleLink } from '@site/src/components/ExampleLink';
 
 **Beschreibung:** Die **Accordion**-Komponente gliedert Inhalte in einzelne Abschnitte, deren Detailinformationen ein- oder ausgeblendet werden können. Sie unterstützt eine kompakte und strukturierte Darstellung größerer Informationsmengen auf begrenztem Raum. Die Nutzenden entscheiden selbst, welche Abschnitte geöffnet werden. Dadurch wird die kognitive Belastung reduziert und die Seite bleibt übersichtlich.
 
+Die Komponente orientiert sich am **WAI-ARIA Accordion Pattern**: Der Kopfbereich ist ein natives `button`-Element – bei gesetztem `_level` innerhalb einer Überschrift –, der Inhaltsbereich nimmt beliebiges HTML über den Slot auf. Jede `KolAccordion` steuert genau einen Abschnitt; mehrere Abschnitte entstehen durch mehrere Accordions untereinander.
+
 ## Beispiel
 
-Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet werden.
+Darstellung mehrerer Accordions ohne optional gesetzte Felder. Code kann eingeblendet werden.
 
 <AccordionMultiplePreview context="example" />
 
 ## Barrierefreiheit
 
-- Die Accordion-Header sind als interaktive Elemente umgesetzt, was die Tastatursteuerung ermöglicht, die Fokussierbarkeit gewährleistet und Screenreadern die Interaktion korrekt ankündigt.
-- Die Öffnen-/Schließen-Icons können frei positioniert werden, allerdings wird empfohlen diese links auszurichten, um die Bedienbarkeit für Nutzende mit eingeschränktem Sichtfeld zu unterstützen.
-- Der Zustand eines Accordions (offen/geschlossen) wird programmatisch vermittelt und ist somit auch für assistive Technologien erreichbar. Zustandsänderungen werden nicht ausschließlich über Icons oder Farben vermittelt.
-- Der Fokus bleibt beim Öffnen eines Accordions im Kontext des Bedienelements.
+- Der Kopfbereich ist per Tastatur erreichbar und wird von Screenreadern als Schaltfläche mit ihrem aktuellen Zustand (erweitert/reduziert) angekündigt. Zustandsänderungen werden damit nicht ausschließlich über Icons oder Farben vermittelt.
+- Der geöffnete Inhaltsbereich ist für Screenreader als eigener Bereich navigierbar, der nach der Beschriftung des Kopfbereichs benannt ist.
+- Im geschlossenen Zustand ist der Inhalt weder für Screenreader noch per `Tab` erreichbar.
+- Der Fokus bleibt beim Öffnen und Schließen auf dem Kopfbereich.
 
 ### Konkrete Designentscheidungen
 
@@ -38,15 +41,6 @@ Darstellung der Komponente ohne optional gesetzte Felder. Code kann eingeblendet
 | Klare visuelle Fokusmarkierung                 | Tastaturnutzer benötigen Orientierung                    |
 | Optional Mehrfachöffnung                       | Abhängig vom Anwendungsfall                              |
 | Keine automatische Öffnung bei Fokus           | Verhindert unerwartete Kontextwechsel                    |
-
-#### ARIA-Struktur
-
-Die Komponente implementiert das **WAI-ARIA Accordion Pattern**:
-
-- Der Toggle-Button trägt `aria-expanded` mit dem aktuellen Öffnungszustand (`true` / `false`).
-- `aria-controls` auf dem Button verweist auf die ID des Content-Bereichs.
-- Der Content-Bereich hat `role="region"` und ist über `aria-labelledby` mit der Überschrift verknüpft – Screenreader-Nutzer:innen können ihn als Landmark navigieren.
-- Im geschlossenen Zustand wird `aria-hidden="true"` auf den Content-Bereich gesetzt. Der Inhalt ist damit für Screenreader vollständig nicht erreichbar.
 
 ### Links und Referenzen
 
@@ -62,16 +56,13 @@ Accordions werden eingesetzt, um:
 
 Typischerweise besteht ein Accordion aus:
 
-- einem Titel (Header)
-- einem zugehörigen Inhaltsbereich (Panel)
-- einem Zustand (geöffnet/geschlossen)
+- einem Titel (Header, `_label`)
+- einem zugehörigen Inhaltsbereich (Panel, Slot)
+- einem Zustand (geöffnet/geschlossen, `_open`)
 
-Je nach Konfiguration kann:
+Mehrere untereinander angeordnete Accordions öffnen und schließen sich unabhängig voneinander, es können also mehrere Einträge parallel geöffnet sein. Soll immer nur ein Eintrag gleichzeitig geöffnet sein, muss die einbindende Anwendung die übrigen Accordions beim `toggle`-Event über `_open` schließen – KoliBri bietet dafür keine eigene Gruppierung.
 
-- nur ein Eintrag gleichzeitig geöffnet sein oder
-- mehrere Einträge parallel geöffnet sein
-
-Accordion ist **nicht geeignet**,:
+Accordion ist **nicht geeignet**:
 
 - wenn Inhalte zwingend gleichzeitig sichtbar sein müssen
 - wenn Inhalte miteinander verglichen werden müssen
@@ -80,20 +71,26 @@ Accordion ist **nicht geeignet**,:
 
 ### Tastatursteuerung
 
-| Taste           | Funktion                                             |
-| --------------- | ---------------------------------------------------- |
-| `Tab`           | Springt zum nächsten Accordion.                      |
-| `Shift+Tab`     | Springt zum vorherigen Accordion.                    |
-| `Enter`/`Space` | Öffnet bzw. schließt den fokussierten Accordion-Tab. |
+<NativeKeyboardIntro />
+
+| Taste           | Funktion                                                                                                       |
+| --------------- | -------------------------------------------------------------------------------------------------------------- |
+| `Tab`           | Springt zum nächsten fokussierbaren Element – dem nächsten Kopfbereich oder einem Element im geöffneten Inhalt. |
+| `Shift+Tab`     | Springt zum vorherigen fokussierbaren Element.                                                                 |
+| `Enter`/`Space` | Öffnet bzw. schließt das fokussierte Accordion.                                                                |
+
+Die im WAI-ARIA Accordion Pattern optional vorgesehenen Tasten zum Wechsel zwischen den Kopfbereichen (`Pfeil-Tasten (oben/unten)`, `Pos1`, `Ende`) werden nicht unterstützt.
 
 ### Best Practices / Empfehlungen
 
 - Nutzen Sie ein Accordion für ergänzende oder sekundäre Informationen, die nicht dauerhaft sichtbar sein müssen. Für wichtige primäre Inhalte (z. B. zentrale Handlungsaufforderungen oder rechtlich relevante Hinweise) sind Accordions weniger geeignet.
 - Strukturieren Sie längere Inhalte in klar benannte Abschnitte und verwenden Sie prägnante Überschriften über `_label`.
+- Wählen Sie über `_level` eine Überschriftenebene, die zur Überschriftenstruktur der Seite passt.
 - Verwenden Sie ein Accordion nicht als primäres Auswahl- oder Filterelement.
 - Verwenden Sie mehrere Accordions mit wenig Inhalt anstatt ein einzelnes inhaltlich zu überladen.
 - Verzichten Sie auf eine tiefe Verschachtelung mehrerer Accordions.
 - Wählen Sie den initialen Zustand bewusst (offen/geschlossen).
+- Die Öffnen-/Schließen-Icons können im Theme frei positioniert werden, allerdings wird empfohlen, diese links auszurichten, um die Bedienbarkeit für Nutzende mit eingeschränktem Sichtfeld zu unterstützen.
 
 ### Anwendungsfälle
 
@@ -106,10 +103,10 @@ Accordion ist **nicht geeignet**,:
 ### FAQ
 
 **Welche Überschriftenebenen sind möglich?**  
-Über `_level` sind die Ebenen `1` bis `6` verfügbar. Mit `0` wird die Überschriftenebene deaktiviert und als `strong` dargestellt. Dies ist beim `KolAccordion` standardmäßig voreingestellt.
+Siehe [Überschriftenstruktur](#überschriftenstruktur).
 
-**Darf ein Accordion verschachtelt werden?**
-Verschachtelungen sind möglich sollten allerdings aus Gründen der Barrierefreiheit mit Bedacht vorgenommen werden.
+**Darf ein Accordion verschachtelt werden?**  
+Verschachtelungen sind möglich, sollten allerdings aus Gründen der Barrierefreiheit mit Bedacht vorgenommen werden.
 
 **Wann sollte ein Accordion standardmäßig geöffnet sein?**  
 Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvoll ist.
@@ -130,7 +127,7 @@ Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvol
 
 ### Basisinhalt und Beschriftung
 
-Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird über den Slot befüllt.
+Die sichtbare Überschrift wird über `_label` gesetzt (Pflichtfeld). Der Inhaltsbereich wird über den Slot mit beliebigem HTML befüllt.
 
 <AccordionPreview
 	context="feature"
@@ -145,7 +142,7 @@ Die sichtbare Überschrift wird über `_label` gesetzt. Der Inhaltsbereich wird 
 
 ### Überschriftenstruktur
 
-Die Überschriftenebene wird über `_level` gesteuert.
+Die Überschriftenebene des Kopfbereichs wird über `_level` gesteuert. Mit den Werten `1` bis `6` wird der Kopfbereich als Überschrift der entsprechenden Ebene ausgegeben und erscheint damit in der Überschriftennavigation von Screenreadern. Mit `0` (Standardwert) wird keine Überschrift ausgegeben, sondern fett dargestellter Text.
 
 <AccordionPreview
 	context="feature"
@@ -160,7 +157,7 @@ Die Überschriftenebene wird über `_level` gesteuert.
 
 ### Zustandssteuerung
 
-Das initiale Öffnen erfolgt über `_open`. Für den nicht interaktiven Zustand steht `_disabled` zur Verfügung.
+Das initiale Öffnen erfolgt über `_open`; beim Bedienen des Kopfbereichs wird `_open` von der Komponente aktualisiert. Mit `_disabled` wird der Kopfbereich deaktiviert: Er ist dann nicht fokussierbar und das Accordion lässt sich nicht mehr öffnen oder schließen.
 
 <AccordionPreview
 	context="feature"
@@ -173,16 +170,15 @@ Das initiale Öffnen erfolgt über `_open`. Für den nicht interaktiven Zustand 
 	}}
 />
 
+## API
+
 ### Events
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+<EventsIntro />
 
-Beispiel für das Click-Event laut Dokumentation:
-
-| Event   | Auslöser                | Value |
-| ------- | ----------------------- | ----- |
-| `click` | Element wird angeklickt | -     |
-
-## API
+| Event    | Auslöser                                  | Value                                                  |
+| -------- | ----------------------------------------- | ------------------------------------------------------ |
+| `click`  | Kopfbereich wird angeklickt bzw. bedient  | Neuer Öffnungszustand (`true` = geöffnet) als `boolean` |
+| `toggle` | Kopfbereich wird angeklickt bzw. bedient  | Neuer Öffnungszustand (`true` = geöffnet) als `boolean` |
 
 <Readme />
