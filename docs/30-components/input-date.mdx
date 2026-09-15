@@ -133,6 +133,9 @@ Die Schrittweite für `time` und `datetime-local` wird in Sekunden angegeben. Se
 **Warum sieht InputDate je nach Browser unterschiedlich aus?**  
 Die Komponente nutzt die nativen HTML5-Eingabetypen des Browsers. Darstellung und Bedienung der Auswahldialoge werden daher vom jeweiligen Browser und Betriebssystem bestimmt.
 
+**Wird eine automatische Korrektur einer ungültigen Eingabe angekündigt?**  
+Nein. Gibt jemand beispielsweise beim Typ `date` einen ungültigen Tageswert ein (z. B. „33“ statt „03“), korrigiert der Browser diesen Wert nativ, ohne dass KoliBri diese Änderung derzeit per Sprachausgabe ankündigt. Screenreader-Nutzende können die stille Korrektur dadurch leicht übersehen. Validieren Sie eingegebene Werte daher zusätzlich auf Anwendungsebene. Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10542" _target="_blank" _label="GitHub Issue #10542"></kol-link>.
+
 ## Playground
 
 Testen Sie die verschiedenen Eigenschaften des InputDate-Feldes:
