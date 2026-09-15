@@ -43,6 +43,7 @@ Standard-Auswahlgruppe mit drei Optionen ohne optional gesetzte Felder:
 * <ErrorMessageNote />
 * Radio-Button und Beschriftung einer Option bilden eine gemeinsame Klickfläche, die mindestens der barrierefreien Mindestgröße für Bedienelemente entspricht.
 * Der ausgewählte Zustand bleibt auch im Kontrastmodus des Betriebssystems (Forced Colors) sichtbar.
+* Die Komponente markiert das aktuell fokussierte Element deutlich.
 
 ### Konkrete Designentscheidungen
 
@@ -92,14 +93,14 @@ Die Auswahl wird dabei nicht verändert.
 - Verwenden Sie für die Gruppe eine klare, präzise Beschriftung, die den Zweck der Auswahl deutlich macht, beispielsweise „Anrede“ oder „Versandart“.
 - Formulieren Sie die Beschriftungen der Optionen kurz, eindeutig und voneinander unterscheidbar.
 - Begrenzen Sie die Anzahl der Optionen auf etwa 3–7. Für umfangreichere Auswahllisten sind die Komponenten <kol-link _href="../components/select" _label="Select"></kol-link> oder <kol-link _href="../components/single-select" _label="SingleSelect"></kol-link> besser geeignet.
-- Wählen Sie eine Option nur dann vor, wenn es einen fachlich sinnvollen Standardwert gibt. Bei Pflichtangaben, die bewusst getroffen werden sollen, verzichten Sie auf eine Vorauswahl.
+- Wählen Sie eine Option nur dann vor, wenn es einen fachlich sinnvollen Standardwert gibt; ein solcher Standardwert unterstützt die Benutzerführung. Bei Pflichtangaben, die bewusst getroffen werden sollen, verzichten Sie auf eine Vorauswahl.
 - Nutzen Sie `_orientation="vertical"` bei mehreren Optionen, um das Überfliegen der Liste zu erleichtern. `_orientation="horizontal"` eignet sich für wenige, kurze Optionen.
-- Deaktivieren Sie einzelne Optionen nur, wenn sie tatsächlich nicht verfügbar sind, und erläutern Sie den Grund möglichst im sichtbaren Kontext. Andernfalls blenden Sie nicht verfügbare Optionen besser aus.
+- Deaktivieren Sie einzelne Optionen nur, wenn sie tatsächlich nicht verfügbar sind, und erläutern Sie den Grund möglichst im sichtbaren Kontext. Andernfalls blenden Sie nicht verfügbare Optionen besser aus. Für dynamische Filterung verwenden Sie statt deaktivierter Radio-Elemente die <kol-link _href="../components/combobox" _label="Combobox"></kol-link> oder andere Komponenten.
 - Geben Sie zusätzliche Erklärungen über `_hint` an, falls die Optionen nicht selbsterklärend sind.
 
 ### Anwendungsfälle
 
-- Auswahl einer Anrede
+- Auswahl einer Geschlechtsangabe oder Anrede
 - Wahl zwischen Zahlungsmethoden, beispielsweise Kreditkarte, Überweisung oder PayPal
 - Auswahl von Lieferoptionen, beispielsweise Express, Standard oder Economy
 - Beantwortung von Einfachauswahl-Fragen in Umfragen

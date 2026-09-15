@@ -170,7 +170,9 @@ Beispiele für `_accept`-Werte:
 - `.pdf`: Nur PDF-Dateien
 - `.doc,.docx`: Microsoft-Word-Dokumente
 - `.csv,.xlsx`: Tabellendaten
-- leer: Alle Dateitypen (Standard)
+- `*` oder leer: Alle Dateitypen (Standard)
+
+Die Einschränkung zulässiger Dateitypen über `_accept` wird von Browsern und assistiven Technologien unterstützt.
 
 **Hinweis:** Die Einschränkung wirkt nur im Dateiauswahldialog. Per Drag & Drop abgelegte Dateien werden derzeit nicht gegen `_accept` geprüft (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10865" _target="_blank" _label="#10865"></kol-link>).
 

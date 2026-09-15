@@ -43,6 +43,7 @@ Standard-Textarea ohne optional gesetzte Felder:
 * <LabelNote />
 * <ErrorMessageNote />
 * <CharacterCounterNote />
+* Die Textarea bietet klare Fokusindikatoren.
 
 ### Konkrete Designentscheidungen
 
@@ -85,7 +86,7 @@ Standard-Textarea ohne optional gesetzte Felder:
 
 ### Best Practices / Empfehlungen
 
-- **Höhe sinnvoll wählen:** Beginnen Sie mit wenigen Zeilen (z. B. `_rows` mit dem Wert `4`) und erlauben Sie bei Bedarf die Größenanpassung über `_resize` oder die automatische Höhenanpassung über `_adjustHeight`.
+- **Höhe sinnvoll wählen:** Beginnen Sie mit wenigen Zeilen (z. B. `_rows` mit dem Wert `4`) und erlauben Sie bei Bedarf die Größenanpassung über `_resize` oder die automatische Höhenanpassung über `_adjustHeight`, aber vermeiden Sie horizontales Scrollen.
 - **Sinnvolle maximale Länge:** Legen Sie eine fachlich begründete maximale Zeichenlänge fest und machen Sie diese mit `_hasCounter` und `_maxLength` transparent. Für weiche Grenzen nutzen Sie `_maxLengthBehavior="soft"`.
 - **Hilfetexte bereitstellen:** Geben Sie Formatvorgaben oder Hinweise über `_hint` vor der Eingabe an, nicht erst nach einem Fehler.
 - **Kontrolle bei den Nutzenden lassen:** Erzwingen Sie keine Groß- oder Kleinschreibung. Nutzende behalten die Kontrolle über den eingegebenen Text.
@@ -98,8 +99,8 @@ Standard-Textarea ohne optional gesetzte Felder:
 - Erfassen von Kommentaren, Feedback oder Bewertungen
 - Eingabe von Produkt-, Artikel- oder Personenbeschreibungen
 - Erfassung von Anliegen, Anfragen oder Begründungen in Formularen
-- Eingabe von Notizen oder Anweisungen über mehrere Zeilen
-- Verfassen von Nachrichten oder Mitteilungen
+- Eingabe von Adressen mit mehreren Zeilen, Notizen oder Anweisungen
+- Verfassen von E-Mails, Nachrichten oder Mitteilungen
 - Eingabe längerer Texte in Dokumentations- oder Content-Management-Systemen
 
 ### FAQ

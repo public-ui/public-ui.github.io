@@ -145,6 +145,8 @@ Testen Sie die verschiedenen Eigenschaften des InputEmail-Feldes:
 
 Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `input`-Elements übertragen.
 
+**Hinweis:** `_name` wird als HTML-Attribut `name` verwendet und ist wichtig für das Absenden des Formulars.
+
 <InputEmailPreview
 	context="feature"
 	visibleProperties={['_disabled', '_readOnly', '_required']}
@@ -171,7 +173,7 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `inpu
 
 ### Mehrere E-Mail-Adressen
 
-Mit `_multiple` akzeptiert das Feld mehrere, durch Kommas getrennte E-Mail-Adressen. Die Eigenschaft wird als natives Attribut `multiple` übergeben; der Browser prüft dann jede einzelne Adresse. Der Wert des Feldes bleibt ein einzelner, kommagetrennter String. Weisen Sie Nutzende über `_hint` auf die erwartete Schreibweise hin.
+Mit `_multiple` akzeptiert das Feld mehrere, durch Kommas getrennte E-Mail-Adressen. Die Eigenschaft wird als natives Attribut `multiple` übergeben; der Browser prüft dann jede einzelne Adresse. Der Wert des Feldes bleibt ein einzelner, kommagetrennter String. Die Eingabe mehrerer, durch Komma getrennter E-Mail-Adressen wird dabei entsprechend an assistive Technologien kommuniziert. Weisen Sie Nutzende über `_hint` auf die erwartete Schreibweise hin.
 
 <InputEmailPreview
 	context="feature"
