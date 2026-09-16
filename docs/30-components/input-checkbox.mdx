@@ -44,6 +44,7 @@ Standard-Checkbox ohne optional gesetzte Felder:
 | Entscheidung | Begründung |
 | ------------ | ---------- |
 | Native Checkbox-Semantik unabhängig von `_variant` | Alle Varianten verwenden technisch eine native Checkbox. Screenreader geben daher in jeder Variante eine Checkbox aus; Verhalten und Tastatursteuerung bleiben identisch. |
+| Bewusster Verzicht auf ARIA-Rollen wie `role="switch"` | Die native Checkbox-Semantik wird von Screenreadern browser- und plattformübergreifend zuverlässiger unterstützt als nachgebildete Widget-Rollen. Zusätzliche ARIA-Rollen würden keinen Mehrwert bieten und könnten zu inkonsistentem Verhalten führen. |
 | Indeterminate-Zustand nur programmatisch | Der Zustand `_indeterminate` kann ausschließlich über die API gesetzt werden. Bei einer Interaktion durch Nutzende wird er zurückgesetzt und `_checked` umgeschaltet – entsprechend dem Verhalten nativer Checkboxen. |
 
 ### Links und Referenzen
@@ -78,6 +79,7 @@ Der Auswahlzustand der Checkbox wird dabei nicht verändert.
 
 - Formulieren Sie die Beschriftung so, dass der aktivierte Zustand eindeutig verständlich ist, beispielsweise „Newsletter abonnieren“ statt „Newsletter“.
 - Setzen Sie Vorauswahlen (`_checked`) nur, wenn dies fachlich sinnvoll ist.
+- Ergänzen Sie bei Bedarf Hinweise oder Validierungsnachrichten, um die Nutzung der Checkbox verständlich zu unterstützen.
 - Deaktivieren Sie Checkboxen nur, wenn eine Auswahl tatsächlich nicht möglich ist, und erläutern Sie den Grund möglichst im sichtbaren Kontext.
 - Wählen Sie die visuelle Variante ausschließlich nach gestalterischen Anforderungen aus. Das Verhalten der Komponente bleibt in allen Varianten identisch.
 - Gruppieren Sie zusammengehörige Checkboxen logisch und versehen Sie Gruppen mit einer gemeinsamen Beschriftung, beispielsweise mit einem `fieldset` und einer `legend`.

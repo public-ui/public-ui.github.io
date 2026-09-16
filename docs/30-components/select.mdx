@@ -101,6 +101,7 @@ Die Select-Komponente sollte **nicht** verwendet werden, wenn:
 - Verwenden Sie die Select-Komponente ausschließlich für vordefinierte Auswahlmöglichkeiten.
 - Nutzen Sie `_multiple` nur, wenn eine Mehrfachauswahl fachlich erforderlich ist. Die Mehrfachauswahl erfordert Tastenkombinationen, die vielen Nutzenden nicht bekannt sind. Prüfen Sie, ob stattdessen eine **Checkbox Group** besser geeignet ist.
 - Prüfen Sie bei umfangreichen Auswahllisten, ob eine **Combobox** die geeignetere Komponente ist.
+- Zusätzliche ARIA-Rollen (z. B. `role="combobox"` oder `role="listbox"`) sind nicht erforderlich und sollten nicht ergänzt werden.
 
 **Gestaltung der Optionen**
 
@@ -140,6 +141,9 @@ Ja. `_options` unterstützt neben einzelnen Optionen auch Optionsgruppen (`{ lab
 
 **Gibt es einen Platzhalter für die Select-Komponente?**  
 Nein. Die Komponente unterstützt kein `_placeholder`. Nutzen Sie bei Bedarf eine klar beschriftete Leer-Option als erste Option.
+
+**Warum verwendet die Komponente das native HTML-Element `<select>`?**  
+Das native HTML-Element `<select>` stellt die erforderliche Semantik sowie die Unterstützung für Tastaturbedienung, Fokusverwaltung und Screenreader bereits bereit. Die KoliBri-Komponente ergänzt daher keine eigenen ARIA-Rollen und nutzt bewusst das standardisierte Verhalten des Browsers.
 
 ## Playground
 
