@@ -5,23 +5,23 @@ description: Beschreibung, Spezifikation und Beispiele für die InputNumber-Komp
 
 import Readme from '@site/readmes/input-number/readme.md';
 import InputNumberPreview from '@site/src/components/previews/components/InputNumber';
-import LabelNote from './_shared/a11y-properties/label.md';
 import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import LabelNote from './_shared/a11y-properties/label.md';
 import SuggestionsNote from './_shared/a11y-properties/suggestions.md';
-import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
-import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
-import BasicFeature from './_shared/features/basic.md';
-import FormAttributesFeature from './_shared/features/form-attributes.md';
+import EventsIntro from './_shared/api/events-intro.md';
 import DisabledProp from './_shared/feature-properties/disabled.md';
 import ReadOnlyProp from './_shared/feature-properties/read-only.md';
 import RequiredProp from './_shared/feature-properties/required.md';
-import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
-import PlaceholderFeature from './_shared/features/placeholder.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
 import HideLabelFeature from './_shared/features/hide-label.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
 import IconsFeature from './_shared/features/icons.md';
+import PlaceholderFeature from './_shared/features/placeholder.md';
 import SmartButtonFeature from './_shared/features/smart-button.md';
 import SuggestionsFeature from './_shared/features/suggestions.md';
-import EventsIntro from './_shared/api/events-intro.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
 
 # InputNumber
 
@@ -40,14 +40,19 @@ import EventsIntro from './_shared/api/events-intro.md';
 
 Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
-<InputNumberPreview context="example" />
+<InputNumberPreview 
+	context="example" 	
+	initialProps={{ 
+		_value: 0,
+	}} />
 
 ## Barrierefreiheit
 
+* Durch native Semantik statt Marke-Eigenbau erkennen Screenreader, Spracheingabe und Betriebssystem-Tastaturen (z. B. numerisches Layout auf Mobilgeräten) das Feld automatisch als Zahleneingabe.
 * <LabelNote />
 * <ErrorMessageNote />
 * <SuggestionsNote />
-* Das native Eingabefeld wurde um zwei Buttons zum Erhöhen und Verringern des Werts ergänzt, deren Größe den Anforderungen an barrierefreie Bedienelemente entspricht, um die Zugänglichkeit zu verbessern.
+* Das Eingabefeld wurde um zwei Buttons zum Erhöhen und Verringern ergänzt, deren Größe barrierefreien Anforderungen entspricht.
 
 ### Konkrete Designentscheidungen
 
@@ -81,8 +86,11 @@ Sind `_min` und/oder `_max` gesetzt, kann der Wert über die Pfeiltasten nur inn
 
 ## FAQ
 
-**Wann sollte ich `_step`, `_min` und `_max` verwenden?**  
-Verwenden Sie `_min` und `_max`, um den zulässigen Wertebereich einzuschränken. Mit `_step` legen Sie fest, in welchen Schritten der Wert angepasst werden kann. Beachten Sie aber: `_min`, `_max` und `_step` verhindern keine manuelle Eingabe außerhalb des zulässigen Wertebereichs. Die Validierung manuell eingegebener Werte muss auf Anwendungsebene erfolgen.
+**Wie schränke ich Wertebereiche ein?**  
+Verwenden Sie `_min`, um den minimalen und `_max`, um den maximalen erlaubten Wert zu definieren. Diese Attribute wirken zuverlässig bei der Bedienung über Pfeiltasten und Schaltflächen. Beachten Sie aber: Bei manueller Texteingabe können Werte außerhalb des Bereichs eingegeben werden. Die Validierung manuell eingegebener Werte muss auf Anwendungsebene erfolgen.
+
+**Wie kann ich die Schrittweite definieren?**  
+Mit `_step` legen Sie fest, um wie viel der Wert bei jedem Schritt angepasst wird – sowohl bei Pfeiltasten als auch bei den Erhöhen-/Verringern-Schaltflächen. Das Attribut beeinflusst auch, welche manuell eingegebenen Werte technisch gültig sind, führt aber nicht zu automatischer Validierung oder Korrektur.
 
 **Wofür sollte ich InputNumber nicht verwenden?**  
 Verwenden Sie InputNumber ausschließlich für Werte, die mathematisch verarbeitet werden. Für Telefonnummern, Postleitzahlen, Kreditkarten- oder Identifikationsnummern sollten Sie stattdessen Texteingabefelder verwenden.
@@ -98,17 +106,6 @@ Nein. Die Erhöhen-/Verringern-Schaltflächen sind nicht Teil der Tab-Reihenfolg
 
 **Können die Erhöhen-/Verringern-Schaltflächen ausgeblendet werden?**  
 Ja. Die Erhöhen-/Verringern-Schaltflächen können über das Theme-seitige Feature-Flag `inputNumberButtons` (Wert `'hide'`) ausgeblendet werden.
-
-## Playground
-
-Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
-
-<InputNumberPreview 
-	context="playground"
-	initialProps={{ 
-		_value: 0,
-	}} 
-/>
 
 ## Funktionalitäten
 
@@ -247,6 +244,17 @@ Verfügbare Attribute sind:
 		_label: 'Anzahl',
 		_suggestions: [1, 5, 10, 25, 50, 100],
 	}}
+/>
+
+## Playground
+
+Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
+
+<InputNumberPreview 
+	context="playground"
+	initialProps={{ 
+		_value: 0,
+	}} 
 />
 
 ## API
