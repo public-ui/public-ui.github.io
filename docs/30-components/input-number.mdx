@@ -27,11 +27,14 @@ import EventsIntro from './_shared/api/events-intro.md';
 
 **Synonyme:** Zahlenfeld, Numerisches Eingabefeld, Zahleneingabe, Number Input, Number Field 
 
-**Beschreibung:** Mit **InputNumber** können numerische Werte eingegeben und bearbeitet werden.
+**Beschreibung:** Mit **InputNumber** können numerische Werte eingegeben und bearbeitet werden. Der Wert kann direkt eingegeben oder über Erhöhen-/Verringern-Schaltflächen und Pfeiltasten angepasst werden.
 
-Die Komponente basiert auf dem nativen HTML5-Eingabetyp `number` und profitiert dadurch von dessen Semantik sowie der standardisierten Unterstützung durch Browser und assistive Technologien.
-
-Neben der direkten Eingabe kann der Wert über die **Erhöhen-/Verringern-Schaltflächen** oder mithilfe der Pfeiltasten angepasst werden.
+**Anwendungsfälle:**
+- Altersangaben in Registrierungs- oder Kontaktformularen
+- Eingabe von Mengen, Stückzahlen oder Preisen
+- Erfassung von Messwerten wie Gewicht, Länge oder Temperatur
+- Konfiguration numerischer Einstellungen, beispielsweise für Grenz- oder Schwellenwerte
+- Eingabe von Prozentwerten oder Rabattangaben
 
 ## Beispiel
 
@@ -59,15 +62,7 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number" _target="_blank" _label="MDN Web Docs: Input Type Number"></kol-link>
 - <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#number-state-(type=number)" _target="_blank" _label="HTML Living Standard: The input element - type number"></kol-link>
 
-## Verwendung
-
-- Nutzen Sie `_min` und `_max`, um zulässige Wertebereiche einzuschränken.
-- Verwenden Sie `_step`, um die Schrittweite für die Wertänderung festzulegen.
-- Berücksichtigen Sie, dass `_step` sowohl die Bedienung über die Pfeiltasten und Erhöhen-/Verringern-Schaltflächen als auch die zulässigen Eingabewerte beeinflusst.
-
-**Hinweis:** `_min`, `_max` und `_step` verhindern keine manuelle Eingabe außerhalb des zulässigen Wertebereichs bzw. Schrittmaßes. Die Einschränkungen wirken sich hauptsächlich auf die integrierten Erhöhen-/Verringern-Schaltflächen und die Bedienung mit den Pfeiltasten aus. Die Validierung der manuell eingegebenen Werte muss auf Anwendungsebene erfolgen.
-
-### Tastatursteuerung
+## Tastatursteuerung
 
 <NativeKeyboardIntro />
 
@@ -80,29 +75,23 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 <SubmitOnEnterNote />
 
-Die **Erhöhen-/Verringern-Schaltflächen** sind nicht Teil der Tab-Reihenfolge. Ihre Funktion steht Tastaturnutzenden über die Pfeiltasten im fokussierten Eingabefeld zur Verfügung.
+Die **Erhöhen-/Verringern-Schaltflächen** sind nicht fokussierbar – die gleiche Funktionalität steht über die Pfeiltasten zur Verfügung.
 
-**Hinweis:** Sind `_min` und/oder `_max` gesetzt, kann der Wert über die Pfeiltasten nur innerhalb dieses Wertebereichs verändert werden. Bei manueller Eingabe können hingegen auch Werte außerhalb des definierten Bereichs eingegeben werden. Die Validierung der manuell eingegebenen Werte muss auf Anwendungsebene erfolgen.
+Sind `_min` und/oder `_max` gesetzt, kann der Wert über die Pfeiltasten nur innerhalb dieses Wertebereichs verändert werden.
 
-### Best Practices / Empfehlungen
-
-- Verwenden Sie InputNumber ausschließlich für Werte, die mathematisch verarbeitet werden. Für Telefonnummern, Postleitzahlen, Kreditkarten- oder Identifikationsnummern sollten stattdessen Texteingabefelder verwendet werden.
-- Wählen Sie `_min`, `_max` und `_step` so, dass sie den fachlichen Anforderungen des jeweiligen Anwendungsfalls entsprechen.
-- Stellen Sie sicher, dass zulässige Wertebereiche oder Einheiten für Nutzende eindeutig erkennbar sind, beispielsweise über die Beschriftung (`_label`) oder ergänzende Hinweise (`_hint`).
-- Berücksichtigen Sie, dass sich Darstellung und Verhalten nativer numerischer Eingabefelder je nach Browser und Betriebssystem unterscheiden können.
-
-### Anwendungsfälle
-
-- Altersangaben in Registrierungs- oder Kontaktformularen
-- Eingabe von Mengen, Stückzahlen oder Preisen
-- Erfassung von Messwerten wie Gewicht, Länge oder Temperatur
-- Konfiguration numerischer Einstellungen, beispielsweise für Grenz- oder Schwellenwerte
-- Eingabe von Prozentwerten oder Rabattangaben
-
-### FAQ
+## FAQ
 
 **Wann sollte ich `_step`, `_min` und `_max` verwenden?**  
-Verwenden Sie `_min` und `_max`, um den zulässigen Wertebereich einzuschränken. Mit `_step` legen Sie fest, in welchen Schritten der Wert angepasst werden kann. Diese Attribute unterstützen dabei, numerische Eingaben an den jeweiligen Anwendungsfall anzupassen.
+Verwenden Sie `_min` und `_max`, um den zulässigen Wertebereich einzuschränken. Mit `_step` legen Sie fest, in welchen Schritten der Wert angepasst werden kann. Beachten Sie aber: `_min`, `_max` und `_step` verhindern keine manuelle Eingabe außerhalb des zulässigen Wertebereichs. Die Validierung manuell eingegebener Werte muss auf Anwendungsebene erfolgen.
+
+**Wofür sollte ich InputNumber nicht verwenden?**  
+Verwenden Sie InputNumber ausschließlich für Werte, die mathematisch verarbeitet werden. Für Telefonnummern, Postleitzahlen, Kreditkarten- oder Identifikationsnummern sollten Sie stattdessen Texteingabefelder verwenden.
+
+**Wie stelle ich sicher, dass Wertebereiche für Nutzende klar sind?**  
+Nutzen Sie die Beschriftung (`_label`) und ergänzende Hinweise (`_hint`), um zulässige Wertebereiche oder Einheiten deutlich zu machen. Wählen Sie `_min`, `_max` und `_step` so, dass sie den fachlichen Anforderungen Ihres Anwendungsfalls entsprechen.
+
+**Warum unterscheiden sich Eingabefelder je nach Browser?**  
+Das ist normales Verhalten nativer HTML5-Eingabefelder. Darstellung und Verhalten können je nach Browser und Betriebssystem unterscheiden.
 
 **Sind die Erhöhen-/Verringern-Schaltflächen fokussierbar?**  
 Nein. Die Erhöhen-/Verringern-Schaltflächen sind nicht Teil der Tab-Reihenfolge. Tastaturnutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld anpassen.
