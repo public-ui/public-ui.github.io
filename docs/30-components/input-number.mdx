@@ -48,7 +48,7 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 ## Barrierefreiheit
 
-* Durch native Semantik statt Marke-Eigenbau erkennen Screenreader, Spracheingabe und Betriebssystem-Tastaturen (z. B. numerisches Layout auf Mobilgeräten) das Feld automatisch als Zahleneingabe.
+* Die native Semantik des Eingabefeldes ermöglicht es Screenreadern, Spracheingabe und Betriebssystem-Tastaturen (z. B. numerisches Layout auf Mobilgeräten), das Feld automatisch als Zahleneingabe zu erkennen.
 * Die Komponente ist vollumfänglich tastaturbedienbar. Mit den Pfeiltasten können Werte erhöht und verringert werden, Enter sendet das umgebende Formular ab und Access- bzw. Shortkeys ermöglichen einen direkten Sprung ins Feld.
 * <LabelNote />
 * <ErrorMessageNote />
@@ -59,7 +59,7 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
-| Verwendung des nativen HTML5-Eingabetyps `number` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
+| Verwendung des nativen HTML5-Eingabetyps `number` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp statt eines Custom-Elements und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
 | Erhöhen-/Verringern-Schaltflächen | Neben der direkten Eingabe stellt die Komponente standardmäßig Erhöhen-/Verringern-Schaltflächen für die Bedienung mit Maus und Touch bereit. |
 | Tastaturbedienung | Die Erhöhen-/Verringern-Schaltflächen sind nicht per Tastatur fokussierbar und mittels `aria-hidden` vollständig aus dem Accessibility-Tree entfernt. Tastaturnutzende und Screenreader-Nutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld entsprechend der in `_step` definierten Schrittweite anpassen. |
 
