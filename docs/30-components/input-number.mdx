@@ -5,52 +5,61 @@ description: Beschreibung, Spezifikation und Beispiele für die InputNumber-Komp
 
 import Readme from '@site/readmes/input-number/readme.md';
 import InputNumberPreview from '@site/src/components/previews/components/InputNumber';
-import LabelNote from './_shared/a11y-properties/label.md';
 import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
+import LabelNote from './_shared/a11y-properties/label.md';
 import SuggestionsNote from './_shared/a11y-properties/suggestions.md';
-import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
-import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
-import BasicFeature from './_shared/features/basic.md';
-import FormAttributesFeature from './_shared/features/form-attributes.md';
+import EventsIntro from './_shared/api/events-intro.md';
 import DisabledProp from './_shared/feature-properties/disabled.md';
 import ReadOnlyProp from './_shared/feature-properties/read-only.md';
 import RequiredProp from './_shared/feature-properties/required.md';
-import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
-import PlaceholderFeature from './_shared/features/placeholder.md';
+import BasicFeature from './_shared/features/basic.md';
+import FormAttributesFeature from './_shared/features/form-attributes.md';
 import HideLabelFeature from './_shared/features/hide-label.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
 import IconsFeature from './_shared/features/icons.md';
+import PlaceholderFeature from './_shared/features/placeholder.md';
 import SmartButtonFeature from './_shared/features/smart-button.md';
 import SuggestionsFeature from './_shared/features/suggestions.md';
-import EventsIntro from './_shared/api/events-intro.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import SubmitOnEnterNote from './_shared/keyboard/submit-on-enter.md';
 
 # InputNumber
 
 **Synonyme:** Zahlenfeld, Numerisches Eingabefeld, Zahleneingabe, Number Input, Number Field 
 
-**Beschreibung:** Mit **InputNumber** können numerische Werte eingegeben und bearbeitet werden.
+**Beschreibung:** Mit **InputNumber** können numerische Werte eingegeben und bearbeitet werden. Der Wert kann direkt eingegeben oder über Erhöhen-/Verringern-Schaltflächen und Pfeiltasten angepasst werden.
 
-Die Komponente basiert auf dem nativen HTML5-Eingabetyp `number` und profitiert dadurch von dessen Semantik sowie der standardisierten Unterstützung durch Browser und assistive Technologien.
-
-Neben der direkten Eingabe kann der Wert über die **Erhöhen-/Verringern-Schaltflächen** oder mithilfe der Pfeiltasten angepasst werden.
+**Anwendungsfälle:**
+- Altersangaben in Registrierungs- oder Kontaktformularen
+- Eingabe von Mengen, Stückzahlen oder Preisen
+- Erfassung von Messwerten wie Gewicht, Länge oder Temperatur
+- Konfiguration numerischer Einstellungen, beispielsweise für Grenz- oder Schwellenwerte
+- Eingabe von Prozentwerten oder Rabattangaben
 
 ## Beispiel
 
 Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
-<InputNumberPreview context="example" />
+<InputNumberPreview 
+	context="example" 	
+	initialProps={{ 
+		_value: 0,
+	}} />
 
 ## Barrierefreiheit
 
+* Die native Semantik des Eingabefeldes ermöglicht es Screenreadern, Spracheingabe und Betriebssystem-Tastaturen (z. B. numerisches Layout auf Mobilgeräten), das Feld automatisch als Zahleneingabe zu erkennen.
+* Die Komponente ist vollumfänglich tastaturbedienbar. Mit den Pfeiltasten können Werte erhöht und verringert werden, Enter sendet das umgebende Formular ab und Access- bzw. Shortkeys ermöglichen einen direkten Sprung ins Feld.
 * <LabelNote />
 * <ErrorMessageNote />
 * <SuggestionsNote />
-* Das native Eingabefeld wurde um zwei Buttons zum Erhöhen und Verringern des Werts ergänzt, deren Größe den Anforderungen an barrierefreie Bedienelemente entspricht, um die Zugänglichkeit zu verbessern.
+* Das Eingabefeld wurde um zwei Buttons zum Erhöhen und Verringern ergänzt, deren Größe barrierefreien Anforderungen entspricht.
 
 ### Konkrete Designentscheidungen
 
 | Entscheidung | Begründung |
 | ------------ | ---------- |
-| Verwendung des nativen HTML5-Eingabetyps `number` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
+| Verwendung des nativen HTML5-Eingabetyps `number` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp statt eines Custom-Elements und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
 | Erhöhen-/Verringern-Schaltflächen | Neben der direkten Eingabe stellt die Komponente standardmäßig Erhöhen-/Verringern-Schaltflächen für die Bedienung mit Maus und Touch bereit. |
 | Tastaturbedienung | Die Erhöhen-/Verringern-Schaltflächen sind nicht per Tastatur fokussierbar und mittels `aria-hidden` vollständig aus dem Accessibility-Tree entfernt. Tastaturnutzende und Screenreader-Nutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld entsprechend der in `_step` definierten Schrittweite anpassen. |
 
@@ -59,15 +68,7 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number" _target="_blank" _label="MDN Web Docs: Input Type Number"></kol-link>
 - <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#number-state-(type=number)" _target="_blank" _label="HTML Living Standard: The input element - type number"></kol-link>
 
-## Verwendung
-
-- Nutzen Sie `_min` und `_max`, um zulässige Wertebereiche einzuschränken.
-- Verwenden Sie `_step`, um die Schrittweite für die Wertänderung festzulegen.
-- Berücksichtigen Sie, dass `_step` sowohl die Bedienung über die Pfeiltasten und Erhöhen-/Verringern-Schaltflächen als auch die zulässigen Eingabewerte beeinflusst.
-
-**Hinweis:** `_min`, `_max` und `_step` verhindern keine manuelle Eingabe außerhalb des zulässigen Wertebereichs bzw. Schrittmaßes. Die Einschränkungen wirken sich hauptsächlich auf die integrierten Erhöhen-/Verringern-Schaltflächen und die Bedienung mit den Pfeiltasten aus. Die Validierung der manuell eingegebenen Werte muss auf Anwendungsebene erfolgen.
-
-### Tastatursteuerung
+## Tastatursteuerung
 
 <NativeKeyboardIntro />
 
@@ -80,46 +81,32 @@ Standard-Eingabefeld für numerische Werte ohne optional gesetzte Felder:
 
 <SubmitOnEnterNote />
 
-Die **Erhöhen-/Verringern-Schaltflächen** sind nicht Teil der Tab-Reihenfolge. Ihre Funktion steht Tastaturnutzenden über die Pfeiltasten im fokussierten Eingabefeld zur Verfügung.
+Die **Erhöhen-/Verringern-Schaltflächen** sind nicht fokussierbar – die gleiche Funktionalität steht über die Pfeiltasten zur Verfügung.
 
-**Hinweis:** Sind `_min` und/oder `_max` gesetzt, kann der Wert über die Pfeiltasten nur innerhalb dieses Wertebereichs verändert werden. Bei manueller Eingabe können hingegen auch Werte außerhalb des definierten Bereichs eingegeben werden. Die Validierung der manuell eingegebenen Werte muss auf Anwendungsebene erfolgen.
+Sind `_min` und/oder `_max` gesetzt, kann der Wert über die Pfeiltasten nur innerhalb dieses Wertebereichs verändert werden.
 
-### Best Practices / Empfehlungen
+## FAQ
 
-- Verwenden Sie InputNumber ausschließlich für Werte, die mathematisch verarbeitet werden. Für Telefonnummern, Postleitzahlen, Kreditkarten- oder Identifikationsnummern sollten stattdessen Texteingabefelder verwendet werden.
-- Wählen Sie `_min`, `_max` und `_step` so, dass sie den fachlichen Anforderungen des jeweiligen Anwendungsfalls entsprechen.
-- Stellen Sie sicher, dass zulässige Wertebereiche oder Einheiten für Nutzende eindeutig erkennbar sind, beispielsweise über die Beschriftung (`_label`) oder ergänzende Hinweise (`_hint`).
-- Berücksichtigen Sie, dass sich Darstellung und Verhalten nativer numerischer Eingabefelder je nach Browser und Betriebssystem unterscheiden können.
+**Wie schränke ich Wertebereiche ein?**  
+Verwenden Sie `_min`, um den minimalen und `_max`, um den maximalen erlaubten Wert zu definieren. Diese Attribute wirken zuverlässig bei der Bedienung über Pfeiltasten und Schaltflächen. Beachten Sie aber: Bei manueller Texteingabe können Werte außerhalb des Bereichs eingegeben werden. Die Validierung manuell eingegebener Werte muss auf Anwendungsebene erfolgen.
 
-### Anwendungsfälle
+**Wie kann ich die Schrittweite definieren?**  
+Mit `_step` legen Sie fest, um wie viel der Wert bei jedem Schritt angepasst wird – sowohl bei Pfeiltasten als auch bei den Erhöhen-/Verringern-Schaltflächen. Das Attribut beeinflusst auch, welche manuell eingegebenen Werte technisch gültig sind, führt aber nicht zu automatischer Validierung oder Korrektur.
 
-- Altersangaben in Registrierungs- oder Kontaktformularen
-- Eingabe von Mengen, Stückzahlen oder Preisen
-- Erfassung von Messwerten wie Gewicht, Länge oder Temperatur
-- Konfiguration numerischer Einstellungen, beispielsweise für Grenz- oder Schwellenwerte
-- Eingabe von Prozentwerten oder Rabattangaben
+**Wofür sollte ich InputNumber nicht verwenden?**  
+Verwenden Sie InputNumber ausschließlich für Werte, die mathematisch verarbeitet werden. Für Telefonnummern, Postleitzahlen, Kreditkarten- oder Identifikationsnummern sollten Sie stattdessen Texteingabefelder verwenden.
 
-### FAQ
+**Wie stelle ich sicher, dass Wertebereiche für Nutzende klar sind?**  
+Nutzen Sie die Beschriftung (`_label`) und ergänzende Hinweise (`_hint`), um zulässige Wertebereiche oder Einheiten deutlich zu machen. Wählen Sie `_min`, `_max` und `_step` so, dass sie den fachlichen Anforderungen Ihres Anwendungsfalls entsprechen.
 
-**Wann sollte ich `_step`, `_min` und `_max` verwenden?**  
-Verwenden Sie `_min` und `_max`, um den zulässigen Wertebereich einzuschränken. Mit `_step` legen Sie fest, in welchen Schritten der Wert angepasst werden kann. Diese Attribute unterstützen dabei, numerische Eingaben an den jeweiligen Anwendungsfall anzupassen.
+**Warum unterscheiden sich Eingabefelder je nach Browser?**  
+Das ist normales Verhalten nativer HTML5-Eingabefelder. Darstellung und Verhalten können je nach Browser und Betriebssystem unterscheiden.
 
 **Sind die Erhöhen-/Verringern-Schaltflächen fokussierbar?**  
 Nein. Die Erhöhen-/Verringern-Schaltflächen sind nicht Teil der Tab-Reihenfolge. Tastaturnutzende können den Wert stattdessen über die Pfeiltasten im Eingabefeld anpassen.
 
 **Können die Erhöhen-/Verringern-Schaltflächen ausgeblendet werden?**  
 Ja. Die Erhöhen-/Verringern-Schaltflächen können über das Theme-seitige Feature-Flag `inputNumberButtons` (Wert `'hide'`) ausgeblendet werden.
-
-## Playground
-
-Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
-
-<InputNumberPreview 
-	context="playground"
-	initialProps={{ 
-		_value: 0,
-	}} 
-/>
 
 ## Funktionalitäten
 
@@ -258,6 +245,17 @@ Verfügbare Attribute sind:
 		_label: 'Anzahl',
 		_suggestions: [1, 5, 10, 25, 50, 100],
 	}}
+/>
+
+## Playground
+
+Testen Sie die verschiedenen Eigenschaften des InputNumber-Feldes:
+
+<InputNumberPreview 
+	context="playground"
+	initialProps={{ 
+		_value: 0,
+	}} 
 />
 
 ## API
