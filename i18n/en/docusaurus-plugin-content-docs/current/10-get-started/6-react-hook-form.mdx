@@ -1,0 +1,190 @@
+import { KolLink } from '@public-ui/react-v19';
+
+# React Hook Form
+
+The package `@public-ui/react-hook-form-adapter` connects the form library <KolLink _label="React Hook Form" _href="https://react-hook-form.com/" _target="_blank" /> with the React components from `@public-ui/react-v19`. For each form component there is a controller component that uses the React Hook Form <KolLink _label="Controller" _href="https://react-hook-form.com/docs/usecontroller/controller" _target="_blank" /> internally. Value, error message, touched and disabled state are passed to the KoliBri component automatically.
+
+## Installation
+
+```bash
+npm i @public-ui/react-hook-form-adapter react-hook-form
+```
+
+The adapter requires the following peer dependencies:
+
+| Package                 | Version                     |
+| ----------------------- | --------------------------- |
+| `@public-ui/components` | same version as the adapter |
+| `@public-ui/react-v19`  | same version as the adapter |
+| `react`                 | 19.x                        |
+| `react-hook-form`       | 7.x                         |
+
+Setting up KoliBri itself (registering a theme, loading the components) is described under [Frameworks](./5-frameworks.mdx).
+
+## Available controllers
+
+| Component          | Controller                   | Bound property |
+| ------------------ | ---------------------------- | -------------- |
+| `KolCombobox`      | `KolComboboxController`      | `_value`       |
+| `KolInputCheckbox` | `KolInputCheckboxController` | `_checked`     |
+| `KolInputColor`    | `KolInputColorController`    | `_value`       |
+| `KolInputDate`     | `KolInputDateController`     | `_value`       |
+| `KolInputEmail`    | `KolInputEmailController`    | `_value`       |
+| `KolInputFile`     | `KolInputFileController`     | –              |
+| `KolInputNumber`   | `KolInputNumberController`   | `_value`       |
+| `KolInputPassword` | `KolInputPasswordController` | `_value`       |
+| `KolInputRadio`    | `KolInputRadioController`    | `_value`       |
+| `KolInputRange`    | `KolInputRangeController`    | `_value`       |
+| `KolInputText`     | `KolInputTextController`     | `_value`       |
+| `KolSelect`        | `KolSelectController`        | `_value`       |
+| `KolSingleSelect`  | `KolSingleSelectController`  | `_value`       |
+| `KolTextarea`      | `KolTextareaController`      | `_value`       |
+
+The adapter also exports the API types of the components (`InputTextAPI`, `SelectAPI`, `InputCheckboxAPI` …).
+
+## Usage
+
+A controller accepts the properties of the React Hook Form `Controller` and all properties of the respective KoliBri component:
+
+| Property            | Meaning                                                                            |
+| ------------------- | ---------------------------------------------------------------------------------- |
+| `name`              | Name of the field in the form, also passed to the component as `_name`             |
+| `control`           | The `control` object from `useForm()`                                              |
+| `rules`             | React Hook Form validation rules (`required`, `min`, `pattern`, `validate` …)      |
+| `defaultValue`      | Initial value of the field if it is not part of the `defaultValues` of `useForm()` |
+| `shouldUnregister`  | Removes the value from the form when the field unmounts                            |
+| `_label`, `_hint` … | All other properties are passed to the KoliBri component unchanged                 |
+
+The following example shows a form with two fields. To submit, `handleSubmit` is called in the `onSubmit` event of `KolForm`:
+
+```tsx
+import { KolInputCheckboxController, KolInputTextController } from '@public-ui/react-hook-form-adapter';
+import { KolButton, KolForm } from '@public-ui/react-v19';
+import type { BaseSyntheticEvent } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+
+interface FormData {
+	firstName: string;
+	termsAccepted: boolean | null;
+}
+
+export const MyForm = () => {
+	const { control, handleSubmit } = useForm<FormData>({
+		defaultValues: { firstName: '', termsAccepted: false },
+		mode: 'onTouched',
+	});
+
+	const onSubmit: SubmitHandler<FormData> = (data) => {
+		console.log(data);
+	};
+
+	return (
+		<KolForm
+			_on={{
+				onSubmit: (event) => {
+					void handleSubmit(onSubmit)(event as unknown as BaseSyntheticEvent);
+				},
+			}}
+		>
+			<KolInputTextController
+				name="firstName"
+				control={control}
+				rules={{ required: 'Please enter your first name.' }}
+				_label="First name"
+				_required
+			/>
+			<KolInputCheckboxController
+				name="termsAccepted"
+				control={control}
+				rules={{ required: 'Please accept the terms of use.' }}
+				_label="I accept the terms of use"
+				_required
+			/>
+			<KolButton _label="Submit" _type="submit" />
+		</KolForm>
+	);
+};
+```
+
+A complete example using all controllers can be found in the <KolLink _label="React sample in the KoliBri repository" _href="https://github.com/public-ui/kolibri/tree/4.4.0/packages/samples/react/src/scenarios/react-hook-form" _target="_blank" />.
+
+## What the adapter takes care of
+
+The controller sets the following properties of the KoliBri component itself. If they are also set manually, the adapter overrides them.
+
+| Property                | Value                                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------------- |
+| `_value` or `_checked`  | Current value of the field (see [Available controllers](#available-controllers))       |
+| `_name`                 | Value of `name`                                                                        |
+| `_msg`                  | On a validation error `{ _type: 'error', _description: <error message> }`, otherwise `undefined` |
+| `_touched`              | `true` as soon as React Hook Form marks the field as touched (`fieldState.isTouched`)  |
+| `_disabled`             | Disabled state from React Hook Form (`field.disabled`)                                 |
+
+The adapter also connects the component's events with React Hook Form:
+
+- `onInput` and `onChange` write the value into the form. The form value is therefore up to date while the user is typing.
+- `onBlur` marks the field as touched.
+- Your own handlers in `_on` are kept and called afterwards.
+- The element reference is passed to React Hook Form. With `shouldFocusError`, React Hook Form focuses the first invalid field on submit. Your own `ref` is served as well.
+
+## Notes
+
+### Error messages appear only after the field was touched
+
+KoliBri only shows `_msg` when the field is considered touched (`_touched`). The adapter takes this state from React Hook Form. However, `handleSubmit` does not mark fields as touched. If a form is submitted without the user visiting the fields, validation fails but the error messages stay invisible.
+
+The React sample solves this by marking all fields as touched and validating again in the error case:
+
+```tsx
+const { control, handleSubmit, setValue, getValues, trigger } = useForm<FormData>({
+	defaultValues,
+	mode: 'onTouched',
+	shouldFocusError: true,
+});
+
+const onError = () => {
+	(Object.keys(defaultValues) as Array<keyof FormData>).forEach((name) => {
+		setValue(name, getValues(name), { shouldTouch: true, shouldValidate: true });
+	});
+	void trigger(undefined, { shouldFocus: true });
+};
+
+// <KolForm _on={{ onSubmit: (event) => void handleSubmit(onSubmit, onError)(event as unknown as BaseSyntheticEvent) }}>
+```
+
+### Always provide error messages as text
+
+The adapter shows the `message` of the React Hook Form error. For rules without their own message (e.g. `required: true` or `min: 0`) it is empty, and the component shows `[object Object]` instead. Therefore provide a message for every rule:
+
+```tsx
+rules={{
+	required: 'Please enter your age.',
+	min: { value: 0, message: 'The age must not be negative.' },
+}}
+```
+
+### Custom messages via `_msg` are not possible
+
+Since the adapter always sets `_msg`, a manually set `_msg` is overridden. Use `_hint` for permanent hints on a field.
+
+### Disabling fields
+
+Disable a field with `_disabled`. The adapter passes the value on to React Hook Form. React Hook Form <KolLink _label="does not validate disabled fields and omits their value from the submitted data" _href="https://react-hook-form.com/docs/usecontroller/controller" _target="_blank" />. The controller's `disabled` property is not evaluated. Use `useForm({ disabled: true })` to disable all fields of a form at once.
+
+Example with two fields of which only one can be filled:
+
+```tsx
+const { control, watch } = useForm({ defaultValues: { first: '', second: '' } });
+
+<KolInputTextController name="first" control={control} _label="First field" _disabled={!!watch('second')} />
+<KolInputTextController name="second" control={control} _label="Second field" _disabled={!!watch('first')} />
+```
+
+### Checkbox
+
+- The controller binds the field value to `_checked`. A checked checkbox returns its `_value` (default: `true`), an unchecked checkbox returns `null`, not `false`. Take this into account in the form type (`boolean | null`).
+- `_checked` only accepts boolean values. Therefore do not change `_value` on `KolInputCheckboxController`, otherwise the field value cannot be written back to the component.
+
+### File selection
+
+`KolInputFileController` reads the selected files into the form as a `FileList` but does not write a value back to the component. `defaultValues`, `setValue` and `reset` therefore do not change what the component displays.
