@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[4196],{54196:(l,s,u)=>{u.r(s),u.d(s,{default:()=>e});u(92990);var _=u(87373),c=u(94686);const e=()=>(0,c.jsx)(_.lX,{_label:"Label"})}}]);
