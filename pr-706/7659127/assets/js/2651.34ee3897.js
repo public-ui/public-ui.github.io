@@ -1,0 +1,1 @@
+(globalThis.webpackChunk_public_ui_docs_v3=globalThis.webpackChunk_public_ui_docs_v3||[]).push([[2651],{57740(c,s,u){"use strict";u.d(s,{A:()=>i});var _=u(36430);const i=_},99056(){}}]);
