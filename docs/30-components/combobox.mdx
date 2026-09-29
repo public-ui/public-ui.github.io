@@ -118,7 +118,7 @@ Standard-Combobox mit Vorschlagsliste:
 
 ### FAQ
 
-**Wann sollte ich Combobox, SingleSelect oder Select verwenden?**  
+**Wann sollte ich Combobox, SingleSelect oder Select verwenden?**
 Die Combobox ist die einzige der drei Komponenten, die freie Eingaben zulässt. Muss genau ein vordefinierter Wert gewählt werden, eignet sich bei umfangreichen Listen ein SingleSelect (mit Filterung) und bei überschaubaren Listen ein Select.
 
 | Kriterium                  | Combobox                          | SingleSelect                      | Select             |
@@ -127,19 +127,19 @@ Die Combobox ist die einzige der drei Komponenten, die freie Eingaben zulässt. 
 | Filtern per Texteingabe    | ja                                | ja                                | nein               |
 | Technische Grundlage       | natives `input` mit ARIA-Listbox  | natives `input` mit ARIA-Listbox  | natives `select`   |
 
-**Warum wird kein natives `datalist` verwendet?**  
+**Warum wird kein natives `datalist` verwendet?**
 Die KoliBri-Combobox verwendet eine eigene ARIA-basierte Listbox, um ein konsistentes Verhalten hinsichtlich Tastatursteuerung, Styling und Unterstützung durch assistive Technologien über alle unterstützten Browser hinweg sicherzustellen.
 
-**Worin weicht die Tastatursteuerung vom WAI-ARIA APG Pattern ab?**  
+**Worin weicht die Tastatursteuerung vom WAI-ARIA APG Pattern ab?**
 Während der Navigation innerhalb der Vorschlagsliste wird der Tastaturfokus auf den aktiven Vorschlag verschoben, statt im Eingabefeld zu verbleiben. Die daraus resultierenden Unterschiede zur Referenzimplementierung sind im Abschnitt [Tastatursteuerung](#tastatursteuerung) beschrieben.
 
-**Warum ist der Öffnen-/Schließen-Pfeil nicht per Tab erreichbar?**  
+**Warum ist der Öffnen-/Schließen-Pfeil nicht per Tab erreichbar?**
 Der Öffnen-/Schließen-Pfeil dient ausschließlich als zusätzliche Unterstützung für Maus- und Touch-Nutzende. Die Vorschlagsliste kann vollständig über die Tastatur geöffnet und bedient werden, sodass kein zusätzlicher Tabstopp erforderlich ist.
 
-**Warum kann ich während der Navigation keinen weiteren Suchtext eingeben?**  
+**Warum kann ich während der Navigation keinen weiteren Suchtext eingeben?**
 Während der Navigation innerhalb der Vorschlagsliste befindet sich der Tastaturfokus auf dem aktiven Vorschlag und nicht im Eingabefeld. Zeicheneingaben dienen in diesem Zustand der Navigation innerhalb der Vorschlagsliste und werden nicht in das Eingabefeld übernommen. Mit `Esc` gelangen Sie zurück in das Eingabefeld.
 
-**Warum schließt sich die Vorschlagsliste bei einem eindeutigen Treffer automatisch?**  
+**Warum schließt sich die Vorschlagsliste bei einem eindeutigen Treffer automatisch?**
 Entspricht die Eingabe exakt dem einzigen passenden Vorschlag, gibt es keine weitere Auswahl mehr. Die Vorschlagsliste wird daher geschlossen, um zu signalisieren, dass bereits ein eindeutiger Wert eingegeben wurde.
 
 ## Playground
@@ -188,11 +188,12 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `inpu
 
 <ComboboxPreview
 	context="feature"
-	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg', '_infoPopover']}
 	initialProps={{
 		_label: 'Programmiersprache',
 		_hint: 'Wählen Sie aus der Liste oder geben Sie eine Alternative ein.',
 		_msg: { _description: 'Die Programmiersprache ist erforderlich.' },
+		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', icons: 'kolicon-kolibri'},
 		_touched: true,
 		_hideMsg: false,
 	}}

@@ -90,19 +90,19 @@ Die Bedienung innerhalb des Dateiauswahldialogs wird durch das Betriebssystem be
 
 ### FAQ
 
-**Kann ich die Auswahl auf bestimmte Dateitypen beschränken?**  
+**Kann ich die Auswahl auf bestimmte Dateitypen beschränken?**
 Ja. Über `_accept` legen Sie fest, welche Dateitypen im Dateiauswahldialog angeboten werden. Diese Einschränkung dient der Benutzerführung und ersetzt keine serverseitige Validierung.
 
-**Wie kann ich mehrere Dateien auswählen?**  
+**Wie kann ich mehrere Dateien auswählen?**
 Aktivieren Sie `_multiple`, damit mehrere Dateien in einem Arbeitsgang ausgewählt werden können.
 
-**Kann ich die maximale Dateigröße begrenzen?**  
+**Kann ich die maximale Dateigröße begrenzen?**
 Nein. Die maximale Dateigröße kann nicht über die Komponente begrenzt werden und muss durch die Anwendung bzw. serverseitig geprüft werden.
 
-**Unterstützt die Komponente Drag & Drop?**  
+**Unterstützt die Komponente Drag & Drop?**
 Ja. Dateien können zusätzlich zum nativen Dateiauswahldialog per Drag & Drop auf dem Feld abgelegt werden. Diese Funktion ergänzt die Dateiauswahl, ersetzt sie jedoch nicht. Abgelegte Dateien werden nicht gegen `_accept` und `_multiple` geprüft.
 
-**Wie setze ich die Auswahl zurück?**  
+**Wie setze ich die Auswahl zurück?**
 Rufen Sie die Methode `reset()` der Komponente auf. Sie entfernt die ausgewählten Dateien und stellt den Hinweistext im Feld wieder her.
 
 ## Playground
@@ -204,11 +204,12 @@ Mit `_multiple` ermöglichen Sie die Auswahl mehrerer Dateien in einem Arbeitsga
 
 <InputFilePreview
 	context="feature"
-	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg', '_infoPopover']}
 	initialProps={{
 		_label: 'Dokument hochladen',
 		_hint: 'Akzeptierte Formate: PDF, DOC, DOCX. Maximale Größe: 10 MB.',
 		_msg: { _description: 'Bitte laden Sie eine PDF-Datei mit maximal 10 MB hoch.' },
+		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', icons: 'kolicon-kolibri'},
 		_touched: true,
 		_hideMsg: false,
 	}}

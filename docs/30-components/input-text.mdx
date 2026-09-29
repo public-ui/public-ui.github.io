@@ -115,19 +115,19 @@ Standard-Eingabefeld für Texte ohne optional gesetzte Felder:
 
 ### FAQ
 
-**Wann sollte ich `_hideLabel` verwenden?**  
+**Wann sollte ich `_hideLabel` verwenden?**
 Verwenden Sie `_hideLabel` nur, wenn der Zweck des Eingabefelds durch den direkten visuellen Kontext eindeutig ist. Die Beschriftung bleibt für assistive Technologien als zugänglicher Name erhalten und wird sehenden Nutzenden als Tooltip angezeigt.
 
-**Wie kann ich Eingaben validieren?**  
+**Wie kann ich Eingaben validieren?**
 Nutzen Sie die nativen Attribute `_required`, `_pattern` und `_maxLength`, um Anforderungen an die Eingabe festzulegen. Die Komponente zeigt native Validierungsergebnisse jedoch nicht selbst an: Werten Sie die Validierung in Ihrer Anwendung aus und stellen Sie Fehlermeldungen über `_msg` zusammen mit `_touched` bereit.
 
-**Kann ich Vorschläge anzeigen?**  
+**Kann ich Vorschläge anzeigen?**
 Ja, über `_suggestions` können Vorschlagswerte bereitgestellt werden. Da die Unterstützung von `datalist` je nach Browser und assistiver Technologie unterschiedlich ausfällt, sollten Vorschläge nur als ergänzende Eingabehilfe verwendet werden.
 
-**Wie unterscheiden sich `_maxLength` und `_maxLengthBehavior`?**  
+**Wie unterscheiden sich `_maxLength` und `_maxLengthBehavior`?**
 Mit `_maxLength` wird die maximale Anzahl an Zeichen festgelegt. `_maxLengthBehavior` steuert, ob die Eingabe nativ begrenzt wird (`'hard'`, Standard – auch ohne Zeichenzähler) oder weitere Eingaben zugelassen werden und der Zähler die Überschreitung anzeigt (`'soft'`).
 
-**Kann ich ein Suchfeld per Tastatur leeren?**  
+**Kann ich ein Suchfeld per Tastatur leeren?**
 Ja. Beim Eingabetyp `search` stellt KoliBri eine eigene Schaltfläche „Suche löschen“ bereit, sobald das Feld einen Wert enthält. Sie ist per Tastatur erreichbar und setzt den Fokus nach dem Leeren zurück in das Eingabefeld. Ob zusätzlich `Esc` das Feld leert, hängt vom Browser ab.
 
 ## Playground
@@ -174,11 +174,12 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `inpu
 
 <InputTextPreview
 	context="feature"
-	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg', '_infoPopover']}
 	initialProps={{
 		_label: 'Benutzername',
 		_hint: 'Mindestens 3 Zeichen',
 		_msg: { _description: 'Bitte geben Sie einen Benutzernamen an.' },
+		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', icons: 'kolicon-kolibri'},
 		_touched: true,
 		_hideMsg: false,
 	}}

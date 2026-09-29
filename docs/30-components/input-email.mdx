@@ -103,16 +103,16 @@ Standard-Eingabefeld für E-Mail-Adressen ohne optional gesetzte Felder:
 
 ### FAQ
 
-**Wie kann ich Validierungsfehler barrierefrei anzeigen?**  
+**Wie kann ich Validierungsfehler barrierefrei anzeigen?**
 Die native Formatprüfung des HTML5-Eingabetyps `email` ersetzt keine barrierefreie Fehlermeldung. Werten Sie das Ergebnis der Validierung in Ihrer Anwendung aus und stellen Sie Validierungsfehler über `_msg` zusammen mit `_touched` bereit. Die Meldung wird dann automatisch mit dem Feld verknüpft und das Feld als ungültig gekennzeichnet.
 
-**Wie werden mehrere E-Mail-Adressen bei `_multiple` verarbeitet?**  
+**Wie werden mehrere E-Mail-Adressen bei `_multiple` verarbeitet?**
 Der Wert des Eingabefelds enthält weiterhin den vollständigen, durch Kommas getrennten String. Eine automatische Aufteilung in einzelne E-Mail-Adressen erfolgt nicht durch die Komponente.
 
-**Werden internationalisierte (Unicode-)E-Mail-Adressen unterstützt?**  
+**Werden internationalisierte (Unicode-)E-Mail-Adressen unterstützt?**
 Die Komponente nutzt die native Browservalidierung des HTML5-Eingabetyps `email`. Ob internationalisierte E-Mail-Adressen unterstützt werden, hängt daher vom jeweiligen Browser ab.
 
-**Kann ich die native E-Mail-Validierung erweitern?**  
+**Kann ich die native E-Mail-Validierung erweitern?**
 Ja. Nutzen Sie `_pattern`, wenn zusätzlich zur nativen E-Mail-Validierung weitere fachliche Anforderungen geprüft werden sollen, beispielsweise um E-Mail-Adressen auf bestimmte Domains einzuschränken. Bei gesetztem `_multiple` prüft der Browser das Muster für jede einzelne Adresse.
 
 ## Playground
@@ -161,11 +161,12 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `inpu
 
 <InputEmailPreview
 	context="feature"
-	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg', '_infoPopover']}
 	initialProps={{
 		_label: 'E-Mail-Adresse',
 		_hint: 'Wir verwenden Ihre E-Mail-Adresse nur für Benachrichtigungen.',
 		_msg: { _description: 'Bitte geben Sie eine gültige E-Mail-Adresse ein, z. B. name@beispiel.de.' },
+		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', icons: 'kolicon-kolibri'},
 		_touched: true,
 		_hideMsg: false,
 	}}

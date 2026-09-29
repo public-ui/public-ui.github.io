@@ -105,13 +105,13 @@ Standard-Textarea ohne optional gesetzte Felder:
 
 ### FAQ
 
-**Wird die Zeichengrenze bei `_maxLengthBehavior="soft"` erzwungen?**  
+**Wird die Zeichengrenze bei `_maxLengthBehavior="soft"` erzwungen?**
 Nein. Bei `soft` können weiterhin Zeichen eingegeben werden; der Zähler zeigt dann an, um wie viele Zeichen die Grenze überschritten ist. Die Validierung muss auf Anwendungsebene erfolgen.
 
-**Kann die Textarea horizontal vergrößert werden?**  
+**Kann die Textarea horizontal vergrößert werden?**
 Nein. Horizontales Vergrößern wird seit Version 3 nicht mehr angeboten. `_resize` unterstützt nur `vertical` und `none`.
 
-**Kann ich einen Zeichenzähler ohne Zeichengrenze anzeigen?**  
+**Kann ich einen Zeichenzähler ohne Zeichengrenze anzeigen?**
 Ja. Mit `_hasCounter` ohne `_maxLength` wird die Anzahl der eingegebenen Zeichen angezeigt.
 
 ## Playground
@@ -167,11 +167,12 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `text
 
 <TextAreaPreview
 	context="feature"
-	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg', '_infoPopover']}
 	initialProps={{
 		_label: 'Begründung',
 		_hint: 'Beschreiben Sie kurz, warum Sie den Antrag stellen.',
 		_msg: { _description: 'Bitte geben Sie eine Begründung an.' },
+		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', icons: 'kolicon-kolibri'},
 		_touched: true,
 		_hideMsg: false,
 	}}
