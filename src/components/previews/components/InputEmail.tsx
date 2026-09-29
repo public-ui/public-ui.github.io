@@ -1,6 +1,14 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { AlignProperty, BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty, SuggestionsProperty } from '../properties';
+import {
+	AlignProperty,
+	BooleanProperty,
+	IconsProperty,
+	InfoPopoverProperty,
+	MsgProperty,
+	SmartButtonProperty,
+	SuggestionsProperty,
+} from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputEmail, KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -27,6 +35,7 @@ const InputEmailPreview = (props: PreviewDefaults<JSX.KolInputEmail>) => {
 				_name: <KolInputText _label="Name" />,
 				_hint: <KolInputText _label="Hint" />,
 				_msg: <MsgProperty label="Message" />,
+				_infoPopover: <InfoPopoverProperty label="Info Popover"></InfoPopoverProperty>,
 				_maxLength: <KolInputNumber _label="Max Length" _min={0} />,
 				_maxLengthBehavior: (
 					<KolSelect

@@ -6,6 +6,7 @@ import { KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults } from '../utils';
+import InfoPopoverProperty from '../properties/InfoPopoverProperty';
 
 const InputTextPreview = (props: PreviewDefaults<JSX.KolInputText>) => {
 	const defaultProps = React.useMemo<JSX.KolInputText>(
@@ -38,6 +39,7 @@ const InputTextPreview = (props: PreviewDefaults<JSX.KolInputText>) => {
 				_name: <KolInputText _label="Name" />,
 				_hint: <KolInputText _label="Hint" />,
 				_msg: <MsgProperty label="Message" />,
+				_infoPopover: <InfoPopoverProperty label="Info Popover"></InfoPopoverProperty>,
 				_hideMsg: <BooleanProperty label="Hide Message" />,
 				_autoComplete: <KolInputText _label="Auto Complete" />,
 				_spellCheck: <BooleanProperty label="Spell Check" />,

@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, MsgProperty } from '../properties';
+import { BooleanProperty, InfoPopoverProperty, MsgProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -42,6 +42,7 @@ const InputCheckboxPreview = (props: PreviewDefaults<JSX.KolInputCheckbox>) => {
 				_shortKey: <KolInputText _label="Short Key" _maxLength={1} />,
 				_name: <KolInputText _label="Name" />,
 				_msg: <MsgProperty label="Message" />,
+				_infoPopover: <InfoPopoverProperty label="Info Popover"></InfoPopoverProperty>,
 				_hideMsg: <BooleanProperty label="Hide Message" />,
 				_labelAlign: (
 					<KolSelect

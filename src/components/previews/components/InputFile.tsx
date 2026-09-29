@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
+import { BooleanProperty, IconsProperty, InfoPopoverProperty, MsgProperty, SmartButtonProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputFile, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -39,6 +39,7 @@ const InputFilePreview = (props: PreviewDefaults<JSX.KolInputFile>) => {
 				_name: <KolInputText _label="Name" />,
 				_hint: <KolInputText _label="Hint" />,
 				_msg: <MsgProperty label="Message" />,
+				_infoPopover: <InfoPopoverProperty label="Info Popover"></InfoPopoverProperty>,
 				_hideMsg: <BooleanProperty label="Hide Message" />,
 				_multiple: <BooleanProperty label="Multiple" />,
 				_disabled: <BooleanProperty label="Disabled" />,
