@@ -1,6 +1,6 @@
 # Kapitelstruktur einer Komponenten-Dokumentation (`docs/30-components/`)
 
-Verbindliches Kapitelschema für alle Seiten unter `docs/30-components/`. Blaupause: [docs/30-components/input-number.mdx](docs/30-components/input-number.mdx). Quelle: public-ui/interne-todos#124.
+Verbindliches Kapitelschema für alle Seiten unter `docs/30-components/`. Blaupause: [input-number.mdx](input-number.mdx). Quelle: public-ui/interne-todos#124.
 
 Die Reihenfolge ist verpflichtend. Ein Kapitel entfällt nur, wenn die Komponente nachweislich keinen Inhalt dafür hat (z. B. "Tastatursteuerung" bei nicht-interaktiven Komponenten wie Card, Heading, Badge).
 
