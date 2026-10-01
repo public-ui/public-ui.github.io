@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, SuggestionsProperty } from '../properties';
+import { BooleanProperty, IconsProperty, InfoPopoverProperty, MsgProperty, SuggestionsProperty } from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolCombobox, KolInputText } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -30,6 +30,7 @@ const ComboboxPreview = (props: PreviewDefaults<JSX.KolCombobox>) => {
 				_name: <KolInputText _label="Name" />,
 				_hint: <KolInputText _label="Hint" />,
 				_msg: <MsgProperty label="Message" />,
+				_infoPopover: <InfoPopoverProperty label="Info Popover"></InfoPopoverProperty>,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_required: <BooleanProperty label="Required" />,
 				_hasClearButton: <BooleanProperty label="Has Clear Button" />,

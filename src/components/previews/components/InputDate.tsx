@@ -1,6 +1,13 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty, SuggestionsProperty } from '../properties';
+import {
+	BooleanProperty,
+	IconsProperty,
+	InfoPopoverProperty,
+	MsgProperty,
+	SmartButtonProperty,
+	SuggestionsProperty,
+} from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputDate, KolInputNumber, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -38,6 +45,7 @@ const InputDatePreview = (props: PreviewDefaults<JSX.KolInputDate>) => {
 				_name: <KolInputText _label="Name" />,
 				_icons: <IconsProperty label="Icons" directions={['right', 'left']} />,
 				_msg: <MsgProperty label="Message" />,
+				_infoPopover: <InfoPopoverProperty label="Info Popover"></InfoPopoverProperty>,
 				_hideMsg: <BooleanProperty label="Hide Message" />,
 				_suggestions: <SuggestionsProperty label="Suggestions" />,
 				_disabled: <BooleanProperty label="Disabled" />,

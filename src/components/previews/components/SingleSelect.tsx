@@ -1,6 +1,6 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { BooleanProperty, IconsProperty, MsgProperty, SelectOptionsProperty } from '../properties';
+import { BooleanProperty, IconsProperty, InfoPopoverProperty, MsgProperty, SelectOptionsProperty } from '../properties';
 import { getPreviewDefaults, SelectOptionsDefault } from '../utils';
 import type { JSX } from '@public-ui/components';
 import { KolInputRange, KolInputText, KolSingleSelect } from '@public-ui/react-v19';
@@ -30,6 +30,7 @@ const SingleSelectPreview = (props: PreviewDefaults<JSX.KolSingleSelect>) => {
 				_name: <KolInputText _label="Name" />,
 				_hint: <KolInputText _label="Hint" />,
 				_msg: <MsgProperty label="Message" />,
+				_infoPopover: <InfoPopoverProperty label="Info Popover"></InfoPopoverProperty>,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_required: <BooleanProperty label="Required" />,
 				_hasClearButton: <BooleanProperty label="Has Clear Button" />,

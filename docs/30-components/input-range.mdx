@@ -100,24 +100,24 @@ Die vom nativen Schieberegler bekannten Tasten (`Pfeil-Tasten (links/rechts)`, `
 
 ### FAQ
 
-**Warum kann ich den Schieberegler nicht per Tab-Taste fokussieren?**  
+**Warum kann ich den Schieberegler nicht per Tab-Taste fokussieren?**
 Der Schieberegler ist nicht Teil der Tab-Reihenfolge und wird mit Maus oder Touch bedient. Tastatur- und Screenreader-Nutzende bedienen die Komponente über das Zahlenfeld, das den gleichen Wert anzeigt und über die Pfeiltasten verändert werden kann.
 
-**Kann ich einen Bereich mit zwei Griffen (von–bis) abbilden?**  
+**Kann ich einen Bereich mit zwei Griffen (von–bis) abbilden?**
 Nein. InputRange verwaltet genau einen Wert. Für einen Wertebereich verwenden Sie zwei separate Felder, beispielsweise zwei InputRange- oder InputNumber-Komponenten für Minimal- und Maximalwert.
 
-**Welche Standardwerte gelten für `_min` und `_max`?**  
+**Welche Standardwerte gelten für `_min` und `_max`?**
 Ohne Angabe gilt `_min` = `0` und `_max` = `100`.
 
 ## Playground
 
 Testen Sie die verschiedenen Eigenschaften der InputRange-Komponente:
 
-<InputRangePreview 
+<InputRangePreview
 	context="playground"
-	initialProps={{ 
+	initialProps={{
 		_value: 50,
-	}} 
+	}}
 />
 
 ## Funktionalitäten
@@ -126,13 +126,13 @@ Testen Sie die verschiedenen Eigenschaften der InputRange-Komponente:
 
 <BasicFeature />
 
-<InputRangePreview 
+<InputRangePreview
 	context="feature"
 	visibleProperties={['_label']}
-	initialProps={{ 
+	initialProps={{
 		_label: 'Lautstärke',
 		_value: 50,
-	}} 
+	}}
 />
 
 ### Formularattribute
@@ -158,11 +158,12 @@ Die Property wird auf beide nativen Elemente (Schieberegler und Zahlenfeld) übe
 
 <InputRangePreview
 	context="feature"
-	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg', '_infoPopover']}
 	initialProps={{
 		_label: 'Lautstärke (%)',
 		_hint: 'Wählen Sie einen Wert zwischen 10 und 90 %.',
 		_msg: { _description: 'Der Wert muss zwischen 10 und 90 liegen.' },
+		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', icons: 'kolicon-kolibri'},
 		_touched: true,
 		_hideMsg: false,
 		_value: 5,

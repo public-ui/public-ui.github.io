@@ -127,22 +127,22 @@ Die Select-Komponente sollte **nicht** verwendet werden, wenn:
 
 ### FAQ
 
-**Wann eignet sich eine Combobox besser?**  
+**Wann eignet sich eine Combobox besser?**
 Wenn eine große Anzahl an Optionen zur Verfügung steht oder Nutzende gezielt nach Einträgen suchen sollen.
 
-**Wann eignet sich eine Radio Group besser?**  
+**Wann eignet sich eine Radio Group besser?**
 Wenn genau eine Option aus einer kleinen Anzahl (ca. 1–5 Optionen) ausgewählt werden soll und alle Optionen gleichzeitig sichtbar sein können.
 
-**Unterstützt die Komponente Optionsgruppen?**  
+**Unterstützt die Komponente Optionsgruppen?**
 Ja. `_options` unterstützt neben einzelnen Optionen auch Optionsgruppen (`{ label, options }`), die als native `optgroup`-Elemente ausgegeben werden.
 
-**Warum wirkt sich `_rows` bei meiner Auswahlliste nicht aus?**  
+**Warum wirkt sich `_rows` bei meiner Auswahlliste nicht aus?**
 `_rows` wird nur in Verbindung mit `_multiple` ausgewertet. Bei der Einfachauswahl bleibt die Komponente ein aufklappbares Auswahlfeld.
 
-**Gibt es einen Platzhalter für die Select-Komponente?**  
+**Gibt es einen Platzhalter für die Select-Komponente?**
 Nein. Die Komponente unterstützt kein `_placeholder`. Nutzen Sie bei Bedarf eine klar beschriftete Leer-Option als erste Option.
 
-**Warum verwendet die Komponente das native HTML-Element `<select>`?**  
+**Warum verwendet die Komponente das native HTML-Element `<select>`?**
 Das native HTML-Element `<select>` stellt die erforderliche Semantik sowie die Unterstützung für Tastaturbedienung, Fokusverwaltung und Screenreader bereits bereit. Die KoliBri-Komponente ergänzt daher keine eigenen ARIA-Rollen und nutzt bewusst das standardisierte Verhalten des Browsers.
 
 ## Playground
@@ -188,11 +188,12 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `sele
 
 <SelectPreview
 	context="feature"
-	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg', '_infoPopover']}
 	initialProps={{
 		_label: 'Bundesland',
 		_hint: 'Wählen Sie das Bundesland Ihres Hauptwohnsitzes.',
 		_msg: { _description: 'Bitte wählen Sie ein Bundesland aus.' },
+		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', icons: 'kolicon-kolibri'},
 		_touched: true,
 		_hideMsg: false,
 	}}

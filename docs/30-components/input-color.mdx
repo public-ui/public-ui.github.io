@@ -92,30 +92,30 @@ Die Bedienung innerhalb des geöffneten Farbwählers wird vollständig durch den
 
 ### FAQ
 
-**Welche Farbwerte unterstützt die Komponente?**  
+**Welche Farbwerte unterstützt die Komponente?**
 Der Wert wird im Format `#rrggbb` übergeben und zurückgeliefert. Der native Farbwähler des Browsers kann – abhängig von Browser und Betriebssystem – weitere Eingabemöglichkeiten wie RGB oder HSL anbieten; der Wert der Komponente bleibt davon unberührt.
 
-**Wie kann ich eine Farbe vorbelegen?**  
+**Wie kann ich eine Farbe vorbelegen?**
 Übergeben Sie über `_value` einen hexadezimalen Farbwert im Format `#rrggbb` als Ausgangswert.
 
-**Gibt es ein Textfeld für die direkte Eingabe von HEX-Werten?**  
+**Gibt es ein Textfeld für die direkte Eingabe von HEX-Werten?**
 Nein. Bis Version 4.3 bestand die Komponente zusätzlich aus einem Textfeld für HEX-Werte. Seit Version 4.4 wird ausschließlich das native Farbfeld verwendet.
 
-**Kann ich die Farbauswahl als Pflichtfeld kennzeichnen?**  
+**Kann ich die Farbauswahl als Pflichtfeld kennzeichnen?**
 Nein, die Komponente unterstützt kein `_required`. Ob eine Farbauswahl verpflichtend ist, muss durch die Anwendung validiert und über `_msg` kommuniziert werden.
 
-**Warum sieht der Farbwähler je nach Browser unterschiedlich aus?**  
+**Warum sieht der Farbwähler je nach Browser unterschiedlich aus?**
 Die Komponente verwendet den nativen Farbwähler des Browsers. Dessen Darstellung, Bedienung und Funktionsumfang werden durch Browser und Betriebssystem bestimmt.
 
 ## Playground
 
 Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
 
-<InputColorPreview 
+<InputColorPreview
 	context="playground"
-	initialProps={{ 
+	initialProps={{
 		_value: '#d4fcf4',
-	}} 
+	}}
 />
 
 ## Funktionalitäten
@@ -124,12 +124,12 @@ Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
 
 <BasicFeature />
 
-<InputColorPreview 
+<InputColorPreview
 	context="feature"
 	visibleProperties={['_label']}
-	initialProps={{ 
+	initialProps={{
 		_label: 'Wählen Sie eine Farbe',
-	}} 
+	}}
 />
 
 ### Formularattribute
@@ -169,11 +169,12 @@ Mit `_value` legen Sie die vorausgewählte Farbe im Format `#rrggbb` fest.
 
 <InputColorPreview
 	context="feature"
-	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg', '_infoPopover']}
 	initialProps={{
 		_label: 'Textfarbe',
 		_hint: 'Achten Sie auf ausreichenden Kontrast zur Hintergrundfarbe.',
 		_msg: { _description: 'Die gewählte Farbe erreicht keinen ausreichenden Kontrast.' },
+		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', icons: 'kolicon-kolibri'},
 		_touched: true,
 		_hideMsg: false,
 	}}

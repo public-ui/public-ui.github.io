@@ -1,6 +1,13 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import { AlignProperty, BooleanProperty, IconsProperty, MsgProperty, SmartButtonProperty } from '../properties';
+import {
+	AlignProperty,
+	BooleanProperty,
+	IconsProperty,
+	InfoPopoverProperty,
+	MsgProperty,
+	SmartButtonProperty,
+} from '../properties';
 import type { JSX } from '@public-ui/components';
 import { KolInputNumber, KolInputPassword, KolInputText, KolSelect } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
@@ -28,6 +35,7 @@ const InputPasswordPreview = (props: PreviewDefaults<JSX.KolInputPassword>) => {
 				_hideMsg: <BooleanProperty label="Hide Message" />,
 				_hint: <KolInputText _label="Hint" />,
 				_msg: <MsgProperty label="Message" />,
+				_infoPopover: <InfoPopoverProperty label="Info Popover"></InfoPopoverProperty>,
 				_maxLength: <KolInputNumber _label="Max Length" _min={0} />,
 				_maxLengthBehavior: (
 					<KolSelect

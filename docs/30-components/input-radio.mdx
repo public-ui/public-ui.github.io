@@ -109,13 +109,13 @@ Die Auswahl wird dabei nicht verändert.
 
 ### FAQ
 
-**Kann ich die Beschriftung der Gruppe ausblenden?**  
+**Kann ich die Beschriftung der Gruppe ausblenden?**
 Nein. Die Beschriftung der Gruppe (`legend`) bleibt immer sichtbar. `_hideLabel` blendet ausschließlich die Beschriftungen der einzelnen Optionen visuell aus.
 
-**Ändert sich die Tastaturbedienung bei horizontaler Ausrichtung?**  
+**Ändert sich die Tastaturbedienung bei horizontaler Ausrichtung?**
 Nein. `_orientation` verändert nur die Anordnung. Die Optionen können in beiden Ausrichtungen mit allen Pfeiltasten gewechselt werden.
 
-**Welcher Wert wird bei den Events übermittelt?**  
+**Welcher Wert wird bei den Events übermittelt?**
 Die Events `input` und `change` übermitteln den `value` der ausgewählten Option aus `_options` – nicht das technische `value`-Attribut des nativen Radio-Buttons.
 
 ## Playground
@@ -208,11 +208,12 @@ Mit `_hint` und `_msg` geben Sie Nutzenden zusätzliche Orientierung zur Auswahl
 
 <InputRadioPreview
 	context="feature"
-	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg']}
+	visibleProperties={['_hint', '_msg', '_touched', '_hideMsg', '_infoPopover']}
 	initialProps={{
 		_label: 'Versandart',
 		_hint: 'Die Lieferzeit beginnt ab Zahlungseingang.',
 		_msg: { _description: 'Bitte wählen Sie eine Versandart aus.' },
+		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', icons: 'kolicon-kolibri'},
 		_touched: true,
 		_hideMsg: false,
 		_options: [
