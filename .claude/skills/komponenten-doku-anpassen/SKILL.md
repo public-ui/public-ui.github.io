@@ -9,13 +9,14 @@ Goal: one component page under `docs/30-components/` follows the fixed chapter s
 
 The English translation under `i18n/en/` is out of scope – don't edit it and don't report on it.
 
-The content rules (no implementation details under "Barrierefreiheit", backed rationales, features in "Funktionalitäten", …) are in the repo's `CLAUDE.md`, which is loaded automatically. This skill adds the workflow and the chapter schema. Read [references/kapitelstruktur.md](references/kapitelstruktur.md) before editing – it defines what each chapter must contain.
+The content rules (no implementation details under "Barrierefreiheit", backed rationales, features in "Funktionalitäten", …) are in the repo's `CLAUDE.md`, which is loaded automatically. The chapter schema – which chapters exist, their order and what each must contain – is defined only in `docs/30-components/_STRUCTURE.md`; it is the single source of truth, so read it before editing and don't rely on a remembered chapter order. This skill adds the workflow. [references/kapitel-hinweise.md](references/kapitel-hinweise.md) adds what the schema doesn't cover: migrating pages from the old structure, MDX formats and per-chapter pitfalls.
 
 ## 1. Gather the sources
 
 Read all of these before changing anything; the old page is a source of hints, not of truth.
 
-- the page itself and the blueprint `docs/30-components/input-number.mdx`
+- the page itself and the blueprint `docs/30-components/input-number.mdx` (for non-form components also `docs/30-components/accordion.mdx`)
+- `docs/30-components/_STRUCTURE.md` – the binding chapter schema
 - the preview `src/components/previews/components/<Name>.tsx` (which `propertyComponents` exist)
 - the generated API readme `readmes/<komponente>/readme.md` (run `pnpm run gen:doc` if missing)
 - all snippets in `docs/30-components/_shared/` (to know what can be reused)
@@ -36,12 +37,14 @@ Statements in the docs must match the KoliBri version pinned in `package.json` (
 
 ## 3. Rebuild the page
 
-Follow [references/kapitelstruktur.md](references/kapitelstruktur.md) chapter by chapter. Practical points learned from the form components:
+Follow `docs/30-components/_STRUCTURE.md` chapter by chapter, with [references/kapitel-hinweise.md](references/kapitel-hinweise.md) for formats and pitfalls. Practical points learned from the form components:
 
-- **Keep existing content unless the code contradicts it.** Use cases, best practices, FAQs, links and design decisions from the old page stay – rewording is not the goal, structure and correctness are. Moving a statement to the chapter where it belongs is fine; deleting it is only fine if it is refuted, a pure implementation detail, or an exact duplicate – and every deletion goes into the report.
-- **Barrierefreiheit stays short.** Typically 2–4 bullets. For each bullet ask: is it an implementation detail (→ remove or describe the observable effect), a feature (→ Funktionalitäten), a general recommendation (→ Best Practices) or already a row in "Konkrete Designentscheidungen" (→ remove)?
+- **Migrate pages from the old schema.** Many pages still have `## Verwendung` with `### Tastatursteuerung`, `### Best Practices / Empfehlungen`, `### Anwendungsfälle` and `### FAQ` below it, and the Playground before "Funktionalitäten". Chapters that no longer exist in `docs/30-components/_STRUCTURE.md` are not deleted – their content moves; the mapping table (old chapter → new place) is in the reference.
+- **Keep existing content unless the code contradicts it.** Use cases, best practices, FAQs, links and design decisions from the old page stay – rewording is not the goal, structure and correctness are. Moving a statement to the chapter where it belongs is fine (including turning a recommendation into an FAQ answer); deleting it is only fine if it is refuted, a pure implementation detail, or an exact duplicate – and every deletion goes into the report.
+- **Barrierefreiheit stays short.** For each bullet ask: is it an implementation detail (→ remove or describe the observable effect), a feature (→ Funktionalitäten), a general recommendation (→ FAQ) or already a row in "Konkrete Designentscheidungen" (→ remove)?
 - **Konkrete Designentscheidungen are decisions with a reason.** Don't turn behaviour descriptions into rows, and don't fill the "Begründung" cell with a restatement of the decision ("Umsetzung nach Pattern X | Kopfbereich ist eine Schaltfläche …" is a description, not a reason). Existing rows stay (see step 2); a new row needs a backed rationale – otherwise describe the behaviour in the chapter where it belongs.
-- **Each fact in one place.** Usage limits go to "Verwendung", feature behaviour to "Funktionalitäten", what users experience to "Barrierefreiheit". An FAQ entry only answers what the page doesn't already say – otherwise link to the section. Writing the same fact into four chapters makes the page longer and lets the copies drift apart.
+- **Each fact in one place.** Usage limits and recommendations go to the FAQ, feature behaviour to "Funktionalitäten", what users experience to "Barrierefreiheit". An FAQ entry only answers what the page doesn't already say – otherwise link to the section. Writing the same fact into four chapters makes the page longer and lets the copies drift apart.
+- **FAQ entries are questions, not relabelled bullets.** When moving "Verwendung" or "Best Practices" content, find the question a developer would actually ask, group related recommendations under it, and merge with an existing FAQ entry on the same topic instead of adding a near-duplicate.
 - **No purely visual details** (icon direction, colours, spacing) unless they matter for accessibility – the look comes from the theme and changes independently of the component.
 - **Non-interactive or grouping components** (Card, Heading, Badge, Quote …): omit "Tastatursteuerung" if nothing is operable; describe what is grouped and how headings/structure reach assistive technology.
 - **Snippets:** use a `_shared` snippet only if it is accurate for this component. If a text you write would be identical in other component pages, create a snippet (no headings inside) and mention it in the report; edit a snippet instead of copying and adapting it. When a snippet changes, check every page that imports it (`Select-String`/`grep` for the file name).

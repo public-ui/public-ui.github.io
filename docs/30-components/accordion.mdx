@@ -17,6 +17,13 @@ import EventsIntro from './_shared/api/events-intro.md';
 
 Die Komponente orientiert sich am **WAI-ARIA Accordion Pattern**: Der Kopfbereich ist ein natives `button`-Element – bei gesetztem `_level` innerhalb einer Überschrift –, der Inhaltsbereich nimmt beliebiges HTML über den Slot auf. Jede `KolAccordion` steuert genau einen Abschnitt; mehrere Abschnitte entstehen durch mehrere Accordions untereinander.
 
+**Anwendungsfälle:**
+- Gliederung längerer Dokumentations- oder Einstellungsseiten
+- Strukturierung von Inhalten auf kleinen Bildschirmen mit begrenztem Platz
+- Gruppierung umfangreicher Formularabschnitte oder Konfigurationsseiten mit mehreren Eingabegruppen
+- FAQ-Bereiche mit mehreren unabhängig öffnenbaren Fragen
+- Ergänzende oder optionale Detailinformationen, die Nutzende bei Bedarf selbst einblenden
+
 ## Beispiel
 
 Darstellung mehrerer Accordions ohne optional gesetzte Felder. Code kann eingeblendet werden.
@@ -29,47 +36,21 @@ Darstellung mehrerer Accordions ohne optional gesetzte Felder. Code kann eingebl
 - Der geöffnete Inhaltsbereich ist für Screenreader als eigener Bereich navigierbar, der nach der Beschriftung des Kopfbereichs benannt ist.
 - Im geschlossenen Zustand ist der Inhalt weder für Screenreader noch per `Tab` erreichbar.
 - Der Fokus bleibt beim Öffnen und Schließen auf dem Kopfbereich.
+- Das Öffnen und Schließen berücksichtigt automatisch die Systemeinstellung „Bewegung reduzieren" (`prefers-reduced-motion`): Ist sie aktiviert, läuft die Animation nicht ab. Die einbindende Anwendung muss dafür nichts konfigurieren.
 
 ### Konkrete Designentscheidungen
 
-| Entscheidung                                   | Begründung                                               |
-| ---------------------------------------------- | -------------------------------------------------------- |
-| Verwendung eines Buttons für Header            | Native Tastatursteuerung und Screenreader-Kompatibilität |
-| aria-expanded am Header                        | Zustand programmatisch erkennbar                         |
-| Panel bleibt im DOM                            | Screenreader verlieren keinen Kontext                    |
-| Keine Hover-Interaktion als alleiniger Trigger | Hover ist nicht barrierefrei                             |
-| Klare visuelle Fokusmarkierung                 | Tastaturnutzer benötigen Orientierung                    |
-| Optional Mehrfachöffnung                       | Abhängig vom Anwendungsfall                              |
-| Keine automatische Öffnung bei Fokus           | Verhindert unerwartete Kontextwechsel                    |
+| Entscheidung                                                          | Begründung                                                                                                                                                          |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Verwendung eines nativen `button`-Elements für den Kopfbereich         | Der Kopfbereich nutzt bewusst ein natives, fokussierbares `button`-Element statt eines Custom-Elements und profitiert dadurch von dessen etablierter Tastatursteuerung und Screenreader-Unterstützung. |
+| Mehrere Accordions öffnen und schließen sich unabhängig voneinander    | Eine gebündelte Variante, bei der immer nur ein Abschnitt gleichzeitig geöffnet sein kann, wurde bewusst nicht in die Komponente eingebaut. Ob mehrere Abschnitte parallel geöffnet sein dürfen, hängt vom Anwendungsfall ab und liegt in der Verantwortung der einbindenden Anwendung. |
+| Öffnen erfolgt ausschließlich durch aktives Bedienen des Kopfbereichs   | Der Fokus allein (z. B. beim Durchtabben) löst kein automatisches Öffnen aus. Das verhindert unerwartete Kontextwechsel für Tastatur- und Screenreader-Nutzende. |
 
 ### Links und Referenzen
 
 - <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/" _label="W3C WAI-ARIA Authoring Practices Guide (APG) – Accordion Pattern" _target="_blank"></kol-link>
 
-## Verwendung
-
-Accordions werden eingesetzt, um:
-
-- Inhalte zu gruppieren, die nicht zwingend gleichzeitig sichtbar sein müssen
-- lange Seiten zu strukturieren
-- progressive Offenlegung (progressive disclosure) umzusetzen
-
-Typischerweise besteht ein Accordion aus:
-
-- einem Titel (Header, `_label`)
-- einem zugehörigen Inhaltsbereich (Panel, Slot)
-- einem Zustand (geöffnet/geschlossen, `_open`)
-
-Mehrere untereinander angeordnete Accordions öffnen und schließen sich unabhängig voneinander, es können also mehrere Einträge parallel geöffnet sein. Soll immer nur ein Eintrag gleichzeitig geöffnet sein, muss die einbindende Anwendung die übrigen Accordions beim `toggle`-Event über `_open` schließen – KoliBri bietet dafür keine eigene Gruppierung.
-
-Accordion ist **nicht geeignet**:
-
-- wenn Inhalte zwingend gleichzeitig sichtbar sein müssen
-- wenn Inhalte miteinander verglichen werden müssen
-- wenn Nutzende häufig zwischen Abschnitten wechseln müssen
-- um Fehlermeldungen darzustellen
-
-### Tastatursteuerung
+## Tastatursteuerung
 
 <NativeKeyboardIntro />
 
@@ -81,47 +62,34 @@ Accordion ist **nicht geeignet**:
 
 Die im WAI-ARIA Accordion Pattern optional vorgesehenen Tasten zum Wechsel zwischen den Kopfbereichen (`Pfeil-Tasten (oben/unten)`, `Pos1`, `Ende`) werden nicht unterstützt.
 
-### Best Practices / Empfehlungen
+## FAQ
 
-- Nutzen Sie ein Accordion für ergänzende oder sekundäre Informationen, die nicht dauerhaft sichtbar sein müssen. Für wichtige primäre Inhalte (z. B. zentrale Handlungsaufforderungen oder rechtlich relevante Hinweise) sind Accordions weniger geeignet.
-- Strukturieren Sie längere Inhalte in klar benannte Abschnitte und verwenden Sie prägnante Überschriften über `_label`.
-- Wählen Sie über `_level` eine Überschriftenebene, die zur Überschriftenstruktur der Seite passt.
-- Verwenden Sie ein Accordion nicht als primäres Auswahl- oder Filterelement.
-- Verwenden Sie mehrere Accordions mit wenig Inhalt anstatt ein einzelnes inhaltlich zu überladen.
-- Verzichten Sie auf eine tiefe Verschachtelung mehrerer Accordions.
-- Wählen Sie den initialen Zustand bewusst (offen/geschlossen).
-- Die Öffnen-/Schließen-Icons können im Theme frei positioniert werden, allerdings wird empfohlen, diese links auszurichten, um die Bedienbarkeit für Nutzende mit eingeschränktem Sichtfeld zu unterstützen.
+**Wann ist ein Accordion nicht geeignet?**  
+Ein Accordion ist nicht geeignet:
+- wenn Inhalte zwingend gleichzeitig sichtbar sein müssen
+- wenn Inhalte miteinander verglichen werden müssen
+- wenn Nutzende häufig zwischen Abschnitten wechseln müssen
+- um Fehlermeldungen darzustellen
 
-### Anwendungsfälle
+Verwenden Sie ein Accordion nicht als primäres Auswahl- oder Filterelement.
 
-- Gliederung längerer Dokumentations- oder Einstellungsseiten
-- Strukturierung von Inhalten auf kleinen Bildschirmen mit begrenztem Platz
-- Gruppierung umfangreicher Formularabschnitte
-- FAQ-Bereiche
-- Zusätzliche Detailinformationen, optionale Bereiche
-
-### FAQ
+**Können mehrere Accordions gleichzeitig geöffnet sein?**  
+Mehrere untereinander angeordnete Accordions öffnen und schließen sich unabhängig voneinander, es können also mehrere Einträge parallel geöffnet sein. Soll immer nur ein Eintrag gleichzeitig geöffnet sein, muss die einbindende Anwendung die übrigen Accordions beim `toggle`-Event über `_open` schließen – KoliBri bietet dafür keine eigene Gruppierung.
 
 **Welche Überschriftenebenen sind möglich?**  
-Siehe [Überschriftenstruktur](#überschriftenstruktur).
+Mit den Werten `1` bis `6` wird der Kopfbereich als Überschrift der entsprechenden Ebene ausgegeben und erscheint damit in der Überschriftennavigation von Screenreadern. Mit `0` (Standardwert) wird keine Überschrift ausgegeben, sondern fett dargestellter Text. Wählen Sie eine Überschriftenebene, die zur Überschriftenstruktur der Seite passt.
 
 **Darf ein Accordion verschachtelt werden?**  
-Verschachtelungen sind möglich, sollten allerdings aus Gründen der Barrierefreiheit mit Bedacht vorgenommen werden.
+Verschachtelungen sind möglich, sollten allerdings aus Gründen der Barrierefreiheit mit Bedacht vorgenommen werden. Verzichten Sie auf tiefe Verschachtelung mehrerer Accordions.
 
 **Wann sollte ein Accordion standardmäßig geöffnet sein?**  
-Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvoll ist.
+Wenn ein Inhalt voraussichtlich direkt benötigt wird oder dies fachlich sinnvoll ist. Wählen Sie den initialen Zustand bewusst (offen/geschlossen). Nutzen Sie dabei aussagekräftige Labels und ergänzende Hinweise, um den Zweck klar zu machen.
 
-## Playground
+**Wie positioniere ich die Öffnen-/Schließen-Icons?**  
+Die Icons können im Theme frei positioniert werden, allerdings wird empfohlen, diese links auszurichten, um die Bedienbarkeit für Nutzende mit eingeschränktem Sichtfeld zu unterstützen.
 
-<AccordionPreview
-	context="playground"
-	initialProps={{
-		_open: true,
-		_slot:
-			'Das Frühjahr bringt den Übergang vom Winter zum Sommer. Die Temperaturen steigen langsam, die Tage werden länger, und die Natur erwacht aus dem Winterschlaf: Pflanzen beginnen zu blühen, Bäume treiben neue Knospen, und viele Tierarten aktivieren ihre Fortpflanzungszyklen. Typisch sind wechselhaftes Wetter mit warmen sonnigen Phasen und kühleren Regentagen.',
-		_label: 'Der Frühling',
-	}}
-/>
+**Wie reagiere ich programmatisch auf das Öffnen/Schließen eines Accordions?**  
+Nutzen Sie das `toggle`-Event, das bei jedem Öffnen oder Schließen ausgelöst wird und den neuen Zustand (`true` = geöffnet) übermittelt. Sie können auch `_open` setzen, um den Zustand zu steuern oder abzufragen.
 
 ## Funktionalitäten
 
@@ -167,6 +135,18 @@ Das initiale Öffnen erfolgt über `_open`; beim Bedienen des Kopfbereichs wird 
 		_open: true,
 		_slot:
 			'Die kalte Jahreszeit mit den kürzesten Tagen und längsten Nächten. Die niedrige Sonnenposition sorgt für geringe Einstrahlungsintensität. Temperaturen fallen unter den Gefrierpunkt, was in vielen Regionen Schnee und Eis ermöglicht. Pflanzen ruhen, viele Tiere halten Winterruhe oder migrieren. Die natürliche Lichtverfügbarkeit ist am geringsten.',
+	}}
+/>
+
+## Playground
+
+<AccordionPreview
+	context="playground"
+	initialProps={{
+		_open: true,
+		_slot:
+			'Das Frühjahr bringt den Übergang vom Winter zum Sommer. Die Temperaturen steigen langsam, die Tage werden länger, und die Natur erwacht aus dem Winterschlaf: Pflanzen beginnen zu blühen, Bäume treiben neue Knospen, und viele Tierarten aktivieren ihre Fortpflanzungszyklen. Typisch sind wechselhaftes Wetter mit warmen sonnigen Phasen und kühleren Regentagen.',
+		_label: 'Der Frühling',
 	}}
 />
 
