@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[7679],{67679:(e,l,s)=>{s.r(l),s.d(l,{default:()=>a});s(92990);var _=s(87373),u=s(94686);const a=()=>(0,u.jsx)(_.su,{_icons:{left:"fa-solid fa-palette"},_hideLabel:!0,_label:"Color",_value:"#f08080"})}}]);
