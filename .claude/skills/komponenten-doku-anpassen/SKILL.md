@@ -1,6 +1,6 @@
 ---
 name: komponenten-doku-anpassen
-description: Überarbeitet eine KoliBri-Komponentendokumentation (docs/30-components/<komponente>.mdx) nach dem verbindlichen Kapitelschema (Blaupause input-number.mdx, Sammelticket public-ui/interne-todos#124) und prüft jede Aussage gegen den KoliBri-Quellcode. Verwende diesen Skill immer, wenn eine Komponenten-Doku angepasst, überarbeitet, vereinheitlicht oder „nach dem Schema/der Blaupause“ umgebaut werden soll, wenn ein Unter-Issue „Doku prüfen: <Komponente>“ bearbeitet wird oder wenn nur einzelne Kapitel einer Komponenten-Doku (Barrierefreiheit, Designentscheidungen, Tastatursteuerung, Funktionalitäten) überarbeitet werden sollen – auch für Nicht-Eingabe-Komponenten wie Accordion, Card oder Tabs.
+description: Überarbeitet eine KoliBri-Komponentendokumentation (docs/30-components/<komponente>.mdx) nach dem verbindlichen Kapitelschema (Blaupause input-number.mdx, Sammelticket public-ui/interne-todos#124) und prüft jede Aussage gegen den KoliBri-Quellcode. Verwende diesen Skill immer, wenn eine Komponenten-Doku angepasst, überarbeitet, vereinheitlicht oder „nach dem Schema/der Blaupause“ umgebaut werden soll, wenn ein Unter-Issue „Doku anpassen: <Komponente>“ bearbeitet wird oder wenn nur einzelne Kapitel einer Komponenten-Doku (Barrierefreiheit, Designentscheidungen, Tastatursteuerung, Funktionalitäten) überarbeitet werden sollen – auch für Nicht-Eingabe-Komponenten wie Accordion, Card oder Tabs.
 ---
 
 # Komponenten-Doku nach dem Schema anpassen
