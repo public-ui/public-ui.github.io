@@ -1,0 +1,167 @@
+/*
+ * „Linien für Raum und Zeit" — Bauplan-Motiv der Startseite.
+ * Raum: feines Konstruktionsraster im Hero. Zeit: mehrere Signallinien, die
+ * wie Raumfahrtrouten dauerhaft und in unterschiedlichen Geschwindigkeiten und
+ * Richtungen durch den Hero-Hintergrund laufen. Alles CSS-only (stroke-dashoffset,
+ * opacity), keine Layout-Properties.
+ */
+
+.hero-lines-wrap {
+	position: relative;
+	overflow: hidden;
+}
+
+.hero-lines {
+	pointer-events: none;
+	position: absolute;
+	inset: 0;
+}
+
+/* Raster (Raum) */
+.hero-lines::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: linear-gradient(to right, rgb(143 185 232 / 0.09) 1px, transparent 1px),
+		linear-gradient(to bottom, rgb(143 185 232 / 0.09) 1px, transparent 1px);
+	background-size: 90px 90px;
+	opacity: 0;
+	animation: hero-fade 1.6s ease-out 0.2s forwards;
+}
+
+.hero-lines svg {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.hero-line {
+	fill: none;
+	stroke: #8fb9e8;
+	stroke-opacity: 0.3;
+	stroke-width: 1;
+	/* 1px auch bei skaliertem viewBox (preserveAspectRatio: slice) */
+	vector-effect: non-scaling-stroke;
+}
+
+.hero-line--cross {
+	stroke-opacity: 0.4;
+	stroke-width: 1;
+}
+
+/* Konstruktionslinien zeichnen sich beim Laden auf */
+.hero-line--draw {
+	stroke-dasharray: 1440;
+	stroke-dashoffset: 1440;
+	animation: hero-draw 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-line--draw.hero-line--d2 {
+	animation-delay: 0.3s;
+}
+
+.hero-line--draw.hero-line--d3 {
+	animation-delay: 0.55s;
+}
+
+/* Signallinien (Zeit) wandern dauerhaft und nahtlos um eine Periode —
+   wie Raumfahrtrouten in mehreren Ebenen: unterschiedliche Bahnen,
+   Geschwindigkeiten, Richtungen und Opazitäten erzeugen Tiefenwirkung. */
+.hero-line--signal {
+	stroke: #b7d3f0;
+	stroke-opacity: 0.55;
+	stroke-width: 2;
+	stroke-dasharray: 130 1310;
+	animation: hero-signal 9s linear infinite;
+}
+
+.hero-line--signal.hero-line--s2 {
+	stroke-width: 1;
+	stroke-opacity: 0.35;
+	animation-duration: 14s;
+	animation-direction: reverse;
+}
+
+.hero-line--signal.hero-line--s3 {
+	stroke-width: 1;
+	stroke-opacity: 0.25;
+	animation-duration: 20s;
+}
+
+.hero-line--signal.hero-line--s4 {
+	stroke-width: 1;
+	stroke-opacity: 0.4;
+	animation-duration: 11s;
+	animation-direction: reverse;
+}
+
+@keyframes hero-draw {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes hero-signal {
+	from {
+		stroke-dashoffset: 1440;
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes hero-fade {
+	to {
+		opacity: 1;
+	}
+}
+
+/* Technische Eckmarken an der Imagefilm-Karte */
+.imagefilm-frame::before,
+.imagefilm-frame::after {
+	content: '';
+	position: absolute;
+	width: 28px;
+	height: 28px;
+	border: 2px solid #8fb9e8;
+	pointer-events: none;
+}
+
+.imagefilm-frame::before {
+	top: -11px;
+	left: -11px;
+	border-right: 0;
+	border-bottom: 0;
+}
+
+.imagefilm-frame::after {
+	right: -11px;
+	bottom: -11px;
+	border-left: 0;
+	border-top: 0;
+}
+
+/*
+ * Reduzierte Bewegung: der fertige Bauplan steht statisch — Linien sind
+ * gezeichnet, die Signallinie ruht als durchgezogene Linie, das Raster
+ * ist eingeblendet. Keine Bewegung, keine Information geht verloren.
+ */
+@media (prefers-reduced-motion: reduce) {
+	.hero-lines::before {
+		animation: none;
+		opacity: 1;
+	}
+
+	.hero-line--draw {
+		animation: none;
+		stroke-dashoffset: 0;
+	}
+
+	.hero-line--signal {
+		animation: none;
+		stroke-dasharray: none;
+		stroke-opacity: 0.3;
+		stroke-width: 1;
+	}
+}

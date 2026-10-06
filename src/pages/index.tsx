@@ -11,9 +11,68 @@ import { ITZLogo } from '@site/src/components/ITZLogo';
 
 const YOUTUBE_URL = 'https://www.youtube.com/watch?v=Fsv_aUTM4ls';
 
+/*
+ * Bauplan-Motiv „Linien für Raum und Zeit": rein dekorativ, daher aria-hidden.
+ * Choreografie und Reduced-Motion-Verhalten liegen in src/css/homepage-lines.css.
+ */
+const HeroLines: FunctionComponent = () => (
+	<div className="hero-lines" aria-hidden="true">
+		<svg viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+			{/* Konstruktionslinien (Raum) */}
+			<line className="hero-line hero-line--draw" x1="80" y1="128" x2="1360" y2="128" pathLength="1440" />
+			<line
+				className="hero-line hero-line--draw hero-line--d2"
+				x1="160"
+				y1="512"
+				x2="1360"
+				y2="512"
+				pathLength="1440"
+			/>
+			<line
+				className="hero-line hero-line--draw hero-line--d3"
+				x1="1120"
+				y1="80"
+				x2="1120"
+				y2="560"
+				pathLength="1440"
+			/>
+			{/* Fadenkreuze an Schnittpunkten */}
+			<path className="hero-line hero-line--cross" d="M1120 120v16M1112 128h16" />
+			<path className="hero-line hero-line--cross" d="M280 432v16M272 440h16" />
+			{/* Signallinien (Zeit): Raumfahrtrouten in mehreren Ebenen */}
+			<line className="hero-line hero-line--signal" x1="80" y1="320" x2="1360" y2="320" pathLength="1440" />
+			<line
+				className="hero-line hero-line--signal hero-line--s2"
+				x1="40"
+				y1="216"
+				x2="1400"
+				y2="216"
+				pathLength="1440"
+			/>
+			<line
+				className="hero-line hero-line--signal hero-line--s3"
+				x1="120"
+				y1="432"
+				x2="1320"
+				y2="432"
+				pathLength="1440"
+			/>
+			<line
+				className="hero-line hero-line--signal hero-line--s4"
+				x1="200"
+				y1="560"
+				x2="1240"
+				y2="560"
+				pathLength="1440"
+			/>
+		</svg>
+	</div>
+);
+
 const HomepageHeader: FunctionComponent = () => (
-	<header className="bg-gradient-to-b from-[#003a5c] to-[#02243c] text-white">
-		<div className="mx-auto max-w-6xl px-6 py-20 md:py-28 grid gap-6 justify-items-center text-center">
+	<header className="hero-lines-wrap bg-gradient-to-b from-[#003a5c] to-[#02243c] text-white">
+		<HeroLines />
+		<div className="relative z-10 mx-auto max-w-6xl px-6 py-20 md:py-28 grid gap-6 justify-items-center text-center">
 			<p className="m-0 text-sm font-semibold uppercase tracking-[0.2em] text-[#8fb9e8]">
 				{translate({
 					id: 'custom.hero-kicker',
@@ -96,7 +155,7 @@ const ImagefilmSection: FunctionComponent = () => {
 						})}
 					</p>
 				</div>
-				<div className="relative aspect-video w-full max-w-4xl overflow-hidden rounded-2xl bg-[#05244a] shadow-xl">
+				<div className="imagefilm-frame relative aspect-video w-full max-w-4xl overflow-visible rounded-2xl bg-[#05244a] shadow-xl">
 					{playing ? (
 						<iframe
 							src={filmUrl}
@@ -104,7 +163,7 @@ const ImagefilmSection: FunctionComponent = () => {
 								id: 'custom.imagefilm-frame-title',
 								message: 'KoliBri Imagefilm – animierte Folienshow (4:15 Minuten, ohne Ton)',
 							})}
-							className="absolute inset-0 h-full w-full border-0"
+							className="absolute inset-0 h-full w-full rounded-2xl border-0"
 							loading="lazy"
 						></iframe>
 					) : (
@@ -119,7 +178,7 @@ const ImagefilmSection: FunctionComponent = () => {
 									id: 'custom.imagefilm-poster-alt',
 									message: 'Vorschaubild des Imagefilms: KoliBri – Die Elemente, die HTML fehlen.',
 								})}
-								className="absolute inset-0 h-full w-full object-cover transition group-hover:scale-[1.02] group-focus-visible:scale-[1.02]"
+								className="absolute inset-0 h-full w-full rounded-2xl object-cover transition group-hover:scale-[1.02] group-focus-visible:scale-[1.02]"
 							/>
 							<span
 								aria-hidden="true"
