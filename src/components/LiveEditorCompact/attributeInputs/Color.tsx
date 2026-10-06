@@ -19,7 +19,7 @@ export function Color(props: Props) {
 		<KolInputColor
 			_label=""
 			_on={{ onInput: (_event, value) => update(name, value as string) }}
-			_value={value as string}
+			_value={value}
 		>
 			<span slot="expert">{label}</span>
 		</KolInputColor>
