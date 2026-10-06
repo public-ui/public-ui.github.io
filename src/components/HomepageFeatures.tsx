@@ -13,12 +13,12 @@ type FeatureItem = {
 
 function Feature({ title, icon, description, button }: FeatureItem) {
 	return (
-		<div className="grid gap-4 content-baseline text-center justify-items-center">
-			<KolIcon className="text-8xl text-gray-700" _label="" _icons={icon}></KolIcon>
-			<Heading as="h3" className="m-0">
+		<div className="grid content-between justify-items-center gap-4 rounded-2xl border border-[#d7e3ec] bg-white p-8 text-center shadow-sm text-[#1f2937]">
+			<KolIcon className="text-7xl text-[#003a5c]" _label="" _icons={icon}></KolIcon>
+			<Heading as="h3" className="m-0 text-xl font-bold text-[#003a5c]">
 				{title}
 			</Heading>
-			<div className="grid gap-2">{description}</div>
+			<div className="grid gap-2 justify-items-center">{description}</div>
 			<div className="grid sm:inline">{button}</div>
 		</div>
 	);
@@ -104,10 +104,12 @@ export default function HomepageFeatures(): ReactElement {
 	];
 
 	return (
-		<section className="m-8 grid gap-8 lg:grid-cols-3">
-			{FeatureList.map((props, idx) => (
-				<Feature key={idx} {...props} />
-			))}
+		<section className="bg-white px-6 pb-16 pt-2 md:pb-24">
+			<div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3">
+				{FeatureList.map((props, idx) => (
+					<Feature key={idx} {...props} />
+				))}
+			</div>
 		</section>
 	);
 }

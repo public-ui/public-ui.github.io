@@ -1,34 +1,46 @@
 import { translate } from '@docusaurus/Translate';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import { KolKolibri, KolLink, KolLinkButton } from '@public-ui/react-v19';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import type { FunctionComponent, ReactElement } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
 import { ITZLogo } from '@site/src/components/ITZLogo';
 
+const YOUTUBE_URL = 'https://www.youtube.com/watch?v=Fsv_aUTM4ls';
+
 const HomepageHeader: FunctionComponent = () => (
-	<header className="p-8 grid justify-center">
-		<Heading as="h1" className="text-white text-center">
-			{translate({
-				id: 'custom.title',
-			})}
-		</Heading>
-		<p className="text-white text-center text-xl">
-			{translate({
-				id: 'custom.subtitle',
-			})}
-		</p>
+	<header className="bg-gradient-to-b from-[#003a5c] to-[#02243c] text-white">
+		<div className="mx-auto max-w-6xl px-6 py-20 md:py-28 grid gap-6 justify-items-center text-center">
+			<p className="m-0 text-sm font-semibold uppercase tracking-[0.2em] text-[#8fb9e8]">
+				{translate({
+					id: 'custom.hero-kicker',
+					message: 'Open Source aus dem ITZBund',
+				})}
+			</p>
+			<Heading as="h1" className="m-0 text-4xl font-bold text-white md:text-6xl">
+				{translate({
+					id: 'custom.title',
+				})}
+			</Heading>
+			<p className="m-0 max-w-3xl text-lg text-[#cfe2f3] md:text-xl">
+				{translate({
+					id: 'custom.subtitle',
+				})}
+			</p>
+			<HomepageButtons />
+		</div>
 	</header>
 );
+
 const HomepageButtons: FunctionComponent = () => {
 	const docsHref = useBaseUrl('/docs');
 	const firstStepsHref = useBaseUrl('/docs/get-started/first-steps');
 
 	return (
-		<div className="grid sm:flex gap-4 justify-center mt-4">
+		<div className="mt-4 grid gap-4 justify-center sm:flex">
 			<KolLinkButton
 				className="w-72"
 				_icons={{
@@ -61,6 +73,128 @@ const HomepageButtons: FunctionComponent = () => {
 	);
 };
 
+const ImagefilmSection: FunctionComponent = () => {
+	const [playing, setPlaying] = useState(false);
+	const posterUrl = useBaseUrl('/img/imagefilm-poster.png');
+	const filmUrl = useBaseUrl('/imagefilm');
+
+	return (
+		<section className="bg-white text-[#1f2937]" aria-labelledby="imagefilm-heading">
+			<div className="mx-auto max-w-6xl px-6 py-16 grid justify-items-center gap-8 md:py-24">
+				<div className="grid max-w-3xl justify-items-center gap-4 text-center">
+					<Heading as="h2" id="imagefilm-heading" className="m-0 text-3xl font-bold text-[#003a5c] md:text-4xl">
+						{translate({
+							id: 'custom.imagefilm-title',
+							message: 'Der Imagefilm',
+						})}
+					</Heading>
+					<p className="m-0 text-[#374151]">
+						{translate({
+							id: 'custom.imagefilm-description',
+							message:
+								'4:15 Minuten über KoliBri, Barrierefreiheit und Open Source – beim Open Source Wettbewerb 2026 eingereicht. Die Präsentation läuft automatisch ab, ohne Ton.',
+						})}
+					</p>
+				</div>
+				<div className="relative aspect-video w-full max-w-4xl overflow-hidden rounded-2xl bg-[#05244a] shadow-xl">
+					{playing ? (
+						<iframe
+							src={filmUrl}
+							title={translate({
+								id: 'custom.imagefilm-frame-title',
+								message: 'KoliBri Imagefilm – animierte Folienshow (4:15 Minuten, ohne Ton)',
+							})}
+							className="absolute inset-0 h-full w-full border-0"
+							loading="lazy"
+						></iframe>
+					) : (
+						<button
+							type="button"
+							onClick={() => setPlaying(true)}
+							className="group absolute inset-0 h-full w-full cursor-pointer p-0"
+						>
+							<img
+								src={posterUrl}
+								alt={translate({
+									id: 'custom.imagefilm-poster-alt',
+									message: 'Vorschaubild des Imagefilms: KoliBri – Die Elemente, die HTML fehlen.',
+								})}
+								className="absolute inset-0 h-full w-full object-cover transition group-hover:scale-[1.02] group-focus-visible:scale-[1.02]"
+							/>
+							<span
+								aria-hidden="true"
+								className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-white/80 bg-[#02243c]/60 transition group-hover:bg-[#003a5c]/80 group-focus-visible:bg-[#003a5c]/80"
+							>
+								<span className="ml-1 border-y-[14px] border-l-[22px] border-y-transparent border-l-white"></span>
+							</span>
+							<span className="sr-only">
+								{translate({
+									id: 'custom.imagefilm-play',
+									message: 'Imagefilm abspielen',
+								})}
+							</span>
+						</button>
+					)}
+				</div>
+				<KolLinkButton
+					className="w-72"
+					_icons={{
+						right: 'fa-solid fa-external-link',
+					}}
+					_href={YOUTUBE_URL}
+					_label={translate({
+						id: 'custom.imagefilm-youtube',
+						message: 'Auf YouTube ansehen',
+					})}
+					_variant="secondary"
+				></KolLinkButton>
+			</div>
+		</section>
+	);
+};
+
+const StandardSection: FunctionComponent = () => (
+	<section className="bg-[#eef5fa] text-[#1f2937]" aria-labelledby="standard-heading">
+		<div className="mx-auto max-w-6xl px-6 py-16 grid justify-items-center gap-6 text-center md:py-24">
+			<div className="flex items-center gap-6">
+				<ITZLogo
+					style={{
+						display: 'block',
+						width: '150px',
+					}}
+				/>
+				<KolKolibri
+					_labeled={false}
+					style={{
+						display: 'block',
+						width: '80px',
+					}}
+				/>
+			</div>
+			<Heading as="h2" id="standard-heading" className="m-0 text-3xl font-bold text-[#003a5c] md:text-4xl">
+				{translate({
+					id: 'custom.accessible-standard',
+					message: 'Barrierefreier Standard',
+				})}
+			</Heading>
+			<p className="m-0 max-w-3xl text-lg">
+				<KoliBriAbbr />{' '}
+				{translate({
+					id: 'custom.homepage-message-part-1',
+					message: 'und wurde vom',
+				})}{' '}
+				<strong>
+					<KolLink _href="https://itzbund.de" _label="Informationstechnikzentrum Bund" _target="itzbund"></KolLink>
+				</strong>{' '}
+				{translate({
+					id: 'custom.homepage-message-part-2',
+					message: 'Open Source zur Wiederverwendung und Weiterentwicklung freigegeben.',
+				})}
+			</p>
+		</div>
+	</section>
+);
+
 export default function Homepage(): ReactElement {
 	return (
 		<Layout
@@ -79,65 +213,11 @@ export default function Homepage(): ReactElement {
 			)}
 		>
 			<HomepageHeader />
-			<HomepageButtons />
 
 			<main>
-				<div className="grid gap-2 md:w-6/12 m-auto mt-4 p-4">
-					<div className="flex gap-4 justify-center">
-						<ITZLogo
-							style={{
-								display: 'block',
-								width: '175px',
-								marginTop: '1em',
-							}}
-						/>
-						<KolKolibri
-							_labeled={false}
-							style={{
-								display: 'block',
-								width: '100px',
-								marginBottom: '1em',
-							}}
-						/>
-					</div>
-					<Heading as="h2" className="text-center">
-						{translate({
-							id: 'custom.accessible-standard',
-							message: 'Barrierefreier Standard',
-						})}
-					</Heading>
-					<p className="text-center">
-						<KoliBriAbbr />{' '}
-						{translate({
-							id: 'custom.homepage-message-part-1',
-							message: 'und wurde vom',
-						})}{' '}
-						<strong>
-							<KolLink _href="https://itzbund.de" _label="Informationstechnikzentrum Bund" _target="itzbund"></KolLink>
-						</strong>{' '}
-						{translate({
-							id: 'custom.homepage-message-part-2',
-							message: 'Open Source zur Wiederverwendung und Weiterentwicklung freigegeben.',
-						})}
-					</p>
-				</div>
+				<ImagefilmSection />
+				<StandardSection />
 				<HomepageFeatures />
-				{/* <section className="used-by-gallery m-8 gap-8 text-center">
-					<Heading as="h2">Referenzen</Heading>
-					<p className="text-center">KoliBri/Public UI wird als Basis für eigene Design Systeme oder direkt bei der Umsetzung von Webprojekten verwendet.</p>
-					<ul>
-						{Array.from(USED_BY).map((item) => {
-							const used = item[1];
-							return (
-								<li key={item[0]}>
-									<KolLink _label="" _target={item[0]}>
-										<KolImage slot="expert" className="block w-30" _alt={`Logo von ${used.label}`} _src={`https://${used.logoSrc}`} />
-									</KolLink>
-								</li>
-							);
-						})}
-					</ul>
-				</section> */}
 			</main>
 		</Layout>
 	);

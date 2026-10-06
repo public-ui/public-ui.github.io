@@ -2,7 +2,32 @@
 /* @tailwind components; */
 @tailwind utilities;
 
+/*
+ * Da bewusst kein @tailwind base geladen wird, fehlen die CSS-Variablen-Defaults,
+ * auf die einige Tailwind-Utilities (Gradient, Schatten, Ring, Scale) aufbauen. Ohne
+ * diese Defaults resolven die Deklarationen zu ungültigen Werten und werden ignoriert.
+ */
+*,
+::before,
+::after {
+	--tw-gradient-from-position: ;
+	--tw-gradient-via-position: ;
+	--tw-gradient-to-position: ;
+	--tw-shadow: 0 0 #0000;
+	--tw-shadow-colored: 0 0 #0000;
+	--tw-ring-offset-shadow: 0 0 #0000;
+	--tw-ring-shadow: 0 0 #0000;
+	--tw-ring-offset-width: 0px;
+	--tw-ring-offset-color: #fff;
+	--tw-ring-color: rgb(59 130 246 / 0.5);
+	--tw-scale-x: 1;
+	--tw-scale-y: 1;
+	--tw-scale-z: 1;
+}
+
 @import url('./loader.css');
+
+@import url('./kol-host-transparent.css');
 
 @import url('https://public-ui.github.io/assets/fontawesome-free/css/all.min.css');
 @import url('https://public-ui.github.io/assets/kolicons/style.css');
