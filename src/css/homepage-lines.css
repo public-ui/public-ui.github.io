@@ -1,9 +1,10 @@
 /*
  * „Linien für Raum und Zeit" — Bauplan-Motiv der Startseite.
- * Raum: feines Konstruktionsraster im Hero. Zeit: mehrere Signallinien, die
- * wie Raumfahrtrouten dauerhaft und in unterschiedlichen Geschwindigkeiten und
- * Richtungen durch den Hero-Hintergrund laufen. Alles CSS-only (stroke-dashoffset,
- * opacity), keine Layout-Properties.
+ * Raum: eine flache Rasterebene, die am Horizont im Fluchtpunkt verschwindet
+ * (Perspektive „in die Tiefe"), dazu Konstruktionslinien im Himmelbereich.
+ * Zeit: Signallinien wie Raumfahrtrouten quer durch den Hero, „Tauch-Pulse"
+ * auf den Fluchtlinien und ein langsames Atmen der Ebene. Alles CSS-only
+ * (stroke-dashoffset, opacity, transform), keine Layout-Properties.
  */
 
 .hero-lines-wrap {
@@ -17,14 +18,12 @@
 	inset: 0;
 }
 
-/* Raster (Raum) */
+/* Horizont-Schimmer am Fluchtpunkt */
 .hero-lines::before {
 	content: '';
 	position: absolute;
 	inset: 0;
-	background-image: linear-gradient(to right, rgb(143 185 232 / 0.09) 1px, transparent 1px),
-		linear-gradient(to bottom, rgb(143 185 232 / 0.09) 1px, transparent 1px);
-	background-size: 90px 90px;
+	background: radial-gradient(ellipse 55% 22% at 50% 23%, rgb(143 185 232 / 0.12), transparent 70%);
 	opacity: 0;
 	animation: hero-fade 1.6s ease-out 0.2s forwards;
 }
@@ -48,6 +47,62 @@
 .hero-line--cross {
 	stroke-opacity: 0.4;
 	stroke-width: 1;
+}
+
+/* Rasterebene (Raum): fluchtet am Horizont in die Tiefe */
+.hero-plane {
+	transform-origin: 720px 150px;
+	animation: hero-plane-breathe 18s ease-in-out infinite alternate;
+}
+
+.hero-line--plane {
+	stroke-opacity: 0.16;
+}
+
+.hero-line--horizon {
+	stroke-opacity: 0.28;
+}
+
+/* Tauch-Pulse: Licht läuft vom Fluchtpunkt Richtung Betrachter */
+.hero-line--dive {
+	stroke: #b7d3f0;
+	stroke-opacity: 0.35;
+	stroke-width: 1.5;
+	stroke-dasharray: 80 920;
+	animation: hero-dive 8s linear infinite;
+}
+
+.hero-line--dive.hero-line--dive-2 {
+	animation-delay: 2s;
+	stroke-opacity: 0.28;
+}
+
+.hero-line--dive.hero-line--dive-3 {
+	animation-delay: 4s;
+	stroke-opacity: 0.32;
+}
+
+.hero-line--dive.hero-line--dive-4 {
+	animation-delay: 6s;
+	stroke-opacity: 0.24;
+}
+
+@keyframes hero-dive {
+	from {
+		stroke-dashoffset: 1000;
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes hero-plane-breathe {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.045);
+	}
 }
 
 /* Konstruktionslinien zeichnen sich beim Laden auf */
@@ -144,8 +199,9 @@
 
 /*
  * Reduzierte Bewegung: der fertige Bauplan steht statisch — Linien sind
- * gezeichnet, die Signallinie ruht als durchgezogene Linie, das Raster
- * ist eingeblendet. Keine Bewegung, keine Information geht verloren.
+ * gezeichnet, die Ebene ruht ohne Atmen, Signallinien und Tauch-Pulse
+ * verschwinden bzw. ruhen als durchgezogene Linie. Keine Bewegung,
+ * keine Information geht verloren.
  */
 @media (prefers-reduced-motion: reduce) {
 	.hero-lines::before {
@@ -163,5 +219,14 @@
 		stroke-dasharray: none;
 		stroke-opacity: 0.3;
 		stroke-width: 1;
+	}
+
+	.hero-plane {
+		animation: none;
+	}
+
+	.hero-line--dive {
+		animation: none;
+		stroke-opacity: 0;
 	}
 }

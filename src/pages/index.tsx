@@ -15,30 +15,57 @@ const YOUTUBE_URL = 'https://www.youtube.com/watch?v=Fsv_aUTM4ls';
  * Bauplan-Motiv „Linien für Raum und Zeit": rein dekorativ, daher aria-hidden.
  * Choreografie und Reduced-Motion-Verhalten liegen in src/css/homepage-lines.css.
  */
+const PLANE_HORIZON = 150;
+const PLANE_BOTTOM = 640;
+// Horizontale der Rasterebene: quadratische Abstände, dicht am Horizont, weit unten auseinander
+const PLANE_ROWS = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) =>
+	Math.round(PLANE_HORIZON + (PLANE_BOTTOM - PLANE_HORIZON) * (i / 9) ** 2)
+);
+// Fluchtlinien: Verteiler am unteren Rand, konvergieren im Fluchtpunkt (720, 150)
+const PLANE_SPOKES = [-7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7].map((k) => 720 + k * 240);
+const DIVE_SPOKES = [-5, -3, 3, 5];
+
 const HeroLines: FunctionComponent = () => (
 	<div className="hero-lines" aria-hidden="true">
 		<svg viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-			{/* Konstruktionslinien (Raum) */}
+			{/* Konstruktionslinie im Himmelbereich (Raum) */}
 			<line className="hero-line hero-line--draw" x1="80" y1="128" x2="1360" y2="128" pathLength="1440" />
-			<line
-				className="hero-line hero-line--draw hero-line--d2"
-				x1="160"
-				y1="512"
-				x2="1360"
-				y2="512"
-				pathLength="1440"
-			/>
-			<line
-				className="hero-line hero-line--draw hero-line--d3"
-				x1="1120"
-				y1="80"
-				x2="1120"
-				y2="560"
-				pathLength="1440"
-			/>
-			{/* Fadenkreuze an Schnittpunkten */}
+			{/* Fadenkreuze */}
 			<path className="hero-line hero-line--cross" d="M1120 120v16M1112 128h16" />
-			<path className="hero-line hero-line--cross" d="M280 432v16M272 440h16" />
+			{/* Rasterebene: flacht am Horizont in die Tiefe (Fluchtpunkt 720/150) */}
+			<g className="hero-plane">
+				<line
+					className="hero-line hero-line--plane hero-line--horizon"
+					x1="0"
+					y1={PLANE_HORIZON}
+					x2="1440"
+					y2={PLANE_HORIZON}
+				/>
+				{PLANE_SPOKES.map((x) => (
+					<line
+						className="hero-line hero-line--plane"
+						x1="720"
+						y1={PLANE_HORIZON}
+						x2={x}
+						y2={PLANE_BOTTOM}
+						key={`spoke-${x}`}
+					/>
+				))}
+				{PLANE_ROWS.map((y) => (
+					<line className="hero-line hero-line--plane" x1="0" y1={y} x2="1440" y2={y} key={`row-${y}`} />
+				))}
+				{DIVE_SPOKES.map((x, idx) => (
+					<line
+						className={`hero-line hero-line--dive${idx > 0 ? ` hero-line--dive-${idx + 1}` : ''}`}
+						x1="720"
+						y1={PLANE_HORIZON}
+						x2={x}
+						y2={PLANE_BOTTOM}
+						pathLength="1000"
+						key={`dive-${x}`}
+					/>
+				))}
+			</g>
 			{/* Signallinien (Zeit): Raumfahrtrouten in mehreren Ebenen */}
 			<line className="hero-line hero-line--signal" x1="80" y1="320" x2="1360" y2="320" pathLength="1440" />
 			<line
