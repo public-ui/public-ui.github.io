@@ -178,9 +178,16 @@ const HomepageButtons: FunctionComponent = () => {
 };
 
 const ImagefilmSection: FunctionComponent = () => {
-	const [playing, setPlaying] = useState(false);
+	// filmSrc enthält bei reduzierter Bewegung den Query ?static (kein Auto-Advance);
+	// die Präferenz wird beim Klick gelesen, da der Handler nur clientseitig läuft.
+	const [filmSrc, setFilmSrc] = useState<string | null>(null);
 	const posterUrl = useBaseUrl('/img/imagefilm-poster.png');
 	const filmUrl = useBaseUrl('/imagefilm');
+
+	const startFilm = () => {
+		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		setFilmSrc(reducedMotion ? `${filmUrl}?static` : filmUrl);
+	};
 
 	return (
 		<section className="bg-white text-[#1f2937]" aria-labelledby="imagefilm-heading">
@@ -201,12 +208,15 @@ const ImagefilmSection: FunctionComponent = () => {
 					</p>
 				</div>
 				<div className="imagefilm-frame relative aspect-video w-full max-w-4xl overflow-visible rounded-2xl bg-[#05244a] shadow-xl">
-					{playing ? (
+					{filmSrc ? (
 						<iframe
-							src={filmUrl}
+							src={filmSrc}
 							title={translate({
-								id: 'custom.imagefilm-frame-title',
-								message: 'KoliBri Imagefilm – animierte Folienshow (4:15 Minuten, ohne Ton)',
+								id: filmSrc === filmUrl ? 'custom.imagefilm-frame-title' : 'custom.imagefilm-frame-title-static',
+								message:
+									filmSrc === filmUrl
+										? 'KoliBri Imagefilm – animierte Folienshow (4:15 Minuten, ohne Ton)'
+										: 'KoliBri Imagefilm – Folienshow (manuell bedienbar, ohne Ton)',
 							})}
 							className="absolute inset-0 h-full w-full rounded-2xl border-0"
 							loading="lazy"
@@ -214,7 +224,7 @@ const ImagefilmSection: FunctionComponent = () => {
 					) : (
 						<button
 							type="button"
-							onClick={() => setPlaying(true)}
+							onClick={startFilm}
 							className="group absolute inset-0 h-full w-full cursor-pointer p-0"
 						>
 							<img

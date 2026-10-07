@@ -330,4 +330,13 @@
 	.hero-float {
 		animation: none;
 	}
+
+	/*
+	 * Kein Zoom-Effekt auf das Film-Poster: die Skalierung ist reine
+	 * Deko-Bewegung und hat bei reduzierter Bewegung zu entfallen.
+	 */
+	.imagefilm-frame img,
+	.imagefilm-frame span {
+		transform: none !important;
+	}
 }
