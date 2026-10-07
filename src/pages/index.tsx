@@ -25,6 +25,23 @@ const PLANE_ROWS = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) =>
 const PLANE_SPOKES = [-7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7].map((k) => 720 + k * 240);
 const DIVE_SPOKES = [-5, -3, 3, 5];
 
+/*
+ * Schwebende HTML-Elemente im Hero-Raum: die Produkt-Metapher „Die Elemente,
+ * die HTML fehlen" — Tag-Chips treiben langsam wie Satelliten durch die
+ * Perspektiv-Ebene. Rein dekorativ (aria-hidden), Chorea in homepage-lines.css.
+ */
+const FLOATING_TAGS = ['<button>', '<input>', '<select>', '<table>', '<a>', '<details>', '<dialog>'];
+
+const HeroFloats: FunctionComponent = () => (
+	<div className="hero-floats" aria-hidden="true">
+		{FLOATING_TAGS.map((tag, idx) => (
+			<span className={`hero-float hero-float--${idx + 1}${idx > 3 ? ' hidden lg:block' : ''}`} key={tag}>
+				{tag}
+			</span>
+		))}
+	</div>
+);
+
 const HeroLines: FunctionComponent = () => (
 	<div className="hero-lines" aria-hidden="true">
 		<svg viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -99,6 +116,7 @@ const HeroLines: FunctionComponent = () => (
 const HomepageHeader: FunctionComponent = () => (
 	<header className="hero-lines-wrap bg-gradient-to-b from-[#003a5c] to-[#02243c] text-white">
 		<HeroLines />
+		<HeroFloats />
 		<div className="relative z-10 mx-auto max-w-6xl px-6 py-20 md:py-28 grid gap-6 justify-items-center text-center">
 			<p className="m-0 text-sm font-semibold uppercase tracking-[0.2em] text-[#8fb9e8]">
 				{translate({

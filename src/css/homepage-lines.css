@@ -105,6 +105,103 @@
 	}
 }
 
+/*
+ * Schwebende HTML-Elemente: Tag-Chips treiben wie Satelliten durch den
+ * Hero-Raum — mit eigenem Kurs, Tempo und Gefälle pro Chip. Transform/opacity
+ * only, hinter dem Text (Pointer-Events aus).
+ */
+.hero-floats {
+	pointer-events: none;
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+}
+
+.hero-float {
+	position: absolute;
+	border: 1px solid rgb(143 185 232 / 0.3);
+	border-radius: 8px;
+	padding: 0.3rem 0.65rem;
+	font-size: 0.8rem;
+	letter-spacing: 0.04em;
+	color: rgb(183 211 240 / 0.6);
+	background-color: rgb(2 36 60 / 0.45);
+	white-space: nowrap;
+}
+
+/* Positionen verteilen die Chips in die Randbereiche, die Mitte bleibt frei */
+.hero-float--1 {
+	top: 18%;
+	left: 6%;
+	animation: hero-float-a 26s ease-in-out infinite alternate;
+}
+
+.hero-float--2 {
+	top: 30%;
+	right: 8%;
+	animation: hero-float-b 31s ease-in-out infinite alternate;
+}
+
+.hero-float--3 {
+	top: 56%;
+	left: 10%;
+	animation: hero-float-c 24s ease-in-out infinite alternate;
+}
+
+.hero-float--4 {
+	bottom: 14%;
+	right: 12%;
+	animation: hero-float-a 36s ease-in-out infinite alternate-reverse;
+}
+
+.hero-float--5 {
+	top: 12%;
+	left: 38%;
+	animation: hero-float-b 28s ease-in-out infinite alternate-reverse;
+	opacity: 0.7;
+}
+
+.hero-float--6 {
+	top: 64%;
+	right: 24%;
+	animation: hero-float-c 33s ease-in-out infinite alternate;
+	opacity: 0.7;
+}
+
+.hero-float--7 {
+	bottom: 22%;
+	left: 30%;
+	animation: hero-float-a 29s ease-in-out infinite alternate;
+	opacity: 0.6;
+}
+
+@keyframes hero-float-a {
+	from {
+		transform: translate3d(0, 0, 0) rotate(-3deg);
+	}
+	to {
+		transform: translate3d(34px, -22px, 0) rotate(4deg);
+	}
+}
+
+@keyframes hero-float-b {
+	from {
+		transform: translate3d(0, 0, 0) rotate(2.5deg);
+	}
+	to {
+		transform: translate3d(-30px, 18px, 0) rotate(-5deg);
+	}
+}
+
+@keyframes hero-float-c {
+	from {
+		transform: translate3d(0, 0, 0) rotate(1.5deg);
+	}
+	to {
+		transform: translate3d(22px, 26px, 0) rotate(6deg);
+	}
+}
+
 /* Konstruktionslinien zeichnen sich beim Laden auf */
 .hero-line--draw {
 	stroke-dasharray: 1440;
@@ -228,5 +325,9 @@
 	.hero-line--dive {
 		animation: none;
 		stroke-opacity: 0;
+	}
+
+	.hero-float {
+		animation: none;
 	}
 }
