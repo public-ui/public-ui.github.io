@@ -211,13 +211,17 @@ const ImagefilmSection: FunctionComponent = () => {
 					{filmSrc ? (
 						<iframe
 							src={filmSrc}
-							title={translate({
-								id: filmSrc === filmUrl ? 'custom.imagefilm-frame-title' : 'custom.imagefilm-frame-title-static',
-								message:
-									filmSrc === filmUrl
-										? 'KoliBri Imagefilm – animierte Folienshow (4:15 Minuten, ohne Ton)'
-										: 'KoliBri Imagefilm – Folienshow (manuell bedienbar, ohne Ton)',
-							})}
+							title={
+								filmSrc === filmUrl
+									? translate({
+											id: 'custom.imagefilm-frame-title',
+											message: 'KoliBri Imagefilm – animierte Folienshow (4:15 Minuten, ohne Ton)',
+									  })
+									: translate({
+											id: 'custom.imagefilm-frame-title-static',
+											message: 'KoliBri Imagefilm – Folienshow (manuell bedienbar, ohne Ton)',
+									  })
+							}
 							className="absolute inset-0 h-full w-full rounded-2xl border-0"
 							loading="lazy"
 						></iframe>
