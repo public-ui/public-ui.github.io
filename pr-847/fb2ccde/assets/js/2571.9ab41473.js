@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[2571],{62571:(u,_,s)=>{s.r(_),s.d(_,{default:()=>c});s(92990);var l=s(87373),a=s(94686);const c=()=>(0,a.jsx)(l.Cv,{_label:"Auslastung",_max:100,_value:65,_unit:"%"})}}]);
