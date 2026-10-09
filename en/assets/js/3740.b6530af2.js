@@ -1,0 +1,1 @@
+/*! For license information please see 3740.b6530af2.js.LICENSE.txt */ "use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[1359,3740],{93740:(s,c,t)=>{t.r(c),t.d(c,{test_component:()=>_});var u=t(18773);t(64874);const _=class{constructor(s){(0,u.r)(this,s)}}}}]);
