@@ -11,7 +11,17 @@ function minifyFiles(dir) {
 	dirItems.forEach((dirItem) => {
 		const dirItemPath = path.resolve(dir, dirItem);
 		const stats = fs.lstatSync(dirItemPath);
-		if (stats.isFile() && /(htaccess|robots)/.test(dirItemPath) === false && !dirItemPath.endsWith('.json')) {
+		// Nur HTML-Markup minifieren: Auf .js-Dateien angewendet würde der HTML-Parser
+		// JS-Dateien, deren String-Literale wohlgeformte Tags enthalten (z. B.
+		// "<button>"), erfolgreich als HTML parsen und durch angehängte Schließ-Tags
+		// korrupt machen. Bei Parse-Fehlern bleibt eine Datei zwar unangetastet, aber
+		// genau dieser Zufallsschutz reicht nicht als Filter.
+		if (
+			stats.isFile() &&
+			dirItemPath.endsWith('.html') &&
+			/(htaccess|robots)/.test(dirItemPath) === false &&
+			!dirItemPath.endsWith('.json')
+		) {
 			let code = fs.readFileSync(dirItemPath, { encoding: 'utf-8' });
 			minify(code, options)
 				.then((result) => {
