@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_public_ui_docs_v4=self.webpackChunk_public_ui_docs_v4||[]).push([[2652],{52652:(s,_,c)=>{c.r(_),c.d(_,{default:()=>a});c(92990);var e=c(87373),u=c(94686);const a=()=>(0,u.jsx)(e.I0,{_src:"/assets/samples/skip-nav.png",_alt:"",_sizes:"20vw"})}}]);
