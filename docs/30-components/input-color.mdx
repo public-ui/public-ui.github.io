@@ -5,28 +5,31 @@ description: Beschreibung, Spezifikation und Beispiele für die InputColor-Kompo
 
 import Readme from '@site/readmes/input-color/readme.md';
 import InputColorPreview from '@site/src/components/previews/components/InputColor';
-import LabelNote from './_shared/a11y-properties/label.md';
 import ErrorMessageNote from './_shared/a11y-properties/error-message.md';
-import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
+import LabelNote from './_shared/a11y-properties/label.md';
+import EventsIntro from './_shared/api/events-intro.md';
+import DisabledProp from './_shared/feature-properties/disabled.md';
 import BasicFeature from './_shared/features/basic.md';
 import FormAttributesFeature from './_shared/features/form-attributes.md';
-import DisabledProp from './_shared/feature-properties/disabled.md';
-import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
 import HideLabelFeature from './_shared/features/hide-label.md';
+import HintAndMsgFeature from './_shared/features/hint-and-msg.md';
 import IconsFeature from './_shared/features/icons.md';
 import SmartButtonFeature from './_shared/features/smart-button.md';
 import SuggestionsFeature from './_shared/features/suggestions.md';
-import EventsIntro from './_shared/api/events-intro.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
 
 # InputColor
 
 **Synonyme:** Farbeingabefeld, Farbauswahl, Farbwähler, Color Input, Color Picker
 
-**Beschreibung:** Mit **InputColor** kann eine Farbe über den Farbwähler des Browsers ausgewählt werden.
+**Beschreibung:** Mit **InputColor** kann eine Farbe über den Farbwähler des Browsers ausgewählt werden. Die Komponente basiert auf dem nativen HTML5-Eingabetyp `color`: Das Farbfeld zeigt die aktuell gewählte Farbe an und öffnet per Klick oder Tastatur den Farbwähler des Browsers bzw. Betriebssystems.
 
-Die Komponente basiert auf dem nativen HTML5-Eingabetyp `color` und profitiert dadurch von dessen Semantik sowie der Unterstützung durch Browser und assistive Technologien.
-
-Das Farbfeld zeigt die aktuell gewählte Farbe an. Per Klick oder Tastatur öffnet sich der Farbwähler des Browsers bzw. Betriebssystems, dessen Darstellung und Funktionsumfang von der Plattform abhängen.
+**Anwendungsfälle:**
+- Auswahl einer Primär- oder Sekundärfarbe in Konfigurationsoberflächen
+- Festlegen von Hintergrund-, Text- oder Akzentfarben
+- Anpassung von Design- oder Theme-Einstellungen
+- Konfiguration individueller Farbprofile oder Farbschemata
+- Farbwahl in Formularen oder Administrationsoberflächen
 
 ## Beispiel
 
@@ -45,7 +48,7 @@ Einfaches Farbfeld mit Beschriftung und voreingestellter Farbe:
 | Entscheidung | Begründung |
 | ------------ | ---------- |
 | Verwendung des nativen HTML5-Eingabetyps `color` | Die Komponente nutzt bewusst den nativen HTML5-Eingabetyp `color` und profitiert dadurch von dessen standardisierter Unterstützung durch Browser und assistive Technologien. |
-| Kein eigener Farbwähler und kein zusätzliches Textfeld | Die Farbauswahl erfolgt ausschließlich über den nativen Dialog des Browsers bzw. Betriebssystems. Tastatur- und Screenreader-Unterstützung des Dialogs hängen daher von der jeweiligen Plattform ab. |
+| Kein eigener Farbwähler und kein zusätzliches Textfeld | Mit dem bis Version 4.3 vorhandenen Textfeld für HEX-Werte war das Farbfeld nicht per Tastatur erreichbar, sodass sich der Farbwähler nicht per Tastatur öffnen ließ. Da HEX-Werte auch im nativen Farbwähler eingegeben werden können, wurde das Textfeld wieder entfernt (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10666" _target="_blank" _label="#10666"></kol-link>). Die Farbauswahl erfolgt seitdem ausschließlich über den nativen Dialog des Browsers bzw. Betriebssystems. |
 | Übernahme des Browser-Standardwerts | Ist kein `_value` gesetzt, übernimmt die Komponente nach dem Laden den Standardwert des nativen Farbfelds (`#000000`), sodass Anzeige und Wert der Komponente übereinstimmen. |
 
 ### Links und Referenzen
@@ -54,14 +57,7 @@ Einfaches Farbfeld mit Beschriftung und voreingestellter Farbe:
 - <kol-link _href="https://html.spec.whatwg.org/multipage/input.html#color-state-(type=color)" _target="_blank" _label="HTML Living Standard: The input element - type color"></kol-link>
 - <kol-link _href="https://public-ui.github.io/docs/known-issues#kol-input-color" _target="_blank" _label="Bekannte Probleme: kol-input-color"></kol-link>
 
-## Verwendung
-
-- Legen Sie die vorausgewählte Farbe über `_value` fest. Verwenden Sie dafür das Format `#rrggbb` (z. B. `#d4fcf4`).
-- KoliBri übergibt `_value` unverändert an das native Farbfeld. Andere Schreibweisen wie `#fff` oder Farbnamen werden vom Browser in der Regel nicht übernommen und durch `#000000` ersetzt.
-- Ist kein `_value` gesetzt, wird der Standardwert des Browsers (`#000000`) verwendet.
-- Die Komponente unterstützt weder `_required` noch `_readOnly`. Ob eine Farbauswahl verpflichtend ist, muss durch die Anwendung validiert und über `_msg` kommuniziert werden.
-
-### Tastatursteuerung
+## Tastatursteuerung
 
 <NativeKeyboardIntro />
 
@@ -74,49 +70,28 @@ Einfaches Farbfeld mit Beschriftung und voreingestellter Farbe:
 
 Die Bedienung innerhalb des geöffneten Farbwählers wird vollständig durch den Browser bzw. das Betriebssystem bestimmt.
 
-### Best Practices / Empfehlungen
+## FAQ
 
-- Verwenden Sie eine aussagekräftige Beschriftung (`_label`), damit Nutzende erkennen, wofür die Farbe verwendet wird (z. B. „Primärfarbe“ oder „Hintergrundfarbe“).
-- Verzichten Sie möglichst auf `_hideLabel`, da einige Screenreader die Beschriftung des nativen Farbfelds nicht zuverlässig ausgeben.
-- Nutzen Sie `_hint`, um ergänzende Hinweise bereitzustellen, beispielsweise zur Verwendung der Farbe oder zu Kontrastanforderungen.
-- Ist nur eine begrenzte Anzahl an Farben zulässig, verwenden Sie stattdessen eine Auswahl vordefinierter Farben, beispielsweise mit <kol-link _href="./select" _label="Select"></kol-link> oder <kol-link _href="./input-radio" _label="InputRadio"></kol-link>. Beschreiben Sie die Farben dabei zusätzlich in Textform (z. B. „Dunkelblau“).
-- Geben Sie Validierungsfehler über `_msg` aus und beschreiben Sie verständlich, wie Nutzende den Fehler beheben können.
+**Welche Farbwerte unterstützt die Komponente?**  
+Der Wert wird im Format `#rrggbb` übergeben und zurückgeliefert. KoliBri übergibt `_value` unverändert an das native Farbfeld. Andere Schreibweisen wie `#fff` oder Farbnamen behandeln Browser unterschiedlich: Je nach Browser werden sie in das Format `#rrggbb` umgewandelt oder durch `#000000` ersetzt. Verwenden Sie daher immer `#rrggbb`. Der native Farbwähler des Browsers kann – abhängig von Browser und Betriebssystem – weitere Eingabemöglichkeiten wie RGB oder HSL anbieten; der Wert der Komponente bleibt davon unberührt.
 
-### Anwendungsfälle
+**Wie kann ich eine Farbe vorbelegen?**  
+Über `_value`, siehe [Vorbelegter Farbwert](#vorbelegter-farbwert). Welcher Wert ohne `_value` gilt, steht unter [Konkrete Designentscheidungen](#konkrete-designentscheidungen).
 
-- Auswahl einer Primär- oder Sekundärfarbe in Konfigurationsoberflächen
-- Festlegen von Hintergrund-, Text- oder Akzentfarben
-- Anpassung von Design- oder Theme-Einstellungen
-- Konfiguration individueller Farbprofile oder Farbschemata
-- Farbwahl in Formularen oder Administrationsoberflächen
-
-### FAQ
-
-**Welche Farbwerte unterstützt die Komponente?**
-Der Wert wird im Format `#rrggbb` übergeben und zurückgeliefert. Der native Farbwähler des Browsers kann – abhängig von Browser und Betriebssystem – weitere Eingabemöglichkeiten wie RGB oder HSL anbieten; der Wert der Komponente bleibt davon unberührt.
-
-**Wie kann ich eine Farbe vorbelegen?**
-Übergeben Sie über `_value` einen hexadezimalen Farbwert im Format `#rrggbb` als Ausgangswert.
-
-**Gibt es ein Textfeld für die direkte Eingabe von HEX-Werten?**
+**Gibt es ein Textfeld für die direkte Eingabe von HEX-Werten?**  
 Nein. Bis Version 4.3 bestand die Komponente zusätzlich aus einem Textfeld für HEX-Werte. Seit Version 4.4 wird ausschließlich das native Farbfeld verwendet.
 
-**Kann ich die Farbauswahl als Pflichtfeld kennzeichnen?**
-Nein, die Komponente unterstützt kein `_required`. Ob eine Farbauswahl verpflichtend ist, muss durch die Anwendung validiert und über `_msg` kommuniziert werden.
+**Kann ich die Farbauswahl als Pflichtfeld oder als schreibgeschützt kennzeichnen?**  
+Nein, die Komponente unterstützt weder `_required` noch `_readOnly`. Ob eine Farbauswahl verpflichtend ist, muss durch die Anwendung validiert und über `_msg` kommuniziert werden. Beschreiben Sie in der Fehlermeldung verständlich, wie Nutzende den Fehler beheben können.
 
-**Warum sieht der Farbwähler je nach Browser unterschiedlich aus?**
+**Wie beschrifte ich das Farbfeld verständlich?**  
+Verwenden Sie eine aussagekräftige Beschriftung (`_label`), damit Nutzende erkennen, wofür die Farbe verwendet wird (z. B. „Primärfarbe“ oder „Hintergrundfarbe“). Verzichten Sie möglichst auf `_hideLabel`, da einige Screenreader die Beschriftung des nativen Farbfelds nicht zuverlässig ausgeben. Nutzen Sie `_hint`, um ergänzende Hinweise bereitzustellen, beispielsweise zur Verwendung der Farbe oder zu Kontrastanforderungen.
+
+**Wann sollte ich InputColor nicht verwenden?**  
+Ist nur eine begrenzte Anzahl an Farben zulässig, verwenden Sie stattdessen eine Auswahl vordefinierter Farben, beispielsweise mit <kol-link _href="./select" _label="Select"></kol-link> oder <kol-link _href="./input-radio" _label="InputRadio"></kol-link>. Beschreiben Sie die Farben dabei zusätzlich in Textform (z. B. „Dunkelblau“).
+
+**Warum sieht der Farbwähler je nach Browser unterschiedlich aus?**  
 Die Komponente verwendet den nativen Farbwähler des Browsers. Dessen Darstellung, Bedienung und Funktionsumfang werden durch Browser und Betriebssystem bestimmt.
-
-## Playground
-
-Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
-
-<InputColorPreview
-	context="playground"
-	initialProps={{
-		_value: '#d4fcf4',
-	}}
-/>
 
 ## Funktionalitäten
 
@@ -152,7 +127,7 @@ Die Property wird 1:1 auf das gleichnamige native HTML-Attribut des `input`-Elem
 
 ### Vorbelegter Farbwert
 
-Mit `_value` legen Sie die vorausgewählte Farbe im Format `#rrggbb` fest.
+Mit `_value` legen Sie die vorausgewählte Farbe im Format `#rrggbb` fest (z. B. `#d4fcf4`).
 
 <InputColorPreview
 	context="feature"
@@ -174,7 +149,7 @@ Mit `_value` legen Sie die vorausgewählte Farbe im Format `#rrggbb` fest.
 		_label: 'Textfarbe',
 		_hint: 'Achten Sie auf ausreichenden Kontrast zur Hintergrundfarbe.',
 		_msg: { _description: 'Die gewählte Farbe erreicht keinen ausreichenden Kontrast.' },
-		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', icons: 'kolicon-kolibri'},
+		_infoPopover: { _label: 'zusätzliche Info', _content: 'zusätzliche Informationen zum Input', _icons: 'kolicon-kolibri' },
 		_touched: true,
 		_hideMsg: false,
 	}}
@@ -225,14 +200,23 @@ Mit `_value` legen Sie die vorausgewählte Farbe im Format `#rrggbb` fest.
 
 <SuggestionsFeature />
 
-**Hinweis:** In der aktuellen Version werden die Vorschlagswerte bei InputColor nicht angezeigt, da die zugehörige Vorschlagsliste nicht erzeugt wird (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10859" _target="_blank" _label="#10859"></kol-link>). Das Beispiel zeigt die Konfiguration; die Vorschläge erscheinen erst nach Behebung des Fehlers.
-
 <InputColorPreview
 	context="feature"
 	visibleProperties={['_suggestions']}
 	initialProps={{
 		_label: 'Markenfarbe',
 		_suggestions: ['#005ea8', '#e30613', '#ffcc00'],
+	}}
+/>
+
+## Playground
+
+Testen Sie die verschiedenen Eigenschaften der InputColor-Komponente:
+
+<InputColorPreview
+	context="playground"
+	initialProps={{
+		_value: '#d4fcf4',
 	}}
 />
 
@@ -247,7 +231,7 @@ Mit `_value` legen Sie die vorausgewählte Farbe im Format `#rrggbb` fest.
 | `click`   | Farbfeld wird angeklickt              | -                                      |
 | `focus`   | Farbfeld wird fokussiert              | -                                      |
 | `blur`    | Farbfeld verliert Fokus               | -                                      |
-| `keydown` | Taste wird im Farbfeld gedrückt       | -                        |
+| `keydown` | Taste wird im Farbfeld gedrückt       | -                                      |
 | `input`   | Farbe wird im Farbwähler geändert     | Aktueller Farbwert im Format `#rrggbb` |
 | `change`  | Farbauswahl wurde abgeschlossen       | Aktueller Farbwert im Format `#rrggbb` |
 
