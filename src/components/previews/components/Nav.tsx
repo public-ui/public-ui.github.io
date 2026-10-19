@@ -21,12 +21,12 @@ const NavPreview: React.FC<PreviewDefaults<JSX.KolNav>> = (props) => {
 		<Preview<JSX.KolNav>
 			{...getPreviewDefaults(props, defaultProps)}
 			propertyComponents={{
-				_label: <KolInputText _label="_label" />,
-				_links: <NavItemsProperty label="_links" />,
-				_hasCompactButton: <BooleanProperty label="_hasCompactButton" />,
-				_hasIconsWhenExpanded: <BooleanProperty label="_hasIconsWhenExpanded" />,
-				_hideLabel: <BooleanProperty label="_hideLabel" />,
-				_collapsible: <BooleanProperty label="_collapsible" />,
+				_label: <KolInputText _label="Label" />,
+				_links: <NavItemsProperty label="Links" />,
+				_hasCompactButton: <BooleanProperty label="Has Compact Button" />,
+				_hasIconsWhenExpanded: <BooleanProperty label="Has Icons When Expanded" />,
+				_hideLabel: <BooleanProperty label="Hide Label" />,
+				_collapsible: <BooleanProperty label="Collapsible" />,
 			}}
 			componentName="KolNav"
 			layout={PreviewLayout.DEFAULT}
