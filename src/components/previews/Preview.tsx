@@ -229,13 +229,14 @@ const Preview = <TProps,>({
 		const highlightedCode = hljs.highlight(sourceCode, { language: 'xml' }).value;
 
 		return (
-			<div className="grid grid-cols-[1fr_max-content] gap-1 p-2 my-2 bg-gray-100 border-solid border-gray-300 rounded-md">
+			<div className="relative p-2 my-2 bg-gray-100 border-solid border-gray-300 rounded-md">
 				<pre className="overflow-auto m-0 p-1">
 					<code className="hljs" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
 				</pre>
 				<KolButton
-					style={{ backgroundColor: 'transparent' }}
+					style={{ position: 'absolute', top: '0.5rem', right: '0.5rem', backgroundColor: 'transparent' }}
 					_label={translate({ id: 'preview.sourceCode.copyButton' })}
+					_hideLabel
 					_variant="secondary"
 					_icons={copySuccess ? 'fa-solid fa-check' : 'fa-solid fa-copy'}
 					_on={{
