@@ -1,25 +1,35 @@
-import { KolCard, KolLink } from '@public-ui/react-v19';
+import { KolAlert, KolLink } from '@public-ui/react-v19';
 
-# Create a KoliBri theme
+# Create a theme for KoliBri
 
-> Note: The former Designer is no longer available; themes are now maintained directly in code.
+<KolAlert _label="Designer discontinued" _type="warning" _variant="card">
+	<p>
+		The previous designer is no longer available. Themes are maintained entirely in code and distributed as own
+		npm packages.
+	</p>
+</KolAlert>
 
-<div className="grid grid-cols-2 gap-4">
-<KolCard _label="Theme guide" _level={2}>
-<KolLink _label="Guide in the KERN Developer Kit" _href="https://gitlab.opencode.de/kern-ux/kern-developer-kit/-/blob/main/CONTRIBUTING.md" _target="_blank" _icons={{ left: 'fa-solid fa-code-branch' }} />
-</KolCard>
-</div>
+Creating your own theme takes place in a dedicated theme repository. The complete process, from setting up the
+repository via design tokens and build through to testing and publishing, is covered by the step-by-step guide:
 
-Creating a custom theme now happens entirely in a Git repository. The approach follows the documentation in the [KERN Developer Kit](https://gitlab.opencode.de/kern-ux/kern-developer-kit/-/blob/main/CONTRIBUTING.en.md).
+<KolLink _label="Setting up your own theme repository" _href="/docs/concepts/styling/theme-repository" />
 
-## Steps
+## Reference projects
 
-1. **Fork an existing theme:** Use a current theme as a baseline and create your own repository from it (for example via a fork or `git clone`). This keeps the structure KoliBri expects for styling.
-2. **Apply your style guide:** Adapt the existing styles, variables, and tokens to your style guide. Work directly in the code of the forked theme to derive colors, spacing, typography, and component variants consistently.
-3. **Version the theme:** Commit your changes regularly and keep the theme repository well documented. This ensures the theme remains traceable and reusable over time.
-4. **Use the theme:** Consume the finished theme from your repository in your projects so applications can use the customized styles without the Designer.
+- <KolLink
+		_label="KERN Developer Kit, contributing notes"
+		_href="https://gitlab.opencode.de/kern-ux/kern-developer-kit/-/blob/main/CONTRIBUTING.md"
+		_target="_blank"
+	/>
+- <KolLink
+		_label="KERN pattern library, Scss-based theme implementation"
+		_href="https://gitlab.opencode.de/kern-designsystem/pattern-library/-/tree/main/packages/themes"
+		_target="_blank"
+	/>
 
 ## Notes
 
-- If you need global CSS rules (for example for zoom levels, hyphenation, or spacing), add them directly in your theme.
-- For Sass workflows you can still use the [Scss approach](/docs/concepts/styling/scss) to organize your styles modularly.
+- Global rules of the application, for example for zoom levels, hyphenation or spacing, belong in the global layer of
+  the theme (`global.scss` or the `GLOBAL` entry of the theme map).
+- Scss is optional: the styles work just the same as plain CSS. The theme template ships an Scss structure with mixins
+  that can be reduced as needed.

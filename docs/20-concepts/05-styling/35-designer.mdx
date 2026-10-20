@@ -1,25 +1,36 @@
-import { KolCard, KolLink } from '@public-ui/react-v19';
+import { KolAlert, KolLink } from '@public-ui/react-v19';
 
 # Theme für KoliBri erstellen
 
-> Hinweis: Der bisherige Designer steht nicht mehr zur Verfügung; Themes werden nun direkt im Code gepflegt.
+<KolAlert _label="Designer eingestellt" _type="warning" _variant="card">
+	<p>
+		Der bisherige Designer steht nicht mehr zur Verfügung. Themes werden vollständig im Code gepflegt und als
+		eigene npm-Pakete verteilt.
+	</p>
+</KolAlert>
 
-<div className="grid grid-cols-2 gap-4">
-<KolCard _label="Theme-Anleitung" _level={2}>
-<KolLink _label="Anleitung im KERN Developer Kit" _href="https://gitlab.opencode.de/kern-ux/kern-developer-kit/-/blob/main/CONTRIBUTING.md" _target="_blank" _icons={{ left: 'fa-solid fa-code-branch' }} />
-</KolCard>
-</div>
+Die Erstellung eines eigenen Themes erfolgt in einem eigenen Theme-Repository. Das komplette Vorgehen, vom Anlegen
+des Repositorys über Design-Tokens und Build bis zur Prüfung und Veröffentlichung, zeigt die
+Schritt-für-Schritt-Anleitung:
 
-Die Erstellung eines eigenen Themes erfolgt vollständig in einem Git-Repository. Das Vorgehen orientiert sich an der Dokumentation im [KERN Developer Kit](https://gitlab.opencode.de/kern-ux/kern-developer-kit/-/blob/main/CONTRIBUTING.md).
+<KolLink _label="Eigenes Theme-Repository aufbauen" _href="/docs/concepts/styling/theme-repository" />
 
-## Vorgehen
+## Referenzprojekte
 
-1. **Bestehendes Theme forken:** Nutzen Sie ein aktuelles Theme als Ausgangspunkt und erstellen Sie daraus ein eigenes Repository (z. B. per Fork oder `git clone`). So behalten Sie die Struktur bei, die KoliBri für das Styling erwartet.
-2. **Styleguide anwenden:** Passen Sie die vorhandenen Styles, Variablen und Tokens an Ihren Styleguide an. Arbeiten Sie dabei direkt im Code des geforkten Themes, um Farben, Abstände, Typografie und Komponentenvarianten konsistent abzuleiten.
-3. **Theme versionieren:** Committen Sie Ihre Anpassungen regelmäßig und halten Sie das Theme-Repository sauber dokumentiert. Damit stellen Sie sicher, dass Ihr Theme langfristig nachvollziehbar und wiederverwendbar bleibt.
-4. **Theme nutzen:** Binden Sie das fertige Theme aus Ihrem Repository in Ihre Projekte ein. So können Anwendungen die angepassten Styles ohne den Designer verwenden.
+- <KolLink
+		_label="KERN Developer Kit, Beitragshinweise"
+		_href="https://gitlab.opencode.de/kern-ux/kern-developer-kit/-/blob/main/CONTRIBUTING.md"
+		_target="_blank"
+	/>
+- <KolLink
+		_label="KERN Pattern Library, Theme-Umsetzung mit Scss"
+		_href="https://gitlab.opencode.de/kern-designsystem/pattern-library/-/tree/main/packages/themes"
+		_target="_blank"
+	/>
 
 ## Hinweise
 
-- Wenn Sie globale CSS-Regeln benötigen (z. B. für Zoom-Stufen, Hyphenation oder Abstände), ergänzen Sie diese direkt in Ihrem Theme.
-- Für Sass-Workflows können Sie weiterhin den [Scss-Ansatz](/docs/concepts/styling/scss) verwenden, um Ihre Styles modular zu organisieren.
+- Globale Regeln der Anwendung, etwa für Zoom-Stufen, Silbentrennung oder Abstände, gehören in den globalen Layer
+  des Themes (`global.scss` beziehungsweise der `GLOBAL`-Eintrag der Theme-Map).
+- Scss ist optional: Die Styles funktionieren genauso als gewöhnliches CSS. Das Theme-Template bringt eine
+  Scss-Struktur mit Mixins mit, die sich nach Bedarf reduzieren lässt.
