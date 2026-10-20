@@ -12,8 +12,8 @@ const SelectPreview = (props: PreviewDefaults<JSX.KolSelect>) => {
 	const defaultProps = React.useMemo<JSX.KolSelect>(
 		() => ({
 			_label: translate({ id: 'preview.component.select.label' }),
-			// Für ein Bundesland gibt es keinen unstrittigen Standardwert, daher beginnt die Einfachauswahl mit
-			// einer klar beschrifteten Leer-Option (Empfehlung aus public-ui/interne-todos#233).
+			// There is no undisputed default federal state, so the single select starts with a clearly labelled
+			// empty option instead of preselecting the first one.
 			_options: multiple
 				? SelectOptionsDefault
 				: [
