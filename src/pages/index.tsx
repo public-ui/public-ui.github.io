@@ -178,16 +178,11 @@ const HomepageButtons: FunctionComponent = () => {
 };
 
 const ImagefilmSection: FunctionComponent = () => {
-	// filmSrc enthält bei reduzierter Bewegung den Query ?static (kein Auto-Advance);
-	// die Präferenz wird beim Klick gelesen, da der Handler nur clientseitig läuft.
 	const [filmSrc, setFilmSrc] = useState<string | null>(null);
 	const posterUrl = useBaseUrl('/img/imagefilm-poster.png');
 	const filmUrl = useBaseUrl('/imagefilm');
 
-	const startFilm = () => {
-		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		setFilmSrc(reducedMotion ? `${filmUrl}?static` : filmUrl);
-	};
+	const startFilm = () => setFilmSrc(filmUrl);
 
 	return (
 		<section className="bg-white text-[#1f2937]" aria-labelledby="imagefilm-heading">
@@ -203,7 +198,7 @@ const ImagefilmSection: FunctionComponent = () => {
 						{translate({
 							id: 'custom.imagefilm-description',
 							message:
-								'4:15 Minuten über KoliBri, Barrierefreiheit und Open Source – beim Open Source Wettbewerb 2026 eingereicht. Die Präsentation läuft automatisch ab, ohne Ton.',
+								'Über KoliBri, Barrierefreiheit und Open Source – Sieger in der Kategorie Transformation beim Open Source Wettbewerb 2026. Die Präsentation lässt sich einfach durchklicken, ohne Ton.',
 						})}
 					</p>
 				</div>
@@ -211,17 +206,10 @@ const ImagefilmSection: FunctionComponent = () => {
 					{filmSrc ? (
 						<iframe
 							src={filmSrc}
-							title={
-								filmSrc === filmUrl
-									? translate({
-											id: 'custom.imagefilm-frame-title',
-											message: 'KoliBri Imagefilm – animierte Folienshow (4:15 Minuten, ohne Ton)',
-									  })
-									: translate({
-											id: 'custom.imagefilm-frame-title-static',
-											message: 'KoliBri Imagefilm – Folienshow (manuell bedienbar, ohne Ton)',
-									  })
-							}
+							title={translate({
+								id: 'custom.imagefilm-frame-title',
+								message: 'KoliBri Imagefilm – Präsentation (manuell durchklickbar, ohne Ton)',
+							})}
 							className="absolute inset-0 h-full w-full rounded-2xl border-0"
 							loading="lazy"
 						></iframe>
