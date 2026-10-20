@@ -5,13 +5,21 @@ description: Beschreibung, Spezifikation und Beispiele für die Button-Komponent
 
 import Readme from '@site/readmes/button/readme.md';
 import ButtonPreview from '@site/src/components/previews/components/Button';
-import { ExampleLink } from '@site/src/components/ExampleLink';
+import EventsIntro from './_shared/api/events-intro.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
 
 # Button
 
 **Synonyme:** Schaltfläche, Schalter, Call-to-Action (CTA), Aktionsschaltfläche
 
-**Beschreibung:** Die **Button**-Komponente stellt Schaltflächen zur Verfügung, mit denen Nutzende Aktionen auslösen können. Unterschiedliche Varianten unterstützen die visuelle Priorisierung und erleichtern die Orientierung innerhalb einer Anwendung.
+**Beschreibung:** Die **Button**-Komponente stellt Schaltflächen zur Verfügung, mit denen Nutzende Aktionen auslösen können. Sie basiert auf dem nativen HTML-Element `button`. Unterschiedliche Varianten unterstützen die visuelle Priorisierung und erleichtern die Orientierung innerhalb einer Anwendung.
+
+**Anwendungsfälle:**
+- Absenden eines Formulars oder Auslösen einer Suche
+- Speichern, Bearbeiten oder Löschen von Daten bzw. Datensätzen
+- Öffnen oder Schließen eines Dialogs
+- Bestätigen oder Abbrechen einer Aktion
+- Starten eines Prozesses oder Workflows sowie Navigation innerhalb von Wizards oder mehrstufigen Prozessen
 
 ## Beispiel
 
@@ -21,13 +29,10 @@ Darstellung der Komponente mit Standard-Label und ohne optional gesetzte Felder.
 
 ## Barrierefreiheit
 
-- Die Property `_label` ist verpflichtend und stellt den zugänglichen Namen (Accessible Name) des Buttons bereit. Die Beschriftung wird von Screenreadern ausgegeben und ermöglicht die Identifikation der Funktion des Buttons.
-- Die Komponente unterstützt die Bedienung per Tastatur.
-- Der Button kann über die Tabulatortaste fokussiert und über Enter oder Leertaste aktiviert werden.
-- Auch bei ausgeblendeter sichtbarer Beschriftung (`_hideLabel`) bleibt der zugängliche Name erhalten. Die Beschriftung wird als **Tooltip** angezeigt und von Screenreadern beim Fokus vorgelesen.
+- Die sichtbare Beschriftung ist zugleich der zugängliche Name der Schaltfläche. Screenreader geben damit denselben Text aus, den sehende Nutzende lesen; dekorative Icons und der Hinweis auf ein Tastenkürzel werden dabei nicht mitgelesen.
+- Die Schaltfläche ist unabhängig von der Länge ihrer Beschriftung mindestens 44 × 44 Pixel groß und erfüllt damit die Zielgröße nach WCAG 2.5.5.
 - Die Komponente stellt einen sichtbaren Fokuszustand bereit.
-- Die Komponente basiert auf dem nativen HTML-Element `button` und unterstützt dadurch etablierte Bedienmuster sowie assistive Technologien.
-- Für Menschen mit eingeschränktem Sichtfeld ist die Positionierung von Icons **links** von der Beschriftung optimal.
+- Im Kontrastmodus des Betriebssystems (z. B. „Kontrastdesigns“ unter Windows) werden Schaltfläche, Fokusrahmen und deaktivierter Zustand in den Systemfarben dargestellt und bleiben dadurch unterscheidbar.
 
 ### Konkrete Designentscheidungen
 
@@ -45,91 +50,51 @@ Darstellung der Komponente mit Standard-Label und ohne optional gesetzte Felder.
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button" _target="_blank" _label="MDN Web Docs: HTML Button Element"></kol-link>
 - <kol-link _href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element" _target="_blank" _label="HTML Living Standard: Button Element"></kol-link>
 
-## Verwendung
+## Tastatursteuerung
 
-- Die Button-Komponente wird verwendet, um Aktionen innerhalb einer Anwendung auszulösen.
-- Schaltflächen sollten immer eine konkrete Aktion ausführen und keine reine Navigation übernehmen.
-- Die Beschriftung sollte die auszuführende Aktion möglichst eindeutig beschreiben.
-- Buttons können durch unterschiedliche Varianten visuell priorisiert werden.
-- Die Komponente eignet sich für einzelne Aktionen sowie für Aktionsgruppen innerhalb eines gemeinsamen Kontexts.
+<NativeKeyboardIntro />
 
-### Tastatursteuerung
+| Taste             | Funktion                                                                                     |
+| ----------------- | -------------------------------------------------------------------------------------------- |
+| `Tab`             | Fokus auf die Schaltfläche bzw. das nächste fokussierbare Element setzen.                    |
+| `Shift+Tab`       | Fokus auf das vorherige fokussierbare Element setzen.                                        |
+| `Enter` / `Space` | Schaltfläche aktivieren. Bei `_type="submit"` bzw. `"reset"` wirkt sie auf das umgebende Formular (siehe [Button-Typ](#button-typ)). |
 
-| Taste       | Funktion                                              |
-| ----------- | ----------------------------------------------------- |
-| `Tab`       | Fokus auf die nächste Schaltfläche setzen             |
-| `Shift+Tab` | Fokus auf die vorherige Schaltfläche setzen           |
-| `Enter` / `Space` | Schaltfläche aktivieren                         |
+Ergänzend zum nativen Verhalten schließt `Escape` den Tooltip einer Schaltfläche mit ausgeblendeter Beschriftung (`_hideLabel`), solange er angezeigt wird.
 
-### Best Practices / Empfehlungen
-
-- Verwenden Sie möglichst aussagekräftige Beschriftungen, die die auszuführende Aktion beschreiben.
-- Verwenden Sie Verben wie „Speichern“, „Absenden“ oder „Löschen“ statt allgemeiner Bezeichnungen wie „OK“ oder „Weiter“. Die **Beschriftung** muss die Aktion beschreiben.
-- Heben Sie innerhalb eines Bereichs nur die wichtigste Aktion als primäre Schaltfläche hervor. Weitere Buttons sollten als sekundäre Schaltflächen dargestellt werden.
-- Verwenden Sie **nicht mehrere Buttons** im Stil „primär" innerhalb einer Gruppierung.
-- Verwenden Sie Schaltflächen nicht für Navigation zwischen Seiten. Nutzen Sie hierfür Links oder die LinkButton-Komponente.
-- Verwenden Sie Icons als Ergänzung zur Beschriftung, nicht als deren Ersatz.
-- Verwenden Sie Icon-only-Buttons nur, wenn die Funktion auch ohne sichtbaren Text eindeutig erkennbar bleibt.
-- Gruppieren Sie zusammengehörige Aktionen räumlich und visuell.
-
-### Anwendungsfälle
-
-- Absenden eines Formulars
-- Speichern von Daten
-- Öffnen oder Schließen eines Dialogs
-- Bestätigen oder Abbrechen einer Aktion
-- Starten eines Prozesses oder Workflows
-- Auslösen einer Suche
-- Bearbeiten oder Löschen eines Datensatzes
-- Navigation innerhalb von Wizards oder mehrstufigen Prozessen
+Deaktivierte Schaltflächen (`_disabled`) sind nicht Teil der Tab-Reihenfolge.
 
 ## FAQ
 
-**Wann sollte ein Button statt eines Links verwendet werden?**
-- Buttons lösen Aktionen innerhalb der aktuellen Seite oder Anwendung aus.
-- Beispiele: Speichern, Löschen, Absenden, Dialog öffnen.
-- Links dienen der Navigation zu anderen Seiten, Ansichten oder Ressourcen.
+**Wann verwende ich Button, Link oder LinkButton?**  
+Die Wahl richtet sich nach der Funktion und nicht nach dem visuellen Erscheinungsbild. Buttons lösen Aktionen innerhalb der aktuellen Seite oder Anwendung aus, z. B. Speichern, Löschen, Absenden oder einen Dialog öffnen. Schaltflächen sollten immer eine konkrete Aktion ausführen und keine reine Navigation übernehmen. Links dienen der Navigation zu anderen Seiten, Ansichten oder Ressourcen. Soll eine Navigation wie eine Schaltfläche aussehen, verwenden Sie die LinkButton-Komponente.
 
-**Wann sollte die LinkButton-Komponente statt der Button-Komponente verwendet werden?**
-- LinkButton für Navigation mit schaltflächenähnlicher Darstellung.
-- Button für Aktionen innerhalb der Anwendung.
-- Die Wahl sollte sich an der Funktion und nicht am visuellen Erscheinungsbild orientieren.
+**Wie formuliere ich die Beschriftung?**  
+Die Beschriftung (`_label`) muss die auszuführende Aktion möglichst eindeutig beschreiben. Verwenden Sie Verben wie „Speichern“, „Absenden“ oder „Löschen“ statt allgemeiner Bezeichnungen wie „OK“ oder „Weiter“. Die Property ist verpflichtend, weil sie den zugänglichen Namen der Schaltfläche bereitstellt, der von Screenreadern ausgegeben wird – so entstehen keine unbeschrifteten und damit schwer verständlichen Schaltflächen.
 
-**Warum ist die Property _label verpflichtend?**
-- Stellt den zugänglichen Namen (Accessible Name) der Schaltfläche bereit.
-- Wird von Screenreadern ausgegeben.
-- Verhindert unbeschriftete und damit schwer verständliche Schaltflächen.
+**Darf ein Button nur aus einem Icon bestehen?**  
+Ja. Die sichtbare Beschriftung kann über `_hideLabel` ausgeblendet werden (siehe [Icon-Only-Button](#icon-only-button)); ein aussagekräftiges `_label` bleibt weiterhin erforderlich. Verwenden Sie Icon-only-Buttons nur, wenn die Funktion auch ohne sichtbaren Text eindeutig erkennbar bleibt. Setzen Sie Icons sonst als Ergänzung zur Beschriftung ein, nicht als deren Ersatz.
 
-**Darf ein Button nur aus einem Icon bestehen?**
-- Ja. Die sichtbare Beschriftung kann über _hideLabel ausgeblendet werden.
-- Ein aussagekräftiges `_label` bleibt weiterhin erforderlich.
-- Die Funktion muss auch ohne sichtbaren Text eindeutig erkennbar sein.
+**Wo sollte ein Icon neben der Beschriftung stehen?**  
+Für Menschen mit eingeschränktem Sichtfeld ist die Positionierung von Icons **links** von der Beschriftung optimal.
 
-**Wie viele primäre Schaltflächen sollten innerhalb eines Bereichs verwendet werden?**
-- In der Regel nur eine primäre Schaltfläche pro Kontext.
-- Die wichtigste Aktion sollte visuell hervorgehoben werden.
-- Mehrere primäre Schaltflächen erschweren die Priorisierung von Aktionen.
+**Warum wird die Beschriftung bei `_hideLabel` als Tooltip angezeigt?**  
+Die Funktion bleibt auch ohne sichtbare Beschriftung nachvollziehbar: Sehende Nutzende erhalten zusätzliche Orientierung, und der zugängliche Name bleibt für assistive Technologien erhalten.
 
-**Können Schaltflächen deaktiviert werden?**
-- Ja. Deaktivierte Schaltflächen können weder fokussiert noch aktiviert werden.
-- Das Verhalten entspricht dem nativen HTML-Button.
+**Wie viele primäre Schaltflächen sollten innerhalb eines Bereichs verwendet werden?**  
+In der Regel nur eine primäre Schaltfläche pro Kontext. Heben Sie innerhalb eines Bereichs nur die wichtigste Aktion als primäre Schaltfläche hervor und stellen Sie weitere Buttons als sekundäre Schaltflächen dar. Mehrere primäre Schaltflächen innerhalb einer Gruppierung erschweren die Priorisierung von Aktionen.
 
-**Werden eigene Tastaturkürzel unterstützt?**
-- Nein. Die Komponente unterstützt die standardmäßige Tastaturbedienung nativer HTML-Schaltflächen.
-- Zusätzliche Tastaturkürzel müssen durch die Anwendung umgesetzt werden.
+**Wie ordne ich mehrere Schaltflächen an?**  
+Die Komponente eignet sich für einzelne Aktionen sowie für Aktionsgruppen innerhalb eines gemeinsamen Kontexts. Gruppieren Sie zusammengehörige Aktionen räumlich und visuell.
 
-**Können Schaltflächen ausschließlich über Farben unterschieden werden?**
-- Davon wird abgeraten. Informationen sollten nicht ausschließlich über Farben vermittelt werden.
-- Beschriftung, Position oder weitere visuelle Merkmale sollten die Bedeutung zusätzlich unterstützen.
+**Können Schaltflächen ausschließlich über Farben unterschieden werden?**  
+Davon wird abgeraten. Informationen sollten nicht ausschließlich über Farben vermittelt werden. Beschriftung, Position oder weitere visuelle Merkmale sollten die Bedeutung zusätzlich unterstützen.
 
-**Warum wird die Beschriftung bei `_hideLabel` als Tooltip angezeigt?
-- Die Funktion bleibt auch ohne sichtbare Beschriftung nachvollziehbar.
-- Sehende Nutzende erhalten zusätzliche Orientierung.
-- Der zugängliche Name bleibt für assistive Technologien erhalten.
+**Werden eigene Tastaturkürzel unterstützt?**  
+Nein. Die Komponente unterstützt die standardmäßige Tastaturbedienung nativer HTML-Schaltflächen. Mit `_accessKey` und `_shortKey` können Sie auf ein Tastenkürzel hinweisen (siehe [Tastenkürzel](#tastenkürzel)); zusätzliche Tastaturkürzel – auch das über `_shortKey` angekündigte – müssen durch die Anwendung umgesetzt werden.
 
-## Playground
-
-<ButtonPreview context="playground" />
+**Werden `_name` und `_value` mit dem Formular übertragen?**  
+Nein. Die Schaltfläche trägt nichts zu den Formulardaten bei. `_value` wird stattdessen beim Klick an das `click`-Event und den Callback `onClick` übergeben (siehe [Events](#events)).
 
 ## Funktionalitäten
 
@@ -163,7 +128,7 @@ Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varia
 
 ### Icons
 
-Icons können über `_icons` hinzugefügt werden. Als String übergeben Sie die Icon-Klasse (z.B. `kolicon-house`), das Icon wird links vom Text angezeigt:
+Icons können über `_icons` hinzugefügt werden. Als String übergeben Sie die Icon-Klasse (z. B. `kolicon-house`), das Icon wird links vom Text angezeigt:
 
 <ButtonPreview
 	context="feature"
@@ -171,7 +136,9 @@ Icons können über `_icons` hinzugefügt werden. Als String übergeben Sie die 
 	initialProps={{ _label: 'Home', _icons: 'kolicon-house' }}
 />
 
-Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `left` angegeben werden, jeweils mit Icon-Klasse oder Styleobjekt.
+Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `left` angegeben werden, jeweils mit Icon-Klasse oder als Objekt mit `icon`, optional `label` und `style`.
+
+Ein Icon ohne `label` gilt als dekorativ und wird von Screenreadern nicht ausgegeben. Trägt ein Icon eine Information, die nicht bereits aus der Beschriftung hervorgeht, übergeben Sie es als Objekt mit `label`.
 
 ### Icon-Only-Button
 
@@ -179,11 +146,13 @@ Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip 
 
 <ButtonPreview
 	context="feature"
-	visibleProperties={['_hideLabel', '_icons']}
-	initialProps={{ _label: 'Home', _icons: 'kolicon-house', _hideLabel: true }}
+	visibleProperties={['_hideLabel', '_icons', '_tooltipAlign']}
+	initialProps={{ _label: 'Home', _icons: { left: 'kolicon-house' }, _hideLabel: true }}
 />
 
 **Hinweis:** Das Attribut `_label` muss auch gesetzt werden, wenn nur ein Icon angezeigt wird – es wird für Screenreader und den Tooltip verwendet.
+
+Der Tooltip erscheint nach kurzer Verzögerung, sobald die Schaltfläche mit der Maus berührt oder per Tastatur fokussiert wird. Er bleibt sichtbar, solange sich der Mauszeiger über der Schaltfläche oder dem Tooltip befindet, und lässt sich mit `Escape` schließen. Nach einem Klick wird er ausgeblendet, bis die Schaltfläche verlassen und erneut angesteuert wird. Mit `_tooltipAlign` legen Sie die bevorzugte Position fest (`top` (Standard), `right`, `bottom`, `left`); reicht der Platz nicht aus, weicht der Tooltip auf eine andere Seite aus.
 
 ### Button-Typ
 
@@ -194,11 +163,13 @@ Der HTML-Button-Type wird über `_type` gesteuert:
 **Verfügbare Typen:**
 - `button` – Standard-Button (Standard)
 - `submit` – Formular absenden
-- `reset` – Formular zurücksetzen
+- `reset` – Zurücksetzen des Formulars auslösen
 
-### Disabled-Status
+Da das native `button`-Element im Shadow DOM der Komponente liegt, ergänzt KoliBri die Formularanbindung: Bei `submit` und `reset` sucht die Schaltfläche das umgebende `form`- bzw. `kol-form`-Element – auch über Shadow-DOM-Grenzen hinweg – und löst dort das Absenden bzw. das `reset`-Event aus.
 
-Mit `_disabled` wird der Button deaktiviert:
+### Deaktivierter Zustand
+
+Mit `_disabled` wird der Button deaktiviert. Deaktivierte Schaltflächen können weder fokussiert noch aktiviert werden und lösen keine Events aus; das Verhalten entspricht dem nativen HTML-Button. Ist zusätzlich `_hideLabel` gesetzt, lässt sich der Tooltip mit der Beschriftung daher nicht per Tastatur aufrufen.
 
 <ButtonPreview
 	context="feature"
@@ -206,37 +177,57 @@ Mit `_disabled` wird der Button deaktiviert:
 	initialProps={{ _label: 'Deaktiviert', _disabled: true }}
 />
 
+### Tastenkürzel
+
+Mit `_accessKey` und `_shortKey` weisen Sie auf ein Tastenkürzel hin. Beide werden als Hinweis hinter der Beschriftung angezeigt; der passende Buchstabe in der Beschriftung wird zusätzlich unterstrichen. Es kann jeweils nur eine der beiden Properties gesetzt werden.
+
+- `_accessKey`: Definiert die Tastenkombination zum Auslösen oder Fokussieren des Buttons. Sie wird auf das native `accesskey`-Attribut übertragen; welche Zusatztasten dafür gedrückt werden müssen, hängt von Browser und Betriebssystem ab.
+- `_shortKey`: Definiert einen visuellen Shortcut-Hinweis und liest ihn in Screenreadern vor. Die Tastenkombination selbst muss von der Anwendung umgesetzt werden.
+
+<ButtonPreview
+	context="feature"
+	visibleProperties={['_accessKey', '_shortKey']}
+	initialProps={{ _label: 'Speichern', _shortKey: 's' }}
+/>
+
 ### Weitere Eigenschaften
 
 Darüber hinaus unterstützt der Button folgende Attribute:
 
-| Eigenschaft        | Beschreibung                                                                                                  |
-| ------------------ | ------------------------------------------------------------------------------------------------------------- |
-| `_accessKey`       | Definiert die Tastenkombination zum Auslösen oder Fokussieren des Buttons                                     |
-| `_tooltipAlign`    | Position des Tooltips: `top` (Standard), `right`, `bottom`, `left`                                           |
-| `_shortKey`        | Definiert einen visuellen Shortcut-Hinweis und liest ihn in Screenreadern vor                                |
-| `_customClass`     | Benutzerdefinierte CSS-Klasse (nur für `_variant="custom"`)                                                  |
-| `_name`            | Technischer Name des Buttons im Formular                                                                      |
-| `_value`           | Wert des Elements                                                                                             |
-| `_inline`          | Displaymodus ohne Mindestgröße von 44px                                                                       |
-| `_ariaControls`    | Definiert, welche Elemente durch diesen Button gesteuert werden (`aria-controls`)                             |
-| `_ariaDescription` | Setzt das `aria-description`-Attribut für eine erweiterte Beschreibung durch Screenreader                     |
-| `_ariaExpanded`    | Gibt an, ob der Button ein erweitertes Element steuert (`aria-expanded`)                                      |
-| `_ariaSelected`    | Gibt an, ob das interaktive Element ausgewählt ist, z.B. bei `role="tab"` (`aria-selected`)                   |
+| Eigenschaft        | Beschreibung                                                                                                                    |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `_customClass`     | Zusätzliche CSS-Klasse für die Schaltfläche (ein einzelner Klassenname)                                                         |
+| `_name`            | Technischer Name des Buttons; wird nicht mit den Formulardaten übertragen                                                       |
+| `_value`           | Wert, der beim Klick an das `click`-Event und den Callback `onClick` übergeben wird                                             |
+| `_inline`          | Displaymodus ohne Mindestgröße von 44px. Abweichend davon bleibt die Mindestgröße beim Button in KoliBri 4.5.0 erhalten.        |
+| `_ariaControls`    | Definiert, welche Elemente durch diesen Button gesteuert werden (`aria-controls`)                                               |
+| `_ariaDescription` | Ergänzende Beschreibung, die Screenreader zusätzlich zur Beschriftung ausgeben; sie wird nicht sichtbar dargestellt             |
+| `_ariaExpanded`    | Gibt an, ob der Button ein erweitertes Element steuert (`aria-expanded`)                                                        |
+| `_ariaSelected`    | Gibt an, ob das interaktive Element ausgewählt ist, z. B. bei `role="tab"` (`aria-selected`)                                    |
 
-### Events
+<ButtonPreview
+	context="feature"
+	visibleProperties={['_customClass', '_name', '_value', '_inline', '_ariaControls', '_ariaDescription', '_ariaExpanded', '_ariaSelected']}
+	initialProps={{ _label: 'Details', _ariaDescription: 'Öffnet die Detailansicht des Datensatzes', _ariaExpanded: false }}
+/>
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+## Playground
 
-| Event         | Auslöser                                 | Value             |
-| ------------- | ---------------------------------------- | ----------------- |
-| `onClick`     | Button wird angeklickt                   | `_value`-Property |
-| `onMouseDown` | Maustaste wird über dem Button gedrückt  | -                 |
-| `onFocus`     | Button erhält den Fokus                  | -                 |
-| `onBlur`      | Button verliert den Fokus                | -                 |
+<ButtonPreview context="playground" />
 
 ## API
 
-<Readme />
+### Events
 
-<ExampleLink component="button" />
+<EventsIntro />
+
+| Event       | Auslöser                                | Value             |
+| ----------- | --------------------------------------- | ----------------- |
+| `click`     | Button wird angeklickt bzw. aktiviert   | `_value`-Property |
+| `mousedown` | Maustaste wird über dem Button gedrückt | -                 |
+| `focus`     | Button erhält den Fokus                 | -                 |
+| `blur`      | Button verliert den Fokus               | -                 |
+
+Über `_on` stehen die entsprechenden Callbacks `onClick`, `onMouseDown`, `onFocus` und `onBlur` zur Verfügung. `onClick` wird nur bei `_type="button"` aufgerufen; bei `submit` und `reset` wird ausschließlich das `click`-Event ausgelöst.
+
+<Readme />
