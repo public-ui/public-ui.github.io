@@ -236,6 +236,7 @@ const Preview = <TProps,>({
 				<KolButton
 					style={{ backgroundColor: 'transparent' }}
 					_label={translate({ id: 'preview.sourceCode.copyButton' })}
+					_hideLabel
 					_variant="secondary"
 					_icons={copySuccess ? 'fa-solid fa-check' : 'fa-solid fa-copy'}
 					_on={{
