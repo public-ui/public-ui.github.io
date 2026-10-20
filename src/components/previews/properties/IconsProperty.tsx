@@ -11,6 +11,7 @@ type IconValues = {
 export const PREDEFINED_ICONS = [
 	{ label: 'None', value: '' },
 	{ label: 'KoliBri', value: 'kolicon-kolibri' },
+	{ label: 'Info', value: 'kolicon-alert-info' },
 	{ label: 'Check', value: 'kolicon-check' },
 	{ label: 'House', value: 'kolicon-house' },
 	{ label: 'Wheel', value: 'kolicon-cogwheel' },
