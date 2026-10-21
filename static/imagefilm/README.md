@@ -5,8 +5,8 @@ Open-Source-Wettbewerb-2026-Projekt (`slides.html`) und werden nicht gebaut,
 sondern direkt ausgeliefert (URL: `/imagefilm`).
 
 Quelle: `~/Workspace/Obsidian/Projekte/open-source-wettbewerb-2026/imagevideo/slides.html`
-(Stand: Oktober 2026, Fassung mit Sieger-Status: Badge im Kopf, Sieger-Karte auf
-der Titelfolie, Auszeichnung im Abbinder). Neu sind drei Verweise: Der Badge im
+(Stand: Oktober 2026, Fassung mit Auszeichnung: Badge im Kopf, 1.-Platz-Karte
+auf der Titelfolie, Auszeichnung im Abbinder). Neu sind drei Verweise: Der Badge im
 Kopf führt auf den Gewinnertext bei egovernment.de, die Zeile „Das Imagevideo ·
 4:15“ auf der Titelfolie auf YouTube und der Song im Footer aufs Suno-Album
 „KoliBri – Wings for Everyone“ (alle in neuem Tab).
@@ -23,8 +23,10 @@ Kopf führt auf den Gewinnertext bei egovernment.de, die Zeile „Das Imagevideo
 - Titel und Meta-Beschreibung (auch `og:title`/`og:description`) beschreiben die
   Durchklick-Präsentation statt des Videos.
 
-Badge, Sieger-Karte auf der Titelfolie und Abbinder kommen unverändert aus dem
-Original und brauchen hier keine Nachbearbeitung mehr.
+Badge, Karte auf der Titelfolie und Abbinder brauchen keine Nachbearbeitung mehr.
+Gegenüber dem Wettbewerb-Original ist allein die Wortwahl „Sieger“ durchgängig
+durch „1. Platz“ ersetzt (Review-Feedback, PR #846) – quellseitig in `slides.md`/`slides.html`
+sowie hier in der Kopie.
 
 Bei einer Aktualisierung: neues `slides.html` kopieren, die Bildpfade erneut
 absolut setzen, das Auto-Advance-Skript entfernen, Titel/Meta-Beschreibung

@@ -9,8 +9,6 @@ import React, { useState } from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
 import { ITZLogo } from '@site/src/components/ITZLogo';
 
-const YOUTUBE_URL = 'https://www.youtube.com/watch?v=Fsv_aUTM4ls';
-
 /*
  * Bauplan-Motiv „Linien für Raum und Zeit": rein dekorativ, daher aria-hidden.
  * Choreografie und Reduced-Motion-Verhalten liegen in src/css/homepage-lines.css.
@@ -185,23 +183,8 @@ const ImagefilmSection: FunctionComponent = () => {
 	const startFilm = () => setFilmSrc(filmUrl);
 
 	return (
-		<section className="bg-white text-[#1f2937]" aria-labelledby="imagefilm-heading">
-			<div className="mx-auto max-w-6xl px-6 py-16 grid justify-items-center gap-8 md:py-24">
-				<div className="grid max-w-3xl justify-items-center gap-4 text-center">
-					<Heading as="h2" id="imagefilm-heading" className="m-0 text-3xl font-bold text-[#003a5c] md:text-4xl">
-						{translate({
-							id: 'custom.imagefilm-title',
-							message: 'Der Imagefilm',
-						})}
-					</Heading>
-					<p className="m-0 text-[#374151]">
-						{translate({
-							id: 'custom.imagefilm-description',
-							message:
-								'Über KoliBri, Barrierefreiheit und Open Source – Sieger in der Kategorie Transformation beim Open Source Wettbewerb 2026. Die Präsentation lässt sich einfach durchklicken, ohne Ton.',
-						})}
-					</p>
-				</div>
+		<section className="bg-white text-[#1f2937]">
+			<div className="mx-auto max-w-6xl px-6 py-12 grid justify-items-center gap-8 md:py-16">
 				<div className="imagefilm-frame relative aspect-video w-full max-w-4xl overflow-visible rounded-2xl bg-[#05244a] shadow-xl">
 					{filmSrc ? (
 						<iframe
@@ -229,9 +212,9 @@ const ImagefilmSection: FunctionComponent = () => {
 							/>
 							<span
 								aria-hidden="true"
-								className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-white/80 bg-[#02243c]/60 transition group-hover:bg-[#003a5c]/80 group-focus-visible:bg-[#003a5c]/80"
+								className="absolute left-[calc(50%-2.5rem)] top-[calc(50%-2.5rem)] flex h-20 w-20 items-center justify-center rounded-full border-solid border-4 border-white/80 bg-[#02243c]/60 transition group-hover:bg-[#003a5c]/80 group-focus-visible:bg-[#003a5c]/80"
 							>
-								<span className="ml-1 border-y-[14px] border-l-[22px] border-y-transparent border-l-white"></span>
+								<span className="ml-1 border-solid border-y-[14px] border-l-[22px] border-y-transparent border-l-white"></span>
 							</span>
 							<span className="sr-only">
 								{translate({
@@ -239,21 +222,9 @@ const ImagefilmSection: FunctionComponent = () => {
 									message: 'Imagefilm abspielen',
 								})}
 							</span>
-						</button>
-					)}
+					</button>
+				)}
 				</div>
-				<KolLinkButton
-					className="w-72"
-					_icons={{
-						right: 'fa-solid fa-external-link',
-					}}
-					_href={YOUTUBE_URL}
-					_label={translate({
-						id: 'custom.imagefilm-youtube',
-						message: 'Auf YouTube ansehen',
-					})}
-					_variant="secondary"
-				></KolLinkButton>
 			</div>
 		</section>
 	);
