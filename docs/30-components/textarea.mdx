@@ -24,13 +24,21 @@ import EventsIntro from './_shared/api/events-intro.md';
 
 # Textarea
 
-**Synonyme:** Mehrzeiliges Eingabefeld, Textbereich, Texteingabefeld
+**Synonyme:** Mehrzeiliges Eingabefeld, Textbereich, Texteingabefeld, Multiline Text Field, Text Area
 
 **Beschreibung:** Mit **Textarea** können längere Texte mit Zeilenumbrüchen eingegeben und bearbeitet werden, etwa Beschreibungen, Kommentare oder Begründungen.
 
 Die Komponente basiert auf dem nativen HTML-Element `<textarea>` und profitiert dadurch von dessen Semantik sowie der standardisierten Unterstützung durch Browser und assistive Technologien.
 
 Über das native Element hinaus bietet die Komponente eine automatische Höhenanpassung an den Inhalt, eine auf die vertikale Richtung beschränkte Größenanpassung sowie einen barrierefreien Zeichenzähler.
+
+**Anwendungsfälle:**
+- Erfassen von Kommentaren, Feedback oder Bewertungen
+- Eingabe von Produkt-, Artikel- oder Personenbeschreibungen
+- Erfassung von Anliegen, Anfragen oder Begründungen in Formularen
+- Eingabe von Adressen mit mehreren Zeilen, Notizen oder Anweisungen
+- Verfassen von E-Mails, Nachrichten oder Mitteilungen
+- Eingabe längerer Texte in Dokumentations- oder Content-Management-Systemen
 
 ## Beispiel
 
@@ -60,15 +68,7 @@ Standard-Textarea ohne optional gesetzte Felder:
 - <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1: Labels or Instructions"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" _target="_blank" _label="WCAG 2.1: Error Identification"></kol-link>
 
-## Verwendung
-
-- Verwenden Sie die Textarea für mehrzeilige Inhalte. Für kurze, einzeilige Eingaben nutzen Sie die <kol-link _href="../components/input-text" _label="InputText-Komponente"></kol-link>.
-- Legen Sie mit `_rows` eine Starthöhe fest, die zur erwarteten Textmenge passt.
-- Begrenzen Sie die Eingabelänge mit `_maxLength`, wenn dies fachlich erforderlich ist, und machen Sie die Grenze mit `_hasCounter` transparent.
-
-**Hinweis:** Bei `_maxLengthBehavior="soft"` wird das native `maxlength`-Attribut nicht gesetzt, sodass auch längere Texte eingegeben werden können. Die Validierung der Zeichengrenze muss dann auf Anwendungsebene erfolgen.
-
-### Tastatursteuerung
+## Tastatursteuerung
 
 <NativeKeyboardIntro />
 
@@ -84,49 +84,33 @@ Standard-Textarea ohne optional gesetzte Felder:
 
 **Hinweis:** `Tab` fügt kein Tabulatorzeichen ein, sondern verlässt das Feld. Tastaturnutzende bleiben dadurch nicht in der Textarea gefangen.
 
-### Best Practices / Empfehlungen
+Anders als bei einzeiligen Eingabefeldern löst `Enter` kein Absenden des umgebenden Formulars aus.
 
-- **Höhe sinnvoll wählen:** Beginnen Sie mit wenigen Zeilen (z. B. `_rows` mit dem Wert `4`) und erlauben Sie bei Bedarf die Größenanpassung über `_resize` oder die automatische Höhenanpassung über `_adjustHeight`, aber vermeiden Sie horizontales Scrollen.
-- **Sinnvolle maximale Länge:** Legen Sie eine fachlich begründete maximale Zeichenlänge fest und machen Sie diese mit `_hasCounter` und `_maxLength` transparent. Für weiche Grenzen nutzen Sie `_maxLengthBehavior="soft"`.
-- **Hilfetexte bereitstellen:** Geben Sie Formatvorgaben oder Hinweise über `_hint` vor der Eingabe an, nicht erst nach einem Fehler.
-- **Kontrolle bei den Nutzenden lassen:** Erzwingen Sie keine Groß- oder Kleinschreibung. Nutzende behalten die Kontrolle über den eingegebenen Text.
-- **Transparenz bei Kürzungen:** Schneiden Sie Inhalte nie ohne Hinweis ab und verändern Sie sie nicht unbemerkt. Kommunizieren Sie Kürzungen klar.
-- **Aussagekräftige Beschriftungen:** Verwenden Sie klare und präzise Beschriftungen (`_label`), die den Zweck des Feldes deutlich machen.
-- **Konkrete Fehlermeldungen:** Geben Sie bei Validierungsfehlern konkrete, verständliche Hinweise über `_msg`.
+## FAQ
 
-### Anwendungsfälle
+**Wann verwende ich die Textarea und wann InputText?**  
+Verwenden Sie die Textarea für mehrzeilige Inhalte. Für kurze, einzeilige Eingaben nutzen Sie die <kol-link _href="../components/input-text" _label="InputText-Komponente"></kol-link>.
 
-- Erfassen von Kommentaren, Feedback oder Bewertungen
-- Eingabe von Produkt-, Artikel- oder Personenbeschreibungen
-- Erfassung von Anliegen, Anfragen oder Begründungen in Formularen
-- Eingabe von Adressen mit mehreren Zeilen, Notizen oder Anweisungen
-- Verfassen von E-Mails, Nachrichten oder Mitteilungen
-- Eingabe längerer Texte in Dokumentations- oder Content-Management-Systemen
+**Wie wähle ich eine passende Höhe?**  
+Legen Sie mit `_rows` eine Starthöhe fest, die zur erwarteten Textmenge passt, und beginnen Sie mit wenigen Zeilen (z. B. `_rows` mit dem Wert `4`). Erlauben Sie bei Bedarf die Größenanpassung über `_resize` oder die automatische Höhenanpassung über `_adjustHeight`, aber vermeiden Sie horizontales Scrollen.
 
-### FAQ
-
-**Wird die Zeichengrenze bei `_maxLengthBehavior="soft"` erzwungen?**
-Nein. Bei `soft` können weiterhin Zeichen eingegeben werden; der Zähler zeigt dann an, um wie viele Zeichen die Grenze überschritten ist. Die Validierung muss auf Anwendungsebene erfolgen.
-
-**Kann die Textarea horizontal vergrößert werden?**
+**Kann die Textarea horizontal vergrößert werden?**  
 Nein. Horizontales Vergrößern wird seit Version 3 nicht mehr angeboten. `_resize` unterstützt nur `vertical` und `none`.
 
-**Kann ich einen Zeichenzähler ohne Zeichengrenze anzeigen?**
+**Wie lege ich eine sinnvolle maximale Länge fest?**  
+Begrenzen Sie die Eingabelänge mit `_maxLength` nur, wenn dies fachlich erforderlich ist, und wählen Sie eine fachlich begründete maximale Zeichenlänge. Machen Sie die Grenze mit `_hasCounter` transparent. Für weiche Grenzen nutzen Sie `_maxLengthBehavior="soft"`.
+
+**Wird die Zeichengrenze bei `_maxLengthBehavior="soft"` erzwungen?**  
+Nein. Bei `soft` können weiterhin Zeichen eingegeben werden; der Zähler (`_hasCounter`) zeigt dann an, um wie viele Zeichen die Grenze überschritten ist. Die Validierung muss auf Anwendungsebene erfolgen.
+
+**Kann ich einen Zeichenzähler ohne Zeichengrenze anzeigen?**  
 Ja. Mit `_hasCounter` ohne `_maxLength` wird die Anzahl der eingegebenen Zeichen angezeigt.
 
-## Playground
+**Darf die Anwendung den eingegebenen Text verändern?**  
+Erzwingen Sie keine Groß- oder Kleinschreibung – Nutzende behalten die Kontrolle über den eingegebenen Text. Schneiden Sie Inhalte nie ohne Hinweis ab und verändern Sie sie nicht unbemerkt. Kommunizieren Sie Kürzungen klar.
 
-Testen Sie die verschiedenen Eigenschaften der Textarea-Komponente:
-
-<TextAreaPreview
-	context="playground"
-	initialProps={{
-		_label: 'Beschreibung',
-		_placeholder: 'Bitte geben Sie eine Beschreibung ein …',
-		_hint: 'Hinweistext',
-		_rows: 4,
-	}}
-/>
+**Wie unterstütze ich Nutzende bei der Eingabe?**  
+Verwenden Sie klare und präzise Beschriftungen (`_label`), die den Zweck des Feldes deutlich machen. Geben Sie Formatvorgaben oder Hinweise über `_hint` vor der Eingabe an, nicht erst nach einem Fehler. Geben Sie bei Validierungsfehlern konkrete, verständliche Hinweise über `_msg`.
 
 ## Funktionalitäten
 
@@ -158,6 +142,7 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `text
 	initialProps={{
 		_label: 'Beschreibung',
 		_value: 'Dies ist ein Beispieltext.',
+		_required: true,
 	}}
 />
 
@@ -193,7 +178,7 @@ Mit `_rows` legen Sie die sichtbare Höhe der Textarea in Zeilen fest. Der Wert 
 
 ### Automatische Höhenanpassung
 
-Mit `_adjustHeight` passt die Textarea ihre Zeilenanzahl bei jeder Eingabe an den Inhalt an, sodass der gesamte Text ohne inneren Scrollbalken sichtbar ist. Beim ersten Rendern wird mindestens die über `_rows` festgelegte Höhe verwendet.
+Mit `_adjustHeight` passt die Textarea ihre Zeilenanzahl beim ersten Rendern und bei jeder Eingabe an den Inhalt an, sodass der gesamte Text ohne inneren Scrollbalken sichtbar ist. Sie wächst mit längeren Texten und wird beim Löschen wieder kleiner, unterschreitet dabei aber nie die über `_rows` festgelegte Zeilenanzahl.
 
 <TextAreaPreview
 	context="feature"
@@ -265,7 +250,7 @@ Verfügbare Werte sind:
 	visibleProperties={['_label', '_hideLabel']}
 	initialProps={{
 		_label: 'Beschreibung',
-		_hideLabel: false,
+		_hideLabel: true,
 	}}
 />
 
@@ -281,6 +266,20 @@ Verfügbare Werte sind:
 		_icons: {
 			left: 'kolicon-kolibri',
 		},
+	}}
+/>
+
+## Playground
+
+Testen Sie die verschiedenen Eigenschaften der Textarea-Komponente:
+
+<TextAreaPreview
+	context="playground"
+	initialProps={{
+		_label: 'Beschreibung',
+		_placeholder: 'Bitte geben Sie eine Beschreibung ein …',
+		_hint: 'Hinweistext',
+		_rows: 4,
 	}}
 />
 
