@@ -12,22 +12,22 @@ const toolbarItems: JSX.KolToolbar['_items'] = [
 	{
 		type: 'button',
 		_label: translate({ id: 'preview.component.split-button.menu.edit' }),
-		_icons: { left: { icon: 'codicon-edit' } },
+		_icons: { left: { icon: 'kolicon-cogwheel' } },
 	},
 	{
 		type: 'button',
 		_label: translate({ id: 'preview.component.split-button.menu.copy' }),
-		_icons: { left: { icon: 'codicon-copy' } },
+		_icons: { left: { icon: 'kolicon-version' } },
 	},
 	{
 		type: 'button',
 		_label: translate({ id: 'preview.component.split-button.menu.archive' }),
-		_icons: { left: { icon: 'codicon-archive' } },
+		_icons: { left: { icon: 'kolicon-save' } },
 	},
 	{
 		type: 'button',
 		_label: translate({ id: 'preview.component.split-button.menu.delete' }),
-		_icons: { left: { icon: 'codicon-trash' } },
+		_icons: { left: { icon: 'kolicon-trash' } },
 	},
 ];
 
