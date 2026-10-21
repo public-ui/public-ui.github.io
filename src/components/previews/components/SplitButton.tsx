@@ -39,6 +39,23 @@ const SplitButtonPreview: React.FC<PreviewDefaults<JSX.KolSplitButton>> = (props
 		[]
 	);
 
+	const formatSource = (currentProps: JSX.KolSplitButton): string => {
+		const propsString = Object.entries(currentProps as unknown as Record<string, unknown>)
+			.filter(([, value]) => value !== undefined && value !== null && value !== '')
+			.map(([key, value]) => {
+				if (typeof value === 'string') return `\n  ${key}="${value}"`;
+				if (typeof value === 'boolean') return value ? `\n  ${key}` : '';
+				if (typeof value === 'number') return `\n  ${key}={${value}}`;
+				return `\n  ${key}={${JSON.stringify(value, null, 2).replace(/\n/g, '\n  ')}}`;
+			})
+			.filter(Boolean)
+			.sort()
+			.join('');
+		const items = JSON.stringify(toolbarItems, null, 2).replace(/\n/g, '\n    ');
+
+		return `<KolSplitButton${propsString}\n>\n  <KolToolbar\n    _label=""\n    _orientation="vertical"\n    _items={${items}}\n  />\n</KolSplitButton>`;
+	};
+
 	return (
 		<Preview<JSX.KolSplitButton>
 			{...getPreviewDefaults(props, defaultProps)}
@@ -52,6 +69,7 @@ const SplitButtonPreview: React.FC<PreviewDefaults<JSX.KolSplitButton>> = (props
 			}}
 			componentName="KolSplitButton"
 			layout={PreviewLayout.CENTERED}
+			sourceFormatter={formatSource}
 		>
 			{(componentProps) => (
 				<KolSplitButton {...componentProps}>
