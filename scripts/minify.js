@@ -11,6 +11,9 @@ function minifyFiles(dir) {
 	dirItems.forEach((dirItem) => {
 		const dirItemPath = path.resolve(dir, dirItem);
 		const stats = fs.lstatSync(dirItemPath);
+		// Nur HTML-Markup minifieren: Auf andere Dateien angewendet würde der HTML-Parser
+		// Inhalte, deren String-Literale wohlgeformte Tags enthalten (z. B.
+		// "<button>"), als HTML parsen und durch angehängte Schließ-Tags korrupt machen.
 		if (stats.isFile() && dirItemPath.endsWith('.html')) {
 			let code = fs.readFileSync(dirItemPath, { encoding: 'utf-8' });
 			minify(code, options)
