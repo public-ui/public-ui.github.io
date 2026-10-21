@@ -6,7 +6,10 @@ sondern direkt ausgeliefert (URL: `/imagefilm`).
 
 Quelle: `~/Workspace/Obsidian/Projekte/open-source-wettbewerb-2026/imagevideo/slides.html`
 (Stand: Oktober 2026, Fassung mit Sieger-Status: Badge im Kopf, Sieger-Karte auf
-der Titelfolie, Auszeichnung im Abbinder).
+der Titelfolie, Auszeichnung im Abbinder). Neu sind drei Verweise: Der Badge im
+Kopf führt auf den Gewinnertext bei egovernment.de, die Zeile „Das Imagevideo ·
+4:15“ auf der Titelfolie auf YouTube und der Song im Footer aufs Suno-Album
+„KoliBri – Wings for Everyone“ (alle in neuem Tab).
 
 Änderungen gegenüber dem Original:
 
