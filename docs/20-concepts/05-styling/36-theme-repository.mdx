@@ -1,0 +1,544 @@
+---
+title: Eigenes Theme-Repository aufbauen
+description: Schritt für Schritt zum eigenen KoliBri-Theme als npm-Paket, vom Template über Build und Prüfung bis zur Veröffentlichung.
+---
+
+import { KolAlert, KolDetails, KolLink } from '@public-ui/react-v19';
+
+# Eigenes Theme-Repository aufbauen
+
+Ich habe diese Anleitung geschrieben, weil es für genau diese Frage bisher nur Videos in
+[Discussion #894](https://github.com/public-ui/kolibri/discussions/894) gab, aber keine Schritt-für-Schritt-Doku
+(siehe [Issue #11284](https://github.com/public-ui/kolibri/issues/11284)). Sie führt in zehn Schritten von einem
+leeren Verzeichnis zu einem eigenen Theme, das als npm-Paket vorliegt, in eine Anwendung eingebunden und automatisiert
+geprüft werden kann. Getestet habe ich jeden Schritt mit `@public-ui/components` in Version 4.5.0 unter Node 24 auf
+macOS. Drei Testleser haben die Anleitung anschließend unabhängig voneinander praktisch durchgespielt, unter anderem
+mit npm und mit pnpm. Ihre Befunde sind eingeflossen. Wo im Template oder in den Werkzeugen etwas nicht auf
+Anhieb läuft, steht das mit Abhilfe dabei, damit niemand dieselben Umwege laufen muss wie ich.
+
+<KolAlert _label="Wann reicht ein einfacheres Vorgehen?" _type="info" _variant="card">
+	<p>
+		Wer nur Farben, Schrift oder Radien ans Corporate Design anpassen will und sonst mit dem Aussehen des
+		Standard-Themes zufrieden ist, kommt ohne eigenes Paket aus: Das Standard-Theme liest seine Werte aus
+		CSS-Custom-Properties mit dem Präfix <code>--kolibri-</code>. Diese überschreibt die Anwendung einfach im
+		eigenen Stylesheet (siehe <KolLink _label="Erste Schritte" _href="/docs/get-started/first-steps" />). Custom
+		Properties wirken global und sind nicht durch den Shadow DOM geschützt, deshalb bleiben eigene Variablen der
+		Anwendung mit einem eigenen Präfix kollisionsfrei. Ein eigenes Theme-Repository lohnt sich, wenn Komponenten
+		ein eigenes Design bekommen sollen oder wenn das Theme in mehreren Projekten wiederverwendet und versioniert
+		werden soll.
+	</p>
+</KolAlert>
+
+## Wie Theming in KoliBri funktioniert
+
+KoliBri liefert alle Web Components ohne festes Styling aus. Das Aussehen kommt ausschließlich aus einem Theme, das
+zusammen mit den Komponenten registriert wird. Ein Theme ist dabei kein Stylesheet, das die Seite lädt, sondern ein
+JavaScript-Objekt: Es ordnet jedem Komponenten-Tag-Namen eine CSS-Zeichenkette zu. Jede Komponente nimmt sich zur
+Laufzeit ihren CSS-String aus dem Theme und hängt ihn in ihren Shadow DOM. Deshalb reicht es nicht, eigene CSS-Dateien
+einzubinden, um `<kol-*>`-Komponenten umzugestalten: Das CSS muss über die Theme-Registrierung laufen.
+
+Technisch entsteht ein Theme durch einen einzigen Aufruf:
+
+```ts
+export const MEIN_THEME = KoliBri.createTheme(
+	'mein-theme', // Name, siehe Schritt 3
+	{
+		GLOBAL: globalCss, // gilt für alle Komponenten: Tokens, Schrift, Fokus
+		'KOL-BUTTON': buttonCss, // gilt nur für kol-button
+		'KOL-INPUT-TEXT': inputTextCss, // gilt nur für kol-input-text
+		// … je Komponente ein Eintrag, den man gestalten will
+	},
+);
+```
+
+Beim Styling greifen mehrere CSS-Layer ineinander. Die Basis kommt aus `@public-ui/components`: `kol-a11y`,
+`kol-global` und `kol-component` regeln Barrierefreiheits-Basis, globales Layout und Komponenten-Layout, dazu kommen
+zwei Layer für den Hochkontrast-Modus des Betriebssystems. Das Theme besitzt die beiden Layer `kol-theme-global` und
+`kol-theme-component` und setzt damit die Letzte im Stapel: Es darf alles umfärben, was die Basis angeliefert hat. Das
+Basis-Styling enthält bewusst keine Farben und kein Dark- oder Light-Design. Farbentscheidungen und Color Schemes
+liegen vollständig beim Theme, deshalb stehen die Farb-Tokens in Schritt 4 im globalen Layer.
+
+Wer es ganz ohne Projekt ausprobieren will, kann ein Wegwerf-Theme auch direkt beim `register()`-Aufruf der Anwendung
+erzeugen und die CSS-Strings inline schreiben. Für alles, was länger lebt, gilt: Anpassungen gehören in ein eigenes,
+konsolidiertes und versioniertes Theme-Paket.
+
+## Vorbereitung
+
+Vor dem ersten Schritt bereitstellen:
+
+- Node.js ab Version 20 und ein Paketmanager (`npm` genügt, `pnpm` funktioniert ebenfalls).
+- Zum Veröffentlichen ein Konto auf npm oder in einer eigenen Registry. Wer nur lokal entwickeln will, überspringt
+  Schritt 9.
+- Grundkenntnisse in CSS, TypeScript und npm. SCSS ist hilfreich, aber nicht nötig: Die Styles im Template liegen als
+  SCSS, funktionieren aber als gewöhnliches CSS genauso.
+
+## Schritt 1: Theme-Repository anlegen
+
+Für den Start gibt es den offiziellen Theme-Starter im [Template-Repository](https://github.com/public-ui/templates). Starter in ein neues Verzeichnis holen:
+
+```bash
+npx degit public-ui/templates/kolibri/theme mein-kolibri-theme
+cd mein-kolibri-theme
+```
+
+Anschließend liegt diese Struktur vor:
+
+| Datei oder Verzeichnis | Zweck                                                                                        |
+| ---------------------- | -------------------------------------------------------------------------------------------- |
+| `src/index.ts`         | Einstiegspunkt: erzeugt das Theme mit `KoliBri.createTheme` und exportiert es                |
+| `src/global.scss`      | Theme-globaler Layer: Design-Tokens, Schrift, Fokus-Regeln                                   |
+| `src/components/`      | Je Komponente eine SCSS-Datei, rund 45 Stück                                                 |
+| `src/mixins/`          | SCSS-Mixins, die die Komponenten-Styles wiederverwenden                                      |
+| `src/globals.d.ts`     | TypeScript-Deklaration, damit SCSS-Importe als String durchgehen                             |
+| `rollup.config.js`     | Build-Konfiguration: baut TypeScript und kompiliert SCSS zu CSS-Strings in `dist`            |
+| `package.json`         | Paket-Metadaten, Skripte, Abhängigkeiten                                                     |
+| `serve.sh`             | Startet eine Beispiel-Anwendung (funktioniert Stand 4.5.0 nicht out of the box, siehe Schritt 7) |
+
+<KolAlert _label="Aktualität der Kopie prüfen" _type="warning" _variant="card">
+	<p>
+		Der Starter ist eine Kopie des Standard-Themes. Diese Kopie kann hinter der installierten
+		Components-Version zurückfallen. Meine Review-Runde traf auf genau diesen Fall: Alte Selektoren
+		(<code>kol-span-wc</code>, Klassen wie <code>.primary</code>) trafen auf das neuere DOM von Components
+		4.5.0 (<code>kol-span</code>, <code>kol-button--primary</code>). Das Theme blieb weitgehend ungestylt.
+		Deshalb direkt nach dem Anlegen gegenprüfen:
+	</p>
+	<code>grep -rl kol-span-wc src | wc -l</code>
+	<p>
+		Steht hier <code>0</code>, ist die Kopie aktuell. Steht hier eine Zahl größer 0, übernimmt man die
+		Quelltexte des Standard-Themes in der eigenen Version. Der folgende Befehl ist mit genau dieser Version
+		geprüft:
+	</p>
+	<code>npx degit public-ui/kolibri/packages/themes/default/src#4.5.0 src</code>
+	<p>
+		Der Export heißt danach <code>DEFAULT</code> statt <code>YOUR_THEME</code> und das Theme
+		<code>'default'</code> statt <code>'your-theme'</code>, Schritt 3 passt die Namen an. Die Mischung aus
+		Starter-Verzeichnis und frischen Quelltexten baut und typprüft sauber gegen Components 4.5.0.
+	</p>
+</KolAlert>
+
+Alle `src`-Dateien sind eine Kopie des Standard-Themes. Das ist der in Issue #11284 empfohlene Weg: ein eigenes,
+abgeleitetes Theme, das man von der Struktur her vollständig unter Kontrolle hat. Genauso richtig ist es, die Kopie
+zu verschlanken und nur die Komponenten zu pflegen, die man wirklich abweichend gestalten will (siehe Schritt 5).
+
+Eine Git-Verwaltung lohnt sich ab jetzt: `git init` und den ersten Commit setzen.
+
+## Schritt 2: Abhängigkeiten installieren
+
+```bash
+npm install
+```
+
+Das lädt über 500 Pakete und dauert je nach Verbindung etwa eine Minute. Danach den ersten Build anstoßen:
+
+```bash
+npm run build
+```
+
+<KolAlert _label="Bekanntes Problem im Template" _type="warning" _variant="card">
+	<p>
+		Schlägt der erste Build mit der Meldung
+		<code>You need to install one of the following packages: "sass", "node-sass"</code> ab, fehlt dem
+		Template-Stand die SCSS-Abhängigkeit, in Version 4.5.0 war das der Fall. Abhilfe mit npm:
+	</p>
+	<code>npm install --save-dev sass-embedded</code>
+	<p>
+		Mit pnpm sucht der Build die Pakete namentlich und findet <code>sass-embedded</code> nicht. Dort lautet die
+		Abhilfe <code>pnpm add -D sass</code>. Danach läuft der Build durch.
+	</p>
+</KolAlert>
+
+Am Ende liegt ein `dist`-Verzeichnis mit `index.mjs`, `index.cjs` und `index.d.ts` vor: das fertige Theme-Paket, das
+Anwendungen später importieren. Der Build dauert auf einem normalen Rechner wenige Sekunden, daher lohnt sich während
+der Arbeit an den Styles ein zweites Terminal mit `npm run dev`: Rollup baut dann bei jeder Änderung neu.
+
+## Schritt 3: Theme benennen
+
+Jetzt vier Stellen anpassen, damit nichts mehr nach „YOUR“ klingt:
+
+1. **Theme-Name** in `src/index.ts`: Der erste Parameter von `KoliBri.createTheme('your-theme', …)` wird zum
+   Theme-Namen im KoliBri-Register. Erlaubt sind laut Validierung nur Kleinbuchstaben, Ziffern und Bindestriche nach
+   dem Muster `/^[a-z][a-z0-9]{1,}(-[a-z0-9]+)?$/`. Kurznamen wie `default` oder `my-theme` funktionieren, Umlaute
+   und Leerzeichen nicht.
+2. **Export-Konstante** in `src/index.ts`: Aus `export const YOUR_THEME` wird zum Beispiel
+   `export const MEIN_THEME`. Anwendungen importieren genau diesen Namen.
+3. **Paketname** in `package.json`: Aus `@your/kolibri-theme` wird zum Beispiel `@meine-firma/kolibri-theme`. Über
+   diesen Namen installieren Projekte das Theme später. An den übrigen Feldern (`files`, `exports`, `main`,
+   `module`, `types`) nichts ändern, sie sorgen für die korrekten Einstiegspunkte.
+4. **Skripte** in `package.json`: Die Einträge `serve`, `test` und `test-update` enthalten ebenfalls den Platzhalter
+   `YOUR_THEME`. Wer ihn dort stehen lässt, bricht später beim Testlauf auf den falschen Export-Namen. Nach Schritt
+   8 weiß man, ob man die beiden Test-Skripte nutzen will; der Umbenennung schadet es nicht.
+
+Wer mehrere Themes in einem Paket anbieten will, kann in `src/index.ts` mehrere `createTheme`-Aufrufe unter
+verschiedenen Namen exportieren, so macht es das ECL-Theme im KoliBri-Repository mit `ECL_EC` und `ECL_EU`.
+
+Anschließend kontrollieren, dass der Build mit den neuen Namen durchläuft. Danach ein Rauchtest ohne Browser:
+
+```bash
+npm run build
+node --input-type=module -e "import { MEIN_THEME } from './dist/index.mjs'; console.log(typeof MEIN_THEME)"
+```
+
+Als Ergebnis muss `function` erscheinen, denn `createTheme` liefert eine Funktion, die beim `register()`-Aufruf
+ausgeführt wird.
+
+## Schritt 4: Design-Tokens im globalen Layer setzen
+
+Die `src/global.scss` ist die zentrale Stellschraube. Dort stehen im Layer `kol-theme-global` die Design-Tokens des
+Themes. Jedes Token hat die Form:
+
+```scss
+--color-primary: var(--kolibri-color-primary, #b1063a);
+```
+
+Diese Kette hat zwei Effekte: Das Theme setzt seinen eigenen Wert (`#b1063a`) als Standard. Eine Anwendung kann den
+Wert über `--kolibri-color-primary` überschreiben, ohne das Theme anzufassen. Diese Rückfallebene kann man sich zu
+Nutze machen oder abschneiden: Will man verhindern, dass Anwendungen einzelne Werte umfälschen, entfernt man die
+`var(--kolibri-…, …)`-Klammer und schreibt den Wert direkt hin. Sinnvoll ist das vor allem bei abweichenden
+Größenwerten wie Radien und Abständen.
+
+Für den Anfang reichen meist diese Tokens aus `global.scss`:
+
+| Token                                       | Zuständig für                                              |
+| ------------------------------------------- | ---------------------------------------------------------- |
+| `--font-family`, `--font-size`              | Schriftart und Basis-Schriftgröße aller Komponenten        |
+| `--spacing`, `--border-width`               | Abstände und Rahmenstärken                                 |
+| `--border-radius`                           | Rundungen                                                  |
+| `--color-primary` und `…-variant`           | Primärfarbe, zum Beispiel für Buttons und Links            |
+| `--color-danger` / `…warning` / `…success`  | Fehler-, Warn- und Erfolgsmeldungen                        |
+| `--color-text`, `--color-light`, `--color-mute` | Text-, Flächen- und Deaktivierungsfarben               |
+| `--color-subtle`                            | feine Akzente wie Trennlinien                              |
+
+Wer Werte ändert, sollte direkt an jedem geänderten Token die Kontraste prüfen. Für Text gelten mindestens 4,5:1, für
+Grafiken und Bedienelemente mindestens 3:1 (WCAG 2.2 AA). Die Kontrastverantwortung liegt mit dem Theme, nicht mit
+KoliBri.
+
+<KolAlert _label="Dark Mode" _type="info" _variant="card">
+	<p>
+		Ein dunkles Erscheinungsbild ist Aufgabe des Themes, nicht der Komponenten: Das Basis-Styling kennt kein
+		Color Scheme. Das offizielle Standard-Theme in Version 4.5.0 löst das mit der CSS-Funktion
+		<code>light-dark()</code> in den Token-Werten und lässt sich über <code>color-scheme</code> umschalten, das
+		die Anwendung setzt. Die alte Kopie im Template liefert dagegen nur ein helles Design; wer in Schritt 1 die
+		Quelltexte aus dem Repository übernommen hat, erbt das <code>light-dark()</code>-Muster. In beiden Fällen
+		gilt: Kontraste für beide Schemata einzeln einhalten. Details stehen im Konzept
+		<KolLink _label="Theming" _href="/docs/concepts/styling/theming" /> und im
+		<KolLink
+			_label="Konzeptdokument Basis-Styling vs. Theming"
+			_href="https://github.com/public-ui/kolibri/blob/develop/docs/BASE_STYLING_VS_THEMING_CONCEPT.md"
+			_target="_blank"
+		/>.
+	</p>
+</KolAlert>
+
+## Schritt 5: Komponenten stylen
+
+Jede Datei in `src/components/` ist einem Komponenten-Tag zugeordnet und landet über die Map in `src/index.ts` beim
+passenden Schlüssel: `button.scss` bei `'KOL-BUTTON'`, `input-text.scss` bei `'KOL-INPUT-TEXT'`. Die Styles stehen im
+Layer `kol-theme-component` und dürfen auf die Tokens aus dem globalen Layer zugreifen. Selektoren setzen an den
+Klassen im Inneren der Komponente an, nicht am Tag selbst:
+
+```scss
+@layer kol-theme-component {
+	.kol-button__interactive-element {
+		text-transform: uppercase;
+		border-width: 3px;
+	}
+}
+```
+
+Ein Element-Selektor wie `kol-button { … }` bleibt in diesem Kontext wirkungslos, das habe ich in der Demo
+nachgemessen. Welche Klassen die Komponente wirklich rendert, zeigt die laufende Demo (Schritt 7) im DevTools, wenn
+man den Shadow DOM der Komponente aufklappt.
+
+Vorgehen zum Umgestalten einer Komponente:
+
+1. Komponente in der laufenden Demo betrachten und im DevTools den Shadow DOM öffnen.
+2. Die Klassen folgen dem BEM-Schema (`kol-button` mit Modifiern wie `kol-button--primary` und Elementen wie
+   `kol-button__interactive-element`), dort ansetzen.
+3. Gewünschte Änderung in der passenden Datei unter `src/components/` umsetzen und die Tokens im globalen Layer
+   bevorzugen, statt Farben direkt in die Komponenten-Styles zu schreiben.
+4. Bauen, neu laden und am Element kontrollieren (DevTools, Reiter Computed).
+
+Zum Umfang gehört eine ehrliche Entscheidung: Die Kopie aus Schritt 1 enthält alle Komponenten-Styles des
+Standard-Themes, damit von Anfang an alles ein konsistentes Aussehen hat. Man kann und sollte reduzieren, was man
+nicht ändern will. Ein Komponenten-Schlüssel, den die Map nicht enthält, fällt auf das unverfärbte Basis-Layout
+zurück. Die Komponente bleibt funktionsfähig und barrierefrei im Aufbau, sieht aber schlicht aus. Empfehlung: nur
+die Schlüssel behalten, deren Styles man wirklich pflegt. Im globalen Layer die Tokens so setzen, dass die
+übrigen Komponenten trotzdem zum Gesamtbild passen.
+
+Bei den SCSS-Dateien unter `src/mixins/` gilt: Sie gehören zur Arbeitsweise des Standard-Themes und machen die
+Komponenten-Styles wiederverwendbar. Wer klein anfängt, kann sie größtenteils löschen und die `@use`-Zeilen in den
+Komponenten-Dateien mitentfernen. Behalten sollte man `mixins/rem.scss`, falls man die `rem()`-Hilfsfunktion
+weiterverwendet.
+
+## Schritt 6: Theme bauen
+
+```bash
+npm run build
+```
+
+Der Build erzeugt in `dist` ein ES-Modul (`index.mjs`) und ein CommonJS-Modul (`index.cjs`), zusammen mit den
+Typdefinitionen und Sourcemaps. Das Theme liegt damit als Paket bereit. Die CSS-Strings stecken eingebettet in diesen
+Modulen, es gibt keine separaten CSS-Dateien auszuliefern. Lediglich die `assets` (Icon-Fonts, Favicon) bleiben
+eigene Dateien und werden beim `prepare`-Skript aus `@public-ui/components` kopiert.
+
+## Schritt 7: Theme in einer Demo-Anwendung ausprobieren
+
+<KolAlert _label="Bekanntes Problem im Template" _type="warning" _variant="card">
+	<p>
+		Das Skript <code>npm start</code> beziehungsweise <code>serve.sh</code> wechselt Stand 4.5.0 in das Paket
+		<code>@public-ui/sample-react</code> und ruft dort <code>npm start</code> auf. Das veröffentlichte Paket
+		enthält aber kein Start-Skript, daher bricht der Aufruf mit <code>Missing script: "start"</code> ab. Bis das
+		Template korrigiert ist, empfehle ich die eigene Mini-Demo aus diesem Schritt.
+	</p>
+</KolAlert>
+
+Eine eigene Demo bleibt ohnehin die präziseste Probe, denn sie zeigt genau die Komponenten, die im eigenen Projekt
+vorkommen. Innerhalb des Theme-Repositorys ein `demo`-Verzeichnis anlegen und vier Dateien erzeugen:
+
+`demo/package.json`:
+
+```json
+{
+	"name": "theme-demo",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@public-ui/components": "4.5.0"
+	},
+	"devDependencies": {
+		"vite": "5.4.20"
+	}
+}
+```
+
+`demo/index.html`:
+
+```html
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Theme-Demo</title>
+	</head>
+	<body>
+		<main style="max-width: 60rem; margin: 2rem auto; display: grid; gap: 1rem;">
+			<kol-heading _level="1">Mein Theme in Aktion</kol-heading>
+			<kol-alert _label="Hinweis" _level="2" _type="info">
+				Diese Komponenten nutzen das Theme aus dem eigenen Theme-Repository.
+			</kol-alert>
+			<div style="display: flex; gap: 0.5rem;">
+				<kol-button _label="Primär" _variant="primary">Primär</kol-button>
+				<kol-button _label="Sekundär" _variant="secondary">Sekundär</kol-button>
+			</div>
+			<kol-input-text _label="Name"></kol-input-text>
+			<kol-input-checkbox _label="Rechnung als PDF">Rechnung als PDF</kol-input-checkbox>
+		</main>
+		<script type="module" src="/src/main.ts"></script>
+	</body>
+</html>
+```
+
+`demo/src/main.ts`:
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+// Pfad zum Build des Theme-Repositorys, ein Verzeichnis über demo/
+import { MEIN_THEME } from '../../dist/index.mjs';
+
+await register(MEIN_THEME, defineCustomElements);
+```
+
+Damit Vite den Build mit dem Top-Level-`await` im Einstiegspunkt schafft, noch `demo/vite.config.ts` anlegen:
+
+```ts
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+	build: {
+		target: 'es2022',
+	},
+});
+```
+
+Dann installieren und starten:
+
+```bash
+cd demo
+npm install
+npm run dev
+```
+
+Die Demo läuft auf http://localhost:5173, bei belegtem Port auf dem nächsten freien, die genaue Adresse steht in der
+Ausgabe von Vite. Sichtprobe danach: Der Primär-Button zeigt die Hintergrundfarbe aus `--color-primary`, geänderte
+Tokens aus Schritt 4 werden sichtbar. Zeigt der Button stattdessen keinen Hintergrund, stimmt die Selektor-Generation
+des Themes nicht mit der Components-Version überein, dann greift die Aktualitätsprüfung aus Schritt 1. Der Ablauf in
+der täglichen Arbeit: Styles in `src` ändern, im ersten Terminal `npm run dev` des Theme-Repositorys laufen lassen und
+den Browser aktualisieren. Die Demo importiert den Build aus `dist`, daher gehört das beobachtende Rollup dazu.
+
+## Schritt 8: Theme automatisiert prüfen
+
+Dieser Schritt ist optional, aber empfohlen, sobald das Theme über den eigenen Rechner hinausgehen soll. Zum
+Theme-Paket gehört ein visueller Regressionstest, der die Komponenten des React-Sample-Apps mit dem eigenen Theme
+fotografiert und mit Referenzbildern vergleicht. Der Starter bringt dafür eigene Skripte mit (`npm test` und
+`npm run test-update`); funktionieren sie beim Template-Stand nicht, nutzen die Handbefehle aus diesem Schritt. Damit
+der erste Lauf Referenzen anlegt, den Modus zum Neu-Schreiben der Snapshots verwenden:
+
+<KolAlert _label="Bekannte Hürden mit npm" _type="warning" _variant="card">
+	<p>
+		Stand 4.5.0 lief der Test bei mir erst nach zwei kleinen Eingriffen. Erstens fehlt dem veröffentlichten
+		Binärskript <code>kolibri-visual-test</code> die Shebang-Zeile, über npm aufgerufen endet es in einem
+		Fehler. Zweitens sucht das Testwerkzeug das <code>playwright</code>-Programm im eigenen
+		<code>node_modules</code>-Ordner, npm legt es dort aber nicht ab. Beides lässt sich mit den Schritten unten
+		beheben. Mit pnpm reicht der unveränderte Aufruf über <code>pnpm test</code>, das haben meine Testleser
+		geprüft, ein Symlink ist dort nicht nötig.
+	</p>
+</KolAlert>
+
+```bash
+# 1. Die von @public-ui/visual-tests erwartete Playwright-Version als devDependency
+npm install --save-dev @playwright/test@1.60.0
+
+# 2. Den vom Test verwendeten Browser herunterladen (einmalig)
+npx playwright install firefox
+
+# 3. Dem Testwerkzeug das Playwright-Programm auffindbar machen
+cd node_modules/@public-ui/visual-tests
+ln -s ../../../../playwright/cli.js node_modules/.bin/playwright
+cd ../../..
+
+# 4. Snapshots für das eigene Theme erzeugen (im ersten Lauf Referenzen)
+THEME_MODULE=dist THEME_EXPORT=MEIN_THEME \
+	node node_modules/@public-ui/visual-tests/src/index.js --update-snapshots
+```
+
+Der Testlauf verwendet in dieser Version ausschließlich Firefox, deshalb in Schritt 2 den Firefox-Browser laden
+und nicht Chromium. Nach rund einer Minute liegen in `snapshots/theme-mein_theme/` mehrere hundert PNG-Referenzen. Danach
+prüft ein gewöhnlicher Lauf (ohne `--update-snapshots`) jede weitere Änderung gegen diese Bilder. Namen und Pfade in
+den Umgebungsvariablen anpassen: `THEME_MODULE` zeigt auf das Build-Verzeichnis, `THEME_EXPORT` ist der Name der
+exportierten Konstante aus Schritt 3.
+
+Vor dem ersten Lauf die Demo aus Schritt 7 einmal kritisch ansehen: Der Test fotografiert den aktuellen Zustand und
+friert ihn als Referenz ein. Referenzen aus einem kaputten Rendering zu erzeugen verfehlt den Sinn der Prüfung,
+das ist mir in der Review-Runde tatsächlich passiert, bevor der Template-Defekt aus Schritt 1 gefunden war.
+
+Eine Meldung gehört dabei zur Erklärung, nicht zu den Fehlern: Hat das Theme keine Varianten für eine Komponente,
+zeigt das Sample an dieser Stelle im Bild `This theme has no variants for this component`. Das Standard-Theme
+deklariert Varianten über ein Feature-Flag, das die alte Template-Kopie noch nicht kennt; wer die Quelltexte aus
+Schritt 1 übernommen hat, bekommt die Varianten-Anzeige mit.
+
+Über die Bildvergleiche hinaus empfehle ich, das fertige Theme einmal unter `forced-colors` und mit Screenreader
+beziehungsweise Tastatur zu prüfen. Farb- und Kontrastentscheidungen, die in Schritt 4 gefallen sind, lassen sich
+hier am echten Element verifizieren.
+
+<KolDetails _label="Warum die Kontrastprüfung beim Theme liegt">
+	Die Komponenten aus <code>@public-ui/components</code> enthalten absichtlich kein Farbdesign. Sie stellen
+	Struktur und Layout bereit, damit assistive Technologie sie korrekt erfassen. Erst das Theme trifft
+	Farbentscheidungen. Genau diese Entscheidungen sind auf Kontrast zu prüfen. Die FAQ nennen zusätzlich einen
+	eigenständigen Barrierefreiheitstest für das fertige Theme, sobald es produktiv gehen soll.
+</KolDetails>
+
+## Schritt 9: Paket versionieren und veröffentlichen
+
+Vor dem Veröffentlichen in `package.json` kontrollieren:
+
+- `peerDependencies` enthält `@public-ui/components` mit exakter Version (im Template: `"4.5.0"`). Diese Kopplung
+  ist Absicht: Das Theme erzeugt sein Objekt über `KoliBri` aus genau dieser Komponentenversion. Das
+  Theme-Register teilt sich Daten über Paketgrenzen hinweg. Beim Wechsel auf eine neue KoliBri-Version Theme und
+  Komponenten gemeinsam heben.
+- `files` listet `assets` und `dist`, es landet also nur Nötiges im Paket.
+- `name`, `version`, `description`, `license`, `repository` und `keywords` auf den eigenen Stand bringen.
+
+Bei der Versionspolitik eigene Nummern verwenden und die KoliBri-Kompatibilität über `peerDependencies` zeigen statt
+über die eigene Versionsnummer, zum Beispiel `1.0.0` für die erste Ausgabe gegen KoliBri 4.5.0. Welches Theme gegen
+welche Components-Version gebaut ist, liest ein Projekt dann mit `npm info @meine-firma/kolibri-theme peerDependencies`
+ab.
+
+Dann bauen und veröffentlichen:
+
+```bash
+npm run build
+npm publish --access public
+```
+
+`--access public` braucht es für Scoped-Pakete wie `@meine-firma/kolibri-theme`. Für eine firmeneigene Registry
+entfällt `--access`, dafür gehört die Registry-URL in die `.npmrc`. Versionsnummern mit Bindestrich wie `1.0.0-beta.1`
+stufen npm als Prerelease ein und verlangen zusätzlich `--tag beta`, sonst lehnt npm die Veröffentlichung ab.
+
+## Schritt 10: Theme in einer Anwendung einbinden
+
+In der Ziel-Anwendung installieren und registrieren:
+
+```bash
+npm install @meine-firma/kolibri-theme
+```
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+import { MEIN_THEME } from '@meine-firma/kolibri-theme';
+
+await register(MEIN_THEME, defineCustomElements);
+```
+
+Zwei Stolperfallen aus der Review-Runde, beide betreffen vor allem das lokale Ausprobieren mit
+`npm install ../mein-kolibri-theme`:
+
+- Die Ziel-Anwendung braucht `@public-ui/components` selbst als Abhängigkeit. Bei Installation über die Registry
+  zieht npm die Peer-Dependency automatisch nach, bei einer lokalen `file:`-Installation tut es das nicht zuverlässig,
+  und der Build bricht mit `failed to resolve import "@public-ui/components"` ab.
+- Nutzt die Ziel-Anwendung Vite mit Standard-Einstellungen, braucht der Build `target: 'es2022'` in der
+  Vite-Konfiguration wie in Schritt 7, sonst meckert der Build über das Top-Level-`await`. Alternativ den Registrierungs-Aufruf
+  ohne Top-Level-`await` schreiben: `register(MEIN_THEME, defineCustomElements).then(() => { /* App starten */ })`.
+
+Wichtig bleibt, das Promise abzuwarten, bevor die ersten `<kol-*>`-Komponenten gerendert werden (siehe
+[Erste Schritte](/docs/get-started/first-steps)). Mehrere Themes lassen sich als Array übergeben,
+`register([DEFAULT, MEIN_THEME], defineCustomElements)`, vorausgesetzt beide Konstanten sind importiert. Wie sich
+Themes zur Laufzeit umschalten lassen, hängt von der Versionsnummer ab und ist im
+[Register-Howto des KoliBri-Repositorys](https://github.com/public-ui/kolibri/blob/develop/docs/HOWTO_REGISTER_COMPONENTS_AND_THEMES.md)
+beschrieben; in der hier getesteten Version 4.5.0 habe ich dafür keine Unterstützung gefunden.
+
+## Laufzeit-Patching: nur für Notfälle
+
+Neben `createTheme` gibt es `KoliBriDevHelper.patchTheme` und `KoliBriDevHelper.patchThemeTag`. Mit beiden lassen
+sich CSS-Regeln eines registrierten Themes zur Laufzeit ändern. Dazu die Klarstellung, die Issue #11284 vermisst.
+Der Weg ist für Prototyping und für Notfälle gedacht, zum Beispiel um kurzfristig einen Show-Stopper im produktiven
+Theme zu umgehen, bevor eine neue Theme-Version ausgeliefert werden kann. Sobald ein Theme registriert ist, gilt der
+Theme-Prozess als abgeschlossen. Ein Patch danach löst die Warnung `The theme process is locked. This means that the
+theme "…" should not be patched.` aus. Sie bedeutet: Es funktioniert zwar, aber es ist der falsche Weg. Im
+Testbetrieb ist damit zu rechnen, dass künftige Versionen strenger reagieren. Wer die Warnung sieht, überführt den
+Patch in das Theme-Paket und versioniert ihn dort. Im Alltag heißt das: Jeder Patch, der im Quellcode landet, ist
+einer zu viel. Prototyp mit `patchTheme` erlaubt, Erkenntnis sofort in `src` übernehmen, Patch löschen,
+Theme-Version erhöhen.
+
+## Fehlerbilder und Abhilfe
+
+| Symptom                                                                        | Ursache                                                                  | Abhilfe                                                                                             |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| Build bricht ab: `You need to install one of the following packages: "sass"`    | Im Template fehlt Stand 4.5.0 die SCSS-Abhängigkeit                      | `npm install --save-dev sass-embedded`, unter pnpm `pnpm add -D sass` (Schritt 2)                   |
+| `npm start` endet mit `Missing script: "start"`                                 | `serve.sh` ruft ein Skript im Sample-Paket auf, das dort nicht existiert | Eigene Demo-Anwendung aus Schritt 7 nutzen                                                          |
+| Theme-Registrierung wirft Fehler zur Theme-Kennung                              | Name verletzt das Muster `/^[a-z][a-z0-9]{1,}(-[a-z0-9]+)?$/`            | Namen in Schritt 3 prüfen: Kleinbuchstaben, Ziffern, Bindestriche                                   |
+| Komponenten erscheinen ungestylt                                                | Kein Theme registriert, Schlüssel fehlt in der Map oder Selektoren passen nicht zum DOM | `register()` vor dem Rendern abwarten; Theme-Map prüfen; Aktualitätsprüfung aus Schritt 1            |
+| Primär-Button bleibt ohne Hintergrundfarbe                                      | Template-Kopie älter als die Components-Version                          | Quelltexte aus dem KoliBri-Repository übernehmen (Warnkasten in Schritt 1)                          |
+| Warnung `The theme process is locked`                                           | `patchTheme` nach der Registrierung aufgerufen                           | Patch ins Theme-Paket überführen (Abschnitt Laufzeit-Patching)                                      |
+| `kolibri-visual-test` endet mit Shell-Fehler wie `import: command not found`    | Dem veröffentlichten Binärskript fehlt die Shebang-Zeile                 | Aufruf über `node node_modules/@public-ui/visual-tests/src/index.js` (Schritt 8)                    |
+| Testlauf bricht ab: `Executable doesn't exist` mit Firefox-Pfad                 | Browser fehlt oder Playwright-Version passt nicht zur Konfiguration      | `npx playwright install firefox` und bei `@playwright/test@1.60.0` bleiben (Schritt 8)              |
+| `playwright: not found` im Testlauf                                             | npm legt das Playwright-Programm nicht im Ordner des Testpakets ab       | Symlink aus Schritt 8                                                                               |
+
+## Quellen
+
+- [Issue #11284: Doku-Tutorial zum Anpassen und Ableiten von Themes](https://github.com/public-ui/kolibri/issues/11284)
+- [Discussion #894: Eigene Themes, inklusive Videos](https://github.com/public-ui/kolibri/discussions/894)
+- [Template-Repository mit dem Theme-Template](https://github.com/public-ui/templates/tree/main/kolibri/theme)
+- [Quelltext des Standard-Themes im KoliBri-Repository](https://github.com/public-ui/kolibri/tree/main/packages/themes/default/src)
+- [Theming-Konzept in der Doku](/docs/concepts/styling/theming)
+- [Designer-Seite in der Doku mit Referenzprojekten](/docs/concepts/styling/designer)
+- [HOWTO_REGISTER_COMPONENTS_AND_THEMES im KoliBri-Repository](https://github.com/public-ui/kolibri/blob/develop/docs/HOWTO_REGISTER_COMPONENTS_AND_THEMES.md)
+- [Konzeptdokument Basis-Styling vs. Theming](https://github.com/public-ui/kolibri/blob/develop/docs/BASE_STYLING_VS_THEMING_CONCEPT.md)
+- [`@public-ui/theme-default` auf npm](https://www.npmjs.com/package/@public-ui/theme-default)
