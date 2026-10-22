@@ -97,6 +97,10 @@ export default function Homepage(): ReactElement {
 								display: 'block',
 								width: '100px',
 								marginBottom: '1em',
+								/* Das Logo nutzt eine feste Markenfarbe und braucht daher in beiden Farbschemata eine helle Fläche. */
+								backgroundColor: '#fff',
+								padding: '0.5em',
+								borderRadius: '0.25rem',
 							}}
 						/>
 					</div>
@@ -113,7 +117,7 @@ export default function Homepage(): ReactElement {
 							message: 'und wurde vom',
 						})}{' '}
 						<strong>
-							<KolLink _href="https://itzbund.de" _label="Informationstechnikzentrum Bund" _target="itzbund"></KolLink>
+							<KolLink _href="https://itzbund.de" _label="Informationstechnikzentrum Bund"></KolLink>
 						</strong>{' '}
 						{translate({
 							id: 'custom.homepage-message-part-2',

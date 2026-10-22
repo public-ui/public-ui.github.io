@@ -14,7 +14,7 @@ type FeatureItem = {
 function Feature({ title, icon, description, button }: FeatureItem) {
 	return (
 		<div className="grid gap-4 content-baseline text-center justify-items-center">
-			<KolIcon className="text-8xl text-gray-700" _label="" _icons={icon}></KolIcon>
+			<KolIcon className="text-8xl text-[color:var(--ifm-color-emphasis-700)]" _label="" _icons={icon}></KolIcon>
 			<Heading as="h3" className="m-0">
 				{title}
 			</Heading>
