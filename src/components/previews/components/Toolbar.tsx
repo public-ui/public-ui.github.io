@@ -3,7 +3,7 @@ import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
 import { KolInputText, KolSelect, KolTextarea, KolToolbar } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import type { PreviewDefaults} from '../utils';
+import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults, ToolbarItemsDefault } from '../utils';
 
 const ToolbarPreview = (props: PreviewDefaults<JSX.KolToolbar>) => {
@@ -15,7 +15,11 @@ const ToolbarPreview = (props: PreviewDefaults<JSX.KolToolbar>) => {
 		[]
 	);
 
-	const [itemsJson, setItemsJson] = React.useState<string>(JSON.stringify(defaultProps._items, null, 2));
+	const [itemsJson, setItemsJson] = React.useState<string>(
+		props.initialProps?._items
+			? JSON.stringify(props.initialProps._items, null, 2)
+			: JSON.stringify(defaultProps._items, null, 2)
+	);
 	const [itemsError, setItemsError] = React.useState<string>('');
 
 	const parseItems = (json: string) => {
