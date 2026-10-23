@@ -18,7 +18,6 @@ const InputPasswordPreview = (props: PreviewDefaults<JSX.KolInputPassword>) => {
 	const defaultProps = React.useMemo<JSX.KolInputPassword>(
 		() => ({
 			_label: translate({ id: 'preview.component.input-password.label' }),
-			_visibilityToggle: true,
 		}),
 		[]
 	);
