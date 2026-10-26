@@ -1,4 +1,4 @@
-**Hinweis:** `Pos1` und `Ende` bewegen auch im Eingabefeld nicht den Textcursor.
+**Hinweis:** Bei geöffneter Liste bewegen `Pos1` und `Ende` auch im Eingabefeld nicht den Textcursor, sondern setzen den Fokus auf den ersten bzw. letzten Eintrag. Bei geschlossener Liste bewegen sie wie gewohnt den Textcursor im Eingabefeld.
 
 **Fokusmodell**
 
