@@ -27,6 +27,13 @@ Die Komponente basiert auf dem nativen HTML-Element `<select>` und profitiert da
 
 Sie eignet sich für strukturierte Eingaben, bei denen ausschließlich bekannte Werte zulässig sind und keine freie Texteingabe erfolgen soll. Je nach Konfiguration unterstützt die Komponente die **Einfachauswahl** als aufklappbares Auswahlfeld oder die **Mehrfachauswahl** als Liste mit mehreren sichtbaren Zeilen. Die auswählbaren Optionen werden über `_options` bereitgestellt und können mithilfe von **Optionsgruppen** logisch strukturiert werden.
 
+**Anwendungsfälle:**
+- Auswahl eines Bundeslandes
+- Sprachauswahl
+- Auswahl einer Organisationseinheit oder eines Fachbereichs
+- Kategorieauswahl in Formularen
+- Statusauswahl aus mehreren festgelegten Bearbeitungsständen
+
 ## Beispiel
 
 Standard-Auswahlliste ohne optional gesetzte Felder:
@@ -44,7 +51,7 @@ Standard-Auswahlliste ohne optional gesetzte Felder:
 | ------------ | ---------- |
 | Verwendung des nativen HTML-Elements `<select>` | Rolle, Tastaturbedienung, Fokusverwaltung und Ansageverhalten stammen vollständig vom nativen Element und entsprechen damit dem gewohnten Verhalten des jeweiligen Browsers. |
 | Deaktivierte Optionen bleiben für Screenreader wahrnehmbar | Deaktivierte Optionen werden nicht vor assistiven Technologien verborgen, da Browser das Verbergen einzelner Optionen ignorieren bzw. dadurch fehlerhaftes Verhalten entstand. Screenreader zählen und sagen sie daher mit an, sodass die Anzahl der angesagten Optionen von der Anzahl der auswählbaren Optionen abweichen kann. |
-| Mindestgröße der Optionen bei Mehrfachauswahl | In der dauerhaft sichtbaren Liste der Mehrfachauswahl (`_multiple`) haben die Optionen eine Mindesthöhe, die der barrierefreien Mindestgröße für Bedienelemente entspricht. |
+| Mindestgröße der Optionen bei Mehrfachauswahl | In der dauerhaft sichtbaren Liste der Mehrfachauswahl (`_multiple`) haben die Optionen eine Mindesthöhe, die der barrierefreien Mindestgröße für Bedienelemente entspricht. So können sie auch mit Maus und Touch sicher getroffen werden. |
 | Häkchen vor ausgewählten Optionen | Ausgewählte Optionen sind zusätzlich zur Hervorhebung durch ein vorangestelltes Häkchen erkennbar. Die Darstellung hängt davon ab, ob der Browser die Optionsliste mit den Stilen der Komponente rendert. |
 
 ### Links und Referenzen
@@ -53,22 +60,7 @@ Standard-Auswahlliste ohne optional gesetzte Felder:
 - <kol-link _href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element" _target="_blank" _label="HTML Living Standard: The select element"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/" _target="_blank" _label="WAI: Accessible Names and Descriptions"></kol-link>
 
-## Verwendung
-
-Die Select-Komponente eignet sich insbesondere für:
-
-- die Auswahl einer oder mehrerer Optionen aus einer vordefinierten Menge an Werten,
-- strukturierte Formulareingaben und standardisierte Datenerfassung,
-- Einfach- und Mehrfachauswahlen.
-
-Die Select-Komponente sollte **nicht** verwendet werden, wenn:
-
-- freie Eingaben möglich sein sollen oder bei einer Einfachauswahl eine Such- oder Filterfunktion benötigt wird. Verwenden Sie stattdessen eine **Combobox**.
-- genau eine Option aus einer kleinen Auswahl (ca. 1–5 Optionen) ausgewählt werden soll und alle Optionen gleichzeitig sichtbar sein sollen. Verwenden Sie stattdessen eine **Radio Group**.
-
-**Hinweis:** Bei der Einfachauswahl erwartet `_value` einen einzelnen Wert, bei der Mehrfachauswahl (`_multiple`) ein Array. Werte, die in `_options` nicht vorkommen, werden verworfen. Ist bei der Einfachauswahl kein gültiger Wert gesetzt, wird – wie beim nativen `<select>` – automatisch die erste Option ausgewählt.
-
-### Tastatursteuerung
+## Tastatursteuerung
 
 <NativeKeyboardIntro />
 
@@ -83,7 +75,7 @@ Die Select-Komponente sollte **nicht** verwendet werden, wenn:
 | `Alt+Pfeil-Taste unten`     | Auswahlliste öffnen (u. a. unter Windows).                                                                 |
 | `Esc`                       | Geöffnete Auswahlliste schließen.                                                                          |
 
-#### Bei Mehrfachauswahl (`_multiple`)
+### Bei Mehrfachauswahl (`_multiple`)
 
 | Taste                        | Funktion                                                                          |
 | ---------------------------- | --------------------------------------------------------------------------------- |
@@ -94,62 +86,50 @@ Die Select-Komponente sollte **nicht** verwendet werden, wenn:
 
 **Hinweis:** Unter macOS wird statt `Strg` in der Regel die `Cmd`-Taste verwendet.
 
-### Best Practices / Empfehlungen
+## FAQ
 
-**Auswahl der geeigneten Komponente**
+**Wofür eignet sich die Select-Komponente?**  
+Für die Auswahl einer oder mehrerer Optionen aus einer vordefinierten Menge an Werten, etwa bei strukturierten Formulareingaben und standardisierter Datenerfassung. Verwenden Sie die Select-Komponente ausschließlich für vordefinierte Auswahlmöglichkeiten.
 
-- Verwenden Sie die Select-Komponente ausschließlich für vordefinierte Auswahlmöglichkeiten.
-- Nutzen Sie `_multiple` nur, wenn eine Mehrfachauswahl fachlich erforderlich ist. Die Mehrfachauswahl erfordert Tastenkombinationen, die vielen Nutzenden nicht bekannt sind. Prüfen Sie, ob stattdessen eine **Checkbox Group** besser geeignet ist.
-- Prüfen Sie bei umfangreichen Auswahllisten, ob eine **Combobox** die geeignetere Komponente ist.
-- Zusätzliche ARIA-Rollen (z. B. `role="combobox"` oder `role="listbox"`) sind nicht erforderlich und sollten nicht ergänzt werden.
+**Wann eignet sich eine Combobox besser?**  
+Wenn freie Eingaben möglich sein sollen, bei einer Einfachauswahl eine Such- oder Filterfunktion benötigt wird, eine große Anzahl an Optionen zur Verfügung steht oder Nutzende gezielt nach Einträgen suchen sollen. Prüfen Sie daher bei umfangreichen Auswahllisten, ob eine **Combobox** die geeignetere Komponente ist.
 
-**Gestaltung der Optionen**
-
-- Stellen Sie die Optionen über `_options` als Array mit `label` und `value` bereit.
-- Strukturieren Sie umfangreiche Auswahllisten mithilfe von **Optionsgruppen**.
-- Verwenden Sie aussagekräftige und eindeutige Beschriftungen (`label`).
-- Vermeiden Sie deaktivierte Optionen, sofern dies fachlich möglich ist. Screenreader sagen sie mit an, sodass die Anzahl der angesagten Optionen von der Anzahl der tatsächlich auswählbaren Optionen abweichen kann.
-- Setzen Sie `_required`, wenn eine Auswahl zwingend erforderlich ist.
-
-**Vorauswahl und Leer-Option**
-
-- Treffen Sie keine automatische Vorauswahl personenbezogener Optionen (z. B. Anreden), sofern diese nicht fachlich begründet ist. Verwenden Sie stattdessen eine neutrale Option, damit Nutzende ihre Auswahl bewusst treffen, oder eine **Radio Group**.
-- Sofern aus der Auswahlliste ein sinnvoller Standardwert hervorgeht, sollte dieser über `_value` vorausgewählt werden. In diesem Fall sollte keine Leer-Option verwendet werden.
-- Falls kein sinnvoller Standardwert existiert oder die Auswahl rechtliche bzw. finanzielle Konsequenzen hat, stellen Sie eine explizite, klar beschriftete Leer-Option (z. B. „Bitte auswählen“) als erste Option in `_options` bereit. Die Komponente bietet hierfür keinen eigenen Platzhalter an.
-
-### Anwendungsfälle
-
-- Auswahl eines Bundeslandes
-- Sprachauswahl
-- Auswahl einer Organisationseinheit oder eines Fachbereichs
-- Kategorieauswahl in Formularen
-- Statusauswahl aus mehreren festgelegten Bearbeitungsständen
-
-### FAQ
-
-**Wann eignet sich eine Combobox besser?**
-Wenn eine große Anzahl an Optionen zur Verfügung steht oder Nutzende gezielt nach Einträgen suchen sollen.
-
-**Wann eignet sich eine Radio Group besser?**
+**Wann eignet sich eine Radio Group besser?**  
 Wenn genau eine Option aus einer kleinen Anzahl (ca. 1–5 Optionen) ausgewählt werden soll und alle Optionen gleichzeitig sichtbar sein können.
 
-**Unterstützt die Komponente Optionsgruppen?**
-Ja. `_options` unterstützt neben einzelnen Optionen auch Optionsgruppen (`{ label, options }`), die als native `optgroup`-Elemente ausgegeben werden.
+**Wann sollte ich die Mehrfachauswahl verwenden?**  
+Nutzen Sie `_multiple` nur, wenn eine Mehrfachauswahl fachlich erforderlich ist. Die Mehrfachauswahl erfordert Tastenkombinationen, die vielen Nutzenden nicht bekannt sind (siehe [Tastatursteuerung](#tastatursteuerung)). Prüfen Sie, ob stattdessen eine **Checkbox Group** besser geeignet ist.
 
-**Warum wirkt sich `_rows` bei meiner Auswahlliste nicht aus?**
+**Welche Werte erwartet `_value`?**  
+Bei der Einfachauswahl erwartet `_value` einen einzelnen Wert, bei der Mehrfachauswahl (`_multiple`) ein Array; passt die Form nicht dazu, wird der Wert nicht übernommen und ein Fehler in der Browser-Konsole ausgegeben. Werte, die in `_options` nicht vorkommen, werden verworfen. Ist bei der Einfachauswahl kein gültiger Wert gesetzt, wird – wie beim nativen `<select>` – automatisch die erste nicht deaktivierte Option ausgewählt.
+
+**Wie gestalte ich die Optionen?**  
+Stellen Sie die Optionen über `_options` als Array mit `label` und `value` bereit und verwenden Sie aussagekräftige und eindeutige Beschriftungen (`label`). Strukturieren Sie umfangreiche Auswahllisten mithilfe von [Optionsgruppen](#optionsgruppen). Vermeiden Sie deaktivierte Optionen, sofern dies fachlich möglich ist: Screenreader sagen sie mit an, sodass die Anzahl der angesagten Optionen von der Anzahl der tatsächlich auswählbaren Optionen abweichen kann.
+
+**Soll ich eine Option vorauswählen oder eine Leer-Option anbieten?**  
+Das hängt davon ab, ob es einen sinnvollen Standardwert gibt:
+
+- Gibt es **einen sinnvollen, unstrittigen Standardwert**, wählen Sie ihn über `_value` vor und verzichten Sie auf eine Leer-Option. Das spart Zeit und Klicks und vermeidet Mehrdeutigkeit.
+- Gibt es **keinen sinnvollen Standardwert** oder hat die **Auswahl rechtliche bzw. finanzielle Konsequenzen**, stellen Sie eine explizite, **klar beschriftete Leer-Option** (z. B. „Bitte auswählen“) bereit. So treffen Nutzende eine bewusste Entscheidung, werden nicht beeinflusst und können ihre Eingabe zurücksetzen.
+
+Treffen Sie keine automatische Vorauswahl personenbezogener Optionen (z. B. Anreden), sofern diese nicht fachlich begründet ist. Verwenden Sie stattdessen eine neutrale Option, damit Nutzende ihre Auswahl bewusst treffen, oder eine **Radio Group**.
+
+**Wie setze ich eine Leer-Option um und wie verhält sie sich mit `_required`?**  
+Legen Sie die Leer-Option als erste Option in `_options` an, z. B. `{ label: 'Bitte auswählen', value: '' }`. Ohne gültigen `_value` wählt die Komponente bei der Einfachauswahl die erste nicht deaktivierte Option aus, also die Leer-Option; `getValue()` und die Events liefern dann deren `value`. Deaktivieren Sie die Leer-Option nicht – sonst wird sie übersprungen und die erste fachliche Option ist vorausgewählt. Auch die Leer-Option braucht ein nicht leeres `label`; eine Option mit leerem `label` macht die gesamte Optionsliste ungültig.
+
+Setzen Sie `_required`, wenn eine Auswahl zwingend erforderlich ist. `_required` kennzeichnet das Feld als Pflichtfeld, prüft die Auswahl aber nicht: Ist die Leer-Option ausgewählt, zeigt die Komponente keine Fehlermeldung an. Prüfen Sie daher in der Anwendung, ob noch der Wert der Leer-Option ausgewählt ist, und zeigen Sie in diesem Fall über `_msg` eine Fehlermeldung an (siehe [Hinweistexte und Fehlermeldungen](#hinweistexte-und-fehlermeldungen)).
+
+**Gibt es einen Platzhalter für die Select-Komponente?**  
+Nein. Die Komponente unterstützt kein `_placeholder`. Nutzen Sie bei Bedarf eine klar beschriftete Leer-Option als erste Option (siehe oben).
+
+**Unterstützt die Komponente Optionsgruppen?**  
+Ja, siehe [Optionsgruppen](#optionsgruppen).
+
+**Warum wirkt sich `_rows` bei meiner Auswahlliste nicht aus?**  
 `_rows` wird nur in Verbindung mit `_multiple` ausgewertet. Bei der Einfachauswahl bleibt die Komponente ein aufklappbares Auswahlfeld.
 
-**Gibt es einen Platzhalter für die Select-Komponente?**
-Nein. Die Komponente unterstützt kein `_placeholder`. Nutzen Sie bei Bedarf eine klar beschriftete Leer-Option als erste Option.
-
-**Warum verwendet die Komponente das native HTML-Element `<select>`?**
-Das native HTML-Element `<select>` stellt die erforderliche Semantik sowie die Unterstützung für Tastaturbedienung, Fokusverwaltung und Screenreader bereits bereit. Die KoliBri-Komponente ergänzt daher keine eigenen ARIA-Rollen und nutzt bewusst das standardisierte Verhalten des Browsers.
-
-## Playground
-
-Testen Sie die verschiedenen Eigenschaften der Select-Komponente:
-
-<SelectPreview context="playground" />
+**Warum verwendet die Komponente das native HTML-Element `<select>`?**  
+Das native HTML-Element `<select>` stellt die erforderliche Semantik sowie die Unterstützung für Tastaturbedienung, Fokusverwaltung und Screenreader bereits bereit. Die KoliBri-Komponente ergänzt daher keine eigenen ARIA-Rollen und nutzt bewusst das standardisierte Verhalten des Browsers. Zusätzliche ARIA-Rollen (z. B. `role="combobox"` oder `role="listbox"`) sind nicht erforderlich und sollten nicht ergänzt werden.
 
 ## Funktionalitäten
 
@@ -179,6 +159,7 @@ Die Properties werden 1:1 auf die gleichnamigen nativen HTML-Attribute des `sele
 	visibleProperties={['_disabled', '_required', '_name']}
 	initialProps={{
 		_label: 'Bundesland',
+		_required: true,
 	}}
 />
 
@@ -205,8 +186,6 @@ Mit `_multiple` erlauben Sie die Auswahl mehrerer Optionen. Die Komponente wird 
 
 Mit `_rows` legen Sie fest, wie viele Optionen gleichzeitig sichtbar sind. `_rows` wird ausschließlich in Verbindung mit `_multiple` als natives `size`-Attribut gesetzt.
 
-Die Optionen der Mehrfachauswahl haben eine Mindesthöhe, die der barrierefreien Mindestgröße für Bedienelemente entspricht, und können so auch mit Maus und Touch sicher getroffen werden.
-
 <SelectPreview
 	context="feature"
 	visibleProperties={['_multiple', '_rows']}
@@ -221,7 +200,7 @@ Die Optionen der Mehrfachauswahl haben eine Mindesthöhe, die der barrierefreien
 
 Umfangreiche Auswahllisten strukturieren Sie mit Optionsgruppen. Eine Optionsgruppe wird in `_options` als Objekt mit `label` und einem eigenen Array `options` angegeben und als natives `optgroup`-Element ausgegeben. Die Beschriftung der Gruppe wird von Screenreadern beim Navigieren durch die Optionen mit angesagt; sie ist selbst nicht auswählbar.
 
-**Hinweis:** `disabled: true` an einer Optionsgruppe wirkt derzeit nicht; die Optionen der Gruppe bleiben auswählbar (<kol-link _href="https://github.com/public-ui/kolibri/issues/10864" _target="_blank" _label="#10864"></kol-link>). Deaktivieren Sie stattdessen die einzelnen Optionen.
+Mit `disabled: true` an einer Optionsgruppe deaktivieren Sie alle Optionen dieser Gruppe.
 
 <SelectPreview
 	context="feature"
@@ -229,6 +208,7 @@ Umfangreiche Auswahllisten strukturieren Sie mit Optionsgruppen. Eine Optionsgru
 	initialProps={{
 		_label: 'Bundesland',
 		_options: [
+			{ label: 'Bitte auswählen', value: '' },
 			{
 				label: 'Norddeutschland',
 				options: [
@@ -250,7 +230,7 @@ Umfangreiche Auswahllisten strukturieren Sie mit Optionsgruppen. Eine Optionsgru
 
 ### Deaktivierte Optionen
 
-Einzelne Optionen deaktivieren Sie über die Eigenschaft `disabled` der jeweiligen Option. Deaktivierte Optionen bleiben sichtbar und werden von Screenreadern angesagt, können aber nicht ausgewählt werden. Setzen Sie deaktivierte Optionen sparsam ein (siehe [Best Practices / Empfehlungen](#best-practices--empfehlungen)).
+Einzelne Optionen deaktivieren Sie über die Eigenschaft `disabled` der jeweiligen Option. Deaktivierte Optionen bleiben sichtbar und werden von Screenreadern angesagt, können aber nicht ausgewählt werden. Setzen Sie deaktivierte Optionen sparsam ein (siehe [FAQ](#faq)).
 
 <SelectPreview
 	context="feature"
@@ -292,6 +272,12 @@ Einzelne Optionen deaktivieren Sie über die Eigenschaft `disabled` der jeweilig
 		},
 	}}
 />
+
+## Playground
+
+Testen Sie die verschiedenen Eigenschaften der Select-Komponente:
+
+<SelectPreview context="playground" />
 
 ## API
 
