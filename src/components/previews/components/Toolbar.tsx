@@ -1,10 +1,11 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
-import type { JSX } from '@public-ui/components';
-import { KolInputText, KolSelect, KolTextarea, KolToolbar } from '@public-ui/react-v19';
+import type { JSX, ToolbarItemsPropType } from '@public-ui/components';
+import { KolInputText, KolSelect, KolToolbar } from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
-import type { PreviewDefaults} from '../utils';
+import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults, ToolbarItemsDefault } from '../utils';
+import { ToolbarItemsProperty } from '../properties';
 
 const ToolbarPreview = (props: PreviewDefaults<JSX.KolToolbar>) => {
 	const defaultProps = React.useMemo<JSX.KolToolbar>(
@@ -15,16 +16,11 @@ const ToolbarPreview = (props: PreviewDefaults<JSX.KolToolbar>) => {
 		[]
 	);
 
-	const [itemsJson, setItemsJson] = React.useState<string>(JSON.stringify(defaultProps._items, null, 2));
-	const [itemsError, setItemsError] = React.useState<string>('');
-
-	const parseItems = (json: string) => {
+	const parseItems = (json: ToolbarItemsPropType) => {
 		try {
-			const parsed = JSON.parse(json) as JSX.KolToolbar['_items'];
-			setItemsError('');
+			const parsed = JSON.parse(JSON.stringify(json, null, 2)) as JSX.KolToolbar['_items'];
 			return parsed;
 		} catch {
-			setItemsError('Invalid JSON');
 			return defaultProps._items;
 		}
 	};
@@ -44,24 +40,12 @@ const ToolbarPreview = (props: PreviewDefaults<JSX.KolToolbar>) => {
 						]}
 					/>
 				),
-				_items: (
-					<KolTextarea
-						_label="Items (JSON)"
-						_rows={15}
-						_msg={itemsError ? { _type: 'error', _description: itemsError } : undefined}
-						_on={{
-							onInput: (_: Event, v: unknown) => {
-								setItemsJson(v as string);
-							},
-						}}
-						_value={itemsJson}
-					/>
-				),
+				_items: <ToolbarItemsProperty label="Items" />,
 			}}
 			componentName="KolToolbar"
 			layout={PreviewLayout.CENTERED}
 		>
-			{(props) => <KolToolbar {...props} _items={parseItems(itemsJson)} />}
+			{(props) => <KolToolbar {...props} _items={parseItems(props._items)} />}
 		</Preview>
 	);
 };
