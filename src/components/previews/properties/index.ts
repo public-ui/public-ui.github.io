@@ -25,4 +25,5 @@ export { default as TableColumnsProperty } from './TableColumnsProperty';
 export { default as TreeItemsProperty } from './TreeItemsProperty';
 export { default as AccordionMultipleProperty } from './AccordionMultipleProperty';
 export { default as InfoPopoverProperty } from './InfoPopoverProperty';
+export { default as ToolbarItemsProperty } from './ToolbarItemsProperty';
 export type { TreeItemData } from './TreeItemsProperty';
