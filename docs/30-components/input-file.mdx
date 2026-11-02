@@ -103,8 +103,6 @@ Rufen Sie die Methode `reset()` der Komponente auf. Sie entfernt die ausgewählt
 	}}
 />
 
-### Dateiauswahl und Drag & Drop
-
 Die Komponente zeigt eine Schaltfläche **„Datei auswählen“** an. Ein Klick an beliebiger Stelle des Feldes öffnet den Dateiauswahldialog des Betriebssystems; per Tastatur öffnen `Enter` bzw. `Leertaste` den Dialog, sobald das Feld fokussiert ist.
 
 Die Namen der ausgewählten Dateien werden als Text im Feld angezeigt. Solange keine Datei ausgewählt ist, erscheint dort der Hinweis „Datei auswählen oder hier ablegen...“.
@@ -114,14 +112,6 @@ Zusätzlich können Dateien per **Drag & Drop** auf dem Feld abgelegt werden. Di
 **Hinweis:** Beim Ablegen per Drag & Drop werden `_accept` und `_multiple` derzeit nicht berücksichtigt – es werden alle abgelegten Dateien übernommen (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10865" _target="_blank" _label="#10865"></kol-link>). Prüfen Sie Anzahl, Typ und Größe der Dateien daher immer auf Anwendungsebene bzw. serverseitig.
 
 **Hinweis:** Die Schaltfläche „Datei auswählen“ erhält derzeit zusätzlich zum Eingabefeld den Tastaturfokus und ist auch für Screenreader als eigene Schaltfläche erreichbar, löst bei Aktivierung per Tastatur aber keine Aktion aus (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10538" _target="_blank" _label="#10538"></kol-link>).
-
-<InputFilePreview
-	context="feature"
-	visibleProperties={[]}
-	initialProps={{
-		_label: 'Dokument hochladen',
-	}}
-/>
 
 ### Formularattribute
 
