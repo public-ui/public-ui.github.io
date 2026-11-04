@@ -99,13 +99,16 @@ export const ToolbarItemsDefault: ToolbarItemsPropType = [
 		_icons: 'kolicon-chevron-right',
 	},
 	{
+		type: 'button',
+		_label: 'Button',
+	},
+	{
+		type: 'hr',
+	},
+	{
 		type: 'link',
 		_href: '#',
 		_label: 'Link',
-	},
-	{
-		type: 'button',
-		_label: 'Button',
 	},
 ];
 

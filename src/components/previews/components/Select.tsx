@@ -8,12 +8,23 @@ import { translate } from '@docusaurus/Translate';
 import type { PreviewDefaults } from '../utils';
 
 const SelectPreview = (props: PreviewDefaults<JSX.KolSelect>) => {
+	const multiple = props.initialProps?._multiple === true;
 	const defaultProps = React.useMemo<JSX.KolSelect>(
 		() => ({
 			_label: translate({ id: 'preview.component.select.label' }),
-			_options: SelectOptionsDefault,
+			// There is no undisputed default federal state, so the single select starts with a clearly labelled
+			// empty option instead of preselecting the first one.
+			_options: multiple
+				? SelectOptionsDefault
+				: [
+						{
+							label: translate({ id: 'preview.component.select.empty-option', message: 'Bitte auswählen' }),
+							value: '',
+						},
+						...SelectOptionsDefault,
+				  ],
 		}),
-		[]
+		[multiple]
 	);
 
 	return (
