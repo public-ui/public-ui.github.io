@@ -68,8 +68,8 @@ const ToolbarItemsEditor: React.FC<{
 					_options={ToolbarItemTypes}
 					_value={item.type}
 					_on={{
-						onInput: (e: Event) => {
-							handleTypeChange((e.target as HTMLSelectElement).value);
+						onInput: (_e: Event, value: unknown) => {
+							handleTypeChange(value as string);
 						},
 					}}
 				/>
