@@ -10,6 +10,14 @@ import {IndentedText} from '@site/src/components/IndentedText';
 </KolAlert>
 
 <p>
+	Ein eigenes Theme entsteht vollständig im Code: Die Schritt-für-Schritt-Anleitung
+	<KolLink _label="Eigenes Theme-Repository aufbauen" _href="/docs/concepts/styling/theme-repository" /> führt
+	durch das Anlegen eines Theme-Repositorys bis zur Veröffentlichung als npm-Paket. Hintergründe und
+	Referenzprojekte sammelt die Seite
+	<KolLink _label="Theme für KoliBri erstellen" _href="/docs/concepts/styling/designer" />.
+</p>
+
+<p>
 	Das Einzigartige an <KoliBri/> ist die <strong>Referenzimplementierung</strong> von Komponenten, die von Grund auf
 	<strong>semantisch W3C- und WCAG-konform</strong> und damit <strong>vollständig barrierefrei</strong> bezüglich der assistiven
 	Unterstützung sind. Alle Komponenten werden dabei als <KolLink
@@ -143,18 +151,43 @@ import {IndentedText} from '@site/src/components/IndentedText';
 	CSS-Properties oder Design-Tokens definiert werden. Damit das eigene Theme über Projekte hinweg geteilt werden kann,
 	wird das Theme in ein NPM-Paket paketiert und kann über eine beliebige Registry bereitgestellt werden.
 </p>
+
+## Barrierefreie Layout-Varianten
+
+Jede KoliBri-Komponente ist ein geschlossener, barrierefreier Baustein: Label, Eingabefeld, Hilfetext, Fehlermeldung
+und Icon stecken vollständig im Inneren, und nach außen gibt es genau ein Element, das den Fokus bekommt. Themes
+dürfen dieses Innere visuell umordnen, etwa das Label neben statt über das Eingabefeld setzen oder die Fehlermeldung
+darunter anzeigen. Die DOM-Struktur bleibt dabei unverändert, nur das CSS ordnet um, mit Grid, Flexbox oder den
+Mitteln, die der Theme-Layer hergibt.
+
+Für die Barrierefreiheit macht die visuelle Reihenfolge keinen Unterschied: Die Screenreader gibt unabhängig von der
+Optik zuerst die Rolle des Elements wieder, dann das Label und danach Hilfetext sowie Fehlermeldung. Die Verknüpfungen
+dafür stellt die Komponente selbst sicher, über <code>aria-labelledby</code> für das Label und
+<code>aria-describedby</code> für Zusatztexte. Tastatur- und Screenreader-Navigation laufen deshalb in jedem Theme
+gleich.
+
+Anwendungen dürfen diese Ordnung nicht wieder aufweichen: Absolute Positionierungen, die die logische Reihenfolge des
+DOM zerstören, und Eingriffe, die die natürliche Leserichtung verletzen, bleiben tabu. Die Verantwortung teilt sich:
+Die Komponente liefert die zugängliche Struktur, das Theme die Anordnung, und die Anwendung lässt beides unangetastet.
 <p>
 	<KolDetails _label="Design-Tokens">
 		Optional können beispielsweise aus Figma, mittels Design-Tokens, Design-Schemata exportiert werden. Diese können
 		dann in separate CSS-Dateien überführt werden, die die jeweiligen Werte zu den CSS-Properties enthalten. Später wird
 		eine dieser CSS-Dateien verwendet, um das konkrete Design in Kombination mit den Web Components und dem Theme in der
 		Webseite anzuwenden.
+		<p>
+			CSS-Custom-Properties wirken global und sind nicht durch den Shadow DOM geschützt. Eigene Properties
+			erhalten daher einen eigenen Präfix, und interne Werte werden über Sass-Variablen abgebildet, damit es zu
+			keinen Kollisionen mit Variablen der hostenden Seite kommt.
+		</p>
 	</KolDetails>
 </p>
 <p>
 	<KolDetails _label="Dark-Mode">
 		Optional kann auch ein "Dark-Mode"-Theme umgesetzt werden. Hierzu kann das erforderliche CSS in den Globals des
-		KoliBri-Themes hinterlegt werden.
+		KoliBri-Themes hinterlegt werden. Das Standard-Theme löst das seit Version 4.5 über die CSS-Funktion
+		<code>light-dark()</code> in den Token-Werten, und die Anwendung schaltet über die CSS-Property
+		<code>color-scheme</code> zwischen hell und dunkel um.
 	</KolDetails>
 </p>
 
