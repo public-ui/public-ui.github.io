@@ -5,7 +5,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
 import type { FunctionComponent, ReactElement } from 'react';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
 import { ITZLogo } from '@site/src/components/ITZLogo';
 
@@ -42,7 +42,13 @@ const HeroFloats: FunctionComponent = () => (
 
 const HeroLines: FunctionComponent = () => (
 	<div className="hero-lines" aria-hidden="true">
-		<svg viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+		<svg
+			viewBox="0 0 1440 640"
+			preserveAspectRatio="xMidYMid slice"
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			focusable="false"
+		>
 			{/* Konstruktionslinie im Himmelbereich (Raum) */}
 			<line className="hero-line hero-line--draw" x1="80" y1="128" x2="1360" y2="128" pathLength="1440" />
 			{/* Fadenkreuze */}
@@ -179,15 +185,35 @@ const ImagefilmSection: FunctionComponent = () => {
 	const [filmSrc, setFilmSrc] = useState<string | null>(null);
 	const posterUrl = useBaseUrl('/img/imagefilm-poster.png');
 	const filmUrl = useBaseUrl('/imagefilm');
+	const frameRef = useRef<HTMLIFrameElement>(null);
 
 	const startFilm = () => setFilmSrc(filmUrl);
 
+	/*
+	 * Beim Abspielen verlässt der Start-Button das DOM. Der Fokus wandert
+	 * deshalb bewusst in das Iframe, damit Tastatur- und Screenreader-Nutzende
+	 * direkt in der Präsentation ankommen, statt bei <body> zu stranden.
+	 */
+	useEffect(() => {
+		if (filmSrc && frameRef.current) {
+			frameRef.current.focus();
+		}
+	}, [filmSrc]);
+
 	return (
-		<section className="bg-white text-[#1f2937]">
+		<section className="bg-white text-[#1f2937]" aria-labelledby="imagefilm-heading">
 			<div className="mx-auto max-w-6xl px-6 py-12 grid justify-items-center gap-8 md:py-16">
+				{/* Sichtbar ausgeblendete Sektionsüberschrift: benennt die Region und hält die Überschriften-Hierarchie h1 → h2 → h3 intakt. */}
+				<Heading as="h2" id="imagefilm-heading" className="sr-only m-0">
+					{translate({
+						id: 'custom.imagefilm-heading',
+						message: 'Imagefilm',
+					})}
+				</Heading>
 				<div className="imagefilm-frame relative aspect-video w-full max-w-4xl overflow-visible rounded-2xl bg-[#05244a] shadow-xl">
 					{filmSrc ? (
 						<iframe
+							ref={frameRef}
 							src={filmSrc}
 							title={translate({
 								id: 'custom.imagefilm-frame-title',
@@ -202,12 +228,10 @@ const ImagefilmSection: FunctionComponent = () => {
 							onClick={startFilm}
 							className="group absolute inset-0 h-full w-full cursor-pointer p-0"
 						>
+							{/* Das Poster steckt innerhalb des beschrifteten Buttons und ist für Screenreader dekorativ; der sr-only-Text liefert den zugänglichen Namen. */}
 							<img
 								src={posterUrl}
-								alt={translate({
-									id: 'custom.imagefilm-poster-alt',
-									message: 'Vorschaubild des Imagefilms: KoliBri – Die Elemente, die HTML fehlen.',
-								})}
+								alt=""
 								className="absolute inset-0 h-full w-full rounded-2xl object-cover transition group-hover:scale-[1.02] group-focus-visible:scale-[1.02]"
 							/>
 							<span
@@ -222,8 +246,8 @@ const ImagefilmSection: FunctionComponent = () => {
 									message: 'Imagefilm abspielen',
 								})}
 							</span>
-					</button>
-				)}
+						</button>
+					)}
 				</div>
 			</div>
 		</section>
@@ -278,16 +302,11 @@ export default function Homepage(): ReactElement {
 			title={translate({
 				id: 'custom.subtitle',
 			})}
-			description={translate(
-				{
-					message: 'custom.meta.description',
-				},
-				{
-					name: {
-						id: 'KoliBri (Public-UI) ist eine barrierefreie Web Component-Bibliothek für webbasierten Projekte und Design Systeme.',
-					},
-				}
-			)}
+			description={translate({
+				id: 'custom.meta.description',
+				message:
+					'KoliBri (Public UI) ist eine barrierefreie Web Component-Bibliothek für webbasierte Projekte und Design Systeme.',
+			})}
 		>
 			<HomepageHeader />
 
