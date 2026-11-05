@@ -301,8 +301,7 @@ Umgang mit Tabelleninteraktionen und Events, die von TableStateless ausgelöst w
 | ----- | -------- | ----- |
 | `sort` | Eine Spalte wurde zum Sortieren angeklickt. | Objekt mit `key` (Spaltenschlüssel) und `currentSortDirection` ('ASC', 'DESC', 'NONE'). |
 | `selectionChange` | Nutzer hat eine oder mehrere Zeilen ausgewählt/abgewählt. | Array von Zeilen-Keys (oder einzelner Key bei Einfachauswahl). |
-| `settingsChange` | Nutzer hat Spalteneinstellungen im Menü geändert. | Objekt vom Typ `TableSettings` mit aktualisierten Spalten. |
-| `changeHeaderCells` | Spaltenüberschriften wurden durch `_on.onChangeHeaderCells` aktualisiert. | Aktualisierte Kopfzeilendaten als `TableHeaderCells`. |
+| `changeHeaderCells` | Nutzer hat Spalteneinstellungen im Menü geändert. | Callback `onChangeHeaderCells`: aktualisierte Kopfzeilendaten als `TableHeaderCells`; DOM-Event `changeheadercells`: `KoliBriTableHeaderCell[][]`. |
 
 ## API
 
