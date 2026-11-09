@@ -17,7 +17,8 @@ if (files.length === 0) {
 
 let problems = 0;
 for (const file of files) {
-	const source = fs.readFileSync(file, 'utf8');
+	// Fenced code blocks are documentation, not MDX: their `import` lines and tags must not count.
+	const source = fs.readFileSync(file, 'utf8').replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1[^\n]*$/gm, '');
 	// Supports `import A from '…'`, `import { B, C as D } from '…'` and `import A, { B } from '…'`.
 	const imports = [...source.matchAll(/^import\s+(?:(\w+)\s*,?\s*)?(?:\{([^}]*)\})?\s*from\s+'([^']+)';?\s*$/gm)].flatMap(
 		([, defaultName, namedList, target]) => {
