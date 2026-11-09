@@ -5,86 +5,91 @@ description: Beschreibung, Spezifikation und Beispiele für die Nav-Komponente.
 
 import Readme from '@site/readmes/nav/readme.md';
 import NavPreview from '@site/src/components/previews/components/Nav';
+import EventsIntro from './_shared/api/events-intro.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
 
 # Nav
 
-**Synonyme:** Navigation, Menu, Sidebar
+**Synonyme:** Navigation, Menü, Menu, Sidebar, Seitennavigation
 
 **Beschreibung:** Eine **Nav**-Komponente ist eine Gruppe von verwandten Links oder Navigationselementen, die Nutzer:innen direkt zu bestimmten Inhalten oder externen Seiten führen. Sie ermöglicht hierarchische Navigationsstrukturen mit mehreren Ebenen und unterstützt kompakte Darstellungsmodi für platzbegrenzte Layouts.
 
-## Beispiel
+Die Komponente gibt ein natives `nav`-Element mit verschachtelten Listen aus und stellt die Einträge vertikal untereinander dar. Ein Eintrag mit `_href` ist ein Link, ein Eintrag ohne `_href` eine Schaltfläche, die – sofern vorhanden – ihre Untereinträge auf- und zuklappt.
 
-Darstellung der Navigationsleiste mit Hierarchie und Icons.
-
-<NavPreview context="example" initialProps={{}} />
-
-## Barrierefreiheit
-
-- Die Navigation wird als semantische Landmark mit `<nav>`-Element ausgegeben, um Nutzer:innen mit Screenreadern zu helfen.
-- Alle Navigationspunkte sind über die Tastatur erreichbar und fokussierbar.
-- Übergeordnete Menüpunkte mit Untermenüs werden durch visuell erkennbare Symbole (Plus/Minus) gekennzeichnet.
-- Die aktive Navigationsposition wird visuell und semantisch gekennzeichnet.
-- Labels sind zwingend erforderlich und werden von assistiven Technologien erkannt.
-
-### Links und Referenzen
-
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/navigation/" _target="_blank" _label="WAI-ARIA APG - Navigation Pattern"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/navigation-mechanisms.html" _target="_blank" _label="WCAG 2.1 - Navigation Mechanisms"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav" _target="_blank" _label="MDN Web Docs - nav Element"></kol-link>
-
-## Verwendung
-
-### Tastatursteuerung
-
-| Taste   | Funktion                                                                                                     |
-| ------- | ------------------------------------------------------------------------------------------------------------ |
-| `Tab`   | Fokussiert Navigationspunkte und den optionalen Compact-Button. Navigation durch alle fokussierbaren Elemente. |
-| `Enter` | Aktiviert den fokussierten Link oder öffnet/schließt Untermenüs bei fokussierten Eltern-Navigationspunkten.  |
-
-### Best Practices / Empfehlungen
-
-- Verwenden Sie die **Nav**-Komponente für Hauptnavigation, Seitennavigation und strukturierte Inhaltsverzeichnisse.
-- Strukturieren Sie die Navigationshierarchie logisch, mit maximal 2–3 Ebenen, um Nutzer:innen nicht zu überfordern.
-- Nutzen Sie aussagekräftige, prägnante Labels, die das Ziel oder den Inhalt klar beschreiben.
-- Verwenden Sie Icons nur ergänzend zu Labels – nie als Ersatz.
-- Deaktivieren Sie `_collapsible` nur, wenn die Navigation klein genug ist und keine Komprimierung nötig ist.
-- Nutzen Sie `_hasCompactButton` für Navigationen mit vielen Einträgen, um Platz zu sparen.
-- Verwenden Sie `_hideLabel` und den Compact-Modus, um eine kompakte Seiten-Navigation zur Verfügung zu stellen.
-- Vermeiden Sie zu tiefe Verschachtelungen – verwenden Sie stattdessen mehrere flachere Ebenen oder alternative Navigationsmuster.
-
-### Anwendungsfälle
-
+**Anwendungsfälle:**
 - Hauptnavigation einer Website oder Anwendung
 - Seiten-Sidebar mit Inhaltsverzeichnis
 - Nicht-lineare Navigation mit mehreren Ebenen
 - Admin-Dashboards oder Verwaltungsoberflächen mit kategorisierter Funktionalität
-- Breadcrumb-ähnliche Navigationsstrukturen
-- Filterverwaltung und Kategorie-Navigation in e-Commerce-Anwendungen
+- Filterverwaltung und Kategorie-Navigation in E-Commerce-Anwendungen
 
-### FAQ
+## Beispiel
+
+Darstellung einer Navigation mit aktivem Eintrag und aufklappbaren Untermenüs ohne optional gesetzte Properties:
+
+<NavPreview context="example" />
+
+## Barrierefreiheit
+
+- Die Navigation ist für Screenreader als Navigationsbereich (Landmark) erkennbar und wird mit der über `_label` gesetzten Beschriftung angesagt. So lassen sich mehrere Navigationen auf einer Seite unterscheiden.
+- Alle Einträge sind Links oder Schaltflächen und damit per Tastatur erreichbar und bedienbar. Untereinträge eines geschlossenen Untermenüs sind nicht erreichbar.
+- Einträge mit Untermenü teilen Screenreadern mit, ob ihr Untermenü geöffnet oder geschlossen ist. Visuell wird der Zustand durch ein Plus- bzw. Minus-Symbol gekennzeichnet und nicht ausschließlich über Farbe vermittelt. Beides gilt nur, solange `_collapsible` aktiv ist (siehe [Nicht-kollabierbare Navigation](#nicht-kollabierbare-navigation)).
+- Der aktive Eintrag (`_active`) wird visuell hervorgehoben. Als aktuelle Seite angesagt wird ein Link-Eintrag nur über den `aria-current`-Service (siehe [Aktiver Eintrag](#aktiver-eintrag)).
+
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Die Beschriftung `_label` ist Pflicht. Fehlt sie oder trägt eine weitere Navigation auf der Seite dieselbe Beschriftung, weist KoliBri im Entwicklungsmodus in der Konsole darauf hin. | Eine Seite kann mehrere Navigationen enthalten (z. B. Haupt- und Unternavigation, Breadcrumb, Pagination). Damit Nutzende assistiver Technologien sie unterscheiden können, muss jede Navigation eindeutig beschriftet sein. |
+| Bei mehr als sieben Einträgen auf der obersten Ebene gibt KoliBri im Entwicklungsmodus einen UI/UX-Hinweis in der Konsole aus. | Innerhalb von Navigationsstrukturen wird empfohlen, nicht mehr als sieben Menüpunkte zu verwenden (<kol-link _href="https://de.wikipedia.org/wiki/Millersche_Zahl" _target="_blank" _label="Millersche Zahl"></kol-link>). |
+
+### Links und Referenzen
+
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/navigation.html" _target="_blank" _label="WAI-ARIA APG – Navigation Landmark"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/" _target="_blank" _label="WAI-ARIA APG – Disclosure Navigation Menu"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/navigable.html" _target="_blank" _label="WCAG 2.2 – Guideline 2.4 Navigable"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/nav" _target="_blank" _label="MDN Web Docs – nav-Element"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element" _target="_blank" _label="HTML Living Standard – The nav element"></kol-link>
+
+## Tastatursteuerung
+
+<NativeKeyboardIntro />
+
+| Taste           | Funktion                                                                                                           |
+| --------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `Tab`           | Springt zum nächsten Eintrag bzw. zum Kompakt-Button. Untereinträge werden nur erreicht, wenn ihr Untermenü geöffnet ist. |
+| `Shift+Tab`     | Springt zum vorherigen Eintrag.                                                                                    |
+| `Enter`         | Folgt dem fokussierten Link bzw. öffnet oder schließt das Untermenü des fokussierten Eintrags ohne `_href`.         |
+| `Space`         | Öffnet oder schließt das Untermenü des fokussierten Eintrags ohne `_href` bzw. betätigt den Kompakt-Button.          |
+
+Pfeiltasten werden nicht unterstützt; zwischen den Einträgen wird ausschließlich mit `Tab` gewechselt.
+
+## FAQ
 
 **Kann ich die Navigation horizontal darstellen?**  
-Die aktuelle Komponente ist für vertikale Layouts optimiert. [Information nicht im Code gefunden]
+Nein. Die Komponente stellt die Einträge vertikal dar. Die frühere Property `_orientation` ist in KoliBri 4 nicht mehr vorhanden.
 
 **Wie viele Ebenen werden unterstützt?**  
-Unbegrenzt viele Ebenen sind theoretisch möglich, aber praktisch sollten es maximal 2–3 sein, um die Usability zu gewährleisten.
+Unbegrenzt viele Ebenen sind theoretisch möglich, aber praktisch sollten es maximal 2–3 sein, um die Usability zu gewährleisten. Strukturieren Sie die Hierarchie logisch und vermeiden Sie zu tiefe Verschachtelungen – verwenden Sie stattdessen mehrere flachere Ebenen oder alternative Navigationsmuster.
+
+**Wie formuliere ich Beschriftungen und Icons?**  
+Nutzen Sie aussagekräftige, prägnante Labels, die das Ziel oder den Inhalt klar beschreiben. Verwenden Sie Icons nur ergänzend zu Labels – nie als Ersatz. Für die [kompakte Darstellung](#kompakter-modus-mit-button) sollte jeder Eintrag ein passendes Icon über `_icons` erhalten: Einträge ohne Icon zeigen dort alle dasselbe Standard-Icon.
 
 **Wie kann ich die Navigationsbreite ändern?**  
-Nutzen Sie `_hasCompactButton`, um einen Button unterhalb der Navigation anzuzeigen, der zwischen normaler und kompakter Darstellung (nur Icons) umschaltet.
+Nutzen Sie `_hasCompactButton`, um einen Button unterhalb der Navigation anzuzeigen, der zwischen normaler und kompakter Darstellung (nur Icons) umschaltet – das spart insbesondere bei Navigationen mit vielen Einträgen Platz. Mit `_hideLabel` startet die Navigation direkt in der kompakten Darstellung, z. B. für eine kompakte Seiten-Navigation. Siehe [Kompakter Modus mit Button](#kompakter-modus-mit-button) und [Kompakte Darstellung](#kompakte-darstellung).
 
-## Playground
-
-<NavPreview context="playground" />
+**Wann deaktiviere ich `_collapsible`?**  
+`_collapsible` steuert nicht, ob Untermenüs auf- und zugeklappt werden können, sondern nur, ob der Zustand angezeigt und Screenreadern mitgeteilt wird (siehe [Nicht-kollabierbare Navigation](#nicht-kollabierbare-navigation)). Lassen Sie `_collapsible` aktiv, sobald Einträge Untermenüs haben.
 
 ## Funktionalitäten
 
 ### Basis-Navigation
 
-Einfache flache Navigation ohne Untermenüs.
+Einfache flache Navigation ohne Untermenüs. Die Einträge werden über `_links` übergeben, die Beschriftung des Navigationsbereichs über `_label`.
 
 <NavPreview
 	context="feature"
-	visibleProperties={['_links']}
+	visibleProperties={['_label', '_links']}
 	initialProps={{
 		_label: 'Navigation',
 		_links: [
@@ -96,7 +101,11 @@ Einfache flache Navigation ohne Untermenüs.
 
 ### Hierarchische Navigation mit Untermenüs
 
-Navigation mit mehreren Ebenen durch Nutzung von `_children`:
+Navigation mit mehreren Ebenen durch Nutzung von `_children`. Ein Klick auf einen Eintrag ohne `_href` öffnet bzw. schließt sein Untermenü; trägt der Eintrag zusätzlich einen `_on.onClick`-Callback, wird dieser vorher aufgerufen. Solche Einträge lassen sich mit `_disabled` deaktivieren.
+
+Wird `_links` neu gesetzt, gehen manuell geöffnete Untermenüs verloren: Geöffnet sind dann nur die Untermenüs auf dem Pfad zum [aktiven Eintrag](#aktiver-eintrag).
+
+**Hinweis:** Ein Eintrag mit `_href` und `_children` ist ein Link: Ein Klick folgt dem Link und öffnet das Untermenü nicht, obwohl das Plus-Symbol angezeigt und das Untermenü Screenreadern als geschlossen angesagt wird. Geöffnet wird es derzeit nur über `_active`. Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10241" _target="_blank" _label="GitHub Issue #10241"></kol-link>.
 
 <NavPreview
 	context="feature"
@@ -104,7 +113,7 @@ Navigation mit mehreren Ebenen durch Nutzung von `_children`:
 	initialProps={{
 		_label: 'Navigation',
 		_links: [
-			{ _href: '#start', _icons: 'kolicon-housekolibri', _label: 'Startseite' },
+			{ _href: '#start', _icons: 'kolicon-house', _label: 'Startseite' },
 			{
 				_icons: 'kolicon-house',
 				_label: 'Oberseite',
@@ -118,9 +127,36 @@ Navigation mit mehreren Ebenen durch Nutzung von `_children`:
 	}}
 />
 
+### Aktiver Eintrag
+
+Mit `_active: true` wird ein Eintrag als aktiv hervorgehoben. Beim Laden sind das Untermenü des aktiven Eintrags und alle Untermenüs auf dem Pfad zu ihm geöffnet.
+
+`_active` wirkt nur visuell. Damit Screenreader einen Link-Eintrag als aktuelle Seite ansagen, setzen Sie am Eintrag `_ariaCurrentValue` (z. B. `'page'`) und teilen KoliBri die aktuelle Seite über den <kol-link _href="./link#aria-current-service" _label="aria-current-Service"></kol-link> mit. Stimmt die übergebene Location exakt mit dem `_href` des Eintrags überein, wird er als aktuell gekennzeichnet.
+
+<NavPreview
+	context="feature"
+	visibleProperties={['_links']}
+	initialProps={{
+		_label: 'Navigation',
+		_links: [
+			{ _href: '#start', _label: 'Startseite' },
+			{
+				_label: 'Leistungen',
+				_children: [
+					{ _href: '#leistungen/beratung', _label: 'Beratung' },
+					{ _href: '#leistungen/schulung', _label: 'Schulung', _active: true },
+				],
+			},
+			{ _href: '#about', _label: 'Über uns' },
+		],
+	}}
+/>
+
 ### Kompakter Modus mit Button
 
-Compact-Button zum Umschalten zwischen voller und Icon-nur Anzeige:
+Mit `_hasCompactButton` erscheint unterhalb der Navigation ein Button, der zwischen voller und kompakter Darstellung umschaltet. Der Button ist mit „Navigation minimieren“ bzw. „Navigation maximieren“ beschriftet und teilt Screenreadern mit, ob die Navigation gerade erweitert ist. Das Umschalten verändert die Property `_hideLabel` nicht.
+
+In der kompakten Darstellung zeigen die Einträge nur ihr Icon; Einträge ohne Icon erhalten ein Standard-Icon. Die Beschriftung erscheint bei Maus-Hover und Tastaturfokus als Tooltip und bleibt für assistive Technologien als zugänglicher Name erhalten.
 
 <NavPreview
 	context="feature"
@@ -131,22 +167,9 @@ Compact-Button zum Umschalten zwischen voller und Icon-nur Anzeige:
 	}}
 />
 
-### Icons auch im erweiterten Modus
+### Kompakte Darstellung
 
-Icons werden neben Labels auch in der normalen (nicht kompakten) Darstellung angezeigt:
-
-<NavPreview
-	context="feature"
-	visibleProperties={['_hasIconsWhenExpanded']}
-	initialProps={{
-		_label: 'Navigation',
-		_hasIconsWhenExpanded: true,
-	}}
-/>
-
-### Kompakte Labels mit Tooltips
-
-Hide-Label-Modus versteckt die Beschriftung und zeigt sie nur als Tooltip bei Hover/Focus:
+Mit `_hideLabel` startet die Navigation in der kompakten Darstellung: Die Beschriftungen der Einträge sind visuell ausgeblendet und werden nur als Tooltip bei Hover/Fokus angezeigt.
 
 <NavPreview
 	context="feature"
@@ -157,9 +180,24 @@ Hide-Label-Modus versteckt die Beschriftung und zeigt sie nur als Tooltip bei Ho
 	}}
 />
 
+### Icons auch im erweiterten Modus
+
+Mit `_hasIconsWhenExpanded` werden die Icons der Einträge (`_icons`) auch in der normalen, nicht kompakten Darstellung neben den Labels angezeigt:
+
+<NavPreview
+	context="feature"
+	visibleProperties={['_hasIconsWhenExpanded']}
+	initialProps={{
+		_label: 'Navigation',
+		_hasIconsWhenExpanded: true,
+	}}
+/>
+
 ### Nicht-kollabierbare Navigation
 
-Wenn `_collapsible` deaktiviert ist, können Untermenüs nicht geöffnet/geschlossen werden:
+Ist `_collapsible` deaktiviert, entfallen das Plus- bzw. Minus-Symbol an Einträgen mit Untermenü. Die Untermenüs lassen sich weiterhin per Klick öffnen und schließen.
+
+**Hinweis:** Bei deaktiviertem `_collapsible` wird Screenreadern derzeit nicht mitgeteilt, ob ein Untermenü geöffnet oder geschlossen ist, obwohl es sich weiterhin auf- und zuklappen lässt.
 
 <NavPreview
 	context="feature"
@@ -167,17 +205,41 @@ Wenn `_collapsible` deaktiviert ist, können Untermenüs nicht geöffnet/geschlo
 	initialProps={{
 		_label: 'Navigation',
 		_collapsible: false,
+		_links: [
+			{ _href: '#start', _label: 'Startseite' },
+			{
+				_label: 'Leistungen',
+				_children: [
+					{ _href: '#leistungen/beratung', _label: 'Beratung', _active: true },
+					{ _href: '#leistungen/schulung', _label: 'Schulung' },
+				],
+			},
+			{
+				_label: 'Kontakt',
+				_children: [
+					{ _href: '#kontakt/formular', _label: 'Kontaktformular' },
+					{ _href: '#kontakt/anfahrt', _label: 'Anfahrt' },
+				],
+			},
+		],
 	}}
 />
 
-### Events
+## Playground
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event   | Auslöser                              | Value |
-| ------- | ------------------------------------- | ----- |
-| `click` | Navigationspunkt oder Kompakt-Button wird angeklickt | -     |
+<NavPreview context="playground" />
 
 ## API
+
+### Events
+
+<EventsIntro />
+
+| Event       | Auslöser                                                                     | Value                                       |
+| ----------- | ---------------------------------------------------------------------------- | ------------------------------------------- |
+| `click`     | Ein Eintrag oder der Kompakt-Button wird angeklickt bzw. aktiviert           | Bei Link-Einträgen der `_href`, sonst -     |
+| `mousedown` | Maustaste wird über einem Eintrag ohne `_href` oder dem Kompakt-Button gedrückt | -                                           |
+| `focus`     | Ein Eintrag ohne `_href` oder der Kompakt-Button erhält den Fokus            | -                                           |
+| `blur`      | Ein Eintrag ohne `_href` oder der Kompakt-Button verliert den Fokus          | -                                           |
 
 <Readme />
