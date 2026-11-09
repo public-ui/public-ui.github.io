@@ -7,7 +7,7 @@ import { translate } from '@docusaurus/Translate';
 import type { PreviewDefaults } from '../utils';
 import { getPreviewDefaults } from '../utils';
 import { variantButtonOptions } from '../properties/VariantProperty';
-        
+
 const LinkButtonPreview = (props: PreviewDefaults<JSX.KolLinkButton>) => {
 	const defaultProps = React.useMemo<JSX.KolLinkButton>(
 		() => ({
@@ -35,9 +35,10 @@ const LinkButtonPreview = (props: PreviewDefaults<JSX.KolLinkButton>) => {
 					/>
 				),
 				_icons: <IconsProperty label="Icons" />,
-				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
+				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="right" />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
+				_inline: <BooleanProperty label="Inline" />,
 				_download: <KolInputText _label="Download" />,
 				_accessKey: <KolInputText _label="Access Key" _maxLength={1} />,
 				_ariaControls: <KolInputText _label="ARIA Controls" />,
