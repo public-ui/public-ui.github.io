@@ -27,7 +27,7 @@ const LinkPreview = (props: PreviewDefaults<JSX.KolLink>) => {
 				_target: <KolInputText _label="Target" />,
 				_variant: <VariantProperty label="Variant" defaultValue="normal" variantOptions={variantLinkOptions} />,
 				_icons: <IconsProperty label="Icons" />,
-				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="top" />,
+				_tooltipAlign: <AlignProperty label="Tooltip Align" defaultValue="right" />,
 				_disabled: <BooleanProperty label="Disabled" />,
 				_hideLabel: <BooleanProperty label="Hide Label" />,
 				_inline: <BooleanProperty label="Inline" />,
