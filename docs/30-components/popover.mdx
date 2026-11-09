@@ -3,35 +3,42 @@ title: Popover
 description: Beschreibung, Spezifikation und Beispiele für die Popover-Komponente.
 ---
 
-import Readme from '@site/readmes/popover-button/readme.md';
+import PopoverButtonPreview from '@site/src/components/previews/components/PopoverButton';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
 
 # Popover
 
-**Synonyme:** Overlay, Popup, dynamisches Overlay
+**Synonyme:** Overlay, Popup, dynamisches Overlay, Flyout, Aufklappfenster
 
 **Beschreibung:** Die **Popover**-Komponente bietet eine leichte, nicht-modale Overlay-Lösung, die temporär zusätzliche Inhalte neben einem Triggerelement anzeigt. Sie nutzt die native HTML Popover API für optimierte Performance.
 
 <kol-alert _type="info" _variant="card">
-Die **Popover**-Komponente wird intern innerhalb von KoliBri verwendet (z.B. im <kol-link _href="../components/popover-button" _label="PopoverButton"></kol-link>) und ist nicht für die direkte Verwendung in der Anwendungsentwicklung vorgesehen. Verwenden Sie stattdessen die <kol-link _href="../components/popover-button" _label="PopoverButton-Komponente"></kol-link>.
+Die **Popover**-Komponente wird intern innerhalb von KoliBri verwendet – im <kol-link _href="../components/popover-button" _label="PopoverButton"></kol-link> und für das Aufklappmenü des <kol-link _href="../components/split-button" _label="SplitButton"></kol-link> – und ist nicht für die direkte Verwendung in der Anwendungsentwicklung vorgesehen. Es gibt kein eigenes HTML-Element dafür. Verwenden Sie stattdessen die <kol-link _href="../components/popover-button" _label="PopoverButton-Komponente"></kol-link>.
 </kol-alert>
+
+**Anwendungsfälle:**
+- Interne Verwendung in der PopoverButton- und der SplitButton-Komponente
+- Flexible, leichte Overlay-Lösungen bei speziellen Anforderungen
+- Kontextabhängige Hilfeinformationen oder Aktionsmenüs
 
 ## Beispiel
 
-Einfaches Popover mit Standard-Konfiguration:
+Da die Popover-Komponente nicht direkt eingebunden werden kann, zeigt das Beispiel sie im PopoverButton. Ein Klick auf die Schaltfläche öffnet das Popover.
 
-```html
-<button popovertarget="my-popover">Trigger</button>
-<div id="my-popover" popover>
-	<p>Dies ist der Popover-Inhalt.</p>
-</div>
-```
+<PopoverButtonPreview context="example" />
 
 ## Barrierefreiheit
 
 - Die Popover-Komponente nutzt die native HTML Popover API für verbesserte Unterstützung durch assistive Technologien.
-- Das Triggerelement und der Popover-Inhalt sollten semantisch miteinander verknüpft sein.
-- Der Popover-Inhalt sollte eine ausreichende Größe und Kontrast für die Lesbarkeit haben.
-- Bei verschachtelten oder mehreren Popovers kann die Fokussteuerung komplex werden; in solchen Fällen wird die Verwendung von <kol-link _href="../components/dialog" _label="Dialog"></kol-link> oder <kol-link _href="../components/modal" _label="Modal"></kol-link> empfohlen.
+- Screenreader kündigen am auslösenden Button an, ob das zugehörige Popover geöffnet oder geschlossen ist. Der angekündigte Zustand bleibt auch dann korrekt, wenn das Popover mit `Escape` oder per Klick außerhalb geschlossen wurde.
+- Beim Öffnen bleibt der Fokus auf dem auslösenden Button. Mit `Tab` gelangen Tastaturnutzende direkt zu den fokussierbaren Elementen im Popover-Inhalt.
+- Das Popover lässt sich jederzeit ohne Maus schließen; Tastaturnutzende sind nicht auf eine Schließen-Schaltfläche angewiesen (siehe [Tastatursteuerung](#tastatursteuerung)).
+
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Das Popover wird per Skript geöffnet und geschlossen, nicht über das deklarative HTML-Attribut `popovertarget`. | Mit dem deklarativen Attribut traten in Chrome und Safari Probleme mit dem Fokus und der Tab-Reihenfolge auf. |
 
 ### Links und Referenzen
 
@@ -39,43 +46,57 @@ Einfaches Popover mit Standard-Konfiguration:
 - <kol-link _href="https://html.spec.whatwg.org/multipage/popover.html" _target="_blank" _label="HTML Standard - Popover"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html" _target="_blank" _label="WCAG 2.1 - Focus Visible"></kol-link>
 
-## Verwendung
+## Tastatursteuerung
 
-### Best Practices / Empfehlungen
+<NativeKeyboardIntro />
 
-- Verwenden Sie diese Komponente primär für interne KoliBri-Implementierungen.
-- Achten Sie darauf, dass der Popover-Inhalt nicht zu groß ist und auf verschiedenen Bildschirmgrößen angepasst werden kann.
-- Stellen Sie sicher, dass der Popover geschlossen werden kann, z.B. durch Klick außerhalb oder eine explizite Schließschaltfläche.
-- Verwenden Sie aussagekräftige Labels und Beschreibungen für das Triggerelement (`_label`, `_ariaDescription`).
-- Berücksichtigen Sie die Position des Popover-Inhalts (`_popoverAlign`), um Sichtbarkeitsprobleme zu vermeiden.
+| Taste           | Funktion                                                                 |
+| --------------- | ------------------------------------------------------------------------ |
+| `Enter`/`Space` | Öffnet bzw. schließt das Popover, wenn der auslösende Button fokussiert ist. |
+| `Tab`           | Springt zum nächsten fokussierbaren Element. Bei geöffnetem Popover folgen auf den auslösenden Button die fokussierbaren Elemente im Popover-Inhalt. |
+| `Shift+Tab`     | Springt zum vorherigen fokussierbaren Element.                            |
+| `Escape`        | Schließt das geöffnete Popover.                                          |
 
-### Anwendungsfälle
+## FAQ
 
-- Interne Verwendung in der PopoverButton-Komponente
-- Flexible, leichte Overlay-Lösungen bei speziellen Anforderungen
-- Kontextabhängige Hilfeinformationen oder Aktionsmenüs
+**Kann ich die Popover-Komponente direkt verwenden?**  
+Nein. Es gibt kein eigenes HTML-Element für das Popover. Für eigene Overlays verwenden Sie die <kol-link _href="../components/popover-button" _label="PopoverButton-Komponente"></kol-link>, deren Slot-Inhalt im Popover angezeigt wird.
+
+**Wie stelle ich sicher, dass das Popover geschlossen werden kann?**  
+Das Popover schließt sich ohne weiteres Zutun mit `Escape`, per Klick außerhalb und bei erneutem Klick auf den auslösenden Button (siehe [Öffnen und Schließen](#öffnen-und-schließen)). Eine explizite Schließen-Schaltfläche im Popover-Inhalt ist zusätzlich möglich; der PopoverButton stellt dafür die Methode `hidePopover()` bereit.
+
+**Worauf sollte ich beim Popover-Inhalt achten?**  
+Achten Sie darauf, dass der Popover-Inhalt nicht zu groß ist und sich an verschiedene Bildschirmgrößen anpassen kann. Der Inhalt sollte eine ausreichende Größe und einen ausreichenden Kontrast für die Lesbarkeit haben.
+
+**Wie beschrifte ich das Triggerelement?**  
+Verwenden Sie aussagekräftige Labels und Beschreibungen für das Triggerelement (`_label`, `_ariaDescription` am PopoverButton), damit vor dem Öffnen klar ist, welcher Inhalt im Popover erscheint.
+
+**Wann sollte ich statt eines Popovers einen Dialog oder ein Modal verwenden?**  
+Bei verschachtelten oder mehreren Popovers kann die Fokussteuerung komplex werden; in solchen Fällen wird die Verwendung von <kol-link _href="../components/dialog" _label="Dialog"></kol-link> oder <kol-link _href="../components/modal" _label="Modal"></kol-link> empfohlen.
 
 ## Funktionalitäten
 
+### Öffnen und Schließen
+
+Das Popover öffnet sich beim Klick auf den auslösenden Button und schließt sich beim erneuten Klick. Außerdem schließt es sich mit `Escape`, per Klick außerhalb des Popovers und wenn ein anderes Popover geöffnet wird. Der Öffnungszustand am Button folgt dabei immer dem tatsächlichen Zustand des Popovers.
+
+<PopoverButtonPreview context="feature" visibleProperties={['_slot']} />
+
 ### Positionierung
 
-Die Popover-Position wird über `_popoverAlign` gesteuert:
+Die bevorzugte Position des Popovers wird beim PopoverButton über `_popoverAlign` gesteuert. Das Aufklappmenü des SplitButtons erscheint immer unterhalb der Schaltfläche.
 
-| Wert     | Beschreibung                              |
-| -------- | ----------------------------------------- |
-| `top`    | Das Popover wird über dem Triggerelement angeordnet. |
+| Wert     | Beschreibung                                                     |
+| -------- | ---------------------------------------------------------------- |
+| `top`    | Das Popover wird über dem Triggerelement angeordnet.             |
 | `bottom` | Das Popover wird unter dem Triggerelement angeordnet (Standard). |
-| `left`   | Das Popover wird links neben dem Triggerelement angeordnet. |
-| `right`  | Das Popover wird rechts neben dem Triggerelement angeordnet. |
+| `left`   | Das Popover wird links neben dem Triggerelement angeordnet.      |
+| `right`  | Das Popover wird rechts neben dem Triggerelement angeordnet.     |
 
-### Events
+Reicht der Platz auf der gewählten Seite nicht aus, weicht das Popover auf die gegenüberliegende Seite aus und wird innerhalb des sichtbaren Bereichs verschoben. Beim Scrollen und bei Größenänderungen bleibt es am Triggerelement ausgerichtet. Berücksichtigen Sie die Position des Popover-Inhalts (`_popoverAlign`), um Sichtbarkeitsprobleme zu vermeiden.
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
-
-| Event   | Auslöser                         | Value |
-| ------- | -------------------------------- | ----- |
-| `close` | Das Popover wird geschlossen [Nicht im Quellcode gefunden – bitte prüfen] | -     |
+<PopoverButtonPreview context="feature" visibleProperties={['_popoverAlign']} initialProps={{ _popoverAlign: 'right' }} />
 
 ## API
 
-<Readme />
+Die Popover-Komponente hat keine eigene öffentliche API und löst keine eigenen Events aus. Eigenschaften, Methoden und Events stehen in der API-Referenz der <kol-link _href="../components/popover-button#api" _label="PopoverButton-Komponente"></kol-link> und der <kol-link _href="../components/split-button#api" _label="SplitButton-Komponente"></kol-link>.
