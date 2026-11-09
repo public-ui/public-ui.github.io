@@ -5,74 +5,81 @@ description: Beschreibung, Spezifikation und Beispiele für die SkipNav-Komponen
 
 import Readme from '@site/readmes/skip-nav/readme.md';
 import SkipNavPreview from '@site/src/components/previews/components/SkipNav';
+import EventsIntro from './_shared/api/events-intro.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
 
 # SkipNav
 
-**Synonyme:** Skip-Link, Übersprungung, Navigationssprung
+**Synonyme:** Skip-Link, Skip Navigation, Sprungnavigation, Übersprungung, Navigationssprung
 
-**Beschreibung:** Die **SkipNav**-Komponente erzeugt eine versteckte Navigation, die es Nutzer:innen mit Tastatur und assistiven Technologien ermöglicht, wiederholte Seitenbereiche zu überspringen und direkt zum Hauptinhalt zu navigieren. Sie ist nur sichtbar, wenn sie durch die Tab-Taste erreicht wird.
+**Beschreibung:** Die **SkipNav**-Komponente erzeugt eine versteckte Navigation, die es Nutzer:innen mit Tastatur und assistiven Technologien ermöglicht, wiederholte Seitenbereiche zu überspringen und direkt zum Hauptinhalt zu navigieren. Sie wird als benannte Navigation (`nav`-Element) mit einer Liste nativer Links (`a`-Elemente) ausgegeben. Ein Link wird erst sichtbar, wenn er den Fokus erhält, z. B. beim Erreichen über die `Tab`-Taste.
 
-## Beispiel
-
-Versteckte Navigation mit Link-Labels und Zielankern:
-
-<SkipNavPreview context="example" />
-
-## Barrierefreiheit
-
-- Die **SkipNav**-Komponente ist standardmäßig für Sehende nicht sichtbar und wird nur aktiviert, wenn Tastatur-Nutzer:innen oder Screenreader-Nutzer:innen die Tab-Taste drücken.
-- Sie bietet Nutzer:innen mit motorischen Einschränkungen die Möglichkeit, schnell zum Hauptinhalt zu navigieren, ohne wiederholte Navigation durchlaufen zu müssen.
-- Für Screenreader-Nutzer:innen wird jeder Link semantisch korrekt ausgezeichnet und kann direkt angesteuert werden.
-- Die Verwendung ist besonders wertvoll auf Seiten mit mehreren Navigationsebenen oder wiederholten Inhaltsblöcken.
-- Die Link-Labels sollten prägnant und verständlich sein (z. B. „Zum Hauptinhalt", „Zur Navigation").
-
-### Links und Referenzen
-
-- <kol-link _href="https://webaim.org/techniques/skipnav/" _target="_blank" _label="WebAIM - Skip Navigation Links"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html" _target="_blank" _label="WCAG 2.1 - Bypass Blocks"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/navigation/" _target="_blank" _label="WAI-ARIA APG - Navigation Pattern"></kol-link>
-
-## Verwendung
-
-### Tastatursteuerung
-
-| Taste   | Funktion                                                               |
-| ------- | ---------------------------------------------------------------------- |
-| `Tab`   | Macht die SkipNav sichtbar und fokussiert den ersten Link.            |
-| `Tab`   | Navigiert durch die einzelnen Links der SkipNav.                      |
-| `Enter` | Folgt dem fokussierten Link zum angegebenen Zielanker.                |
-
-### Best Practices / Empfehlungen
-
-- Platzieren Sie SkipNav am Anfang der Seite, vor anderen interaktiven Elementen.
-- Definieren Sie Link-Labels, die klar beschreiben, wohin der Nutzer navigiert wird (z. B. „Zum Hauptinhalt", „Zur Navigation").
-- Verwenden Sie semantisch sinnvolle Zielanker als `_href` (z. B. `#main`, `#nav`, `#content`).
-- Die entsprechenden Ziele sollten mit `id`-Attributen versehen sein (z. B. `<main id="main">`).
-- SkipNav ist besonders wertvoll auf komplexen Seiten mit vielen Navigations- und Wiederholungselementen.
-
-### Anwendungsfälle
-
+**Anwendungsfälle:**
 - Längere Websites mit umfangreicher Navigation am Anfang
 - Multi-Level-Navigationsstrukturen, die viele Tastaturschritte erfordern
 - Seiten mit mehreren Seitenleisten oder wiederholten Inhaltsblöcken
 - Blogs oder News-Portale mit vielen Navigations- und Filteroptionen
 - Barrierefreie Webanwendungen für verschiedene Nutzergruppen
 
-## Playground
+## Beispiel
 
-<SkipNavPreview context="playground" />
+Versteckte Navigation mit Link-Labels und Zielankern. Drücken Sie im Beispiel die `Tab`-Taste, um die Links nacheinander einzublenden.
+
+<SkipNavPreview context="example" />
+
+## Barrierefreiheit
+
+- Die Links sind für Sehende standardmäßig nicht sichtbar. Erhält ein Link den Fokus, wird genau dieser Link eingeblendet; verlässt der Fokus ihn, wird er wieder ausgeblendet.
+- Für Screenreader sind die Links jederzeit vorhanden: Sie werden auch ohne Fokus im Lesemodus vorgelesen und erscheinen in der Liste der Links bzw. Landmarks.
+- Screenreader kündigen die SkipNav als Navigation mit dem über `_label` gesetzten Namen an, die Links als Liste mit der Anzahl der Einträge. Jeder Link kann direkt angesteuert werden.
+- Sie bietet Nutzer:innen mit motorischen Einschränkungen die Möglichkeit, schnell zum Hauptinhalt zu navigieren, ohne wiederholte Navigation durchlaufen zu müssen.
+
+### Konkrete Designentscheidungen
+
+| Entscheidung                                                                       | Begründung                                                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_label` ist ein Pflichtfeld und benennt die Navigation                            | Auf einer Seite kann es mehrere Navigationen geben (z. B. Hauptnavigation, Breadcrumb, Pagination). Damit sie unterscheidbar sind, müssen sie eindeutig benannt sein. Im Entwicklungsmodus gibt KoliBri einen Hinweis in der Konsole aus, wenn das Label fehlt oder bereits von einer anderen Navigation verwendet wird. |
+| Hinweis in der Konsole (Entwicklungsmodus) bei mehr als sieben Links               | Innerhalb von Navigationsstrukturen werden höchstens sieben Einträge empfohlen (Millersche Zahl).                                                                                                            |
+
+### Links und Referenzen
+
+- <kol-link _href="https://webaim.org/techniques/skipnav/" _target="_blank" _label="WebAIM - Skip Navigation Links"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html" _target="_blank" _label="WCAG 2.2 - Bypass Blocks (2.4.1)"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/navigation.html" _target="_blank" _label="WAI-ARIA APG - Navigation Landmark"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/nav" _target="_blank" _label="MDN - Das nav-Element"></kol-link>
+
+## Tastatursteuerung
+
+<NativeKeyboardIntro />
+
+| Taste       | Funktion                                                                                                                     |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`       | Fokussiert den nächsten Link der SkipNav und blendet ihn ein. Steht die SkipNav am Seitenanfang, ist ihr erster Link das erste fokussierbare Element. |
+| `Shift+Tab` | Fokussiert den vorherigen Link bzw. das vorherige fokussierbare Element.                                                     |
+| `Enter`     | Folgt dem fokussierten Link zum angegebenen Zielanker.                                                                       |
+
+## FAQ
+
+**Wo platziere ich die SkipNav?**  
+Platzieren Sie die SkipNav am Anfang der Seite, vor anderen interaktiven Elementen. Nur dann erreichen Tastatur-Nutzer:innen ihren ersten Link mit dem ersten Druck auf die `Tab`-Taste.
+
+**Wie formuliere ich die Link-Beschriftungen?**  
+Definieren Sie prägnante und verständliche Link-Labels, die klar beschreiben, wohin der Nutzer navigiert wird (z. B. „Zum Hauptinhalt", „Zur Navigation").
+
+**Wie lege ich die Sprungziele fest?**  
+Verwenden Sie semantisch sinnvolle Zielanker als `_href` (z. B. `#main`, `#nav`, `#content`). Die entsprechenden Ziele sollten mit `id`-Attributen versehen sein (z. B. `<main id="main">`).
 
 ## Funktionalitäten
 
-### Basis-Navigation
+### Beschriftung der Navigation
 
-Minimale Konfiguration mit `_label` und `_links`:
+Über `_label` (Pflichtfeld) wird der Name der Navigation gesetzt. Er ist nicht sichtbar, sondern wird von Screenreadern beim Erreichen der Navigation vorgelesen und unterscheidet die SkipNav von anderen Navigationen der Seite.
 
-<SkipNavPreview context="feature" visibleProperties={['_label', '_links']} />
+<SkipNavPreview context="feature" visibleProperties={['_label']} />
 
-### Link-Struktur
+### Sprungziele
 
-Die `_links` werden als Array von Objekten mit `_label` und `_href` übergeben:
+Die `_links` (Pflichtfeld) werden als Array von Objekten mit `_label` und `_href` übergeben:
 
 ```js
 [
@@ -82,9 +89,22 @@ Die `_links` werden als Array von Objekten mit `_label` und `_href` übergeben:
 ];
 ```
 
-Jeder Link zeigt seinen Label an und navigiert zum entsprechenden Zielanker auf der Seite.
+Jeder Link zeigt sein Label an und navigiert zum entsprechenden Zielanker auf der Seite. Die Einträge sind Link-Objekte und übernehmen weitere Properties der <kol-link _label="Link-Komponente" _href="./link" />, z. B. `_target`, `_icons` oder `_ariaDescription`.
+
+<SkipNavPreview context="feature" visibleProperties={['_links']} />
+
+## Playground
+
+<SkipNavPreview context="playground" />
 
 ## API
 
-<Readme />
+### Events
 
+<EventsIntro />
+
+| Event   | Auslöser                                      | Value                                 |
+| ------- | --------------------------------------------- | ------------------------------------- |
+| `click` | Ein Link wird angeklickt bzw. per Tastatur aktiviert | `_href` des aktivierten Links als `string` |
+
+<Readme />
