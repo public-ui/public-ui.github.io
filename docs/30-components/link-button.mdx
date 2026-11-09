@@ -5,12 +5,22 @@ description: Beschreibung, Spezifikation und Beispiele für die LinkButton-Kompo
 
 import Readme from '@site/readmes/link-button/readme.md';
 import LinkButtonPreview from '@site/src/components/previews/components/LinkButton';
+import { ExampleLink } from '@site/src/components/ExampleLink';
+import EventsIntro from './_shared/api/events-intro.md';
+import NativeKeyboardIntro from './_shared/keyboard/native-intro.md';
 
 # LinkButton
 
-**Synonyme:** Link mit Button-Stil, stilisierter Link
+**Synonyme:** Link mit Button-Stil, stilisierter Link, Call-to-Action-Link, Link Button, Schaltflächen-Link
 
-**Beschreibung:** Die **LinkButton**-Komponente ist semantisch ein Link, hat aber das visuelle Erscheinungsbild eines Buttons. Sie kombiniert die Semantik der Link-Komponente mit den Design-Eigenschaften der Button-Komponente und eignet sich zur Verlinkung mit Betonung durch Button-artige Darstellung.
+**Beschreibung:** Die **LinkButton**-Komponente ist semantisch ein Link, hat aber das visuelle Erscheinungsbild eines Buttons. Sie basiert auf dem nativen HTML-Element `a`, kombiniert die Semantik der Link-Komponente mit den Design-Eigenschaften der Button-Komponente und eignet sich zur Verlinkung mit Betonung durch Button-artige Darstellung.
+
+**Anwendungsfälle:**
+- Navigation zu primären oder hervorgehobenen Bereichen einer Anwendung
+- Call-to-Action-Links, die visuell als Buttons prominenter erscheinen sollen
+- Navigation in Footern oder Sidebars mit Button-ähnlichem Styling
+- Kontextuelle Navigation mit Button-Styling (z. B. „Weitere Informationen“)
+- Rückwärts-Navigation oder ähnliche primäre Navigationsziele
 
 ## Beispiel
 
@@ -20,72 +30,72 @@ Darstellung der Komponente ohne optional gesetzte Felder:
 
 ## Barrierefreiheit
 
-Die **LinkButton**-Komponente wird als Link-Element renders und ist daher vollständig auf Barrierefreiheit optimiert:
+- Die Komponente behält die **semantische Rolle des Links**: Screenreader kündigen sie unabhängig vom Button-Erscheinungsbild als Link an und führen sie in der Linkliste auf.
+- Die sichtbare Beschriftung (`_label`) ist zugleich der zugängliche Name. Screenreader geben damit denselben Text aus, den sehende Nutzende lesen; dekorative Icons und der Hinweis auf ein Tastenkürzel werden dabei nicht mitgelesen. Ist `_label` nicht gesetzt, wird das Linkziel (`_href`) als Beschriftung angezeigt und vorgelesen.
+- Der LinkButton ist unabhängig von der Länge seiner Beschriftung mindestens 44 Pixel hoch und erfüllt damit in der Höhe die Zielgröße nach WCAG 2.5.5.
+- Die Komponente stellt einen sichtbaren Fokuszustand bereit. Im Kontrastmodus des Betriebssystems (z. B. „Kontrastdesigns“ unter Windows) werden Fokusrahmen und deaktivierter Zustand in den Systemfarben dargestellt und bleiben dadurch unterscheidbar.
 
-- Die Komponente behält die **semantische Rolle des Links**, was von assistiven Technologien korrekt erkannt wird.
-- Das Label (`_label`) wird als sichtbarer Text ausgegeben und als `aria-label` für Screenreader bereitgestellt.
-- Die Komponente unterstützt **vollständig Tastaturnavigation** (Tab, Enter).
-- Icons können zur visuellen Verdeutlichung hinzugefügt werden, ohne die Barrierefreiheit zu beeinträchtigen.
-- Das Attribut `_hideLabel` ermöglicht die visuell versteckte Beschriftung mit automatisch angezeigtem Tooltip beim Fokussieren.
-- Das Attribut `_shortKey` kann zur Anzeige von Tastaturkürzeln genutzt werden.
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| --- | --- |
+| Verwendung des nativen HTML-Elements `a` | Der LinkButton ist semantisch ein Link, der lediglich wie ein Button aussieht. Das native Element ist von sich aus per Tastatur bedienbar (`Enter` löst den Klick aus); eine eigene Tastaturbehandlung entfällt dadurch. |
+| Die Rolle des Links lässt sich nicht ändern | KoliBri bevorzugt die semantische Rolle des HTML-Elements und lässt keine Anpassung zu. Die Property `_role` ist deshalb veraltet und wird nicht mehr übernommen. |
+| Deaktivierte LinkButtons sind weder per Tastatur noch per Maus oder Skript erreichbar | Das `a`-Element kennt keinen nativen deaktivierten Zustand. KoliBri ergänzt ihn, damit ein deaktivierter LinkButton wie andere deaktivierte Bedienelemente nicht mehr angesteuert werden kann. |
+| Kein sichtbares Icon für das Öffnen in einem neuen Tab | Das Icon wurde außerhalb der Schaltfläche angezeigt und veränderte ihre Größe (<kol-link _href="https://github.com/public-ui/kolibri/issues/10506" _target="_blank" _label="KoliBri-Issue #10506"></kol-link>). Der Hinweis für Screenreader bleibt erhalten (siehe [Zielverhalten](#zielverhalten)). |
 
 ### Links und Referenzen
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" _target="_blank" _label="MDN Web Docs - a Element"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-link-only.html" _target="_blank" _label="WCAG 2.1 - Link Purpose (Link Only)"></kol-link>
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/link/" _target="_blank" _label="ARIA Authoring Practices - Link Pattern"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/a" _target="_blank" _label="MDN Web Docs: HTML-Element a"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element" _target="_blank" _label="HTML Living Standard: The a element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/link/" _target="_blank" _label="WAI-ARIA Authoring Practices Guide: Link Pattern"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-link-only.html" _target="_blank" _label="WCAG 2.1: Link Purpose (Link Only)"></kol-link>
+- <ExampleLink component="link-button" />
 
-## Verwendung
+## Tastatursteuerung
 
-### Tastatursteuerung
+<NativeKeyboardIntro />
 
-| Taste   | Funktion                         |
-| ------- | -------------------------------- |
-| `Tab`   | Fokussiert die LinkButton.       |
-| `Enter` | Öffnet den Hyperlink.            |
-| `Space` | Öffnet den Hyperlink (optional). |
+| Taste       | Funktion                                                                  |
+| ----------- | ------------------------------------------------------------------------- |
+| `Tab`       | Fokus auf den LinkButton bzw. das nächste fokussierbare Element setzen.   |
+| `Shift+Tab` | Fokus auf das vorherige fokussierbare Element setzen.                     |
+| `Enter`     | Link öffnen bzw. Download starten.                                        |
 
-### Best Practices / Empfehlungen
+`Space` öffnet den LinkButton nicht – wie bei jedem nativen Link scrollt der Browser stattdessen die Seite. Das unterscheidet den LinkButton trotz gleichen Erscheinungsbilds vom [Button](./button.mdx).
 
-- **Semantik über Stil**: Verwenden Sie LinkButton nur, wenn Sie semantisch einen Link benötigen, die Benutzer:innen aber eine Button-ähnliche Darstellung erwarten.
-- **Button vs. LinkButton**: Verwenden Sie einen echten <kol-link _href="../components/button" _label="Button"></kol-link> für Aktionen (speichern, löschen), und LinkButton für Navigation.
-- **Aussagekräftige Labels**: Der Link-Text sollte das Ziel oder den Kontext der Navigation deutlich machen (z. B. „Zur Startseite" statt „Hier").
-- **Zielangabe**: Verwenden Sie `_target="_blank"` nur, wenn sich der Link tatsächlich in einem neuen Tab öffnen soll, und kommunizieren Sie dies deutlich im Label.
-- **Download-Links**: Für Download-Links verwenden Sie `_download="dateiname"` um dem Browser zu signalisieren, dass eine Datei heruntergeladen werden soll.
-- **Externe Links kennzeichnen**: Nutzen Sie Icons oder klare Beschriftungen, um externe Links von internen zu unterscheiden.
+Ergänzend zum nativen Verhalten schließt `Escape` den Tooltip eines LinkButtons mit ausgeblendeter Beschriftung (`_hideLabel`), solange er angezeigt wird.
 
-### Anwendungsfälle
+Deaktivierte LinkButtons (`_disabled`) sind nicht Teil der Tab-Reihenfolge.
 
-- Navigation zu primären oder hervorgehobenen Bereichen einer Anwendung
-- Call-to-Action-Links, die visuell als Buttons prominenter erscheinen sollen
-- Navigation in Footern oder Sidebars mit Button-ähnlichem Styling
-- Kontextuelle Navigation mit Button-Styling (z. B. „Weitere Informationen")
-- Rückwärts-Navigation oder ähnliche primäre Navigationsziele
+## FAQ
 
-### FAQ
+**Wann sollte ich LinkButton statt Button verwenden?**  
+Die Wahl richtet sich nach der Funktion, nicht nach dem Erscheinungsbild. Verwenden Sie LinkButton nur, wenn Sie semantisch einen Link benötigen (Navigation), die Nutzenden aber eine Button-ähnliche Darstellung erwarten bzw. der Link mit Button-Styling betont werden soll. Für echte Aktionen (z. B. Speichern, Löschen oder Formularabsendung) verwenden Sie einen <kol-link _href="../components/button" _label="Button"></kol-link>.
 
-**Wann sollte ich LinkButton statt Button verwenden?**
-Verwenden Sie LinkButton, wenn Sie semantisch einen Link benötigen (Navigation), diesen aber mit Button-Styling betonen möchten. Für echte Aktionen (wie Formularabsendung) verwenden Sie stattdessen einen Button.
-
-**Kann ich LinkButton mit Icons verwenden?**
-Ja, das Attribut `_icons` unterstützt Icon-Klassennamen (z. B. `_icons="kolicon-house"`).
-
-**Was ist der Unterschied zu button-link?**
+**Was ist der Unterschied zu ButtonLink?**  
 LinkButton ist semantisch ein Link mit Button-Styling. <kol-link _href="../components/button-link" _label="ButtonLink"></kol-link> ist dagegen semantisch ein Button mit Link-Styling.
 
-## Playground
+**Wie formuliere ich die Beschriftung?**  
+Der Link-Text sollte das Ziel oder den Kontext der Navigation deutlich machen (z. B. „Zur Startseite“ statt „Hier“).
 
-<LinkButtonPreview context="playground" initialProps={{ _label: 'LinkButton' }} />
+**Wie kennzeichne ich externe Links und Links, die sich in einem neuen Tab öffnen?**  
+Verwenden Sie `_target="_blank"` nur, wenn sich der Link tatsächlich in einem neuen Tab öffnen soll. KoliBri ergänzt dafür nur einen Hinweis für Screenreader, kein sichtbares Icon (siehe [Zielverhalten](#zielverhalten)) – kommunizieren Sie das Öffnen in einem neuen Tab daher deutlich in der Beschriftung. Nutzen Sie Icons oder klare Beschriftungen, um externe Links von internen zu unterscheiden.
 
-Erkunden Sie die verschiedenen Konfigurationen der LinkButton-Komponente:
+**Kann ich LinkButton mit Icons verwenden?**  
+Ja, siehe [Icons](#icons) und [Icon-Only-LinkButton](#icon-only-linkbutton).
 
 ## Funktionalitäten
 
-### Beschriftung
+### Beschriftung und Linkziel
 
-Die sichtbare Beschriftung wird über `_label` gesetzt:
+Die sichtbare Beschriftung wird über `_label` gesetzt, das Linkziel über `_href` (Pflichtfeld). Ohne `_label` zeigt die Komponente das Linkziel als Beschriftung an.
 
-<LinkButtonPreview context="feature" visibleProperties={['_label']} initialProps={{ _label: 'Normal', _href: '#' }} />
+<LinkButtonPreview
+	context="feature"
+	visibleProperties={['_label', '_href']}
+	initialProps={{ _label: 'Zur Startseite', _href: '#' }}
+/>
 
 ### Varianten
 
@@ -99,34 +109,40 @@ Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varia
 
 ### Icons
 
-Icons können über das Attribut `_icons` hinzugefügt werden:
+Icons können über `_icons` hinzugefügt werden. Als String übergeben Sie die Icon-Klasse (z. B. `kolicon-house`), das Icon wird links vom Text angezeigt:
 
 <LinkButtonPreview
 	context="feature"
-	visibleProperties={['_icons', '_tooltipAlign']}
-	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'kolicon-house' }}
+	visibleProperties={['_icons']}
+	initialProps={{ _label: 'Startseite', _href: '#', _icons: 'kolicon-house' }}
 />
 
-Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `left` angegeben werden, jeweils mit Icon-Klasse oder Styleobjekt.
+Icons können auch als Objekt mit den Positionen `top`, `right`, `bottom` und `left` angegeben werden, jeweils mit Icon-Klasse oder als Objekt mit `icon`, optional `label` und `style`.
 
-### Icon-Only-Button
+Ein Icon ohne `label` gilt als dekorativ und wird von Screenreadern nicht ausgegeben. Trägt ein Icon eine Information, die nicht bereits aus der Beschriftung hervorgeht, übergeben Sie es als Objekt mit `label`.
+
+### Icon-Only-LinkButton
 
 Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip angezeigt:
 
 <LinkButtonPreview
 	context="feature"
-	visibleProperties={['_hideLabel', '_icons']}
-	initialProps={{ _label: 'LinkButton', _href: '#', _icons: 'kolicon-house', _hideLabel: true }}
+	visibleProperties={['_hideLabel', '_icons', '_tooltipAlign']}
+	initialProps={{ _label: 'Startseite', _href: '#', _icons: 'kolicon-house', _hideLabel: true }}
 />
+
+**Hinweis:** Das Attribut `_label` muss auch gesetzt werden, wenn nur ein Icon angezeigt wird – es wird für Screenreader und den Tooltip verwendet.
+
+Der Tooltip erscheint nach kurzer Verzögerung, sobald der LinkButton mit der Maus berührt oder per Tastatur fokussiert wird. Er bleibt sichtbar, solange sich der Mauszeiger über dem LinkButton oder dem Tooltip befindet, und lässt sich mit `Escape` schließen. Nach einem Klick wird er ausgeblendet, bis der LinkButton verlassen und erneut angesteuert wird. Mit `_tooltipAlign` legen Sie die bevorzugte Position fest (`top`, `right` (Standard), `bottom`, `left`); reicht der Platz nicht aus, weicht der Tooltip auf eine andere Seite aus.
 
 ### Zielverhalten
 
-Kontrolle darüber, wie der Link im Browser geöffnet wird:
+Über `_target` steuern Sie, wo der Link im Browser geöffnet wird:
 
 <LinkButtonPreview
 	context="feature"
 	visibleProperties={['_target']}
-	initialProps={{ _label: 'LinkButton', _href: '#', _target: '_self' }}
+	initialProps={{ _label: 'Dokumentation', _href: 'https://public-ui.github.io/docs', _target: '_blank' }}
 />
 
 **Verfügbare Targets:**
@@ -134,19 +150,23 @@ Kontrolle darüber, wie der Link im Browser geöffnet wird:
 - `_self` – Der Link wird im aktuellen Tab geöffnet (Standard)
 - `_blank` – Der Link wird in einem neuen Tab geöffnet
 
+Daneben sind die übrigen Werte des nativen `target`-Attributs möglich (z. B. `_parent`, `_top` oder ein Fenstername).
+
+Bei jedem Wert außer `_self` geben Screenreader zusätzlich den Hinweis „Öffnet in neuem Tab.“ aus. Ein sichtbarer Hinweis wird beim LinkButton nicht angezeigt (siehe [Konkrete Designentscheidungen](#konkrete-designentscheidungen)).
+
 ### Download-Links
 
-Signalisieren Sie dem Browser, dass eine Datei heruntergeladen werden soll:
+Mit `_download` signalisieren Sie dem Browser, dass eine Datei heruntergeladen werden soll. Der Wert wird als vorgeschlagener Dateiname verwendet; ein leerer String startet den Download ohne Dateinamensvorschlag.
 
 <LinkButtonPreview
 	context="feature"
-	visibleProperties={[]}
+	visibleProperties={['_download']}
 	initialProps={{ _label: 'PDF herunterladen', _href: '/files/dokument.pdf', _download: 'dokument.pdf' }}
 />
 
-### Disabled-Status
+### Deaktivierter Zustand
 
-Mit `_disabled` wird der Button deaktiviert:
+Mit `_disabled` wird der LinkButton deaktiviert. Er ist dann nicht Teil der Tab-Reihenfolge, erhält auch per Mausklick oder über die Methoden `focus()` und `click()` keinen Fokus, öffnet den Link nicht und löst keine Events aus. Screenreader kündigen ihn als nicht verfügbar an. Ist zusätzlich `_hideLabel` gesetzt, lässt sich der Tooltip mit der Beschriftung daher nicht per Tastatur aufrufen.
 
 <LinkButtonPreview
 	context="feature"
@@ -154,38 +174,62 @@ Mit `_disabled` wird der Button deaktiviert:
 	initialProps={{ _label: 'Deaktiviert', _href: '#', _disabled: true }}
 />
 
-### Tastaturkürzel
+### Tastenkürzel
 
-Ein visueller Hinweis auf ein verfügbares Tastaturkürzel:
+Mit `_accessKey` und `_shortKey` weisen Sie auf ein Tastenkürzel hin. Beide werden als Hinweis hinter der Beschriftung angezeigt; der passende Buchstabe in der Beschriftung wird zusätzlich unterstrichen. Es kann jeweils nur eine der beiden Properties gesetzt werden.
 
-<LinkButtonPreview
-	context="feature"
-	visibleProperties={['_shortKey']}
-	initialProps={{ _label: 'Startseite', _href: '#', _shortKey: 'H' }}
-/>
-
-### ARIA-Attribute
-
-LinkButton mit ARIA-Attributen für erweiterte Semantik:
+- `_accessKey`: Definiert die Tastenkombination zum Auslösen oder Fokussieren des LinkButtons. Sie wird auf das native `accesskey`-Attribut übertragen; welche Zusatztasten dafür gedrückt werden müssen, hängt von Browser und Betriebssystem ab.
+- `_shortKey`: Definiert einen visuellen Shortcut-Hinweis und liest ihn in Screenreadern vor. Die Tastenkombination selbst muss von der Anwendung umgesetzt werden.
 
 <LinkButtonPreview
 	context="feature"
-	initialProps={{
-		_label: 'Aktuelle Seite',
-		_ariaCurrentValue: 'page',
-		_ariaDescription: 'Navigiert zur Dokumentation',
-	}}
-	visibleProperties={['_ariaCurrentValue', '_ariaDescription']}
+	visibleProperties={['_accessKey', '_shortKey']}
+	initialProps={{ _label: 'Startseite', _href: '#', _shortKey: 's' }}
 />
+
+### Aktuelle Seite
+
+Mit `_ariaCurrentValue` (z. B. `page`) kennzeichnen Sie den LinkButton als Verweis auf die aktuelle Seite bzw. den aktuellen Schritt; Screenreader kündigen ihn dann entsprechend an. Die Kennzeichnung wird nur gesetzt, solange `_href` dem aktuellen Ort entspricht. Diesen teilt die Anwendung KoliBri über die Funktion `setCurrentLocation` aus `@public-ui/components` mit (z. B. bei jedem Routenwechsel); ohne diesen Aufruf bleibt `_ariaCurrentValue` wirkungslos.
+
+<LinkButtonPreview
+	context="feature"
+	visibleProperties={['_ariaCurrentValue']}
+	initialProps={{ _label: 'Aktuelle Seite', _href: '#', _ariaCurrentValue: 'page' }}
+/>
+
+### Weitere Eigenschaften
+
+Darüber hinaus unterstützt der LinkButton folgende Attribute:
+
+| Eigenschaft        | Beschreibung                                                                                                         |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `_ariaDescription` | Ergänzende Beschreibung, die Screenreader zusätzlich zur Beschriftung ausgeben; sie wird nicht sichtbar dargestellt  |
+| `_ariaControls`    | Definiert, welche Elemente durch diesen LinkButton gesteuert werden (`aria-controls`)                                |
+| `_customClass`     | Zusätzliche CSS-Klasse, wenn `_variant="custom"` gesetzt ist                                                         |
+| `_inline`          | Displaymodus ohne Mindestgröße von 44px. Abweichend davon bleibt die Mindesthöhe beim LinkButton in KoliBri 4.5.0 erhalten. |
+
+<LinkButtonPreview
+	context="feature"
+	visibleProperties={['_ariaDescription', '_ariaControls', '_customClass', '_inline']}
+	initialProps={{ _label: 'Dokumentation', _href: '#', _ariaDescription: 'Navigiert zur Dokumentation' }}
+/>
+
+## Playground
+
+Erkunden Sie die verschiedenen Konfigurationen der LinkButton-Komponente:
+
+<LinkButtonPreview context="playground" initialProps={{ _label: 'LinkButton' }} />
+
+## API
 
 ### Events
 
-Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="../concepts/events" />.
+<EventsIntro />
 
-| Event   | Auslöser                | Value        |
-| ------- | ----------------------- | ------------ |
-| `click` | Element wird angeklickt | `_href`-Wert |
+| Event   | Auslöser                                    | Value            |
+| ------- | ------------------------------------------- | ---------------- |
+| `click` | LinkButton wird angeklickt bzw. aktiviert   | `_href`-Property |
 
-## API
+Über `_on` steht der entsprechende Callback `onClick` zur Verfügung; er erhält das Event und den Wert von `_href`. Ein deaktivierter LinkButton löst weder das Event noch den Callback aus.
 
 <Readme />
