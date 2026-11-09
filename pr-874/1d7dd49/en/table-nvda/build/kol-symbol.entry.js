@@ -1,0 +1,5 @@
+/*!
+ * KoliBri - The accessible HTML-Standard
+ */
+import{r as i,h as a,H as t}from"./index-330c31f9.js";import{a as s}from"./i18n-931157b2.js";import{v as e}from"./label-8d64163d.js";import{w as r}from"./prop.validators-0a66a178.js";import"./index-fc511254.js";import"./index-3711603c.js";import"./a11y.tipps-beae7792.js";import"./dev.utils-5b0de6da.js";import"./reuse-c2156413.js";const l=class{constructor(a){i(this,a);this._ariaLabel=undefined;this._label=undefined;this._symbol=undefined;this.state={_label:s("kol-warning"),_symbol:"…"}}render(){return a(t,null,a("span",{"aria-label":this.state._label,role:"term"},this.state._symbol))}validateAriaLabel(i){this.validateLabel(i)}validateLabel(i){e(this,i)}validateSymbol(i){r(this,"_symbol",i,{required:true})}componentWillLoad(){this.validateLabel(this._label||this._ariaLabel);this.validateSymbol(this._symbol)}static get watchers(){return{_ariaLabel:["validateAriaLabel"],_label:["validateLabel"],_symbol:["validateSymbol"]}}};export{l as kol_symbol};
+//# sourceMappingURL=kol-symbol.entry.js.map
