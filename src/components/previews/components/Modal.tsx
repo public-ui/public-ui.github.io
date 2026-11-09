@@ -46,7 +46,7 @@ const ModalPreview = (props: PreviewDefaults<ModalPreviewProps>) => {
 							_label={translate({ id: 'preview.component.modal.openButton' })}
 							_on={{
 								onClick: () => {
-									void modalRef.current?.openModal();
+									void modalRef.current?.showModal();
 								},
 							}}
 						/>
