@@ -390,3 +390,17 @@ html[data-theme='dark'] .algolia-autocomplete .ds-cursor .algolia-docsearch-sugg
 		z-index: auto;
 	}
 }
+
+/*
+ * BF-Web-Test: Fokus-Ring der KoliBri-Komponenten auf dunklem Grund (#318)
+ * Der Shadow-Ring der Komponenten folgt --color-primary-variant (#005a8f) und
+ * unterschreitet auf dem dunklen Hero-Verlauf die 3:1; der Host trägt deshalb
+ * den zweilagigen Dokument-Ring via :focus-within. Auf hellem Grund reicht der
+ * Komponenten-Ring (~7:1) und bleibt unangetastet.
+ */
+.hero-lines-wrap kol-link-button:focus-within,
+.hero-lines-wrap kol-button:focus-within {
+	outline: 3px solid #003a5c;
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px #fff;
+}
