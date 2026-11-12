@@ -207,7 +207,7 @@ const ImagefilmSection: FunctionComponent = () => {
 							id: 'custom.imagefilm-narrated-video-label',
 							message: 'KoliBri Imagefilm als Vorlesefassung mit Untertiteln',
 						})}
-						className="mt-4 aspect-video w-full rounded-2xl bg-[#05244a] shadow-xl"
+						className="mt-4 h-auto w-full rounded-2xl bg-[#05244a] shadow-xl"
 					>
 						<source src={narratedVideoUrl} type="video/mp4" />
 						<track
