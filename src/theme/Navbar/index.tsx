@@ -1,4 +1,4 @@
-import { KolHeading, KolLinkButton, KolPopoverButton } from '@public-ui/react-v19';
+import { KolLinkButton, KolPopoverButton } from '@public-ui/react-v19';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import React from 'react';
 // import { getDarkMode, setDarkMode } from '../../shares/store';
@@ -106,8 +106,9 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								<div
 									className="popover-container"
 									role="group"
-									// aria-label statt aria-labelledby: die Überschrift liegt im
-									// Shadow-DOM von kol-heading, ID-Referenzen lösen die Grenze nicht auf.
+									// Die Gruppe trägt den sichtbaren Titel als zugänglichen Namen; ein
+									// echtes Heading würde der Überschriftenhierarchie ein H3 vor die
+									// erste H1 der Seite setzen.
 									aria-label={translate({
 										id: 'feedback.header',
 									})}
@@ -120,12 +121,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 										}
 									}}
 								>
-									<KolHeading
-										_label={translate({
-											id: 'feedback.header',
-										})}
-										_level={3}
-									></KolHeading>
+									<p className="popover-heading">{translate({ id: 'feedback.header' })}</p>
 									<p className="p popover-paragraph">
 										{translate({
 											id: 'feedback.information',
