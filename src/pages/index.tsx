@@ -179,6 +179,9 @@ const ImagefilmSection: FunctionComponent = () => {
 	const [filmSrc, setFilmSrc] = useState<string | null>(null);
 	const posterUrl = useBaseUrl('/img/imagefilm-poster.png');
 	const filmUrl = useBaseUrl('/imagefilm');
+	const narratedVideoUrl = useBaseUrl('/imagefilm/vorlesefassung.mp4');
+	const narratedTrackUrl = useBaseUrl('/imagefilm/vorlesefassung.vtt');
+	const narratedPosterUrl = useBaseUrl('/imagefilm/vorlesefassung-poster.png');
 
 	const startFilm = () => setFilmSrc(filmUrl);
 
@@ -222,8 +225,57 @@ const ImagefilmSection: FunctionComponent = () => {
 									message: 'Imagefilm abspielen',
 								})}
 							</span>
-					</button>
-				)}
+						</button>
+					)}
+				</div>
+				<div className="w-full max-w-4xl text-center">
+					<Heading as="h2" className="sr-only">
+						{translate({
+							id: 'custom.imagefilm-narrated-heading',
+							message: 'Vorlesefassung des Imagefilms',
+						})}
+					</Heading>{' '}
+					<p className="m-0 text-sm text-[#42576e]">
+						{translate({
+							id: 'custom.imagefilm-narrated-description',
+							message:
+								'Vorlesefassung: Eine Stimme liest jede Folie vor, beschreibt das Dargestellte und blendet Untertitel ein.',
+						})}
+					</p>
+					<video
+						controls
+						preload="metadata"
+						poster={narratedPosterUrl}
+						width={1920}
+						height={1080}
+						aria-label={translate({
+							id: 'custom.imagefilm-narrated-video-label',
+							message: 'KoliBri Imagefilm als Vorlesefassung mit Untertiteln',
+						})}
+						className="mt-4 aspect-video w-full rounded-2xl bg-[#05244a] shadow-xl"
+					>
+						<source src={narratedVideoUrl} type="video/mp4" />
+						<track
+							src={narratedTrackUrl}
+							kind="captions"
+							srcLang="de"
+							label={translate({
+								id: 'custom.imagefilm-narrated-track-label',
+								message: 'Deutsch',
+							})}
+							default
+						/>
+						{translate({
+							id: 'custom.imagefilm-narrated-download',
+							message: 'Ihr Browser kann dieses Video nicht wiedergeben.',
+						})}{' '}
+						<a href={narratedVideoUrl}>
+							{translate({
+								id: 'custom.imagefilm-narrated-download-label',
+								message: 'Video herunterladen (MP4)',
+							})}
+						</a>
+					</video>
 				</div>
 			</div>
 		</section>
