@@ -1,4 +1,4 @@
-import { KolLinkButton, KolPopoverButton } from '@public-ui/react-v19';
+import { KolCard, KolLinkButton, KolPopoverButton } from '@public-ui/react-v19';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import React from 'react';
 // import { getDarkMode, setDarkMode } from '../../shares/store';
@@ -105,13 +105,6 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 							>
 								<div
 									className="popover-container"
-									role="group"
-									// Die Gruppe trägt den sichtbaren Titel als zugänglichen Namen; ein
-									// echtes Heading würde der Überschriftenhierarchie ein H3 vor die
-									// erste H1 der Seite setzen.
-									aria-label={translate({
-										id: 'feedback.header',
-									})}
 									ref={(el) => {
 										if (el) {
 											const timeout = setTimeout(() => {
@@ -121,20 +114,26 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 										}
 									}}
 								>
-									<p className="popover-heading">{translate({ id: 'feedback.header' })}</p>
-									<p className="p popover-paragraph">
-										{translate({
-											id: 'feedback.information',
-										})}
-									</p>
-									<KolLinkButton
-										className="popover-link-button"
+									<KolCard
 										_label={translate({
-											id: 'email.send',
+											id: 'feedback.header',
 										})}
-										_variant="primary"
-										_href="mailto:kolibri@itzbund.de?subject=Feedback%20zu%20KoliBri-Webcomponents&body=Hallo%20KoliBri-Team,%0A%0Ahier%20ist%20mein%20Feedback%20zur%20Dokumentation%20oder%20den%20Webcomponents:%0A%0A%5BEinfach%20hier%20Ihr%20Feedback%20einfügen%5D%0A%0AVielen%20Dank!"
-									></KolLinkButton>
+										_level={2}
+									>
+										<p className="p popover-paragraph">
+											{translate({
+												id: 'feedback.information',
+											})}
+										</p>
+										<KolLinkButton
+											className="popover-link-button"
+											_label={translate({
+												id: 'email.send',
+											})}
+											_variant="primary"
+											_href="mailto:kolibri@itzbund.de?subject=Feedback%20zu%20KoliBri-Webcomponents&body=Hallo%20KoliBri-Team,%0A%0Ahier%20ist%20mein%20Feedback%20zur%20Dokumentation%20oder%20den%20Webcomponents:%0A%0A%5BEinfach%20hier%20Ihr%20Feedback%20einfügen%5D%0A%0AVielen%20Dank!"
+										></KolLinkButton>
+									</KolCard>
 								</div>
 							</KolPopoverButton>
 						</li>

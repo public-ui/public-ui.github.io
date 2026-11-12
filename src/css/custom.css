@@ -153,16 +153,12 @@ kol-link-button {
 }
 
 .popover-container {
-	border: var(--border-width) solid var(--color-primary);
 	display: none;
-	padding: 1rem;
-	width: 300px;
+	width: 320px;
 }
 
-.popover-heading {
-	font-size: 1.1rem;
-	font-weight: 700;
-	margin: 0;
+.popover-container kol-card {
+	width: 100%;
 }
 
 .popover-paragraph {
