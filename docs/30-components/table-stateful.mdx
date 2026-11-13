@@ -196,7 +196,7 @@ Das Attribut `_selection` aktiviert die Zeilenauswahl (einfach oder mehrfach). D
 
 ### Einstellungsmenü
 
-Mit `_hasSettingsMenu` wird ein Menü aktiviert, über das Benutzer Tabelleneinstellungen anpassen können (z.B. sichtbare Spalten):
+Mit `_hasSettingsMenu` wird ein Menü aktiviert, über das Benutzer Tabelleneinstellungen anpassen können (z.B. sichtbare Spalten). Die Tabelle wendet die Änderungen selbst an und behält die angepassten Kopfzellen (Reihenfolge, Sichtbarkeit, Breite) auch bei einem Neuaufbau der Tabelle bei; ein eigener Callback für Einstellungsänderungen existiert nicht.
 
 <TableStatefulPreview context="feature" visibleProperties={['_hasSettingsMenu']} initialProps={{}} />
 
@@ -219,7 +219,6 @@ Zur Behandlung von Events bzw. Callbacks siehe <kol-link _label="Events" _href="
 | Event | Auslöser | Value |
 | ----- | -------- | ----- |
 | `selectionChange` | Die Auswahl von Tabellenzeilen hat sich geändert | Array von ausgewählten Zeilen (oder einzelne Zeile bei Einfachauswahl) |
-| `settingsChange` | Tabelleneinstellungen wurden durch den Benutzer geändert | Objekt vom Typ `TableSettings` |
 
 ## API
 
