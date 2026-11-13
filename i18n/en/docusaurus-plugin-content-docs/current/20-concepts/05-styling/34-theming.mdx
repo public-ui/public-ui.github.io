@@ -93,22 +93,47 @@ stateDiagram-v2
 
 <p>
 	For example, the UI/UX team specifies the components of their design system with Figma. When the specification is
-	transferred to implementation, the design is “transferred” to the basic components in the form of pure CSS using the
-	<KolLink _label="KoliBri-Designer" _href="/docs/concepts/styling/designer" />. If customizability is desired in your
-	design system, CSS properties or design tokens can be defined in the Designer for this purpose. So that the own theme
-	can be shared across projects, the theme is packaged in an NPM package and can be made available via any registry.
+	transferred to implementation, the design is “transferred” to the basic components in the form of pure CSS. If
+	customizability is desired in your design system, CSS properties or design tokens can be defined for this purpose. So
+	that the own theme can be shared across projects, the theme is packaged in an NPM package and can be made available
+	via any registry. The step-by-step guide
+	<KolLink _label="Setting up your own theme repository" _href="/docs/concepts/styling/theme-repository" /> shows the
+	whole process.
 </p>
+
+## Accessible layout variants
+
+Every KoliBri component is a closed, accessible unit: label, input, hint, error message and icon live entirely inside
+it, and from the outside there is exactly one element that receives focus. Themes may rearrange that interior
+visually, placing the label next to the input instead of above it or showing the error message below. The DOM structure
+stays unchanged; only the CSS rearranges the parts, using grid, flexbox or whatever the theme layer provides.
+
+For accessibility the visual order makes no difference: regardless of the optics, the screen reader announces the role
+of the element first, then the label and then hints and error messages. The component itself ensures the connections,
+via <code>aria-labelledby</code> for the label and <code>aria-describedby</code> for additional texts. Keyboard and
+screen reader navigation therefore behave the same in every theme.
+
+Applications must not soften this order again: absolute positioning that destroys the logical DOM order and
+interventions that violate the natural reading direction are off limits. The responsibility is shared: the component
+provides the accessible structure, the theme the arrangement, and the application leaves both untouched.
 <p>
 	<KolDetails _label="Design-Tokens">
 		Optionally, design schemes can be exported from Figma, for example, using design tokens. These can then be
 		transferred into separate CSS files that contain the respective values for the CSS properties. Later, one of these
 		CSS files is used to apply the concrete design in combination with the Web Components and the theme on the website.
+		<p>
+			CSS custom properties act globally and are not protected by the shadow DOM. Own properties therefore carry
+			their own prefix, and internal values are mapped via Sass variables so that they do not collide with variables
+			of the hosting page.
+		</p>
 	</KolDetails>
 </p>
 <p>
 	<KolDetails _label="Dark-Mode">
 		Optionally, a “dark mode” theme can also be implemented. For this, the required CSS can be stored in the globals of
-		the KoliBri theme.
+		the KoliBri theme. Since version 4.5, the default theme resolves it via the CSS function <code>light-dark()</code>
+		in the token values, and the application switches between light and dark using the CSS property
+		<code>color-scheme</code>.
 	</KolDetails>
 </p>
 

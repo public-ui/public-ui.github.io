@@ -40,7 +40,11 @@ import { KolLink } from '@public-ui/react-v19';
 - **Wie funktioniert das Theming?**<br/>
   In der Regel werden Web Components mit festem Styling erstellt. KoliBri trennt die semantisch barrierefreien Komponenten vom Styling und stellt dafür eine Register-Methode zum Kombinieren zur Verfügung. Da die Web Components im Browser grundsätzlich registriert (define) werden müssen, besteht hier die Möglichkeit, die Komponenten mit einem definierten Theme zu laden.
 - **Wie kann man ein eigenes Theme erstellen?**<br/>
-  Wir arbeiten stets daran, das Erstellen und Pflegen von Themes weiter zu vereinfachen. Hierzu dienen z.B. das Basis-Styling (reines Layout) der Komponenten ab Version 1.5. Aufsetzen kann man einfach durch die Erstellung einer Theme-Definition, z.B. mit einem eigenen Theme-Projekt (NPM-Paket) mittels der <KolLink _label="TS-Datei" _href="https://github.com/public-ui/kolibri/blob/45726c50d7f28c9c595442b2241582816eca5670/packages/create-kolibri/templates/kolibri-library/packages/components/src/global/script.ts#L8" _target="_blank" />. Hilfreich um Erstellen und Pflegen von Themes ist auch unser <KolLink _label="Theme-Designer" _href="/designer/" _target="_blank" />.
+  Themes werden vollständig im Code gepflegt und als eigene npm-Pakete verteilt. Den Einstieg liefert der
+  Theme-Starter aus dem <KolLink _label="Template-Repository" _href="https://github.com/public-ui/templates/tree/main/kolibri/theme" _target="_blank" />;
+  die <KolLink _label="Schritt-für-Schritt-Anleitung" _href="/docs/concepts/styling/theme-repository" /> führt von dort über Build und Prüfung bis zur Veröffentlichung.
+  Sobald ein eigenes Theme erstellt wurde, ist ein eigenständiger Barrierefreiheitstest notwendig, um beispielsweise
+  die Kontrastverhältnisse der Farbwerte ebenfalls sicherzustellen.
 - **Warum muss CSS in JavaScript verwaltet werden?**<br/>
   Das Stylen von KoliBri-Komponenten erfolgt nicht allein eingebundenes CSS oder die Verwendung von CSS-Frameworks (wie z.B. Bootstrap, Material-UI, Tailwind CSS, etc.), sondern
   über das technische Setzen von CSS an der Komponente. Das hat den Vorteil, dass die Komponenten vom äußeren CSS unabhängig sind. Die Robustheit ist ein architektonisches Qualitätsziel. Sie spiegelt sich darin wider, dass nur die Komponente selbst über ihr Styling entscheidet.
