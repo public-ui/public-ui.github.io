@@ -106,6 +106,9 @@ Nein. Der eingegebene Text dient nur zum Filtern der Optionen. Als Wert wird aus
 **Wie übergebe ich die Optionen und welchen Wert liefert die Komponente?**  
 Übergeben Sie die Optionen über `_options` als Liste von Objekten mit `label` (angezeigte Beschriftung), `value` (Wert) und optional `disabled` (siehe [Deaktivierte Optionen](#deaktivierte-optionen)). Der Wert (`_value`) entspricht dem `value` der gewählten Option. Ohne Auswahl bzw. nach dem Entfernen der Auswahl ist er `null`.
 
+**Bleibt die Auswahl erhalten, wenn ich den Eingabetext lösche?**  
+Ja. Die Texteingabe dient ausschließlich dem Filtern der Optionen. Das Leeren des Eingabefelds, etwa mit der `Rücktaste` oder der `Entf`-Taste, entfernt die Auswahl nicht: Der Wert (`_value`) bleibt gesetzt, und es werden keine Events ausgelöst. Die Auswahl entfernen Sie über den Clear-Button (siehe [Clear-Button](#clear-button)).
+
 **Wie werden die Optionen gefiltert?**  
 Ein Klick in das Eingabefeld oder auf den Pfeil öffnet bzw. schließt die Auswahlliste. Während der Eingabe werden die Optionen über eine **Substring-Suche** ohne Beachtung der Groß-/Kleinschreibung gefiltert, und der Suchbegriff wird in den passenden Optionen hervorgehoben. Passt keine Option zur Eingabe, wird „Keine Ergebnisse gefunden.“ angezeigt und von Screenreadern unmittelbar angesagt. Verlässt der Fokus das Feld und entspricht der eingegebene Text exakt der Beschriftung einer Option (ohne Beachtung der Groß-/Kleinschreibung), wird diese Option automatisch ausgewählt.
 
