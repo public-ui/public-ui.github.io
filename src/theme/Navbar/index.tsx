@@ -1,4 +1,4 @@
-import { KolHeading, KolLinkButton, KolPopoverButton } from '@public-ui/react-v19';
+import { KolCard, KolLinkButton, KolPopoverButton } from '@public-ui/react-v19';
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import React from 'react';
 // import { getDarkMode, setDarkMode } from '../../shares/store';
@@ -27,8 +27,10 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 			<div className="kolibri-navbar max-w-screen-md lg:max-w-4xl 2xl:max-w-[95rem] mx-auto grid grid-cols-[1fr,auto] gap-y-2 items-center 2xl:grid-cols-[1fr,auto,auto,auto] p-4 lg:px-8">
 				<Navbar {...props} />
 				<section aria-label="Toolbar" className="flex flex-wrap gap-2 col-span-2">
-					<div className="flex-grow grid gap-2 grid-cols-6 items-center justify-items-center">
-						<LanguageSwitch />
+					<ul className="flex-grow grid list-none gap-2 grid-cols-6 items-center justify-items-center m-0 p-0">
+						<li>
+							<LanguageSwitch />
+						</li>
 						{/* <div>
 						{dark ? (
 							<KolButton _icons={'fa-solid fa-moon'} _hideLabel _label="Dark-Modus ausschalten" _on={onDark} _tooltipAlign="left" _variant="ghost"></KolButton>
@@ -45,7 +47,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 							></KolButton>
 						)}
 					</div> */}
-						<div>
+						<li>
 							<KolLinkButton
 								_href="https://github.com/public-ui/kolibri"
 								_icons={'fa-brands fa-github'}
@@ -55,7 +57,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								// _target="github"
 								_variant="ghost"
 							/>
-						</div>
+						</li>
 						{/* <div>
 							<KolLinkButton
 								_href="/cheat-sheet/"
@@ -78,7 +80,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								_variant="ghost"
 							/>
 						</div> */}
-						<div>
+						<li>
 							<KolLinkButton
 								_href="https://develop--kolibri-public-ui.netlify.app"
 								_icons={'fa-solid fa-eye'}
@@ -90,8 +92,8 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								// _target="presentation"
 								_variant="ghost"
 							/>
-						</div>
-						<div>
+						</li>
+						<li>
 							<KolPopoverButton
 								aria-label="Feedback geben"
 								_label="Feedback"
@@ -112,28 +114,29 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 										}
 									}}
 								>
-									<KolHeading
+									<KolCard
 										_label={translate({
 											id: 'feedback.header',
 										})}
-										_level={3}
-									></KolHeading>
-									<p className="p popover-paragraph">
-										{translate({
-											id: 'feedback.information',
-										})}
-									</p>
-									<KolLinkButton
-										className="popover-link-button"
-										_label={translate({
-											id: 'email.send',
-										})}
-										_variant="primary"
-										_href="mailto:kolibri@itzbund.de?subject=Feedback%20zu%20KoliBri-Webcomponents&body=Hallo%20KoliBri-Team,%0A%0Ahier%20ist%20mein%20Feedback%20zur%20Dokumentation%20oder%20den%20Webcomponents:%0A%0A%5BEinfach%20hier%20Ihr%20Feedback%20einfügen%5D%0A%0AVielen%20Dank!"
-									></KolLinkButton>
+										_level={2}
+									>
+										<p className="p popover-paragraph">
+											{translate({
+												id: 'feedback.information',
+											})}
+										</p>
+										<KolLinkButton
+											className="popover-link-button"
+											_label={translate({
+												id: 'email.send',
+											})}
+											_variant="primary"
+											_href="mailto:kolibri@itzbund.de?subject=Feedback%20zu%20KoliBri-Webcomponents&body=Hallo%20KoliBri-Team,%0A%0Ahier%20ist%20mein%20Feedback%20zur%20Dokumentation%20oder%20den%20Webcomponents:%0A%0A%5BEinfach%20hier%20Ihr%20Feedback%20einfügen%5D%0A%0AVielen%20Dank!"
+										></KolLinkButton>
+									</KolCard>
 								</div>
 							</KolPopoverButton>
-						</div>
+						</li>
 						{/* <div>
 						<KolLinkButton
 							_href="https://discord.com/invite/7ntYFPns6b"
@@ -156,7 +159,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 								_variant="ghost"
 							/>
 						</div>*/}
-					</div>
+					</ul>
 				</section>
 			</div>
 		</div>
