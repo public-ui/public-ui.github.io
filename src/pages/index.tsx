@@ -5,7 +5,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
 import type { FunctionComponent, ReactElement } from 'react';
-import React, { useState } from 'react';
+import React from 'react';
 import { KoliBriAbbr } from '../components/KoliBriAbbr';
 import { ITZLogo } from '@site/src/components/ITZLogo';
 
@@ -176,54 +176,61 @@ const HomepageButtons: FunctionComponent = () => {
 };
 
 const ImagefilmSection: FunctionComponent = () => {
-	const [filmSrc, setFilmSrc] = useState<string | null>(null);
-	const posterUrl = useBaseUrl('/img/imagefilm-poster.png');
-	const filmUrl = useBaseUrl('/imagefilm');
-
-	const startFilm = () => setFilmSrc(filmUrl);
+	const narratedVideoUrl = useBaseUrl('/imagefilm/vorlesefassung.mp4');
+	const narratedTrackUrl = useBaseUrl('/imagefilm/vorlesefassung.vtt');
+	const narratedPosterUrl = useBaseUrl('/imagefilm/vorlesefassung-poster.png');
 
 	return (
 		<section className="bg-white text-[#1f2937]">
 			<div className="mx-auto max-w-6xl px-6 py-12 grid justify-items-center gap-8 md:py-16">
-				<div className="imagefilm-frame relative aspect-video w-full max-w-4xl overflow-visible rounded-2xl bg-[#05244a] shadow-xl">
-					{filmSrc ? (
-						<iframe
-							src={filmSrc}
-							title={translate({
-								id: 'custom.imagefilm-frame-title',
-								message: 'KoliBri Imagefilm – Präsentation (manuell durchklickbar, ohne Ton)',
+				<div className="w-full max-w-4xl text-center">
+					<Heading as="h2" className="sr-only">
+						{translate({
+							id: 'custom.imagefilm-narrated-heading',
+							message: 'Imagefilm als Vorlesefassung',
+						})}
+					</Heading>
+					<p className="m-0 text-sm text-[#42576e]">
+						{translate({
+							id: 'custom.imagefilm-narrated-description',
+							message:
+								'Der Imagefilm als Vorlesefassung: Eine Stimme liest jede Folie vor, beschreibt das Dargestellte und blendet Untertitel ein.',
+						})}
+					</p>
+					<video
+						controls
+						preload="metadata"
+						poster={narratedPosterUrl}
+						width={1920}
+						height={1080}
+						aria-label={translate({
+							id: 'custom.imagefilm-narrated-video-label',
+							message: 'KoliBri Imagefilm als Vorlesefassung mit Untertiteln',
+						})}
+						className="mt-4 h-auto w-full rounded-2xl bg-[#05244a] shadow-xl"
+					>
+						<source src={narratedVideoUrl} type="video/mp4" />
+						<track
+							src={narratedTrackUrl}
+							kind="captions"
+							srcLang="de"
+							label={translate({
+								id: 'custom.imagefilm-narrated-track-label',
+								message: 'Deutsch',
 							})}
-							className="absolute inset-0 h-full w-full rounded-2xl border-0"
-							loading="lazy"
-						></iframe>
-					) : (
-						<button
-							type="button"
-							onClick={startFilm}
-							className="group absolute inset-0 h-full w-full cursor-pointer p-0"
-						>
-							<img
-								src={posterUrl}
-								alt={translate({
-									id: 'custom.imagefilm-poster-alt',
-									message: 'Vorschaubild des Imagefilms: KoliBri – Die Elemente, die HTML fehlen.',
-								})}
-								className="absolute inset-0 h-full w-full rounded-2xl object-cover transition group-hover:scale-[1.02] group-focus-visible:scale-[1.02]"
-							/>
-							<span
-								aria-hidden="true"
-								className="absolute left-[calc(50%-2.5rem)] top-[calc(50%-2.5rem)] flex h-20 w-20 items-center justify-center rounded-full border-solid border-4 border-white/80 bg-[#02243c]/60 transition group-hover:bg-[#003a5c]/80 group-focus-visible:bg-[#003a5c]/80"
-							>
-								<span className="ml-1 border-solid border-y-[14px] border-l-[22px] border-y-transparent border-l-white"></span>
-							</span>
-							<span className="sr-only">
-								{translate({
-									id: 'custom.imagefilm-play',
-									message: 'Imagefilm abspielen',
-								})}
-							</span>
-					</button>
-				)}
+							default
+						/>
+						{translate({
+							id: 'custom.imagefilm-narrated-download',
+							message: 'Ihr Browser kann dieses Video nicht wiedergeben.',
+						})}{' '}
+						<a href={narratedVideoUrl}>
+							{translate({
+								id: 'custom.imagefilm-narrated-download-label',
+								message: 'Video herunterladen (MP4)',
+							})}
+						</a>
+					</video>
 				</div>
 			</div>
 		</section>
