@@ -125,6 +125,55 @@ The `_pagination` property activates automatic pagination and provides various c
 
 **Positioning:** With `_paginationPosition` the position of the pagination can be controlled (top, bottom, or both).
 
+### Special Columns: Action & State
+
+You can define specialcColumns to show actions (Button, Link) or states (Badge).
+
+<TableStatefulPreview
+	context="feature"
+	visibleProperties={[]}
+  initialProps={{
+    _headers: {
+      horizontal: [[
+        {
+          key: "name",
+          label: "Name",
+        },
+				{
+					type: 'state',
+					key: 'plantStates',
+					label: 'States',
+				},
+        {
+          type: "action",
+          key: "actions",
+          label: "Actions",
+					textAlign: 'right',
+          actions: (row) => {
+            return [
+              {
+                type: "button",
+                _label: "Edit",
+              },
+            ];
+          },
+        },
+      ]],
+    },
+  }}
+/>
+
+**Attention:** How the state is rendered is determined by your dataset. For the above sample this would be:
+```jsx
+plantStates: [
+	{
+		type: 'badge',
+		_label: 'OK',
+		_color: '#66aa88',
+	},
+],
+```
+
 ### Data and cell rendering
 
 The `_data` property contains the table rows. Cell content can be individually formatted via render functions:
