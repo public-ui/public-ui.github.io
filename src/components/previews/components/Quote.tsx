@@ -13,7 +13,6 @@ const QuotePreview: React.FC<PreviewDefaults<JSX.KolQuote>> = (props) => {
 			_label: translate({ id: 'preview.component.quote.label' }),
 			_href: translate({ id: 'preview.component.quote.href' }),
 			_quote: translate({ id: 'preview.component.quote.quote' }),
-			_variant: 'block',
 		}),
 		[]
 	);
@@ -25,7 +24,7 @@ const QuotePreview: React.FC<PreviewDefaults<JSX.KolQuote>> = (props) => {
 				_label: <KolInputText _label="Label" />,
 				_href: <KolInputText _label="Source URL" />,
 				_quote: <MultiLineTextProperty label="Quote" />,
-				_variant: <QuoteVariantProperty label="Variant" defaultValue="block" />,
+				_variant: <QuoteVariantProperty label="Variant" defaultValue="inline" />,
 			}}
 			componentName="KolQuote"
 			layout={PreviewLayout.CENTERED}
