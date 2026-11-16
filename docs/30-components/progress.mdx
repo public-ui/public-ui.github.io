@@ -8,106 +8,122 @@ import ProgressPreview from '@site/src/components/previews/components/Progress';
 
 # Progress
 
-**Synonyme:** Fortschrittsanzeige, Fortschrittsbalken
+**Synonyme:** Fortschrittsanzeige, Fortschrittsbalken, Ladebalken, Progress Bar, Progress Indicator
 
-**Beschreibung:** Die **Progress**-Komponente visualisiert den Fortschritt oder die Vollendung eines Prozesses oder einer Aufgabe. Sie ermöglicht es Nutzern, den aktuellen Status im Hin­blick auf ein definiertes Ziel zu verstehen.
+**Beschreibung:** Die **Progress**-Komponente visualisiert den Fortschritt oder die Vollendung eines Prozesses oder einer Aufgabe. Sie ermöglicht es Nutzern, den aktuellen Status im Hin­blick auf ein definiertes Ziel zu verstehen. Grundlage ist das native HTML-Element `progress`, das wahlweise als Balken oder als Kreis dargestellt wird.
+
+**Anwendungsfälle:**
+- **Datei-Uploads/Downloads**: Anzeige des Fortschritts beim Upload oder Download von Dateien.
+- **Form-Completion**: Visualisierung von Schritten in mehrstufigen Formularen oder Checklisten.
+- **Prozessfortschritt**: Anzeige von Ladebalken bei längerlaufenden Prozessen im Hintergrund.
+- **Ressourcennutzung**: Darstellung von Auslastung (z. B. Stromspeicher, Speicherplatz, CPU).
+- **Aufgabenvervollständigung**: Tracking von abgeschlossenen Aufgaben in einer Liste oder eines Gesamtziels.
 
 ## Beispiel
 
-Darstellung der Komponente mit horizontalem Fortschrittsbalken und Beschriftung.
+Darstellung der Komponente als horizontaler Fortschrittsbalken mit Beschriftung.
 
-<ProgressPreview context="example" initialProps={{ _label: 'Fortschritt', _value: 65, _max: 100, _variant: 'bar' }} />
+<ProgressPreview context="example" initialProps={{ _label: 'Fortschritt', _value: 65, _max: 100 }} />
 
 ## Barrierefreiheit
 
-Die **Progress**-Komponente wurde mit Fokus auf Barrierefreiheit entwickelt:
+- Screenreader erkennen die Komponente als Fortschrittsanzeige und lesen den aktuellen Fortschritt im Verhältnis zu `_max` vor. Die sichtbare Beschriftung, Zahl und Grafik werden nicht zusätzlich vorgelesen.
+- Ändert sich der Wert, sagen Screenreader den neuen Stand automatisch an, ohne die laufende Ausgabe zu unterbrechen. Die Ansage erfolgt höchstens einmal alle fünf Sekunden und enthält den Wert mit Einheit – bei der Standardeinheit `%` den gerundeten Prozentwert (z. B. „65 %“), sonst den Wert im Verhältnis zum Maximum (z. B. „8 von 12 Aufgaben“).
+- Die Komponente ist nicht interaktiv und daher nicht per Tastatur fokussierbar.
 
-- **Semantische Struktur**: Die Komponente verwendet das ARIA-Attribut `role="progressbar"` zur korrekten Kennzeichnung gegenüber assistiven Technologien.
-- **Beschriftung**: Das Attribut `_label` wird als `aria-label` oder label-ähnlich dargestellt und informiert Nutzer assistiver Technologien über den Zweck des Fortschrittsbalkens.
-- **Werte**: Die aktuellen und maximalen Werte werden über `aria-valuenow` und `aria-valuemax` kommuniziert.
-- **Transparenz**: Der Fortschritt wird immer prozentual berechnet und visuell dargestellt, um Transparenz zu gewährleisten.
+### Konkrete Designentscheidungen
+
+| Entscheidung                                                          | Begründung                                                                                 |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Werte außerhalb von `0` bis `_max` werden auf die nächste Grenze gesetzt | Dies ist intentional, um die Integrität der Visualisierung zu bewahren.                    |
 
 ### Links und Referenzen
 
 - <kol-link _href="https://www.w3.org/WAI/ARIA/apg/patterns/progressbar/" _target="_blank" _label="ARIA Authoring Practices Guide - Progress Bar"></kol-link>
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/progressbar_role" _target="_blank" _label="MDN Web Docs - progressbar role"></kol-link>
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress" _target="_blank" _label="MDN Web Docs - progress Element"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element" _target="_blank" _label="HTML Living Standard: The progress element"></kol-link>
 
-## Verwendung
+## FAQ
 
-### Best Practices / Empfehlungen
+**Was passiert mit Werten außerhalb des Bereichs von `0` bis `_max`?**  
+Sie werden nicht über `_max` hinaus dargestellt: Werte größer als `_max` werden auf `_max` begrenzt, negative Werte auf `0`. Validieren Sie Eingabewerte trotzdem bereits vor der Übergabe an die Komponente.
 
-- **Aussagekräftige Beschriftungen**: Verwenden Sie bei `_label` klare Beschreibungen, die vermitteln, welche Aufgabe oder welcher Prozess gerade lädt (z.B. „Datei wird hochgeladen" statt genau „Upload").
-- **Realistische Wertespannen**: Wählen Sie `_max` basierend auf der tatsächlichen Aufgabe. For example, für eine Aufgabe mit 12 Schritten können Sie `_max="12"` nutzen, statt auf 100 zu normalisieren.
-- **Visuelle Klarheit**: Nutzen Sie `_variant="bar"` für horizontale Kontexte und `_variant="cycle"` für kompakte Darstellungen.
-- **Unit-Informationen klar machen**: Wenn `_unit` gesetzt ist, wird dieses intern verarbeitet, aber kommunizieren Sie klar, was die Einheit bedeutet (z.B. über `_label`).
-- **Werte begrenzen**: Werte außerhalb des Bereichs `[0, max]` werden automatisch begrenzt. Validieren Sie Eingabewerte bereits vor Übergabe an die Komponente.
-- **Variantenauswahl**: Nutzen Sie `_variant="bar"` für längere Prozesse und `_variant="cycle"` für schnelle oder räumlich begrenzte Vorgänge.
+**Welchen Wert sollte ich für `_max` wählen?**  
+Wählen Sie `_max` basierend auf der tatsächlichen Aufgabe. Zum Beispiel können Sie für eine Aufgabe mit 12 Schritten `_max="12"` nutzen, statt auf 100 zu normalisieren. `_max` muss größer als `0` sein.
 
-### Anwendungsfälle
+**Welche Variante sollte ich wählen?**  
+Nutzen Sie `_variant="bar"` für horizontale Kontexte und längere Prozesse, `_variant="cycle"` für kompakte Darstellungen und schnelle oder räumlich begrenzte Vorgänge.
 
-- **Datei-Uploads/Downloads**: Anzeige des Fortschritts beim Upload oder Download von Dateien.
-- **Form-Completion**: Visualisierung von Schritten in mehrstufigen Formularen oder Checklisten.
-- **Prozessfortschritt**: Anzeige von Ladebalken bei längerlaufenden Prozessen im Hintergrund.
-- **Ressourcennutzung**: Darstellung von Auslastung (z.B. Stromspeicher, Speicherplatz, CPU).
-- **Aufgabenvervollständigung**: Tracking von abgeschlossenen Aufgaben in einer Liste oder eines Gesamtziels.
+**Wie formuliere ich eine gute Beschriftung?**  
+Verwenden Sie bei `_label` klare Beschreibungen, die vermitteln, welche Aufgabe oder welcher Prozess gerade lädt (z. B. „Datei wird hochgeladen“ statt nur „Upload“).
 
-### FAQ
+**Wird `_unit` angezeigt?**  
+Ja. Die Einheit wird neben dem Wert angezeigt und in der Ansage für Screenreader mitgelesen (siehe [Einheit und Wertanzeige](#einheit-und-wertanzeige)). Wählen Sie eine Einheit, die ohne weiteren Kontext verständlich ist, oder machen Sie ihre Bedeutung über `_label` klar.
 
-**Kann ich Zwischenwerte anzeigen, die über `_max` hinausgehen?**  
-Ja, der Wert wird automatisch auf `_max` begrenzt dargestellt. Dies ist intentional, um die Integrität der Visualisierung zu bewahren.
-
-**Wird `_unit` irgendwo angezeigt?**  
-Nein, `_unit` wird nicht visuell dargestellt, aber kann über `_label` vermittelt werden.
-
-**Kann ich Dezimalzahlen als `-_value` oder `_max` verwenden?**  
-Ja, die Progress-Komponente verarbeitet auch Dezimalzahlen, beispielsweise `_value="5.5"` bei `_max="10"`.
-
-## Playground
-
-<ProgressPreview context="playground" />
+**Kann ich Dezimalzahlen als `_value` oder `_max` verwenden?**  
+Ja, die Progress-Komponente verarbeitet auch Dezimalzahlen, beispielsweise `_value="5.5"` bei `_max="10"`. Mit der Standardeinheit `%` wird der Prozentwert auf eine ganze Zahl gerundet angezeigt.
 
 ## Funktionalitäten
 
-### Horizontaler Fortschrittsbalken
+### Fortschrittsbalken
 
-Der horizontale Balken ist die Standard-Variante und eignet sich für die Darstellung in größeren Kontexten.
-
-<ProgressPreview
-	context="feature"
-	visibleProperties={['_label', '_value', '_max', '_variant']}
-	initialProps={{ _label: 'Progress', _value: 45, _max: 100, _variant: 'bar' }}
-/>
-
-### Zirkulärer Fortschrittsbalken
-
-Die zirkuläre Variante ist kompakt und eignet sich für kleine Bereiche oder als Indikator für schnelle Prozesse.
-
-<ProgressPreview
-	context="feature"
-	visibleProperties={['_label', '_value', '_max', '_variant']}
-	initialProps={{ _label: 'Cycle', _value: 65, _max: 100, _variant: 'cycle' }}
-/>
-
-### Beschriftung und Unit
-
-Mit `_label` können Sie den Fortschritt beschreiben, `_unit` kann intern zur Berechnung verwendet werden.
-
-<ProgressPreview
-	context="feature"
-	visibleProperties={['_label', '_value', '_max', '_unit']}
-	initialProps={{ _label: 'Download-Speed', _value: 250, _max: 500, _unit: 'MB' }}
-/>
-
-### Aufgabenverfolgung
-
-Anwendungsbeispiel: Verfolgung von abgeschlossenen Aufgaben aus einer Liste.
+Der horizontale Balken ist die Standard-Variante und eignet sich für die Darstellung in größeren Kontexten. Zusätzlich zur Grafik werden der aktuelle Wert und die Einheit als Text angezeigt.
 
 <ProgressPreview
 	context="feature"
 	visibleProperties={['_label', '_value', '_max']}
+	initialProps={{ _label: 'Fortschritt', _value: 45, _max: 100 }}
+/>
+
+### Kreisdarstellung
+
+Mit `_variant="cycle"` wird der Fortschritt als Kreis dargestellt, ebenfalls mit Beschriftung, Wert und Einheit als Text. Die Variante ist kompakt und eignet sich für kleine Bereiche oder als Indikator für schnelle Prozesse.
+
+<ProgressPreview
+	context="feature"
+	visibleProperties={['_variant', '_value']}
+	initialProps={{ _label: 'Fortschritt', _value: 65, _max: 100, _variant: 'cycle' }}
+/>
+
+### Beschriftung
+
+Mit `_label` beschreiben Sie, welcher Prozess dargestellt wird. Die Beschriftung wird bei beiden Varianten sichtbar angezeigt.
+
+**Hinweis:** Bis einschließlich KoliBri 4.5.0 wird die Beschriftung Screenreadern nicht als Name der Fortschrittsanzeige übermittelt. Sie hören nur „Fortschrittsanzeige“ mit dem Wert, ohne zu erfahren, welcher Prozess gemeint ist. Der Fehler ist ab KoliBri 4.6.0 behoben, Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/11350" _target="_blank" _label="GitHub Issue #11350"></kol-link>.
+
+<ProgressPreview
+	context="feature"
+	visibleProperties={['_label']}
+	initialProps={{ _label: 'Datei wird hochgeladen', _value: 30, _max: 100 }}
+/>
+
+### Einheit und Wertanzeige
+
+`_unit` legt die Einheit des Werts fest (Standard: `%`).
+
+- Mit `%` wird der Wert als gerundeter Prozentanteil von `_max` angezeigt und angesagt – `_value` 250 bei `_max` 500 erscheint als „50 %“.
+- Mit jeder anderen Einheit wird `_value` unverändert mit der Einheit angezeigt (z. B. „250 MB“). Screenreader hören zusätzlich das Maximum („250 von 500 MB“).
+
+<ProgressPreview
+	context="feature"
+	visibleProperties={['_value', '_max', '_unit']}
+	initialProps={{ _label: 'Download', _value: 250, _max: 500, _unit: 'MB' }}
+/>
+
+### Wertebereich
+
+`_value` und `_max` legen den Fortschritt fest; der Bereich beginnt immer bei `0`. Werte außerhalb des Bereichs werden auf `0` bzw. `_max` begrenzt. Das Beispiel zeigt 8 von 12 erledigten Aufgaben, die mit der Standardeinheit als 67 % dargestellt werden.
+
+<ProgressPreview
+	context="feature"
+	visibleProperties={['_value', '_max']}
 	initialProps={{ _label: 'Aufgaben erledigt', _value: 8, _max: 12 }}
 />
+
+## Playground
+
+<ProgressPreview context="playground" />
 
 ## API
 
