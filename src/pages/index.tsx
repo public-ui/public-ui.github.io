@@ -231,6 +231,14 @@ const ImagefilmSection: FunctionComponent = () => {
 							})}
 						</a>
 					</video>
+					<p className="m-0 mt-3 text-sm">
+						<a href={narratedTrackUrl}>
+							{translate({
+								id: 'custom.imagefilm-narrated-captions-download',
+								message: 'Untertiteldatei herunterladen (WebVTT)',
+							})}
+						</a>
+					</p>
 				</div>
 			</div>
 		</section>
