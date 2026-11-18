@@ -118,7 +118,6 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props) => {
 										_label={translate({
 											id: 'feedback.header',
 										})}
-										_level={2}
 									>
 										<p className="p popover-paragraph">
 											{translate({
