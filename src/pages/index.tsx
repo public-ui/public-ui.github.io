@@ -132,7 +132,6 @@ const HomepageHeader: FunctionComponent = () => (
 					id: 'custom.subtitle',
 				})}
 			</p>
-			<HomepageButtons />
 		</div>
 	</header>
 );
@@ -142,7 +141,7 @@ const HomepageButtons: FunctionComponent = () => {
 	const firstStepsHref = useBaseUrl('/docs/get-started/first-steps');
 
 	return (
-		<div className="mt-4 grid gap-4 justify-center sm:flex">
+		<div className="grid gap-4 justify-center sm:flex">
 			<KolLinkButton
 				className="w-72"
 				_icons={{
@@ -184,7 +183,8 @@ const ImagefilmSection: FunctionComponent = () => {
 
 	return (
 		<section className="bg-white text-[#1f2937]">
-			<div className="mx-auto max-w-6xl px-6 py-12 grid justify-items-center gap-8 md:py-16">
+			<div className="mx-auto max-w-6xl px-6 pb-12 pt-8 grid justify-items-center gap-8 md:pb-16">
+				<HomepageButtons />
 				<div className="imagefilm-frame relative aspect-video w-full max-w-4xl overflow-visible rounded-2xl bg-[#05244a] shadow-xl">
 					{filmSrc ? (
 						<iframe
@@ -222,8 +222,8 @@ const ImagefilmSection: FunctionComponent = () => {
 									message: 'Imagefilm abspielen',
 								})}
 							</span>
-					</button>
-				)}
+						</button>
+					)}
 				</div>
 			</div>
 		</section>
