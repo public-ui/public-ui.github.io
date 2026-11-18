@@ -104,8 +104,15 @@ export default function HomepageFeatures(): ReactElement {
 	];
 
 	return (
-		<section className="bg-white px-6 pb-16 pt-2 md:pb-24">
+		<section className="bg-white px-6 pb-16 pt-2 md:pb-24" aria-labelledby="homepage-features-heading">
 			<div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3">
+				{/* Sichtbar ausgeblendete Sektionsüberschrift: benennt die Region und hält die Überschriften-Hierarchie h1 → h2 → h3 intakt. */}
+				<Heading as="h2" id="homepage-features-heading" className="sr-only m-0">
+					{translate({
+						id: 'custom.features-heading',
+						message: 'KoliBri im Überblick',
+					})}
+				</Heading>
 				{FeatureList.map((props, idx) => (
 					<Feature key={idx} {...props} />
 				))}

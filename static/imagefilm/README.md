@@ -16,6 +16,9 @@ Kopf führt auf den Gewinnertext bei egovernment.de, die Zeile „Das Imagevideo
 - Die Verweise auf `assets/logo-weiss.png` und `assets/osw-mark.png` wurden auf
   `/imagefilm/assets/…` absolut gesetzt, damit die Bilder auch unter `/imagefilm`
   (ohne abschließenden Slash, siehe `trailingSlash: false`) geladen werden.
+- Das Sprachattribut `lang="C"` (ungültiger BCP-47-Code, Marp-Export-Default)
+  wurde an `<html>` und allen `<section>`-Elementen durch `lang="de"` ersetzt
+  (WCAG 3.1.1/3.1.2).
 - Das Auto-Advance-Skript (`<script data-imv-player>`) wurde entfernt. Es baut
   auch den Fortschrittsbalken, deshalb ist der mit entfernt. Die Präsentation
   ist eine reine Durchklick-Fassung: Prev/Next-Buttons der Marp-Leiste,
@@ -30,5 +33,6 @@ sowie hier in der Kopie.
 
 Bei einer Aktualisierung: neues `slides.html` kopieren, die Bildpfade erneut
 absolut setzen, das Auto-Advance-Skript entfernen, Titel/Meta-Beschreibung
-erneut setzen und fehlende Dateien aus `assets/` nach `assets/` kopieren
-(zurzeit `logo-weiss.png` und `osw-mark.png`).
+erneut setzen, `lang="C"` erneut durch `lang="de"` ersetzen und fehlende Dateien
+aus `assets/` nach `assets/` kopieren (zurzeit `logo-weiss.png` und
+`osw-mark.png`).
