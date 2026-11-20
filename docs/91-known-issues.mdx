@@ -45,17 +45,8 @@ In Firefox funktioniert die Textauswahl bei der Verwendung von Web Components ni
 Die Komponente InputColor ist ein Wrapper für das native HTML-Element `<input type="color">`, das Zugänglichkeitsprobleme aufweist:
 
 - Mit NVDA wird das Element als "klickbar" und nicht als Eingabefeld angekündigt.
-- Es ist nicht möglich, mit einem Screenreader eine Farbe auszuwählen.
 - **9.1.3.1h Programmgesteuerte Erkennbarkeit der Beschriftung von Formularelementen:**
 Das Label wird vom Screenreader nicht angekündigt. Da linear gelesen wird, ist bei Verwendung von `hideLabel` kein Label wahrnehmbar.
-- **9.1.3.2 Sinnvolle Reihenfolge:**
-Beim Öffnen der Farbauswahl für "Farbe mit Fehler" erfolgt keine Ausgabe. Sie ist nicht über die Tab-Taste, sondern nur mit den Pfeiltasten erreichbar, was für Screenreader-Nutzer sehr verwirrend ist.
-- **9.2.4.3 Logische Tastaturnavigationsreihenfolge:**
-Die Fokusreihenfolge für "Farbe mit Fehler" ist sehr ungewöhnlich. Nutzer erkennen nicht, dass sie die Pfeiltasten verwenden müssen. Dies ist besonders problematisch, da es auf Schwarz nicht sichtbar ist.
-- **9.2.4.7 Deutlich sichtbare Fokusposition:**
-Der Fokus ist auf dem schwarzen Farbsymbol bei "Farbe mit Fehler" nicht sichtbar.
-
-Für vollständige Barrierefreiheit sollten vordefinierte Farblisten, z. B. mit KolSelect oder KolCheckbox, verwendet werden.
 
 [🐞 GitHub Issue #5549](https://github.com/public-ui/kolibri/issues/5549),
 [🐞 GitHub Issue #7455](https://github.com/public-ui/kolibri/pull/7455)

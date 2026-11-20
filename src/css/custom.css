@@ -303,3 +303,90 @@ kol-link-button {
 :root:has(.kolibri-navbar-wrapper > .version-hint) {
 	--kol-version-hint-height: 3rem;
 }
+
+/*
+ * BF-Web-Test: Fokusindikator (#318)
+ * Zweilagiger Ring: der dunkle Ring trägt auf hellem Grund, der weiße Saum
+ * auf dunklem Grund — eine der beiden Ebenen erfüllt immer >= 3:1 (WCAG 1.4.11).
+ * Dokument-Selektoren reichen nicht in Shadow-DOM-Bäume, der KoliBri-Ring bleibt unberührt.
+ */
+:focus-visible {
+	outline: 3px solid #003a5c;
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px #fff;
+}
+
+/*
+ * BF-Web-Test: Platzhalter-Kontrast (#319)
+ * Der Platzhalter steht auf grauem Feld (#ebedf0) und braucht >= 4,5:1;
+ * #767676 läge dort nur bei 3,4:1, daher #595959 (>= 6:1).
+ */
+.navbar__search-input::placeholder {
+	color: #595959;
+}
+
+/*
+ * BF-Web-Test: Überschriften-Anker dauerhaft sichtbar (#320)
+ * Der Anker ist für Tastaturnutzende nur deutbar, wenn der Hashtag steht; grau als
+ * unauffälliger Grundton (Hover-/Fokusfarbe liefert der Kern bereits). Der verdoppelte
+ * Klassenselektor schlägt die spätere Kern-Regel ".hash-link { opacity: 0 }".
+ */
+.hash-link.hash-link {
+	opacity: 1;
+	color: #595959;
+}
+
+/*
+ * BF-Web-Test: unsichtbarer Such-Expand-Knopf (#316)
+ * Das Plugin rendert einen leeren, tabbable Span ("expand searchbar"); seine
+ * Desktop-Ausblendung (styles.css) lädt das Plugin selbst nie. Ohne diese Regel
+ * bleibt der Span auf Desktop-Viewports Teil der Tab-Reihenfolge.
+ */
+.search-icon {
+	display: none;
+}
+
+@media (max-width: 360px) {
+	.search-icon {
+		display: inline;
+	}
+}
+
+/*
+ * BF-Web-Test: Fokushervorhebung der Suchtreffer (#316)
+ * Der Markierungs-Ring braucht >= 3:1 gegen die graue Trefferfläche; die türkise
+ * Variante der Plugin-Regel erreicht das nicht. Der Treffer-Container liegt im
+ * selben Bundle nach custom.css, daher eine Spezifität über die Plugin-Regel hinaus.
+ */
+.algolia-autocomplete .ds-cursor .algolia-docsearch-suggestion .algolia-docsearch-suggestion--wrapper {
+	background: #f1f1f1;
+	box-shadow: inset 0 0 0 2px #003a5c;
+}
+
+/* Im Dark Mode erzwingt das Plugin die Hintergrundfarbe; der Markierungs-Ring wird hell geführt. */
+html[data-theme='dark'] .algolia-autocomplete .ds-cursor .algolia-docsearch-suggestion .algolia-docsearch-suggestion--wrapper {
+	box-shadow: inset 0 0 0 2px #fff;
+}
+
+/*
+ * BF-Web-Test: Suchtrefferliste scrollfähig auf allen Viewports (#323)
+ * Das Plugin setzt max-height im Desktop-Zweig nach; dieser Selektor
+ * (das Autocomplete-Panel hängt im navbar-Suchcontainer) bleibt spezifischer.
+ */
+.navbar__search .algolia-autocomplete .ds-dropdown-menu {
+	max-height: min(70vh, 30rem);
+	overflow-y: auto;
+}
+
+/*
+ * BF-Web-Test: Header-Klebung auf kleinen Viewports freigeben (#323)
+ * Bei 400 % Vergrößerung (~320 CSS px) und im Smartphone-Querformat (~393 px Höhe)
+ * belegt der mehrzeilige Header einen großen Teil des Viewports. Doppelt spezifisch
+ * gegen die Tailwind-Utility-Klassen sticky/z-50 am Element.
+ */
+@media (max-width: 600px), (max-height: 500px) {
+	.kolibri-navbar-wrapper.sticky {
+		position: static;
+		z-index: auto;
+	}
+}
