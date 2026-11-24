@@ -154,6 +154,14 @@ Das `<select>`-Element und seine `<option>`-Tags bieten nur eingeschränkte Styl
 
 Die Verwendung von `aria-label` oder `aria-labelledby` auf `<kol-icon>` oder dessen verschachtelten Elementen funktioniert in Firefox nicht zuverlässig. Selbst das direkte Anwenden dieser Attribute auf `<kol-icon>` hat keine Wirkung, was auf ein browser-spezifisches Problem mit ARIA-Unterstützung bei Custom Elements oder Shadow DOM hinweist.
 
+### kol-tabs
+
+#### NVDA liest neu fokussierte Tabs doppel vor
+
+Beim fokussieren der Reiter-Elemente durch Tab, gibt NVDA das neu fokussierte Element doppel aus.
+
+[🐞 NVDA Issue #21166](https://github.com/nvaccess/nvda/issues/21166)
+
 ##### Wichtige Punkte
 
 - Das Problem liegt in der Handhabung von ARIA-Attributen bei benutzerdefinierten Webkomponenten oder tief verschachtelten Elementen in Firefox.
