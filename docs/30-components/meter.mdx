@@ -8,10 +8,18 @@ import MeterPreview from '@site/src/components/previews/components/Meter';
 
 # Meter
 
-**Synonyme:** Messwertanzeige, Gauge, Messgerät
+**Synonyme:** Messwertanzeige, Füllstandsanzeige, Messgerät, Gauge, Meter
 
 **Beschreibung:** Die **Meter**-Komponente visualisiert einen numerischen Messwert innerhalb eines definierten
-Wertebereichs. Sie unterstützt die Einordnung des Werts über optionale Schwellen und einen Optimalwert.
+Wertebereichs. Sie unterstützt die Einordnung des Werts über optionale Schwellen und einen Optimalwert. Grundlage ist das
+native HTML-Element `meter`, ergänzt um eine sichtbare Beschriftung, die Anzeige von Wert und Einheit sowie eine
+textuelle Zustandsangabe.
+
+**Anwendungsfälle:**
+- Systemauslastung (z. B. CPU, RAM, Speicher)
+- Batteriestand oder Füllstände
+- Messwerte mit Grenzbereichen (z. B. Temperatur, Luftfeuchte)
+- Qualitäts- oder Gesundheitsindikatoren mit Optimalbereich
 
 ## Beispiel
 
@@ -24,43 +32,42 @@ Das Beispiel zeigt eine Meter-Anzeige mit definiertem Wertebereich, Schwellenwer
 
 ## Barrierefreiheit
 
-- **Label-Pflicht:** Jede Meter-Komponente benötigt `_label`, damit der Messwert korrekt zugeordnet werden kann.
-- **Semantische Ausgabe:** Ein semantisches `<meter>`-Element stellt die Informationen auch für assistive Technologien bereit.
-- **Wertänderungen:** Änderungen des Messwerts können von assistiven Technologien erkannt und vorgelesen werden.
-- **Nicht interaktiv:** Die Komponente dient der Darstellung und bietet keine eigene Eingabeinteraktion.
+- **Label-Pflicht:** Jede Meter-Komponente benötigt `_label`. Die Beschriftung wird sichtbar über der Anzeige ausgegeben und von Screenreadern als Name der Messanzeige angesagt.
+- **Zustand nicht nur über Farbe:** Sind Schwellenwerte (`_low`/`_high`) gesetzt, wird der Zustand („Optimal“, „Suboptimal“, „Kritisch“) zusätzlich als Text neben der Beschriftung angezeigt und von Screenreadern mit dem Wert angesagt.
+- **Nicht interaktiv:** Die Komponente dient der Darstellung und bietet keine eigene Eingabeinteraktion; sie ist nicht per Tastatur fokussierbar.
+
+### Konkrete Designentscheidungen
+
+| Entscheidung | Begründung |
+| ------------ | ---------- |
+| Verwendung des nativen `meter`-Elements | Ein Ansatz, bei dem ein eigenes Element die Rolle der Messanzeige übernahm und das native Element vor assistiven Technologien verborgen war, wurde verworfen, um die native Semantik des `meter`-Elements zu erhalten. |
+| Screenreader-Ansage mit Wert, Maximum und Einheit | Screenreader rechnen den Wert des nativen `meter`-Elements unabhängig von der tatsächlichen Einheit in einen Prozentwert um (z. B. „50 Prozent“ statt „21 von 42 kg“). KoliBri gibt deshalb einen eigenen Ansagetext mit Einheit vor: Wert, Maximum und Einheit (z. B. „512 von 1024 MB“), bei der Einheit `%` den Prozentwert (z. B. „65 %“), jeweils ergänzt um den Zustand, sofern Schwellenwerte gesetzt sind. |
+| Keine automatische Ansage bei Wertänderungen | Meter ist eine Messanzeige und kein Fortschrittsindikator. Screenreader geben den aktuellen Wert aus, sobald Nutzende die Anzeige ansteuern; eine Ansage bei jeder Wertänderung ist nicht vorgesehen. |
 
 ### Links und Referenzen
 
 - <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/meter" _target="_blank" _label="MDN Web Docs - meter-Element"></kol-link>
+- <kol-link _href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element" _target="_blank" _label="HTML Living Standard - The meter element"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html" _target="_blank" _label="WCAG 2.2 - Use of Color"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" _target="_blank" _label="WCAG 2.1 - Labels or Instructions"></kol-link>
 - <kol-link _href="https://www.w3.org/WAI/WCAG22/quickref/" _target="_blank" _label="WCAG 2.2 Quick Reference"></kol-link>
 
-## Verwendung
+## FAQ
 
-### Best Practices / Empfehlungen
+**Wofür sollte ich Meter nicht verwenden?**  
+Nutzen Sie Meter für Status- und Messanzeigen. Für editierbare Eingaben ist eine Input-Komponente geeignet. Um den Fortschritt eines Vorgangs anzuzeigen, verwenden Sie die <kol-link _href="./progress" _label="Progress"></kol-link>-Komponente.
 
-- Verwenden Sie ein präzises `_label`, das den Messkontext beschreibt (z. B. Auslastung, Füllstand, Temperatur).
-- Setzen Sie `_min` und `_max` fachlich korrekt, damit die Einordnung des Werts nachvollziehbar ist.
-- Nutzen Sie `_low`, `_high` und `_optimum`, um den Messwert in sinnvolle Bereiche einzuordnen.
-- Geben Sie mit `_unit` eine eindeutige Einheit an, wenn der Wert ohne Einheit missverständlich wäre.
-- Nutzen Sie `Meter` für Status- und Messanzeigen. Für editierbare Eingaben ist eine Input-Komponente geeignet.
+**Wie beschrifte ich die Anzeige verständlich?**  
+Verwenden Sie ein präzises `_label`, das den Messkontext beschreibt (z. B. Auslastung, Füllstand, Temperatur). Geben Sie mit `_unit` eine eindeutige Einheit an, wenn der Wert ohne Einheit missverständlich wäre. Ohne `_unit` wird `%` verwendet und der Wert als Prozentanteil des Wertebereichs angezeigt (siehe [Wertebereich und Einheit](#wertebereich-und-einheit)).
 
-### Anwendungsfälle
-
-- Systemauslastung (z. B. CPU, RAM, Speicher)
-- Batteriestand oder Füllstände
-- Messwerte mit Grenzbereichen (z. B. Temperatur, Luftfeuchte)
-- Qualitäts- oder Gesundheitsindikatoren mit Optimalbereich
-
-## Playground
-
-<MeterPreview context="playground" />
+**Wie lege ich Wertebereich und Schwellen fest?**  
+Setzen Sie `_min` und `_max` fachlich korrekt, damit die Einordnung des Werts nachvollziehbar ist. Wie beim nativen Element gelten ohne Angabe `_min = 0` und `_max = 1`. Nutzen Sie `_low`, `_high` und `_optimum`, um den Messwert in sinnvolle Bereiche einzuordnen (siehe [Meter mit Zustandsbereichen](#meter-mit-zustandsbereichen)).
 
 ## Funktionalitäten
 
-### Grundlegende Meter mit Wertbereich
+### Wertebereich und Einheit
 
-Einfache Meter-Anzeige mit Minimum, Maximum, aktuellem Wert und Einheit.
+Einfache Meter-Anzeige mit Minimum, Maximum, aktuellem Wert und Einheit. Der Wert wird auf den Bereich zwischen `_min` und `_max` begrenzt. Die Einheit aus `_unit` wird neben dem Wert angezeigt; Standard ist `%`. Bei der Einheit `%` wird statt des Rohwerts sein gerundeter Prozentanteil am Wertebereich angezeigt – ein Wert von 512 bei `_max: 1024` erscheint dann als „50 %“.
 
 <MeterPreview
 	context="feature"
@@ -75,7 +82,11 @@ Mit `_low`, `_high` und `_optimum` lassen sich Messbereiche semantisch einordnen
 - `_min` bis `_low`: niedriger Bereich
 - `_low` bis `_high`: mittlerer Bereich
 - `_high` bis `_max`: hoher Bereich
-- `_optimum` definiert den optimalen Zielbereich
+- `_optimum` legt fest, welcher dieser Bereiche optimal ist: Liegt `_optimum` im niedrigen oder hohen Bereich, ist dieser optimal, der mittlere Bereich suboptimal und der gegenüberliegende Bereich kritisch. Liegt `_optimum` im mittleren Bereich, ist dieser optimal und die beiden äußeren Bereiche sind suboptimal.
+
+Sobald `_low` oder `_high` gesetzt ist, zeigt die Komponente den Zustand des aktuellen Werts („Optimal“, „Suboptimal“, „Kritisch“) zusätzlich als Text neben der Beschriftung an und gibt ihn auch an Screenreader aus.
+
+**Hinweis:** Ist `_optimum` nicht gesetzt, kann der angezeigte und angesagte Zustand derzeit von der Farbe des Balkens abweichen: KoliBri wertet dann den mittleren Bereich als optimal, der Browser legt das Optimum dagegen in die Mitte zwischen `_min` und `_max`. Beispiel: `_low: 60`, `_value: 80`, `_max: 100` wird als „Optimal“ ausgegeben, aber gelb (suboptimal) dargestellt. Setzen Sie `_optimum` daher zusammen mit den Schwellenwerten. Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/11523" _target="_blank" _label="GitHub Issue #11523 (Punkt 13)"></kol-link>.
 
 <MeterPreview
 	context="feature"
@@ -87,11 +98,17 @@ Mit `_low`, `_high` und `_optimum` lassen sich Messbereiche semantisch einordnen
 
 Die Ausrichtung kann über `_orientation` zwischen horizontal und vertikal umgeschaltet werden.
 
+**Hinweis:** Im Hochkontrastmodus von Windows gehen bei der vertikalen Ausrichtung derzeit die Zustandsfarben verloren; Wert und – bei gesetzten Schwellenwerten – Zustand bleiben als Text erhalten. Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10214" _target="_blank" _label="GitHub Issue #10214"></kol-link>.
+
 <MeterPreview
 	context="feature"
 	visibleProperties={['_label', '_value', '_min', '_max', '_orientation']}
 	initialProps={{ _label: 'Flüssigkeitsstand', _min: 0, _max: 1000, _value: 650, _orientation: 'vertical', _unit: 'l' }}
 />
+
+## Playground
+
+<MeterPreview context="playground" />
 
 ## API
 
