@@ -121,6 +121,55 @@ Siehe <kol-link _href="../pagination" _label="Pagination-Komponente"></kol-link>
 
 **Positionierung:** Mit `_paginationPosition` kann die Position der Pagination gesteuert werden (oben, unten, oder beides).
 
+### Spezialspalten: Action & State
+
+Es können Spezialspalten definiert werden um Actions (Button, Link) oder State (Badge) anzuzeigen.
+
+<TableStatefulPreview
+	context="feature"
+	visibleProperties={[]}
+  initialProps={{
+    _headers: {
+      horizontal: [[
+        {
+          key: "name",
+          label: "Name",
+        },
+				{
+					type: 'state',
+					key: 'plantStates',
+					label: 'States',
+				},
+        {
+          type: "action",
+          key: "actions",
+          label: "Actions",
+					textAlign: 'right',
+          actions: (row) => {
+            return [
+              {
+                type: "button",
+                _label: "Edit",
+              },
+            ];
+          },
+        },
+      ]],
+    },
+  }}
+/>
+
+**Hinweis:** Die Art des States wird im Data Object für jeden Datensatz definiert. Im gezeigten Beispiel entspricht das:
+```jsx
+plantStates: [
+	{
+		type: 'badge',
+		_label: 'OK',
+		_color: '#66aa88',
+	},
+],
+```
+
 ### Daten und Zellendarstellung
 
 Die `_data` Eigenschaft enthält die Tabellenzeilen. Zellinhalte können über Render-Funktionen individuell formatiert werden:

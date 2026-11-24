@@ -1,7 +1,14 @@
 import React from 'react';
 import Preview, { PreviewLayout } from '../Preview';
 import type { JSX } from '@public-ui/components';
-import { KolHeading, KolInputCheckbox, KolInputText, KolSelect, KolTableStateful, KolTextarea } from '@public-ui/react-v19';
+import {
+	KolHeading,
+	KolInputCheckbox,
+	KolInputText,
+	KolSelect,
+	KolTableStateful,
+	KolTextarea,
+} from '@public-ui/react-v19';
 import { translate } from '@docusaurus/Translate';
 import TableColumnsProperty from '../properties/TableColumnsProperty';
 import TableSelectionProperty from '../properties/TableSelectionProperty';
@@ -25,6 +32,13 @@ const TableStatefulPreview: React.FC<PreviewDefaults<JSX.KolTableStateful>> = (p
 				family: 'Rosaceae',
 				type: translate({ id: 'preview.component.table-stateful.type.shrub' }),
 				origin: translate({ id: 'preview.component.table-stateful.origin.europe' }),
+				plantStates: [
+					{
+						type: 'badge',
+						_label: 'OK',
+						_color: '#66aa88',
+					},
+				],
 			},
 			{
 				id: 2,
@@ -32,6 +46,13 @@ const TableStatefulPreview: React.FC<PreviewDefaults<JSX.KolTableStateful>> = (p
 				family: 'Lamiaceae',
 				type: translate({ id: 'preview.component.table-stateful.type.shrub' }),
 				origin: translate({ id: 'preview.component.table-stateful.origin.europe' }),
+				plantStates: [
+					{
+						type: 'badge',
+						_label: 'NOK',
+						_color: '#aa0000',
+					},
+				],
 			},
 			{
 				id: 3,
