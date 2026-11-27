@@ -135,6 +135,8 @@ Mit `_hideLabel` wird nur das Icon angezeigt, die Beschriftung wird als Tooltip 
 
 Der Tooltip erscheint nach kurzer Verzögerung, sobald der LinkButton mit der Maus berührt oder per Tastatur fokussiert wird. Er bleibt sichtbar, solange sich der Mauszeiger über dem LinkButton oder dem Tooltip befindet, und lässt sich mit `Escape` schließen. Nach einem Klick wird er ausgeblendet, bis der LinkButton verlassen und erneut angesteuert wird. Mit `_tooltipAlign` legen Sie die bevorzugte Position fest (`top`, `right` (Standard), `bottom`, `left`); reicht der Platz nicht aus, weicht der Tooltip auf eine andere Seite aus.
 
+**Hinweis:** Ein LinkButton, der nur ein Icon zeigt, ist derzeit schmaler als 44 px und unterschreitet damit in der Breite die Zielgröße nach WCAG 2.5.5. Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/11719" _target="_blank" _label="GitHub Issue #11719"></kol-link>.
+
 ### Zielverhalten
 
 Über `_target` steuern Sie, wo der Link im Browser geöffnet wird:
@@ -153,6 +155,8 @@ Der Tooltip erscheint nach kurzer Verzögerung, sobald der LinkButton mit der Ma
 Daneben sind die übrigen Werte des nativen `target`-Attributs möglich (z. B. `_parent`, `_top` oder ein Fenstername).
 
 Bei jedem Wert außer `_self` geben Screenreader zusätzlich den Hinweis „Öffnet in neuem Tab.“ aus. Ein sichtbarer Hinweis wird beim LinkButton nicht angezeigt (siehe [Konkrete Designentscheidungen](#konkrete-designentscheidungen)).
+
+**Hinweis:** Der Hinweis „Öffnet in neuem Tab.“ wird derzeit auch bei `_parent`, `_top` und Fensternamen ausgegeben, obwohl dabei kein neuer Tab geöffnet wird. Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/11718" _target="_blank" _label="GitHub Issue #11718"></kol-link>.
 
 ### Download-Links
 
@@ -206,7 +210,7 @@ Darüber hinaus unterstützt der LinkButton folgende Attribute:
 | `_ariaDescription` | Ergänzende Beschreibung, die Screenreader zusätzlich zur Beschriftung ausgeben; sie wird nicht sichtbar dargestellt  |
 | `_ariaControls`    | Definiert, welche Elemente durch diesen LinkButton gesteuert werden (`aria-controls`)                                |
 | `_customClass`     | Zusätzliche CSS-Klasse, wenn `_variant="custom"` gesetzt ist                                                         |
-| `_inline`          | Displaymodus ohne Mindestgröße von 44px. Abweichend davon bleibt die Mindesthöhe beim LinkButton in KoliBri 4.5.0 erhalten. |
+| `_inline`          | Displaymodus ohne Mindestgröße von 44px. Abweichend davon bleibt die Mindesthöhe beim LinkButton in KoliBri 4.5.0 erhalten (<kol-link _href="https://github.com/public-ui/kolibri/issues/11717" _target="_blank" _label="GitHub Issue #11717"></kol-link>). |
 
 <LinkButtonPreview
 	context="feature"
