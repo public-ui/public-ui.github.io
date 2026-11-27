@@ -1,0 +1,220 @@
+WEBVTT
+
+00:00:00.593 --> 00:00:03.572
+KoliBri – die Elemente, die HTML fehlen.
+
+00:00:04.433 --> 00:00:09.797
+Das ist KoliBri: eine Komponentenbibliothek, die Barrierefreiheit von Anfang an mitbringt –
+
+00:00:09.847 --> 00:00:12.433
+damit Benutzeroberflächen für alle funktionieren.
+
+00:00:13.289 --> 00:00:18.446
+Titelfolie: die Wortmarke auf blauem Grund, daneben die Karte des Open Source Wettbewerbs
+
+00:00:18.496 --> 00:00:22.398
+zweitausendsechsundzwanzig – erster Platz in der Kategorie Transformation.
+
+00:00:24.560 --> 00:00:29.054
+Fünfundneunzig Komma neun Prozent der eine Million meistbesuchten Startseiten fallen schon beim
+
+00:00:29.104 --> 00:00:33.658
+automatischen W C A G Test durch – im Schnitt mit sechsundfünfzig Fehlern pro Seite.
+
+00:00:35.827 --> 00:00:38.049
+Keine Randfälle. Menschen.
+
+00:00:38.899 --> 00:00:44.397
+Jemand, dessen Hände so zittern, dass die Maus nicht stillhält. Jemand, der nie einen
+
+00:00:44.447 --> 00:00:50.147
+Bildschirm gesehen hat und jede Seite hört. Jemand, der sich in grauen Tabs verliert und
+
+00:00:50.197 --> 00:00:51.397
+aufgibt.
+
+00:00:52.927 --> 00:00:54.557
+Gültig heißt nicht benutzbar.
+
+00:00:55.399 --> 00:01:00.540
+Zwei Zeilen HTML: ein leerer Button und ein E-Mail-Feld mit Required-Attribut.
+
+00:01:01.399 --> 00:01:05.453
+Der Validator ist zufrieden – dem Screenreader fehlen eindeutige Bezeichnungen.
+
+00:01:07.627 --> 00:01:09.377
+Ein Button ohne Namen ist Stille.
+
+00:01:10.219 --> 00:01:15.571
+Wer auf einen Screenreader angewiesen ist, hört nur: Button. Sonst nichts.
+
+00:01:17.760 --> 00:01:20.173
+Ein barrierefreies Feld, von Hand.
+
+00:01:21.024 --> 00:01:27.024
+Im Code: ein Label für das E-Mail-Feld, das Eingabefeld mit den ARIA-Attributen aria-required,
+
+00:01:27.252 --> 00:01:32.572
+aria-invalid und aria-describedby, dazu ein Hinweistext und eine Fehlermeldung mit der Rolle
+
+00:01:32.622 --> 00:01:33.822
+alert.
+
+00:01:33.960 --> 00:01:40.412
+Drei IDs, vier ARIA-Attribute – für ein einziges Feld. Und in jedem Projekt neu.
+
+00:01:42.560 --> 00:01:45.225
+Barrierefreiheit ist Pflicht, keine Kür.
+
+00:01:46.088 --> 00:01:52.212
+W C A G zwei Komma eins und E N drei null eins, fünf vier neun legen fest, was eine Oberfläche
+
+00:01:52.262 --> 00:01:55.864
+können muss. Für öffentliche Stellen ist das verbindlich.
+
+00:01:56.744 --> 00:01:59.592
+Umsetzen muss es jedes Projekt neu, von Hand.
+
+00:02:01.760 --> 00:02:04.391
+Was, wenn das Element die Regel selbst kennt?
+
+00:02:06.560 --> 00:02:10.038
+KoliBri ist HTML mit eingebauter Barrierefreiheit.
+
+00:02:10.880 --> 00:02:17.182
+Eine Bibliothek aus Web Components, dem Webstandard für eigene HTML-Elemente. Sie läuft in
+
+00:02:17.232 --> 00:02:22.569
+jedem modernen Browser. Die Regeln stecken im Element, nicht in jedem Projekt.
+
+00:02:24.760 --> 00:02:30.314
+Dasselbe Feld – ein Tag: kol-input-email mit den Eigenschaften Label, Required und Hint.
+
+00:02:31.168 --> 00:02:35.472
+Die drei IDs und vier ARIA-Attribute setzt das Element automatisch.
+
+00:02:37.660 --> 00:02:39.617
+Die Eigenschaft Label ist Pflicht.
+
+00:02:40.492 --> 00:02:45.740
+Ein KoliBri-Element ohne Bezeichnung gibt es nicht. Barrierefreiheit lässt sich nicht
+
+00:02:45.790 --> 00:02:46.990
+abschalten.
+
+00:02:48.560 --> 00:02:49.897
+Nicht glauben – nachprüfen.
+
+00:02:50.744 --> 00:02:57.042
+aria-invalid sitzt, sobald die Eingabe fehlerhaft ist. aria-describedby verkettet Hinweis,
+
+00:02:57.281 --> 00:02:58.846
+Fehler und Zähler richtig.
+
+00:02:59.720 --> 00:03:05.344
+Dazu: ein sichtbarer Fokusring, volle Bedienung per Tastatur und Klickflächen von mindestens
+
+00:03:05.394 --> 00:03:10.840
+vierundvierzig mal vierundvierzig Pixeln, wie W C A G zwei Komma fünf Komma fünf verlangt.
+
+00:03:13.027 --> 00:03:17.292
+Nichts davon steht im Markup. Im Markup steht nur: Label.
+
+00:03:19.493 --> 00:03:25.591
+Einundfünfzig dokumentierte Elemente: Felder, Buttons, Tabellen, Dialoge, Navigation.
+
+00:03:26.453 --> 00:03:29.562
+Jede Eigenschaft bedeutet in jedem Element dasselbe.
+
+00:03:31.727 --> 00:03:35.720
+Wir schreiben HTML nicht um. Wir schreiben es zu Ende.
+
+00:03:37.893 --> 00:03:40.524
+Webstandards überdauern Framework-Zyklen.
+
+00:03:41.373 --> 00:03:47.530
+React, Angular, Vue, Preact, Solid – oder ohne Framework: Wechselt die Technik, bleiben die
+
+00:03:47.580 --> 00:03:48.780
+Elemente.
+
+00:03:49.029 --> 00:03:52.725
+Das Aussehen kommt aus einem Theme, eingebunden mit einer Zeile.
+
+00:03:54.893 --> 00:03:56.654
+Public Money, Public Code.
+
+00:03:57.509 --> 00:04:01.901
+Was aus öffentlichen Mitteln entsteht, muss allen offenstehen – ohne Lizenzgebühr.
+
+00:04:02.765 --> 00:04:08.539
+Die E U P L eins Komma zwei hält es offen: Wer KoliBri weitergibt, gibt den Quellcode mit.
+
+00:04:10.593 --> 00:04:12.050
+Offen heißt nachprüfbar.
+
+00:04:12.897 --> 00:04:18.939
+Jede Codezeile und jeder gemeldete Fehler ist öffentlich einsehbar. KoliBri sendet keine Daten
+
+00:04:18.989 --> 00:04:20.871
+und bindet keinen Fremddienst ein.
+
+00:04:21.681 --> 00:04:24.714
+Jedes Paket kommt signiert aus einem öffentlichen Build.
+
+00:04:26.893 --> 00:04:29.122
+Wir kleben kein Pflaster auf Browserfehler.
+
+00:04:29.965 --> 00:04:34.600
+Lücken in Browsern und Hilfstechnologien dokumentieren wir öffentlich und melden sie den
+
+00:04:34.650 --> 00:04:35.850
+Herstellern.
+
+00:04:36.229 --> 00:04:40.099
+Sie sollen an der Quelle behoben werden, nicht in jedem Projekt umschifft.
+
+00:04:42.260 --> 00:04:44.912
+Nachrüsten ist die teuerste Barrierefreiheit.
+
+00:04:45.788 --> 00:04:51.760
+Nachträglich kostet sie rund fünfzehn Prozent der Projektinvestition. Von Anfang an eingebaut:
+
+00:04:52.021 --> 00:04:53.629
+fünf Prozent oder weniger.
+
+00:04:54.476 --> 00:04:59.350
+Zwanzig Vorhaben mit denselben Elementen sparen zusammen schätzungsweise hundertzwanzig bis
+
+00:04:59.400 --> 00:05:01.335
+zweihundertvierzig Personenmonate.
+
+00:05:02.180 --> 00:05:05.713
+Die Zahlen sind Erfahrungswerte und als Größenordnung gedacht.
+
+00:05:07.893 --> 00:05:10.846
+Das Richtige einmal tun. Für alle.
+
+00:05:11.661 --> 00:05:17.942
+Die Elemente entstehen einmal, das Aussehen je Organisation. Jedes weitere Projekt erbt die
+
+00:05:17.992 --> 00:05:19.192
+Barrierefreiheit.
+
+00:05:21.193 --> 00:05:23.835
+Am Ende merkt man nur, dass es funktioniert.
+
+00:05:24.697 --> 00:05:30.941
+Sie drückt die Taste Enter. Beim ersten Versuch. Der Screenreader sagt: Gesendet.
+
+00:05:33.127 --> 00:05:37.768
+Abbindefolie mit dem KoliBri-Logo: Die Elemente, die HTML fehlen.
+
+00:05:38.623 --> 00:05:44.253
+Erster Platz, Kategorie Transformation, Open Source Wettbewerb zweitausendsechsundzwanzig.
+
+00:05:45.103 --> 00:05:50.238
+Sie finden KoliBri auf GitHub unter public-ui schrägstrich kolibri, die Dokumentation auf
+
+00:05:50.288 --> 00:05:52.311
+public-ui punkt github punkt io.
