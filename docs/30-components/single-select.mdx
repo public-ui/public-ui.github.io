@@ -112,8 +112,6 @@ Ja. Die Texteingabe dient ausschließlich dem Filtern der Optionen. Das Leeren d
 **Wie werden die Optionen gefiltert?**  
 Ein Klick in das Eingabefeld oder auf den Pfeil öffnet bzw. schließt die Auswahlliste. Während der Eingabe werden die Optionen über eine **Substring-Suche** ohne Beachtung der Groß-/Kleinschreibung gefiltert, und der Suchbegriff wird in den passenden Optionen hervorgehoben. Passt keine Option zur Eingabe, wird „Keine Ergebnisse gefunden.“ angezeigt und von Screenreadern unmittelbar angesagt. Verlässt der Fokus das Feld und entspricht der eingegebene Text exakt der Beschriftung einer Option (ohne Beachtung der Groß-/Kleinschreibung), wird diese Option automatisch ausgewählt.
 
-**Hinweis:** Ist bereits eine Option ausgewählt, setzt KoliBri 4.5.0 die Filterung zurück, sobald der Fokus in die Liste wechselt – etwa per `Pfeil-Taste unten` oder beim Überfahren der Optionen mit der Maus. Die Liste zeigt dann wieder alle Optionen (<kol-link _href="https://github.com/public-ui/kolibri/issues/10501" _target="_blank" _label="KoliBri-Issue #10501"></kol-link>, <kol-link _href="https://github.com/public-ui/kolibri/issues/10617" _target="_blank" _label="#10617"></kol-link>).
-
 **Wie formuliere ich Beschriftung, Optionen und Placeholder?**  
 Verwenden Sie klare, verständliche Beschriftungen (`_label`), die den Zweck der Auswahl deutlich machen. Formulieren Sie die Beschriftungen der Optionen eindeutig und gut unterscheidbar – sie werden sowohl für die Filterung als auch für die Zeichensuche verwendet. Nutzen Sie den Placeholder (`_placeholder`) nur als ergänzende Hilfe, nicht als Ersatz für Beschriftung oder Hinweis.
 
@@ -240,8 +238,6 @@ Einzelne Optionen deaktivieren Sie über `disabled: true` im jeweiligen Options-
 <ClearButtonFeature />
 
 Nach dem Entfernen der Auswahl wird die Auswahlliste geöffnet und der Fokus in das Eingabefeld gesetzt, sodass direkt eine neue Option gewählt werden kann. Dabei werden die Events `input` und `change` ausgelöst.
-
-**Hinweis:** In KoliBri 4.5.0 liefern die Events `input` und `change` beim Entfernen der Auswahl nicht `null`, sondern das Objekt `{ value: null }` (<kol-link _href="https://github.com/public-ui/kolibri/issues/11205" _target="_blank" _label="KoliBri-Issue #11205"></kol-link>). `_value` und `getValue()` sind dagegen `null`.
 
 <SingleSelectPreview
 	context="feature"

@@ -82,7 +82,7 @@ Verwenden Sie InputNumber ausschließlich für Werte, die mathematisch verarbeit
 - The feature is visible immediately – set start values via `initialProps` instead of "enter something first".
 - Accessibility-relevant behaviour of the feature belongs here, not under "Barrierefreiheit" (e.g. clear button, variants, states).
 - No purely visual details (icon direction, colours, spacing) unless they matter for accessibility.
-- Known KoliBri bugs as a note with a link to the issue, right at the feature.
+- No notes on KoliBri bugs or links to bug issues – describe the behaviour; bugs belong only in KoliBri issues.
 - Recurring sections via shared snippets from `_shared/features/`.
 
 **Events** – `<EventsIntro />` is `_shared/api/events-intro.md`. Verify the "Value" column in the source. Omit the chapter if the component emits no events.

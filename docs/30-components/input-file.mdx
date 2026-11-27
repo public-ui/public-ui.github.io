@@ -67,12 +67,10 @@ Standard-Datei-Eingabefeld ohne optional gesetzte Felder:
 
 Die Bedienung innerhalb des Dateiauswahldialogs wird durch das Betriebssystem bestimmt.
 
-**Hinweis:** Nach dem Eingabefeld ist derzeit zusätzlich die Schaltfläche „Datei auswählen“ per `Tab` erreichbar, sie hat jedoch keine Funktion (siehe [Dateiauswahl und Drag & Drop](#dateiauswahl-und-drag--drop)).
-
 ## FAQ
 
 **Kann ich die Auswahl auf bestimmte Dateitypen beschränken?**  
-Ja. Über `_accept` legen Sie fest, welche Dateitypen im Dateiauswahldialog angeboten werden (siehe [Dateitypbeschränkung](#dateitypbeschränkung)). Nutzen Sie diese Einschränkung, um die Benutzerführung zu verbessern, verlassen Sie sich aber nicht ausschließlich darauf: Die clientseitige Einschränkung kann umgangen werden und greift beim Ablegen per Drag & Drop nicht. Prüfen Sie Dateitypen und Dateigrößen daher zusätzlich serverseitig.
+Ja. Über `_accept` legen Sie fest, welche Dateitypen im Dateiauswahldialog angeboten werden (siehe [Dateitypbeschränkung](#dateitypbeschränkung)). Nutzen Sie diese Einschränkung, um die Benutzerführung zu verbessern, verlassen Sie sich aber nicht ausschließlich darauf: Die clientseitige Einschränkung kann umgangen werden. Prüfen Sie Dateitypen und Dateigrößen daher zusätzlich serverseitig.
 
 **Wie kann ich mehrere Dateien auswählen?**  
 Aktivieren Sie `_multiple`, damit mehrere Dateien in einem Arbeitsgang ausgewählt werden können (siehe [Mehrfachauswahl](#mehrfachauswahl)). Verwenden Sie `_multiple` nur, wenn die Auswahl mehrerer Dateien für den Anwendungsfall erforderlich ist.
@@ -84,7 +82,7 @@ Nein. Die maximale Dateigröße kann nicht über die Komponente begrenzt werden 
 Formulieren Sie aussagekräftige Beschriftungen (`_label`), die den Zweck des Datei-Uploads eindeutig beschreiben. Nutzen Sie `_hint`, um zulässige Dateiformate oder maximale Dateigrößen verständlich zu kommunizieren. Geben Sie Validierungsfehler über `_msg` aus und beschreiben Sie verständlich, wie Nutzende den Fehler beheben können (siehe [Hinweistexte und Fehlermeldungen](#hinweistexte-und-fehlermeldungen)).
 
 **Unterstützt die Komponente Drag & Drop?**  
-Ja. Dateien können zusätzlich zum nativen Dateiauswahldialog per Drag & Drop auf dem Feld abgelegt werden; Einschränkungen dabei beschreibt der Abschnitt [Dateiauswahl und Drag & Drop](#dateiauswahl-und-drag--drop).
+Ja. Dateien können zusätzlich zum nativen Dateiauswahldialog per Drag & Drop auf dem Feld abgelegt werden (siehe [Einfaches Eingabefeld](#einfaches-eingabefeld)).
 
 **Wie setze ich die Auswahl zurück?**  
 Rufen Sie die Methode `reset()` der Komponente auf. Sie entfernt die ausgewählten Dateien und stellt den Hinweistext im Feld wieder her.
@@ -108,10 +106,6 @@ Die Komponente zeigt eine Schaltfläche **„Datei auswählen“** an. Ein Klick
 Die Namen der ausgewählten Dateien werden als Text im Feld angezeigt. Solange keine Datei ausgewählt ist, erscheint dort der Hinweis „Datei auswählen oder hier ablegen...“.
 
 Zusätzlich können Dateien per **Drag & Drop** auf dem Feld abgelegt werden. Diese Komfortfunktion ergänzt die tastaturbedienbare Auswahl über den Dateiauswahldialog, ersetzt sie jedoch nicht. Ist das Feld deaktiviert (`_disabled`), werden abgelegte Dateien ignoriert.
-
-**Hinweis:** Beim Ablegen per Drag & Drop werden `_accept` und `_multiple` derzeit nicht berücksichtigt – es werden alle abgelegten Dateien übernommen (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10865" _target="_blank" _label="#10865"></kol-link>). Prüfen Sie Anzahl, Typ und Größe der Dateien daher immer auf Anwendungsebene bzw. serverseitig.
-
-**Hinweis:** Die Schaltfläche „Datei auswählen“ erhält derzeit zusätzlich zum Eingabefeld den Tastaturfokus und ist auch für Screenreader als eigene Schaltfläche erreichbar, löst bei Aktivierung per Tastatur aber keine Aktion aus (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10538" _target="_blank" _label="#10538"></kol-link>).
 
 ### Formularattribute
 
@@ -143,8 +137,6 @@ Beispiele für `_accept`-Werte:
 - `*` oder leer: Alle Dateitypen (Standard)
 
 Die Einschränkung zulässiger Dateitypen über `_accept` wird von Browsern und assistiven Technologien unterstützt.
-
-**Hinweis:** Die Einschränkung wirkt nur im Dateiauswahldialog. Per Drag & Drop abgelegte Dateien werden derzeit nicht gegen `_accept` geprüft (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10865" _target="_blank" _label="#10865"></kol-link>).
 
 <InputFilePreview
 	context="feature"

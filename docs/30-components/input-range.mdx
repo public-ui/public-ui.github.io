@@ -61,7 +61,7 @@ Standard-Schieberegler mit Beschriftung und Zahlenfeld:
 
 - Nutzen Sie `_min` und `_max`, um den Wertebereich festzulegen. Ohne Angabe gilt der Bereich von `0` bis `100`.
 - Verwenden Sie `_step`, um die Schrittweite festzulegen. Ohne Angabe gilt die native Schrittweite von `1`.
-- Der über die Events `input` und `change` sowie über `getValue()` gemeldete Wert wird auf `_min` bzw. `_max` begrenzt. Ist die jeweilige Grenze `0`, findet diese Begrenzung derzeit nicht statt (siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/10861" _target="_blank" _label="#10861"></kol-link>).
+- Der über die Events `input` und `change` sowie über `getValue()` gemeldete Wert wird auf `_min` bzw. `_max` begrenzt.
 - Wurde `_value` als Zeichenkette übergeben (z. B. `'50'`), liefern Events und `getValue()` den Wert ebenfalls als Zeichenkette, andernfalls als Zahl.
 
 **Hinweis:** Im Zahlenfeld können manuell auch Werte außerhalb des Bereichs bzw. Schrittmaßes eingegeben werden. Die Validierung der eingegebenen Werte muss auf Anwendungsebene erfolgen.

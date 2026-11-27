@@ -83,8 +83,6 @@ Standard-Datumsfeld mit dem Typ `date`:
 
 Ist das Kalender-Symbol des Browsers fokussiert, wird das Formular nicht abgesendet, damit die Eingabetaste dort weiterhin den Auswahldialog bedient (siehe [Konkrete Designentscheidungen](#konkrete-designentscheidungen)). Bei `_readOnly` hat die `Leertaste` keine Funktion.
 
-**Hinweis:** In Firefox sendet `Enter` auf dem Kalender-Symbol das Formular derzeit trotzdem ab. Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/11254" _target="_blank" _label="GitHub Issue #11254"></kol-link>.
-
 ## FAQ
 
 **Wie belege ich InputDate mit einem Wert vor?**  
@@ -103,8 +101,6 @@ Vermutlich passt das Format nicht zum gewählten `_type`, beispielsweise ein vol
 
 **Kann ich `Date`-Objekte übergeben?**  
 `Date`-Objekte werden für `_value`, `_min` und `_max` weiterhin akzeptiert und passend zum `_type` in eine ISO-8601-Zeichenkette umgewandelt. Diese Variante ist jedoch veraltet (deprecated) und sollte nicht mehr verwendet werden – übergeben Sie Werte stattdessen als ISO-8601-Zeichenkette. Wurde `_value` als `Date` übergeben, liefern Events und `getValue()` ebenfalls ein `Date`, andernfalls eine Zeichenkette.
-
-**Hinweis:** Bei den Typen `time` und `week` ist das zurückgelieferte `Date` derzeit ungültig (`Invalid Date`). Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/6926" _target="_blank" _label="GitHub Issue #6926"></kol-link>.
 
 **Wie kann InputDate geleert werden?**  
 Setzen Sie `_value` auf `null` oder `undefined` oder rufen Sie die Methode `reset()` auf. `reset()` leert das Eingabefeld und den Formularwert, die Property `_value` behält dabei ihren bisherigen Wert. Ein leeres Feld liefert in Events und bei `getValue()` den Wert `null`.
