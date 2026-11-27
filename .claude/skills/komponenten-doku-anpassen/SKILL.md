@@ -52,7 +52,7 @@ Follow `docs/30-components/_STRUCTURE.md` chapter by chapter, with [references/k
   - every preview needs `context` (`example` / `playground` / `feature`) matching its section, and `feature` previews need `visibleProperties`
   - add a missing control to the preview `.tsx` when the component supports the property (follow the existing pattern, e.g. `_touched: <BooleanProperty label="Touched" />`)
   - examples must show the feature immediately via `initialProps`; if a preview keeps `_value` in state, initialise it from `props.initialProps?._value`
-- **Known KoliBri bugs**: short note with issue link next to the affected feature, never under "Barrierefreiheit".
+- **No bug notes in the page**: don't mention or link KoliBri bugs anywhere on the page – bugs go into the report and, after confirmation, into a KoliBri issue (step 6). Existing bug notes ("Hinweis: … siehe Issue #…") on the page you are editing are removed and listed in the report. Issue links that back a design decision (e.g. a "Begründung" cell) are not bug notes and stay.
 - German prose with correct umlauts, camelCase property names, tabs in JSX, single quotes.
 
 ## 4. Check
@@ -88,4 +88,4 @@ Bugs belong in the KoliBri backlog, not only in a chat report – but filing pub
 1. Before asking, search for duplicates: `gh issue list --repo public-ui/kolibri --state all --search "<Komponente> <Stichwort>"` (German and English terms). If an issue exists, name it instead of proposing a new one; if it's closed but the bug is back, propose a new issue that references it as a regression.
 2. Ask the user which bugs to file (list them with a one-line summary and the duplicate result). File nothing without an explicit yes.
 3. File each confirmed bug as its own issue in `public-ui/kolibri`, in German, with the sections **Problem**, **Reproduktion** (minimal web component snippet + steps), **Erwartetes Verhalten**, **Betroffene Komponenten**, **Codebeleg** (tag and paths relative to `packages/components/src/`) and a closing line referencing the docs work. Use only existing labels (e.g. `bug`, `a11y`, `doc`); check with `gh label list --repo public-ui/kolibri`. Write the body to a file and pass it with `--body-file` – umlauts and quotes break inline shell arguments.
-4. Link each filed issue in the page as a short note next to the affected feature (not under "Barrierefreiheit") and re-run the checks from step 4.
+4. Don't link the filed issues in the page. Name them (with URL) in the report and in the PR description instead.
