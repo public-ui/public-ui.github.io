@@ -147,6 +147,10 @@ const config = {
 								label: 'Impressum',
 								to: '/docs/legal-notice',
 							},
+							{
+								label: 'EZB',
+								to: '/docs/ezb',
+							},
 						],
 					},
 					{
