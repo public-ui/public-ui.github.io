@@ -115,6 +115,8 @@ Mit `_target` legen Sie fest, wo das Linkziel geöffnet wird (z. B. `_blank` fü
 	initialProps={{ _label: 'Externe Dokumentation', _href: 'https://example.com', _target: '_blank' }}
 />
 
+**Hinweis:** Der Hinweis „Öffnet in neuem Tab.“ erscheint derzeit auch bei `_target="_top"` und `_target="_parent"`, obwohl diese Ziele keinen neuen Tab öffnen. Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/11718" _target="_blank" _label="GitHub Issue #11718"></kol-link>.
+
 ### Varianten
 
 Die Darstellung wird über `_variant` gesteuert. Die Themes steuern welche Varianten zur Verfügung stehen und welche der Standardwert ist. Hier sind <kol-link _href="https://develop--kolibri-public-ui.netlify.app/#/link/link-variant?theme=desy-v11" _target="_blank" _label="die anderen Themes und ihre jeweiligen Varianten"></kol-link> zu sehen. Im Folgenden zeigen wir nur das Default Theme; dort unterscheiden sich die Varianten `normal` und `small` des Links nicht in der Darstellung.
@@ -246,6 +248,8 @@ Testen Sie die verschiedenen Eigenschaften der Link-Komponente:
 | `click` | Link wird angeklickt bzw. per Tastatur aktiviert | Linkziel (`_href`)   |
 
 Über `_on` steht der entsprechende Callback `onClick` zur Verfügung, der ebenfalls das Linkziel erhält. Deaktivierte Links lösen weder Event noch Callback aus.
+
+**Hinweis:** Neben dem KoliBri-Event erreicht derzeit auch das native `click`-Event des Links den Host, sodass ein `click`-Listener pro Klick zweimal aufgerufen wird. Details siehe <kol-link _href="https://github.com/public-ui/kolibri/issues/11720" _target="_blank" _label="GitHub Issue #11720"></kol-link>.
 
 <div lang="en">
 <Readme />
